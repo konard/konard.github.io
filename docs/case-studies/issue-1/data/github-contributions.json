@@ -1,0 +1,31 @@
+[
+  {"commits":8,"issues":0,"pullRequests":0,"repositories":1,"reviews":0,"total":10,"year":2012}
+,
+  {"commits":0,"issues":0,"pullRequests":0,"repositories":0,"reviews":0,"total":0,"year":2013}
+,
+  {"commits":1,"issues":2,"pullRequests":0,"repositories":1,"reviews":0,"total":5,"year":2014}
+,
+  {"commits":202,"issues":148,"pullRequests":2,"repositories":4,"reviews":0,"total":358,"year":2015}
+,
+  {"commits":232,"issues":147,"pullRequests":5,"repositories":6,"reviews":0,"total":391,"year":2016}
+,
+  {"commits":204,"issues":0,"pullRequests":0,"repositories":0,"reviews":0,"total":204,"year":2017}
+,
+  {"commits":109,"issues":0,"pullRequests":0,"repositories":2,"reviews":0,"total":111,"year":2018}
+,
+  {"commits":4114,"issues":509,"pullRequests":14,"repositories":28,"reviews":0,"total":4665,"year":2019}
+,
+  {"commits":2098,"issues":281,"pullRequests":8,"repositories":36,"reviews":20,"total":2447,"year":2020}
+,
+  {"commits":918,"issues":238,"pullRequests":7,"repositories":14,"reviews":210,"total":1390,"year":2021}
+,
+  {"commits":766,"issues":83,"pullRequests":3,"repositories":5,"reviews":241,"total":1100,"year":2022}
+,
+  {"commits":3066,"issues":401,"pullRequests":36,"repositories":28,"reviews":47,"total":3586,"year":2023}
+,
+  {"commits":2032,"issues":1441,"pullRequests":5,"repositories":101,"reviews":3,"total":4779,"year":2024}
+,
+  {"commits":18746,"issues":2184,"pullRequests":5627,"repositories":101,"reviews":4,"total":29463,"year":2025}
+,
+  {"commits":63220,"issues":6260,"pullRequests":8809,"repositories":101,"reviews":0,"total":83493,"year":2026}
+]
