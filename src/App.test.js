@@ -34,7 +34,8 @@ describe('App', () => {
   test('shows companies on the timeline and social links', () => {
     render(<App />);
     expect(screen.getAllByText('LinksPlatform').length).toBeGreaterThan(0);
-    expect(screen.getByText('Kaiten')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 3, name: 'Kaiten' })).toBeInTheDocument();
+    expect(screen.getByLabelText(/^Kaiten, Senior Software Engineer: Jul 2024 – present$/)).toBeInTheDocument();
     const contacts = document.getElementById('contacts');
     expect(within(contacts).getByRole('link', { name: /GitHub/ })).toHaveAttribute('href', 'https://github.com/konard');
     within(contacts).getAllByRole('link').forEach((a) => {

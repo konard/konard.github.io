@@ -26,7 +26,7 @@ export default function LanguagesChart({ languages, favorites }) {
   return (
     <div className="chart" data-tooltip-root>
       <p className="chart__caption">
-        Primary language of {formatNumber(total)} original public repositories (personal + organizations).
+        Primary language of {formatNumber(total)} original public repositories with a detected language (personal + organizations).
         <span className="muted"> ★ = favorite language</span>
       </p>
       <ul className="hbars" aria-label="Repositories by primary language">
