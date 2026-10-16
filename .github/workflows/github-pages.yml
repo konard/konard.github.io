@@ -6,38 +6,76 @@ on:
       - main
     paths-ignore:
       - 'docs/**'
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     steps:
       - name: Checkout source
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '14'
+          node-version: '20'
+          cache: npm
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
+
+      - name: Run tests
+        run: npm run test:ci
 
       - name: Build the React app
         run: npm run build
 
-      - name: Deploy: Copy build to docs folder and commit
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  deploy:
+    needs: test
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build the React app
+        run: npm run build
+
+      # GitHub Pages serves the /docs folder of main. Replace the previous
+      # build but keep the hand-written documentation in docs/case-studies.
+      - name: 'Deploy: copy build to docs folder and commit'
         run: |
-          rm -rf docs
-          cp -r build docs
+          mkdir -p docs
+          find docs -mindepth 1 -maxdepth 1 ! -name case-studies -exec rm -rf {} +
+          cp -r build/. docs/
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs
+          git add -A docs
           if ! git diff --cached --quiet; then
             git commit -m "Deploy build to docs [skip ci]"
-            git push origin main
+            git push origin HEAD:main
           else
             echo "No changes in build output to deploy."
           fi
