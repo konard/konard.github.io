@@ -1,0 +1,516 @@
+test	Set up job	﻿2026-10-17T09:29:16.7925537Z Current runner version: '2.337.0'
+test	Set up job	2026-10-17T09:29:16.7965596Z ##[group]Runner Image Provisioner
+test	Set up job	2026-10-17T09:29:16.7967369Z Hosted Compute Agent
+test	Set up job	2026-10-17T09:29:16.7968379Z Version: 20261012.601
+test	Set up job	2026-10-17T09:29:16.7969409Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+test	Set up job	2026-10-17T09:29:16.7970752Z Build Date: 2026-10-12T17:48:21Z
+test	Set up job	2026-10-17T09:29:16.7971940Z Worker ID: {fda51995-6ffb-4748-b559-0457d79f34ca}
+test	Set up job	2026-10-17T09:29:16.7973166Z Region: eastus2
+test	Set up job	2026-10-17T09:29:16.7974036Z Cloud: Azure
+test	Set up job	2026-10-17T09:29:16.7975002Z ##[endgroup]
+test	Set up job	2026-10-17T09:29:16.7977971Z ##[group]Operating System
+test	Set up job	2026-10-17T09:29:16.7979091Z Ubuntu
+test	Set up job	2026-10-17T09:29:16.7980033Z 24.04.5
+test	Set up job	2026-10-17T09:29:16.7980823Z LTS
+test	Set up job	2026-10-17T09:29:16.7981732Z ##[endgroup]
+test	Set up job	2026-10-17T09:29:16.7982788Z ##[group]Runner Image
+test	Set up job	2026-10-17T09:29:16.7983759Z Image: ubuntu-24.04
+test	Set up job	2026-10-17T09:29:16.7984741Z Version: 20261012.334.1
+test	Set up job	2026-10-17T09:29:16.7986661Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+test	Set up job	2026-10-17T09:29:16.7990037Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+test	Set up job	2026-10-17T09:29:16.7991730Z ##[endgroup]
+test	Set up job	2026-10-17T09:29:16.7993798Z ##[group]GITHUB_TOKEN Permissions
+test	Set up job	2026-10-17T09:29:16.7996771Z Contents: read
+test	Set up job	2026-10-17T09:29:16.7998161Z Metadata: read
+test	Set up job	2026-10-17T09:29:16.7999159Z Packages: read
+test	Set up job	2026-10-17T09:29:16.8000156Z ##[endgroup]
+test	Set up job	2026-10-17T09:29:16.8003203Z Secret source: Actions
+test	Set up job	2026-10-17T09:29:16.8004757Z Cache mode: write
+test	Set up job	2026-10-17T09:29:16.8006500Z Prepare workflow directory
+test	Set up job	2026-10-17T09:29:16.8495740Z Prepare all required actions
+test	Set up job	2026-10-17T09:29:16.8569147Z Getting action download info
+test	Set up job	2026-10-17T09:29:17.0473497Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+test	Set up job	2026-10-17T09:29:17.1626513Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+test	Set up job	2026-10-17T09:29:17.3626360Z Complete job name: test
+test	Checkout source	﻿2026-10-17T09:29:17.4432735Z ##[group]Run actions/checkout@v4
+test	Checkout source	2026-10-17T09:29:17.4433691Z with:
+test	Checkout source	2026-10-17T09:29:17.4434173Z   repository: konard/konard.github.io
+test	Checkout source	2026-10-17T09:29:17.4438873Z   token: ***
+test	Checkout source	2026-10-17T09:29:17.4439356Z   ssh-strict: true
+test	Checkout source	2026-10-17T09:29:17.4439819Z   ssh-user: git
+test	Checkout source	2026-10-17T09:29:17.4440282Z   persist-credentials: true
+test	Checkout source	2026-10-17T09:29:17.4440789Z   clean: true
+test	Checkout source	2026-10-17T09:29:17.4441399Z   sparse-checkout-cone-mode: true
+test	Checkout source	2026-10-17T09:29:17.4442115Z   fetch-depth: 1
+test	Checkout source	2026-10-17T09:29:17.4442564Z   fetch-tags: false
+test	Checkout source	2026-10-17T09:29:17.4443017Z   show-progress: true
+test	Checkout source	2026-10-17T09:29:17.4443469Z   lfs: false
+test	Checkout source	2026-10-17T09:29:17.4443891Z   submodules: false
+test	Checkout source	2026-10-17T09:29:17.4444341Z   set-safe-directory: true
+test	Checkout source	2026-10-17T09:29:17.4444872Z   allow-unsafe-pr-checkout: false
+test	Checkout source	2026-10-17T09:29:17.4445764Z ##[endgroup]
+test	Checkout source	2026-10-17T09:29:17.5504931Z Syncing repository: konard/konard.github.io
+test	Checkout source	2026-10-17T09:29:17.5506933Z ##[group]Getting Git version info
+test	Checkout source	2026-10-17T09:29:17.5508040Z Working directory is '/home/runner/work/konard.github.io/konard.github.io'
+test	Checkout source	2026-10-17T09:29:17.5509293Z [command]/usr/bin/git version
+test	Checkout source	2026-10-17T09:29:17.5619000Z git version 2.55.0
+test	Checkout source	2026-10-17T09:29:17.5651064Z ##[endgroup]
+test	Checkout source	2026-10-17T09:29:17.5670089Z Temporarily overriding HOME='/home/runner/work/_temp/1f3df70e-8fc6-4fa6-8181-ddee83783c53' before making global git config changes
+test	Checkout source	2026-10-17T09:29:17.5672468Z Adding repository directory to the temporary git global config as a safe directory
+test	Checkout source	2026-10-17T09:29:17.5675749Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/konard.github.io/konard.github.io
+test	Checkout source	2026-10-17T09:29:17.5735816Z Deleting the contents of '/home/runner/work/konard.github.io/konard.github.io'
+test	Checkout source	2026-10-17T09:29:17.5745406Z ##[group]Initializing the repository
+test	Checkout source	2026-10-17T09:29:17.5746685Z [command]/usr/bin/git init /home/runner/work/konard.github.io/konard.github.io
+test	Checkout source	2026-10-17T09:29:17.5850023Z hint: Using 'master' as the name for the initial branch. This default branch name
+test	Checkout source	2026-10-17T09:29:17.5852270Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+test	Checkout source	2026-10-17T09:29:17.5853906Z hint: to use in all of your new repositories, which will suppress this warning,
+test	Checkout source	2026-10-17T09:29:17.5855126Z hint: call:
+test	Checkout source	2026-10-17T09:29:17.5855773Z hint:
+test	Checkout source	2026-10-17T09:29:17.5856581Z hint: 	git config --global init.defaultBranch <name>
+test	Checkout source	2026-10-17T09:29:17.5857845Z hint:
+test	Checkout source	2026-10-17T09:29:17.5858860Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+test	Checkout source	2026-10-17T09:29:17.5860398Z hint: 'development'. The just-created branch can be renamed via this command:
+test	Checkout source	2026-10-17T09:29:17.5861613Z hint:
+test	Checkout source	2026-10-17T09:29:17.5862273Z hint: 	git branch -m <name>
+test	Checkout source	2026-10-17T09:29:17.5863085Z hint:
+test	Checkout source	2026-10-17T09:29:17.5864172Z hint: Disable this message with "git config set advice.defaultBranchName false"
+test	Checkout source	2026-10-17T09:29:17.5865962Z Initialized empty Git repository in /home/runner/work/konard.github.io/konard.github.io/.git/
+test	Checkout source	2026-10-17T09:29:17.5869214Z [command]/usr/bin/git remote add origin https://github.com/konard/konard.github.io
+test	Checkout source	2026-10-17T09:29:17.5921923Z ##[endgroup]
+test	Checkout source	2026-10-17T09:29:17.5923174Z ##[group]Disabling automatic garbage collection
+test	Checkout source	2026-10-17T09:29:17.5926442Z [command]/usr/bin/git config --local gc.auto 0
+test	Checkout source	2026-10-17T09:29:17.5960802Z ##[endgroup]
+test	Checkout source	2026-10-17T09:29:17.5962006Z ##[group]Setting up auth
+test	Checkout source	2026-10-17T09:29:17.5969213Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+test	Checkout source	2026-10-17T09:29:17.6004102Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+test	Checkout source	2026-10-17T09:29:17.6388963Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+test	Checkout source	2026-10-17T09:29:17.6430606Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+test	Checkout source	2026-10-17T09:29:17.6664143Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+test	Checkout source	2026-10-17T09:29:17.6702848Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+test	Checkout source	2026-10-17T09:29:17.6942634Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+test	Checkout source	2026-10-17T09:29:17.6985903Z ##[endgroup]
+test	Checkout source	2026-10-17T09:29:17.6986973Z ##[group]Fetching the repository
+test	Checkout source	2026-10-17T09:29:17.6996779Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +3d4aa8dfe5455358d3f7ba30a9557882ba3480a4:refs/remotes/origin/main
+test	Checkout source	2026-10-17T09:29:18.2192729Z From https://github.com/konard/konard.github.io
+test	Checkout source	2026-10-17T09:29:18.2195921Z  * [new ref]         3d4aa8dfe5455358d3f7ba30a9557882ba3480a4 -> origin/main
+test	Checkout source	2026-10-17T09:29:18.2202817Z ##[endgroup]
+test	Checkout source	2026-10-17T09:29:18.2205378Z ##[group]Determining the checkout info
+test	Checkout source	2026-10-17T09:29:18.2209293Z ##[endgroup]
+test	Checkout source	2026-10-17T09:29:18.2211572Z [command]/usr/bin/git sparse-checkout disable
+test	Checkout source	2026-10-17T09:29:18.2271551Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+test	Checkout source	2026-10-17T09:29:18.2308048Z ##[group]Checking out the ref
+test	Checkout source	2026-10-17T09:29:18.2347368Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+test	Checkout source	2026-10-17T09:29:18.2652315Z Switched to a new branch 'main'
+test	Checkout source	2026-10-17T09:29:18.2656627Z branch 'main' set up to track 'origin/main'.
+test	Checkout source	2026-10-17T09:29:18.2664412Z ##[endgroup]
+test	Checkout source	2026-10-17T09:29:18.2711447Z [command]/usr/bin/git log -1 --format=%H
+test	Checkout source	2026-10-17T09:29:18.2739645Z 3d4aa8dfe5455358d3f7ba30a9557882ba3480a4
+test	Setup Node.js	﻿2026-10-17T09:29:18.3143153Z ##[group]Run actions/setup-node@v4
+test	Setup Node.js	2026-10-17T09:29:18.3144442Z with:
+test	Setup Node.js	2026-10-17T09:29:18.3145313Z   node-version: 20
+test	Setup Node.js	2026-10-17T09:29:18.3146272Z   cache: npm
+test	Setup Node.js	2026-10-17T09:29:18.3147359Z   always-auth: false
+test	Setup Node.js	2026-10-17T09:29:18.3148391Z   check-latest: false
+test	Setup Node.js	2026-10-17T09:29:18.3160010Z   token: ***
+test	Setup Node.js	2026-10-17T09:29:18.3160941Z ##[endgroup]
+test	Setup Node.js	2026-10-17T09:29:18.4649112Z Attempting to download 20...
+test	Setup Node.js	2026-10-17T09:29:18.4760314Z (node:2310) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+test	Setup Node.js	2026-10-17T09:29:18.4764029Z (Use `node --trace-deprecation ...` to show where the warning was created)
+test	Setup Node.js	2026-10-17T09:29:18.9321879Z Acquiring 20.20.2 - x64 from https://github.com/actions/node-versions/releases/download/20.20.2-23521894959/node-20.20.2-linux-x64.tar.gz
+test	Setup Node.js	2026-10-17T09:29:19.3393361Z Extracting ...
+test	Setup Node.js	2026-10-17T09:29:19.3518875Z [command]/usr/bin/tar xz --strip 1 --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/54d4be8f-e8ea-42b3-a913-78b9e5670366 -f /home/runner/work/_temp/fd360376-7933-4d1f-88a0-0be1964ecf5d
+test	Setup Node.js	2026-10-17T09:29:20.3882644Z Adding to the cache ...
+test	Setup Node.js	2026-10-17T09:29:22.2231250Z ##[group]Environment details
+test	Setup Node.js	2026-10-17T09:29:22.4566309Z node: v20.20.2
+test	Setup Node.js	2026-10-17T09:29:22.4566776Z npm: 10.8.2
+test	Setup Node.js	2026-10-17T09:29:22.4567476Z yarn: 1.22.22
+test	Setup Node.js	2026-10-17T09:29:22.4568649Z ##[endgroup]
+test	Setup Node.js	2026-10-17T09:29:22.4592030Z [command]/opt/hostedtoolcache/node/20.20.2/x64/bin/npm config get cache
+test	Setup Node.js	2026-10-17T09:29:22.5637806Z /home/runner/.npm
+test	Setup Node.js	2026-10-17T09:29:22.6498779Z npm cache is not found
+test	Install dependencies	﻿2026-10-17T09:29:22.6697464Z ##[group]Run npm ci
+test	Install dependencies	2026-10-17T09:29:22.6697815Z ^[[36;1mnpm ci^[[0m
+test	Install dependencies	2026-10-17T09:29:22.6963426Z shell: /usr/bin/bash -e {0}
+test	Install dependencies	2026-10-17T09:29:22.6963824Z ##[endgroup]
+test	Install dependencies	2026-10-17T09:29:26.3986633Z npm warn deprecated w3c-hr-time@1.0.2: Use your platform's native performance.now() and performance.timeOrigin.
+test	Install dependencies	2026-10-17T09:29:26.8589336Z npm warn deprecated stable@0.1.8: Modern JS already guarantees Array#sort() is a stable sort, so this library is deprecated. See the compatibility table on MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#browser_compatibility
+test	Install dependencies	2026-10-17T09:29:26.8879291Z npm warn deprecated sourcemap-codec@1.4.8: Please use @jridgewell/sourcemap-codec instead
+test	Install dependencies	2026-10-17T09:29:26.9820397Z npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+test	Install dependencies	2026-10-17T09:29:27.0204324Z npm warn deprecated rollup-plugin-terser@7.0.2: This package has been deprecated and is no longer maintained. Please use @rollup/plugin-terser
+test	Install dependencies	2026-10-17T09:29:27.2991136Z npm warn deprecated q@1.5.1: You or someone you depend on is using Q, the JavaScript Promise library that gave JavaScript developers strong feelings about promises. They can almost certainly migrate to the native JavaScript promise now. Thank you literally everyone for joining me in this bet against the odds. Be excellent to each other.
+test	Install dependencies	2026-10-17T09:29:27.2993151Z npm warn deprecated
+test	Install dependencies	2026-10-17T09:29:27.2993727Z npm warn deprecated (For a CapTP with native promises, see @endo/eventual-send and @endo/captp)
+test	Install dependencies	2026-10-17T09:29:27.3842167Z npm warn deprecated workbox-cacheable-response@6.6.0: workbox-background-sync@6.6.0
+test	Install dependencies	2026-10-17T09:29:27.6385276Z npm warn deprecated workbox-google-analytics@6.6.0: It is not compatible with newer versions of GA starting with v4, as long as you are using GAv3 it should be ok, but the package is not longer being maintained
+test	Install dependencies	2026-10-17T09:29:28.5140303Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+test	Install dependencies	2026-10-17T09:29:28.6955027Z npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+test	Install dependencies	2026-10-17T09:29:29.1931633Z npm warn deprecated domexception@2.0.1: Use your platform's native DOMException instead
+test	Install dependencies	2026-10-17T09:29:29.9289039Z npm warn deprecated abab@2.0.6: Use your platform's native atob() and btoa() methods instead
+test	Install dependencies	2026-10-17T09:29:29.9654681Z npm warn deprecated svgo@1.3.2: This SVGO version is no longer supported. Upgrade to v2.x.x.
+test	Install dependencies	2026-10-17T09:29:30.4421636Z npm warn deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead
+test	Install dependencies	2026-10-17T09:29:30.5289329Z npm warn deprecated @humanwhocodes/config-array@0.13.0: Use @eslint/config-array instead
+test	Install dependencies	2026-10-17T09:29:31.0120520Z npm warn deprecated @babel/plugin-proposal-private-property-in-object@7.21.11: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-private-property-in-object instead.
+test	Install dependencies	2026-10-17T09:29:31.0149598Z npm warn deprecated @babel/plugin-proposal-private-methods@7.18.6: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-private-methods instead.
+test	Install dependencies	2026-10-17T09:29:31.0409898Z npm warn deprecated @babel/plugin-proposal-optional-chaining@7.21.0: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-optional-chaining instead.
+test	Install dependencies	2026-10-17T09:29:31.0412206Z npm warn deprecated @babel/plugin-proposal-numeric-separator@7.18.6: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-numeric-separator instead.
+test	Install dependencies	2026-10-17T09:29:31.0414538Z npm warn deprecated @babel/plugin-proposal-nullish-coalescing-operator@7.18.6: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-nullish-coalescing-operator instead.
+test	Install dependencies	2026-10-17T09:29:31.0418312Z npm warn deprecated @babel/plugin-proposal-class-properties@7.18.6: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-class-properties instead.
+test	Install dependencies	2026-10-17T09:29:35.8011574Z npm warn deprecated eslint@8.57.1: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+test	Install dependencies	2026-10-17T09:30:33.8980856Z 
+test	Install dependencies	2026-10-17T09:30:33.8981775Z added 1340 packages, and audited 1341 packages in 1m
+test	Install dependencies	2026-10-17T09:30:33.8984019Z 
+test	Install dependencies	2026-10-17T09:30:33.8985055Z 269 packages are looking for funding
+test	Install dependencies	2026-10-17T09:30:33.8985643Z   run `npm fund` for details
+test	Install dependencies	2026-10-17T09:30:34.2974246Z 
+test	Install dependencies	2026-10-17T09:30:34.2976961Z 107 vulnerabilities (6 low, 20 moderate, 77 high, 4 critical)
+test	Install dependencies	2026-10-17T09:30:34.2977916Z 
+test	Install dependencies	2026-10-17T09:30:34.2978360Z To address issues that do not require attention, run:
+test	Install dependencies	2026-10-17T09:30:34.2979042Z   npm audit fix
+test	Install dependencies	2026-10-17T09:30:34.2979431Z 
+test	Install dependencies	2026-10-17T09:30:34.2980328Z To address all issues (including breaking changes), run:
+test	Install dependencies	2026-10-17T09:30:34.2980992Z   npm audit fix --force
+test	Install dependencies	2026-10-17T09:30:34.2981346Z 
+test	Install dependencies	2026-10-17T09:30:34.2981588Z Run `npm audit` for details.
+test	Run tests	﻿2026-10-17T09:30:34.3434553Z ##[group]Run npm run test:ci
+test	Run tests	2026-10-17T09:30:34.3435012Z ^[[36;1mnpm run test:ci^[[0m
+test	Run tests	2026-10-17T09:30:34.3503859Z shell: /usr/bin/bash -e {0}
+test	Run tests	2026-10-17T09:30:34.3504121Z ##[endgroup]
+test	Run tests	2026-10-17T09:30:34.4709375Z 
+test	Run tests	2026-10-17T09:30:34.4709769Z > konard.github.io@0.1.0 test:ci
+test	Run tests	2026-10-17T09:30:34.4710233Z > CI=true react-scripts test --watchAll=false
+test	Run tests	2026-10-17T09:30:34.4710519Z 
+test	Run tests	2026-10-17T09:30:37.0326612Z PASS src/data/data.test.js
+test	Run tests	2026-10-17T09:30:37.2123909Z PASS src/workflow.test.js
+test	Run tests	2026-10-17T09:30:37.4259584Z PASS src/components/components.test.js
+test	Run tests	2026-10-17T09:30:38.9238589Z PASS src/App.test.js
+test	Run tests	2026-10-17T09:30:38.9562277Z 
+test	Run tests	2026-10-17T09:30:38.9565677Z Test Suites: 4 passed, 4 total
+test	Run tests	2026-10-17T09:30:38.9566378Z Tests:       28 passed, 28 total
+test	Run tests	2026-10-17T09:30:38.9566935Z Snapshots:   0 total
+test	Run tests	2026-10-17T09:30:38.9567652Z Time:        3.993 s
+test	Run tests	2026-10-17T09:30:38.9568075Z Ran all test suites.
+test	Build the React app	﻿2026-10-17T09:30:39.0400562Z ##[group]Run npm run build
+test	Build the React app	2026-10-17T09:30:39.0400875Z ^[[36;1mnpm run build^[[0m
+test	Build the React app	2026-10-17T09:30:39.0464847Z shell: /usr/bin/bash -e {0}
+test	Build the React app	2026-10-17T09:30:39.0465112Z ##[endgroup]
+test	Build the React app	2026-10-17T09:30:39.1685316Z 
+test	Build the React app	2026-10-17T09:30:39.1685974Z > konard.github.io@0.1.0 build
+test	Build the React app	2026-10-17T09:30:39.1686573Z > react-scripts build
+test	Build the React app	2026-10-17T09:30:39.1686841Z 
+test	Build the React app	2026-10-17T09:30:40.0798529Z Creating an optimized production build...
+test	Build the React app	2026-10-17T09:30:40.1846699Z Browserslist: browsers data (caniuse-lite) is 21 months old. Please run:
+test	Build the React app	2026-10-17T09:30:40.1848033Z   npx update-browserslist-db@latest
+test	Build the React app	2026-10-17T09:30:40.1848989Z   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+test	Build the React app	2026-10-17T09:30:46.2984273Z Browserslist: browsers data (caniuse-lite) is 21 months old. Please run:
+test	Build the React app	2026-10-17T09:30:46.2985459Z   npx update-browserslist-db@latest
+test	Build the React app	2026-10-17T09:30:46.2986080Z   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+test	Build the React app	2026-10-17T09:30:46.8766300Z Compiled successfully.
+test	Build the React app	2026-10-17T09:30:46.8767490Z 
+test	Build the React app	2026-10-17T09:30:46.8807858Z File sizes after gzip:
+test	Build the React app	2026-10-17T09:30:46.8817630Z 
+test	Build the React app	2026-10-17T09:30:46.9073056Z   72.6 kB  build/static/js/main.f7da2628.js
+test	Build the React app	2026-10-17T09:30:46.9088104Z   4.99 kB  build/static/css/main.93aedd83.css
+test	Build the React app	2026-10-17T09:30:46.9117475Z 
+test	Build the React app	2026-10-17T09:30:46.9147771Z The project was built assuming it is hosted at /.
+test	Build the React app	2026-10-17T09:30:46.9158023Z You can control this with the homepage field in your package.json.
+test	Build the React app	2026-10-17T09:30:46.9177481Z 
+test	Build the React app	2026-10-17T09:30:46.9200106Z The build folder is ready to be deployed.
+test	Build the React app	2026-10-17T09:30:46.9227711Z You may serve it with a static server:
+test	Build the React app	2026-10-17T09:30:46.9238859Z 
+test	Build the React app	2026-10-17T09:30:46.9239420Z   npm install -g serve
+test	Build the React app	2026-10-17T09:30:46.9240128Z   serve -s build
+test	Build the React app	2026-10-17T09:30:46.9240362Z 
+test	Build the React app	2026-10-17T09:30:46.9240629Z Find out more about deployment here:
+test	Build the React app	2026-10-17T09:30:46.9240961Z 
+test	Build the React app	2026-10-17T09:30:46.9241157Z   https://cra.link/deployment
+test	Build the React app	2026-10-17T09:30:46.9241453Z 
+test	Post Setup Node.js	﻿2026-10-17T09:30:47.0113816Z Post job cleanup.
+test	Post Setup Node.js	2026-10-17T09:30:47.1441479Z (node:2564) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+test	Post Setup Node.js	2026-10-17T09:30:47.1443367Z (Use `node --trace-deprecation ...` to show where the warning was created)
+test	Post Setup Node.js	2026-10-17T09:30:47.1788892Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/konard.github.io/konard.github.io --files-from manifest.txt --use-compress-program zstdmt
+test	Post Setup Node.js	2026-10-17T09:30:47.7460274Z (node:2564) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+test	Post Setup Node.js	2026-10-17T09:30:48.6721006Z Sent 72080365 of 72080365 (100.0%), 73.4 MBs/sec
+test	Post Setup Node.js	2026-10-17T09:30:48.7876105Z Cache saved with the key: node-cache-Linux-x64-npm-93188126e664aff333bc6f502fa8d11eebc54ac0935f5ff608a1f2371a6ac146
+test	Post Checkout source	﻿2026-10-17T09:30:48.8081962Z Post job cleanup.
+test	Post Checkout source	2026-10-17T09:30:48.8971498Z [command]/usr/bin/git version
+test	Post Checkout source	2026-10-17T09:30:48.9018989Z git version 2.55.0
+test	Post Checkout source	2026-10-17T09:30:48.9066213Z Temporarily overriding HOME='/home/runner/work/_temp/06938085-08f4-42b0-b9d2-fe8f6eca6f40' before making global git config changes
+test	Post Checkout source	2026-10-17T09:30:48.9068122Z Adding repository directory to the temporary git global config as a safe directory
+test	Post Checkout source	2026-10-17T09:30:48.9073268Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/konard.github.io/konard.github.io
+test	Post Checkout source	2026-10-17T09:30:48.9117469Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+test	Post Checkout source	2026-10-17T09:30:48.9155335Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+test	Post Checkout source	2026-10-17T09:30:48.9408998Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+test	Post Checkout source	2026-10-17T09:30:48.9440193Z http.https://github.com/.extraheader
+test	Post Checkout source	2026-10-17T09:30:48.9452857Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+test	Post Checkout source	2026-10-17T09:30:48.9492676Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+test	Post Checkout source	2026-10-17T09:30:48.9775657Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+test	Post Checkout source	2026-10-17T09:30:48.9820541Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+test	Complete job	﻿2026-10-17T09:30:49.0246332Z Cleaning up orphan processes
+test	Complete job	2026-10-17T09:30:49.0566740Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+deploy	Set up job	﻿2026-10-17T09:30:53.2479925Z Current runner version: '2.337.0'
+deploy	Set up job	2026-10-17T09:30:53.2501844Z ##[group]Runner Image Provisioner
+deploy	Set up job	2026-10-17T09:30:53.2502599Z Hosted Compute Agent
+deploy	Set up job	2026-10-17T09:30:53.2503143Z Version: 20261012.601
+deploy	Set up job	2026-10-17T09:30:53.2503686Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+deploy	Set up job	2026-10-17T09:30:53.2504446Z Build Date: 2026-10-12T17:48:21Z
+deploy	Set up job	2026-10-17T09:30:53.2505061Z Worker ID: {f5d0d4ce-fd42-4415-bf4c-04665c37c9a6}
+deploy	Set up job	2026-10-17T09:30:53.2505649Z Region: westus3
+deploy	Set up job	2026-10-17T09:30:53.2506128Z Cloud: Azure
+deploy	Set up job	2026-10-17T09:30:53.2506675Z ##[endgroup]
+deploy	Set up job	2026-10-17T09:30:53.2507751Z ##[group]Operating System
+deploy	Set up job	2026-10-17T09:30:53.2508329Z Ubuntu
+deploy	Set up job	2026-10-17T09:30:53.2508800Z 24.04.5
+deploy	Set up job	2026-10-17T09:30:53.2509221Z LTS
+deploy	Set up job	2026-10-17T09:30:53.2509722Z ##[endgroup]
+deploy	Set up job	2026-10-17T09:30:53.2510194Z ##[group]Runner Image
+deploy	Set up job	2026-10-17T09:30:53.2510715Z Image: ubuntu-24.04
+deploy	Set up job	2026-10-17T09:30:53.2511205Z Version: 20261012.334.1
+deploy	Set up job	2026-10-17T09:30:53.2512102Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+deploy	Set up job	2026-10-17T09:30:53.2513533Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+deploy	Set up job	2026-10-17T09:30:53.2514514Z ##[endgroup]
+deploy	Set up job	2026-10-17T09:30:53.2515479Z ##[group]GITHUB_TOKEN Permissions
+deploy	Set up job	2026-10-17T09:30:53.2517306Z Contents: write
+deploy	Set up job	2026-10-17T09:30:53.2517882Z Metadata: read
+deploy	Set up job	2026-10-17T09:30:53.2518342Z ##[endgroup]
+deploy	Set up job	2026-10-17T09:30:53.2520031Z Secret source: Actions
+deploy	Set up job	2026-10-17T09:30:53.2520826Z Cache mode: write
+deploy	Set up job	2026-10-17T09:30:53.2521470Z Prepare workflow directory
+deploy	Set up job	2026-10-17T09:30:53.2771745Z Prepare all required actions
+deploy	Set up job	2026-10-17T09:30:53.2809552Z Getting action download info
+deploy	Set up job	2026-10-17T09:30:53.5774822Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+deploy	Set up job	2026-10-17T09:30:53.6964482Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+deploy	Set up job	2026-10-17T09:30:53.9021680Z Complete job name: deploy
+deploy	Checkout source	﻿2026-10-17T09:30:53.9615291Z ##[group]Run actions/checkout@v4
+deploy	Checkout source	2026-10-17T09:30:53.9616338Z with:
+deploy	Checkout source	2026-10-17T09:30:53.9616726Z   repository: konard/konard.github.io
+deploy	Checkout source	2026-10-17T09:30:53.9620002Z   token: ***
+deploy	Checkout source	2026-10-17T09:30:53.9620429Z   ssh-strict: true
+deploy	Checkout source	2026-10-17T09:30:53.9620818Z   ssh-user: git
+deploy	Checkout source	2026-10-17T09:30:53.9621178Z   persist-credentials: true
+deploy	Checkout source	2026-10-17T09:30:53.9621565Z   clean: true
+deploy	Checkout source	2026-10-17T09:30:53.9621917Z   sparse-checkout-cone-mode: true
+deploy	Checkout source	2026-10-17T09:30:53.9622324Z   fetch-depth: 1
+deploy	Checkout source	2026-10-17T09:30:53.9622659Z   fetch-tags: false
+deploy	Checkout source	2026-10-17T09:30:53.9623009Z   show-progress: true
+deploy	Checkout source	2026-10-17T09:30:53.9623356Z   lfs: false
+deploy	Checkout source	2026-10-17T09:30:53.9623678Z   submodules: false
+deploy	Checkout source	2026-10-17T09:30:53.9624030Z   set-safe-directory: true
+deploy	Checkout source	2026-10-17T09:30:53.9624546Z   allow-unsafe-pr-checkout: false
+deploy	Checkout source	2026-10-17T09:30:53.9625297Z ##[endgroup]
+deploy	Checkout source	2026-10-17T09:30:54.0434057Z Syncing repository: konard/konard.github.io
+deploy	Checkout source	2026-10-17T09:30:54.0435934Z ##[group]Getting Git version info
+deploy	Checkout source	2026-10-17T09:30:54.0436723Z Working directory is '/home/runner/work/konard.github.io/konard.github.io'
+deploy	Checkout source	2026-10-17T09:30:54.0437788Z [command]/usr/bin/git version
+deploy	Checkout source	2026-10-17T09:30:54.0496640Z git version 2.55.0
+deploy	Checkout source	2026-10-17T09:30:54.0513535Z ##[endgroup]
+deploy	Checkout source	2026-10-17T09:30:54.0535089Z Temporarily overriding HOME='/home/runner/work/_temp/5e6a847c-aa34-4845-a939-f55a9e398cef' before making global git config changes
+deploy	Checkout source	2026-10-17T09:30:54.0536827Z Adding repository directory to the temporary git global config as a safe directory
+deploy	Checkout source	2026-10-17T09:30:54.0538773Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/konard.github.io/konard.github.io
+deploy	Checkout source	2026-10-17T09:30:54.0577550Z Deleting the contents of '/home/runner/work/konard.github.io/konard.github.io'
+deploy	Checkout source	2026-10-17T09:30:54.0581385Z ##[group]Initializing the repository
+deploy	Checkout source	2026-10-17T09:30:54.0584854Z [command]/usr/bin/git init /home/runner/work/konard.github.io/konard.github.io
+deploy	Checkout source	2026-10-17T09:30:54.0703323Z hint: Using 'master' as the name for the initial branch. This default branch name
+deploy	Checkout source	2026-10-17T09:30:54.0704890Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+deploy	Checkout source	2026-10-17T09:30:54.0706330Z hint: to use in all of your new repositories, which will suppress this warning,
+deploy	Checkout source	2026-10-17T09:30:54.0707274Z hint: call:
+deploy	Checkout source	2026-10-17T09:30:54.0707754Z hint:
+deploy	Checkout source	2026-10-17T09:30:54.0708368Z hint: 	git config --global init.defaultBranch <name>
+deploy	Checkout source	2026-10-17T09:30:54.0709135Z hint:
+deploy	Checkout source	2026-10-17T09:30:54.0709845Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+deploy	Checkout source	2026-10-17T09:30:54.0711026Z hint: 'development'. The just-created branch can be renamed via this command:
+deploy	Checkout source	2026-10-17T09:30:54.0711931Z hint:
+deploy	Checkout source	2026-10-17T09:30:54.0712447Z hint: 	git branch -m <name>
+deploy	Checkout source	2026-10-17T09:30:54.0713040Z hint:
+deploy	Checkout source	2026-10-17T09:30:54.0713838Z hint: Disable this message with "git config set advice.defaultBranchName false"
+deploy	Checkout source	2026-10-17T09:30:54.0715371Z Initialized empty Git repository in /home/runner/work/konard.github.io/konard.github.io/.git/
+deploy	Checkout source	2026-10-17T09:30:54.0717588Z [command]/usr/bin/git remote add origin https://github.com/konard/konard.github.io
+deploy	Checkout source	2026-10-17T09:30:54.0758198Z ##[endgroup]
+deploy	Checkout source	2026-10-17T09:30:54.0758823Z ##[group]Disabling automatic garbage collection
+deploy	Checkout source	2026-10-17T09:30:54.0762430Z [command]/usr/bin/git config --local gc.auto 0
+deploy	Checkout source	2026-10-17T09:30:54.0788626Z ##[endgroup]
+deploy	Checkout source	2026-10-17T09:30:54.0795446Z ##[group]Setting up auth
+deploy	Checkout source	2026-10-17T09:30:54.0796056Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+deploy	Checkout source	2026-10-17T09:30:54.0823855Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+deploy	Checkout source	2026-10-17T09:30:54.1158153Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+deploy	Checkout source	2026-10-17T09:30:54.1188183Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+deploy	Checkout source	2026-10-17T09:30:54.1375234Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+deploy	Checkout source	2026-10-17T09:30:54.1403588Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+deploy	Checkout source	2026-10-17T09:30:54.1589332Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+deploy	Checkout source	2026-10-17T09:30:54.1623639Z ##[endgroup]
+deploy	Checkout source	2026-10-17T09:30:54.1624423Z ##[group]Fetching the repository
+deploy	Checkout source	2026-10-17T09:30:54.1631186Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +3d4aa8dfe5455358d3f7ba30a9557882ba3480a4:refs/remotes/origin/main
+deploy	Checkout source	2026-10-17T09:30:55.1574894Z From https://github.com/konard/konard.github.io
+deploy	Checkout source	2026-10-17T09:30:55.1576685Z  * [new ref]         3d4aa8dfe5455358d3f7ba30a9557882ba3480a4 -> origin/main
+deploy	Checkout source	2026-10-17T09:30:55.1580278Z ##[endgroup]
+deploy	Checkout source	2026-10-17T09:30:55.1581784Z ##[group]Determining the checkout info
+deploy	Checkout source	2026-10-17T09:30:55.1583432Z ##[endgroup]
+deploy	Checkout source	2026-10-17T09:30:55.1585800Z [command]/usr/bin/git sparse-checkout disable
+deploy	Checkout source	2026-10-17T09:30:55.1631721Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+deploy	Checkout source	2026-10-17T09:30:55.1660495Z ##[group]Checking out the ref
+deploy	Checkout source	2026-10-17T09:30:55.1664455Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+deploy	Checkout source	2026-10-17T09:30:55.1925473Z Switched to a new branch 'main'
+deploy	Checkout source	2026-10-17T09:30:55.1930072Z branch 'main' set up to track 'origin/main'.
+deploy	Checkout source	2026-10-17T09:30:55.1935101Z ##[endgroup]
+deploy	Checkout source	2026-10-17T09:30:55.1969928Z [command]/usr/bin/git log -1 --format=%H
+deploy	Checkout source	2026-10-17T09:30:55.1992372Z 3d4aa8dfe5455358d3f7ba30a9557882ba3480a4
+deploy	Setup Node.js	﻿2026-10-17T09:30:55.2305127Z ##[group]Run actions/setup-node@v4
+deploy	Setup Node.js	2026-10-17T09:30:55.2306098Z with:
+deploy	Setup Node.js	2026-10-17T09:30:55.2306780Z   node-version: 20
+deploy	Setup Node.js	2026-10-17T09:30:55.2307510Z   cache: npm
+deploy	Setup Node.js	2026-10-17T09:30:55.2308218Z   always-auth: false
+deploy	Setup Node.js	2026-10-17T09:30:55.2309034Z   check-latest: false
+deploy	Setup Node.js	2026-10-17T09:30:55.2316952Z   token: ***
+deploy	Setup Node.js	2026-10-17T09:30:55.2317857Z ##[endgroup]
+deploy	Setup Node.js	2026-10-17T09:30:55.3425084Z Attempting to download 20...
+deploy	Setup Node.js	2026-10-17T09:30:55.3503992Z (node:2079) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+deploy	Setup Node.js	2026-10-17T09:30:55.3506610Z (Use `node --trace-deprecation ...` to show where the warning was created)
+deploy	Setup Node.js	2026-10-17T09:30:56.3906629Z Acquiring 20.20.2 - x64 from https://github.com/actions/node-versions/releases/download/20.20.2-23521894959/node-20.20.2-linux-x64.tar.gz
+deploy	Setup Node.js	2026-10-17T09:30:56.9568202Z Extracting ...
+deploy	Setup Node.js	2026-10-17T09:30:56.9661724Z [command]/usr/bin/tar xz --strip 1 --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/46bbced7-b88e-4115-8a48-d6fd0b082d2a -f /home/runner/work/_temp/ad8620ac-2099-4815-b5bf-7e2be5c8c07f
+deploy	Setup Node.js	2026-10-17T09:30:57.8196984Z Adding to the cache ...
+deploy	Setup Node.js	2026-10-17T09:30:59.6004456Z ##[group]Environment details
+deploy	Setup Node.js	2026-10-17T09:30:59.7762189Z node: v20.20.2
+deploy	Setup Node.js	2026-10-17T09:30:59.7762725Z npm: 10.8.2
+deploy	Setup Node.js	2026-10-17T09:30:59.7763019Z yarn: 1.22.22
+deploy	Setup Node.js	2026-10-17T09:30:59.7763729Z ##[endgroup]
+deploy	Setup Node.js	2026-10-17T09:30:59.7778951Z [command]/opt/hostedtoolcache/node/20.20.2/x64/bin/npm config get cache
+deploy	Setup Node.js	2026-10-17T09:30:59.8589469Z /home/runner/.npm
+deploy	Setup Node.js	2026-10-17T09:31:00.0667888Z Cache hit for: node-cache-Linux-x64-npm-93188126e664aff333bc6f502fa8d11eebc54ac0935f5ff608a1f2371a6ac146
+deploy	Setup Node.js	2026-10-17T09:31:00.0749445Z (node:2079) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+deploy	Setup Node.js	2026-10-17T09:31:01.2904561Z Received 33554432 of 72080365 (46.6%), 32.0 MBs/sec
+deploy	Setup Node.js	2026-10-17T09:31:01.5733643Z Received 72080365 of 72080365 (100.0%), 53.5 MBs/sec
+deploy	Setup Node.js	2026-10-17T09:31:01.5734990Z Cache Size: ~69 MB (72080365 B)
+deploy	Setup Node.js	2026-10-17T09:31:01.5792658Z [command]/usr/bin/tar -xf /home/runner/work/_temp/67e85a82-4240-48b7-91aa-becd8d2f2bf1/cache.tzst -P -C /home/runner/work/konard.github.io/konard.github.io --use-compress-program unzstd
+deploy	Setup Node.js	2026-10-17T09:31:02.0680853Z Cache restored successfully
+deploy	Setup Node.js	2026-10-17T09:31:02.0717758Z Cache restored from key: node-cache-Linux-x64-npm-93188126e664aff333bc6f502fa8d11eebc54ac0935f5ff608a1f2371a6ac146
+deploy	Install dependencies	﻿2026-10-17T09:31:02.0880731Z ##[group]Run npm ci
+deploy	Install dependencies	2026-10-17T09:31:02.0880985Z ^[[36;1mnpm ci^[[0m
+deploy	Install dependencies	2026-10-17T09:31:02.1096395Z shell: /usr/bin/bash -e {0}
+deploy	Install dependencies	2026-10-17T09:31:02.1096685Z ##[endgroup]
+deploy	Install dependencies	2026-10-17T09:31:05.0329129Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+deploy	Install dependencies	2026-10-17T09:31:05.0691703Z npm warn deprecated stable@0.1.8: Modern JS already guarantees Array#sort() is a stable sort, so this library is deprecated. See the compatibility table on MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#browser_compatibility
+deploy	Install dependencies	2026-10-17T09:31:05.1066493Z npm warn deprecated @babel/plugin-proposal-private-methods@7.18.6: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-private-methods instead.
+deploy	Install dependencies	2026-10-17T09:31:05.1069232Z npm warn deprecated @babel/plugin-proposal-numeric-separator@7.18.6: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-numeric-separator instead.
+deploy	Install dependencies	2026-10-17T09:31:05.1071886Z npm warn deprecated @babel/plugin-proposal-nullish-coalescing-operator@7.18.6: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-nullish-coalescing-operator instead.
+deploy	Install dependencies	2026-10-17T09:31:05.1074621Z npm warn deprecated @babel/plugin-proposal-class-properties@7.18.6: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-class-properties instead.
+deploy	Install dependencies	2026-10-17T09:31:05.1733421Z npm warn deprecated rollup-plugin-terser@7.0.2: This package has been deprecated and is no longer maintained. Please use @rollup/plugin-terser
+deploy	Install dependencies	2026-10-17T09:31:05.1962202Z npm warn deprecated @humanwhocodes/config-array@0.13.0: Use @eslint/config-array instead
+deploy	Install dependencies	2026-10-17T09:31:05.2132829Z npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+deploy	Install dependencies	2026-10-17T09:31:05.2312805Z npm warn deprecated abab@2.0.6: Use your platform's native atob() and btoa() methods instead
+deploy	Install dependencies	2026-10-17T09:31:05.2366694Z npm warn deprecated @babel/plugin-proposal-private-property-in-object@7.21.11: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-private-property-in-object instead.
+deploy	Install dependencies	2026-10-17T09:31:05.2369348Z npm warn deprecated @babel/plugin-proposal-optional-chaining@7.21.0: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-optional-chaining instead.
+deploy	Install dependencies	2026-10-17T09:31:05.3389612Z npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+deploy	Install dependencies	2026-10-17T09:31:05.3518421Z npm warn deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead
+deploy	Install dependencies	2026-10-17T09:31:05.3734033Z npm warn deprecated domexception@2.0.1: Use your platform's native DOMException instead
+deploy	Install dependencies	2026-10-17T09:31:05.3872671Z npm warn deprecated w3c-hr-time@1.0.2: Use your platform's native performance.now() and performance.timeOrigin.
+deploy	Install dependencies	2026-10-17T09:31:05.4159889Z npm warn deprecated q@1.5.1: You or someone you depend on is using Q, the JavaScript Promise library that gave JavaScript developers strong feelings about promises. They can almost certainly migrate to the native JavaScript promise now. Thank you literally everyone for joining me in this bet against the odds. Be excellent to each other.
+deploy	Install dependencies	2026-10-17T09:31:05.4161132Z npm warn deprecated
+deploy	Install dependencies	2026-10-17T09:31:05.4161699Z npm warn deprecated (For a CapTP with native promises, see @endo/eventual-send and @endo/captp)
+deploy	Install dependencies	2026-10-17T09:31:05.4415792Z npm warn deprecated sourcemap-codec@1.4.8: Please use @jridgewell/sourcemap-codec instead
+deploy	Install dependencies	2026-10-17T09:31:05.9293476Z npm warn deprecated workbox-cacheable-response@6.6.0: workbox-background-sync@6.6.0
+deploy	Install dependencies	2026-10-17T09:31:06.3387258Z npm warn deprecated workbox-google-analytics@6.6.0: It is not compatible with newer versions of GA starting with v4, as long as you are using GAv3 it should be ok, but the package is not longer being maintained
+deploy	Install dependencies	2026-10-17T09:31:07.0635516Z npm warn deprecated svgo@1.3.2: This SVGO version is no longer supported. Upgrade to v2.x.x.
+deploy	Install dependencies	2026-10-17T09:31:08.4173988Z npm warn deprecated eslint@8.57.1: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+deploy	Install dependencies	2026-10-17T09:31:10.3423765Z 
+deploy	Install dependencies	2026-10-17T09:31:10.3424566Z added 1340 packages, and audited 1341 packages in 8s
+deploy	Install dependencies	2026-10-17T09:31:10.3424814Z 
+deploy	Install dependencies	2026-10-17T09:31:10.3425122Z 269 packages are looking for funding
+deploy	Install dependencies	2026-10-17T09:31:10.3425536Z   run `npm fund` for details
+deploy	Install dependencies	2026-10-17T09:31:10.6372621Z 
+deploy	Install dependencies	2026-10-17T09:31:10.6373515Z 107 vulnerabilities (6 low, 20 moderate, 77 high, 4 critical)
+deploy	Install dependencies	2026-10-17T09:31:10.6373899Z 
+deploy	Install dependencies	2026-10-17T09:31:10.6374378Z To address issues that do not require attention, run:
+deploy	Install dependencies	2026-10-17T09:31:10.6374965Z   npm audit fix
+deploy	Install dependencies	2026-10-17T09:31:10.6375125Z 
+deploy	Install dependencies	2026-10-17T09:31:10.6375412Z To address all issues (including breaking changes), run:
+deploy	Install dependencies	2026-10-17T09:31:10.6375844Z   npm audit fix --force
+deploy	Install dependencies	2026-10-17T09:31:10.6376035Z 
+deploy	Install dependencies	2026-10-17T09:31:10.6376181Z Run `npm audit` for details.
+deploy	Build the React app	﻿2026-10-17T09:31:10.6832152Z ##[group]Run npm run build
+deploy	Build the React app	2026-10-17T09:31:10.6832401Z ^[[36;1mnpm run build^[[0m
+deploy	Build the React app	2026-10-17T09:31:10.6890581Z shell: /usr/bin/bash -e {0}
+deploy	Build the React app	2026-10-17T09:31:10.6890800Z ##[endgroup]
+deploy	Build the React app	2026-10-17T09:31:10.7785958Z 
+deploy	Build the React app	2026-10-17T09:31:10.7786559Z > konard.github.io@0.1.0 build
+deploy	Build the React app	2026-10-17T09:31:10.7786939Z > react-scripts build
+deploy	Build the React app	2026-10-17T09:31:10.7787070Z 
+deploy	Build the React app	2026-10-17T09:31:11.4506021Z Creating an optimized production build...
+deploy	Build the React app	2026-10-17T09:31:11.5309542Z Browserslist: browsers data (caniuse-lite) is 21 months old. Please run:
+deploy	Build the React app	2026-10-17T09:31:11.5310199Z   npx update-browserslist-db@latest
+deploy	Build the React app	2026-10-17T09:31:11.5310806Z   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+deploy	Build the React app	2026-10-17T09:31:15.8975039Z Browserslist: browsers data (caniuse-lite) is 21 months old. Please run:
+deploy	Build the React app	2026-10-17T09:31:15.8975745Z   npx update-browserslist-db@latest
+deploy	Build the React app	2026-10-17T09:31:15.8976401Z   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+deploy	Build the React app	2026-10-17T09:31:16.3005208Z Compiled successfully.
+deploy	Build the React app	2026-10-17T09:31:16.3005614Z 
+deploy	Build the React app	2026-10-17T09:31:16.3005977Z File sizes after gzip:
+deploy	Build the React app	2026-10-17T09:31:16.3006259Z 
+deploy	Build the React app	2026-10-17T09:31:16.3100219Z   72.6 kB  build/static/js/main.f7da2628.js
+deploy	Build the React app	2026-10-17T09:31:16.3100767Z   4.99 kB  build/static/css/main.93aedd83.css
+deploy	Build the React app	2026-10-17T09:31:16.3101051Z 
+deploy	Build the React app	2026-10-17T09:31:16.3101759Z The project was built assuming it is hosted at /.
+deploy	Build the React app	2026-10-17T09:31:16.3102857Z You can control this with the homepage field in your package.json.
+deploy	Build the React app	2026-10-17T09:31:16.3103150Z 
+deploy	Build the React app	2026-10-17T09:31:16.3103375Z The build folder is ready to be deployed.
+deploy	Build the React app	2026-10-17T09:31:16.3103763Z You may serve it with a static server:
+deploy	Build the React app	2026-10-17T09:31:16.3103925Z 
+deploy	Build the React app	2026-10-17T09:31:16.3105163Z   npm install -g serve
+deploy	Build the React app	2026-10-17T09:31:16.3105496Z   serve -s build
+deploy	Build the React app	2026-10-17T09:31:16.3105614Z 
+deploy	Build the React app	2026-10-17T09:31:16.3106222Z Find out more about deployment here:
+deploy	Build the React app	2026-10-17T09:31:16.3106387Z 
+deploy	Build the React app	2026-10-17T09:31:16.3107077Z   https://cra.link/deployment
+deploy	Build the React app	2026-10-17T09:31:16.3107286Z 
+deploy	Deploy: copy build to docs folder and commit	﻿2026-10-17T09:31:16.3500419Z ##[group]Run mkdir -p docs
+deploy	Deploy: copy build to docs folder and commit	2026-10-17T09:31:16.3500684Z ^[[36;1mmkdir -p docs^[[0m
+deploy	Deploy: copy build to docs folder and commit	2026-10-17T09:31:16.3501000Z ^[[36;1mfind docs -mindepth 1 -maxdepth 1 ! -name case-studies -exec rm -rf {} +^[[0m
+deploy	Deploy: copy build to docs folder and commit	2026-10-17T09:31:16.3501341Z ^[[36;1mcp -r build/. docs/^[[0m
+deploy	Deploy: copy build to docs folder and commit	2026-10-17T09:31:16.3501578Z ^[[36;1mgit config user.name "github-actions[bot]"^[[0m
+deploy	Deploy: copy build to docs folder and commit	2026-10-17T09:31:16.3501918Z ^[[36;1mgit config user.email "github-actions[bot]@users.noreply.github.com"^[[0m
+deploy	Deploy: copy build to docs folder and commit	2026-10-17T09:31:16.3502248Z ^[[36;1mgit add -A docs^[[0m
+deploy	Deploy: copy build to docs folder and commit	2026-10-17T09:31:16.3502465Z ^[[36;1mif ! git diff --cached --quiet; then^[[0m
+deploy	Deploy: copy build to docs folder and commit	2026-10-17T09:31:16.3502737Z ^[[36;1m  git commit -m "Deploy build to docs [skip ci]"^[[0m
+deploy	Deploy: copy build to docs folder and commit	2026-10-17T09:31:16.3502997Z ^[[36;1m  git push origin HEAD:main^[[0m
+deploy	Deploy: copy build to docs folder and commit	2026-10-17T09:31:16.3503208Z ^[[36;1melse^[[0m
+deploy	Deploy: copy build to docs folder and commit	2026-10-17T09:31:16.3503413Z ^[[36;1m  echo "No changes in build output to deploy."^[[0m
+deploy	Deploy: copy build to docs folder and commit	2026-10-17T09:31:16.3503649Z ^[[36;1mfi^[[0m
+deploy	Deploy: copy build to docs folder and commit	2026-10-17T09:31:16.3558417Z shell: /usr/bin/bash -e {0}
+deploy	Deploy: copy build to docs folder and commit	2026-10-17T09:31:16.3558653Z ##[endgroup]
+deploy	Deploy: copy build to docs folder and commit	2026-10-17T09:31:16.4091163Z [main a4fef41] Deploy build to docs [skip ci]
+deploy	Deploy: copy build to docs folder and commit	2026-10-17T09:31:16.4091699Z  14 files changed, 114 insertions(+)
+deploy	Deploy: copy build to docs folder and commit	2026-10-17T09:31:16.4092158Z  create mode 100644 docs/.nojekyll
+deploy	Deploy: copy build to docs folder and commit	2026-10-17T09:31:16.4092466Z  create mode 100644 docs/asset-manifest.json
+deploy	Deploy: copy build to docs folder and commit	2026-10-17T09:31:16.4092735Z  create mode 100644 docs/favicon.ico
+deploy	Deploy: copy build to docs folder and commit	2026-10-17T09:31:16.4092975Z  create mode 100644 docs/favicon.svg
+deploy	Deploy: copy build to docs folder and commit	2026-10-17T09:31:16.4093206Z  create mode 100644 docs/index.html
+deploy	Deploy: copy build to docs folder and commit	2026-10-17T09:31:16.4093482Z  create mode 100644 docs/logo192.png
+deploy	Deploy: copy build to docs folder and commit	2026-10-17T09:31:16.4093711Z  create mode 100644 docs/logo512.png
+deploy	Deploy: copy build to docs folder and commit	2026-10-17T09:31:16.4093955Z  create mode 100644 docs/manifest.json
+deploy	Deploy: copy build to docs folder and commit	2026-10-17T09:31:16.4094378Z  create mode 100644 docs/robots.txt
+deploy	Deploy: copy build to docs folder and commit	2026-10-17T09:31:16.4094656Z  create mode 100644 docs/static/css/main.93aedd83.css
+deploy	Deploy: copy build to docs folder and commit	2026-10-17T09:31:16.4094976Z  create mode 100644 docs/static/css/main.93aedd83.css.map
+deploy	Deploy: copy build to docs folder and commit	2026-10-17T09:31:16.4095297Z  create mode 100644 docs/static/js/main.f7da2628.js
+deploy	Deploy: copy build to docs folder and commit	2026-10-17T09:31:16.4095626Z  create mode 100644 docs/static/js/main.f7da2628.js.LICENSE.txt
+deploy	Deploy: copy build to docs folder and commit	2026-10-17T09:31:16.4095970Z  create mode 100644 docs/static/js/main.f7da2628.js.map
+deploy	Deploy: copy build to docs folder and commit	2026-10-17T09:31:17.7262906Z To https://github.com/konard/konard.github.io
+deploy	Deploy: copy build to docs folder and commit	2026-10-17T09:31:17.7263564Z    3d4aa8d..a4fef41  HEAD -> main
+deploy	Post Setup Node.js	﻿2026-10-17T09:31:17.7385466Z Post job cleanup.
+deploy	Post Setup Node.js	2026-10-17T09:31:17.8342443Z (node:2230) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+deploy	Post Setup Node.js	2026-10-17T09:31:17.8343440Z (Use `node --trace-deprecation ...` to show where the warning was created)
+deploy	Post Setup Node.js	2026-10-17T09:31:17.8345187Z Cache hit occurred on the primary key node-cache-Linux-x64-npm-93188126e664aff333bc6f502fa8d11eebc54ac0935f5ff608a1f2371a6ac146, not saving cache.
+deploy	Post Checkout source	﻿2026-10-17T09:31:17.8482539Z Post job cleanup.
+deploy	Post Checkout source	2026-10-17T09:31:17.9151276Z [command]/usr/bin/git version
+deploy	Post Checkout source	2026-10-17T09:31:17.9185686Z git version 2.55.0
+deploy	Post Checkout source	2026-10-17T09:31:17.9215361Z Temporarily overriding HOME='/home/runner/work/_temp/6fac0310-d994-4039-82d7-478ae1869ffe' before making global git config changes
+deploy	Post Checkout source	2026-10-17T09:31:17.9216872Z Adding repository directory to the temporary git global config as a safe directory
+deploy	Post Checkout source	2026-10-17T09:31:17.9220254Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/konard.github.io/konard.github.io
+deploy	Post Checkout source	2026-10-17T09:31:17.9251564Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+deploy	Post Checkout source	2026-10-17T09:31:17.9279702Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+deploy	Post Checkout source	2026-10-17T09:31:17.9495613Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+deploy	Post Checkout source	2026-10-17T09:31:17.9523526Z http.https://github.com/.extraheader
+deploy	Post Checkout source	2026-10-17T09:31:17.9532386Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+deploy	Post Checkout source	2026-10-17T09:31:17.9561563Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+deploy	Post Checkout source	2026-10-17T09:31:17.9772409Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+deploy	Post Checkout source	2026-10-17T09:31:17.9802079Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+deploy	Complete job	﻿2026-10-17T09:31:18.0131661Z Cleaning up orphan processes
+deploy	Complete job	2026-10-17T09:31:18.0372418Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
