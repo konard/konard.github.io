@@ -62,4 +62,4 @@ Not applicable to a private, unpublished personal site: changesets, `release.yml
 
 ## Verification
 
-Local: `npm run check` (lint, format, file size, secrets) pass, `npm run test:ci` 34/34 pass, `npm run build` passes with byte-identical CSS output, `npm audit` 0 vulnerabilities, actionlint 1.7.12 clean. CI results are in PR #4.
+Local: `npm run check` (lint, format, file size, secrets) pass, `npm run test:ci` 34/34 pass, `npm run build` passes with byte-identical CSS output, `npm audit` 0 vulnerabilities, actionlint 1.7.12 clean. CI run 39022132481 on `e450f1f` (`ci-logs/run-39022132481-after.log`): all jobs green with 0 warnings, 0 deprecations, 0 vulnerabilities.

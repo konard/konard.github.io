@@ -1,0 +1,762 @@
+lint-workflows	Set up job	﻿2026-10-17T09:42:17.2824905Z Current runner version: '2.337.0'
+lint-workflows	Set up job	2026-10-17T09:42:17.2845922Z ##[group]Runner Image Provisioner
+lint-workflows	Set up job	2026-10-17T09:42:17.2846756Z Hosted Compute Agent
+lint-workflows	Set up job	2026-10-17T09:42:17.2847252Z Version: 20261012.601
+lint-workflows	Set up job	2026-10-17T09:42:17.2847761Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+lint-workflows	Set up job	2026-10-17T09:42:17.2848419Z Build Date: 2026-10-12T17:48:21Z
+lint-workflows	Set up job	2026-10-17T09:42:17.2849009Z Worker ID: {443c4379-c3b8-4561-a33d-e9d4bcf0d56a}
+lint-workflows	Set up job	2026-10-17T09:42:17.2849606Z Region: westus3
+lint-workflows	Set up job	2026-10-17T09:42:17.2850110Z Cloud: Azure
+lint-workflows	Set up job	2026-10-17T09:42:17.2850569Z ##[endgroup]
+lint-workflows	Set up job	2026-10-17T09:42:17.2851971Z ##[group]Operating System
+lint-workflows	Set up job	2026-10-17T09:42:17.2852576Z Ubuntu
+lint-workflows	Set up job	2026-10-17T09:42:17.2853059Z 24.04.5
+lint-workflows	Set up job	2026-10-17T09:42:17.2853505Z LTS
+lint-workflows	Set up job	2026-10-17T09:42:17.2854082Z ##[endgroup]
+lint-workflows	Set up job	2026-10-17T09:42:17.2854592Z ##[group]Runner Image
+lint-workflows	Set up job	2026-10-17T09:42:17.2855124Z Image: ubuntu-24.04
+lint-workflows	Set up job	2026-10-17T09:42:17.2855585Z Version: 20261012.334.1
+lint-workflows	Set up job	2026-10-17T09:42:17.2856506Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+lint-workflows	Set up job	2026-10-17T09:42:17.2857983Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+lint-workflows	Set up job	2026-10-17T09:42:17.2858799Z ##[endgroup]
+lint-workflows	Set up job	2026-10-17T09:42:17.2859766Z ##[group]GITHUB_TOKEN Permissions
+lint-workflows	Set up job	2026-10-17T09:42:17.2861288Z Contents: read
+lint-workflows	Set up job	2026-10-17T09:42:17.2861770Z Metadata: read
+lint-workflows	Set up job	2026-10-17T09:42:17.2862364Z ##[endgroup]
+lint-workflows	Set up job	2026-10-17T09:42:17.2864251Z Secret source: Actions
+lint-workflows	Set up job	2026-10-17T09:42:17.2865129Z Cache mode: write
+lint-workflows	Set up job	2026-10-17T09:42:17.2865698Z Prepare workflow directory
+lint-workflows	Set up job	2026-10-17T09:42:17.4094224Z Prepare all required actions
+lint-workflows	Set up job	2026-10-17T09:42:17.4154230Z Getting action download info
+lint-workflows	Set up job	2026-10-17T09:42:17.7005571Z Download action repository 'actions/checkout@v6' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+lint-workflows	Set up job	2026-10-17T09:42:17.8710896Z Complete job name: lint-workflows
+lint-workflows	Pull rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667	﻿2026-10-17T09:42:17.9087618Z ##[group]Pull down action image 'rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667'
+lint-workflows	Pull rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667	2026-10-17T09:42:17.9175013Z ##[command]/usr/bin/docker pull rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667
+lint-workflows	Pull rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667	2026-10-17T09:42:18.5617394Z docker.io/rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667: Pulling from rhysd/actionlint
+lint-workflows	Pull rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667	2026-10-17T09:42:18.7857273Z 589002ba0eae: Pulling fs layer
+lint-workflows	Pull rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667	2026-10-17T09:42:18.7858107Z c09af8888d6a: Pulling fs layer
+lint-workflows	Pull rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667	2026-10-17T09:42:18.7858699Z 4ccd7d76ca98: Pulling fs layer
+lint-workflows	Pull rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667	2026-10-17T09:42:18.7859251Z b6b4b7b0e257: Pulling fs layer
+lint-workflows	Pull rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667	2026-10-17T09:42:18.7859957Z b6b4b7b0e257: Waiting
+lint-workflows	Pull rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667	2026-10-17T09:42:18.9788595Z c09af8888d6a: Verifying Checksum
+lint-workflows	Pull rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667	2026-10-17T09:42:18.9789959Z c09af8888d6a: Download complete
+lint-workflows	Pull rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667	2026-10-17T09:42:18.9829848Z 589002ba0eae: Verifying Checksum
+lint-workflows	Pull rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667	2026-10-17T09:42:18.9830749Z 589002ba0eae: Download complete
+lint-workflows	Pull rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667	2026-10-17T09:42:18.9912024Z 4ccd7d76ca98: Verifying Checksum
+lint-workflows	Pull rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667	2026-10-17T09:42:18.9912826Z 4ccd7d76ca98: Download complete
+lint-workflows	Pull rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667	2026-10-17T09:42:19.0978027Z 589002ba0eae: Pull complete
+lint-workflows	Pull rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667	2026-10-17T09:42:19.2026925Z b6b4b7b0e257: Verifying Checksum
+lint-workflows	Pull rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667	2026-10-17T09:42:19.2028264Z b6b4b7b0e257: Download complete
+lint-workflows	Pull rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667	2026-10-17T09:42:24.9420394Z c09af8888d6a: Pull complete
+lint-workflows	Pull rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667	2026-10-17T09:42:25.0778353Z 4ccd7d76ca98: Pull complete
+lint-workflows	Pull rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667	2026-10-17T09:42:25.8038126Z b6b4b7b0e257: Pull complete
+lint-workflows	Pull rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667	2026-10-17T09:42:25.8070666Z Digest: sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667
+lint-workflows	Pull rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667	2026-10-17T09:42:25.8076430Z Status: Downloaded newer image for rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667
+lint-workflows	Pull rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667	2026-10-17T09:42:25.8083090Z docker.io/rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667
+lint-workflows	Pull rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667	2026-10-17T09:42:25.8105503Z ##[endgroup]
+lint-workflows	Checkout source	﻿2026-10-17T09:42:25.8352675Z ##[group]Run actions/checkout@v6
+lint-workflows	Checkout source	2026-10-17T09:42:25.8353173Z with:
+lint-workflows	Checkout source	2026-10-17T09:42:25.8353417Z   persist-credentials: false
+lint-workflows	Checkout source	2026-10-17T09:42:25.8353819Z   repository: konard/konard.github.io
+lint-workflows	Checkout source	2026-10-17T09:42:25.8355840Z   token: ***
+lint-workflows	Checkout source	2026-10-17T09:42:25.8356062Z   ssh-strict: true
+lint-workflows	Checkout source	2026-10-17T09:42:25.8356505Z   ssh-user: git
+lint-workflows	Checkout source	2026-10-17T09:42:25.8356734Z   clean: true
+lint-workflows	Checkout source	2026-10-17T09:42:25.8357020Z   sparse-checkout-cone-mode: true
+lint-workflows	Checkout source	2026-10-17T09:42:25.8357271Z   fetch-depth: 1
+lint-workflows	Checkout source	2026-10-17T09:42:25.8357476Z   fetch-tags: false
+lint-workflows	Checkout source	2026-10-17T09:42:25.8357687Z   show-progress: true
+lint-workflows	Checkout source	2026-10-17T09:42:25.8357906Z   lfs: false
+lint-workflows	Checkout source	2026-10-17T09:42:25.8358110Z   submodules: false
+lint-workflows	Checkout source	2026-10-17T09:42:25.8358329Z   set-safe-directory: true
+lint-workflows	Checkout source	2026-10-17T09:42:25.8358573Z   allow-unsafe-pr-checkout: false
+lint-workflows	Checkout source	2026-10-17T09:42:25.8358998Z env:
+lint-workflows	Checkout source	2026-10-17T09:42:25.8359196Z   GIT_CONFIG_COUNT: 1
+lint-workflows	Checkout source	2026-10-17T09:42:25.8359424Z   GIT_CONFIG_KEY_0: init.defaultBranch
+lint-workflows	Checkout source	2026-10-17T09:42:25.8359688Z   GIT_CONFIG_VALUE_0: main
+lint-workflows	Checkout source	2026-10-17T09:42:25.8359951Z ##[endgroup]
+lint-workflows	Checkout source	2026-10-17T09:42:25.9153076Z Syncing repository: konard/konard.github.io
+lint-workflows	Checkout source	2026-10-17T09:42:25.9154645Z ##[group]Getting Git version info
+lint-workflows	Checkout source	2026-10-17T09:42:25.9155105Z Working directory is '/home/runner/work/konard.github.io/konard.github.io'
+lint-workflows	Checkout source	2026-10-17T09:42:25.9155696Z [command]/usr/bin/git version
+lint-workflows	Checkout source	2026-10-17T09:42:25.9431311Z git version 2.55.0
+lint-workflows	Checkout source	2026-10-17T09:42:25.9456084Z ##[endgroup]
+lint-workflows	Checkout source	2026-10-17T09:42:25.9462103Z Temporarily overriding HOME='/home/runner/work/_temp/19f830f5-30c6-4782-af77-65518c384ea5' before making global git config changes
+lint-workflows	Checkout source	2026-10-17T09:42:25.9463247Z Adding repository directory to the temporary git global config as a safe directory
+lint-workflows	Checkout source	2026-10-17T09:42:25.9467096Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/konard.github.io/konard.github.io
+lint-workflows	Checkout source	2026-10-17T09:42:25.9555249Z Deleting the contents of '/home/runner/work/konard.github.io/konard.github.io'
+lint-workflows	Checkout source	2026-10-17T09:42:25.9578386Z ##[group]Determining repository object format
+lint-workflows	Checkout source	2026-10-17T09:42:25.9579997Z ##[endgroup]
+lint-workflows	Checkout source	2026-10-17T09:42:25.9580542Z ##[group]Initializing the repository
+lint-workflows	Checkout source	2026-10-17T09:42:25.9584852Z [command]/usr/bin/git init /home/runner/work/konard.github.io/konard.github.io
+lint-workflows	Checkout source	2026-10-17T09:42:25.9760076Z Initialized empty Git repository in /home/runner/work/konard.github.io/konard.github.io/.git/
+lint-workflows	Checkout source	2026-10-17T09:42:25.9769818Z [command]/usr/bin/git remote add origin https://github.com/konard/konard.github.io
+lint-workflows	Checkout source	2026-10-17T09:42:25.9818107Z ##[endgroup]
+lint-workflows	Checkout source	2026-10-17T09:42:25.9818806Z ##[group]Disabling automatic garbage collection
+lint-workflows	Checkout source	2026-10-17T09:42:25.9821736Z [command]/usr/bin/git config --local gc.auto 0
+lint-workflows	Checkout source	2026-10-17T09:42:25.9853336Z ##[endgroup]
+lint-workflows	Checkout source	2026-10-17T09:42:25.9854006Z ##[group]Setting up auth
+lint-workflows	Checkout source	2026-10-17T09:42:25.9854586Z Removing SSH command configuration
+lint-workflows	Checkout source	2026-10-17T09:42:25.9859677Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+lint-workflows	Checkout source	2026-10-17T09:42:25.9890500Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+lint-workflows	Checkout source	2026-10-17T09:42:26.0167810Z Removing HTTP extra header
+lint-workflows	Checkout source	2026-10-17T09:42:26.0173403Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+lint-workflows	Checkout source	2026-10-17T09:42:26.0205055Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+lint-workflows	Checkout source	2026-10-17T09:42:26.0393560Z Removing includeIf entries pointing to credentials config files
+lint-workflows	Checkout source	2026-10-17T09:42:26.0400055Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+lint-workflows	Checkout source	2026-10-17T09:42:26.0431068Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+lint-workflows	Checkout source	2026-10-17T09:42:26.0629138Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-15828d55-8cd6-4611-9de6-0506dccce09a.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+lint-workflows	Checkout source	2026-10-17T09:42:26.0665708Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path /home/runner/work/_temp/git-credentials-15828d55-8cd6-4611-9de6-0506dccce09a.config
+lint-workflows	Checkout source	2026-10-17T09:42:26.0696413Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-15828d55-8cd6-4611-9de6-0506dccce09a.config
+lint-workflows	Checkout source	2026-10-17T09:42:26.0729187Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-15828d55-8cd6-4611-9de6-0506dccce09a.config
+lint-workflows	Checkout source	2026-10-17T09:42:26.0758478Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-15828d55-8cd6-4611-9de6-0506dccce09a.config
+lint-workflows	Checkout source	2026-10-17T09:42:26.0785316Z ##[endgroup]
+lint-workflows	Checkout source	2026-10-17T09:42:26.0785730Z ##[group]Fetching the repository
+lint-workflows	Checkout source	2026-10-17T09:42:26.0791915Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +7244e8ead9205ec055efcdaa990c8e15d05302c5:refs/remotes/pull/4/merge
+lint-workflows	Checkout source	2026-10-17T09:42:27.3026135Z From https://github.com/konard/konard.github.io
+lint-workflows	Checkout source	2026-10-17T09:42:27.3026920Z  * [new ref]         7244e8ead9205ec055efcdaa990c8e15d05302c5 -> pull/4/merge
+lint-workflows	Checkout source	2026-10-17T09:42:27.3030766Z ##[endgroup]
+lint-workflows	Checkout source	2026-10-17T09:42:27.3031363Z ##[group]Determining the checkout info
+lint-workflows	Checkout source	2026-10-17T09:42:27.3031901Z ##[endgroup]
+lint-workflows	Checkout source	2026-10-17T09:42:27.3036678Z [command]/usr/bin/git sparse-checkout disable
+lint-workflows	Checkout source	2026-10-17T09:42:27.3086834Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+lint-workflows	Checkout source	2026-10-17T09:42:27.3117401Z ##[group]Checking out the ref
+lint-workflows	Checkout source	2026-10-17T09:42:27.3120963Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/4/merge
+lint-workflows	Checkout source	2026-10-17T09:42:27.3384539Z Note: switching to 'refs/remotes/pull/4/merge'.
+lint-workflows	Checkout source	2026-10-17T09:42:27.3384927Z 
+lint-workflows	Checkout source	2026-10-17T09:42:27.3385210Z You are in 'detached HEAD' state. You can look around, make experimental
+lint-workflows	Checkout source	2026-10-17T09:42:27.3385708Z changes and commit them, and you can discard any commits you make in this
+lint-workflows	Checkout source	2026-10-17T09:42:27.3386222Z state without impacting any branches by switching back to a branch.
+lint-workflows	Checkout source	2026-10-17T09:42:27.3386581Z 
+lint-workflows	Checkout source	2026-10-17T09:42:27.3386795Z If you want to create a new branch to retain commits you create, you may
+lint-workflows	Checkout source	2026-10-17T09:42:27.3387291Z do so (now or later) by using -c with the switch command. Example:
+lint-workflows	Checkout source	2026-10-17T09:42:27.3387570Z 
+lint-workflows	Checkout source	2026-10-17T09:42:27.3387773Z   git switch -c <new-branch-name>
+lint-workflows	Checkout source	2026-10-17T09:42:27.3387977Z 
+lint-workflows	Checkout source	2026-10-17T09:42:27.3388112Z Or undo this operation with:
+lint-workflows	Checkout source	2026-10-17T09:42:27.3388314Z 
+lint-workflows	Checkout source	2026-10-17T09:42:27.3388412Z   git switch -
+lint-workflows	Checkout source	2026-10-17T09:42:27.3388592Z 
+lint-workflows	Checkout source	2026-10-17T09:42:27.3388888Z Turn off this advice by setting config variable advice.detachedHead to false
+lint-workflows	Checkout source	2026-10-17T09:42:27.3389258Z 
+lint-workflows	Checkout source	2026-10-17T09:42:27.3389666Z HEAD is now at 7244e8e Merge e450f1fc72215b7c2e0990c6effd6df5699ae676 into a4fef41c98790fc6f0dd8134e404ca758485edb9
+lint-workflows	Checkout source	2026-10-17T09:42:27.3393886Z ##[endgroup]
+lint-workflows	Checkout source	2026-10-17T09:42:27.3434367Z [command]/usr/bin/git log -1 --format=%H
+lint-workflows	Checkout source	2026-10-17T09:42:27.3458355Z 7244e8ead9205ec055efcdaa990c8e15d05302c5
+lint-workflows	Checkout source	2026-10-17T09:42:27.3467013Z ##[group]Removing auth
+lint-workflows	Checkout source	2026-10-17T09:42:27.3467303Z Removing SSH command configuration
+lint-workflows	Checkout source	2026-10-17T09:42:27.3470233Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+lint-workflows	Checkout source	2026-10-17T09:42:27.3498331Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+lint-workflows	Checkout source	2026-10-17T09:42:27.3688154Z Removing HTTP extra header
+lint-workflows	Checkout source	2026-10-17T09:42:27.3691974Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+lint-workflows	Checkout source	2026-10-17T09:42:27.3728188Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+lint-workflows	Checkout source	2026-10-17T09:42:27.3914832Z Removing includeIf entries pointing to credentials config files
+lint-workflows	Checkout source	2026-10-17T09:42:27.3918787Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+lint-workflows	Checkout source	2026-10-17T09:42:27.3944942Z includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path
+lint-workflows	Checkout source	2026-10-17T09:42:27.3945849Z includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path
+lint-workflows	Checkout source	2026-10-17T09:42:27.3946483Z includeif.gitdir:/github/workspace/.git.path
+lint-workflows	Checkout source	2026-10-17T09:42:27.3946931Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+lint-workflows	Checkout source	2026-10-17T09:42:27.3954411Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path
+lint-workflows	Checkout source	2026-10-17T09:42:27.3976374Z /home/runner/work/_temp/git-credentials-15828d55-8cd6-4611-9de6-0506dccce09a.config
+lint-workflows	Checkout source	2026-10-17T09:42:27.3985414Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path /home/runner/work/_temp/git-credentials-15828d55-8cd6-4611-9de6-0506dccce09a.config
+lint-workflows	Checkout source	2026-10-17T09:42:27.4019169Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path
+lint-workflows	Checkout source	2026-10-17T09:42:27.4041480Z /home/runner/work/_temp/git-credentials-15828d55-8cd6-4611-9de6-0506dccce09a.config
+lint-workflows	Checkout source	2026-10-17T09:42:27.4049453Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-15828d55-8cd6-4611-9de6-0506dccce09a.config
+lint-workflows	Checkout source	2026-10-17T09:42:27.4081226Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+lint-workflows	Checkout source	2026-10-17T09:42:27.4105503Z /github/runner_temp/git-credentials-15828d55-8cd6-4611-9de6-0506dccce09a.config
+lint-workflows	Checkout source	2026-10-17T09:42:27.4112314Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-15828d55-8cd6-4611-9de6-0506dccce09a.config
+lint-workflows	Checkout source	2026-10-17T09:42:27.4179217Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+lint-workflows	Checkout source	2026-10-17T09:42:27.4201449Z /github/runner_temp/git-credentials-15828d55-8cd6-4611-9de6-0506dccce09a.config
+lint-workflows	Checkout source	2026-10-17T09:42:27.4211015Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-15828d55-8cd6-4611-9de6-0506dccce09a.config
+lint-workflows	Checkout source	2026-10-17T09:42:27.4240157Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+lint-workflows	Checkout source	2026-10-17T09:42:27.4424087Z Removing credentials config '/home/runner/work/_temp/git-credentials-15828d55-8cd6-4611-9de6-0506dccce09a.config'
+lint-workflows	Checkout source	2026-10-17T09:42:27.4432738Z ##[endgroup]
+lint-workflows	Run actionlint	﻿2026-10-17T09:42:27.4591291Z ##[group]Run docker://rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667
+lint-workflows	Run actionlint	2026-10-17T09:42:27.4591792Z with:
+lint-workflows	Run actionlint	2026-10-17T09:42:27.4591975Z   args: -color
+lint-workflows	Run actionlint	2026-10-17T09:42:27.4592140Z env:
+lint-workflows	Run actionlint	2026-10-17T09:42:27.4592293Z   GIT_CONFIG_COUNT: 1
+lint-workflows	Run actionlint	2026-10-17T09:42:27.4592485Z   GIT_CONFIG_KEY_0: init.defaultBranch
+lint-workflows	Run actionlint	2026-10-17T09:42:27.4592708Z   GIT_CONFIG_VALUE_0: main
+lint-workflows	Run actionlint	2026-10-17T09:42:27.4592905Z ##[endgroup]
+lint-workflows	Run actionlint	2026-10-17T09:42:27.4669186Z ##[command]/usr/bin/docker run --name rhysdactionlintsha256b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667_d395cb --label c13190 --workdir /github/workspace --rm -e "GIT_CONFIG_COUNT" -e "GIT_CONFIG_KEY_0" -e "GIT_CONFIG_VALUE_0" -e "INPUT_ARGS" -e "HOME" -e "GITHUB_JOB" -e "GITHUB_REF" -e "GITHUB_SHA" -e "GITHUB_REPOSITORY" -e "GITHUB_REPOSITORY_OWNER" -e "GITHUB_REPOSITORY_OWNER_ID" -e "GITHUB_RUN_ID" -e "GITHUB_RUN_NUMBER" -e "GITHUB_RETENTION_DAYS" -e "GITHUB_RUN_ATTEMPT" -e "GITHUB_ACTOR_ID" -e "GITHUB_ACTOR" -e "GITHUB_WORKFLOW" -e "GITHUB_HEAD_REF" -e "GITHUB_BASE_REF" -e "GITHUB_EVENT_NAME" -e "GITHUB_SERVER_URL" -e "GITHUB_API_URL" -e "GITHUB_GRAPHQL_URL" -e "GITHUB_REF_NAME" -e "GITHUB_REF_PROTECTED" -e "GITHUB_REF_TYPE" -e "GITHUB_WORKFLOW_REF" -e "GITHUB_WORKFLOW_SHA" -e "GITHUB_REPOSITORY_ID" -e "GITHUB_TRIGGERING_ACTOR" -e "GITHUB_WORKSPACE" -e "GITHUB_ACTION" -e "GITHUB_EVENT_PATH" -e "GITHUB_ACTION_REPOSITORY" -e "GITHUB_ACTION_REF" -e "GITHUB_PATH" -e "GITHUB_ENV" -e "GITHUB_STEP_SUMMARY" -e "GITHUB_STATE" -e "GITHUB_OUTPUT" -e "GITHUB_ARTIFACTS" -e "GITHUB_ARTIFACTS_LIST" -e "RUNNER_OS" -e "RUNNER_ARCH" -e "RUNNER_NAME" -e "RUNNER_ENVIRONMENT" -e "RUNNER_TOOL_CACHE" -e "RUNNER_TEMP" -e "RUNNER_WORKSPACE" -e "ACTIONS_RUNTIME_URL" -e "ACTIONS_RUNTIME_TOKEN" -e "ACTIONS_CACHE_URL" -e "ACTIONS_RESULTS_URL" -e "ACTIONS_CACHE_MODE" -e "ACTIONS_ORCHESTRATION_ID" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work/_temp":"/github/runner_temp" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" -v "/home/runner/work/_temp/_runner_file_commands":"/github/file_commands" -v "/home/runner/work/konard.github.io/konard.github.io":"/github/workspace" rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667 -color
+lint-workflows	Post Checkout source	﻿2026-10-17T09:42:27.8022846Z Post job cleanup.
+lint-workflows	Post Checkout source	2026-10-17T09:42:27.8711443Z [command]/usr/bin/git version
+lint-workflows	Post Checkout source	2026-10-17T09:42:27.8745454Z git version 2.55.0
+lint-workflows	Post Checkout source	2026-10-17T09:42:27.8776076Z Temporarily overriding HOME='/home/runner/work/_temp/e6009fa8-69aa-40f2-94ce-b9062cab02e3' before making global git config changes
+lint-workflows	Post Checkout source	2026-10-17T09:42:27.8777297Z Adding repository directory to the temporary git global config as a safe directory
+lint-workflows	Post Checkout source	2026-10-17T09:42:27.8780488Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/konard.github.io/konard.github.io
+lint-workflows	Post Checkout source	2026-10-17T09:42:27.8809814Z Removing SSH command configuration
+lint-workflows	Post Checkout source	2026-10-17T09:42:27.8815784Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+lint-workflows	Post Checkout source	2026-10-17T09:42:27.8846148Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+lint-workflows	Post Checkout source	2026-10-17T09:42:27.9054618Z Removing HTTP extra header
+lint-workflows	Post Checkout source	2026-10-17T09:42:27.9064453Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+lint-workflows	Post Checkout source	2026-10-17T09:42:27.9088174Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+lint-workflows	Post Checkout source	2026-10-17T09:42:27.9297345Z Removing includeIf entries pointing to credentials config files
+lint-workflows	Post Checkout source	2026-10-17T09:42:27.9305069Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+lint-workflows	Post Checkout source	2026-10-17T09:42:27.9338879Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+lint-workflows	Complete job	﻿2026-10-17T09:42:27.9660808Z Cleaning up orphan processes
+checks	Set up job	﻿2026-10-17T09:42:17.4276294Z Current runner version: '2.337.0'
+checks	Set up job	2026-10-17T09:42:17.4296966Z ##[group]Runner Image Provisioner
+checks	Set up job	2026-10-17T09:42:17.4297581Z Hosted Compute Agent
+checks	Set up job	2026-10-17T09:42:17.4298040Z Version: 20261012.601
+checks	Set up job	2026-10-17T09:42:17.4298484Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+checks	Set up job	2026-10-17T09:42:17.4298952Z Build Date: 2026-10-12T17:48:21Z
+checks	Set up job	2026-10-17T09:42:17.4299384Z Worker ID: {58ec1044-6255-4fc9-968d-8eb5348924b8}
+checks	Set up job	2026-10-17T09:42:17.4299806Z Region: westus3
+checks	Set up job	2026-10-17T09:42:17.4300181Z Cloud: Azure
+checks	Set up job	2026-10-17T09:42:17.4300515Z ##[endgroup]
+checks	Set up job	2026-10-17T09:42:17.4301468Z ##[group]Operating System
+checks	Set up job	2026-10-17T09:42:17.4301923Z Ubuntu
+checks	Set up job	2026-10-17T09:42:17.4302242Z 24.04.5
+checks	Set up job	2026-10-17T09:42:17.4302588Z LTS
+checks	Set up job	2026-10-17T09:42:17.4302934Z ##[endgroup]
+checks	Set up job	2026-10-17T09:42:17.4303263Z ##[group]Runner Image
+checks	Set up job	2026-10-17T09:42:17.4303695Z Image: ubuntu-24.04
+checks	Set up job	2026-10-17T09:42:17.4304060Z Version: 20261012.334.1
+checks	Set up job	2026-10-17T09:42:17.4304735Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+checks	Set up job	2026-10-17T09:42:17.4305882Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+checks	Set up job	2026-10-17T09:42:17.4306530Z ##[endgroup]
+checks	Set up job	2026-10-17T09:42:17.4307271Z ##[group]GITHUB_TOKEN Permissions
+checks	Set up job	2026-10-17T09:42:17.4308610Z Contents: read
+checks	Set up job	2026-10-17T09:42:17.4309000Z Metadata: read
+checks	Set up job	2026-10-17T09:42:17.4309398Z ##[endgroup]
+checks	Set up job	2026-10-17T09:42:17.4311517Z Secret source: Actions
+checks	Set up job	2026-10-17T09:42:17.4312165Z Cache mode: write
+checks	Set up job	2026-10-17T09:42:17.4312672Z Prepare workflow directory
+checks	Set up job	2026-10-17T09:42:17.4957115Z Prepare all required actions
+checks	Set up job	2026-10-17T09:42:17.4990210Z Getting action download info
+checks	Set up job	2026-10-17T09:42:17.7844074Z Download action repository 'actions/checkout@v6' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+checks	Set up job	2026-10-17T09:42:18.0219870Z Download action repository 'actions/setup-node@v6' (SHA:249970729cb0ef3589644e2896645e5dc5ba9c38)
+checks	Set up job	2026-10-17T09:42:18.3797849Z Complete job name: checks
+checks	Checkout source	﻿2026-10-17T09:42:18.4439773Z ##[group]Run actions/checkout@v6
+checks	Checkout source	2026-10-17T09:42:18.4440285Z with:
+checks	Checkout source	2026-10-17T09:42:18.4440551Z   persist-credentials: false
+checks	Checkout source	2026-10-17T09:42:18.4440865Z   repository: konard/konard.github.io
+checks	Checkout source	2026-10-17T09:42:18.4443127Z   token: ***
+checks	Checkout source	2026-10-17T09:42:18.4443374Z   ssh-strict: true
+checks	Checkout source	2026-10-17T09:42:18.4443635Z   ssh-user: git
+checks	Checkout source	2026-10-17T09:42:18.4443885Z   clean: true
+checks	Checkout source	2026-10-17T09:42:18.4444191Z   sparse-checkout-cone-mode: true
+checks	Checkout source	2026-10-17T09:42:18.4444656Z   fetch-depth: 1
+checks	Checkout source	2026-10-17T09:42:18.4444917Z   fetch-tags: false
+checks	Checkout source	2026-10-17T09:42:18.4445182Z   show-progress: true
+checks	Checkout source	2026-10-17T09:42:18.4445450Z   lfs: false
+checks	Checkout source	2026-10-17T09:42:18.4445695Z   submodules: false
+checks	Checkout source	2026-10-17T09:42:18.4445983Z   set-safe-directory: true
+checks	Checkout source	2026-10-17T09:42:18.4446281Z   allow-unsafe-pr-checkout: false
+checks	Checkout source	2026-10-17T09:42:18.4446696Z env:
+checks	Checkout source	2026-10-17T09:42:18.4446936Z   GIT_CONFIG_COUNT: 1
+checks	Checkout source	2026-10-17T09:42:18.4447218Z   GIT_CONFIG_KEY_0: init.defaultBranch
+checks	Checkout source	2026-10-17T09:42:18.4447537Z   GIT_CONFIG_VALUE_0: main
+checks	Checkout source	2026-10-17T09:42:18.4447850Z ##[endgroup]
+checks	Checkout source	2026-10-17T09:42:18.5238064Z Syncing repository: konard/konard.github.io
+checks	Checkout source	2026-10-17T09:42:18.5239723Z ##[group]Getting Git version info
+checks	Checkout source	2026-10-17T09:42:18.5240256Z Working directory is '/home/runner/work/konard.github.io/konard.github.io'
+checks	Checkout source	2026-10-17T09:42:18.5241220Z [command]/usr/bin/git version
+checks	Checkout source	2026-10-17T09:42:18.5291972Z git version 2.55.0
+checks	Checkout source	2026-10-17T09:42:18.5319847Z ##[endgroup]
+checks	Checkout source	2026-10-17T09:42:18.5327347Z Temporarily overriding HOME='/home/runner/work/_temp/b021a39c-d657-4526-8e55-9d7acfaa13c7' before making global git config changes
+checks	Checkout source	2026-10-17T09:42:18.5328338Z Adding repository directory to the temporary git global config as a safe directory
+checks	Checkout source	2026-10-17T09:42:18.5329952Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/konard.github.io/konard.github.io
+checks	Checkout source	2026-10-17T09:42:18.5433442Z Deleting the contents of '/home/runner/work/konard.github.io/konard.github.io'
+checks	Checkout source	2026-10-17T09:42:18.5437970Z ##[group]Determining repository object format
+checks	Checkout source	2026-10-17T09:42:18.5439691Z ##[endgroup]
+checks	Checkout source	2026-10-17T09:42:18.5441381Z ##[group]Initializing the repository
+checks	Checkout source	2026-10-17T09:42:18.5444164Z [command]/usr/bin/git init /home/runner/work/konard.github.io/konard.github.io
+checks	Checkout source	2026-10-17T09:42:18.5737217Z Initialized empty Git repository in /home/runner/work/konard.github.io/konard.github.io/.git/
+checks	Checkout source	2026-10-17T09:42:18.5746480Z [command]/usr/bin/git remote add origin https://github.com/konard/konard.github.io
+checks	Checkout source	2026-10-17T09:42:18.5958293Z ##[endgroup]
+checks	Checkout source	2026-10-17T09:42:18.5959161Z ##[group]Disabling automatic garbage collection
+checks	Checkout source	2026-10-17T09:42:18.5962218Z [command]/usr/bin/git config --local gc.auto 0
+checks	Checkout source	2026-10-17T09:42:18.6029933Z ##[endgroup]
+checks	Checkout source	2026-10-17T09:42:18.6030648Z ##[group]Setting up auth
+checks	Checkout source	2026-10-17T09:42:18.6031350Z Removing SSH command configuration
+checks	Checkout source	2026-10-17T09:42:18.6035391Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+checks	Checkout source	2026-10-17T09:42:18.6066759Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+checks	Checkout source	2026-10-17T09:42:18.6360471Z Removing HTTP extra header
+checks	Checkout source	2026-10-17T09:42:18.6364905Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+checks	Checkout source	2026-10-17T09:42:18.6394677Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+checks	Checkout source	2026-10-17T09:42:18.6561442Z Removing includeIf entries pointing to credentials config files
+checks	Checkout source	2026-10-17T09:42:18.6565627Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+checks	Checkout source	2026-10-17T09:42:18.6592903Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+checks	Checkout source	2026-10-17T09:42:18.6786028Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-00a42de9-f6f9-40c0-a0fa-f571fb1b9089.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+checks	Checkout source	2026-10-17T09:42:18.6859531Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path /home/runner/work/_temp/git-credentials-00a42de9-f6f9-40c0-a0fa-f571fb1b9089.config
+checks	Checkout source	2026-10-17T09:42:18.6967366Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-00a42de9-f6f9-40c0-a0fa-f571fb1b9089.config
+checks	Checkout source	2026-10-17T09:42:18.7063519Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-00a42de9-f6f9-40c0-a0fa-f571fb1b9089.config
+checks	Checkout source	2026-10-17T09:42:18.7162917Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-00a42de9-f6f9-40c0-a0fa-f571fb1b9089.config
+checks	Checkout source	2026-10-17T09:42:18.7259225Z ##[endgroup]
+checks	Checkout source	2026-10-17T09:42:18.7259785Z ##[group]Fetching the repository
+checks	Checkout source	2026-10-17T09:42:18.7265275Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +7244e8ead9205ec055efcdaa990c8e15d05302c5:refs/remotes/pull/4/merge
+checks	Checkout source	2026-10-17T09:42:20.1857999Z From https://github.com/konard/konard.github.io
+checks	Checkout source	2026-10-17T09:42:20.1860049Z  * [new ref]         7244e8ead9205ec055efcdaa990c8e15d05302c5 -> pull/4/merge
+checks	Checkout source	2026-10-17T09:42:20.1863095Z ##[endgroup]
+checks	Checkout source	2026-10-17T09:42:20.1864004Z ##[group]Determining the checkout info
+checks	Checkout source	2026-10-17T09:42:20.1865254Z ##[endgroup]
+checks	Checkout source	2026-10-17T09:42:20.1866049Z [command]/usr/bin/git sparse-checkout disable
+checks	Checkout source	2026-10-17T09:42:20.1969305Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+checks	Checkout source	2026-10-17T09:42:20.2001386Z ##[group]Checking out the ref
+checks	Checkout source	2026-10-17T09:42:20.2003530Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/4/merge
+checks	Checkout source	2026-10-17T09:42:20.2245828Z Note: switching to 'refs/remotes/pull/4/merge'.
+checks	Checkout source	2026-10-17T09:42:20.2246544Z 
+checks	Checkout source	2026-10-17T09:42:20.2247130Z You are in 'detached HEAD' state. You can look around, make experimental
+checks	Checkout source	2026-10-17T09:42:20.2248725Z changes and commit them, and you can discard any commits you make in this
+checks	Checkout source	2026-10-17T09:42:20.2249938Z state without impacting any branches by switching back to a branch.
+checks	Checkout source	2026-10-17T09:42:20.2250785Z 
+checks	Checkout source	2026-10-17T09:42:20.2251587Z If you want to create a new branch to retain commits you create, you may
+checks	Checkout source	2026-10-17T09:42:20.2253005Z do so (now or later) by using -c with the switch command. Example:
+checks	Checkout source	2026-10-17T09:42:20.2253801Z 
+checks	Checkout source	2026-10-17T09:42:20.2254184Z   git switch -c <new-branch-name>
+checks	Checkout source	2026-10-17T09:42:20.2254767Z 
+checks	Checkout source	2026-10-17T09:42:20.2255227Z Or undo this operation with:
+checks	Checkout source	2026-10-17T09:42:20.2255835Z 
+checks	Checkout source	2026-10-17T09:42:20.2256269Z   git switch -
+checks	Checkout source	2026-10-17T09:42:20.2256824Z 
+checks	Checkout source	2026-10-17T09:42:20.2257724Z Turn off this advice by setting config variable advice.detachedHead to false
+checks	Checkout source	2026-10-17T09:42:20.2258890Z 
+checks	Checkout source	2026-10-17T09:42:20.2260256Z HEAD is now at 7244e8e Merge e450f1fc72215b7c2e0990c6effd6df5699ae676 into a4fef41c98790fc6f0dd8134e404ca758485edb9
+checks	Checkout source	2026-10-17T09:42:20.2264635Z ##[endgroup]
+checks	Checkout source	2026-10-17T09:42:20.2297398Z [command]/usr/bin/git log -1 --format=%H
+checks	Checkout source	2026-10-17T09:42:20.2321816Z 7244e8ead9205ec055efcdaa990c8e15d05302c5
+checks	Checkout source	2026-10-17T09:42:20.2330235Z ##[group]Removing auth
+checks	Checkout source	2026-10-17T09:42:20.2331515Z Removing SSH command configuration
+checks	Checkout source	2026-10-17T09:42:20.2333229Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+checks	Checkout source	2026-10-17T09:42:20.2359123Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+checks	Checkout source	2026-10-17T09:42:20.2534164Z Removing HTTP extra header
+checks	Checkout source	2026-10-17T09:42:20.2536342Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+checks	Checkout source	2026-10-17T09:42:20.2566848Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+checks	Checkout source	2026-10-17T09:42:20.2744797Z Removing includeIf entries pointing to credentials config files
+checks	Checkout source	2026-10-17T09:42:20.2747558Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+checks	Checkout source	2026-10-17T09:42:20.2773844Z includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path
+checks	Checkout source	2026-10-17T09:42:20.2776334Z includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path
+checks	Checkout source	2026-10-17T09:42:20.2778428Z includeif.gitdir:/github/workspace/.git.path
+checks	Checkout source	2026-10-17T09:42:20.2780024Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+checks	Checkout source	2026-10-17T09:42:20.2790029Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path
+checks	Checkout source	2026-10-17T09:42:20.2803735Z /home/runner/work/_temp/git-credentials-00a42de9-f6f9-40c0-a0fa-f571fb1b9089.config
+checks	Checkout source	2026-10-17T09:42:20.2812218Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path /home/runner/work/_temp/git-credentials-00a42de9-f6f9-40c0-a0fa-f571fb1b9089.config
+checks	Checkout source	2026-10-17T09:42:20.2841883Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path
+checks	Checkout source	2026-10-17T09:42:20.2861399Z /home/runner/work/_temp/git-credentials-00a42de9-f6f9-40c0-a0fa-f571fb1b9089.config
+checks	Checkout source	2026-10-17T09:42:20.2868592Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-00a42de9-f6f9-40c0-a0fa-f571fb1b9089.config
+checks	Checkout source	2026-10-17T09:42:20.2896669Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+checks	Checkout source	2026-10-17T09:42:20.2919205Z /github/runner_temp/git-credentials-00a42de9-f6f9-40c0-a0fa-f571fb1b9089.config
+checks	Checkout source	2026-10-17T09:42:20.2930982Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-00a42de9-f6f9-40c0-a0fa-f571fb1b9089.config
+checks	Checkout source	2026-10-17T09:42:20.2959792Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+checks	Checkout source	2026-10-17T09:42:20.2980574Z /github/runner_temp/git-credentials-00a42de9-f6f9-40c0-a0fa-f571fb1b9089.config
+checks	Checkout source	2026-10-17T09:42:20.2990064Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-00a42de9-f6f9-40c0-a0fa-f571fb1b9089.config
+checks	Checkout source	2026-10-17T09:42:20.3020528Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+checks	Checkout source	2026-10-17T09:42:20.3199626Z Removing credentials config '/home/runner/work/_temp/git-credentials-00a42de9-f6f9-40c0-a0fa-f571fb1b9089.config'
+checks	Checkout source	2026-10-17T09:42:20.3203045Z ##[endgroup]
+checks	Setup Node.js	﻿2026-10-17T09:42:20.3507684Z ##[group]Run actions/setup-node@v6
+checks	Setup Node.js	2026-10-17T09:42:20.3508394Z with:
+checks	Setup Node.js	2026-10-17T09:42:20.3508907Z   node-version: 24.x
+checks	Setup Node.js	2026-10-17T09:42:20.3509478Z   cache: npm
+checks	Setup Node.js	2026-10-17T09:42:20.3510019Z   check-latest: false
+checks	Setup Node.js	2026-10-17T09:42:20.3515318Z   token: ***
+checks	Setup Node.js	2026-10-17T09:42:20.3515882Z   package-manager-cache: true
+checks	Setup Node.js	2026-10-17T09:42:20.3516517Z env:
+checks	Setup Node.js	2026-10-17T09:42:20.3517019Z   GIT_CONFIG_COUNT: 1
+checks	Setup Node.js	2026-10-17T09:42:20.3517636Z   GIT_CONFIG_KEY_0: init.defaultBranch
+checks	Setup Node.js	2026-10-17T09:42:20.3518346Z   GIT_CONFIG_VALUE_0: main
+checks	Setup Node.js	2026-10-17T09:42:20.3518944Z ##[endgroup]
+checks	Setup Node.js	2026-10-17T09:42:20.4429440Z Found in cache @ /opt/hostedtoolcache/node/24.21.0/x64
+checks	Setup Node.js	2026-10-17T09:42:20.4432427Z ##[group]Environment details
+checks	Setup Node.js	2026-10-17T09:42:20.7650471Z node: v24.21.0
+checks	Setup Node.js	2026-10-17T09:42:20.7650743Z npm: 11.19.0
+checks	Setup Node.js	2026-10-17T09:42:20.7650862Z yarn: 1.22.22
+checks	Setup Node.js	2026-10-17T09:42:20.7651747Z ##[endgroup]
+checks	Setup Node.js	2026-10-17T09:42:20.7664460Z [command]/opt/hostedtoolcache/node/24.21.0/x64/bin/npm config get cache
+checks	Setup Node.js	2026-10-17T09:42:20.8936240Z /home/runner/.npm
+checks	Setup Node.js	2026-10-17T09:42:21.1141195Z npm cache is not found
+checks	Install dependencies	﻿2026-10-17T09:42:21.1229591Z ##[group]Run npm ci
+checks	Install dependencies	2026-10-17T09:42:21.1229793Z ^[[36;1mnpm ci^[[0m
+checks	Install dependencies	2026-10-17T09:42:21.1513245Z shell: /usr/bin/bash -e {0}
+checks	Install dependencies	2026-10-17T09:42:21.1513442Z env:
+checks	Install dependencies	2026-10-17T09:42:21.1513563Z   GIT_CONFIG_COUNT: 1
+checks	Install dependencies	2026-10-17T09:42:21.1513703Z   GIT_CONFIG_KEY_0: init.defaultBranch
+checks	Install dependencies	2026-10-17T09:42:21.1513862Z   GIT_CONFIG_VALUE_0: main
+checks	Install dependencies	2026-10-17T09:42:21.1513995Z ##[endgroup]
+checks	Install dependencies	2026-10-17T09:42:24.5327969Z 
+checks	Install dependencies	2026-10-17T09:42:24.5334337Z > konard.github.io@0.1.0 prepare
+checks	Install dependencies	2026-10-17T09:42:24.5334602Z > husky
+checks	Install dependencies	2026-10-17T09:42:24.5334668Z 
+checks	Install dependencies	2026-10-17T09:42:24.5818961Z 
+checks	Install dependencies	2026-10-17T09:42:24.5819934Z added 296 packages, and audited 297 packages in 3s
+checks	Install dependencies	2026-10-17T09:42:24.5820178Z 
+checks	Install dependencies	2026-10-17T09:42:24.5820289Z 75 packages are looking for funding
+checks	Install dependencies	2026-10-17T09:42:24.5820528Z   run `npm fund` for details
+checks	Install dependencies	2026-10-17T09:42:24.5827254Z 
+checks	Install dependencies	2026-10-17T09:42:24.5827360Z found 0 vulnerabilities
+checks	Lint	﻿2026-10-17T09:42:24.6313537Z ##[group]Run npm run lint
+checks	Lint	2026-10-17T09:42:24.6313738Z ^[[36;1mnpm run lint^[[0m
+checks	Lint	2026-10-17T09:42:24.6366735Z shell: /usr/bin/bash -e {0}
+checks	Lint	2026-10-17T09:42:24.6366920Z env:
+checks	Lint	2026-10-17T09:42:24.6367033Z   GIT_CONFIG_COUNT: 1
+checks	Lint	2026-10-17T09:42:24.6367173Z   GIT_CONFIG_KEY_0: init.defaultBranch
+checks	Lint	2026-10-17T09:42:24.6367328Z   GIT_CONFIG_VALUE_0: main
+checks	Lint	2026-10-17T09:42:24.6367459Z ##[endgroup]
+checks	Lint	2026-10-17T09:42:24.7084808Z 
+checks	Lint	2026-10-17T09:42:24.7085275Z > konard.github.io@0.1.0 lint
+checks	Lint	2026-10-17T09:42:24.7085579Z > eslint . --max-warnings=0
+checks	Lint	2026-10-17T09:42:24.7085684Z 
+checks	Check formatting	﻿2026-10-17T09:42:25.7924228Z ##[group]Run npm run format:check
+checks	Check formatting	2026-10-17T09:42:25.7924541Z ^[[36;1mnpm run format:check^[[0m
+checks	Check formatting	2026-10-17T09:42:25.7976960Z shell: /usr/bin/bash -e {0}
+checks	Check formatting	2026-10-17T09:42:25.7977117Z env:
+checks	Check formatting	2026-10-17T09:42:25.7977234Z   GIT_CONFIG_COUNT: 1
+checks	Check formatting	2026-10-17T09:42:25.7977371Z   GIT_CONFIG_KEY_0: init.defaultBranch
+checks	Check formatting	2026-10-17T09:42:25.7977527Z   GIT_CONFIG_VALUE_0: main
+checks	Check formatting	2026-10-17T09:42:25.7977658Z ##[endgroup]
+checks	Check formatting	2026-10-17T09:42:25.8639075Z 
+checks	Check formatting	2026-10-17T09:42:25.8639955Z > konard.github.io@0.1.0 format:check
+checks	Check formatting	2026-10-17T09:42:25.8640326Z > prettier --check .
+checks	Check formatting	2026-10-17T09:42:25.8640464Z 
+checks	Check formatting	2026-10-17T09:42:25.9178120Z Checking formatting...
+checks	Check formatting	2026-10-17T09:42:26.4063547Z All matched files use Prettier code style!
+checks	Check file size limits	﻿2026-10-17T09:42:26.4255280Z ##[group]Run npm run check:file-size
+checks	Check file size limits	2026-10-17T09:42:26.4255498Z ^[[36;1mnpm run check:file-size^[[0m
+checks	Check file size limits	2026-10-17T09:42:26.4308564Z shell: /usr/bin/bash -e {0}
+checks	Check file size limits	2026-10-17T09:42:26.4308714Z env:
+checks	Check file size limits	2026-10-17T09:42:26.4308827Z   GIT_CONFIG_COUNT: 1
+checks	Check file size limits	2026-10-17T09:42:26.4308960Z   GIT_CONFIG_KEY_0: init.defaultBranch
+checks	Check file size limits	2026-10-17T09:42:26.4309117Z   GIT_CONFIG_VALUE_0: main
+checks	Check file size limits	2026-10-17T09:42:26.4309248Z ##[endgroup]
+checks	Check file size limits	2026-10-17T09:42:26.4963643Z 
+checks	Check file size limits	2026-10-17T09:42:26.4964363Z > konard.github.io@0.1.0 check:file-size
+checks	Check file size limits	2026-10-17T09:42:26.4964791Z > bash scripts/check-file-line-limits.sh
+checks	Check file size limits	2026-10-17T09:42:26.4964982Z 
+checks	Check file size limits	2026-10-17T09:42:26.5526917Z Checked 36 files against the 1500-line limit.
+checks	Check for secrets	﻿2026-10-17T09:42:26.5607541Z ##[group]Run npm run check:secrets
+checks	Check for secrets	2026-10-17T09:42:26.5607745Z ^[[36;1mnpm run check:secrets^[[0m
+checks	Check for secrets	2026-10-17T09:42:26.5661304Z shell: /usr/bin/bash -e {0}
+checks	Check for secrets	2026-10-17T09:42:26.5661474Z env:
+checks	Check for secrets	2026-10-17T09:42:26.5661587Z   GIT_CONFIG_COUNT: 1
+checks	Check for secrets	2026-10-17T09:42:26.5661725Z   GIT_CONFIG_KEY_0: init.defaultBranch
+checks	Check for secrets	2026-10-17T09:42:26.5661878Z   GIT_CONFIG_VALUE_0: main
+checks	Check for secrets	2026-10-17T09:42:26.5662013Z ##[endgroup]
+checks	Check for secrets	2026-10-17T09:42:26.6360769Z 
+checks	Check for secrets	2026-10-17T09:42:26.6361641Z > konard.github.io@0.1.0 check:secrets
+checks	Check for secrets	2026-10-17T09:42:26.6362093Z > secretlint "**/*" --secretlintignore .prettierignore
+checks	Check for secrets	2026-10-17T09:42:26.6362309Z 
+checks	Audit dependencies	﻿2026-10-17T09:42:26.8085942Z ##[group]Run npm audit --audit-level=moderate
+checks	Audit dependencies	2026-10-17T09:42:26.8086175Z ^[[36;1mnpm audit --audit-level=moderate^[[0m
+checks	Audit dependencies	2026-10-17T09:42:26.8137266Z shell: /usr/bin/bash -e {0}
+checks	Audit dependencies	2026-10-17T09:42:26.8137416Z env:
+checks	Audit dependencies	2026-10-17T09:42:26.8137528Z   GIT_CONFIG_COUNT: 1
+checks	Audit dependencies	2026-10-17T09:42:26.8137661Z   GIT_CONFIG_KEY_0: init.defaultBranch
+checks	Audit dependencies	2026-10-17T09:42:26.8137812Z   GIT_CONFIG_VALUE_0: main
+checks	Audit dependencies	2026-10-17T09:42:26.8137943Z ##[endgroup]
+checks	Audit dependencies	2026-10-17T09:42:27.1108140Z found 0 vulnerabilities
+checks	Post Setup Node.js	﻿2026-10-17T09:42:27.1251422Z Post job cleanup.
+checks	Post Setup Node.js	2026-10-17T09:42:27.2202982Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/konard.github.io/konard.github.io --files-from manifest.txt --use-compress-program zstdmt
+checks	Post Setup Node.js	2026-10-17T09:42:28.5211843Z Sent 32351320 of 32351320 (100.0%), 30.9 MBs/sec
+checks	Post Setup Node.js	2026-10-17T09:42:29.1203959Z Cache saved with the key: node-cache-Linux-x64-npm-f934b8ec88d903307993501371c09a57d12590019e9c93260ad12280f8e63281
+checks	Post Checkout source	﻿2026-10-17T09:42:29.1325620Z Post job cleanup.
+checks	Post Checkout source	2026-10-17T09:42:29.1873074Z [command]/usr/bin/git version
+checks	Post Checkout source	2026-10-17T09:42:29.1902641Z git version 2.55.0
+checks	Post Checkout source	2026-10-17T09:42:29.1926303Z Temporarily overriding HOME='/home/runner/work/_temp/3256e809-23b0-435a-911c-950416880000' before making global git config changes
+checks	Post Checkout source	2026-10-17T09:42:29.1927093Z Adding repository directory to the temporary git global config as a safe directory
+checks	Post Checkout source	2026-10-17T09:42:29.1929406Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/konard.github.io/konard.github.io
+checks	Post Checkout source	2026-10-17T09:42:29.1955622Z Removing SSH command configuration
+checks	Post Checkout source	2026-10-17T09:42:29.1960006Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+checks	Post Checkout source	2026-10-17T09:42:29.1987686Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+checks	Post Checkout source	2026-10-17T09:42:29.2191677Z Removing HTTP extra header
+checks	Post Checkout source	2026-10-17T09:42:29.2192330Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+checks	Post Checkout source	2026-10-17T09:42:29.2223628Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+checks	Post Checkout source	2026-10-17T09:42:29.2408528Z Removing includeIf entries pointing to credentials config files
+checks	Post Checkout source	2026-10-17T09:42:29.2414679Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+checks	Post Checkout source	2026-10-17T09:42:29.2448124Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+checks	Complete job	﻿2026-10-17T09:42:29.2743445Z Cleaning up orphan processes
+test	Set up job	﻿2026-10-17T09:42:33.9244501Z Current runner version: '2.337.0'
+test	Set up job	2026-10-17T09:42:33.9271283Z ##[group]Runner Image Provisioner
+test	Set up job	2026-10-17T09:42:33.9272297Z Hosted Compute Agent
+test	Set up job	2026-10-17T09:42:33.9272919Z Version: 20261012.601
+test	Set up job	2026-10-17T09:42:33.9273876Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+test	Set up job	2026-10-17T09:42:33.9274821Z Build Date: 2026-10-12T17:48:21Z
+test	Set up job	2026-10-17T09:42:33.9275557Z Worker ID: {f6c11605-7602-4462-8a02-7846eeb4e9b5}
+test	Set up job	2026-10-17T09:42:33.9276358Z Region: centralus
+test	Set up job	2026-10-17T09:42:33.9276919Z Cloud: Azure
+test	Set up job	2026-10-17T09:42:33.9277453Z ##[endgroup]
+test	Set up job	2026-10-17T09:42:33.9279136Z ##[group]Operating System
+test	Set up job	2026-10-17T09:42:33.9279816Z Ubuntu
+test	Set up job	2026-10-17T09:42:33.9280447Z 24.04.5
+test	Set up job	2026-10-17T09:42:33.9280995Z LTS
+test	Set up job	2026-10-17T09:42:33.9281520Z ##[endgroup]
+test	Set up job	2026-10-17T09:42:33.9282140Z ##[group]Runner Image
+test	Set up job	2026-10-17T09:42:33.9282810Z Image: ubuntu-24.04
+test	Set up job	2026-10-17T09:42:33.9283450Z Version: 20261012.334.1
+test	Set up job	2026-10-17T09:42:33.9284836Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+test	Set up job	2026-10-17T09:42:33.9286740Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+test	Set up job	2026-10-17T09:42:33.9287750Z ##[endgroup]
+test	Set up job	2026-10-17T09:42:33.9288940Z ##[group]GITHUB_TOKEN Permissions
+test	Set up job	2026-10-17T09:42:33.9290877Z Contents: read
+test	Set up job	2026-10-17T09:42:33.9291605Z Metadata: read
+test	Set up job	2026-10-17T09:42:33.9292214Z ##[endgroup]
+test	Set up job	2026-10-17T09:42:33.9294620Z Secret source: Actions
+test	Set up job	2026-10-17T09:42:33.9295751Z Cache mode: write
+test	Set up job	2026-10-17T09:42:33.9296534Z Prepare workflow directory
+test	Set up job	2026-10-17T09:42:33.9821736Z Prepare all required actions
+test	Set up job	2026-10-17T09:42:33.9893173Z Getting action download info
+test	Set up job	2026-10-17T09:42:34.2400512Z Download action repository 'actions/checkout@v6' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+test	Set up job	2026-10-17T09:42:34.3617936Z Download action repository 'actions/setup-node@v6' (SHA:249970729cb0ef3589644e2896645e5dc5ba9c38)
+test	Set up job	2026-10-17T09:42:34.5013279Z Download action repository 'actions/upload-artifact@v7' (SHA:cf430e030ddbb5b0abf93d22962f4752f3646cd9)
+test	Set up job	2026-10-17T09:42:35.0831391Z Complete job name: test
+test	Checkout source	﻿2026-10-17T09:42:35.1656190Z ##[group]Run actions/checkout@v6
+test	Checkout source	2026-10-17T09:42:35.1657174Z with:
+test	Checkout source	2026-10-17T09:42:35.1657692Z   persist-credentials: false
+test	Checkout source	2026-10-17T09:42:35.1658295Z   repository: konard/konard.github.io
+test	Checkout source	2026-10-17T09:42:35.1662411Z   token: ***
+test	Checkout source	2026-10-17T09:42:35.1662896Z   ssh-strict: true
+test	Checkout source	2026-10-17T09:42:35.1663400Z   ssh-user: git
+test	Checkout source	2026-10-17T09:42:35.1664260Z   clean: true
+test	Checkout source	2026-10-17T09:42:35.1664776Z   sparse-checkout-cone-mode: true
+test	Checkout source	2026-10-17T09:42:35.1665351Z   fetch-depth: 1
+test	Checkout source	2026-10-17T09:42:35.1665823Z   fetch-tags: false
+test	Checkout source	2026-10-17T09:42:35.1666314Z   show-progress: true
+test	Checkout source	2026-10-17T09:42:35.1666807Z   lfs: false
+test	Checkout source	2026-10-17T09:42:35.1667251Z   submodules: false
+test	Checkout source	2026-10-17T09:42:35.1667766Z   set-safe-directory: true
+test	Checkout source	2026-10-17T09:42:35.1668318Z   allow-unsafe-pr-checkout: false
+test	Checkout source	2026-10-17T09:42:35.1669185Z env:
+test	Checkout source	2026-10-17T09:42:35.1669671Z   GIT_CONFIG_COUNT: 1
+test	Checkout source	2026-10-17T09:42:35.1670211Z   GIT_CONFIG_KEY_0: init.defaultBranch
+test	Checkout source	2026-10-17T09:42:35.1670857Z   GIT_CONFIG_VALUE_0: main
+test	Checkout source	2026-10-17T09:42:35.1671419Z ##[endgroup]
+test	Checkout source	2026-10-17T09:42:35.2704492Z Syncing repository: konard/konard.github.io
+test	Checkout source	2026-10-17T09:42:35.2708149Z ##[group]Getting Git version info
+test	Checkout source	2026-10-17T09:42:35.2709189Z Working directory is '/home/runner/work/konard.github.io/konard.github.io'
+test	Checkout source	2026-10-17T09:42:35.2710440Z [command]/usr/bin/git version
+test	Checkout source	2026-10-17T09:42:35.2830892Z git version 2.55.0
+test	Checkout source	2026-10-17T09:42:35.2857312Z ##[endgroup]
+test	Checkout source	2026-10-17T09:42:35.2874086Z Temporarily overriding HOME='/home/runner/work/_temp/fa3c61bf-dae4-4366-b32d-eb444e302bc0' before making global git config changes
+test	Checkout source	2026-10-17T09:42:35.2876430Z Adding repository directory to the temporary git global config as a safe directory
+test	Checkout source	2026-10-17T09:42:35.2880719Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/konard.github.io/konard.github.io
+test	Checkout source	2026-10-17T09:42:35.2936036Z Deleting the contents of '/home/runner/work/konard.github.io/konard.github.io'
+test	Checkout source	2026-10-17T09:42:35.2948433Z ##[group]Determining repository object format
+test	Checkout source	2026-10-17T09:42:35.2950355Z ##[endgroup]
+test	Checkout source	2026-10-17T09:42:35.2952039Z ##[group]Initializing the repository
+test	Checkout source	2026-10-17T09:42:35.2953149Z [command]/usr/bin/git init /home/runner/work/konard.github.io/konard.github.io
+test	Checkout source	2026-10-17T09:42:35.3071042Z Initialized empty Git repository in /home/runner/work/konard.github.io/konard.github.io/.git/
+test	Checkout source	2026-10-17T09:42:35.3084318Z [command]/usr/bin/git remote add origin https://github.com/konard/konard.github.io
+test	Checkout source	2026-10-17T09:42:35.3135371Z ##[endgroup]
+test	Checkout source	2026-10-17T09:42:35.3136847Z ##[group]Disabling automatic garbage collection
+test	Checkout source	2026-10-17T09:42:35.3140292Z [command]/usr/bin/git config --local gc.auto 0
+test	Checkout source	2026-10-17T09:42:35.3174128Z ##[endgroup]
+test	Checkout source	2026-10-17T09:42:35.3175509Z ##[group]Setting up auth
+test	Checkout source	2026-10-17T09:42:35.3183070Z Removing SSH command configuration
+test	Checkout source	2026-10-17T09:42:35.3191076Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+test	Checkout source	2026-10-17T09:42:35.3223449Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+test	Checkout source	2026-10-17T09:42:35.3600759Z Removing HTTP extra header
+test	Checkout source	2026-10-17T09:42:35.3607696Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+test	Checkout source	2026-10-17T09:42:35.3658849Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+test	Checkout source	2026-10-17T09:42:35.3881641Z Removing includeIf entries pointing to credentials config files
+test	Checkout source	2026-10-17T09:42:35.3888501Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+test	Checkout source	2026-10-17T09:42:35.3927610Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+test	Checkout source	2026-10-17T09:42:35.4160498Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-fc1725ba-6db4-479a-9b2c-ad1c3eeef4a8.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+test	Checkout source	2026-10-17T09:42:35.4204738Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path /home/runner/work/_temp/git-credentials-fc1725ba-6db4-479a-9b2c-ad1c3eeef4a8.config
+test	Checkout source	2026-10-17T09:42:35.4241543Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-fc1725ba-6db4-479a-9b2c-ad1c3eeef4a8.config
+test	Checkout source	2026-10-17T09:42:35.4282935Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-fc1725ba-6db4-479a-9b2c-ad1c3eeef4a8.config
+test	Checkout source	2026-10-17T09:42:35.4317332Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-fc1725ba-6db4-479a-9b2c-ad1c3eeef4a8.config
+test	Checkout source	2026-10-17T09:42:35.4348560Z ##[endgroup]
+test	Checkout source	2026-10-17T09:42:35.4349971Z ##[group]Fetching the repository
+test	Checkout source	2026-10-17T09:42:35.4356814Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +7244e8ead9205ec055efcdaa990c8e15d05302c5:refs/remotes/pull/4/merge
+test	Checkout source	2026-10-17T09:42:36.1478254Z From https://github.com/konard/konard.github.io
+test	Checkout source	2026-10-17T09:42:36.1479944Z  * [new ref]         7244e8ead9205ec055efcdaa990c8e15d05302c5 -> pull/4/merge
+test	Checkout source	2026-10-17T09:42:36.1496048Z ##[endgroup]
+test	Checkout source	2026-10-17T09:42:36.1497698Z ##[group]Determining the checkout info
+test	Checkout source	2026-10-17T09:42:36.1499258Z ##[endgroup]
+test	Checkout source	2026-10-17T09:42:36.1500472Z [command]/usr/bin/git sparse-checkout disable
+test	Checkout source	2026-10-17T09:42:36.1560749Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+test	Checkout source	2026-10-17T09:42:36.1601653Z ##[group]Checking out the ref
+test	Checkout source	2026-10-17T09:42:36.1605066Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/4/merge
+test	Checkout source	2026-10-17T09:42:36.1915272Z Note: switching to 'refs/remotes/pull/4/merge'.
+test	Checkout source	2026-10-17T09:42:36.1916840Z 
+test	Checkout source	2026-10-17T09:42:36.1918164Z You are in 'detached HEAD' state. You can look around, make experimental
+test	Checkout source	2026-10-17T09:42:36.1921349Z changes and commit them, and you can discard any commits you make in this
+test	Checkout source	2026-10-17T09:42:36.1924771Z state without impacting any branches by switching back to a branch.
+test	Checkout source	2026-10-17T09:42:36.1926131Z 
+test	Checkout source	2026-10-17T09:42:36.1927050Z If you want to create a new branch to retain commits you create, you may
+test	Checkout source	2026-10-17T09:42:36.1929914Z do so (now or later) by using -c with the switch command. Example:
+test	Checkout source	2026-10-17T09:42:36.1931243Z 
+test	Checkout source	2026-10-17T09:42:36.1931851Z   git switch -c <new-branch-name>
+test	Checkout source	2026-10-17T09:42:36.1932761Z 
+test	Checkout source	2026-10-17T09:42:36.1933332Z Or undo this operation with:
+test	Checkout source	2026-10-17T09:42:36.1934458Z 
+test	Checkout source	2026-10-17T09:42:36.1935006Z   git switch -
+test	Checkout source	2026-10-17T09:42:36.1935706Z 
+test	Checkout source	2026-10-17T09:42:36.1936811Z Turn off this advice by setting config variable advice.detachedHead to false
+test	Checkout source	2026-10-17T09:42:36.1938397Z 
+test	Checkout source	2026-10-17T09:42:36.1940172Z HEAD is now at 7244e8e Merge e450f1fc72215b7c2e0990c6effd6df5699ae676 into a4fef41c98790fc6f0dd8134e404ca758485edb9
+test	Checkout source	2026-10-17T09:42:36.1945938Z ##[endgroup]
+test	Checkout source	2026-10-17T09:42:36.1977418Z [command]/usr/bin/git log -1 --format=%H
+test	Checkout source	2026-10-17T09:42:36.2006229Z 7244e8ead9205ec055efcdaa990c8e15d05302c5
+test	Checkout source	2026-10-17T09:42:36.2017926Z ##[group]Removing auth
+test	Checkout source	2026-10-17T09:42:36.2020000Z Removing SSH command configuration
+test	Checkout source	2026-10-17T09:42:36.2023183Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+test	Checkout source	2026-10-17T09:42:36.2062509Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+test	Checkout source	2026-10-17T09:42:36.2295801Z Removing HTTP extra header
+test	Checkout source	2026-10-17T09:42:36.2300788Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+test	Checkout source	2026-10-17T09:42:36.2345413Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+test	Checkout source	2026-10-17T09:42:36.2598685Z Removing includeIf entries pointing to credentials config files
+test	Checkout source	2026-10-17T09:42:36.2602947Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+test	Checkout source	2026-10-17T09:42:36.2636660Z includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path
+test	Checkout source	2026-10-17T09:42:36.2640118Z includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path
+test	Checkout source	2026-10-17T09:42:36.2642766Z includeif.gitdir:/github/workspace/.git.path
+test	Checkout source	2026-10-17T09:42:36.2645525Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+test	Checkout source	2026-10-17T09:42:36.2651288Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path
+test	Checkout source	2026-10-17T09:42:36.2678104Z /home/runner/work/_temp/git-credentials-fc1725ba-6db4-479a-9b2c-ad1c3eeef4a8.config
+test	Checkout source	2026-10-17T09:42:36.2691216Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path /home/runner/work/_temp/git-credentials-fc1725ba-6db4-479a-9b2c-ad1c3eeef4a8.config
+test	Checkout source	2026-10-17T09:42:36.2731491Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path
+test	Checkout source	2026-10-17T09:42:36.2758408Z /home/runner/work/_temp/git-credentials-fc1725ba-6db4-479a-9b2c-ad1c3eeef4a8.config
+test	Checkout source	2026-10-17T09:42:36.2774196Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-fc1725ba-6db4-479a-9b2c-ad1c3eeef4a8.config
+test	Checkout source	2026-10-17T09:42:36.2813113Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+test	Checkout source	2026-10-17T09:42:36.2846031Z /github/runner_temp/git-credentials-fc1725ba-6db4-479a-9b2c-ad1c3eeef4a8.config
+test	Checkout source	2026-10-17T09:42:36.2891408Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-fc1725ba-6db4-479a-9b2c-ad1c3eeef4a8.config
+test	Checkout source	2026-10-17T09:42:36.2929110Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+test	Checkout source	2026-10-17T09:42:36.2956090Z /github/runner_temp/git-credentials-fc1725ba-6db4-479a-9b2c-ad1c3eeef4a8.config
+test	Checkout source	2026-10-17T09:42:36.2970586Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-fc1725ba-6db4-479a-9b2c-ad1c3eeef4a8.config
+test	Checkout source	2026-10-17T09:42:36.3008922Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+test	Checkout source	2026-10-17T09:42:36.3235756Z Removing credentials config '/home/runner/work/_temp/git-credentials-fc1725ba-6db4-479a-9b2c-ad1c3eeef4a8.config'
+test	Checkout source	2026-10-17T09:42:36.3244745Z ##[endgroup]
+test	Setup Node.js	﻿2026-10-17T09:42:36.3611706Z ##[group]Run actions/setup-node@v6
+test	Setup Node.js	2026-10-17T09:42:36.3612927Z with:
+test	Setup Node.js	2026-10-17T09:42:36.3613971Z   node-version: 24.x
+test	Setup Node.js	2026-10-17T09:42:36.3614929Z   cache: npm
+test	Setup Node.js	2026-10-17T09:42:36.3615868Z   check-latest: false
+test	Setup Node.js	2026-10-17T09:42:36.3625322Z   token: ***
+test	Setup Node.js	2026-10-17T09:42:36.3626289Z   package-manager-cache: true
+test	Setup Node.js	2026-10-17T09:42:36.3627371Z env:
+test	Setup Node.js	2026-10-17T09:42:36.3628218Z   GIT_CONFIG_COUNT: 1
+test	Setup Node.js	2026-10-17T09:42:36.3629252Z   GIT_CONFIG_KEY_0: init.defaultBranch
+test	Setup Node.js	2026-10-17T09:42:36.3630460Z   GIT_CONFIG_VALUE_0: main
+test	Setup Node.js	2026-10-17T09:42:36.3631491Z ##[endgroup]
+test	Setup Node.js	2026-10-17T09:42:36.5160042Z Found in cache @ /opt/hostedtoolcache/node/24.21.0/x64
+test	Setup Node.js	2026-10-17T09:42:36.5163830Z ##[group]Environment details
+test	Setup Node.js	2026-10-17T09:42:38.8724361Z node: v24.21.0
+test	Setup Node.js	2026-10-17T09:42:38.8724824Z npm: 11.19.0
+test	Setup Node.js	2026-10-17T09:42:38.8749678Z yarn: 1.22.22
+test	Setup Node.js	2026-10-17T09:42:38.8750837Z ##[endgroup]
+test	Setup Node.js	2026-10-17T09:42:38.8751285Z [command]/opt/hostedtoolcache/node/24.21.0/x64/bin/npm config get cache
+test	Setup Node.js	2026-10-17T09:42:39.1509957Z /home/runner/.npm
+test	Setup Node.js	2026-10-17T09:42:39.3016283Z Cache hit for: node-cache-Linux-x64-npm-f934b8ec88d903307993501371c09a57d12590019e9c93260ad12280f8e63281
+test	Setup Node.js	2026-10-17T09:42:40.2356454Z Received 32351320 of 32351320 (100.0%), 39.1 MBs/sec
+test	Setup Node.js	2026-10-17T09:42:40.2357699Z Cache Size: ~31 MB (32351320 B)
+test	Setup Node.js	2026-10-17T09:42:40.2479868Z [command]/usr/bin/tar -xf /home/runner/work/_temp/219b7a3e-bd76-4b3a-a718-8a6e865b78db/cache.tzst -P -C /home/runner/work/konard.github.io/konard.github.io --use-compress-program unzstd
+test	Setup Node.js	2026-10-17T09:42:40.3465179Z Cache restored successfully
+test	Setup Node.js	2026-10-17T09:42:40.3484151Z Cache restored from key: node-cache-Linux-x64-npm-f934b8ec88d903307993501371c09a57d12590019e9c93260ad12280f8e63281
+test	Install dependencies	﻿2026-10-17T09:42:40.3639855Z ##[group]Run npm ci
+test	Install dependencies	2026-10-17T09:42:40.3640197Z ^[[36;1mnpm ci^[[0m
+test	Install dependencies	2026-10-17T09:42:40.3933063Z shell: /usr/bin/bash -e {0}
+test	Install dependencies	2026-10-17T09:42:40.3933440Z env:
+test	Install dependencies	2026-10-17T09:42:40.3934005Z   GIT_CONFIG_COUNT: 1
+test	Install dependencies	2026-10-17T09:42:40.3934294Z   GIT_CONFIG_KEY_0: init.defaultBranch
+test	Install dependencies	2026-10-17T09:42:40.3934634Z   GIT_CONFIG_VALUE_0: main
+test	Install dependencies	2026-10-17T09:42:40.3934907Z ##[endgroup]
+test	Install dependencies	2026-10-17T09:42:45.2813099Z 
+test	Install dependencies	2026-10-17T09:42:45.2820278Z > konard.github.io@0.1.0 prepare
+test	Install dependencies	2026-10-17T09:42:45.2820745Z > husky
+test	Install dependencies	2026-10-17T09:42:45.2820897Z 
+test	Install dependencies	2026-10-17T09:42:45.3755448Z 
+test	Install dependencies	2026-10-17T09:42:45.3756570Z added 296 packages, and audited 297 packages in 5s
+test	Install dependencies	2026-10-17T09:42:45.3757196Z 
+test	Install dependencies	2026-10-17T09:42:45.3757673Z 75 packages are looking for funding
+test	Install dependencies	2026-10-17T09:42:45.3758431Z   run `npm fund` for details
+test	Install dependencies	2026-10-17T09:42:45.3768978Z 
+test	Install dependencies	2026-10-17T09:42:45.3769230Z found 0 vulnerabilities
+test	Run tests	﻿2026-10-17T09:42:45.4417196Z ##[group]Run npm run test:ci
+test	Run tests	2026-10-17T09:42:45.4417556Z ^[[36;1mnpm run test:ci^[[0m
+test	Run tests	2026-10-17T09:42:45.4486655Z shell: /usr/bin/bash -e {0}
+test	Run tests	2026-10-17T09:42:45.4486965Z env:
+test	Run tests	2026-10-17T09:42:45.4487242Z   GIT_CONFIG_COUNT: 1
+test	Run tests	2026-10-17T09:42:45.4487517Z   GIT_CONFIG_KEY_0: init.defaultBranch
+test	Run tests	2026-10-17T09:42:45.4487858Z   GIT_CONFIG_VALUE_0: main
+test	Run tests	2026-10-17T09:42:45.4488127Z ##[endgroup]
+test	Run tests	2026-10-17T09:42:45.5586033Z 
+test	Run tests	2026-10-17T09:42:45.5586831Z > konard.github.io@0.1.0 test:ci
+test	Run tests	2026-10-17T09:42:45.5587288Z > vitest run
+test	Run tests	2026-10-17T09:42:45.5587459Z 
+test	Run tests	2026-10-17T09:42:45.9854806Z 
+test	Run tests	2026-10-17T09:42:45.9859991Z ^[[1m^[[30m^[[46m RUN ^[[49m^[[39m^[[22m ^[[36mv5.0.5 ^[[39m^[[90m/home/runner/work/konard.github.io/konard.github.io^[[39m
+test	Run tests	2026-10-17T09:42:45.9860499Z 
+test	Run tests	2026-10-17T09:42:47.1636486Z  ^[[32m✓^[[39m src/workflow.test.js ^[[2m(^[[22m^[[2m8 tests^[[22m^[[2m)^[[22m^[[32m 28^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-17T09:42:47.5022011Z  ^[[32m✓^[[39m src/components/components.test.js ^[[2m(^[[22m^[[2m10 tests^[[22m^[[2m)^[[22m^[[32m 54^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-17T09:42:48.1635900Z  ^[[32m✓^[[39m src/data/data.test.js ^[[2m(^[[22m^[[2m10 tests^[[22m^[[2m)^[[22m^[[32m 31^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-17T09:42:48.7605376Z  ^[[32m✓^[[39m src/App.test.jsx ^[[2m(^[[22m^[[2m6 tests^[[22m^[[2m)^[[22m^[[33m 1245^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-17T09:42:48.7637568Z    ^[[32m✓^[[39m App ^[[2m(6)^[[22m
+test	Run tests	2026-10-17T09:42:48.7672782Z      ^[[33m^[[2m✓^[[22m^[[39m renders the name, headline and every CV section^[[33m 564^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-17T09:42:48.7697709Z 
+test	Run tests	2026-10-17T09:42:48.7703097Z ^[[2m Test Files ^[[22m ^[[1m^[[32m4 passed^[[39m^[[22m^[[90m (4)^[[39m
+test	Run tests	2026-10-17T09:42:48.7704377Z ^[[2m      Tests ^[[22m ^[[1m^[[32m34 passed^[[39m^[[22m^[[90m (34)^[[39m
+test	Run tests	2026-10-17T09:42:48.7705068Z ^[[2m   Start at ^[[22m 09:42:45
+test	Run tests	2026-10-17T09:42:48.7710769Z ^[[2m   Duration ^[[22m 2.78s^[[2m (environment 55%, tests 23%, setup 8%, import 7%, transform 6%, worker 1%)^[[22m
+test	Run tests	2026-10-17T09:42:48.7716472Z 
+test	Run tests	2026-10-17T09:42:48.7718458Z ^[[2mEnvironment ^[[22m ^[[33mjsdom was created 4 times^[[39m^[[2m · 3.25s total, 55% of tracked time^[[22m
+test	Run tests	2026-10-17T09:42:48.7720512Z ^[[2m            ^[[22m ^[[2mcreate it once per worker with ^[[22m^[[33mpool: 'vmThreads'^[[39m^[[2m (keeps per-file isolation) or ^[[22m^[[33misolate: false^[[39m^[[2m (shares it across files)^[[22m
+test	Run tests	2026-10-17T09:42:48.7722340Z ^[[2m            ^[[22m ^[[2mlearn more: https://vitest.dev/guide/improving-performance#test-environments^[[22m
+test	Run tests	2026-10-17T09:42:48.7723046Z 
+test	Build the React app	﻿2026-10-17T09:42:48.8157738Z ##[group]Run npm run build
+test	Build the React app	2026-10-17T09:42:48.8158082Z ^[[36;1mnpm run build^[[0m
+test	Build the React app	2026-10-17T09:42:48.8220979Z shell: /usr/bin/bash -e {0}
+test	Build the React app	2026-10-17T09:42:48.8221253Z env:
+test	Build the React app	2026-10-17T09:42:48.8221454Z   GIT_CONFIG_COUNT: 1
+test	Build the React app	2026-10-17T09:42:48.8221702Z   GIT_CONFIG_KEY_0: init.defaultBranch
+test	Build the React app	2026-10-17T09:42:48.8222008Z   GIT_CONFIG_VALUE_0: main
+test	Build the React app	2026-10-17T09:42:48.8222252Z ##[endgroup]
+test	Build the React app	2026-10-17T09:42:48.9253420Z 
+test	Build the React app	2026-10-17T09:42:48.9254691Z > konard.github.io@0.1.0 build
+test	Build the React app	2026-10-17T09:42:48.9255177Z > vite build
+test	Build the React app	2026-10-17T09:42:48.9255352Z 
+test	Build the React app	2026-10-17T09:42:49.1493276Z ^[[36mvite v8.3.4 ^[[32mbuilding client environment for production...^[[36m^[[39m
+test	Build the React app	2026-10-17T09:42:49.1600031Z transforming...
+test	Build the React app	2026-10-17T09:42:49.2247785Z ✓ 36 modules transformed.
+test	Build the React app	2026-10-17T09:42:49.2526033Z rendering chunks...
+test	Build the React app	2026-10-17T09:42:49.2937275Z computing gzip size...
+test	Build the React app	2026-10-17T09:42:49.2986527Z build/index.html                   2.02 kB │ gzip:  0.79 kB
+test	Build the React app	2026-10-17T09:42:49.2987723Z build/assets/index-BwikbMEA.css   18.70 kB │ gzip:  4.90 kB
+test	Build the React app	2026-10-17T09:42:49.2989250Z build/assets/index-OgCrp1wx.js   273.80 kB │ gzip: 83.63 kB │ map: 1,170.03 kB
+test	Build the React app	2026-10-17T09:42:49.2989868Z 
+test	Build the React app	2026-10-17T09:42:49.2991264Z ^[[32m✓ built in 148ms^[[39m
+test	Upload the build	﻿2026-10-17T09:42:49.3341217Z ##[group]Run actions/upload-artifact@v7
+test	Upload the build	2026-10-17T09:42:49.3341545Z with:
+test	Upload the build	2026-10-17T09:42:49.3341750Z   name: build
+test	Upload the build	2026-10-17T09:42:49.3341950Z   path: build/
+test	Upload the build	2026-10-17T09:42:49.3342173Z   include-hidden-files: true
+test	Upload the build	2026-10-17T09:42:49.3342432Z   if-no-files-found: error
+test	Upload the build	2026-10-17T09:42:49.3342668Z   retention-days: 7
+test	Upload the build	2026-10-17T09:42:49.3342892Z   compression-level: 6
+test	Upload the build	2026-10-17T09:42:49.3343110Z   overwrite: false
+test	Upload the build	2026-10-17T09:42:49.3343313Z   archive: true
+test	Upload the build	2026-10-17T09:42:49.3343508Z env:
+test	Upload the build	2026-10-17T09:42:49.3343994Z   GIT_CONFIG_COUNT: 1
+test	Upload the build	2026-10-17T09:42:49.3344230Z   GIT_CONFIG_KEY_0: init.defaultBranch
+test	Upload the build	2026-10-17T09:42:49.3344508Z   GIT_CONFIG_VALUE_0: main
+test	Upload the build	2026-10-17T09:42:49.3344736Z ##[endgroup]
+test	Upload the build	2026-10-17T09:42:49.4819861Z With the provided path, there will be 11 files uploaded
+test	Upload the build	2026-10-17T09:42:49.4827172Z Artifact name is valid!
+test	Upload the build	2026-10-17T09:42:49.4828012Z Root directory input is valid!
+test	Upload the build	2026-10-17T09:42:49.7459743Z Uploading artifact: build.zip
+test	Upload the build	2026-10-17T09:42:49.7507115Z Beginning upload of artifact content to blob storage
+test	Upload the build	2026-10-17T09:42:50.2037117Z Uploaded bytes 394412
+test	Upload the build	2026-10-17T09:42:50.2505059Z Finished uploading artifact content to blob storage!
+test	Upload the build	2026-10-17T09:42:50.2507093Z SHA256 digest of uploaded artifact is f56b22cfe0b14c7212a62d62cb2e64cb11eb6788e727a4859524fdaa53f71d46
+test	Upload the build	2026-10-17T09:42:50.2508463Z Finalizing artifact upload
+test	Upload the build	2026-10-17T09:42:50.5303253Z Artifact build successfully finalized. Artifact ID 12097126329
+test	Upload the build	2026-10-17T09:42:50.5304966Z Artifact build has been successfully uploaded! Final size is 394412 bytes. Artifact ID is 12097126329
+test	Upload the build	2026-10-17T09:42:50.5309095Z Artifact download URL: https://github.com/konard/konard.github.io/actions/runs/39022132481/artifacts/12097126329
+test	Post Setup Node.js	﻿2026-10-17T09:42:50.7093395Z Post job cleanup.
+test	Post Setup Node.js	2026-10-17T09:42:50.8356761Z Cache hit occurred on the primary key node-cache-Linux-x64-npm-f934b8ec88d903307993501371c09a57d12590019e9c93260ad12280f8e63281, not saving cache.
+test	Post Checkout source	﻿2026-10-17T09:42:50.9487565Z Post job cleanup.
+test	Post Checkout source	2026-10-17T09:42:51.0498279Z [command]/usr/bin/git version
+test	Post Checkout source	2026-10-17T09:42:51.0569528Z git version 2.55.0
+test	Post Checkout source	2026-10-17T09:42:51.0624703Z Temporarily overriding HOME='/home/runner/work/_temp/b882997f-febf-4f1a-8c67-ea11d5760f2f' before making global git config changes
+test	Post Checkout source	2026-10-17T09:42:51.0627528Z Adding repository directory to the temporary git global config as a safe directory
+test	Post Checkout source	2026-10-17T09:42:51.0638547Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/konard.github.io/konard.github.io
+test	Post Checkout source	2026-10-17T09:42:51.0694942Z Removing SSH command configuration
+test	Post Checkout source	2026-10-17T09:42:51.0706582Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+test	Post Checkout source	2026-10-17T09:42:51.0762573Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+test	Post Checkout source	2026-10-17T09:42:51.1147178Z Removing HTTP extra header
+test	Post Checkout source	2026-10-17T09:42:51.1154581Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+test	Post Checkout source	2026-10-17T09:42:51.1198377Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+test	Post Checkout source	2026-10-17T09:42:51.1520228Z Removing includeIf entries pointing to credentials config files
+test	Post Checkout source	2026-10-17T09:42:51.1529891Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+test	Post Checkout source	2026-10-17T09:42:51.1577489Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+test	Complete job	﻿2026-10-17T09:42:51.1972911Z Cleaning up orphan processes
