@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Fails when a tracked source, style, markdown or workflow file exceeds
-# 1500 lines, and warns above 1350 lines. Generated output (docs/ build,
-# dev/log data, lock files and generated JSON) is not checked.
+# 1500 lines, and warns above 1350 lines. Collected data (docs/ case
+# studies, dev/log), lock files and generated JSON are not checked.
 # Adapted from link-foundation/js-ai-driven-development-pipeline-template.
 set -euo pipefail
 

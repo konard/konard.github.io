@@ -16,13 +16,49 @@ describe('GitHub Actions workflows', () => {
     });
   });
 
-  test('deploy keeps docs/case-studies when replacing the site build', () => {
+  // Issue #5: GitHub Pages is set to deploy from GitHub Actions ("build_type": "workflow"),
+  // so a commit to docs/ never reaches the site. Only actions/deploy-pages publishes it.
+  describe('GitHub Pages deployment from Actions', () => {
     const doc = yaml.load(fs.readFileSync(path.join(workflowsDir, 'github-pages.yml'), 'utf8'));
+    const { deploy, test: testJob } = doc.jobs;
     const scripts = Object.values(doc.jobs)
       .flatMap((job) => job.steps.map((s) => s.run || ''))
       .join('\n');
-    expect(scripts).not.toMatch(/rm -rf docs\s*($|;|&)/m);
-    expect(scripts).toMatch(/case-studies/);
+
+    test('the tested build is uploaded as the Pages artifact', () => {
+      const upload = testJob.steps.find((s) => (s.uses || '').startsWith('actions/upload-pages-artifact@'));
+      expect(upload).toBeDefined();
+      expect(upload.with.path).toBe('build/');
+      const build = testJob.steps.findIndex((s) => s.run === 'npm run build');
+      expect(build).toBeGreaterThanOrEqual(0);
+      expect(testJob.steps.indexOf(upload)).toBeGreaterThan(build);
+    });
+
+    test('deploy publishes with actions/deploy-pages to the github-pages environment', () => {
+      expect(deploy.steps.some((s) => (s.uses || '').startsWith('actions/deploy-pages@'))).toBe(true);
+      expect(deploy.permissions).toEqual({ contents: 'read', pages: 'write', 'id-token': 'write' });
+      expect(deploy.environment.name).toBe('github-pages');
+      expect(deploy.environment.url).toBe('${{ steps.deployment.outputs.page_url }}');
+    });
+
+    test('nothing commits the build to the repository any more', () => {
+      expect(scripts).not.toMatch(/git (commit|push)/);
+      expect(scripts).not.toMatch(/cp -r build/);
+      Object.values(doc.jobs).forEach((job) => expect((job.permissions || {}).contents).not.toBe('write'));
+    });
+
+    test('deploy fails unless the deployed URL serves the app', () => {
+      const deployStep = deploy.steps.findIndex((s) => s.id === 'deployment');
+      const verify = deploy.steps.findIndex((s) => (s.run || '').includes('scripts/check-deployed-site.sh'));
+      expect(verify).toBeGreaterThan(deployStep);
+      expect(deploy.steps[verify].env.PAGE_URL).toBe('${{ steps.deployment.outputs.page_url }}');
+      expect(fs.existsSync(path.join(__dirname, '..', 'scripts', 'check-deployed-site.sh'))).toBe(true);
+    });
+
+    test('docs/ holds no stale site build that looks deployed', () => {
+      const docsDir = path.join(__dirname, '..', 'docs');
+      expect(fs.readdirSync(docsDir).filter((f) => f !== 'case-studies')).toEqual([]);
+    });
   });
 });
 
@@ -46,6 +82,8 @@ describe('GitHub Actions best practices', () => {
       'actions/setup-node': 6,
       'actions/upload-artifact': 7,
       'actions/download-artifact': 8,
+      'actions/upload-pages-artifact': 5,
+      'actions/deploy-pages': 5,
     };
     steps(doc)
       .filter((s) => s.uses && !s.uses.startsWith('docker://'))
@@ -75,6 +113,6 @@ describe('GitHub Actions best practices', () => {
     const doc = yaml.load(fs.readFileSync(path.join(workflowsDir, 'github-pages.yml'), 'utf8'));
     expect(doc.jobs.deploy.needs).toBe('test');
     expect(doc.jobs.deploy.steps.some((s) => (s.run || '').includes('npm run build'))).toBe(false);
-    expect(doc.jobs.deploy.steps.some((s) => (s.uses || '').startsWith('actions/download-artifact@'))).toBe(true);
+    expect(doc.jobs.deploy.steps.some((s) => (s.uses || '').startsWith('actions/deploy-pages@'))).toBe(true);
   });
 });

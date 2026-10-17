@@ -36,8 +36,11 @@ npm run build:data                       # writes src/data/github.json
 ## Deployment
 
 `.github/workflows/github-pages.yml` lints the workflows (actionlint), runs `npm run check` and `npm audit`, then the tests and the build, for pull requests and for pushes to `main`.
-On `main`, the deploy job then copies that tested build into `docs/`, which GitHub Pages serves (`main` branch, `/docs` folder).
-The `docs/case-studies/` folder is kept.
+The `test` job uploads the tested build as the GitHub Pages artifact.
+On `main`, the `deploy` job publishes that artifact with `actions/deploy-pages`, then `scripts/check-deployed-site.sh` fails the run unless https://konard.github.io serves the app.
+
+GitHub Pages must be set to **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+Nothing is committed to `docs/`; it only holds the case studies.
 
 ## Case study
 

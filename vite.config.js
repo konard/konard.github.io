@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 // The site is served from the root of https://konard.github.io, and the
-// deploy job copies build/ into docs/ (see .github/workflows/github-pages.yml).
+// deploy job publishes build/ with actions/deploy-pages (see .github/workflows/github-pages.yml).
 export default defineConfig({
   plugins: [react()],
   build: {

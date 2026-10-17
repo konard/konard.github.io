@@ -12,7 +12,7 @@ on:
       - main
   workflow_dispatch:
 
-# Least-privilege default; only the deploy job may write.
+# Least-privilege default; only the deploy job may publish to Pages.
 permissions:
   contents: read
 
@@ -107,14 +107,14 @@ jobs:
       - name: Build the React app
         run: npm run build
 
-      - name: Upload the build
-        uses: actions/upload-artifact@v7
+      # GitHub Pages is set to deploy from GitHub Actions, so the site is
+      # published from this artifact, not from a branch or the docs/ folder.
+      # Pull requests upload it too, so a broken artifact fails before merge.
+      - name: Upload the build as the Pages artifact
+        uses: actions/upload-pages-artifact@v5
         with:
-          name: build
           path: build/
           include-hidden-files: true
-          if-no-files-found: error
-          retention-days: 7
 
   deploy:
     needs: test
@@ -122,40 +122,26 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     permissions:
-      contents: write
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
+
+      # A green deploy must mean the site is really there (issue #5).
       - name: Checkout source
         uses: actions/checkout@v6
-
-      - name: Download the build
-        uses: actions/download-artifact@v8
         with:
-          name: build
-          path: build/
+          persist-credentials: false
+          sparse-checkout: scripts
 
-      # GitHub Pages serves the /docs folder of main. Replace the previous
-      # build but keep the hand-written documentation in docs/case-studies.
-      - name: 'Deploy: copy build to docs folder and commit'
-        run: |
-          mkdir -p docs
-          find docs -mindepth 1 -maxdepth 1 ! -name case-studies -exec rm -rf {} +
-          cp -r build/. docs/
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A docs
-          if git diff --cached --quiet; then
-            echo "No changes in build output to deploy."
-            exit 0
-          fi
-          git commit -m "Deploy build to docs [skip ci]"
-          # main may move while this job runs; rebase and retry instead of failing.
-          for attempt in 1 2 3; do
-            if git push origin HEAD:main; then
-              exit 0
-            fi
-            echo "::warning::Push attempt $attempt was rejected; rebasing onto origin/main."
-            git pull --rebase origin main
-          done
-          echo "::error::Could not push the build to main after 3 attempts."
-          exit 1
+      - name: Verify the deployed site
+        run: bash scripts/check-deployed-site.sh "$PAGE_URL"
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}

@@ -1,0 +1,935 @@
+lint-workflows	UNKNOWN STEP	﻿2026-10-17T11:45:12.4734281Z Current runner version: '2.337.0'
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:12.4769878Z ##[group]Runner Image Provisioner
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:12.4771544Z Hosted Compute Agent
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:12.4772572Z Version: 20261012.601
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:12.4773665Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:12.4774900Z Build Date: 2026-10-12T17:48:21Z
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:12.4776073Z Worker ID: {f099afd5-a5a3-4830-b741-25049640930d}
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:12.4777276Z Region: eastus2
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:12.4778128Z Cloud: Azure
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:12.4779367Z ##[endgroup]
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:12.4781715Z ##[group]Operating System
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:12.4782795Z Ubuntu
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:12.4783681Z 24.04.5
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:12.4784682Z LTS
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:12.4785508Z ##[endgroup]
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:12.4786376Z ##[group]Runner Image
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:12.4787485Z Image: ubuntu-24.04
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:12.4788389Z Version: 20261012.334.1
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:12.4790894Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:12.4793570Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:12.4795334Z ##[endgroup]
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:12.4797123Z ##[group]GITHUB_TOKEN Permissions
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:12.4800313Z Contents: read
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:12.4801253Z Metadata: read
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:12.4802196Z ##[endgroup]
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:12.4805113Z Secret source: Actions
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:12.4806742Z Cache mode: write
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:12.4807851Z Prepare workflow directory
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:12.5343855Z Prepare all required actions
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:12.5394012Z Getting action download info
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:12.6972180Z Download action repository 'actions/checkout@v6' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:12.8891568Z Complete job name: lint-workflows
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:12.9460979Z ##[group]Pull down action image 'rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667'
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:12.9577001Z ##[command]/usr/bin/docker pull rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:13.2679764Z docker.io/rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667: Pulling from rhysd/actionlint
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:13.3486286Z 589002ba0eae: Pulling fs layer
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:13.3488303Z c09af8888d6a: Pulling fs layer
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:13.3490445Z 4ccd7d76ca98: Pulling fs layer
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:13.3493693Z b6b4b7b0e257: Pulling fs layer
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:13.3495403Z b6b4b7b0e257: Waiting
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:13.4517953Z 4ccd7d76ca98: Verifying Checksum
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:13.4520214Z 4ccd7d76ca98: Download complete
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:13.4533501Z 589002ba0eae: Verifying Checksum
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:13.4535011Z 589002ba0eae: Download complete
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:13.4554837Z c09af8888d6a: Verifying Checksum
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:13.4556542Z c09af8888d6a: Download complete
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:13.5809317Z 589002ba0eae: Pull complete
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:13.6117819Z b6b4b7b0e257: Verifying Checksum
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.1215688Z b6b4b7b0e257: Download complete
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.1216955Z c09af8888d6a: Pull complete
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.1947742Z 4ccd7d76ca98: Pull complete
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.7217849Z b6b4b7b0e257: Pull complete
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.7261955Z Digest: sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.7269081Z Status: Downloaded newer image for rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.7276499Z docker.io/rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.7312536Z ##[endgroup]
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.7634144Z ##[group]Run actions/checkout@v6
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.7634819Z with:
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.7635113Z   persist-credentials: false
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.7635453Z   repository: konard/konard.github.io
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.7637923Z   token: ***
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.7638188Z   ssh-strict: true
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.7638705Z   ssh-user: git
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.7638976Z   clean: true
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.7639521Z   sparse-checkout-cone-mode: true
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.7639857Z   fetch-depth: 1
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.7640137Z   fetch-tags: false
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.7640404Z   show-progress: true
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.7640677Z   lfs: false
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.7640920Z   submodules: false
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.7641192Z   set-safe-directory: true
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.7641495Z   allow-unsafe-pr-checkout: false
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.7642104Z env:
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.7642364Z   GIT_CONFIG_COUNT: 1
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.7642670Z   GIT_CONFIG_KEY_0: init.defaultBranch
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.7643055Z   GIT_CONFIG_VALUE_0: main
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.7643337Z ##[endgroup]
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.8665431Z Syncing repository: konard/konard.github.io
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.8667456Z ##[group]Getting Git version info
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.8668289Z Working directory is '/home/runner/work/konard.github.io/konard.github.io'
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.8669728Z [command]/usr/bin/git version
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.8746333Z git version 2.55.0
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.8778668Z ##[endgroup]
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.8789332Z Temporarily overriding HOME='/home/runner/work/_temp/912116a8-0201-427c-a5d6-4e64f5d7459a' before making global git config changes
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.8791296Z Adding repository directory to the temporary git global config as a safe directory
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.8795481Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/konard.github.io/konard.github.io
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.8850153Z Deleting the contents of '/home/runner/work/konard.github.io/konard.github.io'
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.8853992Z ##[group]Determining repository object format
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.8856089Z ##[endgroup]
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.8856949Z ##[group]Initializing the repository
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.8861043Z [command]/usr/bin/git init /home/runner/work/konard.github.io/konard.github.io
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.9005687Z Initialized empty Git repository in /home/runner/work/konard.github.io/konard.github.io/.git/
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.9017604Z [command]/usr/bin/git remote add origin https://github.com/konard/konard.github.io
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.9064340Z ##[endgroup]
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.9065144Z ##[group]Disabling automatic garbage collection
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.9069492Z [command]/usr/bin/git config --local gc.auto 0
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.9101495Z ##[endgroup]
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.9102254Z ##[group]Setting up auth
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.9110430Z Removing SSH command configuration
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.9118156Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.9150871Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.9548808Z Removing HTTP extra header
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.9556008Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.9593731Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.9816706Z Removing includeIf entries pointing to credentials config files
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.9823321Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:16.9858229Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.0089346Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-67df7f36-39e3-4cfa-a5c9-31cc42dd8bba.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.0129850Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path /home/runner/work/_temp/git-credentials-67df7f36-39e3-4cfa-a5c9-31cc42dd8bba.config
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.0164405Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-67df7f36-39e3-4cfa-a5c9-31cc42dd8bba.config
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.0200620Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-67df7f36-39e3-4cfa-a5c9-31cc42dd8bba.config
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.0242795Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-67df7f36-39e3-4cfa-a5c9-31cc42dd8bba.config
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.0272167Z ##[endgroup]
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.0272700Z ##[group]Fetching the repository
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.0280437Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +dbbf97ee5d8899c91382b4ecf04648fbd57a02f0:refs/remotes/origin/main
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.4027866Z From https://github.com/konard/konard.github.io
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.4028768Z  * [new ref]         dbbf97ee5d8899c91382b4ecf04648fbd57a02f0 -> origin/main
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.4039982Z [command]/usr/bin/git branch --list --remote origin/main
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.4071955Z   origin/main
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.4082019Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.4109011Z dbbf97ee5d8899c91382b4ecf04648fbd57a02f0
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.4114000Z ##[endgroup]
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.4114747Z ##[group]Determining the checkout info
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.4115730Z ##[endgroup]
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.4120701Z [command]/usr/bin/git sparse-checkout disable
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.4176578Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.4211021Z ##[group]Checking out the ref
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.4213298Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.4546232Z Reset branch 'main'
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.4552578Z branch 'main' set up to track 'origin/main'.
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.4559839Z ##[endgroup]
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.4603962Z [command]/usr/bin/git log -1 --format=%H
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.4632780Z dbbf97ee5d8899c91382b4ecf04648fbd57a02f0
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.4642385Z ##[group]Removing auth
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.4642867Z Removing SSH command configuration
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.4646537Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.4682502Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.4908216Z Removing HTTP extra header
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.4913075Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.4947856Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.5163788Z Removing includeIf entries pointing to credentials config files
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.5169344Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.5199471Z includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.5201016Z includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.5202179Z includeif.gitdir:/github/workspace/.git.path
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.5202989Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.5210550Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.5236749Z /home/runner/work/_temp/git-credentials-67df7f36-39e3-4cfa-a5c9-31cc42dd8bba.config
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.5247595Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path /home/runner/work/_temp/git-credentials-67df7f36-39e3-4cfa-a5c9-31cc42dd8bba.config
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.5284386Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.5313084Z /home/runner/work/_temp/git-credentials-67df7f36-39e3-4cfa-a5c9-31cc42dd8bba.config
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.5323622Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-67df7f36-39e3-4cfa-a5c9-31cc42dd8bba.config
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.5366099Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.5391860Z /github/runner_temp/git-credentials-67df7f36-39e3-4cfa-a5c9-31cc42dd8bba.config
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.5403669Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-67df7f36-39e3-4cfa-a5c9-31cc42dd8bba.config
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.5437247Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.5461078Z /github/runner_temp/git-credentials-67df7f36-39e3-4cfa-a5c9-31cc42dd8bba.config
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.5467574Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-67df7f36-39e3-4cfa-a5c9-31cc42dd8bba.config
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.5502008Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.5719215Z Removing credentials config '/home/runner/work/_temp/git-credentials-67df7f36-39e3-4cfa-a5c9-31cc42dd8bba.config'
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.5727570Z ##[endgroup]
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.5899863Z ##[group]Run docker://rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.5900457Z with:
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.5900702Z   args: -color
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.5900907Z env:
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.5901097Z   GIT_CONFIG_COUNT: 1
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.5901341Z   GIT_CONFIG_KEY_0: init.defaultBranch
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.5901623Z   GIT_CONFIG_VALUE_0: main
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.5901850Z ##[endgroup]
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.5993751Z ##[command]/usr/bin/docker run --name rhysdactionlintsha256b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667_efcd43 --label 79e2d6 --workdir /github/workspace --rm -e "GIT_CONFIG_COUNT" -e "GIT_CONFIG_KEY_0" -e "GIT_CONFIG_VALUE_0" -e "INPUT_ARGS" -e "HOME" -e "GITHUB_JOB" -e "GITHUB_REF" -e "GITHUB_SHA" -e "GITHUB_REPOSITORY" -e "GITHUB_REPOSITORY_OWNER" -e "GITHUB_REPOSITORY_OWNER_ID" -e "GITHUB_RUN_ID" -e "GITHUB_RUN_NUMBER" -e "GITHUB_RETENTION_DAYS" -e "GITHUB_RUN_ATTEMPT" -e "GITHUB_ACTOR_ID" -e "GITHUB_ACTOR" -e "GITHUB_WORKFLOW" -e "GITHUB_HEAD_REF" -e "GITHUB_BASE_REF" -e "GITHUB_EVENT_NAME" -e "GITHUB_SERVER_URL" -e "GITHUB_API_URL" -e "GITHUB_GRAPHQL_URL" -e "GITHUB_REF_NAME" -e "GITHUB_REF_PROTECTED" -e "GITHUB_REF_TYPE" -e "GITHUB_WORKFLOW_REF" -e "GITHUB_WORKFLOW_SHA" -e "GITHUB_REPOSITORY_ID" -e "GITHUB_TRIGGERING_ACTOR" -e "GITHUB_WORKSPACE" -e "GITHUB_ACTION" -e "GITHUB_EVENT_PATH" -e "GITHUB_ACTION_REPOSITORY" -e "GITHUB_ACTION_REF" -e "GITHUB_PATH" -e "GITHUB_ENV" -e "GITHUB_STEP_SUMMARY" -e "GITHUB_STATE" -e "GITHUB_OUTPUT" -e "GITHUB_ARTIFACTS" -e "GITHUB_ARTIFACTS_LIST" -e "RUNNER_OS" -e "RUNNER_ARCH" -e "RUNNER_NAME" -e "RUNNER_ENVIRONMENT" -e "RUNNER_TOOL_CACHE" -e "RUNNER_TEMP" -e "RUNNER_WORKSPACE" -e "ACTIONS_RUNTIME_URL" -e "ACTIONS_RUNTIME_TOKEN" -e "ACTIONS_CACHE_URL" -e "ACTIONS_RESULTS_URL" -e "ACTIONS_CACHE_MODE" -e "ACTIONS_ORCHESTRATION_ID" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work/_temp":"/github/runner_temp" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" -v "/home/runner/work/_temp/_runner_file_commands":"/github/file_commands" -v "/home/runner/work/konard.github.io/konard.github.io":"/github/workspace" rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667 -color
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:17.9608947Z Post job cleanup.
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:18.0439844Z [command]/usr/bin/git version
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:18.0474544Z git version 2.55.0
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:18.0521451Z Temporarily overriding HOME='/home/runner/work/_temp/758630f9-7a24-4360-be37-9490e47e64cf' before making global git config changes
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:18.0522897Z Adding repository directory to the temporary git global config as a safe directory
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:18.0527772Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/konard.github.io/konard.github.io
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:18.0597439Z Removing SSH command configuration
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:18.0598150Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:18.0624376Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:18.0877431Z Removing HTTP extra header
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:18.0882026Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:18.0917883Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:18.1155469Z Removing includeIf entries pointing to credentials config files
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:18.1163319Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:18.1205241Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+lint-workflows	UNKNOWN STEP	2026-10-17T11:45:18.1580047Z Cleaning up orphan processes
+checks	UNKNOWN STEP	﻿2026-10-17T11:45:12.7053411Z Current runner version: '2.337.0'
+checks	UNKNOWN STEP	2026-10-17T11:45:12.7076712Z ##[group]Runner Image Provisioner
+checks	UNKNOWN STEP	2026-10-17T11:45:12.7077526Z Hosted Compute Agent
+checks	UNKNOWN STEP	2026-10-17T11:45:12.7078188Z Version: 20261012.601
+checks	UNKNOWN STEP	2026-10-17T11:45:12.7078811Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+checks	UNKNOWN STEP	2026-10-17T11:45:12.7079501Z Build Date: 2026-10-12T17:48:21Z
+checks	UNKNOWN STEP	2026-10-17T11:45:12.7080179Z Worker ID: {0e785c40-5924-41f8-9e39-6c26d6d0b628}
+checks	UNKNOWN STEP	2026-10-17T11:45:12.7080826Z Region: centralus
+checks	UNKNOWN STEP	2026-10-17T11:45:12.7081376Z Cloud: Azure
+checks	UNKNOWN STEP	2026-10-17T11:45:12.7081899Z ##[endgroup]
+checks	UNKNOWN STEP	2026-10-17T11:45:12.7083043Z ##[group]Operating System
+checks	UNKNOWN STEP	2026-10-17T11:45:12.7083616Z Ubuntu
+checks	UNKNOWN STEP	2026-10-17T11:45:12.7084195Z 24.04.5
+checks	UNKNOWN STEP	2026-10-17T11:45:12.7084705Z LTS
+checks	UNKNOWN STEP	2026-10-17T11:45:12.7085196Z ##[endgroup]
+checks	UNKNOWN STEP	2026-10-17T11:45:12.7085853Z ##[group]Runner Image
+checks	UNKNOWN STEP	2026-10-17T11:45:12.7086558Z Image: ubuntu-24.04
+checks	UNKNOWN STEP	2026-10-17T11:45:12.7087082Z Version: 20261012.334.1
+checks	UNKNOWN STEP	2026-10-17T11:45:12.7088292Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+checks	UNKNOWN STEP	2026-10-17T11:45:12.7089634Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+checks	UNKNOWN STEP	2026-10-17T11:45:12.7090577Z ##[endgroup]
+checks	UNKNOWN STEP	2026-10-17T11:45:12.7091556Z ##[group]GITHUB_TOKEN Permissions
+checks	UNKNOWN STEP	2026-10-17T11:45:12.7093475Z Contents: read
+checks	UNKNOWN STEP	2026-10-17T11:45:12.7094014Z Metadata: read
+checks	UNKNOWN STEP	2026-10-17T11:45:12.7094551Z ##[endgroup]
+checks	UNKNOWN STEP	2026-10-17T11:45:12.7096769Z Secret source: Actions
+checks	UNKNOWN STEP	2026-10-17T11:45:12.7097686Z Cache mode: write
+checks	UNKNOWN STEP	2026-10-17T11:45:12.7098337Z Prepare workflow directory
+checks	UNKNOWN STEP	2026-10-17T11:45:12.7471286Z Prepare all required actions
+checks	UNKNOWN STEP	2026-10-17T11:45:12.7520196Z Getting action download info
+checks	UNKNOWN STEP	2026-10-17T11:45:12.9935002Z Download action repository 'actions/checkout@v6' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+checks	UNKNOWN STEP	2026-10-17T11:45:13.0800791Z Download action repository 'actions/setup-node@v6' (SHA:249970729cb0ef3589644e2896645e5dc5ba9c38)
+checks	UNKNOWN STEP	2026-10-17T11:45:13.6710505Z Complete job name: checks
+checks	UNKNOWN STEP	2026-10-17T11:45:13.7547193Z ##[group]Run actions/checkout@v6
+checks	UNKNOWN STEP	2026-10-17T11:45:13.7548130Z with:
+checks	UNKNOWN STEP	2026-10-17T11:45:13.7548771Z   persist-credentials: false
+checks	UNKNOWN STEP	2026-10-17T11:45:13.7549432Z   repository: konard/konard.github.io
+checks	UNKNOWN STEP	2026-10-17T11:45:13.7554089Z   token: ***
+checks	UNKNOWN STEP	2026-10-17T11:45:13.7554660Z   ssh-strict: true
+checks	UNKNOWN STEP	2026-10-17T11:45:13.7555210Z   ssh-user: git
+checks	UNKNOWN STEP	2026-10-17T11:45:13.7555953Z   clean: true
+checks	UNKNOWN STEP	2026-10-17T11:45:13.7556538Z   sparse-checkout-cone-mode: true
+checks	UNKNOWN STEP	2026-10-17T11:45:13.7557185Z   fetch-depth: 1
+checks	UNKNOWN STEP	2026-10-17T11:45:13.7557771Z   fetch-tags: false
+checks	UNKNOWN STEP	2026-10-17T11:45:13.7558341Z   show-progress: true
+checks	UNKNOWN STEP	2026-10-17T11:45:13.7558951Z   lfs: false
+checks	UNKNOWN STEP	2026-10-17T11:45:13.7559496Z   submodules: false
+checks	UNKNOWN STEP	2026-10-17T11:45:13.7560085Z   set-safe-directory: true
+checks	UNKNOWN STEP	2026-10-17T11:45:13.7560757Z   allow-unsafe-pr-checkout: false
+checks	UNKNOWN STEP	2026-10-17T11:45:13.7561571Z env:
+checks	UNKNOWN STEP	2026-10-17T11:45:13.7562106Z   GIT_CONFIG_COUNT: 1
+checks	UNKNOWN STEP	2026-10-17T11:45:13.7562699Z   GIT_CONFIG_KEY_0: init.defaultBranch
+checks	UNKNOWN STEP	2026-10-17T11:45:13.7563539Z   GIT_CONFIG_VALUE_0: main
+checks	UNKNOWN STEP	2026-10-17T11:45:13.7564132Z ##[endgroup]
+checks	UNKNOWN STEP	2026-10-17T11:45:13.8548263Z Syncing repository: konard/konard.github.io
+checks	UNKNOWN STEP	2026-10-17T11:45:13.8551125Z ##[group]Getting Git version info
+checks	UNKNOWN STEP	2026-10-17T11:45:13.8552444Z Working directory is '/home/runner/work/konard.github.io/konard.github.io'
+checks	UNKNOWN STEP	2026-10-17T11:45:13.8554402Z [command]/usr/bin/git version
+checks	UNKNOWN STEP	2026-10-17T11:45:13.8593297Z git version 2.55.0
+checks	UNKNOWN STEP	2026-10-17T11:45:13.8612506Z ##[endgroup]
+checks	UNKNOWN STEP	2026-10-17T11:45:13.8627441Z Temporarily overriding HOME='/home/runner/work/_temp/03e24c71-07b6-406a-ba87-79624e93fbed' before making global git config changes
+checks	UNKNOWN STEP	2026-10-17T11:45:13.8629918Z Adding repository directory to the temporary git global config as a safe directory
+checks	UNKNOWN STEP	2026-10-17T11:45:13.8632289Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/konard.github.io/konard.github.io
+checks	UNKNOWN STEP	2026-10-17T11:45:13.8682715Z Deleting the contents of '/home/runner/work/konard.github.io/konard.github.io'
+checks	UNKNOWN STEP	2026-10-17T11:45:13.8686658Z ##[group]Determining repository object format
+checks	UNKNOWN STEP	2026-10-17T11:45:13.8690088Z ##[endgroup]
+checks	UNKNOWN STEP	2026-10-17T11:45:13.8692886Z ##[group]Initializing the repository
+checks	UNKNOWN STEP	2026-10-17T11:45:13.8695557Z [command]/usr/bin/git init /home/runner/work/konard.github.io/konard.github.io
+checks	UNKNOWN STEP	2026-10-17T11:45:13.8792520Z Initialized empty Git repository in /home/runner/work/konard.github.io/konard.github.io/.git/
+checks	UNKNOWN STEP	2026-10-17T11:45:13.8802054Z [command]/usr/bin/git remote add origin https://github.com/konard/konard.github.io
+checks	UNKNOWN STEP	2026-10-17T11:45:13.8852606Z ##[endgroup]
+checks	UNKNOWN STEP	2026-10-17T11:45:13.8854171Z ##[group]Disabling automatic garbage collection
+checks	UNKNOWN STEP	2026-10-17T11:45:13.8856008Z [command]/usr/bin/git config --local gc.auto 0
+checks	UNKNOWN STEP	2026-10-17T11:45:13.8901965Z ##[endgroup]
+checks	UNKNOWN STEP	2026-10-17T11:45:13.8903529Z ##[group]Setting up auth
+checks	UNKNOWN STEP	2026-10-17T11:45:13.8904709Z Removing SSH command configuration
+checks	UNKNOWN STEP	2026-10-17T11:45:13.8906475Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+checks	UNKNOWN STEP	2026-10-17T11:45:13.8930589Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+checks	UNKNOWN STEP	2026-10-17T11:45:13.9435062Z Removing HTTP extra header
+checks	UNKNOWN STEP	2026-10-17T11:45:13.9444551Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+checks	UNKNOWN STEP	2026-10-17T11:45:13.9479596Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+checks	UNKNOWN STEP	2026-10-17T11:45:13.9655744Z Removing includeIf entries pointing to credentials config files
+checks	UNKNOWN STEP	2026-10-17T11:45:13.9663216Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+checks	UNKNOWN STEP	2026-10-17T11:45:13.9692055Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+checks	UNKNOWN STEP	2026-10-17T11:45:13.9874297Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-dd210c3c-4655-4d01-a6d3-9f295d25b9eb.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+checks	UNKNOWN STEP	2026-10-17T11:45:13.9909081Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path /home/runner/work/_temp/git-credentials-dd210c3c-4655-4d01-a6d3-9f295d25b9eb.config
+checks	UNKNOWN STEP	2026-10-17T11:45:13.9940079Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-dd210c3c-4655-4d01-a6d3-9f295d25b9eb.config
+checks	UNKNOWN STEP	2026-10-17T11:45:13.9973402Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-dd210c3c-4655-4d01-a6d3-9f295d25b9eb.config
+checks	UNKNOWN STEP	2026-10-17T11:45:14.0006906Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-dd210c3c-4655-4d01-a6d3-9f295d25b9eb.config
+checks	UNKNOWN STEP	2026-10-17T11:45:14.0034239Z ##[endgroup]
+checks	UNKNOWN STEP	2026-10-17T11:45:14.0035987Z ##[group]Fetching the repository
+checks	UNKNOWN STEP	2026-10-17T11:45:14.0043058Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +dbbf97ee5d8899c91382b4ecf04648fbd57a02f0:refs/remotes/origin/main
+checks	UNKNOWN STEP	2026-10-17T11:45:14.8577831Z From https://github.com/konard/konard.github.io
+checks	UNKNOWN STEP	2026-10-17T11:45:14.8580334Z  * [new ref]         dbbf97ee5d8899c91382b4ecf04648fbd57a02f0 -> origin/main
+checks	UNKNOWN STEP	2026-10-17T11:45:14.8593007Z [command]/usr/bin/git branch --list --remote origin/main
+checks	UNKNOWN STEP	2026-10-17T11:45:14.8616684Z   origin/main
+checks	UNKNOWN STEP	2026-10-17T11:45:14.8626290Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+checks	UNKNOWN STEP	2026-10-17T11:45:14.8647112Z dbbf97ee5d8899c91382b4ecf04648fbd57a02f0
+checks	UNKNOWN STEP	2026-10-17T11:45:14.8651635Z ##[endgroup]
+checks	UNKNOWN STEP	2026-10-17T11:45:14.8653449Z ##[group]Determining the checkout info
+checks	UNKNOWN STEP	2026-10-17T11:45:14.8655940Z ##[endgroup]
+checks	UNKNOWN STEP	2026-10-17T11:45:14.8657057Z [command]/usr/bin/git sparse-checkout disable
+checks	UNKNOWN STEP	2026-10-17T11:45:14.8705868Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+checks	UNKNOWN STEP	2026-10-17T11:45:14.8736764Z ##[group]Checking out the ref
+checks	UNKNOWN STEP	2026-10-17T11:45:14.8744128Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+checks	UNKNOWN STEP	2026-10-17T11:45:14.9115274Z Reset branch 'main'
+checks	UNKNOWN STEP	2026-10-17T11:45:14.9123278Z branch 'main' set up to track 'origin/main'.
+checks	UNKNOWN STEP	2026-10-17T11:45:14.9129104Z ##[endgroup]
+checks	UNKNOWN STEP	2026-10-17T11:45:14.9166104Z [command]/usr/bin/git log -1 --format=%H
+checks	UNKNOWN STEP	2026-10-17T11:45:14.9188347Z dbbf97ee5d8899c91382b4ecf04648fbd57a02f0
+checks	UNKNOWN STEP	2026-10-17T11:45:14.9198268Z ##[group]Removing auth
+checks	UNKNOWN STEP	2026-10-17T11:45:14.9200336Z Removing SSH command configuration
+checks	UNKNOWN STEP	2026-10-17T11:45:14.9202864Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+checks	UNKNOWN STEP	2026-10-17T11:45:14.9233860Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+checks	UNKNOWN STEP	2026-10-17T11:45:14.9437477Z Removing HTTP extra header
+checks	UNKNOWN STEP	2026-10-17T11:45:14.9440727Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+checks	UNKNOWN STEP	2026-10-17T11:45:14.9468833Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+checks	UNKNOWN STEP	2026-10-17T11:45:14.9643833Z Removing includeIf entries pointing to credentials config files
+checks	UNKNOWN STEP	2026-10-17T11:45:14.9647432Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+checks	UNKNOWN STEP	2026-10-17T11:45:14.9670584Z includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path
+checks	UNKNOWN STEP	2026-10-17T11:45:14.9673925Z includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path
+checks	UNKNOWN STEP	2026-10-17T11:45:14.9677005Z includeif.gitdir:/github/workspace/.git.path
+checks	UNKNOWN STEP	2026-10-17T11:45:14.9679463Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+checks	UNKNOWN STEP	2026-10-17T11:45:14.9684388Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path
+checks	UNKNOWN STEP	2026-10-17T11:45:14.9699306Z /home/runner/work/_temp/git-credentials-dd210c3c-4655-4d01-a6d3-9f295d25b9eb.config
+checks	UNKNOWN STEP	2026-10-17T11:45:14.9711197Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path /home/runner/work/_temp/git-credentials-dd210c3c-4655-4d01-a6d3-9f295d25b9eb.config
+checks	UNKNOWN STEP	2026-10-17T11:45:14.9746505Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path
+checks	UNKNOWN STEP	2026-10-17T11:45:14.9767659Z /home/runner/work/_temp/git-credentials-dd210c3c-4655-4d01-a6d3-9f295d25b9eb.config
+checks	UNKNOWN STEP	2026-10-17T11:45:14.9780318Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-dd210c3c-4655-4d01-a6d3-9f295d25b9eb.config
+checks	UNKNOWN STEP	2026-10-17T11:45:14.9846797Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+checks	UNKNOWN STEP	2026-10-17T11:45:14.9867583Z /github/runner_temp/git-credentials-dd210c3c-4655-4d01-a6d3-9f295d25b9eb.config
+checks	UNKNOWN STEP	2026-10-17T11:45:14.9876649Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-dd210c3c-4655-4d01-a6d3-9f295d25b9eb.config
+checks	UNKNOWN STEP	2026-10-17T11:45:14.9916402Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+checks	UNKNOWN STEP	2026-10-17T11:45:14.9936461Z /github/runner_temp/git-credentials-dd210c3c-4655-4d01-a6d3-9f295d25b9eb.config
+checks	UNKNOWN STEP	2026-10-17T11:45:14.9944874Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-dd210c3c-4655-4d01-a6d3-9f295d25b9eb.config
+checks	UNKNOWN STEP	2026-10-17T11:45:14.9976952Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+checks	UNKNOWN STEP	2026-10-17T11:45:15.0152312Z Removing credentials config '/home/runner/work/_temp/git-credentials-dd210c3c-4655-4d01-a6d3-9f295d25b9eb.config'
+checks	UNKNOWN STEP	2026-10-17T11:45:15.0162494Z ##[endgroup]
+checks	UNKNOWN STEP	2026-10-17T11:45:15.0502238Z ##[group]Run actions/setup-node@v6
+checks	UNKNOWN STEP	2026-10-17T11:45:15.0503483Z with:
+checks	UNKNOWN STEP	2026-10-17T11:45:15.0504390Z   node-version: 24.x
+checks	UNKNOWN STEP	2026-10-17T11:45:15.0505499Z   cache: npm
+checks	UNKNOWN STEP	2026-10-17T11:45:15.0506462Z   check-latest: false
+checks	UNKNOWN STEP	2026-10-17T11:45:15.0515985Z   token: ***
+checks	UNKNOWN STEP	2026-10-17T11:45:15.0517029Z   package-manager-cache: true
+checks	UNKNOWN STEP	2026-10-17T11:45:15.0518129Z env:
+checks	UNKNOWN STEP	2026-10-17T11:45:15.0519037Z   GIT_CONFIG_COUNT: 1
+checks	UNKNOWN STEP	2026-10-17T11:45:15.0520103Z   GIT_CONFIG_KEY_0: init.defaultBranch
+checks	UNKNOWN STEP	2026-10-17T11:45:15.0521338Z   GIT_CONFIG_VALUE_0: main
+checks	UNKNOWN STEP	2026-10-17T11:45:15.0522439Z ##[endgroup]
+checks	UNKNOWN STEP	2026-10-17T11:45:15.1910372Z Found in cache @ /opt/hostedtoolcache/node/24.21.0/x64
+checks	UNKNOWN STEP	2026-10-17T11:45:15.1913058Z ##[group]Environment details
+checks	UNKNOWN STEP	2026-10-17T11:45:15.5917122Z node: v24.21.0
+checks	UNKNOWN STEP	2026-10-17T11:45:15.5918867Z npm: 11.19.0
+checks	UNKNOWN STEP	2026-10-17T11:45:15.5920208Z yarn: 1.22.22
+checks	UNKNOWN STEP	2026-10-17T11:45:15.5922458Z ##[endgroup]
+checks	UNKNOWN STEP	2026-10-17T11:45:15.5936711Z [command]/opt/hostedtoolcache/node/24.21.0/x64/bin/npm config get cache
+checks	UNKNOWN STEP	2026-10-17T11:45:15.7057353Z /home/runner/.npm
+checks	UNKNOWN STEP	2026-10-17T11:45:15.8460022Z npm cache is not found
+checks	UNKNOWN STEP	2026-10-17T11:45:15.8579971Z ##[group]Run npm ci
+checks	UNKNOWN STEP	2026-10-17T11:45:15.8580398Z ^[[36;1mnpm ci^[[0m
+checks	UNKNOWN STEP	2026-10-17T11:45:15.8797796Z shell: /usr/bin/bash -e {0}
+checks	UNKNOWN STEP	2026-10-17T11:45:15.8798285Z env:
+checks	UNKNOWN STEP	2026-10-17T11:45:15.8798648Z   GIT_CONFIG_COUNT: 1
+checks	UNKNOWN STEP	2026-10-17T11:45:15.8798982Z   GIT_CONFIG_KEY_0: init.defaultBranch
+checks	UNKNOWN STEP	2026-10-17T11:45:15.8799347Z   GIT_CONFIG_VALUE_0: main
+checks	UNKNOWN STEP	2026-10-17T11:45:15.8799692Z ##[endgroup]
+checks	UNKNOWN STEP	2026-10-17T11:45:20.4082290Z 
+checks	UNKNOWN STEP	2026-10-17T11:45:20.4091362Z > konard.github.io@0.1.0 prepare
+checks	UNKNOWN STEP	2026-10-17T11:45:20.4092177Z > husky
+checks	UNKNOWN STEP	2026-10-17T11:45:20.5107787Z 
+checks	UNKNOWN STEP	2026-10-17T11:45:20.5107823Z 
+checks	UNKNOWN STEP	2026-10-17T11:45:20.5109163Z added 296 packages, and audited 297 packages in 5s
+checks	UNKNOWN STEP	2026-10-17T11:45:20.5109783Z 
+checks	UNKNOWN STEP	2026-10-17T11:45:20.5110459Z 75 packages are looking for funding
+checks	UNKNOWN STEP	2026-10-17T11:45:20.5111053Z   run `npm fund` for details
+checks	UNKNOWN STEP	2026-10-17T11:45:20.5136048Z 
+checks	UNKNOWN STEP	2026-10-17T11:45:20.5137202Z found 0 vulnerabilities
+checks	UNKNOWN STEP	2026-10-17T11:45:20.5526403Z ##[group]Run npm run lint
+checks	UNKNOWN STEP	2026-10-17T11:45:20.5526838Z ^[[36;1mnpm run lint^[[0m
+checks	UNKNOWN STEP	2026-10-17T11:45:20.5571087Z shell: /usr/bin/bash -e {0}
+checks	UNKNOWN STEP	2026-10-17T11:45:20.5571536Z env:
+checks	UNKNOWN STEP	2026-10-17T11:45:20.5571955Z   GIT_CONFIG_COUNT: 1
+checks	UNKNOWN STEP	2026-10-17T11:45:20.5572315Z   GIT_CONFIG_KEY_0: init.defaultBranch
+checks	UNKNOWN STEP	2026-10-17T11:45:20.5572710Z   GIT_CONFIG_VALUE_0: main
+checks	UNKNOWN STEP	2026-10-17T11:45:20.5573035Z ##[endgroup]
+checks	UNKNOWN STEP	2026-10-17T11:45:20.6581892Z 
+checks	UNKNOWN STEP	2026-10-17T11:45:20.6582881Z > konard.github.io@0.1.0 lint
+checks	UNKNOWN STEP	2026-10-17T11:45:20.6583632Z > eslint . --max-warnings=0
+checks	UNKNOWN STEP	2026-10-17T11:45:20.6584129Z 
+checks	UNKNOWN STEP	2026-10-17T11:45:22.4526076Z ##[group]Run npm run format:check
+checks	UNKNOWN STEP	2026-10-17T11:45:22.4526532Z ^[[36;1mnpm run format:check^[[0m
+checks	UNKNOWN STEP	2026-10-17T11:45:22.4566146Z shell: /usr/bin/bash -e {0}
+checks	UNKNOWN STEP	2026-10-17T11:45:22.4566516Z env:
+checks	UNKNOWN STEP	2026-10-17T11:45:22.4566797Z   GIT_CONFIG_COUNT: 1
+checks	UNKNOWN STEP	2026-10-17T11:45:22.4567172Z   GIT_CONFIG_KEY_0: init.defaultBranch
+checks	UNKNOWN STEP	2026-10-17T11:45:22.4567596Z   GIT_CONFIG_VALUE_0: main
+checks	UNKNOWN STEP	2026-10-17T11:45:22.4567950Z ##[endgroup]
+checks	UNKNOWN STEP	2026-10-17T11:45:22.5813797Z 
+checks	UNKNOWN STEP	2026-10-17T11:45:22.5815018Z > konard.github.io@0.1.0 format:check
+checks	UNKNOWN STEP	2026-10-17T11:45:22.5816112Z > prettier --check .
+checks	UNKNOWN STEP	2026-10-17T11:45:22.5816406Z 
+checks	UNKNOWN STEP	2026-10-17T11:45:22.6624789Z Checking formatting...
+checks	UNKNOWN STEP	2026-10-17T11:45:23.3507271Z All matched files use Prettier code style!
+checks	UNKNOWN STEP	2026-10-17T11:45:23.4228343Z ##[group]Run npm run check:file-size
+checks	UNKNOWN STEP	2026-10-17T11:45:23.4228871Z ^[[36;1mnpm run check:file-size^[[0m
+checks	UNKNOWN STEP	2026-10-17T11:45:23.4268301Z shell: /usr/bin/bash -e {0}
+checks	UNKNOWN STEP	2026-10-17T11:45:23.4268720Z env:
+checks	UNKNOWN STEP	2026-10-17T11:45:23.4269016Z   GIT_CONFIG_COUNT: 1
+checks	UNKNOWN STEP	2026-10-17T11:45:23.4269372Z   GIT_CONFIG_KEY_0: init.defaultBranch
+checks	UNKNOWN STEP	2026-10-17T11:45:23.4269752Z   GIT_CONFIG_VALUE_0: main
+checks	UNKNOWN STEP	2026-10-17T11:45:23.4270059Z ##[endgroup]
+checks	UNKNOWN STEP	2026-10-17T11:45:23.5729689Z 
+checks	UNKNOWN STEP	2026-10-17T11:45:23.5730874Z > konard.github.io@0.1.0 check:file-size
+checks	UNKNOWN STEP	2026-10-17T11:45:23.5731637Z > bash scripts/check-file-line-limits.sh
+checks	UNKNOWN STEP	2026-10-17T11:45:23.5732149Z 
+checks	UNKNOWN STEP	2026-10-17T11:45:23.6672321Z Checked 36 files against the 1500-line limit.
+checks	UNKNOWN STEP	2026-10-17T11:45:23.6922988Z ##[group]Run npm run check:secrets
+checks	UNKNOWN STEP	2026-10-17T11:45:23.6923544Z ^[[36;1mnpm run check:secrets^[[0m
+checks	UNKNOWN STEP	2026-10-17T11:45:23.6980732Z shell: /usr/bin/bash -e {0}
+checks	UNKNOWN STEP	2026-10-17T11:45:23.6981206Z env:
+checks	UNKNOWN STEP	2026-10-17T11:45:23.6981497Z   GIT_CONFIG_COUNT: 1
+checks	UNKNOWN STEP	2026-10-17T11:45:23.6982136Z   GIT_CONFIG_KEY_0: init.defaultBranch
+checks	UNKNOWN STEP	2026-10-17T11:45:23.6982762Z   GIT_CONFIG_VALUE_0: main
+checks	UNKNOWN STEP	2026-10-17T11:45:23.6983163Z ##[endgroup]
+checks	UNKNOWN STEP	2026-10-17T11:45:23.8084639Z 
+checks	UNKNOWN STEP	2026-10-17T11:45:23.8085682Z > konard.github.io@0.1.0 check:secrets
+checks	UNKNOWN STEP	2026-10-17T11:45:23.8086525Z > secretlint "**/*" --secretlintignore .prettierignore
+checks	UNKNOWN STEP	2026-10-17T11:45:23.8086987Z 
+checks	UNKNOWN STEP	2026-10-17T11:45:24.2626457Z ##[group]Run npm audit --audit-level=moderate
+checks	UNKNOWN STEP	2026-10-17T11:45:24.2626962Z ^[[36;1mnpm audit --audit-level=moderate^[[0m
+checks	UNKNOWN STEP	2026-10-17T11:45:24.2666517Z shell: /usr/bin/bash -e {0}
+checks	UNKNOWN STEP	2026-10-17T11:45:24.2666878Z env:
+checks	UNKNOWN STEP	2026-10-17T11:45:24.2667264Z   GIT_CONFIG_COUNT: 1
+checks	UNKNOWN STEP	2026-10-17T11:45:24.2667596Z   GIT_CONFIG_KEY_0: init.defaultBranch
+checks	UNKNOWN STEP	2026-10-17T11:45:24.2668019Z   GIT_CONFIG_VALUE_0: main
+checks	UNKNOWN STEP	2026-10-17T11:45:24.2668336Z ##[endgroup]
+checks	UNKNOWN STEP	2026-10-17T11:45:24.6786373Z found 0 vulnerabilities
+checks	UNKNOWN STEP	2026-10-17T11:45:24.6951228Z Post job cleanup.
+checks	UNKNOWN STEP	2026-10-17T11:45:24.8314893Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/konard.github.io/konard.github.io --files-from manifest.txt --use-compress-program zstdmt
+checks	UNKNOWN STEP	2026-10-17T11:45:25.8898865Z Sent 32351081 of 32351081 (100.0%), 38.2 MBs/sec
+checks	UNKNOWN STEP	2026-10-17T11:45:26.1488771Z Cache saved with the key: node-cache-Linux-x64-npm-f934b8ec88d903307993501371c09a57d12590019e9c93260ad12280f8e63281
+checks	UNKNOWN STEP	2026-10-17T11:45:26.1629725Z Post job cleanup.
+checks	UNKNOWN STEP	2026-10-17T11:45:26.2471970Z [command]/usr/bin/git version
+checks	UNKNOWN STEP	2026-10-17T11:45:26.2510410Z git version 2.55.0
+checks	UNKNOWN STEP	2026-10-17T11:45:26.2546823Z Temporarily overriding HOME='/home/runner/work/_temp/832b6b79-fd95-430f-98bb-cec4cfb15d0f' before making global git config changes
+checks	UNKNOWN STEP	2026-10-17T11:45:26.2548308Z Adding repository directory to the temporary git global config as a safe directory
+checks	UNKNOWN STEP	2026-10-17T11:45:26.2552020Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/konard.github.io/konard.github.io
+checks	UNKNOWN STEP	2026-10-17T11:45:26.2581805Z Removing SSH command configuration
+checks	UNKNOWN STEP	2026-10-17T11:45:26.2588988Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+checks	UNKNOWN STEP	2026-10-17T11:45:26.2619251Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+checks	UNKNOWN STEP	2026-10-17T11:45:26.2826430Z Removing HTTP extra header
+checks	UNKNOWN STEP	2026-10-17T11:45:26.2832506Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+checks	UNKNOWN STEP	2026-10-17T11:45:26.2862380Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+checks	UNKNOWN STEP	2026-10-17T11:45:26.3052755Z Removing includeIf entries pointing to credentials config files
+checks	UNKNOWN STEP	2026-10-17T11:45:26.3059162Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+checks	UNKNOWN STEP	2026-10-17T11:45:26.3092601Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+checks	UNKNOWN STEP	2026-10-17T11:45:26.3448216Z Cleaning up orphan processes
+test	UNKNOWN STEP	﻿2026-10-17T11:45:30.0445378Z Current runner version: '2.337.0'
+test	UNKNOWN STEP	2026-10-17T11:45:30.0471244Z ##[group]Runner Image Provisioner
+test	UNKNOWN STEP	2026-10-17T11:45:30.0472181Z Hosted Compute Agent
+test	UNKNOWN STEP	2026-10-17T11:45:30.0472829Z Version: 20261012.601
+test	UNKNOWN STEP	2026-10-17T11:45:30.0473448Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+test	UNKNOWN STEP	2026-10-17T11:45:30.0474225Z Build Date: 2026-10-12T17:48:21Z
+test	UNKNOWN STEP	2026-10-17T11:45:30.0474973Z Worker ID: {9cc40cd4-55c9-48a8-99ed-1a34ae337e0c}
+test	UNKNOWN STEP	2026-10-17T11:45:30.0475780Z Region: eastus
+test	UNKNOWN STEP	2026-10-17T11:45:30.0476515Z Cloud: Azure
+test	UNKNOWN STEP	2026-10-17T11:45:30.0477336Z ##[endgroup]
+test	UNKNOWN STEP	2026-10-17T11:45:30.0478923Z ##[group]Operating System
+test	UNKNOWN STEP	2026-10-17T11:45:30.0479561Z Ubuntu
+test	UNKNOWN STEP	2026-10-17T11:45:30.0480179Z 24.04.5
+test	UNKNOWN STEP	2026-10-17T11:45:30.0480734Z LTS
+test	UNKNOWN STEP	2026-10-17T11:45:30.0481274Z ##[endgroup]
+test	UNKNOWN STEP	2026-10-17T11:45:30.0481844Z ##[group]Runner Image
+test	UNKNOWN STEP	2026-10-17T11:45:30.0482444Z Image: ubuntu-24.04
+test	UNKNOWN STEP	2026-10-17T11:45:30.0483060Z Version: 20261012.334.1
+test	UNKNOWN STEP	2026-10-17T11:45:30.0484336Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+test	UNKNOWN STEP	2026-10-17T11:45:30.0486013Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+test	UNKNOWN STEP	2026-10-17T11:45:30.0487414Z ##[endgroup]
+test	UNKNOWN STEP	2026-10-17T11:45:30.0488776Z ##[group]GITHUB_TOKEN Permissions
+test	UNKNOWN STEP	2026-10-17T11:45:30.0491042Z Contents: read
+test	UNKNOWN STEP	2026-10-17T11:45:30.0491677Z Metadata: read
+test	UNKNOWN STEP	2026-10-17T11:45:30.0492228Z ##[endgroup]
+test	UNKNOWN STEP	2026-10-17T11:45:30.0494366Z Secret source: Actions
+test	UNKNOWN STEP	2026-10-17T11:45:30.0495349Z Cache mode: write
+test	UNKNOWN STEP	2026-10-17T11:45:30.0496254Z Prepare workflow directory
+test	UNKNOWN STEP	2026-10-17T11:45:30.0882086Z Prepare all required actions
+test	UNKNOWN STEP	2026-10-17T11:45:30.0930064Z Getting action download info
+test	UNKNOWN STEP	2026-10-17T11:45:30.2433474Z Download action repository 'actions/checkout@v6' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+test	UNKNOWN STEP	2026-10-17T11:45:30.3745955Z Download action repository 'actions/setup-node@v6' (SHA:249970729cb0ef3589644e2896645e5dc5ba9c38)
+test	UNKNOWN STEP	2026-10-17T11:45:30.5120106Z Download action repository 'actions/upload-artifact@v7' (SHA:cf430e030ddbb5b0abf93d22962f4752f3646cd9)
+test	UNKNOWN STEP	2026-10-17T11:45:30.7950309Z Complete job name: test
+test	UNKNOWN STEP	2026-10-17T11:45:30.8731396Z ##[group]Run actions/checkout@v6
+test	UNKNOWN STEP	2026-10-17T11:45:30.8732515Z with:
+test	UNKNOWN STEP	2026-10-17T11:45:30.8733077Z   persist-credentials: false
+test	UNKNOWN STEP	2026-10-17T11:45:30.8733715Z   repository: konard/konard.github.io
+test	UNKNOWN STEP	2026-10-17T11:45:30.8737792Z   token: ***
+test	UNKNOWN STEP	2026-10-17T11:45:30.8738340Z   ssh-strict: true
+test	UNKNOWN STEP	2026-10-17T11:45:30.8738891Z   ssh-user: git
+test	UNKNOWN STEP	2026-10-17T11:45:30.8739425Z   clean: true
+test	UNKNOWN STEP	2026-10-17T11:45:30.8739973Z   sparse-checkout-cone-mode: true
+test	UNKNOWN STEP	2026-10-17T11:45:30.8740608Z   fetch-depth: 1
+test	UNKNOWN STEP	2026-10-17T11:45:30.8741141Z   fetch-tags: false
+test	UNKNOWN STEP	2026-10-17T11:45:30.8741705Z   show-progress: true
+test	UNKNOWN STEP	2026-10-17T11:45:30.8742260Z   lfs: false
+test	UNKNOWN STEP	2026-10-17T11:45:30.8742777Z   submodules: false
+test	UNKNOWN STEP	2026-10-17T11:45:30.8743335Z   set-safe-directory: true
+test	UNKNOWN STEP	2026-10-17T11:45:30.8743946Z   allow-unsafe-pr-checkout: false
+test	UNKNOWN STEP	2026-10-17T11:45:30.8744821Z env:
+test	UNKNOWN STEP	2026-10-17T11:45:30.8745336Z   GIT_CONFIG_COUNT: 1
+test	UNKNOWN STEP	2026-10-17T11:45:30.8745926Z   GIT_CONFIG_KEY_0: init.defaultBranch
+test	UNKNOWN STEP	2026-10-17T11:45:30.8746640Z   GIT_CONFIG_VALUE_0: main
+test	UNKNOWN STEP	2026-10-17T11:45:30.8747480Z ##[endgroup]
+test	UNKNOWN STEP	2026-10-17T11:45:30.9756592Z Syncing repository: konard/konard.github.io
+test	UNKNOWN STEP	2026-10-17T11:45:30.9759554Z ##[group]Getting Git version info
+test	UNKNOWN STEP	2026-10-17T11:45:30.9761028Z Working directory is '/home/runner/work/konard.github.io/konard.github.io'
+test	UNKNOWN STEP	2026-10-17T11:45:30.9762934Z [command]/usr/bin/git version
+test	UNKNOWN STEP	2026-10-17T11:45:30.9869385Z git version 2.55.0
+test	UNKNOWN STEP	2026-10-17T11:45:30.9882391Z ##[endgroup]
+test	UNKNOWN STEP	2026-10-17T11:45:30.9900531Z Temporarily overriding HOME='/home/runner/work/_temp/c277da5c-e1ad-472d-8875-9133a2370fe1' before making global git config changes
+test	UNKNOWN STEP	2026-10-17T11:45:30.9902963Z Adding repository directory to the temporary git global config as a safe directory
+test	UNKNOWN STEP	2026-10-17T11:45:30.9907635Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/konard.github.io/konard.github.io
+test	UNKNOWN STEP	2026-10-17T11:45:30.9968297Z Deleting the contents of '/home/runner/work/konard.github.io/konard.github.io'
+test	UNKNOWN STEP	2026-10-17T11:45:30.9970871Z ##[group]Determining repository object format
+test	UNKNOWN STEP	2026-10-17T11:45:30.9972443Z ##[endgroup]
+test	UNKNOWN STEP	2026-10-17T11:45:30.9973624Z ##[group]Initializing the repository
+test	UNKNOWN STEP	2026-10-17T11:45:30.9975065Z [command]/usr/bin/git init /home/runner/work/konard.github.io/konard.github.io
+test	UNKNOWN STEP	2026-10-17T11:45:31.0089523Z Initialized empty Git repository in /home/runner/work/konard.github.io/konard.github.io/.git/
+test	UNKNOWN STEP	2026-10-17T11:45:31.0100312Z [command]/usr/bin/git remote add origin https://github.com/konard/konard.github.io
+test	UNKNOWN STEP	2026-10-17T11:45:31.0193361Z ##[endgroup]
+test	UNKNOWN STEP	2026-10-17T11:45:31.0200597Z ##[group]Disabling automatic garbage collection
+test	UNKNOWN STEP	2026-10-17T11:45:31.0202167Z [command]/usr/bin/git config --local gc.auto 0
+test	UNKNOWN STEP	2026-10-17T11:45:31.0216820Z ##[endgroup]
+test	UNKNOWN STEP	2026-10-17T11:45:31.0218411Z ##[group]Setting up auth
+test	UNKNOWN STEP	2026-10-17T11:45:31.0219268Z Removing SSH command configuration
+test	UNKNOWN STEP	2026-10-17T11:45:31.0226516Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+test	UNKNOWN STEP	2026-10-17T11:45:31.0273342Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+test	UNKNOWN STEP	2026-10-17T11:45:31.0731762Z Removing HTTP extra header
+test	UNKNOWN STEP	2026-10-17T11:45:31.0741491Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+test	UNKNOWN STEP	2026-10-17T11:45:31.0783430Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+test	UNKNOWN STEP	2026-10-17T11:45:31.1056475Z Removing includeIf entries pointing to credentials config files
+test	UNKNOWN STEP	2026-10-17T11:45:31.1063668Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+test	UNKNOWN STEP	2026-10-17T11:45:31.1109087Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+test	UNKNOWN STEP	2026-10-17T11:45:31.1374681Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-d4b4ef27-f5f2-43b8-a619-393bb42fd065.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+test	UNKNOWN STEP	2026-10-17T11:45:31.1423677Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path /home/runner/work/_temp/git-credentials-d4b4ef27-f5f2-43b8-a619-393bb42fd065.config
+test	UNKNOWN STEP	2026-10-17T11:45:31.1462526Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-d4b4ef27-f5f2-43b8-a619-393bb42fd065.config
+test	UNKNOWN STEP	2026-10-17T11:45:31.1503225Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-d4b4ef27-f5f2-43b8-a619-393bb42fd065.config
+test	UNKNOWN STEP	2026-10-17T11:45:31.1544010Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-d4b4ef27-f5f2-43b8-a619-393bb42fd065.config
+test	UNKNOWN STEP	2026-10-17T11:45:31.1574963Z ##[endgroup]
+test	UNKNOWN STEP	2026-10-17T11:45:31.1576306Z ##[group]Fetching the repository
+test	UNKNOWN STEP	2026-10-17T11:45:31.1585436Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +dbbf97ee5d8899c91382b4ecf04648fbd57a02f0:refs/remotes/origin/main
+test	UNKNOWN STEP	2026-10-17T11:45:31.5013288Z From https://github.com/konard/konard.github.io
+test	UNKNOWN STEP	2026-10-17T11:45:31.5015170Z  * [new ref]         dbbf97ee5d8899c91382b4ecf04648fbd57a02f0 -> origin/main
+test	UNKNOWN STEP	2026-10-17T11:45:31.5029274Z [command]/usr/bin/git branch --list --remote origin/main
+test	UNKNOWN STEP	2026-10-17T11:45:31.5057957Z   origin/main
+test	UNKNOWN STEP	2026-10-17T11:45:31.5076479Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+test	UNKNOWN STEP	2026-10-17T11:45:31.5096222Z dbbf97ee5d8899c91382b4ecf04648fbd57a02f0
+test	UNKNOWN STEP	2026-10-17T11:45:31.5102612Z ##[endgroup]
+test	UNKNOWN STEP	2026-10-17T11:45:31.5104540Z ##[group]Determining the checkout info
+test	UNKNOWN STEP	2026-10-17T11:45:31.5106398Z ##[endgroup]
+test	UNKNOWN STEP	2026-10-17T11:45:31.5109938Z [command]/usr/bin/git sparse-checkout disable
+test	UNKNOWN STEP	2026-10-17T11:45:31.5170235Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+test	UNKNOWN STEP	2026-10-17T11:45:31.5203375Z ##[group]Checking out the ref
+test	UNKNOWN STEP	2026-10-17T11:45:31.5208218Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+test	UNKNOWN STEP	2026-10-17T11:45:31.5547541Z Reset branch 'main'
+test	UNKNOWN STEP	2026-10-17T11:45:31.5550967Z branch 'main' set up to track 'origin/main'.
+test	UNKNOWN STEP	2026-10-17T11:45:31.5560405Z ##[endgroup]
+test	UNKNOWN STEP	2026-10-17T11:45:31.5609089Z [command]/usr/bin/git log -1 --format=%H
+test	UNKNOWN STEP	2026-10-17T11:45:31.5638335Z dbbf97ee5d8899c91382b4ecf04648fbd57a02f0
+test	UNKNOWN STEP	2026-10-17T11:45:31.5650106Z ##[group]Removing auth
+test	UNKNOWN STEP	2026-10-17T11:45:31.5651467Z Removing SSH command configuration
+test	UNKNOWN STEP	2026-10-17T11:45:31.5654538Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+test	UNKNOWN STEP	2026-10-17T11:45:31.5694448Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+test	UNKNOWN STEP	2026-10-17T11:45:31.5928775Z Removing HTTP extra header
+test	UNKNOWN STEP	2026-10-17T11:45:31.5934617Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+test	UNKNOWN STEP	2026-10-17T11:45:31.5974716Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+test	UNKNOWN STEP	2026-10-17T11:45:31.6201843Z Removing includeIf entries pointing to credentials config files
+test	UNKNOWN STEP	2026-10-17T11:45:31.6204959Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+test	UNKNOWN STEP	2026-10-17T11:45:31.6236556Z includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path
+test	UNKNOWN STEP	2026-10-17T11:45:31.6241997Z includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path
+test	UNKNOWN STEP	2026-10-17T11:45:31.6246522Z includeif.gitdir:/github/workspace/.git.path
+test	UNKNOWN STEP	2026-10-17T11:45:31.6250454Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+test	UNKNOWN STEP	2026-10-17T11:45:31.6258616Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path
+test	UNKNOWN STEP	2026-10-17T11:45:31.6276884Z /home/runner/work/_temp/git-credentials-d4b4ef27-f5f2-43b8-a619-393bb42fd065.config
+test	UNKNOWN STEP	2026-10-17T11:45:31.6289401Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path /home/runner/work/_temp/git-credentials-d4b4ef27-f5f2-43b8-a619-393bb42fd065.config
+test	UNKNOWN STEP	2026-10-17T11:45:31.6328152Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path
+test	UNKNOWN STEP	2026-10-17T11:45:31.6356398Z /home/runner/work/_temp/git-credentials-d4b4ef27-f5f2-43b8-a619-393bb42fd065.config
+test	UNKNOWN STEP	2026-10-17T11:45:31.6369517Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-d4b4ef27-f5f2-43b8-a619-393bb42fd065.config
+test	UNKNOWN STEP	2026-10-17T11:45:31.6440714Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+test	UNKNOWN STEP	2026-10-17T11:45:31.6467419Z /github/runner_temp/git-credentials-d4b4ef27-f5f2-43b8-a619-393bb42fd065.config
+test	UNKNOWN STEP	2026-10-17T11:45:31.6479440Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-d4b4ef27-f5f2-43b8-a619-393bb42fd065.config
+test	UNKNOWN STEP	2026-10-17T11:45:31.6521713Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+test	UNKNOWN STEP	2026-10-17T11:45:31.6547368Z /github/runner_temp/git-credentials-d4b4ef27-f5f2-43b8-a619-393bb42fd065.config
+test	UNKNOWN STEP	2026-10-17T11:45:31.6555989Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-d4b4ef27-f5f2-43b8-a619-393bb42fd065.config
+test	UNKNOWN STEP	2026-10-17T11:45:31.6590867Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+test	UNKNOWN STEP	2026-10-17T11:45:31.6817457Z Removing credentials config '/home/runner/work/_temp/git-credentials-d4b4ef27-f5f2-43b8-a619-393bb42fd065.config'
+test	UNKNOWN STEP	2026-10-17T11:45:31.6825924Z ##[endgroup]
+test	UNKNOWN STEP	2026-10-17T11:45:31.7253570Z ##[group]Run actions/setup-node@v6
+test	UNKNOWN STEP	2026-10-17T11:45:31.7254718Z with:
+test	UNKNOWN STEP	2026-10-17T11:45:31.7255566Z   node-version: 24.x
+test	UNKNOWN STEP	2026-10-17T11:45:31.7256496Z   cache: npm
+test	UNKNOWN STEP	2026-10-17T11:45:31.7257671Z   check-latest: false
+test	UNKNOWN STEP	2026-10-17T11:45:31.7266175Z   token: ***
+test	UNKNOWN STEP	2026-10-17T11:45:31.7267365Z   package-manager-cache: true
+test	UNKNOWN STEP	2026-10-17T11:45:31.7268412Z env:
+test	UNKNOWN STEP	2026-10-17T11:45:31.7269223Z   GIT_CONFIG_COUNT: 1
+test	UNKNOWN STEP	2026-10-17T11:45:31.7270223Z   GIT_CONFIG_KEY_0: init.defaultBranch
+test	UNKNOWN STEP	2026-10-17T11:45:31.7271361Z   GIT_CONFIG_VALUE_0: main
+test	UNKNOWN STEP	2026-10-17T11:45:31.7272339Z ##[endgroup]
+test	UNKNOWN STEP	2026-10-17T11:45:31.8702565Z Found in cache @ /opt/hostedtoolcache/node/24.21.0/x64
+test	UNKNOWN STEP	2026-10-17T11:45:31.8704759Z ##[group]Environment details
+test	UNKNOWN STEP	2026-10-17T11:45:32.2596303Z node: v24.21.0
+test	UNKNOWN STEP	2026-10-17T11:45:32.2596872Z npm: 11.19.0
+test	UNKNOWN STEP	2026-10-17T11:45:32.2597724Z yarn: 1.22.22
+test	UNKNOWN STEP	2026-10-17T11:45:32.2598670Z ##[endgroup]
+test	UNKNOWN STEP	2026-10-17T11:45:32.2617919Z [command]/opt/hostedtoolcache/node/24.21.0/x64/bin/npm config get cache
+test	UNKNOWN STEP	2026-10-17T11:45:32.3798295Z /home/runner/.npm
+test	UNKNOWN STEP	2026-10-17T11:45:32.4577602Z Cache hit for: node-cache-Linux-x64-npm-f934b8ec88d903307993501371c09a57d12590019e9c93260ad12280f8e63281
+test	UNKNOWN STEP	2026-10-17T11:45:32.7874336Z Received 32351081 of 32351081 (100.0%), 114.7 MBs/sec
+test	UNKNOWN STEP	2026-10-17T11:45:32.7875340Z Cache Size: ~31 MB (32351081 B)
+test	UNKNOWN STEP	2026-10-17T11:45:32.7908464Z [command]/usr/bin/tar -xf /home/runner/work/_temp/a0593ebb-e4ec-4d75-a4d2-bcb819cf1bee/cache.tzst -P -C /home/runner/work/konard.github.io/konard.github.io --use-compress-program unzstd
+test	UNKNOWN STEP	2026-10-17T11:45:32.9105298Z Cache restored successfully
+test	UNKNOWN STEP	2026-10-17T11:45:32.9123339Z Cache restored from key: node-cache-Linux-x64-npm-f934b8ec88d903307993501371c09a57d12590019e9c93260ad12280f8e63281
+test	UNKNOWN STEP	2026-10-17T11:45:32.9299276Z ##[group]Run npm ci
+test	UNKNOWN STEP	2026-10-17T11:45:32.9299598Z ^[[36;1mnpm ci^[[0m
+test	UNKNOWN STEP	2026-10-17T11:45:32.9565484Z shell: /usr/bin/bash -e {0}
+test	UNKNOWN STEP	2026-10-17T11:45:32.9565836Z env:
+test	UNKNOWN STEP	2026-10-17T11:45:32.9566091Z   GIT_CONFIG_COUNT: 1
+test	UNKNOWN STEP	2026-10-17T11:45:32.9566404Z   GIT_CONFIG_KEY_0: init.defaultBranch
+test	UNKNOWN STEP	2026-10-17T11:45:32.9566767Z   GIT_CONFIG_VALUE_0: main
+test	UNKNOWN STEP	2026-10-17T11:45:32.9567383Z ##[endgroup]
+test	UNKNOWN STEP	2026-10-17T11:45:36.9676346Z 
+test	UNKNOWN STEP	2026-10-17T11:45:36.9686051Z > konard.github.io@0.1.0 prepare
+test	UNKNOWN STEP	2026-10-17T11:45:36.9686703Z > husky
+test	UNKNOWN STEP	2026-10-17T11:45:36.9686920Z 
+test	UNKNOWN STEP	2026-10-17T11:45:37.0478239Z 
+test	UNKNOWN STEP	2026-10-17T11:45:37.0479060Z added 296 packages, and audited 297 packages in 4s
+test	UNKNOWN STEP	2026-10-17T11:45:37.0479602Z 
+test	UNKNOWN STEP	2026-10-17T11:45:37.0480122Z 75 packages are looking for funding
+test	UNKNOWN STEP	2026-10-17T11:45:37.0480919Z   run `npm fund` for details
+test	UNKNOWN STEP	2026-10-17T11:45:37.0494877Z 
+test	UNKNOWN STEP	2026-10-17T11:45:37.0495196Z found 0 vulnerabilities
+test	UNKNOWN STEP	2026-10-17T11:45:37.1144214Z ##[group]Run npm run test:ci
+test	UNKNOWN STEP	2026-10-17T11:45:37.1144538Z ^[[36;1mnpm run test:ci^[[0m
+test	UNKNOWN STEP	2026-10-17T11:45:37.1216063Z shell: /usr/bin/bash -e {0}
+test	UNKNOWN STEP	2026-10-17T11:45:37.1216363Z env:
+test	UNKNOWN STEP	2026-10-17T11:45:37.1216579Z   GIT_CONFIG_COUNT: 1
+test	UNKNOWN STEP	2026-10-17T11:45:37.1216849Z   GIT_CONFIG_KEY_0: init.defaultBranch
+test	UNKNOWN STEP	2026-10-17T11:45:37.1217497Z   GIT_CONFIG_VALUE_0: main
+test	UNKNOWN STEP	2026-10-17T11:45:37.1217742Z ##[endgroup]
+test	UNKNOWN STEP	2026-10-17T11:45:37.2265296Z 
+test	UNKNOWN STEP	2026-10-17T11:45:37.2265985Z > konard.github.io@0.1.0 test:ci
+test	UNKNOWN STEP	2026-10-17T11:45:37.2266518Z > vitest run
+test	UNKNOWN STEP	2026-10-17T11:45:37.2266740Z 
+test	UNKNOWN STEP	2026-10-17T11:45:37.6190947Z 
+test	UNKNOWN STEP	2026-10-17T11:45:37.6195180Z ^[[1m^[[30m^[[46m RUN ^[[49m^[[39m^[[22m ^[[36mv5.0.5 ^[[39m^[[90m/home/runner/work/konard.github.io/konard.github.io^[[39m
+test	UNKNOWN STEP	2026-10-17T11:45:37.6195958Z 
+test	UNKNOWN STEP	2026-10-17T11:45:38.9760234Z  ^[[32m✓^[[39m src/workflow.test.js ^[[2m(^[[22m^[[2m8 tests^[[22m^[[2m)^[[22m^[[32m 20^[[2mms^[[22m^[[39m
+test	UNKNOWN STEP	2026-10-17T11:45:39.1343108Z  ^[[32m✓^[[39m src/components/components.test.js ^[[2m(^[[22m^[[2m10 tests^[[22m^[[2m)^[[22m^[[32m 15^[[2mms^[[22m^[[39m
+test	UNKNOWN STEP	2026-10-17T11:45:40.1178936Z  ^[[32m✓^[[39m src/data/data.test.js ^[[2m(^[[22m^[[2m10 tests^[[22m^[[2m)^[[22m^[[32m 34^[[2mms^[[22m^[[39m
+test	UNKNOWN STEP	2026-10-17T11:45:40.6338970Z  ^[[32m✓^[[39m src/App.test.jsx ^[[2m(^[[22m^[[2m6 tests^[[22m^[[2m)^[[22m^[[33m 1435^[[2mms^[[22m^[[39m
+test	UNKNOWN STEP	2026-10-17T11:45:40.6355404Z    ^[[32m✓^[[39m App ^[[2m(6)^[[22m
+test	UNKNOWN STEP	2026-10-17T11:45:40.6356300Z      ^[[33m^[[2m✓^[[22m^[[39m renders the name, headline and every CV section^[[33m 683^[[2mms^[[22m^[[39m
+test	UNKNOWN STEP	2026-10-17T11:45:40.6379152Z 
+test	UNKNOWN STEP	2026-10-17T11:45:40.6383593Z ^[[2m Test Files ^[[22m ^[[1m^[[32m4 passed^[[39m^[[22m^[[90m (4)^[[39m
+test	UNKNOWN STEP	2026-10-17T11:45:40.6384356Z ^[[2m      Tests ^[[22m ^[[1m^[[32m34 passed^[[39m^[[22m^[[90m (34)^[[39m
+test	UNKNOWN STEP	2026-10-17T11:45:40.6385190Z ^[[2m   Start at ^[[22m 11:45:37
+test	UNKNOWN STEP	2026-10-17T11:45:40.6390705Z ^[[2m   Duration ^[[22m 3.01s^[[2m (environment 57%, tests 24%, setup 9%, transform 8%, import 3%, worker 1%)^[[22m
+test	UNKNOWN STEP	2026-10-17T11:45:40.6396688Z 
+test	UNKNOWN STEP	2026-10-17T11:45:40.6398479Z ^[[2mEnvironment ^[[22m ^[[33mjsdom was created 4 times^[[39m^[[2m · 3.58s total, 57% of tracked time^[[22m
+test	UNKNOWN STEP	2026-10-17T11:45:40.6400082Z ^[[2m            ^[[22m ^[[2mcreate it once per worker with ^[[22m^[[33mpool: 'vmThreads'^[[39m^[[2m (keeps per-file isolation) or ^[[22m^[[33misolate: false^[[39m^[[2m (shares it across files)^[[22m
+test	UNKNOWN STEP	2026-10-17T11:45:40.6401547Z ^[[2m            ^[[22m ^[[2mlearn more: https://vitest.dev/guide/improving-performance#test-environments^[[22m
+test	UNKNOWN STEP	2026-10-17T11:45:40.6402076Z 
+test	UNKNOWN STEP	2026-10-17T11:45:40.6817655Z ##[group]Run npm run build
+test	UNKNOWN STEP	2026-10-17T11:45:40.6817984Z ^[[36;1mnpm run build^[[0m
+test	UNKNOWN STEP	2026-10-17T11:45:40.6882209Z shell: /usr/bin/bash -e {0}
+test	UNKNOWN STEP	2026-10-17T11:45:40.6882469Z env:
+test	UNKNOWN STEP	2026-10-17T11:45:40.6882662Z   GIT_CONFIG_COUNT: 1
+test	UNKNOWN STEP	2026-10-17T11:45:40.6882912Z   GIT_CONFIG_KEY_0: init.defaultBranch
+test	UNKNOWN STEP	2026-10-17T11:45:40.6883194Z   GIT_CONFIG_VALUE_0: main
+test	UNKNOWN STEP	2026-10-17T11:45:40.6883442Z ##[endgroup]
+test	UNKNOWN STEP	2026-10-17T11:45:40.7899551Z 
+test	UNKNOWN STEP	2026-10-17T11:45:40.7900164Z > konard.github.io@0.1.0 build
+test	UNKNOWN STEP	2026-10-17T11:45:40.7900552Z > vite build
+test	UNKNOWN STEP	2026-10-17T11:45:40.7900719Z 
+test	UNKNOWN STEP	2026-10-17T11:45:41.0277482Z ^[[36mvite v8.3.4 ^[[32mbuilding client environment for production...^[[36m^[[39m
+test	UNKNOWN STEP	2026-10-17T11:45:41.0379324Z transforming...
+test	UNKNOWN STEP	2026-10-17T11:45:41.1125019Z ✓ 36 modules transformed.
+test	UNKNOWN STEP	2026-10-17T11:45:41.1391140Z rendering chunks...
+test	UNKNOWN STEP	2026-10-17T11:45:41.1809151Z computing gzip size...
+test	UNKNOWN STEP	2026-10-17T11:45:41.1855667Z build/index.html                   2.02 kB │ gzip:  0.79 kB
+test	UNKNOWN STEP	2026-10-17T11:45:41.1856382Z build/assets/index-BwikbMEA.css   18.70 kB │ gzip:  4.90 kB
+test	UNKNOWN STEP	2026-10-17T11:45:41.1857233Z build/assets/index-OgCrp1wx.js   273.80 kB │ gzip: 83.63 kB │ map: 1,170.03 kB
+test	UNKNOWN STEP	2026-10-17T11:45:41.1857586Z 
+test	UNKNOWN STEP	2026-10-17T11:45:41.1859817Z ^[[32m✓ built in 159ms^[[39m
+test	UNKNOWN STEP	2026-10-17T11:45:41.2126479Z ##[group]Run actions/upload-artifact@v7
+test	UNKNOWN STEP	2026-10-17T11:45:41.2126781Z with:
+test	UNKNOWN STEP	2026-10-17T11:45:41.2127309Z   name: build
+test	UNKNOWN STEP	2026-10-17T11:45:41.2127566Z   path: build/
+test	UNKNOWN STEP	2026-10-17T11:45:41.2127782Z   include-hidden-files: true
+test	UNKNOWN STEP	2026-10-17T11:45:41.2128036Z   if-no-files-found: error
+test	UNKNOWN STEP	2026-10-17T11:45:41.2128273Z   retention-days: 7
+test	UNKNOWN STEP	2026-10-17T11:45:41.2128484Z   compression-level: 6
+test	UNKNOWN STEP	2026-10-17T11:45:41.2128703Z   overwrite: false
+test	UNKNOWN STEP	2026-10-17T11:45:41.2128904Z   archive: true
+test	UNKNOWN STEP	2026-10-17T11:45:41.2129094Z env:
+test	UNKNOWN STEP	2026-10-17T11:45:41.2129275Z   GIT_CONFIG_COUNT: 1
+test	UNKNOWN STEP	2026-10-17T11:45:41.2129529Z   GIT_CONFIG_KEY_0: init.defaultBranch
+test	UNKNOWN STEP	2026-10-17T11:45:41.2129796Z   GIT_CONFIG_VALUE_0: main
+test	UNKNOWN STEP	2026-10-17T11:45:41.2130016Z ##[endgroup]
+test	UNKNOWN STEP	2026-10-17T11:45:41.3540485Z With the provided path, there will be 11 files uploaded
+test	UNKNOWN STEP	2026-10-17T11:45:41.3547177Z Artifact name is valid!
+test	UNKNOWN STEP	2026-10-17T11:45:41.3548145Z Root directory input is valid!
+test	UNKNOWN STEP	2026-10-17T11:45:41.5643117Z Uploading artifact: build.zip
+test	UNKNOWN STEP	2026-10-17T11:45:41.5685762Z Beginning upload of artifact content to blob storage
+test	UNKNOWN STEP	2026-10-17T11:45:41.7329958Z Uploaded bytes 394412
+test	UNKNOWN STEP	2026-10-17T11:45:41.7451568Z Finished uploading artifact content to blob storage!
+test	UNKNOWN STEP	2026-10-17T11:45:41.7452863Z SHA256 digest of uploaded artifact is b89dc7b29f29724eb635e1d38f56d34f0a392cbe3e3dccd782b083fac963416c
+test	UNKNOWN STEP	2026-10-17T11:45:41.7453695Z Finalizing artifact upload
+test	UNKNOWN STEP	2026-10-17T11:45:41.9979370Z Artifact build successfully finalized. Artifact ID 12100200725
+test	UNKNOWN STEP	2026-10-17T11:45:41.9980607Z Artifact build has been successfully uploaded! Final size is 394412 bytes. Artifact ID is 12100200725
+test	UNKNOWN STEP	2026-10-17T11:45:41.9982620Z Artifact download URL: https://github.com/konard/konard.github.io/actions/runs/39029889455/artifacts/12100200725
+test	UNKNOWN STEP	2026-10-17T11:45:42.0095541Z Post job cleanup.
+test	UNKNOWN STEP	2026-10-17T11:45:42.1270458Z Cache hit occurred on the primary key node-cache-Linux-x64-npm-f934b8ec88d903307993501371c09a57d12590019e9c93260ad12280f8e63281, not saving cache.
+test	UNKNOWN STEP	2026-10-17T11:45:42.1403708Z Post job cleanup.
+test	UNKNOWN STEP	2026-10-17T11:45:42.2279336Z [command]/usr/bin/git version
+test	UNKNOWN STEP	2026-10-17T11:45:42.2322103Z git version 2.55.0
+test	UNKNOWN STEP	2026-10-17T11:45:42.2364891Z Temporarily overriding HOME='/home/runner/work/_temp/fe4a132d-a09d-4a51-ba68-73021d9d957c' before making global git config changes
+test	UNKNOWN STEP	2026-10-17T11:45:42.2366497Z Adding repository directory to the temporary git global config as a safe directory
+test	UNKNOWN STEP	2026-10-17T11:45:42.2371784Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/konard.github.io/konard.github.io
+test	UNKNOWN STEP	2026-10-17T11:45:42.2407178Z Removing SSH command configuration
+test	UNKNOWN STEP	2026-10-17T11:45:42.2415132Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+test	UNKNOWN STEP	2026-10-17T11:45:42.2452909Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+test	UNKNOWN STEP	2026-10-17T11:45:42.2750295Z Removing HTTP extra header
+test	UNKNOWN STEP	2026-10-17T11:45:42.2758586Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+test	UNKNOWN STEP	2026-10-17T11:45:42.2808101Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+test	UNKNOWN STEP	2026-10-17T11:45:42.3133948Z Removing includeIf entries pointing to credentials config files
+test	UNKNOWN STEP	2026-10-17T11:45:42.3144974Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+test	UNKNOWN STEP	2026-10-17T11:45:42.3199987Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+test	UNKNOWN STEP	2026-10-17T11:45:42.3662035Z Cleaning up orphan processes
+deploy	UNKNOWN STEP	﻿2026-10-17T11:45:46.1051669Z Current runner version: '2.337.0'
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.1087567Z ##[group]Runner Image Provisioner
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.1089584Z Hosted Compute Agent
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.1090601Z Version: 20261012.601
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.1091863Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.1093374Z Build Date: 2026-10-12T17:48:21Z
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.1094649Z Worker ID: {2795bc84-b423-4adf-b184-e333d19e3975}
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.1096375Z Region: eastus
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.1097298Z Cloud: Azure
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.1098118Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.1101264Z ##[group]Operating System
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.1102279Z Ubuntu
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.1103232Z 24.04.5
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.1104091Z LTS
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.1105160Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.1106446Z ##[group]Runner Image
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.1107425Z Image: ubuntu-24.04
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.1108423Z Version: 20261012.334.1
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.1110488Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.1113243Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.1114897Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.1117168Z ##[group]GITHUB_TOKEN Permissions
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.1119950Z Contents: write
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.1121043Z Metadata: read
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.1121987Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.1124992Z Secret source: Actions
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.1126760Z Cache mode: write
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.1128473Z Prepare workflow directory
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.1696839Z Prepare all required actions
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.1768217Z Getting action download info
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.3576338Z Download action repository 'actions/checkout@v6' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.4590097Z Download action repository 'actions/download-artifact@v8' (SHA:9000827ccba6bdab643e8b6fd33ac0654aef8333)
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.7169506Z Complete job name: deploy
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.7942786Z ##[group]Run actions/checkout@v6
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.7943745Z with:
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.7944215Z   repository: konard/konard.github.io
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.7948239Z   token: ***
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.7948699Z   ssh-strict: true
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.7949148Z   ssh-user: git
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.7949617Z   persist-credentials: true
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.7950122Z   clean: true
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.7950587Z   sparse-checkout-cone-mode: true
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.7951115Z   fetch-depth: 1
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.7951562Z   fetch-tags: false
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.7952019Z   show-progress: true
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.7952476Z   lfs: false
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.7952905Z   submodules: false
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.7953365Z   set-safe-directory: true
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.7953882Z   allow-unsafe-pr-checkout: false
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.7954656Z env:
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.7955081Z   GIT_CONFIG_COUNT: 1
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.7955733Z   GIT_CONFIG_KEY_0: init.defaultBranch
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.7956373Z   GIT_CONFIG_VALUE_0: main
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.7956859Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.9003615Z Syncing repository: konard/konard.github.io
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.9006543Z ##[group]Getting Git version info
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.9007824Z Working directory is '/home/runner/work/konard.github.io/konard.github.io'
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.9009674Z [command]/usr/bin/git version
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.9059186Z git version 2.55.0
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.9084390Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.9099748Z Temporarily overriding HOME='/home/runner/work/_temp/510df783-7c90-4988-8e75-28b0aa76e3ae' before making global git config changes
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.9102206Z Adding repository directory to the temporary git global config as a safe directory
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.9107613Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/konard.github.io/konard.github.io
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.9179456Z Deleting the contents of '/home/runner/work/konard.github.io/konard.github.io'
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.9183834Z ##[group]Determining repository object format
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.9186445Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.9187977Z ##[group]Initializing the repository
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.9191259Z [command]/usr/bin/git init /home/runner/work/konard.github.io/konard.github.io
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.9321367Z Initialized empty Git repository in /home/runner/work/konard.github.io/konard.github.io/.git/
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.9332864Z [command]/usr/bin/git remote add origin https://github.com/konard/konard.github.io
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.9384368Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.9385792Z ##[group]Disabling automatic garbage collection
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.9387927Z [command]/usr/bin/git config --local gc.auto 0
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.9421749Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.9423009Z ##[group]Setting up auth
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.9424045Z Removing SSH command configuration
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.9430042Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.9470292Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.9865512Z Removing HTTP extra header
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.9867280Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+deploy	UNKNOWN STEP	2026-10-17T11:45:46.9903100Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.0133198Z Removing includeIf entries pointing to credentials config files
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.0141117Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.0178392Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.0412149Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-4208d211-8a2a-4239-8425-3d902be10b77.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.0456898Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path /home/runner/work/_temp/git-credentials-4208d211-8a2a-4239-8425-3d902be10b77.config
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.0491846Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-4208d211-8a2a-4239-8425-3d902be10b77.config
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.0564228Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-4208d211-8a2a-4239-8425-3d902be10b77.config
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.0628092Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-4208d211-8a2a-4239-8425-3d902be10b77.config
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.0658969Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.0660540Z ##[group]Fetching the repository
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.0669447Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +dbbf97ee5d8899c91382b4ecf04648fbd57a02f0:refs/remotes/origin/main
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.3672954Z From https://github.com/konard/konard.github.io
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.3674327Z  * [new ref]         dbbf97ee5d8899c91382b4ecf04648fbd57a02f0 -> origin/main
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.3683685Z [command]/usr/bin/git branch --list --remote origin/main
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.3716462Z   origin/main
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.3733654Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.3760645Z dbbf97ee5d8899c91382b4ecf04648fbd57a02f0
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.3766131Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.3767548Z ##[group]Determining the checkout info
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.3768640Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.3771115Z [command]/usr/bin/git sparse-checkout disable
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.3825513Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.3858029Z ##[group]Checking out the ref
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.3861337Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.4194315Z Reset branch 'main'
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.4200430Z branch 'main' set up to track 'origin/main'.
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.4209566Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.4259399Z [command]/usr/bin/git log -1 --format=%H
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.4287506Z dbbf97ee5d8899c91382b4ecf04648fbd57a02f0
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.4547726Z ##[group]Run actions/download-artifact@v8
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.4548341Z with:
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.4548751Z   name: build
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.4549179Z   path: build/
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.4549617Z   merge-multiple: false
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.4550116Z   repository: konard/konard.github.io
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.4550659Z   run-id: 39029889455
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.4551122Z   skip-decompress: false
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.4551602Z   digest-mismatch: error
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.4552061Z env:
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.4552462Z   GIT_CONFIG_COUNT: 1
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.4552961Z   GIT_CONFIG_KEY_0: init.defaultBranch
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.4553507Z   GIT_CONFIG_VALUE_0: main
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.4553972Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.6067649Z Downloading single artifact
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.7126769Z Preparing to download the following artifacts:
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.7129385Z - build (ID: 12100200725, Size: 394412, Expected Digest: sha256:b89dc7b29f29724eb635e1d38f56d34f0a392cbe3e3dccd782b083fac963416c)
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.8659711Z Redirecting to blob download url: https://productionresultssa13.blob.core.windows.net/actions-results/197c3c6e-e93e-8e11-a517-cb867e227d23/workflow-job-run-a10dd0e2-0f88-50f4-b1eb-903f1b16c712/artifacts/44575cf5b28512d75644bf54a517dcef304ff809fd511747621b4d64f19aac66.zip
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.8663976Z Starting download of artifact to: /home/runner/work/konard.github.io/konard.github.io/build
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.8969352Z (node:2300) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.8973218Z (Use `node --trace-deprecation ...` to show where the warning was created)
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.9342186Z SHA256 digest of downloaded artifact is b89dc7b29f29724eb635e1d38f56d34f0a392cbe3e3dccd782b083fac963416c
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.9344185Z Artifact download completed successfully.
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.9345730Z Total of 1 artifact(s) downloaded
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.9347235Z Download artifact has finished successfully
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.9577418Z ##[group]Run mkdir -p docs
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.9578569Z ^[[36;1mmkdir -p docs^[[0m
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.9579754Z ^[[36;1mfind docs -mindepth 1 -maxdepth 1 ! -name case-studies -exec rm -rf {} +^[[0m
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.9580979Z ^[[36;1mcp -r build/. docs/^[[0m
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.9582018Z ^[[36;1mgit config user.name "github-actions[bot]"^[[0m
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.9583245Z ^[[36;1mgit config user.email "github-actions[bot]@users.noreply.github.com"^[[0m
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.9584457Z ^[[36;1mgit add -A docs^[[0m
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.9585447Z ^[[36;1mif git diff --cached --quiet; then^[[0m
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.9586836Z ^[[36;1m  echo "No changes in build output to deploy."^[[0m
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.9587899Z ^[[36;1m  exit 0^[[0m
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.9588789Z ^[[36;1mfi^[[0m
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.9589772Z ^[[36;1mgit commit -m "Deploy build to docs [skip ci]"^[[0m
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.9591035Z ^[[36;1m# main may move while this job runs; rebase and retry instead of failing.^[[0m
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.9592310Z ^[[36;1mfor attempt in 1 2 3; do^[[0m
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.9593333Z ^[[36;1m  if git push origin HEAD:main; then^[[0m
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.9594361Z ^[[36;1m    exit 0^[[0m
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.9595259Z ^[[36;1m  fi^[[0m
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.9596634Z ^[[36;1m  echo "::warning::Push attempt $attempt was rejected; rebasing onto origin/main."^[[0m
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.9597913Z ^[[36;1m  git pull --rebase origin main^[[0m
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.9598924Z ^[[36;1mdone^[[0m
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.9600008Z ^[[36;1mecho "::error::Could not push the build to main after 3 attempts."^[[0m
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.9601362Z ^[[36;1mexit 1^[[0m
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.9855309Z shell: /usr/bin/bash -e {0}
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.9857014Z env:
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.9858379Z   GIT_CONFIG_COUNT: 1
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.9859841Z   GIT_CONFIG_KEY_0: init.defaultBranch
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.9861381Z   GIT_CONFIG_VALUE_0: main
+deploy	UNKNOWN STEP	2026-10-17T11:45:47.9862789Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-10-17T11:45:48.0806215Z [main 2c4189d] Deploy build to docs [skip ci]
+deploy	UNKNOWN STEP	2026-10-17T11:45:48.0808630Z  10 files changed, 54 insertions(+), 70 deletions(-)
+deploy	UNKNOWN STEP	2026-10-17T11:45:48.0810777Z  delete mode 100644 docs/asset-manifest.json
+deploy	UNKNOWN STEP	2026-10-17T11:45:48.0813126Z  create mode 100644 docs/assets/index-BwikbMEA.css
+deploy	UNKNOWN STEP	2026-10-17T11:45:48.0815468Z  create mode 100644 docs/assets/index-OgCrp1wx.js
+deploy	UNKNOWN STEP	2026-10-17T11:45:48.0817225Z  create mode 100644 docs/assets/index-OgCrp1wx.js.map
+deploy	UNKNOWN STEP	2026-10-17T11:45:48.0818575Z  delete mode 100644 docs/static/css/main.93aedd83.css
+deploy	UNKNOWN STEP	2026-10-17T11:45:48.0819939Z  delete mode 100644 docs/static/css/main.93aedd83.css.map
+deploy	UNKNOWN STEP	2026-10-17T11:45:48.0821293Z  delete mode 100644 docs/static/js/main.f7da2628.js
+deploy	UNKNOWN STEP	2026-10-17T11:45:48.0822680Z  delete mode 100644 docs/static/js/main.f7da2628.js.LICENSE.txt
+deploy	UNKNOWN STEP	2026-10-17T11:45:48.0824087Z  delete mode 100644 docs/static/js/main.f7da2628.js.map
+deploy	UNKNOWN STEP	2026-10-17T11:45:49.3914212Z To https://github.com/konard/konard.github.io
+deploy	UNKNOWN STEP	2026-10-17T11:45:49.3915407Z    dbbf97e..2c4189d  HEAD -> main
+deploy	UNKNOWN STEP	2026-10-17T11:45:49.4103620Z Post job cleanup.
+deploy	UNKNOWN STEP	2026-10-17T11:45:49.4978269Z [command]/usr/bin/git version
+deploy	UNKNOWN STEP	2026-10-17T11:45:49.5018922Z git version 2.55.0
+deploy	UNKNOWN STEP	2026-10-17T11:45:49.5060627Z Temporarily overriding HOME='/home/runner/work/_temp/89c6e3eb-fdcf-42e5-8a61-4b4b31a06637' before making global git config changes
+deploy	UNKNOWN STEP	2026-10-17T11:45:49.5062176Z Adding repository directory to the temporary git global config as a safe directory
+deploy	UNKNOWN STEP	2026-10-17T11:45:49.5065901Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/konard.github.io/konard.github.io
+deploy	UNKNOWN STEP	2026-10-17T11:45:49.5100997Z Removing SSH command configuration
+deploy	UNKNOWN STEP	2026-10-17T11:45:49.5109475Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+deploy	UNKNOWN STEP	2026-10-17T11:45:49.5148206Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+deploy	UNKNOWN STEP	2026-10-17T11:45:49.5392831Z Removing HTTP extra header
+deploy	UNKNOWN STEP	2026-10-17T11:45:49.5400670Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+deploy	UNKNOWN STEP	2026-10-17T11:45:49.5458204Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+deploy	UNKNOWN STEP	2026-10-17T11:45:49.5708174Z Removing includeIf entries pointing to credentials config files
+deploy	UNKNOWN STEP	2026-10-17T11:45:49.5715271Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+deploy	UNKNOWN STEP	2026-10-17T11:45:49.5747213Z includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path
+deploy	UNKNOWN STEP	2026-10-17T11:45:49.5749272Z includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path
+deploy	UNKNOWN STEP	2026-10-17T11:45:49.5751281Z includeif.gitdir:/github/workspace/.git.path
+deploy	UNKNOWN STEP	2026-10-17T11:45:49.5753075Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+deploy	UNKNOWN STEP	2026-10-17T11:45:49.5759668Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path
+deploy	UNKNOWN STEP	2026-10-17T11:45:49.5794829Z /home/runner/work/_temp/git-credentials-4208d211-8a2a-4239-8425-3d902be10b77.config
+deploy	UNKNOWN STEP	2026-10-17T11:45:49.5808978Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path /home/runner/work/_temp/git-credentials-4208d211-8a2a-4239-8425-3d902be10b77.config
+deploy	UNKNOWN STEP	2026-10-17T11:45:49.5854806Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path
+deploy	UNKNOWN STEP	2026-10-17T11:45:49.5888190Z /home/runner/work/_temp/git-credentials-4208d211-8a2a-4239-8425-3d902be10b77.config
+deploy	UNKNOWN STEP	2026-10-17T11:45:49.5901067Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-4208d211-8a2a-4239-8425-3d902be10b77.config
+deploy	UNKNOWN STEP	2026-10-17T11:45:49.5941683Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+deploy	UNKNOWN STEP	2026-10-17T11:45:49.5984038Z /github/runner_temp/git-credentials-4208d211-8a2a-4239-8425-3d902be10b77.config
+deploy	UNKNOWN STEP	2026-10-17T11:45:49.5987567Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-4208d211-8a2a-4239-8425-3d902be10b77.config
+deploy	UNKNOWN STEP	2026-10-17T11:45:49.6023968Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+deploy	UNKNOWN STEP	2026-10-17T11:45:49.6049410Z /github/runner_temp/git-credentials-4208d211-8a2a-4239-8425-3d902be10b77.config
+deploy	UNKNOWN STEP	2026-10-17T11:45:49.6059790Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-4208d211-8a2a-4239-8425-3d902be10b77.config
+deploy	UNKNOWN STEP	2026-10-17T11:45:49.6102684Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+deploy	UNKNOWN STEP	2026-10-17T11:45:49.6330885Z Removing credentials config '/home/runner/work/_temp/git-credentials-4208d211-8a2a-4239-8425-3d902be10b77.config'
+deploy	UNKNOWN STEP	2026-10-17T11:45:49.6478416Z Cleaning up orphan processes
