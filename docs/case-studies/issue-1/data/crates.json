@@ -1,0 +1,347 @@
+{
+ "source": "https://crates.io/api/v1/crates?user_id=152348",
+ "user": "https://crates.io/users/konard",
+ "total": 34,
+ "crates": [
+  {
+   "name": "agent-commander",
+   "max_version": "0.3.2",
+   "description": "A Rust library to control agents enclosed in CLI commands like Anthropic Claude Code CLI",
+   "downloads": 168,
+   "recent_downloads": 68,
+   "created_at": "2026-04-30T02:58:44.061866Z",
+   "updated_at": "2026-10-16T19:00:25.276110Z",
+   "repository": "https://github.com/link-assistant/agent-commander"
+  },
+  {
+   "name": "browser-commander",
+   "max_version": "0.19.0",
+   "description": "Universal browser automation library that supports multiple browser engines with a unified API",
+   "downloads": 4280,
+   "recent_downloads": 3764,
+   "created_at": "2026-01-18T18:47:40.206827Z",
+   "updated_at": "2026-10-06T23:05:54.293811Z",
+   "repository": "https://github.com/link-foundation/browser-commander"
+  },
+  {
+   "name": "command-stream",
+   "max_version": "1.9.0",
+   "description": "Modern shell command execution library with streaming, async iteration, and event support",
+   "downloads": 17639,
+   "recent_downloads": 17485,
+   "created_at": "2026-06-08T12:31:20.216230Z",
+   "updated_at": "2026-10-12T10:01:52.528368Z",
+   "repository": "https://github.com/link-foundation/command-stream"
+  },
+  {
+   "name": "doublets",
+   "max_version": "0.8.0",
+   "description": "Doublets (links) data structure implementation.\n",
+   "downloads": 73360,
+   "recent_downloads": 27609,
+   "created_at": "2022-03-21T18:11:25.646971Z",
+   "updated_at": "2026-10-08T23:54:42.480612Z",
+   "repository": "https://github.com/linksplatform/doublets-rs"
+  },
+  {
+   "name": "formal-ai",
+   "max_version": "0.353.8",
+   "description": "Formal symbolic AI implementation with OpenAI-compatible APIs",
+   "downloads": 8487,
+   "recent_downloads": 3586,
+   "created_at": "2026-05-12T15:02:39.698864Z",
+   "updated_at": "2026-10-16T15:39:51.173772Z",
+   "repository": "https://github.com/link-assistant/formal-ai"
+  },
+  {
+   "name": "glab-pull-all",
+   "max_version": "0.5.0",
+   "description": "A powerful command-line tool for efficiently syncing all repositories from a GitLab group or user account with parallel processing, real-time status updates, and advanced features",
+   "downloads": 76,
+   "recent_downloads": 29,
+   "created_at": "2026-03-24T08:24:11.000758Z",
+   "updated_at": "2026-10-08T05:29:02.509501Z",
+   "repository": "https://github.com/link-foundation/glab-pull-all"
+  },
+  {
+   "name": "link-assistant-agent",
+   "max_version": "0.10.4",
+   "description": "A minimal, public domain AI CLI agent compatible with OpenCode's JSON interface",
+   "downloads": 78,
+   "recent_downloads": 60,
+   "created_at": "2026-04-13T08:56:17.448974Z",
+   "updated_at": "2026-10-14T14:15:21.611217Z",
+   "repository": "https://github.com/link-assistant/agent"
+  },
+  {
+   "name": "link-assistant-router",
+   "max_version": "1.16.0",
+   "description": "Link.Assistant.Router \u2014 Claude MAX OAuth proxy and token gateway for Anthropic APIs",
+   "downloads": 2980,
+   "recent_downloads": 2682,
+   "created_at": "2026-03-19T04:43:18.787689Z",
+   "updated_at": "2026-10-05T11:21:58.775566Z",
+   "repository": "https://github.com/link-assistant/router"
+  },
+  {
+   "name": "link-calculator",
+   "max_version": "0.24.0",
+   "description": "A Rust WebAssembly calculator with grammar-based expression parsing using links-notation",
+   "downloads": 24243,
+   "recent_downloads": 20662,
+   "created_at": "2026-01-25T14:23:59.432521Z",
+   "updated_at": "2026-10-12T19:14:27.553965Z",
+   "repository": "https://github.com/link-assistant/calculator"
+  },
+  {
+   "name": "link-cli",
+   "max_version": "1.0.5",
+   "description": "A CLI tool and reusable library for links manipulation backed by a LiNo-notation doublet storage engine.",
+   "downloads": 15176,
+   "recent_downloads": 15029,
+   "created_at": "2026-05-12T12:50:21.131125Z",
+   "updated_at": "2026-10-15T09:28:15.708606Z",
+   "repository": "https://github.com/link-foundation/link-cli"
+  },
+  {
+   "name": "links-logs-vault",
+   "max_version": "0.20.0",
+   "description": "An associative log vault with LiNo text and compact binary stores",
+   "downloads": 16,
+   "recent_downloads": 4,
+   "created_at": "2026-07-12T12:32:36.126199Z",
+   "updated_at": "2026-07-12T12:32:36.126199Z",
+   "repository": "https://github.com/link-foundation/links-logs-vault"
+  },
+  {
+   "name": "links-notation",
+   "max_version": "0.27.0",
+   "description": "Rust implementation of the Links Notation parser",
+   "downloads": 52362,
+   "recent_downloads": 47401,
+   "created_at": "2025-10-12T08:56:30.405831Z",
+   "updated_at": "2026-10-16T19:35:58.588855Z",
+   "repository": "https://github.com/link-foundation/links-notation"
+  },
+  {
+   "name": "links-notation-macro",
+   "max_version": "0.1.2",
+   "description": "Procedural macro for Links Notation compile-time parsing",
+   "downloads": 19032,
+   "recent_downloads": 19032,
+   "created_at": "2026-08-11T00:19:55.115952Z",
+   "updated_at": "2026-10-11T02:21:27.515159Z",
+   "repository": "https://github.com/link-foundation/links-notation"
+  },
+  {
+   "name": "linksql",
+   "max_version": "0.1.0",
+   "description": "Rust reference implementation of LinksQL \u2014 an associative query language built around a single substitution operation.",
+   "downloads": 21,
+   "recent_downloads": 4,
+   "created_at": "2026-05-30T09:41:23.163723Z",
+   "updated_at": "2026-05-30T09:41:23.163723Z",
+   "repository": "https://github.com/link-foundation/linksql"
+  },
+  {
+   "name": "lino-arguments",
+   "max_version": "0.5.0",
+   "description": "A unified configuration library combining environment variables and CLI arguments with a clear priority chain",
+   "downloads": 36092,
+   "recent_downloads": 32111,
+   "created_at": "2026-01-13T21:59:59.036186Z",
+   "updated_at": "2026-10-08T22:41:44.596811Z",
+   "repository": "https://github.com/link-foundation/lino-arguments"
+  },
+  {
+   "name": "lino-env",
+   "max_version": "0.1.0",
+   "description": "A Rust library to read and write .lenv files",
+   "downloads": 33257,
+   "recent_downloads": 29179,
+   "created_at": "2026-01-06T23:51:16.124513Z",
+   "updated_at": "2026-01-06T23:51:16.124513Z",
+   "repository": "https://github.com/link-foundation/lino-env"
+  },
+  {
+   "name": "lino-i18n",
+   "max_version": "0.5.0",
+   "description": "Universal i18n runtime that stores translations as Links Notation (.lino) catalogues, with CLDR plurals, context suffixes and namespaces.",
+   "downloads": 80,
+   "recent_downloads": 37,
+   "created_at": "2026-05-16T20:57:08.461407Z",
+   "updated_at": "2026-10-08T23:37:10.679640Z",
+   "repository": "https://github.com/link-foundation/lino-i18n"
+  },
+  {
+   "name": "lino-i18n-macros",
+   "max_version": "0.5.0",
+   "description": "Compile-time macros for lino-i18n. Reads .lino translation catalogues at compile time and embeds them as a static I18n instance.",
+   "downloads": 144,
+   "recent_downloads": 83,
+   "created_at": "2026-05-16T20:56:52.782064Z",
+   "updated_at": "2026-10-08T23:37:07.485786Z",
+   "repository": "https://github.com/link-foundation/lino-i18n"
+  },
+  {
+   "name": "lino-objects-codec",
+   "max_version": "0.9.1",
+   "description": "A library to encode/decode objects to/from links notation",
+   "downloads": 29563,
+   "recent_downloads": 26450,
+   "created_at": "2026-05-03T12:42:45.916257Z",
+   "updated_at": "2026-10-11T17:18:49.805152Z",
+   "repository": "https://github.com/link-foundation/lino-objects-codec"
+  },
+  {
+   "name": "lino-rest-api",
+   "max_version": "0.2.1",
+   "description": "REST API framework and client using Links Notation (LINO) instead of JSON",
+   "downloads": 10,
+   "recent_downloads": 10,
+   "created_at": "2026-10-11T09:31:15.502515Z",
+   "updated_at": "2026-10-11T09:31:15.502515Z",
+   "repository": "https://github.com/link-foundation/lino-rest-api"
+  },
+  {
+   "name": "log-lazy",
+   "max_version": "0.2.0",
+   "description": "A lazy logging library with bitwise level control",
+   "downloads": 5876,
+   "recent_downloads": 5622,
+   "created_at": "2026-04-16T13:04:24.356370Z",
+   "updated_at": "2026-05-10T12:06:38.119789Z",
+   "repository": "https://github.com/link-foundation/log-lazy"
+  },
+  {
+   "name": "meta-language",
+   "max_version": "1.0.0",
+   "description": "A self-describing links-network core for lossless language representation",
+   "downloads": 23353,
+   "recent_downloads": 20868,
+   "created_at": "2026-06-05T22:44:30.618673Z",
+   "updated_at": "2026-10-08T12:27:34.219097Z",
+   "repository": "https://github.com/link-foundation/meta-language"
+  },
+  {
+   "name": "network-isomorphism-solver",
+   "max_version": "0.2.0",
+   "description": "Network isomorphism solver using Links Theory - determines if two networks are structurally identical",
+   "downloads": 27,
+   "recent_downloads": 2,
+   "created_at": "2026-01-17T00:03:06.768516Z",
+   "updated_at": "2026-01-17T00:03:06.768516Z",
+   "repository": "https://github.com/link-foundation/network-isomorphism-solver"
+  },
+  {
+   "name": "package-registry-manager",
+   "max_version": "0.23.0",
+   "description": "Inspect repositories and guide secure package-registry setup",
+   "downloads": 36,
+   "recent_downloads": 36,
+   "created_at": "2026-10-12T01:17:59.112935Z",
+   "updated_at": "2026-10-12T19:45:09.127636Z",
+   "repository": "https://github.com/link-foundation/package-registry-manager"
+  },
+  {
+   "name": "platform-data",
+   "max_version": "2.0.0",
+   "description": "Data types and traits for the LinksPlatform",
+   "downloads": 39794,
+   "recent_downloads": 29798,
+   "created_at": "2022-04-07T16:37:34.288568Z",
+   "updated_at": "2026-04-14T13:21:48.066153Z",
+   "repository": "https://github.com/linksplatform/data-rs"
+  },
+  {
+   "name": "platform-lino",
+   "max_version": "0.7.0",
+   "description": "Rust implementation of the Lino protocol parser",
+   "downloads": 1511,
+   "recent_downloads": 6,
+   "created_at": "2025-08-09T02:34:48.481694Z",
+   "updated_at": "2025-10-03T14:10:36.826643Z",
+   "repository": "https://github.com/linksplatform/Protocols.Lino"
+  },
+  {
+   "name": "platform-mem",
+   "max_version": "0.3.0",
+   "description": "Memory for linksplatform\n",
+   "downloads": 46036,
+   "recent_downloads": 29810,
+   "created_at": "2022-04-07T16:37:09.870399Z",
+   "updated_at": "2026-04-13T08:30:27.020059Z",
+   "repository": "https://github.com/linksplatform/mem-rs"
+  },
+  {
+   "name": "platform-num",
+   "max_version": "0.8.0",
+   "description": "Numbers for linksplatform\n",
+   "downloads": 40848,
+   "recent_downloads": 29931,
+   "created_at": "2022-04-07T16:36:23.178516Z",
+   "updated_at": "2026-04-14T12:57:08.837343Z",
+   "repository": "https://github.com/linksplatform/Numbers"
+  },
+  {
+   "name": "platform-trees",
+   "max_version": "0.3.4",
+   "description": "Trees methods for linksplatform\n",
+   "downloads": 32921,
+   "recent_downloads": 29658,
+   "created_at": "2026-03-28T21:20:47.093749Z",
+   "updated_at": "2026-04-14T13:19:15.106976Z",
+   "repository": "https://github.com/linksplatform/trees-rs"
+  },
+  {
+   "name": "platform-treesmethods",
+   "max_version": "0.1.0-aplha.2",
+   "description": "Trees methods for linksplatform\n",
+   "downloads": 5932,
+   "recent_downloads": 138,
+   "created_at": "2022-04-07T16:36:50.932014Z",
+   "updated_at": "2022-06-28T09:46:23.929320Z",
+   "repository": "https://github.com/linksplatform/platform-rs"
+  },
+  {
+   "name": "start-command",
+   "max_version": "0.25.8",
+   "description": "Gamification of coding, execute any command with ability to auto-report issues on GitHub",
+   "downloads": 522,
+   "recent_downloads": 339,
+   "created_at": "2026-05-03T19:08:05.934103Z",
+   "updated_at": "2026-10-14T15:09:19.495140Z",
+   "repository": "https://github.com/link-foundation/start"
+  },
+  {
+   "name": "sync-auth",
+   "max_version": "0.3.0",
+   "description": "Bidirectional auth credential sync for dev tools (Claude Code, GitHub CLI, GitLab CLI, Codex, Gemini CLI, and more) via Git repositories",
+   "downloads": 24,
+   "recent_downloads": 4,
+   "created_at": "2026-03-16T22:04:58.496447Z",
+   "updated_at": "2026-03-16T22:04:58.496447Z",
+   "repository": "https://github.com/link-foundation/auth-sync"
+  },
+  {
+   "name": "web-capture",
+   "max_version": "0.5.0",
+   "description": "CLI and microservice to render web pages as HTML, Markdown, or PNG",
+   "downloads": 17803,
+   "recent_downloads": 17161,
+   "created_at": "2026-04-13T09:12:35.905413Z",
+   "updated_at": "2026-10-08T08:49:51.166535Z",
+   "repository": "https://github.com/link-assistant/web-capture"
+  },
+  {
+   "name": "web-search",
+   "max_version": "0.6.0",
+   "description": "A multi-provider web search aggregator with reranking support",
+   "downloads": 16942,
+   "recent_downloads": 16895,
+   "created_at": "2026-06-13T11:56:26.912167Z",
+   "updated_at": "2026-10-07T11:38:57.585562Z",
+   "repository": "https://github.com/link-assistant/web-search"
+  }
+ ]
+}

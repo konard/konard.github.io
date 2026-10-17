@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+# konard.github.io
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Personal website of Konstantin Diachenko ([@konard](https://github.com/konard)): a public biography and CV with infographics.
+It is published at https://konard.github.io.
 
-## Available Scripts
+It is a React 19 app (Create React App), with hand-written SVG/CSS charts and no runtime API calls.
+All numbers come from data snapshots committed to the repository.
 
-In the project directory, you can run:
+## Development
 
-### `npm start`
+```bash
+npm ci
+npm start          # dev server at http://localhost:3000
+npm run test:ci    # unit, data and workflow tests
+npm run build      # production build in build/
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Updating the data
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+| What | Where |
+|---|---|
+| Career, education, skills, publications, contacts, featured projects | `src/data/profile.js` (hand-curated) |
+| GitHub, npm, crates.io, NuGet and Stack Overflow numbers | `src/data/github.json` (generated) |
 
-### `npm test`
+To refresh the generated data:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+experiments/collect-github-data.sh       # repositories and organizations (needs gh auth)
+experiments/collect-contributions.sh     # yearly contribution totals (GraphQL)
+npm run build:data                       # writes src/data/github.json
+```
 
-### `npm run build`
+`src/data/data.test.js` fails if `github.json` is out of date with the snapshots.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Deployment
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+`.github/workflows/github-pages.yml` runs the tests and the build for pull requests and for pushes to `main`.
+On `main`, it then copies the build into `docs/`, which GitHub Pages serves (`main` branch, `/docs` folder).
+The `docs/case-studies/` folder is kept.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Case study
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The research, requirements, alternatives and decisions behind the site are in [`docs/case-studies/issue-1`](docs/case-studies/issue-1/README.md).

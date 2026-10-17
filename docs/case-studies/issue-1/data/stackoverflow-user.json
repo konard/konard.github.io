@@ -1,0 +1,567 @@
+{
+ "source": "https://api.stackexchange.com/2.3/users/710069?site=stackoverflow",
+ "fetched": "2026-10-16",
+ "user": {
+  "badge_counts": {
+   "bronze": 28,
+   "silver": 38,
+   "gold": 0
+  },
+  "account_id": 365249,
+  "is_employee": false,
+  "last_modified_date": 1741687224,
+  "last_access_date": 1759920268,
+  "reputation_change_year": 30,
+  "reputation_change_quarter": 20,
+  "reputation_change_month": 0,
+  "reputation_change_week": 0,
+  "reputation_change_day": 0,
+  "reputation": 3134,
+  "creation_date": 1302880311,
+  "user_type": "registered",
+  "user_id": 710069,
+  "location": "Goa, India",
+  "website_url": "https://vk.com/konard",
+  "link": "https://stackoverflow.com/users/710069/konard",
+  "profile_image": "https://www.gravatar.com/avatar/74bbef6437ca6a5a9158601455d7a534?s=256&d=identicon&r=PG",
+  "display_name": "Konard"
+ },
+ "top_tags": [
+  {
+   "user_id": 710069,
+   "answer_count": 17,
+   "answer_score": 75,
+   "question_count": 0,
+   "question_score": 0,
+   "tag_name": "c#"
+  },
+  {
+   "user_id": 710069,
+   "answer_count": 2,
+   "answer_score": 44,
+   "question_count": 0,
+   "question_score": 0,
+   "tag_name": "docker"
+  },
+  {
+   "user_id": 710069,
+   "answer_count": 1,
+   "answer_score": 44,
+   "question_count": 0,
+   "question_score": 0,
+   "tag_name": "docker-for-windows"
+  },
+  {
+   "user_id": 710069,
+   "answer_count": 1,
+   "answer_score": 44,
+   "question_count": 0,
+   "question_score": 0,
+   "tag_name": "docker-desktop"
+  },
+  {
+   "user_id": 710069,
+   "answer_count": 5,
+   "answer_score": 43,
+   "question_count": 0,
+   "question_score": 0,
+   "tag_name": "linux"
+  },
+  {
+   "user_id": 710069,
+   "answer_count": 2,
+   "answer_score": 36,
+   "question_count": 0,
+   "question_score": 0,
+   "tag_name": "asp.net-core"
+  },
+  {
+   "user_id": 710069,
+   "answer_count": 11,
+   "answer_score": 34,
+   "question_count": 0,
+   "question_score": 0,
+   "tag_name": "javascript"
+  },
+  {
+   "user_id": 710069,
+   "answer_count": 1,
+   "answer_score": 31,
+   "question_count": 0,
+   "question_score": 0,
+   "tag_name": "bash"
+  },
+  {
+   "user_id": 710069,
+   "answer_count": 7,
+   "answer_score": 29,
+   "question_count": 0,
+   "question_score": 0,
+   "tag_name": ".net-core"
+  },
+  {
+   "user_id": 710069,
+   "answer_count": 6,
+   "answer_score": 28,
+   "question_count": 0,
+   "question_score": 0,
+   "tag_name": "postgresql"
+  },
+  {
+   "user_id": 710069,
+   "answer_count": 2,
+   "answer_score": 26,
+   "question_count": 0,
+   "question_score": 0,
+   "tag_name": "jquery"
+  },
+  {
+   "user_id": 710069,
+   "answer_count": 6,
+   "answer_score": 24,
+   "question_count": 0,
+   "question_score": 0,
+   "tag_name": ".net"
+  },
+  {
+   "user_id": 710069,
+   "answer_count": 1,
+   "answer_score": 22,
+   "question_count": 0,
+   "question_score": 0,
+   "tag_name": "scroll"
+  },
+  {
+   "user_id": 710069,
+   "answer_count": 1,
+   "answer_score": 22,
+   "question_count": 0,
+   "question_score": 0,
+   "tag_name": "scrollto"
+  },
+  {
+   "user_id": 710069,
+   "answer_count": 1,
+   "answer_score": 22,
+   "question_count": 0,
+   "question_score": 0,
+   "tag_name": "js-scrollintoview"
+  },
+  {
+   "user_id": 710069,
+   "answer_count": 3,
+   "answer_score": 20,
+   "question_count": 0,
+   "question_score": 0,
+   "tag_name": "visual-studio"
+  },
+  {
+   "user_id": 710069,
+   "answer_count": 3,
+   "answer_score": 17,
+   "question_count": 0,
+   "question_score": 0,
+   "tag_name": "t4"
+  },
+  {
+   "user_id": 710069,
+   "answer_count": 4,
+   "answer_score": 16,
+   "question_count": 0,
+   "question_score": 0,
+   "tag_name": "c++"
+  },
+  {
+   "user_id": 710069,
+   "answer_count": 2,
+   "answer_score": 16,
+   "question_count": 0,
+   "question_score": 0,
+   "tag_name": "visual-studio-2017"
+  },
+  {
+   "user_id": 710069,
+   "answer_count": 2,
+   "answer_score": 15,
+   "question_count": 0,
+   "question_score": 0,
+   "tag_name": "sql"
+  }
+ ],
+ "badges": [
+  {
+   "name": "Teacher",
+   "rank": "bronze",
+   "award_count": 1,
+   "badge_type": "named",
+   "link": "https://stackoverflow.com/badges/1/teacher"
+  },
+  {
+   "name": "Editor",
+   "rank": "bronze",
+   "award_count": 1,
+   "badge_type": "named",
+   "link": "https://stackoverflow.com/badges/3/editor"
+  },
+  {
+   "name": "Organizer",
+   "rank": "bronze",
+   "award_count": 1,
+   "badge_type": "named",
+   "link": "https://stackoverflow.com/badges/5/organizer"
+  },
+  {
+   "name": "Supporter",
+   "rank": "bronze",
+   "award_count": 1,
+   "badge_type": "named",
+   "link": "https://stackoverflow.com/badges/6/supporter"
+  },
+  {
+   "name": "Critic",
+   "rank": "bronze",
+   "award_count": 1,
+   "badge_type": "named",
+   "link": "https://stackoverflow.com/badges/7/critic"
+  },
+  {
+   "name": "Citizen Patrol",
+   "rank": "bronze",
+   "award_count": 1,
+   "badge_type": "named",
+   "link": "https://stackoverflow.com/badges/8/citizen-patrol"
+  },
+  {
+   "name": "Autobiographer",
+   "rank": "bronze",
+   "award_count": 1,
+   "badge_type": "named",
+   "link": "https://stackoverflow.com/badges/9/autobiographer"
+  },
+  {
+   "name": "Nice Answer",
+   "rank": "bronze",
+   "award_count": 7,
+   "badge_type": "named",
+   "link": "https://stackoverflow.com/badges/23/nice-answer"
+  },
+  {
+   "name": "Commentator",
+   "rank": "bronze",
+   "award_count": 1,
+   "badge_type": "named",
+   "link": "https://stackoverflow.com/badges/31/commentator"
+  },
+  {
+   "name": "Announcer",
+   "rank": "bronze",
+   "award_count": 2,
+   "badge_type": "named",
+   "link": "https://stackoverflow.com/badges/260/announcer"
+  },
+  {
+   "name": "Revival",
+   "rank": "bronze",
+   "award_count": 3,
+   "badge_type": "named",
+   "link": "https://stackoverflow.com/badges/837/revival"
+  },
+  {
+   "name": "Excavator",
+   "rank": "bronze",
+   "award_count": 1,
+   "badge_type": "named",
+   "link": "https://stackoverflow.com/badges/1287/excavator"
+  },
+  {
+   "name": "Caucus",
+   "rank": "bronze",
+   "award_count": 4,
+   "badge_type": "named",
+   "link": "https://stackoverflow.com/badges/1973/caucus"
+  },
+  {
+   "name": "Custodian",
+   "rank": "bronze",
+   "award_count": 2,
+   "badge_type": "named",
+   "link": "https://stackoverflow.com/badges/2278/custodian"
+  },
+  {
+   "name": "Informed",
+   "rank": "bronze",
+   "award_count": 1,
+   "badge_type": "named",
+   "link": "https://stackoverflow.com/badges/2600/informed"
+  },
+  {
+   "name": "Lifejacket",
+   "rank": "silver",
+   "award_count": 1,
+   "badge_type": "named",
+   "link": "https://stackoverflow.com/badges/8841/lifejacket"
+  },
+  {
+   "name": "Constituent",
+   "rank": "silver",
+   "award_count": 1,
+   "badge_type": "named",
+   "link": "https://stackoverflow.com/badges/1974/constituent"
+  },
+  {
+   "name": "Civic Duty",
+   "rank": "silver",
+   "award_count": 1,
+   "badge_type": "named",
+   "link": "https://stackoverflow.com/badges/32/civic-duty"
+  },
+  {
+   "name": "Good Answer",
+   "rank": "silver",
+   "award_count": 3,
+   "badge_type": "named",
+   "link": "https://stackoverflow.com/badges/24/good-answer"
+  },
+  {
+   "name": "Yearling",
+   "rank": "silver",
+   "award_count": 15,
+   "badge_type": "named",
+   "link": "https://stackoverflow.com/badges/13/yearling"
+  },
+  {
+   "name": "Necromancer",
+   "rank": "silver",
+   "award_count": 16,
+   "badge_type": "named",
+   "link": "https://stackoverflow.com/badges/17/necromancer"
+  },
+  {
+   "name": "Enlightened",
+   "rank": "silver",
+   "award_count": 1,
+   "badge_type": "named",
+   "link": "https://stackoverflow.com/badges/19/enlightened"
+  }
+ ],
+ "top_answers": [
+  {
+   "score": 44,
+   "is_accepted": false,
+   "question_title": "Locating data volumes in Docker Desktop (Windows)",
+   "question_views": 396286,
+   "link": "https://stackoverflow.com/a/63791543",
+   "creation_date": 1599559212
+  },
+  {
+   "score": 35,
+   "is_accepted": true,
+   "question_title": "MVC1000\tUse of IHtmlHelper.Partial may result in application deadlocks. Consider using &lt;partial&gt; Tag Helper or IHtmlHelper.PartialAsync",
+   "question_views": 15289,
+   "link": "https://stackoverflow.com/a/57244108",
+   "creation_date": 1564340644
+  },
+  {
+   "score": 31,
+   "is_accepted": false,
+   "question_title": "Bash ignoring error for a particular command",
+   "question_views": 663125,
+   "link": "https://stackoverflow.com/a/60362732",
+   "creation_date": 1582464923
+  },
+  {
+   "score": 22,
+   "is_accepted": false,
+   "question_title": "Scroll Automatically to the Bottom of the Page",
+   "question_views": 1504064,
+   "link": "https://stackoverflow.com/a/37578256",
+   "creation_date": 1464813154
+  },
+  {
+   "score": 15,
+   "is_accepted": false,
+   "question_title": "postgresql list and order tables by size",
+   "question_views": 530013,
+   "link": "https://stackoverflow.com/a/77203010",
+   "creation_date": 1695999867
+  },
+  {
+   "score": 10,
+   "is_accepted": false,
+   "question_title": "Get Visual Studio to run a T4 template on every build",
+   "question_views": 78341,
+   "link": "https://stackoverflow.com/a/57741346",
+   "creation_date": 1567282823
+  },
+  {
+   "score": 10,
+   "is_accepted": false,
+   "question_title": "Build NuGet package on Linux that targets .NET Framework",
+   "question_views": 10750,
+   "link": "https://stackoverflow.com/a/57893362",
+   "creation_date": 1568219422
+  },
+  {
+   "score": 9,
+   "is_accepted": false,
+   "question_title": "package-lock.json in npm workspaces",
+   "question_views": 10209,
+   "link": "https://stackoverflow.com/a/77268828",
+   "creation_date": 1696970269
+  }
+ ],
+ "associated_accounts": [
+  {
+   "site_name": "Stack Overflow",
+   "site_url": "https://stackoverflow.com",
+   "reputation": 3134,
+   "answer_count": 69,
+   "question_count": 0,
+   "user_id": 710069
+  },
+  {
+   "site_name": "Server Fault",
+   "site_url": "https://serverfault.com",
+   "reputation": 261,
+   "answer_count": 2,
+   "question_count": 0,
+   "user_id": 523098
+  },
+  {
+   "site_name": "Super User",
+   "site_url": "https://superuser.com",
+   "reputation": 101,
+   "answer_count": 0,
+   "question_count": 0,
+   "user_id": 1034694
+  },
+  {
+   "site_name": "Meta Stack Exchange",
+   "site_url": "https://meta.stackexchange.com",
+   "reputation": 101,
+   "answer_count": 0,
+   "question_count": 0,
+   "user_id": 530550
+  },
+  {
+   "site_name": "Web Applications Stack Exchange",
+   "site_url": "https://webapps.stackexchange.com",
+   "reputation": 101,
+   "answer_count": 0,
+   "question_count": 0,
+   "user_id": 218227
+  },
+  {
+   "site_name": "Mathematics Stack Exchange",
+   "site_url": "https://math.stackexchange.com",
+   "reputation": 101,
+   "answer_count": 0,
+   "question_count": 0,
+   "user_id": 673006
+  },
+  {
+   "site_name": "TeX - LaTeX Stack Exchange",
+   "site_url": "https://tex.stackexchange.com",
+   "reputation": 101,
+   "answer_count": 0,
+   "question_count": 0,
+   "user_id": 194359
+  },
+  {
+   "site_name": "Ask Ubuntu",
+   "site_url": "https://askubuntu.com",
+   "reputation": 99,
+   "answer_count": 2,
+   "question_count": 0,
+   "user_id": 1047125
+  },
+  {
+   "site_name": "English Language &amp; Usage Stack Exchange",
+   "site_url": "https://english.stackexchange.com",
+   "reputation": 101,
+   "answer_count": 0,
+   "question_count": 0,
+   "user_id": 347981
+  },
+  {
+   "site_name": "Unix &amp; Linux Stack Exchange",
+   "site_url": "https://unix.stackexchange.com",
+   "reputation": 103,
+   "answer_count": 0,
+   "question_count": 0,
+   "user_id": 368598
+  },
+  {
+   "site_name": "Ask Different",
+   "site_url": "https://apple.stackexchange.com",
+   "reputation": 149,
+   "answer_count": 1,
+   "question_count": 0,
+   "user_id": 480538
+  },
+  {
+   "site_name": "Software Engineering Stack Exchange",
+   "site_url": "https://softwareengineering.stackexchange.com",
+   "reputation": 101,
+   "answer_count": 0,
+   "question_count": 0,
+   "user_id": 215242
+  },
+  {
+   "site_name": "Android Enthusiasts Stack Exchange",
+   "site_url": "https://android.stackexchange.com",
+   "reputation": 101,
+   "answer_count": 0,
+   "question_count": 0,
+   "user_id": 330227
+  },
+  {
+   "site_name": "Graphic Design Stack Exchange",
+   "site_url": "https://graphicdesign.stackexchange.com",
+   "reputation": 101,
+   "answer_count": 0,
+   "question_count": 0,
+   "user_id": 155368
+  },
+  {
+   "site_name": "Database Administrators Stack Exchange",
+   "site_url": "https://dba.stackexchange.com",
+   "reputation": 121,
+   "answer_count": 1,
+   "question_count": 0,
+   "user_id": 215879
+  },
+  {
+   "site_name": "Blender Stack Exchange",
+   "site_url": "https://blender.stackexchange.com",
+   "reputation": 101,
+   "answer_count": 0,
+   "question_count": 0,
+   "user_id": 70754
+  },
+  {
+   "site_name": "MathOverflow",
+   "site_url": "https://mathoverflow.net",
+   "reputation": 101,
+   "answer_count": 0,
+   "question_count": 0,
+   "user_id": 534293
+  },
+  {
+   "site_name": "Stack Overflow \u043d\u0430 \u0440\u0443\u0441\u0441\u043a\u043e\u043c",
+   "site_url": "https://ru.stackoverflow.com",
+   "reputation": 126,
+   "answer_count": 3,
+   "question_count": 0,
+   "user_id": 192730
+  },
+  {
+   "site_name": "Open Source Stack Exchange",
+   "site_url": "https://opensource.stackexchange.com",
+   "reputation": 101,
+   "answer_count": 0,
+   "question_count": 0,
+   "user_id": 14955
+  }
+ ]
+}

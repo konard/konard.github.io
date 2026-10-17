@@ -12,6 +12,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:ci": "CI=true react-scripts test --watchAll=false",
+    "build:data": "node scripts/build-data.js",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -32,8 +34,12 @@
       "last 1 safari version"
     ]
   },
-  "overrides": {
-    "@testing-library/react": "^19.0.0"
-  },
-  "homepage": "https://konard.github.io"
+  "homepage": "https://konard.github.io",
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.3",
+    "js-yaml": "^4.3.2"
+  }
 }

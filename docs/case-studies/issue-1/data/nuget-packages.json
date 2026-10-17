@@ -1,0 +1,1536 @@
+{
+ "owner:konard": {
+  "source": "https://azuresearch-usnc.nuget.org/query?q=owner:konard&take=1000&prerelease=true",
+  "totalHits": 51,
+  "totalDownloads": 1784755,
+  "packages": [
+   {
+    "id": "Platform.Exceptions",
+    "version": "0.5.0",
+    "description": "LinksPlatform's Platform.Exceptions Class Library",
+    "totalDownloads": 132994,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Exceptions"
+   },
+   {
+    "id": "Platform.Interfaces",
+    "version": "0.5.0",
+    "description": "LinksPlatform's Platform.Interfaces Class Library",
+    "totalDownloads": 131795,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Interfaces"
+   },
+   {
+    "id": "Platform.Ranges",
+    "version": "0.5.0",
+    "description": "LinksPlatform's Platform.Ranges Class Library",
+    "totalDownloads": 128549,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Ranges"
+   },
+   {
+    "id": "Platform.Collections",
+    "version": "0.4.0",
+    "description": "LinksPlatform's Platform.Collections Class Library",
+    "totalDownloads": 120080,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "konard, tynkute"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Collections"
+   },
+   {
+    "id": "Platform.Disposables",
+    "version": "0.4.0",
+    "description": "LinksPlatform's Platform.Disposables Class Library",
+    "totalDownloads": 114622,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Disposables"
+   },
+   {
+    "id": "Platform.Reflection",
+    "version": "0.7.0",
+    "description": "LinksPlatform's Platform.Reflection Class Library",
+    "totalDownloads": 102118,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Reflection"
+   },
+   {
+    "id": "Platform.Random",
+    "version": "0.3.0",
+    "description": "LinksPlatform's Platform.Random Class Library",
+    "totalDownloads": 104215,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Random"
+   },
+   {
+    "id": "Platform.RegularExpressions.Transformer.CSharpToCpp",
+    "version": "0.3.0",
+    "description": "LinksPlatform's Platform.RegularExpressions.Transformer.CSharpToCpp Class Library",
+    "totalDownloads": 84459,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/RegularExpressions.Transformer.CSharpToCpp"
+   },
+   {
+    "id": "Platform.Numbers",
+    "version": "0.9.0",
+    "description": "LinksPlatform's Platform.Numbers Class Library",
+    "totalDownloads": 62165,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Numbers"
+   },
+   {
+    "id": "Platform.Converters",
+    "version": "0.4.0",
+    "description": "LinksPlatform's Platform.Converters Class Library",
+    "totalDownloads": 62393,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Converters"
+   },
+   {
+    "id": "Platform.Singletons",
+    "version": "0.3.0",
+    "description": "LinksPlatform's Platform.Singletons Class Library",
+    "totalDownloads": 53454,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Singletons"
+   },
+   {
+    "id": "Platform.Threading",
+    "version": "0.5.0",
+    "description": "LinksPlatform's Platform.Threading Class Library",
+    "totalDownloads": 53469,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Threading"
+   },
+   {
+    "id": "Platform.Data",
+    "version": "0.16.1",
+    "description": "LinksPlatform's Platform.Data Class Library",
+    "totalDownloads": 53334,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "konard, FreePhoenix888"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Data"
+   },
+   {
+    "id": "Platform.Unsafe",
+    "version": "0.6.2",
+    "description": "LinksPlatform's Platform.Unsafe Class Library",
+    "totalDownloads": 45424,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Unsafe"
+   },
+   {
+    "id": "Platform.IO",
+    "version": "0.5.1",
+    "description": "LinksPlatform's Platform.IO Class Library",
+    "totalDownloads": 42180,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/IO"
+   },
+   {
+    "id": "Platform.Memory",
+    "version": "0.4.1",
+    "description": "LinksPlatform's Platform.Memory Class Library",
+    "totalDownloads": 41994,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Memory"
+   },
+   {
+    "id": "Platform.Delegates.TemplateLibrary",
+    "version": "0.3.7",
+    "description": "LinksPlatform's Platform.Delegates is a Template Library what contains set of C++ abstract class templates for a simple event engine. Use Platform.Delegates.h file to include the library.",
+    "totalDownloads": 35704,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "konard, poul250, uselessgoddess"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Delegates"
+   },
+   {
+    "id": "Platform.Data.Doublets",
+    "version": "0.18.1",
+    "description": "LinksPlatform's Platform.Data.Doublets Class Library",
+    "totalDownloads": 34419,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "konard, FreePhoenix888"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Data.Doublets"
+   },
+   {
+    "id": "Platform.RegularExpressions.Transformer",
+    "version": "0.3.4",
+    "description": "LinksPlatform's Platform.RegularExpressions.Transformer Class Library",
+    "totalDownloads": 35371,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/RegularExpressions.Transformer"
+   },
+   {
+    "id": "Platform.Interfaces.TemplateLibrary",
+    "version": "0.3.41",
+    "description": "LinksPlatform's Platform.Interfaces is a Template Library what contains set of C++ concepts templates. Use Platform.Interfaces.h file to include the library.",
+    "totalDownloads": 34292,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "konard, uselessgoddess, Mitron57"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Interfaces"
+   },
+   {
+    "id": "Platform.Collections.Methods",
+    "version": "0.7.3",
+    "description": "LinksPlatform's Platform.Collections.Methods Class Library",
+    "totalDownloads": 33145,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Collections.Methods"
+   },
+   {
+    "id": "Platform.Setters",
+    "version": "0.5.0",
+    "description": "LinksPlatform's Platform.Setters Class Library",
+    "totalDownloads": 33370,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "konard, FreePhoenix888"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Setters"
+   },
+   {
+    "id": "Platform.Timestamps",
+    "version": "0.3.0",
+    "description": "LinksPlatform's Platform.Timestamps Class Library",
+    "totalDownloads": 23410,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Timestamps"
+   },
+   {
+    "id": "Platform.Exceptions.TemplateLibrary",
+    "version": "0.3.2",
+    "description": "LinksPlatform's Platform.Exceptions is a Template Library what contains set of C++ abstract class templates. Use Platform.Exceptions.h file to include the library.",
+    "totalDownloads": 24475,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Exceptions"
+   },
+   {
+    "id": "Platform.Communication",
+    "version": "0.2.0",
+    "description": "LinksPlatform's Platform.Communication Class Library",
+    "totalDownloads": 16351,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Communication"
+   },
+   {
+    "id": "Platform.Hashing.TemplateLibrary",
+    "version": "0.5.6",
+    "description": "LinksPlatform's Platform.Hashing is a Template Library which contains std::hash specializations for:\n- trivial and standard-layout types\n- types constrained by std::ranges::range\n- std::any\nUse Platfo",
+    "totalDownloads": 14229,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Hashing"
+   },
+   {
+    "id": "Platform.Data.Doublets.FFI",
+    "version": "0.9.0",
+    "description": "This package contains platform-specific native code builds of LinksPlatform's Platform.Data.Doublets library.",
+    "totalDownloads": 15564,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "voider"
+    ],
+    "projectUrl": "https://github.com/linksplatform/Data.Doublets"
+   },
+   {
+    "id": "Platform.Diagnostics",
+    "version": "0.1.0",
+    "description": "LinksPlatform's Platform.Diagnostics Class Library",
+    "totalDownloads": 14715,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Diagnostics"
+   },
+   {
+    "id": "Platform.Delegates",
+    "version": "0.1.1",
+    "description": "LinksPlatform's Platform.Delegates Class Library",
+    "totalDownloads": 14766,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "FreePhoenix888"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Delegates"
+   },
+   {
+    "id": "Platform.Collections.Methods.TemplateLibrary",
+    "version": "0.3.0",
+    "description": "LinksPlatform's Platform.Collections.Methods is a Template Library what contains set of C++ classes templates to build custom implementations of collections on top of provided standard methods impleme",
+    "totalDownloads": 13337,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Collections.Methods"
+   },
+   {
+    "id": "Platform.Ranges.TemplateLibrary",
+    "version": "0.2.0",
+    "description": "LinksPlatform's Platform.Ranges is a Template Library what contains set of C++ non-abstract class templates. Use Platform.Ranges.h file to include the library.",
+    "totalDownloads": 10262,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Ranges"
+   },
+   {
+    "id": "Platform.Incrementers",
+    "version": "0.2.0",
+    "description": "LinksPlatform's Platform.Incrementers Class Library",
+    "totalDownloads": 9325,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Incrementers"
+   },
+   {
+    "id": "Platform.Converters.TemplateLibrary",
+    "version": "0.2.0",
+    "description": "LinksPlatform's Platform.Converters is a Template Library what contains set of C++ abstract class templates. Use Platform.Converters.h file to include the library.",
+    "totalDownloads": 8831,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Converters"
+   },
+   {
+    "id": "Platform.Data.Triplets",
+    "version": "0.1.1",
+    "description": "LinksPlatform's Platform.Data.Triplets Class Library",
+    "totalDownloads": 8276,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Data.Triplets"
+   },
+   {
+    "id": "Platform.Data.Doublets.Sequences",
+    "version": "0.6.5",
+    "description": "LinksPlatform's Platform.Data.Doublets.Sequences Class Library",
+    "totalDownloads": 9587,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "konard, FreePhoenix888"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Data.Doublets.Sequences"
+   },
+   {
+    "id": "Platform.Scopes",
+    "version": "0.1.0",
+    "description": "LinksPlatform's Platform.Scopes Class Library",
+    "totalDownloads": 8590,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Scopes"
+   },
+   {
+    "id": "Platform.Communication.Protocol.Lino",
+    "version": "0.4.0",
+    "description": "LinksPlatform's Platform.Communication.Protocol.Lino Class Library",
+    "totalDownloads": 8088,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Communication.Protocol.Lino"
+   },
+   {
+    "id": "Platform.Data.Sequences",
+    "version": "0.3.2",
+    "description": "LinksPlatform's Platform.Data.Sequences Class Library",
+    "totalDownloads": 8017,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "konard, FreePhoenix888"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Data.Sequences"
+   },
+   {
+    "id": "Platform.Data.Triplets.Kernel",
+    "version": "0.0.4",
+    "description": "This package contains platform-specific native code builds of LinksPlatform's Platform.Data.Triplets.Kernel library.",
+    "totalDownloads": 6316,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://github.com/linksplatform/Data.Triplets.Kernel"
+   },
+   {
+    "id": "Platform.Comparers",
+    "version": "0.1.0",
+    "description": "LinksPlatform's Platform.Comparers Class Library",
+    "totalDownloads": 4741,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Comparers"
+   },
+   {
+    "id": "Platform.Hardware.Cpu",
+    "version": "0.1.0",
+    "description": "LinksPlatform's Platform.Hardware.Cpu Class Library",
+    "totalDownloads": 4846,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Nick Strupat, Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Hardware.Cpu"
+   },
+   {
+    "id": "Platform.Setters.TemplateLibrary",
+    "version": "0.1.0",
+    "description": "LinksPlatform's Platform.Setters is a Template Library what contains set of C++ class templates. Each setter provides a set of callback methods to set the result value. Use Platform.Setters.h file to ",
+    "totalDownloads": 2881,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "konard, Mitron57"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Setters"
+   },
+   {
+    "id": "Platform.Protocols.Lino",
+    "version": "0.7.0",
+    "description": "LinksPlatform's Platform.Protocols.Lino Class Library",
+    "totalDownloads": 3155,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Protocols.Lino"
+   },
+   {
+    "id": "Platform.Data.Doublets.Json",
+    "version": "0.1.2",
+    "description": "LinksPlatform's Platform.Data.Doublets.Json Class Library",
+    "totalDownloads": 3000,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "FreePhoenix888"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Data.Doublets.Json"
+   },
+   {
+    "id": "Platform.Random.TemplateLibrary",
+    "version": "0.2.0",
+    "description": "LinksPlatform's Platform.Random is a Template Library that contains helper functions and constants to work with random numbers. Use Platform.Random.h file to include the library.",
+    "totalDownloads": 2739,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "konard, norwend, uselessgoddess"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Random"
+   },
+   {
+    "id": "Platform.Data.Doublets.Xml",
+    "version": "0.0.3",
+    "description": "LinksPlatform's Platform.Data.Doublets.Xml Class Library",
+    "totalDownloads": 1954,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko, mrMask"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Data.Doublets.Xml"
+   },
+   {
+    "id": "Platform.Equality.TemplateLibrary",
+    "version": "0.0.1",
+    "description": "LinksPlatform's Platform.Equality is a Template Library adds more comparison features for using std::unordered_map",
+    "totalDownloads": 2091,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "konard, uselessgoddess"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Equality"
+   },
+   {
+    "id": "Platform.Protocols",
+    "version": "0.3.0",
+    "description": "LinksPlatform's Platform.Protocols Class Library",
+    "totalDownloads": 1684,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Communication"
+   },
+   {
+    "id": "Platform.RegularExpressions.Transformer.HasuraSQLSimplifier",
+    "version": "0.0.2",
+    "description": "LinksPlatform's Platform.RegularExpressions.Transformer.HasuraSQLSimplifier Class Library",
+    "totalDownloads": 1621,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/RegularExpressions.Transformer.HasuraSQLSimplifier"
+   },
+   {
+    "id": "json2links",
+    "version": "0.1.0",
+    "description": "LinksPlatform's Platform.Data.Doublets.Json.Importer CLI tool (json2links).",
+    "totalDownloads": 1168,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "FreePhoenix888"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Data.Doublets.Json.Importer"
+   },
+   {
+    "id": "links2json",
+    "version": "0.1.0",
+    "description": "LinksPlatform's Platform.Data.Doublets.Json.Importer CLI tool (links2json).",
+    "totalDownloads": 1190,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "FreePhoenix888"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Data.Doublets.Json.Exporter"
+   }
+  ]
+ },
+ "owner:LinksPlatform": {
+  "source": "https://azuresearch-usnc.nuget.org/query?q=owner:LinksPlatform&take=1000&prerelease=true",
+  "totalHits": 58,
+  "totalDownloads": 1917488,
+  "packages": [
+   {
+    "id": "Platform.Exceptions",
+    "version": "0.5.0",
+    "description": "LinksPlatform's Platform.Exceptions Class Library",
+    "totalDownloads": 132994,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Exceptions"
+   },
+   {
+    "id": "Platform.Interfaces",
+    "version": "0.5.0",
+    "description": "LinksPlatform's Platform.Interfaces Class Library",
+    "totalDownloads": 131795,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Interfaces"
+   },
+   {
+    "id": "clink",
+    "version": "4.0.2",
+    "description": "A CLI tool for links manipulation. The reusable library API ships separately as the Foundation.Data.Doublets.Cli NuGet package.",
+    "totalDownloads": 126911,
+    "owners": [
+     "Link.Foundation",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "link-foundation"
+    ],
+    "projectUrl": "https://github.com/link-foundation/link-cli"
+   },
+   {
+    "id": "Platform.Ranges",
+    "version": "0.5.0",
+    "description": "LinksPlatform's Platform.Ranges Class Library",
+    "totalDownloads": 128549,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Ranges"
+   },
+   {
+    "id": "Platform.Disposables",
+    "version": "0.4.0",
+    "description": "LinksPlatform's Platform.Disposables Class Library",
+    "totalDownloads": 114622,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Disposables"
+   },
+   {
+    "id": "Platform.Collections",
+    "version": "0.4.0",
+    "description": "LinksPlatform's Platform.Collections Class Library",
+    "totalDownloads": 120080,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "konard, tynkute"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Collections"
+   },
+   {
+    "id": "Platform.Reflection",
+    "version": "0.7.0",
+    "description": "LinksPlatform's Platform.Reflection Class Library",
+    "totalDownloads": 102118,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Reflection"
+   },
+   {
+    "id": "Platform.Random",
+    "version": "0.3.0",
+    "description": "LinksPlatform's Platform.Random Class Library",
+    "totalDownloads": 104215,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Random"
+   },
+   {
+    "id": "Platform.RegularExpressions.Transformer.CSharpToCpp",
+    "version": "0.3.0",
+    "description": "LinksPlatform's Platform.RegularExpressions.Transformer.CSharpToCpp Class Library",
+    "totalDownloads": 84459,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/RegularExpressions.Transformer.CSharpToCpp"
+   },
+   {
+    "id": "Platform.Numbers",
+    "version": "0.9.0",
+    "description": "LinksPlatform's Platform.Numbers Class Library",
+    "totalDownloads": 62165,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Numbers"
+   },
+   {
+    "id": "Platform.Converters",
+    "version": "0.4.0",
+    "description": "LinksPlatform's Platform.Converters Class Library",
+    "totalDownloads": 62393,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Converters"
+   },
+   {
+    "id": "Platform.Singletons",
+    "version": "0.3.0",
+    "description": "LinksPlatform's Platform.Singletons Class Library",
+    "totalDownloads": 53454,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Singletons"
+   },
+   {
+    "id": "Platform.Threading",
+    "version": "0.5.0",
+    "description": "LinksPlatform's Platform.Threading Class Library",
+    "totalDownloads": 53469,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Threading"
+   },
+   {
+    "id": "Platform.Data",
+    "version": "0.16.1",
+    "description": "LinksPlatform's Platform.Data Class Library",
+    "totalDownloads": 53334,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "konard, FreePhoenix888"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Data"
+   },
+   {
+    "id": "Platform.IO",
+    "version": "0.5.1",
+    "description": "LinksPlatform's Platform.IO Class Library",
+    "totalDownloads": 42180,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/IO"
+   },
+   {
+    "id": "Platform.Unsafe",
+    "version": "0.6.2",
+    "description": "LinksPlatform's Platform.Unsafe Class Library",
+    "totalDownloads": 45424,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Unsafe"
+   },
+   {
+    "id": "Platform.Memory",
+    "version": "0.4.1",
+    "description": "LinksPlatform's Platform.Memory Class Library",
+    "totalDownloads": 41994,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Memory"
+   },
+   {
+    "id": "Platform.Delegates.TemplateLibrary",
+    "version": "0.3.7",
+    "description": "LinksPlatform's Platform.Delegates is a Template Library what contains set of C++ abstract class templates for a simple event engine. Use Platform.Delegates.h file to include the library.",
+    "totalDownloads": 35704,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "konard, poul250, uselessgoddess"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Delegates"
+   },
+   {
+    "id": "Platform.Data.Doublets",
+    "version": "0.18.1",
+    "description": "LinksPlatform's Platform.Data.Doublets Class Library",
+    "totalDownloads": 34419,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "konard, FreePhoenix888"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Data.Doublets"
+   },
+   {
+    "id": "Platform.RegularExpressions.Transformer",
+    "version": "0.3.4",
+    "description": "LinksPlatform's Platform.RegularExpressions.Transformer Class Library",
+    "totalDownloads": 35371,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/RegularExpressions.Transformer"
+   },
+   {
+    "id": "Platform.Interfaces.TemplateLibrary",
+    "version": "0.3.41",
+    "description": "LinksPlatform's Platform.Interfaces is a Template Library what contains set of C++ concepts templates. Use Platform.Interfaces.h file to include the library.",
+    "totalDownloads": 34292,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "konard, uselessgoddess, Mitron57"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Interfaces"
+   },
+   {
+    "id": "Platform.Collections.Methods",
+    "version": "0.7.3",
+    "description": "LinksPlatform's Platform.Collections.Methods Class Library",
+    "totalDownloads": 33145,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Collections.Methods"
+   },
+   {
+    "id": "Platform.Setters",
+    "version": "0.5.0",
+    "description": "LinksPlatform's Platform.Setters Class Library",
+    "totalDownloads": 33370,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "konard, FreePhoenix888"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Setters"
+   },
+   {
+    "id": "Platform.Exceptions.TemplateLibrary",
+    "version": "0.3.2",
+    "description": "LinksPlatform's Platform.Exceptions is a Template Library what contains set of C++ abstract class templates. Use Platform.Exceptions.h file to include the library.",
+    "totalDownloads": 24475,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Exceptions"
+   },
+   {
+    "id": "Platform.Timestamps",
+    "version": "0.3.0",
+    "description": "LinksPlatform's Platform.Timestamps Class Library",
+    "totalDownloads": 23410,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Timestamps"
+   },
+   {
+    "id": "Platform.Communication",
+    "version": "0.2.0",
+    "description": "LinksPlatform's Platform.Communication Class Library",
+    "totalDownloads": 16351,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Communication"
+   },
+   {
+    "id": "Platform.Data.Doublets.FFI",
+    "version": "0.9.0",
+    "description": "This package contains platform-specific native code builds of LinksPlatform's Platform.Data.Doublets library.",
+    "totalDownloads": 15564,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "voider"
+    ],
+    "projectUrl": "https://github.com/linksplatform/Data.Doublets"
+   },
+   {
+    "id": "Platform.Hashing.TemplateLibrary",
+    "version": "0.5.6",
+    "description": "LinksPlatform's Platform.Hashing is a Template Library which contains std::hash specializations for:\n- trivial and standard-layout types\n- types constrained by std::ranges::range\n- std::any\nUse Platfo",
+    "totalDownloads": 14229,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Hashing"
+   },
+   {
+    "id": "Platform.Diagnostics",
+    "version": "0.1.0",
+    "description": "LinksPlatform's Platform.Diagnostics Class Library",
+    "totalDownloads": 14715,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Diagnostics"
+   },
+   {
+    "id": "Platform.Collections.Methods.TemplateLibrary",
+    "version": "0.3.0",
+    "description": "LinksPlatform's Platform.Collections.Methods is a Template Library what contains set of C++ classes templates to build custom implementations of collections on top of provided standard methods impleme",
+    "totalDownloads": 13337,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Collections.Methods"
+   },
+   {
+    "id": "Platform.Delegates",
+    "version": "0.1.1",
+    "description": "LinksPlatform's Platform.Delegates Class Library",
+    "totalDownloads": 14766,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "FreePhoenix888"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Delegates"
+   },
+   {
+    "id": "Platform.Ranges.TemplateLibrary",
+    "version": "0.2.0",
+    "description": "LinksPlatform's Platform.Ranges is a Template Library what contains set of C++ non-abstract class templates. Use Platform.Ranges.h file to include the library.",
+    "totalDownloads": 10262,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Ranges"
+   },
+   {
+    "id": "Platform.Incrementers",
+    "version": "0.2.0",
+    "description": "LinksPlatform's Platform.Incrementers Class Library",
+    "totalDownloads": 9325,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Incrementers"
+   },
+   {
+    "id": "Platform.Converters.TemplateLibrary",
+    "version": "0.2.0",
+    "description": "LinksPlatform's Platform.Converters is a Template Library what contains set of C++ abstract class templates. Use Platform.Converters.h file to include the library.",
+    "totalDownloads": 8831,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Converters"
+   },
+   {
+    "id": "Platform.Data.Doublets.Sequences",
+    "version": "0.6.5",
+    "description": "LinksPlatform's Platform.Data.Doublets.Sequences Class Library",
+    "totalDownloads": 9587,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "konard, FreePhoenix888"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Data.Doublets.Sequences"
+   },
+   {
+    "id": "Platform.Data.Triplets",
+    "version": "0.1.1",
+    "description": "LinksPlatform's Platform.Data.Triplets Class Library",
+    "totalDownloads": 8276,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Data.Triplets"
+   },
+   {
+    "id": "Platform.Scopes",
+    "version": "0.1.0",
+    "description": "LinksPlatform's Platform.Scopes Class Library",
+    "totalDownloads": 8590,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Scopes"
+   },
+   {
+    "id": "Platform.Communication.Protocol.Lino",
+    "version": "0.4.0",
+    "description": "LinksPlatform's Platform.Communication.Protocol.Lino Class Library",
+    "totalDownloads": 8088,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Communication.Protocol.Lino"
+   },
+   {
+    "id": "Platform.Data.Sequences",
+    "version": "0.3.2",
+    "description": "LinksPlatform's Platform.Data.Sequences Class Library",
+    "totalDownloads": 8017,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "konard, FreePhoenix888"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Data.Sequences"
+   },
+   {
+    "id": "Platform.Collections.TemplateLibrary",
+    "version": "0.2.1",
+    "description": "LinksPlatform's Platform.Collections is a Template Library what contains set of C++ abstract class templates for collections. Use Platform.Collections.h file to include the library.",
+    "totalDownloads": 1430,
+    "owners": [
+     "LinksPlatform"
+    ],
+    "authors": [
+     "konard, flakeed, uselessgoddess"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Collections"
+   },
+   {
+    "id": "Platform.Data.Triplets.Kernel",
+    "version": "0.0.4",
+    "description": "This package contains platform-specific native code builds of LinksPlatform's Platform.Data.Triplets.Kernel library.",
+    "totalDownloads": 6316,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://github.com/linksplatform/Data.Triplets.Kernel"
+   },
+   {
+    "id": "Platform.Data.TemplateLibrary",
+    "version": "0.1.1",
+    "description": "LinksPlatform's Platform.Hashing is a Template Library which contains interface specializations for:\n- doublets, triplets and etc.\nUse Platform.Data.h file to include the whole library.",
+    "totalDownloads": 1383,
+    "owners": [
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Data"
+   },
+   {
+    "id": "Platform.Comparers",
+    "version": "0.1.0",
+    "description": "LinksPlatform's Platform.Comparers Class Library",
+    "totalDownloads": 4741,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Comparers"
+   },
+   {
+    "id": "Platform.Hardware.Cpu",
+    "version": "0.1.0",
+    "description": "LinksPlatform's Platform.Hardware.Cpu Class Library",
+    "totalDownloads": 4846,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Nick Strupat, Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Hardware.Cpu"
+   },
+   {
+    "id": "Platform.Data.Doublets.TemplateLibrary",
+    "version": "0.1.0",
+    "description": "LinksPlatform's Platform.Data.Doublets is a Template Library what contains set of C++ templates. Use Platform.Data.Doublets.h file to include the library.",
+    "totalDownloads": 779,
+    "owners": [
+     "LinksPlatform"
+    ],
+    "authors": [
+     "konard, uselessgoddess, FreePhoenix888"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Data.Doublets"
+   },
+   {
+    "id": "Platform.Numbers.TemplateLibrary",
+    "version": "0.1.0",
+    "description": "LinksPlatform's Platform.Numbers is a Template Library what contains set of C++ abstract class templates for collections. Use Platform.Numbers.h file to include the library.",
+    "totalDownloads": 766,
+    "owners": [
+     "LinksPlatform"
+    ],
+    "authors": [
+     "konard"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Numbers"
+   },
+   {
+    "id": "Platform.Timestamps.TemplateLibrary",
+    "version": "0.1.0",
+    "description": "LinksPlatform's Platform.Timestamps is a Template Library what contains set of C++ class for timestamps. Use Platform.Timestamps.h file to include the library.",
+    "totalDownloads": 760,
+    "owners": [
+     "LinksPlatform"
+    ],
+    "authors": [
+     "konard"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Timestamps"
+   },
+   {
+    "id": "Platform.Memory.TemplateLibrary",
+    "version": "0.1.0",
+    "description": "LinksPlatform's Platform.Memory is a Template Library what contains crossplatform class API for memory mapping. Use Platform.Memory.h file to include the library.",
+    "totalDownloads": 704,
+    "owners": [
+     "LinksPlatform"
+    ],
+    "authors": [
+     "konard"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Memory"
+   },
+   {
+    "id": "Platform.Setters.TemplateLibrary",
+    "version": "0.1.0",
+    "description": "LinksPlatform's Platform.Setters is a Template Library what contains set of C++ class templates. Each setter provides a set of callback methods to set the result value. Use Platform.Setters.h file to ",
+    "totalDownloads": 2881,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "konard, Mitron57"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Setters"
+   },
+   {
+    "id": "Platform.Protocols.Lino",
+    "version": "0.7.0",
+    "description": "LinksPlatform's Platform.Protocols.Lino Class Library",
+    "totalDownloads": 3155,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Protocols.Lino"
+   },
+   {
+    "id": "Platform.Data.Doublets.Json",
+    "version": "0.1.2",
+    "description": "LinksPlatform's Platform.Data.Doublets.Json Class Library",
+    "totalDownloads": 3000,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "FreePhoenix888"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Data.Doublets.Json"
+   },
+   {
+    "id": "Platform.Random.TemplateLibrary",
+    "version": "0.2.0",
+    "description": "LinksPlatform's Platform.Random is a Template Library that contains helper functions and constants to work with random numbers. Use Platform.Random.h file to include the library.",
+    "totalDownloads": 2739,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "konard, norwend, uselessgoddess"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Random"
+   },
+   {
+    "id": "Platform.Equality.TemplateLibrary",
+    "version": "0.0.1",
+    "description": "LinksPlatform's Platform.Equality is a Template Library adds more comparison features for using std::unordered_map",
+    "totalDownloads": 2091,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "konard, uselessgoddess"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Equality"
+   },
+   {
+    "id": "Platform.Data.Doublets.Xml",
+    "version": "0.0.3",
+    "description": "LinksPlatform's Platform.Data.Doublets.Xml Class Library",
+    "totalDownloads": 1954,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko, mrMask"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Data.Doublets.Xml"
+   },
+   {
+    "id": "Platform.Protocols",
+    "version": "0.3.0",
+    "description": "LinksPlatform's Platform.Protocols Class Library",
+    "totalDownloads": 1684,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Communication"
+   },
+   {
+    "id": "Platform.RegularExpressions.Transformer.HasuraSQLSimplifier",
+    "version": "0.0.2",
+    "description": "LinksPlatform's Platform.RegularExpressions.Transformer.HasuraSQLSimplifier Class Library",
+    "totalDownloads": 1621,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "Konstantin Diachenko"
+    ],
+    "projectUrl": "https://linksplatform.github.io/RegularExpressions.Transformer.HasuraSQLSimplifier"
+   },
+   {
+    "id": "json2links",
+    "version": "0.1.0",
+    "description": "LinksPlatform's Platform.Data.Doublets.Json.Importer CLI tool (json2links).",
+    "totalDownloads": 1168,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "FreePhoenix888"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Data.Doublets.Json.Importer"
+   },
+   {
+    "id": "links2json",
+    "version": "0.1.0",
+    "description": "LinksPlatform's Platform.Data.Doublets.Json.Importer CLI tool (links2json).",
+    "totalDownloads": 1190,
+    "owners": [
+     "konard",
+     "LinksPlatform"
+    ],
+    "authors": [
+     "FreePhoenix888"
+    ],
+    "projectUrl": "https://linksplatform.github.io/Data.Doublets.Json.Exporter"
+   }
+  ]
+ }
+}

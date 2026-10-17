@@ -1,0 +1,2349 @@
+{
+ "source": "https://registry.npmjs.org/-/v1/search?text=maintainer:konard&size=250",
+ "total": 213,
+ "packages": [
+  {
+   "name": "links-notation",
+   "version": "0.27.0",
+   "date": "2026-10-16T19:38:06.126Z",
+   "description": "Links Notation parser for JavaScript",
+   "npm": "https://www.npmjs.com/package/links-notation",
+   "downloads": {
+    "monthly": 42068,
+    "weekly": 22858
+   }
+  },
+  {
+   "name": "command-stream",
+   "version": "2.4.0",
+   "date": "2026-10-12T09:59:51.525Z",
+   "description": "Modern $ shell utility library with streaming, async iteration, and EventEmitter support, optimized for Bun runtime",
+   "npm": "https://www.npmjs.com/package/command-stream",
+   "downloads": {
+    "monthly": 28872,
+    "weekly": 12694
+   }
+  },
+  {
+   "name": "log-lazy",
+   "version": "1.0.4",
+   "date": "2025-09-21T05:40:23.919Z",
+   "description": "A lazy logging library with bitwise level control",
+   "npm": "https://www.npmjs.com/package/log-lazy",
+   "downloads": {
+    "monthly": 11427,
+    "weekly": 5803
+   }
+  },
+  {
+   "name": "lino-env",
+   "version": "0.2.8",
+   "date": "2025-12-03T14:54:30.527Z",
+   "description": "A JavaScript library to operate .lenv files",
+   "npm": "https://www.npmjs.com/package/lino-env",
+   "downloads": {
+    "monthly": 12634,
+    "weekly": 7057
+   }
+  },
+  {
+   "name": "test-anywhere",
+   "version": "0.9.1",
+   "date": "2025-12-19T09:48:06.493Z",
+   "description": "A JavaScript testing framework that is built on top of built-in testing frameworks of Bun, Deno, and Node.js",
+   "npm": "https://www.npmjs.com/package/test-anywhere",
+   "downloads": {
+    "monthly": 16335,
+    "weekly": 8315
+   }
+  },
+  {
+   "name": "browser-commander",
+   "version": "0.31.2",
+   "date": "2026-10-12T07:05:43.227Z",
+   "description": "Universal browser automation library that supports Playwright, Puppeteer, and Selenium with a unified API",
+   "npm": "https://www.npmjs.com/package/browser-commander",
+   "downloads": {
+    "monthly": 9561,
+    "weekly": 5689
+   }
+  },
+  {
+   "name": "lino-objects-codec",
+   "version": "0.9.2",
+   "date": "2026-10-11T17:17:54.507Z",
+   "description": "A library to encode/decode objects to/from links notation",
+   "npm": "https://www.npmjs.com/package/lino-objects-codec",
+   "downloads": {
+    "monthly": 11813,
+    "weekly": 6802
+   }
+  },
+  {
+   "name": "lino-arguments",
+   "version": "0.3.0",
+   "date": "2026-04-10T22:24:25.006Z",
+   "description": "A setup of Links Notation Environment (lenv) + yargs to support easy configuration of CLI apps",
+   "npm": "https://www.npmjs.com/package/lino-arguments",
+   "downloads": {
+    "monthly": 11483,
+    "weekly": 5714
+   }
+  },
+  {
+   "name": "@link-assistant/hive-mind",
+   "version": "2.37.1",
+   "date": "2026-10-16T19:29:13.965Z",
+   "description": "AI-powered issue solver and hive mind for collaborative problem solving",
+   "npm": "https://www.npmjs.com/package/@link-assistant/hive-mind",
+   "downloads": {
+    "monthly": 9676,
+    "weekly": 3559
+   }
+  },
+  {
+   "name": "use-m",
+   "version": "8.16.4",
+   "date": "2026-09-24T20:13:42.893Z",
+   "description": "use-m: dynamically import any JavaScript module",
+   "npm": "https://www.npmjs.com/package/use-m",
+   "downloads": {
+    "monthly": 5563,
+    "weekly": 1542
+   }
+  },
+  {
+   "name": "@link-assistant/agent",
+   "version": "0.26.15",
+   "date": "2026-10-14T14:19:23.769Z",
+   "description": "A minimal, public domain AI CLI agent compatible with OpenCode's JSON interface. Bun-only runtime.",
+   "npm": "https://www.npmjs.com/package/@link-assistant/agent",
+   "downloads": {
+    "monthly": 4903,
+    "weekly": 1943
+   }
+  },
+  {
+   "name": "agent-commander",
+   "version": "0.11.1",
+   "date": "2026-10-16T16:03:27.575Z",
+   "description": "A JavaScript library to control agents enclosed in CLI commands like Anthropic Claude Code CLI",
+   "npm": "https://www.npmjs.com/package/agent-commander",
+   "downloads": {
+    "monthly": 4454,
+    "weekly": 2056
+   }
+  },
+  {
+   "name": "lino-i18n",
+   "version": "0.4.0",
+   "date": "2026-10-08T23:33:33.273Z",
+   "description": "Universal i18n library that stores translations in Links Notation (.lino) instead of JSON.",
+   "npm": "https://www.npmjs.com/package/lino-i18n",
+   "downloads": {
+    "monthly": 4215,
+    "weekly": 2680
+   }
+  },
+  {
+   "name": "@link-assistant/web-search",
+   "version": "0.11.1",
+   "date": "2026-10-07T11:29:44.728Z",
+   "description": "A 40-provider web search microservice and library with typed provider metadata, reranking, and optional web-capture backing",
+   "npm": "https://www.npmjs.com/package/@link-assistant/web-search",
+   "downloads": {
+    "monthly": 3453,
+    "weekly": 2259
+   }
+  },
+  {
+   "name": "start-command",
+   "version": "0.37.8",
+   "date": "2026-10-14T15:00:12.743Z",
+   "description": "Gamification of coding, execute any command with ability to auto-report issues on GitHub",
+   "npm": "https://www.npmjs.com/package/start-command",
+   "downloads": {
+    "monthly": 3187,
+    "weekly": 1402
+   }
+  },
+  {
+   "name": "@link-assistant/web-capture",
+   "version": "2.0.1",
+   "date": "2026-10-09T07:20:35.894Z",
+   "description": "CLI and microservice to render web pages as HTML, Markdown, or PNG",
+   "npm": "https://www.npmjs.com/package/@link-assistant/web-capture",
+   "downloads": {
+    "monthly": 2409,
+    "weekly": 1286
+   }
+  },
+  {
+   "name": "@deep-foundation/deeplinks",
+   "version": "0.0.620",
+   "date": "2024-10-26T19:15:02.989Z",
+   "description": "[![npm](https://img.shields.io/npm/v/@deep-foundation/deeplinks.svg)](https://www.npmjs.com/package/@deep-foundation/deeplinks) [![Gitpod](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/deep-fo",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/deeplinks",
+   "downloads": {
+    "monthly": 2401,
+    "weekly": 853
+   }
+  },
+  {
+   "name": "package-registry-manager",
+   "version": "0.23.0",
+   "date": "2026-10-12T19:56:55.950Z",
+   "description": "Inspect repositories and guide secure package-registry setup",
+   "npm": "https://www.npmjs.com/package/package-registry-manager",
+   "downloads": {
+    "monthly": 1592,
+    "weekly": 1299
+   }
+  },
+  {
+   "name": "gh-upload-log",
+   "version": "0.10.1",
+   "date": "2026-10-08T10:58:47.718Z",
+   "description": "A tool to upload log files to GitHub as Gists or repositories",
+   "npm": "https://www.npmjs.com/package/gh-upload-log",
+   "downloads": {
+    "monthly": 1429,
+    "weekly": 760
+   }
+  },
+  {
+   "name": "disk-space-saviour",
+   "version": "0.17.0",
+   "date": "2026-10-11T14:54:09.533Z",
+   "description": "Safely reclaims disk space: caches and build outputs of 20+ ecosystems, forgotten projects, and Docker (running, stopped and nested containers), with an emergency mode",
+   "npm": "https://www.npmjs.com/package/disk-space-saviour",
+   "downloads": {
+    "monthly": 1035,
+    "weekly": 583
+   }
+  },
+  {
+   "name": "@deep-foundation/deepcase",
+   "version": "0.0.135",
+   "date": "2024-07-23T11:17:31.766Z",
+   "description": "[![Gitpod](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/deep-foundation/deepcase)  [![Discord](https://badgen.net/badge/icon/discord?icon=discord&label&color=purple)](https://discord.gg/deep-",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/deepcase",
+   "downloads": {
+    "monthly": 735,
+    "weekly": 325
+   }
+  },
+  {
+   "name": "@deep-foundation/hasura",
+   "version": "0.0.68",
+   "date": "2024-09-17T05:25:24.813Z",
+   "description": "[![npm](https://img.shields.io/npm/v/@deep-foundation/hasura.svg)](https://www.npmjs.com/package/@deep-foundation/hasura) [![Gitpod](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/deep-foundati",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/hasura",
+   "downloads": {
+    "monthly": 804,
+    "weekly": 194
+   }
+  },
+  {
+   "name": "@deep-foundation/npm-automation",
+   "version": "18.1.15",
+   "date": "2024-01-29T11:59:20.821Z",
+   "description": "Automates actions that you do in your deep package when you use npm",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/npm-automation",
+   "downloads": {
+    "monthly": 598,
+    "weekly": 12
+   }
+  },
+  {
+   "name": "@deep-foundation/store",
+   "version": "0.0.32",
+   "date": "2024-09-20T18:01:07.467Z",
+   "description": "[![npm](https://img.shields.io/npm/v/@deep-foundation/store.svg)](https://www.npmjs.com/package/@deep-foundation/store) [![Gitpod](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/deep-foundation",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/store",
+   "downloads": {
+    "monthly": 602,
+    "weekly": 136
+   }
+  },
+  {
+   "name": "doublets-web",
+   "version": "0.1.3",
+   "date": "2026-05-08T10:26:40.761Z",
+   "description": "WebAssembly bindings for the LinksPlatform Doublets associative storage library.",
+   "npm": "https://www.npmjs.com/package/doublets-web",
+   "downloads": {
+    "monthly": 733,
+    "weekly": 551
+   }
+  },
+  {
+   "name": "@deep-foundation/materialized-path",
+   "version": "0.0.35",
+   "date": "2024-05-02T22:54:10.092Z",
+   "description": "[![npm](https://img.shields.io/npm/v/@deep-foundation/react-hasura.svg)](https://www.npmjs.com/package/@deep-foundation/react-hasura) [![Gitpod](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/d",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/materialized-path",
+   "downloads": {
+    "monthly": 575,
+    "weekly": 193
+   }
+  },
+  {
+   "name": "@deep-foundation/react-hasura",
+   "version": "0.0.29",
+   "date": "2024-05-02T22:42:38.161Z",
+   "description": "[![npm](https://img.shields.io/npm/v/@deep-foundation/react-hasura.svg)](https://www.npmjs.com/package/@deep-foundation/react-hasura) [![Gitpod](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/d",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/react-hasura",
+   "downloads": {
+    "monthly": 560,
+    "weekly": 203
+   }
+  },
+  {
+   "name": "meta-language",
+   "version": "0.46.0",
+   "date": "2026-06-28T14:42:34.612Z",
+   "description": "JavaScript implementation of the meta-language links-network core",
+   "npm": "https://www.npmjs.com/package/meta-language",
+   "downloads": {
+    "monthly": 395,
+    "weekly": 221
+   }
+  },
+  {
+   "name": "@deep-foundation/chatgpt",
+   "version": "3.1.0",
+   "date": "2023-09-23T22:15:33.521Z",
+   "description": "The ChatGPT package for Deep allows seamless GPT-3.5/GPT-4 integration in your projects, providing AI-powered conversations.",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/chatgpt",
+   "downloads": {
+    "monthly": 463,
+    "weekly": 146
+   }
+  },
+  {
+   "name": "@link-assistant/claude-profiles",
+   "version": "1.2.3",
+   "date": "2025-12-09T21:33:09.212Z",
+   "description": "Manage multiple Claude configuration profiles using GitHub Gists as secure cloud storage",
+   "npm": "https://www.npmjs.com/package/@link-assistant/claude-profiles",
+   "downloads": {
+    "monthly": 370,
+    "weekly": 178
+   }
+  },
+  {
+   "name": "@deep-foundation/core",
+   "version": "0.0.2",
+   "date": "2023-02-24T19:49:13.878Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/core",
+   "downloads": {
+    "monthly": 334,
+    "weekly": 40
+   }
+  },
+  {
+   "name": "@deep-foundation/firebase-push-notification",
+   "version": "18.2.2-dev.0",
+   "date": "2023-08-14T17:04:30.594Z",
+   "description": "Provides links for working with @firebase/messaging and typescript library to simplify integration with this deep package",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/firebase-push-notification",
+   "downloads": {
+    "monthly": 321,
+    "weekly": 55
+   }
+  },
+  {
+   "name": "@deep-foundation/npm-packager",
+   "version": "0.0.45",
+   "date": "2024-03-24T20:00:24.339Z",
+   "description": "NPM packager package for [Deep](https://deep.foundation/). It handles installation and publication of `deep-package` packages. This package is included in each [Deep](https://deep.foundation/) instance, there is no need to install it manually.",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/npm-packager",
+   "downloads": {
+    "monthly": 404,
+    "weekly": 74
+   }
+  },
+  {
+   "name": "@deep-foundation/capacitor-device",
+   "version": "20.0.3-dev.5",
+   "date": "2024-05-11T02:30:02.681Z",
+   "description": "A deep package based on [`@capacitor/device`](https://www.npmjs.com/package/@capacitor/device)",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/capacitor-device",
+   "downloads": {
+    "monthly": 388,
+    "weekly": 15
+   }
+  },
+  {
+   "name": "@deep-foundation/tsx",
+   "version": "0.0.5",
+   "date": "2023-08-27T08:17:11.406Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/tsx",
+   "downloads": {
+    "monthly": 346,
+    "weekly": 39
+   }
+  },
+  {
+   "name": "@deep-foundation/perception-imports",
+   "version": "0.0.140",
+   "date": "2024-10-26T18:49:29.143Z",
+   "description": "[![npm](https://img.shields.io/npm/v/@deep-foundation/perception-imports.svg)](https://www.npmjs.com/package/@deep-foundation/perception-imports) [![Gitpod](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/perception-imports",
+   "downloads": {
+    "monthly": 343,
+    "weekly": 183
+   }
+  },
+  {
+   "name": "gh-pull-all",
+   "version": "1.6.0",
+   "date": "2026-08-17T09:47:49.772Z",
+   "description": "A tool to pull all git repositories in a directory with parallel processing and status display",
+   "npm": "https://www.npmjs.com/package/gh-pull-all",
+   "downloads": {
+    "monthly": 342,
+    "weekly": 141
+   }
+  },
+  {
+   "name": "gh-load-issue",
+   "version": "0.3.2",
+   "date": "2025-12-26T22:20:50.711Z",
+   "description": "A CLI tool to download GitHub issues and convert them to markdown",
+   "npm": "https://www.npmjs.com/package/gh-load-issue",
+   "downloads": {
+    "monthly": 266,
+    "weekly": 116
+   }
+  },
+  {
+   "name": "gh-load-pull-request",
+   "version": "0.7.0",
+   "date": "2025-12-28T02:29:00.431Z",
+   "description": "Download GitHub pull request and convert it to markdown",
+   "npm": "https://www.npmjs.com/package/gh-load-pull-request",
+   "downloads": {
+    "monthly": 276,
+    "weekly": 100
+   }
+  },
+  {
+   "name": "@deep-foundation/chatgpt-azure",
+   "version": "3.0.7",
+   "date": "2024-07-08T01:46:58.147Z",
+   "description": "[![npm](https://img.shields.io/npm/v/@deep-foundation/chatgpt-azure.svg)](https://www.npmjs.com/package/@deep-foundation/chatgpt-azure) [![Discord](https://badgen.net/badge/icon/discord?icon=discord&label&color=purple)](https://discord.gg/deep-foundation)",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/chatgpt-azure",
+   "downloads": {
+    "monthly": 220,
+    "weekly": 55
+   }
+  },
+  {
+   "name": "@deep-foundation/capacitor-motion",
+   "version": "8.0.0-dev.13",
+   "date": "2024-05-11T02:41:50.517Z",
+   "description": "Provides links based on [`@capacitor/motion`](https://www.npmjs.com/package/@capacitor/motion) and typescript library for comfortable using of this deep package using typescript",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/capacitor-motion",
+   "downloads": {
+    "monthly": 244,
+    "weekly": 107
+   }
+  },
+  {
+   "name": "gh-setup-git-identity",
+   "version": "0.8.0",
+   "date": "2026-01-16T11:31:09.247Z",
+   "description": "A tool to setup git identity based on current gh user",
+   "npm": "https://www.npmjs.com/package/gh-setup-git-identity",
+   "downloads": {
+    "monthly": 233,
+    "weekly": 171
+   }
+  },
+  {
+   "name": "@deep-foundation/capacitor-voice-recorder",
+   "version": "1.2.7-dev.28",
+   "date": "2024-05-11T02:35:15.044Z",
+   "description": "[![npm](https://img.shields.io/npm/v/@deep-foundation/capacitor-voice-recorder.svg)](https://www.npmjs.com/package/@deep-foundation/capacitor-voice-recorder)  [![Gitpod](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/capacitor-voice-recorder",
+   "downloads": {
+    "monthly": 185,
+    "weekly": 16
+   }
+  },
+  {
+   "name": "@deep-foundation/words-demo",
+   "version": "0.0.57",
+   "date": "2023-11-02T01:16:08.020Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/words-demo",
+   "downloads": {
+    "monthly": 175,
+    "weekly": 60
+   }
+  },
+  {
+   "name": "glab-setup-git-identity",
+   "version": "0.6.2",
+   "date": "2026-03-17T14:44:41.929Z",
+   "description": "A tool to setup git identity based on current GitLab user",
+   "npm": "https://www.npmjs.com/package/glab-setup-git-identity",
+   "downloads": {
+    "monthly": 173,
+    "weekly": 127
+   }
+  },
+  {
+   "name": "@deep-foundation/capacitor-geolocation",
+   "version": "8.0.0-dev.23",
+   "date": "2024-05-11T02:45:16.894Z",
+   "description": "A deep package that provides links based on @capacitor/geolocation and typescript library to simplify integration with this deep package",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/capacitor-geolocation",
+   "downloads": {
+    "monthly": 172,
+    "weekly": 46
+   }
+  },
+  {
+   "name": "@deep-foundation/payments-tinkoff-c2b-test",
+   "version": "0.7.7",
+   "date": "2023-08-02T13:19:46.373Z",
+   "description": "Test [`@deep-foundation/payments-tinkoff-c2b`](https://www.npmjs.com/package/@deep-foundation/payments-tinkoff-c2b) package",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/payments-tinkoff-c2b-test",
+   "downloads": {
+    "monthly": 131,
+    "weekly": 47
+   }
+  },
+  {
+   "name": "@deepcase/materialized-path",
+   "version": "0.0.33",
+   "date": "2021-11-03T16:23:32.499Z",
+   "description": "[![npm version](https://badge.fury.io/js/%40deepcase%2Fmaterialized-path.svg)](https://badge.fury.io/js/%40deepcase%2Fmaterialized-path)",
+   "npm": "https://www.npmjs.com/package/@deepcase/materialized-path",
+   "downloads": {
+    "monthly": 117,
+    "weekly": 36
+   }
+  },
+  {
+   "name": "@deep-foundation/react-with-packages-installed",
+   "version": "0.5.3",
+   "date": "2023-06-06T07:42:37.515Z",
+   "description": "A wrapper component for the useArePackageInstalled react hook from the @deep-foundation/use-are-package-installed package",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/react-with-packages-installed",
+   "downloads": {
+    "monthly": 115,
+    "weekly": 37
+   }
+  },
+  {
+   "name": "@deepcase/deeplinks",
+   "version": "0.0.52",
+   "date": "2021-11-07T16:26:21.702Z",
+   "description": "[![npm version](https://badge.fury.io/js/%40deepcase%2Fdeeplinks.svg)](https://badge.fury.io/js/%40deepcase%2Fdeeplinks)  [![develop deepcase](https://badgen.net/badge/develop/deepcase)](https://github.com/deepcase/deepcase)",
+   "npm": "https://www.npmjs.com/package/@deepcase/deeplinks",
+   "downloads": {
+    "monthly": 136,
+    "weekly": 55
+   }
+  },
+  {
+   "name": "@deep-foundation/post-to-cloud",
+   "version": "0.0.33",
+   "date": "2023-11-05T10:29:04.531Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/post-to-cloud",
+   "downloads": {
+    "monthly": 123,
+    "weekly": 34
+   }
+  },
+  {
+   "name": "@deep-foundation/payments-tinkoff-c2b",
+   "version": "0.1.10",
+   "date": "2024-10-08T13:01:52.397Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/payments-tinkoff-c2b",
+   "downloads": {
+    "monthly": 98,
+    "weekly": 30
+   }
+  },
+  {
+   "name": "@deep-foundation/npm-packager-ui",
+   "version": "0.0.14",
+   "date": "2024-01-09T22:52:21.450Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/npm-packager-ui",
+   "downloads": {
+    "monthly": 123,
+    "weekly": 23
+   }
+  },
+  {
+   "name": "@deep-foundation/capacitor-haptics",
+   "version": "0.0.2",
+   "date": "2024-05-11T02:52:53.991Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/capacitor-haptics",
+   "downloads": {
+    "monthly": 121,
+    "weekly": 22
+   }
+  },
+  {
+   "name": "@deep-foundation/react-use-are-packages-installed",
+   "version": "1.0.3",
+   "date": "2023-06-06T07:02:26.108Z",
+   "description": "A React hook that checks whether deep packages are installed",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/react-use-are-packages-installed",
+   "downloads": {
+    "monthly": 99,
+    "weekly": 7
+   }
+  },
+  {
+   "name": "@deep-foundation/jsonschema-form",
+   "version": "0.1.26",
+   "date": "2024-11-05T17:43:27.730Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/jsonschema-form",
+   "downloads": {
+    "monthly": 99,
+    "weekly": 27
+   }
+  },
+  {
+   "name": "@deepcase/store",
+   "version": "0.0.42",
+   "date": "2021-09-02T15:52:14.353Z",
+   "description": "[![npm version](https://badge.fury.io/js/%40deepcase%2Fstore.svg)](https://badge.fury.io/js/%40deepcase%2Fstore) [![example](https://badgen.net/badge/example/gh-pages/gray)](https://deepcase.github.io/store/)",
+   "npm": "https://www.npmjs.com/package/@deepcase/store",
+   "downloads": {
+    "monthly": 80,
+    "weekly": 29
+   }
+  },
+  {
+   "name": "@deep-foundation/logger",
+   "version": "2.0.0",
+   "date": "2023-08-17T23:37:43.994Z",
+   "description": "[![npm](https://img.shields.io/npm/v/@deep-foundation/logger.svg)](https://www.npmjs.com/package/@deep-foundation/logger)  [![Gitpod](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/deep-foundat",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/logger",
+   "downloads": {
+    "monthly": 77,
+    "weekly": 48
+   }
+  },
+  {
+   "name": "@deepcase/hasura",
+   "version": "0.0.33",
+   "date": "2021-10-25T19:41:45.684Z",
+   "description": "[![npm version](https://badge.fury.io/js/%40deepcase%2Fhasura.svg)](https://badge.fury.io/js/%40deepcase%2Fhasura) [![example](https://badgen.net/badge/example/gh-pages/gray)](https://deepcase.github.io/hasura/) [![develop deepcase](https://badgen.net/bad",
+   "npm": "https://www.npmjs.com/package/@deepcase/hasura",
+   "downloads": {
+    "monthly": 99,
+    "weekly": 34
+   }
+  },
+  {
+   "name": "@deep-assistant/hive-mind",
+   "version": "0.38.1",
+   "date": "2025-12-09T18:13:56.835Z",
+   "description": "AI-powered issue solver and hive mind for collaborative problem solving",
+   "npm": "https://www.npmjs.com/package/@deep-assistant/hive-mind",
+   "downloads": {
+    "monthly": 80,
+    "weekly": 7
+   }
+  },
+  {
+   "name": "@deep-foundation/finder",
+   "version": "0.0.9",
+   "date": "2024-06-30T10:04:46.567Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/finder",
+   "downloads": {
+    "monthly": 74,
+    "weekly": 12
+   }
+  },
+  {
+   "name": "@deep-foundation/perception-links",
+   "version": "0.0.31",
+   "date": "2024-10-11T10:31:18.638Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/perception-links",
+   "downloads": {
+    "monthly": 74,
+    "weekly": 30
+   }
+  },
+  {
+   "name": "@deep-foundation/capacitor-network",
+   "version": "0.1.15",
+   "date": "2024-05-11T02:46:13.863Z",
+   "description": "A deep package that is based on @capacitor/network package",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/capacitor-network",
+   "downloads": {
+    "monthly": 78,
+    "weekly": 29
+   }
+  },
+  {
+   "name": "@deep-foundation/chatgpt-tokens-gpt-3-encoder",
+   "version": "0.0.19",
+   "date": "2023-05-21T13:18:52.992Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/chatgpt-tokens-gpt-3-encoder",
+   "downloads": {
+    "monthly": 81,
+    "weekly": 40
+   }
+  },
+  {
+   "name": "@deep-foundation/chatgpt-azure-deep",
+   "version": "0.1.14",
+   "date": "2024-06-01T01:44:03.881Z",
+   "description": "[![npm](https://img.shields.io/npm/v/@deep-foundation/chatgpt-azure-deep.svg)](https://www.npmjs.com/package/@deep-foundation/chatgpt-azure-deep)  [![Discord](https://badgen.net/badge/icon/discord?icon=discord&label&color=purple)](https://discord.gg/deep-",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/chatgpt-azure-deep",
+   "downloads": {
+    "monthly": 62,
+    "weekly": 32
+   }
+  },
+  {
+   "name": "@deep-foundation/tokens",
+   "version": "0.0.11",
+   "date": "2023-05-21T13:11:44.336Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/tokens",
+   "downloads": {
+    "monthly": 72,
+    "weekly": 38
+   }
+  },
+  {
+   "name": "@deep-foundation/rss-to-deep",
+   "version": "0.0.31",
+   "date": "2023-10-30T03:46:55.025Z",
+   "description": "RSS-to-Deep is a package designed to manage RSS feeds. It allows you to import posts for each item in the RSS feed within a given date range.\r # Installation",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/rss-to-deep",
+   "downloads": {
+    "monthly": 72,
+    "weekly": 35
+   }
+  },
+  {
+   "name": "@deep-foundation/openai",
+   "version": "1.1.1",
+   "date": "2024-03-10T14:40:49.803Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/openai",
+   "downloads": {
+    "monthly": 58,
+    "weekly": 23
+   }
+  },
+  {
+   "name": "@deep-foundation/object-to-links-async-converter",
+   "version": "0.0.1",
+   "date": "2024-06-07T16:35:24.625Z",
+   "description": "A deep package for converting object to links",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/object-to-links-async-converter",
+   "downloads": {
+    "monthly": 63,
+    "weekly": 13
+   }
+  },
+  {
+   "name": "@deep-foundation/chatgpt-azure-discord-bot",
+   "version": "4.0.3",
+   "date": "2024-06-03T19:53:03.443Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/chatgpt-azure-discord-bot",
+   "downloads": {
+    "monthly": 63,
+    "weekly": 18
+   }
+  },
+  {
+   "name": "@deep-foundation/sound",
+   "version": "0.0.7",
+   "date": "2023-07-28T21:31:11.369Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/sound",
+   "downloads": {
+    "monthly": 52,
+    "weekly": 13
+   }
+  },
+  {
+   "name": "@deep-foundation/chatgpt-tasks",
+   "version": "0.0.15",
+   "date": "2023-09-26T16:01:44.701Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/chatgpt-tasks",
+   "downloads": {
+    "monthly": 55,
+    "weekly": 17
+   }
+  },
+  {
+   "name": "@deep-foundation/capacitor-camera",
+   "version": "1.1.15",
+   "date": "2024-05-11T02:43:22.799Z",
+   "description": "A deep package that is based on @capacitor/camera package",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/capacitor-camera",
+   "downloads": {
+    "monthly": 65,
+    "weekly": 5
+   }
+  },
+  {
+   "name": "@deep-foundation/boolean",
+   "version": "1.0.0",
+   "date": "2023-09-19T10:00:47.585Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/boolean",
+   "downloads": {
+    "monthly": 53,
+    "weekly": 4
+   }
+  },
+  {
+   "name": "@deepcase/auth",
+   "version": "0.0.26",
+   "date": "2020-12-06T23:46:03.736Z",
+   "description": "Adapter-wrapper for nextjs.",
+   "npm": "https://www.npmjs.com/package/@deepcase/auth",
+   "downloads": {
+    "monthly": 52,
+    "weekly": 13
+   }
+  },
+  {
+   "name": "@deep-foundation/splitting-text-into-words-alt",
+   "version": "0.0.11",
+   "date": "2023-09-24T06:51:51.217Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/splitting-text-into-words-alt",
+   "downloads": {
+    "monthly": 48,
+    "weekly": 30
+   }
+  },
+  {
+   "name": "@deep-foundation/create-typescript-npm-package",
+   "version": "2.0.11",
+   "date": "2023-08-01T05:46:22.556Z",
+   "description": "Creates a new npm package with typescript support that will help you to manage your deep package. Uses [`@deep-foundation/typescript-npm-package-template`](https://github.com/deep-foundation/typescript-npm-package-template) as a template",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/create-typescript-npm-package",
+   "downloads": {
+    "monthly": 51,
+    "weekly": 1
+   }
+  },
+  {
+   "name": "@deep-foundation/pow",
+   "version": "0.0.15",
+   "date": "2023-10-23T17:35:15.383Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/pow",
+   "downloads": {
+    "monthly": 47,
+    "weekly": 29
+   }
+  },
+  {
+   "name": "@deep-foundation/jsonschema",
+   "version": "0.1.13",
+   "date": "2024-10-11T13:12:10.790Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/jsonschema",
+   "downloads": {
+    "monthly": 58,
+    "weekly": 24
+   }
+  },
+  {
+   "name": "@deep-foundation/words-experiment",
+   "version": "0.0.16",
+   "date": "2023-09-24T07:01:22.072Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/words-experiment",
+   "downloads": {
+    "monthly": 54,
+    "weekly": 32
+   }
+  },
+  {
+   "name": "@deep-foundation/logger-test",
+   "version": "1.1.4",
+   "date": "2023-08-18T00:22:00.340Z",
+   "description": "Provides handler for testing @deep-foundation/logger package and link `Test` that is handled by the handler",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/logger-test",
+   "downloads": {
+    "monthly": 45,
+    "weekly": 19
+   }
+  },
+  {
+   "name": "@deep-foundation/capacitor-screen-reader",
+   "version": "1.3.3",
+   "date": "2024-05-11T01:36:31.875Z",
+   "description": "[![npm](https://img.shields.io/npm/v/@deep-foundation/capacitor-screen-reader.svg)](https://www.npmjs.com/package/<PACKAGE_NAME>)  [![Gitpod](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/deep",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/capacitor-screen-reader",
+   "downloads": {
+    "monthly": 42,
+    "weekly": 15
+   }
+  },
+  {
+   "name": "@deep-foundation/chatgpt-discord-bot",
+   "version": "0.0.4",
+   "date": "2024-06-03T20:10:32.938Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/chatgpt-discord-bot",
+   "downloads": {
+    "monthly": 42,
+    "weekly": 7
+   }
+  },
+  {
+   "name": "deduplino",
+   "version": "0.0.9",
+   "date": "2025-08-11T03:08:11.524Z",
+   "description": "CLI tool for deduplicating lino format",
+   "npm": "https://www.npmjs.com/package/deduplino",
+   "downloads": {
+    "monthly": 48,
+    "weekly": 12
+   }
+  },
+  {
+   "name": "@deepcase/react-hasura",
+   "version": "0.0.5",
+   "date": "2021-09-21T05:10:09.322Z",
+   "description": "[![npm version](https://badge.fury.io/js/%40deepcase%2Freact-hasura.svg)](https://badge.fury.io/js/%40deepcase%2Freact-hasura) [![example](https://badgen.net/badge/example/gh-pages/gray)](https://deepcase.github.io/hasura/) [![develop deepcase](https://ba",
+   "npm": "https://www.npmjs.com/package/@deepcase/react-hasura",
+   "downloads": {
+    "monthly": 47,
+    "weekly": 8
+   }
+  },
+  {
+   "name": "@deep-foundation/deepmemo-imports",
+   "version": "0.0.17",
+   "date": "2024-07-12T11:04:32.825Z",
+   "description": "[![npm](https://img.shields.io/npm/v/@deep-foundation/deepmemo-imports.svg)](https://www.npmjs.com/package/@deep-foundation/deepmemo-imports) [![Gitpod](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://gith",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/deepmemo-imports",
+   "downloads": {
+    "monthly": 38,
+    "weekly": 19
+   }
+  },
+  {
+   "name": "@deep-foundation/chatgpt-tokens-gpt-4-encoder",
+   "version": "1.0.3",
+   "date": "2023-09-23T21:22:01.703Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/chatgpt-tokens-gpt-4-encoder",
+   "downloads": {
+    "monthly": 46,
+    "weekly": 17
+   }
+  },
+  {
+   "name": "@deep-foundation/chatgpt-azure-tasks",
+   "version": "0.0.20",
+   "date": "2024-04-01T03:11:25.932Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/chatgpt-azure-tasks",
+   "downloads": {
+    "monthly": 38,
+    "weekly": 10
+   }
+  },
+  {
+   "name": "@deep-foundation/site",
+   "version": "0.0.4",
+   "date": "2023-10-09T15:43:22.345Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/site",
+   "downloads": {
+    "monthly": 41,
+    "weekly": 9
+   }
+  },
+  {
+   "name": "@deep-foundation/telegram-bot",
+   "version": "0.0.8",
+   "date": "2024-07-10T16:58:17.479Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/telegram-bot",
+   "downloads": {
+    "monthly": 35,
+    "weekly": 9
+   }
+  },
+  {
+   "name": "@deep-foundation/tasks",
+   "version": "0.0.7",
+   "date": "2023-07-19T05:41:20.693Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/tasks",
+   "downloads": {
+    "monthly": 35,
+    "weekly": 9
+   }
+  },
+  {
+   "name": "@deep-foundation/ai",
+   "version": "0.0.8",
+   "date": "2024-07-08T04:57:41.477Z",
+   "description": "[![npm](https://img.shields.io/npm/v/@deep-foundation/ai.svg)](https://www.npmjs.com/package/@deep-foundation/ai) [![Discord](https://badgen.net/badge/icon/discord?icon=discord&label&color=purple)](https://discord.gg/deep-foundation) # ai # Deep Package f",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/ai",
+   "downloads": {
+    "monthly": 40,
+    "weekly": 10
+   }
+  },
+  {
+   "name": "@deep-foundation/deep-vision",
+   "version": "0.1.2",
+   "date": "2024-01-18T18:33:49.985Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/deep-vision",
+   "downloads": {
+    "monthly": 40,
+    "weekly": 13
+   }
+  },
+  {
+   "name": "@deep-assistant/agent",
+   "version": "0.0.7",
+   "date": "2025-11-21T04:15:35.823Z",
+   "description": "A minimal, public domain AI CLI agent compatible with OpenCode's JSON interface. Bun-only runtime.",
+   "npm": "https://www.npmjs.com/package/@deep-assistant/agent",
+   "downloads": {
+    "monthly": 36,
+    "weekly": 10
+   }
+  },
+  {
+   "name": "@deep-foundation/authorization",
+   "version": "0.0.6",
+   "date": "2024-09-24T09:07:15.338Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/authorization",
+   "downloads": {
+    "monthly": 37,
+    "weekly": 7
+   }
+  },
+  {
+   "name": "@deepcase/deepgraph",
+   "version": "0.0.11",
+   "date": "2021-06-27T16:27:53.872Z",
+   "description": "[![npm version](https://badge.fury.io/js/%40deepcase%2Fdeepgraph.svg)](https://badge.fury.io/js/%40deepcase%2Fdeepgraph)  [![develop deepcase](https://badgen.net/badge/develop/deepcase)](https://github.com/deepcase/deepcase)",
+   "npm": "https://www.npmjs.com/package/@deepcase/deepgraph",
+   "downloads": {
+    "monthly": 38,
+    "weekly": 20
+   }
+  },
+  {
+   "name": "@deep-foundation/capacitor-contacts",
+   "version": "0.0.3-dev.18",
+   "date": "2024-05-10T22:03:21.822Z",
+   "description": "<DESCRIPTION>",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/capacitor-contacts",
+   "downloads": {
+    "monthly": 31,
+    "weekly": 4
+   }
+  },
+  {
+   "name": "@deep-foundation/deep-memo",
+   "version": "3.2.3",
+   "date": "2024-05-10T22:05:49.728Z",
+   "description": "<DESCRIPTION>",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/deep-memo",
+   "downloads": {
+    "monthly": 37,
+    "weekly": 12
+   }
+  },
+  {
+   "name": "@deep-foundation/ai-models",
+   "version": "0.0.7",
+   "date": "2024-07-09T02:23:18.150Z",
+   "description": "[![npm](https://img.shields.io/npm/v/@deep-foundation/ai-models.svg)](https://www.npmjs.com/package/@deep-foundation/ai-models)  [![Discord](https://badgen.net/badge/icon/discord?icon=discord&label&color=purple)](https://discord.gg/deep-foundation) # ai-m",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/ai-models",
+   "downloads": {
+    "monthly": 30,
+    "weekly": 9
+   }
+  },
+  {
+   "name": "@deep-foundation/messaging",
+   "version": "2.0.1",
+   "date": "2024-09-22T15:06:30.796Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/messaging",
+   "downloads": {
+    "monthly": 36,
+    "weekly": 12
+   }
+  },
+  {
+   "name": "@deep-foundation/d3-force-3d-graph",
+   "version": "0.2.1",
+   "date": "2023-08-30T01:20:36.282Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/d3-force-3d-graph",
+   "downloads": {
+    "monthly": 36,
+    "weekly": 18
+   }
+  },
+  {
+   "name": "@deep-foundation/deepmemorybot",
+   "version": "0.0.7",
+   "date": "2024-07-10T16:59:04.384Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/deepmemorybot",
+   "downloads": {
+    "monthly": 31,
+    "weekly": 8
+   }
+  },
+  {
+   "name": "@deep-foundation/chatgpt-azure-templates",
+   "version": "0.0.13",
+   "date": "2024-07-03T12:17:37.443Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/chatgpt-azure-templates",
+   "downloads": {
+    "monthly": 31,
+    "weekly": 10
+   }
+  },
+  {
+   "name": "@deep-foundation/capacitor-call-history",
+   "version": "0.0.3-dev.0",
+   "date": "2023-12-20T14:35:22.035Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/capacitor-call-history",
+   "downloads": {
+    "monthly": 31,
+    "weekly": 5
+   }
+  },
+  {
+   "name": "@deep-foundation/payments",
+   "version": "0.1.3",
+   "date": "2024-09-24T09:12:06.711Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/payments",
+   "downloads": {
+    "monthly": 32,
+    "weekly": 10
+   }
+  },
+  {
+   "name": "@deep-foundation/browser-extension",
+   "version": "0.0.8",
+   "date": "2024-05-11T02:26:41.373Z",
+   "description": "deep-browser-extension",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/browser-extension",
+   "downloads": {
+    "monthly": 32,
+    "weekly": 7
+   }
+  },
+  {
+   "name": "@deep-foundation/mathjs",
+   "version": "0.0.6",
+   "date": "2024-03-17T20:13:23.171Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/mathjs",
+   "downloads": {
+    "monthly": 35,
+    "weekly": 9
+   }
+  },
+  {
+   "name": "@deep-foundation/notification",
+   "version": "1.0.1",
+   "date": "2023-04-13T09:56:00.548Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/notification",
+   "downloads": {
+    "monthly": 35,
+    "weekly": 5
+   }
+  },
+  {
+   "name": "@deep-foundation/deepmemo-links",
+   "version": "0.0.6",
+   "date": "2024-06-07T16:51:41.072Z",
+   "description": "Links of deepmemo for deep.",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/deepmemo-links",
+   "downloads": {
+    "monthly": 30,
+    "weekly": 9
+   }
+  },
+  {
+   "name": "@deep-foundation/wysiwyg",
+   "version": "0.1.1",
+   "date": "2024-10-07T10:31:25.194Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/wysiwyg",
+   "downloads": {
+    "monthly": 31,
+    "weekly": 9
+   }
+  },
+  {
+   "name": "@deep-foundation/deepcase-app",
+   "version": "0.1.0-beta.41",
+   "date": "2024-07-23T11:51:40.756Z",
+   "description": "[SDK](https://github.com/deep-foundation/sdk) based application, with configured [@deep-foundation/deepcase](https://github.com/deep-foundation/deepcase).",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/deepcase-app",
+   "downloads": {
+    "monthly": 28,
+    "weekly": 11
+   }
+  },
+  {
+   "name": "@deepcase/deeplinks-app",
+   "version": "0.0.20",
+   "date": "2021-09-27T08:41:12.719Z",
+   "description": "```\r export MIGRATIONS_DEEPLINKS_APP_URL=localhost:3007;\r export MIGRATIONS_HASURA_PATH=localhost:8080;\r export MIGRATIONS_HASURA_SSL=0;\r export MIGRATIONS_HASURA_SECRET=myadminsecretkey;",
+   "npm": "https://www.npmjs.com/package/@deepcase/deeplinks-app",
+   "downloads": {
+    "monthly": 34,
+    "weekly": 16
+   }
+  },
+  {
+   "name": "@deepcase/migrations",
+   "version": "0.0.6",
+   "date": "2020-11-17T13:18:38.861Z",
+   "description": "## install",
+   "npm": "https://www.npmjs.com/package/@deepcase/migrations",
+   "downloads": {
+    "monthly": 29,
+    "weekly": 9
+   }
+  },
+  {
+   "name": "@deep-foundation/cosmoverse2024-hackaton-test",
+   "version": "0.0.3",
+   "date": "2024-10-27T11:53:53.457Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/cosmoverse2024-hackaton-test",
+   "downloads": {
+    "monthly": 30,
+    "weekly": 6
+   }
+  },
+  {
+   "name": "@deep-foundation/chatgpt-templates",
+   "version": "0.0.6",
+   "date": "2023-09-16T18:12:18.362Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/chatgpt-templates",
+   "downloads": {
+    "monthly": 33,
+    "weekly": 10
+   }
+  },
+  {
+   "name": "@deep-foundation/chatgpt-ui",
+   "version": "0.0.9",
+   "date": "2023-06-02T20:23:57.695Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/chatgpt-ui",
+   "downloads": {
+    "monthly": 32,
+    "weekly": 13
+   }
+  },
+  {
+   "name": "@deep-assistant/claude-profiles",
+   "version": "1.2.2",
+   "date": "2025-09-08T18:17:47.264Z",
+   "description": "Manage multiple Claude configuration profiles using GitHub Gists as secure cloud storage",
+   "npm": "https://www.npmjs.com/package/@deep-assistant/claude-profiles",
+   "downloads": {
+    "monthly": 27,
+    "weekly": 4
+   }
+  },
+  {
+   "name": "@deep-foundation/law",
+   "version": "0.0.1-dev.3",
+   "date": "2024-03-07T11:39:38.172Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/law",
+   "downloads": {
+    "monthly": 24,
+    "weekly": 5
+   }
+  },
+  {
+   "name": "@deep-foundation/readme",
+   "version": "0.1.2",
+   "date": "2024-10-08T13:02:28.181Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/readme",
+   "downloads": {
+    "monthly": 29,
+    "weekly": 10
+   }
+  },
+  {
+   "name": "@linksplatform/protocols-lino",
+   "version": "0.7.0",
+   "date": "2025-10-03T14:10:25.190Z",
+   "description": "Lino protocol parser for JavaScript",
+   "npm": "https://www.npmjs.com/package/@linksplatform/protocols-lino",
+   "downloads": {
+    "monthly": 29,
+    "weekly": 3
+   }
+  },
+  {
+   "name": "@deepcase/android-lodash-fix",
+   "version": "1.0.2",
+   "date": "2021-05-25T20:31:35.989Z",
+   "description": "Fix `_` paths and update it to `androidfix`.",
+   "npm": "https://www.npmjs.com/package/@deepcase/android-lodash-fix",
+   "downloads": {
+    "monthly": 27,
+    "weekly": 7
+   }
+  },
+  {
+   "name": "@deep-foundation/aframe-force-graph",
+   "version": "0.1.0",
+   "date": "2023-08-04T17:58:25.343Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/aframe-force-graph",
+   "downloads": {
+    "monthly": 28,
+    "weekly": 9
+   }
+  },
+  {
+   "name": "@deep-foundation/function_generation-azure",
+   "version": "0.0.3",
+   "date": "2024-04-02T01:37:42.367Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/function_generation-azure",
+   "downloads": {
+    "monthly": 23,
+    "weekly": 7
+   }
+  },
+  {
+   "name": "@deep-foundation/google-speech",
+   "version": "0.0.4",
+   "date": "2023-06-05T19:50:03.329Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/google-speech",
+   "downloads": {
+    "monthly": 24,
+    "weekly": 5
+   }
+  },
+  {
+   "name": "@deep-foundation/passport-username-password",
+   "version": "0.0.11",
+   "date": "2024-10-08T15:59:04.110Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/passport-username-password",
+   "downloads": {
+    "monthly": 26,
+    "weekly": 12
+   }
+  },
+  {
+   "name": "@deep-foundation/rules",
+   "version": "0.0.3",
+   "date": "2024-09-26T06:32:05.610Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/rules",
+   "downloads": {
+    "monthly": 25,
+    "weekly": 4
+   }
+  },
+  {
+   "name": "@deep-foundation/capacitor-contact-urls",
+   "version": "0.0.1",
+   "date": "2023-04-14T17:07:37.609Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/capacitor-contact-urls",
+   "downloads": {
+    "monthly": 22,
+    "weekly": 4
+   }
+  },
+  {
+   "name": "@deep-foundation/function_type_generation",
+   "version": "0.0.2",
+   "date": "2024-07-08T05:00:24.023Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/function_type_generation",
+   "downloads": {
+    "monthly": 23,
+    "weekly": 6
+   }
+  },
+  {
+   "name": "@deep-foundation/goals",
+   "version": "0.0.1",
+   "date": "2023-06-02T20:15:55.631Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/goals",
+   "downloads": {
+    "monthly": 23,
+    "weekly": 4
+   }
+  },
+  {
+   "name": "@deep-foundation/perception-dashboard",
+   "version": "0.0.5",
+   "date": "2024-09-25T01:42:40.588Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/perception-dashboard",
+   "downloads": {
+    "monthly": 21,
+    "weekly": 10
+   }
+  },
+  {
+   "name": "@deep-foundation/telegram_save_audio",
+   "version": "1.0.1",
+   "date": "2023-10-03T19:18:29.888Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/telegram_save_audio",
+   "downloads": {
+    "monthly": 20,
+    "weekly": 3
+   }
+  },
+  {
+   "name": "@deep-foundation/object-to-links-converter",
+   "version": "0.0.1-dev.1",
+   "date": "2023-11-18T16:51:09.821Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/object-to-links-converter",
+   "downloads": {
+    "monthly": 19,
+    "weekly": 4
+   }
+  },
+  {
+   "name": "@deep-foundation/table",
+   "version": "0.0.3",
+   "date": "2023-07-22T18:54:53.039Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/table",
+   "downloads": {
+    "monthly": 21,
+    "weekly": 4
+   }
+  },
+  {
+   "name": "@deep-foundation/capacitor-contact-birthday-payload",
+   "version": "0.0.1",
+   "date": "2023-04-14T17:04:29.407Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/capacitor-contact-birthday-payload",
+   "downloads": {
+    "monthly": 22,
+    "weekly": 2
+   }
+  },
+  {
+   "name": "@deep-foundation/forcegraph-experiment",
+   "version": "0.0.6",
+   "date": "2023-07-07T12:53:25.332Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/forcegraph-experiment",
+   "downloads": {
+    "monthly": 22,
+    "weekly": 7
+   }
+  },
+  {
+   "name": "@deep-foundation/4o-bot",
+   "version": "0.0.10",
+   "date": "2024-09-28T18:18:08.671Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/4o-bot",
+   "downloads": {
+    "monthly": 22,
+    "weekly": 8
+   }
+  },
+  {
+   "name": "@deep-foundation/function_generation",
+   "version": "0.0.2",
+   "date": "2024-07-08T05:00:56.532Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/function_generation",
+   "downloads": {
+    "monthly": 19,
+    "weekly": 3
+   }
+  },
+  {
+   "name": "react-deep-tree",
+   "version": "0.0.6",
+   "date": "2020-11-22T16:24:11.156Z",
+   "description": "An UI component for tree rendering.",
+   "npm": "https://www.npmjs.com/package/react-deep-tree",
+   "downloads": {
+    "monthly": 20,
+    "weekly": 0
+   }
+  },
+  {
+   "name": "@deep-foundation/openai-completion",
+   "version": "1.0.12",
+   "date": "2023-04-12T19:31:56.305Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/openai-completion",
+   "downloads": {
+    "monthly": 21,
+    "weekly": 3
+   }
+  },
+  {
+   "name": "deep-import",
+   "version": "2.1.0",
+   "date": "2023-08-21T08:18:34.943Z",
+   "description": "Cli utility for import data to your deep",
+   "npm": "https://www.npmjs.com/package/deep-import",
+   "downloads": {
+    "monthly": 21,
+    "weekly": 2
+   }
+  },
+  {
+   "name": "@deep-foundation/semantic",
+   "version": "0.0.4",
+   "date": "2024-07-03T09:54:27.528Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/semantic",
+   "downloads": {
+    "monthly": 19,
+    "weekly": 7
+   }
+  },
+  {
+   "name": "@deep-foundation/bots",
+   "version": "0.0.3",
+   "date": "2024-09-17T16:52:10.524Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/bots",
+   "downloads": {
+    "monthly": 18,
+    "weekly": 4
+   }
+  },
+  {
+   "name": "@deep-foundation/combined-solution",
+   "version": "0.0.3",
+   "date": "2024-07-08T05:01:20.153Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/combined-solution",
+   "downloads": {
+    "monthly": 17,
+    "weekly": 4
+   }
+  },
+  {
+   "name": "@deep-foundation/openrouter-ai",
+   "version": "0.0.2",
+   "date": "2023-08-15T21:12:06.710Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/openrouter-ai",
+   "downloads": {
+    "monthly": 18,
+    "weekly": 3
+   }
+  },
+  {
+   "name": "@deep-foundation/main-port",
+   "version": "0.0.1",
+   "date": "2024-05-19T09:15:02.915Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/main-port",
+   "downloads": {
+    "monthly": 18,
+    "weekly": 2
+   }
+  },
+  {
+   "name": "@deep-foundation/capacitor-action-sheet",
+   "version": "1.0.0",
+   "date": "2023-04-13T06:44:20.772Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/capacitor-action-sheet",
+   "downloads": {
+    "monthly": 17,
+    "weekly": 2
+   }
+  },
+  {
+   "name": "@deep-foundation/deepcase-grid",
+   "version": "0.0.3",
+   "date": "2024-01-09T21:20:06.670Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/deepcase-grid",
+   "downloads": {
+    "monthly": 17,
+    "weekly": 4
+   }
+  },
+  {
+   "name": "@deep-foundation/timezone",
+   "version": "0.0.2",
+   "date": "2024-09-29T12:29:44.111Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/timezone",
+   "downloads": {
+    "monthly": 19,
+    "weekly": 3
+   }
+  },
+  {
+   "name": "@deep-foundation/ai-templates",
+   "version": "0.0.1",
+   "date": "2024-07-08T04:58:08.697Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/ai-templates",
+   "downloads": {
+    "monthly": 19,
+    "weekly": 2
+   }
+  },
+  {
+   "name": "@deep-foundation/perception-app",
+   "version": "0.0.24",
+   "date": "2024-07-22T13:23:49.722Z",
+   "description": "[SDK](https://github.com/deep-foundation/sdk) based application, with configured [@deep-foundation/perception-imports](https://github.com/deep-foundation/perception-imports).",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/perception-app",
+   "downloads": {
+    "monthly": 18,
+    "weekly": 4
+   }
+  },
+  {
+   "name": "@deepcase/deepcase",
+   "version": "0.0.4",
+   "date": "2021-09-04T15:06:47.744Z",
+   "description": "[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/deepcase/deepcase)",
+   "npm": "https://www.npmjs.com/package/@deepcase/deepcase",
+   "downloads": {
+    "monthly": 19,
+    "weekly": 3
+   }
+  },
+  {
+   "name": "@deep-foundation/handle-cyto",
+   "version": "0.0.1",
+   "date": "2023-07-01T06:31:54.255Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/handle-cyto",
+   "downloads": {
+    "monthly": 16,
+    "weekly": 4
+   }
+  },
+  {
+   "name": "@deep-foundation/splitting-text-into-words",
+   "version": "0.0.3",
+   "date": "2023-08-08T17:40:39.909Z",
+   "description": "This package is used to split text into words and count the frequency of each word.\r # Installation",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/splitting-text-into-words",
+   "downloads": {
+    "monthly": 17,
+    "weekly": 6
+   }
+  },
+  {
+   "name": "@deep-foundation/capacitor-contact-name-payload",
+   "version": "0.0.1",
+   "date": "2023-04-14T17:08:11.995Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/capacitor-contact-name-payload",
+   "downloads": {
+    "monthly": 17,
+    "weekly": 3
+   }
+  },
+  {
+   "name": "@deep-foundation/capacitor-contact-email-payload",
+   "version": "0.0.1",
+   "date": "2023-04-14T17:05:49.517Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/capacitor-contact-email-payload",
+   "downloads": {
+    "monthly": 18,
+    "weekly": 2
+   }
+  },
+  {
+   "name": "@deep-foundation/capacitor-contact-postal-addresses",
+   "version": "0.0.1",
+   "date": "2023-04-14T17:07:06.076Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/capacitor-contact-postal-addresses",
+   "downloads": {
+    "monthly": 16,
+    "weekly": 2
+   }
+  },
+  {
+   "name": "@deep-foundation/vk-api-group-users",
+   "version": "0.0.1",
+   "date": "2023-08-19T08:44:25.125Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/vk-api-group-users",
+   "downloads": {
+    "monthly": 16,
+    "weekly": 3
+   }
+  },
+  {
+   "name": "@deep-foundation/chatgpt-missions2goals",
+   "version": "0.0.1",
+   "date": "2023-06-02T20:20:28.649Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/chatgpt-missions2goals",
+   "downloads": {
+    "monthly": 16,
+    "weekly": 2
+   }
+  },
+  {
+   "name": "@deep-foundation/capacitor-contact-image-payload",
+   "version": "0.0.1",
+   "date": "2023-04-14T17:06:22.240Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/capacitor-contact-image-payload",
+   "downloads": {
+    "monthly": 18,
+    "weekly": 2
+   }
+  },
+  {
+   "name": "@deep-foundation/tests_generation",
+   "version": "0.0.2",
+   "date": "2024-07-08T05:02:01.481Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/tests_generation",
+   "downloads": {
+    "monthly": 18,
+    "weekly": 3
+   }
+  },
+  {
+   "name": "@deep-foundation/coordinates",
+   "version": "0.0.2",
+   "date": "2024-09-29T12:13:49.048Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/coordinates",
+   "downloads": {
+    "monthly": 16,
+    "weekly": 3
+   }
+  },
+  {
+   "name": "@deep-foundation/handle-cyto-contain",
+   "version": "0.0.1",
+   "date": "2023-07-01T06:35:22.596Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/handle-cyto-contain",
+   "downloads": {
+    "monthly": 15,
+    "weekly": 2
+   }
+  },
+  {
+   "name": "@konard/python-docker-isolation-provider",
+   "version": "0.0.2",
+   "date": "2023-04-26T23:51:47.920Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@konard/python-docker-isolation-provider",
+   "downloads": {
+    "monthly": 16,
+    "weekly": 2
+   }
+  },
+  {
+   "name": "@deep-foundation/ai-tasks",
+   "version": "0.0.1",
+   "date": "2024-07-08T04:58:38.391Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/ai-tasks",
+   "downloads": {
+    "monthly": 17,
+    "weekly": 2
+   }
+  },
+  {
+   "name": "@deep-foundation/missions",
+   "version": "0.0.1",
+   "date": "2023-06-02T20:12:13.971Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/missions",
+   "downloads": {
+    "monthly": 17,
+    "weekly": 2
+   }
+  },
+  {
+   "name": "@deep-foundation/capacitor-contact-organization-payload",
+   "version": "0.0.1",
+   "date": "2023-04-14T17:06:47.254Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/capacitor-contact-organization-payload",
+   "downloads": {
+    "monthly": 17,
+    "weekly": 3
+   }
+  },
+  {
+   "name": "@deep-foundation/capacitor-contact-phones-payload",
+   "version": "0.0.1",
+   "date": "2023-04-14T17:04:58.389Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/capacitor-contact-phones-payload",
+   "downloads": {
+    "monthly": 17,
+    "weekly": 3
+   }
+  },
+  {
+   "name": "@deep-foundation/function_type_generation-azure",
+   "version": "0.0.1",
+   "date": "2024-04-01T03:35:38.836Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/function_type_generation-azure",
+   "downloads": {
+    "monthly": 15,
+    "weekly": 3
+   }
+  },
+  {
+   "name": "@deepcase/types-json",
+   "version": "0.0.1",
+   "date": "2020-09-18T10:01:22.878Z",
+   "description": "## usage",
+   "npm": "https://www.npmjs.com/package/@deepcase/types-json",
+   "downloads": {
+    "monthly": 16,
+    "weekly": 2
+   }
+  },
+  {
+   "name": "@deep-foundation/unsafe",
+   "version": "0.0.2",
+   "date": "2024-09-17T16:13:24.171Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/unsafe",
+   "downloads": {
+    "monthly": 15,
+    "weekly": 3
+   }
+  },
+  {
+   "name": "deep-export",
+   "version": "2.1.0-dev.0",
+   "date": "2023-08-21T08:23:38.045Z",
+   "description": "cli utility for export data from your deep",
+   "npm": "https://www.npmjs.com/package/deep-export",
+   "downloads": {
+    "monthly": 15,
+    "weekly": 5
+   }
+  },
+  {
+   "name": "@deep-foundation/files",
+   "version": "0.0.1",
+   "date": "2024-09-22T18:17:54.284Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/files",
+   "downloads": {
+    "monthly": 16,
+    "weekly": 2
+   }
+  },
+  {
+   "name": "@deep-foundation/messenger",
+   "version": "0.0.1",
+   "date": "2023-04-05T11:27:56.290Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/messenger",
+   "downloads": {
+    "monthly": 16,
+    "weekly": 3
+   }
+  },
+  {
+   "name": "@deep-foundation/telegram",
+   "version": "0.0.2",
+   "date": "2023-04-19T18:52:02.026Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/telegram",
+   "downloads": {
+    "monthly": 16,
+    "weekly": 3
+   }
+  },
+  {
+   "name": "@deep-foundation/earth",
+   "version": "0.0.1",
+   "date": "2024-10-07T10:37:57.829Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/earth",
+   "downloads": {
+    "monthly": 16,
+    "weekly": 4
+   }
+  },
+  {
+   "name": "@deep-foundation/tests_generation-azure",
+   "version": "0.0.1",
+   "date": "2024-04-01T17:03:37.929Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/tests_generation-azure",
+   "downloads": {
+    "monthly": 16,
+    "weekly": 2
+   }
+  },
+  {
+   "name": "@deep-foundation/capacitor-contact-note",
+   "version": "0.0.1",
+   "date": "2023-04-14T17:05:19.760Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/capacitor-contact-note",
+   "downloads": {
+    "monthly": 16,
+    "weekly": 2
+   }
+  },
+  {
+   "name": "@konard/dependency-test-main",
+   "version": "0.0.2",
+   "date": "2023-03-21T15:55:02.485Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@konard/dependency-test-main",
+   "downloads": {
+    "monthly": 16,
+    "weekly": 6
+   }
+  },
+  {
+   "name": "@deep-foundation/telegram_save_only_audio",
+   "version": "1.0.0",
+   "date": "2023-10-03T19:59:23.306Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/telegram_save_only_audio",
+   "downloads": {
+    "monthly": 15,
+    "weekly": 2
+   }
+  },
+  {
+   "name": "@deep-foundation/jsonschema-apply-for-all",
+   "version": "0.0.2",
+   "date": "2023-06-18T21:55:20.598Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/jsonschema-apply-for-all",
+   "downloads": {
+    "monthly": 14,
+    "weekly": 4
+   }
+  },
+  {
+   "name": "@deep-foundation/haptics",
+   "version": "0.0.1",
+   "date": "2023-04-13T09:10:08.178Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/haptics",
+   "downloads": {
+    "monthly": 14,
+    "weekly": 2
+   }
+  },
+  {
+   "name": "@deep-foundation/aframe-experiment-2",
+   "version": "0.0.1",
+   "date": "2023-06-19T03:37:29.087Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/aframe-experiment-2",
+   "downloads": {
+    "monthly": 13,
+    "weekly": 3
+   }
+  },
+  {
+   "name": "@deep-foundation/call-history",
+   "version": "0.0.1-dev.0",
+   "date": "2023-12-20T14:36:54.342Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/call-history",
+   "downloads": {
+    "monthly": 15,
+    "weekly": 2
+   }
+  },
+  {
+   "name": "@deep-foundation/rss-analytics",
+   "version": "0.0.2",
+   "date": "2023-08-08T14:31:14.496Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/rss-analytics",
+   "downloads": {
+    "monthly": 15,
+    "weekly": 3
+   }
+  },
+  {
+   "name": "@deep-foundation/preload",
+   "version": "0.0.1",
+   "date": "2024-09-29T14:03:40.021Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/preload",
+   "downloads": {
+    "monthly": 14,
+    "weekly": 2
+   }
+  },
+  {
+   "name": "@deep-foundation/npm-to-github",
+   "version": "0.0.1-dev.0",
+   "date": "2024-04-02T15:49:56.334Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/npm-to-github",
+   "downloads": {
+    "monthly": 13,
+    "weekly": 2
+   }
+  },
+  {
+   "name": "@deep-foundation/promise-cleaner",
+   "version": "0.0.2",
+   "date": "2023-10-02T14:09:59.162Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/promise-cleaner",
+   "downloads": {
+    "monthly": 14,
+    "weekly": 3
+   }
+  },
+  {
+   "name": "@deep-foundation/site-flag",
+   "version": "0.0.1",
+   "date": "2023-08-08T00:05:05.542Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/site-flag",
+   "downloads": {
+    "monthly": 14,
+    "weekly": 2
+   }
+  },
+  {
+   "name": "@deep-foundation/sdk",
+   "version": "0.0.0-dev.13",
+   "date": "2024-07-22T13:25:22.562Z",
+   "description": "A template/boilerplate for creating nextjs applications that use deep. It is recommended to merge with this repository to have its improvements in your nextjs application!",
+   "npm": "https://www.npmjs.com/package/@deep-foundation/sdk",
+   "downloads": {
+    "monthly": 14,
+    "weekly": 6
+   }
+  },
+  {
+   "name": "@deep-foundation/react-force-graph",
+   "version": "0.0.1",
+   "date": "2023-07-11T00:50:38.612Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/react-force-graph",
+   "downloads": {
+    "monthly": 13,
+    "weekly": 2
+   }
+  },
+  {
+   "name": "@deep-foundation/deepcase-opened",
+   "version": "0.0.1",
+   "date": "2023-07-30T17:10:28.219Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/deepcase-opened",
+   "downloads": {
+    "monthly": 13,
+    "weekly": 2
+   }
+  },
+  {
+   "name": "@deep-foundation/capacitor-dialog",
+   "version": "1.0.0",
+   "date": "2023-04-12T15:12:34.402Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/capacitor-dialog",
+   "downloads": {
+    "monthly": 12,
+    "weekly": 2
+   }
+  },
+  {
+   "name": "@deep-foundation/aframe-experiment-1",
+   "version": "0.0.1",
+   "date": "2023-06-19T01:49:50.291Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/aframe-experiment-1",
+   "downloads": {
+    "monthly": 13,
+    "weekly": 2
+   }
+  },
+  {
+   "name": "@deep-foundation/combined-solution-azure",
+   "version": "0.0.1",
+   "date": "2024-04-01T17:43:45.178Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/combined-solution-azure",
+   "downloads": {
+    "monthly": 13,
+    "weekly": 2
+   }
+  },
+  {
+   "name": "@deep-foundation/voice-to-sync-text-file",
+   "version": "0.0.1",
+   "date": "2024-05-19T17:24:13.690Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/voice-to-sync-text-file",
+   "downloads": {
+    "monthly": 13,
+    "weekly": 2
+   }
+  },
+  {
+   "name": "@deep-foundation/capacitor-contact-contact-id",
+   "version": "0.0.1",
+   "date": "2023-04-14T17:07:56.918Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/capacitor-contact-contact-id",
+   "downloads": {
+    "monthly": 13,
+    "weekly": 2
+   }
+  },
+  {
+   "name": "@konard/chatgpt-ui",
+   "version": "0.0.1",
+   "date": "2023-05-05T06:08:58.829Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@konard/chatgpt-ui",
+   "downloads": {
+    "monthly": 11,
+    "weekly": 2
+   }
+  },
+  {
+   "name": "@konard/pow-inheritor",
+   "version": "0.0.2",
+   "date": "2023-02-20T17:34:10.651Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@konard/pow-inheritor",
+   "downloads": {
+    "monthly": 11,
+    "weekly": 4
+   }
+  },
+  {
+   "name": "@deepcase/android-locash-fix",
+   "version": "1.0.0",
+   "date": "2021-05-25T20:24:54.812Z",
+   "description": "",
+   "npm": "https://www.npmjs.com/package/@deepcase/android-locash-fix",
+   "downloads": {
+    "monthly": 12,
+    "weekly": 1
+   }
+  },
+  {
+   "name": "@deep-foundation/capacitor-clipboard",
+   "version": "0.0.1",
+   "date": "2023-04-14T17:17:53.081Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@deep-foundation/capacitor-clipboard",
+   "downloads": {
+    "monthly": 12,
+    "weekly": 2
+   }
+  },
+  {
+   "name": "@konard/client-handler-example",
+   "version": "0.0.1",
+   "date": "2024-01-02T17:47:33.342Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@konard/client-handler-example",
+   "downloads": {
+    "monthly": 11,
+    "weekly": 1
+   }
+  },
+  {
+   "name": "@link-foundation/links-client",
+   "version": "1.0.0",
+   "date": "2025-12-28T00:55:09.253Z",
+   "description": "Node.js client library for link-cli (Links Theory database)",
+   "npm": "https://www.npmjs.com/package/@link-foundation/links-client",
+   "downloads": {
+    "monthly": 11,
+    "weekly": 4
+   }
+  },
+  {
+   "name": "@konard/cats-and-handlers",
+   "version": "0.0.1",
+   "date": "2023-04-30T06:42:20.778Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@konard/cats-and-handlers",
+   "downloads": {
+    "monthly": 9,
+    "weekly": 2
+   }
+  },
+  {
+   "name": "@konard/this-test",
+   "version": "0.0.2",
+   "date": "2023-08-15T16:54:11.253Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@konard/this-test",
+   "downloads": {
+    "monthly": 9,
+    "weekly": 1
+   }
+  },
+  {
+   "name": "knex-sql-injection-detector",
+   "version": "1.1.0",
+   "date": "2025-06-03T15:04:48.367Z",
+   "description": "A CLI tool to detect potential SQL injection risks in knex.js codebases by analyzing raw SQL query construction.",
+   "npm": "https://www.npmjs.com/package/knex-sql-injection-detector",
+   "downloads": {
+    "monthly": 8,
+    "weekly": 0
+   }
+  },
+  {
+   "name": "@konard/promise-diagnostics",
+   "version": "0.0.1",
+   "date": "2023-05-13T21:09:06.785Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@konard/promise-diagnostics",
+   "downloads": {
+    "monthly": 8,
+    "weekly": 1
+   }
+  },
+  {
+   "name": "recurscan",
+   "version": "1.0.0",
+   "date": "2024-10-18T20:01:24.488Z",
+   "description": "A CLI tool to detect recursive functions in JavaScript files.",
+   "npm": "https://www.npmjs.com/package/recurscan",
+   "downloads": {
+    "monthly": 8,
+    "weekly": 0
+   }
+  },
+  {
+   "name": "@konard/rust-tests",
+   "version": "0.0.2",
+   "date": "2023-08-08T18:08:48.186Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@konard/rust-tests",
+   "downloads": {
+    "monthly": 8,
+    "weekly": 3
+   }
+  },
+  {
+   "name": "@konard/empty-package-test",
+   "version": "0.0.3",
+   "date": "2023-03-27T00:02:28.100Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@konard/empty-package-test",
+   "downloads": {
+    "monthly": 7,
+    "weekly": 1
+   }
+  },
+  {
+   "name": "@konard/dependency-test-slave1",
+   "version": "0.0.1",
+   "date": "2023-03-21T16:02:07.057Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@konard/dependency-test-slave1",
+   "downloads": {
+    "monthly": 7,
+    "weekly": 1
+   }
+  },
+  {
+   "name": "loggify-js",
+   "version": "0.0.2",
+   "date": "2023-09-30T18:54:16.054Z",
+   "description": "CLI tool that adds console.log statements after each statement in a JavaScript file",
+   "npm": "https://www.npmjs.com/package/loggify-js",
+   "downloads": {
+    "monthly": 7,
+    "weekly": 0
+   }
+  },
+  {
+   "name": "@konard/test-save-package-button-works",
+   "version": "0.0.1",
+   "date": "2023-10-09T19:24:04.810Z",
+   "description": null,
+   "npm": "https://www.npmjs.com/package/@konard/test-save-package-button-works",
+   "downloads": {
+    "monthly": 6,
+    "weekly": 1
+   }
+  },
+  {
+   "name": "lino-rest-api",
+   "version": "0.2.1",
+   "date": "2026-10-11T09:29:03.308Z",
+   "description": "REST API framework and client using Links Notation (LINO) instead of JSON",
+   "npm": "https://www.npmjs.com/package/lino-rest-api",
+   "downloads": {
+    "monthly": 0,
+    "weekly": 0
+   }
+  }
+ ]
+}
