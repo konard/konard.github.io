@@ -1,0 +1,135 @@
+/* ---------- Responsive ---------- */
+
+@media (max-width: 960px) {
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .split,
+  .split--wide {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .nav ul {
+    display: none;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    justify-items: start;
+    gap: 1.5rem;
+    padding-top: 2.5rem;
+  }
+
+  .hero__avatar {
+    width: 140px;
+    height: 140px;
+  }
+
+  .hero__avatar img {
+    width: 126px;
+    height: 126px;
+  }
+
+  .stat__value {
+    font-size: 1.5rem;
+  }
+
+  .timeline__chart {
+    --label: 6.5rem;
+  }
+
+  .timeline__chart .timeline__year:nth-child(even) {
+    display: none;
+  }
+
+  .positions {
+    grid-template-columns: 1fr;
+  }
+
+  .hbars__row {
+    grid-template-columns: 6.5rem 1fr 3rem;
+  }
+}
+
+/* ---------- Print: a compact paper CV ---------- */
+
+@media print {
+  :root {
+    --text: #111;
+    --text-2: #333;
+    --muted: #555;
+    --accent: #0b5cad;
+    --border: #ccc;
+  }
+
+  body {
+    background: #fff;
+    font-size: 11pt;
+  }
+
+  .backdrop,
+  .nav,
+  .hero__ring,
+  .hero__actions,
+  .segmented,
+  .chips,
+  .table-view,
+  .tooltip,
+  #ecosystem .chart {
+    display: none !important;
+  }
+
+  .glitch {
+    background: none;
+    color: #111;
+  }
+
+  .glitch::before,
+  .glitch::after {
+    display: none;
+  }
+
+  .section {
+    padding-top: 1.5rem;
+    break-inside: avoid-page;
+  }
+
+  .card,
+  .chart,
+  .registry,
+  .project,
+  .skills__group,
+  .org,
+  .step,
+  .stat,
+  .position,
+  .social {
+    background: none;
+    backdrop-filter: none;
+    box-shadow: none;
+    break-inside: avoid;
+  }
+
+  .stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .split,
+  .split--wide {
+    grid-template-columns: 1fr;
+  }
+
+  .chart__label,
+  .ecosystem__count,
+  .ecosystem__name {
+    fill: #111;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
