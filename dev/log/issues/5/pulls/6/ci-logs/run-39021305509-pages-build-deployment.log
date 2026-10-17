@@ -1,0 +1,497 @@
+build	UNKNOWN STEP	﻿2026-10-17T09:29:17.7107106Z Current runner version: '2.337.0'
+build	UNKNOWN STEP	2026-10-17T09:29:17.7141255Z ##[group]Runner Image Provisioner
+build	UNKNOWN STEP	2026-10-17T09:29:17.7142595Z Hosted Compute Agent
+build	UNKNOWN STEP	2026-10-17T09:29:17.7143690Z Version: 20261012.601
+build	UNKNOWN STEP	2026-10-17T09:29:17.7144713Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+build	UNKNOWN STEP	2026-10-17T09:29:17.7146318Z Build Date: 2026-10-12T17:48:21Z
+build	UNKNOWN STEP	2026-10-17T09:29:17.7147565Z Worker ID: {91a5af0f-cd5f-4a49-a19f-825ef1b3fb5d}
+build	UNKNOWN STEP	2026-10-17T09:29:17.7148877Z Region: eastus
+build	UNKNOWN STEP	2026-10-17T09:29:17.7149860Z Cloud: Azure
+build	UNKNOWN STEP	2026-10-17T09:29:17.7150759Z ##[endgroup]
+build	UNKNOWN STEP	2026-10-17T09:29:17.7153161Z ##[group]Operating System
+build	UNKNOWN STEP	2026-10-17T09:29:17.7154248Z Ubuntu
+build	UNKNOWN STEP	2026-10-17T09:29:17.7155155Z 24.04.5
+build	UNKNOWN STEP	2026-10-17T09:29:17.7156295Z LTS
+build	UNKNOWN STEP	2026-10-17T09:29:17.7157185Z ##[endgroup]
+build	UNKNOWN STEP	2026-10-17T09:29:17.7158239Z ##[group]Runner Image
+build	UNKNOWN STEP	2026-10-17T09:29:17.7159252Z Image: ubuntu-24.04
+build	UNKNOWN STEP	2026-10-17T09:29:17.7160239Z Version: 20261012.334.1
+build	UNKNOWN STEP	2026-10-17T09:29:17.7162519Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+build	UNKNOWN STEP	2026-10-17T09:29:17.7165391Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+build	UNKNOWN STEP	2026-10-17T09:29:17.7167345Z ##[endgroup]
+build	UNKNOWN STEP	2026-10-17T09:29:17.7169418Z ##[group]GITHUB_TOKEN Permissions
+build	UNKNOWN STEP	2026-10-17T09:29:17.7172366Z Contents: read
+build	UNKNOWN STEP	2026-10-17T09:29:17.7173476Z Metadata: read
+build	UNKNOWN STEP	2026-10-17T09:29:17.7174434Z Pages: write
+build	UNKNOWN STEP	2026-10-17T09:29:17.7175354Z ##[endgroup]
+build	UNKNOWN STEP	2026-10-17T09:29:17.7178561Z Secret source: Actions
+build	UNKNOWN STEP	2026-10-17T09:29:17.7180645Z Cache mode: read
+build	UNKNOWN STEP	2026-10-17T09:29:17.7182114Z Prepare workflow directory
+build	UNKNOWN STEP	2026-10-17T09:29:17.7651969Z Prepare all required actions
+build	UNKNOWN STEP	2026-10-17T09:29:17.7722714Z Getting action download info
+build	UNKNOWN STEP	2026-10-17T09:29:17.9699673Z Download action repository 'actions/checkout@v7.0.1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+build	UNKNOWN STEP	2026-10-17T09:29:18.0786497Z Download action repository 'actions/jekyll-build-pages@v1' (SHA:44a6e6beabd48582f863aeeb6cb2151cc1716697)
+build	UNKNOWN STEP	2026-10-17T09:29:18.2197041Z Download action repository 'actions/upload-pages-artifact@v3' (SHA:56afc609e74202658d3ffba0e8f6dda462b719fa)
+build	UNKNOWN STEP	2026-10-17T09:29:18.4011114Z Getting action download info
+build	UNKNOWN STEP	2026-10-17T09:29:18.4760698Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+build	UNKNOWN STEP	2026-10-17T09:29:18.6196267Z Complete job name: build
+build	UNKNOWN STEP	2026-10-17T09:29:18.6705409Z ##[group]Pull down action image 'ghcr.io/actions/jekyll-build-pages:v1.0.13'
+build	UNKNOWN STEP	2026-10-17T09:29:18.6827402Z ##[command]/usr/bin/docker pull ghcr.io/actions/jekyll-build-pages:v1.0.13
+build	UNKNOWN STEP	2026-10-17T09:29:19.0974815Z v1.0.13: Pulling from actions/jekyll-build-pages
+build	UNKNOWN STEP	2026-10-17T09:29:19.0976378Z efc2b5ad9eec: Pulling fs layer
+build	UNKNOWN STEP	2026-10-17T09:29:19.0977246Z 165b60d1bb48: Pulling fs layer
+build	UNKNOWN STEP	2026-10-17T09:29:19.0978202Z 2a328af1ca3a: Pulling fs layer
+build	UNKNOWN STEP	2026-10-17T09:29:19.0979365Z 32b58fa44788: Pulling fs layer
+build	UNKNOWN STEP	2026-10-17T09:29:19.0980690Z 590ab93c22d2: Pulling fs layer
+build	UNKNOWN STEP	2026-10-17T09:29:19.0981648Z 26ea96c4c14c: Pulling fs layer
+build	UNKNOWN STEP	2026-10-17T09:29:19.0982655Z bd7e451dfea1: Pulling fs layer
+build	UNKNOWN STEP	2026-10-17T09:29:19.0983522Z c209e9dadc51: Pulling fs layer
+build	UNKNOWN STEP	2026-10-17T09:29:19.0984354Z a4925b5c711a: Pulling fs layer
+build	UNKNOWN STEP	2026-10-17T09:29:19.0985171Z cd9459784e3c: Pulling fs layer
+build	UNKNOWN STEP	2026-10-17T09:29:19.0986237Z bd7e451dfea1: Waiting
+build	UNKNOWN STEP	2026-10-17T09:29:19.0987011Z c209e9dadc51: Waiting
+build	UNKNOWN STEP	2026-10-17T09:29:19.0987843Z a4925b5c711a: Waiting
+build	UNKNOWN STEP	2026-10-17T09:29:19.0988610Z cd9459784e3c: Waiting
+build	UNKNOWN STEP	2026-10-17T09:29:19.0989387Z 32b58fa44788: Waiting
+build	UNKNOWN STEP	2026-10-17T09:29:19.0990142Z 590ab93c22d2: Waiting
+build	UNKNOWN STEP	2026-10-17T09:29:19.0990914Z 26ea96c4c14c: Waiting
+build	UNKNOWN STEP	2026-10-17T09:29:19.1492080Z 2a328af1ca3a: Verifying Checksum
+build	UNKNOWN STEP	2026-10-17T09:29:19.1493969Z 2a328af1ca3a: Download complete
+build	UNKNOWN STEP	2026-10-17T09:29:19.2024308Z 165b60d1bb48: Verifying Checksum
+build	UNKNOWN STEP	2026-10-17T09:29:19.2027901Z 165b60d1bb48: Download complete
+build	UNKNOWN STEP	2026-10-17T09:29:19.2539558Z efc2b5ad9eec: Verifying Checksum
+build	UNKNOWN STEP	2026-10-17T09:29:19.2547882Z efc2b5ad9eec: Download complete
+build	UNKNOWN STEP	2026-10-17T09:29:19.2599574Z 590ab93c22d2: Verifying Checksum
+build	UNKNOWN STEP	2026-10-17T09:29:19.2602263Z 590ab93c22d2: Download complete
+build	UNKNOWN STEP	2026-10-17T09:29:19.3118214Z bd7e451dfea1: Verifying Checksum
+build	UNKNOWN STEP	2026-10-17T09:29:19.3122078Z bd7e451dfea1: Download complete
+build	UNKNOWN STEP	2026-10-17T09:29:19.3333882Z 32b58fa44788: Verifying Checksum
+build	UNKNOWN STEP	2026-10-17T09:29:19.3337218Z 32b58fa44788: Download complete
+build	UNKNOWN STEP	2026-10-17T09:29:19.4049940Z a4925b5c711a: Verifying Checksum
+build	UNKNOWN STEP	2026-10-17T09:29:19.4053524Z a4925b5c711a: Download complete
+build	UNKNOWN STEP	2026-10-17T09:29:19.4645920Z cd9459784e3c: Verifying Checksum
+build	UNKNOWN STEP	2026-10-17T09:29:19.4648824Z cd9459784e3c: Download complete
+build	UNKNOWN STEP	2026-10-17T09:29:19.5353027Z c209e9dadc51: Verifying Checksum
+build	UNKNOWN STEP	2026-10-17T09:29:19.5357802Z c209e9dadc51: Download complete
+build	UNKNOWN STEP	2026-10-17T09:29:19.9497146Z 26ea96c4c14c: Verifying Checksum
+build	UNKNOWN STEP	2026-10-17T09:29:19.9499323Z 26ea96c4c14c: Download complete
+build	UNKNOWN STEP	2026-10-17T09:29:20.6398052Z efc2b5ad9eec: Pull complete
+build	UNKNOWN STEP	2026-10-17T09:29:22.0543927Z 165b60d1bb48: Pull complete
+build	UNKNOWN STEP	2026-10-17T09:29:22.0659661Z 2a328af1ca3a: Pull complete
+build	UNKNOWN STEP	2026-10-17T09:29:23.0513356Z 32b58fa44788: Pull complete
+build	UNKNOWN STEP	2026-10-17T09:29:23.0640873Z 590ab93c22d2: Pull complete
+build	UNKNOWN STEP	2026-10-17T09:29:27.1456045Z 26ea96c4c14c: Pull complete
+build	UNKNOWN STEP	2026-10-17T09:29:27.1563902Z bd7e451dfea1: Pull complete
+build	UNKNOWN STEP	2026-10-17T09:29:29.2358026Z c209e9dadc51: Pull complete
+build	UNKNOWN STEP	2026-10-17T09:29:29.2600365Z a4925b5c711a: Pull complete
+build	UNKNOWN STEP	2026-10-17T09:29:29.2693585Z cd9459784e3c: Pull complete
+build	UNKNOWN STEP	2026-10-17T09:29:29.2724949Z Digest: sha256:6791ebfd912185ed59bfb5fb102664fa872496b79f87ff8b9cfba292a7345041
+build	UNKNOWN STEP	2026-10-17T09:29:29.2734426Z Status: Downloaded newer image for ghcr.io/actions/jekyll-build-pages:v1.0.13
+build	UNKNOWN STEP	2026-10-17T09:29:29.2743339Z ghcr.io/actions/jekyll-build-pages:v1.0.13
+build	UNKNOWN STEP	2026-10-17T09:29:29.2764034Z ##[endgroup]
+build	UNKNOWN STEP	2026-10-17T09:29:29.3089085Z ##[group]Run actions/checkout@v7.0.1
+build	UNKNOWN STEP	2026-10-17T09:29:29.3089724Z with:
+build	UNKNOWN STEP	2026-10-17T09:29:29.3089932Z   ref: main
+build	UNKNOWN STEP	2026-10-17T09:29:29.3090135Z   submodules: recursive
+build	UNKNOWN STEP	2026-10-17T09:29:29.3090395Z   repository: konard/konard.github.io
+build	UNKNOWN STEP	2026-10-17T09:29:29.3093070Z   token: ***
+build	UNKNOWN STEP	2026-10-17T09:29:29.3093287Z   ssh-strict: true
+build	UNKNOWN STEP	2026-10-17T09:29:29.3093497Z   ssh-user: git
+build	UNKNOWN STEP	2026-10-17T09:29:29.3093749Z   persist-credentials: true
+build	UNKNOWN STEP	2026-10-17T09:29:29.3093995Z   clean: true
+build	UNKNOWN STEP	2026-10-17T09:29:29.3094209Z   sparse-checkout-cone-mode: true
+build	UNKNOWN STEP	2026-10-17T09:29:29.3094478Z   fetch-depth: 1
+build	UNKNOWN STEP	2026-10-17T09:29:29.3094688Z   fetch-tags: false
+build	UNKNOWN STEP	2026-10-17T09:29:29.3094897Z   show-progress: true
+build	UNKNOWN STEP	2026-10-17T09:29:29.3095113Z   lfs: false
+build	UNKNOWN STEP	2026-10-17T09:29:29.3095325Z   set-safe-directory: true
+build	UNKNOWN STEP	2026-10-17T09:29:29.3095610Z   allow-unsafe-pr-checkout: false
+build	UNKNOWN STEP	2026-10-17T09:29:29.3096371Z ##[endgroup]
+build	UNKNOWN STEP	2026-10-17T09:29:29.4112267Z Syncing repository: konard/konard.github.io
+build	UNKNOWN STEP	2026-10-17T09:29:29.4114080Z ##[group]Getting Git version info
+build	UNKNOWN STEP	2026-10-17T09:29:29.4114667Z Working directory is '/home/runner/work/konard.github.io/konard.github.io'
+build	UNKNOWN STEP	2026-10-17T09:29:29.4115472Z [command]/usr/bin/git version
+build	UNKNOWN STEP	2026-10-17T09:29:29.4262179Z git version 2.55.0
+build	UNKNOWN STEP	2026-10-17T09:29:29.4288430Z ##[endgroup]
+build	UNKNOWN STEP	2026-10-17T09:29:29.4300388Z Temporarily overriding HOME='/home/runner/work/_temp/f522cbf2-a6a9-446c-a03b-35bc26e1c18a' before making global git config changes
+build	UNKNOWN STEP	2026-10-17T09:29:29.4301948Z Adding repository directory to the temporary git global config as a safe directory
+build	UNKNOWN STEP	2026-10-17T09:29:29.4307718Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/konard.github.io/konard.github.io
+build	UNKNOWN STEP	2026-10-17T09:29:29.4362643Z Deleting the contents of '/home/runner/work/konard.github.io/konard.github.io'
+build	UNKNOWN STEP	2026-10-17T09:29:29.4365369Z ##[group]Determining repository object format
+build	UNKNOWN STEP	2026-10-17T09:29:29.6508910Z ##[endgroup]
+build	UNKNOWN STEP	2026-10-17T09:29:29.6510105Z ##[group]Initializing the repository
+build	UNKNOWN STEP	2026-10-17T09:29:29.6521130Z [command]/usr/bin/git init /home/runner/work/konard.github.io/konard.github.io
+build	UNKNOWN STEP	2026-10-17T09:29:29.6713549Z hint: Using 'master' as the name for the initial branch. This default branch name
+build	UNKNOWN STEP	2026-10-17T09:29:29.6715076Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+build	UNKNOWN STEP	2026-10-17T09:29:29.6717066Z hint: to use in all of your new repositories, which will suppress this warning,
+build	UNKNOWN STEP	2026-10-17T09:29:29.6718960Z hint: call:
+build	UNKNOWN STEP	2026-10-17T09:29:29.6719607Z hint:
+build	UNKNOWN STEP	2026-10-17T09:29:29.6720522Z hint: 	git config --global init.defaultBranch <name>
+build	UNKNOWN STEP	2026-10-17T09:29:29.6721434Z hint:
+build	UNKNOWN STEP	2026-10-17T09:29:29.6722354Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+build	UNKNOWN STEP	2026-10-17T09:29:29.6723677Z hint: 'development'. The just-created branch can be renamed via this command:
+build	UNKNOWN STEP	2026-10-17T09:29:29.6724742Z hint:
+build	UNKNOWN STEP	2026-10-17T09:29:29.6725387Z hint: 	git branch -m <name>
+build	UNKNOWN STEP	2026-10-17T09:29:29.6726356Z hint:
+build	UNKNOWN STEP	2026-10-17T09:29:29.6727338Z hint: Disable this message with "git config set advice.defaultBranchName false"
+build	UNKNOWN STEP	2026-10-17T09:29:29.6728836Z Initialized empty Git repository in /home/runner/work/konard.github.io/konard.github.io/.git/
+build	UNKNOWN STEP	2026-10-17T09:29:29.6733841Z [command]/usr/bin/git remote add origin https://github.com/konard/konard.github.io
+build	UNKNOWN STEP	2026-10-17T09:29:29.6804493Z ##[endgroup]
+build	UNKNOWN STEP	2026-10-17T09:29:29.6805178Z ##[group]Disabling automatic garbage collection
+build	UNKNOWN STEP	2026-10-17T09:29:29.6809517Z [command]/usr/bin/git config --local gc.auto 0
+build	UNKNOWN STEP	2026-10-17T09:29:29.6850430Z ##[endgroup]
+build	UNKNOWN STEP	2026-10-17T09:29:29.6851015Z ##[group]Setting up auth
+build	UNKNOWN STEP	2026-10-17T09:29:29.6851488Z Removing SSH command configuration
+build	UNKNOWN STEP	2026-10-17T09:29:29.6932128Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build	UNKNOWN STEP	2026-10-17T09:29:29.6938372Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build	UNKNOWN STEP	2026-10-17T09:29:29.7303568Z Removing HTTP extra header
+build	UNKNOWN STEP	2026-10-17T09:29:29.7309487Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build	UNKNOWN STEP	2026-10-17T09:29:29.7355543Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build	UNKNOWN STEP	2026-10-17T09:29:29.7576095Z Removing includeIf entries pointing to credentials config files
+build	UNKNOWN STEP	2026-10-17T09:29:29.7581745Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+build	UNKNOWN STEP	2026-10-17T09:29:29.7619903Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+build	UNKNOWN STEP	2026-10-17T09:29:29.7853222Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-6152931f-5f6d-455c-b0e3-e24314d2e3ea.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+build	UNKNOWN STEP	2026-10-17T09:29:29.7896856Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path /home/runner/work/_temp/git-credentials-6152931f-5f6d-455c-b0e3-e24314d2e3ea.config
+build	UNKNOWN STEP	2026-10-17T09:29:29.7932797Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-6152931f-5f6d-455c-b0e3-e24314d2e3ea.config
+build	UNKNOWN STEP	2026-10-17T09:29:29.7972302Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-6152931f-5f6d-455c-b0e3-e24314d2e3ea.config
+build	UNKNOWN STEP	2026-10-17T09:29:29.8009464Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-6152931f-5f6d-455c-b0e3-e24314d2e3ea.config
+build	UNKNOWN STEP	2026-10-17T09:29:29.8044607Z ##[endgroup]
+build	UNKNOWN STEP	2026-10-17T09:29:29.8045179Z ##[group]Fetching the repository
+build	UNKNOWN STEP	2026-10-17T09:29:29.8052225Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +refs/heads/main*:refs/remotes/origin/main* +refs/tags/main*:refs/tags/main*
+build	UNKNOWN STEP	2026-10-17T09:29:30.2440451Z From https://github.com/konard/konard.github.io
+build	UNKNOWN STEP	2026-10-17T09:29:30.2441443Z  * [new branch]      main       -> origin/main
+build	UNKNOWN STEP	2026-10-17T09:29:30.2447757Z ##[endgroup]
+build	UNKNOWN STEP	2026-10-17T09:29:30.2448453Z ##[group]Determining the checkout info
+build	UNKNOWN STEP	2026-10-17T09:29:30.2457237Z [command]/usr/bin/git branch --list --remote origin/main
+build	UNKNOWN STEP	2026-10-17T09:29:30.2493057Z   origin/main
+build	UNKNOWN STEP	2026-10-17T09:29:30.2498579Z ##[endgroup]
+build	UNKNOWN STEP	2026-10-17T09:29:30.2504516Z [command]/usr/bin/git sparse-checkout disable
+build	UNKNOWN STEP	2026-10-17T09:29:30.2564323Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+build	UNKNOWN STEP	2026-10-17T09:29:30.2604737Z ##[group]Checking out the ref
+build	UNKNOWN STEP	2026-10-17T09:29:30.2609127Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+build	UNKNOWN STEP	2026-10-17T09:29:30.2925707Z Switched to a new branch 'main'
+build	UNKNOWN STEP	2026-10-17T09:29:30.2931333Z branch 'main' set up to track 'origin/main'.
+build	UNKNOWN STEP	2026-10-17T09:29:30.2938293Z ##[endgroup]
+build	UNKNOWN STEP	2026-10-17T09:29:30.2938990Z ##[group]Setting up auth for fetching submodules
+build	UNKNOWN STEP	2026-10-17T09:29:30.2944902Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-6152931f-5f6d-455c-b0e3-e24314d2e3ea.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+build	UNKNOWN STEP	2026-10-17T09:29:30.2994092Z [command]/usr/bin/git config --global include.path /home/runner/work/_temp/git-credentials-6152931f-5f6d-455c-b0e3-e24314d2e3ea.config
+build	UNKNOWN STEP	2026-10-17T09:29:30.3032935Z [command]/usr/bin/git config --global --unset-all url.https://github.com/.insteadOf
+build	UNKNOWN STEP	2026-10-17T09:29:30.3084417Z [command]/usr/bin/git config --global --add url.https://github.com/.insteadOf git@github.com:
+build	UNKNOWN STEP	2026-10-17T09:29:30.3125242Z [command]/usr/bin/git config --global --add url.https://github.com/.insteadOf org-1431904@github.com:
+build	UNKNOWN STEP	2026-10-17T09:29:30.3165167Z ##[endgroup]
+build	UNKNOWN STEP	2026-10-17T09:29:30.3166204Z ##[group]Fetching submodules
+build	UNKNOWN STEP	2026-10-17T09:29:30.3167725Z [command]/usr/bin/git submodule sync --recursive
+build	UNKNOWN STEP	2026-10-17T09:29:30.3425393Z [command]/usr/bin/git -c protocol.version=2 submodule update --init --force --depth=1 --recursive
+build	UNKNOWN STEP	2026-10-17T09:29:30.3688952Z [command]/usr/bin/git submodule foreach --recursive git config --local gc.auto 0
+build	UNKNOWN STEP	2026-10-17T09:29:30.3928032Z ##[endgroup]
+build	UNKNOWN STEP	2026-10-17T09:29:30.3928742Z ##[group]Persisting credentials for submodules
+build	UNKNOWN STEP	2026-10-17T09:29:30.3933423Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'url\.https\:\/\/github\.com\/\.insteadOf' && git config --local --unset-all 'url.https://github.com/.insteadOf' || :"
+build	UNKNOWN STEP	2026-10-17T09:29:30.4164509Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+build	UNKNOWN STEP	2026-10-17T09:29:30.4394683Z [command]/usr/bin/git submodule foreach --recursive git config --local --add 'url.https://github.com/.insteadOf' 'git@github.com:'
+build	UNKNOWN STEP	2026-10-17T09:29:30.4631316Z [command]/usr/bin/git submodule foreach --recursive git config --local --add 'url.https://github.com/.insteadOf' 'org-1431904@github.com:'
+build	UNKNOWN STEP	2026-10-17T09:29:30.4887871Z ##[endgroup]
+build	UNKNOWN STEP	2026-10-17T09:29:30.4937905Z [command]/usr/bin/git log -1 --format=%H
+build	UNKNOWN STEP	2026-10-17T09:29:30.4969370Z 3d4aa8dfe5455358d3f7ba30a9557882ba3480a4
+build	UNKNOWN STEP	2026-10-17T09:29:30.5179997Z ##[group]Run actions/jekyll-build-pages@v1
+build	UNKNOWN STEP	2026-10-17T09:29:30.5180314Z with:
+build	UNKNOWN STEP	2026-10-17T09:29:30.5180509Z   source: ./docs
+build	UNKNOWN STEP	2026-10-17T09:29:30.5180728Z   destination: ./docs/_site
+build	UNKNOWN STEP	2026-10-17T09:29:30.5180975Z   future: false
+build	UNKNOWN STEP	2026-10-17T09:29:30.5181234Z   build_revision: 3d4aa8dfe5455358d3f7ba30a9557882ba3480a4
+build	UNKNOWN STEP	2026-10-17T09:29:30.5181548Z   verbose: true
+build	UNKNOWN STEP	2026-10-17T09:29:30.5184088Z   token: ***
+build	UNKNOWN STEP	2026-10-17T09:29:30.5184294Z ##[endgroup]
+build	UNKNOWN STEP	2026-10-17T09:29:30.5279557Z ##[command]/usr/bin/docker run --name ghcrioactionsjekyllbuildpagesv1013_a1aa24 --label d7f594 --workdir /github/workspace --rm -e "INPUT_SOURCE" -e "INPUT_DESTINATION" -e "INPUT_FUTURE" -e "INPUT_BUILD_REVISION" -e "INPUT_VERBOSE" -e "INPUT_TOKEN" -e "HOME" -e "GITHUB_JOB" -e "GITHUB_REF" -e "GITHUB_SHA" -e "GITHUB_REPOSITORY" -e "GITHUB_REPOSITORY_OWNER" -e "GITHUB_REPOSITORY_OWNER_ID" -e "GITHUB_RUN_ID" -e "GITHUB_RUN_NUMBER" -e "GITHUB_RETENTION_DAYS" -e "GITHUB_RUN_ATTEMPT" -e "GITHUB_ACTOR_ID" -e "GITHUB_ACTOR" -e "GITHUB_WORKFLOW" -e "GITHUB_HEAD_REF" -e "GITHUB_BASE_REF" -e "GITHUB_EVENT_NAME" -e "GITHUB_SERVER_URL" -e "GITHUB_API_URL" -e "GITHUB_GRAPHQL_URL" -e "GITHUB_REF_NAME" -e "GITHUB_REF_PROTECTED" -e "GITHUB_REF_TYPE" -e "GITHUB_WORKFLOW_REF" -e "GITHUB_WORKFLOW_SHA" -e "GITHUB_REPOSITORY_ID" -e "GITHUB_TRIGGERING_ACTOR" -e "GITHUB_WORKSPACE" -e "GITHUB_ACTION" -e "GITHUB_EVENT_PATH" -e "GITHUB_ACTION_REPOSITORY" -e "GITHUB_ACTION_REF" -e "GITHUB_PATH" -e "GITHUB_ENV" -e "GITHUB_STEP_SUMMARY" -e "GITHUB_STATE" -e "GITHUB_OUTPUT" -e "GITHUB_ARTIFACTS" -e "GITHUB_ARTIFACTS_LIST" -e "RUNNER_OS" -e "RUNNER_ARCH" -e "RUNNER_NAME" -e "RUNNER_ENVIRONMENT" -e "RUNNER_TOOL_CACHE" -e "RUNNER_TEMP" -e "RUNNER_WORKSPACE" -e "ACTIONS_RUNTIME_URL" -e "ACTIONS_RUNTIME_TOKEN" -e "ACTIONS_CACHE_URL" -e "ACTIONS_ID_TOKEN_REQUEST_URL" -e "ACTIONS_ID_TOKEN_REQUEST_TOKEN" -e "ACTIONS_RESULTS_URL" -e "ACTIONS_CACHE_MODE" -e "ACTIONS_ORCHESTRATION_ID" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work/_temp":"/github/runner_temp" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" -v "/home/runner/work/_temp/_runner_file_commands":"/github/file_commands" -v "/home/runner/work/konard.github.io/konard.github.io":"/github/workspace" ghcr.io/actions/jekyll-build-pages:v1.0.13
+build	UNKNOWN STEP	2026-10-17T09:29:31.3170636Z ^[[33mConfiguration file: none^[[0m
+build	UNKNOWN STEP	2026-10-17T09:29:31.4318610Z To use retry middleware with Faraday v2.0+, install `faraday-retry` gem
+build	UNKNOWN STEP	2026-10-17T09:29:33.7101062Z   Logging at level: debug
+build	UNKNOWN STEP	2026-10-17T09:29:33.7101731Z       GitHub Pages: github-pages v232
+build	UNKNOWN STEP	2026-10-17T09:29:33.7102354Z       GitHub Pages: jekyll v3.10.0
+build	UNKNOWN STEP	2026-10-17T09:29:33.7111275Z              Theme: jekyll-theme-primer
+build	UNKNOWN STEP	2026-10-17T09:29:33.7112311Z       Theme source: /usr/local/bundle/gems/jekyll-theme-primer-0.6.0
+build	UNKNOWN STEP	2026-10-17T09:29:33.7113217Z          Requiring: jekyll-github-metadata
+build	UNKNOWN STEP	2026-10-17T09:29:33.7113775Z          Requiring: jekyll-seo-tag
+build	UNKNOWN STEP	2026-10-17T09:29:33.7114410Z          Requiring: jekyll-coffeescript
+build	UNKNOWN STEP	2026-10-17T09:29:33.7114972Z          Requiring: jekyll-commonmark-ghpages
+build	UNKNOWN STEP	2026-10-17T09:29:33.7115531Z          Requiring: jekyll-gist
+build	UNKNOWN STEP	2026-10-17T09:29:33.7116369Z          Requiring: jekyll-github-metadata
+build	UNKNOWN STEP	2026-10-17T09:29:33.7116984Z          Requiring: jekyll-paginate
+build	UNKNOWN STEP	2026-10-17T09:29:33.7117656Z          Requiring: jekyll-relative-links
+build	UNKNOWN STEP	2026-10-17T09:29:33.7118241Z          Requiring: jekyll-optional-front-matter
+build	UNKNOWN STEP	2026-10-17T09:29:33.7118789Z          Requiring: jekyll-readme-index
+build	UNKNOWN STEP	2026-10-17T09:29:33.7119300Z          Requiring: jekyll-default-layout
+build	UNKNOWN STEP	2026-10-17T09:29:33.7119852Z          Requiring: jekyll-titles-from-headings
+build	UNKNOWN STEP	2026-10-17T09:29:33.7120411Z    GitHub Metadata: Initializing...
+build	UNKNOWN STEP	2026-10-17T09:29:33.7120923Z             Source: /github/workspace/./docs
+build	UNKNOWN STEP	2026-10-17T09:29:33.7121482Z        Destination: /github/workspace/./docs/_site
+build	UNKNOWN STEP	2026-10-17T09:29:33.7122143Z  Incremental build: disabled. Enable with --incremental
+build	UNKNOWN STEP	2026-10-17T09:29:33.7123302Z       Generating... 
+build	UNKNOWN STEP	2026-10-17T09:29:33.7130520Z         Generating: JekyllOptionalFrontMatter::Generator finished in 0.000411594 seconds.
+build	UNKNOWN STEP	2026-10-17T09:29:33.7131575Z         Generating: JekyllReadmeIndex::Generator finished in 0.001849149 seconds.
+build	UNKNOWN STEP	2026-10-17T09:29:33.7132315Z         Generating: Jekyll::Paginate::Pagination finished in 6.852e-06 seconds.
+build	UNKNOWN STEP	2026-10-17T09:29:33.7132904Z    GitHub Metadata: Generating for konard/konard.github.io
+build	UNKNOWN STEP	2026-10-17T09:29:33.7133485Z    GitHub Metadata: Calling @client.pages("konard/konard.github.io", {})
+build	UNKNOWN STEP	2026-10-17T09:29:33.7134119Z         Generating: JekyllRelativeLinks::Generator finished in 0.203431309 seconds.
+build	UNKNOWN STEP	2026-10-17T09:29:33.7134774Z         Generating: JekyllDefaultLayout::Generator finished in 0.000160532 seconds.
+build	UNKNOWN STEP	2026-10-17T09:29:33.7135555Z          Requiring: kramdown-parser-gfm
+build	UNKNOWN STEP	2026-10-17T09:29:33.7136499Z         Generating: JekyllTitlesFromHeadings::Generator finished in 0.009223088 seconds.
+build	UNKNOWN STEP	2026-10-17T09:29:33.7137332Z          Rendering: assets/css/style.scss
+build	UNKNOWN STEP	2026-10-17T09:29:33.7137762Z   Pre-Render Hooks: assets/css/style.scss
+build	UNKNOWN STEP	2026-10-17T09:29:33.7138178Z   Rendering Markup: assets/css/style.scss
+build	UNKNOWN STEP	2026-10-17T09:29:33.7138665Z          Rendering: case-studies/issue-1/data/profile-readme.md
+build	UNKNOWN STEP	2026-10-17T09:29:33.7139443Z   Pre-Render Hooks: case-studies/issue-1/data/profile-readme.md
+build	UNKNOWN STEP	2026-10-17T09:29:33.7140010Z   Rendering Markup: case-studies/issue-1/data/profile-readme.md
+build	UNKNOWN STEP	2026-10-17T09:29:33.7140554Z   Rendering Layout: case-studies/issue-1/data/profile-readme.md
+build	UNKNOWN STEP	2026-10-17T09:29:33.7141233Z      Layout source: theme
+build	UNKNOWN STEP	2026-10-17T09:29:33.7141786Z    GitHub Metadata: Calling @client.organization("konard")
+build	UNKNOWN STEP	2026-10-17T09:29:33.7142461Z    GitHub Metadata: Calling @client.user("konard")
+build	UNKNOWN STEP	2026-10-17T09:29:33.7143571Z    GitHub Metadata: Calling @client.repository("konard/konard.github.io", {:accept=>"application/vnd.github.drax-preview+json"})
+build	UNKNOWN STEP	2026-10-17T09:29:33.7144772Z          Rendering: case-studies/issue-1/data/web-research.md
+build	UNKNOWN STEP	2026-10-17T09:29:33.7145526Z   Pre-Render Hooks: case-studies/issue-1/data/web-research.md
+build	UNKNOWN STEP	2026-10-17T09:29:33.7146441Z   Rendering Markup: case-studies/issue-1/data/web-research.md
+build	UNKNOWN STEP	2026-10-17T09:29:33.7146979Z   Rendering Layout: case-studies/issue-1/data/web-research.md
+build	UNKNOWN STEP	2026-10-17T09:29:33.7147452Z      Layout source: theme
+build	UNKNOWN STEP	2026-10-17T09:29:33.7147845Z          Rendering: case-studies/issue-1/README.md
+build	UNKNOWN STEP	2026-10-17T09:29:33.7148574Z   Pre-Render Hooks: case-studies/issue-1/README.md
+build	UNKNOWN STEP	2026-10-17T09:29:33.7149038Z   Rendering Markup: case-studies/issue-1/README.md
+build	UNKNOWN STEP	2026-10-17T09:29:33.7149495Z   Rendering Layout: case-studies/issue-1/README.md
+build	UNKNOWN STEP	2026-10-17T09:29:33.7149919Z      Layout source: theme
+build	UNKNOWN STEP	2026-10-17T09:29:33.7150348Z            Writing: /github/workspace/docs/_site/assets/css/style.css
+build	UNKNOWN STEP	2026-10-17T09:29:33.7150987Z            Writing: /github/workspace/docs/_site/case-studies/issue-1/data/profile-readme.html
+build	UNKNOWN STEP	2026-10-17T09:29:33.7152026Z            Writing: /github/workspace/docs/_site/case-studies/issue-1/data/web-research.html
+build	UNKNOWN STEP	2026-10-17T09:29:33.7152698Z            Writing: /github/workspace/docs/_site/case-studies/issue-1/index.html
+build	UNKNOWN STEP	2026-10-17T09:29:33.7153210Z                     done in 1.974 seconds.
+build	UNKNOWN STEP	2026-10-17T09:29:33.7153658Z  Auto-regeneration: disabled. Use --watch to enable.
+build	UNKNOWN STEP	2026-10-17T09:29:33.8103803Z ##[group]Run actions/upload-pages-artifact@v3
+build	UNKNOWN STEP	2026-10-17T09:29:33.8104144Z with:
+build	UNKNOWN STEP	2026-10-17T09:29:33.8104345Z   path: ./docs/_site
+build	UNKNOWN STEP	2026-10-17T09:29:33.8104562Z   name: github-pages
+build	UNKNOWN STEP	2026-10-17T09:29:33.8104774Z   retention-days: 1
+build	UNKNOWN STEP	2026-10-17T09:29:33.8104984Z ##[endgroup]
+build	UNKNOWN STEP	2026-10-17T09:29:33.8172332Z ##[start-action display=Archive artifact;id=__actions_upload-pages-artifact.__run]
+build	UNKNOWN STEP	2026-10-17T09:29:33.8224563Z ##[group]Run echo ::group::Archive artifact
+build	UNKNOWN STEP	2026-10-17T09:29:33.8224969Z ^[[36;1mecho ::group::Archive artifact^[[0m
+build	UNKNOWN STEP	2026-10-17T09:29:33.8225246Z ^[[36;1mtar \^[[0m
+build	UNKNOWN STEP	2026-10-17T09:29:33.8225495Z ^[[36;1m  --dereference --hard-dereference \^[[0m
+build	UNKNOWN STEP	2026-10-17T09:29:33.8226055Z ^[[36;1m  --directory "$INPUT_PATH" \^[[0m
+build	UNKNOWN STEP	2026-10-17T09:29:33.8226362Z ^[[36;1m  -cvf "$RUNNER_TEMP/artifact.tar" \^[[0m
+build	UNKNOWN STEP	2026-10-17T09:29:33.8226647Z ^[[36;1m  --exclude=.git \^[[0m
+build	UNKNOWN STEP	2026-10-17T09:29:33.8226890Z ^[[36;1m  --exclude=.github \^[[0m
+build	UNKNOWN STEP	2026-10-17T09:29:33.8227151Z ^[[36;1m  .^[[0m
+build	UNKNOWN STEP	2026-10-17T09:29:33.8227406Z ^[[36;1mecho ::endgroup::^[[0m
+build	UNKNOWN STEP	2026-10-17T09:29:33.8257562Z shell: /usr/bin/sh -e {0}
+build	UNKNOWN STEP	2026-10-17T09:29:33.8257841Z env:
+build	UNKNOWN STEP	2026-10-17T09:29:33.8258046Z   INPUT_PATH: ./docs/_site
+build	UNKNOWN STEP	2026-10-17T09:29:33.8258279Z ##[endgroup]
+build	UNKNOWN STEP	2026-10-17T09:29:33.8323683Z ##[group]Archive artifact
+build	UNKNOWN STEP	2026-10-17T09:29:33.8337899Z ./
+build	UNKNOWN STEP	2026-10-17T09:29:33.8339093Z ./assets/
+build	UNKNOWN STEP	2026-10-17T09:29:33.8339414Z ./assets/css/
+build	UNKNOWN STEP	2026-10-17T09:29:33.8339762Z ./assets/css/style.css
+build	UNKNOWN STEP	2026-10-17T09:29:33.8342861Z ./case-studies/
+build	UNKNOWN STEP	2026-10-17T09:29:33.8343244Z ./case-studies/issue-1/
+build	UNKNOWN STEP	2026-10-17T09:29:33.8343661Z ./case-studies/issue-1/index.html
+build	UNKNOWN STEP	2026-10-17T09:29:33.8344098Z ./case-studies/issue-1/data/
+build	UNKNOWN STEP	2026-10-17T09:29:33.8344577Z ./case-studies/issue-1/data/org-linksplatform.json
+build	UNKNOWN STEP	2026-10-17T09:29:33.8345171Z ./case-studies/issue-1/data/org-deep-foundation.json
+build	UNKNOWN STEP	2026-10-17T09:29:33.8346020Z ./case-studies/issue-1/data/stackoverflow-user.json
+build	UNKNOWN STEP	2026-10-17T09:29:33.8346578Z ./case-studies/issue-1/data/orgs-other.json
+build	UNKNOWN STEP	2026-10-17T09:29:33.8347473Z ./case-studies/issue-1/data/profile-readme.md
+build	UNKNOWN STEP	2026-10-17T09:29:33.8347989Z ./case-studies/issue-1/data/github-user.json
+build	UNKNOWN STEP	2026-10-17T09:29:33.8348533Z ./case-studies/issue-1/data/org-link-foundation.json
+build	UNKNOWN STEP	2026-10-17T09:29:33.8349075Z ./case-studies/issue-1/data/web-research.md
+build	UNKNOWN STEP	2026-10-17T09:29:33.8349624Z ./case-studies/issue-1/data/repos-link-foundation.json
+build	UNKNOWN STEP	2026-10-17T09:29:33.8350246Z ./case-studies/issue-1/data/repos-linksplatform.json
+build	UNKNOWN STEP	2026-10-17T09:29:33.8350813Z ./case-studies/issue-1/data/npm-packages.json
+build	UNKNOWN STEP	2026-10-17T09:29:33.8351343Z ./case-studies/issue-1/data/web-research.html
+build	UNKNOWN STEP	2026-10-17T09:29:33.8351904Z ./case-studies/issue-1/data/repos-deep-foundation.json
+build	UNKNOWN STEP	2026-10-17T09:29:33.8352480Z ./case-studies/issue-1/data/nuget-packages.json
+build	UNKNOWN STEP	2026-10-17T09:29:33.8353061Z ./case-studies/issue-1/data/github-social-accounts.json
+build	UNKNOWN STEP	2026-10-17T09:29:33.8353670Z ./case-studies/issue-1/data/github-contributions.json
+build	UNKNOWN STEP	2026-10-17T09:29:33.8354254Z ./case-studies/issue-1/data/org-link-assistant.json
+build	UNKNOWN STEP	2026-10-17T09:29:33.8354864Z ./case-studies/issue-1/data/repos-link-assistant.json
+build	UNKNOWN STEP	2026-10-17T09:29:33.8355428Z ./case-studies/issue-1/data/repos-konard.json
+build	UNKNOWN STEP	2026-10-17T09:29:33.8356217Z ./case-studies/issue-1/data/profile-readme.html
+build	UNKNOWN STEP	2026-10-17T09:29:33.8356737Z ./case-studies/issue-1/data/crates.json
+build	UNKNOWN STEP	2026-10-17T09:29:33.8357219Z ./case-studies/issue-1/data/github-orgs.json
+build	UNKNOWN STEP	2026-10-17T09:29:33.8357698Z ./case-studies/issue-1/README.md
+build	UNKNOWN STEP	2026-10-17T09:29:33.8358123Z ./case-studies/issue-1/screenshots/
+build	UNKNOWN STEP	2026-10-17T09:29:33.8358666Z ./case-studies/issue-1/screenshots/section-experience.png
+build	UNKNOWN STEP	2026-10-17T09:29:33.8359322Z ./case-studies/issue-1/screenshots/section-projects.png
+build	UNKNOWN STEP	2026-10-17T09:29:33.8359967Z ./case-studies/issue-1/screenshots/section-activity.png
+build	UNKNOWN STEP	2026-10-17T09:29:33.8360614Z ./case-studies/issue-1/screenshots/section-contacts.png
+build	UNKNOWN STEP	2026-10-17T09:29:33.8361220Z ./case-studies/issue-1/screenshots/section-skills.png
+build	UNKNOWN STEP	2026-10-17T09:29:33.8361837Z ./case-studies/issue-1/screenshots/section-method.png
+build	UNKNOWN STEP	2026-10-17T09:29:33.8362733Z ./case-studies/issue-1/screenshots/mobile-hero.png
+build	UNKNOWN STEP	2026-10-17T09:29:33.8364243Z ./case-studies/issue-1/screenshots/desktop-hero.png
+build	UNKNOWN STEP	2026-10-17T09:29:33.8368374Z ./case-studies/issue-1/screenshots/section-packages.png
+build	UNKNOWN STEP	2026-10-17T09:29:33.8369047Z ./case-studies/issue-1/screenshots/mobile-timeline.png
+build	UNKNOWN STEP	2026-10-17T09:29:33.8369693Z ./case-studies/issue-1/screenshots/section-ecosystem.png
+build	UNKNOWN STEP	2026-10-17T09:29:33.8371603Z ./case-studies/issue-1/screenshots/desktop-full.png
+build	UNKNOWN STEP	2026-10-17T09:29:33.8382567Z ./case-studies/issue-1/screenshots/section-community.png
+build	UNKNOWN STEP	2026-10-17T09:29:33.8386955Z ##[endgroup]
+build	UNKNOWN STEP	2026-10-17T09:29:33.8401681Z ##[end-action id=__actions_upload-pages-artifact.__run;outcome=success;conclusion=success;duration_ms=22]
+build	UNKNOWN STEP	2026-10-17T09:29:33.8405211Z ##[start-action display=Archive artifact;id=__actions_upload-pages-artifact.__run_2]
+build	UNKNOWN STEP	2026-10-17T09:29:33.8410889Z ##[end-action id=__actions_upload-pages-artifact.__run_2;outcome=skipped;conclusion=skipped;duration_ms=0]
+build	UNKNOWN STEP	2026-10-17T09:29:33.8413821Z ##[start-action display=Archive artifact;id=__actions_upload-pages-artifact.__run_3]
+build	UNKNOWN STEP	2026-10-17T09:29:33.8417924Z ##[end-action id=__actions_upload-pages-artifact.__run_3;outcome=skipped;conclusion=skipped;duration_ms=0]
+build	UNKNOWN STEP	2026-10-17T09:29:33.8419923Z ##[start-action display=Upload artifact;id=__actions_upload-pages-artifact.upload-artifact]
+build	UNKNOWN STEP	2026-10-17T09:29:33.8477109Z ##[group]Run actions/upload-artifact@v4
+build	UNKNOWN STEP	2026-10-17T09:29:33.8477424Z with:
+build	UNKNOWN STEP	2026-10-17T09:29:33.8477623Z   name: github-pages
+build	UNKNOWN STEP	2026-10-17T09:29:33.8477882Z   path: /home/runner/work/_temp/artifact.tar
+build	UNKNOWN STEP	2026-10-17T09:29:33.8478177Z   retention-days: 1
+build	UNKNOWN STEP	2026-10-17T09:29:33.8478395Z   if-no-files-found: error
+build	UNKNOWN STEP	2026-10-17T09:29:33.8478624Z   compression-level: 6
+build	UNKNOWN STEP	2026-10-17T09:29:33.8478841Z   overwrite: false
+build	UNKNOWN STEP	2026-10-17T09:29:33.8479054Z   include-hidden-files: false
+build	UNKNOWN STEP	2026-10-17T09:29:33.8479291Z ##[endgroup]
+build	UNKNOWN STEP	2026-10-17T09:29:34.0181621Z (node:2700) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+build	UNKNOWN STEP	2026-10-17T09:29:34.0183726Z (Use `node --trace-deprecation ...` to show where the warning was created)
+build	UNKNOWN STEP	2026-10-17T09:29:34.0237281Z With the provided path, there will be 1 file uploaded
+build	UNKNOWN STEP	2026-10-17T09:29:34.0245303Z Artifact name is valid!
+build	UNKNOWN STEP	2026-10-17T09:29:34.0278380Z Root directory input is valid!
+build	UNKNOWN STEP	2026-10-17T09:29:34.2240784Z Beginning upload of artifact content to blob storage
+build	UNKNOWN STEP	2026-10-17T09:29:34.3989866Z (node:2700) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+build	UNKNOWN STEP	2026-10-17T09:29:34.4774909Z Uploaded bytes 3559605
+build	UNKNOWN STEP	2026-10-17T09:29:34.4926914Z Finished uploading artifact content to blob storage!
+build	UNKNOWN STEP	2026-10-17T09:29:34.4928424Z SHA256 digest of uploaded artifact zip is 914bc20dbe881386df76c0c6e4666c0e52f3517f63426821945704840a01e967
+build	UNKNOWN STEP	2026-10-17T09:29:34.4930453Z Finalizing artifact upload
+build	UNKNOWN STEP	2026-10-17T09:29:34.7216514Z Artifact github-pages.zip successfully finalized. Artifact ID 12096444137
+build	UNKNOWN STEP	2026-10-17T09:29:34.7217780Z Artifact github-pages has been successfully uploaded! Final size is 3559605 bytes. Artifact ID is 12096444137
+build	UNKNOWN STEP	2026-10-17T09:29:34.7225607Z Artifact download URL: https://github.com/konard/konard.github.io/actions/runs/39021305509/artifacts/12096444137
+build	UNKNOWN STEP	2026-10-17T09:29:34.7335465Z ##[end-action id=__actions_upload-pages-artifact.upload-artifact;outcome=success;conclusion=success;duration_ms=891]
+build	UNKNOWN STEP	2026-10-17T09:29:34.7452093Z Post job cleanup.
+build	UNKNOWN STEP	2026-10-17T09:29:34.8315963Z [command]/usr/bin/git version
+build	UNKNOWN STEP	2026-10-17T09:29:34.8364195Z git version 2.55.0
+build	UNKNOWN STEP	2026-10-17T09:29:34.8407529Z Temporarily overriding HOME='/home/runner/work/_temp/eabb9905-a4d8-4528-9e24-36d11db6a6d2' before making global git config changes
+build	UNKNOWN STEP	2026-10-17T09:29:34.8409020Z Adding repository directory to the temporary git global config as a safe directory
+build	UNKNOWN STEP	2026-10-17T09:29:34.8421630Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/konard.github.io/konard.github.io
+build	UNKNOWN STEP	2026-10-17T09:29:34.8454852Z Removing SSH command configuration
+build	UNKNOWN STEP	2026-10-17T09:29:34.8461002Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build	UNKNOWN STEP	2026-10-17T09:29:34.8498597Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build	UNKNOWN STEP	2026-10-17T09:29:34.8742733Z Removing HTTP extra header
+build	UNKNOWN STEP	2026-10-17T09:29:34.8748569Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build	UNKNOWN STEP	2026-10-17T09:29:34.8785245Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build	UNKNOWN STEP	2026-10-17T09:29:34.9041849Z Removing includeIf entries pointing to credentials config files
+build	UNKNOWN STEP	2026-10-17T09:29:34.9050462Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+build	UNKNOWN STEP	2026-10-17T09:29:34.9083928Z includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path
+build	UNKNOWN STEP	2026-10-17T09:29:34.9085139Z includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path
+build	UNKNOWN STEP	2026-10-17T09:29:34.9086474Z includeif.gitdir:/github/workspace/.git.path
+build	UNKNOWN STEP	2026-10-17T09:29:34.9087659Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+build	UNKNOWN STEP	2026-10-17T09:29:34.9094226Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path
+build	UNKNOWN STEP	2026-10-17T09:29:34.9121592Z /home/runner/work/_temp/git-credentials-6152931f-5f6d-455c-b0e3-e24314d2e3ea.config
+build	UNKNOWN STEP	2026-10-17T09:29:34.9132350Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-6152931f\-5f6d\-455c\-b0e3\-e24314d2e3ea\.config
+build	UNKNOWN STEP	2026-10-17T09:29:34.9181983Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path
+build	UNKNOWN STEP	2026-10-17T09:29:34.9214011Z /home/runner/work/_temp/git-credentials-6152931f-5f6d-455c-b0e3-e24314d2e3ea.config
+build	UNKNOWN STEP	2026-10-17T09:29:34.9234139Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-6152931f\-5f6d\-455c\-b0e3\-e24314d2e3ea\.config
+build	UNKNOWN STEP	2026-10-17T09:29:34.9276126Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+build	UNKNOWN STEP	2026-10-17T09:29:34.9305522Z /github/runner_temp/git-credentials-6152931f-5f6d-455c-b0e3-e24314d2e3ea.config
+build	UNKNOWN STEP	2026-10-17T09:29:34.9313661Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-6152931f\-5f6d\-455c\-b0e3\-e24314d2e3ea\.config
+build	UNKNOWN STEP	2026-10-17T09:29:34.9351671Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+build	UNKNOWN STEP	2026-10-17T09:29:34.9378086Z /github/runner_temp/git-credentials-6152931f-5f6d-455c-b0e3-e24314d2e3ea.config
+build	UNKNOWN STEP	2026-10-17T09:29:34.9385588Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-6152931f\-5f6d\-455c\-b0e3\-e24314d2e3ea\.config
+build	UNKNOWN STEP	2026-10-17T09:29:34.9423598Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+build	UNKNOWN STEP	2026-10-17T09:29:34.9648581Z Removing credentials config '/home/runner/work/_temp/git-credentials-6152931f-5f6d-455c-b0e3-e24314d2e3ea.config'
+build	UNKNOWN STEP	2026-10-17T09:29:34.9789933Z Cleaning up orphan processes
+build	UNKNOWN STEP	2026-10-17T09:29:35.0124252Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+deploy	UNKNOWN STEP	﻿2026-10-17T09:29:40.1744367Z Current runner version: '2.337.0'
+deploy	UNKNOWN STEP	2026-10-17T09:29:40.1764745Z ##[group]Runner Image Provisioner
+deploy	UNKNOWN STEP	2026-10-17T09:29:40.1765497Z Hosted Compute Agent
+deploy	UNKNOWN STEP	2026-10-17T09:29:40.1766222Z Version: 20261012.601
+deploy	UNKNOWN STEP	2026-10-17T09:29:40.1766778Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+deploy	UNKNOWN STEP	2026-10-17T09:29:40.1767388Z Build Date: 2026-10-12T17:48:21Z
+deploy	UNKNOWN STEP	2026-10-17T09:29:40.1767974Z Worker ID: {d57a72c1-4f31-4701-a704-99e90494edc0}
+deploy	UNKNOWN STEP	2026-10-17T09:29:40.1768595Z Region: westus
+deploy	UNKNOWN STEP	2026-10-17T09:29:40.1769048Z Cloud: Azure
+deploy	UNKNOWN STEP	2026-10-17T09:29:40.1769472Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-10-17T09:29:40.1770650Z ##[group]Operating System
+deploy	UNKNOWN STEP	2026-10-17T09:29:40.1771247Z Ubuntu
+deploy	UNKNOWN STEP	2026-10-17T09:29:40.1771723Z 24.04.5
+deploy	UNKNOWN STEP	2026-10-17T09:29:40.1772195Z LTS
+deploy	UNKNOWN STEP	2026-10-17T09:29:40.1772607Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-10-17T09:29:40.1773112Z ##[group]Runner Image
+deploy	UNKNOWN STEP	2026-10-17T09:29:40.1773625Z Image: ubuntu-24.04
+deploy	UNKNOWN STEP	2026-10-17T09:29:40.1774116Z Version: 20261012.334.1
+deploy	UNKNOWN STEP	2026-10-17T09:29:40.1775152Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+deploy	UNKNOWN STEP	2026-10-17T09:29:40.1776647Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+deploy	UNKNOWN STEP	2026-10-17T09:29:40.1777454Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-10-17T09:29:40.1778468Z ##[group]GITHUB_TOKEN Permissions
+deploy	UNKNOWN STEP	2026-10-17T09:29:40.1780028Z Contents: read
+deploy	UNKNOWN STEP	2026-10-17T09:29:40.1780565Z Metadata: read
+deploy	UNKNOWN STEP	2026-10-17T09:29:40.1781065Z Pages: write
+deploy	UNKNOWN STEP	2026-10-17T09:29:40.1781511Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-10-17T09:29:40.1783193Z Secret source: Actions
+deploy	UNKNOWN STEP	2026-10-17T09:29:40.1783957Z Cache mode: read
+deploy	UNKNOWN STEP	2026-10-17T09:29:40.1784583Z Prepare workflow directory
+deploy	UNKNOWN STEP	2026-10-17T09:29:40.2041844Z Prepare all required actions
+deploy	UNKNOWN STEP	2026-10-17T09:29:40.2079157Z Getting action download info
+deploy	UNKNOWN STEP	2026-10-17T09:29:40.5400866Z Download action repository 'actions/deploy-pages@v5' (SHA:368f82528645a54fb793d4d04e342629a3f51346)
+deploy	UNKNOWN STEP	2026-10-17T09:29:41.1426873Z Complete job name: deploy
+deploy	UNKNOWN STEP	2026-10-17T09:29:41.2060739Z ##[group]Run actions/deploy-pages@v5
+deploy	UNKNOWN STEP	2026-10-17T09:29:41.2061413Z with:
+deploy	UNKNOWN STEP	2026-10-17T09:29:41.2064375Z   token: ***
+deploy	UNKNOWN STEP	2026-10-17T09:29:41.2064736Z   timeout: 600000
+deploy	UNKNOWN STEP	2026-10-17T09:29:41.2065084Z   error_count: 10
+deploy	UNKNOWN STEP	2026-10-17T09:29:41.2065441Z   reporting_interval: 5000
+deploy	UNKNOWN STEP	2026-10-17T09:29:41.2066119Z   artifact_name: github-pages
+deploy	UNKNOWN STEP	2026-10-17T09:29:41.2066593Z   preview: false
+deploy	UNKNOWN STEP	2026-10-17T09:29:41.2067144Z ##[endgroup]
+deploy	UNKNOWN STEP	2026-10-17T09:29:41.3615607Z (node:1979) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+deploy	UNKNOWN STEP	2026-10-17T09:29:41.3617217Z (Use `node --trace-deprecation ...` to show where the warning was created)
+deploy	UNKNOWN STEP	2026-10-17T09:29:41.6176135Z Fetching artifact metadata for "github-pages" in this workflow run
+deploy	UNKNOWN STEP	2026-10-17T09:29:41.8786853Z Found 1 artifact(s)
+deploy	UNKNOWN STEP	2026-10-17T09:29:41.8788159Z Creating Pages deployment with payload:
+deploy	UNKNOWN STEP	2026-10-17T09:29:41.8788594Z {
+deploy	UNKNOWN STEP	2026-10-17T09:29:41.8788931Z 	"artifact_id": 12096444137,
+deploy	UNKNOWN STEP	2026-10-17T09:29:41.8789682Z 	"pages_build_version": "3d4aa8dfe5455358d3f7ba30a9557882ba3480a4",
+deploy	UNKNOWN STEP	2026-10-17T09:29:41.8836715Z 	"oidc_token": "***"
+deploy	UNKNOWN STEP	2026-10-17T09:29:41.8837241Z }
+deploy	UNKNOWN STEP	2026-10-17T09:29:42.4581106Z Created deployment for 3d4aa8dfe5455358d3f7ba30a9557882ba3480a4, ID: 3d4aa8dfe5455358d3f7ba30a9557882ba3480a4
+deploy	UNKNOWN STEP	2026-10-17T09:29:46.8299982Z Getting Pages deployment status...
+deploy	UNKNOWN STEP	2026-10-17T09:29:46.9967506Z Reported success!
+deploy	UNKNOWN STEP	2026-10-17T09:29:47.0188514Z Evaluate and set environment url
+deploy	UNKNOWN STEP	2026-10-17T09:29:47.0193086Z Evaluated environment url: https://konard.github.io/
+deploy	UNKNOWN STEP	2026-10-17T09:29:47.0193915Z Cleaning up orphan processes
+report-build-status	UNKNOWN STEP	﻿2026-10-17T09:29:38.3837841Z Current runner version: '2.337.0'
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:38.3853202Z ##[group]Runner Image Provisioner
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:38.3853788Z Hosted Compute Agent
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:38.3854131Z Version: 20261012.601
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:38.3854537Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:38.3854991Z Build Date: 2026-10-12T17:48:21Z
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:38.3855379Z Worker ID: {92a07740-0095-4f2c-8ce0-c968b11c745a}
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:38.3855814Z Region: centralus
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:38.3856133Z Cloud: Azure
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:38.3856436Z ##[endgroup]
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:38.3857306Z ##[group]Operating System
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:38.3857654Z Ubuntu
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:38.3858022Z 24.04.5
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:38.3858316Z LTS
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:38.3858619Z ##[endgroup]
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:38.3859085Z ##[group]Runner Image
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:38.3859434Z Image: ubuntu-24.04
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:38.3859818Z Version: 20261012.334.1
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:38.3860581Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:38.3861483Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:38.3862111Z ##[endgroup]
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:38.3862811Z ##[group]GITHUB_TOKEN Permissions
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:38.3864091Z Contents: read
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:38.3864491Z Metadata: read
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:38.3864825Z Pages: write
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:38.3865141Z ##[endgroup]
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:38.3866367Z Secret source: Actions
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:38.3866860Z Cache mode: read
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:38.3867349Z Prepare workflow directory
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:38.4070825Z Prepare all required actions
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:38.4130667Z Complete job name: report-build-status
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:39.0542216Z ##[group]Run gh api -X POST "repos/$GITHUB_REPOSITORY/pages/telemetry" \
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:39.0543011Z ^[[36;1mgh api -X POST "repos/$GITHUB_REPOSITORY/pages/telemetry" \^[[0m
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:39.0543531Z ^[[36;1m  -F github_run_id="$GITHUB_RUN_ID" \^[[0m
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:39.0544014Z ^[[36;1m  -F conclusion="$CONCLUSION"^[[0m
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:39.0957450Z shell: /usr/bin/bash -e {0}
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:39.0957971Z env:
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:39.0960198Z   GITHUB_TOKEN: ***
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:39.0960586Z   CONCLUSION: success
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:39.0960923Z ##[endgroup]
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:39.5358659Z {}
+report-build-status	UNKNOWN STEP	2026-10-17T09:29:39.5458114Z Cleaning up orphan processes
