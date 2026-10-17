@@ -1,0 +1,497 @@
+build	Set up job	﻿2026-10-17T09:29:17.7105951Z Current runner version: '2.337.0'
+build	Set up job	2026-10-17T09:29:17.7141230Z ##[group]Runner Image Provisioner
+build	Set up job	2026-10-17T09:29:17.7142580Z Hosted Compute Agent
+build	Set up job	2026-10-17T09:29:17.7143679Z Version: 20261012.601
+build	Set up job	2026-10-17T09:29:17.7144707Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+build	Set up job	2026-10-17T09:29:17.7146300Z Build Date: 2026-10-12T17:48:21Z
+build	Set up job	2026-10-17T09:29:17.7147555Z Worker ID: {91a5af0f-cd5f-4a49-a19f-825ef1b3fb5d}
+build	Set up job	2026-10-17T09:29:17.7148843Z Region: eastus
+build	Set up job	2026-10-17T09:29:17.7149847Z Cloud: Azure
+build	Set up job	2026-10-17T09:29:17.7150751Z ##[endgroup]
+build	Set up job	2026-10-17T09:29:17.7153141Z ##[group]Operating System
+build	Set up job	2026-10-17T09:29:17.7154237Z Ubuntu
+build	Set up job	2026-10-17T09:29:17.7155149Z 24.04.5
+build	Set up job	2026-10-17T09:29:17.7156283Z LTS
+build	Set up job	2026-10-17T09:29:17.7157174Z ##[endgroup]
+build	Set up job	2026-10-17T09:29:17.7158229Z ##[group]Runner Image
+build	Set up job	2026-10-17T09:29:17.7159246Z Image: ubuntu-24.04
+build	Set up job	2026-10-17T09:29:17.7160226Z Version: 20261012.334.1
+build	Set up job	2026-10-17T09:29:17.7162264Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+build	Set up job	2026-10-17T09:29:17.7165378Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+build	Set up job	2026-10-17T09:29:17.7167331Z ##[endgroup]
+build	Set up job	2026-10-17T09:29:17.7169405Z ##[group]GITHUB_TOKEN Permissions
+build	Set up job	2026-10-17T09:29:17.7172341Z Contents: read
+build	Set up job	2026-10-17T09:29:17.7173464Z Metadata: read
+build	Set up job	2026-10-17T09:29:17.7174428Z Pages: write
+build	Set up job	2026-10-17T09:29:17.7175344Z ##[endgroup]
+build	Set up job	2026-10-17T09:29:17.7178537Z Secret source: Actions
+build	Set up job	2026-10-17T09:29:17.7180622Z Cache mode: read
+build	Set up job	2026-10-17T09:29:17.7182048Z Prepare workflow directory
+build	Set up job	2026-10-17T09:29:17.7651936Z Prepare all required actions
+build	Set up job	2026-10-17T09:29:17.7722685Z Getting action download info
+build	Set up job	2026-10-17T09:29:17.9699637Z Download action repository 'actions/checkout@v7.0.1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+build	Set up job	2026-10-17T09:29:18.0786468Z Download action repository 'actions/jekyll-build-pages@v1' (SHA:44a6e6beabd48582f863aeeb6cb2151cc1716697)
+build	Set up job	2026-10-17T09:29:18.2197001Z Download action repository 'actions/upload-pages-artifact@v3' (SHA:56afc609e74202658d3ffba0e8f6dda462b719fa)
+build	Set up job	2026-10-17T09:29:18.4011084Z Getting action download info
+build	Set up job	2026-10-17T09:29:18.4760681Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+build	Set up job	2026-10-17T09:29:18.6196232Z Complete job name: build
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	﻿2026-10-17T09:29:18.6705378Z ##[group]Pull down action image 'ghcr.io/actions/jekyll-build-pages:v1.0.13'
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:18.6827368Z ##[command]/usr/bin/docker pull ghcr.io/actions/jekyll-build-pages:v1.0.13
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.0974741Z v1.0.13: Pulling from actions/jekyll-build-pages
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.0976366Z efc2b5ad9eec: Pulling fs layer
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.0977242Z 165b60d1bb48: Pulling fs layer
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.0978195Z 2a328af1ca3a: Pulling fs layer
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.0979355Z 32b58fa44788: Pulling fs layer
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.0980666Z 590ab93c22d2: Pulling fs layer
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.0981633Z 26ea96c4c14c: Pulling fs layer
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.0982649Z bd7e451dfea1: Pulling fs layer
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.0983518Z c209e9dadc51: Pulling fs layer
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.0984350Z a4925b5c711a: Pulling fs layer
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.0985167Z cd9459784e3c: Pulling fs layer
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.0986218Z bd7e451dfea1: Waiting
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.0987006Z c209e9dadc51: Waiting
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.0987780Z a4925b5c711a: Waiting
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.0988603Z cd9459784e3c: Waiting
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.0989384Z 32b58fa44788: Waiting
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.0990139Z 590ab93c22d2: Waiting
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.0990911Z 26ea96c4c14c: Waiting
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.1491653Z 2a328af1ca3a: Verifying Checksum
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.1493958Z 2a328af1ca3a: Download complete
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.2024235Z 165b60d1bb48: Verifying Checksum
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.2027870Z 165b60d1bb48: Download complete
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.2539454Z efc2b5ad9eec: Verifying Checksum
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.2547831Z efc2b5ad9eec: Download complete
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.2599528Z 590ab93c22d2: Verifying Checksum
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.2602226Z 590ab93c22d2: Download complete
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.3117917Z bd7e451dfea1: Verifying Checksum
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.3122049Z bd7e451dfea1: Download complete
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.3333795Z 32b58fa44788: Verifying Checksum
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.3337185Z 32b58fa44788: Download complete
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.4049854Z a4925b5c711a: Verifying Checksum
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.4053439Z a4925b5c711a: Download complete
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.4645655Z cd9459784e3c: Verifying Checksum
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.4648806Z cd9459784e3c: Download complete
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.5352942Z c209e9dadc51: Verifying Checksum
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.5357768Z c209e9dadc51: Download complete
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.9497038Z 26ea96c4c14c: Verifying Checksum
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:19.9499298Z 26ea96c4c14c: Download complete
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:20.6397980Z efc2b5ad9eec: Pull complete
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:22.0543858Z 165b60d1bb48: Pull complete
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:22.0659605Z 2a328af1ca3a: Pull complete
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:23.0513294Z 32b58fa44788: Pull complete
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:23.0640814Z 590ab93c22d2: Pull complete
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:27.1455962Z 26ea96c4c14c: Pull complete
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:27.1563852Z bd7e451dfea1: Pull complete
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:29.2357962Z c209e9dadc51: Pull complete
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:29.2599881Z a4925b5c711a: Pull complete
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:29.2693537Z cd9459784e3c: Pull complete
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:29.2724452Z Digest: sha256:6791ebfd912185ed59bfb5fb102664fa872496b79f87ff8b9cfba292a7345041
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:29.2734399Z Status: Downloaded newer image for ghcr.io/actions/jekyll-build-pages:v1.0.13
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:29.2743317Z ghcr.io/actions/jekyll-build-pages:v1.0.13
+build	Pull ghcr.io/actions/jekyll-build-pages:v1.0.13	2026-10-17T09:29:29.2764015Z ##[endgroup]
+build	Checkout	﻿2026-10-17T09:29:29.3089058Z ##[group]Run actions/checkout@v7.0.1
+build	Checkout	2026-10-17T09:29:29.3089717Z with:
+build	Checkout	2026-10-17T09:29:29.3089928Z   ref: main
+build	Checkout	2026-10-17T09:29:29.3090132Z   submodules: recursive
+build	Checkout	2026-10-17T09:29:29.3090391Z   repository: konard/konard.github.io
+build	Checkout	2026-10-17T09:29:29.3093066Z   token: ***
+build	Checkout	2026-10-17T09:29:29.3093283Z   ssh-strict: true
+build	Checkout	2026-10-17T09:29:29.3093494Z   ssh-user: git
+build	Checkout	2026-10-17T09:29:29.3093745Z   persist-credentials: true
+build	Checkout	2026-10-17T09:29:29.3093992Z   clean: true
+build	Checkout	2026-10-17T09:29:29.3094206Z   sparse-checkout-cone-mode: true
+build	Checkout	2026-10-17T09:29:29.3094475Z   fetch-depth: 1
+build	Checkout	2026-10-17T09:29:29.3094685Z   fetch-tags: false
+build	Checkout	2026-10-17T09:29:29.3094894Z   show-progress: true
+build	Checkout	2026-10-17T09:29:29.3095110Z   lfs: false
+build	Checkout	2026-10-17T09:29:29.3095322Z   set-safe-directory: true
+build	Checkout	2026-10-17T09:29:29.3095607Z   allow-unsafe-pr-checkout: false
+build	Checkout	2026-10-17T09:29:29.3096363Z ##[endgroup]
+build	Checkout	2026-10-17T09:29:29.4112235Z Syncing repository: konard/konard.github.io
+build	Checkout	2026-10-17T09:29:29.4113907Z ##[group]Getting Git version info
+build	Checkout	2026-10-17T09:29:29.4114661Z Working directory is '/home/runner/work/konard.github.io/konard.github.io'
+build	Checkout	2026-10-17T09:29:29.4115464Z [command]/usr/bin/git version
+build	Checkout	2026-10-17T09:29:29.4262139Z git version 2.55.0
+build	Checkout	2026-10-17T09:29:29.4288409Z ##[endgroup]
+build	Checkout	2026-10-17T09:29:29.4300371Z Temporarily overriding HOME='/home/runner/work/_temp/f522cbf2-a6a9-446c-a03b-35bc26e1c18a' before making global git config changes
+build	Checkout	2026-10-17T09:29:29.4301934Z Adding repository directory to the temporary git global config as a safe directory
+build	Checkout	2026-10-17T09:29:29.4307699Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/konard.github.io/konard.github.io
+build	Checkout	2026-10-17T09:29:29.4362619Z Deleting the contents of '/home/runner/work/konard.github.io/konard.github.io'
+build	Checkout	2026-10-17T09:29:29.4365353Z ##[group]Determining repository object format
+build	Checkout	2026-10-17T09:29:29.6508865Z ##[endgroup]
+build	Checkout	2026-10-17T09:29:29.6510097Z ##[group]Initializing the repository
+build	Checkout	2026-10-17T09:29:29.6521084Z [command]/usr/bin/git init /home/runner/work/konard.github.io/konard.github.io
+build	Checkout	2026-10-17T09:29:29.6713523Z hint: Using 'master' as the name for the initial branch. This default branch name
+build	Checkout	2026-10-17T09:29:29.6715060Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+build	Checkout	2026-10-17T09:29:29.6717047Z hint: to use in all of your new repositories, which will suppress this warning,
+build	Checkout	2026-10-17T09:29:29.6718944Z hint: call:
+build	Checkout	2026-10-17T09:29:29.6719585Z hint:
+build	Checkout	2026-10-17T09:29:29.6720507Z hint: 	git config --global init.defaultBranch <name>
+build	Checkout	2026-10-17T09:29:29.6721421Z hint:
+build	Checkout	2026-10-17T09:29:29.6722340Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+build	Checkout	2026-10-17T09:29:29.6723662Z hint: 'development'. The just-created branch can be renamed via this command:
+build	Checkout	2026-10-17T09:29:29.6724731Z hint:
+build	Checkout	2026-10-17T09:29:29.6725378Z hint: 	git branch -m <name>
+build	Checkout	2026-10-17T09:29:29.6726345Z hint:
+build	Checkout	2026-10-17T09:29:29.6727326Z hint: Disable this message with "git config set advice.defaultBranchName false"
+build	Checkout	2026-10-17T09:29:29.6728804Z Initialized empty Git repository in /home/runner/work/konard.github.io/konard.github.io/.git/
+build	Checkout	2026-10-17T09:29:29.6733821Z [command]/usr/bin/git remote add origin https://github.com/konard/konard.github.io
+build	Checkout	2026-10-17T09:29:29.6804477Z ##[endgroup]
+build	Checkout	2026-10-17T09:29:29.6805171Z ##[group]Disabling automatic garbage collection
+build	Checkout	2026-10-17T09:29:29.6809502Z [command]/usr/bin/git config --local gc.auto 0
+build	Checkout	2026-10-17T09:29:29.6850414Z ##[endgroup]
+build	Checkout	2026-10-17T09:29:29.6851010Z ##[group]Setting up auth
+build	Checkout	2026-10-17T09:29:29.6851483Z Removing SSH command configuration
+build	Checkout	2026-10-17T09:29:29.6932106Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build	Checkout	2026-10-17T09:29:29.6938353Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build	Checkout	2026-10-17T09:29:29.7303547Z Removing HTTP extra header
+build	Checkout	2026-10-17T09:29:29.7309140Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build	Checkout	2026-10-17T09:29:29.7355522Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build	Checkout	2026-10-17T09:29:29.7576080Z Removing includeIf entries pointing to credentials config files
+build	Checkout	2026-10-17T09:29:29.7581726Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+build	Checkout	2026-10-17T09:29:29.7619887Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+build	Checkout	2026-10-17T09:29:29.7853191Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-6152931f-5f6d-455c-b0e3-e24314d2e3ea.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+build	Checkout	2026-10-17T09:29:29.7896813Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path /home/runner/work/_temp/git-credentials-6152931f-5f6d-455c-b0e3-e24314d2e3ea.config
+build	Checkout	2026-10-17T09:29:29.7932780Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-6152931f-5f6d-455c-b0e3-e24314d2e3ea.config
+build	Checkout	2026-10-17T09:29:29.7972286Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-6152931f-5f6d-455c-b0e3-e24314d2e3ea.config
+build	Checkout	2026-10-17T09:29:29.8009448Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-6152931f-5f6d-455c-b0e3-e24314d2e3ea.config
+build	Checkout	2026-10-17T09:29:29.8044593Z ##[endgroup]
+build	Checkout	2026-10-17T09:29:29.8045173Z ##[group]Fetching the repository
+build	Checkout	2026-10-17T09:29:29.8052200Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +refs/heads/main*:refs/remotes/origin/main* +refs/tags/main*:refs/tags/main*
+build	Checkout	2026-10-17T09:29:30.2440418Z From https://github.com/konard/konard.github.io
+build	Checkout	2026-10-17T09:29:30.2441402Z  * [new branch]      main       -> origin/main
+build	Checkout	2026-10-17T09:29:30.2447746Z ##[endgroup]
+build	Checkout	2026-10-17T09:29:30.2448446Z ##[group]Determining the checkout info
+build	Checkout	2026-10-17T09:29:30.2457221Z [command]/usr/bin/git branch --list --remote origin/main
+build	Checkout	2026-10-17T09:29:30.2493043Z   origin/main
+build	Checkout	2026-10-17T09:29:30.2498566Z ##[endgroup]
+build	Checkout	2026-10-17T09:29:30.2504502Z [command]/usr/bin/git sparse-checkout disable
+build	Checkout	2026-10-17T09:29:30.2564306Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+build	Checkout	2026-10-17T09:29:30.2604724Z ##[group]Checking out the ref
+build	Checkout	2026-10-17T09:29:30.2609112Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+build	Checkout	2026-10-17T09:29:30.2925676Z Switched to a new branch 'main'
+build	Checkout	2026-10-17T09:29:30.2931320Z branch 'main' set up to track 'origin/main'.
+build	Checkout	2026-10-17T09:29:30.2938282Z ##[endgroup]
+build	Checkout	2026-10-17T09:29:30.2938955Z ##[group]Setting up auth for fetching submodules
+build	Checkout	2026-10-17T09:29:30.2944886Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-6152931f-5f6d-455c-b0e3-e24314d2e3ea.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+build	Checkout	2026-10-17T09:29:30.2994075Z [command]/usr/bin/git config --global include.path /home/runner/work/_temp/git-credentials-6152931f-5f6d-455c-b0e3-e24314d2e3ea.config
+build	Checkout	2026-10-17T09:29:30.3032919Z [command]/usr/bin/git config --global --unset-all url.https://github.com/.insteadOf
+build	Checkout	2026-10-17T09:29:30.3084404Z [command]/usr/bin/git config --global --add url.https://github.com/.insteadOf git@github.com:
+build	Checkout	2026-10-17T09:29:30.3125227Z [command]/usr/bin/git config --global --add url.https://github.com/.insteadOf org-1431904@github.com:
+build	Checkout	2026-10-17T09:29:30.3165156Z ##[endgroup]
+build	Checkout	2026-10-17T09:29:30.3166189Z ##[group]Fetching submodules
+build	Checkout	2026-10-17T09:29:30.3167718Z [command]/usr/bin/git submodule sync --recursive
+build	Checkout	2026-10-17T09:29:30.3425084Z [command]/usr/bin/git -c protocol.version=2 submodule update --init --force --depth=1 --recursive
+build	Checkout	2026-10-17T09:29:30.3688931Z [command]/usr/bin/git submodule foreach --recursive git config --local gc.auto 0
+build	Checkout	2026-10-17T09:29:30.3928014Z ##[endgroup]
+build	Checkout	2026-10-17T09:29:30.3928726Z ##[group]Persisting credentials for submodules
+build	Checkout	2026-10-17T09:29:30.3933408Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'url\.https\:\/\/github\.com\/\.insteadOf' && git config --local --unset-all 'url.https://github.com/.insteadOf' || :"
+build	Checkout	2026-10-17T09:29:30.4164494Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+build	Checkout	2026-10-17T09:29:30.4394669Z [command]/usr/bin/git submodule foreach --recursive git config --local --add 'url.https://github.com/.insteadOf' 'git@github.com:'
+build	Checkout	2026-10-17T09:29:30.4631277Z [command]/usr/bin/git submodule foreach --recursive git config --local --add 'url.https://github.com/.insteadOf' 'org-1431904@github.com:'
+build	Checkout	2026-10-17T09:29:30.4887840Z ##[endgroup]
+build	Checkout	2026-10-17T09:29:30.4937888Z [command]/usr/bin/git log -1 --format=%H
+build	Checkout	2026-10-17T09:29:30.4969316Z 3d4aa8dfe5455358d3f7ba30a9557882ba3480a4
+build	Build with Jekyll	﻿2026-10-17T09:29:30.5179987Z ##[group]Run actions/jekyll-build-pages@v1
+build	Build with Jekyll	2026-10-17T09:29:30.5180311Z with:
+build	Build with Jekyll	2026-10-17T09:29:30.5180506Z   source: ./docs
+build	Build with Jekyll	2026-10-17T09:29:30.5180726Z   destination: ./docs/_site
+build	Build with Jekyll	2026-10-17T09:29:30.5180973Z   future: false
+build	Build with Jekyll	2026-10-17T09:29:30.5181232Z   build_revision: 3d4aa8dfe5455358d3f7ba30a9557882ba3480a4
+build	Build with Jekyll	2026-10-17T09:29:30.5181546Z   verbose: true
+build	Build with Jekyll	2026-10-17T09:29:30.5184085Z   token: ***
+build	Build with Jekyll	2026-10-17T09:29:30.5184292Z ##[endgroup]
+build	Build with Jekyll	2026-10-17T09:29:30.5279493Z ##[command]/usr/bin/docker run --name ghcrioactionsjekyllbuildpagesv1013_a1aa24 --label d7f594 --workdir /github/workspace --rm -e "INPUT_SOURCE" -e "INPUT_DESTINATION" -e "INPUT_FUTURE" -e "INPUT_BUILD_REVISION" -e "INPUT_VERBOSE" -e "INPUT_TOKEN" -e "HOME" -e "GITHUB_JOB" -e "GITHUB_REF" -e "GITHUB_SHA" -e "GITHUB_REPOSITORY" -e "GITHUB_REPOSITORY_OWNER" -e "GITHUB_REPOSITORY_OWNER_ID" -e "GITHUB_RUN_ID" -e "GITHUB_RUN_NUMBER" -e "GITHUB_RETENTION_DAYS" -e "GITHUB_RUN_ATTEMPT" -e "GITHUB_ACTOR_ID" -e "GITHUB_ACTOR" -e "GITHUB_WORKFLOW" -e "GITHUB_HEAD_REF" -e "GITHUB_BASE_REF" -e "GITHUB_EVENT_NAME" -e "GITHUB_SERVER_URL" -e "GITHUB_API_URL" -e "GITHUB_GRAPHQL_URL" -e "GITHUB_REF_NAME" -e "GITHUB_REF_PROTECTED" -e "GITHUB_REF_TYPE" -e "GITHUB_WORKFLOW_REF" -e "GITHUB_WORKFLOW_SHA" -e "GITHUB_REPOSITORY_ID" -e "GITHUB_TRIGGERING_ACTOR" -e "GITHUB_WORKSPACE" -e "GITHUB_ACTION" -e "GITHUB_EVENT_PATH" -e "GITHUB_ACTION_REPOSITORY" -e "GITHUB_ACTION_REF" -e "GITHUB_PATH" -e "GITHUB_ENV" -e "GITHUB_STEP_SUMMARY" -e "GITHUB_STATE" -e "GITHUB_OUTPUT" -e "GITHUB_ARTIFACTS" -e "GITHUB_ARTIFACTS_LIST" -e "RUNNER_OS" -e "RUNNER_ARCH" -e "RUNNER_NAME" -e "RUNNER_ENVIRONMENT" -e "RUNNER_TOOL_CACHE" -e "RUNNER_TEMP" -e "RUNNER_WORKSPACE" -e "ACTIONS_RUNTIME_URL" -e "ACTIONS_RUNTIME_TOKEN" -e "ACTIONS_CACHE_URL" -e "ACTIONS_ID_TOKEN_REQUEST_URL" -e "ACTIONS_ID_TOKEN_REQUEST_TOKEN" -e "ACTIONS_RESULTS_URL" -e "ACTIONS_CACHE_MODE" -e "ACTIONS_ORCHESTRATION_ID" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work/_temp":"/github/runner_temp" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" -v "/home/runner/work/_temp/_runner_file_commands":"/github/file_commands" -v "/home/runner/work/konard.github.io/konard.github.io":"/github/workspace" ghcr.io/actions/jekyll-build-pages:v1.0.13
+build	Build with Jekyll	2026-10-17T09:29:31.3170586Z ^[[33mConfiguration file: none^[[0m
+build	Build with Jekyll	2026-10-17T09:29:31.4318570Z To use retry middleware with Faraday v2.0+, install `faraday-retry` gem
+build	Build with Jekyll	2026-10-17T09:29:33.7101015Z   Logging at level: debug
+build	Build with Jekyll	2026-10-17T09:29:33.7101725Z       GitHub Pages: github-pages v232
+build	Build with Jekyll	2026-10-17T09:29:33.7102340Z       GitHub Pages: jekyll v3.10.0
+build	Build with Jekyll	2026-10-17T09:29:33.7111261Z              Theme: jekyll-theme-primer
+build	Build with Jekyll	2026-10-17T09:29:33.7112304Z       Theme source: /usr/local/bundle/gems/jekyll-theme-primer-0.6.0
+build	Build with Jekyll	2026-10-17T09:29:33.7113212Z          Requiring: jekyll-github-metadata
+build	Build with Jekyll	2026-10-17T09:29:33.7113737Z          Requiring: jekyll-seo-tag
+build	Build with Jekyll	2026-10-17T09:29:33.7114403Z          Requiring: jekyll-coffeescript
+build	Build with Jekyll	2026-10-17T09:29:33.7114968Z          Requiring: jekyll-commonmark-ghpages
+build	Build with Jekyll	2026-10-17T09:29:33.7115524Z          Requiring: jekyll-gist
+build	Build with Jekyll	2026-10-17T09:29:33.7116354Z          Requiring: jekyll-github-metadata
+build	Build with Jekyll	2026-10-17T09:29:33.7116979Z          Requiring: jekyll-paginate
+build	Build with Jekyll	2026-10-17T09:29:33.7117648Z          Requiring: jekyll-relative-links
+build	Build with Jekyll	2026-10-17T09:29:33.7118237Z          Requiring: jekyll-optional-front-matter
+build	Build with Jekyll	2026-10-17T09:29:33.7118786Z          Requiring: jekyll-readme-index
+build	Build with Jekyll	2026-10-17T09:29:33.7119296Z          Requiring: jekyll-default-layout
+build	Build with Jekyll	2026-10-17T09:29:33.7119848Z          Requiring: jekyll-titles-from-headings
+build	Build with Jekyll	2026-10-17T09:29:33.7120407Z    GitHub Metadata: Initializing...
+build	Build with Jekyll	2026-10-17T09:29:33.7120919Z             Source: /github/workspace/./docs
+build	Build with Jekyll	2026-10-17T09:29:33.7121478Z        Destination: /github/workspace/./docs/_site
+build	Build with Jekyll	2026-10-17T09:29:33.7122132Z  Incremental build: disabled. Enable with --incremental
+build	Build with Jekyll	2026-10-17T09:29:33.7122845Z       Generating... 
+build	Build with Jekyll	2026-10-17T09:29:33.7130504Z         Generating: JekyllOptionalFrontMatter::Generator finished in 0.000411594 seconds.
+build	Build with Jekyll	2026-10-17T09:29:33.7131565Z         Generating: JekyllReadmeIndex::Generator finished in 0.001849149 seconds.
+build	Build with Jekyll	2026-10-17T09:29:33.7132312Z         Generating: Jekyll::Paginate::Pagination finished in 6.852e-06 seconds.
+build	Build with Jekyll	2026-10-17T09:29:33.7132901Z    GitHub Metadata: Generating for konard/konard.github.io
+build	Build with Jekyll	2026-10-17T09:29:33.7133482Z    GitHub Metadata: Calling @client.pages("konard/konard.github.io", {})
+build	Build with Jekyll	2026-10-17T09:29:33.7134117Z         Generating: JekyllRelativeLinks::Generator finished in 0.203431309 seconds.
+build	Build with Jekyll	2026-10-17T09:29:33.7134772Z         Generating: JekyllDefaultLayout::Generator finished in 0.000160532 seconds.
+build	Build with Jekyll	2026-10-17T09:29:33.7135549Z          Requiring: kramdown-parser-gfm
+build	Build with Jekyll	2026-10-17T09:29:33.7136492Z         Generating: JekyllTitlesFromHeadings::Generator finished in 0.009223088 seconds.
+build	Build with Jekyll	2026-10-17T09:29:33.7137316Z          Rendering: assets/css/style.scss
+build	Build with Jekyll	2026-10-17T09:29:33.7137759Z   Pre-Render Hooks: assets/css/style.scss
+build	Build with Jekyll	2026-10-17T09:29:33.7138176Z   Rendering Markup: assets/css/style.scss
+build	Build with Jekyll	2026-10-17T09:29:33.7138662Z          Rendering: case-studies/issue-1/data/profile-readme.md
+build	Build with Jekyll	2026-10-17T09:29:33.7139440Z   Pre-Render Hooks: case-studies/issue-1/data/profile-readme.md
+build	Build with Jekyll	2026-10-17T09:29:33.7140008Z   Rendering Markup: case-studies/issue-1/data/profile-readme.md
+build	Build with Jekyll	2026-10-17T09:29:33.7140552Z   Rendering Layout: case-studies/issue-1/data/profile-readme.md
+build	Build with Jekyll	2026-10-17T09:29:33.7141225Z      Layout source: theme
+build	Build with Jekyll	2026-10-17T09:29:33.7141782Z    GitHub Metadata: Calling @client.organization("konard")
+build	Build with Jekyll	2026-10-17T09:29:33.7142457Z    GitHub Metadata: Calling @client.user("konard")
+build	Build with Jekyll	2026-10-17T09:29:33.7143565Z    GitHub Metadata: Calling @client.repository("konard/konard.github.io", {:accept=>"application/vnd.github.drax-preview+json"})
+build	Build with Jekyll	2026-10-17T09:29:33.7144767Z          Rendering: case-studies/issue-1/data/web-research.md
+build	Build with Jekyll	2026-10-17T09:29:33.7145506Z   Pre-Render Hooks: case-studies/issue-1/data/web-research.md
+build	Build with Jekyll	2026-10-17T09:29:33.7146436Z   Rendering Markup: case-studies/issue-1/data/web-research.md
+build	Build with Jekyll	2026-10-17T09:29:33.7146970Z   Rendering Layout: case-studies/issue-1/data/web-research.md
+build	Build with Jekyll	2026-10-17T09:29:33.7147449Z      Layout source: theme
+build	Build with Jekyll	2026-10-17T09:29:33.7147843Z          Rendering: case-studies/issue-1/README.md
+build	Build with Jekyll	2026-10-17T09:29:33.7148570Z   Pre-Render Hooks: case-studies/issue-1/README.md
+build	Build with Jekyll	2026-10-17T09:29:33.7149036Z   Rendering Markup: case-studies/issue-1/README.md
+build	Build with Jekyll	2026-10-17T09:29:33.7149493Z   Rendering Layout: case-studies/issue-1/README.md
+build	Build with Jekyll	2026-10-17T09:29:33.7149917Z      Layout source: theme
+build	Build with Jekyll	2026-10-17T09:29:33.7150345Z            Writing: /github/workspace/docs/_site/assets/css/style.css
+build	Build with Jekyll	2026-10-17T09:29:33.7150984Z            Writing: /github/workspace/docs/_site/case-studies/issue-1/data/profile-readme.html
+build	Build with Jekyll	2026-10-17T09:29:33.7152012Z            Writing: /github/workspace/docs/_site/case-studies/issue-1/data/web-research.html
+build	Build with Jekyll	2026-10-17T09:29:33.7152696Z            Writing: /github/workspace/docs/_site/case-studies/issue-1/index.html
+build	Build with Jekyll	2026-10-17T09:29:33.7153207Z                     done in 1.974 seconds.
+build	Build with Jekyll	2026-10-17T09:29:33.7153655Z  Auto-regeneration: disabled. Use --watch to enable.
+build	Upload artifact	﻿2026-10-17T09:29:33.8103790Z ##[group]Run actions/upload-pages-artifact@v3
+build	Upload artifact	2026-10-17T09:29:33.8104141Z with:
+build	Upload artifact	2026-10-17T09:29:33.8104342Z   path: ./docs/_site
+build	Upload artifact	2026-10-17T09:29:33.8104559Z   name: github-pages
+build	Upload artifact	2026-10-17T09:29:33.8104772Z   retention-days: 1
+build	Upload artifact	2026-10-17T09:29:33.8104982Z ##[endgroup]
+build	Upload artifact	2026-10-17T09:29:33.8172318Z ##[start-action display=Archive artifact;id=__actions_upload-pages-artifact.__run]
+build	Upload artifact	2026-10-17T09:29:33.8224551Z ##[group]Run echo ::group::Archive artifact
+build	Upload artifact	2026-10-17T09:29:33.8224966Z ^[[36;1mecho ::group::Archive artifact^[[0m
+build	Upload artifact	2026-10-17T09:29:33.8225244Z ^[[36;1mtar \^[[0m
+build	Upload artifact	2026-10-17T09:29:33.8225492Z ^[[36;1m  --dereference --hard-dereference \^[[0m
+build	Upload artifact	2026-10-17T09:29:33.8226052Z ^[[36;1m  --directory "$INPUT_PATH" \^[[0m
+build	Upload artifact	2026-10-17T09:29:33.8226359Z ^[[36;1m  -cvf "$RUNNER_TEMP/artifact.tar" \^[[0m
+build	Upload artifact	2026-10-17T09:29:33.8226644Z ^[[36;1m  --exclude=.git \^[[0m
+build	Upload artifact	2026-10-17T09:29:33.8226888Z ^[[36;1m  --exclude=.github \^[[0m
+build	Upload artifact	2026-10-17T09:29:33.8227149Z ^[[36;1m  .^[[0m
+build	Upload artifact	2026-10-17T09:29:33.8227349Z ^[[36;1mecho ::endgroup::^[[0m
+build	Upload artifact	2026-10-17T09:29:33.8257550Z shell: /usr/bin/sh -e {0}
+build	Upload artifact	2026-10-17T09:29:33.8257838Z env:
+build	Upload artifact	2026-10-17T09:29:33.8258044Z   INPUT_PATH: ./docs/_site
+build	Upload artifact	2026-10-17T09:29:33.8258277Z ##[endgroup]
+build	Upload artifact	2026-10-17T09:29:33.8323670Z ##[group]Archive artifact
+build	Upload artifact	2026-10-17T09:29:33.8337884Z ./
+build	Upload artifact	2026-10-17T09:29:33.8339085Z ./assets/
+build	Upload artifact	2026-10-17T09:29:33.8339411Z ./assets/css/
+build	Upload artifact	2026-10-17T09:29:33.8339758Z ./assets/css/style.css
+build	Upload artifact	2026-10-17T09:29:33.8342854Z ./case-studies/
+build	Upload artifact	2026-10-17T09:29:33.8343239Z ./case-studies/issue-1/
+build	Upload artifact	2026-10-17T09:29:33.8343656Z ./case-studies/issue-1/index.html
+build	Upload artifact	2026-10-17T09:29:33.8344094Z ./case-studies/issue-1/data/
+build	Upload artifact	2026-10-17T09:29:33.8344563Z ./case-studies/issue-1/data/org-linksplatform.json
+build	Upload artifact	2026-10-17T09:29:33.8345168Z ./case-studies/issue-1/data/org-deep-foundation.json
+build	Upload artifact	2026-10-17T09:29:33.8346015Z ./case-studies/issue-1/data/stackoverflow-user.json
+build	Upload artifact	2026-10-17T09:29:33.8346575Z ./case-studies/issue-1/data/orgs-other.json
+build	Upload artifact	2026-10-17T09:29:33.8347455Z ./case-studies/issue-1/data/profile-readme.md
+build	Upload artifact	2026-10-17T09:29:33.8347986Z ./case-studies/issue-1/data/github-user.json
+build	Upload artifact	2026-10-17T09:29:33.8348529Z ./case-studies/issue-1/data/org-link-foundation.json
+build	Upload artifact	2026-10-17T09:29:33.8349072Z ./case-studies/issue-1/data/web-research.md
+build	Upload artifact	2026-10-17T09:29:33.8349621Z ./case-studies/issue-1/data/repos-link-foundation.json
+build	Upload artifact	2026-10-17T09:29:33.8350236Z ./case-studies/issue-1/data/repos-linksplatform.json
+build	Upload artifact	2026-10-17T09:29:33.8350810Z ./case-studies/issue-1/data/npm-packages.json
+build	Upload artifact	2026-10-17T09:29:33.8351340Z ./case-studies/issue-1/data/web-research.html
+build	Upload artifact	2026-10-17T09:29:33.8351900Z ./case-studies/issue-1/data/repos-deep-foundation.json
+build	Upload artifact	2026-10-17T09:29:33.8352477Z ./case-studies/issue-1/data/nuget-packages.json
+build	Upload artifact	2026-10-17T09:29:33.8353058Z ./case-studies/issue-1/data/github-social-accounts.json
+build	Upload artifact	2026-10-17T09:29:33.8353667Z ./case-studies/issue-1/data/github-contributions.json
+build	Upload artifact	2026-10-17T09:29:33.8354251Z ./case-studies/issue-1/data/org-link-assistant.json
+build	Upload artifact	2026-10-17T09:29:33.8354847Z ./case-studies/issue-1/data/repos-link-assistant.json
+build	Upload artifact	2026-10-17T09:29:33.8355425Z ./case-studies/issue-1/data/repos-konard.json
+build	Upload artifact	2026-10-17T09:29:33.8356212Z ./case-studies/issue-1/data/profile-readme.html
+build	Upload artifact	2026-10-17T09:29:33.8356733Z ./case-studies/issue-1/data/crates.json
+build	Upload artifact	2026-10-17T09:29:33.8357215Z ./case-studies/issue-1/data/github-orgs.json
+build	Upload artifact	2026-10-17T09:29:33.8357694Z ./case-studies/issue-1/README.md
+build	Upload artifact	2026-10-17T09:29:33.8358120Z ./case-studies/issue-1/screenshots/
+build	Upload artifact	2026-10-17T09:29:33.8358663Z ./case-studies/issue-1/screenshots/section-experience.png
+build	Upload artifact	2026-10-17T09:29:33.8359319Z ./case-studies/issue-1/screenshots/section-projects.png
+build	Upload artifact	2026-10-17T09:29:33.8359964Z ./case-studies/issue-1/screenshots/section-activity.png
+build	Upload artifact	2026-10-17T09:29:33.8360611Z ./case-studies/issue-1/screenshots/section-contacts.png
+build	Upload artifact	2026-10-17T09:29:33.8361217Z ./case-studies/issue-1/screenshots/section-skills.png
+build	Upload artifact	2026-10-17T09:29:33.8361833Z ./case-studies/issue-1/screenshots/section-method.png
+build	Upload artifact	2026-10-17T09:29:33.8362481Z ./case-studies/issue-1/screenshots/mobile-hero.png
+build	Upload artifact	2026-10-17T09:29:33.8364235Z ./case-studies/issue-1/screenshots/desktop-hero.png
+build	Upload artifact	2026-10-17T09:29:33.8368364Z ./case-studies/issue-1/screenshots/section-packages.png
+build	Upload artifact	2026-10-17T09:29:33.8369043Z ./case-studies/issue-1/screenshots/mobile-timeline.png
+build	Upload artifact	2026-10-17T09:29:33.8369683Z ./case-studies/issue-1/screenshots/section-ecosystem.png
+build	Upload artifact	2026-10-17T09:29:33.8371597Z ./case-studies/issue-1/screenshots/desktop-full.png
+build	Upload artifact	2026-10-17T09:29:33.8382560Z ./case-studies/issue-1/screenshots/section-community.png
+build	Upload artifact	2026-10-17T09:29:33.8386950Z ##[endgroup]
+build	Upload artifact	2026-10-17T09:29:33.8401670Z ##[end-action id=__actions_upload-pages-artifact.__run;outcome=success;conclusion=success;duration_ms=22]
+build	Upload artifact	2026-10-17T09:29:33.8405202Z ##[start-action display=Archive artifact;id=__actions_upload-pages-artifact.__run_2]
+build	Upload artifact	2026-10-17T09:29:33.8410877Z ##[end-action id=__actions_upload-pages-artifact.__run_2;outcome=skipped;conclusion=skipped;duration_ms=0]
+build	Upload artifact	2026-10-17T09:29:33.8413798Z ##[start-action display=Archive artifact;id=__actions_upload-pages-artifact.__run_3]
+build	Upload artifact	2026-10-17T09:29:33.8417917Z ##[end-action id=__actions_upload-pages-artifact.__run_3;outcome=skipped;conclusion=skipped;duration_ms=0]
+build	Upload artifact	2026-10-17T09:29:33.8419919Z ##[start-action display=Upload artifact;id=__actions_upload-pages-artifact.upload-artifact]
+build	Upload artifact	2026-10-17T09:29:33.8477097Z ##[group]Run actions/upload-artifact@v4
+build	Upload artifact	2026-10-17T09:29:33.8477422Z with:
+build	Upload artifact	2026-10-17T09:29:33.8477621Z   name: github-pages
+build	Upload artifact	2026-10-17T09:29:33.8477879Z   path: /home/runner/work/_temp/artifact.tar
+build	Upload artifact	2026-10-17T09:29:33.8478175Z   retention-days: 1
+build	Upload artifact	2026-10-17T09:29:33.8478392Z   if-no-files-found: error
+build	Upload artifact	2026-10-17T09:29:33.8478622Z   compression-level: 6
+build	Upload artifact	2026-10-17T09:29:33.8478838Z   overwrite: false
+build	Upload artifact	2026-10-17T09:29:33.8479052Z   include-hidden-files: false
+build	Upload artifact	2026-10-17T09:29:33.8479289Z ##[endgroup]
+build	Upload artifact	2026-10-17T09:29:34.0181577Z (node:2700) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+build	Upload artifact	2026-10-17T09:29:34.0183693Z (Use `node --trace-deprecation ...` to show where the warning was created)
+build	Upload artifact	2026-10-17T09:29:34.0237265Z With the provided path, there will be 1 file uploaded
+build	Upload artifact	2026-10-17T09:29:34.0245290Z Artifact name is valid!
+build	Upload artifact	2026-10-17T09:29:34.0278361Z Root directory input is valid!
+build	Upload artifact	2026-10-17T09:29:34.2240764Z Beginning upload of artifact content to blob storage
+build	Upload artifact	2026-10-17T09:29:34.3989824Z (node:2700) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+build	Upload artifact	2026-10-17T09:29:34.4774877Z Uploaded bytes 3559605
+build	Upload artifact	2026-10-17T09:29:34.4926875Z Finished uploading artifact content to blob storage!
+build	Upload artifact	2026-10-17T09:29:34.4928411Z SHA256 digest of uploaded artifact zip is 914bc20dbe881386df76c0c6e4666c0e52f3517f63426821945704840a01e967
+build	Upload artifact	2026-10-17T09:29:34.4930441Z Finalizing artifact upload
+build	Upload artifact	2026-10-17T09:29:34.7216488Z Artifact github-pages.zip successfully finalized. Artifact ID 12096444137
+build	Upload artifact	2026-10-17T09:29:34.7217760Z Artifact github-pages has been successfully uploaded! Final size is 3559605 bytes. Artifact ID is 12096444137
+build	Upload artifact	2026-10-17T09:29:34.7225595Z Artifact download URL: https://github.com/konard/konard.github.io/actions/runs/39021305509/artifacts/12096444137
+build	Upload artifact	2026-10-17T09:29:34.7335458Z ##[end-action id=__actions_upload-pages-artifact.upload-artifact;outcome=success;conclusion=success;duration_ms=891]
+build	Post Checkout	﻿2026-10-17T09:29:34.7452084Z Post job cleanup.
+build	Post Checkout	2026-10-17T09:29:34.8315934Z [command]/usr/bin/git version
+build	Post Checkout	2026-10-17T09:29:34.8364168Z git version 2.55.0
+build	Post Checkout	2026-10-17T09:29:34.8407514Z Temporarily overriding HOME='/home/runner/work/_temp/eabb9905-a4d8-4528-9e24-36d11db6a6d2' before making global git config changes
+build	Post Checkout	2026-10-17T09:29:34.8409011Z Adding repository directory to the temporary git global config as a safe directory
+build	Post Checkout	2026-10-17T09:29:34.8421616Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/konard.github.io/konard.github.io
+build	Post Checkout	2026-10-17T09:29:34.8454840Z Removing SSH command configuration
+build	Post Checkout	2026-10-17T09:29:34.8460983Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build	Post Checkout	2026-10-17T09:29:34.8498583Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build	Post Checkout	2026-10-17T09:29:34.8742698Z Removing HTTP extra header
+build	Post Checkout	2026-10-17T09:29:34.8748477Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build	Post Checkout	2026-10-17T09:29:34.8785231Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build	Post Checkout	2026-10-17T09:29:34.9041807Z Removing includeIf entries pointing to credentials config files
+build	Post Checkout	2026-10-17T09:29:34.9050450Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+build	Post Checkout	2026-10-17T09:29:34.9083917Z includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path
+build	Post Checkout	2026-10-17T09:29:34.9085135Z includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path
+build	Post Checkout	2026-10-17T09:29:34.9086470Z includeif.gitdir:/github/workspace/.git.path
+build	Post Checkout	2026-10-17T09:29:34.9087638Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+build	Post Checkout	2026-10-17T09:29:34.9094192Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path
+build	Post Checkout	2026-10-17T09:29:34.9121583Z /home/runner/work/_temp/git-credentials-6152931f-5f6d-455c-b0e3-e24314d2e3ea.config
+build	Post Checkout	2026-10-17T09:29:34.9132342Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-6152931f\-5f6d\-455c\-b0e3\-e24314d2e3ea\.config
+build	Post Checkout	2026-10-17T09:29:34.9181951Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path
+build	Post Checkout	2026-10-17T09:29:34.9213998Z /home/runner/work/_temp/git-credentials-6152931f-5f6d-455c-b0e3-e24314d2e3ea.config
+build	Post Checkout	2026-10-17T09:29:34.9234127Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-6152931f\-5f6d\-455c\-b0e3\-e24314d2e3ea\.config
+build	Post Checkout	2026-10-17T09:29:34.9276070Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+build	Post Checkout	2026-10-17T09:29:34.9305508Z /github/runner_temp/git-credentials-6152931f-5f6d-455c-b0e3-e24314d2e3ea.config
+build	Post Checkout	2026-10-17T09:29:34.9313650Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-6152931f\-5f6d\-455c\-b0e3\-e24314d2e3ea\.config
+build	Post Checkout	2026-10-17T09:29:34.9351658Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+build	Post Checkout	2026-10-17T09:29:34.9378071Z /github/runner_temp/git-credentials-6152931f-5f6d-455c-b0e3-e24314d2e3ea.config
+build	Post Checkout	2026-10-17T09:29:34.9385575Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-6152931f\-5f6d\-455c\-b0e3\-e24314d2e3ea\.config
+build	Post Checkout	2026-10-17T09:29:34.9423340Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+build	Post Checkout	2026-10-17T09:29:34.9648563Z Removing credentials config '/home/runner/work/_temp/git-credentials-6152931f-5f6d-455c-b0e3-e24314d2e3ea.config'
+build	Complete job	﻿2026-10-17T09:29:34.9789922Z Cleaning up orphan processes
+build	Complete job	2026-10-17T09:29:35.0124233Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+deploy	Set up job	﻿2026-10-17T09:29:40.1743668Z Current runner version: '2.337.0'
+deploy	Set up job	2026-10-17T09:29:40.1764724Z ##[group]Runner Image Provisioner
+deploy	Set up job	2026-10-17T09:29:40.1765494Z Hosted Compute Agent
+deploy	Set up job	2026-10-17T09:29:40.1766215Z Version: 20261012.601
+deploy	Set up job	2026-10-17T09:29:40.1766775Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+deploy	Set up job	2026-10-17T09:29:40.1767383Z Build Date: 2026-10-12T17:48:21Z
+deploy	Set up job	2026-10-17T09:29:40.1767970Z Worker ID: {d57a72c1-4f31-4701-a704-99e90494edc0}
+deploy	Set up job	2026-10-17T09:29:40.1768590Z Region: westus
+deploy	Set up job	2026-10-17T09:29:40.1769046Z Cloud: Azure
+deploy	Set up job	2026-10-17T09:29:40.1769470Z ##[endgroup]
+deploy	Set up job	2026-10-17T09:29:40.1770643Z ##[group]Operating System
+deploy	Set up job	2026-10-17T09:29:40.1771242Z Ubuntu
+deploy	Set up job	2026-10-17T09:29:40.1771720Z 24.04.5
+deploy	Set up job	2026-10-17T09:29:40.1772192Z LTS
+deploy	Set up job	2026-10-17T09:29:40.1772602Z ##[endgroup]
+deploy	Set up job	2026-10-17T09:29:40.1773107Z ##[group]Runner Image
+deploy	Set up job	2026-10-17T09:29:40.1773620Z Image: ubuntu-24.04
+deploy	Set up job	2026-10-17T09:29:40.1774113Z Version: 20261012.334.1
+deploy	Set up job	2026-10-17T09:29:40.1774985Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+deploy	Set up job	2026-10-17T09:29:40.1776639Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+deploy	Set up job	2026-10-17T09:29:40.1777450Z ##[endgroup]
+deploy	Set up job	2026-10-17T09:29:40.1778463Z ##[group]GITHUB_TOKEN Permissions
+deploy	Set up job	2026-10-17T09:29:40.1780015Z Contents: read
+deploy	Set up job	2026-10-17T09:29:40.1780562Z Metadata: read
+deploy	Set up job	2026-10-17T09:29:40.1781063Z Pages: write
+deploy	Set up job	2026-10-17T09:29:40.1781509Z ##[endgroup]
+deploy	Set up job	2026-10-17T09:29:40.1783184Z Secret source: Actions
+deploy	Set up job	2026-10-17T09:29:40.1783954Z Cache mode: read
+deploy	Set up job	2026-10-17T09:29:40.1784580Z Prepare workflow directory
+deploy	Set up job	2026-10-17T09:29:40.2041819Z Prepare all required actions
+deploy	Set up job	2026-10-17T09:29:40.2079136Z Getting action download info
+deploy	Set up job	2026-10-17T09:29:40.5400835Z Download action repository 'actions/deploy-pages@v5' (SHA:368f82528645a54fb793d4d04e342629a3f51346)
+deploy	Set up job	2026-10-17T09:29:41.1426839Z Complete job name: deploy
+deploy	Deploy to GitHub Pages	﻿2026-10-17T09:29:41.2060713Z ##[group]Run actions/deploy-pages@v5
+deploy	Deploy to GitHub Pages	2026-10-17T09:29:41.2061408Z with:
+deploy	Deploy to GitHub Pages	2026-10-17T09:29:41.2064373Z   token: ***
+deploy	Deploy to GitHub Pages	2026-10-17T09:29:41.2064733Z   timeout: 600000
+deploy	Deploy to GitHub Pages	2026-10-17T09:29:41.2065082Z   error_count: 10
+deploy	Deploy to GitHub Pages	2026-10-17T09:29:41.2065439Z   reporting_interval: 5000
+deploy	Deploy to GitHub Pages	2026-10-17T09:29:41.2066105Z   artifact_name: github-pages
+deploy	Deploy to GitHub Pages	2026-10-17T09:29:41.2066589Z   preview: false
+deploy	Deploy to GitHub Pages	2026-10-17T09:29:41.2067141Z ##[endgroup]
+deploy	Deploy to GitHub Pages	2026-10-17T09:29:41.3615536Z (node:1979) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+deploy	Deploy to GitHub Pages	2026-10-17T09:29:41.3617207Z (Use `node --trace-deprecation ...` to show where the warning was created)
+deploy	Deploy to GitHub Pages	2026-10-17T09:29:41.6176088Z Fetching artifact metadata for "github-pages" in this workflow run
+deploy	Deploy to GitHub Pages	2026-10-17T09:29:41.8786764Z Found 1 artifact(s)
+deploy	Deploy to GitHub Pages	2026-10-17T09:29:41.8788131Z Creating Pages deployment with payload:
+deploy	Deploy to GitHub Pages	2026-10-17T09:29:41.8788586Z {
+deploy	Deploy to GitHub Pages	2026-10-17T09:29:41.8788920Z 	"artifact_id": 12096444137,
+deploy	Deploy to GitHub Pages	2026-10-17T09:29:41.8789497Z 	"pages_build_version": "3d4aa8dfe5455358d3f7ba30a9557882ba3480a4",
+deploy	Deploy to GitHub Pages	2026-10-17T09:29:41.8836683Z 	"oidc_token": "***"
+deploy	Deploy to GitHub Pages	2026-10-17T09:29:41.8837206Z }
+deploy	Deploy to GitHub Pages	2026-10-17T09:29:42.4581025Z Created deployment for 3d4aa8dfe5455358d3f7ba30a9557882ba3480a4, ID: 3d4aa8dfe5455358d3f7ba30a9557882ba3480a4
+deploy	Deploy to GitHub Pages	2026-10-17T09:29:46.8299889Z Getting Pages deployment status...
+deploy	Deploy to GitHub Pages	2026-10-17T09:29:46.9967434Z Reported success!
+deploy	Complete job	﻿2026-10-17T09:29:47.0188485Z Evaluate and set environment url
+deploy	Complete job	2026-10-17T09:29:47.0193067Z Evaluated environment url: https://konard.github.io/
+deploy	Complete job	2026-10-17T09:29:47.0193909Z Cleaning up orphan processes
+report-build-status	Set up job	﻿2026-10-17T09:29:38.3837173Z Current runner version: '2.337.0'
+report-build-status	Set up job	2026-10-17T09:29:38.3853184Z ##[group]Runner Image Provisioner
+report-build-status	Set up job	2026-10-17T09:29:38.3853786Z Hosted Compute Agent
+report-build-status	Set up job	2026-10-17T09:29:38.3854129Z Version: 20261012.601
+report-build-status	Set up job	2026-10-17T09:29:38.3854535Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+report-build-status	Set up job	2026-10-17T09:29:38.3854989Z Build Date: 2026-10-12T17:48:21Z
+report-build-status	Set up job	2026-10-17T09:29:38.3855377Z Worker ID: {92a07740-0095-4f2c-8ce0-c968b11c745a}
+report-build-status	Set up job	2026-10-17T09:29:38.3855812Z Region: centralus
+report-build-status	Set up job	2026-10-17T09:29:38.3856131Z Cloud: Azure
+report-build-status	Set up job	2026-10-17T09:29:38.3856435Z ##[endgroup]
+report-build-status	Set up job	2026-10-17T09:29:38.3857304Z ##[group]Operating System
+report-build-status	Set up job	2026-10-17T09:29:38.3857652Z Ubuntu
+report-build-status	Set up job	2026-10-17T09:29:38.3858020Z 24.04.5
+report-build-status	Set up job	2026-10-17T09:29:38.3858315Z LTS
+report-build-status	Set up job	2026-10-17T09:29:38.3858617Z ##[endgroup]
+report-build-status	Set up job	2026-10-17T09:29:38.3859084Z ##[group]Runner Image
+report-build-status	Set up job	2026-10-17T09:29:38.3859432Z Image: ubuntu-24.04
+report-build-status	Set up job	2026-10-17T09:29:38.3859816Z Version: 20261012.334.1
+report-build-status	Set up job	2026-10-17T09:29:38.3860453Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+report-build-status	Set up job	2026-10-17T09:29:38.3861480Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+report-build-status	Set up job	2026-10-17T09:29:38.3862109Z ##[endgroup]
+report-build-status	Set up job	2026-10-17T09:29:38.3862808Z ##[group]GITHUB_TOKEN Permissions
+report-build-status	Set up job	2026-10-17T09:29:38.3864086Z Contents: read
+report-build-status	Set up job	2026-10-17T09:29:38.3864489Z Metadata: read
+report-build-status	Set up job	2026-10-17T09:29:38.3864824Z Pages: write
+report-build-status	Set up job	2026-10-17T09:29:38.3865139Z ##[endgroup]
+report-build-status	Set up job	2026-10-17T09:29:38.3866364Z Secret source: Actions
+report-build-status	Set up job	2026-10-17T09:29:38.3866858Z Cache mode: read
+report-build-status	Set up job	2026-10-17T09:29:38.3867347Z Prepare workflow directory
+report-build-status	Set up job	2026-10-17T09:29:38.4070809Z Prepare all required actions
+report-build-status	Set up job	2026-10-17T09:29:38.4130651Z Complete job name: report-build-status
+report-build-status	Report Build Status	﻿2026-10-17T09:29:39.0542186Z ##[group]Run gh api -X POST "repos/$GITHUB_REPOSITORY/pages/telemetry" \
+report-build-status	Report Build Status	2026-10-17T09:29:39.0543008Z ^[[36;1mgh api -X POST "repos/$GITHUB_REPOSITORY/pages/telemetry" \^[[0m
+report-build-status	Report Build Status	2026-10-17T09:29:39.0543528Z ^[[36;1m  -F github_run_id="$GITHUB_RUN_ID" \^[[0m
+report-build-status	Report Build Status	2026-10-17T09:29:39.0543951Z ^[[36;1m  -F conclusion="$CONCLUSION"^[[0m
+report-build-status	Report Build Status	2026-10-17T09:29:39.0957344Z shell: /usr/bin/bash -e {0}
+report-build-status	Report Build Status	2026-10-17T09:29:39.0957968Z env:
+report-build-status	Report Build Status	2026-10-17T09:29:39.0960196Z   GITHUB_TOKEN: ***
+report-build-status	Report Build Status	2026-10-17T09:29:39.0960584Z   CONCLUSION: success
+report-build-status	Report Build Status	2026-10-17T09:29:39.0960921Z ##[endgroup]
+report-build-status	Report Build Status	2026-10-17T09:29:39.5358614Z {}
+report-build-status	Complete job	﻿2026-10-17T09:29:39.5458098Z Cleaning up orphan processes

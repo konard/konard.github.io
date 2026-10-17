@@ -7,19 +7,29 @@ export function StackOverflowCard({ so }) {
   return (
     <article className="card">
       <h3 className="card__title">
-        <a href={so.url} target="_blank" rel="noopener noreferrer">Stack Overflow</a>
+        <a href={so.url} target="_blank" rel="noopener noreferrer">
+          Stack Overflow
+        </a>
         <span className="muted"> · since {so.memberSince}</span>
       </h3>
       <div className="so__numbers">
-        <span className="so__rep"><strong>{formatNumber(so.reputation)}</strong> reputation</span>
-        <span className="badge badge--silver" aria-label={`${so.badges.silver} silver badges`}>● {so.badges.silver}</span>
-        <span className="badge badge--bronze" aria-label={`${so.badges.bronze} bronze badges`}>● {so.badges.bronze}</span>
+        <span className="so__rep">
+          <strong>{formatNumber(so.reputation)}</strong> reputation
+        </span>
+        <span className="badge badge--silver" aria-label={`${so.badges.silver} silver badges`}>
+          ● {so.badges.silver}
+        </span>
+        <span className="badge badge--bronze" aria-label={`${so.badges.bronze} bronze badges`}>
+          ● {so.badges.bronze}
+        </span>
       </div>
       <ul className="hbars hbars--compact" aria-label="Top tags by answer score">
         {so.topTags.map((t) => (
           <li key={t.name} className="hbars__row">
             <span className="hbars__name mono">{t.name}</span>
-            <span className="hbars__track"><span className="hbars__fill" style={{ width: `${(t.score / max) * 100}%` }} /></span>
+            <span className="hbars__track">
+              <span className="hbars__fill" style={{ width: `${(t.score / max) * 100}%` }} />
+            </span>
             <span className="hbars__value">{t.score}</span>
           </li>
         ))}
@@ -36,8 +46,12 @@ export function Publications({ items }) {
       <ol className="pubs">
         {items.map((p) => (
           <li key={p.url}>
-            <time className="mono" dateTime={p.date}>{p.date.slice(0, 7)}</time>
-            <a href={p.url} target="_blank" rel="noopener noreferrer">{p.title}</a>
+            <time className="mono" dateTime={p.date}>
+              {p.date.slice(0, 7)}
+            </time>
+            <a href={p.url} target="_blank" rel="noopener noreferrer">
+              {p.title}
+            </a>
             <span className="muted"> · {p.venue}</span>
           </li>
         ))}
@@ -61,7 +75,9 @@ export function Education({ items, achievements }) {
       </ol>
       <h3 className="card__title card__title--spaced">Highlights</h3>
       <ul className="highlights">
-        {achievements.map((a) => <li key={a}>{a}</li>)}
+        {achievements.map((a) => (
+          <li key={a}>{a}</li>
+        ))}
       </ul>
     </article>
   );

@@ -66,7 +66,13 @@ describe('mergeProjects', () => {
       [{ fullName: 'org/a', name: 'a', owner: 'org', stars: 7, language: 'Rust', url: 'https://github.com/org/a' }],
     );
     expect(merged.map((p) => p.fullName)).toEqual(['org/b', 'org/a']);
-    expect(merged[0]).toMatchObject({ name: 'b', owner: 'org', stars: 0, url: 'https://github.com/org/b', tagline: 'B' });
+    expect(merged[0]).toMatchObject({
+      name: 'b',
+      owner: 'org',
+      stars: 0,
+      url: 'https://github.com/org/b',
+      tagline: 'B',
+    });
     expect(merged[1]).toMatchObject({ stars: 7, language: 'Rust', tagline: 'A' });
   });
 });

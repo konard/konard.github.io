@@ -25,16 +25,30 @@ export default function EcosystemMap({ owners, avatarUrl }) {
     <>
       <strong>{o.name}</strong>
       <span className="tooltip__value">{formatNumber(o.repositories)} original repositories</span>
-      <span className="tooltip__row">★ {formatNumber(o.stars)} stars · since {o.createdAt.slice(0, 4)}</span>
-      <span className="tooltip__row">{o.languages.slice(0, 3).map((l) => l.name).join(' · ')}</span>
+      <span className="tooltip__row">
+        ★ {formatNumber(o.stars)} stars · since {o.createdAt.slice(0, 4)}
+      </span>
+      <span className="tooltip__row">
+        {o.languages
+          .slice(0, 3)
+          .map((l) => l.name)
+          .join(' · ')}
+      </span>
     </>
   );
 
   return (
     <div className="chart ecosystem" data-tooltip-root>
-      <svg className="ecosystem__svg" viewBox={`0 0 ${SIZE} ${SIZE}`} role="img" aria-label="Ecosystem of GitHub organizations">
+      <svg
+        className="ecosystem__svg"
+        viewBox={`0 0 ${SIZE} ${SIZE}`}
+        role="img"
+        aria-label="Ecosystem of GitHub organizations"
+      >
         <defs>
-          <clipPath id="eco-avatar"><circle cx={C} cy={C} r={52} /></clipPath>
+          <clipPath id="eco-avatar">
+            <circle cx={C} cy={C} r={52} />
+          </clipPath>
           <radialGradient id="eco-glow">
             <stop offset="0%" stopColor="#22d3ee" stopOpacity="0.35" />
             <stop offset="100%" stopColor="#22d3ee" stopOpacity="0" />
@@ -62,9 +76,15 @@ export default function EcosystemMap({ owners, avatarUrl }) {
           >
             <circle cx={n.x} cy={n.y} r={n.r + 8} fill="transparent" />
             <circle cx={n.x} cy={n.y} r={n.r} fill={n.color} fillOpacity="0.22" stroke={n.color} strokeWidth="2" />
-            <text x={n.x} y={n.y - 2} textAnchor="middle" className="ecosystem__count">{formatNumber(n.repositories)}</text>
-            <text x={n.x} y={n.y + 13} textAnchor="middle" className="ecosystem__unit">repos</text>
-            <text x={n.x} y={n.y + n.r + 18} textAnchor="middle" className="ecosystem__name">{n.name}</text>
+            <text x={n.x} y={n.y - 2} textAnchor="middle" className="ecosystem__count">
+              {formatNumber(n.repositories)}
+            </text>
+            <text x={n.x} y={n.y + 13} textAnchor="middle" className="ecosystem__unit">
+              repos
+            </text>
+            <text x={n.x} y={n.y + n.r + 18} textAnchor="middle" className="ecosystem__name">
+              {n.name}
+            </text>
           </g>
         ))}
       </svg>

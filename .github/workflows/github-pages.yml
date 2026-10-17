@@ -6,28 +6,96 @@ on:
       - main
     paths-ignore:
       - 'docs/**'
+      - 'dev/**'
   pull_request:
     branches:
       - main
   workflow_dispatch:
 
+# Least-privilege default; only the deploy job may write.
+permissions:
+  contents: read
+
+# Cancel superseded pull request runs, but never a deploy on main.
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+# actions/checkout runs `git init` before any step can configure Git; this
+# silences its "default branch name" hint.
+env:
+  GIT_CONFIG_COUNT: '1'
+  GIT_CONFIG_KEY_0: init.defaultBranch
+  GIT_CONFIG_VALUE_0: main
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
+  # Lint the workflows themselves (actionlint also runs shellcheck on run: blocks).
+  lint-workflows:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
 
     steps:
       - name: Checkout source
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Run actionlint
+        uses: docker://rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667 # v1.7.12
+        with:
+          args: -color
+
+  # Fast checks run before the tests and the build.
+  checks:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: '20'
+          node-version: '24.x'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Check formatting
+        run: npm run format:check
+
+      - name: Check file size limits
+        run: npm run check:file-size
+
+      - name: Check for secrets
+        run: npm run check:secrets
+
+      - name: Audit dependencies
+        run: npm audit --audit-level=moderate
+
+  test:
+    needs: [lint-workflows, checks]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+
+    steps:
+      # On pull requests this is the merge result with main, not the branch head.
+      - name: Checkout source
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24.x'
           cache: npm
 
       - name: Install dependencies
@@ -39,29 +107,32 @@ jobs:
       - name: Build the React app
         run: npm run build
 
+      - name: Upload the build
+        uses: actions/upload-artifact@v7
+        with:
+          name: build
+          path: build/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 7
+
   deploy:
     needs: test
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     permissions:
       contents: write
 
     steps:
       - name: Checkout source
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Download the build
+        uses: actions/download-artifact@v8
         with:
-          node-version: '20'
-          cache: npm
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build the React app
-        run: npm run build
+          name: build
+          path: build/
 
       # GitHub Pages serves the /docs folder of main. Replace the previous
       # build but keep the hand-written documentation in docs/case-studies.
@@ -73,9 +144,18 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A docs
-          if ! git diff --cached --quiet; then
-            git commit -m "Deploy build to docs [skip ci]"
-            git push origin HEAD:main
-          else
+          if git diff --cached --quiet; then
             echo "No changes in build output to deploy."
+            exit 0
           fi
+          git commit -m "Deploy build to docs [skip ci]"
+          # main may move while this job runs; rebase and retry instead of failing.
+          for attempt in 1 2 3; do
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "::warning::Push attempt $attempt was rejected; rebasing onto origin/main."
+            git pull --rebase origin main
+          done
+          echo "::error::Could not push the build to main after 3 attempts."
+          exit 1

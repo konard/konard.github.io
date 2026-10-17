@@ -75,9 +75,8 @@ describe('generated github.json', () => {
   });
 });
 
-describe('scripts/build-data.js', () => {
-  // eslint-disable-next-line global-require
-  const { build, isNoise } = require('../../scripts/build-data');
+describe('scripts/build-data.cjs', () => {
+  const { build, isNoise } = require('../../scripts/build-data.cjs');
 
   test('committed github.json is up to date with the raw case-study data', () => {
     expect(build({ write: false })).toEqual(github);

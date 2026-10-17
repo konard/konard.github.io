@@ -17,7 +17,10 @@ export default function LanguagesChart({ languages, favorites }) {
 
   const tipContent = (l) => (
     <>
-      <strong>{l.name}{favorites.includes(l.name) ? ' ★' : ''}</strong>
+      <strong>
+        {l.name}
+        {favorites.includes(l.name) ? ' ★' : ''}
+      </strong>
       <span className="tooltip__value">{formatNumber(l.count)} repositories</span>
       <span className="tooltip__row">{formatPercent(l.count / total)} of repositories with a detected language</span>
     </>
@@ -26,7 +29,8 @@ export default function LanguagesChart({ languages, favorites }) {
   return (
     <div className="chart" data-tooltip-root>
       <p className="chart__caption">
-        Primary language of {formatNumber(total)} original public repositories with a detected language (personal + organizations).
+        Primary language of {formatNumber(total)} original public repositories with a detected language (personal +
+        organizations).
         <span className="muted"> ★ = favorite language</span>
       </p>
       <ul className="hbars" aria-label="Repositories by primary language">
@@ -42,7 +46,12 @@ export default function LanguagesChart({ languages, favorites }) {
           >
             <span className="hbars__name">
               {l.name}
-              {favorites.includes(l.name) && <span className="hbars__fav" aria-label="favorite"> ★</span>}
+              {favorites.includes(l.name) && (
+                <span className="hbars__fav" aria-label="favorite">
+                  {' '}
+                  ★
+                </span>
+              )}
             </span>
             <span className="hbars__track">
               <span
