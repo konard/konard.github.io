@@ -24,7 +24,9 @@ describe('App', () => {
   test('every navigation link points to an existing section', () => {
     const { container } = render(<App />);
     const nav = screen.getByRole('navigation', { name: 'Sections' });
-    const links = within(nav).getAllByRole('link').filter((a) => a.getAttribute('href') !== '#top');
+    const links = within(nav)
+      .getAllByRole('link')
+      .filter((a) => a.getAttribute('href') !== '#top');
     expect(links.length).toBeGreaterThan(5);
     links.forEach((a) => {
       expect(container.querySelector(a.getAttribute('href'))).not.toBeNull();
@@ -38,9 +40,11 @@ describe('App', () => {
     expect(screen.getByLabelText(/^Kaiten, Senior Software Engineer: Jul 2024 – present$/)).toBeInTheDocument();
     const contacts = document.getElementById('contacts');
     expect(within(contacts).getByRole('link', { name: /GitHub/ })).toHaveAttribute('href', 'https://github.com/konard');
-    within(contacts).getAllByRole('link').forEach((a) => {
-      expect(a).toHaveAttribute('rel', expect.stringContaining('noopener'));
-    });
+    within(contacts)
+      .getAllByRole('link')
+      .forEach((a) => {
+        expect(a).toHaveAttribute('rel', expect.stringContaining('noopener'));
+      });
   });
 
   test('contributions chart toggles between log and linear scale', () => {

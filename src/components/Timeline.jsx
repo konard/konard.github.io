@@ -34,13 +34,17 @@ export default function Timeline({ items, endYear }) {
   const pos = (year) => ((year - startYear) / span) * 100;
   const ticks = [];
   for (let y = startYear; y <= endYear; y += 2) ticks.push(y);
-  const recentFirst = [...items].sort((a, b) => (b.end || '9999').localeCompare(a.end || '9999') || b.start.localeCompare(a.start));
+  const recentFirst = [...items].sort(
+    (a, b) => (b.end || '9999').localeCompare(a.end || '9999') || b.start.localeCompare(a.start),
+  );
 
   const tipContent = (item) => (
     <>
       <strong>{item.title}</strong>
       <span className="tooltip__value">{formatPeriod(item.start, item.end)}</span>
-      <span className="tooltip__row">{item.role} · {TYPES[item.type]}</span>
+      <span className="tooltip__row">
+        {item.role} · {TYPES[item.type]}
+      </span>
     </>
   );
 
@@ -49,12 +53,17 @@ export default function Timeline({ items, endYear }) {
       <div className="chart timeline__chart" data-tooltip-root>
         <ul className="legend" aria-label="Timeline legend">
           {Object.entries(TYPES).map(([type, label]) => (
-            <li key={type}><span className={`legend__swatch timeline__swatch--${type}`} />{label}</li>
+            <li key={type}>
+              <span className={`legend__swatch timeline__swatch--${type}`} />
+              {label}
+            </li>
           ))}
         </ul>
         <div className="timeline__axis" aria-hidden="true">
           {ticks.map((y) => (
-            <span key={y} className="timeline__year" style={{ left: `${pos(y)}%` }}>{y}</span>
+            <span key={y} className="timeline__year" style={{ left: `${pos(y)}%` }}>
+              {y}
+            </span>
           ))}
         </div>
         <ol className="timeline__rows" aria-label="Career timeline">
@@ -65,7 +74,9 @@ export default function Timeline({ items, endYear }) {
               <li key={item.id} className="timeline__row">
                 <span className="timeline__label">{item.title}</span>
                 <span className="timeline__track">
-                  {ticks.map((y) => <span key={y} className="timeline__tick" style={{ left: `${pos(y)}%` }} />)}
+                  {ticks.map((y) => (
+                    <span key={y} className="timeline__tick" style={{ left: `${pos(y)}%` }} />
+                  ))}
                   <span
                     className={`timeline__bar timeline__bar--${item.type}${item.end ? '' : ' is-ongoing'}`}
                     style={{ left: `${pos(from)}%`, width: `${Math.max(0.8, pos(to) - pos(from))}%` }}
@@ -90,11 +101,15 @@ export default function Timeline({ items, endYear }) {
           return (
             <li key={item.id} className={`position position--${item.type}`}>
               <span className="position__period mono">{formatPeriod(item.start, item.end)}</span>
-              <h3 className="position__title"><Title {...linkProps(item.url)}>{item.title}</Title></h3>
+              <h3 className="position__title">
+                <Title {...linkProps(item.url)}>{item.title}</Title>
+              </h3>
               <span className="position__role">{item.role}</span>
               <p className="position__summary">{item.summary}</p>
               <ul className="tags">
-                {item.tags.map((t) => <li key={t}>{t}</li>)}
+                {item.tags.map((t) => (
+                  <li key={t}>{t}</li>
+                ))}
               </ul>
             </li>
           );

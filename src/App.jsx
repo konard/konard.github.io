@@ -1,4 +1,7 @@
 import './App.css';
+import './App.sections.css';
+// Responsive and print overrides must come last.
+import './App.media.css';
 import github from './data/github.json';
 import {
   achievements,
@@ -43,9 +46,15 @@ function App() {
     <div className="app">
       <div className="backdrop" aria-hidden="true" />
       <nav className="nav" aria-label="Sections">
-        <a className="nav__brand mono" href="#top">konard<span className="nav__cursor">_</span></a>
+        <a className="nav__brand mono" href="#top">
+          konard<span className="nav__cursor">_</span>
+        </a>
         <ul>
-          {NAV.map(([id, label]) => <li key={id}><a href={`#${id}`}>{label}</a></li>)}
+          {NAV.map(([id, label]) => (
+            <li key={id}>
+              <a href={`#${id}`}>{label}</a>
+            </li>
+          ))}
         </ul>
       </nav>
 
@@ -63,8 +72,12 @@ function App() {
             <ul className="orgs">
               {github.owners.map((o) => (
                 <li key={o.login} className="org">
-                  <a href={o.url} target="_blank" rel="noopener noreferrer" className="org__name">{o.name}</a>
-                  <span className="org__meta">since {o.createdAt.slice(0, 4)} · {o.repositories} repos · ★ {o.stars}</span>
+                  <a href={o.url} target="_blank" rel="noopener noreferrer" className="org__name">
+                    {o.name}
+                  </a>
+                  <span className="org__meta">
+                    since {o.createdAt.slice(0, 4)} · {o.repositories} repos · ★ {o.stars}
+                  </span>
                   {o.description && <p className="org__desc">{o.description}</p>}
                 </li>
               ))}
@@ -112,7 +125,9 @@ function App() {
         <span className="mono">{profile.motto}</span>
         <span>
           Data: public GitHub, Habr Career, CodersRank, Stack Overflow, npm, crates.io and NuGet ·{' '}
-          <a href="https://github.com/konard/konard.github.io" target="_blank" rel="noopener noreferrer">source</a>
+          <a href="https://github.com/konard/konard.github.io" target="_blank" rel="noopener noreferrer">
+            source
+          </a>
         </span>
       </footer>
     </div>

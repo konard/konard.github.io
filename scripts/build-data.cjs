@@ -64,7 +64,10 @@ function build({ write = true } = {}) {
       createdAt: (org || user).created_at,
       repositories: repos.length,
       stars: repos.reduce((sum, r) => sum + r.stargazers_count, 0),
-      languages: topEntries(countBy(repos, (r) => r.language), 5),
+      languages: topEntries(
+        countBy(repos, (r) => r.language),
+        5,
+      ),
     };
   });
 
@@ -74,19 +77,18 @@ function build({ write = true } = {}) {
     .sort((a, b) => b.stargazers_count - a.stargazers_count || a.full_name.localeCompare(b.full_name));
   const mostStarred = byStars.slice(0, 40);
   const extra = allRepos.filter((r) => featured.has(r.full_name) && !mostStarred.includes(r));
-  const projects = [...mostStarred, ...extra]
-    .map((r) => ({
-      name: r.name,
-      fullName: r.full_name,
-      owner: r.owner,
-      description: r.description,
-      language: r.language,
-      stars: r.stargazers_count,
-      forks: r.forks_count,
-      url: r.html_url,
-      createdYear: Number(r.created_at.slice(0, 4)),
-      topics: r.topics || [],
-    }));
+  const projects = [...mostStarred, ...extra].map((r) => ({
+    name: r.name,
+    fullName: r.full_name,
+    owner: r.owner,
+    description: r.description,
+    language: r.language,
+    stars: r.stargazers_count,
+    forks: r.forks_count,
+    url: r.html_url,
+    createdYear: Number(r.created_at.slice(0, 4)),
+    topics: r.topics || [],
+  }));
 
   const npm = read('npm-packages.json');
   const crates = read('crates.json');
@@ -101,8 +103,11 @@ function build({ write = true } = {}) {
       packages: npm.total,
       downloads: npm.packages.reduce((sum, p) => sum + ((p.downloads && p.downloads.monthly) || 0), 0),
       downloadsUnit: 'downloads / month',
-      top: top(npm.packages, (p) => (p.downloads && p.downloads.monthly) || 0)
-        .map((p) => ({ name: p.name, downloads: p.downloads.monthly, url: p.npm })),
+      top: top(npm.packages, (p) => (p.downloads && p.downloads.monthly) || 0).map((p) => ({
+        name: p.name,
+        downloads: p.downloads.monthly,
+        url: p.npm,
+      })),
     },
     {
       id: 'crates',
@@ -111,8 +116,11 @@ function build({ write = true } = {}) {
       packages: crates.total,
       downloads: crates.crates.reduce((sum, c) => sum + c.downloads, 0),
       downloadsUnit: 'downloads total',
-      top: top(crates.crates, (c) => c.downloads)
-        .map((c) => ({ name: c.name, downloads: c.downloads, url: `https://crates.io/crates/${c.name}` })),
+      top: top(crates.crates, (c) => c.downloads).map((c) => ({
+        name: c.name,
+        downloads: c.downloads,
+        url: `https://crates.io/crates/${c.name}`,
+      })),
     },
     {
       id: 'nuget',
@@ -121,8 +129,11 @@ function build({ write = true } = {}) {
       packages: nuget.totalHits,
       downloads: nuget.totalDownloads,
       downloadsUnit: 'downloads total',
-      top: top(nuget.packages, (p) => p.totalDownloads)
-        .map((p) => ({ name: p.id, downloads: p.totalDownloads, url: `https://www.nuget.org/packages/${p.id}` })),
+      top: top(nuget.packages, (p) => p.totalDownloads).map((p) => ({
+        name: p.id,
+        downloads: p.totalDownloads,
+        url: `https://www.nuget.org/packages/${p.id}`,
+      })),
     },
   ];
   const stackOverflow = {
@@ -131,7 +142,10 @@ function build({ write = true } = {}) {
     badges: so.user.badge_counts,
     memberSince: new Date(so.user.creation_date * 1000).getUTCFullYear(),
     // Drop near-duplicate sub-tags (docker-desktop, docker-for-windows) of an already listed tag.
-    topTags: so.top_tags.filter((t) => !/^docker-/.test(t.tag_name)).slice(0, 8).map((t) => ({ name: t.tag_name, score: t.answer_score, answers: t.answer_count })),
+    topTags: so.top_tags
+      .filter((t) => !/^docker-/.test(t.tag_name))
+      .slice(0, 8)
+      .map((t) => ({ name: t.tag_name, score: t.answer_score, answers: t.answer_count })),
   };
 
   const result = {
@@ -175,8 +189,10 @@ function build({ write = true } = {}) {
 
 if (require.main === module) {
   const result = build();
-  console.log(`Wrote ${path.relative(root, outFile)}: ${result.projects.length} projects, ` +
-    `${result.languages.length} languages, ${result.totals.contributions} contributions`);
+  console.log(
+    `Wrote ${path.relative(root, outFile)}: ${result.projects.length} projects, ` +
+      `${result.languages.length} languages, ${result.totals.contributions} contributions`,
+  );
 }
 
 module.exports = { build, isNoise };

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Wraps a single square PNG (<= 256px) into an .ico container.
 // ICO files may embed PNG data directly (supported by all current browsers).
-// Usage: node experiments/png-to-ico.js input.png output.ico
+// Usage: node experiments/png-to-ico.cjs input.png output.ico
 const fs = require('fs');
 const [input, output] = process.argv.slice(2);
 const png = fs.readFileSync(input);

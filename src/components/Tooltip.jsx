@@ -25,11 +25,7 @@ export function useTooltip() {
 export function Tooltip({ tip }) {
   if (!tip) return null;
   return (
-    <div
-      className={`tooltip${tip.flip ? ' tooltip--flip' : ''}`}
-      role="status"
-      style={{ left: tip.x, top: tip.y }}
-    >
+    <div className={`tooltip${tip.flip ? ' tooltip--flip' : ''}`} role="status" style={{ left: tip.x, top: tip.y }}>
       {tip.content}
     </div>
   );

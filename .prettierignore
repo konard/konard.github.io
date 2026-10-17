@@ -1,0 +1,7 @@
+build
+docs
+dev
+coverage
+node_modules
+package-lock.json
+src/data/github.json

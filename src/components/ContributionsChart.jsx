@@ -56,7 +56,9 @@ export default function ContributionsChart({ data }) {
       <strong>{d.year}</strong>
       <span className="tooltip__value">{formatNumber(d.total)} contributions</span>
       {MIX.map((m) => (
-        <span key={m.key} className="tooltip__row">{m.label}: {formatNumber(d[m.key])}</span>
+        <span key={m.key} className="tooltip__row">
+          {m.label}: {formatNumber(d[m.key])}
+        </span>
       ))}
     </>
   );
@@ -91,7 +93,9 @@ export default function ContributionsChart({ data }) {
           {ticks.map((t) => (
             <g key={t} transform={`translate(0,${innerH - y(t)})`}>
               <line className="chart__grid" x1={0} x2={innerW} />
-              <text className="chart__tick" x={-8} dy="0.32em" textAnchor="end">{formatCompact(t)}</text>
+              <text className="chart__tick" x={-8} dy="0.32em" textAnchor="end">
+                {formatCompact(t)}
+              </text>
             </g>
           ))}
           {data.map((d, i) => {
@@ -161,13 +165,22 @@ export default function ContributionsChart({ data }) {
         <summary>Show data table</summary>
         <table>
           <thead>
-            <tr><th>Year</th><th>Total</th>{MIX.map((m) => <th key={m.key}>{m.label}</th>)}</tr>
+            <tr>
+              <th>Year</th>
+              <th>Total</th>
+              {MIX.map((m) => (
+                <th key={m.key}>{m.label}</th>
+              ))}
+            </tr>
           </thead>
           <tbody>
             {data.map((d) => (
               <tr key={d.year}>
-                <td>{d.year}</td><td>{formatNumber(d.total)}</td>
-                {MIX.map((m) => <td key={m.key}>{formatNumber(d[m.key])}</td>)}
+                <td>{d.year}</td>
+                <td>{formatNumber(d.total)}</td>
+                {MIX.map((m) => (
+                  <td key={m.key}>{formatNumber(d[m.key])}</td>
+                ))}
               </tr>
             ))}
           </tbody>

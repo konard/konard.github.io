@@ -3,22 +3,21 @@ import { formatNumber } from './format';
 
 export function mergeProjects(featured, projects) {
   const byName = new Map(projects.map((p) => [p.fullName, p]));
-  return featured
-    .map((f) => {
-      const p = byName.get(f.fullName);
-      const [owner, name] = f.fullName.split('/');
-      return {
-        owner,
-        name,
-        language: null,
-        stars: 0,
-        createdYear: null,
-        url: `https://github.com/${f.fullName}`,
-        ...p,
-        fullName: f.fullName,
-        tagline: f.tagline,
-      };
-    });
+  return featured.map((f) => {
+    const p = byName.get(f.fullName);
+    const [owner, name] = f.fullName.split('/');
+    return {
+      owner,
+      name,
+      language: null,
+      stars: 0,
+      createdYear: null,
+      url: `https://github.com/${f.fullName}`,
+      ...p,
+      fullName: f.fullName,
+      tagline: f.tagline,
+    };
+  });
 }
 
 export default function Projects({ featured, projects }) {
