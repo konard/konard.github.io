@@ -37,15 +37,14 @@ describe('link glyphs', () => {
   const all = [1, 2, 3, 4].flatMap((n) => codes[n]);
 
   test('every glyph stays inside the shared view box', () => {
-    all.forEach((code) => {
-      const numbers = glyphPaths(decode(code))
+    // One assertion for all ~300k coordinates: an expect() per number is slow.
+    const outside = all.filter((code) =>
+      glyphPaths(decode(code))
         .stroke.match(/-?\d+(\.\d+)?/g)
-        .map(Number);
-      numbers.forEach((v) => {
-        expect(v).toBeGreaterThanOrEqual(0);
-        expect(v).toBeLessThanOrEqual(SIZE);
-      });
-    });
+        .map(Number)
+        .some((v) => v < 0 || v > SIZE),
+    );
+    expect(outside).toEqual([]);
   });
 
   test('every configuration gets a distinct drawing and id', () => {
