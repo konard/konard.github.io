@@ -1,0 +1,517 @@
+{
+ "collectedAt": "2026-10-19T16:30:40.323Z",
+ "company": {
+  "alias": "deepfoundation",
+  "title": "Deep.Foundation",
+  "description": "Фонд развития ассоциативных технологий.",
+  "url": "https://habr.com/ru/companies/deepfoundation/",
+  "rating": 43.47,
+  "subscribers": 57,
+  "posts": 10
+ },
+ "user": {
+  "alias": "Konard",
+  "name": "Константин Дьяченко",
+  "url": "https://habr.com/ru/users/Konard/",
+  "karma": 6,
+  "karmaVotes": 40,
+  "rating": 0,
+  "followers": 26,
+  "registeredAt": "2012-09-04T19:36:05+00:00"
+ },
+ "articles": [
+  {
+   "id": "1018142",
+   "title": "Мета-теория связей 0.0.3",
+   "url": "https://habr.com/ru/articles/1018142/",
+   "publishedAt": "2026-04-01T17:26:10+00:00",
+   "lang": "ru",
+   "company": null,
+   "author": {
+    "alias": "Konard",
+    "name": "Константин Дьяченко"
+   },
+   "hubs": [
+    "Математика",
+    "Ненормальное программирование",
+    "Программирование",
+    "Open source",
+    "Data Engineering"
+   ],
+   "tags": [
+    "мета-теория",
+    "теория связей",
+    "реляционная алгебра",
+    "ассоциативная теория",
+    "математика",
+    "теория множеств",
+    "теория типов",
+    "графовая теория",
+    "реляционная модель данных",
+    "ассоциативная модель данных"
+   ],
+   "lead": "Этому миру нужна новая теория — теория, которая могла бы описать все существующие теории на планете. Теория, которая смогла бы описать философию, математику, физику и психологию единым формальным языком, чтобы сделать все виды наук исчисляемыми. Именно над этим мы сейчас работаем. Когда нам удастся добиться успеха, эта теория станет единой мета-теорией всего и коснётся каждого на этой планете. Про",
+   "image": "https://habrastorage.org/getpro/habr/upload_files/719/dbf/658/719dbf6585add0d9efcc068fe2529185.png",
+   "statistics": {
+    "views": 1735,
+    "score": 3,
+    "votes": 3,
+    "bookmarks": 18,
+    "comments": 2
+   }
+  },
+  {
+   "id": "895896",
+   "title": "The Links Theory 0.0.2",
+   "url": "https://habr.com/en/articles/895896/",
+   "publishedAt": "2025-04-01T12:15:55+00:00",
+   "lang": "en",
+   "company": null,
+   "author": {
+    "alias": "Konard",
+    "name": "Константин Дьяченко"
+   },
+   "hubs": [
+    "Программирование",
+    "Ненормальное программирование",
+    "Математика",
+    "Open source",
+    "Data Engineering"
+   ],
+   "tags": [
+    "metatheory",
+    "links theory",
+    "relational theory",
+    "associative theory",
+    "math",
+    "set theory",
+    "type theory",
+    "graph theory",
+    "relational algebra",
+    "associative model of data"
+   ],
+   "lead": "This world needs a new theory — a theory that could describe all the theories on the planet. A theory that could easily describe philosophy, mathematics, physics, and psychology. The one that makes all kinds of sciences computable. This is exactly what we are working on. If we succeed, this theory will become the unified meta-theory of everything. A year has passed since our last publication, and ",
+   "image": "https://habrastorage.org/getpro/habr/upload_files/104/768/821/104768821e08820e2da82aafd57be147.png",
+   "statistics": {
+    "views": 5113,
+    "score": 10,
+    "votes": 10,
+    "bookmarks": 10,
+    "comments": 3
+   }
+  },
+  {
+   "id": "808731",
+   "title": "Один репозиторий, чтобы править всеми",
+   "url": "https://habr.com/ru/articles/808731/",
+   "publishedAt": "2024-04-20T15:41:25+00:00",
+   "lang": "ru",
+   "company": "deepfoundation",
+   "author": {
+    "alias": "IvanSGlazunov",
+    "name": "Иван Сергеевич Глазунов"
+   },
+   "hubs": [
+    "Блог компании Deep.Foundation",
+    "iOS",
+    "Android",
+    "Node.JS",
+    "ReactJS"
+   ],
+   "tags": [
+    "capacitor",
+    "electron js",
+    "next.js",
+    "react",
+    "javascript",
+    "linux",
+    "macos",
+    "ios",
+    "android",
+    "cordova"
+   ],
+   "lead": "Собираем кроссплатформенное (server-client, static-client, gh-pages, Android, iOS, macOS, Linux, Windows, Chrome extension, Docker, Kubernetes, ...) React приложение. В этой статье я почти не затрону Deep backend, только чуть-чуть в конце. Но рассмотрю Open Source шаблон/заготовку для сборки кроссплатформенных React приложений который мы используем в Deep.Foundation.",
+   "image": "https://habrastorage.org/getpro/habr/upload_files/640/2ec/360/6402ec360bfb54cf6e6041945efaf514.png",
+   "statistics": {
+    "views": 10827,
+    "score": 14,
+    "votes": 13,
+    "bookmarks": 50,
+    "comments": 5
+   }
+  },
+  {
+   "id": "801137",
+   "title": "Теперь я адепт Глубины, но денежный вопрос все ещё актуален",
+   "url": "https://habr.com/ru/articles/801137/",
+   "publishedAt": "2024-04-10T15:18:30+00:00",
+   "lang": "ru",
+   "company": "deepfoundation",
+   "author": {
+    "alias": "Prinz_Eugen_Deep",
+    "name": null
+   },
+   "hubs": [
+    "Блог компании Deep.Foundation",
+    "Ненормальное программирование",
+    "Программирование",
+    "Удалённая работа",
+    "Визуальное программирование"
+   ],
+   "tags": [
+    "telegram",
+    "telegram-bot",
+    "mp3",
+    "ogg",
+    "работа в it",
+    "работа в команде",
+    "api",
+    "bot",
+    "обработчик",
+    "пакет"
+   ],
+   "lead": "И вновь я приветствую всех своих читателей! В своей прошлой статье я начал рассказывать про то, как я стал кадетом Глубины. Продолжение погружения в Глубину начнётся здесь и сейчас, поэтому настоятельно рекомендую всё-таки обратиться к истокам, чтобы быть в курсе всех событий, которые произошли со мной за этот период.",
+   "image": "https://habrastorage.org/getpro/habr/upload_files/748/b18/492/748b184921676c893fd3852ac6e6f62e.jpeg",
+   "statistics": {
+    "views": 6897,
+    "score": 10,
+    "votes": 19,
+    "bookmarks": 21,
+    "comments": 4
+   }
+  },
+  {
+   "id": "804617",
+   "title": "Глубокая Теория Связей 0.0.1",
+   "url": "https://habr.com/ru/articles/804617/",
+   "publishedAt": "2024-04-01T20:35:13+00:00",
+   "lang": "ru",
+   "company": "deepfoundation",
+   "author": {
+    "alias": "Konard",
+    "name": "Константин Дьяченко"
+   },
+   "hubs": [
+    "Блог компании Deep.Foundation",
+    "Data Engineering",
+    "Математика",
+    "Программирование",
+    "Open source"
+   ],
+   "tags": [
+    "метатеория",
+    "теория связей",
+    "теория отношений",
+    "ассоциативная теория",
+    "математика",
+    "теория множеств",
+    "теория типов",
+    "теория графов",
+    "реляционная алгебра",
+    "ассоциативная модель данных"
+   ],
+   "lead": "Этому миру требуется новая теория, теория, которая могла бы описать все теории на планете. Теория которая могла бы одинаково легко описывать философию, математику, физику и психологию. Сделать все виды наук вычислимыми. Именно над этим мы и работаем. Эта теория, если у нас всё получится, станет единой метатеорией всего. Прошёл год с прошлой публикации, и сейчас наша задача поделиться нашим прогрес",
+   "image": "https://habrastorage.org/getpro/habr/upload_files/353/79c/859/35379c859f987ecb45db9cd72bfa3eb3.jpeg",
+   "statistics": {
+    "views": 9196,
+    "score": 14,
+    "votes": 18,
+    "bookmarks": 65,
+    "comments": 14
+   }
+  },
+  {
+   "id": "799161",
+   "title": "Монета карман не тянет или история о том, как Глубина сделала меня своим Кадетом",
+   "url": "https://habr.com/ru/articles/799161/",
+   "publishedAt": "2024-03-10T13:31:30+00:00",
+   "lang": "ru",
+   "company": "deepfoundation",
+   "author": {
+    "alias": "Prinz_Eugen_Deep",
+    "name": null
+   },
+   "hubs": [
+    "Блог компании Deep.Foundation",
+    "Удалённая работа",
+    "Биографии гиков",
+    "Карьера в IT-индустрии"
+   ],
+   "tags": [
+    "ретроспектива",
+    "гик",
+    "история успеха",
+    "жизнь-боль",
+    "жизнь прекрасна",
+    "коллектив",
+    "коллективный разум"
+   ],
+   "lead": "Начну с банального: меня отшили в детском лагере, где я собирался подзаработать после летней сессии. Да, вот такая простая причина. Не думал, что моих навыков будет недостаточно для того, чтобы работать с детьми. Внутренний программист негодовал от такого исхода дела, потому что помимо взаимодействия с мелкими, вкусной еды, танцев и обучению английскому я хотел вести кружок радиоэлектроники и обуч",
+   "image": "https://habrastorage.org/getpro/habr/upload_files/7b2/2cd/c4d/7b22cdc4dd0e07c212d85d2cbf3c5873.jpg",
+   "statistics": {
+    "views": 5070,
+    "score": 8,
+    "votes": 29,
+    "bookmarks": 10,
+    "comments": 18
+   }
+  },
+  {
+   "id": "757166",
+   "title": "Просто о Deep #1",
+   "url": "https://habr.com/ru/articles/757166/",
+   "publishedAt": "2023-08-27T09:10:47+00:00",
+   "lang": "ru",
+   "company": "deepfoundation",
+   "author": {
+    "alias": "l4legenda",
+    "name": "Александр"
+   },
+   "hubs": [
+    "Блог компании Deep.Foundation",
+    "Python",
+    "JavaScript",
+    "SQL",
+    "IT-инфраструктура"
+   ],
+   "tags": [
+    "Deep",
+    "deep.case",
+    "deep.links",
+    "deep.foundation",
+    "database tools",
+    "database as code",
+    "links",
+    "hasura"
+   ],
+   "lead": "Боль в написании backend Разберем, какие есть боли у backend разработчика и как deep.foundation решает данную проблему и что предлагает для разработчика.",
+   "image": "https://habrastorage.org/getpro/habr/upload_files/df0/1a3/765/df01a3765ddf5eac3a60d0ffe4698aed.png",
+   "statistics": {
+    "views": 5227,
+    "score": 3,
+    "votes": 9,
+    "bookmarks": 27,
+    "comments": 8
+   }
+  },
+  {
+   "id": "750140",
+   "title": "Ассоциативный Эксель и Сквозная валидация",
+   "url": "https://habr.com/ru/articles/750140/",
+   "publishedAt": "2023-07-25T07:03:39+00:00",
+   "lang": "ru",
+   "company": "deepfoundation",
+   "author": {
+    "alias": "Konard",
+    "name": "Константин Дьяченко"
+   },
+   "hubs": [
+    "Блог компании Deep.Foundation",
+    "Open source",
+    "Программирование",
+    "Развитие стартапа",
+    "Data Engineering"
+   ],
+   "tags": [
+    "mathjs",
+    "jsonschema",
+    "deep.case",
+    "deep.links",
+    "deep.foundation",
+    "logger"
+   ],
+   "lead": "Продолжая традицию обзоров пакетов Глубины, в этой статье мы рассмотрим практику применения пакетов mathjs, logger и jsonschema. Мы расскажем как превратить свой экземпляр Deep в ассоциативный эксель, где значения вычисляются прямо внутри транзакции. Вы также узнаете о том как можно записывать любые изменения связей. А ещё вы увидите как сделать так, чтобы значения связей валидировались, а так же ",
+   "image": "https://habrastorage.org/getpro/habr/upload_files/d41/e8e/930/d41e8e930d6f9c672637e025bcdfe59a.jpeg",
+   "statistics": {
+    "views": 2747,
+    "score": 8,
+    "votes": 8,
+    "bookmarks": 18,
+    "comments": 2
+   }
+  },
+  {
+   "id": "745454",
+   "title": "Хроники безумного стартапа. День 581",
+   "url": "https://habr.com/ru/articles/745454/",
+   "publishedAt": "2023-07-04T06:41:46+00:00",
+   "lang": "ru",
+   "company": "deepfoundation",
+   "author": {
+    "alias": "IvanSGlazunov",
+    "name": "Иван Сергеевич Глазунов"
+   },
+   "hubs": [
+    "Блог компании Deep.Foundation",
+    "Open source",
+    "Программирование",
+    "Развитие стартапа",
+    "Data Engineering"
+   ],
+   "tags": [
+    "chatgpt",
+    "deep.foundation",
+    "deep.case",
+    "deep.links"
+   ],
+   "lead": "Начиная традицию обзоров пакетов Глубины, в этой статье мы рассмотрим практику применения пакетов для подключения GPT. Вы увидите, как довольно удобная но крайне абстрактная языковая модель превращаемся в Имитатора: контекстно зависимая личность с узкой функцией. Например, продавец в магазине, который может рассказать о том, что есть на витрине, или бортовой компьютер яхты, который может «слышать»",
+   "image": "https://habrastorage.org/getpro/habr/upload_files/312/44f/d64/31244fd64a0fe360d60d70b597667866.jpg",
+   "statistics": {
+    "views": 4028,
+    "score": 9,
+    "votes": 9,
+    "bookmarks": 15,
+    "comments": 1
+   }
+  },
+  {
+   "id": "658705",
+   "title": "Math introduction to Deep Theory",
+   "url": "https://habr.com/en/articles/658705/",
+   "publishedAt": "2022-04-01T18:12:53+00:00",
+   "lang": "en",
+   "company": "deepfoundation",
+   "author": {
+    "alias": "IvanSGlazunov",
+    "name": "Иван Сергеевич Глазунов"
+   },
+   "hubs": [
+    "Блог компании Deep.Foundation",
+    "SQL",
+    "Математика",
+    "Data Engineering"
+   ],
+   "tags": [
+    "ассоциативность",
+    "deep.foundation",
+    "триплеты",
+    "дуплеты",
+    "связи",
+    "links",
+    "associative"
+   ],
+   "lead": "In this article, we would like to compare the core mathematical bases of the two most popular theories and associative theory.",
+   "image": "https://habrastorage.org/getpro/habr/upload_files/1ca/d4c/c02/1cad4cc02df9881be59b66da8d7c567f.png",
+   "statistics": {
+    "views": 4562,
+    "score": 1,
+    "votes": 1,
+    "bookmarks": 8,
+    "comments": 1
+   }
+  },
+  {
+   "id": "656879",
+   "title": "Стартап с другой планеты",
+   "url": "https://habr.com/ru/articles/656879/",
+   "publishedAt": "2022-03-22T12:13:23+00:00",
+   "lang": "ru",
+   "company": "deepfoundation",
+   "author": {
+    "alias": "leon_3",
+    "name": "Глазунов Иван"
+   },
+   "hubs": [
+    "Блог компании Deep.Foundation"
+   ],
+   "tags": [
+    "ассоциативность",
+    "sql",
+    "nosql",
+    "gql",
+    "graphql",
+    "ddd",
+    "backend",
+    "electron",
+    "hasura",
+    "postgresql"
+   ],
+   "lead": "Привет, Хабр! Мы стартап Deep.Foundation, и сегодня мы официально публикуем альфа-версию своей портальной пушки Deep.Case! Что же мы такое создали? Мы создали универсальную мультипарадигменную архитектуру, поставляемую в качестве кроссплатформенного приложения, которую можно описать так: дата-ориентированное операционное пространство ассоциативного представления данных.",
+   "image": "https://habrastorage.org/getpro/habr/upload_files/3cf/137/299/3cf137299602a6d51d994a89e259afab.png",
+   "statistics": {
+    "views": 12005,
+    "score": 1,
+    "votes": 12,
+    "bookmarks": 39,
+    "comments": 28
+   }
+  },
+  {
+   "id": "576398",
+   "title": "Ассоциативные связи",
+   "url": "https://habr.com/ru/articles/576398/",
+   "publishedAt": "2021-09-05T18:23:58+00:00",
+   "lang": "ru",
+   "company": "deepfoundation",
+   "author": {
+    "alias": "IvanSGlazunov",
+    "name": "Иван Сергеевич Глазунов"
+   },
+   "hubs": [
+    "Блог компании Deep.Foundation",
+    "Анализ и проектирование систем",
+    "Качество кода",
+    "IT-инфраструктура",
+    "Big Data"
+   ],
+   "tags": [
+    "Ассоциативность",
+    "gql",
+    "graphlql",
+    "Единица смысла",
+    "sql",
+    "data",
+    "data-science"
+   ],
+   "lead": "Что такое идеальный \"квант информации\" или \"минимальная единица смысла\" и зачем задаваться этим вопросом? С этим связано много боли, часто даже не осознаваемой. Мы предлагаем решение, но сначала нужно разобраться для чего это нужно. Рекомендуем ознакомиться с первой статьёй в серии.",
+   "image": "https://habrastorage.org/getpro/habr/upload_files/77a/b8a/f25/77ab8af25e3fa5510be2b103dc8edebc.png",
+   "statistics": {
+    "views": 5922,
+    "score": -1,
+    "votes": 6,
+    "bookmarks": 26,
+    "comments": 11
+   }
+  },
+  {
+   "id": "576326",
+   "title": "Фактор рефакторинга",
+   "url": "https://habr.com/ru/articles/576326/",
+   "publishedAt": "2021-09-04T15:38:37+00:00",
+   "lang": "ru",
+   "company": "deepfoundation",
+   "author": {
+    "alias": "IvanSGlazunov",
+    "name": "Иван Сергеевич Глазунов"
+   },
+   "hubs": [
+    "Блог компании Deep.Foundation",
+    "Анализ и проектирование систем",
+    "Проектирование API",
+    "Big Data",
+    "Data Engineering"
+   ],
+   "tags": [
+    "Ассоциативность",
+    "sql",
+    "schema",
+    "data",
+    "рефакторинг",
+    "graph",
+    "nosql",
+    "backend",
+    "api",
+    "gql"
+   ],
+   "lead": "Код зависим от данных и моделей, а значит от абстракций используемых в них, поэтому рефакторинг неминуем сегодня. Почему? Обычно под рефакторингом подразумевают реорганизацию кода из соображений необходимости использовать данные по-новому. Мы поговорим о самом частом и нелюбимом типе рефакторинга - лавинообразный рефакторинг, возникающий при изменениях в моделях данных, структурах таблиц и бизнес ",
+   "image": "https://habrastorage.org/getpro/habr/upload_files/2ee/9f6/ecc/2ee9f6eccdccc2cff966c67a647dc923.png",
+   "statistics": {
+    "views": 7123,
+    "score": 5,
+    "votes": 14,
+    "bookmarks": 35,
+    "comments": 39
+   }
+  }
+ ]
+}
