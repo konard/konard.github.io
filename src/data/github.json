@@ -2168,7 +2168,8 @@
       {
         "id": "github-packages",
         "name": "GitHub Packages",
-        "blocker": "gh token lacks read:packages scope; exact download counts and versions need `gh auth refresh -s read:packages`."
+        "blocker": "gh token lacks read:packages scope; exact download counts and versions need `gh auth refresh -s read:packages`.",
+        "note": "download counts are rounded by github.com and cover public packages only"
       }
     ],
     "droppedPackages": 21

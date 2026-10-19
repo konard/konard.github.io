@@ -21,6 +21,11 @@ const DISPLAY = {
   homebrew: ['Homebrew', null],
 };
 
+// What a reader should know about registries whose data is partial.
+const PARTIAL = {
+  'github-packages': 'download counts are rounded by github.com and cover public packages only',
+};
+
 // The GitHub repository a package is built from, as `owner/name` in lower case.
 function sourceRepository(registry, pkg) {
   const match = /github\.com\/([^/]+\/[^/#?]+)/i.exec(pkg.repository || '');
@@ -36,7 +41,10 @@ function buildRegistries(kindOf, { limit = 6 } = {}) {
   const blocked = [];
   let dropped = 0;
   for (const r of data.registries) {
-    if (r.blocker) blocked.push({ id: r.id, name: (DISPLAY[r.id] || [r.name])[0], blocker: r.blocker });
+    if (r.blocker) {
+      const name = (DISPLAY[r.id] || [r.name])[0];
+      blocked.push({ id: r.id, name, blocker: r.blocker, note: PARTIAL[r.id] || 'partial data' });
+    }
     const packages = r.packages.filter((p) => {
       const repo = sourceRepository(r.id, p);
       const kind = repo && kindOf(repo);

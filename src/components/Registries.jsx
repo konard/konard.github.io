@@ -65,7 +65,7 @@ export default function Registries({ registries, summary }) {
         <p className="registries__note muted">
           {summary.checked} registries checked on {summary.collectedAt.slice(0, 10)}, by account and by the manifests of
           every original repository; packages of client copies are not counted. Nothing published on{' '}
-          {summary.empty.join(', ')}.{summary.blocked.map((b) => ` ${b.name}: ${b.blocker}`)}
+          {summary.empty.join(', ')}.{summary.blocked.map((b) => ` ${b.name}: ${b.note}.`)}
         </p>
       )}
     </>
