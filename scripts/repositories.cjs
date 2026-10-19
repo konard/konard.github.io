@@ -66,7 +66,7 @@ function kindOf(repo) {
 const FIELD_RULES = [
   [
     'associative',
-    /link|doublet|triplet|associativ|\blino\b|lino-|deep|meta-?(theory|language|notation|ontology|logic|expression|sovereign)|ideav|graph|semantic|ontolog|shuttler/,
+    /link|doublet|triplet|associativ|\blino\b|lino-|deep(?!-assistant)|meta-?(theory|language|notation|ontology|logic|expression|sovereign)|ideav|graph|semantic|ontolog|shuttler/,
     [],
   ],
   [
@@ -116,7 +116,7 @@ const FIELD_RULES = [
   ],
   [
     'systems',
-    /memory|unsafe|\btrees?\b|trees-|\bsbt\b|size-balanced|hashing|hashbrown|\bgpu\b|gpu-|kernel|native|bare|threading|benchmark|performance|epoll|rb-tree|layout|ram-|\bdisk|process|collections|numbers|bitcoin|sorting|mem-rs|platform-rs|data-rs|doublets-rs|delegates|disposables|interfaces|equality|incrementers|singletons|ranges|setters|scopes|converters|comparers|exceptions|reflection|timestamps|random|\bio\b|protocols|iddistributor|idclient|archiver|\bbar\b|veil|vpn|cpp|wasm|webassembly|audio-?system/,
+    /memory|unsafe|\btrees?\b|trees-|\bsbt\b|size-balanced|hashing|hashbrown|\bgpu\b|gpu-|kernel|native|bare|threading|benchmark|performance|epoll|rb-tree|layout|\bram-|\bdisk|process|collections|numbers|bitcoin|sorting|mem-rs|platform-rs|data-rs|doublets-rs|delegates|disposables|interfaces|equality|incrementers|singletons|ranges|setters|scopes|converters|comparers|exceptions|reflection|timestamps|random|\bio\b|protocols|iddistributor|idclient|archiver|\bbar\b|veil|vpn|cpp|wasm|webassembly|audio-?system/,
     ['C', 'C++', 'Assembly', 'Cuda', 'WGSL', 'WebAssembly', 'Metal', 'Nim', 'Objective-C', 'RenderScript'],
   ],
   [

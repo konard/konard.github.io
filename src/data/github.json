@@ -1160,7 +1160,6 @@
         "stable-diffusion"
       ],
       "fields": [
-        "associative",
         "ai",
         "web",
         "backend",
@@ -1512,10 +1511,8 @@
       "createdYear": 2024,
       "topics": [],
       "fields": [
-        "associative",
         "ai",
-        "bots",
-        "systems"
+        "bots"
       ]
     },
     {
@@ -1811,6 +1808,22 @@
         "associative",
         "data",
         "languages"
+      ]
+    },
+    {
+      "name": "meta-theory",
+      "fullName": "link-foundation/meta-theory",
+      "owner": "link-foundation",
+      "description": "The links meta-theory",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/link-foundation/meta-theory",
+      "createdYear": 2025,
+      "topics": [],
+      "fields": [
+        "associative",
+        "research"
       ]
     }
   ],

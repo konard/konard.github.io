@@ -31,7 +31,13 @@
         "alias": "Konard",
         "name": "Константин Дьяченко"
       },
-      "hubs": ["Математика", "Ненормальное программирование", "Программирование", "Open source", "Data Engineering"],
+      "hubs": [
+        "Математика",
+        "Ненормальное программирование",
+        "Программирование",
+        "Open source",
+        "Data Engineering"
+      ],
       "tags": [
         "мета-теория",
         "теория связей",
@@ -65,7 +71,13 @@
         "alias": "Konard",
         "name": "Константин Дьяченко"
       },
-      "hubs": ["Программирование", "Ненормальное программирование", "Математика", "Open source", "Data Engineering"],
+      "hubs": [
+        "Программирование",
+        "Ненормальное программирование",
+        "Математика",
+        "Open source",
+        "Data Engineering"
+      ],
       "tags": [
         "metatheory",
         "links theory",
@@ -99,7 +111,13 @@
         "alias": "IvanSGlazunov",
         "name": "Иван Сергеевич Глазунов"
       },
-      "hubs": ["Блог компании Deep.Foundation", "iOS", "Android", "Node.JS", "ReactJS"],
+      "hubs": [
+        "Блог компании Deep.Foundation",
+        "iOS",
+        "Android",
+        "Node.JS",
+        "ReactJS"
+      ],
       "tags": [
         "capacitor",
         "electron js",
@@ -173,7 +191,13 @@
         "alias": "Konard",
         "name": "Константин Дьяченко"
       },
-      "hubs": ["Блог компании Deep.Foundation", "Data Engineering", "Математика", "Программирование", "Open source"],
+      "hubs": [
+        "Блог компании Deep.Foundation",
+        "Data Engineering",
+        "Математика",
+        "Программирование",
+        "Open source"
+      ],
       "tags": [
         "метатеория",
         "теория связей",
@@ -207,7 +231,12 @@
         "alias": "Prinz_Eugen_Deep",
         "name": null
       },
-      "hubs": ["Блог компании Deep.Foundation", "Удалённая работа", "Биографии гиков", "Карьера в IT-индустрии"],
+      "hubs": [
+        "Блог компании Deep.Foundation",
+        "Удалённая работа",
+        "Биографии гиков",
+        "Карьера в IT-индустрии"
+      ],
       "tags": [
         "ретроспектива",
         "гик",
@@ -238,7 +267,13 @@
         "alias": "l4legenda",
         "name": "Александр"
       },
-      "hubs": ["Блог компании Deep.Foundation", "Python", "JavaScript", "SQL", "IT-инфраструктура"],
+      "hubs": [
+        "Блог компании Deep.Foundation",
+        "Python",
+        "JavaScript",
+        "SQL",
+        "IT-инфраструктура"
+      ],
       "tags": [
         "Deep",
         "deep.case",
@@ -277,7 +312,14 @@
         "Развитие стартапа",
         "Data Engineering"
       ],
-      "tags": ["mathjs", "jsonschema", "deep.case", "deep.links", "deep.foundation", "logger"],
+      "tags": [
+        "mathjs",
+        "jsonschema",
+        "deep.case",
+        "deep.links",
+        "deep.foundation",
+        "logger"
+      ],
       "lead": "Продолжая традицию обзоров пакетов Глубины, в этой статье мы рассмотрим практику применения пакетов mathjs, logger и jsonschema. Мы расскажем как превратить свой экземпляр Deep в ассоциативный эксель, где значения вычисляются прямо внутри транзакции. Вы также узнаете о том как можно записывать любые изменения связей. А ещё вы увидите как сделать так, чтобы значения связей валидировались, а так же ",
       "image": "https://habrastorage.org/getpro/habr/upload_files/d41/e8e/930/d41e8e930d6f9c672637e025bcdfe59a.jpeg",
       "statistics": {
@@ -306,7 +348,12 @@
         "Развитие стартапа",
         "Data Engineering"
       ],
-      "tags": ["chatgpt", "deep.foundation", "deep.case", "deep.links"],
+      "tags": [
+        "chatgpt",
+        "deep.foundation",
+        "deep.case",
+        "deep.links"
+      ],
       "lead": "Начиная традицию обзоров пакетов Глубины, в этой статье мы рассмотрим практику применения пакетов для подключения GPT. Вы увидите, как довольно удобная но крайне абстрактная языковая модель превращаемся в Имитатора: контекстно зависимая личность с узкой функцией. Например, продавец в магазине, который может рассказать о том, что есть на витрине, или бортовой компьютер яхты, который может «слышать»",
       "image": "https://habrastorage.org/getpro/habr/upload_files/312/44f/d64/31244fd64a0fe360d60d70b597667866.jpg",
       "statistics": {
@@ -328,8 +375,21 @@
         "alias": "IvanSGlazunov",
         "name": "Иван Сергеевич Глазунов"
       },
-      "hubs": ["Блог компании Deep.Foundation", "SQL", "Математика", "Data Engineering"],
-      "tags": ["ассоциативность", "deep.foundation", "триплеты", "дуплеты", "связи", "links", "associative"],
+      "hubs": [
+        "Блог компании Deep.Foundation",
+        "SQL",
+        "Математика",
+        "Data Engineering"
+      ],
+      "tags": [
+        "ассоциативность",
+        "deep.foundation",
+        "триплеты",
+        "дуплеты",
+        "связи",
+        "links",
+        "associative"
+      ],
       "lead": "In this article, we would like to compare the core mathematical bases of the two most popular theories and associative theory.",
       "image": "https://habrastorage.org/getpro/habr/upload_files/1ca/d4c/c02/1cad4cc02df9881be59b66da8d7c567f.png",
       "statistics": {
@@ -351,7 +411,9 @@
         "alias": "leon_3",
         "name": "Глазунов Иван"
       },
-      "hubs": ["Блог компании Deep.Foundation"],
+      "hubs": [
+        "Блог компании Deep.Foundation"
+      ],
       "tags": [
         "ассоциативность",
         "sql",
@@ -392,7 +454,15 @@
         "IT-инфраструктура",
         "Big Data"
       ],
-      "tags": ["Ассоциативность", "gql", "graphlql", "Единица смысла", "sql", "data", "data-science"],
+      "tags": [
+        "Ассоциативность",
+        "gql",
+        "graphlql",
+        "Единица смысла",
+        "sql",
+        "data",
+        "data-science"
+      ],
       "lead": "Что такое идеальный \"квант информации\" или \"минимальная единица смысла\" и зачем задаваться этим вопросом? С этим связано много боли, часто даже не осознаваемой. Мы предлагаем решение, но сначала нужно разобраться для чего это нужно. Рекомендуем ознакомиться с первой статьёй в серии.",
       "image": "https://habrastorage.org/getpro/habr/upload_files/77a/b8a/f25/77ab8af25e3fa5510be2b103dc8edebc.png",
       "statistics": {
@@ -421,7 +491,18 @@
         "Big Data",
         "Data Engineering"
       ],
-      "tags": ["Ассоциативность", "sql", "schema", "data", "рефакторинг", "graph", "nosql", "backend", "api", "gql"],
+      "tags": [
+        "Ассоциативность",
+        "sql",
+        "schema",
+        "data",
+        "рефакторинг",
+        "graph",
+        "nosql",
+        "backend",
+        "api",
+        "gql"
+      ],
       "lead": "Код зависим от данных и моделей, а значит от абстракций используемых в них, поэтому рефакторинг неминуем сегодня. Почему? Обычно под рефакторингом подразумевают реорганизацию кода из соображений необходимости использовать данные по-новому. Мы поговорим о самом частом и нелюбимом типе рефакторинга - лавинообразный рефакторинг, возникающий при изменениях в моделях данных, структурах таблиц и бизнес ",
       "image": "https://habrastorage.org/getpro/habr/upload_files/2ee/9f6/ecc/2ee9f6eccdccc2cff966c67a647dc923.png",
       "statistics": {
