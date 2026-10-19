@@ -1,4 +1,6 @@
 import github from './github.json';
+import repositories from './repositories.json';
+import { fields, professions } from './fields';
 import {
   education,
   experience,
@@ -87,5 +89,46 @@ describe('scripts/build-data.cjs', () => {
     expect(isNoise({ name: 'pr-42-solution-draft-log' })).toBe(true);
     expect(isNoise({ name: 'log-it' })).toBe(false);
     expect(isNoise({ name: 'links-notation' })).toBe(false);
+  });
+});
+
+describe('scripts/repositories.cjs (issue #7)', () => {
+  const { buildRepositories, kindOf, fieldsOf, readCollected } = require('../../scripts/repositories.cjs');
+
+  test('committed repositories.json is up to date with the collected data', () => {
+    expect(buildRepositories({ write: false, repos: readCollected() })).toEqual(repositories);
+  });
+
+  test('forks are never collected and copies are classified', () => {
+    const own = { fullName: 'konard/problem-solving', owner: 'konard', name: 'problem-solving', description: '' };
+    expect(kindOf(own)).toBe('own');
+    expect(kindOf({ ...own, fullName: 'konard/Aboba-site', name: 'Aboba-site' })).toBe('client');
+    expect(kindOf({ ...own, fullName: 'konard/log-tmp-1', name: 'log-tmp-1' })).toBe('noise');
+    expect(kindOf({ ...own, fullName: 'konard/x_fork', name: 'x_fork' })).toBe('mirror');
+    expect(kindOf({ ...own, copyOf: 'deep-foundation/deeplinks' })).toBe('mirror');
+    expect(repositories.items.some((r) => r.fork)).toBe(false);
+  });
+
+  test('fields are assigned from keywords, languages and owners', () => {
+    const base = { owner: 'konard', description: '', topics: [], languages: [] };
+    expect(fieldsOf({ ...base, fullName: 'konard/p-vs-np', name: 'p-vs-np', language: 'Rocq' })).toContain('research');
+    expect(fieldsOf({ ...base, fullName: 'linksplatform/Memory', owner: 'linksplatform', name: 'Memory' })).toContain(
+      'associative',
+    );
+    expect(fieldsOf({ ...base, fullName: 'konard/zzz', name: 'zzz' })).toEqual(['other']);
+  });
+
+  test('own repositories match the original repository total', () => {
+    const own = repositories.items.filter((r) => r.kind === 'own');
+    expect(own.length).toBe(github.totals.ownRepositories);
+    expect(repositories.items.every((r) => r.fields.length > 0)).toBe(true);
+  });
+
+  test('every field has a description and professions point to original repositories', () => {
+    expect(fields.map((f) => f.id)).toEqual(repositories.fields);
+    const own = new Set(repositories.items.filter((r) => r.kind === 'own').map((r) => r.fullName));
+    const missing = professions.flatMap((p) => p.repos.map(([name]) => name)).filter((n) => !own.has(n));
+    expect(missing).toEqual([]);
+    professions.forEach((p) => expect(p.repos.length).toBeGreaterThanOrEqual(5));
   });
 });

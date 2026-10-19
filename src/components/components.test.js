@@ -5,6 +5,7 @@ import { formatPeriod, toYear } from './Timeline';
 import { contributionScale } from './ContributionsChart';
 import { formatCompact, formatNumber, formatPercent, SERIES } from './format';
 import github from '../data/github.json';
+import habr from '../data/habr.json';
 
 describe('format', () => {
   test('formats numbers', () => {
@@ -22,9 +23,11 @@ describe('format', () => {
 
 describe('buildStats', () => {
   test('derives tiles from github data', () => {
-    const stats = buildStats(github, 2000, new Date('2026-10-16'));
+    const stats = buildStats(github, 2000, new Date('2026-10-16'), habr);
     const byId = Object.fromEntries(stats.map((s) => [s.id, s]));
-    expect(stats).toHaveLength(8);
+    expect(stats).toHaveLength(12);
+    expect(byId.habr.value).toBe(habr.articles.reduce((s, a) => s + a.statistics.views, 0));
+    expect(buildStats(github, 2000, new Date('2026-10-16'))).toHaveLength(11);
     expect(byId.years.value).toBe(26);
     expect(byId.contributions.value).toBe(github.totals.contributions);
     expect(byId.packages.value).toBe(github.registries.reduce((s, r) => s + r.packages, 0));
@@ -32,6 +35,15 @@ describe('buildStats', () => {
     const lifetime = github.registries.filter((r) => r.downloadsUnit === 'downloads total');
     expect(byId.downloads.value).toBe(lifetime.reduce((s, r) => s + r.downloads, 0));
     stats.forEach((s) => expect(Number.isFinite(s.value)).toBe(true));
+  });
+
+  test('counts only original repositories, never forks (issue #7)', () => {
+    const byId = Object.fromEntries(buildStats(github, 2000).map((s) => [s.id, s]));
+    expect(byId.repos.label).toBe('Original repositories');
+    expect(byId.repos.value).toBe(github.totals.ownRepositories);
+    expect(byId.repos.value).toBe(github.totals.personalRepositories + github.totals.organizationRepositories);
+    // The public profile counter includes forks of other people's projects.
+    expect(byId.repos.value).toBeLessThan(github.profile.publicRepos);
   });
 });
 

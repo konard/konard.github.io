@@ -1,5 +1,8 @@
 {
-  "generatedFrom": "docs/case-studies/issue-1/data",
+  "generatedFrom": [
+    "docs/case-studies/issue-1/data",
+    "docs/case-studies/issue-7/data"
+  ],
   "profile": {
     "login": "konard",
     "name": "Konstantin Diachenko",
@@ -12,15 +15,20 @@
     "hireable": true,
     "followers": 375,
     "following": 918,
-    "publicRepos": 1460,
-    "publicGists": 23391,
+    "publicRepos": 1461,
+    "publicGists": 23438,
     "createdAt": "2012-02-13T00:19:39Z"
   },
   "totals": {
-    "ownRepositories": 672,
-    "stars": 945,
+    "ownRepositories": 525,
+    "personalRepositories": 184,
+    "organizationRepositories": 341,
+    "organizations": 15,
+    "clientCopies": 89,
+    "mirrors": 96,
+    "stars": 993,
     "contributions": 132002,
-    "languages": 21
+    "languages": 73
   },
   "contributions": [
     {
@@ -162,87 +170,514 @@
   "languages": [
     {
       "name": "JavaScript",
-      "count": 129
-    },
-    {
-      "name": "TypeScript",
-      "count": 125
-    },
-    {
-      "name": "C#",
-      "count": 60
-    },
-    {
-      "name": "Rust",
-      "count": 55
-    },
-    {
-      "name": "Python",
-      "count": 45
-    },
-    {
-      "name": "HTML",
-      "count": 31
-    },
-    {
-      "name": "C++",
-      "count": 22
+      "count": 250,
+      "primary": 141,
+      "bytes": 149776019,
+      "color": "#f1e05a"
     },
     {
       "name": "Shell",
-      "count": 18
+      "count": 160,
+      "primary": 18,
+      "bytes": 5946290,
+      "color": "#89e051"
     },
     {
-      "name": "C",
-      "count": 9
+      "name": "TypeScript",
+      "count": 125,
+      "primary": 86,
+      "bytes": 41024642,
+      "color": "#3178c6"
     },
     {
-      "name": "PHP",
-      "count": 7
+      "name": "Python",
+      "count": 85,
+      "primary": 35,
+      "bytes": 13037367,
+      "color": "#3572A5"
     },
     {
-      "name": "Kotlin",
-      "count": 3
+      "name": "HTML",
+      "count": 84,
+      "primary": 26,
+      "bytes": 132773353,
+      "color": "#e34c26"
     },
     {
-      "name": "Coq",
-      "count": 2
+      "name": "Rust",
+      "count": 82,
+      "primary": 45,
+      "bytes": 73554976,
+      "color": "#dea584"
     },
     {
-      "name": "Go",
-      "count": 2
-    },
-    {
-      "name": "Jupyter Notebook",
-      "count": 2
-    },
-    {
-      "name": "TeX",
-      "count": 2
-    },
-    {
-      "name": "Batchfile",
-      "count": 1
-    },
-    {
-      "name": "Crystal",
-      "count": 1
+      "name": "C#",
+      "count": 80,
+      "primary": 60,
+      "bytes": 7476004,
+      "color": "#7355dd"
     },
     {
       "name": "CSS",
-      "count": 1
+      "count": 63,
+      "primary": 4,
+      "bytes": 1365447,
+      "color": "#663399"
     },
     {
       "name": "Dockerfile",
-      "count": 1
+      "count": 56,
+      "primary": 1,
+      "bytes": 159253,
+      "color": "#384d54"
     },
     {
-      "name": "PowerShell",
-      "count": 1
+      "name": "C++",
+      "count": 36,
+      "primary": 8,
+      "bytes": 6168081,
+      "color": "#f34b7d"
+    },
+    {
+      "name": "C",
+      "count": 29,
+      "primary": 7,
+      "bytes": 126322624,
+      "color": "#555555"
+    },
+    {
+      "name": "CMake",
+      "count": 21,
+      "primary": 0,
+      "bytes": 57336,
+      "color": "#DA3434"
+    },
+    {
+      "name": "PHP",
+      "count": 14,
+      "primary": 5,
+      "bytes": 3454205,
+      "color": "#4F5D95"
+    },
+    {
+      "name": "Java",
+      "count": 13,
+      "primary": 0,
+      "bytes": 394210,
+      "color": "#b07219"
+    },
+    {
+      "name": "Ruby",
+      "count": 13,
+      "primary": 1,
+      "bytes": 95739,
+      "color": "#701516"
+    },
+    {
+      "name": "Batchfile",
+      "count": 13,
+      "primary": 1,
+      "bytes": 6991,
+      "color": "#C1F12E"
+    },
+    {
+      "name": "Swift",
+      "count": 9,
+      "primary": 0,
+      "bytes": 28019,
+      "color": "#F05138"
+    },
+    {
+      "name": "Jinja",
+      "count": 8,
+      "primary": 0,
+      "bytes": 22340,
+      "color": "#a52a22"
+    },
+    {
+      "name": "Makefile",
+      "count": 7,
+      "primary": 0,
+      "bytes": 33813,
+      "color": "#427819"
+    },
+    {
+      "name": "Lean",
+      "count": 6,
+      "primary": 0,
+      "bytes": 2543427,
+      "color": null
     },
     {
       "name": "Rocq Prover",
-      "count": 1
+      "count": 5,
+      "primary": 1,
+      "bytes": 2613404,
+      "color": "#d0b68c"
+    },
+    {
+      "name": "Go",
+      "count": 5,
+      "primary": 1,
+      "bytes": 660307,
+      "color": "#00ADD8"
+    },
+    {
+      "name": "PEG.js",
+      "count": 4,
+      "primary": 0,
+      "bytes": 18198,
+      "color": "#234d6b"
+    },
+    {
+      "name": "PowerShell",
+      "count": 4,
+      "primary": 1,
+      "bytes": 17278,
+      "color": "#012456"
+    },
+    {
+      "name": "Nim",
+      "count": 4,
+      "primary": 0,
+      "bytes": 16973,
+      "color": "#ffc200"
+    },
+    {
+      "name": "Mustache",
+      "count": 4,
+      "primary": 0,
+      "bytes": 7200,
+      "color": "#724b3b"
+    },
+    {
+      "name": "Lex",
+      "count": 3,
+      "primary": 0,
+      "bytes": 173932,
+      "color": "#DBCA00"
+    },
+    {
+      "name": "Awk",
+      "count": 3,
+      "primary": 0,
+      "bytes": 6570,
+      "color": "#c30e9b"
+    },
+    {
+      "name": "M4",
+      "count": 2,
+      "primary": 0,
+      "bytes": 429210,
+      "color": null
+    },
+    {
+      "name": "Yacc",
+      "count": 2,
+      "primary": 0,
+      "bytes": 138390,
+      "color": "#4B6C4B"
+    },
+    {
+      "name": "TeX",
+      "count": 2,
+      "primary": 1,
+      "bytes": 129753,
+      "color": "#3D6117"
+    },
+    {
+      "name": "GAP",
+      "count": 2,
+      "primary": 0,
+      "bytes": 47568,
+      "color": "#0000cc"
+    },
+    {
+      "name": "Roff",
+      "count": 2,
+      "primary": 0,
+      "bytes": 21620,
+      "color": "#ecdebe"
+    },
+    {
+      "name": "Perl",
+      "count": 2,
+      "primary": 0,
+      "bytes": 21208,
+      "color": "#0298c3"
+    },
+    {
+      "name": "DTrace",
+      "count": 2,
+      "primary": 0,
+      "bytes": 9028,
+      "color": null
+    },
+    {
+      "name": "Go Template",
+      "count": 2,
+      "primary": 0,
+      "bytes": 3864,
+      "color": "#00ADD8"
+    },
+    {
+      "name": "Elixir",
+      "count": 2,
+      "primary": 0,
+      "bytes": 307,
+      "color": "#6e4a7e"
+    },
+    {
+      "name": "Procfile",
+      "count": 2,
+      "primary": 0,
+      "bytes": 109,
+      "color": "#3B2F63"
+    },
+    {
+      "name": "Isabelle",
+      "count": 1,
+      "primary": 0,
+      "bytes": 963634,
+      "color": "#FEFE00"
+    },
+    {
+      "name": "Vue",
+      "count": 1,
+      "primary": 1,
+      "bytes": 170732,
+      "color": "#41b883"
+    },
+    {
+      "name": "SCSS",
+      "count": 1,
+      "primary": 0,
+      "bytes": 164136,
+      "color": "#c6538c"
+    },
+    {
+      "name": "Coq",
+      "count": 1,
+      "primary": 1,
+      "bytes": 134709,
+      "color": "#d0b68c"
+    },
+    {
+      "name": "Gherkin",
+      "count": 1,
+      "primary": 0,
+      "bytes": 54525,
+      "color": "#5B2063"
+    },
+    {
+      "name": "ANTLR",
+      "count": 1,
+      "primary": 0,
+      "bytes": 53576,
+      "color": "#9DC3FF"
+    },
+    {
+      "name": "Cuda",
+      "count": 1,
+      "primary": 0,
+      "bytes": 38934,
+      "color": "#3A4E3A"
+    },
+    {
+      "name": "Agda",
+      "count": 1,
+      "primary": 0,
+      "bytes": 31208,
+      "color": "#315665"
+    },
+    {
+      "name": "Metal",
+      "count": 1,
+      "primary": 0,
+      "bytes": 22235,
+      "color": "#8f14e9"
+    },
+    {
+      "name": "PLpgSQL",
+      "count": 1,
+      "primary": 0,
+      "bytes": 9198,
+      "color": "#336790"
+    },
+    {
+      "name": "Assembly",
+      "count": 1,
+      "primary": 0,
+      "bytes": 7097,
+      "color": "#6E4C13"
+    },
+    {
+      "name": "Slim",
+      "count": 1,
+      "primary": 0,
+      "bytes": 5307,
+      "color": "#2b2b2b"
+    },
+    {
+      "name": "Nix",
+      "count": 1,
+      "primary": 0,
+      "bytes": 4818,
+      "color": "#7e7eff"
+    },
+    {
+      "name": "Inno Setup",
+      "count": 1,
+      "primary": 0,
+      "bytes": 4018,
+      "color": "#264b99"
+    },
+    {
+      "name": "Vim Snippet",
+      "count": 1,
+      "primary": 0,
+      "bytes": 3722,
+      "color": "#199f4b"
+    },
+    {
+      "name": "WebAssembly",
+      "count": 1,
+      "primary": 0,
+      "bytes": 3121,
+      "color": "#04133b"
+    },
+    {
+      "name": "Lua",
+      "count": 1,
+      "primary": 0,
+      "bytes": 2406,
+      "color": "#000080"
+    },
+    {
+      "name": "Euphoria",
+      "count": 1,
+      "primary": 0,
+      "bytes": 2362,
+      "color": "#FF790B"
+    },
+    {
+      "name": "Pascal",
+      "count": 1,
+      "primary": 0,
+      "bytes": 2353,
+      "color": "#E3F171"
+    },
+    {
+      "name": "MDX",
+      "count": 1,
+      "primary": 0,
+      "bytes": 895,
+      "color": "#fcb32c"
+    },
+    {
+      "name": "Blade",
+      "count": 1,
+      "primary": 0,
+      "bytes": 689,
+      "color": "#f7523f"
+    },
+    {
+      "name": "Meson",
+      "count": 1,
+      "primary": 0,
+      "bytes": 659,
+      "color": "#007800"
+    },
+    {
+      "name": "Mako",
+      "count": 1,
+      "primary": 0,
+      "bytes": 651,
+      "color": "#7e858d"
+    },
+    {
+      "name": "Less",
+      "count": 1,
+      "primary": 0,
+      "bytes": 611,
+      "color": "#1d365d"
+    },
+    {
+      "name": "Erlang",
+      "count": 1,
+      "primary": 0,
+      "bytes": 77,
+      "color": "#B83998"
+    },
+    {
+      "name": "Scala",
+      "count": 1,
+      "primary": 0,
+      "bytes": 51,
+      "color": "#c22d40"
+    },
+    {
+      "name": "Haskell",
+      "count": 1,
+      "primary": 0,
+      "bytes": 46,
+      "color": "#5e5086"
+    },
+    {
+      "name": "sed",
+      "count": 1,
+      "primary": 0,
+      "bytes": 46,
+      "color": "#64b970"
+    },
+    {
+      "name": "Kotlin",
+      "count": 1,
+      "primary": 0,
+      "bytes": 44,
+      "color": "#A97BFF"
+    },
+    {
+      "name": "OCaml",
+      "count": 1,
+      "primary": 0,
+      "bytes": 30,
+      "color": "#ef7a08"
+    },
+    {
+      "name": "Clojure",
+      "count": 1,
+      "primary": 0,
+      "bytes": 26,
+      "color": "#db5855"
+    },
+    {
+      "name": "Julia",
+      "count": 1,
+      "primary": 0,
+      "bytes": 25,
+      "color": "#a270ba"
+    },
+    {
+      "name": "F#",
+      "count": 1,
+      "primary": 0,
+      "bytes": 24,
+      "color": "#b845fc"
+    },
+    {
+      "name": "R",
+      "count": 1,
+      "primary": 0,
+      "bytes": 24,
+      "color": "#198CE7"
+    },
+    {
+      "name": "RenderScript",
+      "count": 1,
+      "primary": 0,
+      "bytes": 1,
+      "color": null
     }
   ],
   "owners": [
@@ -252,59 +687,28 @@
       "description": null,
       "url": "https://github.com/konard",
       "createdAt": "2012-02-13T00:19:39Z",
-      "repositories": 293,
-      "stars": 221,
+      "repositories": 184,
+      "stars": 220,
       "languages": [
         {
           "name": "JavaScript",
-          "count": 53
+          "count": 49
         },
         {
           "name": "C#",
           "count": 23
         },
         {
-          "name": "Python",
-          "count": 22
-        },
-        {
-          "name": "Rust",
+          "name": "HTML",
           "count": 19
         },
         {
-          "name": "HTML",
-          "count": 17
-        }
-      ]
-    },
-    {
-      "login": "linksplatform",
-      "name": "LinksPlatform",
-      "description": "A cross-platform modular framework for automation of automation. Кроссплатформенный модульный фреймворк для автоматизации автоматизации.",
-      "url": "https://github.com/linksplatform",
-      "createdAt": "2015-10-14T01:12:20Z",
-      "repositories": 79,
-      "stars": 154,
-      "languages": [
-        {
-          "name": "C#",
-          "count": 37
-        },
-        {
-          "name": "Rust",
-          "count": 11
-        },
-        {
           "name": "Python",
-          "count": 6
+          "count": 14
         },
         {
-          "name": "C",
-          "count": 4
-        },
-        {
-          "name": "C++",
-          "count": 4
+          "name": "Shell",
+          "count": 14
         }
       ]
     },
@@ -345,28 +749,59 @@
       "description": "The foundation of foundations. Our mission is linkness.",
       "url": "https://github.com/link-foundation",
       "createdAt": "2024-07-20T19:06:38Z",
-      "repositories": 171,
+      "repositories": 80,
       "stars": 45,
       "languages": [
         {
-          "name": "TypeScript",
-          "count": 53
-        },
-        {
           "name": "JavaScript",
-          "count": 49
+          "count": 42
         },
         {
           "name": "Rust",
-          "count": 19
+          "count": 17
+        },
+        {
+          "name": "TypeScript",
+          "count": 11
         },
         {
           "name": "Python",
-          "count": 10
+          "count": 3
         },
         {
-          "name": "HTML",
-          "count": 9
+          "name": "Go",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "login": "linksplatform",
+      "name": "LinksPlatform",
+      "description": "A cross-platform modular framework for automation of automation. Кроссплатформенный модульный фреймворк для автоматизации автоматизации.",
+      "url": "https://github.com/linksplatform",
+      "createdAt": "2015-10-14T01:12:20Z",
+      "repositories": 79,
+      "stars": 154,
+      "languages": [
+        {
+          "name": "C#",
+          "count": 37
+        },
+        {
+          "name": "Rust",
+          "count": 11
+        },
+        {
+          "name": "Python",
+          "count": 6
+        },
+        {
+          "name": "C",
+          "count": 4
+        },
+        {
+          "name": "C++",
+          "count": 4
         }
       ]
     },
@@ -376,16 +811,16 @@
       "description": null,
       "url": "https://github.com/link-assistant",
       "createdAt": "2025-11-21T09:35:14Z",
-      "repositories": 28,
+      "repositories": 29,
       "stars": 111,
       "languages": [
         {
           "name": "JavaScript",
-          "count": 17
+          "count": 19
         },
         {
           "name": "Rust",
-          "count": 5
+          "count": 4
         },
         {
           "name": "TypeScript",
@@ -393,6 +828,215 @@
         },
         {
           "name": "HTML",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "login": "meteor-shuttler",
+      "name": "Shuttler",
+      "description": null,
+      "url": "https://github.com/meteor-shuttler",
+      "createdAt": "2016-02-23T15:33:46Z",
+      "repositories": 15,
+      "stars": 4,
+      "languages": [
+        {
+          "name": "JavaScript",
+          "count": 12
+        },
+        {
+          "name": "HTML",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "login": "Svetozar-Technologies",
+      "name": "Svetozar Technologies",
+      "description": null,
+      "url": "https://github.com/Svetozar-Technologies",
+      "createdAt": "2026-01-18T10:17:10Z",
+      "repositories": 9,
+      "stars": 2,
+      "languages": [
+        {
+          "name": "Python",
+          "count": 4
+        },
+        {
+          "name": "CSS",
+          "count": 1
+        },
+        {
+          "name": "JavaScript",
+          "count": 1
+        },
+        {
+          "name": "Ruby",
+          "count": 1
+        },
+        {
+          "name": "Rust",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "login": "deep-assistant",
+      "name": "deep-assistant",
+      "description": null,
+      "url": "https://github.com/deep-assistant",
+      "createdAt": "2025-02-10T05:19:44Z",
+      "repositories": 6,
+      "stars": 33,
+      "languages": [
+        {
+          "name": "JavaScript",
+          "count": 1
+        },
+        {
+          "name": "Python",
+          "count": 1
+        },
+        {
+          "name": "Shell",
+          "count": 1
+        },
+        {
+          "name": "TypeScript",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "login": "styleschool",
+      "name": "Высшая Школа Стилистики Дизайна и Технологий",
+      "description": null,
+      "url": "https://github.com/styleschool",
+      "createdAt": "2018-05-29T20:15:59Z",
+      "repositories": 6,
+      "stars": 4,
+      "languages": [
+        {
+          "name": "TypeScript",
+          "count": 3
+        },
+        {
+          "name": "JavaScript",
+          "count": 2
+        },
+        {
+          "name": "PHP",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "login": "OSWS",
+      "name": "OSWS",
+      "description": "Open Source Web Standards",
+      "url": "https://github.com/OSWS",
+      "createdAt": "2014-11-17T09:22:21Z",
+      "repositories": 5,
+      "stars": 4,
+      "languages": [
+        {
+          "name": "JavaScript",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "login": "correlation-center",
+      "name": "Correlation Center",
+      "description": null,
+      "url": "https://github.com/correlation-center",
+      "createdAt": "2025-08-23T07:13:01Z",
+      "repositories": 3,
+      "stars": 2,
+      "languages": [
+        {
+          "name": "JavaScript",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "login": "open-online-tools",
+      "name": "Open Online Tools",
+      "description": null,
+      "url": "https://github.com/open-online-tools",
+      "createdAt": "2025-05-30T06:34:52Z",
+      "repositories": 3,
+      "stars": 0,
+      "languages": [
+        {
+          "name": "TypeScript",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "login": "Qvinciy",
+      "name": "Qvinciy",
+      "description": null,
+      "url": "https://github.com/Qvinciy",
+      "createdAt": "2020-01-09T09:08:56Z",
+      "repositories": 2,
+      "stars": 0,
+      "languages": [
+        {
+          "name": "HTML",
+          "count": 1
+        },
+        {
+          "name": "Vue",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "login": "EfficiencyParadigm",
+      "name": "EfficiencyParadigm",
+      "description": null,
+      "url": "https://github.com/EfficiencyParadigm",
+      "createdAt": "2015-12-23T18:28:26Z",
+      "repositories": 1,
+      "stars": 0,
+      "languages": [
+        {
+          "name": "CSS",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "login": "Gls-full",
+      "name": "Gls-full",
+      "description": null,
+      "url": "https://github.com/Gls-full",
+      "createdAt": "2026-05-11T13:20:30Z",
+      "repositories": 1,
+      "stars": 0,
+      "languages": [
+        {
+          "name": "TypeScript",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "login": "links-games",
+      "name": "links-games",
+      "description": null,
+      "url": "https://github.com/links-games",
+      "createdAt": "2026-10-15T08:51:35Z",
+      "repositories": 1,
+      "stars": 0,
+      "languages": [
+        {
+          "name": "JavaScript",
           "count": 1
         }
       ]
@@ -409,7 +1053,13 @@
       "forks": 17,
       "url": "https://github.com/link-assistant/hive-mind",
       "createdYear": 2025,
-      "topics": []
+      "topics": [],
+      "fields": [
+        "associative",
+        "ai",
+        "mlops",
+        "devops"
+      ]
     },
     {
       "name": "twittermatrix",
@@ -421,7 +1071,11 @@
       "forks": 42,
       "url": "https://github.com/konard/twittermatrix",
       "createdYear": 2016,
-      "topics": []
+      "topics": [],
+      "fields": [
+        "data",
+        "art"
+      ]
     },
     {
       "name": "LinksPlatform",
@@ -435,21 +1089,28 @@
       "createdYear": 2012,
       "topics": [
         "associative-data-model",
-        "associative-memory",
         "associative-model",
-        "associative-model-of-data",
-        "automation-of-automation",
         "c-sharp",
-        "database",
-        "doublet",
-        "doublets",
-        "link",
-        "links",
-        "memory",
         "storage",
         "transformations",
+        "links",
+        "doublets",
+        "triplets",
+        "doublet",
         "triplet",
-        "triplets"
+        "link",
+        "associative-memory",
+        "memory",
+        "automation-of-automation",
+        "database",
+        "associative-model-of-data"
+      ],
+      "fields": [
+        "associative",
+        "data",
+        "devops",
+        "systems",
+        "productivity"
       ]
     },
     {
@@ -464,9 +1125,47 @@
       "createdYear": 2020,
       "topics": [
         "bot",
-        "csharp",
+        "vk",
         "python",
-        "vk"
+        "csharp"
+      ],
+      "fields": [
+        "associative",
+        "bots",
+        "finance"
+      ]
+    },
+    {
+      "name": "GPTutor",
+      "fullName": "deep-assistant/GPTutor",
+      "owner": "deep-assistant",
+      "description": "VK-mini-apps приложения GPTutor",
+      "language": "TypeScript",
+      "stars": 26,
+      "forks": 4,
+      "url": "https://github.com/deep-assistant/GPTutor",
+      "createdYear": 2023,
+      "topics": [
+        "vk",
+        "chatgpt",
+        "gpt",
+        "vk-mini-apps",
+        "react",
+        "signals",
+        "dignals",
+        "vk-bridge",
+        "nude",
+        "nude-detection",
+        "sd",
+        "stable-diffusion"
+      ],
+      "fields": [
+        "associative",
+        "ai",
+        "web",
+        "backend",
+        "bots",
+        "education"
       ]
     },
     {
@@ -480,19 +1179,25 @@
       "url": "https://github.com/konard/ASP.NET-Core-WebSocket-Example",
       "createdYear": 2015,
       "topics": [
-        "asp",
-        "asp-net-core",
-        "csharp",
-        "css",
-        "demo",
         "dotnet-core",
-        "echo-server",
+        "asp-net-core",
+        "websocket",
+        "asp",
+        "demo",
         "example",
+        "echo-server",
+        "mit-license",
         "html",
         "html5",
         "javascript",
-        "mit-license",
-        "websocket"
+        "css",
+        "csharp"
+      ],
+      "fields": [
+        "devops",
+        "web",
+        "backend",
+        "education"
       ]
     },
     {
@@ -505,7 +1210,10 @@
       "forks": 18,
       "url": "https://github.com/deep-foundation/dev",
       "createdYear": 2021,
-      "topics": []
+      "topics": [],
+      "fields": [
+        "associative"
+      ]
     },
     {
       "name": "use-m",
@@ -517,7 +1225,13 @@
       "forks": 1,
       "url": "https://github.com/link-foundation/use-m",
       "createdYear": 2024,
-      "topics": []
+      "topics": [],
+      "fields": [
+        "associative",
+        "data",
+        "devops",
+        "productivity"
+      ]
     },
     {
       "name": "Data.Doublets",
@@ -530,8 +1244,12 @@
       "url": "https://github.com/linksplatform/Data.Doublets",
       "createdYear": 2019,
       "topics": [
-        "associative-model",
-        "linksplatform"
+        "linksplatform",
+        "associative-model"
+      ],
+      "fields": [
+        "associative",
+        "data"
       ]
     },
     {
@@ -544,7 +1262,11 @@
       "forks": 8,
       "url": "https://github.com/deep-foundation/deeplinks",
       "createdYear": 2021,
-      "topics": []
+      "topics": [],
+      "fields": [
+        "associative",
+        "backend"
+      ]
     },
     {
       "name": "hasura",
@@ -556,7 +1278,12 @@
       "forks": 4,
       "url": "https://github.com/deep-foundation/hasura",
       "createdYear": 2021,
-      "topics": []
+      "topics": [],
+      "fields": [
+        "associative",
+        "data",
+        "backend"
+      ]
     },
     {
       "name": "sdk",
@@ -568,7 +1295,11 @@
       "forks": 10,
       "url": "https://github.com/deep-foundation/sdk",
       "createdYear": 2023,
-      "topics": []
+      "topics": [],
+      "fields": [
+        "associative",
+        "backend"
+      ]
     },
     {
       "name": "deep-memo-app",
@@ -580,7 +1311,12 @@
       "forks": 7,
       "url": "https://github.com/deep-foundation/deep-memo-app",
       "createdYear": 2022,
-      "topics": []
+      "topics": [],
+      "fields": [
+        "associative",
+        "web",
+        "productivity"
+      ]
     },
     {
       "name": "deepcase-app",
@@ -592,7 +1328,11 @@
       "forks": 6,
       "url": "https://github.com/deep-foundation/deepcase-app",
       "createdYear": 2021,
-      "topics": []
+      "topics": [],
+      "fields": [
+        "associative",
+        "web"
+      ]
     },
     {
       "name": "RegularExpressions.Transformer.CSharpToCpp",
@@ -604,7 +1344,12 @@
       "forks": 1,
       "url": "https://github.com/linksplatform/RegularExpressions.Transformer.CSharpToCpp",
       "createdYear": 2019,
-      "topics": []
+      "topics": [],
+      "fields": [
+        "associative",
+        "languages",
+        "systems"
+      ]
     },
     {
       "name": "documentation",
@@ -616,7 +1361,12 @@
       "forks": 2,
       "url": "https://github.com/deep-foundation/documentation",
       "createdYear": 2023,
-      "topics": []
+      "topics": [],
+      "fields": [
+        "associative",
+        "research",
+        "education"
+      ]
     },
     {
       "name": "agent",
@@ -628,7 +1378,13 @@
       "forks": 0,
       "url": "https://github.com/link-assistant/agent",
       "createdYear": 2025,
-      "topics": []
+      "topics": [],
+      "fields": [
+        "associative",
+        "ai",
+        "mlops",
+        "productivity"
+      ]
     },
     {
       "name": "Data.Doublets.Gql",
@@ -640,7 +1396,11 @@
       "forks": 4,
       "url": "https://github.com/linksplatform/Data.Doublets.Gql",
       "createdYear": 2021,
-      "topics": []
+      "topics": [],
+      "fields": [
+        "associative",
+        "data"
+      ]
     },
     {
       "name": "boilerplate",
@@ -652,7 +1412,10 @@
       "forks": 1,
       "url": "https://github.com/deep-foundation/boilerplate",
       "createdYear": 2020,
-      "topics": []
+      "topics": [],
+      "fields": [
+        "associative"
+      ]
     },
     {
       "name": "chatgpt",
@@ -664,7 +1427,12 @@
       "forks": 1,
       "url": "https://github.com/deep-foundation/chatgpt",
       "createdYear": 2023,
-      "topics": []
+      "topics": [],
+      "fields": [
+        "associative",
+        "ai",
+        "bots"
+      ]
     },
     {
       "name": "materialized-path",
@@ -676,7 +1444,11 @@
       "forks": 2,
       "url": "https://github.com/deep-foundation/materialized-path",
       "createdYear": 2021,
-      "topics": []
+      "topics": [],
+      "fields": [
+        "associative",
+        "data"
+      ]
     },
     {
       "name": "npm-automation",
@@ -688,7 +1460,11 @@
       "forks": 1,
       "url": "https://github.com/deep-foundation/npm-automation",
       "createdYear": 2023,
-      "topics": []
+      "topics": [],
+      "fields": [
+        "associative",
+        "devops"
+      ]
     },
     {
       "name": "npm-packager",
@@ -702,6 +1478,10 @@
       "createdYear": 2023,
       "topics": [
         "deep-package"
+      ],
+      "fields": [
+        "associative",
+        "devops"
       ]
     },
     {
@@ -714,7 +1494,29 @@
       "forks": 2,
       "url": "https://github.com/link-foundation/link-cli",
       "createdYear": 2024,
-      "topics": []
+      "topics": [],
+      "fields": [
+        "associative",
+        "productivity"
+      ]
+    },
+    {
+      "name": "telegram-bot",
+      "fullName": "deep-assistant/telegram-bot",
+      "owner": "deep-assistant",
+      "description": null,
+      "language": "Python",
+      "stars": 7,
+      "forks": 4,
+      "url": "https://github.com/deep-assistant/telegram-bot",
+      "createdYear": 2024,
+      "topics": [],
+      "fields": [
+        "associative",
+        "ai",
+        "bots",
+        "systems"
+      ]
     },
     {
       "name": "capacitor-network",
@@ -726,7 +1528,11 @@
       "forks": 1,
       "url": "https://github.com/deep-foundation/capacitor-network",
       "createdYear": 2023,
-      "topics": []
+      "topics": [],
+      "fields": [
+        "associative",
+        "web"
+      ]
     },
     {
       "name": "capacitor-voice-recorder",
@@ -738,7 +1544,12 @@
       "forks": 1,
       "url": "https://github.com/deep-foundation/capacitor-voice-recorder",
       "createdYear": 2023,
-      "topics": []
+      "topics": [],
+      "fields": [
+        "associative",
+        "web",
+        "art"
+      ]
     },
     {
       "name": "deepcase",
@@ -750,7 +1561,11 @@
       "forks": 6,
       "url": "https://github.com/deep-foundation/deepcase",
       "createdYear": 2023,
-      "topics": []
+      "topics": [],
+      "fields": [
+        "associative",
+        "web"
+      ]
     },
     {
       "name": "firebase-push-notification",
@@ -772,6 +1587,11 @@
         "firebase-push-notifications",
         "notification",
         "push-notification"
+      ],
+      "fields": [
+        "associative",
+        "devops",
+        "web"
       ]
     },
     {
@@ -784,7 +1604,12 @@
       "forks": 1,
       "url": "https://github.com/deep-foundation/payments-tinkoff-c2b-test-integration",
       "createdYear": 2023,
-      "topics": []
+      "topics": [],
+      "fields": [
+        "associative",
+        "backend",
+        "finance"
+      ]
     },
     {
       "name": "python-docker-isolation-provider",
@@ -796,7 +1621,11 @@
       "forks": 4,
       "url": "https://github.com/deep-foundation/python-docker-isolation-provider",
       "createdYear": 2022,
-      "topics": []
+      "topics": [],
+      "fields": [
+        "associative",
+        "devops"
+      ]
     },
     {
       "name": "react-hasura",
@@ -808,7 +1637,13 @@
       "forks": 2,
       "url": "https://github.com/deep-foundation/react-hasura",
       "createdYear": 2021,
-      "topics": []
+      "topics": [],
+      "fields": [
+        "associative",
+        "data",
+        "web",
+        "backend"
+      ]
     },
     {
       "name": "react-use-are-packages-installed",
@@ -820,7 +1655,12 @@
       "forks": 1,
       "url": "https://github.com/deep-foundation/react-use-are-packages-installed",
       "createdYear": 2023,
-      "topics": []
+      "topics": [],
+      "fields": [
+        "associative",
+        "devops",
+        "web"
+      ]
     },
     {
       "name": "rust-docker-isolation-provider",
@@ -832,7 +1672,11 @@
       "forks": 3,
       "url": "https://github.com/deep-foundation/rust-docker-isolation-provider",
       "createdYear": 2023,
-      "topics": []
+      "topics": [],
+      "fields": [
+        "associative",
+        "devops"
+      ]
     },
     {
       "name": "store",
@@ -844,7 +1688,12 @@
       "forks": 3,
       "url": "https://github.com/deep-foundation/store",
       "createdYear": 2021,
-      "topics": []
+      "topics": [],
+      "fields": [
+        "associative",
+        "data",
+        "web"
+      ]
     },
     {
       "name": "workflows",
@@ -856,7 +1705,11 @@
       "forks": 1,
       "url": "https://github.com/deep-foundation/workflows",
       "createdYear": 2022,
-      "topics": []
+      "topics": [],
+      "fields": [
+        "associative",
+        "devops"
+      ]
     },
     {
       "name": "formal-ai",
@@ -868,7 +1721,13 @@
       "forks": 2,
       "url": "https://github.com/link-assistant/formal-ai",
       "createdYear": 2026,
-      "topics": []
+      "topics": [],
+      "fields": [
+        "associative",
+        "ai",
+        "ml",
+        "research"
+      ]
     },
     {
       "name": "android-lodash-fix",
@@ -880,7 +1739,11 @@
       "forks": 1,
       "url": "https://github.com/deep-foundation/android-lodash-fix",
       "createdYear": 2021,
-      "topics": []
+      "topics": [],
+      "fields": [
+        "associative",
+        "web"
+      ]
     },
     {
       "name": "bot",
@@ -892,7 +1755,11 @@
       "forks": 1,
       "url": "https://github.com/deep-foundation/bot",
       "createdYear": 2021,
-      "topics": []
+      "topics": [],
+      "fields": [
+        "associative",
+        "bots"
+      ]
     },
     {
       "name": "browser-extension",
@@ -904,31 +1771,11 @@
       "forks": 1,
       "url": "https://github.com/deep-foundation/browser-extension",
       "createdYear": 2023,
-      "topics": []
-    },
-    {
-      "name": "capacitor-camera",
-      "fullName": "deep-foundation/capacitor-camera",
-      "owner": "deep-foundation",
-      "description": "capacitor-camera integration",
-      "language": "TypeScript",
-      "stars": 6,
-      "forks": 1,
-      "url": "https://github.com/deep-foundation/capacitor-camera",
-      "createdYear": 2023,
-      "topics": []
-    },
-    {
-      "name": "capacitor-device",
-      "fullName": "deep-foundation/capacitor-device",
-      "owner": "deep-foundation",
-      "description": null,
-      "language": "TypeScript",
-      "stars": 6,
-      "forks": 1,
-      "url": "https://github.com/deep-foundation/capacitor-device",
-      "createdYear": 2023,
-      "topics": []
+      "topics": [],
+      "fields": [
+        "associative",
+        "web"
+      ]
     },
     {
       "name": "problem-solving",
@@ -943,6 +1790,10 @@
       "topics": [
         "automation-of-automation",
         "problem-solving"
+      ],
+      "fields": [
+        "devops",
+        "research"
       ]
     },
     {
@@ -955,7 +1806,12 @@
       "forks": 2,
       "url": "https://github.com/link-foundation/links-notation",
       "createdYear": 2019,
-      "topics": []
+      "topics": [],
+      "fields": [
+        "associative",
+        "data",
+        "languages"
+      ]
     }
   ],
   "registries": [

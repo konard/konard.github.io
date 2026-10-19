@@ -1,0 +1,156 @@
+{
+  "collectedAt": "2026-10-19T16:42:04.629Z",
+  "user": {
+    "login": "konard",
+    "createdAt": "2012-02-13T00:19:39Z",
+    "publicRepos": 1461,
+    "publicGists": 23438,
+    "followers": 375,
+    "following": 918
+  },
+  "organizations": [
+    {
+      "login": "correlation-center",
+      "name": "Correlation Center",
+      "description": "",
+      "blog": null,
+      "url": "https://github.com/correlation-center",
+      "createdAt": "2025-08-23T07:13:01Z",
+      "publicRepos": 3,
+      "followers": 0
+    },
+    {
+      "login": "deep-assistant",
+      "description": "",
+      "blog": null,
+      "url": "https://github.com/deep-assistant",
+      "createdAt": "2025-02-10T05:19:44Z",
+      "publicRepos": 7,
+      "followers": 4
+    },
+    {
+      "login": "deep-foundation",
+      "name": "Deep.Foundation",
+      "description": "Deep.Foundation - associative technology development bay.",
+      "blog": "https://deep.foundation/",
+      "url": "https://github.com/deep-foundation",
+      "createdAt": "2020-03-29T15:17:26Z",
+      "publicRepos": 106,
+      "followers": 71
+    },
+    {
+      "login": "EfficiencyParadigm",
+      "description": null,
+      "blog": null,
+      "url": "https://github.com/EfficiencyParadigm",
+      "createdAt": "2015-12-23T18:28:26Z",
+      "publicRepos": 1,
+      "followers": 0
+    },
+    {
+      "login": "Gls-full",
+      "description": null,
+      "blog": null,
+      "url": "https://github.com/Gls-full",
+      "createdAt": "2026-05-11T13:20:30Z",
+      "publicRepos": 1,
+      "followers": 0
+    },
+    {
+      "login": "link-assistant",
+      "description": null,
+      "blog": null,
+      "url": "https://github.com/link-assistant",
+      "createdAt": "2025-11-21T09:35:14Z",
+      "publicRepos": 29,
+      "followers": 3
+    },
+    {
+      "login": "link-foundation",
+      "name": "Link.Foundation",
+      "description": "The foundation of foundations. Our mission is linkness.",
+      "blog": null,
+      "url": "https://github.com/link-foundation",
+      "createdAt": "2024-07-20T19:06:38Z",
+      "publicRepos": 171,
+      "followers": 7
+    },
+    {
+      "login": "links-games",
+      "description": null,
+      "blog": null,
+      "url": "https://github.com/links-games",
+      "createdAt": "2026-10-15T08:51:35Z",
+      "publicRepos": 1,
+      "followers": 0
+    },
+    {
+      "login": "linksplatform",
+      "name": "LinksPlatform",
+      "description": "A cross-platform modular framework for automation of automation. Кроссплатформенный модульный фреймворк для автоматизации автоматизации.",
+      "blog": "https://vk.com/LinksPlatform",
+      "url": "https://github.com/linksplatform",
+      "createdAt": "2015-10-14T01:12:20Z",
+      "publicRepos": 87,
+      "followers": 30
+    },
+    {
+      "login": "meteor-shuttler",
+      "name": "Shuttler",
+      "description": "",
+      "blog": "https://meteor-shuttler.herokuapp.com/",
+      "url": "https://github.com/meteor-shuttler",
+      "createdAt": "2016-02-23T15:33:46Z",
+      "publicRepos": 15,
+      "followers": 0
+    },
+    {
+      "login": "open-online-tools",
+      "name": "Open Online Tools",
+      "description": "",
+      "blog": null,
+      "url": "https://github.com/open-online-tools",
+      "createdAt": "2025-05-30T06:34:52Z",
+      "publicRepos": 3,
+      "followers": 0
+    },
+    {
+      "login": "OSWS",
+      "description": "Open Source Web Standards",
+      "blog": "http://codepen.io/ivansglazunov/pen/MYGjmJ",
+      "url": "https://github.com/OSWS",
+      "createdAt": "2014-11-17T09:22:21Z",
+      "publicRepos": 5,
+      "followers": 0
+    },
+    {
+      "login": "Qvinciy",
+      "description": null,
+      "blog": null,
+      "url": "https://github.com/Qvinciy",
+      "createdAt": "2020-01-09T09:08:56Z",
+      "publicRepos": 2,
+      "followers": 0
+    },
+    {
+      "login": "styleschool",
+      "name": "Высшая Школа Стилистики Дизайна и Технологий",
+      "description": "",
+      "blog": "https://styleschool.ru/",
+      "url": "https://github.com/styleschool",
+      "createdAt": "2018-05-29T20:15:59Z",
+      "publicRepos": 9,
+      "followers": 1
+    },
+    {
+      "login": "Svetozar-Technologies",
+      "name": "Svetozar Technologies",
+      "description": null,
+      "blog": null,
+      "url": "https://github.com/Svetozar-Technologies",
+      "createdAt": "2026-01-18T10:17:10Z",
+      "publicRepos": 9,
+      "followers": 1
+    }
+  ]
+}

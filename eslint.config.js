@@ -27,7 +27,7 @@ export default [
     languageOptions: { globals: { ...globals.node, ...globals.vitest } },
   },
   {
-    files: ['**/*.cjs', 'experiments/**/*.js', 'vite.config.js', 'eslint.config.js'],
+    files: ['**/*.cjs', '**/*.mjs', 'experiments/**/*.js', 'vite.config.js', 'eslint.config.js'],
     languageOptions: { globals: { ...globals.node } },
   },
   { files: ['**/*.cjs'], languageOptions: { sourceType: 'commonjs' } },

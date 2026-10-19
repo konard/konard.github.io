@@ -3,6 +3,7 @@ import './App.sections.css';
 // Responsive and print overrides must come last.
 import './App.media.css';
 import github from './data/github.json';
+import habr from './data/habr.json';
 import {
   achievements,
   education,
@@ -60,7 +61,7 @@ function App() {
 
       <main>
         <Hero profile={profile} github={github.profile} />
-        <StatTiles github={github} codingSince={profile.codingSince} />
+        <StatTiles github={github} codingSince={profile.codingSince} habr={habr} />
 
         <Section id="experience" kicker="01 · Career" title="Companies & ventures">
           <Timeline items={experience} endYear={lastYear} />
