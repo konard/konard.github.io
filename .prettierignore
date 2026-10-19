@@ -8,3 +8,4 @@ src/data/github.json
 src/data/repositories.json
 src/data/habr.json
 public/link-glyphs.svg
+src/links/configurations.json
