@@ -1832,39 +1832,40 @@
       "id": "npm",
       "name": "npm",
       "url": "https://www.npmjs.com/~konard",
-      "packages": 213,
-      "downloads": 204376,
+      "status": "ok",
+      "packages": 222,
+      "downloads": 232045,
       "downloadsUnit": "downloads / month",
       "top": [
         {
           "name": "links-notation",
-          "downloads": 42068,
+          "downloads": 49757,
           "url": "https://www.npmjs.com/package/links-notation"
         },
         {
           "name": "command-stream",
-          "downloads": 28872,
+          "downloads": 30782,
           "url": "https://www.npmjs.com/package/command-stream"
         },
         {
           "name": "test-anywhere",
-          "downloads": 16335,
+          "downloads": 18777,
           "url": "https://www.npmjs.com/package/test-anywhere"
         },
         {
-          "name": "lino-env",
-          "downloads": 12634,
-          "url": "https://www.npmjs.com/package/lino-env"
+          "name": "lino-arguments",
+          "downloads": 14586,
+          "url": "https://www.npmjs.com/package/lino-arguments"
         },
         {
           "name": "lino-objects-codec",
-          "downloads": 11813,
+          "downloads": 14429,
           "url": "https://www.npmjs.com/package/lino-objects-codec"
         },
         {
-          "name": "lino-arguments",
-          "downloads": 11483,
-          "url": "https://www.npmjs.com/package/lino-arguments"
+          "name": "lino-env",
+          "downloads": 14019,
+          "url": "https://www.npmjs.com/package/lino-env"
         }
       ]
     },
@@ -1872,38 +1873,39 @@
       "id": "crates",
       "name": "crates.io",
       "url": "https://crates.io/users/konard",
-      "packages": 34,
-      "downloads": 548689,
+      "status": "ok",
+      "packages": 35,
+      "downloads": 569608,
       "downloadsUnit": "downloads total",
       "top": [
         {
           "name": "doublets",
-          "downloads": 73360,
+          "downloads": 74290,
           "url": "https://crates.io/crates/doublets"
         },
         {
           "name": "links-notation",
-          "downloads": 52362,
+          "downloads": 54434,
           "url": "https://crates.io/crates/links-notation"
         },
         {
           "name": "platform-mem",
-          "downloads": 46036,
+          "downloads": 46981,
           "url": "https://crates.io/crates/platform-mem"
         },
         {
           "name": "platform-num",
-          "downloads": 40848,
+          "downloads": 41798,
           "url": "https://crates.io/crates/platform-num"
         },
         {
           "name": "platform-data",
-          "downloads": 39794,
+          "downloads": 40738,
           "url": "https://crates.io/crates/platform-data"
         },
         {
           "name": "lino-arguments",
-          "downloads": 36092,
+          "downloads": 37647,
           "url": "https://crates.io/crates/lino-arguments"
         }
       ]
@@ -1911,9 +1913,10 @@
     {
       "id": "nuget",
       "name": "NuGet",
-      "url": "https://www.nuget.org/profiles/LinksPlatform",
-      "packages": 58,
-      "downloads": 1917488,
+      "url": "https://www.nuget.org/profiles/konard",
+      "status": "ok",
+      "packages": 62,
+      "downloads": 1922100,
       "downloadsUnit": "downloads total",
       "top": [
         {
@@ -1947,8 +1950,229 @@
           "url": "https://www.nuget.org/packages/Platform.Disposables"
         }
       ]
+    },
+    {
+      "id": "pypi",
+      "name": "PyPI",
+      "url": "https://pypi.org/user/konard/",
+      "status": "ok",
+      "packages": 5,
+      "downloads": 1046,
+      "downloadsUnit": "downloads / month",
+      "top": [
+        {
+          "name": "links-notation",
+          "downloads": 944,
+          "url": "https://pypi.org/project/links-notation/"
+        },
+        {
+          "name": "retranslator",
+          "downloads": 38,
+          "url": "https://pypi.org/project/retranslator/"
+        },
+        {
+          "name": "cs2cpp",
+          "downloads": 26,
+          "url": "https://pypi.org/project/cs2cpp/"
+        },
+        {
+          "name": "deepclient",
+          "downloads": 25,
+          "url": "https://pypi.org/project/deepclient/"
+        },
+        {
+          "name": "py2nim",
+          "downloads": 13,
+          "url": "https://pypi.org/project/py2nim/"
+        }
+      ]
+    },
+    {
+      "id": "dockerhub",
+      "name": "Docker Hub",
+      "url": "https://hub.docker.com/u/konard",
+      "status": "ok",
+      "packages": 63,
+      "downloads": 295643,
+      "downloadsUnit": "pulls total",
+      "top": [
+        {
+          "name": "konard/hive-mind",
+          "downloads": 53219,
+          "url": "https://hub.docker.com/r/konard/hive-mind"
+        },
+        {
+          "name": "konard/hive-mind-dind",
+          "downloads": 36520,
+          "url": "https://hub.docker.com/r/konard/hive-mind-dind"
+        },
+        {
+          "name": "konard/link-assistant-router",
+          "downloads": 17117,
+          "url": "https://hub.docker.com/r/konard/link-assistant-router"
+        },
+        {
+          "name": "konard/box",
+          "downloads": 8751,
+          "url": "https://hub.docker.com/r/konard/box"
+        },
+        {
+          "name": "konard/sandbox",
+          "downloads": 8170,
+          "url": "https://hub.docker.com/r/konard/sandbox"
+        },
+        {
+          "name": "konard/box-js",
+          "downloads": 7268,
+          "url": "https://hub.docker.com/r/konard/box-js"
+        }
+      ]
+    },
+    {
+      "id": "github-packages",
+      "name": "GitHub Packages",
+      "url": "https://github.com/konard?tab=packages",
+      "status": "partial",
+      "packages": 82,
+      "downloads": 20506,
+      "downloadsUnit": "downloads total (rounded)",
+      "top": [
+        {
+          "name": "link-assistant/router",
+          "downloads": 6370,
+          "url": "https://github.com/orgs/link-assistant/packages/container/package/router"
+        },
+        {
+          "name": "link-assistant/formal-ai",
+          "downloads": 1740,
+          "url": "https://github.com/orgs/link-assistant/packages/container/package/formal-ai"
+        },
+        {
+          "name": "link-foundation/box",
+          "downloads": 1370,
+          "url": "https://github.com/orgs/link-foundation/packages/container/package/box"
+        },
+        {
+          "name": "link-foundation/box-dind",
+          "downloads": 946,
+          "url": "https://github.com/orgs/link-foundation/packages/container/package/box-dind"
+        },
+        {
+          "name": "link-foundation/box-ruby",
+          "downloads": 668,
+          "url": "https://github.com/orgs/link-foundation/packages/container/package/box-ruby"
+        },
+        {
+          "name": "link-foundation/box-essentials",
+          "downloads": 552,
+          "url": "https://github.com/orgs/link-foundation/packages/container/package/box-essentials"
+        }
+      ]
+    },
+    {
+      "id": "go",
+      "name": "Go modules",
+      "url": "https://pkg.go.dev/",
+      "status": "ok",
+      "packages": 3,
+      "downloads": null,
+      "downloadsUnit": null,
+      "top": [
+        {
+          "name": "github.com/deep-foundation/deep-chain",
+          "downloads": null,
+          "url": "https://pkg.go.dev/github.com/deep-foundation/deep-chain"
+        },
+        {
+          "name": "github.com/link-foundation/go-ai-driven-development-pipeline-template",
+          "downloads": null,
+          "url": "https://pkg.go.dev/github.com/link-foundation/go-ai-driven-development-pipeline-template"
+        },
+        {
+          "name": "github.com/link-foundation/links-notation/go",
+          "downloads": null,
+          "url": "https://pkg.go.dev/github.com/link-foundation/links-notation/go"
+        }
+      ]
+    },
+    {
+      "id": "nimble",
+      "name": "Nimble",
+      "url": "https://nimble.directory/",
+      "status": "ok",
+      "packages": 2,
+      "downloads": null,
+      "downloadsUnit": null,
+      "top": [
+        {
+          "name": "retranslator",
+          "downloads": null,
+          "url": "https://nimble.directory/pkg/retranslator"
+        },
+        {
+          "name": "triplets",
+          "downloads": null,
+          "url": "https://nimble.directory/pkg/triplets"
+        }
+      ]
+    },
+    {
+      "id": "homebrew",
+      "name": "Homebrew",
+      "url": "https://brew.sh/",
+      "status": "ok",
+      "packages": 1,
+      "downloads": null,
+      "downloadsUnit": null,
+      "top": [
+        {
+          "name": "svetozar-technologies/localcode/localcode",
+          "downloads": null,
+          "url": "https://github.com/Svetozar-Technologies/homebrew-localcode/blob/HEAD/Formula/localcode.rb"
+        }
+      ]
     }
   ],
+  "packageRegistries": {
+    "collectedAt": "2026-10-19T17:13:41.923Z",
+    "checked": 20,
+    "empty": [
+      "RubyGems",
+      "Packagist (PHP)",
+      "JSR",
+      "Visual Studio Marketplace",
+      "Open VSX",
+      "Maven Central",
+      "pub.dev (Dart/Flutter)",
+      "Hex (Elixir/Erlang)",
+      "Anaconda.org (conda)",
+      "Arch User Repository",
+      "Swift Package Index"
+    ],
+    "notChecked": [
+      "Chrome Web Store",
+      "Chocolatey",
+      "winget",
+      "Snap Store",
+      "Flathub",
+      "CocoaPods",
+      "Hackage",
+      "opam",
+      "CPAN",
+      "Clojars",
+      "LuaRocks",
+      "Lean Reservoir",
+      "Julia General"
+    ],
+    "blocked": [
+      {
+        "id": "github-packages",
+        "name": "GitHub Packages",
+        "blocker": "gh token lacks read:packages scope; exact download counts and versions need `gh auth refresh -s read:packages`."
+      }
+    ],
+    "droppedPackages": 21
+  },
   "stackOverflow": {
     "url": "https://stackoverflow.com/users/710069/konard",
     "reputation": 3134,

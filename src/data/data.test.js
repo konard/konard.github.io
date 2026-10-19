@@ -132,3 +132,37 @@ describe('scripts/repositories.cjs (issue #7)', () => {
     professions.forEach((p) => expect(p.repos.length).toBeGreaterThanOrEqual(5));
   });
 });
+
+describe('scripts/registries.cjs (issue #7)', () => {
+  const { sourceRepository } = require('../../scripts/registries.cjs');
+
+  test('every registry with packages has a card, the empty ones are listed', () => {
+    const ids = github.registries.map((r) => r.id);
+    expect(ids).toEqual(
+      expect.arrayContaining(['npm', 'crates', 'nuget', 'pypi', 'dockerhub', 'github-packages', 'go']),
+    );
+    github.registries.forEach((r) => {
+      expect(r.packages).toBeGreaterThan(0);
+      expect(r.top.length).toBeGreaterThan(0);
+      if (r.downloadsUnit) expect(r.downloads).toBe(Math.max(r.downloads, ...r.top.map((p) => p.downloads)));
+    });
+    const summary = github.packageRegistries;
+    expect(summary.checked).toBe(github.registries.length + summary.empty.length);
+    expect(summary.blocked.map((b) => b.id)).toEqual(['github-packages']);
+  });
+
+  test('packages of client copies are not counted', () => {
+    const kinds = new Map(repositories.items.map((r) => [r.fullName.toLowerCase(), r.kind]));
+    const ghcr = github.registries.find((r) => r.id === 'github-packages');
+    ghcr.top.forEach((p) => expect(kinds.get(sourceRepository('github-packages', p)) ?? 'own').toBe('own'));
+    expect(github.packageRegistries.droppedPackages).toBeGreaterThan(0);
+  });
+
+  test('sourceRepository reads the GitHub repository of a package', () => {
+    expect(sourceRepository('npm', { repository: 'git+https://github.com/Link-Foundation/links-notation.git' })).toBe(
+      'link-foundation/links-notation',
+    );
+    expect(sourceRepository('github-packages', { name: 'konard/some-repo/service' })).toBe('konard/some-repo');
+    expect(sourceRepository('npm', { name: 'x' })).toBeNull();
+  });
+});

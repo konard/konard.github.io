@@ -3,11 +3,13 @@
 // docs/case-studies/issue-7/data into the compact src/data/github.json and
 // src/data/repositories.json consumed by the website.
 // Refresh the raw data with experiments/collect-github-data.sh,
-// experiments/collect-contributions.sh, experiments/collect-repositories.cjs and
-// experiments/collect-organizations.cjs, then run `npm run build:data`.
+// experiments/collect-contributions.sh, experiments/collect-repositories.cjs,
+// experiments/collect-organizations.cjs and experiments/collect-registries.cjs,
+// then run `npm run build:data`.
 const fs = require('fs');
 const path = require('path');
 
+const { buildRegistries } = require('./registries.cjs');
 const { buildRepositories, isNoise, readCollected } = require('./repositories.cjs');
 
 const root = path.join(__dirname, '..');
@@ -111,52 +113,12 @@ function build({ write = true } = {}) {
     fields: kindByName.get(r.fullName).fields,
   }));
 
-  const npm = read('npm-packages.json');
-  const crates = read('crates.json');
-  const nuget = read('nuget-packages.json')['owner:LinksPlatform'];
   const so = read('stackoverflow-user.json');
-  const top = (items, value, limit = 6) => [...items].sort((a, b) => value(b) - value(a)).slice(0, limit);
-  const registries = [
-    {
-      id: 'npm',
-      name: 'npm',
-      url: 'https://www.npmjs.com/~konard',
-      packages: npm.total,
-      downloads: npm.packages.reduce((sum, p) => sum + ((p.downloads && p.downloads.monthly) || 0), 0),
-      downloadsUnit: 'downloads / month',
-      top: top(npm.packages, (p) => (p.downloads && p.downloads.monthly) || 0).map((p) => ({
-        name: p.name,
-        downloads: p.downloads.monthly,
-        url: p.npm,
-      })),
-    },
-    {
-      id: 'crates',
-      name: 'crates.io',
-      url: crates.user,
-      packages: crates.total,
-      downloads: crates.crates.reduce((sum, c) => sum + c.downloads, 0),
-      downloadsUnit: 'downloads total',
-      top: top(crates.crates, (c) => c.downloads).map((c) => ({
-        name: c.name,
-        downloads: c.downloads,
-        url: `https://crates.io/crates/${c.name}`,
-      })),
-    },
-    {
-      id: 'nuget',
-      name: 'NuGet',
-      url: 'https://www.nuget.org/profiles/LinksPlatform',
-      packages: nuget.totalHits,
-      downloads: nuget.totalDownloads,
-      downloadsUnit: 'downloads total',
-      top: top(nuget.packages, (p) => p.totalDownloads).map((p) => ({
-        name: p.id,
-        downloads: p.totalDownloads,
-        url: `https://www.nuget.org/packages/${p.id}`,
-      })),
-    },
-  ];
+  const kindOf = (fullName) => {
+    const repo = items.find((r) => r.fullName.toLowerCase() === fullName);
+    return repo ? repo.kind : null;
+  };
+  const { registries, packageRegistries } = buildRegistries(kindOf);
   const stackOverflow = {
     url: so.user.link,
     reputation: so.user.reputation,
@@ -204,6 +166,7 @@ function build({ write = true } = {}) {
     owners,
     projects,
     registries,
+    packageRegistries,
     stackOverflow,
   };
 

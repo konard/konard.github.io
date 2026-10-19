@@ -498,7 +498,7 @@ export const featuredProjects = [
   },
   {
     fullName: 'link-foundation/links-notation',
-    tagline: 'A way to describe data using references and links (≈42K npm downloads / month).',
+    tagline: 'A way to describe data using references and links (≈50K npm downloads / month).',
   },
   {
     fullName: 'link-foundation/meta-theory',

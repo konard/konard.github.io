@@ -405,6 +405,22 @@
   color: var(--text);
 }
 
+.registry__packages {
+  display: grid;
+  gap: 0.3rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.8rem;
+  overflow-wrap: anywhere;
+}
+
+.registries__note {
+  max-width: 90ch;
+  margin-top: 1rem;
+  font-size: 0.82rem;
+}
+
 /* ---------- Community cards ---------- */
 
 .cards {

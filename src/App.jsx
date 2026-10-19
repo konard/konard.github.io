@@ -126,7 +126,7 @@ function App() {
       </Section>
 
       <Section id="packages" kicker="08 · Distribution" title="Published packages">
-        <Registries registries={github.registries} />
+        <Registries registries={github.registries} summary={github.packageRegistries} />
       </Section>
 
       <Section id="habr" kicker="09 · Writing" title="Articles on Habr">
