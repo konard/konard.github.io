@@ -1,4 +1,4 @@
-import { formatNumber, formatPercent, SERIES } from './format';
+import { formatNumber, SERIES } from './format';
 import { Tooltip, useTooltip } from './Tooltip';
 
 const LIMIT = 10;
@@ -12,7 +12,6 @@ export function topWithOther(languages, limit = LIMIT) {
 export default function LanguagesChart({ languages, favorites }) {
   const { tip, show, hide } = useTooltip();
   const rows = topWithOther(languages);
-  const total = rows.reduce((sum, l) => sum + l.count, 0);
   const max = Math.max(...rows.map((l) => l.count));
 
   const tipContent = (l) => (
@@ -21,16 +20,16 @@ export default function LanguagesChart({ languages, favorites }) {
         {l.name}
         {favorites.includes(l.name) ? ' ★' : ''}
       </strong>
-      <span className="tooltip__value">{formatNumber(l.count)} repositories</span>
-      <span className="tooltip__row">{formatPercent(l.count / total)} of repositories with a detected language</span>
+      <span className="tooltip__value">used in {formatNumber(l.count)} repositories</span>
+      {!l.isOther && <span className="tooltip__row">primary language of {formatNumber(l.primary)}</span>}
     </>
   );
 
   return (
     <div className="chart" data-tooltip-root>
       <p className="chart__caption">
-        Primary language of {formatNumber(total)} original public repositories with a detected language (personal +
-        organizations).
+        Repositories that use each of the {formatNumber(languages.length)} languages GitHub detected in original public
+        repositories (personal + organizations); a repository counts once for every language in it.
         <span className="muted"> ★ = favorite language</span>
       </p>
       <ul className="hbars" aria-label="Repositories by primary language">

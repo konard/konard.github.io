@@ -6,3 +6,8 @@ import { cleanup } from '@testing-library/react';
 import { afterEach } from 'vitest';
 
 afterEach(() => cleanup());
+
+// Components that refresh data live (Habr statistics) must never reach the
+// network in tests: unless a test passes its own fetch, requests fail fast and
+// the committed snapshot stays on screen.
+globalThis.fetch = () => Promise.reject(new Error('Network is disabled in tests'));

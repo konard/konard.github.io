@@ -1,0 +1,539 @@
+/* ---------- Background layers: universe, grid, link rain ---------- */
+
+.cosmos {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  /* Shown until (or instead of) the WebGL universe. */
+  background:
+    radial-gradient(60rem 40rem at 10% -10%, rgba(34, 211, 238, 0.14), transparent 60%),
+    radial-gradient(50rem 40rem at 100% 10%, rgba(167, 139, 250, 0.16), transparent 60%),
+    radial-gradient(40rem 30rem at 50% 110%, rgba(244, 114, 182, 0.1), transparent 60%), var(--bg);
+}
+
+.cosmos__universe,
+.cosmos__rain {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.cosmos__universe {
+  opacity: 0.95;
+}
+
+.cosmos__grid {
+  position: absolute;
+  inset: -64px 0 0 0;
+  background-image:
+    linear-gradient(rgba(148, 197, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 197, 255, 0.07) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at 50% 30%, black 20%, transparent 85%);
+  animation: grid-drift 24s linear infinite;
+}
+
+@keyframes grid-drift {
+  to {
+    transform: translateY(64px);
+  }
+}
+
+.cosmos__rain {
+  opacity: 0.5;
+  /* Strong at the edges, quiet behind the content column so text stays readable. */
+  mask-image: linear-gradient(
+    to right,
+    black 0%,
+    rgba(0, 0, 0, 0.75) calc(50% - 640px),
+    rgba(0, 0, 0, 0.22) calc(50% - 480px),
+    rgba(0, 0, 0, 0.22) calc(50% + 480px),
+    rgba(0, 0, 0, 0.75) calc(50% + 640px),
+    black 100%
+  );
+}
+
+/* ---------- Top bar: pages and sections ---------- */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(7, 11, 20, 0.74);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+
+.topbar__row {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 0.6rem max(1.25rem, (100% - 1180px) / 2);
+}
+
+.pages {
+  min-width: 0;
+}
+
+.pages ul {
+  display: flex;
+  gap: 0.25rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.pages a {
+  display: block;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  color: var(--text-2);
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.pages a:hover {
+  color: var(--text);
+  border-color: var(--border-strong);
+  text-decoration: none;
+}
+
+.pages a[aria-current='page'] {
+  color: var(--text);
+  border-color: rgba(34, 211, 238, 0.5);
+  background: rgba(34, 211, 238, 0.12);
+}
+
+.nav__top {
+  color: var(--muted);
+  padding: 0 0.35rem;
+}
+
+.nav ul a {
+  font-size: 0.8rem;
+  padding: 0.25rem 0.6rem;
+}
+
+/* ---------- Shared bits of the new sections ---------- */
+
+.section__more {
+  margin-top: 1.25rem;
+  color: var(--text-2);
+}
+
+.glyph {
+  color: var(--accent);
+  flex: none;
+}
+
+.page-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.page-card {
+  display: grid;
+  gap: 0.4rem;
+  height: 100%;
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: linear-gradient(160deg, rgba(18, 26, 44, 0.9), rgba(13, 18, 32, 0.75));
+  color: var(--text-2);
+  transition:
+    border-color 0.2s,
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.page-card:hover {
+  text-decoration: none;
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(34, 211, 238, 0.15);
+}
+
+.page-card__title {
+  color: var(--text);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.page-card__summary {
+  font-size: 0.9rem;
+}
+
+/* ---------- Links meta-theory ---------- */
+
+.theory {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.theory__hero {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.8fr) 1.6fr;
+  gap: 2rem;
+  align-items: center;
+  padding: 1.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, rgba(34, 211, 238, 0.08), rgba(167, 139, 250, 0.1) 60%, rgba(13, 18, 32, 0.85));
+}
+
+.theory__formula {
+  display: grid;
+  place-items: center;
+  min-height: 180px;
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  background: linear-gradient(120deg, #fff, var(--accent) 45%, var(--accent-2) 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 30px rgba(34, 211, 238, 0.35));
+}
+
+.theory__summary {
+  color: var(--text);
+  font-size: 1.05rem;
+}
+
+.theory__example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.theory__example .glyph {
+  color: var(--accent-2);
+  filter: drop-shadow(0 0 10px rgba(167, 139, 250, 0.5));
+}
+
+.theory__example ul {
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.theory__example p {
+  flex: 1 1 220px;
+  font-size: 0.88rem;
+}
+
+.theory__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.theory__formulas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0.75rem;
+}
+
+.theory__formulas li {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(13, 18, 32, 0.78);
+  color: var(--text-2);
+  font-size: 0.88rem;
+}
+
+.theory__math {
+  color: var(--accent);
+  font-size: 1.15rem;
+}
+
+.theory__versions {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 0.75rem;
+}
+
+.version {
+  display: grid;
+  gap: 0.3rem;
+  padding: 1rem;
+  border-left: 3px solid var(--accent-2);
+  border-radius: 0 12px 12px 0;
+  background: rgba(13, 18, 32, 0.78);
+}
+
+.version__number {
+  color: var(--accent-2);
+  font-size: 0.8rem;
+}
+
+.version h3 {
+  font-size: 1rem;
+}
+
+.version .muted {
+  font-size: 0.82rem;
+}
+
+.theory__claims,
+.theory__related {
+  display: grid;
+  gap: 0.5rem;
+  padding-left: 1.2rem;
+  list-style: disc;
+  color: var(--text-2);
+}
+
+/* ---------- Problem solving diagram ---------- */
+
+.method {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.psd {
+  margin: 0;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: rgba(3, 6, 12, 0.82);
+}
+
+.psd svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.psd text {
+  font-family: var(--mono);
+  font-size: 21px;
+}
+
+.psd .psd__end {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.psd__edges line {
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-dasharray: 6 5;
+  animation: psd-flow 1.6s linear infinite;
+}
+
+@keyframes psd-flow {
+  to {
+    stroke-dashoffset: -22;
+  }
+}
+
+.psd__nodes circle {
+  fill: #05080f;
+  stroke-width: 2.6;
+  filter: drop-shadow(0 0 6px currentColor);
+}
+
+.psd__nodes circle.is-rejected {
+  opacity: 0.45;
+}
+
+.psd figcaption {
+  margin-top: 0.5rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* ---------- Habr articles: floating cards ---------- */
+
+.habr__summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  align-items: baseline;
+  margin-bottom: 1.5rem;
+  color: var(--text-2);
+  font-size: 0.92rem;
+}
+
+.habr__company {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.habr__status {
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  font-size: 0.78rem;
+}
+
+.habr__status--live {
+  color: #34d399;
+  border-color: rgba(52, 211, 153, 0.5);
+}
+
+.habr__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.habr-card {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: linear-gradient(165deg, rgba(18, 26, 44, 0.94), rgba(13, 18, 32, 0.84));
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  animation: float var(--float-time, 8s) ease-in-out var(--float-delay, 0s) infinite;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.habr-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 16px 40px rgba(34, 211, 238, 0.18);
+  animation-play-state: paused;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.4deg);
+  }
+}
+
+.habr-card__link {
+  display: grid;
+  align-content: start;
+  gap: 0.4rem;
+  padding: 0 1rem 0.75rem;
+  color: var(--text);
+}
+
+.habr-card__link:hover {
+  text-decoration: none;
+}
+
+.habr-card__image {
+  width: calc(100% + 2rem);
+  margin: 0 -1rem 0.4rem;
+  aspect-ratio: 16 / 7;
+  object-fit: cover;
+  opacity: 0.85;
+}
+
+.habr-card__link:not(:has(img)) {
+  padding-top: 1rem;
+}
+
+.habr-card__meta,
+.habr-card__hubs {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.habr-card__title {
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.habr-card__stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 0;
+  border-top: 1px solid var(--border);
+}
+
+.habr-card__stats div {
+  padding: 0.5rem 0.25rem;
+  text-align: center;
+}
+
+.habr-card__stats dt {
+  color: var(--muted);
+  font-size: 0.62rem;
+  white-space: nowrap;
+}
+
+.habr-card__stats dd {
+  margin: 0;
+  color: var(--text);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Language cloud ---------- */
+
+.cloud {
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: rgba(13, 18, 32, 0.78);
+}
+
+.cloud__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.9rem;
+  align-items: baseline;
+  margin-top: 0.75rem;
+}
+
+.cloud__list li {
+  font-size: calc(0.75rem + var(--weight, 0) * 1.1rem);
+  color: color-mix(in srgb, var(--color) 70%, white);
+  opacity: calc(0.55 + var(--weight, 0) * 0.45);
+}
+
+.cloud__list li.is-favorite {
+  font-weight: 700;
+}
+
+.cloud__list li.is-extra {
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.cloud__count {
+  margin-left: 0.2rem;
+  color: var(--muted);
+  font-size: 0.65em;
+  vertical-align: super;
+}
+
+@media (max-width: 720px) {
+  .theory__hero {
+    grid-template-columns: 1fr;
+  }
+
+  .theory__formula {
+    min-height: 120px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .habr-card,
+  .psd__edges line,
+  .cosmos__grid {
+    animation: none;
+  }
+}
