@@ -60,7 +60,7 @@ export default function Layout({ page, sections = null, children, footer = null 
             links theory
           </a>{' '}
           in the{' '}
-          <a href="https://github.com/link-foundation/links-visuals" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/konard/links-visuals" target="_blank" rel="noopener noreferrer">
             links-visuals
           </a>{' '}
           style, raining as in{' '}

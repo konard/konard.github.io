@@ -9,3 +9,4 @@ src/data/repositories.json
 src/data/habr.json
 public/link-glyphs.svg
 src/links/configurations.json
+src/data/posts.json
