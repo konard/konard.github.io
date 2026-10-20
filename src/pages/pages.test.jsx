@@ -169,6 +169,16 @@ describe('BlogPage', () => {
     expect(dates.filter((d) => /[а-я]/i.test(d))).toEqual([]);
   });
 
+  it('shows the archived copies of pictures, not the CDN links', () => {
+    const { container } = render(<BlogPage initialLanguage="ru" />);
+    const sources = [...container.querySelectorAll('.post__media img')].map((img) => img.getAttribute('src'));
+    const notArchived = new Set(
+      archive.posts.flatMap((p) => p.media.filter((m) => m.fileError)).flatMap((m) => [m.url, m.poster]),
+    );
+    expect(sources.length).toBeGreaterThan(10);
+    expect(sources.filter((s) => !s.startsWith('/archive/media/') && !notArchived.has(s))).toEqual([]);
+  });
+
   it('embeds the X post on demand', () => {
     const { container } = render(<BlogPage initialLanguage="en" />);
     fireEvent.click(screen.getAllByRole('button', { name: 'Show embed' })[0]);

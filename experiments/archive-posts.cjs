@@ -16,6 +16,7 @@
 //                           t.me/drakonard is a personal account, not a channel)
 //   --telegram-limit=<n>    newest posts per Telegram channel (default 100)
 //   --no-discover           only fetch URLs from --urls, skip wall/channel crawling
+//   --media-only            fetch nothing new, only download the media of the archived posts
 //
 // Sources and why:
 //   X:        https://cdn.syndication.twimg.com/tweet-result?id=<id>&token=x (public JSON used by
@@ -32,6 +33,10 @@
 // The archive is append-only: posts that can no longer be fetched are kept. `archivedAt` is the
 // first time a post was stored, `updatedAt` the last time its content changed, `unavailableAt` is
 // set when the network explicitly reports the post as gone.
+//
+// Pictures (photos and video posters) are downloaded to public/archive/media/<post>-<n>.<ext> and
+// stored as `file` / `posterFile`, because CDN links of deleted posts stop working too. The names
+// depend on the post and position only: VK signs its image URLs anew on every fetch.
 'use strict';
 const fs = require('fs');
 const path = require('path');
@@ -60,7 +65,10 @@ const VK_WALLS = list(args.vk, ['konard']);
 const VK_LIMIT = Number(args['vk-limit'] || 40);
 const TG_CHANNELS = list(args.telegram, []);
 const TG_LIMIT = Number(args['telegram-limit'] || 100);
-const DISCOVER = !args['no-discover'];
+const DISCOVER = !args['no-discover'] && !args['media-only'];
+const FETCH = !args['media-only'];
+const MEDIA_DIR = 'public/archive/media';
+const MEDIA_URL = '/archive/media';
 
 const BROWSER_UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
 const CRAWLER_UA = 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)';
@@ -93,6 +101,47 @@ async function get(url, { ua = BROWSER_UA, json = false, tries = 3 } = {}) {
       return { status: res.status, url: res.url, body: null, raw: body.slice(0, 200) };
     }
   }
+}
+
+const EXT = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp', 'image/gif': 'gif' };
+
+async function download(url, base) {
+  const known = fs.existsSync(MEDIA_DIR) && fs.readdirSync(MEDIA_DIR).find((f) => f.startsWith(`${base}.`));
+  if (known) return `${MEDIA_URL}/${known}`;
+  // The VK CDN serves some pictures only to the crawler that received the page.
+  for (const ua of [BROWSER_UA, CRAWLER_UA]) {
+    for (let i = 1; i <= 3; i++) {
+      try {
+        const res = await fetch(url, { headers: { 'user-agent': ua }, signal: AbortSignal.timeout(30000) });
+        const ext = EXT[(res.headers.get('content-type') || '').split(';')[0]];
+        if (!res.ok || !ext) break;
+        fs.mkdirSync(MEDIA_DIR, { recursive: true });
+        fs.writeFileSync(path.join(MEDIA_DIR, `${base}.${ext}`), Buffer.from(await res.arrayBuffer()));
+        return `${MEDIA_URL}/${base}.${ext}`;
+      } catch {
+        await sleep(1000 * i);
+      }
+    }
+  }
+  return null;
+}
+
+// Adds local copies of the pictures of a post; keeps the copies of earlier runs.
+async function archiveMedia(post, prev) {
+  const media = [];
+  for (const [i, m] of post.media.entries()) {
+    const old = prev?.media?.[i];
+    const base = `${post.id.replace(/[^\w-]+/g, '-')}-${i + 1}`;
+    const copy = { ...m };
+    if (m.type === 'photo') copy.file = (await download(m.url, base)) || old?.file;
+    if (m.poster) copy.posterFile = (await download(m.poster, `${base}-poster`)) || old?.posterFile;
+    for (const k of ['file', 'posterFile']) if (!copy[k]) delete copy[k];
+    delete copy.fileError;
+    if ((m.type === 'photo' && !copy.file) || (m.poster && !copy.posterFile))
+      copy.fileError = `not downloadable on ${new Date().toISOString().slice(0, 10)} (the CDN returned no image)`;
+    media.push(copy);
+  }
+  return { ...post, media };
 }
 
 // ---------- HTML helpers ----------
@@ -585,6 +634,7 @@ function parsePostUrl(raw) {
 async function main() {
   const existing = fs.existsSync(OUT) ? JSON.parse(fs.readFileSync(OUT, 'utf8')) : { posts: [] };
   const byId = new Map((Array.isArray(existing) ? existing : existing.posts).map((p) => [p.id, p]));
+  const existingById = new Map(byId);
   const now = new Date().toISOString();
   const report = {
     x: { ok: 0, gone: 0, failed: [] },
@@ -596,7 +646,13 @@ async function main() {
   const store = (post) => {
     const prev = byId.get(post.id);
     const content = (p) =>
-      JSON.stringify({ ...p, archivedAt: undefined, updatedAt: undefined, unavailableAt: undefined });
+      JSON.stringify({
+        ...p,
+        media: p.media.map(({ file, posterFile, fileError, ...m }) => m), // eslint-disable-line no-unused-vars
+        archivedAt: undefined,
+        updatedAt: undefined,
+        unavailableAt: undefined,
+      });
     if (prev && content(prev) === content(post) && !prev.unavailableAt) return;
     changed = true;
     byId.set(post.id, { ...post, archivedAt: prev?.archivedAt || now, ...(prev ? { updatedAt: now } : {}) });
@@ -613,7 +669,7 @@ async function main() {
   };
 
   const targets = { x: new Set(), telegram: new Set(), vk: new Set() };
-  if (fs.existsSync(URLS)) {
+  if (FETCH && fs.existsSync(URLS)) {
     for (const line of fs.readFileSync(URLS, 'utf8').split('\n')) {
       const t = parsePostUrl(line);
       if (!t) continue;
@@ -622,7 +678,7 @@ async function main() {
     }
   }
   // Re-check previously archived X posts too (cheap) so deletions get flagged.
-  for (const p of byId.values()) if (p.network === 'x') targets.x.add(p.embed.id);
+  if (FETCH) for (const p of byId.values()) if (p.network === 'x') targets.x.add(p.embed.id);
 
   for (const id of targets.x) {
     await handle('x', `x:${id}`, () => fetchTweet(id));
@@ -651,6 +707,12 @@ async function main() {
   for (const id of targets.vk) {
     await handle('vk', `vk:${id}`, () => fetchVkPost(id));
     await sleep(700);
+  }
+
+  for (const [id, p] of byId) {
+    const withMedia = await archiveMedia(p, existingById.get(id));
+    if (JSON.stringify(withMedia.media) !== JSON.stringify(p.media)) changed = true;
+    byId.set(id, withMedia);
   }
 
   const posts = [...byId.values()].sort((a, b) => (b.publishedAt || '').localeCompare(a.publishedAt || ''));

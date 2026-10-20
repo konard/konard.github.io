@@ -1,3 +1,4 @@
+import fs from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import archive from '../data/posts.json';
 import { dedupe, isDuplicate, links, pick, readerLanguage, similarity, visibleFor, words } from './feed';
@@ -100,5 +101,19 @@ describe('readerLanguage', () => {
     expect(readerLanguage({ languages: [], language: 'uk' })).toBe('ru');
     expect(readerLanguage({ languages: ['en-US', 'ru'] })).toBe('en');
     expect(readerLanguage(null)).toBe('en');
+  });
+});
+
+describe('archive', () => {
+  it('keeps a copy of every picture, so a deleted post keeps its media', () => {
+    const media = archive.posts.flatMap((p) => p.media).filter((m) => m.type === 'photo' || m.poster);
+    // A picture the CDN no longer serves is marked, never silently skipped.
+    media.forEach((m) => expect(m.file || m.posterFile || m.fileError).toBeTruthy());
+    const pictures = media.flatMap((m) => [m.file, m.posterFile]).filter(Boolean);
+    expect(pictures.length).toBeGreaterThan(media.length * 0.9);
+    pictures.forEach((file) => {
+      expect(file).toMatch(/^\/archive\/media\//);
+      expect(fs.existsSync(`public${file}`)).toBe(true);
+    });
   });
 });

@@ -34,6 +34,7 @@ function XEmbed({ id }) {
   );
 }
 
+// Archived copies (public/archive/media) first: CDN links of deleted posts stop working.
 function Media({ items }) {
   if (!items.length) return null;
   return (
@@ -41,10 +42,10 @@ function Media({ items }) {
       {items.map((m) => (
         <li key={m.url}>
           {m.type === 'photo' ? (
-            <img src={m.url} alt={m.alt || ''} loading="lazy" referrerPolicy="no-referrer" />
+            <img src={m.file || m.url} alt={m.alt || ''} loading="lazy" referrerPolicy="no-referrer" />
           ) : (
             <a href={m.url} target="_blank" rel="noopener noreferrer" className="post__video">
-              {m.poster && <img src={m.poster} alt="" loading="lazy" referrerPolicy="no-referrer" />}
+              {m.poster && <img src={m.posterFile || m.poster} alt="" loading="lazy" referrerPolicy="no-referrer" />}
               <span>▶ video</span>
             </a>
           )}
