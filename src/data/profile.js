@@ -42,14 +42,46 @@ export const skillGroups = [
       'Lua',
       'Go',
       'Coq / Rocq',
+      'Lean',
       'GraphQL',
+      'Java',
+      'Ruby',
+      'Swift',
+      'Nim',
+      'PowerShell',
+      'Batch',
+      'Perl',
+      'Elixir',
+      'Haskell',
+      'OCaml',
+      'F#',
+      'Scala',
+      'Julia',
+      'R',
+      'Assembly',
+      'CUDA',
+      'WebAssembly',
+      'PL/pgSQL',
     ],
   },
   {
     id: 'markup',
     title: 'Markup & data formats',
     icon: '◇',
-    items: ['HTML', 'CSS', 'JSON', 'XML', 'Markdown', 'LaTeX', 'Links Notation'],
+    items: [
+      'HTML',
+      'CSS',
+      'SCSS',
+      'JSON',
+      'XML',
+      'YAML',
+      'Markdown',
+      'MDX',
+      'LaTeX',
+      'Links Notation',
+      'Mustache',
+      'Jinja',
+    ],
   },
   {
     id: 'data',
@@ -109,12 +141,16 @@ export const skillGroups = [
     items: [
       'Docker',
       'Kubernetes',
+      'Nix',
+      'CMake',
+      'Make',
       'GitHub Actions',
       'GitLab CI/CD',
       'Travis CI',
       'Grafana',
       'Prometheus',
       'Linux',
+      'macOS',
       'Windows',
       'Android',
     ],
@@ -138,6 +174,29 @@ export const skillGroups = [
     ],
   },
   {
+    id: 'ai',
+    title: 'AI, ML & LLM tooling',
+    icon: '✺',
+    items: [
+      'OpenAI API',
+      'Claude Code',
+      'Codex CLI',
+      'OpenCode',
+      'llama.cpp / local LLMs',
+      'AI agent orchestration',
+      'Vector search',
+      'Speech-to-text',
+      'Image & music generation (Suno)',
+      'Gaussian splatting',
+    ],
+  },
+  {
+    id: 'parsing',
+    title: 'Parsing & code generation',
+    icon: '⟿',
+    items: ['ANTLR', 'Pegasus PEG', 'PEG.js', 'Lex / Yacc', 'Roslyn', 'T4 templates', 'Regex transformers'],
+  },
+  {
     id: 'domains',
     title: 'Domains',
     icon: '✦',
@@ -150,12 +209,17 @@ export const skillGroups = [
       'High-load systems',
       'Travel booking & search',
       'Document management',
+      'Formal proofs (Rocq, Lean)',
+      'Legal tech',
+      'Trading & payments',
+      'Task trackers (Kaiten, Trello, YouGile)',
     ],
   },
 ];
 
 // Career timeline. `start`/`end` are 'YYYY-MM'; `end: null` means present.
 // type: 'company' (employment) or 'open-source' (founded / led projects).
+// roles: kinds of experience shown on /experience/?role=<id> (see `roles` below).
 // Sources: career.habr.com/drakonard, profile.codersrank.io/user/konard,
 // t.me/drakonard and GitHub organization metadata (see web-research.md).
 export const experience = [
@@ -168,6 +232,7 @@ export const experience = [
     end: '2007-08',
     summary: 'Online gift store: site extensions and automated Excel-to-database import.',
     tags: ['PHP', 'MySQL', 'jQuery'],
+    roles: ['developer'],
   },
   {
     id: 'asgardro',
@@ -179,6 +244,7 @@ export const experience = [
     summary:
       'Ragnarok Online game server: core server extensions, anti-cheat protection via reverse engineering, quest scripts.',
     tags: ['C/C++', 'PHP', 'MySQL', 'Lua'],
+    roles: ['developer'],
   },
   {
     id: 'alponline',
@@ -190,6 +256,7 @@ export const experience = [
     summary:
       'Tour search & booking for travel agencies; search engine answering in under 0.1 s across hundreds of millions of tours.',
     tags: ['C#', 'ASP.NET', 'MS SQL'],
+    roles: ['developer', 'lead'],
   },
   {
     id: 'pegas',
@@ -201,6 +268,7 @@ export const experience = [
     summary:
       'Unified tour-operator management system: multilingual data, role-based access, pricing, search and booking of tours, hotels and flights.',
     tags: ['C#', 'WCF', 'Silverlight', 'ASP.NET MVC'],
+    roles: ['developer', 'lead'],
   },
   {
     id: 'termika',
@@ -211,6 +279,7 @@ export const experience = [
     end: '2014-04',
     summary: 'Production control system for Rosneft; load testing and support of an employee training system.',
     tags: ['C#', 'WPF', 'ASP.NET', 'Selenium'],
+    roles: ['developer', 'lead', 'devops'],
   },
   {
     id: 'elar',
@@ -223,18 +292,20 @@ export const experience = [
     summary:
       'Document management integrations (Gazprombank ↔ Saperion), recognized-document import, PDF compression, patent classification automation for FIPS.',
     tags: ['C#', 'ASP.NET', 'MS SQL', 'ABBYY FineReader'],
+    roles: ['developer', 'lead'],
   },
   {
     id: 'linksplatform',
     type: 'open-source',
     title: 'LinksPlatform',
     role: 'Founder, CEO',
-    start: '2015-01',
+    start: '2010-03',
     end: null,
     url: 'https://github.com/linksplatform',
     summary:
-      'Associative database engines (Doublets, Triplets, Sequences), rule-based code translators (C# → C++ / Python, C++ → Java, Python → Nim) and bots. Led an international open-source team.',
+      'Started in March 2010 with the first Link (Source, Linker, Target) prototype; GitHub repository since 2012. Associative database engines (Doublets, Triplets, Sequences), rule-based code translators (C# → C++ / Python, C++ → Java, Python → Nim) and bots. Led an international open-source team.',
     tags: ['C#', 'Rust', 'C++', 'Associative data'],
+    roles: ['lead', 'developer', 'devops', 'research'],
   },
   {
     id: 'abracar',
@@ -245,6 +316,7 @@ export const experience = [
     end: '2022-08',
     summary: 'ShakeApp — car and apartment sharing platform.',
     tags: ['TypeScript', 'Next.js', 'Hasura', 'Kubernetes'],
+    roles: ['developer', 'devops'],
   },
   {
     id: 'deep-foundation',
@@ -257,6 +329,20 @@ export const experience = [
     summary:
       'Deep — an associative data-oriented OS & super-app: PostgreSQL + Hasura GraphQL core, 330+ associative npm packages, isolated handlers in JS, Python, Rust, PHP, C/C++, Kotlin. Led a distributed international team.',
     tags: ['TypeScript', 'PostgreSQL', 'Hasura', 'React'],
+    roles: ['lead', 'developer', 'devops', 'research'],
+  },
+  {
+    id: 'deep-gpt',
+    type: 'open-source',
+    title: 'Deep.GPT (Deep.Assistant)',
+    role: 'Co-creator, developer',
+    start: '2024-05',
+    end: null,
+    url: 'https://github.com/deep-assistant',
+    summary:
+      'Deep.GPT Telegram bot (t.me/DeepGPTBot): question answering with GPT, Claude and open models, image generation and editing, music generation via Suno, payments and referrals; OpenAI-compatible API gateway and the GPTutor VK mini app.',
+    tags: ['Python', 'JavaScript', 'LLM', 'Telegram'],
+    roles: ['ml', 'developer', 'devops'],
   },
   {
     id: 'kaiten',
@@ -269,6 +355,7 @@ export const experience = [
     summary:
       'Business process management system: add-ons subsystem, Yandex.Disk add-on, ClickUp → Kaiten import converter.',
     tags: ['Node.js', 'React', 'PostgreSQL', 'RabbitMQ'],
+    roles: ['developer'],
   },
   {
     id: 'link-foundation',
@@ -281,6 +368,7 @@ export const experience = [
     summary:
       '“The foundation of foundations. Our mission is linkness.” Links Notation, link-cli, use-m, command-stream, Links Theory.',
     tags: ['Rust', 'JavaScript', 'Links Notation'],
+    roles: ['lead', 'developer', 'devops', 'research', 'ml'],
   },
   {
     id: 'link-assistant',
@@ -292,7 +380,16 @@ export const experience = [
     url: 'https://github.com/link-assistant',
     summary: 'Hive Mind — the AI that controls AIs to do the automation of automation; agents, routers and formal AI.',
     tags: ['AI agents', 'JavaScript', 'Rust'],
+    roles: ['ml', 'lead', 'devops', 'developer'],
   },
+];
+
+export const roles = [
+  { id: 'ml', name: 'ML / AI', summary: 'LLM products, AI agents, model routing and ML research.' },
+  { id: 'devops', name: 'DevOps', summary: 'CI/CD, containers, release automation and infrastructure.' },
+  { id: 'lead', name: 'CEO / Team lead', summary: 'Founding organizations, leading distributed teams and roadmaps.' },
+  { id: 'developer', name: 'Developer', summary: 'Hands-on software engineering in many languages and stacks.' },
+  { id: 'research', name: 'Researcher', summary: 'Links theory, formal proofs and algorithm research.' },
 ];
 
 export const education = [
@@ -353,7 +450,8 @@ export const achievements = [
   'Top 1% developer worldwide on CodersRank; top-5 in Russia for GraphQL, Node.js and Shell',
   '~1.9M NuGet downloads of LinksPlatform .NET libraries',
   'Stack Overflow answers on questions with 1.5M+, 660K+ and 530K+ views',
-  'Co-author of the Links Theory (versions 0.0.1 – 0.0.3)',
+  'Co-author of the Links Theory (versions 0.0.1 – 0.0.3) and the links meta-theory',
+  '525 original open-source repositories in 15 organizations, without forks',
   'Built a tour search engine answering in < 0.1 s over hundreds of millions of offers',
 ];
 
@@ -400,7 +498,15 @@ export const featuredProjects = [
   },
   {
     fullName: 'link-foundation/links-notation',
-    tagline: 'A way to describe data using references and links (≈42K npm downloads / month).',
+    tagline: 'A way to describe data using references and links (≈50K npm downloads / month).',
+  },
+  {
+    fullName: 'link-foundation/meta-theory',
+    tagline: 'The links meta-theory: everything is a link, a link is a reference to links — L ↦ L².',
+  },
+  {
+    fullName: 'deep-assistant/telegram-bot',
+    tagline: 'Deep.GPT bot: answers questions, generates images and music.',
   },
   {
     fullName: 'konard/problem-solving',

@@ -1,0 +1,1515 @@
+{
+  "generatedAt": "2026-10-20T20:12:03.177Z",
+  "sources": {
+    "x": "https://cdn.syndication.twimg.com/tweet-result (ids from post-urls.txt)",
+    "telegram": "post-urls.txt only (no public channel configured)",
+    "vk": [
+      "https://vk.com/konard"
+    ]
+  },
+  "counts": {
+    "vk": 60,
+    "x": 3
+  },
+  "posts": [
+    {
+      "id": "vk:3972090_31776",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31776",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2026-10-05T05:45:38.000Z",
+      "lang": "ru",
+      "text": "Ищу работу в IT сфере.\nЕсли тебе или твоим друзьям нужна помощь с автоматизацией, то я тот кто занимается автоматизацией уже больше 26 лет.\nПиши в личку или в комментариях.",
+      "html": "Ищу работу в IT сфере.<br>Если тебе или твоим друзьям нужна помощь с автоматизацией, то я тот кто занимается автоматизацией уже больше 26 лет.<br>Пиши в личку или в комментариях.",
+      "media": [],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31776"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:45:35.156Z"
+    },
+    {
+      "id": "vk:3972090_31768",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31768",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2026-05-17T12:45:00.000Z",
+      "lang": "en",
+      "text": "https://github.com/link-foundation/meta-theory - meta-theory of links - archives of previous drafts and a fresh draft currently being refined at http://habr.com/ru/articles/1018142\nhttps://github.com/linksplatform/doublets-rs - stable doublets in Rust\nhttps://github.com/linksplatform/doublets-web - stable doublets in the web via WebAssembly\nhttps://github.com/link-foundation/links-notation - stable links notation\nhttps://github.com/link-foundation/lino-env - .lenv files in links notation\nhttps://github.com/link-foundation/lino-arguments - argument parser in links notation and traditional options\nhttps://github.com/link-foundation/lino-rest-api - REST API, but instead of JSON — links notation\nhttps://github.com/link-foundation/lino-objects-codec - object encoder/decoder to links notation and back\nhttps://github.com/link-foundation/lino-i18n - internationalization library, but the entire internationalization is written in links notation\nhttps://github.com/link-foundation/log-lazy - lazy logging, if logging is disabled, operations required exclusively for formatting the log message are not executed, meaning when logging is off, this enables near zero cost\nhttps://github.com/link-foundation/command-stream - library for controlling CLI commands programmatically\nhttps://github.com/link-foundation/browser-commander - browser control with pleasant animations, so it is enjoyable to watch and not embarrassing to show or record videos with, as well as an abstraction over the differences between Playwright and Puppeteer\nhttps://github.com/link-assistant/agent-commander - controlling AI agents through CLI (Claude, Codex, Gemini, Qwen, Agent)\nhttps://github.com/link-assistant/agent - AI agent for autonomous mode (OpenCode fork)\nhttps://github.com/link-foundation/js-ai-driven-development-pipeline-template - JS CI/CD template with application builds\nhttps://github.com/link-foundation/rust-ai-driven-development-pipeline-template - CI/CD template for Rust\nhttps://github.com/link-foundation/relative-meta-logic - own prover (analog of Rocq/Lean) in links notation, with a foundation built from links (obviously), currently in the final refinement stage with Roman Vertushkin\nhttps://github.com/link-foundation/link-cli - full implementation of a DBMS + query language in links notation on top of Rust and C#\nhttps://github.com/link-foundation/box - Docker containers for disposable development or AI sandboxes, so that on one side the AI has an environment with preinstalled software, and on the other side the ability to easily break anything, while the whole container can simply be discarded and tried again\nhttps://github.com/link-assistant/hive-mind - robot programmer with deep GitHub integration, aligned with Git/GitHub Flow",
+      "html": "<a href=\"https://github.com/link-foundation/meta-theory\">github.com/link-found...</a> - meta-theory of links - archives of previous drafts and a fresh draft currently being refined at <a href=\"http://habr.com/ru/articles/1018142\">habr.com/ru/article...</a><br><a href=\"https://github.com/linksplatform/doublets-rs\">github.com/linksplatf...</a> - stable doublets in Rust<br><a href=\"https://github.com/linksplatform/doublets-web\">github.com/linksplatf...</a> - stable doublets in the web via WebAssembly<br><a href=\"https://github.com/link-foundation/links-notation\">github.com/link-found...</a> - stable links notation<br><a href=\"https://github.com/link-foundation/lino-env\">github.com/link-found...</a> - .lenv files in links notation<br><a href=\"https://github.com/link-foundation/lino-arguments\">github.com/link-found...</a> - argument parser in links notation and traditional options<br><a href=\"https://github.com/link-foundation/lino-rest-api\">github.com/link-found...</a> - REST API, but instead of JSON — links notation<br><a href=\"https://github.com/link-foundation/lino-objects-codec\">github.com/link-found...</a> - object encoder/decoder to links notation and back<br><a href=\"https://github.com/link-foundation/lino-i18n\">github.com/link-found...</a> - internationalization library, but the entire internationalization is written in links notation<br><a href=\"https://github.com/link-foundation/log-lazy\">github.com/link-found...</a> - lazy logging, if logging is disabled, operations required exclusively for formatting the log message are not executed, meaning when logging is off, this enables near zero cost<br><a href=\"https://github.com/link-foundation/command-stream\">github.com/link-found...</a> - library for controlling CLI commands programmatically<br><a href=\"https://github.com/link-foundation/browser-commander\">github.com/link-found...</a> - browser control with pleasant animations, so it is enjoyable to watch and not embarrassing to show or record videos with, as well as an abstraction over the differences between Playwright and Puppeteer<br><a href=\"https://github.com/link-assistant/agent-commander\">github.com/link-assis...</a> - controlling AI agents through CLI (Claude, Codex, Gemini, Qwen, Agent)<br><a href=\"https://github.com/link-assistant/agent\">github.com/link-assis...</a> - AI agent for autonomous mode (OpenCode fork)<br><a href=\"https://github.com/link-foundation/js-ai-driven-development-pipeline-template\">github.com/link-found...</a> - JS CI/CD template with application builds<br><a href=\"https://github.com/link-foundation/rust-ai-driven-development-pipeline-template\">github.com/link-found...</a> - CI/CD template for Rust<br><a href=\"https://github.com/link-foundation/relative-meta-logic\">github.com/link-found...</a> - own prover (analog of Rocq/Lean) in links notation, with a foundation built from links (obviously), currently in the final refinement stage with Roman Vertushkin<br><a href=\"https://github.com/link-foundation/link-cli\">github.com/link-found...</a> - full implementation of a DBMS + query language in links notation on top of Rust and C#<br><a href=\"https://github.com/link-foundation/box\">github.com/link-found...</a> - Docker containers for disposable development or AI sandboxes, so that on one side the AI has an environment with preinstalled software, and on the other side the ability to easily break anything, while the whole container can simply be discarded and tried again<br><a href=\"https://github.com/link-assistant/hive-mind\">github.com/link-assis...</a> - robot programmer with deep GitHub integration, aligned with Git/GitHub Flow",
+      "media": [],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31768"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:47:51.173Z"
+    },
+    {
+      "id": "vk:3972090_31767",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31767",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2026-05-17T11:29:38.000Z",
+      "lang": "ru",
+      "text": "https://github.com/link-foundation/meta-theory - мета-теория связей - архивы предыдущих черновик и свежий черновик, который в процессе оформления на http://habr.com/ru/articles/1018142\nhttps://github.com/linksplatform/doublets-rs - стабильные дуплеты на Rust\nhttps://github.com/linksplatform/doublets-web - стабильные дуплеты в вебе через WebAssambly\nhttps://github.com/link-foundation/links-notation - стабильная нотация связей\nhttps://github.com/link-foundation/lino-env - .lenv файлы в нотации связей\nhttps://github.com/link-foundation/lino-arguments - парсер аргументов в нотации связей и традиционные опции\nhttps://github.com/link-foundation/lino-rest-api - REST API, но вместо json - нотация связей\nhttps://github.com/link-foundation/lino-objects-codec - кодек/декодер объектов в нотацию связей и обратно\nhttps://github.com/link-foundation/lino-i18n - библиотека по интернационализации, но вся интернационализация записана нотацией связей\nhttps://github.com/link-foundation/log-lazy - л\u0000енивое логирование, если логирование отключено, операции необходимые исключительно для форматирвования сообщения в лог не выполняются, то есть когда лог выключен, это позволяет обеспечивать near zero cost\nhttps://github.com/link-foundation/command-stream - библиотека по управлению CLI командами кодом\nhttps://github.com/link-foundation/browser-commander - управление браузером с приятными анимациями, чтобы было приятно смотреть и не стыдно показать или записать ролик, а так же абстракция разницы между Playwright и Puppeteer\nhttps://github.com/link-assistant/agent-commander - управление AI агентами через CLI (Claude, Codex, Gemini, Qwen, Agent)\nhttps://github.com/link-assistant/agent - AI агент для автономного режима (форк OpenCode)\nhttps://github.com/link-foundation/js-ai-driven-development-pipeline-template - шаблон CI/CD на JS с билдами приложений\nhttps://github.com/link-foundation/rust-ai-driven-development-pipeline-template - шаблон CI/CD для Rust\nhttps://github.com/link-foundation/relative-meta-logic - свой прувер (аналог Rocq/Lean) на нотации связей, с фундаментом из связей (очевидно), в процессе финальная доработа с Романом Вертушкиным\nhttps://github.com/link-foundation/link-cli - полная реализация СУБД + языка запросов на нотации связей поверх Rust и C#\nhttps://github.com/link-foundation/box - докер контейнеры для одноразовых песочниц для разработки или ИИ, чтобы у ИИ с одной стороны была среда с предустановленным ПО, с другой стороны возможность легко сломать что угодно и контейнер целиком можно было бы выбросить и попробовать заново\nhttps://github.com/link-assistant/hive-mind - робот программист с глубокой интеграцией с GitHub, соответствующий Git/GitHub Flow",
+      "html": "<a href=\"https://github.com/link-foundation/meta-theory\">github.com/link-found...</a> - мета-теория связей - архивы предыдущих черновик и свежий черновик, который в процессе оформления на <a href=\"http://habr.com/ru/articles/1018142\">habr.com/ru/article...</a><br><a href=\"https://github.com/linksplatform/doublets-rs\">github.com/linksplatf...</a> - стабильные дуплеты на Rust<br><a href=\"https://github.com/linksplatform/doublets-web\">github.com/linksplatf...</a> - стабильные дуплеты в вебе через WebAssambly<br><a href=\"https://github.com/link-foundation/links-notation\">github.com/link-found...</a> - стабильная нотация связей<br><a href=\"https://github.com/link-foundation/lino-env\">github.com/link-found...</a> - .lenv файлы в нотации связей<br><a href=\"https://github.com/link-foundation/lino-arguments\">github.com/link-found...</a> - парсер аргументов в нотации связей и традиционные опции<br><a href=\"https://github.com/link-foundation/lino-rest-api\">github.com/link-found...</a> - REST API, но вместо json - нотация связей<br><a href=\"https://github.com/link-foundation/lino-objects-codec\">github.com/link-found...</a> - кодек/декодер объектов в нотацию связей и обратно<br><a href=\"https://github.com/link-foundation/lino-i18n\">github.com/link-found...</a> - библиотека по интернационализации, но вся интернационализация записана нотацией связей<br><a href=\"https://github.com/link-foundation/log-lazy\">github.com/link-found...</a> - л\u0000енивое логирование, если логирование отключено, операции необходимые исключительно для форматирвования сообщения в лог не выполняются, то есть когда лог выключен, это позволяет обеспечивать near zero cost<br><a href=\"https://github.com/link-foundation/command-stream\">github.com/link-found...</a> - библиотека по управлению CLI командами кодом<br><a href=\"https://github.com/link-foundation/browser-commander\">github.com/link-found...</a> - управление браузером с приятными анимациями, чтобы было приятно смотреть и не стыдно показать или записать ролик, а так же абстракция разницы между Playwright и Puppeteer<br><a href=\"https://github.com/link-assistant/agent-commander\">github.com/link-assis...</a> - управление AI агентами через CLI (Claude, Codex, Gemini, Qwen, Agent)<br><a href=\"https://github.com/link-assistant/agent\">github.com/link-assis...</a> - AI агент для автономного режима (форк OpenCode)<br><a href=\"https://github.com/link-foundation/js-ai-driven-development-pipeline-template\">github.com/link-found...</a> - шаблон CI/CD на JS с билдами приложений<br><a href=\"https://github.com/link-foundation/rust-ai-driven-development-pipeline-template\">github.com/link-found...</a> - шаблон CI/CD для Rust<br><a href=\"https://github.com/link-foundation/relative-meta-logic\">github.com/link-found...</a> - свой прувер (аналог Rocq/Lean) на нотации связей, с фундаментом из связей (очевидно), в процессе финальная доработа с Романом Вертушкиным<br><a href=\"https://github.com/link-foundation/link-cli\">github.com/link-found...</a> - полная реализация СУБД + языка запросов на нотации связей поверх Rust и C#<br><a href=\"https://github.com/link-foundation/box\">github.com/link-found...</a> - докер контейнеры для одноразовых песочниц для разработки или ИИ, чтобы у ИИ с одной стороны была среда с предустановленным ПО, с другой стороны возможность легко сломать что угодно и контейнер целиком можно было бы выбросить и попробовать заново<br><a href=\"https://github.com/link-assistant/hive-mind\">github.com/link-assis...</a> - робот программист с глубокой интеграцией с GitHub, соответствующий Git/GitHub Flow",
+      "media": [],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31767"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:47:51.173Z"
+    },
+    {
+      "id": "vk:3972090_31766",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31766",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2026-04-27T08:46:50.000Z",
+      "lang": "en",
+      "text": "Do you have a GitHub account? Want to try out my programmer bot? If yes, message me privately at t.me/drakonard. It’s free — you just need to send a link to a GitHub issue, and I’ll provide a pull request for it.",
+      "html": "Do you have a GitHub account? Want to try out my programmer bot? If yes, message me privately at <a href=\"http://t.me/drakonard\">t.me/drakonard</a>. It’s free — you just need to send a link to a GitHub issue, and I’ll provide a pull request for it.",
+      "media": [],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31766"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:45:35.156Z"
+    },
+    {
+      "id": "vk:3972090_31765",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31765",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2026-04-27T08:45:01.000Z",
+      "lang": "ru",
+      "text": "У тебя есть аккаунт на GitHub? Хочешь испытать моего бота-программиста? Если да, то пиши в личкy t.me/drakonard. Это бесплатно, с тебя только ссылка на issue на GitHub, с меня Pull Request к нему.",
+      "html": "У тебя есть аккаунт на GitHub? Хочешь испытать моего бота-программиста? Если да, то пиши в личкy <a href=\"http://t.me/drakonard\">t.me/drakonard</a>. Это бесплатно, с тебя только ссылка на issue на GitHub, с меня Pull Request к нему.",
+      "media": [],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31765"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:45:35.156Z"
+    },
+    {
+      "id": "vk:3972090_31763",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31763",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2026-04-09T18:57:32.000Z",
+      "lang": "en",
+      "text": "linksplatform.github.io/itself.html",
+      "html": "<a href=\"http://linksplatform.github.io/itself.html\">linksplatform.github.io/itself.html</a>",
+      "media": [],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31763"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:45:35.156Z"
+    },
+    {
+      "id": "vk:3972090_31760",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31760",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2026-03-12T17:42:52.000Z",
+      "lang": "ru",
+      "text": "@vk заблокировал меня за то, что я хотел войти со своего планшета.",
+      "html": "<a href=\"https://vk.com/club22822305\">@vk</a> заблокировал меня за то, что я хотел войти со своего планшета.",
+      "media": [],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31760"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:45:35.156Z"
+    },
+    {
+      "id": "vk:3972090_31753",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31753",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2026-03-08T02:41:18.000Z",
+      "lang": "ru",
+      "text": "На шаг ближе к совершенству.\nhttp://konard.github.io/links-visuals/animated-blueprint.html",
+      "html": "На шаг ближе к совершенству.<br><a href=\"http://konard.github.io/links-visuals/animated-blueprint.html\">konard.github.io/links-visu...</a>",
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://sun9-15.userapi.com/s/v1/ig2/AkULXjfuFdEYYtg55Ae9lElRRnD73Ci11-6XD8yR4XxzRY3O-OzUGBaaxW-VrhaL_mR5p6YnvWJxcFtVbYckywaBhpUrEg.jpg?quality=95&as=32x24,48x35,72x53,108x79,160x118,240x177,360x265,480x353,540x397,640x471,720x530,1080x794,1280x941,1440x1059,2072x1524&from=bu&u=Em9kvaA_QfBw9lTOyh7ns-Aw12gBWaJaE30iqj05wiA&cs=640x0",
+          "alt": "",
+          "file": "/archive/media/vk-3972090_31753-1.jpg"
+        }
+      ],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31753"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:47:51.173Z"
+    },
+    {
+      "id": "vk:3972090_31734",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31734",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2026-02-24T12:53:19.000Z",
+      "lang": "ru",
+      "text": "Говорят, что открытым остаётся вопрос о том, что такое добро и зло.\nА я думаю, что это можно сформулировать так:\nДобро — это то, что ведёт к сохранению и приумножению жизни.\nЗло — то, что ведёт к её сокращению или смерти.\nПри этом добро и зло всегда относительны к субъекту или группе.\nТо, что является добром для одного, может быть злом для другого. Это неизбежно.\nЭто нельзя устранить, можно лишь сокращать зло между интересами двух субъектов или групп через договорённости и компромиссы.\nНа уровне индивида:\nДобро — то, что способствует продлению и укреплению его жизни.\nЗло — то, что её сокращает или разрушает.\nКраткосрочное удовольствие не равно пользе.\nЕсли действие ведёт к сокращению жизни — это зло, даже если оно приятно в моменте.\nНа уровне группы:\nДобро — то, что способствует сохранению и развитию группы.\nЗло — то, что сокращает её численность или разрушает её целостность.\nРазве это не закрывает вопрос?",
+      "html": "Говорят, что открытым остаётся вопрос о том, что такое добро и зло.<br>А я думаю, что это можно сформулировать так:<br>Добро — это то, что ведёт к сохранению и приумножению жизни.<br>Зло — то, что ведёт к её сокращению или смерти.<br>При этом добро и зло всегда относительны к субъекту или группе.<br>То, что является добром для одного, может быть злом для другого. Это неизбежно.<br>Это нельзя устранить, можно лишь сокращать зло между интересами двух субъектов или групп через договорённости и компромиссы.<br>На уровне индивида:<br>Добро — то, что способствует продлению и укреплению его жизни.<br>Зло — то, что её сокращает или разрушает.<br>Краткосрочное удовольствие не равно пользе.<br>Если действие ведёт к сокращению жизни — это зло, даже если оно приятно в моменте.<br>На уровне группы:<br>Добро — то, что способствует сохранению и развитию группы.<br>Зло — то, что сокращает её численность или разрушает её целостность.<br>Разве это не закрывает вопрос?",
+      "media": [],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31734"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:45:35.156Z"
+    },
+    {
+      "id": "vk:3972090_31707",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31707",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2026-01-12T10:35:11.000Z",
+      "lang": "ru",
+      "text": "Я просто рассказал как я живу последние 6 месяцев.\nИ на хабре разработчики начали молиться. С каких это пор там столько верующих?\nhttp://habr.com/ru/articles/984026/comments/#comment_29367254",
+      "html": "Я просто рассказал как я живу последние 6 месяцев.<br>И на хабре разработчики начали молиться. С каких это пор там столько верующих?<br><a href=\"http://habr.com/ru/articles/984026/comments/#comment_29367254\">habr.com/ru/article...</a>",
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://sun9-64.userapi.com/s/v1/ig2/oGfk0NeQOVNT7E3NTWuLzznhcY-X7L4aZ9gBHQvoyFE2isKTrc-G9yVULEzhvTKzYA8ymc8roT6tXmMf5ed9fgmT.jpg?quality=95&as=32x45,48x67,72x101,108x152,160x225,240x337,360x505,480x674,540x758,640x898,720x1010,1080x1516,1170x1642&from=bu&u=1QxYBc5_fpkZlho2HdueGgKM6RSaNwbkw05WlHh8oX4&cs=1080x0",
+          "alt": "",
+          "file": "/archive/media/vk-3972090_31707-1.jpg"
+        }
+      ],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31707"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:47:51.173Z"
+    },
+    {
+      "id": "vk:3972090_31704",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31704",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2026-01-09T00:44:45.000Z",
+      "lang": "ru",
+      "text": "1 год роста. +6000 подписчиков. +500 подписчиков в месяц.",
+      "html": "1 год роста. +6000 подписчиков. +500 подписчиков в месяц.",
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://sun9-64.userapi.com/s/v1/ig2/IhmDFvLsSo8UFnPfEaOwnlVW6w0OKCCifnQNUDWAortOBfUXygVWvPQhh8anv8RYKijeHYLNxgquEE_GYfPpi0HI.jpg?quality=95&as=32x23,48x34,72x51,108x77,160x114,240x170,360x256,480x341,540x383,640x454,720x511,1080x767,1280x909,1440x1022,1586x1126&from=bu&u=nU_EGO3n1wrJhBUyHCkFkgZQI74ztbej493fiwkN9to&cs=640x0",
+          "alt": "",
+          "file": "/archive/media/vk-3972090_31704-1.jpg"
+        }
+      ],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31704"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:45:35.156Z"
+    },
+    {
+      "id": "vk:3972090_31703",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31703",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2026-01-08T22:08:31.000Z",
+      "lang": "en",
+      "text": "http://github.com/link-foundation/start\n0.20.4 version released\nbun install -g start-command",
+      "html": "<a href=\"http://github.com/link-foundation/start\">github.com/link-found...</a><br>0.20.4 version released<br>bun install -g start-command",
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://sun9-9.userapi.com/s/v1/ig2/638LagJWWlIY-KcrLP5SmFsJQHbYDvcIaCiMP-kwjhiOeQWiJTsHKGVYDjGP-ABs6kzwLYWHatEOEZ-en6-smDoCMJnV7w.jpg?quality=95&as=32x39,48x59,72x88,108x132,160x196,240x294,360x441,480x588,540x661,640x784,720x881,1080x1322,1280x1567,1440x1763,1730x2118&from=bu&u=rlIsc6d-9-VtbQjM7gXg8m9kFvaJFZPHHiadAz2EIyo&cs=1080x0",
+          "alt": "",
+          "file": "/archive/media/vk-3972090_31703-1.jpg"
+        }
+      ],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31703"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:47:51.173Z"
+    },
+    {
+      "id": "vk:3972090_31702",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31702",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2026-01-08T14:19:24.000Z",
+      "lang": "ru",
+      "text": "",
+      "html": "",
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://sun9-15.userapi.com/s/v1/ig2/fwAz-av6LNW9RVhS7Np5mHxVO_M6HpXExM-2KiUzXYodPpr7XIHYAR6oYMtpipwBq4C1KGtsLHXr4YRf01wgGHne.jpg?quality=95&as=32x48,48x72,72x108,108x162,160x240,240x360,360x540,480x720,540x810,640x960,720x1080,800x1200&from=bu&u=EzJm51AyUcjRxVfS_mJM3NOakQAviuvzQ9PKW9rIX4Y&cs=800x0",
+          "alt": "",
+          "file": "/archive/media/vk-3972090_31702-1.jpg"
+        }
+      ],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31702"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z"
+    },
+    {
+      "id": "vk:3972090_31701",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31701",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2026-01-08T14:19:13.000Z",
+      "lang": "ru",
+      "text": "",
+      "html": "",
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://sun9-51.userapi.com/s/v1/ig2/EM0M7IPR4klA98S9KDjU0Lw0pdZS2tl1Z9ye7EqETeYzg8LnuwxvlNUXs_NvSnymHHvVlqQojlHDm68osKOuqz9F.jpg?quality=95&as=32x48,48x72,72x107,108x161,160x238,240x358,360x536,480x715,540x804,640x953,720x1073,784x1168&from=bu&u=tFPQFsV57nbD8rwRSPGp5lVCieVMWhorgoyTveaPnRg&cs=784x0",
+          "alt": "",
+          "file": "/archive/media/vk-3972090_31701-1.jpg"
+        }
+      ],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31701"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z"
+    },
+    {
+      "id": "vk:3972090_31699",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31699",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2026-01-08T13:40:54.000Z",
+      "lang": "en",
+      "text": "http://github.com/link-foundation/start\n0.19.0 version released\nbun install -g start-command",
+      "html": "<a href=\"http://github.com/link-foundation/start\">github.com/link-found...</a><br>0.19.0 version released<br>bun install -g start-command",
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://sun9-56.userapi.com/s/v1/ig2/ugn7dXMnEdJVA-eGasg2m8DL5lUE597DsbnnWQQyKk-rUAgs-fnBvXFIDRNYjslgi531YIUBjGlLNMq0lUzPyP3u.jpg?quality=95&as=32x40,48x60,72x90,108x135,160x200,240x299,360x449,480x599,540x673,640x798,720x898,1080x1347,1280x1596,1440x1796,1740x2170&from=bu&u=x5m-QsZaGbrxKxbc11xr00bKIRm0YB_BB_pT623NaoI&cs=1080x0",
+          "alt": "",
+          "file": "/archive/media/vk-3972090_31699-1.jpg"
+        }
+      ],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31699"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:47:51.173Z"
+    },
+    {
+      "id": "vk:3972090_31694",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31694",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-12-30T17:05:54.000Z",
+      "lang": "en",
+      "text": "Do you want to create an issue on GitHub to test my programmer bot?",
+      "html": "Do you want to create an issue on GitHub to test my programmer bot?",
+      "media": [],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31694"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:45:35.156Z"
+    },
+    {
+      "id": "vk:3972090_31693",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31693",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-12-30T17:05:43.000Z",
+      "lang": "ru",
+      "text": "Хочешь создать issue на GitHub, чтобы испытать моего бота-программиста?",
+      "html": "Хочешь создать issue на GitHub, чтобы испытать моего бота-программиста?",
+      "media": [],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31693"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:45:35.156Z"
+    },
+    {
+      "id": "vk:3972090_31692",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31692",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-12-30T17:05:35.000Z",
+      "lang": "en",
+      "text": "Happy upcoming new year",
+      "html": "Happy upcoming new year",
+      "media": [],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31692"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:45:35.156Z"
+    },
+    {
+      "id": "vk:3972090_31691",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31691",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-12-30T17:05:27.000Z",
+      "lang": "ru",
+      "text": "С наступающим новым годом",
+      "html": "С наступающим новым годом",
+      "media": [],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31691"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:45:35.156Z"
+    },
+    {
+      "id": "vk:3972090_31689",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31689",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-12-28T16:32:45.000Z",
+      "lang": "en",
+      "text": "Our programming bot needs more tasks to work on.",
+      "html": "Our programming bot needs more tasks to work on.",
+      "media": [],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31689"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:45:35.156Z"
+    },
+    {
+      "id": "vk:3972090_31688",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31688",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-12-28T16:32:01.000Z",
+      "lang": "ru",
+      "text": "Нашему боту-программисту не хватает задач для решения.",
+      "html": "Нашему боту-программисту не хватает задач для решения.",
+      "media": [],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31688"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:45:35.156Z"
+    },
+    {
+      "id": "vk:3972090_31687",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31687",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-12-28T16:31:05.000Z",
+      "lang": "en",
+      "text": "I’m looking for the owner of an issue on GitHub so I can gift them a Pull Request.",
+      "html": "I’m looking for the owner of an issue on GitHub so I can gift them a Pull Request.",
+      "media": [],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31687"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:45:35.156Z"
+    },
+    {
+      "id": "vk:3972090_31686",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31686",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-12-28T16:30:08.000Z",
+      "lang": "ru",
+      "text": "Ищу владельца issue на GitHub, чтобы подарить ему Pull Request.",
+      "html": "Ищу владельца issue на GitHub, чтобы подарить ему Pull Request.",
+      "media": [],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31686"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:45:35.156Z"
+    },
+    {
+      "id": "vk:3972090_31685",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31685",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-12-27T16:19:46.000Z",
+      "lang": "en",
+      "text": "Do you want to become a pioneer in using associative theory and associative technologies?",
+      "html": "Do you want to become a pioneer in using associative theory and associative technologies?",
+      "media": [],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31685"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:45:35.156Z"
+    },
+    {
+      "id": "vk:3972090_31684",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31684",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-12-27T16:18:50.000Z",
+      "lang": "ru",
+      "text": "Хочешь стать пионером в использовании ассоциативной теории и ассоциативных технологий?",
+      "html": "Хочешь стать пионером в использовании ассоциативной теории и ассоциативных технологий?",
+      "media": [],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31684"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:45:35.156Z"
+    },
+    {
+      "id": "vk:3972090_31680",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31680",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-12-25T10:35:20.000Z",
+      "lang": "ru",
+      "text": "",
+      "html": "",
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://sun9-49.userapi.com/s/v1/ig2/6tp8TvLuVgkwso18-G2DAM9Jrhxu23w1AE5Nyo80Iiw1HStIqI1GvKBQ6MHWBWLd79UHNLmydogkGBq-NMb2sMQE.jpg?quality=95&as=32x19,48x29,72x43,108x65,160x96,240x144,360x216,480x287,540x323,640x383,720x431,1080x647,1280x766,1440x862,2560x1533&from=bu&u=uhFy2Pyke8ua3j0ttiSo60OOxryJAsH8pJYJAFjMz7c&cs=640x0",
+          "alt": "",
+          "file": "/archive/media/vk-3972090_31680-1.jpg"
+        }
+      ],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31680"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z"
+    },
+    {
+      "id": "vk:3972090_31679",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31679",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-12-25T10:13:11.000Z",
+      "lang": "en",
+      "text": "Urgent! Today! Right now! Looking for GitHub repository owners who have a love for AI.",
+      "html": "Urgent! Today! Right now! Looking for GitHub repository owners who have a love for AI.",
+      "media": [],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31679"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:45:35.156Z"
+    },
+    {
+      "id": "vk:3972090_31678",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31678",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-12-25T10:12:37.000Z",
+      "lang": "ru",
+      "text": "Срочно! Прямо сегодня! Сейчас! Нужны владельцы репозиториев на GitHub, у которых есть любовь к ИИ.",
+      "html": "Срочно! Прямо сегодня! Сейчас! Нужны владельцы репозиториев на GitHub, у которых есть любовь к ИИ.",
+      "media": [],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31678"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:45:35.156Z"
+    },
+    {
+      "id": "vk:3972090_31672",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31672",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-12-21T01:00:10.000Z",
+      "lang": "ru",
+      "text": "(обучение: мемоизация генерализация демемоизация)",
+      "html": "(обучение: мемоизация генерализация демемоизация)",
+      "media": [],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31672"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:45:35.156Z"
+    },
+    {
+      "id": "vk:3972090_31671",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31671",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-12-21T00:59:56.000Z",
+      "lang": "en",
+      "text": "(learning: memoization generalization dememoization)",
+      "html": "(learning: memoization generalization dememoization)",
+      "media": [],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31671"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:45:35.156Z"
+    },
+    {
+      "id": "vk:3972090_31667",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31667",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-12-06T07:56:51.000Z",
+      "lang": "ru",
+      "text": "",
+      "html": "",
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://sun9-68.userapi.com/s/v1/ig2/LRcG9oOpZWW0J9R9mYHUd0jJ26QR5q5cNSzEwtM6YEMklPw4HkEyMoBZtlNQiQ9jlAS20Cme_frtW2CWQt8AyvCU.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&u=uc1TIR7Op5wRmlX-sCOBjgrKvL22FBDr2T4h76PmTEc&cs=640x0",
+          "alt": "",
+          "file": "/archive/media/vk-3972090_31667-1.jpg"
+        }
+      ],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31667"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z"
+    },
+    {
+      "id": "vk:3972090_31666",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31666",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-12-05T16:26:17.000Z",
+      "lang": "en",
+      "text": "To each according to their need.\nEverything is a need.\nThere are needs for receiving, and there are needs for giving.",
+      "html": "To each according to their need.<br>Everything is a need.<br>There are needs for receiving, and there are needs for giving.",
+      "media": [],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31666"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:45:35.156Z"
+    },
+    {
+      "id": "vk:3972090_31665",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31665",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-12-05T16:25:21.000Z",
+      "lang": "ru",
+      "text": "Каждому по потребности.\nВсё есть потребность.\nЕсть потребности в получении, а есть потребности в отдаче.",
+      "html": "Каждому по потребности.<br>Всё есть потребность.<br>Есть потребности в получении, а есть потребности в отдаче.",
+      "media": [],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31665"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:45:35.156Z"
+    },
+    {
+      "id": "vk:3972090_31664",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31664",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-12-04T20:05:39.000Z",
+      "lang": "ru",
+      "text": "",
+      "html": "",
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://sun9-8.userapi.com/s/v1/ig2/mbbju8UvXXgcxDKFuyjxal-feK4f-dXlYA1Z8YwOxugSkYRIKdSVnPMSmOgFneEMC4hEO5OntpAMnhn_cUxXkGQO.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,1080x1440,1280x1707,1440x1920,1920x2560&from=bu&u=oxY5XsJDqudAU2Bm9IgzAISavHg6ZQY-vLyqZj4Iqvg&cs=1080x0",
+          "alt": "",
+          "file": "/archive/media/vk-3972090_31664-1.jpg"
+        }
+      ],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31664"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z"
+    },
+    {
+      "id": "vk:3972090_31662",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31662",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-12-04T12:56:22.000Z",
+      "lang": "ru",
+      "text": "",
+      "html": "",
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://sun9-39.userapi.com/s/v1/ig2/Ca_Sqz2MrtL1pfaV9wzpivmb3W2TR2WezsFlvcTliMXDDiqtuxTuZShkWqtY_CvG3oJtQ3ukNP3jz32yr-KUAjFU.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&u=JWykKGimVN54ADBzP5Uh-2YM-rgcO1Z9K82UQh2rPr4&cs=640x0",
+          "alt": "",
+          "file": "/archive/media/vk-3972090_31662-1.jpg"
+        }
+      ],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31662"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z"
+    },
+    {
+      "id": "vk:3972090_31661",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31661",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-12-04T12:23:33.000Z",
+      "lang": "en",
+      "text": "Links Notation: A universal notation based on references and links\nhttp://producthunt.com/products/links-notation",
+      "html": "Links Notation: A universal notation based on references and links<br><a href=\"http://producthunt.com/products/links-notation\">producthunt.com/products/l...</a>",
+      "media": [],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31661"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:47:51.173Z"
+    },
+    {
+      "id": "vk:3972090_31660",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31660",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-12-03T21:43:27.000Z",
+      "lang": "ru",
+      "text": "",
+      "html": "",
+      "media": [
+        {
+          "type": "video",
+          "url": "https://vk.com/video3972090_456239814",
+          "poster": "https://iv.okcdn.ru/getVideoPreview?id=9464251419386&idx=10&type=39&tkn=ET-fdM0SyLaw8SzpHC7H0EhmOJI&fn=vid_t",
+          "alt": "",
+          "posterFile": "/archive/media/vk-3972090_31660-1-poster.jpg"
+        }
+      ],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31660"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z"
+    },
+    {
+      "id": "vk:3972090_31659",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31659",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-12-02T07:09:17.000Z",
+      "lang": "ru",
+      "text": "",
+      "html": "",
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://sun9-2.userapi.com/s/v1/ig2/fVouXOVpUQytbGwEpTU62amOCsJdwsr4jOgl5TsUtA7Zp4ljbnrQBWAtYzpwigDr5Vx4u30QZFZgESCLNc9g9GKY.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x959,1440x1079,2560x1919&from=bu&u=0X-eCxJzPJOzFZQhx1OYSVnMAQ4JYR4XBU33c-mXjCM&cs=640x0",
+          "alt": "",
+          "file": "/archive/media/vk-3972090_31659-1.jpg"
+        }
+      ],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31659"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z"
+    },
+    {
+      "id": "vk:3972090_31656",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31656",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-11-24T13:27:40.000Z",
+      "lang": "ru",
+      "text": "",
+      "html": "",
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://sun9-39.userapi.com/s/v1/ig2/mZ6BHuuimVw9P7ngnphzo9IoXFEAmqs_DnccaYm5cq4BkIUpwOJFU5No-bWhnA9pKvYOSyGeFQ7n7xC_pkmJUBny.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x959,1440x1079,2560x1919&from=bu&u=dQyhFd8YWC4ozWfU1tH-JC0JoLTjY6ik8tJwJLNDYsg&cs=640x0",
+          "alt": "",
+          "file": "/archive/media/vk-3972090_31656-1.jpg"
+        }
+      ],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31656"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z"
+    },
+    {
+      "id": "vk:3972090_31655",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31655",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-11-24T06:21:13.000Z",
+      "lang": "ru",
+      "text": "",
+      "html": "",
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://sun9-81.userapi.com/s/v1/ig2/SgoZEo54u-lr8KDQ64Ric7sTX92Q_DdIfsfTPEg9BGyo_1sUdoGRxsrwbHiEEE8Nu91e8aZFsxcciIgANPQ8jCR2.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x959,1440x1079,2560x1919&from=bu&u=UssNDrwI61uGwg7HeapfPv3xgVvBf7tUgCrgorivWUE&cs=640x0",
+          "alt": "",
+          "file": "/archive/media/vk-3972090_31655-1.jpg"
+        }
+      ],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31655"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z"
+    },
+    {
+      "id": "vk:3972090_31654",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31654",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-11-24T04:11:18.000Z",
+      "lang": "en",
+      "text": "Junction is a link.",
+      "html": "Junction is a link.",
+      "media": [],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31654"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:45:35.156Z"
+    },
+    {
+      "id": "vk:3972090_31651",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31651",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-11-22T11:49:17.000Z",
+      "lang": "en",
+      "text": "Every wave is a link.",
+      "html": "Every wave is a link.",
+      "media": [],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31651"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:45:35.156Z"
+    },
+    {
+      "id": "vk:3972090_31650",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31650",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-11-22T11:39:08.000Z",
+      "lang": "en",
+      "text": "All I am is a wave.",
+      "html": "All I am is a wave.",
+      "media": [],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31650"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:45:35.156Z"
+    },
+    {
+      "id": "vk:3972090_31636",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31636",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-11-18T17:19:16.000Z",
+      "lang": "ru",
+      "text": "- Заведи аккаунт на GitHub\n- Создай репозиторий\n- Создай issue в репозитории\n- Дай ссылку на issue мне",
+      "html": "- Заведи аккаунт на GitHub<br>- Создай репозиторий<br>- Создай issue в репозитории<br>- Дай ссылку на issue мне",
+      "media": [],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31636"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:45:35.156Z"
+    },
+    {
+      "id": "vk:3972090_31622",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31622",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-11-18T13:05:30.000Z",
+      "lang": "ru",
+      "text": "Если ты любишь жаловаться в VK на сообщения в личке, то пожалуйста, покинь круг моих друзей.",
+      "html": "Если ты любишь жаловаться в VK на сообщения в личке, то пожалуйста, покинь круг моих друзей.",
+      "media": [],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31622"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:45:35.156Z"
+    },
+    {
+      "id": "vk:3972090_31618",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31618",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-11-18T11:11:06.000Z",
+      "lang": "ru",
+      "text": "В VK меня заблокировали за то, что я поздравлял человека с днём рождения.\nВот такая вот у моих друзей благодарность за поздравления.\nЕсли ты один их таких друзей, который готов за поздравление с днём рождения пожаловаться на меня в VK - то я прошу сразу от меня отписаться, мы больше не друзья.\nВсех, кто так будет делать я заблокирую. Не просите потом обратно доступ к моей странице.",
+      "html": "В VK меня заблокировали за то, что я поздравлял человека с днём рождения.<br>Вот такая вот у моих друзей благодарность за поздравления.<br>Если ты один их таких друзей, который готов за поздравление с днём рождения пожаловаться на меня в VK - то я прошу сразу от меня отписаться, мы больше не друзья.<br>Всех, кто так будет делать я заблокирую. Не просите потом обратно доступ к моей странице.",
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://sun9-54.userapi.com/s/v1/ig2/nrIurwESYwJdzAdzPRxIAkEXyKSHJWpKz-PDQW0JQNnt-S_y-pUQYIe9mShcTYC3XNi4pmx-GvpUia9do-yQ727O.jpg?quality=95&as=32x31,48x46,72x69,108x103,160x153,240x229,360x343,480x458,540x515,640x610,720x687,1080x1030,1280x1221,1440x1373,1644x1568&from=bu&u=94dlClADimgYZAMSfr2fr9Rmkdv50HymDohZgAZALAw&cs=640x0",
+          "alt": "",
+          "file": "/archive/media/vk-3972090_31618-1.jpg"
+        }
+      ],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31618"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-20T20:10:12.464Z"
+    },
+    {
+      "id": "vk:3972090_31615",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31615",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-11-17T08:01:34.000Z",
+      "lang": "en",
+      "text": "Anthropic has banned our account, money refunded, appeal is sent.",
+      "html": "Anthropic has banned our account, money refunded, appeal is sent.",
+      "media": [],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31615"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:45:35.156Z"
+    },
+    {
+      "id": "x:1990323098562994545",
+      "network": "x",
+      "url": "https://x.com/drakonard/status/1990323098562994545",
+      "author": {
+        "name": "Konstantin Diachenko",
+        "handle": "drakonard",
+        "url": "https://x.com/drakonard"
+      },
+      "publishedAt": "2025-11-17T07:36:19.000Z",
+      "lang": "en",
+      "text": "@AnthropicAI has banned our account, money refunded, appeal is sent.",
+      "html": "<a href=\"https://x.com/AnthropicAI\">@AnthropicAI</a> has banned our account, money refunded, appeal is sent.",
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/G58MOT7aEAAV6Wl.jpg",
+          "alt": "",
+          "file": "/archive/media/x-1990323098562994545-1.jpg"
+        },
+        {
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/G58MOT7bQAA_hpB.jpg",
+          "alt": "",
+          "file": "/archive/media/x-1990323098562994545-2.jpg"
+        },
+        {
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/G58MOTpaIAAm4qS.jpg",
+          "alt": "",
+          "file": "/archive/media/x-1990323098562994545-3.jpg"
+        },
+        {
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/G58MOT8bgAIre1I.jpg",
+          "alt": "",
+          "file": "/archive/media/x-1990323098562994545-4.jpg"
+        }
+      ],
+      "embed": {
+        "type": "x",
+        "id": "1990323098562994545"
+      },
+      "inReplyTo": "https://x.com/AnthropicAI",
+      "archivedAt": "2026-10-19T16:42:53.029Z"
+    },
+    {
+      "id": "vk:3972090_31602",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31602",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-11-13T05:34:07.000Z",
+      "lang": "ru",
+      "text": "",
+      "html": "",
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://sun9-66.userapi.com/s/v1/ig2/SR9sqtdSSMHu-KJI4BX4dD4bHRMDb0rSKkG9--UeED9fnpTmUJRMf-cbbGATvAyWOyswokGtE4kgsMbyOVskNkSY.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,1080x1440,1280x1707,1440x1920,1920x2560&from=bu&u=orbnHD_g7fSzD7LMkVve9b2_XPeHDTKJqnyAZbCGO8M&cs=1080x0",
+          "alt": "",
+          "file": "/archive/media/vk-3972090_31602-1.jpg"
+        }
+      ],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31602"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z"
+    },
+    {
+      "id": "vk:3972090_31600",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31600",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-11-08T05:21:35.000Z",
+      "lang": "ru",
+      "text": "Ищу тех кто готов реализовать свою цель или мечту совершенно бесплатно и прямо сейчас.\nСделать своего бота, свой сайт, своё приложение, любую автоматизированную систему, обработать файлы, картинки, документы и многое другое, ограничение только одно - твоя фантазия.\nС тебя ссылка на issue где описана твоя мечта или цель - с меня запуск выполнения этой задачи нашим роботом-программистом, который в данный момент находится на этапе бэта-тестирования. При этом первый черновик будет готов уже через 5-15 минут. И дальше его можно будет продолжать доработатывать, если вдруг он не будет соответствовать твоим требованиям сразу.\nДля \u0000этого нужно быть готовым зарегистрироваться на GitHub и создать репозиторий и создать issue.\nИли можно уже быть владельцем репозитория на GitHub.\nIssue это задача/вопрос/предложение/потребность.\nРепозиторий это папка с файлами, для которой отслеживается история изменений (версии) на GitHub. Обычно в этой папке хранится исходный код, но там могут быть любые файлы.\nGitHub это хостинг платформа, которая позволяет размещать твой исходный код публично или приватно, и поддерживает весь процесс разработки от MVP до разработки программного обеспечения промышленных масштабов. Через GitHub Pages можно бесплатно публиковать твой веб-сайт прямо на GitHub. Через GitHub Actions для публичных репозиториев можно получить бесплатную автоматизацию различного рода задач, например тестирование правок в коде и публикацию новых версий твоего ПО.\nПиши в личку @konard",
+      "html": "Ищу тех кто готов реализовать свою цель или мечту совершенно бесплатно и прямо сейчас.<br>Сделать своего бота, свой сайт, своё приложение, любую автоматизированную систему, обработать файлы, картинки, документы и многое другое, ограничение только одно - твоя фантазия.<br>С тебя ссылка на issue где описана твоя мечта или цель - с меня запуск выполнения этой задачи нашим роботом-программистом, который в данный момент находится на этапе бэта-тестирования. При этом первый черновик будет готов уже через 5-15 минут. И дальше его можно будет продолжать доработатывать, если вдруг он не будет соответствовать твоим требованиям сразу.<br>Для \u0000этого нужно быть готовым зарегистрироваться на GitHub и создать репозиторий и создать issue.<br>Или можно уже быть владельцем репозитория на GitHub.<br>Issue это задача/вопрос/предложение/потребность.<br>Репозиторий это папка с файлами, для которой отслеживается история изменений (версии) на GitHub. Обычно в этой папке хранится исходный код, но там могут быть любые файлы.<br>GitHub это хостинг платформа, которая позволяет размещать твой исходный код публично или приватно, и поддерживает весь процесс разработки от MVP до разработки программного обеспечения промышленных масштабов. Через GitHub Pages можно бесплатно публиковать твой веб-сайт прямо на GitHub. Через GitHub Actions для публичных репозиториев можно получить бесплатную автоматизацию различного рода задач, например тестирование правок в коде и публикацию новых версий твоего ПО.<br>Пиши в личку <a href=\"https://vk.com/id3972090\">@konard</a>",
+      "media": [],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31600"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:47:51.173Z"
+    },
+    {
+      "id": "vk:3972090_31592",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31592",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-11-03T06:26:52.000Z",
+      "lang": "en",
+      "text": "http://github.com/konard/hh-job-application-automation made without direct code editing using http://github.com/deep-assistant/hive-mind",
+      "html": "<a href=\"http://github.com/konard/hh-job-application-automation\">github.com/konard/hh-...</a> made without direct code editing using <a href=\"http://github.com/deep-assistant/hive-mind\">github.com/deep-assis...</a>",
+      "media": [
+        {
+          "type": "video",
+          "url": "https://vk.com/video3972090_456239813",
+          "poster": "https://iv.okcdn.ru/getVideoPreview?id=9130984868602&idx=15&type=39&tkn=yBlUK5HuYj3XdKQYu8pMoEJGGjI&fn=vid_u",
+          "alt": "",
+          "posterFile": "/archive/media/vk-3972090_31592-1-poster.jpg"
+        }
+      ],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31592"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:47:51.173Z"
+    },
+    {
+      "id": "vk:3972090_31590",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31590",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-11-02T13:25:03.000Z",
+      "lang": "ru",
+      "text": "",
+      "html": "",
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://sun9-63.userapi.com/s/v1/ig2/8BKCRG4ReplKDmis9oj2Plyb7QQ871hSHWsDhTG9V_pj2PbAnfFAcrb-SVn0LTCVhMvz2IUQKiUX_ZuD0qPqlogj.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x854,720x960,1080x1441,1280x1708,1440x1921,1919x2560&from=bu&u=1zOJLFdidsPHRoTPwnbww9Ky_iL5THyHix7l7zj7rQY&cs=1080x0",
+          "alt": "",
+          "fileError": "not downloadable on 2026-10-20 (the CDN returned no image)"
+        }
+      ],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31590"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z"
+    },
+    {
+      "id": "vk:3972090_31589",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31589",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-11-02T05:13:33.000Z",
+      "lang": "en",
+      "text": "deep-assistant.github.io/models - the world's first website that uses Links Notation as data exchange format for public database of AI models.",
+      "html": "<a href=\"http://deep-assistant.github.io/models\">deep-assistant.github.io/models</a> - the world&#x27;s first website that uses Links Notation as data exchange format for public database of AI models.",
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://sun9-71.userapi.com/s/v1/ig2/I9B6xWN9tdkdkUdDC4NcU62Z-OAfrjAkc5NPxvhI9dXa6U_xqqQ1DR5WwGFAkHHQCoSO1aE1IY-yYjfdyvhKol5k.jpg?quality=95&as=32x21,48x31,72x47,108x70,160x103,240x155,360x233,480x310,540x349,640x414,720x465,1080x698,1280x827,1440x931,2560x1655&from=bu&u=RrbluMHE1ryBj25T65xs9AkNPRj60YKIt79AGM2Plrs&cs=640x0",
+          "alt": "",
+          "file": "/archive/media/vk-3972090_31589-1.jpg"
+        }
+      ],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31589"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:45:35.156Z"
+    },
+    {
+      "id": "vk:3972090_31586",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31586",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-11-02T00:50:02.000Z",
+      "lang": "ru",
+      "text": "Нашу петицию уже подписало 99 человек.\nКогда каждый из тех кто подписал будет приглашать подписать петицию всего по 1 человеку в день, то количество подписавших будет удваиваться каждый день.\nИ когда те кого мы пригласили подписать петицию будут делать так же, то всего за 27 дней можно собрать больше 8 млрд подписей, то есть сделать так, что всё население планеты подпишет петицию.\nПри этом каждому потребуется пригласить не более 27 человек.\nhttp://www.change.org/p/declare-all-the-world-s-resources-and-knowledge-as-the-common-heritage-of-all-people",
+      "html": "Нашу петицию уже подписало 99 человек.<br>Когда каждый из тех кто подписал будет приглашать подписать петицию всего по 1 человеку в день, то количество подписавших будет удваиваться каждый день.<br>И когда те кого мы пригласили подписать петицию будут делать так же, то всего за 27 дней можно собрать больше 8 млрд подписей, то есть сделать так, что всё население планеты подпишет петицию.<br>При этом каждому потребуется пригласить не более 27 человек.<br><a href=\"http://www.change.org/p/declare-all-the-world-s-resources-and-knowledge-as-the-common-heritage-of-all-people\">www.change.org/p/declare-...</a>",
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://sun9-54.userapi.com/s/v1/ig2/UeUGVrRkookScbxb2RP3f6alJH9ntEyzp5uoBH6MsiP6HioVW36h1xke6HdZdo0GKSartN_uzHRH4JsVLyeH5XWT.jpg?quality=95&as=32x69,48x104,72x156,108x234,160x347,240x520,360x780,480x1040,540x1171,640x1387,720x1561,1080x2341,1181x2560&from=bu&u=q7vVNXEjM7fKWOrcjET4rE9GeNsMGnjteoSmwYBrcWM&cs=640x0",
+          "alt": "",
+          "file": "/archive/media/vk-3972090_31586-1.jpg"
+        }
+      ],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31586"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:47:51.173Z"
+    },
+    {
+      "id": "vk:3972090_31583",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31583",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-11-01T10:50:18.000Z",
+      "lang": "ru",
+      "text": "Хочу предложить свою кандидатуру на работу в хорошую команду, компанию или организацию.\nО предложениях писать в личку, буду рассматривать в течении ближайших 3-х месяцев.\nhttp://hh.ru/resume/80d55a81ff0171bfa80039ed1f743266675357",
+      "html": "Хочу предложить свою кандидатуру на работу в хорошую команду, компанию или организацию.<br>О предложениях писать в личку, буду рассматривать в течении ближайших 3-х месяцев.<br><a href=\"http://hh.ru/resume/80d55a81ff0171bfa80039ed1f743266675357\">hh.ru/resume/80d...</a>",
+      "media": [],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31583"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:47:51.173Z"
+    },
+    {
+      "id": "vk:3972090_31582",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31582",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-11-01T08:05:07.000Z",
+      "lang": "en",
+      "text": "Hyperlink is a link.",
+      "html": "Hyperlink is a link.",
+      "media": [],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31582"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:45:35.156Z"
+    },
+    {
+      "id": "vk:3972090_31581",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31581",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-11-01T08:04:42.000Z",
+      "lang": "ru",
+      "text": "Гиперссылка это связь.",
+      "html": "Гиперссылка это связь.",
+      "media": [],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31581"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:45:35.156Z"
+    },
+    {
+      "id": "vk:3972090_31580",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31580",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-11-01T07:43:02.000Z",
+      "lang": "en",
+      "text": "http://github.com/deep-assistant/hive-mind - this is how work of Hive Mind looks like. Around 1800 pull requests per October alone, more than 700 pull requests merged.",
+      "html": "<a href=\"http://github.com/deep-assistant/hive-mind\">github.com/deep-assis...</a> - this is how work of Hive Mind looks like. Around 1800 pull requests per October alone, more than 700 pull requests merged.",
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://sun9-50.userapi.com/s/v1/ig2/vSZyM0-15iwJJFVzJfle4HZGGbB8ppC5hSGbgCLj060eA1r424KZgu8h_NVLlU5TBMfPCfV19IKZEn_brKBdBBzF.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x959,1440x1079,2560x1919&from=bu&u=IJURmC6knHBG2nWJXpuUJUubhUaKSfZxky5jF7kviTU&cs=640x0",
+          "alt": "",
+          "file": "/archive/media/vk-3972090_31580-1.jpg"
+        }
+      ],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31580"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:47:51.173Z"
+    },
+    {
+      "id": "vk:3972090_31579",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31579",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-10-31T16:49:24.000Z",
+      "lang": "en",
+      "text": "http://github.com/deep-assistant/hive-mind now uses 0.11.2 version of links-notation, with fixed 0 level indentation support.\nGet fresh version of links-notation here: http://github.com/link-foundation/links-notation",
+      "html": "<a href=\"http://github.com/deep-assistant/hive-mind\">github.com/deep-assis...</a> now uses 0.11.2 version of links-notation, with fixed 0 level indentation support.<br>Get fresh version of links-notation here: <a href=\"http://github.com/link-foundation/links-notation\">github.com/link-found...</a>",
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://sun9-56.userapi.com/s/v1/ig2/YWPH8TS3a-2v2F4VW-nVV5MvR0MSaMR7S8RWVEccKU2xUsy5wdW7Y0kSJdGCJDJ74WABsgrXSUn82soX7olWFp3M.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x959,1440x1079,2560x1919&from=bu&u=6Aq0vwwGPEwyS-722bOYbBsEd-llrmm6JKk2B945Lrc&cs=640x0",
+          "alt": "",
+          "fileError": "not downloadable on 2026-10-20 (the CDN returned no image)"
+        }
+      ],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31579"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:47:51.173Z"
+    },
+    {
+      "id": "vk:3972090_31568",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31568",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-10-23T09:43:41.000Z",
+      "lang": "ru",
+      "text": "Space Room | Космос\nПриход китайских многоразовых ракет это не вопрос про «когда-нибудь» или «ну может через пару лет», а уже «через несколько месяцев»\nLandSpace объявили об успешном прохождении серии наземных тестов, включая прожиг, перед орбитальным полётом их ракеты ZQ-3. Если на пальцах, то это такой клон Falcon 9, но из стали, на метане и диаметром 4.5 метра. Пока что опасения вызывают проблемы с двигателем для второй ступени. А первый тест с посадкой должен пройти в начале 2026.\nИ как только хотя бы одна китайская частная или государственная организация решит формулу многоразовой системы — до конца десятилетия её решит ещё почти десяток компаний, и рынок начнёт меняться ещё быстрее.\ntme/starbasepost/3371tme/starbasepost/3371",
+      "html": "<blockquote><a href=\"https://vk.com/wall-3855883_274242\">Space Room | Космос</a><br>Приход китайских многоразовых ракет это не вопрос про «когда-нибудь» или «ну может через пару лет», а уже «через несколько месяцев»<br>LandSpace объявили об успешном прохождении серии наземных тестов, включая прожиг, перед орбитальным полётом их ракеты ZQ-3. Если на пальцах, то это такой клон Falcon 9, но из стали, на метане и диаметром 4.5 метра. Пока что опасения вызывают проблемы с двигателем для второй ступени. А первый тест с посадкой должен пройти в начале 2026.<br>И как только хотя бы одна китайская частная или государственная организация решит формулу многоразовой системы — до конца десятилетия её решит ещё почти десяток компаний, и рынок начнёт меняться ещё быстрее.<br>tme/starbasepost/3371tme/starbasepost/3371</blockquote>",
+      "media": [],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31568"
+      },
+      "repostOf": "https://vk.com/wall-3855883_274242",
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:45:35.156Z"
+    },
+    {
+      "id": "vk:3972090_31566",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31566",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2025-10-21T04:24:39.000Z",
+      "lang": "en",
+      "text": "The links theory is a link between graph theory and relational algebra.",
+      "html": "The links theory is a link between graph theory and relational algebra.",
+      "media": [],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31566"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:45:35.156Z"
+    },
+    {
+      "id": "x:1437792709566255106",
+      "network": "x",
+      "url": "https://x.com/drakonard/status/1437792709566255106",
+      "author": {
+        "name": "Konstantin Diachenko",
+        "handle": "drakonard",
+        "url": "https://x.com/drakonard"
+      },
+      "publishedAt": "2021-09-14T14:57:49.000Z",
+      "lang": "en",
+      "text": "Hello, @stephen_blum :) Is your @twitter stream from https://www.pubnub.com/developers/realtime-data-streams/twitter-stream/ is still online?",
+      "html": "Hello, @stephen_blum :) Is your <a href=\"https://x.com/twitter\">@twitter</a> stream from <a href=\"https://www.pubnub.com/developers/realtime-data-streams/twitter-stream/\">pubnub.com/developers/rea…</a> is still online?",
+      "media": [],
+      "embed": {
+        "type": "x",
+        "id": "1437792709566255106"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z",
+      "updatedAt": "2026-10-19T16:47:51.173Z"
+    },
+    {
+      "id": "x:1297535286906433538",
+      "network": "x",
+      "url": "https://x.com/drakonard/status/1297535286906433538",
+      "author": {
+        "name": "Konstantin Diachenko",
+        "handle": "drakonard",
+        "url": "https://x.com/drakonard"
+      },
+      "publishedAt": "2020-08-23T14:04:54.000Z",
+      "lang": "en",
+      "text": "StorJ: Graceful exit from saltlake.tardigrade.io satellite youtu.be/0hSd3R4_aoQ",
+      "html": "StorJ: Graceful exit from <a href=\"http://saltlake.tardigrade.io\">saltlake.tardigrade.io</a> satellite <a href=\"https://youtu.be/0hSd3R4_aoQ\">youtu.be/0hSd3R4_aoQ</a>",
+      "media": [],
+      "embed": {
+        "type": "x",
+        "id": "1297535286906433538"
+      },
+      "archivedAt": "2026-10-19T16:42:53.029Z"
+    }
+  ]
+}

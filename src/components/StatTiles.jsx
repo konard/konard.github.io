@@ -1,8 +1,13 @@
 import { formatCompact, formatNumber } from './format';
 
-export function buildStats(github, codingSince, now = new Date()) {
+// Repository counts only include original work of konard and of the related
+// organizations: forks, copies of client projects, mirrors and generated test
+// repositories are excluded (see scripts/repositories.cjs).
+export function buildStats(github, codingSince, now = new Date(), habr = null) {
+  const { totals } = github;
   const packages = github.registries.reduce((sum, r) => sum + r.packages, 0);
   const lifetime = github.registries.filter((r) => r.downloadsUnit === 'downloads total');
+  const habrViews = habr ? habr.articles.reduce((sum, a) => sum + a.statistics.views, 0) : 0;
   return [
     {
       id: 'contributions',
@@ -12,9 +17,21 @@ export function buildStats(github, codingSince, now = new Date()) {
     },
     {
       id: 'repos',
-      value: github.profile.publicRepos,
-      label: 'Public repositories',
-      hint: `${formatNumber(github.totals.ownRepositories)} original incl. organizations`,
+      value: totals.ownRepositories,
+      label: 'Original repositories',
+      hint: `${formatNumber(totals.personalRepositories)} personal + ${formatNumber(totals.organizationRepositories)} in organizations, no forks`,
+    },
+    {
+      id: 'organizations',
+      value: totals.organizations,
+      label: 'GitHub organizations',
+      hint: 'founded, led or co-created',
+    },
+    {
+      id: 'languages',
+      value: totals.languages,
+      label: 'Programming languages',
+      hint: 'detected by GitHub in original repositories',
     },
     { id: 'gists', value: github.profile.publicGists, label: 'Public gists', hint: 'snippets, notes & logs' },
     {
@@ -36,12 +53,28 @@ export function buildStats(github, codingSince, now = new Date()) {
       label: 'GitHub followers',
       hint: `following ${formatNumber(github.profile.following)}`,
     },
+    {
+      id: 'reputation',
+      value: github.stackOverflow.reputation,
+      label: 'Stack Overflow reputation',
+      hint: `member since ${github.stackOverflow.memberSince}`,
+    },
+    ...(habr
+      ? [
+          {
+            id: 'habr',
+            value: habrViews,
+            label: 'Habr article views',
+            hint: `${habr.articles.length} articles on links theory & Deep`,
+          },
+        ]
+      : []),
     { id: 'years', value: now.getFullYear() - codingSince, label: 'Years of coding', hint: `since ${codingSince}` },
   ];
 }
 
-export default function StatTiles({ github, codingSince }) {
-  const stats = buildStats(github, codingSince);
+export default function StatTiles({ github, codingSince, habr }) {
+  const stats = buildStats(github, codingSince, new Date(), habr);
   return (
     <ul className="stats" aria-label="Key numbers">
       {stats.map((s) => (

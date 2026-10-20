@@ -1,0 +1,9 @@
+# Extra public post URLs to archive (one per line; lines starting with # are ignored).
+# Supported: x.com/<user>/status/<id>, twitter.com/<user>/status/<id>, t.me/<channel>/<id>, vk.com/wall<owner>_<id>
+# X timeline is not publicly listable, so every tweet must be listed here.
+# Found via GitHub issue search (konard/twittermatrix#8, link-assistant/hive-mind#748) and web search.
+https://x.com/drakonard/status/1990323098562994545
+https://twitter.com/drakonard/status/1437792709566255106
+https://x.com/drakonard/status/1297535286906433538
+# VK posts are discovered automatically from https://vk.com/konard (own posts); pinned post:
+https://vk.com/wall3972090_31765

@@ -1,0 +1,43 @@
+// Helpers shared by the pages that list repositories.
+import repositories from '../data/repositories.json';
+
+export const allRepositories = repositories.items;
+export const ownRepositories = allRepositories.filter((r) => r.kind === 'own');
+const byName = new Map(allRepositories.map((r) => [r.fullName.toLowerCase(), r]));
+
+/** Repository record by "owner/name" (case-insensitive), or null. */
+export const repo = (fullName) => byName.get(fullName.toLowerCase()) || null;
+
+export const inField = (field, list = ownRepositories) => list.filter((r) => r.fields.includes(field));
+
+export const byStars = (a, b) => b.stars - a.stars || b.pushedAt.localeCompare(a.pushedAt);
+
+export const SORTS = {
+  stars: { label: 'Stars', compare: byStars },
+  updated: { label: 'Recently updated', compare: (a, b) => b.pushedAt.localeCompare(a.pushedAt) },
+  created: { label: 'Newest', compare: (a, b) => b.createdAt.localeCompare(a.createdAt) },
+  name: { label: 'Name', compare: (a, b) => a.fullName.localeCompare(b.fullName) },
+};
+
+export const KINDS = {
+  own: { label: 'Original', summary: 'original work: no forks, mirrors or client copies' },
+  client: { label: 'Client work', summary: 'copies of client projects kept for history' },
+  mirror: { label: 'Mirrors', summary: 'mirrors and copies of other repositories' },
+  noise: { label: 'Tests & placeholders', summary: 'test repositories and empty placeholders' },
+};
+
+/** Case-insensitive search in name, description, topics and languages. */
+export function matches(r, query) {
+  if (!query) return true;
+  const haystack = [r.fullName, r.description, ...(r.topics || []), ...(r.languages || [])]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase();
+  return query
+    .toLowerCase()
+    .split(/\s+/)
+    .filter(Boolean)
+    .every((word) => haystack.includes(word));
+}
+
+export const githubUrl = (r) => `https://github.com/${r.fullName}`;

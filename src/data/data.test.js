@@ -1,4 +1,6 @@
 import github from './github.json';
+import repositories from './repositories.json';
+import { fields, professions } from './fields';
 import {
   education,
   experience,
@@ -87,5 +89,89 @@ describe('scripts/build-data.cjs', () => {
     expect(isNoise({ name: 'pr-42-solution-draft-log' })).toBe(true);
     expect(isNoise({ name: 'log-it' })).toBe(false);
     expect(isNoise({ name: 'links-notation' })).toBe(false);
+  });
+});
+
+describe('scripts/repositories.cjs (issue #7)', () => {
+  const { buildRepositories, kindOf, fieldsOf, readCollected } = require('../../scripts/repositories.cjs');
+
+  test('committed repositories.json is up to date with the collected data', () => {
+    expect(buildRepositories({ write: false, repos: readCollected() })).toEqual(repositories);
+  });
+
+  test('forks are never collected and copies are classified', () => {
+    const own = { fullName: 'konard/problem-solving', owner: 'konard', name: 'problem-solving', description: '' };
+    expect(kindOf(own)).toBe('own');
+    expect(kindOf({ ...own, fullName: 'konard/Aboba-site', name: 'Aboba-site' })).toBe('client');
+    expect(kindOf({ ...own, fullName: 'konard/log-tmp-1', name: 'log-tmp-1' })).toBe('noise');
+    expect(kindOf({ ...own, fullName: 'konard/x_fork', name: 'x_fork' })).toBe('mirror');
+    expect(kindOf({ ...own, copyOf: 'deep-foundation/deeplinks' })).toBe('mirror');
+    expect(repositories.items.some((r) => r.fork)).toBe(false);
+  });
+
+  test('fields are assigned from keywords, languages and owners', () => {
+    const base = { owner: 'konard', description: '', topics: [], languages: [] };
+    expect(fieldsOf({ ...base, fullName: 'konard/p-vs-np', name: 'p-vs-np', language: 'Rocq' })).toContain('research');
+    expect(fieldsOf({ ...base, fullName: 'linksplatform/Memory', owner: 'linksplatform', name: 'Memory' })).toContain(
+      'associative',
+    );
+    expect(fieldsOf({ ...base, fullName: 'konard/zzz', name: 'zzz' })).toEqual(['other']);
+  });
+
+  test('own repositories match the original repository total', () => {
+    const own = repositories.items.filter((r) => r.kind === 'own');
+    expect(own.length).toBe(github.totals.ownRepositories);
+    expect(repositories.items.every((r) => r.fields.length > 0)).toBe(true);
+  });
+
+  test('every field has a description and professions point to original repositories', () => {
+    expect(fields.map((f) => f.id)).toEqual(repositories.fields);
+    const own = new Set(repositories.items.filter((r) => r.kind === 'own').map((r) => r.fullName));
+    const missing = professions.flatMap((p) => p.repos.map(([name]) => name)).filter((n) => !own.has(n));
+    expect(missing).toEqual([]);
+    professions.forEach((p) => expect(p.repos.length).toBeGreaterThanOrEqual(5));
+  });
+});
+
+describe('scripts/registries.cjs (issue #7)', () => {
+  const { sourceRepository } = require('../../scripts/registries.cjs');
+
+  test('every registry with packages has a card, the empty ones are listed', () => {
+    const ids = github.registries.map((r) => r.id);
+    expect(ids).toEqual(
+      expect.arrayContaining(['npm', 'crates', 'nuget', 'pypi', 'dockerhub', 'github-packages', 'go']),
+    );
+    github.registries.forEach((r) => {
+      expect(r.packages).toBeGreaterThan(0);
+      expect(r.top.length).toBeGreaterThan(0);
+      if (r.downloadsUnit) expect(r.downloads).toBe(Math.max(r.downloads, ...r.top.map((p) => p.downloads)));
+    });
+    const summary = github.packageRegistries;
+    expect(summary.checked).toBe(github.registries.length + summary.empty.length);
+    expect(summary.blocked.map((b) => b.id)).toEqual(['github-packages']);
+  });
+
+  test('the registries without a public listing are checked too (experiments/collect-other-registries.cjs)', () => {
+    const summary = github.packageRegistries;
+    expect(summary.notChecked).toEqual([]);
+    expect(summary.empty).toEqual(
+      expect.arrayContaining(['Hackage', 'CPAN', 'Lean Reservoir', 'Chocolatey', 'winget']),
+    );
+    expect(summary.checked).toBeGreaterThanOrEqual(33);
+  });
+
+  test('packages of client copies are not counted', () => {
+    const kinds = new Map(repositories.items.map((r) => [r.fullName.toLowerCase(), r.kind]));
+    const ghcr = github.registries.find((r) => r.id === 'github-packages');
+    ghcr.top.forEach((p) => expect(kinds.get(sourceRepository('github-packages', p)) ?? 'own').toBe('own'));
+    expect(github.packageRegistries.droppedPackages).toBeGreaterThan(0);
+  });
+
+  test('sourceRepository reads the GitHub repository of a package', () => {
+    expect(sourceRepository('npm', { repository: 'git+https://github.com/Link-Foundation/links-notation.git' })).toBe(
+      'link-foundation/links-notation',
+    );
+    expect(sourceRepository('github-packages', { name: 'konard/some-repo/service' })).toBe('konard/some-repo');
+    expect(sourceRepository('npm', { name: 'x' })).toBeNull();
   });
 });
