@@ -155,7 +155,7 @@ Tests check that the committed `src/data/github.json` and `src/data/repositories
 | X timeline discovery | The timeline needs a login; syndication returns an empty timeline. | Add tweet URLs to `data/post-urls.txt`, then rerun the archiver. |
 | Telegram feed | `t.me/drakonard` is a personal account; no public channel owned by konard was found. | Once a public channel exists, `t.me/s/<channel>` can be archived and shown with the post widget. |
 | VK embeds | `VK.Widgets.Post` needs a per-post `hash`, which is only issued to logged-in users, so VK posts are shown from the archive. | Hashes from the VK Share dialog. |
-| 2 VK pictures (`vk:3972090_31590`, `vk:3972090_31579`) | The CDN returns 404 for them even on the live page. They are marked with `fileError`, and the page falls back to the CDN link. | Nothing until VK serves them again. |
+| 2 VK pictures (`vk:3972090_31590`, `vk:3972090_31579`) | The CDN returns 404 for them even on the live page. They are marked with `fileError`; the page tries the CDN link and shows "Picture no longer available" when it fails. | Nothing until VK serves them again. |
 
 ## 7. Online research and existing components
 
@@ -193,6 +193,8 @@ Tests check that the committed `src/data/github.json` and `src/data/repositories
 | Art and other | ![art](screenshots/art.png) ![art-symbols](screenshots/art-symbols.png) |
 | Blog (English reader) | ![blog-en](screenshots/blog-en.png) |
 | Blog (Russian reader) | ![blog-ru](screenshots/blog-ru.png) |
+| Blog: archived pictures (served from `/archive/media/`) | ![blog-media](screenshots/blog-media.png) |
+| Blog: a picture the CDN no longer serves | ![blog-missing-picture](screenshots/blog-missing-picture.png) |
 
 ## 9. Refreshing the data
 

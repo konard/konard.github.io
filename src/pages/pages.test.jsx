@@ -179,6 +179,15 @@ describe('BlogPage', () => {
     expect(sources.filter((s) => !s.startsWith('/archive/media/') && !notArchived.has(s))).toEqual([]);
   });
 
+  it('replaces a picture the CDN no longer serves with a note, not a broken image', () => {
+    const { container } = render(<BlogPage initialLanguage="ru" />);
+    const url = archive.posts.flatMap((p) => p.media).find((m) => m.fileError).url;
+    const img = [...container.querySelectorAll('.post__media img')].find((i) => i.getAttribute('src') === url);
+    fireEvent.error(img);
+    expect(container.querySelector(`.post__media img[src="${url}"]`)).toBeNull();
+    expect(screen.getAllByText('Picture no longer available').length).toBeGreaterThan(0);
+  });
+
   it('embeds the X post on demand', () => {
     const { container } = render(<BlogPage initialLanguage="en" />);
     fireEvent.click(screen.getAllByRole('button', { name: 'Show embed' })[0]);

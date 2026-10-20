@@ -468,6 +468,16 @@
   color: var(--text);
 }
 
+.post__media .post__missing {
+  position: static;
+  display: block;
+  padding: 1.2rem;
+  border: 1px dashed var(--border-strong);
+  border-radius: 10px;
+  background: none;
+  text-align: center;
+}
+
 .post__embed {
   display: block;
   width: 100%;

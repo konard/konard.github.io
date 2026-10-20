@@ -34,6 +34,13 @@ function XEmbed({ id }) {
   );
 }
 
+// A picture that is not archived and no longer served by the CDN becomes a note instead of a broken image.
+function Picture({ src, alt = '' }) {
+  const [failed, setFailed] = useState(false);
+  if (failed) return <span className="post__missing muted">Picture no longer available</span>;
+  return <img src={src} alt={alt} loading="lazy" referrerPolicy="no-referrer" onError={() => setFailed(true)} />;
+}
+
 // Archived copies (public/archive/media) first: CDN links of deleted posts stop working.
 function Media({ items }) {
   if (!items.length) return null;
@@ -42,10 +49,10 @@ function Media({ items }) {
       {items.map((m) => (
         <li key={m.url}>
           {m.type === 'photo' ? (
-            <img src={m.file || m.url} alt={m.alt || ''} loading="lazy" referrerPolicy="no-referrer" />
+            <Picture src={m.file || m.url} alt={m.alt} />
           ) : (
             <a href={m.url} target="_blank" rel="noopener noreferrer" className="post__video">
-              {m.poster && <img src={m.posterFile || m.poster} alt="" loading="lazy" referrerPolicy="no-referrer" />}
+              {m.poster && <Picture src={m.posterFile || m.poster} />}
               <span>▶ video</span>
             </a>
           )}
