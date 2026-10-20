@@ -2,6 +2,8 @@
 // A link is a pair (source, target) where both ends point to links of the same
 // configuration, so N links have N^(2N) labelled variants; two variants are the
 // same configuration when a permutation of link indices maps one onto the other.
+// The counts 1, 10, 129, 2836 are OEIS A054050: isomorphism classes of ordered
+// pairs of endofunctions (source, target) on {1..N}.
 
 export function permutations(n) {
   if (n === 0) return [[]];

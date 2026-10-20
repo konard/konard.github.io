@@ -3,7 +3,7 @@ import { canonical, configurations, decode, isConnected, relabel } from './confi
 import { glyphId, glyphPaths, glyphSymbol, SIZE } from './glyph';
 
 describe('link configurations (issue #7)', () => {
-  test('there are 1, 10, 129 and 2836 configurations of 1–4 links (OEIS A001373)', () => {
+  test('there are 1, 10, 129 and 2836 configurations of 1–4 links (OEIS A054050)', () => {
     expect([1, 2, 3, 4].map((n) => codes[n].length)).toEqual([1, 10, 129, 2836]);
   });
 
