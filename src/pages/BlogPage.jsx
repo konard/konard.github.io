@@ -8,6 +8,7 @@ import { useQueryParam } from './query';
 
 const NETWORKS = { x: 'X', vk: 'VK', telegram: 'Telegram' };
 const LANGUAGES = { en: 'English', ru: 'Русский' };
+const IN_LANGUAGE = { en: 'English', ru: 'Russian' };
 
 const stories = dedupe(archive.posts);
 
@@ -161,7 +162,7 @@ export default function BlogPage({ initialLanguage = readerLanguage() }) {
           </label>
           <label className="filters__check">
             <input type="checkbox" checked={onlyLang} onChange={(e) => setOnlyLang(e.target.checked)} />
-            <span>Only posts in {LANGUAGES[lang]}</span>
+            <span>Only posts in {IN_LANGUAGE[lang]}</span>
           </label>
           <output className="filters__count mono" aria-live="polite">
             {formatNumber(list.length)} {list.length === 1 ? 'story' : 'stories'}
