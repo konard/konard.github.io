@@ -151,6 +151,15 @@ describe('scripts/registries.cjs (issue #7)', () => {
     expect(summary.blocked.map((b) => b.id)).toEqual(['github-packages']);
   });
 
+  test('the registries without a public listing are checked too (experiments/collect-other-registries.cjs)', () => {
+    const summary = github.packageRegistries;
+    expect(summary.notChecked).toEqual([]);
+    expect(summary.empty).toEqual(
+      expect.arrayContaining(['Hackage', 'CPAN', 'Lean Reservoir', 'Chocolatey', 'winget']),
+    );
+    expect(summary.checked).toBeGreaterThanOrEqual(33);
+  });
+
   test('packages of client copies are not counted', () => {
     const kinds = new Map(repositories.items.map((r) => [r.fullName.toLowerCase(), r.kind]));
     const ghcr = github.registries.find((r) => r.id === 'github-packages');

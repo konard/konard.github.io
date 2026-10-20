@@ -2135,7 +2135,7 @@
   ],
   "packageRegistries": {
     "collectedAt": "2026-10-19T17:13:41.923Z",
-    "checked": 20,
+    "checked": 33,
     "empty": [
       "RubyGems",
       "Packagist (PHP)",
@@ -2147,23 +2147,22 @@
       "Hex (Elixir/Erlang)",
       "Anaconda.org (conda)",
       "Arch User Repository",
-      "Swift Package Index"
-    ],
-    "notChecked": [
-      "Chrome Web Store",
-      "Chocolatey",
-      "winget",
-      "Snap Store",
-      "Flathub",
-      "CocoaPods",
+      "Swift Package Index",
       "Hackage",
       "opam",
       "CPAN",
       "Clojars",
       "LuaRocks",
       "Lean Reservoir",
-      "Julia General"
+      "Julia General",
+      "CocoaPods",
+      "Snap Store",
+      "Flathub",
+      "Chocolatey",
+      "winget",
+      "Chrome Web Store"
     ],
+    "notChecked": [],
     "blocked": [
       {
         "id": "github-packages",
