@@ -163,6 +163,12 @@ describe('BlogPage', () => {
     expect([...posts.children].every((li) => li.getAttribute('lang') === 'ru' || !li.textContent)).toBe(true);
   });
 
+  it('writes dates in the reader language, also on posts that exist in one language only', () => {
+    render(<BlogPage initialLanguage="en" />);
+    const dates = [...screen.getByRole('list', { name: 'Posts' }).querySelectorAll('time')].map((t) => t.textContent);
+    expect(dates.filter((d) => /[а-я]/i.test(d))).toEqual([]);
+  });
+
   it('embeds the X post on demand', () => {
     const { container } = render(<BlogPage initialLanguage="en" />);
     fireEvent.click(screen.getAllByRole('button', { name: 'Show embed' })[0]);

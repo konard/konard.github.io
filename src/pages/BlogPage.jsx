@@ -64,7 +64,9 @@ export function Story({ story, lang }) {
       <header className="post__head">
         <span className={`post__network post__network--${post.network}`}>{NETWORKS[post.network]}</span>
         <a href={post.url} target="_blank" rel="noopener noreferrer" className="post__date">
-          <time dateTime={post.publishedAt}>{date(post.publishedAt, post.lang)}</time>
+          <time dateTime={post.publishedAt} lang={lang}>
+            {date(post.publishedAt, lang)}
+          </time>
         </a>
         {post.repostOf && (
           <a href={post.repostOf} target="_blank" rel="noopener noreferrer" className="muted">
