@@ -9,7 +9,7 @@ const root = path.join(__dirname, '..');
 const dataDir = path.join(root, 'docs', 'case-studies', 'issue-7', 'data');
 const outFile = path.join(root, 'src', 'data', 'repositories.json');
 
-// GitHub users/organizations whose projects konard copied into his account
+// GitHub users/organizations whose projects konard copied into their own account
 // as `<owner>-<name>` to work on them for (or with) the owner. Reviewed by hand
 // from the full list of konard/* repositories (see the issue-7 case study).
 const CLIENTS = [

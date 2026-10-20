@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Collects every non-fork public repository of konard and of the organizations
-// he founded or worked in, with languages by bytes, topics, stars and dates.
+// konard founded or worked in, with languages by bytes, topics, stars and dates.
 // Usage: node experiments/collect-repositories.cjs [output-dir]
 const { execFileSync } = require('child_process');
 const fs = require('fs');
@@ -98,7 +98,7 @@ console.error(`total: ${all.length}`);
 
 // konard/<user>-<repo> repositories are non-fork copies of other people's
 // projects (imported for paid or AI-assisted work). Detect them by checking
-// whether <user>/<repo> exists on GitHub, so they are not counted as his own.
+// whether <user>/<repo> exists on GitHub, so they are not counted as original work.
 const exists = (fullName) => {
   try {
     execFileSync('gh', ['api', `repos/${fullName}`, '--jq', '.full_name'], { stdio: 'pipe' });
