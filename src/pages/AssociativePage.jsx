@@ -17,7 +17,7 @@ export const STACK = [
   {
     id: 'theory',
     title: 'Theory',
-    glyph: '00',
+    glyph: '11',
     summary: 'Everything is a link: a reference to a vector of references. One formula, L → L², covers all data.',
     repos: [
       ['link-foundation/meta-theory', 'The links meta-theory with versions, PDFs and proofs.'],
@@ -29,7 +29,7 @@ export const STACK = [
   {
     id: 'notation',
     title: 'Notation & languages',
-    glyph: '00 01',
+    glyph: '11 12',
     summary: 'A human readable way to write links, and languages that are themselves links.',
     repos: [
       ['link-foundation/links-notation', 'Links Notation (LiNo): describe any data with references and links.'],
@@ -43,7 +43,7 @@ export const STACK = [
   {
     id: 'storage',
     title: 'Storage engines',
-    glyph: '00 11 01',
+    glyph: '11 22 12',
     summary: 'Doublet and triplet stores on memory-mapped files with size-balanced trees, in C#, C++ and Rust.',
     repos: [
       ['konard/LinksPlatform', 'The holistic system for storing and transforming information, started in 2010.'],
@@ -59,7 +59,7 @@ export const STACK = [
   {
     id: 'tools',
     title: 'Query & tools',
-    glyph: '00 01 22',
+    glyph: '11 12 33',
     summary: 'Ways to read and change links: a CLI, an SQL-like language, GraphQL and queues.',
     repos: [
       ['link-foundation/link-cli', 'A CLI tool to manipulate links.'],
@@ -72,7 +72,7 @@ export const STACK = [
   {
     id: 'benchmarks',
     title: 'Benchmarks',
-    glyph: '01 10',
+    glyph: '12 21',
     summary: 'Doublets compared with relational, graph and key-value databases on the same operations.',
     repos: [
       ['linksplatform/Comparisons.SQLiteVSDoublets', 'Doublets against SQLite.'],
@@ -84,7 +84,7 @@ export const STACK = [
   {
     id: 'platform',
     title: 'Deep platform',
-    glyph: '01 12 20',
+    glyph: '12 23 31',
     summary: 'Deep: links in PostgreSQL with Hasura, handlers in any language and a visual client.',
     repos: [
       ['deep-foundation/deeplinks', 'The core of Deep: links storage, permissions and handlers.'],
@@ -97,7 +97,7 @@ export const STACK = [
   {
     id: 'ai',
     title: 'AI on links',
-    glyph: '01 12 23 30',
+    glyph: '12 23 34 41',
     summary: 'Agents and inference that use links as their memory: the automation of automation.',
     repos: [
       ['link-assistant/hive-mind', 'The AI that controls AIs to do the automation of automation.'],
