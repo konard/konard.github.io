@@ -18,8 +18,9 @@ export const metaTheory = {
       text: 'one formula is enough: any sequence converts to nested doublets and back (proved in Rocq/Coq)',
     },
   ],
-  // The doublet network example from the article: 1 → (1,1), 2 → (2,2), 3 → (1,2).
-  example: { code: '00 11 01', links: ['1 → (1, 1)', '2 → (2, 2)', '3 → (1, 2)'] },
+  // The doublet network example from the article: 1 → (1,1), 2 → (2,2), 3 → (1,2),
+  // written as a network code (link i is its source and target, 0 is nothing).
+  example: { code: '11 22 12' },
   claims: [
     'Doublet-links are sufficient to represent tables, graphs, strings, arrays, lists, numbers, sound, images and video.',
     'A network of doublets can store the tape of a Turing machine, so links are as powerful as a Turing machine in storage capacity.',

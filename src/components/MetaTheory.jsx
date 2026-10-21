@@ -1,6 +1,49 @@
+import { useState } from 'react';
+import { linksNotation, mathNotation, randomCode } from '../links/configurations';
 import Glyph from './Glyph';
 
 const gh = (fullName) => `https://github.com/${fullName}`;
+
+/**
+ * A doublet network with its math and links notation. Clicking the symbol
+ * shows a random network of 1–4 links (`random` is injectable for tests).
+ */
+export function NetworkExample({ example, random = Math.random }) {
+  const [code, setCode] = useState(example.code);
+  const size = code.split(' ').length;
+  const isExample = code === example.code;
+  return (
+    <div className="theory__example">
+      <button
+        type="button"
+        className="theory__network"
+        onClick={() => setCode(randomCode(random))}
+        title="Show a random network of 1–4 links"
+      >
+        <Glyph code={code} size={96} title={`Network of ${size} ${size === 1 ? 'link' : 'links'}: ${code}`} />
+      </button>
+      <dl className="theory__notations">
+        <dt>math notation</dt>
+        <dd className="mono" data-notation="math">
+          {mathNotation(code)}
+        </dd>
+        <dt>links notation</dt>
+        <dd className="mono" data-notation="links">
+          {linksNotation(code).map((l) => (
+            <span key={l}>{l}</span>
+          ))}
+        </dd>
+      </dl>
+      <p className="muted">
+        {isExample
+          ? 'Two links refer to themselves (points), the third connects them: a graph edge is just a link.'
+          : `A random network of ${size} ${size === 1 ? 'link' : 'links'}.`}{' '}
+        Every link is (index: source target), 0 is nothing; the math notation writes the same sources and targets as
+        digits in base {size + 1}. Click the symbol for another random network.
+      </p>
+    </div>
+  );
+}
 
 /** The links meta-theory: the formula, its definitions, versions and PDFs. */
 export default function MetaTheory({ theory, detailed = false }) {
@@ -12,17 +55,7 @@ export default function MetaTheory({ theory, detailed = false }) {
         </div>
         <div>
           <p className="theory__summary">{theory.summary}</p>
-          <div className="theory__example">
-            <Glyph code={theory.example.code} size={96} title="Doublet network of three links" />
-            <ul className="mono">
-              {theory.example.links.map((l) => (
-                <li key={l}>{l}</li>
-              ))}
-            </ul>
-            <p className="muted">
-              Two links refer to themselves (points), the third connects them: a graph edge is just a link.
-            </p>
-          </div>
+          <NetworkExample example={theory.example} />
           <p className="theory__actions">
             <a className="button button--primary" href={theory.repo} target="_blank" rel="noopener noreferrer">
               link-foundation/meta-theory
