@@ -21,25 +21,27 @@
   height: 100%;
 }
 
+/* The grid and the rain start one grid cell above the screen and drift down
+   together (driven by src/visuals/rain.js), so symbols stay on the grid. */
+.cosmos__grid,
+.cosmos__rain {
+  top: -64px;
+  height: calc(100% + 64px);
+}
+
 .cosmos__universe {
   opacity: 0.95;
 }
 
 .cosmos__grid {
   position: absolute;
-  inset: -64px 0 0 0;
+  left: 0;
+  right: 0;
   background-image:
     linear-gradient(rgba(148, 197, 255, 0.07) 1px, transparent 1px),
     linear-gradient(90deg, rgba(148, 197, 255, 0.07) 1px, transparent 1px);
   background-size: 64px 64px;
   mask-image: radial-gradient(ellipse at 50% 30%, black 20%, transparent 85%);
-  animation: grid-drift 24s linear infinite;
-}
-
-@keyframes grid-drift {
-  to {
-    transform: translateY(64px);
-  }
 }
 
 .cosmos__rain {
@@ -212,14 +214,44 @@
   margin-top: 1rem;
 }
 
-.theory__example .glyph {
-  color: var(--accent-2);
+.theory__network {
+  padding: 0.25rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(13, 18, 32, 0.6);
+  cursor: pointer;
+}
+
+.theory__network:hover,
+.theory__network:focus-visible {
+  border-color: var(--accent);
+}
+
+.theory__network .glyph {
+  display: block;
   filter: drop-shadow(0 0 10px rgba(167, 139, 250, 0.5));
 }
 
-.theory__example ul {
+.theory__notations {
+  display: grid;
+  gap: 0.1rem;
+  margin: 0;
   color: var(--text);
   font-size: 0.95rem;
+}
+
+.theory__notations dt {
+  color: var(--muted);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.theory__notations dd {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 0.6rem;
+  margin: 0 0 0.35rem;
 }
 
 .theory__example p {
@@ -532,8 +564,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .habr-card,
-  .psd__edges line,
-  .cosmos__grid {
+  .psd__edges line {
     animation: none;
   }
 }

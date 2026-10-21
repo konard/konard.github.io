@@ -1,9 +1,9 @@
 import { render, screen, waitFor } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import habr from '../data/habr.json';
 import { mergeHabr } from '../data/habrLive';
 import { startNebula } from '../visuals/nebula';
-import { startRain } from '../visuals/rain';
+import { columnsFor, driftAt, startRain } from '../visuals/rain';
 import Cosmos from './Cosmos';
 import HabrCards from './HabrCards';
 import ProblemSolvingDiagram, { edges } from './ProblemSolvingDiagram';
@@ -22,7 +22,72 @@ describe('background layers', () => {
   it('do nothing where WebGL or Canvas 2D are unavailable', () => {
     const canvas = { getContext: () => null };
     expect(startNebula(canvas)).toBeTypeOf('function');
-    expect(startRain(canvas, { codes: ['00'] })).toBeTypeOf('function');
+    expect(startRain(canvas)).toBeTypeOf('function');
+  });
+});
+
+describe('rain of link networks (issue #9)', () => {
+  afterEach(() => vi.unstubAllGlobals());
+
+  it('puts exactly two symbol columns into every 64px grid cell, starting at the grid lines', () => {
+    const xs = columnsFor(1280, 64);
+    expect(xs).toHaveLength(40);
+    expect(xs.slice(0, 4)).toEqual([0, 32, 64, 96]);
+    for (let cell = 0; cell < 1280; cell += 64) expect(xs.filter((x) => x >= cell && x < cell + 64)).toHaveLength(2);
+  });
+
+  it('drifts one grid cell per period and starts over', () => {
+    expect(driftAt(0)).toBe(0);
+    expect(driftAt(12000)).toBe(32);
+    expect(driftAt(24000 + 6000)).toBe(16);
+    expect(driftAt(5000, 64, 0)).toBe(0);
+  });
+
+  it('draws every symbol on a half-cell of the grid, each link in its own colour', () => {
+    const moves = [];
+    const strokes = [];
+    const ctx = new Proxy(
+      {
+        translate: (x, y) => moves.push([x, y]),
+        stroke: () => strokes.push(ctx.strokeStyle),
+      },
+      { get: (target, key) => (key in target ? target[key] : () => {}), set: (t, k, v) => ((t[k] = v), true) },
+    );
+    vi.stubGlobal('Path2D', class {});
+    const canvas = { getContext: () => ctx, clientWidth: 640, clientHeight: 480 + 64, style: {} };
+    let seed = 3;
+    const random = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    const stop = startRain(canvas, { animate: false, random });
+    stop();
+    expect(moves.length).toBeGreaterThan(20);
+    moves.forEach(([x, y]) => {
+      expect(x % 32).toBe(0);
+      expect(y % 32).toBe(0);
+    });
+    expect(new Set(strokes).size).toBeGreaterThan(1);
+  });
+
+  it('moves the canvas with the grid and keeps the trails on it when the grid starts over', () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(24000 * 100 - 100);
+    const copies = [];
+    const ctx = new Proxy(
+      { drawImage: (...args) => copies.push(args.slice(1)) },
+      { get: (target, key) => (key in target ? target[key] : () => {}), set: (t, k, v) => ((t[k] = v), true) },
+    );
+    vi.stubGlobal('Path2D', class {});
+    const canvas = { getContext: () => ctx, clientWidth: 320, clientHeight: 400, style: {} };
+    const drifts = [];
+    const stop = startRain(canvas, { onDrift: (d) => drifts.push(d) });
+    vi.advanceTimersByTime(75);
+    expect(drifts.at(-1)).toBeGreaterThan(63);
+    expect(canvas.style.transform).toMatch(/^translateY\(63\.\d\dpx\)$/);
+    vi.advanceTimersByTime(75);
+    expect(drifts.at(-1)).toBeLessThan(1);
+    // The grid jumped back by one cell, so the picture moves down by one cell.
+    expect(copies).toEqual([[0, 64]]);
+    stop();
+    vi.useRealTimers();
   });
 });
 

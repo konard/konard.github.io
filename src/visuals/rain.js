@@ -1,102 +1,143 @@
-// "Digital rain" of link configuration symbols, after konard/twittermatrix:
+// "Digital rain" of link network symbols, after konard/twittermatrix:
 // every column drops one symbol per step, the canvas slowly fades so the
 // column leaves a trail, and a column restarts at a random moment after it
 // leaves the screen. Unlike the original, the canvas stays transparent (it
 // fades with destination-out), so the universe and the grid shine through.
-import { decode } from '../links/configurations';
+//
+// The symbols sit on the background grid: a symbol is half a grid cell wide,
+// columns start at the grid lines, so every grid cell holds exactly two
+// columns and two rows. The rain also drives the slow downward drift of the
+// grid (`onDrift`), and the canvas drifts with it, so symbols and their
+// trails never slide off the grid lines.
+import { decode, randomCode } from '../links/configurations';
 import { glyphPaths, SIZE } from '../links/glyph';
 
-const HEAD = '#f0fffb';
-const TRAIL = ['#2ee6b0', '#22d3ee', '#7dd3fc', '#a78bfa'];
+const GLOW = '#f0fffb';
+const CACHE_LIMIT = 4000;
 
-/** Builds (and caches) Path2D objects of a configuration code. */
+/** The left edges of the symbol columns: two per grid cell, starting at the first grid line. */
+export function columnsFor(width, grid = 64) {
+  const cell = grid / 2;
+  return Array.from({ length: Math.ceil(width / cell) }, (_, i) => i * cell);
+}
+
+/** Builds (and caches) one coloured Path2D per link of a network code. */
 function pathsOf(code, cache) {
   let paths = cache.get(code);
   if (!paths) {
-    const { stroke, dots } = glyphPaths(decode(code));
-    const fill = new Path2D();
-    dots.forEach(([x, y]) => {
-      fill.moveTo(x + 4.2, y);
-      fill.arc(x, y, 4.2, 0, Math.PI * 2);
-    });
-    paths = { stroke: new Path2D(stroke), fill };
+    if (cache.size >= CACHE_LIMIT) cache.clear();
+    paths = glyphPaths(decode(code)).map(({ d, color }) => ({ path: new Path2D(d), color }));
     cache.set(code, paths);
   }
   return paths;
 }
 
+/** How far the grid has drifted down at time `now` (ms): 0 … grid, one cell per `period`. */
+export const driftAt = (now, grid = 64, period = 24000) => (period ? ((now % period) / period) * grid : 0);
+
 /**
- * Starts the rain on `canvas`. `codes` is a list of configuration codes.
+ * Starts the rain on `canvas`, which must be one grid cell taller than the
+ * screen and start one cell above it. `grid` is the size of a background
+ * grid cell in CSS pixels; every step the rain moves the canvas and calls
+ * `onDrift(pixels)` so the grid moves along. `pick()` returns the next
+ * network code (a random network of 1–4 links by default).
  * Returns a function that stops the animation and removes listeners.
  * Does nothing (and returns a no-op) where Canvas 2D or Path2D is missing.
  */
-export function startRain(canvas, { codes, cell = 34, step = 75, fade = 0.085, animate = true, random = Math.random }) {
+export function startRain(
+  canvas,
+  {
+    grid = 64,
+    period = 24000,
+    onDrift = () => {},
+    step = 75,
+    fade = 0.085,
+    animate = true,
+    random = Math.random,
+    pick = () => randomCode(random),
+  } = {},
+) {
   const ctx = typeof Path2D === 'undefined' ? null : canvas.getContext('2d');
-  if (!ctx || !codes.length) return () => {};
+  if (!ctx) return () => {};
+  const cell = grid / 2;
   const cache = new Map();
-  const pick = () => codes[Math.floor(random() * codes.length)];
   let columns = [];
   let width = 0;
   let height = 0;
+  let ratio = 1;
+  let drift = 0;
 
-  const draw = (code, x, y, color, glow) => {
-    const { stroke, fill } = pathsOf(code, cache);
+  const draw = (code, x, row, glow) => {
     ctx.save();
-    ctx.translate(x, y);
+    ctx.translate(x, row * cell);
     ctx.scale(cell / SIZE, cell / SIZE);
-    ctx.strokeStyle = color;
-    ctx.fillStyle = color;
-    ctx.shadowColor = color;
+    ctx.shadowColor = GLOW;
     ctx.shadowBlur = glow;
-    ctx.stroke(stroke);
-    ctx.fill(fill);
+    pathsOf(code, cache).forEach(({ path, color }) => {
+      ctx.strokeStyle = color;
+      ctx.stroke(path);
+    });
     ctx.restore();
   };
 
   const resize = () => {
-    const ratio = Math.min(window.devicePixelRatio || 1, 2);
+    ratio = Math.min(window.devicePixelRatio || 1, 2);
     width = canvas.clientWidth || window.innerWidth;
-    height = canvas.clientHeight || window.innerHeight;
+    height = canvas.clientHeight || window.innerHeight + grid;
     canvas.width = Math.round(width * ratio);
     canvas.height = Math.round(height * ratio);
     ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
     ctx.lineWidth = 5.5;
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
-    const count = Math.ceil(width / cell);
-    columns = Array.from({ length: count }, () => ({
+    const xs = columnsFor(width, grid);
+    columns = xs.map((x) => ({
+      x,
       row: -Math.floor(random() * (height / cell) * 1.5),
       // Columns move every 1–3 steps, so they fall at different speeds.
       every: 1 + Math.floor(random() * 3),
       tick: 0,
       code: pick(),
-      color: TRAIL[Math.floor(random() * TRAIL.length)],
     }));
     if (!animate) {
       // A still field of symbols for people who prefer reduced motion.
-      for (let i = 0; i < (count * height) / cell / 5; i++) {
+      for (let i = 0; i < (xs.length * height) / cell / 5; i++) {
         ctx.globalAlpha = 0.2 + random() * 0.6;
-        const x = Math.floor(random() * count) * cell;
-        const y = Math.floor(random() * (height / cell)) * cell;
-        draw(pick(), x, y, TRAIL[i % TRAIL.length], 0);
+        draw(pick(), xs[Math.floor(random() * xs.length)], Math.floor(random() * (height / cell)), 0);
       }
       ctx.globalAlpha = 1;
     }
   };
 
+  /** Moves the canvas and the grid down; after a whole cell both jump back and the picture moves down instead. */
+  const move = () => {
+    const next = driftAt(Date.now(), grid, period);
+    if (next < drift) {
+      ctx.save();
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.globalCompositeOperation = 'copy';
+      ctx.drawImage(canvas, 0, Math.round(grid * ratio));
+      ctx.restore();
+      columns.forEach((c) => (c.row += 2));
+    }
+    drift = next;
+    canvas.style.transform = `translateY(${drift.toFixed(2)}px)`;
+    onDrift(drift);
+  };
+
   const frame = () => {
+    move();
     ctx.globalCompositeOperation = 'destination-out';
     ctx.fillStyle = `rgba(0, 0, 0, ${fade})`;
     ctx.fillRect(0, 0, width, height);
     ctx.globalCompositeOperation = 'source-over';
-    columns.forEach((c, i) => {
+    columns.forEach((c) => {
       if (++c.tick % c.every) return;
-      const x = i * cell;
-      // The previous head turns into the trail colour, the new head glows.
-      if (c.row >= 0) draw(c.code, x, c.row * cell, c.color, 0);
+      // The previous head loses its glow and becomes the trail, the new head glows.
+      if (c.row >= 0) draw(c.code, c.x, c.row, 0);
       c.row += 1;
       c.code = pick();
-      if (c.row >= 0) draw(c.code, x, c.row * cell, HEAD, 8);
+      if (c.row >= 0) draw(c.code, c.x, c.row, 8);
       if (c.row * cell > height && random() > 0.95) c.row = -Math.floor(random() * 8);
     });
   };
