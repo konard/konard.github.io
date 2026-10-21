@@ -20,15 +20,15 @@
     "createdAt": "2012-02-13T00:19:39Z"
   },
   "totals": {
-    "ownRepositories": 525,
-    "personalRepositories": 184,
-    "organizationRepositories": 341,
-    "organizations": 15,
-    "clientCopies": 89,
-    "mirrors": 96,
-    "stars": 993,
+    "ownRepositories": 434,
+    "personalRepositories": 146,
+    "organizationRepositories": 288,
+    "organizations": 8,
+    "forks": 3,
+    "mirrors": 88,
+    "stars": 982,
     "contributions": 132002,
-    "languages": 73
+    "languages": 66
   },
   "contributions": [
     {
@@ -170,79 +170,79 @@
   "languages": [
     {
       "name": "JavaScript",
-      "count": 250,
-      "primary": 141,
-      "bytes": 149776019,
+      "count": 220,
+      "primary": 127,
+      "bytes": 148156359,
       "color": "#f1e05a"
     },
     {
       "name": "Shell",
-      "count": 160,
+      "count": 151,
       "primary": 18,
-      "bytes": 5946290,
+      "bytes": 5869360,
       "color": "#89e051"
     },
     {
       "name": "TypeScript",
-      "count": 125,
-      "primary": 86,
-      "bytes": 41024642,
+      "count": 118,
+      "primary": 81,
+      "bytes": 38122004,
       "color": "#3178c6"
     },
     {
-      "name": "Python",
-      "count": 85,
-      "primary": 35,
-      "bytes": 13037367,
-      "color": "#3572A5"
-    },
-    {
-      "name": "HTML",
-      "count": 84,
-      "primary": 26,
-      "bytes": 132773353,
-      "color": "#e34c26"
-    },
-    {
       "name": "Rust",
-      "count": 82,
-      "primary": 45,
-      "bytes": 73554976,
+      "count": 79,
+      "primary": 44,
+      "bytes": 72641602,
       "color": "#dea584"
     },
     {
       "name": "C#",
-      "count": 80,
-      "primary": 60,
-      "bytes": 7476004,
+      "count": 77,
+      "primary": 57,
+      "bytes": 6747136,
       "color": "#7355dd"
     },
     {
-      "name": "CSS",
-      "count": 63,
-      "primary": 4,
-      "bytes": 1365447,
-      "color": "#663399"
+      "name": "Python",
+      "count": 74,
+      "primary": 27,
+      "bytes": 10648820,
+      "color": "#3572A5"
+    },
+    {
+      "name": "HTML",
+      "count": 67,
+      "primary": 18,
+      "bytes": 131816944,
+      "color": "#e34c26"
     },
     {
       "name": "Dockerfile",
-      "count": 56,
+      "count": 51,
       "primary": 1,
-      "bytes": 159253,
+      "bytes": 153515,
       "color": "#384d54"
     },
     {
+      "name": "CSS",
+      "count": 44,
+      "primary": 0,
+      "bytes": 616019,
+      "color": "#663399"
+    },
+    {
       "name": "C++",
-      "count": 36,
-      "primary": 8,
-      "bytes": 6168081,
+      "count": 34,
+      "primary": 7,
+      "bytes": 6139686,
       "color": "#f34b7d"
     },
     {
       "name": "C",
-      "count": 29,
-      "primary": 7,
-      "bytes": 126322624,
+      "count": 28,
+      "primary": 6,
+      "bytes": 126215733,
       "color": "#555555"
     },
     {
@@ -253,13 +253,6 @@
       "color": "#DA3434"
     },
     {
-      "name": "PHP",
-      "count": 14,
-      "primary": 5,
-      "bytes": 3454205,
-      "color": "#4F5D95"
-    },
-    {
       "name": "Java",
       "count": 13,
       "primary": 0,
@@ -267,17 +260,24 @@
       "color": "#b07219"
     },
     {
+      "name": "PHP",
+      "count": 12,
+      "primary": 5,
+      "bytes": 3291174,
+      "color": "#4F5D95"
+    },
+    {
       "name": "Ruby",
-      "count": 13,
-      "primary": 1,
-      "bytes": 95739,
+      "count": 11,
+      "primary": 0,
+      "bytes": 93274,
       "color": "#701516"
     },
     {
       "name": "Batchfile",
-      "count": 13,
+      "count": 11,
       "primary": 1,
-      "bytes": 6991,
+      "bytes": 4676,
       "color": "#C1F12E"
     },
     {
@@ -293,13 +293,6 @@
       "primary": 0,
       "bytes": 22340,
       "color": "#a52a22"
-    },
-    {
-      "name": "Makefile",
-      "count": 7,
-      "primary": 0,
-      "bytes": 33813,
-      "color": "#427819"
     },
     {
       "name": "Lean",
@@ -321,6 +314,13 @@
       "primary": 1,
       "bytes": 660307,
       "color": "#00ADD8"
+    },
+    {
+      "name": "Makefile",
+      "count": 5,
+      "primary": 0,
+      "bytes": 29985,
+      "color": "#427819"
     },
     {
       "name": "PEG.js",
@@ -428,25 +428,11 @@
       "color": "#6e4a7e"
     },
     {
-      "name": "Procfile",
-      "count": 2,
-      "primary": 0,
-      "bytes": 109,
-      "color": "#3B2F63"
-    },
-    {
       "name": "Isabelle",
       "count": 1,
       "primary": 0,
       "bytes": 963634,
       "color": "#FEFE00"
-    },
-    {
-      "name": "Vue",
-      "count": 1,
-      "primary": 1,
-      "bytes": 170732,
-      "color": "#41b883"
     },
     {
       "name": "SCSS",
@@ -505,13 +491,6 @@
       "color": "#336790"
     },
     {
-      "name": "Assembly",
-      "count": 1,
-      "primary": 0,
-      "bytes": 7097,
-      "color": "#6E4C13"
-    },
-    {
       "name": "Slim",
       "count": 1,
       "primary": 0,
@@ -524,13 +503,6 @@
       "primary": 0,
       "bytes": 4818,
       "color": "#7e7eff"
-    },
-    {
-      "name": "Inno Setup",
-      "count": 1,
-      "primary": 0,
-      "bytes": 4018,
-      "color": "#264b99"
     },
     {
       "name": "Vim Snippet",
@@ -575,39 +547,18 @@
       "color": "#fcb32c"
     },
     {
-      "name": "Blade",
-      "count": 1,
-      "primary": 0,
-      "bytes": 689,
-      "color": "#f7523f"
-    },
-    {
-      "name": "Meson",
-      "count": 1,
-      "primary": 0,
-      "bytes": 659,
-      "color": "#007800"
-    },
-    {
-      "name": "Mako",
-      "count": 1,
-      "primary": 0,
-      "bytes": 651,
-      "color": "#7e858d"
-    },
-    {
-      "name": "Less",
-      "count": 1,
-      "primary": 0,
-      "bytes": 611,
-      "color": "#1d365d"
-    },
-    {
       "name": "Erlang",
       "count": 1,
       "primary": 0,
       "bytes": 77,
       "color": "#B83998"
+    },
+    {
+      "name": "Procfile",
+      "count": 1,
+      "primary": 0,
+      "bytes": 65,
+      "color": "#3B2F63"
     },
     {
       "name": "Scala",
@@ -687,8 +638,8 @@
       "description": null,
       "url": "https://github.com/konard",
       "createdAt": "2012-02-13T00:19:39Z",
-      "repositories": 184,
-      "stars": 220,
+      "repositories": 146,
+      "stars": 218,
       "languages": [
         {
           "name": "JavaScript",
@@ -696,19 +647,19 @@
         },
         {
           "name": "C#",
-          "count": 23
-        },
-        {
-          "name": "HTML",
-          "count": 19
-        },
-        {
-          "name": "Python",
-          "count": 14
+          "count": 20
         },
         {
           "name": "Shell",
           "count": 14
+        },
+        {
+          "name": "HTML",
+          "count": 13
+        },
+        {
+          "name": "Rust",
+          "count": 11
         }
       ]
     },
@@ -718,8 +669,8 @@
       "description": "Deep.Foundation - associative technology development bay.",
       "url": "https://github.com/deep-foundation",
       "createdAt": "2020-03-29T15:17:26Z",
-      "repositories": 101,
-      "stars": 414,
+      "repositories": 90,
+      "stars": 412,
       "languages": [
         {
           "name": "TypeScript",
@@ -749,7 +700,7 @@
       "description": "The foundation of foundations. Our mission is linkness.",
       "url": "https://github.com/link-foundation",
       "createdAt": "2024-07-20T19:06:38Z",
-      "repositories": 80,
+      "repositories": 78,
       "stars": 45,
       "languages": [
         {
@@ -780,7 +731,7 @@
       "description": "A cross-platform modular framework for automation of automation. Кроссплатформенный модульный фреймворк для автоматизации автоматизации.",
       "url": "https://github.com/linksplatform",
       "createdAt": "2015-10-14T01:12:20Z",
-      "repositories": 79,
+      "repositories": 76,
       "stars": 154,
       "languages": [
         {
@@ -811,7 +762,7 @@
       "description": null,
       "url": "https://github.com/link-assistant",
       "createdAt": "2025-11-21T09:35:14Z",
-      "repositories": 29,
+      "repositories": 28,
       "stars": 111,
       "languages": [
         {
@@ -828,56 +779,6 @@
         },
         {
           "name": "HTML",
-          "count": 1
-        }
-      ]
-    },
-    {
-      "login": "meteor-shuttler",
-      "name": "Shuttler",
-      "description": null,
-      "url": "https://github.com/meteor-shuttler",
-      "createdAt": "2016-02-23T15:33:46Z",
-      "repositories": 15,
-      "stars": 4,
-      "languages": [
-        {
-          "name": "JavaScript",
-          "count": 12
-        },
-        {
-          "name": "HTML",
-          "count": 1
-        }
-      ]
-    },
-    {
-      "login": "Svetozar-Technologies",
-      "name": "Svetozar Technologies",
-      "description": null,
-      "url": "https://github.com/Svetozar-Technologies",
-      "createdAt": "2026-01-18T10:17:10Z",
-      "repositories": 9,
-      "stars": 2,
-      "languages": [
-        {
-          "name": "Python",
-          "count": 4
-        },
-        {
-          "name": "CSS",
-          "count": 1
-        },
-        {
-          "name": "JavaScript",
-          "count": 1
-        },
-        {
-          "name": "Ruby",
-          "count": 1
-        },
-        {
-          "name": "Rust",
           "count": 1
         }
       ]
@@ -933,27 +834,12 @@
       ]
     },
     {
-      "login": "OSWS",
-      "name": "OSWS",
-      "description": "Open Source Web Standards",
-      "url": "https://github.com/OSWS",
-      "createdAt": "2014-11-17T09:22:21Z",
-      "repositories": 5,
-      "stars": 4,
-      "languages": [
-        {
-          "name": "JavaScript",
-          "count": 2
-        }
-      ]
-    },
-    {
       "login": "correlation-center",
       "name": "Correlation Center",
       "description": null,
       "url": "https://github.com/correlation-center",
       "createdAt": "2025-08-23T07:13:01Z",
-      "repositories": 3,
+      "repositories": 2,
       "stars": 2,
       "languages": [
         {
@@ -963,81 +849,17 @@
       ]
     },
     {
-      "login": "open-online-tools",
-      "name": "Open Online Tools",
-      "description": null,
-      "url": "https://github.com/open-online-tools",
-      "createdAt": "2025-05-30T06:34:52Z",
-      "repositories": 3,
-      "stars": 0,
-      "languages": [
-        {
-          "name": "TypeScript",
-          "count": 2
-        }
-      ]
-    },
-    {
-      "login": "Qvinciy",
-      "name": "Qvinciy",
-      "description": null,
-      "url": "https://github.com/Qvinciy",
-      "createdAt": "2020-01-09T09:08:56Z",
+      "login": "OSWS",
+      "name": "OSWS",
+      "description": "Open Source Web Standards",
+      "url": "https://github.com/OSWS",
+      "createdAt": "2014-11-17T09:22:21Z",
       "repositories": 2,
-      "stars": 0,
-      "languages": [
-        {
-          "name": "HTML",
-          "count": 1
-        },
-        {
-          "name": "Vue",
-          "count": 1
-        }
-      ]
-    },
-    {
-      "login": "EfficiencyParadigm",
-      "name": "EfficiencyParadigm",
-      "description": null,
-      "url": "https://github.com/EfficiencyParadigm",
-      "createdAt": "2015-12-23T18:28:26Z",
-      "repositories": 1,
-      "stars": 0,
-      "languages": [
-        {
-          "name": "CSS",
-          "count": 1
-        }
-      ]
-    },
-    {
-      "login": "Gls-full",
-      "name": "Gls-full",
-      "description": null,
-      "url": "https://github.com/Gls-full",
-      "createdAt": "2026-05-11T13:20:30Z",
-      "repositories": 1,
-      "stars": 0,
-      "languages": [
-        {
-          "name": "TypeScript",
-          "count": 1
-        }
-      ]
-    },
-    {
-      "login": "links-games",
-      "name": "links-games",
-      "description": null,
-      "url": "https://github.com/links-games",
-      "createdAt": "2026-10-15T08:51:35Z",
-      "repositories": 1,
-      "stars": 0,
+      "stars": 3,
       "languages": [
         {
           "name": "JavaScript",
-          "count": 1
+          "count": 2
         }
       ]
     }
@@ -1833,8 +1655,8 @@
       "name": "npm",
       "url": "https://www.npmjs.com/~konard",
       "status": "ok",
-      "packages": 222,
-      "downloads": 232045,
+      "packages": 220,
+      "downloads": 232026,
       "downloadsUnit": "downloads / month",
       "top": [
         {
@@ -2115,22 +1937,6 @@
           "url": "https://nimble.directory/pkg/triplets"
         }
       ]
-    },
-    {
-      "id": "homebrew",
-      "name": "Homebrew",
-      "url": "https://brew.sh/",
-      "status": "ok",
-      "packages": 1,
-      "downloads": null,
-      "downloadsUnit": null,
-      "top": [
-        {
-          "name": "svetozar-technologies/localcode/localcode",
-          "downloads": null,
-          "url": "https://github.com/Svetozar-Technologies/homebrew-localcode/blob/HEAD/Formula/localcode.rb"
-        }
-      ]
     }
   ],
   "packageRegistries": {
@@ -2148,6 +1954,7 @@
       "Anaconda.org (conda)",
       "Arch User Repository",
       "Swift Package Index",
+      "Homebrew taps",
       "Hackage",
       "opam",
       "CPAN",
@@ -2171,7 +1978,7 @@
         "note": "download counts are rounded by github.com and cover public packages only"
       }
     ],
-    "droppedPackages": 21
+    "droppedPackages": 24
   },
   "stackOverflow": {
     "url": "https://stackoverflow.com/users/710069/konard",

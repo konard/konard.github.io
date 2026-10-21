@@ -23,8 +23,8 @@ export default function RepositoriesPage() {
         <h1 className="page-hero__title">Repositories</h1>
         <p className="page-hero__lead">
           {formatNumber(ownRepositories.length)} original repositories in {owners.size} accounts and organizations, with{' '}
-          {formatNumber(stars)} stars. Each one is classified by the fields where it is useful; forks are not counted,
-          mirrors and copies of client projects are kept apart.
+          {formatNumber(stars)} stars. Each one is classified by the fields where it is useful; forks and mirrors are
+          not counted, and empty repositories are not shown.
         </p>
         <ul className="page-stats">
           {Object.entries(KINDS).map(([id, k]) => (

@@ -23,6 +23,14 @@ export function RepoItem({ repo, note = null }) {
         </span>
       </div>
       {(note || repo.description) && <p className="repo__description">{note || repo.description}</p>}
+      {repo.kind === 'fork' && repo.copyOf && (
+        <p className="repo__description muted">
+          Fork of{' '}
+          <a href={`https://github.com/${repo.copyOf}`} target="_blank" rel="noopener noreferrer">
+            {repo.copyOf}
+          </a>
+        </p>
+      )}
       {repo.fields.length > 0 && (
         <ul className="repo__fields" aria-label="Fields">
           {repo.fields.map((f) => (

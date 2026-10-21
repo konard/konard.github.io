@@ -7,6 +7,8 @@ const fs = require('fs');
 const path = require('path');
 
 const OUT = process.argv[2] || 'docs/case-studies/issue-7/data';
+// Every account is collected; scripts/repositories.cjs decides what is shown
+// (HIDDEN_OWNERS, empty repositories and broken forks are left out).
 const OWNERS = [
   ['konard', 'user'],
   ['linksplatform', 'org'],

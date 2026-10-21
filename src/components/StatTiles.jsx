@@ -1,8 +1,8 @@
 import { formatCompact, formatNumber } from './format';
 
 // Repository counts only include original work of konard and of the related
-// organizations: forks, copies of client projects, mirrors and generated test
-// repositories are excluded (see scripts/repositories.cjs).
+// organizations: forks, mirrors, empty and generated test repositories are
+// excluded (see scripts/repositories.cjs).
 export function buildStats(github, codingSince, now = new Date(), habr = null) {
   const { totals } = github;
   const packages = github.registries.reduce((sum, r) => sum + r.packages, 0);

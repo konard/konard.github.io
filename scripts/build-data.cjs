@@ -10,7 +10,7 @@ const fs = require('fs');
 const path = require('path');
 
 const { buildRegistries } = require('./registries.cjs');
-const { buildRepositories, isNoise, readCollected } = require('./repositories.cjs');
+const { buildRepositories, isHiddenOwner, isNoise, readCollected, shownRepositories } = require('./repositories.cjs');
 
 const root = path.join(__dirname, '..');
 const dataDir = path.join(root, 'docs', 'case-studies', 'issue-1', 'data');
@@ -66,7 +66,9 @@ function build({ write = true } = {}) {
   const user = read('github-user.json');
   const contributions = read('github-contributions.json');
   const { user: userNow, organizations } = read('organizations.json', issue7Dir);
-  const collected = readCollected();
+  // Hidden organizations, empty repositories, broken forks and copies of
+  // projects that are not public are left out of every number on the website.
+  const collected = shownRepositories().shown;
   const { items } = buildRepositories({ write, repos: collected });
   const kindByName = new Map(items.map((r) => [r.fullName, r]));
   const allRepos = collected.filter((r) => kindByName.get(r.fullName).kind === 'own');
@@ -114,9 +116,15 @@ function build({ write = true } = {}) {
   }));
 
   const so = read('stackoverflow-user.json');
+  const hidden = new Set(
+    readCollected()
+      .filter((r) => !kindByName.has(r.fullName))
+      .map((r) => r.fullName.toLowerCase()),
+  );
   const kindOf = (fullName) => {
     const repo = items.find((r) => r.fullName.toLowerCase() === fullName);
-    return repo ? repo.kind : null;
+    // Packages built from a repository that is not shown are not shown either.
+    return repo ? repo.kind : hidden.has(fullName) || isHiddenOwner(fullName.split('/')[0]) ? 'hidden' : null;
   };
   const { registries, packageRegistries } = buildRegistries(kindOf);
   const stackOverflow = {
@@ -155,7 +163,7 @@ function build({ write = true } = {}) {
       personalRepositories: allRepos.filter((r) => r.owner === 'konard').length,
       organizationRepositories: allRepos.filter((r) => r.owner !== 'konard').length,
       organizations: owners.filter((o) => o.login !== 'konard').length,
-      clientCopies: kinds.client || 0,
+      forks: kinds.fork || 0,
       mirrors: kinds.mirror || 0,
       stars: allRepos.reduce((sum, r) => sum + r.stars, 0),
       contributions: contributions.reduce((sum, c) => sum + c.total, 0),
@@ -209,7 +217,10 @@ if (require.main === module) {
   const result = build();
   console.log(
     `Wrote ${path.relative(root, outFile)}: ${result.projects.length} projects, ` +
-      `${result.languages.length} languages, ${result.totals.contributions} contributions`,
+      `${result.languages.length} languages, ${result.totals.contributions} contributions; not shown: ` +
+      Object.entries(shownRepositories().excluded)
+        .map(([reason, count]) => `${count} ${reason}`)
+        .join(', '),
   );
 }
 

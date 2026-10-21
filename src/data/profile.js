@@ -389,7 +389,7 @@ export const roles = [
   { id: 'devops', name: 'DevOps', summary: 'CI/CD, containers, release automation and infrastructure.' },
   { id: 'lead', name: 'CEO / Team lead', summary: 'Founding organizations, leading distributed teams and roadmaps.' },
   { id: 'developer', name: 'Developer', summary: 'Hands-on software engineering in many languages and stacks.' },
-  { id: 'research', name: 'Researcher', summary: 'Links theory, formal proofs and algorithm research.' },
+  { id: 'research', name: 'Scientist', summary: 'Links theory, formal proofs and algorithm research.' },
 ];
 
 export const education = [

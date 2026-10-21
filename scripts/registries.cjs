@@ -1,9 +1,10 @@
 // Turns docs/case-studies/issue-7/data/registries.json (written by
 // experiments/collect-registries.cjs) and registries-other.json (written by
 // experiments/collect-other-registries.cjs) into the compact registry cards of the
-// website. Packages built from client copies, mirrors or generated test
-// repositories are dropped, the same way they are excluded from the
-// repository counts (see scripts/repositories.cjs).
+// website. Packages built from forks, mirrors, generated test repositories or
+// repositories that are not shown at all (hidden organizations, empty
+// repositories, broken forks) are dropped, the same way they are excluded from
+// the repository counts (see scripts/repositories.cjs).
 const fs = require('fs');
 const path = require('path');
 
@@ -49,7 +50,8 @@ const PARTIAL = {
 
 // The GitHub repository a package is built from, as `owner/name` in lower case.
 function sourceRepository(registry, pkg) {
-  const match = /github\.com\/([^/]+\/[^/#?]+)/i.exec(pkg.repository || '');
+  // Packages of a Homebrew tap or a Go module only link to their source on GitHub.
+  const match = /github\.com\/([^/]+\/[^/#?]+)/i.exec(pkg.repository || pkg.url || '');
   if (match) return match[1].replace(/\.git$/, '').toLowerCase();
   if (registry === 'github-packages') return pkg.name.split('/').slice(0, 2).join('/').toLowerCase();
   return null;

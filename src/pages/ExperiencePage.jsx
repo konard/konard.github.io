@@ -23,14 +23,15 @@ export const ROLE_DETAILS = {
 
 const endYear = github.contributions[github.contributions.length - 1].year;
 
-/** Experience filtered to one kind of work: ML/AI, DevOps, CEO/team lead, developer or researcher. */
+/** Experience filtered to one kind of work: ML/AI, DevOps, CEO/team lead, developer or scientist. */
 export default function ExperiencePage() {
   const [roleId, setRole] = useQueryParam('role');
   const role = roles.find((r) => r.id === roleId) || null;
   const items = role ? experience.filter((e) => e.roles.includes(role.id)) : experience;
   const details = role ? ROLE_DETAILS[role.id] : null;
   const groups = details ? skillGroups.filter((g) => details.skills.includes(g.id)) : skillGroups;
-  const picks = details ? professions.filter((p) => details.professions.includes(p.id)) : [];
+  // Without a role every profession is shown, with every repository picked for it.
+  const picks = details ? professions.filter((p) => details.professions.includes(p.id)) : professions;
 
   const select = (id) => (event) => {
     event.preventDefault();
@@ -83,7 +84,6 @@ export default function ExperiencePage() {
                   {p.repos
                     .map(([name, why]) => [repo(name), why])
                     .filter(([r]) => r)
-                    .slice(0, 6)
                     .map(([r, why]) => (
                       <RepoItem key={r.fullName} repo={r} note={why} />
                     ))}

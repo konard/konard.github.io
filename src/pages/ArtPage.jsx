@@ -18,7 +18,6 @@ export const ART = [
     'Real-time tweets as the “digital rain” of The Matrix; the rain in the background comes from it.',
   ],
   ['konard/links-visuals', 'The visual language of links used by every symbol on this site.'],
-  ['konard/links-animation', 'Animated links.'],
   ['konard/fractal-interference', 'Fractal interference patterns.'],
   ['konard/gravity-simulation', 'Gravity in Rust + WebAssembly.'],
   ['konard/wave-simulation', 'Wave simulations.'],

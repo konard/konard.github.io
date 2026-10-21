@@ -92,17 +92,95 @@ describe('scripts/build-data.cjs', () => {
   });
 });
 
+describe('repositories that are not shown (issue #9)', () => {
+  const {
+    HIDDEN_OWNERS,
+    excludedBecause,
+    isBrokenFork,
+    isEmptyRepository,
+    readCollected,
+    readHealth,
+    shownRepositories,
+  } = require('../../scripts/repositories.cjs');
+  const health = readHealth();
+  const collected = readCollected();
+  const find = (name) => collected.find((r) => r.fullName === name);
+  const shown = new Set(repositories.items.map((r) => r.fullName));
+
+  test('every collected repository has its health facts', () => {
+    expect(collected.filter((r) => !health[r.fullName])).toEqual([]);
+  });
+
+  test('organizations of no value to a visitor are hidden everywhere', () => {
+    expect(HIDDEN_OWNERS).toEqual(
+      expect.arrayContaining(['EfficiencyParadigm', 'Qvinciy', 'Gls-full', 'links-games', 'open-online-tools']),
+    );
+    expect(HIDDEN_OWNERS).toEqual(expect.arrayContaining(['Svetozar-Technologies', 'meteor-shuttler']));
+    const hidden = new Set(HIDDEN_OWNERS.map((o) => o.toLowerCase()));
+    expect(repositories.items.filter((r) => hidden.has(r.owner.toLowerCase()))).toEqual([]);
+    expect(github.owners.filter((o) => hidden.has(o.login.toLowerCase()))).toEqual([]);
+    expect(github.projects.filter((p) => hidden.has(p.owner.toLowerCase()))).toEqual([]);
+    const packages = github.registries.flatMap((r) => r.top.map((p) => p.url || ''));
+    expect(packages.filter((url) => HIDDEN_OWNERS.some((o) => url.includes(`github.com/${o}/`)))).toEqual([]);
+  });
+
+  test('a repository with only a short README and a license is empty (konard/TheAnime)', () => {
+    expect(isEmptyRepository(health['konard/TheAnime'])).toBe(true);
+    expect(excludedBecause(find('konard/TheAnime'), health['konard/TheAnime'])).toBe('empty');
+    expect(isEmptyRepository({ isEmpty: true, fileCount: 0, files: {} })).toBe(true);
+    // A long README is content, and so is any other file.
+    expect(isEmptyRepository({ fileCount: 2, files: { 'README.md': 12696, LICENSE: 1211 } })).toBe(false);
+    expect(isEmptyRepository({ fileCount: 2, files: { 'README.md': 61, 'index.js': 10 } })).toBe(false);
+    expect(shown.has('konard/TheAnime')).toBe(false);
+  });
+
+  test('history started by another person before the repository existed is a broken fork (konard/slava)', () => {
+    const slava = find('konard/slava');
+    expect(isBrokenFork(slava, health['konard/slava'])).toBe(true);
+    expect(excludedBecause(slava, health['konard/slava'])).toBe('broken fork');
+    // Own history, history written by tools and teamwork in organizations are fine.
+    const root = { at: '2020-01-01T00:00:00Z', author: 'someone' };
+    const repo = { owner: 'konard', createdAt: '2021-01-01T00:00:00Z' };
+    expect(isBrokenFork(repo, { root })).toBe(true);
+    expect(isBrokenFork(repo, { root: { ...root, author: 'konard' } })).toBe(false);
+    expect(isBrokenFork(repo, { root: { ...root, author: 'lovable-dev[bot]' } })).toBe(false);
+    expect(isBrokenFork({ ...repo, owner: 'link-assistant' }, { root })).toBe(false);
+    expect(isBrokenFork(repo, { root, upstream: { fullName: 'someone/x', public: true } })).toBe(false);
+    expect(shown.has('konard/slava')).toBe(false);
+  });
+
+  test('nothing is shown about copies of projects that are not public', () => {
+    const copy = { owner: 'konard', name: 'Aboba-site', fullName: 'konard/Aboba-site' };
+    expect(excludedBecause(copy, { upstream: { public: false } })).toBe('original is not public');
+    expect(excludedBecause(copy, {})).toBe('original is not public');
+    expect(Object.values(health).filter((h) => h.upstream && !h.upstream.public && h.upstream.fullName)).toEqual([]);
+    repositories.items
+      .filter((r) => r.kind === 'fork')
+      .forEach((r) => expect(health[r.fullName].upstream).toEqual({ fullName: r.copyOf, public: true }));
+  });
+
+  test('the website shows exactly the repositories that pass the rules', () => {
+    const { shown: passed, excluded } = shownRepositories();
+    expect(passed.map((r) => r.fullName).sort()).toEqual([...shown].sort());
+    expect(Object.keys(excluded).sort()).toEqual(
+      ['broken fork', 'deleted', 'empty', 'hidden organization', 'original is not public'].sort(),
+    );
+    expect(github.totals.forks).toBe(repositories.items.filter((r) => r.kind === 'fork').length);
+    expect(github.totals).not.toHaveProperty('clientCopies');
+  });
+});
+
 describe('scripts/repositories.cjs (issue #7)', () => {
-  const { buildRepositories, kindOf, fieldsOf, readCollected } = require('../../scripts/repositories.cjs');
+  const { buildRepositories, kindOf, fieldsOf } = require('../../scripts/repositories.cjs');
 
   test('committed repositories.json is up to date with the collected data', () => {
-    expect(buildRepositories({ write: false, repos: readCollected() })).toEqual(repositories);
+    expect(buildRepositories({ write: false })).toEqual(repositories);
   });
 
   test('forks are never collected and copies are classified', () => {
     const own = { fullName: 'konard/problem-solving', owner: 'konard', name: 'problem-solving', description: '' };
     expect(kindOf(own)).toBe('own');
-    expect(kindOf({ ...own, fullName: 'konard/Aboba-site', name: 'Aboba-site' })).toBe('client');
+    expect(kindOf({ ...own, fullName: 'konard/Aboba-site', name: 'Aboba-site' })).toBe('fork');
     expect(kindOf({ ...own, fullName: 'konard/log-tmp-1', name: 'log-tmp-1' })).toBe('noise');
     expect(kindOf({ ...own, fullName: 'konard/x_fork', name: 'x_fork' })).toBe('mirror');
     expect(kindOf({ ...own, copyOf: 'deep-foundation/deeplinks' })).toBe('mirror');
@@ -160,7 +238,7 @@ describe('scripts/registries.cjs (issue #7)', () => {
     expect(summary.checked).toBeGreaterThanOrEqual(33);
   });
 
-  test('packages of client copies are not counted', () => {
+  test('packages of forks, mirrors and hidden repositories are not counted', () => {
     const kinds = new Map(repositories.items.map((r) => [r.fullName.toLowerCase(), r.kind]));
     const ghcr = github.registries.find((r) => r.id === 'github-packages');
     ghcr.top.forEach((p) => expect(kinds.get(sourceRepository('github-packages', p)) ?? 'own').toBe('own'));

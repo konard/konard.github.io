@@ -37,7 +37,7 @@ describe('curated repository lists', () => {
     expect(missing).toEqual([]);
   });
 
-  it('count only original repositories, without forks or client copies', () => {
+  it('count only original repositories, without forks or mirrors', () => {
     expect(ownRepositories.length).toBeGreaterThan(400);
     expect(ownRepositories.every((r) => r.kind === 'own')).toBe(true);
     expect(allRepositories.length).toBeGreaterThan(ownRepositories.length);
@@ -76,6 +76,16 @@ describe('ExperiencePage', () => {
     expect(count(screen.getByRole('list', { name: 'Career timeline' }))).toBe(experience.length);
   });
 
+  it('shows every example repository of every profession without a role', () => {
+    const { container } = render(<ExperiencePage />);
+    const examples = container.querySelector('#examples');
+    professions.forEach((p) =>
+      expect(within(examples).getByRole('heading', { level: 3, name: p.name })).toBeInTheDocument(),
+    );
+    const listed = professions.reduce((sum, p) => sum + p.repos.length, 0);
+    expect(examples.querySelectorAll('.repo')).toHaveLength(listed);
+  });
+
   it.each(roles.map((r) => r.id))('shows only the matching experience for ?role=%s', (id) => {
     go(`?role=${id}`);
     render(<ExperiencePage />);
@@ -88,6 +98,11 @@ describe('ExperiencePage', () => {
       'aria-current',
       'page',
     );
+  });
+
+  it('names the research role Scientist', () => {
+    expect(roles.find((r) => r.id === 'research').name).toBe('Scientist');
+    expect(professions.find((p) => p.id === 'research').name).toBe('Scientist');
   });
 
   it('switches the role without reloading the page', () => {
