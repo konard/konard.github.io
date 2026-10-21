@@ -3,8 +3,11 @@ import { afterEach, describe, expect, it } from 'vitest';
 import archive from '../data/posts.json';
 import { fields, professions } from '../data/fields';
 import { experience, roles } from '../data/profile';
-import codes from '../links/configurations.json';
-import ArtPage, { ART, SymbolGallery } from './ArtPage';
+import NetworkGallery from '../components/NetworkGallery';
+import { metaTheory } from '../data/theory';
+import { codeAt, indexOf } from '../links/configurations';
+import { NetworkExample } from '../components/MetaTheory';
+import ArtPage, { ART } from './ArtPage';
 import AssociativePage, { STACK } from './AssociativePage';
 import BlogPage from './BlogPage';
 import ExperiencePage from './ExperiencePage';
@@ -34,7 +37,7 @@ describe('curated repository lists', () => {
     expect(missing).toEqual([]);
   });
 
-  it('count only original repositories, without forks or client copies', () => {
+  it('count only original repositories, without forks or mirrors', () => {
     expect(ownRepositories.length).toBeGreaterThan(400);
     expect(ownRepositories.every((r) => r.kind === 'own')).toBe(true);
     expect(allRepositories.length).toBeGreaterThan(ownRepositories.length);
@@ -73,6 +76,16 @@ describe('ExperiencePage', () => {
     expect(count(screen.getByRole('list', { name: 'Career timeline' }))).toBe(experience.length);
   });
 
+  it('shows every example repository of every profession without a role', () => {
+    const { container } = render(<ExperiencePage />);
+    const examples = container.querySelector('#examples');
+    professions.forEach((p) =>
+      expect(within(examples).getByRole('heading', { level: 3, name: p.name })).toBeInTheDocument(),
+    );
+    const listed = professions.reduce((sum, p) => sum + p.repos.length, 0);
+    expect(examples.querySelectorAll('.repo')).toHaveLength(listed);
+  });
+
   it.each(roles.map((r) => r.id))('shows only the matching experience for ?role=%s', (id) => {
     go(`?role=${id}`);
     render(<ExperiencePage />);
@@ -87,6 +100,11 @@ describe('ExperiencePage', () => {
     );
   });
 
+  it('names the research role Scientist', () => {
+    expect(roles.find((r) => r.id === 'research').name).toBe('Scientist');
+    expect(professions.find((p) => p.id === 'research').name).toBe('Scientist');
+  });
+
   it('switches the role without reloading the page', () => {
     render(<ExperiencePage />);
     fireEvent.click(screen.getByRole('link', { name: /DevOps/ }));
@@ -98,10 +116,23 @@ describe('ExperiencePage', () => {
 describe('ResearchPage', () => {
   it('shows the meta-theory, the problem solving algorithm, highlights and laws', () => {
     const { container } = render(<ResearchPage />);
-    ['theory', 'method', 'highlights', 'laws', 'all'].forEach((id) =>
+    ['theory', 'symbols', 'method', 'highlights', 'laws', 'all'].forEach((id) =>
       expect(container.querySelector(`#${id}`)).not.toBeNull(),
     );
     expect(container.querySelector('.psd')).not.toBeNull();
+    // Issue #9: the method explains recursion, self-application, going back to
+    // the formulation and links the implementations in code.
+    const method = within(container.querySelector('#method'));
+    ['Recursive', 'Applicable to itself', 'Returns to formulation', 'Self-improving', 'Implemented'].forEach((t) =>
+      expect(method.getByText(t)).toBeInTheDocument(),
+    );
+    expect(method.getByText(/made less dumb/)).toBeInTheDocument();
+    expect(method.getByText(/rarely means redoing everything/)).toBeInTheDocument();
+    expect(method.getByText(/the plan is an algorithm/)).toBeInTheDocument();
+    ['link-assistant/hive-mind', 'link-assistant/formal-ai'].forEach((repo) =>
+      expect(method.getByRole('link', { name: repo })).toHaveAttribute('href', `https://github.com/${repo}`),
+    );
+    expect(container.querySelector('#method figcaption').textContent).toBe('Original drawing · konard/problem-solving');
     const highlights = within(container.querySelector('#highlights'));
     expect(highlights.getByRole('link', { name: 'konard/p-vs-np' })).toBeInTheDocument();
     expect(highlights.getByRole('link', { name: 'konard/tsp' })).toBeInTheDocument();
@@ -127,17 +158,58 @@ describe('ArtPage', () => {
     expect(count(screen.getByRole('list', { name: 'Other' }))).toBe(inField('other').length);
   });
 
-  it('shows every configuration of 1–4 links from the sprite', () => {
-    render(<SymbolGallery sprite="/s.svg" />);
-    expect(count(screen.getByRole('list', { name: 'Configurations of 3 links' }))).toBe(codes[3].length);
-    fireEvent.click(screen.getByRole('button', { name: /^2 links/ }));
-    const two = screen.getByRole('list', { name: 'Configurations of 2 links' });
-    expect(count(two)).toBe(10);
-    expect(two.querySelector('use').getAttribute('href')).toMatch(/^\/s\.svg#links-2-/);
+  it('shows the gallery of every network of 1–4 links', () => {
+    const { container } = render(<ArtPage />);
+    expect(within(container.querySelector('#symbols')).getByRole('list', { name: 'Networks of 2 links' })).toBeTruthy();
+  });
+});
+
+describe('NetworkGallery (issue #9)', () => {
+  it('draws all (N + 1)^(2N) networks of N links page by page, with base subscripts', () => {
+    render(<NetworkGallery />);
+    const two = screen.getByRole('list', { name: 'Networks of 2 links' });
+    expect(count(two)).toBe(81);
+    expect(two.firstChild).toHaveTextContent('00₃ 00₃');
+    expect(two.lastChild).toHaveTextContent('22₃ 22₃');
+    expect(two.firstChild).toHaveAttribute('title', '(1: 0 0) (2: 0 0)');
+    expect(screen.getByText(/00₃ 00₃ … 22₃ 22₃ → 3⁴ = 81 networks/)).toBeInTheDocument();
+    expect(screen.getByText(/\(1: 0 0\) \(2: 0 0\) … \(1: 2 2\) \(2: 2 2\)/)).toBeInTheDocument();
+    // Every link of every symbol is one path in its own colour.
+    expect(two.querySelectorAll('path')).toHaveLength(162);
+
+    fireEvent.click(screen.getByRole('button', { name: /^1 link/ }));
+    const one = screen.getByRole('list', { name: 'Networks of 1 link' });
+    expect([...one.children].map((li) => li.textContent)).toEqual(['00₂', '01₂', '10₂', '11₂']);
+
     fireEvent.click(screen.getByRole('button', { name: /^4 links/ }));
-    expect(count(screen.getByRole('list', { name: 'Configurations of 4 links' }))).toBe(480);
+    expect(count(screen.getByRole('list', { name: 'Networks of 4 links' }))).toBe(243);
     fireEvent.click(screen.getByRole('button', { name: /Show more/ }));
-    expect(count(screen.getByRole('list', { name: 'Configurations of 4 links' }))).toBe(1440);
+    expect(count(screen.getByRole('list', { name: 'Networks of 4 links' }))).toBe(729);
+    expect(screen.getByRole('button', { name: /Show more \(389,896 left\)/ })).toBeInTheDocument();
+  });
+
+  it('can show one network per renaming class', () => {
+    render(<NetworkGallery initial={3} />);
+    fireEvent.click(screen.getByRole('button', { name: /One per renaming/ }));
+    expect(count(screen.getByRole('list', { name: 'Renaming classes of 3 links' }))).toBe(243);
+    fireEvent.click(screen.getByRole('button', { name: /^2 links/ }));
+    expect(count(screen.getByRole('list', { name: 'Renaming classes of 2 links' }))).toBe(45);
+  });
+});
+
+describe('NetworkExample (issue #9)', () => {
+  it('labels the math and the links notation and shows a random network on click', () => {
+    const { container } = render(<NetworkExample example={metaTheory.example} random={() => 0.6} />);
+    expect(screen.getByText('math notation')).toBeInTheDocument();
+    expect(screen.getByText('links notation')).toBeInTheDocument();
+    const math = () => container.querySelector('[data-notation="math"]').textContent;
+    const links = () => container.querySelector('[data-notation="links"]').textContent;
+    expect(math()).toBe('11₄ 22₄ 12₄');
+    expect(links()).toBe('(1: 1 1)(2: 2 2)(3: 1 2)');
+    fireEvent.click(screen.getByRole('button', { name: /Network of 3 links/ }));
+    // random() = 0.6 picks 3 links and the network at 0.6 × 4⁶.
+    expect(math()).toBe('21₄ 21₄ 21₄');
+    expect(links()).toBe('(1: 2 1)(2: 2 1)(3: 2 1)');
   });
 });
 
@@ -198,11 +270,11 @@ describe('BlogPage', () => {
 });
 
 describe('page entries', () => {
-  it('every page has a title, a summary and a symbol of links', () => {
+  it('every page has a title, a summary and a symbol of links, in the order CV, Experience, Repositories…', () => {
     expect(PAGES.map((p) => p.id)).toEqual([
       'home',
-      'repositories',
       'experience',
+      'repositories',
       'research',
       'associative',
       'art',
@@ -210,6 +282,7 @@ describe('page entries', () => {
     ]);
     PAGES.forEach((p) => {
       expect(p.title && p.summary && p.glyph).toBeTruthy();
+      expect(codeAt(p.glyph.split(' ').length, indexOf(p.glyph))).toBe(p.glyph);
       expect(p.href).toBe(p.id === 'home' ? '/' : `/${p.id}/`);
     });
   });

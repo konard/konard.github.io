@@ -1,12 +1,24 @@
 import { render, screen, waitFor } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import habr from '../data/habr.json';
 import { mergeHabr } from '../data/habrLive';
 import { startNebula } from '../visuals/nebula';
-import { startRain } from '../visuals/rain';
+import { columnsFor, driftAt, startRain } from '../visuals/rain';
 import Cosmos from './Cosmos';
 import HabrCards from './HabrCards';
-import ProblemSolvingDiagram, { edges } from './ProblemSolvingDiagram';
+import ProblemSolvingDiagram, {
+  BOTTOM,
+  edges,
+  ends,
+  HEIGHT,
+  nodes,
+  ORIGINAL_IMAGE,
+  ORIGINAL_REPOSITORY,
+  R,
+  TOP,
+  trim,
+  WIDTH,
+} from './ProblemSolvingDiagram';
 
 const json = (body) => Promise.resolve({ ok: true, json: () => Promise.resolve(body) });
 
@@ -22,7 +34,72 @@ describe('background layers', () => {
   it('do nothing where WebGL or Canvas 2D are unavailable', () => {
     const canvas = { getContext: () => null };
     expect(startNebula(canvas)).toBeTypeOf('function');
-    expect(startRain(canvas, { codes: ['00'] })).toBeTypeOf('function');
+    expect(startRain(canvas)).toBeTypeOf('function');
+  });
+});
+
+describe('rain of link networks (issue #9)', () => {
+  afterEach(() => vi.unstubAllGlobals());
+
+  it('puts exactly two symbol columns into every 64px grid cell, starting at the grid lines', () => {
+    const xs = columnsFor(1280, 64);
+    expect(xs).toHaveLength(40);
+    expect(xs.slice(0, 4)).toEqual([0, 32, 64, 96]);
+    for (let cell = 0; cell < 1280; cell += 64) expect(xs.filter((x) => x >= cell && x < cell + 64)).toHaveLength(2);
+  });
+
+  it('drifts one grid cell per period and starts over', () => {
+    expect(driftAt(0)).toBe(0);
+    expect(driftAt(12000)).toBe(32);
+    expect(driftAt(24000 + 6000)).toBe(16);
+    expect(driftAt(5000, 64, 0)).toBe(0);
+  });
+
+  it('draws every symbol on a half-cell of the grid, each link in its own colour', () => {
+    const moves = [];
+    const strokes = [];
+    const ctx = new Proxy(
+      {
+        translate: (x, y) => moves.push([x, y]),
+        stroke: () => strokes.push(ctx.strokeStyle),
+      },
+      { get: (target, key) => (key in target ? target[key] : () => {}), set: (t, k, v) => ((t[k] = v), true) },
+    );
+    vi.stubGlobal('Path2D', class {});
+    const canvas = { getContext: () => ctx, clientWidth: 640, clientHeight: 480 + 64, style: {} };
+    let seed = 3;
+    const random = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    const stop = startRain(canvas, { animate: false, random });
+    stop();
+    expect(moves.length).toBeGreaterThan(20);
+    moves.forEach(([x, y]) => {
+      expect(x % 32).toBe(0);
+      expect(y % 32).toBe(0);
+    });
+    expect(new Set(strokes).size).toBeGreaterThan(1);
+  });
+
+  it('moves the canvas with the grid and keeps the trails on it when the grid starts over', () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(24000 * 100 - 100);
+    const copies = [];
+    const ctx = new Proxy(
+      { drawImage: (...args) => copies.push(args.slice(1)) },
+      { get: (target, key) => (key in target ? target[key] : () => {}), set: (t, k, v) => ((t[k] = v), true) },
+    );
+    vi.stubGlobal('Path2D', class {});
+    const canvas = { getContext: () => ctx, clientWidth: 320, clientHeight: 400, style: {} };
+    const drifts = [];
+    const stop = startRain(canvas, { onDrift: (d) => drifts.push(d) });
+    vi.advanceTimersByTime(75);
+    expect(drifts.at(-1)).toBeGreaterThan(63);
+    expect(canvas.style.transform).toMatch(/^translateY\(63\.\d\dpx\)$/);
+    vi.advanceTimersByTime(75);
+    expect(drifts.at(-1)).toBeLessThan(1);
+    // The grid jumped back by one cell, so the picture moves down by one cell.
+    expect(copies).toEqual([[0, 64]]);
+    stop();
+    vi.useRealTimers();
   });
 });
 
@@ -39,6 +116,65 @@ describe('ProblemSolvingDiagram', () => {
     expect(container.querySelectorAll('.psd__nodes circle')).toHaveLength(22);
     expect(container.querySelectorAll('circle.is-rejected')).toHaveLength(4);
     expect(screen.getByRole('img', { name: 'Universal Problem Solving Algorithm' })).toBeInTheDocument();
+  });
+
+  // Issue #9: the S of "Solution" was hidden behind the last node and
+  // "decomposition" ran into its arrow. Every label is a box of its fixed
+  // width (textLength) and the full em height; nothing may touch it.
+  const boxOf = ({ x, y, width }, size) => ({ x1: x, x2: x + width, y1: y - size / 2, y2: y + size / 2 });
+  const labels = [
+    ...[...TOP, ...BOTTOM].map((item) => ({ name: item.word, ...boxOf(item, 21) })),
+    ...ends().map((item) => ({ name: item.word, ...boxOf(item, 28) })),
+  ];
+  const overlaps = (a, b, margin = 0) =>
+    a.x1 < b.x2 + margin && b.x1 < a.x2 + margin && a.y1 < b.y2 + margin && b.y1 < a.y2 + margin;
+  // A segment hits a box if any of its sampled points falls inside.
+  const hits = ([x1, y1, x2, y2], box, margin) =>
+    Array.from({ length: 41 }, (_, k) => [x1 + ((x2 - x1) * k) / 40, y1 + ((y2 - y1) * k) / 40]).some(
+      ([x, y]) => x > box.x1 - margin && x < box.x2 + margin && y > box.y1 - margin && y < box.y2 + margin,
+    );
+
+  it('keeps every label inside the drawing and clear of other labels, nodes and arrows', () => {
+    const problems = [];
+    labels.forEach((a, i) => {
+      if (a.x1 < 0 || a.x2 > WIDTH || a.y1 < 0 || a.y2 > HEIGHT) problems.push(`${a.name} leaves the drawing`);
+      labels.slice(i + 1).forEach((b) => overlaps(a, b, 8) && problems.push(`${a.name} touches ${b.name}`));
+      nodes().forEach(([n]) => {
+        const node = { x1: n.x - R, x2: n.x + R, y1: n.y - R, y2: n.y + R };
+        if (overlaps(a, node, 8)) problems.push(`${a.name} touches a node at ${n.x},${n.y}`);
+      });
+      edges().forEach(([p, q]) => hits(trim(p, q), a, 4) && problems.push(`${a.name} touches an edge`));
+      [...TOP, ...BOTTOM]
+        .filter((item) => item.arrow)
+        .forEach((item) => {
+          if (hits([item.arrow[0], item.y, item.arrow[1] + 4, item.y], a, 6))
+            problems.push(`${a.name} touches an arrow`);
+        });
+    });
+    expect(problems).toEqual([]);
+  });
+
+  it('centres both rows and puts every flow arrow at the same distance from its words', () => {
+    [TOP, BOTTOM].forEach((row) => {
+      const left = row[0].x;
+      const right = WIDTH - (row.at(-1).x + row.at(-1).width);
+      expect(Math.abs(left - right)).toBeLessThan(1e-9);
+      row.slice(0, -1).forEach((item, i) => {
+        expect(item.arrow[0] - (item.x + item.width)).toBeCloseTo(row[i + 1].x - item.arrow[1], 9);
+      });
+    });
+    expect(TOP.map((i) => i.word)).toEqual(['tasks', 'tests', 'drafts', 'solutions']);
+    expect(BOTTOM.map((i) => i.word)).toEqual(['decomposition', 'experiment', 'selection', 'composition']);
+  });
+
+  it('only links the original drawing and the original repository in the caption', () => {
+    const { container } = render(<ProblemSolvingDiagram />);
+    const caption = container.querySelector('figcaption');
+    expect([...caption.querySelectorAll('a')].map((a) => a.getAttribute('href'))).toEqual([
+      ORIGINAL_IMAGE,
+      ORIGINAL_REPOSITORY,
+    ]);
+    expect(caption.textContent).toBe('Original drawing · konard/problem-solving');
   });
 });
 

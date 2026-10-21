@@ -1,12 +1,14 @@
 // Classification of every collected repository (docs/case-studies/issue-7/data/repositories.json):
-// - kind: what the repository is (original work, a copy of a client project, a mirror, test noise);
-// - fields: fields of study or business where the repository can be useful.
+// - kind: what the repository is (original work, a fork of a public project, a mirror, test noise);
+// - fields: fields of study or business where the repository can be useful;
+// - excludedBecause: why a repository is not shown at all (see the issue-9 case study).
 // Field descriptions shown on the website live in src/data/fields.js; the ids must match.
 const fs = require('fs');
 const path = require('path');
 
 const root = path.join(__dirname, '..');
 const dataDir = path.join(root, 'docs', 'case-studies', 'issue-7', 'data');
+const healthFile = path.join(root, 'docs', 'case-studies', 'issue-9', 'data', 'repository-health.json');
 const outFile = path.join(root, 'src', 'data', 'repositories.json');
 
 // GitHub users/organizations whose projects konard copied into their own account
@@ -49,17 +51,86 @@ const isNoise = (repo) =>
     repo.name,
   ) || /^(konard\/test)$/i.test(repo.fullName || '');
 
-const KINDS = ['own', 'client', 'mirror', 'noise'];
+const KINDS = ['own', 'fork', 'mirror', 'noise'];
+
+// A copy of another person's project: konard/<client>-<name>, or a konard/<owner>-<name>
+// copy of an existing repository outside the own organizations.
+const isCopy = (repo) =>
+  (repo.owner === 'konard' && clientPrefix.test(repo.name)) ||
+  (!!repo.copyOf && !/^(deep-foundation|link-foundation|linksplatform)\//.test(repo.copyOf));
 
 function kindOf(repo) {
   if (isNoise(repo)) return 'noise';
-  if (repo.owner === 'konard' && clientPrefix.test(repo.name)) return 'client';
+  // Only copies of public projects are shown (see excludedBecause), as forks.
+  if (isCopy(repo)) return 'fork';
   if (repo.owner === 'konard' && /_fork$/.test(repo.name)) return 'mirror';
   // link-foundation keeps a backup copy of the deep-foundation repositories;
   // konard/<org>-<name> copies of an existing repository are mirrors as well.
-  if (repo.copyOf) return /^(deep-foundation|link-foundation|linksplatform)\//.test(repo.copyOf) ? 'mirror' : 'client';
+  if (repo.copyOf) return 'mirror';
   if (/automatically exported from code\.google\.com/i.test(repo.description || '')) return 'mirror';
   return 'own';
+}
+
+// Organizations that are of no value to a visitor for now (issue 9): their
+// repositories, stars and languages are not shown anywhere on the website.
+const HIDDEN_OWNERS = [
+  'EfficiencyParadigm',
+  'Qvinciy',
+  'Gls-full',
+  'links-games',
+  'open-online-tools',
+  'Svetozar-Technologies',
+  'meteor-shuttler',
+];
+const isHiddenOwner = (owner) => HIDDEN_OWNERS.some((o) => o.toLowerCase() === owner.toLowerCase());
+
+// Files that every new repository gets; a repository with nothing else is empty.
+const BOILERPLATE = /^(readme|license|licence|\.gitignore|\.gitattributes|\.gitkeep)(\.[a-z]+)?$/i;
+const SHORT_README = 1024; // bytes: a title and a sentence or two, no content yet
+
+/** No files at all, or only a short README, a license and git settings (like konard/TheAnime). */
+function isEmptyRepository(health) {
+  if (!health || health.missing) return false;
+  if (health.isEmpty || health.fileCount === 0) return true;
+  const files = Object.entries(health.files);
+  return (
+    health.fileCount === files.length &&
+    files.every(([name]) => BOILERPLATE.test(name)) &&
+    files.every(([name, bytes]) => !/^readme/i.test(name) || (bytes != null && bytes < SHORT_README))
+  );
+}
+
+// Accounts of tools that write commits on konard's behalf.
+const isTool = (login) =>
+  /\[bot\]$/.test(login) || ['claude', 'copilot', 'github-actions'].includes(login.toLowerCase());
+
+/**
+ * A fork whose link to the original is broken (like konard/slava): a non-fork
+ * repository of the personal account whose history was started by another
+ * person before the repository existed, while no public original is known.
+ * In an organization, history started by another member is normal teamwork.
+ */
+function isBrokenFork(repo, health) {
+  if (!health || !health.root || !health.root.author || repo.owner !== 'konard') return false;
+  const author = health.root.author;
+  const foreign = author.toLowerCase() !== repo.owner.toLowerCase() && !isTool(author);
+  const imported = new Date(health.root.at) < new Date(repo.createdAt);
+  return foreign && imported && !(health.upstream && health.upstream.public);
+}
+
+/**
+ * Why a repository is not shown at all, or null when it is shown:
+ * a hidden organization, a deleted repository, a copy of a project that is
+ * not public (nothing about private repositories is shown), a broken fork or
+ * an empty repository.
+ */
+function excludedBecause(repo, health) {
+  if (isHiddenOwner(repo.owner)) return 'hidden organization';
+  if (health && health.missing) return 'deleted';
+  if (isCopy(repo) && !(health && health.upstream && health.upstream.public)) return 'original is not public';
+  if (isBrokenFork(repo, health)) return 'broken fork';
+  if (isEmptyRepository(health)) return 'empty';
+  return null;
 }
 
 // [field id, keyword pattern over "owner/name description topics", languages implying the field]
@@ -149,7 +220,7 @@ const FIELD_RULES = [
 const FIELDS = [...FIELD_RULES.map(([id]) => id), 'other'];
 
 // Organizations whose whole purpose is associative technology.
-const ASSOCIATIVE_OWNERS = new Set(['linksplatform', 'deep-foundation', 'meteor-shuttler']);
+const ASSOCIATIVE_OWNERS = new Set(['linksplatform', 'deep-foundation']);
 
 function fieldsOf(repo) {
   const text = [repo.fullName, repo.description || '', (repo.topics || []).join(' ')].join(' ').toLowerCase();
@@ -167,9 +238,22 @@ function fieldsOf(repo) {
 }
 
 const readCollected = () => JSON.parse(fs.readFileSync(path.join(dataDir, 'repositories.json'), 'utf8'));
+/** Facts collected by experiments/collect-repository-health.cjs, by full name. */
+const readHealth = () => JSON.parse(fs.readFileSync(healthFile, 'utf8')).repositories;
+
+/** The collected repositories that are shown, and the reasons the others are not. */
+function shownRepositories(repos = readCollected(), health = readHealth()) {
+  const excluded = {};
+  const shown = repos.filter((r) => {
+    const reason = excludedBecause(r, health[r.fullName]);
+    if (reason) excluded[reason] = (excluded[reason] || 0) + 1;
+    return !reason;
+  });
+  return { shown, excluded };
+}
 
 // Compact, sorted list consumed by the repositories page.
-function buildRepositories({ write = true, repos = readCollected() } = {}) {
+function buildRepositories({ write = true, repos = shownRepositories().shown } = {}) {
   const items = repos
     .map((r) => ({
       fullName: r.fullName,
@@ -203,4 +287,20 @@ function buildRepositories({ write = true, repos = readCollected() } = {}) {
   return result;
 }
 
-module.exports = { CLIENTS, FIELDS, KINDS, buildRepositories, fieldsOf, isNoise, kindOf, readCollected };
+module.exports = {
+  CLIENTS,
+  FIELDS,
+  HIDDEN_OWNERS,
+  KINDS,
+  buildRepositories,
+  excludedBecause,
+  fieldsOf,
+  isBrokenFork,
+  isEmptyRepository,
+  isHiddenOwner,
+  isNoise,
+  kindOf,
+  readCollected,
+  readHealth,
+  shownRepositories,
+};

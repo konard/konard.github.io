@@ -1,9 +1,64 @@
-// Every configuration of 1–4 doublet links up to renaming of the links.
-// A link is a pair (source, target) where both ends point to links of the same
-// configuration, so N links have N^(2N) labelled variants; two variants are the
-// same configuration when a permutation of link indices maps one onto the other.
-// The counts 1, 10, 129, 2836 are OEIS A054050: isomorphism classes of ordered
-// pairs of endofunctions (source, target) on {1..N}.
+// Every network of 1–4 doublet links, encoded exactly as links.
+// Index 0 is the permanent zero link (0: 0 0): "nothing", always assumed and
+// never drawn. Real links are 1..N, and every link (i: s t) refers to links
+// 0..N by its source s and target t. So a network of N real links is written
+// with 2N digits in base N + 1, and there are (N + 1)^(2N) networks:
+//
+//   N = 1: base 2, 00₂ … 11₂                 4 networks
+//   N = 2: base 3, 00₃ 00₃ … 22₃ 22₃         81 networks
+//   N = 3: base 4, 00₄ 00₄ 00₄ … 33₄ 33₄ 33₄ 4,096 networks
+//   N = 4: base 5, 00₅ … 44₅ (four pairs)    390,625 networks
+//
+// For example (1: 0 0) is 00₂, (1: 1 0) is 10₂ and (1: 1 1) is 11₂.
+// Networks that differ only by renaming the real links (0 stays 0) form one
+// class; `classCount` counts them with Burnside's lemma and `representatives`
+// lists the smallest code of every class.
+
+const SUBSCRIPTS = '₀₁₂₃₄₅₆₇₈₉';
+
+/** The base of the codes of networks with `n` real links. */
+export const baseOf = (n) => n + 1;
+
+/** How many networks of `n` real links exist: (n + 1)^(2n). */
+export const networkCount = (n) => baseOf(n) ** (2 * n);
+
+/** "00 10" → [[0, 0], [1, 0]]: link i + 1 is [source, target]. */
+export function decode(code) {
+  return code.split(' ').map((pair) => [Number(pair[0]), Number(pair[1])]);
+}
+
+/** [[0, 0], [1, 0]] → "00 10". */
+export const encode = (links) => links.map(([s, t]) => `${s}${t}`).join(' ');
+
+/** The code of the `index`-th network of `n` links, counting in base n + 1. */
+export function codeAt(n, index) {
+  const base = baseOf(n);
+  const digits = index.toString(base).padStart(2 * n, '0');
+  return digits.match(/../g).join(' ');
+}
+
+/** The position of a code among the networks of its size (inverse of codeAt). */
+export const indexOf = (code) => parseInt(code.replace(/ /g, ''), baseOf(code.split(' ').length));
+
+/** A random network of `n` links, or of 1–4 links when `n` is not given. */
+export function randomCode(random = Math.random, n = 1 + Math.floor(random() * 4)) {
+  return codeAt(n, Math.floor(random() * networkCount(n)));
+}
+
+/** Math notation: the code with base subscripts, e.g. "10₂" or "01₃ 20₃". */
+export function mathNotation(code) {
+  const base = String(baseOf(code.split(' ').length))
+    .split('')
+    .map((d) => SUBSCRIPTS[d])
+    .join('');
+  return code
+    .split(' ')
+    .map((pair) => pair + base)
+    .join(' ');
+}
+
+/** Links notation: one "(index: source target)" per real link. */
+export const linksNotation = (code) => decode(code).map(([s, t], i) => `(${i + 1}: ${s} ${t})`);
 
 export function permutations(n) {
   if (n === 0) return [[]];
@@ -13,18 +68,20 @@ export function permutations(n) {
   return result;
 }
 
-const encode = (links) => links.map(([s, t]) => `${s}${t}`).join(' ');
-
-/** Relabels links by `perm` (old index → new index) and returns the new list. */
+/**
+ * Renames the real links by `perm` (perm[i] is the new 0-based position of
+ * link i + 1); references to 0 stay 0.
+ */
 export function relabel(links, perm) {
+  const name = (ref) => (ref === 0 ? 0 : perm[ref - 1] + 1);
   const result = new Array(links.length);
   links.forEach(([s, t], i) => {
-    result[perm[i]] = [perm[s], perm[t]];
+    result[perm[i]] = [name(s), name(t)];
   });
   return result;
 }
 
-/** The lexicographically smallest encoding among all relabelings. */
+/** The smallest code among all renamings of the real links. */
 export function canonical(links, perms = permutations(links.length)) {
   let best = null;
   for (const perm of perms) {
@@ -34,41 +91,78 @@ export function canonical(links, perms = permutations(links.length)) {
   return best;
 }
 
-/** Decodes `"00 10"` into `[[0, 0], [1, 0]]`. */
-export const decode = (code) => code.split(' ').map((pair) => [Number(pair[0]), Number(pair[1])]);
+/**
+ * Whether no renaming of the real links gives a smaller code. Works on flat
+ * digit arrays and stops at the first difference, so all 390,625 networks
+ * of 4 links are checked in a fraction of a second.
+ */
+function isSmallest(digits, perms, n) {
+  const renamed = new Array(2 * n);
+  for (const perm of perms) {
+    for (let i = 0; i < n; i++) {
+      const s = digits[2 * i];
+      const t = digits[2 * i + 1];
+      renamed[2 * perm[i]] = s === 0 ? 0 : perm[s - 1] + 1;
+      renamed[2 * perm[i] + 1] = t === 0 ? 0 : perm[t - 1] + 1;
+    }
+    for (let k = 0; k < 2 * n; k++) {
+      if (renamed[k] < digits[k]) return false;
+      if (renamed[k] > digits[k]) break;
+    }
+  }
+  return true;
+}
 
 const cache = new Map();
 
-/** Canonical codes of all distinct configurations of exactly `n` links. */
-export function configurations(n) {
-  if (cache.has(n)) return cache.get(n);
-  const perms = permutations(n);
-  const seen = new Set();
-  const total = n ** (2 * n);
-  for (let index = 0; index < total; index++) {
-    const links = [];
-    let rest = index;
-    for (let i = 0; i < n; i++) {
-      const s = rest % n;
-      rest = Math.floor(rest / n);
-      const t = rest % n;
-      rest = Math.floor(rest / n);
-      links.push([s, t]);
+/** The smallest code of every renaming class of networks with `n` links. */
+export function representatives(n) {
+  if (!cache.has(n)) {
+    const perms = permutations(n);
+    const base = baseOf(n);
+    const digits = new Array(2 * n).fill(0);
+    const result = [];
+    for (let i = 0; i < networkCount(n); i++) {
+      if (isSmallest(digits, perms, n)) result.push(digits.join('').match(/../g).join(' '));
+      // Count up in base n + 1, last digit first.
+      for (let k = 2 * n - 1; k >= 0 && ++digits[k] === base; k--) digits[k] = 0;
     }
-    seen.add(canonical(links, perms));
+    cache.set(n, result);
   }
-  const result = [...seen].sort();
-  cache.set(n, result);
-  return result;
+  return cache.get(n);
 }
 
-/** Whether all links are reachable from each other ignoring direction. */
-export function isConnected(links) {
-  const parent = links.map((_, i) => i);
-  const find = (i) => (parent[i] === i ? i : (parent[i] = find(parent[i])));
-  links.forEach(([s, t], i) => {
-    parent[find(s)] = find(i);
-    parent[find(t)] = find(i);
+/**
+ * The number of renaming classes by Burnside's lemma: the average, over all
+ * permutations of the real links, of the networks a permutation keeps fixed.
+ */
+export function classCount(n) {
+  const perms = permutations(n);
+  let fixed = 0;
+  for (const perm of perms) {
+    const cycles = cycleLengths(perm);
+    let product = 1;
+    for (const k of cycles) {
+      // An end of a link on a k-cycle may refer to 0 or to any link whose
+      // cycle length divides k; both ends of the cycle's links are free.
+      const choices = 1 + cycles.filter((d) => k % d === 0).reduce((sum, d) => sum + d, 0);
+      product *= choices ** 2;
+    }
+    fixed += product;
+  }
+  return fixed / perms.length;
+}
+
+function cycleLengths(perm) {
+  const seen = new Array(perm.length).fill(false);
+  const lengths = [];
+  perm.forEach((_, start) => {
+    let length = 0;
+    for (let i = start; !seen[i]; i = perm[i]) {
+      seen[i] = true;
+      length += 1;
+    }
+    if (length) lengths.push(length);
   });
-  return new Set(links.map((_, i) => find(i))).size === 1;
+  return lengths;
 }

@@ -343,9 +343,33 @@
   background: color-mix(in srgb, var(--accent) 18%, transparent);
 }
 
+.symbols__formula {
+  display: grid;
+  gap: 0.15rem;
+  margin: 0 0 1rem;
+}
+
+.symbols__formula dt {
+  color: var(--muted);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.symbols__formula dd {
+  margin: 0 0 0.35rem;
+}
+
+.symbols__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  font-size: 0.85rem;
+}
+
 .symbols__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   gap: 0.4rem;
   margin: 0 0 1rem;
   padding: 0;

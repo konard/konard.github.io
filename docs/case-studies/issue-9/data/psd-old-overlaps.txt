@@ -1,0 +1,7 @@
+Solution spans 825.6–960, final node spans 819–841: OVERLAP (the S is behind the node)
+decomposition ends at 281.9, its arrow starts at 280: OVERLAP
+experiment ends at 463.0, its arrow starts at 480: ok
+experiment starts at 337.0, previous arrow head at 318: ok
+selection ends at 656.7, its arrow starts at 680: ok
+selection starts at 543.3, previous arrow head at 518: ok
+composition starts at 730.7, previous arrow head at 718: ok

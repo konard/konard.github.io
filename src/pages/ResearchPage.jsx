@@ -1,16 +1,18 @@
 import Layout from '../components/Layout';
 import MetaTheory from '../components/MetaTheory';
+import NetworkGallery from '../components/NetworkGallery';
 import ProblemSolving from '../components/ProblemSolving';
-import ProblemSolvingDiagram, { ORIGINAL_IMAGE } from '../components/ProblemSolvingDiagram';
+import ProblemSolvingDiagram from '../components/ProblemSolvingDiagram';
 import RepoList, { RepoItem } from '../components/RepoList';
 import Section from '../components/Section';
 import { fields } from '../data/fields';
-import { problemSolving } from '../data/profile';
+import { problemSolving, problemSolvingNotes } from '../data/profile';
 import { metaTheory } from '../data/theory';
 import { inField, ownRepositories, repo } from './repos';
 
 const SECTIONS = [
   ['theory', 'Links theory'],
+  ['symbols', 'Link symbols'],
   ['method', 'Problem solving'],
   ['highlights', 'Highlights'],
   ['laws', 'Laws as data'],
@@ -78,14 +80,12 @@ export const HIGHLIGHTS = [
 export const LAWS = [
   ['deep-foundation/russian-laws', 'Russian codices as a structured dataset for links and search.'],
   ['konard/russian-law', 'The active law of Russia as HTML for analysis and diffs.'],
-  ['Svetozar-Technologies/indian-law', 'The main codices of the active law of India as a dataset.'],
   ['konard/verdicts', 'Court verdicts collected for statistics and prediction.'],
   ['link-assistant/semantic-primes', 'Semantic primes: towards a formal universal ontology for legal and other texts.'],
   ['konard/price-power-law-inference', 'Inference of power-law graphs from historical prices.'],
   ['deep-foundation/russian-laws-bot', 'A bot that answers questions with articles of Russian law.'],
   ['konard/verdicts-bot', 'A bot over the collected court verdicts.'],
   ['link-assistant/legal', 'An AI legal assistant.'],
-  ['Svetozar-Technologies/SatyaVera', 'A legal assistant application.'],
   ['konard/3-ndfl', 'Generation of the 3-NDFL tax declaration for dividends.'],
 ];
 
@@ -123,17 +123,18 @@ export default function ResearchPage() {
         <MetaTheory theory={metaTheory} detailed />
       </Section>
 
+      <Section id="symbols" kicker="Links theory" title="Every configuration of 1–4 links">
+        <NetworkGallery />
+      </Section>
+
       <Section id="method" kicker="Method" title="Universal problem solving algorithm">
         <p className="section__lead">
-          Every project here is built the same way: decomposition, experiment, selection, composition. The diagram is an
-          SVG version of the{' '}
-          <a href={ORIGINAL_IMAGE} target="_blank" rel="noopener noreferrer">
-            hand-drawn original
-          </a>
-          .
+          Every project here is built the same way: decompose the problem, experiment against tests, select what passes
+          and compose it back. The algorithm is recursive and applies to itself, so it produces plans, algorithms and
+          better requirements as well as solutions.
         </p>
         <ProblemSolvingDiagram />
-        <ProblemSolving steps={problemSolving} />
+        <ProblemSolving steps={problemSolving} notes={problemSolvingNotes} />
       </Section>
 
       <Section id="highlights" kicker="Open questions" title="Highlighted research">
