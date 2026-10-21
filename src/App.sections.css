@@ -537,6 +537,43 @@
   color: var(--text-2);
 }
 
+.ps-notes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0 0;
+}
+
+.ps-note {
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: rgba(3, 6, 12, 0.6);
+}
+
+.ps-note dt {
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+
+.ps-note dd {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--text-2);
+}
+
+.ps-note--wide {
+  grid-column: 1 / -1;
+}
+
+.ps-note ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0.35rem 2rem;
+  margin: 0.5rem 0 0;
+  padding-left: 1rem;
+}
+
 /* ---------- Contacts ---------- */
 
 .socials {

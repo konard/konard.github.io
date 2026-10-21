@@ -2,21 +2,36 @@
 // konard: a problem is decomposed into tasks, every task gets a test, every
 // test gets several drafts, the drafts that pass are selected and composed
 // back into the solution.
+//
+// Every text has a fixed width (`textLength`, monospace advance 0.6 em), so
+// the layout below is exact in every browser and font: labels and arrows are
+// placed from the measured widths and never overlap each other or the nodes.
 export const ORIGINAL_IMAGE = 'https://github.com/user-attachments/assets/1d91e911-9ba4-456e-a00a-14cdd60d9a0a';
+export const ORIGINAL_REPOSITORY = 'https://github.com/konard/problem-solving';
 
 const COLORS = { task: '#ef4444', test: '#eab308', draft: '#f8fafc', solution: '#22c55e', flow: '#3b82f6' };
-const R = 11;
+export const WIDTH = 1000;
+export const HEIGHT = 640;
+export const R = 11;
+const ROW_FONT = 21;
+const END_FONT = 28;
+const GAP = 16; // free space between a word and an arrow or a node
+const FLOW = 40; // length of a blue arrow between two words
 
-const PROBLEM = { x: 190, y: 330 };
-const TASKS = [210, 450].map((y) => ({ x: 290, y }));
-const SUBTASKS = [150, 270, 390, 510].map((y) => ({ x: 390, y }));
-const TESTS = SUBTASKS.map(({ y }) => ({ x: 500, y }));
-const DRAFTS = TESTS.flatMap(({ y }) => [y - 30, y + 30]).map((y) => ({ x: 610, y }));
+/** Width of `text` in a monospace font of `size` px (every glyph advances 0.6 em). */
+export const textWidth = (text, size) => text.length * size * 0.6;
+
+const LEFT = 172; // the Problem node; every other column is placed relative to it
+const PROBLEM = { x: LEFT, y: 330 };
+const TASKS = [210, 450].map((y) => ({ x: LEFT + 100, y }));
+const SUBTASKS = [150, 270, 390, 510].map((y) => ({ x: LEFT + 200, y }));
+const TESTS = SUBTASKS.map(({ y }) => ({ x: LEFT + 310, y }));
+const DRAFTS = TESTS.flatMap(({ y }) => [y - 30, y + 30]).map((y) => ({ x: LEFT + 420, y }));
 const SELECTED = [
-  { x: 730, y: 230, from: [0, 3] },
-  { x: 730, y: 440, from: [5, 6] },
+  { x: LEFT + 540, y: 230, from: [0, 3] },
+  { x: LEFT + 540, y: 440, from: [5, 6] },
 ];
-const SOLUTION = { x: 830, y: 335 };
+const SOLUTION = { x: LEFT + 640, y: 330 };
 
 /** Every arrow of the diagram as [from, to, kind]. */
 export function edges() {
@@ -30,7 +45,21 @@ export function edges() {
   return list;
 }
 
-const trim = (a, b) => {
+const selectedDrafts = new Set(SELECTED.flatMap((s) => s.from));
+
+/** Every node as [point, kind]. */
+export const nodes = () => [
+  [PROBLEM, 'task'],
+  ...TASKS.map((n) => [n, 'task']),
+  ...SUBTASKS.map((n) => [n, 'task']),
+  ...TESTS.map((n) => [n, 'test']),
+  ...DRAFTS.map((n, i) => [n, selectedDrafts.has(i) ? 'draft' : 'draft-rejected']),
+  ...SELECTED.map((n) => [n, 'solution']),
+  [SOLUTION, 'solution'],
+];
+
+/** An arrow from the edge of node `a` to the edge of node `b` (the head needs a little more room). */
+export const trim = (a, b) => {
   const dx = b.x - a.x;
   const dy = b.y - a.y;
   const len = Math.hypot(dx, dy);
@@ -38,54 +67,99 @@ const trim = (a, b) => {
   return [a.x + dx * k, a.y + dy * k, b.x - dx * k * 1.25, b.y - dy * k * 1.25];
 };
 
-const selectedDrafts = new Set(SELECTED.flatMap((s) => s.from));
+const KINDS = ['task', 'test', 'draft', 'solution'];
 
-function Row({ y, words }) {
-  const kinds = ['task', 'test', 'draft', 'solution'];
+/**
+ * A row of four words joined by arrows, centred in the drawing: every arrow
+ * starts GAP after a word and ends GAP before the next one.
+ */
+export function rowLayout(words, y) {
+  const widths = words.map((w) => textWidth(w, ROW_FONT));
+  const total = widths.reduce((a, b) => a + b, 0) + (words.length - 1) * (FLOW + 2 * GAP);
+  let x = (WIDTH - total) / 2;
+  const items = [];
+  words.forEach((word, i) => {
+    const item = { word, kind: KINDS[i], x, y, width: widths[i] };
+    x += widths[i];
+    if (i < words.length - 1) {
+      item.arrow = [x + GAP, x + GAP + FLOW];
+      x += FLOW + 2 * GAP;
+    }
+    items.push(item);
+  });
+  return items;
+}
+
+/** The Problem and Solution labels, vertically centred on their nodes. */
+export const ends = () => [
+  {
+    word: 'Problem',
+    kind: 'task',
+    x: PROBLEM.x - R - GAP - textWidth('Problem', END_FONT),
+    y: PROBLEM.y,
+    width: textWidth('Problem', END_FONT),
+  },
+  {
+    word: 'Solution',
+    kind: 'solution',
+    x: SOLUTION.x + R + GAP,
+    y: SOLUTION.y,
+    width: textWidth('Solution', END_FONT),
+  },
+];
+
+export const TOP = rowLayout(['tasks', 'tests', 'drafts', 'solutions'], 58);
+export const BOTTOM = rowLayout(['decomposition', 'experiment', 'selection', 'composition'], 612);
+
+function Label({ word, kind, x, y, width, size, className }) {
+  return (
+    <text
+      x={x}
+      y={y}
+      fill={COLORS[kind]}
+      fontSize={size}
+      textLength={width}
+      lengthAdjust="spacingAndGlyphs"
+      dominantBaseline="central"
+      className={className}
+    >
+      {word}
+    </text>
+  );
+}
+
+function Row({ items }) {
   return (
     <g className="psd__row">
-      {words.map((w, i) => {
-        const x = 200 + i * 200;
-        return (
-          <g key={w}>
-            <text x={x} y={y} fill={COLORS[kinds[i]]} textAnchor="middle">
-              {w}
-            </text>
-            {i < words.length - 1 && (
-              <line
-                x1={x + 80}
-                y1={y - 6}
-                x2={x + 118}
-                y2={y - 6}
-                stroke={COLORS.flow}
-                markerEnd="url(#psd-flow)"
-                strokeWidth="2.5"
-              />
-            )}
-          </g>
-        );
-      })}
+      {items.map((item) => (
+        <g key={item.word}>
+          <Label {...item} size={ROW_FONT} />
+          {item.arrow && (
+            <line
+              x1={item.arrow[0]}
+              y1={item.y}
+              x2={item.arrow[1]}
+              y2={item.y}
+              stroke={COLORS.flow}
+              markerEnd="url(#psd-flow)"
+              strokeWidth="2.5"
+            />
+          )}
+        </g>
+      ))}
     </g>
   );
 }
 
 export default function ProblemSolvingDiagram() {
-  const nodes = [
-    [PROBLEM, 'task'],
-    ...TASKS.map((n) => [n, 'task']),
-    ...SUBTASKS.map((n) => [n, 'task']),
-    ...TESTS.map((n) => [n, 'test']),
-    ...DRAFTS.map((n, i) => [n, selectedDrafts.has(i) ? 'draft' : 'draft-rejected']),
-    ...SELECTED.map((n) => [n, 'solution']),
-    [SOLUTION, 'solution'],
-  ];
   return (
     <figure className="psd">
-      <svg viewBox="0 0 1000 640" role="img" aria-labelledby="psd-title" aria-describedby="psd-desc">
+      <svg viewBox={`0 0 ${WIDTH} ${HEIGHT}`} role="img" aria-labelledby="psd-title" aria-describedby="psd-desc">
         <title id="psd-title">Universal Problem Solving Algorithm</title>
         <desc id="psd-desc">
-          Problem is decomposed into tasks, tasks get tests, tests get drafts, passing drafts are selected and composed
-          into the solution: decomposition, experiment, selection, composition.
+          A problem is decomposed into tasks, every task gets a test, every test gets several drafts, the drafts that
+          pass are selected and composed into the solution: decomposition, experiment, selection, composition. Dimmed
+          drafts did not pass their tests.
         </desc>
         <defs>
           {Object.entries(COLORS).map(([kind, color]) => (
@@ -103,13 +177,10 @@ export default function ProblemSolvingDiagram() {
             </marker>
           ))}
         </defs>
-        <Row y={58} words={['tasks', 'tests', 'drafts', 'solutions']} />
-        <text x={40} y={340} className="psd__end" fill={COLORS.task}>
-          Problem
-        </text>
-        <text x={960} y={345} className="psd__end" fill={COLORS.solution} textAnchor="end">
-          Solution
-        </text>
+        <Row items={TOP} />
+        {ends().map((item) => (
+          <Label key={item.word} {...item} size={END_FONT} className="psd__end" />
+        ))}
         <g className="psd__edges">
           {edges().map(([a, b, kind], i) => {
             const [x1, y1, x2, y2] = trim(a, b);
@@ -128,7 +199,7 @@ export default function ProblemSolvingDiagram() {
           })}
         </g>
         <g className="psd__nodes">
-          {nodes.map(([n, kind], i) => (
+          {nodes().map(([n, kind], i) => (
             <circle
               key={i}
               cx={n.x}
@@ -139,14 +210,16 @@ export default function ProblemSolvingDiagram() {
             />
           ))}
         </g>
-        <Row y={612} words={['decomposition', 'experiment', 'selection', 'composition']} />
+        <Row items={BOTTOM} />
       </svg>
       <figcaption>
-        After the{' '}
         <a href={ORIGINAL_IMAGE} target="_blank" rel="noopener noreferrer">
-          original drawing
+          Original drawing
         </a>{' '}
-        by konard. Dimmed drafts are the experiments that did not pass their tests.
+        ·{' '}
+        <a href={ORIGINAL_REPOSITORY} target="_blank" rel="noopener noreferrer">
+          konard/problem-solving
+        </a>
       </figcaption>
     </figure>
   );

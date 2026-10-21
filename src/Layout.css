@@ -347,12 +347,11 @@
 }
 
 .psd text {
+  /* Sizes and widths are SVG attributes, so the layout never depends on the font. */
   font-family: var(--mono);
-  font-size: 21px;
 }
 
 .psd .psd__end {
-  font-size: 28px;
   font-weight: 700;
 }
 

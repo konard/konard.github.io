@@ -6,7 +6,19 @@ import { startNebula } from '../visuals/nebula';
 import { columnsFor, driftAt, startRain } from '../visuals/rain';
 import Cosmos from './Cosmos';
 import HabrCards from './HabrCards';
-import ProblemSolvingDiagram, { edges } from './ProblemSolvingDiagram';
+import ProblemSolvingDiagram, {
+  BOTTOM,
+  edges,
+  ends,
+  HEIGHT,
+  nodes,
+  ORIGINAL_IMAGE,
+  ORIGINAL_REPOSITORY,
+  R,
+  TOP,
+  trim,
+  WIDTH,
+} from './ProblemSolvingDiagram';
 
 const json = (body) => Promise.resolve({ ok: true, json: () => Promise.resolve(body) });
 
@@ -104,6 +116,65 @@ describe('ProblemSolvingDiagram', () => {
     expect(container.querySelectorAll('.psd__nodes circle')).toHaveLength(22);
     expect(container.querySelectorAll('circle.is-rejected')).toHaveLength(4);
     expect(screen.getByRole('img', { name: 'Universal Problem Solving Algorithm' })).toBeInTheDocument();
+  });
+
+  // Issue #9: the S of "Solution" was hidden behind the last node and
+  // "decomposition" ran into its arrow. Every label is a box of its fixed
+  // width (textLength) and the full em height; nothing may touch it.
+  const boxOf = ({ x, y, width }, size) => ({ x1: x, x2: x + width, y1: y - size / 2, y2: y + size / 2 });
+  const labels = [
+    ...[...TOP, ...BOTTOM].map((item) => ({ name: item.word, ...boxOf(item, 21) })),
+    ...ends().map((item) => ({ name: item.word, ...boxOf(item, 28) })),
+  ];
+  const overlaps = (a, b, margin = 0) =>
+    a.x1 < b.x2 + margin && b.x1 < a.x2 + margin && a.y1 < b.y2 + margin && b.y1 < a.y2 + margin;
+  // A segment hits a box if any of its sampled points falls inside.
+  const hits = ([x1, y1, x2, y2], box, margin) =>
+    Array.from({ length: 41 }, (_, k) => [x1 + ((x2 - x1) * k) / 40, y1 + ((y2 - y1) * k) / 40]).some(
+      ([x, y]) => x > box.x1 - margin && x < box.x2 + margin && y > box.y1 - margin && y < box.y2 + margin,
+    );
+
+  it('keeps every label inside the drawing and clear of other labels, nodes and arrows', () => {
+    const problems = [];
+    labels.forEach((a, i) => {
+      if (a.x1 < 0 || a.x2 > WIDTH || a.y1 < 0 || a.y2 > HEIGHT) problems.push(`${a.name} leaves the drawing`);
+      labels.slice(i + 1).forEach((b) => overlaps(a, b, 8) && problems.push(`${a.name} touches ${b.name}`));
+      nodes().forEach(([n]) => {
+        const node = { x1: n.x - R, x2: n.x + R, y1: n.y - R, y2: n.y + R };
+        if (overlaps(a, node, 8)) problems.push(`${a.name} touches a node at ${n.x},${n.y}`);
+      });
+      edges().forEach(([p, q]) => hits(trim(p, q), a, 4) && problems.push(`${a.name} touches an edge`));
+      [...TOP, ...BOTTOM]
+        .filter((item) => item.arrow)
+        .forEach((item) => {
+          if (hits([item.arrow[0], item.y, item.arrow[1] + 4, item.y], a, 6))
+            problems.push(`${a.name} touches an arrow`);
+        });
+    });
+    expect(problems).toEqual([]);
+  });
+
+  it('centres both rows and puts every flow arrow at the same distance from its words', () => {
+    [TOP, BOTTOM].forEach((row) => {
+      const left = row[0].x;
+      const right = WIDTH - (row.at(-1).x + row.at(-1).width);
+      expect(Math.abs(left - right)).toBeLessThan(1e-9);
+      row.slice(0, -1).forEach((item, i) => {
+        expect(item.arrow[0] - (item.x + item.width)).toBeCloseTo(row[i + 1].x - item.arrow[1], 9);
+      });
+    });
+    expect(TOP.map((i) => i.word)).toEqual(['tasks', 'tests', 'drafts', 'solutions']);
+    expect(BOTTOM.map((i) => i.word)).toEqual(['decomposition', 'experiment', 'selection', 'composition']);
+  });
+
+  it('only links the original drawing and the original repository in the caption', () => {
+    const { container } = render(<ProblemSolvingDiagram />);
+    const caption = container.querySelector('figcaption');
+    expect([...caption.querySelectorAll('a')].map((a) => a.getAttribute('href'))).toEqual([
+      ORIGINAL_IMAGE,
+      ORIGINAL_REPOSITORY,
+    ]);
+    expect(caption.textContent).toBe('Original drawing · konard/problem-solving');
   });
 });
 

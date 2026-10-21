@@ -2,11 +2,11 @@ import Layout from '../components/Layout';
 import MetaTheory from '../components/MetaTheory';
 import NetworkGallery from '../components/NetworkGallery';
 import ProblemSolving from '../components/ProblemSolving';
-import ProblemSolvingDiagram, { ORIGINAL_IMAGE } from '../components/ProblemSolvingDiagram';
+import ProblemSolvingDiagram from '../components/ProblemSolvingDiagram';
 import RepoList, { RepoItem } from '../components/RepoList';
 import Section from '../components/Section';
 import { fields } from '../data/fields';
-import { problemSolving } from '../data/profile';
+import { problemSolving, problemSolvingNotes } from '../data/profile';
 import { metaTheory } from '../data/theory';
 import { inField, ownRepositories, repo } from './repos';
 
@@ -129,15 +129,12 @@ export default function ResearchPage() {
 
       <Section id="method" kicker="Method" title="Universal problem solving algorithm">
         <p className="section__lead">
-          Every project here is built the same way: decomposition, experiment, selection, composition. The diagram is an
-          SVG version of the{' '}
-          <a href={ORIGINAL_IMAGE} target="_blank" rel="noopener noreferrer">
-            hand-drawn original
-          </a>
-          .
+          Every project here is built the same way: decompose the problem, experiment against tests, select what passes
+          and compose it back. The algorithm is recursive and applies to itself, so it produces plans, algorithms and
+          better requirements as well as solutions.
         </p>
         <ProblemSolvingDiagram />
-        <ProblemSolving steps={problemSolving} />
+        <ProblemSolving steps={problemSolving} notes={problemSolvingNotes} />
       </Section>
 
       <Section id="highlights" kicker="Open questions" title="Highlighted research">

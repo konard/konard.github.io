@@ -84,6 +84,10 @@ function App() {
           <ProblemSolvingDiagram />
           <ProblemSolving steps={problemSolving} />
         </div>
+        <p className="section__more">
+          <a href="/research/#method">Research page</a>: why the algorithm is recursive, applies to itself and improves
+          its own requirements, and where it runs in code.
+        </p>
       </Section>
 
       <Section id="ecosystem" kicker="04 · Organizations" title="Open-source ecosystem">

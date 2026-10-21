@@ -105,6 +105,19 @@ describe('ResearchPage', () => {
       expect(container.querySelector(`#${id}`)).not.toBeNull(),
     );
     expect(container.querySelector('.psd')).not.toBeNull();
+    // Issue #9: the method explains recursion, self-application, going back to
+    // the formulation and links the implementations in code.
+    const method = within(container.querySelector('#method'));
+    ['Recursive', 'Applicable to itself', 'Returns to formulation', 'Self-improving', 'Implemented'].forEach((t) =>
+      expect(method.getByText(t)).toBeInTheDocument(),
+    );
+    expect(method.getByText(/made less dumb/)).toBeInTheDocument();
+    expect(method.getByText(/rarely means redoing everything/)).toBeInTheDocument();
+    expect(method.getByText(/the plan is an algorithm/)).toBeInTheDocument();
+    ['link-assistant/hive-mind', 'link-assistant/formal-ai'].forEach((repo) =>
+      expect(method.getByRole('link', { name: repo })).toHaveAttribute('href', `https://github.com/${repo}`),
+    );
+    expect(container.querySelector('#method figcaption').textContent).toBe('Original drawing · konard/problem-solving');
     const highlights = within(container.querySelector('#highlights'));
     expect(highlights.getByRole('link', { name: 'konard/p-vs-np' })).toBeInTheDocument();
     expect(highlights.getByRole('link', { name: 'konard/tsp' })).toBeInTheDocument();
