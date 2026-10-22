@@ -228,6 +228,31 @@ describe('NetworkGallery (issue #9)', () => {
     fireEvent.click(screen.getByRole('button', { name: /^2 links/ }));
     expect(count(screen.getByRole('list', { name: 'Renaming classes of 2 links' }))).toBe(45);
   });
+
+  it('can show only networks whose links refer to real links, not to 0 (issue #13)', () => {
+    render(<NetworkGallery />);
+    const toggle = screen.getByRole('button', { name: /Show only real references/ });
+    // Off by default: the gallery still starts with all 81 networks of 2 links.
+    expect(toggle).toHaveAttribute('aria-pressed', 'false');
+    expect(toggle).toHaveTextContent('16');
+    fireEvent.click(toggle);
+    expect(toggle).toHaveAttribute('aria-pressed', 'true');
+    const two = screen.getByRole('list', { name: 'Networks of 2 links' });
+    expect(count(two)).toBe(16);
+    expect(two.firstChild).toHaveTextContent('11₃ 11₃');
+    expect(two.lastChild).toHaveTextContent('22₃ 22₃');
+    expect([...two.children].every((li) => !/0/.test(li.textContent))).toBe(true);
+    expect(screen.getByText(/11₃ 11₃ … 22₃ 22₃ → 2⁴ = 16 networks/)).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /^4 links/ })).toHaveTextContent('65,536');
+
+    fireEvent.click(screen.getByRole('button', { name: /^1 link/ }));
+    expect([...screen.getByRole('list', { name: 'Networks of 1 link' }).children].map((li) => li.textContent)).toEqual([
+      '11₂',
+    ]);
+    fireEvent.click(screen.getByRole('button', { name: /^3 links/ }));
+    fireEvent.click(screen.getByRole('button', { name: /One per renaming/ }));
+    expect(count(screen.getByRole('list', { name: 'Renaming classes of 3 links' }))).toBe(129);
+  });
 });
 
 describe('NetworkExample (issue #9)', () => {

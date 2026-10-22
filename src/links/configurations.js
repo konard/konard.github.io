@@ -13,14 +13,23 @@
 // Networks that differ only by renaming the real links (0 stays 0) form one
 // class; `classCount` counts them with Burnside's lemma and `representatives`
 // lists the smallest code of every class.
+//
+// With `{ real: true }` (issue #13) only networks whose links refer to real
+// links (each other or themselves) are counted, never to 0: every digit is
+// 1..N, so there are N^(2N) of them (1, 16, 729 and 65,536). Renaming never
+// turns a reference to 0 into a real one, so their classes are exactly the
+// classes without zeros.
 
 const SUBSCRIPTS = '₀₁₂₃₄₅₆₇₈₉';
 
 /** The base of the codes of networks with `n` real links. */
 export const baseOf = (n) => n + 1;
 
-/** How many networks of `n` real links exist: (n + 1)^(2n). */
-export const networkCount = (n) => baseOf(n) ** (2 * n);
+/** How many networks of `n` real links exist: (n + 1)^(2n), or n^(2n) with only real references. */
+export const networkCount = (n, { real = false } = {}) => (real ? n : baseOf(n)) ** (2 * n);
+
+/** Whether every link of the network refers only to real links, never to 0. */
+export const isReal = (code) => !/0/.test(code);
 
 /** "00 10" → [[0, 0], [1, 0]]: link i + 1 is [source, target]. */
 export function decode(code) {
@@ -30,19 +39,37 @@ export function decode(code) {
 /** [[0, 0], [1, 0]] → "00 10". */
 export const encode = (links) => links.map(([s, t]) => `${s}${t}`).join(' ');
 
-/** The code of the `index`-th network of `n` links, counting in base n + 1. */
-export function codeAt(n, index) {
-  const base = baseOf(n);
-  const digits = index.toString(base).padStart(2 * n, '0');
-  return digits.match(/../g).join(' ');
+/** `index` as `length` digits in `base` (also base 1, where the only number is 0), most significant first. */
+function digitsOf(index, base, length) {
+  const digits = new Array(length).fill(0);
+  for (let k = length - 1; k >= 0 && index > 0; k--) {
+    digits[k] = index % base;
+    index = Math.floor(index / base);
+  }
+  return digits;
+}
+
+const pairs = (digits) => digits.join('').match(/../g).join(' ');
+
+/**
+ * The code of the `index`-th network of `n` links, counting in base n + 1;
+ * with only real references the digits 1..n count in base n.
+ */
+export function codeAt(n, index, { real = false } = {}) {
+  if (!real) return pairs(digitsOf(index, baseOf(n), 2 * n));
+  return pairs(digitsOf(index, n, 2 * n).map((d) => d + 1));
 }
 
 /** The position of a code among the networks of its size (inverse of codeAt). */
-export const indexOf = (code) => parseInt(code.replace(/ /g, ''), baseOf(code.split(' ').length));
+export function indexOf(code, { real = false } = {}) {
+  const n = code.split(' ').length;
+  const base = real ? n : baseOf(n);
+  return [...code.replace(/ /g, '')].reduce((index, d) => index * base + Number(d) - (real ? 1 : 0), 0);
+}
 
 /** A random network of `n` links, or of 1–4 links when `n` is not given. */
-export function randomCode(random = Math.random, n = 1 + Math.floor(random() * 4)) {
-  return codeAt(n, Math.floor(random() * networkCount(n)));
+export function randomCode(random = Math.random, n = 1 + Math.floor(random() * 4), { real = false } = {}) {
+  return codeAt(n, Math.floor(random() * networkCount(n, { real })), { real });
 }
 
 /** Math notation: the code with base subscripts, e.g. "10₂" or "01₃ 20₃". */
@@ -116,14 +143,19 @@ function isSmallest(digits, perms, n) {
 const cache = new Map();
 
 /** The smallest code of every renaming class of networks with `n` links. */
-export function representatives(n) {
+export function representatives(n, { real = false } = {}) {
+  if (real) {
+    const key = `real ${n}`;
+    if (!cache.has(key)) cache.set(key, representatives(n).filter(isReal));
+    return cache.get(key);
+  }
   if (!cache.has(n)) {
     const perms = permutations(n);
     const base = baseOf(n);
     const digits = new Array(2 * n).fill(0);
     const result = [];
     for (let i = 0; i < networkCount(n); i++) {
-      if (isSmallest(digits, perms, n)) result.push(digits.join('').match(/../g).join(' '));
+      if (isSmallest(digits, perms, n)) result.push(pairs(digits));
       // Count up in base n + 1, last digit first.
       for (let k = 2 * n - 1; k >= 0 && ++digits[k] === base; k--) digits[k] = 0;
     }
@@ -136,16 +168,17 @@ export function representatives(n) {
  * The number of renaming classes by Burnside's lemma: the average, over all
  * permutations of the real links, of the networks a permutation keeps fixed.
  */
-export function classCount(n) {
+export function classCount(n, { real = false } = {}) {
   const perms = permutations(n);
   let fixed = 0;
   for (const perm of perms) {
     const cycles = cycleLengths(perm);
     let product = 1;
     for (const k of cycles) {
-      // An end of a link on a k-cycle may refer to 0 or to any link whose
-      // cycle length divides k; both ends of the cycle's links are free.
-      const choices = 1 + cycles.filter((d) => k % d === 0).reduce((sum, d) => sum + d, 0);
+      // An end of a link on a k-cycle may refer to 0 (unless only real
+      // references count) or to any link whose cycle length divides k; both
+      // ends of the cycle's links are free.
+      const choices = (real ? 0 : 1) + cycles.filter((d) => k % d === 0).reduce((sum, d) => sum + d, 0);
       product *= choices ** 2;
     }
     fixed += product;
