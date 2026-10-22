@@ -57,12 +57,53 @@
 /* ---------- Print: a compact paper CV ---------- */
 
 @media print {
-  :root {
+  /* Black on white whatever the screen theme is: [data-theme] beats both
+     theme blocks of index.css (issue #11). */
+  :root,
+  :root[data-theme] {
+    --bg: #fff;
+    --surface: #fff;
+    --surface-2: #f4f4f4;
     --text: #111;
     --text-2: #333;
     --muted: #555;
     --accent: #0b5cad;
+    --accent-2: #5b21b6;
+    --accent-3: #9d174d;
     --border: #ccc;
+    --border-strong: #999;
+    --accent-soft: transparent;
+    --panel-rgb: 255 255 255;
+    --panel-2-rgb: 255 255 255;
+    --deep-rgb: 255 255 255;
+    --abyss-rgb: 255 255 255;
+    --line-rgb: 0 0 0;
+    --accent-rgb: 11 92 173;
+    --accent-2-rgb: 91 33 182;
+    --accent-3-rgb: 157 23 77;
+    --title-from: #111;
+    --shadow-card: none;
+    --shadow-tooltip: none;
+    --ok: #047857;
+    --fav: #8a5a00;
+    --silver: #555;
+    --bronze: #9a5b20;
+    --cloud-mix: #111;
+    --cloud-tint: 60%;
+    --cloud-fade: 0.8;
+    --node-fill: #fff;
+    --link-1: #0e7490;
+    --link-2: #9333ea;
+    --link-3: #db2777;
+    --link-4: #b45309;
+    --psd-draft: #111;
+    --psd-draft-line: #555;
+    --psd-test: #a16207;
+    --psd-task: #dc2626;
+    --psd-solution: #15803d;
+    --psd-flow: #2563eb;
+    --psd-glow: transparent;
+    color-scheme: light;
   }
 
   body {

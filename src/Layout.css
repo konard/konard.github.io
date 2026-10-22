@@ -8,9 +8,9 @@
   pointer-events: none;
   /* Shown until (or instead of) the WebGL universe. */
   background:
-    radial-gradient(60rem 40rem at 10% -10%, rgba(34, 211, 238, 0.14), transparent 60%),
-    radial-gradient(50rem 40rem at 100% 10%, rgba(167, 139, 250, 0.16), transparent 60%),
-    radial-gradient(40rem 30rem at 50% 110%, rgba(244, 114, 182, 0.1), transparent 60%), var(--bg);
+    radial-gradient(60rem 40rem at 10% -10%, rgb(var(--accent-rgb) / 0.14), transparent 60%),
+    radial-gradient(50rem 40rem at 100% 10%, rgb(var(--accent-2-rgb) / 0.16), transparent 60%),
+    radial-gradient(40rem 30rem at 50% 110%, rgb(var(--accent-3-rgb) / 0.1), transparent 60%), var(--bg);
 }
 
 .cosmos__universe,
@@ -33,13 +33,25 @@
   opacity: 0.95;
 }
 
+/* Light theme: the dark universe and the bright rain are inverted (keeping
+   their hues) and toned down, so they stay a quiet backdrop for dark text. */
+:root[data-theme='light'] .cosmos__universe {
+  filter: invert(1) hue-rotate(180deg);
+  opacity: 0.25;
+}
+
+:root[data-theme='light'] .cosmos__rain {
+  filter: invert(1) hue-rotate(180deg) saturate(1.4);
+  opacity: 0.32;
+}
+
 .cosmos__grid {
   position: absolute;
   left: 0;
   right: 0;
   background-image:
-    linear-gradient(rgba(148, 197, 255, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(148, 197, 255, 0.07) 1px, transparent 1px);
+    linear-gradient(rgb(var(--line-rgb) / 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--line-rgb) / 0.07) 1px, transparent 1px);
   background-size: 64px 64px;
   mask-image: radial-gradient(ellipse at 50% 30%, black 20%, transparent 85%);
 }
@@ -64,7 +76,7 @@
   position: sticky;
   top: 0;
   z-index: 10;
-  background: rgba(7, 11, 20, 0.74);
+  background: rgb(var(--deep-rgb) / 0.74);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border);
 }
@@ -105,8 +117,8 @@
 
 .pages a[aria-current='page'] {
   color: var(--text);
-  border-color: rgba(34, 211, 238, 0.5);
-  background: rgba(34, 211, 238, 0.12);
+  border-color: rgb(var(--accent-rgb) / 0.5);
+  background: rgb(var(--accent-rgb) / 0.12);
 }
 
 .nav__top {
@@ -144,7 +156,7 @@
   padding: 1.25rem;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: linear-gradient(160deg, rgba(18, 26, 44, 0.9), rgba(13, 18, 32, 0.75));
+  background: linear-gradient(160deg, rgb(var(--panel-2-rgb) / 0.9), rgb(var(--panel-rgb) / 0.75));
   color: var(--text-2);
   transition:
     border-color 0.2s,
@@ -156,7 +168,7 @@
   text-decoration: none;
   border-color: var(--accent);
   transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(34, 211, 238, 0.15);
+  box-shadow: 0 10px 30px rgb(var(--accent-rgb) / 0.15);
 }
 
 .page-card__title {
@@ -184,7 +196,12 @@
   padding: 1.75rem;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: linear-gradient(135deg, rgba(34, 211, 238, 0.08), rgba(167, 139, 250, 0.1) 60%, rgba(13, 18, 32, 0.85));
+  background: linear-gradient(
+    135deg,
+    rgb(var(--accent-rgb) / 0.08),
+    rgb(var(--accent-2-rgb) / 0.1) 60%,
+    rgb(var(--panel-rgb) / 0.85)
+  );
 }
 
 .theory__formula {
@@ -194,11 +211,11 @@
   font-size: clamp(3rem, 8vw, 5.5rem);
   font-weight: 700;
   letter-spacing: 0.02em;
-  background: linear-gradient(120deg, #fff, var(--accent) 45%, var(--accent-2) 80%);
+  background: linear-gradient(120deg, var(--title-from), var(--accent) 45%, var(--accent-2) 80%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  filter: drop-shadow(0 0 30px rgba(34, 211, 238, 0.35));
+  filter: drop-shadow(0 0 30px rgb(var(--accent-rgb) / 0.35));
 }
 
 .theory__summary {
@@ -218,7 +235,7 @@
   padding: 0.25rem;
   border: 1px solid var(--border);
   border-radius: 12px;
-  background: rgba(13, 18, 32, 0.6);
+  background: rgb(var(--panel-rgb) / 0.6);
   cursor: pointer;
 }
 
@@ -229,7 +246,7 @@
 
 .theory__network .glyph {
   display: block;
-  filter: drop-shadow(0 0 10px rgba(167, 139, 250, 0.5));
+  filter: drop-shadow(0 0 10px rgb(var(--accent-2-rgb) / 0.5));
 }
 
 .theory__notations {
@@ -278,7 +295,7 @@
   padding: 0.9rem 1rem;
   border: 1px solid var(--border);
   border-radius: 12px;
-  background: rgba(13, 18, 32, 0.78);
+  background: rgb(var(--panel-rgb) / 0.78);
   color: var(--text-2);
   font-size: 0.88rem;
 }
@@ -300,7 +317,7 @@
   padding: 1rem;
   border-left: 3px solid var(--accent-2);
   border-radius: 0 12px 12px 0;
-  background: rgba(13, 18, 32, 0.78);
+  background: rgb(var(--panel-rgb) / 0.78);
 }
 
 .version__number {
@@ -337,7 +354,7 @@
   padding: 1rem;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: rgba(3, 6, 12, 0.82);
+  background: rgb(var(--abyss-rgb) / 0.82);
 }
 
 .psd svg {
@@ -369,13 +386,51 @@
 }
 
 .psd__nodes circle {
-  fill: #05080f;
+  fill: var(--node-fill);
   stroke-width: 2.6;
-  filter: drop-shadow(0 0 6px currentColor);
+  filter: drop-shadow(0 0 6px var(--psd-glow, currentColor));
 }
 
 .psd__nodes circle.is-rejected {
   opacity: 0.45;
+}
+
+/* The diagram colours are SVG attributes in ProblemSolvingDiagram.jsx; CSS
+   wins over presentation attributes, so each theme can tune them (issue #11). */
+.psd [fill='#f8fafc'] {
+  fill: var(--psd-draft);
+}
+
+.psd [stroke='#f8fafc'] {
+  stroke: var(--psd-draft-line);
+}
+
+.psd [fill='#eab308'] {
+  fill: var(--psd-test);
+}
+
+.psd [stroke='#eab308'] {
+  stroke: var(--psd-test);
+}
+
+.psd [fill='#ef4444'] {
+  fill: var(--psd-task);
+}
+
+.psd [stroke='#ef4444'] {
+  stroke: var(--psd-task);
+}
+
+.psd [fill='#22c55e'] {
+  fill: var(--psd-solution);
+}
+
+.psd [stroke='#22c55e'] {
+  stroke: var(--psd-solution);
+}
+
+.psd [stroke='#3b82f6'] {
+  stroke: var(--psd-flow);
 }
 
 .psd figcaption {
@@ -410,8 +465,8 @@
 }
 
 .habr__status--live {
-  color: #34d399;
-  border-color: rgba(52, 211, 153, 0.5);
+  color: var(--ok);
+  border-color: rgb(var(--ok-rgb) / 0.5);
 }
 
 .habr__cards {
@@ -425,8 +480,8 @@
   grid-template-rows: 1fr auto;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: linear-gradient(165deg, rgba(18, 26, 44, 0.94), rgba(13, 18, 32, 0.84));
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  background: linear-gradient(165deg, rgb(var(--panel-2-rgb) / 0.94), rgb(var(--panel-rgb) / 0.84));
+  box-shadow: var(--shadow-card);
   overflow: hidden;
   animation: float var(--float-time, 8s) ease-in-out var(--float-delay, 0s) infinite;
   transition:
@@ -436,7 +491,7 @@
 
 .habr-card:hover {
   border-color: var(--accent);
-  box-shadow: 0 16px 40px rgba(34, 211, 238, 0.18);
+  box-shadow: 0 16px 40px rgb(var(--accent-rgb) / 0.18);
   animation-play-state: paused;
 }
 
@@ -517,7 +572,7 @@
   padding: 1.25rem;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: rgba(13, 18, 32, 0.78);
+  background: rgb(var(--panel-rgb) / 0.78);
 }
 
 .cloud__list {
@@ -530,8 +585,8 @@
 
 .cloud__list li {
   font-size: calc(0.75rem + var(--weight, 0) * 1.1rem);
-  color: color-mix(in srgb, var(--color) 70%, white);
-  opacity: calc(0.55 + var(--weight, 0) * 0.45);
+  color: color-mix(in srgb, var(--color) var(--cloud-tint), var(--cloud-mix));
+  opacity: calc(var(--cloud-fade) + var(--weight, 0) * (1 - var(--cloud-fade)));
 }
 
 .cloud__list li.is-favorite {
@@ -611,4 +666,24 @@
   border: 1px solid var(--border);
   border-radius: 999px;
   font-size: 0.95rem;
+}
+
+/* ---------- Link symbol colours (issue #11) ---------- */
+
+/* The link colours of src/links/glyph.js are made for a dark background; the
+   light theme and print use darker versions (see --link-1 … --link-4). */
+svg [data-link='1'] {
+  stroke: var(--link-1);
+}
+
+svg [data-link='2'] {
+  stroke: var(--link-2);
+}
+
+svg [data-link='3'] {
+  stroke: var(--link-3);
+}
+
+svg [data-link='4'] {
+  stroke: var(--link-4);
 }
