@@ -2,12 +2,21 @@ import { useMemo, useState } from 'react';
 import { fields } from '../data/fields';
 import { githubUrl, KINDS, matches, SORTS } from '../pages/repos';
 import { useQueryParam } from '../pages/query';
+import { useLang } from '../i18n/prefs';
+import { plural } from '../i18n/plural';
 import { formatNumber } from './format';
 
 const FIELD_NAMES = Object.fromEntries(fields.map((f) => [f.id, f.name]));
+const STARS = { en: ['star', 'stars'], ru: ['звезда', 'звезды', 'звёзд'] };
+const REPOSITORIES = { en: ['repository', 'repositories'], ru: ['репозиторий', 'репозитория', 'репозиториев'] };
 
-/** One repository row: name, description, language, stars, last push and fields. */
+/**
+ * One repository row: name, description, language, stars, last push and fields.
+ * `note` may be a `{ en, ru }` object; GitHub descriptions stay in their own language.
+ */
 export function RepoItem({ repo, note = null }) {
+  const { lang, t } = useLang();
+  const text = t(note) || repo.description;
   return (
     <li className="repo">
       <div className="repo__head">
@@ -17,24 +26,28 @@ export function RepoItem({ repo, note = null }) {
         </a>
         <span className="repo__meta mono">
           {repo.language && <span>{repo.language}</span>}
-          {repo.stars > 0 && <span aria-label={`${repo.stars} stars`}>★ {formatNumber(repo.stars)}</span>}
-          <span title="last push">{repo.pushedAt.slice(0, 7)}</span>
-          {repo.archived && <span>archived</span>}
+          {repo.stars > 0 && (
+            <span aria-label={`${formatNumber(repo.stars, lang)} ${plural(repo.stars, lang, STARS)}`}>
+              ★ {formatNumber(repo.stars, lang)}
+            </span>
+          )}
+          <span title={t({ en: 'last push', ru: 'последнее обновление' })}>{repo.pushedAt.slice(0, 7)}</span>
+          {repo.archived && <span>{t({ en: 'archived', ru: 'в архиве' })}</span>}
         </span>
       </div>
-      {(note || repo.description) && <p className="repo__description">{note || repo.description}</p>}
+      {text && <p className="repo__description">{text}</p>}
       {repo.kind === 'fork' && repo.copyOf && (
         <p className="repo__description muted">
-          Fork of{' '}
+          {t({ en: 'Fork of', ru: 'Форк' })}{' '}
           <a href={`https://github.com/${repo.copyOf}`} target="_blank" rel="noopener noreferrer">
             {repo.copyOf}
           </a>
         </p>
       )}
       {repo.fields.length > 0 && (
-        <ul className="repo__fields" aria-label="Fields">
+        <ul className="repo__fields" aria-label={t({ en: 'Fields', ru: 'Области' })}>
           {repo.fields.map((f) => (
-            <li key={f}>{FIELD_NAMES[f] || f}</li>
+            <li key={f}>{t(FIELD_NAMES[f]) || f}</li>
           ))}
         </ul>
       )}
@@ -48,7 +61,7 @@ export function RepoItem({ repo, note = null }) {
  */
 export default function RepoList({
   items,
-  label = 'Repositories',
+  label = { en: 'Repositories', ru: 'Репозитории' },
   fieldOptions = fields,
   showKinds = true,
   limit = 60,
@@ -58,6 +71,7 @@ export default function RepoList({
   const [kind, setKind] = useQueryParam('kind', 'own');
   const [sort, setSort] = useQueryParam('sort', 'stars');
   const [expanded, setExpanded] = useState(false);
+  const { lang, t } = useLang();
 
   const list = useMemo(
     () =>
@@ -74,60 +88,60 @@ export default function RepoList({
     <div className="repo-list">
       <div className="filters" role="search">
         <label>
-          <span>Search</span>
+          <span>{t({ en: 'Search', ru: 'Поиск' })}</span>
           <input
             type="search"
             value={query}
-            placeholder="name, language, topic…"
+            placeholder={t({ en: 'name, language, topic…', ru: 'название, язык, тема…' })}
             onChange={(e) => setQuery(e.target.value)}
           />
         </label>
         <label>
-          <span>Field</span>
+          <span>{t({ en: 'Field', ru: 'Область' })}</span>
           <select value={field} onChange={(e) => setField(e.target.value)}>
-            <option value="">All fields</option>
+            <option value="">{t({ en: 'All fields', ru: 'Все области' })}</option>
             {fieldOptions.map((f) => (
               <option key={f.id} value={f.id}>
-                {f.name}
+                {t(f.name)}
               </option>
             ))}
           </select>
         </label>
         {showKinds && (
           <label>
-            <span>Kind</span>
+            <span>{t({ en: 'Kind', ru: 'Вид' })}</span>
             <select value={kind} onChange={(e) => setKind(e.target.value)}>
               {Object.entries(KINDS).map(([id, k]) => (
                 <option key={id} value={id}>
-                  {k.label}
+                  {t(k.label)}
                 </option>
               ))}
-              <option value="all">All kinds</option>
+              <option value="all">{t({ en: 'All kinds', ru: 'Все виды' })}</option>
             </select>
           </label>
         )}
         <label>
-          <span>Sort</span>
+          <span>{t({ en: 'Sort', ru: 'Сортировка' })}</span>
           <select value={sort} onChange={(e) => setSort(e.target.value)}>
             {Object.entries(SORTS).map(([id, s]) => (
               <option key={id} value={id}>
-                {s.label}
+                {t(s.label)}
               </option>
             ))}
           </select>
         </label>
         <output className="filters__count mono" aria-live="polite">
-          {formatNumber(list.length)} {list.length === 1 ? 'repository' : 'repositories'}
+          {formatNumber(list.length, lang)} {plural(list.length, lang, REPOSITORIES)}
         </output>
       </div>
-      <ul className="repos" aria-label={label}>
+      <ul className="repos" aria-label={t(label)}>
         {shown.map((r) => (
           <RepoItem key={r.fullName} repo={r} />
         ))}
       </ul>
       {list.length > shown.length && (
         <button type="button" className="button repo-list__more" onClick={() => setExpanded(true)}>
-          Show all {formatNumber(list.length)}
+          {t({ en: 'Show all', ru: 'Показать все' })} {formatNumber(list.length, lang)}
         </button>
       )}
     </div>

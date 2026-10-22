@@ -6,6 +6,9 @@
 // Every text has a fixed width (`textLength`, monospace advance 0.6 em), so
 // the layout below is exact in every browser and font: labels and arrows are
 // placed from the measured widths and never overlap each other or the nodes.
+// The words depend on the site language, so the layout is computed per language.
+import { useLang } from '../i18n/prefs';
+
 export const ORIGINAL_IMAGE = 'https://github.com/user-attachments/assets/1d91e911-9ba4-456e-a00a-14cdd60d9a0a';
 export const ORIGINAL_REPOSITORY = 'https://github.com/konard/problem-solving';
 
@@ -90,26 +93,52 @@ export function rowLayout(words, y) {
   return items;
 }
 
-/** The Problem and Solution labels, vertically centred on their nodes. */
-export const ends = () => [
-  {
-    word: 'Problem',
-    kind: 'task',
-    x: PROBLEM.x - R - GAP - textWidth('Problem', END_FONT),
-    y: PROBLEM.y,
-    width: textWidth('Problem', END_FONT),
+/** The words of the drawing in every site language. */
+export const WORDS = {
+  en: {
+    problem: 'Problem',
+    solution: 'Solution',
+    top: ['tasks', 'tests', 'drafts', 'solutions'],
+    bottom: ['decomposition', 'experiment', 'selection', 'composition'],
   },
-  {
-    word: 'Solution',
-    kind: 'solution',
-    x: SOLUTION.x + R + GAP,
-    y: SOLUTION.y,
-    width: textWidth('Solution', END_FONT),
+  ru: {
+    problem: 'Задача',
+    solution: 'Решение',
+    top: ['подзадачи', 'тесты', 'черновики', 'решения'],
+    bottom: ['декомпозиция', 'эксперимент', 'отбор', 'композиция'],
   },
-];
+};
+const wordsOf = (lang) => WORDS[lang] || WORDS.en;
 
-export const TOP = rowLayout(['tasks', 'tests', 'drafts', 'solutions'], 58);
-export const BOTTOM = rowLayout(['decomposition', 'experiment', 'selection', 'composition'], 612);
+/** The Problem and Solution labels, vertically centred on their nodes. */
+export const ends = (lang = 'en') => {
+  const { problem, solution } = wordsOf(lang);
+  return [
+    {
+      word: problem,
+      kind: 'task',
+      x: PROBLEM.x - R - GAP - textWidth(problem, END_FONT),
+      y: PROBLEM.y,
+      width: textWidth(problem, END_FONT),
+    },
+    {
+      word: solution,
+      kind: 'solution',
+      x: SOLUTION.x + R + GAP,
+      y: SOLUTION.y,
+      width: textWidth(solution, END_FONT),
+    },
+  ];
+};
+
+/** The top (what is made) and bottom (how it is made) rows in a language. */
+export const rows = (lang = 'en') => ({
+  top: rowLayout(wordsOf(lang).top, 58),
+  bottom: rowLayout(wordsOf(lang).bottom, 612),
+});
+
+export const { top: TOP, bottom: BOTTOM } = rows('en');
+const ROWS = Object.fromEntries(Object.keys(WORDS).map((lang) => [lang, rows(lang)]));
 
 function Label({ word, kind, x, y, width, size, className }) {
   return (
@@ -152,14 +181,19 @@ function Row({ items }) {
 }
 
 export default function ProblemSolvingDiagram() {
+  const { lang, t } = useLang();
+  const { top, bottom } = ROWS[lang] || ROWS.en;
   return (
     <figure className="psd">
       <svg viewBox={`0 0 ${WIDTH} ${HEIGHT}`} role="img" aria-labelledby="psd-title" aria-describedby="psd-desc">
-        <title id="psd-title">Universal Problem Solving Algorithm</title>
+        <title id="psd-title">
+          {t({ en: 'Universal Problem Solving Algorithm', ru: 'Универсальный алгоритм решения задач' })}
+        </title>
         <desc id="psd-desc">
-          A problem is decomposed into tasks, every task gets a test, every test gets several drafts, the drafts that
-          pass are selected and composed into the solution: decomposition, experiment, selection, composition. Dimmed
-          drafts did not pass their tests.
+          {t({
+            en: 'A problem is decomposed into tasks, every task gets a test, every test gets several drafts, the drafts that pass are selected and composed into the solution: decomposition, experiment, selection, composition. Dimmed drafts did not pass their tests.',
+            ru: 'Задача разбивается на подзадачи, для каждой подзадачи пишется тест, для каждого теста — несколько черновиков, а черновики, которые проходят тесты, отбираются и собираются в решение: декомпозиция, эксперимент, отбор, композиция. Приглушённые черновики не прошли свои тесты.',
+          })}
         </desc>
         <defs>
           {Object.entries(COLORS).map(([kind, color]) => (
@@ -177,8 +211,8 @@ export default function ProblemSolvingDiagram() {
             </marker>
           ))}
         </defs>
-        <Row items={TOP} />
-        {ends().map((item) => (
+        <Row items={top} />
+        {ends(lang).map((item) => (
           <Label key={item.word} {...item} size={END_FONT} className="psd__end" />
         ))}
         <g className="psd__edges">
@@ -210,11 +244,11 @@ export default function ProblemSolvingDiagram() {
             />
           ))}
         </g>
-        <Row items={BOTTOM} />
+        <Row items={bottom} />
       </svg>
       <figcaption>
         <a href={ORIGINAL_IMAGE} target="_blank" rel="noopener noreferrer">
-          Original drawing
+          {t({ en: 'Original drawing', ru: 'Оригинальный рисунок' })}
         </a>{' '}
         ·{' '}
         <a href={ORIGINAL_REPOSITORY} target="_blank" rel="noopener noreferrer">

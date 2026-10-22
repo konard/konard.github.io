@@ -1,14 +1,24 @@
+import { useLang } from '../i18n/prefs';
+import { plural } from '../i18n/plural';
 import { formatNumber, SERIES } from './format';
 import { Tooltip, useTooltip } from './Tooltip';
 
 const SIZE = 520;
 const C = SIZE / 2;
 const ORBIT = 175;
+const ORIGINAL = {
+  en: ['original repository', 'original repositories'],
+  ru: ['собственный репозиторий', 'собственных репозитория', 'собственных репозиториев'],
+};
+const REPOSITORIES = { en: ['repository', 'repositories'], ru: ['репозиторий', 'репозитория', 'репозиториев'] };
+const STARS = { en: ['star', 'stars'], ru: ['звезда', 'звезды', 'звёзд'] };
 
 // Orbit diagram: the person in the center, every GitHub owner (personal
 // account + organizations) as a satellite whose area encodes repository count.
 export default function EcosystemMap({ owners, avatarUrl }) {
   const { tip, show, hide } = useTooltip();
+  const { lang, t } = useLang();
+  const count = (n, forms) => `${formatNumber(n, lang)} ${plural(n, lang, forms)}`;
   const maxRepos = Math.max(...owners.map((o) => o.repositories));
   const nodes = owners.map((o, i) => {
     const angle = (i / owners.length) * Math.PI * 2 - Math.PI / 2;
@@ -24,9 +34,10 @@ export default function EcosystemMap({ owners, avatarUrl }) {
   const tipContent = (o) => (
     <>
       <strong>{o.name}</strong>
-      <span className="tooltip__value">{formatNumber(o.repositories)} original repositories</span>
+      <span className="tooltip__value">{count(o.repositories, ORIGINAL)}</span>
       <span className="tooltip__row">
-        ★ {formatNumber(o.stars)} stars · since {o.createdAt.slice(0, 4)}
+        ★ {count(o.stars, STARS)} ·{' '}
+        {t({ en: `since ${o.createdAt.slice(0, 4)}`, ru: `с ${o.createdAt.slice(0, 4)} года` })}
       </span>
       <span className="tooltip__row">
         {o.languages
@@ -43,7 +54,7 @@ export default function EcosystemMap({ owners, avatarUrl }) {
         className="ecosystem__svg"
         viewBox={`0 0 ${SIZE} ${SIZE}`}
         role="img"
-        aria-label="Ecosystem of GitHub organizations"
+        aria-label={t({ en: 'Ecosystem of GitHub organizations', ru: 'Экосистема организаций на GitHub' })}
       >
         <defs>
           <clipPath id="eco-avatar">
@@ -67,7 +78,7 @@ export default function EcosystemMap({ owners, avatarUrl }) {
             key={n.login}
             className="ecosystem__node"
             tabIndex={0}
-            aria-label={`${n.name}: ${n.repositories} repositories, ${n.stars} stars`}
+            aria-label={`${n.name}: ${count(n.repositories, REPOSITORIES)}, ${count(n.stars, STARS)}`}
             onPointerMove={(e) => show(e, tipContent(n))}
             onFocus={(e) => show(e, tipContent(n))}
             onPointerLeave={hide}
@@ -77,10 +88,10 @@ export default function EcosystemMap({ owners, avatarUrl }) {
             <circle cx={n.x} cy={n.y} r={n.r + 8} fill="transparent" />
             <circle cx={n.x} cy={n.y} r={n.r} fill={n.color} fillOpacity="0.22" stroke={n.color} strokeWidth="2" />
             <text x={n.x} y={n.y - 2} textAnchor="middle" className="ecosystem__count">
-              {formatNumber(n.repositories)}
+              {formatNumber(n.repositories, lang)}
             </text>
             <text x={n.x} y={n.y + 13} textAnchor="middle" className="ecosystem__unit">
-              repos
+              {t({ en: 'repos', ru: 'репо' })}
             </text>
             <text x={n.x} y={n.y + n.r + 18} textAnchor="middle" className="ecosystem__name">
               {n.name}
