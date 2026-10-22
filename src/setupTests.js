@@ -4,8 +4,15 @@
 import '@testing-library/jest-dom/vitest';
 import { cleanup } from '@testing-library/react';
 import { afterEach } from 'vitest';
+import { setLang, setTheme } from './i18n/prefs';
 
-afterEach(() => cleanup());
+// Every test starts in English with the system theme, whatever an earlier test switched to.
+afterEach(() => {
+  cleanup();
+  setLang('en', { save: false });
+  setTheme('auto', { save: false });
+  window.localStorage.clear();
+});
 
 // Components that refresh data live (Habr statistics) must never reach the
 // network in tests: unless a test passes its own fetch, requests fail fast and
