@@ -1,8 +1,16 @@
 import { useState } from 'react';
 import { linksNotation, mathNotation, randomCode } from '../links/configurations';
+import { tr, useLang } from '../i18n/prefs';
+import { plural } from '../i18n/plural';
 import Glyph from './Glyph';
 
 const gh = (fullName) => `https://github.com/${fullName}`;
+// "a network of N links": Russian needs the genitive after «из».
+const OF_LINKS = { en: ['link', 'links'], ru: ['связи', 'связей', 'связей'] };
+const LANGUAGE_NAMES = {
+  en: { en: 'English', ru: 'на английском' },
+  ru: { en: 'Russian', ru: 'на русском' },
+};
 
 /**
  * A doublet network with its math and links notation. Clicking the symbol
@@ -12,22 +20,24 @@ export function NetworkExample({ example, random = Math.random }) {
   const [code, setCode] = useState(example.code);
   const size = code.split(' ').length;
   const isExample = code === example.code;
+  const { lang, t } = useLang();
+  const links = `${size} ${plural(size, lang, OF_LINKS)}`;
   return (
     <div className="theory__example">
       <button
         type="button"
         className="theory__network"
         onClick={() => setCode(randomCode(random))}
-        title="Show a random network of 1–4 links"
+        title={t({ en: 'Show a random network of 1–4 links', ru: 'Показать случайную сеть из 1–4 связей' })}
       >
-        <Glyph code={code} size={96} title={`Network of ${size} ${size === 1 ? 'link' : 'links'}: ${code}`} />
+        <Glyph code={code} size={96} title={`${t({ en: 'Network of', ru: 'Сеть из' })} ${links}: ${code}`} />
       </button>
       <dl className="theory__notations">
-        <dt>math notation</dt>
+        <dt>{t({ en: 'math notation', ru: 'математическая нотация' })}</dt>
         <dd className="mono" data-notation="math">
           {mathNotation(code)}
         </dd>
-        <dt>links notation</dt>
+        <dt>{t({ en: 'links notation', ru: 'нотация связей' })}</dt>
         <dd className="mono" data-notation="links">
           {linksNotation(code).map((l) => (
             <span key={l}>{l}</span>
@@ -36,10 +46,15 @@ export function NetworkExample({ example, random = Math.random }) {
       </dl>
       <p className="muted">
         {isExample
-          ? 'Two links refer to themselves (points), the third connects them: a graph edge is just a link.'
-          : `A random network of ${size} ${size === 1 ? 'link' : 'links'}.`}{' '}
-        Every link is (index: source target), 0 is nothing; the math notation writes the same sources and targets as
-        digits in base {size + 1}. Click the symbol for another random network.
+          ? t({
+              en: 'Two links refer to themselves (points), the third connects them: a graph edge is just a link.',
+              ru: 'Две связи ссылаются сами на себя (точки), третья соединяет их: ребро графа — это просто связь.',
+            })
+          : `${t({ en: 'A random network of', ru: 'Случайная сеть из' })} ${links}.`}{' '}
+        {t({
+          en: `Every link is (index: source target), 0 is nothing; the math notation writes the same sources and targets as digits in base ${size + 1}. Click the symbol for another random network.`,
+          ru: `Каждая связь — это (индекс: начало конец), 0 означает «ничего»; математическая нотация записывает те же начала и концы цифрами в системе счисления с основанием ${size + 1}. Нажмите на символ, чтобы увидеть другую случайную сеть.`,
+        })}
       </p>
     </div>
   );
@@ -47,21 +62,25 @@ export function NetworkExample({ example, random = Math.random }) {
 
 /** The links meta-theory: the formula, its definitions, versions and PDFs. */
 export default function MetaTheory({ theory, detailed = false }) {
+  const { t } = useLang();
   return (
     <div className="theory">
       <div className="theory__hero">
-        <div className="theory__formula" aria-label={`Links theory in four symbols: ${theory.tldr}`}>
+        <div
+          className="theory__formula"
+          aria-label={`${t({ en: 'Links theory in four symbols', ru: 'Теория связей в четырёх символах' })}: ${theory.tldr}`}
+        >
           <span className="mono">{theory.tldr}</span>
         </div>
         <div>
-          <p className="theory__summary">{theory.summary}</p>
+          <p className="theory__summary">{t(theory.summary)}</p>
           <NetworkExample example={theory.example} />
           <p className="theory__actions">
             <a className="button button--primary" href={theory.repo} target="_blank" rel="noopener noreferrer">
               link-foundation/meta-theory
             </a>
             <a className="button" href={theory.pdfs} target="_blank" rel="noopener noreferrer">
-              All PDFs (ZIP)
+              {t({ en: 'All PDFs (ZIP)', ru: 'Все PDF (ZIP)' })}
             </a>
           </p>
         </div>
@@ -71,12 +90,16 @@ export default function MetaTheory({ theory, detailed = false }) {
         {theory.formulas.map((f) => (
           <li key={f.formula}>
             <span className="mono theory__math">{f.formula}</span>
-            <span>{f.text}</span>
+            <span>{t(f.text)}</span>
           </li>
         ))}
       </ol>
 
-      <div className="theory__versions" role="list" aria-label="Versions of the links theory">
+      <div
+        className="theory__versions"
+        role="list"
+        aria-label={t({ en: 'Versions of the links theory', ru: 'Версии теории связей' })}
+      >
         {theory.versions.map((v) => (
           <article key={v.version} className="version" role="listitem">
             <span className="version__number mono">{v.version}</span>
@@ -86,7 +109,7 @@ export default function MetaTheory({ theory, detailed = false }) {
               </a>
             </h3>
             <span className="muted">
-              {v.status} · {v.lang === 'en' ? 'English' : 'Russian'} ·{' '}
+              {t(v.status)} · {t(LANGUAGE_NAMES[v.lang])} ·{' '}
               <a href={v.pdf} target="_blank" rel="noopener noreferrer">
                 PDF
               </a>
@@ -99,7 +122,7 @@ export default function MetaTheory({ theory, detailed = false }) {
         <>
           <ul className="theory__claims">
             {theory.claims.map((c) => (
-              <li key={c}>{c}</li>
+              <li key={tr(c, 'en')}>{t(c)}</li>
             ))}
           </ul>
           <ul className="theory__related">
@@ -108,7 +131,7 @@ export default function MetaTheory({ theory, detailed = false }) {
                 <a href={gh(repo)} target="_blank" rel="noopener noreferrer" className="mono">
                   {repo}
                 </a>{' '}
-                — {why}
+                — {t(why)}
               </li>
             ))}
           </ul>

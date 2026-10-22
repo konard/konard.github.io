@@ -83,7 +83,7 @@ jobs:
   test:
     needs: [lint-workflows, checks]
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 20
 
     steps:
       # On pull requests this is the merge result with main, not the branch head.
@@ -106,6 +106,15 @@ jobs:
 
       - name: Build the React app
         run: npm run build
+
+      # Issue #11: every CV (position × style × language) is printed to PDF by
+      # headless Chromium and checked: at most 2 pages for a position, 1 page
+      # for the compact style, and a text layer an ATS can read.
+      - name: Install Chromium for the CV PDFs
+        run: npx playwright install --with-deps chromium
+
+      - name: Print the CV PDFs
+        run: npm run build:cv
 
       # GitHub Pages is set to deploy from GitHub Actions, so the site is
       # published from this artifact, not from a branch or the docs/ folder.

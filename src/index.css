@@ -12,10 +12,97 @@
   --accent-3: #f472b6;
   --series-1: #3987e5;
   --series-2: #d95926;
+  --accent-soft: rgba(34, 211, 238, 0.12);
+  /* Theme-dependent colours of panels, lines and glows (issue #11). The
+     *-rgb triplets are used as rgb(var(--panel-rgb) / 0.78), so every panel
+     keeps its own transparency in both themes. */
+  --panel-rgb: 13 18 32;
+  --panel-2-rgb: 18 26 44;
+  --deep-rgb: 7 11 20;
+  --abyss-rgb: 3 6 12;
+  --line-rgb: 148 197 255;
+  --accent-rgb: 34 211 238;
+  --accent-2-rgb: 167 139 250;
+  --accent-3-rgb: 244 114 182;
+  --series-2-rgb: 217 89 38;
+  --title-from: #fff;
+  --shadow-card: 0 12px 30px rgba(0, 0, 0, 0.35);
+  --shadow-tooltip: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --ok: #34d399;
+  --ok-rgb: 52 211 153;
+  --fav: #c98500;
+  --fav-rgb: 201 133 0;
+  --silver: #c0c7d2;
+  --bronze: #d29a63;
+  --cloud-mix: white;
+  --cloud-tint: 70%;
+  --cloud-fade: 0.55;
+  --node-fill: #05080f;
+  /* Link colours of the symbols (the same as COLORS in src/links/glyph.js). */
+  --link-1: #22d3ee;
+  --link-2: #c084fc;
+  --link-3: #f472b6;
+  --link-4: #facc15;
+  /* Problem solving diagram (COLORS in src/components/ProblemSolvingDiagram.jsx). */
+  --psd-draft: #f8fafc;
+  --psd-draft-line: #f8fafc;
+  --psd-test: #eab308;
+  --psd-task: #ef4444;
+  --psd-solution: #22c55e;
+  --psd-flow: #3b82f6;
   --radius: 14px;
   --font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --mono: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   color-scheme: dark;
+}
+
+/* Light theme (issue #11): set by the theme switch or by prefers-color-scheme,
+   see THEME_SCRIPT in vite.config.js and src/i18n/prefs.js. */
+:root[data-theme='light'] {
+  --bg: #f5f7fb;
+  --surface: #ffffff;
+  --surface-2: #eef2f8;
+  --border: rgba(15, 40, 80, 0.14);
+  --border-strong: rgba(15, 40, 80, 0.3);
+  --text: #0f1729;
+  --text-2: #334155;
+  --muted: #5b6578;
+  --accent: #0e7490;
+  --accent-2: #6d28d9;
+  --accent-3: #be185d;
+  --accent-soft: rgba(14, 116, 144, 0.12);
+  --panel-rgb: 255 255 255;
+  --panel-2-rgb: 255 255 255;
+  --deep-rgb: 250 251 253;
+  --abyss-rgb: 250 251 253;
+  --line-rgb: 15 40 80;
+  --accent-rgb: 14 116 144;
+  --accent-2-rgb: 109 40 217;
+  --accent-3-rgb: 190 24 93;
+  --title-from: #0f1729;
+  --shadow-card: 0 10px 26px rgba(15, 40, 80, 0.1);
+  --shadow-tooltip: 0 8px 24px rgba(15, 40, 80, 0.16);
+  --ok: #047857;
+  --ok-rgb: 4 120 87;
+  --fav: #8a5a00;
+  --silver: #5b6578;
+  --bronze: #9a5b20;
+  --cloud-mix: #0f1729;
+  --cloud-tint: 60%;
+  --cloud-fade: 0.8;
+  --node-fill: #ffffff;
+  --link-1: #0e7490;
+  --link-2: #9333ea;
+  --link-3: #db2777;
+  --link-4: #b45309;
+  --psd-draft: #0f1729;
+  --psd-draft-line: #475569;
+  --psd-test: #a16207;
+  --psd-task: #dc2626;
+  --psd-solution: #15803d;
+  --psd-flow: #2563eb;
+  --psd-glow: rgba(15, 40, 80, 0.18);
+  color-scheme: light;
 }
 
 *,

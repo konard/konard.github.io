@@ -1,8 +1,15 @@
-const numberFormat = new Intl.NumberFormat('en-US');
-const compactFormat = new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: 1 });
+// Number formats per site language ('en' or 'ru'; see src/i18n/prefs.js).
+const LOCALES = { en: 'en-US', ru: 'ru-RU' };
+const cache = new Map();
+const formatter = (lang, options) => {
+  const key = `${lang}:${JSON.stringify(options)}`;
+  if (!cache.has(key)) cache.set(key, new Intl.NumberFormat(LOCALES[lang] || LOCALES.en, options));
+  return cache.get(key);
+};
 
-export const formatNumber = (value) => numberFormat.format(value);
-export const formatCompact = (value) => compactFormat.format(value);
+export const formatNumber = (value, lang = 'en') => formatter(lang, {}).format(value);
+export const formatCompact = (value, lang = 'en') =>
+  formatter(lang, { notation: 'compact', maximumFractionDigits: 1 }).format(value);
 export const formatPercent = (value) => `${(value * 100).toFixed(value < 0.1 ? 1 : 0)}%`;
 
 // Categorical slots validated for the dark surface (#0d1220) with the dataviz

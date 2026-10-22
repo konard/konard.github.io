@@ -56,7 +56,7 @@ main {
 
 .nav ul a:hover {
   color: var(--text);
-  background: rgba(34, 211, 238, 0.1);
+  background: rgb(var(--accent-rgb) / 0.1);
   text-decoration: none;
 }
 
@@ -92,7 +92,7 @@ main {
   border-radius: 50%;
   background: conic-gradient(from 0deg, var(--accent), var(--accent-2), var(--accent-3), var(--accent));
   animation: spin 8s linear infinite;
-  filter: drop-shadow(0 0 24px rgba(34, 211, 238, 0.45));
+  filter: drop-shadow(0 0 24px rgb(var(--accent-rgb) / 0.45));
 }
 
 @keyframes spin {
@@ -118,17 +118,17 @@ main {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #34d399;
-  box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.6);
+  background: var(--ok);
+  box-shadow: 0 0 0 0 rgb(var(--ok-rgb) / 0.6);
   animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
   70% {
-    box-shadow: 0 0 0 10px rgba(52, 211, 153, 0);
+    box-shadow: 0 0 0 10px rgb(var(--ok-rgb) / 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(52, 211, 153, 0);
+    box-shadow: 0 0 0 0 rgb(var(--ok-rgb) / 0);
   }
 }
 
@@ -142,7 +142,7 @@ main {
 .glitch {
   position: relative;
   display: inline-block;
-  background: linear-gradient(90deg, #fff, var(--accent) 55%, var(--accent-2));
+  background: linear-gradient(90deg, var(--title-from), var(--accent) 55%, var(--accent-2));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -236,7 +236,7 @@ main {
   padding: 0.6rem 1.1rem;
   border: 1px solid var(--border-strong);
   border-radius: 10px;
-  background: rgba(13, 18, 32, 0.7);
+  background: rgb(var(--panel-rgb) / 0.7);
   color: var(--text);
   font: inherit;
   font-size: 0.9rem;
@@ -250,7 +250,7 @@ main {
 .button:hover {
   text-decoration: none;
   border-color: var(--accent);
-  box-shadow: 0 0 18px rgba(34, 211, 238, 0.25);
+  box-shadow: 0 0 18px rgb(var(--accent-rgb) / 0.25);
   transform: translateY(-1px);
 }
 
@@ -276,7 +276,7 @@ main {
   padding: 1.1rem 1.2rem;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: linear-gradient(160deg, rgba(18, 26, 44, 0.9), rgba(13, 18, 32, 0.75));
+  background: linear-gradient(160deg, rgb(var(--panel-2-rgb) / 0.9), rgb(var(--panel-rgb) / 0.75));
   overflow: hidden;
 }
 
@@ -353,7 +353,7 @@ main {
 .step {
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: rgba(13, 18, 32, 0.78);
+  background: rgb(var(--panel-rgb) / 0.78);
   backdrop-filter: blur(6px);
 }
 
@@ -390,11 +390,11 @@ main {
 }
 
 .chart__grid {
-  stroke: rgba(148, 197, 255, 0.08);
+  stroke: rgb(var(--line-rgb) / 0.08);
 }
 
 .chart__axis {
-  stroke: rgba(148, 197, 255, 0.3);
+  stroke: rgb(var(--line-rgb) / 0.3);
 }
 
 .chart__tick {
@@ -421,7 +421,7 @@ main {
 
 .chart__hit:hover,
 .chart__hit:focus-visible {
-  fill: rgba(148, 197, 255, 0.07);
+  fill: rgb(var(--line-rgb) / 0.07);
   outline: none;
 }
 
@@ -444,7 +444,7 @@ main {
 }
 
 .segmented button.is-active {
-  background: rgba(34, 211, 238, 0.16);
+  background: rgb(var(--accent-rgb) / 0.16);
   color: var(--text);
 }
 
@@ -502,8 +502,8 @@ main {
   padding: 0.55rem 0.75rem;
   border: 1px solid var(--border-strong);
   border-radius: 10px;
-  background: rgba(7, 11, 20, 0.95);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  background: rgb(var(--deep-rgb) / 0.95);
+  box-shadow: var(--shadow-tooltip);
   font-size: 0.8rem;
   color: var(--text-2);
   pointer-events: none;
@@ -578,7 +578,7 @@ main {
 
 .hbars__row:hover,
 .hbars__row:focus-visible {
-  background: rgba(148, 197, 255, 0.06);
+  background: rgb(var(--line-rgb) / 0.06);
 }
 
 .hbars__name {
@@ -589,13 +589,13 @@ main {
 }
 
 .hbars__fav {
-  color: #c98500;
+  color: var(--fav);
 }
 
 .hbars__track {
   height: 10px;
   border-radius: 0 4px 4px 0;
-  background: rgba(148, 197, 255, 0.05);
+  background: rgb(var(--line-rgb) / 0.05);
 }
 
 .hbars__fill {

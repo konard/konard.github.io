@@ -1,10 +1,11 @@
-import { fireEvent, render, screen, within } from '@testing-library/react';
+import { act, fireEvent, render, screen, within } from '@testing-library/react';
 import { afterEach, describe, expect, it } from 'vitest';
 import archive from '../data/posts.json';
 import { fields, professions } from '../data/fields';
-import { experience, roles } from '../data/profile';
+import { experience, positions } from '../data/profile';
 import NetworkGallery from '../components/NetworkGallery';
 import { metaTheory } from '../data/theory';
+import { setLang, tr } from '../i18n/prefs';
 import { codeAt, indexOf } from '../links/configurations';
 import { NetworkExample } from '../components/MetaTheory';
 import ArtPage, { ART } from './ArtPage';
@@ -54,7 +55,9 @@ describe('RepositoriesPage', () => {
   it('summarizes every field and lists the examples of every profession', () => {
     const { container } = render(<RepositoriesPage />);
     expect(container.querySelectorAll('.field-card')).toHaveLength(fields.length);
-    professions.forEach((p) => expect(screen.getByRole('heading', { level: 3, name: p.name })).toBeInTheDocument());
+    professions.forEach((p) =>
+      expect(screen.getByRole('heading', { level: 3, name: tr(p.name, 'en') })).toBeInTheDocument(),
+    );
   });
 
   it('filters the catalog by field and search, kept in the query string', () => {
@@ -70,46 +73,76 @@ describe('RepositoriesPage', () => {
 });
 
 describe('ExperiencePage', () => {
+  const choices = positions.filter((p) => p.id !== 'all');
+
   it('shows every position without a role', () => {
     render(<ExperiencePage />);
-    expect(screen.getByRole('heading', { level: 1, name: 'Experience by role' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1, name: 'Experience by position' })).toBeInTheDocument();
     expect(count(screen.getByRole('list', { name: 'Career timeline' }))).toBe(experience.length);
+    expect(screen.getByRole('link', { name: 'Download CV' })).toHaveAttribute('href', '/cv/?lang=en');
   });
 
   it('shows every example repository of every profession without a role', () => {
     const { container } = render(<ExperiencePage />);
     const examples = container.querySelector('#examples');
     professions.forEach((p) =>
-      expect(within(examples).getByRole('heading', { level: 3, name: p.name })).toBeInTheDocument(),
+      expect(within(examples).getByRole('heading', { level: 3, name: tr(p.name, 'en') })).toBeInTheDocument(),
     );
     const listed = professions.reduce((sum, p) => sum + p.repos.length, 0);
     expect(examples.querySelectorAll('.repo')).toHaveLength(listed);
   });
 
-  it.each(roles.map((r) => r.id))('shows only the matching experience for ?role=%s', (id) => {
+  it('lists the old and the new positions of issue #11', () => {
+    expect(choices.map((p) => p.id)).toEqual(
+      expect.arrayContaining(['ml', 'devops', 'lead', 'developer', 'research', 'techlead', 'cto', 'backend']),
+    );
+    expect(choices.map((p) => p.id)).toEqual(
+      expect.arrayContaining(['fullstack', 'dotnet', 'rust', 'ai-agents', 'trading', 'data']),
+    );
+  });
+
+  it.each(choices.map((p) => p.id))('shows only the matching experience for ?role=%s', (id) => {
     go(`?role=${id}`);
     render(<ExperiencePage />);
-    const role = roles.find((r) => r.id === id);
-    expect(screen.getByRole('heading', { level: 1, name: `${role.name} experience` })).toBeInTheDocument();
-    const expected = experience.filter((e) => e.roles.includes(id)).length;
-    expect(expected).toBeGreaterThan(0);
-    expect(count(screen.getByRole('list', { name: 'Career timeline' }))).toBe(expected);
-    expect(screen.getByRole('link', { name: new RegExp(role.name.replace(/[/]/g, '\\/')) })).toHaveAttribute(
-      'aria-current',
-      'page',
+    const role = positions.find((p) => p.id === id);
+    const name = tr(role.name, 'en');
+    expect(screen.getByRole('heading', { level: 1, name: `${name} experience` })).toBeInTheDocument();
+    expect(role.jobs.length).toBeGreaterThan(0);
+    expect(count(screen.getByRole('list', { name: 'Career timeline' }))).toBe(role.jobs.length);
+    const tab = screen.getByRole('navigation', { name: 'Positions' });
+    expect(
+      within(tab).getByRole('link', { name: new RegExp(`^${name.replace(/[/.]/g, '\\$&')} \\d+$`) }),
+    ).toHaveAttribute('aria-current', 'page');
+    // The CV of the position: its page and its prebuilt PDF.
+    expect(screen.getByRole('link', { name: 'Download CV' })).toHaveAttribute('href', `/cv/?role=${id}&lang=en`);
+    expect(screen.getByRole('link', { name: 'PDF' })).toHaveAttribute(
+      'href',
+      `/cv/pdf/konstantin-diachenko-${id}-classic-en.pdf`,
     );
   });
 
   it('names the research role Scientist', () => {
-    expect(roles.find((r) => r.id === 'research').name).toBe('Scientist');
-    expect(professions.find((p) => p.id === 'research').name).toBe('Scientist');
+    expect(positions.find((p) => p.id === 'research').name).toEqual({ en: 'Scientist', ru: 'Учёный' });
+    expect(professions.find((p) => p.id === 'research').name).toEqual({ en: 'Scientist', ru: 'Учёный' });
   });
 
   it('switches the role without reloading the page', () => {
     render(<ExperiencePage />);
-    fireEvent.click(screen.getByRole('link', { name: /DevOps/ }));
+    fireEvent.click(screen.getByRole('link', { name: /^DevOps/ }));
     expect(window.location.search).toBe('?role=devops');
     expect(screen.getByRole('heading', { level: 1, name: 'DevOps experience' })).toBeInTheDocument();
+  });
+
+  it('is translated to Russian, with the Russian names of the companies', () => {
+    go('?role=developer');
+    render(<ExperiencePage />);
+    act(() => setLang('ru', { save: false }));
+    expect(screen.getByRole('heading', { level: 1, name: 'Опыт: Разработчик' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Скачать резюме' })).toHaveAttribute('href', '/cv/?role=developer&lang=ru');
+    expect(
+      screen.getByText('АО «ЭЛАР»', { selector: '.position__title a, .position__title span' }),
+    ).toBeInTheDocument();
+    expect(document.body.textContent).not.toContain('[object Object]');
   });
 });
 
@@ -285,5 +318,79 @@ describe('page entries', () => {
       expect(codeAt(p.glyph.split(' ').length, indexOf(p.glyph))).toBe(p.glyph);
       expect(p.href).toBe(p.id === 'home' ? '/' : `/${p.id}/`);
     });
+  });
+});
+
+describe('pages in Russian (issue #11)', () => {
+  const russian = () => setLang('ru', { save: false });
+  const noObjects = () => expect(document.body.textContent).not.toContain('[object Object]');
+  const h = (level, name) => expect(screen.getByRole('heading', { level, name })).toBeInTheDocument();
+
+  it('RepositoriesPage', () => {
+    russian();
+    const { container } = render(<RepositoriesPage />);
+    h(1, 'Репозитории');
+    h(2, 'Репозитории по IT-профессиям');
+    h(2, 'Чем репозитории полезны в разных областях');
+    professions.forEach((p) => h(3, p.name.ru));
+    fields.forEach((f) => expect(container.querySelector(`#field-${f.id} h3`).textContent).toContain(f.name.ru));
+    expect(screen.getByRole('list', { name: 'Все репозитории' })).toBeInTheDocument();
+    expect(screen.getByRole('searchbox', { name: 'Поиск' })).toBeInTheDocument();
+    expect(container.querySelector('.page-hero__lead').textContent).toMatch(
+      /^[\d\s]+ (собственный репозиторий|собственных репозитория|собственных репозиториев) в \d+ аккаунтах/,
+    );
+    noObjects();
+  });
+
+  it('ResearchPage', () => {
+    russian();
+    const { container } = render(<ResearchPage />);
+    h(1, 'Исследования и теория');
+    h(2, 'Метатеория связей');
+    h(2, 'Универсальный алгоритм решения задач');
+    h(2, 'Законы как наука о данных');
+    HIGHLIGHTS.forEach((g) => h(3, g.title.ru));
+    expect(screen.getByRole('list', { name: 'Сети из 2 связей' })).toBeInTheDocument();
+    expect(container.querySelector('#method figcaption').textContent).toBe(
+      'Оригинальный рисунок · konard/problem-solving',
+    );
+    expect(screen.getByText(LAWS[0][1].ru)).toBeInTheDocument();
+    noObjects();
+  });
+
+  it('AssociativePage', () => {
+    russian();
+    render(<AssociativePage />);
+    h(1, 'Ассоциативный стек');
+    h(2, 'От теории до ИИ');
+    STACK.forEach((l) => h(3, l.title.ru));
+    expect(screen.getByRole('list', { name: 'Движки хранения' })).toBeInTheDocument();
+    noObjects();
+  });
+
+  it('ArtPage', () => {
+    russian();
+    render(<ArtPage />);
+    h(1, 'Искусство и другие проекты');
+    h(2, 'Все конфигурации из 1–4 связей');
+    expect(count(screen.getByRole('list', { name: 'Искусство' }))).toBe(ART.length);
+    expect(count(screen.getByRole('list', { name: 'Прочее' }))).toBe(inField('other').length);
+    noObjects();
+  });
+
+  it('BlogPage: shows the posts in the site language, without taking over ?lang=', () => {
+    russian();
+    render(<BlogPage />);
+    h(1, 'Записи');
+    h(2, 'Лента');
+    const posts = screen.getByRole('list', { name: 'Записи' });
+    const langs = [...posts.children].map((li) => li.getAttribute('lang'));
+    expect(langs.filter((l) => l === 'ru').length).toBeGreaterThan(langs.length / 2);
+    expect(screen.getByRole('combobox', { name: 'Язык' })).toHaveDisplayValue('Авто (Русский)');
+    expect(screen.getByText(/^\d+ (история|истории|историй)$/)).toBeInTheDocument();
+    fireEvent.change(screen.getByRole('combobox', { name: 'Язык' }), { target: { value: 'en' } });
+    expect(window.location.search).toBe('?posts=en');
+    expect(screen.getByText('Только записи на английском')).toBeInTheDocument();
+    noObjects();
   });
 });

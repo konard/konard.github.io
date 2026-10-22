@@ -2,6 +2,7 @@ import { render, screen, waitFor } from '@testing-library/react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import habr from '../data/habr.json';
 import { mergeHabr } from '../data/habrLive';
+import { setLang } from '../i18n/prefs';
 import { startNebula } from '../visuals/nebula';
 import { columnsFor, driftAt, startRain } from '../visuals/rain';
 import Cosmos from './Cosmos';
@@ -15,9 +16,11 @@ import ProblemSolvingDiagram, {
   ORIGINAL_IMAGE,
   ORIGINAL_REPOSITORY,
   R,
+  rows,
   TOP,
   trim,
   WIDTH,
+  WORDS,
 } from './ProblemSolvingDiagram';
 
 const json = (body) => Promise.resolve({ ok: true, json: () => Promise.resolve(body) });
@@ -121,11 +124,8 @@ describe('ProblemSolvingDiagram', () => {
   // Issue #9: the S of "Solution" was hidden behind the last node and
   // "decomposition" ran into its arrow. Every label is a box of its fixed
   // width (textLength) and the full em height; nothing may touch it.
+  // Issue #11: the same holds for the Russian words.
   const boxOf = ({ x, y, width }, size) => ({ x1: x, x2: x + width, y1: y - size / 2, y2: y + size / 2 });
-  const labels = [
-    ...[...TOP, ...BOTTOM].map((item) => ({ name: item.word, ...boxOf(item, 21) })),
-    ...ends().map((item) => ({ name: item.word, ...boxOf(item, 28) })),
-  ];
   const overlaps = (a, b, margin = 0) =>
     a.x1 < b.x2 + margin && b.x1 < a.x2 + margin && a.y1 < b.y2 + margin && b.y1 < a.y2 + margin;
   // A segment hits a box if any of its sampled points falls inside.
@@ -134,7 +134,12 @@ describe('ProblemSolvingDiagram', () => {
       ([x, y]) => x > box.x1 - margin && x < box.x2 + margin && y > box.y1 - margin && y < box.y2 + margin,
     );
 
-  it('keeps every label inside the drawing and clear of other labels, nodes and arrows', () => {
+  it.each(Object.keys(WORDS))('keeps every label inside the drawing and clear of everything else (%s)', (lang) => {
+    const { top, bottom } = rows(lang);
+    const labels = [
+      ...[...top, ...bottom].map((item) => ({ name: item.word, ...boxOf(item, 21) })),
+      ...ends(lang).map((item) => ({ name: item.word, ...boxOf(item, 28) })),
+    ];
     const problems = [];
     labels.forEach((a, i) => {
       if (a.x1 < 0 || a.x2 > WIDTH || a.y1 < 0 || a.y2 > HEIGHT) problems.push(`${a.name} leaves the drawing`);
@@ -144,7 +149,7 @@ describe('ProblemSolvingDiagram', () => {
         if (overlaps(a, node, 8)) problems.push(`${a.name} touches a node at ${n.x},${n.y}`);
       });
       edges().forEach(([p, q]) => hits(trim(p, q), a, 4) && problems.push(`${a.name} touches an edge`));
-      [...TOP, ...BOTTOM]
+      [...top, ...bottom]
         .filter((item) => item.arrow)
         .forEach((item) => {
           if (hits([item.arrow[0], item.y, item.arrow[1] + 4, item.y], a, 6))
@@ -154,8 +159,9 @@ describe('ProblemSolvingDiagram', () => {
     expect(problems).toEqual([]);
   });
 
-  it('centres both rows and puts every flow arrow at the same distance from its words', () => {
-    [TOP, BOTTOM].forEach((row) => {
+  it.each(Object.keys(WORDS))('centres both rows and spaces every flow arrow evenly (%s)', (lang) => {
+    const { top, bottom } = rows(lang);
+    [top, bottom].forEach((row) => {
       const left = row[0].x;
       const right = WIDTH - (row.at(-1).x + row.at(-1).width);
       expect(Math.abs(left - right)).toBeLessThan(1e-9);
@@ -163,8 +169,22 @@ describe('ProblemSolvingDiagram', () => {
         expect(item.arrow[0] - (item.x + item.width)).toBeCloseTo(row[i + 1].x - item.arrow[1], 9);
       });
     });
+  });
+
+  it('keeps the English words of the original drawing', () => {
     expect(TOP.map((i) => i.word)).toEqual(['tasks', 'tests', 'drafts', 'solutions']);
     expect(BOTTOM.map((i) => i.word)).toEqual(['decomposition', 'experiment', 'selection', 'composition']);
+    expect(ends().map((i) => i.word)).toEqual(['Problem', 'Solution']);
+  });
+
+  it('draws the Russian words when the site is in Russian', () => {
+    setLang('ru', { save: false });
+    const { container } = render(<ProblemSolvingDiagram />);
+    expect(screen.getByRole('img', { name: 'Универсальный алгоритм решения задач' })).toBeInTheDocument();
+    const words = [...container.querySelectorAll('text')].map((t) => t.textContent);
+    expect(words).toEqual(expect.arrayContaining(['Задача', 'Решение', 'подзадачи', 'декомпозиция']));
+    expect(words).not.toContain('tasks');
+    expect(container.querySelector('figcaption').textContent).toBe('Оригинальный рисунок · konard/problem-solving');
   });
 
   it('only links the original drawing and the original repository in the caption', () => {

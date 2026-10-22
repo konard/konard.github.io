@@ -1,0 +1,237 @@
+/* The CV (issue #11): one column, one font, one accent color; black on white
+   in the light theme and in print (the PDF is always light), light on dark in
+   the preview of the dark theme. */
+
+.cv-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.cv-toolbar label {
+  display: grid;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.cv-toolbar select {
+  min-width: 12rem;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 0.5rem;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+}
+
+.cv-paper {
+  max-width: 210mm;
+  margin: 0 auto 3rem;
+  padding: 14mm 14mm 16mm;
+  background: #fff;
+  color: #111;
+  border-radius: 4px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+}
+
+.cv {
+  --cv-accent: #1f4e79;
+  font-family: Arial, 'Liberation Sans', Helvetica, sans-serif;
+  font-size: 9.6pt;
+  line-height: 1.35;
+  color: #111;
+  text-align: left;
+}
+
+.cv a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.cv h1,
+.cv h2,
+.cv h3,
+.cv p,
+.cv ul {
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  color: inherit;
+  background: none;
+  -webkit-text-fill-color: currentColor;
+}
+
+.cv__header {
+  margin-bottom: 0.6em;
+}
+
+.cv__name {
+  font-size: 19pt;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+}
+
+.cv__title {
+  font-size: 11pt;
+  font-weight: 700;
+  color: var(--cv-accent);
+  margin-top: 0.1em;
+}
+
+.cv__contacts {
+  margin-top: 0.25em;
+  font-size: 9pt;
+}
+
+.cv__section {
+  margin-top: 0.75em;
+  break-inside: auto;
+}
+
+.cv__heading {
+  font-size: 10.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--cv-accent);
+  border-bottom: 1px solid var(--cv-accent);
+  padding-bottom: 0.1em;
+  margin-bottom: 0.35em;
+  break-after: avoid;
+}
+
+.cv__strengths,
+.cv__list {
+  list-style: none;
+}
+
+/* Plain list markers: a positioned ::before bullet would be painted in a later
+   layer, and Chrome would write the bullet texts after the rest of the page in
+   the PDF, out of reading order for an ATS. */
+.cv .cv__bullets {
+  list-style: disc outside;
+  padding-left: 1.1em;
+}
+
+.cv__strengths li,
+.cv__list li {
+  margin-top: 0.15em;
+}
+
+.cv__job {
+  margin-top: 0.5em;
+  break-inside: avoid;
+}
+
+.cv__job-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1em;
+  break-after: avoid;
+}
+
+.cv__company {
+  font-size: 10pt;
+  font-weight: 700;
+}
+
+.cv__role-inline,
+.cv__role {
+  font-weight: 700;
+  font-style: italic;
+}
+
+.cv__role-inline {
+  font-weight: 400;
+}
+
+.cv__where {
+  flex: none;
+  font-size: 9pt;
+  white-space: nowrap;
+}
+
+.cv__bullets li {
+  margin-top: 0.1em;
+}
+
+.cv__summary,
+.cv__stack,
+.cv__earlier,
+.cv__languages {
+  margin-top: 0.15em;
+}
+
+.cv--compact {
+  font-size: 9pt;
+  line-height: 1.3;
+}
+
+.cv--compact .cv__section {
+  margin-top: 0.55em;
+}
+
+.cv--compact .cv__job {
+  margin-top: 0.3em;
+}
+
+/* The preview follows the dark theme; print keeps black on white. */
+@media screen {
+  :root:not([data-theme='light']) .cv-paper {
+    background: #0d1220;
+    color: #e6ebf5;
+    border: 1px solid rgb(var(--line-rgb) / 0.16);
+  }
+
+  :root:not([data-theme='light']) .cv {
+    --cv-accent: #7cc4ff;
+    color: #e6ebf5;
+  }
+}
+
+@media (max-width: 640px) {
+  .cv-paper {
+    padding: 1.25rem 1rem;
+  }
+
+  .cv__job-head {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm 14mm;
+  }
+
+  .cv-hero,
+  .cosmos,
+  .topbar,
+  .footer {
+    display: none !important;
+  }
+
+  html,
+  body,
+  .app,
+  main {
+    background: #fff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .cv-paper {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    border-radius: 0;
+  }
+}

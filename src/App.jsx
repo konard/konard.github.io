@@ -8,8 +8,9 @@ import {
   featuredProjects,
   problemSolving,
   profile,
+  languages,
+  positions,
   publications,
-  roles,
   skillGroups,
   socials,
 } from './data/profile';
@@ -33,64 +34,96 @@ import HabrCards from './components/HabrCards';
 import LanguageCloud from './components/LanguageCloud';
 import PageCards from './components/PageCards';
 import Contacts from './components/Contacts';
+import { plural } from './i18n/plural';
+import { useLang } from './i18n/prefs';
 
 const NAV = [
-  ['experience', 'Experience'],
-  ['theory', 'Theory'],
-  ['method', 'Method'],
-  ['ecosystem', 'Ecosystem'],
-  ['activity', 'Activity'],
-  ['skills', 'Skills'],
-  ['projects', 'Projects'],
-  ['packages', 'Packages'],
-  ['habr', 'Articles'],
-  ['community', 'Community'],
-  ['explore', 'Pages'],
-  ['contacts', 'Contacts'],
+  ['experience', { en: 'Experience', ru: 'Опыт' }],
+  ['theory', { en: 'Theory', ru: 'Теория' }],
+  ['method', { en: 'Method', ru: 'Метод' }],
+  ['ecosystem', { en: 'Ecosystem', ru: 'Экосистема' }],
+  ['activity', { en: 'Activity', ru: 'Активность' }],
+  ['skills', { en: 'Skills', ru: 'Навыки' }],
+  ['projects', { en: 'Projects', ru: 'Проекты' }],
+  ['packages', { en: 'Packages', ru: 'Пакеты' }],
+  ['habr', { en: 'Articles', ru: 'Статьи' }],
+  ['community', { en: 'Community', ru: 'Сообщество' }],
+  ['explore', { en: 'Pages', ru: 'Страницы' }],
+  ['contacts', { en: 'Contacts', ru: 'Контакты' }],
 ];
 
 const languageSkills = skillGroups.find((g) => g.id === 'languages').items;
 
+// Positions with their own experience page and CV (issue #11).
+const CHOICES = positions.filter((p) => p.id !== 'all');
+
 function App() {
+  const { t } = useLang();
   const lastYear = github.contributions[github.contributions.length - 1].year;
   return (
     <Layout page="home" sections={NAV}>
       <Hero profile={profile} github={github.profile} />
       <StatTiles github={github} codingSince={profile.codingSince} habr={habr} />
 
-      <Section id="experience" kicker="01 · Career" title="Companies & ventures">
+      <Section
+        id="experience"
+        kicker={{ en: '01 · Career', ru: '01 · Карьера' }}
+        title={{ en: 'Companies & ventures', ru: 'Компании и проекты' }}
+      >
         <Timeline items={experience} endYear={lastYear} />
         <p className="section__more">
-          Only one kind of experience is relevant? See it filtered by role:{' '}
-          {roles.map((r, i) => (
-            <span key={r.id}>
+          {t({
+            en: 'Only one kind of experience is relevant? See it, and download its CV, by position:',
+            ru: 'Нужен только один вид опыта? Смотрите его и скачивайте резюме по должности:',
+          })}{' '}
+          {CHOICES.map((p, i) => (
+            <span key={p.id}>
               {i > 0 && ' · '}
-              <a href={`/experience/?role=${r.id}`}>{r.name}</a>
+              <a href={`/experience/?role=${p.id}`}>{t(p.name)}</a>
             </span>
           ))}
           .
         </p>
       </Section>
 
-      <Section id="theory" kicker="02 · Theory" title="Links meta-theory">
+      <Section
+        id="theory"
+        kicker={{ en: '02 · Theory', ru: '02 · Теория' }}
+        title={{ en: 'Links meta-theory', ru: 'Метатеория связей' }}
+      >
         <MetaTheory theory={metaTheory} />
         <p className="section__more">
-          <a href="/research/">Research page</a>: the theory in detail, formal proofs and other research repositories.
+          <a href="/research/">{t({ en: 'Research page', ru: 'Страница исследований' })}</a>
+          {t({
+            en: ': the theory in detail, formal proofs and other research repositories.',
+            ru: ': теория подробно, формальные доказательства и другие исследовательские репозитории.',
+          })}
         </p>
       </Section>
 
-      <Section id="method" kicker="03 · Method" title="Universal problem solving algorithm">
+      <Section
+        id="method"
+        kicker={{ en: '03 · Method', ru: '03 · Метод' }}
+        title={{ en: 'Universal problem solving algorithm', ru: 'Универсальный алгоритм решения задач' }}
+      >
         <div className="method">
           <ProblemSolvingDiagram />
           <ProblemSolving steps={problemSolving} />
         </div>
         <p className="section__more">
-          <a href="/research/#method">Research page</a>: why the algorithm is recursive, applies to itself and improves
-          its own requirements, and where it runs in code.
+          <a href="/research/#method">{t({ en: 'Research page', ru: 'Страница исследований' })}</a>
+          {t({
+            en: ': why the algorithm is recursive, applies to itself and improves its own requirements, and where it runs in code.',
+            ru: ': почему алгоритм рекурсивен, применим к самому себе и улучшает собственные требования, и где он работает в коде.',
+          })}
         </p>
       </Section>
 
-      <Section id="ecosystem" kicker="04 · Organizations" title="Open-source ecosystem">
+      <Section
+        id="ecosystem"
+        kicker={{ en: '04 · Organizations', ru: '04 · Организации' }}
+        title={{ en: 'Open-source ecosystem', ru: 'Экосистема open-source' }}
+      >
         <div className="split">
           <EcosystemMap owners={github.owners} avatarUrl={github.profile.avatarUrl} />
           <ul className="orgs">
@@ -100,7 +133,11 @@ function App() {
                   {o.name}
                 </a>
                 <span className="org__meta">
-                  since {o.createdAt.slice(0, 4)} · {o.repositories} repos · ★ {o.stars}
+                  {t({
+                    en: `since ${o.createdAt.slice(0, 4)} · ${o.repositories} repos`,
+                    ru: `с ${o.createdAt.slice(0, 4)} · репозиториев: ${o.repositories}`,
+                  })}{' '}
+                  · ★ {o.stars}
                 </span>
                 {o.description && <p className="org__desc">{o.description}</p>}
               </li>
@@ -108,12 +145,23 @@ function App() {
           </ul>
         </div>
         <p className="section__more">
-          <a href="/repositories/">All {github.totals.ownRepositories} original repositories</a>, grouped by field and
-          by IT profession.
+          <a href="/repositories/">
+            {t({
+              en: `All ${github.totals.ownRepositories} original repositories`,
+              ru: `Все ${github.totals.ownRepositories} ${plural(github.totals.ownRepositories, 'ru', {
+                ru: ['собственный репозиторий', 'собственных репозитория', 'собственных репозиториев'],
+              })}`,
+            })}
+          </a>
+          {t({ en: ', grouped by field and by IT profession.', ru: ', сгруппированные по областям и IT-профессиям.' })}
         </p>
       </Section>
 
-      <Section id="activity" kicker="05 · Activity" title="Contributions & languages">
+      <Section
+        id="activity"
+        kicker={{ en: '05 · Activity', ru: '05 · Активность' }}
+        title={{ en: 'Contributions & languages', ru: 'Вклад и языки' }}
+      >
         <div className="split split--wide">
           <ContributionsChart data={github.contributions} />
           <LanguagesChart languages={github.languages} favorites={favoriteLanguages} />
@@ -121,35 +169,63 @@ function App() {
         <LanguageCloud languages={github.languages} extra={languageSkills} favorites={favoriteLanguages} />
       </Section>
 
-      <Section id="skills" kicker="06 · Stack" title="Technologies">
+      <Section
+        id="skills"
+        kicker={{ en: '06 · Stack', ru: '06 · Стек' }}
+        title={{ en: 'Technologies', ru: 'Технологии' }}
+      >
         <Skills groups={skillGroups} favorites={favoriteLanguages} />
       </Section>
 
-      <Section id="projects" kicker="07 · Work" title="Featured projects">
+      <Section
+        id="projects"
+        kicker={{ en: '07 · Work', ru: '07 · Работы' }}
+        title={{ en: 'Featured projects', ru: 'Избранные проекты' }}
+      >
         <Projects featured={featuredProjects} projects={github.projects} />
       </Section>
 
-      <Section id="packages" kicker="08 · Distribution" title="Published packages">
+      <Section
+        id="packages"
+        kicker={{ en: '08 · Distribution', ru: '08 · Распространение' }}
+        title={{ en: 'Published packages', ru: 'Опубликованные пакеты' }}
+      >
         <Registries registries={github.registries} summary={github.packageRegistries} />
       </Section>
 
-      <Section id="habr" kicker="09 · Writing" title="Articles on Habr">
+      <Section
+        id="habr"
+        kicker={{ en: '09 · Writing', ru: '09 · Статьи' }}
+        title={{ en: 'Articles on Habr', ru: 'Статьи на Хабре' }}
+      >
         <HabrCards snapshot={habr} />
       </Section>
 
-      <Section id="community" kicker="10 · Knowledge" title="Community, writing & education">
+      <Section
+        id="community"
+        kicker={{ en: '10 · Knowledge', ru: '10 · Знания' }}
+        title={{ en: 'Community, writing & education', ru: 'Сообщество, публикации и образование' }}
+      >
         <div className="cards">
           <StackOverflowCard so={github.stackOverflow} />
           <Publications items={publications} />
-          <Education items={education} achievements={achievements} />
+          <Education items={education} achievements={achievements} languages={languages} />
         </div>
       </Section>
 
-      <Section id="explore" kicker="11 · Explore" title="More pages">
+      <Section
+        id="explore"
+        kicker={{ en: '11 · Explore', ru: '11 · Обзор' }}
+        title={{ en: 'More pages', ru: 'Другие страницы' }}
+      >
         <PageCards />
       </Section>
 
-      <Section id="contacts" kicker="12 · Links" title="Contacts & social media">
+      <Section
+        id="contacts"
+        kicker={{ en: '12 · Links', ru: '12 · Ссылки' }}
+        title={{ en: 'Contacts & social media', ru: 'Контакты и соцсети' }}
+      >
         <Contacts socials={socials} />
       </Section>
     </Layout>

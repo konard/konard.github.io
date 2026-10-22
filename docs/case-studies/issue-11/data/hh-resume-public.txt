@@ -1,0 +1,14 @@
+Public (anonymous) view of the hh.ru resume, fetched 2026-10-22 with curl from
+https://hh.ru/resume/80d55a81ff0171bfa80039ed1f743266675357
+(the link konard posted on VK, see src/data/posts.json). Navigation, footer and
+personal data (age) are removed. Anonymous visitors only see this header: the
+jobs, their descriptions and the education are shown to signed-in employers, so
+the job facts used by the site come from the table and notes in issue #11.
+
+<title>: Программист/Разработчик/Руководитель
+Обновлено 12.10.2026
+Программист/Разработчик/Руководитель
+Специализации:
+Дата-сайентист, DevOps-инженер, Руководитель группы разработки, Программист, разработчик
+Опыт работы:
+18 лет

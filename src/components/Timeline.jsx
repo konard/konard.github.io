@@ -1,6 +1,9 @@
+import { formatPeriod } from '../cv/buildCv';
+import { useLang } from '../i18n/prefs';
 import { Tooltip, useTooltip } from './Tooltip';
 
-const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+// 'Nov 2006 – Aug 2007' / 'нояб. 2006 – авг. 2007', the same dates as in the CV.
+export { formatPeriod };
 
 // 'YYYY-MM' -> fractional year (start of month).
 export const toYear = (ym) => {
@@ -8,27 +11,27 @@ export const toYear = (ym) => {
   return year + (month - 1) / 12;
 };
 
-export const formatPeriod = (start, end) => {
-  const fmt = (ym) => {
-    const [year, month] = ym.split('-').map(Number);
-    return `${MONTHS[month - 1]} ${year}`;
-  };
-  return `${fmt(start)} – ${end ? fmt(end) : 'present'}`;
+const TYPES = {
+  company: { en: 'Employment', ru: 'Работа в компании' },
+  'open-source': { en: 'Founded / led open-source', ru: 'Основанный / ведомый open-source' },
 };
 
-const TYPES = {
-  company: 'Employment',
-  'open-source': 'Founded / led open-source',
+const TEXT = {
+  legend: { en: 'Timeline legend', ru: 'Легенда шкалы времени' },
+  timeline: { en: 'Career timeline', ru: 'Шкала карьеры' },
 };
 
 const linkProps = (url) => (url ? { href: url, target: '_blank', rel: 'noopener noreferrer' } : {});
 
 // Gantt-style overview (one row per position, years on the x axis) followed by
-// position cards, most recent first. Employment and open-source ventures differ
+// position cards, most recent first, with every bullet of the job: the site is
+// the full record and a CV is a subset of it (issue #11). Employment and open-source ventures differ
 // by fill style (solid vs. hatched) as well as color, so the distinction never
 // relies on color alone.
 export default function Timeline({ items, endYear }) {
   const { tip, show, hide } = useTooltip();
+  const { lang, t } = useLang();
+  const period = (item) => formatPeriod(item.start, item.end, lang);
   const startYear = Math.floor(Math.min(...items.map((i) => toYear(i.start))));
   const span = endYear + 1 - startYear;
   const pos = (year) => ((year - startYear) / span) * 100;
@@ -40,10 +43,10 @@ export default function Timeline({ items, endYear }) {
 
   const tipContent = (item) => (
     <>
-      <strong>{item.title}</strong>
-      <span className="tooltip__value">{formatPeriod(item.start, item.end)}</span>
+      <strong>{t(item.title)}</strong>
+      <span className="tooltip__value">{period(item)}</span>
       <span className="tooltip__row">
-        {item.role} · {TYPES[item.type]}
+        {t(item.role)} · {t(TYPES[item.type])}
       </span>
     </>
   );
@@ -51,11 +54,11 @@ export default function Timeline({ items, endYear }) {
   return (
     <div className="timeline">
       <div className="chart timeline__chart" data-tooltip-root>
-        <ul className="legend" aria-label="Timeline legend">
+        <ul className="legend" aria-label={t(TEXT.legend)}>
           {Object.entries(TYPES).map(([type, label]) => (
             <li key={type}>
               <span className={`legend__swatch timeline__swatch--${type}`} />
-              {label}
+              {t(label)}
             </li>
           ))}
         </ul>
@@ -66,13 +69,13 @@ export default function Timeline({ items, endYear }) {
             </span>
           ))}
         </div>
-        <ol className="timeline__rows" aria-label="Career timeline">
+        <ol className="timeline__rows" aria-label={t(TEXT.timeline)}>
           {items.map((item) => {
             const from = toYear(item.start);
             const to = item.end ? toYear(item.end) + 1 / 12 : endYear + 1;
             return (
               <li key={item.id} className="timeline__row">
-                <span className="timeline__label">{item.title}</span>
+                <span className="timeline__label">{t(item.title)}</span>
                 <span className="timeline__track">
                   {ticks.map((y) => (
                     <span key={y} className="timeline__tick" style={{ left: `${pos(y)}%` }} />
@@ -81,7 +84,7 @@ export default function Timeline({ items, endYear }) {
                     className={`timeline__bar timeline__bar--${item.type}${item.end ? '' : ' is-ongoing'}`}
                     style={{ left: `${pos(from)}%`, width: `${Math.max(0.8, pos(to) - pos(from))}%` }}
                     tabIndex={0}
-                    aria-label={`${item.title}, ${item.role}: ${formatPeriod(item.start, item.end)}`}
+                    aria-label={`${t(item.title)}, ${t(item.role)}: ${period(item)}`}
                     onPointerMove={(e) => show(e, tipContent(item))}
                     onFocus={(e) => show(e, tipContent(item))}
                     onPointerLeave={hide}
@@ -100,15 +103,25 @@ export default function Timeline({ items, endYear }) {
           const Title = item.url ? 'a' : 'span';
           return (
             <li key={item.id} className={`position position--${item.type}`}>
-              <span className="position__period mono">{formatPeriod(item.start, item.end)}</span>
+              <span className="position__period mono">
+                {period(item)}
+                {item.location && ` · ${t(item.location)}`}
+              </span>
               <h3 className="position__title">
-                <Title {...linkProps(item.url)}>{item.title}</Title>
+                <Title {...linkProps(item.url)}>{t(item.title)}</Title>
               </h3>
-              <span className="position__role">{item.role}</span>
-              <p className="position__summary">{item.summary}</p>
+              <span className="position__role">{t(item.role)}</span>
+              <p className="position__summary">{t(item.summary)}</p>
+              {item.bullets?.length > 0 && (
+                <ul className="position__bullets">
+                  {item.bullets.map((b) => (
+                    <li key={b.en}>{t(b)}</li>
+                  ))}
+                </ul>
+              )}
               <ul className="tags">
-                {item.tags.map((t) => (
-                  <li key={t}>{t}</li>
+                {item.tags.map((tag) => (
+                  <li key={tag}>{tag}</li>
                 ))}
               </ul>
             </li>

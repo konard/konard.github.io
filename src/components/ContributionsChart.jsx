@@ -1,4 +1,6 @@
 import { useMemo, useState } from 'react';
+import { useLang } from '../i18n/prefs';
+import { plural } from '../i18n/plural';
 import { formatCompact, formatNumber, formatPercent, SERIES } from './format';
 import { Tooltip, useTooltip } from './Tooltip';
 
@@ -7,11 +9,13 @@ const HEIGHT = 280;
 const PAD = { top: 28, right: 12, bottom: 32, left: 48 };
 
 const MIX = [
-  { key: 'commits', label: 'Commits' },
-  { key: 'pullRequests', label: 'Pull requests' },
-  { key: 'issues', label: 'Issues' },
-  { key: 'reviews', label: 'Reviews' },
+  { key: 'commits', label: { en: 'Commits', ru: 'Коммиты' } },
+  { key: 'pullRequests', label: { en: 'Pull requests', ru: 'Пул-реквесты' } },
+  { key: 'issues', label: { en: 'Issues', ru: 'Issues' } },
+  { key: 'reviews', label: { en: 'Reviews', ru: 'Ревью' } },
 ];
+const CONTRIBUTIONS = { en: ['contribution', 'contributions'], ru: ['вклад', 'вклада', 'вкладов'] };
+const TICK_ADVANCE = 6.6; // 11px monospace tick labels
 
 function niceTicks(max, scale) {
   if (scale === 'log') {
@@ -36,14 +40,19 @@ export function contributionScale(scale, max, height) {
 export default function ContributionsChart({ data }) {
   const [scale, setScale] = useState('log');
   const { tip, show, hide } = useTooltip();
+  const { lang, t } = useLang();
+  const number = (v) => formatNumber(v, lang);
+  const contributions = (v) => `${number(v)} ${plural(v, lang, CONTRIBUTIONS)}`;
   const max = Math.max(...data.map((d) => d.total));
   const peak = data.reduce((a, b) => (b.total > a.total ? b : a));
-  const innerW = WIDTH - PAD.left - PAD.right;
+  const ticks = niceTicks(max, scale);
+  // Russian compact numbers ("10 тыс.") are wider than English ones ("10K").
+  const left = Math.max(PAD.left, 14 + Math.max(...ticks.map((v) => formatCompact(v, lang).length)) * TICK_ADVANCE);
+  const innerW = WIDTH - left - PAD.right;
   const innerH = HEIGHT - PAD.top - PAD.bottom;
   const band = innerW / data.length;
   const barW = Math.max(4, band - 2 - band * 0.35);
   const y = contributionScale(scale, max, innerH);
-  const ticks = niceTicks(max, scale);
 
   const mix = useMemo(() => {
     const totals = MIX.map((m) => ({ ...m, value: data.reduce((s, d) => s + (d[m.key] || 0), 0) }));
@@ -54,10 +63,10 @@ export default function ContributionsChart({ data }) {
   const tipContent = (d) => (
     <>
       <strong>{d.year}</strong>
-      <span className="tooltip__value">{formatNumber(d.total)} contributions</span>
+      <span className="tooltip__value">{contributions(d.total)}</span>
       {MIX.map((m) => (
         <span key={m.key} className="tooltip__row">
-          {m.label}: {formatNumber(d[m.key])}
+          {t(m.label)}: {number(d[m.key])}
         </span>
       ))}
     </>
@@ -67,9 +76,10 @@ export default function ContributionsChart({ data }) {
     <div className="chart" data-tooltip-root>
       <div className="chart__toolbar">
         <p className="chart__caption">
-          Public GitHub contributions per year · peak <strong>{formatNumber(peak.total)}</strong> in {peak.year}
+          {t({ en: 'Public GitHub contributions per year · peak', ru: 'Публичный вклад на GitHub по годам · пик —' })}{' '}
+          <strong>{number(peak.total)}</strong> {t({ en: `in ${peak.year}`, ru: `в ${peak.year} году` })}
         </p>
-        <div className="segmented" role="group" aria-label="Y axis scale">
+        <div className="segmented" role="group" aria-label={t({ en: 'Y axis scale', ru: 'Шкала оси Y' })}>
           {['log', 'linear'].map((s) => (
             <button
               key={s}
@@ -78,7 +88,7 @@ export default function ContributionsChart({ data }) {
               aria-pressed={scale === s}
               onClick={() => setScale(s)}
             >
-              {s === 'log' ? 'Log scale' : 'Linear'}
+              {s === 'log' ? t({ en: 'Log scale', ru: 'Лог. шкала' }) : t({ en: 'Linear', ru: 'Линейная' })}
             </button>
           ))}
         </div>
@@ -87,14 +97,17 @@ export default function ContributionsChart({ data }) {
         className="chart__svg"
         viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
         role="img"
-        aria-label={`Bar chart of contributions per year from ${data[0].year} to ${data[data.length - 1].year}, ${scale} scale`}
+        aria-label={t({
+          en: `Bar chart of contributions per year from ${data[0].year} to ${data.at(-1).year}, ${scale} scale`,
+          ru: `Столбчатая диаграмма вклада по годам с ${data[0].year} по ${data.at(-1).year}, ${scale === 'log' ? 'логарифмическая' : 'линейная'} шкала`,
+        })}
       >
-        <g transform={`translate(${PAD.left},${PAD.top})`}>
-          {ticks.map((t) => (
-            <g key={t} transform={`translate(0,${innerH - y(t)})`}>
+        <g transform={`translate(${left},${PAD.top})`}>
+          {ticks.map((tick) => (
+            <g key={tick} transform={`translate(0,${innerH - y(tick)})`}>
               <line className="chart__grid" x1={0} x2={innerW} />
               <text className="chart__tick" x={-8} dy="0.32em" textAnchor="end">
-                {formatCompact(t)}
+                {formatCompact(tick, lang)}
               </text>
             </g>
           ))}
@@ -113,7 +126,7 @@ export default function ContributionsChart({ data }) {
                 />
                 {isLabeled && d.total > 0 && (
                   <text className="chart__label" x={x + barW / 2} y={innerH - h - 6} textAnchor="middle">
-                    {formatCompact(d.total)}
+                    {formatCompact(d.total, lang)}
                   </text>
                 )}
                 <text className="chart__tick" x={x + barW / 2} y={innerH + 18} textAnchor="middle">
@@ -126,7 +139,7 @@ export default function ContributionsChart({ data }) {
                   width={band}
                   height={innerH}
                   tabIndex={0}
-                  aria-label={`${d.year}: ${formatNumber(d.total)} contributions`}
+                  aria-label={`${d.year}: ${contributions(d.total)}`}
                   onPointerMove={(e) => show(e, tipContent(d))}
                   onFocus={(e) => show(e, tipContent(d))}
                   onPointerLeave={hide}
@@ -140,14 +153,17 @@ export default function ContributionsChart({ data }) {
       </svg>
       <Tooltip tip={tip} />
 
-      <div className="mix" aria-label="Contribution mix across all years">
+      <div
+        className="mix"
+        aria-label={t({ en: 'Contribution mix across all years', ru: 'Структура вклада за все годы' })}
+      >
         <div className="mix__bar">
           {mix.map((m, i) => (
             <span
               key={m.key}
               className="mix__segment"
               style={{ flexGrow: m.share, background: SERIES[i] }}
-              title={`${m.label}: ${formatNumber(m.value)} (${formatPercent(m.share)})`}
+              title={`${t(m.label)}: ${number(m.value)} (${formatPercent(m.share)})`}
             />
           ))}
         </div>
@@ -155,21 +171,21 @@ export default function ContributionsChart({ data }) {
           {mix.map((m, i) => (
             <li key={m.key}>
               <span className="legend__swatch" style={{ background: SERIES[i] }} />
-              {m.label} <strong>{formatNumber(m.value)}</strong> <span className="muted">{formatPercent(m.share)}</span>
+              {t(m.label)} <strong>{number(m.value)}</strong> <span className="muted">{formatPercent(m.share)}</span>
             </li>
           ))}
         </ul>
       </div>
 
       <details className="table-view">
-        <summary>Show data table</summary>
+        <summary>{t({ en: 'Show data table', ru: 'Показать таблицу данных' })}</summary>
         <table>
           <thead>
             <tr>
-              <th>Year</th>
-              <th>Total</th>
+              <th>{t({ en: 'Year', ru: 'Год' })}</th>
+              <th>{t({ en: 'Total', ru: 'Всего' })}</th>
               {MIX.map((m) => (
-                <th key={m.key}>{m.label}</th>
+                <th key={m.key}>{t(m.label)}</th>
               ))}
             </tr>
           </thead>
@@ -177,9 +193,9 @@ export default function ContributionsChart({ data }) {
             {data.map((d) => (
               <tr key={d.year}>
                 <td>{d.year}</td>
-                <td>{formatNumber(d.total)}</td>
+                <td>{number(d.total)}</td>
                 {MIX.map((m) => (
-                  <td key={m.key}>{formatNumber(d[m.key])}</td>
+                  <td key={m.key}>{number(d[m.key])}</td>
                 ))}
               </tr>
             ))}
