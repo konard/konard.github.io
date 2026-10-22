@@ -4,8 +4,11 @@ import habr from '../data/habr.json';
 import { mergeHabr } from '../data/habrLive';
 import { setLang } from '../i18n/prefs';
 import { startNebula } from '../visuals/nebula';
-import { columnsFor, driftAt, startRain } from '../visuals/rain';
-import Cosmos from './Cosmos';
+import { isReal } from '../links/configurations';
+import { resetSettings, setSettings } from '../settings/store';
+import { columnsFor, driftAt, pickerFor, startRain } from '../visuals/rain';
+import Cosmos, { moves, nebulaOptions, rainOptions } from './Cosmos';
+import { DEFAULTS } from '../settings/schema';
 import HabrCards from './HabrCards';
 import ProblemSolvingDiagram, {
   BOTTOM,
@@ -163,6 +166,144 @@ describe('background canvases follow their CSS size (issue #13)', () => {
     expect([canvas.width, canvas.height]).toEqual([1280, 864]);
     stop();
     expect(observed.every((o) => o.targets.length === 0)).toBe(true);
+  });
+});
+
+describe('background follows the settings at once (issue #13)', () => {
+  afterEach(() => {
+    vi.unstubAllGlobals();
+    vi.useRealTimers();
+    resetSettings(undefined, { save: false });
+  });
+
+  const recorder = () => {
+    const calls = { glows: [], widths: [], fades: [], moves: [] };
+    const ctx = new Proxy(
+      { translate: (x, y) => calls.moves.push([x, y]) },
+      {
+        get: (t, key) => (key in t ? t[key] : () => {}),
+        set: (t, key, value) => {
+          if (key === 'shadowBlur' && value) calls.glows.push(value);
+          if (key === 'lineWidth') calls.widths.push(value);
+          if (key === 'fillStyle') calls.fades.push(value);
+          t[key] = value;
+          return true;
+        },
+      },
+    );
+    return { ctx, calls };
+  };
+
+  it('moves in the automatic mode unless the system asks for reduced motion', () => {
+    expect(moves('auto', false)).toBe(true);
+    expect(moves('auto', true)).toBe(false);
+    expect(moves('on', true)).toBe(true);
+    expect(moves('off', false)).toBe(false);
+  });
+
+  it('turns the default settings into the options the layers always had', () => {
+    expect(rainOptions(DEFAULTS, true)).toMatchObject({
+      grid: 64,
+      period: 24000,
+      step: 75,
+      fade: 0.085,
+      glow: 8,
+      glowColor: '#f0fffb',
+      lineWidth: 5.5,
+      speeds: 3,
+      density: 1,
+      restart: 0.05,
+      visible: true,
+    });
+    expect(rainOptions(DEFAULTS, false).period).toBe(0);
+    expect(nebulaOptions(DEFAULTS)).toEqual({
+      scale: 0.6,
+      fps: 24,
+      speed: 1,
+      gas: 1,
+      hue: 0,
+      stars: 1,
+      starBrightness: 1,
+      twinkle: 1,
+      vignette: 0.5,
+    });
+  });
+
+  it('picks networks with the chosen number of links, real references only if asked', () => {
+    let seed = 7;
+    const random = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    const pick = pickerFor({ minLinks: 2, maxLinks: 3, real: true }, random);
+    const codes = Array.from({ length: 300 }, pick);
+    expect(new Set(codes.map((code) => code.split(' ').length))).toEqual(new Set([2, 3]));
+    expect(codes.every(isReal)).toBe(true);
+    expect(pickerFor({ minLinks: 4, maxLinks: 1 }, random)().split(' ').length).toBeLessThanOrEqual(4);
+  });
+
+  it('changes the step, glow, line width and fading of the running rain without starting it again', () => {
+    vi.useFakeTimers();
+    vi.stubGlobal('Path2D', class {});
+    const { ctx, calls } = recorder();
+    const canvas = { getContext: () => ctx, clientWidth: 320, clientHeight: 400, style: {} };
+    let seed = 5;
+    const random = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    const stop = startRain(canvas, { random });
+    vi.advanceTimersByTime(75 * 40);
+    const before = calls.fades.length;
+    stop.update({ step: 300, glow: 20, lineWidth: 2, fade: 0.3 });
+    vi.advanceTimersByTime(300 * 10);
+    // 10 frames, not 40: the new step is used.
+    expect(calls.fades.length - before).toBe(10);
+    expect(calls.fades.at(-1)).toBe('rgba(0, 0, 0, 0.3)');
+    expect(calls.glows.at(-1)).toBe(20);
+    expect(calls.widths.at(-1)).toBe(2);
+    // Invisible rain only clears the canvas and drifts the grid.
+    const drawn = calls.moves.length;
+    stop.update({ visible: false });
+    vi.advanceTimersByTime(3000);
+    expect(calls.moves.length).toBe(drawn);
+    expect(calls.fades.at(-1)).toBe('rgba(0, 0, 0, 1)');
+    stop();
+  });
+
+  it('lays the rain out again on a new grid size', () => {
+    vi.stubGlobal('Path2D', class {});
+    const { ctx, calls } = recorder();
+    const canvas = { getContext: () => ctx, clientWidth: 640, clientHeight: 480, style: {} };
+    const stop = startRain(canvas, { animate: false });
+    calls.moves.length = 0;
+    stop.update({ grid: 96 });
+    expect(calls.moves.length).toBeGreaterThan(10);
+    calls.moves.forEach(([x, y]) => {
+      expect(x % 48).toBe(0);
+      expect(y % 48).toBe(0);
+    });
+    stop();
+  });
+
+  it('sends the look of the universe to the shader', () => {
+    const values = {};
+    const gl = new Proxy(
+      {
+        getUniformLocation: (program, name) => name,
+        uniform1f: (name, value) => (values[name] = value),
+      },
+      { get: (t, key) => (key in t ? t[key] : () => true) },
+    );
+    const canvas = { getContext: () => gl, clientWidth: 300, clientHeight: 150, style: {} };
+    const stop = startNebula(canvas, { animate: false });
+    expect(values).toMatchObject({ gas: 1, hue: 0, density: 1, shine: 1, vignette: 0.5 });
+    stop.update({ gas: 2, hue: 90, stars: 3, starBrightness: 0.5, vignette: 0, scale: 1 });
+    expect(values).toMatchObject({ gas: 2, hue: Math.PI / 2, density: 3, shine: 0.5, vignette: 0 });
+    expect(canvas.width).toBe(300);
+    stop();
+  });
+
+  it('hides switched-off layers and keeps the universe off the page', () => {
+    setSettings({ 'nebula.on': false, 'grid.size': 96 }, { save: false });
+    const { container } = render(<Cosmos />);
+    expect(container.querySelector('.cosmos__universe')).toBeNull();
+    expect(document.documentElement.dataset.nebulaOn).toBe('false');
+    expect(document.documentElement.style.getPropertyValue('--grid-size')).toBe('96px');
   });
 });
 
