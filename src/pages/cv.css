@@ -104,9 +104,16 @@
 }
 
 .cv__strengths,
-.cv__list,
-.cv__bullets {
+.cv__list {
   list-style: none;
+}
+
+/* Plain list markers: a positioned ::before bullet would be painted in a later
+   layer, and Chrome would write the bullet texts after the rest of the page in
+   the PDF, out of reading order for an ATS. */
+.cv .cv__bullets {
+  list-style: disc outside;
+  padding-left: 1.1em;
 }
 
 .cv__strengths li,
@@ -149,15 +156,7 @@
 }
 
 .cv__bullets li {
-  position: relative;
-  padding-left: 1em;
   margin-top: 0.1em;
-}
-
-.cv__bullets li::before {
-  content: '•';
-  position: absolute;
-  left: 0.2em;
 }
 
 .cv__summary,

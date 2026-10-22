@@ -55,7 +55,7 @@ export function formatPeriod(start, end, lang = 'en') {
 }
 
 /** Contacts printed on every CV: no phone, birth date, salary or email. */
-export function cvContacts() {
+export function cvContacts(lang = 'en') {
   const host = profile.website.replace(/^https:\/\//, '');
   return [
     {
@@ -65,7 +65,7 @@ export function cvContacts() {
       url: `https://github.com/${profile.handle}`,
     },
     { id: 'telegram', label: 'Telegram', text: '@drakonard', url: 'https://t.me/drakonard' },
-    { id: 'website', label: 'Website', text: host, url: profile.website },
+    { id: 'website', label: tr({ en: 'Website', ru: 'Сайт' }, lang), text: host, url: profile.website },
   ];
 }
 
@@ -86,13 +86,21 @@ export function pickBullets(job, topics, count) {
   return chosen.sort((a, b) => a.index - b.index).map((s) => s.bullet);
 }
 
+const isOld = (job) => Boolean(job.end && job.end < '2015-01');
+
 // How many bullets a job gets: older jobs say less, the compact CV says least.
 function bulletCount(job, position, style, rank) {
-  const old = job.end && job.end < '2015-01';
+  const old = isOld(job);
   if (style === 'compact') return rank < 5 ? 1 : 0;
   if (old) return position.id === 'all' ? 1 : Math.min(2, position.bullets);
   return position.bullets;
 }
+
+// '2006 – 2007', '2014' or '2010 – present'.
+const yearSpan = (start, end, lang) =>
+  end && end.slice(0, 4) === start.slice(0, 4)
+    ? start.slice(0, 4)
+    : `${start.slice(0, 4)} – ${end ? end.slice(0, 4) : tr(LABELS.present, lang)}`;
 
 function job(item, position, style, lang, rank) {
   const bullets = pickBullets(item, position.topics, bulletCount(item, position, style, rank));
@@ -101,7 +109,7 @@ function job(item, position, style, lang, rank) {
     company: tr(item.title, lang),
     role: tr(item.role, lang),
     period: formatPeriod(item.start, item.end, lang),
-    years: `${item.start.slice(0, 4)} – ${item.end ? item.end.slice(0, 4) : tr(LABELS.present, lang)}`,
+    years: yearSpan(item.start, item.end, lang),
     location: item.location ? tr(item.location, lang) : '',
     url: item.url || '',
     summary: tr(item.summary, lang),
@@ -152,12 +160,16 @@ export function buildCv({ role = 'all', style = 'classic', lang = 'en', asOf = n
     .sort(recentFirst)
     .map((e, rank) => job(e, position, kind, lang, rank));
 
-  // The compact CV keeps the 5 most recent jobs and lists the others in one line.
-  const shown = kind === 'compact' ? jobs.slice(0, 5) : jobs;
+  // The compact CV keeps the 5 most recent jobs, a position with more than 10
+  // jobs keeps those since 2015 (to fit 2 pages), and both list the others in
+  // one line; the full record keeps every job.
+  const recent = experience.filter((e) => ids.has(e.id) && !isOld(e)).length;
+  const keep = kind === 'compact' ? 5 : position.id !== 'all' && jobs.length > 10 ? recent : jobs.length;
+  const shown = jobs.slice(0, keep);
   const earlier =
-    kind === 'compact' && jobs.length > 5
+    jobs.length > keep
       ? jobs
-          .slice(5)
+          .slice(keep)
           .map((j) => `${j.company} (${j.years})`)
           .join(' · ')
       : '';
@@ -181,7 +193,7 @@ export function buildCv({ role = 'all', style = 'classic', lang = 'en', asOf = n
     name: t(profile.name),
     title: t(position.title),
     location: t(profile.cvLocation),
-    contacts: cvContacts(),
+    contacts: cvContacts(lang),
     years: yearsText(asOf)[lang],
     labels: Object.fromEntries(Object.entries(LABELS).map(([key, text]) => [key, t(text)])),
     profile: t(position.profile),

@@ -49,7 +49,8 @@ describe('buildCv', () => {
     expect(all.jobs.map((j) => j.id).sort()).toEqual(experience.map((e) => e.id).sort());
     positions.forEach((p) => {
       const cv = buildCv({ role: p.id, asOf: AS_OF });
-      expect(cv.jobs.map((j) => j.id).sort()).toEqual([...p.jobs].sort());
+      const listed = experience.filter((e) => cv.earlier.includes(`${e.title.en} (`)).map((e) => e.id);
+      expect([...cv.jobs.map((j) => j.id), ...listed].sort()).toEqual([...p.jobs].sort());
       expect(cv.title).toBe(p.title.en);
     });
     expect(buildCv({ role: 'nonsense' }).role).toBe('all');
@@ -59,6 +60,14 @@ describe('buildCv', () => {
     const cv = buildCv({ role: 'techlead', asOf: AS_OF });
     expect(cv.jobs[0]).toMatchObject({ id: 'evirma', role: 'Tech Lead', period: 'May 2026 – present' });
     expect(buildCv({ role: 'techlead', lang: 'ru' }).jobs[0].period).toBe('май 2026 – н. в.');
+  });
+
+  test('a position with more than 10 jobs lists the jobs before 2015 in one line to fit 2 pages', () => {
+    const cv = buildCv({ role: 'developer', asOf: AS_OF });
+    expect(cv.jobs.every((j) => !/20(0\d|1[0-4])$/.test(j.years))).toBe(true);
+    expect(cv.earlier).toMatch(/ELAR.*ArtBridge \(2006 – 2007\)/);
+    expect(buildCv({ role: 'all', asOf: AS_OF }).earlier).toBe('');
+    expect(buildCv({ role: 'rust', asOf: AS_OF }).earlier).toBe('');
   });
 
   test('the compact CV keeps 5 jobs with one bullet and lists the rest in one line', () => {
