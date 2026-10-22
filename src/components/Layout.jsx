@@ -12,7 +12,8 @@ import PrefSwitches from './PrefSwitches';
 
 /**
  * Shared frame of every page: the cosmic background, the page navigation
- * (plus optional in-page section links) and the footer.
+ * (plus optional in-page section links) and the footer with the link to the
+ * settings of the background and the skin (issue #13).
  */
 export default function Layout({ page, sections = null, children, footer = null }) {
   const { t } = useLang();
@@ -58,7 +59,10 @@ export default function Layout({ page, sections = null, children, footer = null 
       <footer className="footer">
         <span className="mono">{profile.motto}</span>
         <span>
-          {footer}
+          <a className="footer__settings" href="/settings/" aria-current={page === 'settings' ? 'page' : undefined}>
+            {t({ en: 'Settings', ru: 'Настройки' })}
+          </a>{' '}
+          · {footer}
           {t({ en: 'Background: links of the', ru: 'Фон: связи' })}{' '}
           <a href="https://github.com/link-foundation/meta-theory" target="_blank" rel="noopener noreferrer">
             {t({ en: 'links theory', ru: 'теории связей' })}

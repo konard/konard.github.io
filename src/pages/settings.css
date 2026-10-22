@@ -1,0 +1,241 @@
+/* ---------- Settings page (issue #13) ---------- */
+
+.settings__groups {
+  columns: 2 30rem;
+  column-gap: 1rem;
+  margin-top: 2rem;
+}
+
+.settings__group {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+  padding: 1.1rem 1.2rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: rgb(var(--panel-rgb) / calc(0.82 * var(--glass-level, 1)));
+  backdrop-filter: blur(var(--glass-blur, 6px));
+  scroll-margin-top: 7rem;
+}
+
+.settings__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.settings__head h2 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.settings__lead {
+  margin: 0.5rem 0 0;
+  color: var(--text-2);
+  font-size: 0.88rem;
+}
+
+.settings__fields {
+  display: grid;
+  gap: 0.15rem;
+  margin: 0.8rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.setting {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  align-items: center;
+  gap: 0.15rem 0.8rem;
+  padding: 0.35rem 0;
+  border-top: 1px solid var(--border);
+  font-size: 0.88rem;
+}
+
+.setting label {
+  color: var(--text-2);
+}
+
+/* A changed setting is marked, so it is easy to see what differs from the defaults. */
+.setting.is-changed label {
+  color: var(--text);
+}
+
+.setting.is-changed label::before {
+  content: '';
+  display: inline-block;
+  width: 0.45rem;
+  height: 0.45rem;
+  margin-right: 0.4rem;
+  border-radius: 50%;
+  background: var(--accent);
+  vertical-align: 0.1em;
+}
+
+.setting__input {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.setting__input input[type='range'] {
+  flex: 1;
+  min-width: 0;
+  accent-color: var(--accent);
+}
+
+.setting__input input[type='checkbox'] {
+  width: 1.1rem;
+  height: 1.1rem;
+  margin: 0 auto 0 0;
+  accent-color: var(--accent);
+}
+
+.setting__input input[type='color'] {
+  width: 2.6rem;
+  height: 1.8rem;
+  padding: 0;
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  background: none;
+}
+
+.setting__input select {
+  flex: 1;
+  min-width: 0;
+  padding: 0.35rem 0.5rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+}
+
+.setting__input output {
+  min-width: 4.2rem;
+  color: var(--accent);
+  font-size: 0.8rem;
+  text-align: right;
+}
+
+.setting--color output {
+  margin-right: auto;
+  text-align: left;
+}
+
+.setting__reset {
+  flex: none;
+  width: 1.7rem;
+  height: 1.7rem;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: none;
+  color: var(--text-2);
+  cursor: pointer;
+}
+
+.setting__reset:disabled {
+  visibility: hidden;
+}
+
+.setting__hint {
+  grid-column: 1 / -1;
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.palettes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.8rem;
+}
+
+.palettes__chip {
+  width: 1.7rem;
+  height: 1.7rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  background: linear-gradient(135deg, var(--chip) 55%, #05080d 55%);
+  cursor: pointer;
+}
+
+.palettes__chip[aria-pressed='true'] {
+  outline: 2px solid var(--chip);
+  outline-offset: 2px;
+}
+
+.settings__share {
+  column-span: all;
+}
+
+.settings__json {
+  max-height: 16rem;
+  margin: 0.8rem 0 0;
+  padding: 0.7rem 0.9rem;
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgb(var(--deep-rgb) / 0.6);
+  font-size: 0.8rem;
+  user-select: all;
+}
+
+.settings__import {
+  display: grid;
+  gap: 0.3rem;
+  margin-top: 1rem;
+  color: var(--text-2);
+  font-size: 0.85rem;
+}
+
+.settings__import textarea {
+  padding: 0.5rem 0.7rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.8rem;
+  resize: vertical;
+}
+
+.settings__status {
+  align-self: center;
+  color: var(--accent);
+  font-size: 0.85rem;
+}
+
+.button:disabled {
+  opacity: 0.45;
+  cursor: default;
+  transform: none;
+  box-shadow: none;
+}
+
+/* "Look at the background": everything but one button fades away. */
+.settings--peek {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.settings__back {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 30;
+}
+
+:root:has(.settings--peek) .topbar,
+:root:has(.settings--peek) .footer {
+  opacity: 0.15;
+  transition: opacity 0.3s;
+}
+
+@media (max-width: 560px) {
+  .setting {
+    grid-template-columns: 1fr;
+  }
+}

@@ -6,7 +6,7 @@ import { RULES } from './src/settings/schema.js';
 
 // Every page is its own HTML entry (a real URL on GitHub Pages, no client-side
 // routing). The home page must stay `index` so build/index.html keeps its name.
-const PAGES = ['repositories', 'experience', 'research', 'associative', 'art', 'blog', 'cv'];
+const PAGES = ['repositories', 'experience', 'research', 'associative', 'art', 'blog', 'cv', 'settings'];
 const input = Object.fromEntries([
   ['index', resolve(import.meta.dirname, 'index.html')],
   ...PAGES.map((page) => [page, resolve(import.meta.dirname, page, 'index.html')]),
