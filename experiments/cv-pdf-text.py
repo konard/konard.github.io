@@ -2,6 +2,7 @@
 
 Usage: python -I experiments/cv-pdf-text.py build/cv/pdf/*.pdf  (needs pypdf)
 """
+import re
 import sys
 
 from pypdf import PdfReader
@@ -18,6 +19,16 @@ for path in sys.argv[1:]:
     if missing:
         failures += 1
         print(f"{path}: missing {missing}")
+    # No phone, email, birth date or salary (issue #11).
+    private = re.findall(r"\+\d[\d\s()-]{7,}|\S+@\S+\.\w+|born|рожд|salary|зарплат|₽", flat, re.I)
+    if private:
+        failures += 1
+        print(f"{path}: private data {private}")
+    # Sections in reading order: the experience before the education.
+    lower = flat.lower()
+    if lower.find(expected[3].lower()) > lower.rfind(expected[4].lower()):
+        failures += 1
+        print(f"{path}: the experience comes after the education")
 if len(sys.argv) == 2:
     print(text)
 print(f"{len(sys.argv) - 1} PDFs checked, {failures} failed")
