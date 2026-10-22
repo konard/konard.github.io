@@ -2,6 +2,7 @@
 // gas nebula (domain-warped fractal noise) with twinkling stars. It renders at
 // a reduced resolution because the nebula is soft anyway, and falls back to
 // the CSS gradient behind the canvas where WebGL is unavailable.
+import { pixelRatio, watchSize } from './size';
 
 const VERTEX = `
 attribute vec2 p;
@@ -103,7 +104,7 @@ export function startNebula(canvas, { animate = true, scale = 0.6, fps = 24 } = 
   const epoch = performance.now() - Math.random() * 600000;
 
   const resize = () => {
-    const ratio = Math.min(window.devicePixelRatio || 1, 2) * scale;
+    const ratio = pixelRatio() * scale;
     canvas.width = Math.round((canvas.clientWidth || window.innerWidth) * ratio);
     canvas.height = Math.round((canvas.clientHeight || window.innerHeight) * ratio);
     gl.viewport(0, 0, canvas.width, canvas.height);
@@ -129,10 +130,10 @@ export function startNebula(canvas, { animate = true, scale = 0.6, fps = 24 } = 
   };
   resize();
   render(performance.now());
-  window.addEventListener('resize', onResize);
+  const unwatch = watchSize(canvas, onResize);
   if (animate) frame = requestAnimationFrame(loop);
   return () => {
     cancelAnimationFrame(frame);
-    window.removeEventListener('resize', onResize);
+    unwatch();
   };
 }

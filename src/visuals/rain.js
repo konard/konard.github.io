@@ -11,6 +11,7 @@
 // trails never slide off the grid lines.
 import { decode, randomCode } from '../links/configurations';
 import { glyphPaths, SIZE } from '../links/glyph';
+import { pixelRatio, watchSize } from './size';
 
 const GLOW = '#f0fffb';
 const CACHE_LIMIT = 4000;
@@ -64,7 +65,7 @@ export function startRain(
   let columns = [];
   let width = 0;
   let height = 0;
-  let ratio = 1;
+  let ratio = 0;
   let drift = 0;
 
   const draw = (code, x, row, glow) => {
@@ -81,9 +82,12 @@ export function startRain(
   };
 
   const resize = () => {
-    ratio = Math.min(window.devicePixelRatio || 1, 2);
-    width = canvas.clientWidth || window.innerWidth;
-    height = canvas.clientHeight || window.innerHeight + grid;
+    const nextRatio = pixelRatio();
+    const nextWidth = canvas.clientWidth || window.innerWidth;
+    const nextHeight = canvas.clientHeight || window.innerHeight + grid;
+    // ResizeObserver also reports the first size; redrawing then would only lose the picture.
+    if (nextRatio === ratio && nextWidth === width && nextHeight === height) return;
+    [ratio, width, height] = [nextRatio, nextWidth, nextHeight];
     canvas.width = Math.round(width * ratio);
     canvas.height = Math.round(height * ratio);
     ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
@@ -143,10 +147,10 @@ export function startRain(
   };
 
   resize();
-  window.addEventListener('resize', resize);
+  const unwatch = watchSize(canvas, resize);
   const timer = animate ? setInterval(() => document.hidden || frame(), step) : null;
   return () => {
     clearInterval(timer);
-    window.removeEventListener('resize', resize);
+    unwatch();
   };
 }

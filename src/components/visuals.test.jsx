@@ -106,6 +106,66 @@ describe('rain of link networks (issue #9)', () => {
   });
 });
 
+describe('background canvases follow their CSS size (issue #13)', () => {
+  afterEach(() => vi.unstubAllGlobals());
+
+  // Safari may run the scripts before the stylesheet applies, so a canvas is
+  // first measured at its default size of 300×150 and only later gets the size
+  // of the screen; no window resize event happens in between.
+  const observed = [];
+  class FakeResizeObserver {
+    constructor(callback) {
+      this.callback = callback;
+      this.targets = [];
+      observed.push(this);
+    }
+    observe(target) {
+      this.targets.push(target);
+    }
+    disconnect() {
+      this.targets = [];
+    }
+  }
+  const resizeTo = (canvas, width, height) => {
+    canvas.clientWidth = width;
+    canvas.clientHeight = height;
+    observed.filter((o) => o.targets.includes(canvas)).forEach((o) => o.callback([{ target: canvas }]));
+  };
+  const anything = (target, extra = () => {}) =>
+    new Proxy(target, {
+      get: (t, key) => (key in t ? t[key] : extra),
+      set: (t, k, v) => ((t[k] = v), true),
+    });
+
+  it('the rain redraws at the new size of its canvas instead of being stretched', () => {
+    observed.length = 0;
+    vi.stubGlobal('ResizeObserver', FakeResizeObserver);
+    vi.stubGlobal('Path2D', class {});
+    vi.stubGlobal('devicePixelRatio', 2);
+    const canvas = { getContext: () => anything({}), clientWidth: 300, clientHeight: 150, style: {} };
+    const stop = startRain(canvas, { animate: false });
+    expect([canvas.width, canvas.height]).toEqual([600, 300]);
+    resizeTo(canvas, 1280, 864);
+    expect([canvas.width, canvas.height]).toEqual([2560, 1728]);
+    stop();
+    expect(observed.every((o) => o.targets.length === 0)).toBe(true);
+  });
+
+  it('the universe renders at the new size of its canvas instead of being stretched', () => {
+    observed.length = 0;
+    vi.stubGlobal('ResizeObserver', FakeResizeObserver);
+    vi.stubGlobal('devicePixelRatio', 2);
+    const gl = anything({}, () => true);
+    const canvas = { getContext: () => gl, clientWidth: 300, clientHeight: 150, style: {} };
+    const stop = startNebula(canvas, { animate: false, scale: 0.5 });
+    expect([canvas.width, canvas.height]).toEqual([300, 150]);
+    resizeTo(canvas, 1280, 864);
+    expect([canvas.width, canvas.height]).toEqual([1280, 864]);
+    stop();
+    expect(observed.every((o) => o.targets.length === 0)).toBe(true);
+  });
+});
+
 describe('ProblemSolvingDiagram', () => {
   it('draws problem → 2 tasks → 4 subtasks → 4 tests → 8 drafts → 2 selections → solution', () => {
     const list = edges();
