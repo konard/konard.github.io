@@ -1,5 +1,6 @@
-/* The CV (issue #11): one column, one font, black on white and one accent
-   color, in every theme of the site and in print. */
+/* The CV (issue #11): one column, one font, one accent color; black on white
+   in the light theme and in print (the PDF is always light), light on dark in
+   the preview of the dark theme. */
 
 .cv-toolbar {
   display: flex;
@@ -177,6 +178,20 @@
 
 .cv--compact .cv__job {
   margin-top: 0.3em;
+}
+
+/* The preview follows the dark theme; print keeps black on white. */
+@media screen {
+  :root:not([data-theme='light']) .cv-paper {
+    background: #0d1220;
+    color: #e6ebf5;
+    border: 1px solid rgb(var(--line-rgb) / 0.16);
+  }
+
+  :root:not([data-theme='light']) .cv {
+    --cv-accent: #7cc4ff;
+    color: #e6ebf5;
+  }
 }
 
 @media (max-width: 640px) {

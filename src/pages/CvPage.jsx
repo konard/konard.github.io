@@ -11,8 +11,8 @@ const TEXT = {
   kicker: { en: 'CV', ru: 'Резюме' },
   title: { en: 'Download CV', ru: 'Скачать резюме' },
   lead: {
-    en: 'A CV for one position, or the full record without a position. One column of plain text in one font, black on white, readable by ATS; a CV for a position fits 2 pages, the compact one fits 1 page.',
-    ru: 'Резюме для одной должности или полный список опыта без должности. Одна колонка простого текста одним шрифтом, чёрным по белому, читаемая ATS; резюме для должности занимает до 2 страниц, компактное — 1 страницу.',
+    en: 'A CV for one position, or the full record without a position. One column of plain text in one font, black on white in the PDF, readable by ATS; a CV for a position fits 2 pages, the compact one fits 1 page.',
+    ru: 'Резюме для одной должности или полный список опыта без должности. Одна колонка простого текста одним шрифтом, в PDF — чёрным по белому, читаемая ATS; резюме для должности занимает до 2 страниц, компактное — 1 страницу.',
   },
   position: { en: 'Position', ru: 'Должность' },
   style: { en: 'Style', ru: 'Стиль' },
