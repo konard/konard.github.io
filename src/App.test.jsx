@@ -1,6 +1,7 @@
-import { fireEvent, render, screen, within } from '@testing-library/react';
+import { act, fireEvent, render, screen, within } from '@testing-library/react';
 import App from './App';
 import github from './data/github.json';
+import { setLang } from './i18n/prefs';
 
 describe('App', () => {
   test('renders the name, headline and every CV section', () => {
@@ -37,7 +38,10 @@ describe('App', () => {
     render(<App />);
     expect(screen.getAllByText('LinksPlatform').length).toBeGreaterThan(0);
     expect(screen.getByRole('heading', { level: 3, name: 'Kaiten' })).toBeInTheDocument();
-    expect(screen.getByLabelText(/^Kaiten, Senior Software Engineer: Jul 2024 – present$/)).toBeInTheDocument();
+    // Issue #11: Kaiten ended in Nov 2025, the current job is Evirma.
+    expect(screen.getByLabelText(/^Kaiten, Development Team Lead: Jul 2024 – Nov 2025$/)).toBeInTheDocument();
+    expect(screen.getByLabelText(/^Evirma, Tech Lead: May 2026 – present$/)).toBeInTheDocument();
+    expect(screen.getByLabelText(/^Capico LLC, Senior Software Engineer: Nov 2025 – May 2026$/)).toBeInTheDocument();
     const contacts = document.getElementById('contacts');
     expect(within(contacts).getByRole('link', { name: /GitHub/ })).toHaveAttribute('href', 'https://github.com/konard');
     within(contacts)
@@ -75,5 +79,26 @@ describe('App', () => {
     const after = document.querySelector('.projects').children.length;
     expect(after).toBeGreaterThan(0);
     expect(after).toBeLessThan(before);
+  });
+
+  test('links the CV and every position from the home page', () => {
+    render(<App />);
+    expect(screen.getByRole('link', { name: 'Download CV' })).toHaveAttribute('href', '/cv/?lang=en');
+    const more = document.querySelector('#experience .section__more');
+    expect(within(more).getByRole('link', { name: 'Rust' })).toHaveAttribute('href', '/experience/?role=rust');
+    expect(within(more).getAllByRole('link')).toHaveLength(14);
+  });
+
+  test('is translated to Russian without untranslated objects', () => {
+    render(<App />);
+    act(() => setLang('ru', { save: false }));
+    expect(screen.getByRole('heading', { level: 1, name: /Константин Дьяченко/ })).toBeInTheDocument();
+    ['Компании и проекты', 'Технологии', 'Сообщество, публикации и образование', 'Контакты и соцсети'].forEach(
+      (title) => expect(screen.getByRole('heading', { level: 2, name: title })).toBeInTheDocument(),
+    );
+    expect(screen.getByRole('link', { name: 'Скачать резюме' })).toHaveAttribute('href', '/cv/?lang=ru');
+    expect(screen.getByText('Лет профессионального опыта')).toBeInTheDocument();
+    expect(screen.getByText(/C1 — продвинутый/)).toBeInTheDocument();
+    expect(document.body.textContent).not.toMatch(/\[object Object\]|undefined/);
   });
 });

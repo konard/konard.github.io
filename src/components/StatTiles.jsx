@@ -1,86 +1,130 @@
+import { experience, experienceYears } from '../data/experience';
+import { tr, useLang } from '../i18n/prefs';
 import { formatCompact, formatNumber } from './format';
 
 // Repository counts only include original work of konard and of the related
 // organizations: forks, mirrors, empty and generated test repositories are
-// excluded (see scripts/repositories.cjs).
-export function buildStats(github, codingSince, now = new Date(), habr = null) {
+// excluded (see scripts/repositories.cjs). Labels and hints are in `lang`.
+export function buildStats(github, codingSince, now = new Date(), habr = null, lang = 'en') {
   const { totals } = github;
+  const n = (value) => formatNumber(value, lang);
   const packages = github.registries.reduce((sum, r) => sum + r.packages, 0);
   const lifetime = github.registries.filter((r) => r.downloadsUnit === 'downloads total');
   const habrViews = habr ? habr.articles.reduce((sum, a) => sum + a.statistics.views, 0) : 0;
-  return [
+  const first = github.contributions[0].year;
+  const last = github.contributions[github.contributions.length - 1].year;
+  const since = experience.reduce((min, e) => (e.start < min ? e.start : min), '9999').slice(0, 4);
+  const stats = [
+    {
+      id: 'experience',
+      value: experienceYears(undefined, now),
+      label: { en: 'Years of professional experience', ru: 'Лет профессионального опыта' },
+      hint: {
+        en: `${experience.length} companies and ventures since ${since}`,
+        ru: `${experience.length} компаний и проектов с ${since} года`,
+      },
+    },
     {
       id: 'contributions',
       value: github.totals.contributions,
-      label: 'GitHub contributions',
-      hint: `${github.contributions[0].year}–${github.contributions[github.contributions.length - 1].year}`,
+      label: { en: 'GitHub contributions', ru: 'Вкладов на GitHub' },
+      hint: `${first}–${last}`,
     },
     {
       id: 'repos',
       value: totals.ownRepositories,
-      label: 'Original repositories',
-      hint: `${formatNumber(totals.personalRepositories)} personal + ${formatNumber(totals.organizationRepositories)} in organizations, no forks`,
+      label: { en: 'Original repositories', ru: 'Собственных репозиториев' },
+      hint: {
+        en: `${n(totals.personalRepositories)} personal + ${n(totals.organizationRepositories)} in organizations, no forks`,
+        ru: `${n(totals.personalRepositories)} личных + ${n(totals.organizationRepositories)} в организациях, без форков`,
+      },
     },
     {
       id: 'organizations',
       value: totals.organizations,
-      label: 'GitHub organizations',
-      hint: 'founded, led or co-created',
+      label: { en: 'GitHub organizations', ru: 'Организаций на GitHub' },
+      hint: { en: 'founded, led or co-created', ru: 'основал, возглавлял или создавал вместе с другими' },
     },
     {
       id: 'languages',
       value: totals.languages,
-      label: 'Programming languages',
-      hint: 'detected by GitHub in original repositories',
+      label: { en: 'Programming languages', ru: 'Языков программирования' },
+      hint: { en: 'detected by GitHub in original repositories', ru: 'по данным GitHub в собственных репозиториях' },
     },
-    { id: 'gists', value: github.profile.publicGists, label: 'Public gists', hint: 'snippets, notes & logs' },
+    {
+      id: 'gists',
+      value: github.profile.publicGists,
+      label: { en: 'Public gists', ru: 'Публичных gist' },
+      hint: { en: 'snippets, notes & logs', ru: 'фрагменты кода, заметки и логи' },
+    },
     {
       id: 'packages',
       value: packages,
-      label: 'Published packages',
+      label: { en: 'Published packages', ru: 'Опубликованных пакетов' },
       hint: github.registries.map((r) => r.name).join(' · '),
     },
     {
       id: 'downloads',
       value: lifetime.reduce((sum, r) => sum + r.downloads, 0),
-      label: 'Package downloads',
-      hint: `lifetime, ${lifetime.map((r) => r.name).join(' + ')}`,
+      label: { en: 'Package downloads', ru: 'Загрузок пакетов' },
+      hint: {
+        en: `lifetime, ${lifetime.map((r) => r.name).join(' + ')}`,
+        ru: `за всё время, ${lifetime.map((r) => r.name).join(' + ')}`,
+      },
     },
-    { id: 'stars', value: github.totals.stars, label: 'Stars on own projects', hint: 'personal + organizations' },
+    {
+      id: 'stars',
+      value: github.totals.stars,
+      label: { en: 'Stars on own projects', ru: 'Звёзд у своих проектов' },
+      hint: { en: 'personal + organizations', ru: 'личные + организации' },
+    },
     {
       id: 'followers',
       value: github.profile.followers,
-      label: 'GitHub followers',
-      hint: `following ${formatNumber(github.profile.following)}`,
+      label: { en: 'GitHub followers', ru: 'Подписчиков на GitHub' },
+      hint: { en: `following ${n(github.profile.following)}`, ru: `подписан на ${n(github.profile.following)}` },
     },
     {
       id: 'reputation',
       value: github.stackOverflow.reputation,
-      label: 'Stack Overflow reputation',
-      hint: `member since ${github.stackOverflow.memberSince}`,
+      label: { en: 'Stack Overflow reputation', ru: 'Репутация на Stack Overflow' },
+      hint: {
+        en: `member since ${github.stackOverflow.memberSince}`,
+        ru: `участник с ${github.stackOverflow.memberSince} года`,
+      },
     },
     ...(habr
       ? [
           {
             id: 'habr',
             value: habrViews,
-            label: 'Habr article views',
-            hint: `${habr.articles.length} articles on links theory & Deep`,
+            label: { en: 'Habr article views', ru: 'Просмотров статей на Хабре' },
+            hint: {
+              en: `${habr.articles.length} articles on links theory & Deep`,
+              ru: `${habr.articles.length} статей о теории связей и Deep`,
+            },
           },
         ]
       : []),
-    { id: 'years', value: now.getFullYear() - codingSince, label: 'Years of coding', hint: `since ${codingSince}` },
+    {
+      id: 'years',
+      value: now.getFullYear() - codingSince,
+      label: { en: 'Years of coding', ru: 'Лет программирования' },
+      hint: { en: `since ${codingSince}`, ru: `с ${codingSince} года` },
+    },
   ];
+  return stats.map((s) => ({ ...s, label: tr(s.label, lang), hint: tr(s.hint, lang) }));
 }
 
 export default function StatTiles({ github, codingSince, habr }) {
-  const stats = buildStats(github, codingSince, new Date(), habr);
+  const { lang, t } = useLang();
+  const stats = buildStats(github, codingSince, new Date(), habr, lang);
   return (
-    <ul className="stats" aria-label="Key numbers">
+    <ul className="stats" aria-label={t({ en: 'Key numbers', ru: 'Ключевые цифры' })}>
       {stats.map((s) => (
         <li key={s.id} className="stat">
-          <span className="stat__value" title={formatNumber(s.value)}>
-            {s.value >= 10000 ? formatCompact(s.value) : formatNumber(s.value)}
+          <span className="stat__value" title={formatNumber(s.value, lang)}>
+            {s.value >= 10000 ? formatCompact(s.value, lang) : formatNumber(s.value, lang)}
           </span>
           <span className="stat__label">{s.label}</span>
           <span className="stat__hint">{s.hint}</span>

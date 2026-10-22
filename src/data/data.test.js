@@ -54,7 +54,7 @@ describe('profile data integrity', () => {
   });
 
   test('education and profile basics are present', () => {
-    expect(profile.name).toBe('Konstantin Diachenko');
+    expect(profile.name).toEqual({ en: 'Konstantin Diachenko', ru: 'Константин Дьяченко' });
     expect(profile.handle).toBe(github.profile.login);
     expect(education.length).toBeGreaterThan(0);
   });

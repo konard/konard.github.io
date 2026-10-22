@@ -25,9 +25,10 @@ describe('buildStats', () => {
   test('derives tiles from github data', () => {
     const stats = buildStats(github, 2000, new Date('2026-10-16'), habr);
     const byId = Object.fromEntries(stats.map((s) => [s.id, s]));
-    expect(stats).toHaveLength(12);
+    expect(stats).toHaveLength(13);
     expect(byId.habr.value).toBe(habr.articles.reduce((s, a) => s + a.statistics.views, 0));
-    expect(buildStats(github, 2000, new Date('2026-10-16'))).toHaveLength(11);
+    expect(buildStats(github, 2000, new Date('2026-10-16'))).toHaveLength(12);
+    expect(byId.experience.value).toBe(18);
     expect(byId.years.value).toBe(26);
     expect(byId.contributions.value).toBe(github.totals.contributions);
     expect(byId.packages.value).toBe(github.registries.reduce((s, r) => s + r.packages, 0));
