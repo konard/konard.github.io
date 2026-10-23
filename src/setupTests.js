@@ -5,14 +5,16 @@ import '@testing-library/jest-dom/vitest';
 import { cleanup } from '@testing-library/react';
 import { afterEach } from 'vitest';
 import { setLang, setTheme } from './i18n/prefs';
+import { setSaved } from './settings/presets';
 import { resetSettings } from './settings/store';
 
-// Every test starts in English with the system theme and default settings, whatever an earlier test switched to.
+// Every test starts in English with the system theme, default settings and no saved looks, whatever an earlier test switched to.
 afterEach(() => {
   cleanup();
   setLang('en', { save: false });
   setTheme('auto', { save: false });
   resetSettings(undefined, { save: false });
+  setSaved([]);
   window.localStorage.clear();
 });
 

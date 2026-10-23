@@ -3,8 +3,10 @@ import './settings.css';
 import Layout from '../components/Layout';
 import { previewSound } from '../components/Sound';
 import { CornerTiles, SameCorners } from './CornerTiles';
+import Presets from './Presets';
 import { useLang } from '../i18n/prefs';
 import { plural } from '../i18n/plural';
+import { getSaved, setSaved, withImported } from '../settings/presets';
 import { DEFAULTS, FIELDS, PALETTES, SECTIONS } from '../settings/schema';
 import { changesOf, resetSettings, setSettings, useSettings } from '../settings/store';
 import { cue } from '../sound/options';
@@ -243,8 +245,14 @@ export default function SettingsPage() {
     try {
       const parsed = JSON.parse(draft);
       if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) throw new Error('not an object');
-      setSettings({ ...DEFAULTS, ...parsed });
-      setStatus(t({ en: 'Settings loaded.', ru: 'Настройки загружены.' }));
+      if (Array.isArray(parsed.presets)) {
+        // Looks copied from "Presets" in another browser.
+        setSaved(withImported(getSaved(), parsed.presets));
+        setStatus(t({ en: 'The looks are added to the presets.', ru: 'Виды добавлены к пресетам.' }));
+      } else {
+        setSettings({ ...DEFAULTS, ...parsed });
+        setStatus(t({ en: 'Settings loaded.', ru: 'Настройки загружены.' }));
+      }
       setDraft('');
     } catch {
       setStatus(t({ en: 'This is not JSON of settings.', ru: 'Это не JSON с настройками.' }));
@@ -252,7 +260,13 @@ export default function SettingsPage() {
   };
 
   return (
-    <Layout page="settings" sections={sections.map((section) => [section.id, section.title])}>
+    <Layout
+      page="settings"
+      sections={[
+        ['presets', { en: 'Presets', ru: 'Пресеты' }],
+        ...sections.map((section) => [section.id, section.title]),
+      ]}
+    >
       <div className={`settings${peek ? ' settings--peek' : ''}`}>
         <header className="page-hero" id="top">
           <p className="section__kicker">{t({ en: 'Settings', ru: 'Настройки' })}</p>
@@ -282,6 +296,8 @@ export default function SettingsPage() {
             </button>
           </div>
         </header>
+
+        <Presets settings={settings} />
 
         <div className="settings__groups">
           {COLUMNS.map((column) => (
@@ -313,7 +329,10 @@ export default function SettingsPage() {
               </button>
             </div>
             <label className="settings__import">
-              {t({ en: 'Paste settings to load them', ru: 'Вставьте настройки, чтобы загрузить их' })}
+              {t({
+                en: 'Paste settings or saved looks to load them',
+                ru: 'Вставьте настройки или сохранённые виды, чтобы загрузить их',
+              })}
               <textarea className="mono" rows={4} value={draft} onChange={(event) => setDraft(event.target.value)} />
             </label>
             <div className="page-hero__actions">

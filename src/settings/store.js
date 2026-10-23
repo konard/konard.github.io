@@ -5,6 +5,7 @@
 // tabs of the site follow along through the `storage` event.
 import { useSyncExternalStore } from 'react';
 import { applySettings, normalize } from './apply';
+import { getLang } from '../i18n/prefs';
 import { CSS_RULES, DEFAULTS, RULES } from './schema';
 
 export const STORAGE_KEY = 'settings';
@@ -83,6 +84,27 @@ const subscribe = (listener) => {
   listeners.add(listener);
   return () => listeners.delete(listener);
 };
+
+/**
+ * Opens the look a link carries (`#settings=…`, made by "Copy link" on the
+ * settings page, issue #15): it replaces the look of this browser but keeps the
+ * visitor's comfort settings, and the look it replaces is kept among the saved
+ * looks under `before`. The hash is then removed, so a reload does not apply it
+ * again. The preset code is loaded only for such links.
+ */
+export async function openSharedLook(before = getLang() === 'ru' ? 'До ссылки' : 'Before the link') {
+  if (!browser || !window.location.hash.startsWith('#settings=')) return false;
+  const { applyLook, cleanLook, getSaved, isLook, lookOfHash, setSaved, withSaved } = await import('./presets');
+  const look = lookOfHash(window.location.hash);
+  window.history.replaceState(null, '', window.location.pathname + window.location.search);
+  if (!look) return false;
+  const mine = cleanLook(changesOf(current));
+  if (Object.keys(mine).length && !isLook(look, current)) setSaved(withSaved(getSaved(), before, mine));
+  replace(applyLook(look, current), true);
+  return true;
+}
+
+openSharedLook();
 
 /** All settings, `{ key: value }`; components re-render when they change. */
 export function useSettings() {

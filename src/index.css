@@ -8,6 +8,8 @@
   --text-2: #b4c0d3;
   --muted: #7d8aa3;
   --accent: #22d3ee;
+  /* The accent of the theme itself, which the futuristic skin does not repaint (preset miniatures). */
+  --theme-accent: #22d3ee;
   --accent-2: #a78bfa;
   --accent-3: #f472b6;
   --series-1: #3987e5;
@@ -68,6 +70,7 @@
   --text-2: #334155;
   --muted: #5b6578;
   --accent: #0e7490;
+  --theme-accent: #0e7490;
   --accent-2: #6d28d9;
   --accent-3: #be185d;
   --accent-soft: rgba(14, 116, 144, 0.12);

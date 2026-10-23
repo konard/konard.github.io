@@ -67,16 +67,16 @@ describe('settings page (issue #13)', () => {
     render(<SettingsPage />);
     expect(JSON.parse(screen.getByLabelText('Changed settings').textContent)).toEqual({ 'skin.name': 'liquid' });
 
-    const paste = screen.getByLabelText('Paste settings to load them');
+    const paste = screen.getByLabelText('Paste settings or saved looks to load them');
     fireEvent.change(paste, { target: { value: '{"grid.size": 96, "nebula.fps": 1000}' } });
     fireEvent.click(screen.getByRole('button', { name: 'Load' }));
     // Loading replaces the settings: what is not in the JSON goes back to the default.
     expect(stored()).toEqual({ 'grid.size': 96, 'nebula.fps': 60 });
-    expect(document.querySelector('.settings__status')).toHaveTextContent('Settings loaded.');
+    expect(document.querySelector('#share .settings__status')).toHaveTextContent('Settings loaded.');
 
     fireEvent.change(paste, { target: { value: '[1, 2]' } });
     fireEvent.click(screen.getByRole('button', { name: 'Load' }));
-    expect(document.querySelector('.settings__status')).toHaveTextContent('This is not JSON of settings.');
+    expect(document.querySelector('#share .settings__status')).toHaveTextContent('This is not JSON of settings.');
     expect(stored()).toEqual({ 'grid.size': 96, 'nebula.fps': 60 });
   });
 
