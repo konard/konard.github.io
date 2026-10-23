@@ -33,6 +33,13 @@ function pathsOf(code, cache) {
   return paths;
 }
 
+/**
+ * The free space (CSS pixels) kept around a symbol inside its cell of `cell`
+ * pixels: `padding`, but never so much that the symbol gets smaller than a
+ * quarter of the cell.
+ */
+export const paddingFor = (cell, padding = 0) => Math.max(0, Math.min(padding, (cell * 3) / 8));
+
 /** How far the grid has drifted down at time `now` (ms): 0 … grid, one cell per `period`. */
 export const driftAt = (now, grid = 64, period = 24000) => (period ? ((now % period) / period) * grid : 0);
 
@@ -56,7 +63,8 @@ export const pickerFor =
  * settings page previews the rain this way). With `visible: false` the rain
  * only drifts the grid. Columns fall every 1…`speeds` steps; a share
  * `density` of them has rain; a column that left the screen starts again with
- * the chance `restart` per step.
+ * the chance `restart` per step. `padding` keeps free CSS pixels around every
+ * symbol inside its cell.
  * Does nothing (and returns a no-op) where Canvas 2D or Path2D is missing.
  */
 export function startRain(canvas, options = {}) {
@@ -69,6 +77,7 @@ export function startRain(canvas, options = {}) {
     glow: 8,
     glowColor: GLOW,
     lineWidth: 5.5,
+    padding: 0,
     speeds: 3,
     density: 1,
     restart: 0.05,
@@ -92,11 +101,14 @@ export function startRain(canvas, options = {}) {
   const cell = () => o.grid / 2;
 
   const draw = (code, x, row, glow) => {
+    const pad = paddingFor(cell(), o.padding);
+    const size = cell() - 2 * pad;
     ctx.save();
-    ctx.translate(x, row * cell());
-    ctx.scale(cell() / SIZE, cell() / SIZE);
+    ctx.translate(x + pad, row * cell() + pad);
+    ctx.scale(size / SIZE, size / SIZE);
     ctx.shadowColor = o.glowColor;
-    ctx.shadowBlur = glow;
+    // The transform does not scale shadows, so the glow is given in device pixels.
+    ctx.shadowBlur = glow * ratio;
     ctx.lineWidth = o.lineWidth;
     pathsOf(code, cache).forEach(({ path, color }) => {
       ctx.strokeStyle = color;

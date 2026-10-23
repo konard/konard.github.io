@@ -32,6 +32,7 @@ export const rainOptions = (s, animate) => ({
   glow: s['rain.glow'],
   glowColor: s['rain.glowColor'],
   lineWidth: s['rain.lineWidth'],
+  padding: s['rain.padding'],
   speeds: s['rain.speeds'],
   density: s['rain.density'],
   restart: s['rain.restart'],
