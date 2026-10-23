@@ -2,12 +2,22 @@ import '../App.css';
 import '../App.sections.css';
 import '../Layout.css';
 import '../pages/pages.css';
+// The skins (issue #13) and the technical fonts of the futuristic one.
+import '@fontsource/orbitron/latin-500.css';
+import '@fontsource/orbitron/latin-700.css';
+import '@fontsource/electrolize/latin-400.css';
+import '@fontsource/chakra-petch/latin-400.css';
+import '@fontsource/chakra-petch/latin-600.css';
+import '@fontsource/share-tech-mono/latin-400.css';
+import '../skins.liquid.css';
+import '../skins.future.css';
 // Responsive and print overrides must come last.
 import '../App.media.css';
 import { profile } from '../data/profile';
 import { PAGES } from '../pages/pages';
 import { useLang } from '../i18n/prefs';
 import Cosmos from './Cosmos';
+import LiquidRefraction from './LiquidRefraction';
 import PrefSwitches from './PrefSwitches';
 
 /**
@@ -20,6 +30,7 @@ export default function Layout({ page, sections = null, children, footer = null 
   return (
     <div className="app">
       <Cosmos />
+      <LiquidRefraction />
       <header className="topbar">
         <div className="topbar__row">
           <a className="nav__brand mono" href="/">

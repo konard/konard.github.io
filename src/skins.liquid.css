@@ -1,0 +1,291 @@
+/* ---------- Liquid glass skin (issue #13) ----------
+   After Apple's Liquid Glass: thick translucent panels with a strong blur,
+   extra saturation and brightness of what is behind them, light catching the
+   edges, an inner glow for thickness and floating capsules. Every number is a
+   setting (src/settings/schema.js, the "liquid" section) written to <html> as
+   a --liquid-* variable, every switch as a data-liquid-* attribute. Panels
+   are restyled with background layers and shadows only, so their own
+   ::before / ::after decorations keep working. */
+
+:root[data-skin-name='liquid'] {
+  --radius: var(--liquid-radius, 24px);
+  --lq-tint-rgb: var(--panel-rgb);
+  /* The colour of the light on the edges and of the shadow under the glass. */
+  --lq-light-rgb: 255 255 255;
+  --lq-edge-rgb: 255 255 255;
+  --lq-shadow-rgb: 0 0 0;
+  --lq-shadow-alpha: 0.6;
+  --lq-sheen: 0.16;
+  --lq-filter: blur(var(--liquid-blur, 18px)) saturate(calc(var(--liquid-saturation, 180) / 100))
+    brightness(calc(var(--liquid-brightness, 108) / 100));
+  /* The light that sweeps over a panel on hover: the first background layer,
+     moved from the right edge to the left one. */
+  --lq-sheen-img: linear-gradient(
+    110deg,
+    transparent 35%,
+    rgb(var(--lq-light-rgb) / var(--lq-sheen)) 48%,
+    rgb(var(--lq-light-rgb) / calc(var(--lq-sheen) * 0.4)) 52%,
+    transparent 65%
+  );
+  --lq-sheen-pos: 120% 0;
+  --lq-glass:
+    var(--lq-sheen-img),
+    linear-gradient(
+      180deg,
+      rgb(var(--lq-light-rgb) / calc(0.14 * var(--liquid-highlight, 0.55))),
+      transparent 45%,
+      rgb(var(--lq-light-rgb) / calc(0.05 * var(--liquid-highlight, 0.55)))
+    ),
+    linear-gradient(
+      rgb(var(--lq-tint-rgb) / var(--liquid-tint-level, 0.22)),
+      rgb(var(--lq-tint-rgb) / var(--liquid-tint-level, 0.22))
+    );
+  --lq-shadow:
+    inset 0 1px 0 rgb(var(--lq-light-rgb) / var(--liquid-highlight, 0.55)),
+    inset 1px 0 0 rgb(var(--lq-light-rgb) / calc(var(--liquid-highlight, 0.55) * 0.35)),
+    inset 0 -1px 0 rgb(var(--lq-light-rgb) / calc(var(--liquid-highlight, 0.55) * 0.25)),
+    inset 0 0 calc(10px + 30px * var(--liquid-depth, 0.35))
+      rgb(var(--lq-light-rgb) / calc(var(--liquid-depth, 0.35) * 0.22)),
+    0 calc(6px + 18px * var(--liquid-shadow, 0.5)) calc(12px + 36px * var(--liquid-shadow, 0.5))
+      rgb(var(--lq-shadow-rgb) / calc(var(--liquid-shadow, 0.5) * var(--lq-shadow-alpha)));
+}
+
+:root[data-skin-name='liquid'][data-theme='light'] {
+  --lq-edge-rgb: 15 40 80;
+  --lq-shadow-rgb: 15 40 80;
+  --lq-shadow-alpha: 0.28;
+  --lq-sheen: 0.5;
+}
+
+:root[data-skin-name='liquid'][data-liquid-tint='clear'] {
+  --lq-tint-rgb: 255 255 255;
+}
+
+:root[data-skin-name='liquid'][data-liquid-tint='accent'] {
+  --lq-tint-rgb: var(--accent-rgb);
+}
+
+:root[data-skin-name='liquid'][data-liquid-tint='smoke'] {
+  --lq-tint-rgb: 0 0 0;
+}
+
+:root[data-skin-name='liquid'][data-liquid-sheen='false'] {
+  --lq-sheen-img: none;
+}
+
+/* Panels, cards and tiles of every page. */
+:root[data-skin-name='liquid']
+  :is(
+    .card,
+    .chart,
+    .registry,
+    .project,
+    .skills__group,
+    .org,
+    .step,
+    .stat,
+    .position,
+    .ps-note,
+    .social,
+    .cloud,
+    .habr-card,
+    .page-card,
+    .psd,
+    .theory__formulas li,
+    .theory__hero,
+    .theory__network,
+    .version,
+    .filters,
+    .page-stats li,
+    .post,
+    .repo,
+    .field-card,
+    .stack__layer,
+    .symbols__grid li,
+    .settings__group
+  ) {
+  border: 1px solid rgb(var(--lq-edge-rgb) / var(--liquid-edge, 0.22));
+  border-radius: var(--radius);
+  background: var(--lq-glass);
+  background-size:
+    260% 100%,
+    100% 100%,
+    100% 100%;
+  background-position:
+    var(--lq-sheen-pos),
+    0 0,
+    0 0;
+  background-repeat: no-repeat;
+  box-shadow: var(--lq-shadow);
+  backdrop-filter: var(--lq-filter);
+  transition:
+    background-position 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s,
+    box-shadow 0.3s,
+    transform 0.3s;
+}
+
+:root[data-skin-name='liquid']
+  :is(
+    .card,
+    .chart,
+    .registry,
+    .project,
+    .skills__group,
+    .org,
+    .step,
+    .stat,
+    .position,
+    .ps-note,
+    .social,
+    .cloud,
+    .habr-card,
+    .page-card,
+    .psd,
+    .theory__hero,
+    .theory__network,
+    .page-stats li,
+    .post,
+    .repo,
+    .field-card,
+    .stack__layer,
+    .symbols__grid li,
+    .settings__group
+  ):hover {
+  --lq-sheen-pos: -60% 0;
+  border-color: rgb(var(--lq-edge-rgb) / calc(var(--liquid-edge, 0.22) + 0.15));
+}
+
+/* Nested panels (the compact repositories inside a stack layer) stay thin. */
+:root[data-skin-name='liquid'] :is(.stack__layer, .page-card, .theory__hero) .repo {
+  box-shadow: inset 0 1px 0 rgb(var(--lq-light-rgb) / calc(var(--liquid-highlight, 0.55) * 0.6));
+  backdrop-filter: none;
+}
+
+/* The left accent of a theory version keeps its colour. */
+:root[data-skin-name='liquid'] .version {
+  border-left: 3px solid var(--accent-2);
+}
+
+/* ---------- The top bar ---------- */
+
+:root[data-skin-name='liquid'] .topbar {
+  border-bottom: 1px solid rgb(var(--lq-edge-rgb) / var(--liquid-edge, 0.22));
+  background: rgb(var(--lq-tint-rgb) / var(--liquid-tint-level, 0.22));
+  box-shadow:
+    inset 0 -1px 0 rgb(var(--lq-light-rgb) / calc(var(--liquid-highlight, 0.55) * 0.3)),
+    0 8px 30px rgb(var(--lq-shadow-rgb) / calc(var(--liquid-shadow, 0.5) * var(--lq-shadow-alpha) * 0.6));
+  backdrop-filter: var(--lq-filter);
+}
+
+/* Floating capsules instead of a bar across the page. */
+:root[data-skin-name='liquid'][data-liquid-float='true'] .topbar {
+  padding: 0.7rem 0.75rem 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+  backdrop-filter: none;
+  pointer-events: none;
+}
+
+:root[data-skin-name='liquid'][data-liquid-float='true'] .topbar > * {
+  width: min(1180px + 2rem, 100%);
+  margin: 0 auto;
+  padding: 0.45rem 0.6rem 0.45rem 1.2rem;
+  border: 1px solid rgb(var(--lq-edge-rgb) / var(--liquid-edge, 0.22));
+  border-radius: 999px;
+  background: var(--lq-glass);
+  background-size:
+    260% 100%,
+    100% 100%,
+    100% 100%;
+  background-position:
+    var(--lq-sheen-pos),
+    0 0,
+    0 0;
+  background-repeat: no-repeat;
+  box-shadow: var(--lq-shadow);
+  backdrop-filter: var(--lq-filter);
+  pointer-events: auto;
+}
+
+:root[data-skin-name='liquid'][data-liquid-float='true'] .topbar > .nav {
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 0.45rem;
+  padding: 0.25rem 0.5rem;
+}
+
+/* ---------- Buttons and other controls ---------- */
+
+:root[data-skin-name='liquid'] .button {
+  border-color: rgb(var(--lq-edge-rgb) / calc(var(--liquid-edge, 0.22) + 0.08));
+  background: linear-gradient(
+    180deg,
+    rgb(var(--lq-light-rgb) / calc(0.16 * var(--liquid-highlight, 0.55))),
+    rgb(var(--lq-tint-rgb) / var(--liquid-tint-level, 0.22))
+  );
+  box-shadow:
+    inset 0 1px 0 rgb(var(--lq-light-rgb) / var(--liquid-highlight, 0.55)),
+    0 4px 14px rgb(var(--lq-shadow-rgb) / calc(var(--liquid-shadow, 0.5) * var(--lq-shadow-alpha) * 0.6));
+  backdrop-filter: var(--lq-filter);
+}
+
+:root[data-skin-name='liquid'] .button--primary {
+  border-color: rgb(255 255 255 / 0.25);
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 0.22), transparent 55%), linear-gradient(90deg, #0891b2, #7c3aed);
+}
+
+:root[data-skin-name='liquid'] .button:hover {
+  transform: translateY(-1px) scale(1.02);
+}
+
+:root[data-skin-name='liquid'][data-liquid-pills='true']
+  :is(
+    .button,
+    .pages a,
+    .chip,
+    .tags li,
+    .segmented,
+    .prefs__theme,
+    .prefs__langs,
+    .role-tabs a,
+    .setting__input select,
+    .setting__reset
+  ) {
+  border-radius: 999px;
+}
+
+:root[data-skin-name='liquid'][data-liquid-pills='false'] :is(.pages a, .chip, .tags li, .segmented, .role-tabs a) {
+  border-radius: calc(var(--radius) / 2);
+}
+
+:root[data-skin-name='liquid'] .pages a[aria-current='page'],
+:root[data-skin-name='liquid'] .role-tabs a[aria-current='page'] {
+  background: rgb(var(--lq-light-rgb) / calc(0.1 + 0.1 * var(--liquid-highlight, 0.55)));
+  box-shadow: inset 0 1px 0 rgb(var(--lq-light-rgb) / var(--liquid-highlight, 0.55));
+}
+
+/* ---------- Refraction (Chromium only) ----------
+   An SVG displacement filter (LiquidRefraction in src/components/Layout.jsx)
+   bends what is behind the glass. Only Chromium applies SVG filters in
+   backdrop-filter, and elsewhere such a value would remove the blur too, so
+   the filter is used only after the component has marked <html> with
+   data-refracts. */
+:root[data-skin-name='liquid'][data-liquid-refraction='true'][data-refracts] {
+  --lq-filter: url(#liquid-refraction) blur(var(--liquid-blur, 18px))
+    saturate(calc(var(--liquid-saturation, 180) / 100)) brightness(calc(var(--liquid-brightness, 108) / 100));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root[data-skin-name='liquid'] {
+    --lq-sheen-img: none;
+  }
+}
+
+/* The filter itself takes no space. */
+.liquid-refraction {
+  position: absolute;
+  overflow: hidden;
+}

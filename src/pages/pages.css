@@ -42,7 +42,7 @@
   padding: 0.9rem 1rem;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: rgb(var(--panel-rgb) / 0.72);
+  background: rgb(var(--panel-rgb) / calc(0.72 * var(--glass-level, 1)));
 }
 
 .page-stats strong {
@@ -77,13 +77,13 @@
   padding: 0.8rem 1rem;
   border: 1px solid var(--border);
   border-radius: 12px;
-  background: rgb(var(--panel-rgb) / 0.78);
-  backdrop-filter: blur(4px);
+  background: rgb(var(--panel-rgb) / calc(0.78 * var(--glass-level, 1)));
+  backdrop-filter: blur(calc(var(--glass-blur, 6px) * 2 / 3));
 }
 
 .repos--compact .repo {
   padding: 0.6rem 0.8rem;
-  background: rgb(var(--panel-2-rgb) / 0.72);
+  background: rgb(var(--panel-2-rgb) / calc(0.72 * var(--glass-level, 1)));
 }
 
 .repo__head {
@@ -146,8 +146,8 @@
   padding: 1.1rem 1.2rem;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: rgb(var(--panel-rgb) / 0.8);
-  backdrop-filter: blur(6px);
+  background: rgb(var(--panel-rgb) / calc(0.8 * var(--glass-level, 1)));
+  backdrop-filter: blur(var(--glass-blur, 6px));
 }
 
 .profession h3,
@@ -209,8 +209,8 @@
   padding: 0.9rem 1rem;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: rgb(var(--deep-rgb) / 0.82);
-  backdrop-filter: blur(6px);
+  background: rgb(var(--deep-rgb) / calc(0.82 * var(--glass-level, 1)));
+  backdrop-filter: blur(var(--glass-blur, 6px));
 }
 
 .filters label {
@@ -276,7 +276,7 @@
   padding: 0.45rem 0.9rem;
   border: 1px solid var(--border-strong);
   border-radius: 999px;
-  background: rgb(var(--panel-rgb) / 0.75);
+  background: rgb(var(--panel-rgb) / calc(0.75 * var(--glass-level, 1)));
   color: var(--text);
 }
 
@@ -406,7 +406,7 @@
   padding: 0.3rem 0.2rem 0.4rem;
   border: 1px solid var(--border);
   border-radius: 10px;
-  background: rgb(var(--panel-rgb) / 0.8);
+  background: rgb(var(--panel-rgb) / calc(0.8 * var(--glass-level, 1)));
   color: var(--accent);
 }
 
@@ -441,8 +441,8 @@
   padding: 1rem 1.2rem;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: rgb(var(--panel-rgb) / 0.86);
-  backdrop-filter: blur(6px);
+  background: rgb(var(--panel-rgb) / calc(0.86 * var(--glass-level, 1)));
+  backdrop-filter: blur(var(--glass-blur, 6px));
 }
 
 .post__head,
