@@ -20,7 +20,6 @@
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: rgb(var(--panel-rgb) / calc(0.82 * var(--glass-level, 0.4)));
-  backdrop-filter: blur(var(--glass-blur, 3px));
   scroll-margin-top: 7rem;
 }
 

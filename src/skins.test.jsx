@@ -7,22 +7,24 @@ import { setSettings } from './settings/store';
 
 const css = (file) => readFileSync(new URL(file, import.meta.url), 'utf8');
 const liquid = css('./skins.liquid.css');
+const glass = css('./skins.glass.css') + css('./index.css') + css('./App.css') + css('./Layout.css');
 const future = css('./skins.future.css') + css('./skins.palettes.css');
 const name = (key) => key.replace(/\./g, '-').replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`);
 
 // Choices that mean "no extra style", so no rule is needed for them.
-const NOTHING = { 'future.hover': ['none'], 'future.title': ['plain'] };
+const NOTHING = { 'future.hover': ['none'], 'future.title': ['plain'], 'glass.shadow': ['none'] };
 // Numbers used by the SVG filter (LiquidRefraction), not by a stylesheet.
 const IN_JSX = ['liquid.refractionScale', 'liquid.refractionDetail'];
 
 describe.each([
-  ['liquid', liquid],
-  ['future', future],
-])('the %s skin (issue #13)', (prefix, sheet) => {
+  ['liquid', liquid, 15],
+  ['future', future, 15],
+  ['glass', glass, 8],
+])('the %s skin (issues #13 and #15)', (prefix, sheet, many) => {
   const fields = FIELDS.filter((f) => f.key.startsWith(`${prefix}.`));
 
   it('has many settings', () => {
-    expect(fields.length).toBeGreaterThanOrEqual(15);
+    expect(fields.length).toBeGreaterThanOrEqual(many);
   });
 
   it.each(fields.filter((f) => f.type === 'range' && !IN_JSX.includes(f.key)).map((f) => f.key))(
@@ -99,5 +101,39 @@ describe('liquid refraction (issue #13)', () => {
     act(() => setSettings({ 'skin.name': 'futuristic', 'liquid.refraction': true }));
     const { container } = render(<LiquidRefraction />);
     expect(container.querySelector('filter')).toBeNull();
+  });
+});
+
+describe('the glass skin (issue #15)', () => {
+  const panels = (sheet, from) => {
+    const start = sheet.indexOf(':is(', sheet.indexOf(from));
+    return sheet
+      .slice(start + 4, sheet.indexOf(')', start))
+      .split(',')
+      .map((s) => s.trim())
+      .filter(Boolean);
+  };
+
+  it('puts the glass on the same panels as the other skins', () => {
+    const list = panels(future, '/* ---------- Panels ---------- */');
+    expect(list.length).toBeGreaterThan(20);
+    expect(panels(glass, '@media screen')).toEqual(list);
+    expect(panels(liquid, '/* Panels, cards and tiles of every page. */')).toEqual(list);
+  });
+});
+
+describe('percent settings (issue #15)', () => {
+  // A range in percents above 2 (`glass.saturation` = 100) is written to CSS as
+  // a bare number, so it must be divided by 100: `saturate(100)` is 10 000 %
+  // and painted every glass panel blue.
+  const sheets = ['./index.css', './App.css', './Layout.css', './skins.glass.css', './skins.liquid.css']
+    .map(css)
+    .join('\n');
+  const percents = FIELDS.filter((f) => f.type === 'range' && f.unit === '%' && f.max > 2);
+
+  it.each(percents.map((f) => f.key))('divides %s by 100 wherever it is used', (key) => {
+    const uses = [...sheets.matchAll(new RegExp(`var\\(--${name(key)}[^)]*\\)\\s*(/\\s*100)?`, 'g'))];
+    expect(uses.length).toBeGreaterThan(0);
+    for (const use of uses) expect(use[0], key).toMatch(/\/\s*100$/);
   });
 });

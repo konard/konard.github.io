@@ -64,6 +64,26 @@ export const SKIN_SECTIONS = [
         { unit: 'px' },
       ),
       range('glass.radius', 10, 0, 32, 1, { en: 'Corner radius', ru: 'Скругление углов' }, { unit: 'px' }),
+      range(
+        'glass.saturation',
+        100,
+        100,
+        250,
+        5,
+        { en: 'Colour behind panels', ru: 'Насыщенность за панелями' },
+        {
+          unit: '%',
+          hint: { en: 'More makes the background behind the glass more vivid.', ru: 'Больше — фон за стеклом ярче.' },
+        },
+      ),
+      range('glass.edge', 0.14, 0, 0.6, 0.02, { en: 'Borders and lines', ru: 'Рамки и линии' }, { unit: '%' }),
+      select(
+        'glass.shadow',
+        'none',
+        [option('none', 'None', 'Нет'), option('soft', 'Soft', 'Мягкая'), option('deep', 'Deep', 'Глубокая')],
+        { en: 'Shadow under panels', ru: 'Тень под панелями' },
+      ),
+      toggle('glass.highlight', false, { en: 'Light on the upper edge', ru: 'Свет на верхней кромке' }),
     ],
   },
   {
