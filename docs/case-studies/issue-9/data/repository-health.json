@@ -13385,6 +13385,38 @@
     "public": true
    }
   },
+  "link-foundation/lfs": {
+   "diskUsage": 2331,
+   "isEmpty": false,
+   "fileCount": 20,
+   "files": {
+    ".github": null,
+    ".gitignore": 1033,
+    ".lycheeignore": 655,
+    ".pre-commit-config.yaml": 1187,
+    ".secretlintrc.json": 92,
+    "Cargo.lock": 27663,
+    "Cargo.toml": 3686,
+    "changelog.d": null,
+    "CHANGELOG.md": 191424,
+    "CONTRIBUTING.md": 11308,
+    "dev": null,
+    "docs": null,
+    "examples": null,
+    "experiments": null,
+    "LICENSE": 1211,
+    "lychee.toml": 219,
+    "README.md": 12380,
+    "scripts": null,
+    "src": null,
+    "tests": null
+   },
+   "commits": 50,
+   "root": {
+    "at": "2026-10-21T17:55:55Z",
+    "author": "konard"
+   }
+  },
   "link-foundation/link-cli": {
    "diskUsage": 5384,
    "isEmpty": false,

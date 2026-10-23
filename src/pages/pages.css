@@ -332,6 +332,14 @@
   font-size: 0.9rem;
 }
 
+.stack__index .chip {
+  text-decoration: none;
+}
+
+.stack__layer {
+  scroll-margin-top: 5rem;
+}
+
 /* ---------- Link symbols ---------- */
 
 .symbols__tabs {

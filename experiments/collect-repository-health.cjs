@@ -7,7 +7,8 @@
 // records the disk usage, the top-level files with their sizes, the number of commits, the root
 // commit (date and GitHub login of its author, never an e-mail) and, for
 // copies of other repositories, whether the original is public.
-// Usage: node experiments/collect-repository-health.cjs [output-file] [--verbose]
+// Usage: node experiments/collect-repository-health.cjs [output-file] [--verbose] [--only=owner/name,...]
+// --only collects the given repositories and merges them into the existing output (issue #13).
 const { execFileSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
@@ -17,7 +18,10 @@ const args = process.argv.slice(2);
 const verbose = args.includes('--verbose');
 const OUT =
   args.find((a) => !a.startsWith('--')) || path.join(root, 'docs/case-studies/issue-9/data/repository-health.json');
-const repos = JSON.parse(fs.readFileSync(path.join(root, 'docs/case-studies/issue-7/data/repositories.json'), 'utf8'));
+const only = (args.find((a) => a.startsWith('--only=')) || '').slice('--only='.length).split(',').filter(Boolean);
+const repos = JSON.parse(
+  fs.readFileSync(path.join(root, 'docs/case-studies/issue-7/data/repositories.json'), 'utf8'),
+).filter((r) => !only.length || only.includes(r.fullName));
 const { CLIENTS } = require('../scripts/repositories.cjs');
 const log = (...a) => verbose && console.error(...a);
 
@@ -136,5 +140,14 @@ for (const r of repos) {
 }
 
 fs.mkdirSync(path.dirname(OUT), { recursive: true });
-fs.writeFileSync(OUT, JSON.stringify({ collectedAt: new Date().toISOString(), repositories: facts }, null, 1) + '\n');
+const previous = only.length && fs.existsSync(OUT) ? JSON.parse(fs.readFileSync(OUT, 'utf8')) : null;
+const merged = previous
+  ? {
+      collectedAt: previous.collectedAt,
+      repositories: Object.fromEntries(
+        Object.entries({ ...previous.repositories, ...facts }).sort(([a], [b]) => a.localeCompare(b)),
+      ),
+    }
+  : { collectedAt: new Date().toISOString(), repositories: facts };
+fs.writeFileSync(OUT, JSON.stringify(merged, null, 1) + '\n');
 console.error(`wrote ${Object.keys(facts).length} repositories to ${path.relative(root, OUT)}`);

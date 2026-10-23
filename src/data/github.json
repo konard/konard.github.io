@@ -20,9 +20,9 @@
     "createdAt": "2012-02-13T00:19:39Z"
   },
   "totals": {
-    "ownRepositories": 434,
+    "ownRepositories": 435,
     "personalRepositories": 146,
-    "organizationRepositories": 288,
+    "organizationRepositories": 289,
     "organizations": 8,
     "forks": 3,
     "mirrors": 88,
@@ -170,16 +170,16 @@
   "languages": [
     {
       "name": "JavaScript",
-      "count": 220,
+      "count": 221,
       "primary": 127,
-      "bytes": 148156359,
+      "bytes": 148205755,
       "color": "#f1e05a"
     },
     {
       "name": "Shell",
-      "count": 151,
+      "count": 152,
       "primary": 18,
-      "bytes": 5869360,
+      "bytes": 5927839,
       "color": "#89e051"
     },
     {
@@ -191,9 +191,9 @@
     },
     {
       "name": "Rust",
-      "count": 79,
-      "primary": 44,
-      "bytes": 72641602,
+      "count": 80,
+      "primary": 45,
+      "bytes": 73752446,
       "color": "#dea584"
     },
     {
@@ -205,9 +205,9 @@
     },
     {
       "name": "Python",
-      "count": 74,
+      "count": 75,
       "primary": 27,
-      "bytes": 10648820,
+      "bytes": 10680005,
       "color": "#3572A5"
     },
     {
@@ -700,7 +700,7 @@
       "description": "The foundation of foundations. Our mission is linkness.",
       "url": "https://github.com/link-foundation",
       "createdAt": "2024-07-20T19:06:38Z",
-      "repositories": 78,
+      "repositories": 79,
       "stars": 45,
       "languages": [
         {
@@ -709,7 +709,7 @@
         },
         {
           "name": "Rust",
-          "count": 17
+          "count": 18
         },
         {
           "name": "TypeScript",

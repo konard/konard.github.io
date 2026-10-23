@@ -142,7 +142,7 @@ const FIELD_RULES = [
   ],
   [
     'data',
-    /sql|postgres|redis|neo4j|clickhouse|spacetime|database|\bdb\b|_db|storage|hasura|graphql|\bgql\b|json|xml|\bdata\b|data\.|elastic|search|vector|cache|queue|materialized|export|import|archive|codec|parse|benchmark|collect/,
+    /sql|postgres|redis|neo4j|clickhouse|spacetime|database|\bdb\b|_db|storage|file ?system|hasura|graphql|\bgql\b|json|xml|\bdata\b|data\.|elastic|search|vector|cache|queue|materialized|export|import|archive|codec|parse|benchmark|collect/,
     ['PLpgSQL', 'Jupyter Notebook', 'R'],
   ],
   [
@@ -187,7 +187,7 @@ const FIELD_RULES = [
   ],
   [
     'systems',
-    /memory|unsafe|\btrees?\b|trees-|\bsbt\b|size-balanced|hashing|hashbrown|\bgpu\b|gpu-|kernel|native|bare|threading|benchmark|performance|epoll|rb-tree|layout|\bram-|\bdisk|process|collections|numbers|bitcoin|sorting|mem-rs|platform-rs|data-rs|doublets-rs|delegates|disposables|interfaces|equality|incrementers|singletons|ranges|setters|scopes|converters|comparers|exceptions|reflection|timestamps|random|\bio\b|protocols|iddistributor|idclient|archiver|\bbar\b|veil|vpn|cpp|wasm|webassembly|audio-?system/,
+    /memory|unsafe|file ?system|\btrees?\b|trees-|\bsbt\b|size-balanced|hashing|hashbrown|\bgpu\b|gpu-|kernel|native|bare|threading|benchmark|performance|epoll|rb-tree|layout|\bram-|\bdisk|process|collections|numbers|bitcoin|sorting|mem-rs|platform-rs|data-rs|doublets-rs|delegates|disposables|interfaces|equality|incrementers|singletons|ranges|setters|scopes|converters|comparers|exceptions|reflection|timestamps|random|\bio\b|protocols|iddistributor|idclient|archiver|\bbar\b|veil|vpn|cpp|wasm|webassembly|audio-?system/,
     ['C', 'C++', 'Assembly', 'Cuda', 'WGSL', 'WebAssembly', 'Metal', 'Nim', 'Objective-C', 'RenderScript'],
   ],
   [

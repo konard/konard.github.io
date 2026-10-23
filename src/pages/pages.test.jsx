@@ -7,6 +7,7 @@ import NetworkGallery from '../components/NetworkGallery';
 import { metaTheory } from '../data/theory';
 import { setLang, tr } from '../i18n/prefs';
 import { codeAt, indexOf } from '../links/configurations';
+import { STACK_ORGANIZATIONS } from '../data/stack';
 import { NetworkExample } from '../components/MetaTheory';
 import ArtPage, { ART } from './ArtPage';
 import AssociativePage, { STACK } from './AssociativePage';
@@ -174,13 +175,39 @@ describe('ResearchPage', () => {
 });
 
 describe('AssociativePage', () => {
-  it('draws the stack from AI on top to the theory at the bottom', () => {
+  it('starts the stack from the links meta-theory and goes up to the applications (issue #13)', () => {
     const { container } = render(<AssociativePage />);
     const layers = [...container.querySelectorAll('.stack__layer')].map((l) => l.id);
-    expect(layers).toEqual(STACK.map((l) => `layer-${l.id}`).reverse());
+    expect(layers).toEqual(STACK.map((l) => `layer-${l.id}`));
+    expect(layers[0]).toBe('layer-theory');
+    expect(layers.at(-1)).toBe('layer-apps');
+    const first = container.querySelector('#layer-theory .repo');
+    expect(within(first).getByRole('link', { name: 'link-foundation/meta-theory' })).toBeInTheDocument();
     expect(
       within(container.querySelector('#layer-storage')).getByRole('link', { name: 'konard/LinksPlatform' }),
     ).toBeInTheDocument();
+    expect(
+      within(container.querySelector('#layer-storage')).getByRole('link', { name: 'link-foundation/lfs' }),
+    ).toBeInTheDocument();
+  });
+
+  it('places every original repository of linksplatform, link-foundation and link-assistant in one layer', () => {
+    const names = STACK.flatMap((l) => l.repos.map(([name]) => name.toLowerCase()));
+    expect(names.filter((name, i) => names.indexOf(name) !== i)).toEqual([]);
+    const own = ownRepositories.filter((r) => STACK_ORGANIZATIONS.includes(r.owner)).map((r) => r.fullName);
+    expect(own.length).toBeGreaterThan(180);
+    expect(own.filter((name) => !names.includes(name.toLowerCase()))).toEqual([]);
+  });
+
+  it('links every layer from the index with the number of its repositories', () => {
+    const { container } = render(<AssociativePage />);
+    const index = within(screen.getByRole('navigation', { name: 'Layers of the stack' }));
+    STACK.forEach((l) => {
+      const link = index.getByRole('link', { name: new RegExp(`^\\d+\\. ${tr(l.title, 'en')} `) });
+      expect(link).toHaveAttribute('href', `#layer-${l.id}`);
+      expect(link).toHaveTextContent(String(l.repos.length));
+      expect(container.querySelectorAll(`#layer-${l.id} > .repos > .repo`)).toHaveLength(l.repos.length);
+    });
   });
 });
 
@@ -387,7 +414,7 @@ describe('pages in Russian (issue #11)', () => {
     russian();
     render(<AssociativePage />);
     h(1, 'Ассоциативный стек');
-    h(2, 'От теории до ИИ');
+    h(2, 'От теории до приложений');
     STACK.forEach((l) => h(3, l.title.ru));
     expect(screen.getByRole('list', { name: 'Движки хранения' })).toBeInTheDocument();
     noObjects();
