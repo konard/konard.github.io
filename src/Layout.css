@@ -22,27 +22,29 @@
 }
 
 /* The grid and the rain start one grid cell above the screen and drift down
-   together (driven by src/visuals/rain.js), so symbols stay on the grid. */
+   together (driven by src/visuals/rain.js), so symbols stay on the grid.
+   Sizes and strengths come from the settings (issue #13, src/settings/schema.js);
+   the fallbacks are the defaults. */
 .cosmos__grid,
 .cosmos__rain {
-  top: -64px;
-  height: calc(100% + 64px);
+  top: calc(-1 * var(--grid-size, 64px));
+  height: calc(100% + var(--grid-size, 64px));
 }
 
 .cosmos__universe {
-  opacity: 0.95;
+  opacity: calc(0.95 * var(--nebula-level, 1));
 }
 
 /* Light theme: the dark universe and the bright rain are inverted (keeping
    their hues) and toned down, so they stay a quiet backdrop for dark text. */
 :root[data-theme='light'] .cosmos__universe {
   filter: invert(1) hue-rotate(180deg);
-  opacity: 0.25;
+  opacity: calc(0.25 * var(--nebula-level, 1));
 }
 
 :root[data-theme='light'] .cosmos__rain {
   filter: invert(1) hue-rotate(180deg) saturate(1.4);
-  opacity: 0.32;
+  opacity: calc(0.32 * var(--rain-level, 1));
 }
 
 .cosmos__grid {
@@ -50,14 +52,14 @@
   left: 0;
   right: 0;
   background-image:
-    linear-gradient(rgb(var(--line-rgb) / 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(var(--line-rgb) / 0.07) 1px, transparent 1px);
-  background-size: 64px 64px;
+    linear-gradient(rgb(var(--line-rgb) / calc(0.07 * var(--grid-level, 1))) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--line-rgb) / calc(0.07 * var(--grid-level, 1))) 1px, transparent 1px);
+  background-size: var(--grid-size, 64px) var(--grid-size, 64px);
   mask-image: radial-gradient(ellipse at 50% 30%, black 20%, transparent 85%);
 }
 
 .cosmos__rain {
-  opacity: 0.5;
+  opacity: calc(0.5 * var(--rain-level, 1));
   /* Strong at the edges, quiet behind the content column so text stays readable. */
   mask-image: linear-gradient(
     to right,
@@ -70,14 +72,25 @@
   );
 }
 
+:root[data-grid-fade='false'] .cosmos__grid,
+:root[data-rain-dim='false'] .cosmos__rain {
+  mask-image: none;
+}
+
+:root[data-nebula-on='false'] .cosmos__universe,
+:root[data-grid-on='false'] .cosmos__grid,
+:root[data-rain-on='false'] .cosmos__rain {
+  display: none;
+}
+
 /* ---------- Top bar: pages and sections ---------- */
 
 .topbar {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: rgb(var(--deep-rgb) / 0.74);
-  backdrop-filter: blur(14px);
+  background: rgb(var(--deep-rgb) / calc(0.74 * var(--glass-level, 1)));
+  backdrop-filter: blur(var(--glass-bar, 14px));
   border-bottom: 1px solid var(--border);
 }
 
@@ -156,7 +169,11 @@
   padding: 1.25rem;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: linear-gradient(160deg, rgb(var(--panel-2-rgb) / 0.9), rgb(var(--panel-rgb) / 0.75));
+  background: linear-gradient(
+    160deg,
+    rgb(var(--panel-2-rgb) / calc(0.9 * var(--glass-level, 1))),
+    rgb(var(--panel-rgb) / calc(0.75 * var(--glass-level, 1)))
+  );
   color: var(--text-2);
   transition:
     border-color 0.2s,
@@ -200,7 +217,7 @@
     135deg,
     rgb(var(--accent-rgb) / 0.08),
     rgb(var(--accent-2-rgb) / 0.1) 60%,
-    rgb(var(--panel-rgb) / 0.85)
+    rgb(var(--panel-rgb) / calc(0.85 * var(--glass-level, 1)))
   );
 }
 
@@ -235,7 +252,7 @@
   padding: 0.25rem;
   border: 1px solid var(--border);
   border-radius: 12px;
-  background: rgb(var(--panel-rgb) / 0.6);
+  background: rgb(var(--panel-rgb) / calc(0.6 * var(--glass-level, 1)));
   cursor: pointer;
 }
 
@@ -295,7 +312,7 @@
   padding: 0.9rem 1rem;
   border: 1px solid var(--border);
   border-radius: 12px;
-  background: rgb(var(--panel-rgb) / 0.78);
+  background: rgb(var(--panel-rgb) / calc(0.78 * var(--glass-level, 1)));
   color: var(--text-2);
   font-size: 0.88rem;
 }
@@ -317,7 +334,7 @@
   padding: 1rem;
   border-left: 3px solid var(--accent-2);
   border-radius: 0 12px 12px 0;
-  background: rgb(var(--panel-rgb) / 0.78);
+  background: rgb(var(--panel-rgb) / calc(0.78 * var(--glass-level, 1)));
 }
 
 .version__number {
@@ -480,7 +497,11 @@
   grid-template-rows: 1fr auto;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: linear-gradient(165deg, rgb(var(--panel-2-rgb) / 0.94), rgb(var(--panel-rgb) / 0.84));
+  background: linear-gradient(
+    165deg,
+    rgb(var(--panel-2-rgb) / calc(0.94 * var(--glass-level, 1))),
+    rgb(var(--panel-rgb) / calc(0.84 * var(--glass-level, 1)))
+  );
   box-shadow: var(--shadow-card);
   overflow: hidden;
   animation: float var(--float-time, 8s) ease-in-out var(--float-delay, 0s) infinite;
@@ -572,7 +593,7 @@
   padding: 1.25rem;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: rgb(var(--panel-rgb) / 0.78);
+  background: rgb(var(--panel-rgb) / calc(0.78 * var(--glass-level, 1)));
 }
 
 .cloud__list {

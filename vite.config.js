@@ -1,10 +1,12 @@
 import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { applySettings, normalize } from './src/settings/apply.js';
+import { RULES } from './src/settings/schema.js';
 
 // Every page is its own HTML entry (a real URL on GitHub Pages, no client-side
 // routing). The home page must stay `index` so build/index.html keeps its name.
-const PAGES = ['repositories', 'experience', 'research', 'associative', 'art', 'blog', 'cv'];
+const PAGES = ['repositories', 'experience', 'research', 'associative', 'art', 'blog', 'cv', 'settings'];
 const input = Object.fromEntries([
   ['index', resolve(import.meta.dirname, 'index.html')],
   ...PAGES.map((page) => [page, resolve(import.meta.dirname, page, 'index.html')]),
@@ -15,9 +17,15 @@ const input = Object.fromEntries([
 // remembered choice, otherwise prefers-color-scheme.
 export const THEME_SCRIPT = `(function(){try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme='dark'}})();`;
 
+// Applies the remembered settings (skin, background, notation; issue #13)
+// before the first paint with the same rules as src/settings/store.js, so a
+// visitor with the futuristic skin never sees the glass one first.
+const inline = (fn) => String(fn).replace(/\s*\n\s*/g, ' ');
+export const SETTINGS_SCRIPT = `(function(){try{${inline(normalize)};${inline(applySettings)};var r=${JSON.stringify(RULES)};applySettings(document.documentElement,r,normalize(r,JSON.parse(localStorage.getItem('settings')||'{}')))}catch(e){}})();`;
+
 const themeBeforePaint = () => ({
   name: 'theme-before-paint',
-  transformIndexHtml: () => [{ tag: 'script', children: THEME_SCRIPT, injectTo: 'head-prepend' }],
+  transformIndexHtml: () => [{ tag: 'script', children: THEME_SCRIPT + SETTINGS_SCRIPT, injectTo: 'head-prepend' }],
 });
 
 // The site is served from the root of https://konard.github.io, and the

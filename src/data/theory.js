@@ -2,6 +2,8 @@
 // universal problem solving algorithm (github.com/konard/problem-solving).
 // Texts are `{ en, ru }` objects translated with useLang().t; formulas, version
 // titles (titles of the published articles) and repository names stay as they are.
+// Formulas are `{ L, R }`: the notation of draft 0.0.2 (L → L²) and of draft
+// 0.0.3 (R → R²), chosen in the settings (src/links/notation.js, issue #13).
 
 const ARCHIVED = { en: 'archived article', ru: 'архивная статья' };
 const DRAFT = { en: 'draft', ru: 'черновик' };
@@ -9,46 +11,64 @@ const DRAFT = { en: 'draft', ru: 'черновик' };
 export const metaTheory = {
   repo: 'https://github.com/link-foundation/meta-theory',
   pdfs: 'https://github.com/link-foundation/meta-theory/releases/latest/download/meta-theory-pdfs.zip',
-  tldr: 'L → L²',
+  tldr: { L: 'L → L²', R: 'R → R²' },
   summary: {
     en: 'A theory of everything built from a single concept, the link: an n-tuple of references to links that has its own reference. The goal is a meta-language that can describe philosophy, mathematics, physics and psychology in one formal language, so that every science becomes computable.',
     ru: 'Теория всего, построенная на единственном понятии — связи: n-кортеже ссылок на связи, у которого есть собственная ссылка. Цель — метаязык, способный описать философию, математику, физику и психологию на одном формальном языке, чтобы любая наука стала вычислимой.',
   },
   formulas: [
     {
-      formula: 'L ⊆ ℕ₀',
+      formula: { L: 'L ⊆ ℕ₀', R: 'R ⊆ ℕ₀' },
       text: {
-        en: 'references to links (vectors) are natural numbers',
-        ru: 'ссылки на связи (векторы) — натуральные числа',
+        L: {
+          en: 'references to links (vectors) are natural numbers',
+          ru: 'ссылки на связи (векторы) — натуральные числа',
+        },
+        R: {
+          en: 'references to tuples are natural numbers',
+          ru: 'ссылки на кортежи — натуральные числа',
+        },
       },
     },
     {
-      formula: 'Vₙ = Lⁿ',
+      formula: { L: 'Vₙ = Lⁿ', R: 'Tₙ = Rⁿ' },
       text: {
-        en: 'all vectors of n references are the Cartesian power of L',
-        ru: 'все векторы из n ссылок — декартова степень L',
+        L: {
+          en: 'all vectors of n references are the Cartesian power of L',
+          ru: 'все векторы из n ссылок — декартова степень L',
+        },
+        R: {
+          en: 'all tuples of n references are the Cartesian power of R',
+          ru: 'все кортежи из n ссылок — декартова степень R',
+        },
       },
     },
     {
-      formula: 'A = L × Vₙ',
+      formula: { L: 'A = L × Vₙ', R: 'L = R × Tₙ' },
       text: {
-        en: 'an association maps a reference to a vector of references',
-        ru: 'ассоциация сопоставляет ссылке вектор ссылок',
+        L: {
+          en: 'an association maps a reference to a vector of references',
+          ru: 'ассоциация сопоставляет ссылке вектор ссылок',
+        },
+        R: {
+          en: 'a link pairs a reference with a tuple of references; a reference is a link of no references, R ⊆ L',
+          ru: 'связь — пара из ссылки и кортежа ссылок; ссылка — связь без ссылок, R ⊆ L',
+        },
       },
     },
     {
-      formula: 'λ: L → L × L',
+      formula: { L: 'λ: L → L × L', R: 'N²: R → R × R' },
       text: {
         en: 'a doublet network gives every link a source and a target',
         ru: 'сеть дуплетов задаёт каждой связи начало и конец',
       },
     },
     {
-      formula: 'λ: L → L × L × L',
+      formula: { L: 'λ: L → L × L × L', R: 'N³: R → R × R × R' },
       text: { en: 'a triplet network adds a type to every link', ru: 'сеть триплетов добавляет каждой связи тип' },
     },
     {
-      formula: 'L → L²',
+      formula: { L: 'L → L²', R: 'R → R²' },
       text: {
         en: 'one formula is enough: any sequence converts to nested doublets and back (proved in Rocq/Coq)',
         ru: 'достаточно одной формулы: любая последовательность преобразуется во вложенные дуплеты и обратно (доказано в Rocq/Coq)',

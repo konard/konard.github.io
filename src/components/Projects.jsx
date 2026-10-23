@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { useLang } from '../i18n/prefs';
+import { useNotation } from '../links/notation';
 import { formatNumber } from './format';
 
 const ALL = 'All';
@@ -25,6 +26,7 @@ export function mergeProjects(featured, projects) {
 
 export default function Projects({ featured, projects }) {
   const { lang, t } = useLang();
+  const { n } = useNotation();
   const all = useMemo(() => mergeProjects(featured, projects), [featured, projects]);
   const languages = useMemo(() => [ALL, ...new Set(all.map((p) => p.language).filter(Boolean))], [all]);
   const [filter, setFilter] = useState(ALL);
@@ -57,7 +59,7 @@ export default function Projects({ featured, projects }) {
               <span className="project__owner mono">{p.owner}/</span>
               <span className="project__name">{p.name}</span>
             </a>
-            <p className="project__tagline">{t(p.tagline)}</p>
+            <p className="project__tagline">{n(t(p.tagline))}</p>
             <div className="project__meter" aria-label={t({ en: `${p.stars} stars`, ru: `звёзд: ${p.stars}` })}>
               <span style={{ width: `${(p.stars / maxStars) * 100}%` }} />
             </div>

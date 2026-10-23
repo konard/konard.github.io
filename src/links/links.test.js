@@ -5,6 +5,7 @@ import {
   codeAt,
   decode,
   indexOf,
+  isReal,
   linksNotation,
   mathNotation,
   networkCount,
@@ -74,6 +75,50 @@ describe('networks with the zero link (issue #9)', () => {
       expect(n).toBeLessThanOrEqual(4);
       expect(codeAt(n, indexOf(code))).toBe(code);
     }
+  });
+});
+
+describe('networks with only real references (issue #13)', () => {
+  const real = { real: true };
+
+  test('exclude every network that refers to 0, keeping links that refer to each other or themselves', () => {
+    expect([1, 2, 3, 4].map((n) => networkCount(n, real))).toEqual([1, 16, 729, 65536]);
+    for (const n of [1, 2, 3]) {
+      const codes = Array.from({ length: networkCount(n, real) }, (_, i) => codeAt(n, i, real));
+      expect(codes).toEqual(all(n).filter(isReal));
+      codes.forEach((code, i) => expect(indexOf(code, real)).toBe(i));
+    }
+    expect(codeAt(1, 0, real)).toBe('11');
+    expect(codeAt(2, 0, real)).toBe('11 11');
+    expect(codeAt(2, 15, real)).toBe('22 22');
+    expect(codeAt(4, 65535, real)).toBe('44 44 44 44');
+  });
+
+  test('count their renaming classes with Burnside’s lemma', () => {
+    expect([1, 2, 3, 4].map((n) => classCount(n, real))).toEqual([1, 10, 129, 2836]);
+    for (const n of [1, 2, 3, 4]) {
+      expect(representatives(n, real)).toHaveLength(classCount(n, real));
+      expect(representatives(n, real).every(isReal)).toBe(true);
+    }
+    // Brute force: the distinct canonical codes of all real networks of 3 links.
+    const classes = new Set(
+      all(3)
+        .filter(isReal)
+        .map((code) => canonical(decode(code))),
+    );
+    expect(classes.size).toBe(129);
+  });
+
+  test('random networks with only real references never refer to 0', () => {
+    let seed = 11;
+    const random = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    for (let k = 0; k < 200; k++) expect(isReal(randomCode(random, undefined, real))).toBe(true);
+  });
+
+  test('the default still includes references to 0', () => {
+    expect(networkCount(2)).toBe(81);
+    expect(codeAt(2, 0)).toBe('00 00');
+    expect(classCount(2)).toBe(45);
   });
 });
 

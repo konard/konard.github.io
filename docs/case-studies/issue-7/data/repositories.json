@@ -13000,6 +13000,34 @@
  },
  {
   "owner": "link-foundation",
+  "name": "lfs",
+  "fullName": "link-foundation/lfs",
+  "description": "Links File System",
+  "homepage": "https://link-foundation.github.io/lfs/",
+  "url": "https://github.com/link-foundation/lfs",
+  "archived": false,
+  "stars": 0,
+  "forks": 0,
+  "createdAt": "2026-10-21T17:55:50Z",
+  "pushedAt": "2026-10-22T10:50:46Z",
+  "language": "Rust",
+  "license": "Unlicense",
+  "topics": [],
+  "languages": {
+   "Rust": 1110844,
+   "Shell": 58479,
+   "JavaScript": 49396,
+   "Python": 31185
+  },
+  "colors": {
+   "Rust": "#dea584",
+   "Shell": "#89e051",
+   "JavaScript": "#f1e05a",
+   "Python": "#3572A5"
+  }
+ },
+ {
+  "owner": "link-foundation",
   "name": "link-cli",
   "fullName": "link-foundation/link-cli",
   "description": "A CLI tool to manipulate links.",

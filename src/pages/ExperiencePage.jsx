@@ -8,6 +8,7 @@ import github from '../data/github.json';
 import { professions } from '../data/fields';
 import { experience, favoriteLanguages, positions, skillGroups } from '../data/profile';
 import { useLang } from '../i18n/prefs';
+import { useNotation } from '../links/notation';
 import { plural } from '../i18n/plural';
 import { useQueryParam } from './query';
 import { repo } from './repos';
@@ -41,6 +42,7 @@ const POSITIONS = { en: ['position', 'positions'], ru: ['место работы
 /** Experience filtered to one position (`?role=`), with the CV of that position. */
 export default function ExperiencePage() {
   const { lang, t } = useLang();
+  const { n } = useNotation();
   const [roleId, setRole] = useQueryParam('role');
   const role = CHOICES.find((p) => p.id === roleId) || null;
   const position = role || ALL;
@@ -70,7 +72,7 @@ export default function ExperiencePage() {
         <h1 className="page-hero__title">
           {role ? t({ en: `${role.name.en} experience`, ru: `Опыт: ${role.name.ru}` }) : t(TEXT.title)}
         </h1>
-        <p className="page-hero__lead">{t(position.summary)}</p>
+        <p className="page-hero__lead">{n(t(position.summary))}</p>
         <nav aria-label={t(TEXT.tabs)}>
           <ul className="role-tabs">
             <li>
@@ -107,7 +109,7 @@ export default function ExperiencePage() {
             {picks.map((p) => (
               <article key={p.id} className="profession">
                 <h3>{t(p.name)}</h3>
-                <p className="muted">{t(p.summary)}</p>
+                <p className="muted">{n(t(p.summary))}</p>
                 <ul className="repos repos--compact">
                   {p.repos
                     .map(([name, why]) => [repo(name), why])

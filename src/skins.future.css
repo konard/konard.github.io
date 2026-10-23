@@ -1,0 +1,641 @@
+/* ---------- Futuristic skin (issue #13) ----------
+   Angular HUD panels in the style of konard/immortality (its Arwes-like
+   frames, palettes, glow and scanlines): thin neon outlines, corner
+   brackets or cut corners, technical fonts. Every number is a setting
+   (src/settings/schema.js, the "futuristic" section) written to <html> as a
+   --future-* variable, every choice as a data-future-* attribute.
+
+   A panel is painted with four groups of background layers, top to bottom:
+   the light sweep on hover, the accent bar, the frame (brackets, diagonals,
+   lines) and the surface (two layers). Clip-path cuts the corners of the
+   chamfered frames. No ::before / ::after is used, so the decorations the
+   panels already have (the accent strip of a stat, the colour bar of a
+   position) keep working. */
+
+@import './skins.palettes.css';
+
+:root[data-skin-name='futuristic'] {
+  /* The palette (skins.palettes.css) becomes the colours of the whole site. */
+  --accent: rgb(var(--fx-neon-rgb));
+  --accent-rgb: var(--fx-neon-rgb);
+  --accent-2: rgb(var(--fx-series-rgb));
+  --accent-2-rgb: var(--fx-series-rgb);
+  --accent-soft: rgb(var(--fx-neon-rgb) / 0.12);
+  --panel-rgb: var(--fx-panel-rgb);
+  --panel-2-rgb: var(--fx-panel-2-rgb);
+  --deep-rgb: var(--fx-page-rgb);
+  --abyss-rgb: var(--fx-page-rgb);
+  --line-rgb: var(--fx-neon-rgb);
+  --bg: rgb(var(--fx-page-rgb));
+  --surface: rgb(var(--fx-panel-2-rgb));
+  --surface-2: rgb(var(--fx-panel-rgb));
+  --text: var(--fx-text);
+  --text-2: color-mix(in srgb, var(--fx-text) 74%, rgb(var(--fx-page-rgb)));
+  --muted: color-mix(in srgb, var(--fx-text) 52%, rgb(var(--fx-page-rgb)));
+  --border: rgb(var(--fx-neon-rgb) / 0.16);
+  --border-strong: rgb(var(--fx-neon-rgb) / 0.4);
+  --title-from: var(--fx-text);
+  --radius: 0px;
+
+  --fx-glow: var(--future-glow, 0.5);
+  --fx-op: var(--future-opacity, 0.82);
+  --fx-b: calc(var(--future-border, 1px) * 2);
+  --fx-c: var(--future-cut, 14px);
+  --fx-k: var(--future-corner, 16px);
+  --fx-line: rgb(var(--accent-rgb) / 0.95);
+  --fx-l: linear-gradient(var(--fx-line), var(--fx-line));
+  --fx-lf: linear-gradient(rgb(var(--accent-rgb) / 0.3), rgb(var(--accent-rgb) / 0.3));
+  --fx-edge: rgb(var(--accent-rgb) / 0.22);
+  --fx-clip: none;
+  --fx-blur-scale: 1;
+  --fx-scan-rgb: 0 0 0;
+
+  /* Diagonals along the cut corners: top left, top right, bottom left, bottom right. */
+  --fx-d-tl: linear-gradient(
+    to bottom right,
+    transparent 50%,
+    var(--fx-line) 50% calc(50% + var(--fx-b)),
+    transparent 0
+  );
+  --fx-d-tr: linear-gradient(
+    to bottom left,
+    transparent 50%,
+    var(--fx-line) 50% calc(50% + var(--fx-b)),
+    transparent 0
+  );
+  --fx-d-bl: linear-gradient(to top right, transparent 50%, var(--fx-line) 50% calc(50% + var(--fx-b)), transparent 0);
+  --fx-d-br: linear-gradient(to top left, transparent 50%, var(--fx-line) 50% calc(50% + var(--fx-b)), transparent 0);
+
+  /* Frame "corners" (the default): eight strokes, two per corner. */
+  --fx-frame-img:
+    var(--fx-l), var(--fx-l), var(--fx-l), var(--fx-l), var(--fx-l), var(--fx-l), var(--fx-l), var(--fx-l);
+  --fx-frame-size:
+    var(--fx-k) var(--fx-b), var(--fx-b) var(--fx-k), var(--fx-k) var(--fx-b), var(--fx-b) var(--fx-k),
+    var(--fx-k) var(--fx-b), var(--fx-b) var(--fx-k), var(--fx-k) var(--fx-b), var(--fx-b) var(--fx-k);
+  --fx-frame-pos: 0 0, 0 0, 100% 0, 100% 0, 0 100%, 0 100%, 100% 100%, 100% 100%;
+
+  /* Accent bar near the top left corner. */
+  --fx-bar-img: linear-gradient(90deg, var(--fx-line), rgb(var(--accent-rgb) / 0));
+  --fx-bar-size: min(32%, 7rem) 3px;
+  --fx-bar-pos: left calc(var(--fx-k) + var(--fx-c) + 0.4rem) top 0;
+
+  /* Light sweep on hover (only with "Panels on hover: light sweep"). */
+  --fx-sweep-img: none;
+
+  /* Surface "gradient" (the default). */
+  --fx-surface-img:
+    none,
+    linear-gradient(160deg, rgb(var(--panel-2-rgb) / var(--fx-op)), rgb(var(--panel-rgb) / calc(var(--fx-op) * 0.85)));
+
+  /* Fonts "Orbitron + Electrolize" (the default); they have Latin letters
+     only, the rest falls back to the site font. */
+  --fx-head: 'Orbitron', var(--font);
+  --fx-body: 'Electrolize', var(--font);
+  --fx-case: uppercase;
+}
+
+:root[data-skin-name='futuristic'][data-theme='light'] {
+  --fx-glow: calc(var(--future-glow, 0.5) * 0.45);
+  --fx-scan-rgb: 15 40 80;
+}
+
+/* ---------- Frames ---------- */
+
+:root[data-skin-name='futuristic'][data-future-frame='chamfer'] {
+  --fx-clip: polygon(
+    var(--fx-c) 0,
+    100% 0,
+    100% calc(100% - var(--fx-c)),
+    calc(100% - var(--fx-c)) 100%,
+    0 100%,
+    0 var(--fx-c)
+  );
+  --fx-frame-img: var(--fx-d-tl), var(--fx-l), var(--fx-d-br), var(--fx-l);
+  --fx-frame-size:
+    var(--fx-c) var(--fx-c), min(30%, 220px) var(--fx-b), var(--fx-c) var(--fx-c), min(30%, 220px) var(--fx-b);
+  --fx-frame-pos: 0 0, left var(--fx-c) top 0, 100% 100%, right var(--fx-c) bottom 0;
+}
+
+:root[data-skin-name='futuristic'][data-future-frame='octagon'] {
+  --fx-clip: polygon(
+    var(--fx-c) 0,
+    calc(100% - var(--fx-c)) 0,
+    100% var(--fx-c),
+    100% calc(100% - var(--fx-c)),
+    calc(100% - var(--fx-c)) 100%,
+    var(--fx-c) 100%,
+    0 calc(100% - var(--fx-c)),
+    0 var(--fx-c)
+  );
+  --fx-frame-img: var(--fx-d-tl), var(--fx-d-tr), var(--fx-d-bl), var(--fx-d-br);
+  --fx-frame-size: var(--fx-c) var(--fx-c), var(--fx-c) var(--fx-c), var(--fx-c) var(--fx-c), var(--fx-c) var(--fx-c);
+  --fx-frame-pos: 0 0, 100% 0, 0 100%, 100% 100%;
+}
+
+/* Kranox: a double cut at two corners and a thick stroke on each side. */
+:root[data-skin-name='futuristic'][data-future-frame='kranox'] {
+  --fx-kc: calc(var(--fx-c) * 2);
+  --fx-clip: polygon(
+    var(--fx-kc) 0,
+    100% 0,
+    100% calc(100% - var(--fx-kc)),
+    calc(100% - var(--fx-kc)) 100%,
+    0 100%,
+    0 var(--fx-kc)
+  );
+  --fx-frame-img: var(--fx-d-tl), var(--fx-d-br), var(--fx-l), var(--fx-l);
+  --fx-frame-size:
+    var(--fx-kc) var(--fx-kc), var(--fx-kc) var(--fx-kc), calc(var(--fx-b) * 1.5) min(30%, 60px),
+    calc(var(--fx-b) * 1.5) min(30%, 60px);
+  --fx-frame-pos: 0 0, 100% 100%, left 0 top calc(var(--fx-kc) + 6px), right 0 bottom calc(var(--fx-kc) + 6px);
+}
+
+/* [ ]: a bracket on each side. */
+:root[data-skin-name='futuristic'][data-future-frame='bracket'] {
+  --fx-edge: transparent;
+  --fx-frame-img:
+    var(--fx-l), var(--fx-l), var(--fx-l), var(--fx-l), var(--fx-l), var(--fx-l), var(--fx-lf), var(--fx-lf);
+  --fx-frame-size:
+    var(--fx-b) 100%, var(--fx-k) var(--fx-b), var(--fx-k) var(--fx-b), var(--fx-b) 100%, var(--fx-k) var(--fx-b),
+    var(--fx-k) var(--fx-b), 100% 1px, 100% 1px;
+  --fx-frame-pos: 0 0, 0 0, 0 100%, 100% 0, 100% 0, 100% 100%, 0 0, 0 100%;
+}
+
+:root[data-skin-name='futuristic'][data-future-frame='lines'] {
+  --fx-edge: transparent;
+  --fx-frame-img: var(--fx-l), var(--fx-l);
+  --fx-frame-size: 100% var(--fx-b), 100% var(--fx-b);
+  --fx-frame-pos: 0 0, 0 100%;
+}
+
+:root[data-skin-name='futuristic'][data-future-frame='underline'] {
+  --fx-edge: transparent;
+  --fx-frame-img: var(--fx-lf), var(--fx-l);
+  --fx-frame-size: 100% var(--fx-b), min(35%, 160px) var(--fx-b);
+  --fx-frame-pos: 0 100%, 0 100%;
+}
+
+:root[data-skin-name='futuristic'][data-future-frame='plain'] {
+  --fx-edge: rgb(var(--accent-rgb) / 0.55);
+  --fx-frame-img: none;
+  --fx-frame-size: auto;
+  --fx-frame-pos: 0 0;
+}
+
+:root[data-skin-name='futuristic'][data-future-accent-bar='false'] {
+  --fx-bar-img: none;
+}
+
+/* ---------- Surfaces (always two layers) ---------- */
+
+:root[data-skin-name='futuristic'][data-future-surface='glass'] {
+  --fx-blur-scale: 1.6;
+  --fx-surface-img:
+    linear-gradient(180deg, rgb(255 255 255 / 0.07), transparent 40%),
+    linear-gradient(
+      rgb(var(--panel-rgb) / calc(var(--fx-op) * 0.45)),
+      rgb(var(--panel-rgb) / calc(var(--fx-op) * 0.45))
+    );
+}
+
+:root[data-skin-name='futuristic'][data-future-surface='frosted'] {
+  --fx-blur-scale: 2.5;
+  --fx-surface-img:
+    repeating-radial-gradient(circle at 30% 20%, rgb(255 255 255 / 0.025) 0 1px, transparent 1px 3px),
+    linear-gradient(
+      rgb(var(--panel-2-rgb) / calc(var(--fx-op) * 0.6)),
+      rgb(var(--panel-2-rgb) / calc(var(--fx-op) * 0.6))
+    );
+}
+
+:root[data-skin-name='futuristic'][data-future-surface='solid'] {
+  --fx-blur-scale: 0;
+  --fx-surface-img: none, linear-gradient(rgb(var(--panel-rgb)), rgb(var(--panel-rgb)));
+}
+
+:root[data-skin-name='futuristic'][data-future-surface='transparent'] {
+  --fx-blur-scale: 0;
+  --fx-surface-img: none, none;
+}
+
+:root[data-skin-name='futuristic'][data-future-surface='steel'] {
+  --fx-surface-img:
+    repeating-linear-gradient(90deg, rgb(255 255 255 / 0.035) 0 1px, transparent 1px 3px),
+    linear-gradient(
+      180deg,
+      rgb(var(--panel-2-rgb) / var(--fx-op)),
+      rgb(var(--panel-rgb) / var(--fx-op)) 55%,
+      rgb(var(--panel-2-rgb) / var(--fx-op))
+    );
+}
+
+:root[data-skin-name='futuristic'][data-future-surface='carbon'] {
+  --fx-surface-img:
+    repeating-linear-gradient(45deg, rgb(var(--accent-rgb) / 0.05) 0 2px, transparent 2px 4px),
+    repeating-linear-gradient(
+      -45deg,
+      rgb(var(--panel-2-rgb) / var(--fx-op)) 0 2px,
+      rgb(var(--panel-rgb) / var(--fx-op)) 2px 4px
+    );
+}
+
+:root[data-skin-name='futuristic'][data-future-surface='holographic'] {
+  --fx-surface-img:
+    linear-gradient(
+      120deg,
+      rgb(var(--accent-rgb) / 0.13),
+      rgb(var(--accent-2-rgb) / 0.1) 35%,
+      rgb(236 72 153 / 0.08) 65%,
+      rgb(var(--accent-rgb) / 0.13)
+    ),
+    linear-gradient(rgb(var(--panel-rgb) / var(--fx-op)), rgb(var(--panel-rgb) / var(--fx-op)));
+}
+
+:root[data-skin-name='futuristic'][data-future-surface='blueprint'] {
+  --fx-surface-img:
+    repeating-linear-gradient(0deg, rgb(var(--accent-rgb) / 0.09) 0 1px, transparent 1px 16px),
+    repeating-linear-gradient(90deg, rgb(var(--accent-rgb) / 0.09) 0 1px, rgb(var(--panel-rgb) / var(--fx-op)) 1px 16px);
+}
+
+/* ---------- Panels ---------- */
+
+:root[data-skin-name='futuristic']
+  :is(
+    .card,
+    .chart,
+    .registry,
+    .project,
+    .skills__group,
+    .org,
+    .step,
+    .stat,
+    .position,
+    .ps-note,
+    .social,
+    .cloud,
+    .habr-card,
+    .page-card,
+    .psd,
+    .theory__formulas li,
+    .theory__hero,
+    .theory__network,
+    .version,
+    .filters,
+    .page-stats li,
+    .post,
+    .repo,
+    .field-card,
+    .stack__layer,
+    .symbols__grid li,
+    .settings__group
+  ) {
+  --fx-sweep-pos: 0% 0;
+  border: var(--future-border, 1px) solid var(--fx-edge);
+  border-radius: 0;
+  background-color: transparent;
+  background-image: var(--fx-sweep-img), var(--fx-bar-img), var(--fx-frame-img), var(--fx-surface-img);
+  background-size:
+    300% 100%,
+    var(--fx-bar-size),
+    var(--fx-frame-size),
+    100% 100%,
+    100% 100%;
+  background-position:
+    var(--fx-sweep-pos),
+    var(--fx-bar-pos),
+    var(--fx-frame-pos),
+    0 0,
+    0 0;
+  background-repeat: no-repeat;
+  box-shadow:
+    0 0 calc(22px * var(--fx-glow)) rgb(var(--accent-rgb) / calc(0.18 * var(--fx-glow))),
+    inset 0 0 calc(26px * var(--fx-glow)) rgb(var(--accent-rgb) / calc(0.08 * var(--fx-glow)));
+  backdrop-filter: blur(calc(var(--future-blur, 6px) * var(--fx-blur-scale)));
+  transition:
+    background-position 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.25s,
+    box-shadow 0.25s,
+    transform 0.25s;
+}
+
+/* Cut corners; charts are left uncut, so their tooltips are never clipped. */
+:root[data-skin-name='futuristic']
+  :is(
+    .card,
+    .registry,
+    .project,
+    .skills__group,
+    .org,
+    .step,
+    .stat,
+    .position,
+    .ps-note,
+    .social,
+    .cloud,
+    .habr-card,
+    .page-card,
+    .theory__hero,
+    .theory__network,
+    .filters,
+    .page-stats li,
+    .post,
+    .repo,
+    .field-card,
+    .stack__layer,
+    .settings__group
+  ):not(:has([data-tooltip-root])) {
+  clip-path: var(--fx-clip);
+}
+
+:root[data-skin-name='futuristic'] .version {
+  border-left: 3px solid var(--accent-2);
+}
+
+/* Small items inside a panel get a plain line, not a second frame. */
+:root[data-skin-name='futuristic'] :is(.stack__layer, .page-card, .theory__hero) .repo,
+:root[data-skin-name='futuristic'] :is(.symbols__grid li, .theory__formulas li, .page-stats li) {
+  --fx-frame-img: none;
+  --fx-frame-size: auto;
+  --fx-frame-pos: 0 0;
+  --fx-bar-img: none;
+  --fx-clip: none;
+  border-color: rgb(var(--accent-rgb) / 0.2);
+  box-shadow: none;
+}
+
+:root[data-skin-name='futuristic'][data-future-hover='glow']
+  :is(
+    .card,
+    .chart,
+    .registry,
+    .project,
+    .skills__group,
+    .org,
+    .step,
+    .stat,
+    .position,
+    .social,
+    .cloud,
+    .habr-card,
+    .page-card,
+    .theory__hero,
+    .post,
+    .repo,
+    .field-card,
+    .stack__layer,
+    .settings__group
+  ):hover {
+  border-color: rgb(var(--accent-rgb) / 0.6);
+  box-shadow:
+    0 0 calc(10px + 36px * var(--fx-glow)) rgb(var(--accent-rgb) / calc(0.12 + 0.3 * var(--fx-glow))),
+    inset 0 0 calc(10px + 34px * var(--fx-glow)) rgb(var(--accent-rgb) / calc(0.06 + 0.14 * var(--fx-glow)));
+}
+
+:root[data-skin-name='futuristic'][data-future-hover='lift']
+  :is(
+    .card,
+    .chart,
+    .registry,
+    .project,
+    .skills__group,
+    .org,
+    .step,
+    .stat,
+    .position,
+    .social,
+    .cloud,
+    .habr-card,
+    .page-card,
+    .theory__hero,
+    .post,
+    .repo,
+    .field-card,
+    .stack__layer,
+    .settings__group
+  ):hover {
+  border-color: rgb(var(--accent-rgb) / 0.5);
+  transform: translateY(-3px);
+}
+
+:root[data-skin-name='futuristic'][data-future-hover='sweep'] {
+  --fx-sweep-img: linear-gradient(100deg, transparent 42%, rgb(var(--accent-rgb) / 0.2) 50%, transparent 58%);
+}
+
+:root[data-skin-name='futuristic'][data-future-hover='sweep']
+  :is(
+    .card,
+    .chart,
+    .registry,
+    .project,
+    .skills__group,
+    .org,
+    .step,
+    .stat,
+    .position,
+    .social,
+    .cloud,
+    .habr-card,
+    .page-card,
+    .theory__hero,
+    .post,
+    .repo,
+    .field-card,
+    .stack__layer,
+    .settings__group
+  ):hover {
+  --fx-sweep-pos: 100% 0;
+  border-color: rgb(var(--accent-rgb) / 0.45);
+}
+
+/* ---------- Top bar ---------- */
+
+:root[data-skin-name='futuristic'] .topbar {
+  border-bottom: var(--future-border, 1px) solid rgb(var(--accent-rgb) / 0.4);
+  background:
+    linear-gradient(90deg, var(--fx-line), rgb(var(--accent-rgb) / 0) 40%) left bottom / 100% 1px no-repeat,
+    rgb(var(--deep-rgb) / calc(0.6 + 0.3 * var(--fx-op)));
+  box-shadow: 0 0 calc(24px * var(--fx-glow)) rgb(var(--accent-rgb) / calc(0.2 * var(--fx-glow)));
+  backdrop-filter: blur(calc(var(--future-blur, 6px) * 2));
+}
+
+:root[data-skin-name='futuristic'] .nav {
+  border-top-color: rgb(var(--accent-rgb) / 0.18);
+}
+
+:root[data-skin-name='futuristic'] .nav__brand {
+  font-family: var(--fx-head);
+  letter-spacing: var(--future-spacing, 0.08em);
+  text-shadow: 0 0 calc(12px * var(--fx-glow)) rgb(var(--accent-rgb) / 0.6);
+}
+
+/* ---------- Buttons and small controls ---------- */
+
+:root[data-skin-name='futuristic']
+  :is(
+    .pages a,
+    .chip,
+    .tags li,
+    .segmented,
+    .prefs__theme,
+    .prefs__langs,
+    .role-tabs a,
+    .repo__fields li,
+    .setting__input select,
+    .setting__reset,
+    .settings__import textarea,
+    .settings__json,
+    .palettes__chip
+  ) {
+  border-radius: 0;
+}
+
+:root[data-skin-name='futuristic'] :is(.pages a, .role-tabs a) {
+  font-family: var(--fx-head);
+  font-size: 0.78rem;
+  letter-spacing: var(--future-spacing, 0.08em);
+  text-transform: var(--fx-case);
+}
+
+:root[data-skin-name='futuristic'] :is(.pages a, .role-tabs a)[aria-current='page'] {
+  border-color: rgb(var(--accent-rgb) / 0.7);
+  background: rgb(var(--accent-rgb) / 0.12);
+  box-shadow: inset 0 calc(-1 * var(--fx-b)) 0 var(--accent);
+  color: var(--accent);
+}
+
+:root[data-skin-name='futuristic'] .button {
+  --fx-bc: min(8px, var(--fx-c));
+  border: var(--future-border, 1px) solid rgb(var(--accent-rgb) / 0.5);
+  border-radius: 0;
+  background: rgb(var(--accent-rgb) / 0.06);
+  font-family: var(--fx-head);
+  font-size: 0.78rem;
+  letter-spacing: var(--future-spacing, 0.08em);
+  text-transform: var(--fx-case);
+  clip-path: polygon(
+    var(--fx-bc) 0,
+    100% 0,
+    100% calc(100% - var(--fx-bc)),
+    calc(100% - var(--fx-bc)) 100%,
+    0 100%,
+    0 var(--fx-bc)
+  );
+}
+
+:root[data-skin-name='futuristic'] .button:hover {
+  border-color: var(--accent);
+  background: rgb(var(--accent-rgb) / 0.16);
+  box-shadow: inset 0 0 calc(18px * var(--fx-glow)) rgb(var(--accent-rgb) / 0.3);
+  transform: none;
+}
+
+:root[data-skin-name='futuristic'] .button--primary {
+  border-color: var(--accent);
+  background: linear-gradient(90deg, rgb(var(--accent-rgb) / 0.26), rgb(var(--accent-2-rgb) / 0.16));
+  color: var(--accent);
+  text-shadow: 0 0 calc(10px * var(--fx-glow)) rgb(var(--accent-rgb) / 0.7);
+}
+
+/* ---------- Type ---------- */
+
+:root[data-skin-name='futuristic'] :is(h1, h2, h3, .section__kicker, .hero__kicker) {
+  font-family: var(--fx-head);
+  letter-spacing: var(--future-spacing, 0.08em);
+  text-transform: var(--fx-case);
+}
+
+:root[data-skin-name='futuristic'] :is(h1, h2, h3) {
+  font-weight: 700;
+  text-shadow: 0 0 calc(16px * var(--fx-glow)) rgb(var(--accent-rgb) / calc(0.45 * var(--fx-glow)));
+}
+
+/* The wide technical fonts need smaller big titles to fit. */
+:root[data-skin-name='futuristic'] :is(.page-hero__title, .hero__name) {
+  font-size: clamp(1.8rem, 4.2vw, 3rem);
+}
+
+:root[data-skin-name='futuristic'] .section__title {
+  font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+}
+
+:root[data-skin-name='futuristic'] :is(h3, .settings__head h2) {
+  font-size: 1rem;
+}
+
+:root[data-skin-name='futuristic'][data-future-case='normal'] {
+  --fx-case: none;
+}
+
+:root[data-skin-name='futuristic'][data-future-font='chakra'] {
+  --fx-head: 'Chakra Petch', var(--font);
+  --fx-body: 'Chakra Petch', var(--font);
+}
+
+:root[data-skin-name='futuristic'][data-future-font='electrolize'] {
+  --fx-head: 'Electrolize', var(--font);
+  --fx-body: 'Electrolize', var(--font);
+}
+
+:root[data-skin-name='futuristic'][data-future-font='terminal'] {
+  --fx-head: 'Share Tech Mono', var(--mono);
+  --fx-body: 'Share Tech Mono', var(--mono);
+}
+
+:root[data-skin-name='futuristic'][data-future-font='mono'] {
+  --fx-head: var(--mono);
+  --fx-body: var(--mono);
+}
+
+:root[data-skin-name='futuristic'][data-future-font='site'] {
+  --fx-head: var(--font);
+  --fx-body: var(--font);
+}
+
+:root[data-skin-name='futuristic'][data-future-body-font='true'] body {
+  font-family: var(--fx-body);
+}
+
+/* Section titles: a bar, a rule after the title or // slashes. */
+:root[data-skin-name='futuristic'][data-future-title='bar'] :is(.section__title, .settings__head h2) {
+  padding-left: 0.65rem;
+  border-left: 3px solid var(--accent);
+}
+
+:root[data-skin-name='futuristic'][data-future-title='rule'] .section__title {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+:root[data-skin-name='futuristic'][data-future-title='rule'] .section__title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgb(var(--accent-rgb) / 0.7), transparent);
+}
+
+:root[data-skin-name='futuristic'][data-future-title='slash'] :is(.section__title, .settings__head h2)::before {
+  content: '// ';
+  color: var(--accent);
+}
+
+/* ---------- Scanlines over the whole page ---------- */
+
+:root[data-skin-name='futuristic'] .app::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgb(var(--fx-scan-rgb) / var(--future-scanlines, 0.12)) 0 1px,
+    transparent 1px 3px
+  );
+  pointer-events: none;
+}
+
+@media print {
+  :root[data-skin-name='futuristic'] .app::after {
+    display: none;
+  }
+}

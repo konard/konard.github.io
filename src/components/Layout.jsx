@@ -2,23 +2,37 @@ import '../App.css';
 import '../App.sections.css';
 import '../Layout.css';
 import '../pages/pages.css';
+// The skins (issue #13) and the technical fonts of the futuristic one.
+import '@fontsource/orbitron/latin-500.css';
+import '@fontsource/orbitron/latin-700.css';
+import '@fontsource/electrolize/latin-400.css';
+import '@fontsource/chakra-petch/latin-400.css';
+import '@fontsource/chakra-petch/latin-600.css';
+import '@fontsource/share-tech-mono/latin-400.css';
+import '../skins.liquid.css';
+import '../skins.future.css';
 // Responsive and print overrides must come last.
 import '../App.media.css';
 import { profile } from '../data/profile';
 import { PAGES } from '../pages/pages';
 import { useLang } from '../i18n/prefs';
+import { useNotation } from '../links/notation';
 import Cosmos from './Cosmos';
+import LiquidRefraction from './LiquidRefraction';
 import PrefSwitches from './PrefSwitches';
 
 /**
  * Shared frame of every page: the cosmic background, the page navigation
- * (plus optional in-page section links) and the footer.
+ * (plus optional in-page section links) and the footer with the link to the
+ * settings of the background and the skin (issue #13).
  */
 export default function Layout({ page, sections = null, children, footer = null }) {
   const { t } = useLang();
+  const { n } = useNotation();
   return (
     <div className="app">
       <Cosmos />
+      <LiquidRefraction />
       <header className="topbar">
         <div className="topbar__row">
           <a className="nav__brand mono" href="/">
@@ -56,9 +70,12 @@ export default function Layout({ page, sections = null, children, footer = null 
       <main>{children}</main>
 
       <footer className="footer">
-        <span className="mono">{profile.motto}</span>
+        <span className="mono">{n(profile.motto)}</span>
         <span>
-          {footer}
+          <a className="footer__settings" href="/settings/" aria-current={page === 'settings' ? 'page' : undefined}>
+            {t({ en: 'Settings', ru: 'Настройки' })}
+          </a>{' '}
+          · {footer}
           {t({ en: 'Background: links of the', ru: 'Фон: связи' })}{' '}
           <a href="https://github.com/link-foundation/meta-theory" target="_blank" rel="noopener noreferrer">
             {t({ en: 'links theory', ru: 'теории связей' })}

@@ -1,5 +1,6 @@
 import { formatPeriod } from '../cv/buildCv';
 import { useLang } from '../i18n/prefs';
+import { useNotation } from '../links/notation';
 import { Tooltip, useTooltip } from './Tooltip';
 
 // 'Nov 2006 – Aug 2007' / 'нояб. 2006 – авг. 2007', the same dates as in the CV.
@@ -31,6 +32,7 @@ const linkProps = (url) => (url ? { href: url, target: '_blank', rel: 'noopener 
 export default function Timeline({ items, endYear }) {
   const { tip, show, hide } = useTooltip();
   const { lang, t } = useLang();
+  const { n } = useNotation();
   const period = (item) => formatPeriod(item.start, item.end, lang);
   const startYear = Math.floor(Math.min(...items.map((i) => toYear(i.start))));
   const span = endYear + 1 - startYear;
@@ -111,7 +113,7 @@ export default function Timeline({ items, endYear }) {
                 <Title {...linkProps(item.url)}>{t(item.title)}</Title>
               </h3>
               <span className="position__role">{t(item.role)}</span>
-              <p className="position__summary">{t(item.summary)}</p>
+              <p className="position__summary">{n(t(item.summary))}</p>
               {item.bullets?.length > 0 && (
                 <ul className="position__bullets">
                   {item.bullets.map((b) => (
