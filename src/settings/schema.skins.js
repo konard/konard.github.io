@@ -1,5 +1,6 @@
 // Sections of the skins (issues #13 and #15): the choice of a skin and the
 // options of glass, liquid glass and the futuristic HUD; see schema.js.
+import { CORNERS } from '../skins.frames';
 import { option, range, select, toggle } from './fields';
 
 /** Futuristic palettes of konard/immortality: [id, English name, Russian name, neon colour]. */
@@ -19,6 +20,49 @@ export const PALETTES = [
 ];
 
 export const SKINS = ['glass', 'liquid', 'futuristic'];
+
+export const CORNER_SHAPES = [
+  option('square', 'Square', 'Прямой'),
+  option('cut', 'Cut', 'Срез'),
+  option('tall', 'Long cut down', 'Длинный срез вниз'),
+  option('wide', 'Long cut along', 'Длинный срез вдоль'),
+  option('round', 'Round', 'Скруглённый'),
+  option('scoop', 'Scoop (round inwards)', 'Выемка (скругление внутрь)'),
+  option('notch', 'Notch (a step)', 'Ступенька'),
+];
+
+export const CORNER_LINES = [
+  option('none', 'No line at the corner', 'Без линии на углу'),
+  option('gap', 'Missing border near the corner', 'Разрыв рамки у угла'),
+  option('line', 'The line of the edges', 'Как края'),
+  option('accent', 'Bright line', 'Яркая линия'),
+  option('bracket', 'Bright bracket', 'Яркий уголок'),
+];
+
+const CORNER_NAMES = {
+  tl: { en: 'Top left', ru: 'Левый верхний' },
+  tr: { en: 'Top right', ru: 'Правый верхний' },
+  br: { en: 'Bottom right', ru: 'Правый нижний' },
+  bl: { en: 'Bottom left', ru: 'Левый нижний' },
+};
+
+/** The default custom frame: a bracket and a bright cut on one diagonal, open corners on the other. */
+const CORNER_LOOKS = {
+  tl: ['cut', 'bracket', 14],
+  tr: ['square', 'gap', 14],
+  br: ['cut', 'accent', 14],
+  bl: ['square', 'gap', 14],
+};
+
+/** Shape, line and size of one corner of the custom frame: `corner.tlShape` and so on. */
+const corner = (c) => {
+  const [shape, line, size] = CORNER_LOOKS[c];
+  return [
+    select(`corner.${c}Shape`, shape, CORNER_SHAPES, { en: 'Shape', ru: 'Форма' }, { tab: c, tiles: 'shape' }),
+    select(`corner.${c}Line`, line, CORNER_LINES, { en: 'Line', ru: 'Линия' }, { tab: c, tiles: 'line', corner: c }),
+    range(`corner.${c}Size`, size, 2, 64, 1, { en: 'Size', ru: 'Размер' }, { tab: c, unit: 'px' }),
+  ];
+};
 
 export const SKIN_SECTIONS = [
   {
@@ -166,6 +210,7 @@ export const SKIN_SECTIONS = [
           option('lines', 'Top and bottom lines', 'Линии сверху и снизу'),
           option('underline', 'Underline', 'Подчёркивание'),
           option('plain', 'Plain frame', 'Простая рамка'),
+          option('custom', 'Each corner on its own', 'Каждый угол по-своему'),
         ],
         { en: 'Frame', ru: 'Рамка' },
       ),
@@ -258,6 +303,30 @@ export const SKIN_SECTIONS = [
         { en: 'Panels on hover', ru: 'Панели при наведении' },
       ),
       range('future.scanlines', 0.12, 0, 0.6, 0.02, { en: 'Scanlines', ru: 'Линии развёртки' }, { unit: '%' }),
+    ],
+  },
+  {
+    id: 'corners',
+    column: 2,
+    title: { en: 'Corners of the frame', ru: 'Углы рамки' },
+    lead: {
+      en: 'Every corner of the panels has its own shape, size and line; the tiles show how the corner will look. The bracket length and the line width are the ones of the futuristic skin.',
+      ru: 'У каждого угла панелей свои форма, размер и линия; плитки показывают, как будет выглядеть угол. Длина уголков и толщина линий берутся из футуристичного оформления.',
+    },
+    when: (s) => s['skin.name'] === 'futuristic' && s['future.frame'] === 'custom',
+    tabs: CORNERS.map((c) => ({ id: c, label: CORNER_NAMES[c] })),
+    fields: [
+      select(
+        'corner.edges',
+        'faint',
+        [
+          option('none', 'None', 'Нет'),
+          option('faint', 'Faint line', 'Тонкая линия'),
+          option('line', 'Bright line', 'Яркая линия'),
+        ],
+        { en: 'Edges between the corners', ru: 'Края между углами' },
+      ),
+      ...CORNERS.flatMap(corner),
     ],
   },
 ];

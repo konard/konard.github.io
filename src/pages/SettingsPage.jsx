@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './settings.css';
 import Layout from '../components/Layout';
+import { CornerTiles, SameCorners } from './CornerTiles';
 import { useLang } from '../i18n/prefs';
 import { plural } from '../i18n/plural';
 import { DEFAULTS, FIELDS, PALETTES, SECTIONS } from '../settings/schema';
@@ -31,7 +32,7 @@ const COLUMNS = [1, 2];
 
 const visibleSections = (settings) => SECTIONS.filter((section) => !section.when || section.when(settings));
 
-function Control({ field, value }) {
+function Control({ field, value, settings }) {
   const { t } = useLang();
   const id = `setting-${field.key.replace(/\./g, '-')}`;
   const set = (next) => setSettings({ [field.key]: next });
@@ -56,6 +57,8 @@ function Control({ field, value }) {
   } else if (field.type === 'color') {
     input = <input id={id} type="color" value={value} onChange={(event) => set(event.target.value)} />;
     shown = value;
+  } else if (field.tiles) {
+    input = <CornerTiles field={field} value={value} settings={settings} labelId={`${id}-label`} />;
   } else {
     input = (
       <select id={id} value={value} onChange={(event) => set(event.target.value)}>
@@ -70,8 +73,10 @@ function Control({ field, value }) {
   // Every row is the same grid: label | control | value | reset, so controls,
   // values and reset buttons line up in a column on the whole page (issue #15).
   return (
-    <li className={`setting setting--${field.type}${changed ? ' is-changed' : ''}`}>
-      <label htmlFor={id}>{t(field.label)}</label>
+    <li className={`setting setting--${field.tiles ? 'tiles' : field.type}${changed ? ' is-changed' : ''}`}>
+      <label htmlFor={field.tiles ? undefined : id} id={`${id}-label`}>
+        {t(field.label)}
+      </label>
       <span className="setting__input">{input}</span>
       {shown !== null && (
         <output htmlFor={id} className="setting__value mono">
@@ -163,9 +168,10 @@ function Group({ section, settings }) {
         {...(section.tabs ? { role: 'tabpanel', 'aria-labelledby': `tab-${tab}` } : {})}
       >
         {fields.map((field) => (
-          <Control key={field.key} field={field} value={settings[field.key]} />
+          <Control key={field.key} field={field} value={settings[field.key]} settings={settings} />
         ))}
       </ul>
+      {section.id === 'corners' && <SameCorners corner={tab} settings={settings} />}
     </section>
   );
 }

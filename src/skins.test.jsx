@@ -8,7 +8,7 @@ import { setSettings } from './settings/store';
 const css = (file) => readFileSync(new URL(file, import.meta.url), 'utf8');
 const liquid = css('./skins.liquid.css');
 const glass = css('./skins.glass.css') + css('./index.css') + css('./App.css') + css('./Layout.css');
-const future = css('./skins.future.css') + css('./skins.palettes.css');
+const future = css('./skins.future.css') + css('./skins.palettes.css') + css('./skins.frames.css');
 const name = (key) => key.replace(/\./g, '-').replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`);
 
 // Choices that mean "no extra style", so no rule is needed for them.

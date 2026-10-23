@@ -125,7 +125,8 @@
 }
 
 .setting--select .setting__input,
-.setting--toggle .setting__input {
+.setting--toggle .setting__input,
+.setting--tiles .setting__input {
   grid-column: 2 / 4;
 }
 
@@ -212,6 +213,67 @@
   outline-offset: 2px;
 }
 
+/* Tiles with a preview of each corner of the custom frame (issue #15). */
+.corner-tiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  padding: 0.15rem 0;
+}
+
+.corner-tile {
+  display: grid;
+  place-items: center;
+  width: 2.3rem;
+  height: 2.3rem;
+  padding: 0.15rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: rgb(var(--deep-rgb) / 0.35);
+  color: var(--text-2);
+  cursor: pointer;
+}
+
+.corner-tile:hover {
+  border-color: var(--border-strong);
+}
+
+.corner-tile[aria-checked='true'] {
+  border-color: var(--accent);
+  background: rgb(var(--accent-rgb) / 0.14);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.corner-tile__svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.corner-tile__fill {
+  fill: rgb(var(--accent-rgb) / 0.08);
+}
+
+.corner-tile__edge,
+.corner-tile__accent {
+  fill: none;
+  stroke-linecap: square;
+}
+
+.corner-tile__edge {
+  stroke: rgb(var(--accent-rgb) / 0.45);
+  stroke-width: 1.2;
+}
+
+.corner-tile__accent {
+  stroke: var(--accent);
+  stroke-width: 2.4;
+}
+
+.corner-tiles__same {
+  margin-top: 0.7rem;
+}
+
 .settings__share {
   grid-column: 1 / -1;
 }
@@ -296,7 +358,8 @@
   }
 
   .setting--select .setting__input,
-  .setting--toggle .setting__input {
+  .setting--toggle .setting__input,
+  .setting--tiles .setting__input {
     grid-column: 1 / 3;
   }
 }

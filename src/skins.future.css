@@ -13,6 +13,7 @@
    position) keep working. */
 
 @import './skins.palettes.css';
+@import './skins.frames.css';
 
 :root[data-skin-name='futuristic'] {
   /* The palette (skins.palettes.css) becomes the colours of the whole site. */
@@ -290,7 +291,8 @@
     .settings__group
   ) {
   --fx-sweep-pos: 0% 0;
-  border: var(--future-border, 1px) solid var(--fx-edge);
+  /* The custom frame (skins.frames.css) draws its edges itself, so it has no border. */
+  border: var(--fx-border-w, var(--future-border, 1px)) solid var(--fx-edge);
   border-radius: 0;
   background-color: transparent;
   background-image: var(--fx-sweep-img), var(--fx-bar-img), var(--fx-frame-img), var(--fx-surface-img);
@@ -484,7 +486,8 @@
     .setting__reset,
     .settings__import textarea,
     .settings__json,
-    .palettes__chip
+    .palettes__chip,
+    .corner-tile
   ) {
   border-radius: 0;
 }
