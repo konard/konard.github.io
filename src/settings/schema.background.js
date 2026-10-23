@@ -7,8 +7,8 @@ export const BACKGROUND_SECTIONS = [
     id: 'motion',
     title: { en: 'Background animation', ru: 'Анимация фона' },
     lead: {
-      en: 'The background has three layers: the universe (a nebula with stars), the grid and the rain of link networks. Every change is applied at once, behind this page.',
-      ru: 'У фона три слоя: вселенная (туманность со звёздами), сетка и дождь из сетей связей. Каждое изменение применяется сразу, за этой страницей.',
+      en: 'The background has layers, from the bottom up: the universe (a nebula with stars), up to four layers of stars, the grid, beams and the rain of link networks. Every change is applied at once, behind this page.',
+      ru: 'Фон состоит из слоёв, снизу вверх: вселенная (туманность со звёздами), до четырёх слоёв звёзд, сетка, лучи и дождь из сетей связей. Каждое изменение применяется сразу, за этой страницей.',
     },
     fields: [
       select(
@@ -42,6 +42,21 @@ export const BACKGROUND_SECTIONS = [
       range('nebula.starBrightness', 0.8, 0, 2.5, 0.05, { en: 'Star brightness', ru: 'Яркость звёзд' }, { unit: '×' }),
       range('nebula.twinkle', 0.3, 0, 5, 0.1, { en: 'Twinkling speed', ru: 'Скорость мерцания' }, { unit: '×' }),
       range('nebula.vignette', 0.3, 0, 1, 0.05, { en: 'Darker edges', ru: 'Затемнение краёв' }, { unit: '%' }),
+      range(
+        'nebula.zoom',
+        1,
+        0.3,
+        3,
+        0.05,
+        { en: 'Size of the clouds', ru: 'Размер облаков' },
+        { unit: '×', css: false },
+      ),
+      color('nebula.color1', '#210f52', { en: 'Deep gas', ru: 'Глубокий газ' }, { css: false }),
+      color('nebula.color2', '#086b85', { en: 'Blue clouds', ru: 'Синие облака' }, { css: false }),
+      color('nebula.color3', '#a63380', { en: 'Pink clouds', ru: 'Розовые облака' }, { css: false }),
+      color('nebula.color4', '#e6d9ff', { en: 'Bright cores', ru: 'Яркие ядра' }, { css: false }),
+      range('nebula.starSize', 1, 0.5, 3, 0.1, { en: 'Size of stars', ru: 'Размер звёзд' }, { unit: '×', css: false }),
+      color('nebula.starColor', '#ffffff', { en: 'Colour of stars', ru: 'Цвет звёзд' }, { css: false }),
       range(
         'nebula.resolution',
         0.6,
@@ -91,10 +106,49 @@ export const BACKGROUND_SECTIONS = [
         { unit: 's', hint: { en: '0 stops the drift.', ru: '0 останавливает сдвиг.' } },
       ),
       toggle('grid.fade', true, { en: 'Fade towards the edges', ru: 'Растворять к краям' }),
+      select(
+        'grid.style',
+        'lines',
+        [
+          option('lines', 'Lines', 'Линии'),
+          option('dashed', 'Dashed lines', 'Пунктир'),
+          option('crosses', 'Crosses at the corners', 'Крестики в углах'),
+          option('dots', 'Dots at the corners', 'Точки в углах'),
+        ],
+        { en: 'Drawing', ru: 'Рисунок' },
+      ),
+      range('grid.width', 1, 0.5, 4, 0.5, { en: 'Line width', ru: 'Толщина линий' }, { unit: 'px' }),
+      range(
+        'grid.mark',
+        0.3,
+        0.05,
+        1,
+        0.05,
+        { en: 'Length of dashes and crosses', ru: 'Длина штрихов и крестиков' },
+        { unit: '%', when: (s) => s['grid.style'] === 'dashed' || s['grid.style'] === 'crosses' },
+      ),
+      select(
+        'grid.tint',
+        'theme',
+        [
+          option('theme', 'Theme lines', 'Линии темы'),
+          option('accent', 'Accent', 'Акцент'),
+          option('accent2', 'Second accent', 'Второй акцент'),
+          option('custom', 'My colour', 'Свой цвет'),
+        ],
+        { en: 'Colour', ru: 'Цвет' },
+      ),
+      color(
+        'grid.color',
+        '#7efcf6',
+        { en: 'My colour', ru: 'Свой цвет' },
+        { when: (s) => s['grid.tint'] === 'custom' },
+      ),
     ],
   },
   {
     id: 'rain',
+    column: 2,
     title: { en: 'Rain of link networks', ru: 'Дождь из сетей связей' },
     fields: [
       toggle('rain.on', true, { en: 'Show the rain', ru: 'Показывать дождь' }),

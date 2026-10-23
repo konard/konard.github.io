@@ -50,6 +50,43 @@
 }
 
 /* label | control | value | reset; a select or a switch takes the value column too. */
+/* Tabs of the star layers (issue #15). */
+.settings__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.8rem;
+}
+
+.settings__tab {
+  padding: 0.3rem 0.75rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: none;
+  color: var(--text-2);
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.settings__tab[aria-selected='true'] {
+  border-color: var(--accent);
+  color: var(--text);
+  background: rgb(var(--accent-rgb) / 0.14);
+}
+
+.settings__tab.is-on::after {
+  content: '';
+  display: inline-block;
+  width: 0.45rem;
+  height: 0.45rem;
+  margin-left: 0.45rem;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 6px var(--accent);
+  vertical-align: 0.1em;
+}
+
 .setting {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 4.4rem 1.7rem;

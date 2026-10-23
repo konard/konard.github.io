@@ -104,15 +104,17 @@ describe('settings page layout (issue #15)', () => {
 
   it('keeps every section in its own column whatever the skin', () => {
     render(<SettingsPage />);
-    const left = ['motion', 'nebula', 'grid', 'rain'];
-    expect(columns()).toEqual([left, ['skin', 'glass', 'theory']]);
+    // The background layers bottom up, then the skin: the beams and the rain start the second column.
+    const left = ['motion', 'nebula', 'stars', 'grid'];
+    const right = (options) => ['beams', 'rain', 'skin', options, 'theory'];
+    expect(columns()).toEqual([left, right('glass')]);
     for (const [skin, options] of [
       ['liquid', 'liquid'],
       ['futuristic', 'futuristic'],
       ['glass', 'glass'],
     ]) {
       fireEvent.change(screen.getByRole('combobox', { name: 'Skin' }), { target: { value: skin } });
-      expect(columns()).toEqual([left, ['skin', options, 'theory']]);
+      expect(columns()).toEqual([left, right(options)]);
     }
   });
 
@@ -129,5 +131,43 @@ describe('settings page layout (issue #15)', () => {
     const select = screen.getByRole('combobox', { name: 'Skin' }).closest('.setting');
     expect(select.querySelector('.setting__value')).toBeNull();
     expect(select).toHaveClass('setting--select');
+  });
+
+  it('shows one star layer at a time in tabs, marking the layers that are on (issue #15)', () => {
+    setSettings(DEFAULTS, { save: false });
+    render(<SettingsPage />);
+    const stars = document.getElementById('stars');
+    const tabs = within(stars).getAllByRole('tab');
+    expect(tabs.map((tab) => tab.textContent)).toEqual(['Layer 1', 'Layer 2', 'Layer 3', 'Layer 4']);
+    expect(tabs[0]).toHaveAttribute('aria-selected', 'true');
+    expect(within(stars).getAllByLabelText('Show this layer')).toHaveLength(1);
+
+    fireEvent.click(tabs[2]);
+    expect(tabs[2]).toHaveAttribute('aria-selected', 'true');
+    fireEvent.click(within(stars).getByLabelText('Show this layer'));
+    expect(getSettings()['stars3.on']).toBe(true);
+    expect(getSettings()['stars1.on']).toBe(false);
+    expect(tabs[2]).toHaveClass('is-on');
+    expect(tabs[0]).not.toHaveClass('is-on');
+    // The scripts read the layers; they do not become attributes of <html>.
+    expect(root.hasAttribute('data-stars3-on')).toBe(false);
+  });
+
+  it('shows a setting only where it applies (issue #15)', () => {
+    setSettings(DEFAULTS, { save: false });
+    render(<SettingsPage />);
+    const stars = document.getElementById('stars');
+    // Layer 1 drifts, so it has a direction; a still layer has neither a direction nor a speed.
+    expect(within(stars).getByLabelText('Direction')).toBeInTheDocument();
+    fireEvent.change(within(stars).getByRole('combobox', { name: 'Motion' }), { target: { value: 'still' } });
+    expect(within(stars).queryByLabelText('Direction')).toBeNull();
+    expect(within(stars).queryByLabelText('Speed')).toBeNull();
+
+    const grid = document.getElementById('grid');
+    expect(within(grid).queryByLabelText('My colour')).toBeNull();
+    fireEvent.change(within(grid).getByRole('combobox', { name: 'Colour' }), { target: { value: 'custom' } });
+    expect(within(grid).getByLabelText('My colour')).toBeInTheDocument();
+    expect(root.style.getPropertyValue('--grid-color')).toBe('#7efcf6');
+    setSettings(DEFAULTS, { save: false });
   });
 });

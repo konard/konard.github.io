@@ -114,10 +114,38 @@ function Palettes({ value }) {
   );
 }
 
+/** Tabs of a section with layers (the star layers of issue #15); a dot marks a layer that is on. */
+function Tabs({ section, settings, tab, onChange }) {
+  const { t } = useLang();
+  return (
+    <div className="settings__tabs" role="tablist" aria-label={t(section.title)}>
+      {section.tabs.map((item) => (
+        <button
+          key={item.id}
+          type="button"
+          role="tab"
+          id={`tab-${item.id}`}
+          aria-selected={tab === item.id}
+          aria-controls={`${section.id}-fields`}
+          className={`settings__tab${settings[item.on] ? ' is-on' : ''}`}
+          onClick={() => onChange(item.id)}
+        >
+          {t(item.label)}
+        </button>
+      ))}
+    </div>
+  );
+}
+
 function Group({ section, settings }) {
   const { t } = useLang();
+  const [tab, setTab] = useState(section.tabs?.[0].id);
   const keys = section.fields.map((field) => field.key);
   const changed = keys.filter((key) => settings[key] !== DEFAULTS[key]).length;
+  // A field may belong to a tab and may apply only to some values of other fields.
+  const fields = section.fields.filter(
+    (field) => (!field.tab || field.tab === tab) && (!field.when || field.when(settings)),
+  );
   return (
     <section id={section.id} className="settings__group" aria-labelledby={`${section.id}-title`}>
       <header className="settings__head">
@@ -128,8 +156,13 @@ function Group({ section, settings }) {
       </header>
       {section.lead && <p className="settings__lead">{t(section.lead)}</p>}
       {section.id === 'futuristic' && <Palettes value={settings['future.palette']} />}
-      <ul className="settings__fields">
-        {section.fields.map((field) => (
+      {section.tabs && <Tabs section={section} settings={settings} tab={tab} onChange={setTab} />}
+      <ul
+        className="settings__fields"
+        id={`${section.id}-fields`}
+        {...(section.tabs ? { role: 'tabpanel', 'aria-labelledby': `tab-${tab}` } : {})}
+      >
+        {fields.map((field) => (
           <Control key={field.key} field={field} value={settings[field.key]} />
         ))}
       </ul>

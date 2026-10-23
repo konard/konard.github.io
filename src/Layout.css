@@ -14,6 +14,8 @@
 }
 
 .cosmos__universe,
+.cosmos__stars,
+.cosmos__beams,
 .cosmos__rain {
   position: absolute;
   inset: 0;
@@ -26,6 +28,7 @@
    Sizes and strengths come from the settings (issue #13, src/settings/schema.js);
    the fallbacks are the defaults. */
 .cosmos__grid,
+.cosmos__beams,
 .cosmos__rain {
   top: calc(-1 * var(--grid-size, 48px));
   height: calc(100% + var(--grid-size, 48px));
@@ -42,20 +45,118 @@
   opacity: calc(0.25 * var(--nebula-level, 0.5));
 }
 
+.cosmos__stars {
+  opacity: var(--stars-level, 1);
+}
+
+.cosmos__beams {
+  opacity: calc(0.8 * var(--beams-level, 1));
+}
+
+:root[data-theme='light'] .cosmos__stars,
+:root[data-theme='light'] .cosmos__beams {
+  filter: invert(1) hue-rotate(180deg);
+  opacity: calc(0.45 * var(--stars-level, 1));
+}
+
+:root[data-theme='light'] .cosmos__beams {
+  opacity: calc(0.45 * var(--beams-level, 1));
+}
+
 :root[data-theme='light'] .cosmos__rain {
   filter: invert(1) hue-rotate(180deg) saturate(1.4);
   opacity: calc(0.32 * var(--rain-level, 0.75));
 }
 
+/* The grid (issues #13 and #15): lines, dashed lines, crosses or dots at the
+   corners of the cells, in the colour of the theme lines, an accent or any
+   colour. Dashes and crosses are lines with a mask, horizontal ones in ::before
+   and vertical ones in ::after, so each direction gets its own mask. */
 .cosmos__grid {
+  --grid-alpha: calc(0.07 * var(--grid-level, 1));
+  --grid-ink: rgb(var(--line-rgb) / var(--grid-alpha));
+  --grid-w: var(--grid-width, 1px);
+  --grid-cell: var(--grid-size, 48px);
+  --grid-across: linear-gradient(var(--grid-ink) var(--grid-w), transparent var(--grid-w));
+  --grid-down: linear-gradient(90deg, var(--grid-ink) var(--grid-w), transparent var(--grid-w));
   position: absolute;
   left: 0;
   right: 0;
-  background-image:
-    linear-gradient(rgb(var(--line-rgb) / calc(0.07 * var(--grid-level, 1))) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(var(--line-rgb) / calc(0.07 * var(--grid-level, 1))) 1px, transparent 1px);
-  background-size: var(--grid-size, 48px) var(--grid-size, 48px);
+  background-image: var(--grid-across), var(--grid-down);
+  background-size: var(--grid-cell) var(--grid-cell);
   mask-image: radial-gradient(ellipse at 50% 30%, black 20%, transparent 85%);
+}
+
+:root[data-grid-tint='accent'] .cosmos__grid {
+  --grid-ink: rgb(var(--accent-rgb) / var(--grid-alpha));
+}
+
+:root[data-grid-tint='accent2'] .cosmos__grid {
+  --grid-ink: rgb(var(--accent-2-rgb) / var(--grid-alpha));
+}
+
+:root[data-grid-tint='custom'] .cosmos__grid {
+  --grid-ink: color-mix(in srgb, var(--grid-color, #7efcf6) calc(var(--grid-alpha) * 100%), transparent);
+}
+
+/* Dots are small, so they get more ink than lines. */
+:root[data-grid-style='dots'] .cosmos__grid {
+  --grid-alpha: calc(0.3 * var(--grid-level, 1));
+  background-image: radial-gradient(circle, var(--grid-ink) var(--grid-w), transparent calc(var(--grid-w) + 0.75px));
+  background-position: calc(var(--grid-cell) / -2) calc(var(--grid-cell) / -2);
+}
+
+:root[data-grid-style='dashed'] .cosmos__grid,
+:root[data-grid-style='crosses'] .cosmos__grid {
+  --grid-arm: calc(var(--grid-cell) * var(--grid-mark, 0.3) / 2);
+  --grid-dash: calc(var(--grid-cell) / 4 * var(--grid-mark, 0.3));
+  background-image: none;
+}
+
+:root[data-grid-style='crosses'] .cosmos__grid {
+  --grid-alpha: calc(0.14 * var(--grid-level, 1));
+}
+
+:root[data-grid-style='dashed'] .cosmos__grid::before,
+:root[data-grid-style='dashed'] .cosmos__grid::after,
+:root[data-grid-style='crosses'] .cosmos__grid::before,
+:root[data-grid-style='crosses'] .cosmos__grid::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--grid-across);
+  background-size: var(--grid-cell) var(--grid-cell);
+  mask-size: var(--grid-cell) var(--grid-cell);
+}
+
+:root[data-grid-style='dashed'] .cosmos__grid::after,
+:root[data-grid-style='crosses'] .cosmos__grid::after {
+  background-image: var(--grid-down);
+}
+
+:root[data-grid-style='dashed'] .cosmos__grid::before {
+  mask-image: repeating-linear-gradient(90deg, black 0 var(--grid-dash), transparent var(--grid-dash) 25%);
+}
+
+:root[data-grid-style='dashed'] .cosmos__grid::after {
+  mask-image: repeating-linear-gradient(black 0 var(--grid-dash), transparent var(--grid-dash) 25%);
+}
+
+:root[data-grid-style='crosses'] .cosmos__grid::before {
+  mask-image: linear-gradient(
+    90deg,
+    black var(--grid-arm),
+    transparent var(--grid-arm) calc(100% - var(--grid-arm)),
+    black calc(100% - var(--grid-arm))
+  );
+}
+
+:root[data-grid-style='crosses'] .cosmos__grid::after {
+  mask-image: linear-gradient(
+    black var(--grid-arm),
+    transparent var(--grid-arm) calc(100% - var(--grid-arm)),
+    black calc(100% - var(--grid-arm))
+  );
 }
 
 .cosmos__rain {
@@ -79,7 +180,8 @@
 
 :root[data-nebula-on='false'] .cosmos__universe,
 :root[data-grid-on='false'] .cosmos__grid,
-:root[data-rain-on='false'] .cosmos__rain {
+:root[data-rain-on='false'] .cosmos__rain,
+:root[data-beams-on='false'] .cosmos__beams {
   display: none;
 }
 

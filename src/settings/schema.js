@@ -13,6 +13,7 @@
 
 import { option, select } from './fields';
 import { BACKGROUND_SECTIONS } from './schema.background';
+import { LAYER_SECTIONS } from './schema.layers';
 import { SKIN_SECTIONS } from './schema.skins';
 
 export { PALETTES, SKINS } from './schema.skins';
@@ -21,8 +22,17 @@ export { PALETTES, SKINS } from './schema.skins';
  * Sections of the settings page; `when(settings)` hides a section that does not
  * apply, and `column` (1 by default) is the column of the page it is shown in.
  */
+const [motion, nebula, grid, rain] = BACKGROUND_SECTIONS;
+const [stars, beams] = LAYER_SECTIONS;
+
 export const SECTIONS = [
-  ...BACKGROUND_SECTIONS,
+  // The background sections in the order of the layers, bottom to top.
+  motion,
+  nebula,
+  stars,
+  grid,
+  beams,
+  rain,
   ...SKIN_SECTIONS,
   {
     id: 'theory',
@@ -48,6 +58,12 @@ export const SECTIONS = [
 
 export const FIELDS = SECTIONS.flatMap((section) => section.fields);
 
+/**
+ * Settings that only scripts read (`css: false`, issue #15) are not put on
+ * <html> as CSS variables or attributes: there are hundreds of them.
+ */
+const forCss = (rules) => Object.fromEntries(FIELDS.filter((f) => f.css !== false).map((f) => [f.key, rules[f.key]]));
+
 /** Every key with its default, limits or choices; also embedded in the before-paint script. */
 export const RULES = Object.fromEntries(
   FIELDS.map(({ key, type, d, min, max, options, unit }) => {
@@ -58,5 +74,8 @@ export const RULES = Object.fromEntries(
     return [key, rule];
   }),
 );
+
+/** The rules of the settings that reach the stylesheets; see apply.js. */
+export const CSS_RULES = forCss(RULES);
 
 export const DEFAULTS = Object.fromEntries(FIELDS.map(({ key, d }) => [key, d]));

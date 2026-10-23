@@ -227,6 +227,14 @@ describe('background follows the settings at once (issue #13)', () => {
       starBrightness: 0.8,
       twinkle: 0.3,
       vignette: 0.3,
+      // Issue #15: the colours of the gas are those the shader had before they became settings.
+      zoom: 1,
+      starSize: 1,
+      starColor: '#ffffff',
+      color1: '#210f52',
+      color2: '#086b85',
+      color3: '#a63380',
+      color4: '#e6d9ff',
     });
   });
 

@@ -5,6 +5,7 @@
 //
 // e.g. node experiments/settings-shot.mjs / '{"skin.name":"liquid"}' liquid.png dark
 // ENGINE=webkit or ENGINE=firefox takes another browser engine instead of Chromium.
+// PEEK=1 hides the page over the background, to show the background alone (issue #15).
 // Needs `npm run build` and `npx vite preview --port 4173` (BASE overrides the URL).
 // Prints the console errors of the page, so a broken page fails loudly.
 /* global document, window */
@@ -29,6 +30,7 @@ await page.addInitScript(
   [json, theme],
 );
 await page.goto(`${base}${path}`);
+if (process.env.PEEK) await page.addStyleTag({ content: 'main, .topbar, .footer { visibility: hidden; }' });
 await page.waitForTimeout(2500);
 if (scroll !== 'full' && Number(scroll)) {
   await page.evaluate((y) => window.scrollTo(0, y), Number(scroll));

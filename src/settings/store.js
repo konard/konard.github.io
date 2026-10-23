@@ -5,7 +5,7 @@
 // tabs of the site follow along through the `storage` event.
 import { useSyncExternalStore } from 'react';
 import { applySettings, normalize } from './apply';
-import { DEFAULTS, RULES } from './schema';
+import { CSS_RULES, DEFAULTS, RULES } from './schema';
 
 export const STORAGE_KEY = 'settings';
 
@@ -37,7 +37,7 @@ let current = loadSettings();
 const listeners = new Set();
 
 const apply = () => {
-  if (browser) applySettings(document.documentElement, RULES, current);
+  if (browser) applySettings(document.documentElement, CSS_RULES, current);
 };
 
 const save = () => {
