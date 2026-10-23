@@ -16,6 +16,7 @@ import '../App.media.css';
 import { profile } from '../data/profile';
 import { PAGES } from '../pages/pages';
 import { useLang } from '../i18n/prefs';
+import { useNotation } from '../links/notation';
 import Cosmos from './Cosmos';
 import LiquidRefraction from './LiquidRefraction';
 import PrefSwitches from './PrefSwitches';
@@ -27,6 +28,7 @@ import PrefSwitches from './PrefSwitches';
  */
 export default function Layout({ page, sections = null, children, footer = null }) {
   const { t } = useLang();
+  const { n } = useNotation();
   return (
     <div className="app">
       <Cosmos />
@@ -68,7 +70,7 @@ export default function Layout({ page, sections = null, children, footer = null 
       <main>{children}</main>
 
       <footer className="footer">
-        <span className="mono">{profile.motto}</span>
+        <span className="mono">{n(profile.motto)}</span>
         <span>
           <a className="footer__settings" href="/settings/" aria-current={page === 'settings' ? 'page' : undefined}>
             {t({ en: 'Settings', ru: 'Настройки' })}

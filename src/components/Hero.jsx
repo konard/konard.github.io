@@ -1,5 +1,6 @@
 import { cvPagePath } from '../cv/buildCv';
 import { useLang } from '../i18n/prefs';
+import { useNotation } from '../links/notation';
 
 const TEXT = {
   open: { en: 'Open to collaboration & hire', ru: 'Открыт к сотрудничеству и найму' },
@@ -12,6 +13,7 @@ const TEXT = {
 
 export default function Hero({ profile, github }) {
   const { lang, t } = useLang();
+  const { n } = useNotation();
   const name = t(profile.name);
   return (
     <header className="hero" id="top">
@@ -40,7 +42,7 @@ export default function Hero({ profile, github }) {
         ))}
         <p className="hero__meta">
           <span>📍 {t(profile.location)}</span>
-          <span className="mono hero__motto">{profile.motto}</span>
+          <span className="mono hero__motto">{n(profile.motto)}</span>
         </p>
         <div className="hero__actions">
           <a className="button button--primary" href={cvPagePath({ lang })}>

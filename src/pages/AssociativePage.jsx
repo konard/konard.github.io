@@ -3,6 +3,7 @@ import Layout from '../components/Layout';
 import RepoList, { RepoItem } from '../components/RepoList';
 import Section from '../components/Section';
 import { useLang } from '../i18n/prefs';
+import { useNotation } from '../links/notation';
 import { plural } from '../i18n/plural';
 import { fields } from '../data/fields';
 import { metaTheory } from '../data/theory';
@@ -270,6 +271,7 @@ const assocFields = fields.filter((f) =>
 /** The associative stack: theory, notation, storage, tools, benchmarks, platform and AI. */
 export default function AssociativePage() {
   const { lang, t } = useLang();
+  const { n } = useNotation();
   const all = inField('associative');
   return (
     <Layout page="associative" sections={SECTIONS}>
@@ -278,8 +280,8 @@ export default function AssociativePage() {
         <h1 className="page-hero__title">{t({ en: 'The associative stack', ru: 'Ассоциативный стек' })}</h1>
         <p className="page-hero__lead">
           {t({
-            en: `Since 2010: ${all.length} repositories that store, query and reason about data as links (${metaTheory.tldr}). The layers below go from the theory up to the AI that uses links as its memory.`,
-            ru: `С 2010 года: ${all.length} ${plural(all.length, lang, REPOSITORIES)}, которые хранят данные как связи, выполняют по ним запросы и рассуждают о них (${metaTheory.tldr}). Слои ниже идут от теории до ИИ, который использует связи как свою память.`,
+            en: `Since 2010: ${all.length} repositories that store, query and reason about data as links (${n(metaTheory.tldr)}). The layers below go from the theory up to the AI that uses links as its memory.`,
+            ru: `С 2010 года: ${all.length} ${plural(all.length, lang, REPOSITORIES)}, которые хранят данные как связи, выполняют по ним запросы и рассуждают о них (${n(metaTheory.tldr)}). Слои ниже идут от теории до ИИ, который использует связи как свою память.`,
           })}
         </p>
       </header>
@@ -296,7 +298,7 @@ export default function AssociativePage() {
                 <Glyph code={layer.glyph} size={44} />
                 <div>
                   <h3>{t(layer.title)}</h3>
-                  <p className="muted">{t(layer.summary)}</p>
+                  <p className="muted">{n(t(layer.summary))}</p>
                 </div>
               </div>
               <ul className="repos repos--compact" aria-label={t(layer.title)}>

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { linksNotation, mathNotation, randomCode } from '../links/configurations';
 import { tr, useLang } from '../i18n/prefs';
+import { useNotation } from '../links/notation';
 import { plural } from '../i18n/plural';
 import Glyph from './Glyph';
 
@@ -63,14 +64,15 @@ export function NetworkExample({ example, random = Math.random }) {
 /** The links meta-theory: the formula, its definitions, versions and PDFs. */
 export default function MetaTheory({ theory, detailed = false }) {
   const { t } = useLang();
+  const { notation, n } = useNotation();
   return (
     <div className="theory">
-      <div className="theory__hero">
+      <div className="theory__hero" data-notation={notation}>
         <div
           className="theory__formula"
-          aria-label={`${t({ en: 'Links theory in four symbols', ru: 'Теория связей в четырёх символах' })}: ${theory.tldr}`}
+          aria-label={`${t({ en: 'Links theory in four symbols', ru: 'Теория связей в четырёх символах' })}: ${n(theory.tldr)}`}
         >
-          <span className="mono">{theory.tldr}</span>
+          <span className="mono">{n(theory.tldr)}</span>
         </div>
         <div>
           <p className="theory__summary">{t(theory.summary)}</p>
@@ -88,9 +90,9 @@ export default function MetaTheory({ theory, detailed = false }) {
 
       <ol className="theory__formulas">
         {theory.formulas.map((f) => (
-          <li key={f.formula}>
-            <span className="mono theory__math">{f.formula}</span>
-            <span>{t(f.text)}</span>
+          <li key={f.formula.L}>
+            <span className="mono theory__math">{n(f.formula)}</span>
+            <span>{t(n(f.text))}</span>
           </li>
         ))}
       </ol>

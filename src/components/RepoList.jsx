@@ -3,6 +3,7 @@ import { fields } from '../data/fields';
 import { githubUrl, KINDS, matches, SORTS } from '../pages/repos';
 import { useQueryParam } from '../pages/query';
 import { useLang } from '../i18n/prefs';
+import { useNotation } from '../links/notation';
 import { plural } from '../i18n/plural';
 import { formatNumber } from './format';
 
@@ -16,7 +17,8 @@ const REPOSITORIES = { en: ['repository', 'repositories'], ru: ['репозит�
  */
 export function RepoItem({ repo, note = null }) {
   const { lang, t } = useLang();
-  const text = t(note) || repo.description;
+  const { n } = useNotation();
+  const text = n(t(note)) || repo.description;
   return (
     <li className="repo">
       <div className="repo__head">
