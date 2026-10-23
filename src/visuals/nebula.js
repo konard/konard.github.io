@@ -2,6 +2,7 @@
 // gas nebula (domain-warped fractal noise) with twinkling stars. It renders at
 // a reduced resolution because the nebula is soft anyway, and falls back to
 // the CSS gradient behind the canvas where WebGL is unavailable.
+import { governor } from './governor';
 import { pixelRatio, watchSize } from './size';
 
 const VERTEX = `
@@ -172,8 +173,10 @@ export function startNebula(canvas, options = {}) {
   let twinkle = time;
   let clock = performance.now();
 
+  // Lowers the resolution, then the frame rate, on a device that cannot keep up (issue #15).
+  const watch = governor();
   const resize = () => {
-    const ratio = pixelRatio() * o.scale;
+    const ratio = pixelRatio() * o.scale * watch.state.scale;
     canvas.width = Math.round((canvas.clientWidth || window.innerWidth) * ratio);
     canvas.height = Math.round((canvas.clientHeight || window.innerHeight) * ratio);
     gl.viewport(0, 0, canvas.width, canvas.height);
@@ -196,9 +199,12 @@ export function startNebula(canvas, options = {}) {
 
   let frame = 0;
   let last = 0;
+  let previous = 0;
   const loop = (now) => {
     frame = requestAnimationFrame(loop);
-    if (document.hidden || now - last < 1000 / o.fps) return;
+    if (watch(now - previous)) resize();
+    previous = now;
+    if (document.hidden || now - last < 1000 / (o.fps * watch.state.fps)) return;
     last = now;
     render(now);
   };

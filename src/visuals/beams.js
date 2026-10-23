@@ -3,6 +3,7 @@
 // the whole screen. The canvas has the size and the drift of the grid (see
 // Cosmos.jsx), so the beams stay on its lines. The code is loaded only when the
 // beams are switched on.
+import { governor } from './governor';
 import { pixelRatio, watchSize } from './size';
 
 /** Default look; every option can be changed later with `stop.update(options)`. */
@@ -159,9 +160,14 @@ export function startBeams(canvas, options = {}) {
 
   let frame = 0;
   let last = 0;
+  // Fewer frames per second on a device that cannot keep up (issue #15).
+  const watch = governor({ resolution: false });
+  let previous = 0;
   const loop = (now) => {
     frame = requestAnimationFrame(loop);
-    if (document.hidden || now - last < 1000 / o.fps) return;
+    watch(now - previous);
+    previous = now;
+    if (document.hidden || now - last < 1000 / (o.fps * watch.state.fps)) return;
     const seconds = last ? Math.min(0.25, (now - last) / 1000) : 0;
     last = now;
     move(seconds);

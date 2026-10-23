@@ -4,6 +4,7 @@
 // the centre of the screen. A star is a sprite drawn once per layer and colour
 // (with its glow) and then only copied, scaled, turned and stretched, so even
 // thousands of stars cost little. The code is loaded only when a layer is on.
+import { governor } from './governor';
 import { pixelRatio, watchSize } from './size';
 
 /** A layer as in the settings (src/settings/schema.layers.js); every option can be changed later. */
@@ -391,9 +392,14 @@ export function startStars(canvas, options = {}) {
 
   let frame = 0;
   let last = 0;
+  // Fewer frames per second on a device that cannot keep up (issue #15).
+  const watch = governor({ resolution: false });
+  let previous = 0;
   const loop = (now) => {
     frame = requestAnimationFrame(loop);
-    if (document.hidden || now - last < 1000 / o.fps) return;
+    watch(now - previous);
+    previous = now;
+    if (document.hidden || now - last < 1000 / (o.fps * watch.state.fps)) return;
     // A long pause (a hidden tab) does not make the stars jump.
     const seconds = last ? Math.min(0.25, (now - last) / 1000) : 0;
     last = now;

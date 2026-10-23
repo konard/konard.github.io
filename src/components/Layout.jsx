@@ -14,7 +14,7 @@ import '../skins.liquid.css';
 import '../skins.future.css';
 // Responsive and print overrides must come last.
 import '../App.media.css';
-import { profile } from '../data/profile';
+import { motto } from '../data/motto';
 import { PAGES } from '../pages/pages';
 import { useLang } from '../i18n/prefs';
 import { useNotation } from '../links/notation';
@@ -73,7 +73,7 @@ export default function Layout({ page, sections = null, children, footer = null 
       <main>{children}</main>
 
       <footer className="footer">
-        <span className="mono">{n(profile.motto)}</span>
+        <span className="mono">{n(motto)}</span>
         <span>
           <a className="footer__settings" href="/settings/" aria-current={page === 'settings' ? 'page' : undefined}>
             {t({ en: 'Settings', ru: 'Настройки' })}
