@@ -23,6 +23,12 @@ export function formatValue(field, value) {
   return unit ? `${number} ${unit}` : number;
 }
 
+// Two explicit columns instead of CSS multi-column layout (issue #15): with
+// multicol the browser rebalanced the sections whenever the skin section
+// changed size, so Skin jumped between the columns, and Safari laid them out in
+// one column or with uneven tops. Each section now names its column.
+const COLUMNS = [1, 2];
+
 const visibleSections = (settings) => SECTIONS.filter((section) => !section.when || section.when(settings));
 
 function Control({ field, value }) {
@@ -31,34 +37,25 @@ function Control({ field, value }) {
   const set = (next) => setSettings({ [field.key]: next });
   const changed = value !== DEFAULTS[field.key];
   let input;
+  let shown = null;
   if (field.type === 'range') {
     input = (
-      <>
-        <input
-          id={id}
-          type="range"
-          min={field.min}
-          max={field.max}
-          step={field.step}
-          value={value}
-          onChange={(event) => set(Number(event.target.value))}
-        />
-        <output htmlFor={id} className="mono">
-          {formatValue(field, value)}
-        </output>
-      </>
+      <input
+        id={id}
+        type="range"
+        min={field.min}
+        max={field.max}
+        step={field.step}
+        value={value}
+        onChange={(event) => set(Number(event.target.value))}
+      />
     );
+    shown = formatValue(field, value);
   } else if (field.type === 'toggle') {
     input = <input id={id} type="checkbox" checked={value} onChange={(event) => set(event.target.checked)} />;
   } else if (field.type === 'color') {
-    input = (
-      <>
-        <input id={id} type="color" value={value} onChange={(event) => set(event.target.value)} />
-        <output htmlFor={id} className="mono">
-          {value}
-        </output>
-      </>
-    );
+    input = <input id={id} type="color" value={value} onChange={(event) => set(event.target.value)} />;
+    shown = value;
   } else {
     input = (
       <select id={id} value={value} onChange={(event) => set(event.target.value)}>
@@ -70,22 +67,27 @@ function Control({ field, value }) {
       </select>
     );
   }
+  // Every row is the same grid: label | control | value | reset, so controls,
+  // values and reset buttons line up in a column on the whole page (issue #15).
   return (
     <li className={`setting setting--${field.type}${changed ? ' is-changed' : ''}`}>
       <label htmlFor={id}>{t(field.label)}</label>
-      <span className="setting__input">
-        {input}
-        <button
-          type="button"
-          className="setting__reset"
-          onClick={() => resetSettings([field.key])}
-          disabled={!changed}
-          title={t({ en: 'Back to the default', ru: 'Вернуть по умолчанию' })}
-          aria-label={`${t({ en: 'Back to the default', ru: 'Вернуть по умолчанию' })}: ${t(field.label)}`}
-        >
-          ↺
-        </button>
-      </span>
+      <span className="setting__input">{input}</span>
+      {shown !== null && (
+        <output htmlFor={id} className="setting__value mono">
+          {shown}
+        </output>
+      )}
+      <button
+        type="button"
+        className="setting__reset"
+        onClick={() => resetSettings([field.key])}
+        disabled={!changed}
+        title={t({ en: 'Back to the default', ru: 'Вернуть по умолчанию' })}
+        aria-label={`${t({ en: 'Back to the default', ru: 'Вернуть по умолчанию' })}: ${t(field.label)}`}
+      >
+        ↺
+      </button>
       {field.hint && <small className="setting__hint">{t(field.hint)}</small>}
     </li>
   );
@@ -204,8 +206,14 @@ export default function SettingsPage() {
         </header>
 
         <div className="settings__groups">
-          {sections.map((section) => (
-            <Group key={section.id} section={section} settings={settings} />
+          {COLUMNS.map((column) => (
+            <div key={column} className="settings__column">
+              {sections
+                .filter((section) => (section.column || 1) === column)
+                .map((section) => (
+                  <Group key={section.id} section={section} settings={settings} />
+                ))}
+            </div>
           ))}
 
           <section id="share" className="settings__group settings__share" aria-labelledby="share-title">

@@ -1,0 +1,7 @@
+glass: columns {"130":["motion","nebula","grid","rain","skin","glass","theory","share"]}
+  column tops 166 (difference 0 px), sideways overflow 0 px
+liquid: columns {"130":["motion","nebula","grid","rain","skin","liquid","theory","share"]}
+  column tops -365 (difference 0 px), sideways overflow 0 px
+futuristic: columns {"130":["motion","nebula","grid","rain","skin","futuristic","theory","share"]}
+  column tops -579 (difference 0 px), sideways overflow 0 px
+sections that change their column between glass and liquid: none

@@ -95,3 +95,39 @@ describe('settings page (issue #13)', () => {
     expect(formatValue(field('grid.size'), 64)).toBe('64 px');
   });
 });
+
+describe('settings page layout (issue #15)', () => {
+  const columns = () =>
+    [...document.querySelectorAll('.settings__column')].map((column) =>
+      [...column.querySelectorAll(':scope > .settings__group')].map((group) => group.id),
+    );
+
+  it('keeps every section in its own column whatever the skin', () => {
+    render(<SettingsPage />);
+    const left = ['motion', 'nebula', 'grid', 'rain'];
+    expect(columns()).toEqual([left, ['skin', 'glass', 'theory']]);
+    for (const [skin, options] of [
+      ['liquid', 'liquid'],
+      ['futuristic', 'futuristic'],
+      ['glass', 'glass'],
+    ]) {
+      fireEvent.change(screen.getByRole('combobox', { name: 'Skin' }), { target: { value: skin } });
+      expect(columns()).toEqual([left, ['skin', options, 'theory']]);
+    }
+  });
+
+  it('puts every row into the same four columns: label, control, value, reset', () => {
+    render(<SettingsPage />);
+    const row = screen.getByLabelText('Step').closest('.setting');
+    expect([...row.children].map((child) => child.className)).toEqual([
+      '',
+      'setting__input',
+      'setting__value mono',
+      'setting__reset',
+      'setting__hint',
+    ]);
+    const select = screen.getByRole('combobox', { name: 'Skin' }).closest('.setting');
+    expect(select.querySelector('.setting__value')).toBeNull();
+    expect(select).toHaveClass('setting--select');
+  });
+});
