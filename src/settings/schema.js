@@ -1,5 +1,6 @@
 // Everything on the site that can be configured (issue #13): the background
-// animation, the skin of the interface and the notation of the links theory.
+// animation, the skin of the interface, the sound (issue #15) and the
+// notation of the links theory.
 // The defaults were the look of the site before settings existed; issue #15
 // replaced some of them with the settings its author chose (the universe, the
 // grid, the rain and the glass). The settings page is built
@@ -15,6 +16,7 @@ import { option, select } from './fields';
 import { BACKGROUND_SECTIONS } from './schema.background';
 import { LAYER_SECTIONS } from './schema.layers';
 import { SKIN_SECTIONS } from './schema.skins';
+import { SOUND_SECTION } from './schema.sound';
 
 export { PALETTES, SKINS } from './schema.skins';
 
@@ -33,6 +35,7 @@ export const SECTIONS = [
   grid,
   beams,
   rain,
+  SOUND_SECTION,
   ...SKIN_SECTIONS,
   {
     id: 'theory',

@@ -21,6 +21,7 @@ import { useNotation } from '../links/notation';
 import Cosmos from './Cosmos';
 import LiquidRefraction from './LiquidRefraction';
 import PrefSwitches from './PrefSwitches';
+import Sound from './Sound';
 
 /**
  * Shared frame of every page: the cosmic background, the page navigation
@@ -34,6 +35,7 @@ export default function Layout({ page, sections = null, children, footer = null 
     <div className="app">
       <Cosmos />
       <LiquidRefraction />
+      <Sound />
       <header className="topbar">
         <div className="topbar__row">
           <a className="nav__brand mono" href="/">

@@ -186,6 +186,30 @@
   visibility: hidden;
 }
 
+/* ▶ next to a sound (issue #15): plays it. */
+.setting__play {
+  flex: none;
+  width: 1.8rem;
+  height: 1.8rem;
+  margin-left: 0.4rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 50%;
+  background: none;
+  color: var(--accent);
+  font-size: 0.7rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.setting__play:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+.setting__play:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
 .setting__hint {
   grid-column: 1 / -1;
   color: var(--muted);

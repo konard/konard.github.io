@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import './settings.css';
 import Layout from '../components/Layout';
+import { previewSound } from '../components/Sound';
 import { CornerTiles, SameCorners } from './CornerTiles';
 import { useLang } from '../i18n/prefs';
 import { plural } from '../i18n/plural';
 import { DEFAULTS, FIELDS, PALETTES, SECTIONS } from '../settings/schema';
 import { changesOf, resetSettings, setSettings, useSettings } from '../settings/store';
+import { cue } from '../sound/options';
 
 const SETTINGS = { en: ['setting', 'settings'], ru: ['настройка', 'настройки', 'настроек'] };
 const CHANGED = { en: ['differs', 'differ'], ru: ['отличается', 'отличаются', 'отличаются'] };
@@ -69,6 +71,24 @@ function Control({ field, value, settings }) {
         ))}
       </select>
     );
+    if (field.preview === 'sound') {
+      // ▶ plays the chosen sound, so a sound can be heard before it is kept.
+      input = (
+        <>
+          {input}
+          <button
+            type="button"
+            className="setting__play"
+            disabled={value === 'none'}
+            onClick={() => previewSound(value)}
+            title={t({ en: 'Play', ru: 'Проиграть' })}
+            aria-label={`${t({ en: 'Play', ru: 'Проиграть' })}: ${t(field.label)}`}
+          >
+            ▶
+          </button>
+        </>
+      );
+    }
   }
   // Every row is the same grid: label | control | value | reset, so controls,
   // values and reset buttons line up in a column on the whole page (issue #15).
@@ -119,7 +139,7 @@ function Palettes({ value }) {
   );
 }
 
-/** Tabs of a section with layers (the star layers of issue #15); a dot marks a layer that is on. */
+/** Tabs of a section with layers (the star layers, corners and sounds of issue #15); a dot marks a layer that is on. */
 function Tabs({ section, settings, tab, onChange }) {
   const { t } = useLang();
   return (
@@ -148,8 +168,18 @@ function Group({ section, settings }) {
   const keys = section.fields.map((field) => field.key);
   const changed = keys.filter((key) => settings[key] !== DEFAULTS[key]).length;
   // A field may belong to a tab and may apply only to some values of other fields.
-  const fields = section.fields.filter(
-    (field) => (!field.tab || field.tab === tab) && (!field.when || field.when(settings)),
+  const shown = (field) => !field.when || field.when(settings);
+  // The fields of every tab come first, then the tabs and the fields of the chosen tab;
+  // tabs with nothing in them are not shown (the sound tabs while the sound is off).
+  const shared = section.fields.filter((field) => !field.tab && shown(field));
+  const inTab = section.fields.filter((field) => field.tab === tab && shown(field));
+  const tabbed = section.tabs && section.fields.some((field) => field.tab && shown(field));
+  const list = (fields, extra) => (
+    <ul className="settings__fields" {...extra}>
+      {fields.map((field) => (
+        <Control key={field.key} field={field} value={settings[field.key]} settings={settings} />
+      ))}
+    </ul>
   );
   return (
     <section id={section.id} className="settings__group" aria-labelledby={`${section.id}-title`}>
@@ -161,24 +191,23 @@ function Group({ section, settings }) {
       </header>
       {section.lead && <p className="settings__lead">{t(section.lead)}</p>}
       {section.id === 'futuristic' && <Palettes value={settings['future.palette']} />}
-      {section.tabs && <Tabs section={section} settings={settings} tab={tab} onChange={setTab} />}
-      <ul
-        className="settings__fields"
-        id={`${section.id}-fields`}
-        {...(section.tabs ? { role: 'tabpanel', 'aria-labelledby': `tab-${tab}` } : {})}
-      >
-        {fields.map((field) => (
-          <Control key={field.key} field={field} value={settings[field.key]} settings={settings} />
-        ))}
-      </ul>
+      {tabbed ? (
+        <>
+          {shared.length > 0 && list(shared)}
+          <Tabs section={section} settings={settings} tab={tab} onChange={setTab} />
+          {list(inTab, { id: `${section.id}-fields`, role: 'tabpanel', 'aria-labelledby': `tab-${tab}` })}
+        </>
+      ) : (
+        list(shared, { id: `${section.id}-fields` })
+      )}
       {section.id === 'corners' && <SameCorners corner={tab} settings={settings} />}
     </section>
   );
 }
 
 /**
- * /settings/ (issue #13): every option of the background animation, the skin
- * and the theory notation, generated from src/settings/schema.js. A change is
+ * /settings/ (issue #13): every option of the background animation, the skin,
+ * the sound (issue #15) and the theory notation, generated from src/settings/schema.js. A change is
  * applied at once, so the page itself is the preview, and it is remembered in
  * this browser (localStorage) as a difference from the defaults.
  */
@@ -186,7 +215,11 @@ export default function SettingsPage() {
   const { lang, t } = useLang();
   const settings = useSettings();
   const [peek, setPeek] = useState(false);
-  const [status, setStatus] = useState('');
+  const [status, setState] = useState('');
+  const setStatus = (message) => {
+    setState(message);
+    cue('notify');
+  };
   const [draft, setDraft] = useState('');
   const sections = visibleSections(settings);
   const changes = changesOf(settings);
@@ -224,7 +257,7 @@ export default function SettingsPage() {
         <header className="page-hero" id="top">
           <p className="section__kicker">{t({ en: 'Settings', ru: 'Настройки' })}</p>
           <h1 className="page-hero__title">
-            {t({ en: 'Background, skin and notation', ru: 'Фон, оформление и нотация' })}
+            {t({ en: 'Background, skin, sound and notation', ru: 'Фон, оформление, звук и нотация' })}
           </h1>
           <p className="page-hero__lead">
             {t({
@@ -233,7 +266,13 @@ export default function SettingsPage() {
             })}
           </p>
           <div className="page-hero__actions">
-            <button type="button" className="button button--primary" aria-pressed={peek} onClick={() => setPeek(!peek)}>
+            <button
+              type="button"
+              className="button button--primary"
+              aria-pressed={peek}
+              data-sound={peek ? 'close' : 'open'}
+              onClick={() => setPeek(!peek)}
+            >
               {peek
                 ? t({ en: 'Show the settings', ru: 'Показать настройки' })
                 : t({ en: 'Look at the background', ru: 'Посмотреть на фон' })}
@@ -289,7 +328,12 @@ export default function SettingsPage() {
         </div>
       </div>
       {peek && (
-        <button type="button" className="button button--primary settings__back" onClick={() => setPeek(false)}>
+        <button
+          type="button"
+          className="button button--primary settings__back"
+          data-sound="close"
+          onClick={() => setPeek(false)}
+        >
           {t({ en: 'Show the settings', ru: 'Показать настройки' })}
         </button>
       )}

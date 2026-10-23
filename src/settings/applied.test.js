@@ -6,6 +6,7 @@ import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { beamsOptions, nebulaOptions, rainOptions, starsOptions } from '../components/Cosmos';
+import { soundOptions } from '../sound/options';
 import { CSS_RULES, DEFAULTS, FIELDS, RULES } from './schema';
 
 const SRC = join(__dirname, '..');
@@ -24,11 +25,16 @@ const SCRIPTS = read(/\.jsx?$/);
 /** `liquid.refractionScale` → `liquid-refraction-scale`, as in apply.js. */
 const cssName = (key) => key.replace(/\./g, '-').replace(/[A-Z]/g, (letter) => '-' + letter.toLowerCase());
 
-/** Keys the option builders of the background layers read. */
+/** Keys the option builders of the background layers and of the sound read. */
 const readByLayers = () => {
   const keys = new Set();
   const spy = new Proxy(DEFAULTS, { get: (target, key) => (keys.add(key), target[key]) });
   [nebulaOptions, starsOptions, beamsOptions, (s) => rainOptions(s, true)].forEach((options) => options(spy));
+  // The sound reads the slots of an interaction up to the first empty one, so it is read with every slot full.
+  const full = Object.fromEntries(
+    Object.keys(DEFAULTS).map((key) => [key, /^sound\.\w+\d$/.test(key) ? 'quartz' : DEFAULTS[key]]),
+  );
+  soundOptions(new Proxy(full, { get: (target, key) => (keys.add(key), target[key]) }));
   return keys;
 };
 

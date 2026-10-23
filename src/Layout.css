@@ -746,7 +746,7 @@
   }
 }
 
-/* ---------- Language and theme switches (issue #11) ---------- */
+/* ---------- Language, sound and theme switches (issues #11 and #15) ---------- */
 
 .prefs {
   display: flex;
@@ -782,13 +782,29 @@
   background: var(--accent-soft);
 }
 
-.prefs__theme {
+.prefs__theme,
+.prefs__sound {
   width: 2rem;
   height: 2rem;
   padding: 0;
   border: 1px solid var(--border);
   border-radius: 999px;
   font-size: 0.95rem;
+}
+
+.prefs__sound svg {
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  margin: auto;
+  fill: currentColor;
+}
+
+.prefs__sound .prefs__waves {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  stroke-linecap: round;
 }
 
 /* ---------- Link symbol colours (issue #11) ---------- */

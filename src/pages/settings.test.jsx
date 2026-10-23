@@ -104,8 +104,8 @@ describe('settings page layout (issue #15)', () => {
 
   it('keeps every section in its own column whatever the skin', () => {
     render(<SettingsPage />);
-    // The background layers bottom up, then the skin: the beams and the rain start the second column.
-    const left = ['motion', 'nebula', 'stars', 'grid'];
+    // The background layers bottom up, then the skin: the beams and the rain start the second column; the sound ends the first.
+    const left = ['motion', 'nebula', 'stars', 'grid', 'sound'];
     const right = (options) => ['beams', 'rain', 'skin', options, 'theory'];
     expect(columns()).toEqual([left, right('glass')]);
     for (const [skin, options] of [

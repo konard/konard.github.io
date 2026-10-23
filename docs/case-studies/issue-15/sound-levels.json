@@ -1,0 +1,162 @@
+{
+  "quartz": {
+    "peak": 0.0108,
+    "rmsDb": -67.3,
+    "tail": 0.74
+  },
+  "cobalt": {
+    "peak": 0.0226,
+    "rmsDb": -58.3,
+    "tail": 0.92
+  },
+  "comet": {
+    "peak": 0.0259,
+    "rmsDb": -54.9,
+    "tail": 0.97
+  },
+  "ion": {
+    "peak": 0.0082,
+    "rmsDb": -71.2,
+    "tail": 0.65
+  },
+  "halo": {
+    "peak": 0.0135,
+    "rmsDb": -62.4,
+    "tail": 0.79
+  },
+  "tide": {
+    "peak": 0.0192,
+    "rmsDb": -56.3,
+    "tail": 0.93
+  },
+  "mica": {
+    "peak": 0.0374,
+    "rmsDb": -60.8,
+    "tail": 0.81
+  },
+  "nova": {
+    "peak": 0.0486,
+    "rmsDb": -49.8,
+    "tail": 1.08
+  },
+  "zephyr": {
+    "peak": 0.0391,
+    "rmsDb": -55.4,
+    "tail": 0.93
+  },
+  "ember": {
+    "peak": 0.0192,
+    "rmsDb": -63.6,
+    "tail": 0.81
+  },
+  "prism": {
+    "peak": 0.0255,
+    "rmsDb": -49,
+    "tail": 1.01
+  },
+  "glacier": {
+    "peak": 0.0363,
+    "rmsDb": -49.7,
+    "tail": 0.97
+  },
+  "pulsar": {
+    "peak": 0.0478,
+    "rmsDb": -45.9,
+    "tail": 1.02
+  },
+  "orbit": {
+    "peak": 0.0175,
+    "rmsDb": -63.3,
+    "tail": 0.77
+  },
+  "vapor": {
+    "peak": 0.0246,
+    "rmsDb": -59.1,
+    "tail": 0.84
+  },
+  "cinder": {
+    "peak": 0.0221,
+    "rmsDb": -66.8,
+    "tail": 0.64
+  },
+  "tungsten": {
+    "peak": 0.0192,
+    "rmsDb": -54.9,
+    "tail": 0.93
+  },
+  "helix": {
+    "peak": 0.0298,
+    "rmsDb": -52.6,
+    "tail": 1.04
+  },
+  "drift": {
+    "peak": 0.0127,
+    "rmsDb": -60.2,
+    "tail": 0.87
+  },
+  "basalt": {
+    "peak": 0.0326,
+    "rmsDb": -54,
+    "tail": 1.01
+  },
+  "flint": {
+    "peak": 0.0264,
+    "rmsDb": -69.5,
+    "tail": 0.66
+  },
+  "opal": {
+    "peak": 0.0304,
+    "rmsDb": -48.3,
+    "tail": 1.04
+  },
+  "lumen": {
+    "peak": 0.0448,
+    "rmsDb": -46.9,
+    "tail": 1.05
+  },
+  "sonar": {
+    "peak": 0.0212,
+    "rmsDb": -48.9,
+    "tail": 1.09
+  },
+  "vesper": {
+    "peak": 0.0369,
+    "rmsDb": -49.3,
+    "tail": 1.16
+  },
+  "relay": {
+    "peak": 0.0109,
+    "rmsDb": -71.2,
+    "tail": 0.63
+  },
+  "raindrop": {
+    "peak": 0.0162,
+    "rmsDb": -60.1,
+    "tail": 0.89
+  },
+  "link": {
+    "peak": 0.0284,
+    "rmsDb": -54.3,
+    "tail": 0.96
+  },
+  "glass": {
+    "peak": 0.0125,
+    "rmsDb": -61.4,
+    "tail": 0.79
+  },
+  "warp": {
+    "peak": 0.0186,
+    "rmsDb": -57.1,
+    "tail": 0.92
+  },
+  "byte": {
+    "peak": 0.0088,
+    "rmsDb": -66.3,
+    "tail": 0.69
+  },
+  "(all together ×4)": {
+    "peak": 0.459,
+    "rmsDb": -29.3,
+    "tail": 1.41
+  }
+}
