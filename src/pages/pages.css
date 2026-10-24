@@ -409,23 +409,66 @@
 }
 
 .symbols__grid li {
+  position: relative;
   display: grid;
-  justify-items: center;
-  padding: 0.3rem 0.2rem 0.4rem;
   border: 1px solid var(--border);
   border-radius: 10px;
   background: rgb(var(--panel-rgb) / calc(0.8 * var(--glass-level, 0.4)));
   color: var(--accent);
 }
 
-.symbols__grid li:hover {
+.symbols__grid li:hover,
+.symbols__grid li:focus-within {
   border-color: var(--accent);
   color: var(--text);
 }
 
-.symbols__grid svg {
+/* The whole card opens the page of the network (issue #17). */
+.symbols__card {
+  display: grid;
+  justify-items: center;
+  padding: 0.3rem 0.2rem 0.4rem;
+  border-radius: inherit;
+  color: inherit;
+  text-decoration: none;
+}
+
+.symbols__card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.symbols__card svg {
   width: 64px;
   height: 64px;
+}
+
+/* The share icon appears on hover (and on keyboard focus, so it can be reached without a mouse). */
+.symbols__share {
+  position: absolute;
+  top: 0.2rem;
+  right: 0.2rem;
+  display: grid;
+  place-items: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: rgb(var(--panel-rgb) / 0.85);
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.symbols__grid li:hover .symbols__share,
+.symbols__share:focus-visible {
+  opacity: 1;
+}
+
+.symbols__share:hover,
+.symbols__share:focus-visible {
+  border-color: var(--accent);
+  color: var(--text);
 }
 
 .symbols__grid span {

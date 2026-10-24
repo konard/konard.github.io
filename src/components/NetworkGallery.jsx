@@ -21,6 +21,23 @@ const superscript = (k) =>
     .split('')
     .map((d) => SUPERSCRIPTS[d])
     .join('');
+/** The page of one network (issue #17): /network/?code=0120. */
+export const networkHref = (code) => `/network/?code=${code.replace(/ /g, '')}`;
+
+/** Three joined circles: drawn with circles and lines only, so the symbols stay the only paths of a card. */
+function ShareIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
+      <g fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+        <line x1="8.6" y1="10.7" x2="15.4" y2="6.6" />
+        <line x1="8.6" y1="13.3" x2="15.4" y2="17.4" />
+        <circle cx="18" cy="5" r="3" />
+        <circle cx="6" cy="12" r="3" />
+        <circle cx="18" cy="19" r="3" />
+      </g>
+    </svg>
+  );
+}
 const LINKS = { en: ['link', 'links'], ru: ['связь', 'связи', 'связей'] };
 // "of N links": Russian needs the genitive after «из».
 const OF_LINKS = { en: ['link', 'links'], ru: ['связи', 'связей', 'связей'] };
@@ -129,8 +146,18 @@ export default function NetworkGallery({ initial = 2 }) {
       >
         {codes.map((code) => (
           <li key={code} title={linksNotation(code).join(' ')}>
-            <Glyph code={code} size={64} />
-            <span className="mono">{mathNotation(code)}</span>
+            <a className="symbols__card" href={networkHref(code)}>
+              <Glyph code={code} size={64} />
+              <span className="mono">{mathNotation(code)}</span>
+            </a>
+            <a
+              className="symbols__share"
+              href={`${networkHref(code)}#share`}
+              aria-label={`${t({ en: 'Share', ru: 'Поделиться' })} ${mathNotation(code)}`}
+              title={t({ en: 'Edit, download and share', ru: 'Изменить, скачать и поделиться' })}
+            >
+              <ShareIcon />
+            </a>
           </li>
         ))}
       </ul>

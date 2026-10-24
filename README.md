@@ -11,6 +11,11 @@ The site is in English and Russian, and has light and dark themes.
 `/cv/?role=<position>&style=<classic|compact|technical|academic>&lang=<en|ru>` shows a CV for one of 15 positions, or the full record without `role`.
 Its "Download PDF" button links to the PDF printed at deploy time, `/cv/pdf/konstantin-diachenko-<position>-<style>-<lang>.pdf`.
 
+`/art/#symbols` opens the gallery of link networks. Click a card to open
+`/network/?code=<pairs>`: edit its notations and links, style the SVG, reduce
+overlaps experimentally, and download or share the picture. Its URL preserves
+the network and image settings, including the theory notation.
+
 It is a React 19 app built with [Vite](https://vite.dev) and tested with [Vitest](https://vitest.dev), with hand-written SVG/CSS charts and no runtime API calls.
 All numbers come from data snapshots committed to the repository.
 
@@ -22,6 +27,7 @@ npm start          # dev server at http://localhost:3000
 npm run test:ci    # unit, data and workflow tests
 npm run check      # ESLint, Prettier, file size limits and secret scan
 npm run build      # production build in build/
+npm run test:network:browser # editor, layout, sharing and real image downloads (needs Chromium)
 npm run build:cv   # prints every CV of build/ to build/cv/pdf/ (needs `npx playwright install chromium`)
 ```
 
@@ -56,7 +62,8 @@ npm run build:data                       # writes src/data/github.json
 ## Deployment
 
 `.github/workflows/github-pages.yml` lints the workflows (actionlint), runs `npm run check` and `npm audit`, then the tests and the build, for pull requests and for pushes to `main`.
-The `test` job prints the CV PDFs into the build with `npm run build:cv`, then uploads the tested build as the GitHub Pages artifact.
+The `test` job checks the network editor and actual image downloads in Chromium,
+prints the CV PDFs with `npm run build:cv`, then uploads the tested build as the GitHub Pages artifact.
 On `main`, the `deploy` job publishes that artifact with `actions/deploy-pages`, then `scripts/check-deployed-site.sh` fails the run unless https://konard.github.io serves the app.
 
 GitHub Pages must be set to **Settings → Pages → Build and deployment → Source: GitHub Actions**.
@@ -70,3 +77,4 @@ Nothing is committed to `docs/`; it only holds the case studies.
 - [`issue-11`](docs/case-studies/issue-11/README.md): the experience synced with hh.ru, a CV per position in EN/RU, the PDF styles and the themes.
 - [`issue-13`](docs/case-studies/issue-13/README.md): the rain on Safari, the settings page, the liquid glass and futuristic skins, only real references, the full associative stack and the R → R² notation.
 - [`issue-15`](docs/case-studies/issue-15/README.md): the new defaults and a test that every setting is applied, the settings layout, the sound design, background layers, each corner of the futuristic frames, presets and saved looks, phones and every screen.
+- [`issue-17`](docs/case-studies/issue-17/README.md): the network editor, notation parsers, SVG styling, image downloads, share links and experimental overlap reduction, with browser screenshots.

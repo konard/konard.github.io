@@ -4,6 +4,7 @@ import { tr, useLang } from '../i18n/prefs';
 import { useNotation } from '../links/notation';
 import { plural } from '../i18n/plural';
 import Glyph from './Glyph';
+import { networkHref } from './NetworkGallery';
 
 const gh = (fullName) => `https://github.com/${fullName}`;
 // "a network of N links": Russian needs the genitive after «из».
@@ -55,7 +56,10 @@ export function NetworkExample({ example, random = Math.random }) {
         {t({
           en: `Every link is (index: source target), 0 is nothing; the math notation writes the same sources and targets as digits in base ${size + 1}. Click the symbol for another random network.`,
           ru: `Каждая связь — это (индекс: начало конец), 0 означает «ничего»; математическая нотация записывает те же начала и концы цифрами в системе счисления с основанием ${size + 1}. Нажмите на символ, чтобы увидеть другую случайную сеть.`,
-        })}
+        })}{' '}
+        <a className="theory__edit" href={networkHref(code)}>
+          {t({ en: 'Edit and share this network', ru: 'Изменить эту сеть и поделиться ею' })}
+        </a>
       </p>
     </div>
   );
