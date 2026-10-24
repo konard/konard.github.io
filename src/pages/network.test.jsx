@@ -61,6 +61,15 @@ describe('the address keeps the network and its picture (issue #17)', () => {
 });
 
 describe('NetworkPage (issue #17)', () => {
+  it('preserves an explicit page language in the address and shared link after editing', () => {
+    go('/network/?code=0120&lang=ru');
+    render(<NetworkPage />);
+    expect(new URLSearchParams(window.location.search).get('lang')).toBe('ru');
+    fireEvent.change(field('N-ary number'), { target: { value: '1122' } });
+    expect(window.location.search).toBe('?code=1122&lang=ru');
+    expect(field('Link to this picture')).toHaveValue(`${window.location.origin}/network/?code=1122&lang=ru`);
+  });
+
   it('opens the shared theory notation regardless of the receiving browser settings', () => {
     setSettings({ 'theory.notation': 'L' }, { save: false });
     go('/network/?code=0120&caption=theory&notation=R');

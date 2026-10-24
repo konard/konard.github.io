@@ -16,7 +16,7 @@ import {
   withColor,
   withTurns,
 } from '../links/style';
-import { useLang } from '../i18n/prefs';
+import { LANGS, useLang } from '../i18n/prefs';
 import { LinksTable, Notations, randomLinks, stepped } from './NetworkEditor';
 import NetworkShare from './NetworkShare';
 import { Looks, StyleSections } from './NetworkStyle';
@@ -38,9 +38,10 @@ export function readNetwork(search) {
   return { links: decode(code), style: styleFromParams(params) };
 }
 
-/** "?code=112212&…": the code without spaces, then only the options that differ from the defaults. */
-export function networkQuery(links, style) {
+/** "?code=112212&…": non-default image options and the explicit page language, if present. */
+export function networkQuery(links, style, lang = null) {
   const params = styleToParams(style);
+  if (LANGS.includes(lang)) params.set('lang', lang);
   return `?code=${encode(links).replace(/ /g, '')}${params.size ? `&${params}` : ''}`;
 }
 
@@ -54,7 +55,7 @@ export default function NetworkPage() {
   const setStyle = (next) => setStyleState(normalizeStyle(next));
   const n = links.length;
   const code = encode(links);
-  const query = networkQuery(links, style);
+  const query = networkQuery(links, style, new URLSearchParams(window.location.search).get('lang'));
 
   // The address always opens exactly this picture, without adding a history entry per change.
   useEffect(() => {
