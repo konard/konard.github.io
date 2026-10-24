@@ -38,8 +38,8 @@ try {
     reducedMotion: 'reduce',
   });
   await context.addInitScript(() => {
-    window.localStorage.setItem('theme', 'dark');
-    window.localStorage.setItem('lang', 'en');
+    if (!window.localStorage.getItem('theme')) window.localStorage.setItem('theme', 'dark');
+    if (!window.localStorage.getItem('lang')) window.localStorage.setItem('lang', 'en');
   });
   const page = await context.newPage();
   page.setDefaultTimeout(10000);
@@ -213,6 +213,7 @@ try {
   await page.emulateMedia({ colorScheme: 'light' });
   await page.evaluate(() => window.localStorage.setItem('theme', 'light'));
   await page.goto(`${base}/network/?code=221331`);
+  assert.equal(await page.locator('html').getAttribute('data-theme'), 'light');
   await shot(page, 'network-light');
   await noOverflow(page);
   assert.deepEqual(errors, [], 'no uncaught browser errors');
