@@ -42,16 +42,21 @@ export default function NetworkShare({ code, links, svg, style, url, text }) {
   // current link. Never share an image prepared for an older drawing.
   useEffect(() => {
     let cancelled = false;
+    let timer;
     prepared.current = null;
     if (canShare([new File([], 'network.png', { type: 'image/png' })])) {
-      rasterize(svg, { width: style.width, height: style.height, type: 'image/png' })
-        .then((blob) => {
-          if (!cancelled) prepared.current = { svg, blob };
-        })
-        .catch(() => {}); // Link sharing remains available if image conversion fails.
+      // Avoid rasterizing a large canvas for every input event in a drag.
+      timer = setTimeout(() => {
+        rasterize(svg, { width: style.width, height: style.height, type: 'image/png' })
+          .then((blob) => {
+            if (!cancelled) prepared.current = { svg, blob };
+          })
+          .catch(() => {}); // Link sharing remains available if image conversion fails.
+      }, 200);
     }
     return () => {
       cancelled = true;
+      clearTimeout(timer);
     };
   }, [svg, style.width, style.height]);
 

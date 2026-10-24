@@ -4,6 +4,7 @@
 // still reach everybody who did not change that particular setting. Other open
 // tabs of the site follow along through the `storage` event.
 import { useSyncExternalStore } from 'react';
+import { replaceAddress } from '../history';
 import { applySettings, normalize } from './apply';
 import { getLang } from '../i18n/prefs';
 import { CSS_RULES, DEFAULTS, RULES } from './schema';
@@ -96,7 +97,7 @@ export async function openSharedLook(before = getLang() === 'ru' ? 'До ссы�
   if (!browser || !window.location.hash.startsWith('#settings=')) return false;
   const { applyLook, cleanLook, getSaved, isLook, lookOfHash, setSaved, withSaved } = await import('./presets');
   const look = lookOfHash(window.location.hash);
-  window.history.replaceState(null, '', window.location.pathname + window.location.search);
+  replaceAddress(window.location.pathname + window.location.search);
   if (!look) return false;
   const mine = cleanLook(changesOf(current));
   if (Object.keys(mine).length && !isLook(look, current)) setSaved(withSaved(getSaved(), before, mine));
