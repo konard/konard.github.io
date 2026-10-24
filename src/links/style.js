@@ -10,22 +10,8 @@
 // values that differ from the defaults in the query string, so a shared link
 // opens exactly the picture that was shared.
 import { color, option, range, select, toggle } from '../settings/fields';
-import { COLORS, MARKERS, MAX_LINKS, SHAPE } from './glyph';
-
-const MARKER_NAMES = {
-  bar: ['Bar', 'Черта'],
-  arrow: ['Arrow', 'Стрелка'],
-  triangle: ['Triangle', 'Треугольник'],
-  tail: ['Tail (reversed arrow)', 'Хвост (обратная стрелка)'],
-  dot: ['Dot', 'Точка'],
-  circle: ['Ring', 'Кольцо'],
-  square: ['Square', 'Квадрат'],
-  diamond: ['Diamond', 'Ромб'],
-  none: ['None', 'Нет'],
-};
-const markers = MARKERS.map((m) => option(m, ...MARKER_NAMES[m]));
-const pointed = (key) => (style) => ['arrow', 'triangle', 'tail'].includes(style[key]);
-const shown = (key) => (style) => style[key] !== 'none';
+import { COLORS, SHAPE } from './glyph';
+import { GEOMETRY_SECTIONS } from './style-geometry';
 
 /** Link colours: the site's, and a few more sets of nine. */
 export const PALETTES = {
@@ -40,164 +26,12 @@ export const PALETTES = {
 
 /** Sections of the editor; each field is one option of the style. */
 export const STYLE_SECTIONS = [
-  {
-    id: 'shape',
-    title: { en: 'Shape of the links', ru: 'Форма связей' },
-    fields: [
-      select(
-        'angles',
-        SHAPE.angles,
-        [
-          option('mirror', 'Mirror the middle (as in the gallery)', 'Отражение середины (как в галерее)'),
-          option('fixed', 'Fixed angles', 'Заданные углы'),
-        ],
-        { en: 'Angles of the ends', ru: 'Углы концов' },
-        {
-          hint: {
-            en: 'At which angle a link leaves the link it starts from and comes to the link it refers to.',
-            ru: 'Под каким углом связь выходит из связи, с которой начинается, и приходит к связи, на которую ссылается.',
-          },
-        },
-      ),
-      range(
-        'sourceAngle',
-        SHAPE.sourceAngle,
-        -90,
-        90,
-        1,
-        { en: 'Leaving angle', ru: 'Угол выхода' },
-        {
-          unit: '°',
-          when: (s) => s.angles === 'fixed',
-        },
-      ),
-      range(
-        'targetAngle',
-        SHAPE.targetAngle,
-        -90,
-        90,
-        1,
-        { en: 'Entering angle', ru: 'Угол входа' },
-        {
-          unit: '°',
-          when: (s) => s.angles === 'fixed',
-        },
-      ),
-      toggle('lens', SHAPE.lens, {
-        en: 'Two references to one link make a lens',
-        ru: 'Две ссылки на одну связь образуют линзу',
-      }),
-      range('tension', SHAPE.tension, 0, 1, 0.01, { en: 'Curvature', ru: 'Изгиб' }, { unit: '%' }),
-      range(
-        'bulge',
-        SHAPE.bulge,
-        0,
-        90,
-        1,
-        { en: 'Bend of a single reference', ru: 'Отклонение одиночной ссылки' },
-        {
-          unit: '°',
-        },
-      ),
-      range('gap', SHAPE.gap, 0, 0.4, 0.01, { en: 'Gap before a middle', ru: 'Зазор перед серединой' }),
-      range(
-        'free',
-        SHAPE.free,
-        0.2,
-        3,
-        0.05,
-        { en: 'Length of a free end', ru: 'Длина свободного конца' },
-        {
-          unit: '×',
-        },
-      ),
-      range('loop', SHAPE.loop, 0.3, 2.5, 0.05, { en: 'Size of a loop', ru: 'Размер петли' }, { unit: '×' }),
-      range(
-        'spread',
-        SHAPE.spread,
-        0.5,
-        2.5,
-        0.05,
-        { en: 'Distance between links', ru: 'Расстояние между связями' },
-        {
-          unit: '×',
-        },
-      ),
-      range('rotation', SHAPE.rotation, 0, 359, 1, { en: 'Rotation', ru: 'Поворот' }, { unit: '°' }),
-      range('padding', SHAPE.padding, 0, 40, 1, { en: 'Margin', ru: 'Поля' }, { unit: '%' }),
-    ],
-  },
-  {
-    id: 'ends',
-    title: { en: 'Start, end and middle', ru: 'Начало, конец и середина' },
-    fields: [
-      select('start', SHAPE.start, markers, { en: 'Start of a link', ru: 'Начало связи' }),
-      range(
-        'startSize',
-        SHAPE.startSize,
-        0.5,
-        15,
-        0.1,
-        { en: 'Size of the start', ru: 'Размер начала' },
-        {
-          when: shown('start'),
-        },
-      ),
-      range(
-        'startAngle',
-        SHAPE.startAngle,
-        5,
-        85,
-        1,
-        { en: 'Angle of the start', ru: 'Угол начала' },
-        {
-          unit: '°',
-          when: pointed('start'),
-        },
-      ),
-      select('end', SHAPE.end, markers, { en: 'End of a link', ru: 'Конец связи' }),
-      range(
-        'endSize',
-        SHAPE.endSize,
-        0.5,
-        15,
-        0.1,
-        { en: 'Size of the end', ru: 'Размер конца' },
-        {
-          when: shown('end'),
-        },
-      ),
-      range(
-        'endAngle',
-        SHAPE.endAngle,
-        5,
-        85,
-        1,
-        { en: 'Angle of the end', ru: 'Угол конца' },
-        {
-          unit: '°',
-          when: pointed('end'),
-        },
-      ),
-      select('middle', SHAPE.middle, markers, { en: 'Middle of a link', ru: 'Середина связи' }),
-      range(
-        'middleSize',
-        SHAPE.middleSize,
-        0.5,
-        12,
-        0.1,
-        { en: 'Size of the middle', ru: 'Размер середины' },
-        {
-          when: shown('middle'),
-        },
-      ),
-    ],
-  },
+  ...GEOMETRY_SECTIONS,
   {
     id: 'lines',
     title: { en: 'Lines and colours', ru: 'Линии и цвета' },
     fields: [
-      range('strokeWidth', 2.4, 0.5, 10, 0.1, { en: 'Line width', ru: 'Толщина линий' }),
+      range('strokeWidth', 1.3, 0.5, 10, 0.1, { en: 'Line width', ru: 'Толщина линий' }),
       select(
         'dash',
         'solid',
@@ -222,7 +56,7 @@ export const STYLE_SECTIONS = [
       ),
       select(
         'linejoin',
-        'round',
+        'miter',
         [
           option('round', 'Round', 'Скруглённые'),
           option('miter', 'Sharp', 'Острые'),
@@ -234,7 +68,7 @@ export const STYLE_SECTIONS = [
       range('glow', 0, 0, 12, 0.5, { en: 'Glow', ru: 'Свечение' }),
       select(
         'palette',
-        'site',
+        'custom',
         [
           option('site', 'Site', 'Как на сайте'),
           option('neon', 'Neon', 'Неон'),
@@ -274,7 +108,7 @@ export const STYLE_SECTIONS = [
       ),
       color(
         'bgColor',
-        '#070b14',
+        '#000000',
         { en: 'Background colour', ru: 'Цвет фона' },
         {
           when: (s) => s.background !== 'transparent',
@@ -300,7 +134,7 @@ export const STYLE_SECTIONS = [
           when: (s) => s.background === 'linear',
         },
       ),
-      toggle('card', true, { en: 'Card around the symbol', ru: 'Карточка вокруг символа' }),
+      toggle('card', false, { en: 'Card around the symbol', ru: 'Карточка вокруг символа' }),
       color('cardColor', '#0d1220', { en: 'Card colour', ru: 'Цвет карточки' }, { when: (s) => s.card }),
       range(
         'cardOpacity',
@@ -430,8 +264,8 @@ export const STYLE_SECTIONS = [
     id: 'image',
     title: { en: 'Image size', ru: 'Размер изображения' },
     fields: [
-      range('width', 1024, 64, 4096, 1, { en: 'Width', ru: 'Ширина' }, { unit: 'px' }),
-      range('height', 1024, 64, 4096, 1, { en: 'Height', ru: 'Высота' }, { unit: 'px' }),
+      range('width', 2048, 64, 4096, 1, { en: 'Width', ru: 'Ширина' }, { unit: 'px' }),
+      range('height', 2048, 64, 4096, 1, { en: 'Height', ru: 'Высота' }, { unit: 'px' }),
       range('quality', 0.92, 0.5, 1, 0.01, { en: 'JPEG and WebP quality', ru: 'Качество JPEG и WebP' }, { unit: '%' }),
     ],
   },
@@ -452,7 +286,8 @@ export const STYLE_SECTIONS = [
 
 /** The options kept per link: its colour (with the own colours) and the turns of its ends. */
 const PER_LINK = [
-  { key: 'colors', type: 'list', d: '' },
+  { key: 'colors', type: 'list', d: '#ff2600,#00f900,#fffb00,#0433ff,#34d399,#fb923c,#60a5fa,#f87171,#a3e635' },
+  { key: 'gap', type: 'range', d: 0.08, min: 0, max: 0.4 },
   { key: 'turns', type: 'list', d: '' },
 ];
 
@@ -464,9 +299,7 @@ const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
 /** A per-link list "a,b,c" of colours, or of turns "source target". */
 function normalizeList(key, value) {
-  const items = String(value ?? '')
-    .split(',')
-    .slice(0, MAX_LINKS);
+  const items = String(value ?? '').split(',');
   if (key === 'colors')
     return items.every((c) => HEX.test(c.trim())) ? items.map((c) => c.trim().toLowerCase()).join(',') : '';
   const turns = items.map((item) =>
@@ -483,6 +316,7 @@ function normalizeList(key, value) {
 
 /** One value of a style checked against its field: the default if it is not valid. */
 function normalizeValue(field, value) {
+  if (value === undefined) return field.d;
   switch (field.type) {
     case 'range': {
       const number = typeof value === 'number' ? value : Number(value);
@@ -504,6 +338,8 @@ function normalizeValue(field, value) {
 
 /** A complete, valid style: every option of `raw` checked, the rest the defaults. */
 export function normalizeStyle(raw = {}) {
+  // Bookmarks from issue #17 used one gap for both references.
+  if (raw?.gap !== undefined) raw = { startGap: raw.gap, endGap: raw.gap, ...raw };
   return Object.fromEntries(STYLE_FIELDS.map((field) => [field.key, normalizeValue(field, raw?.[field.key])]));
 }
 
@@ -530,8 +366,9 @@ export function linkColors(style, n) {
   const own = style.colors ? style.colors.split(',') : [];
   return Array.from({ length: n }, (_, i) => {
     if (style.palette === 'mono') return style.monoColor;
-    if (style.palette === 'custom') return own[i] || COLORS[i];
-    return (PALETTES[style.palette] || COLORS)[i];
+    if (style.palette === 'custom') return own[i] || COLORS[i % COLORS.length];
+    const palette = PALETTES[style.palette] || COLORS;
+    return palette[i % palette.length];
   });
 }
 
@@ -547,7 +384,7 @@ export const withTurns = (style, turns) =>
 
 /** A style where link `i` has its own colour `value` (the other links keep the colours they had). */
 export function withColor(style, n, i, value) {
-  const colors = linkColors(style, Math.max(n, MAX_LINKS));
+  const colors = linkColors(style, Math.max(n, COLORS.length));
   colors[i] = value;
   return normalizeStyle({ ...style, palette: 'custom', colors: colors.join(',') });
 }
@@ -562,6 +399,7 @@ export function shapeOfStyle(style, n, extraTurns = null) {
       .filter((key) => key !== 'turns')
       .map((key) => [key, style[key]]),
     ['turns', turns],
+    ['strokeWidth', style.strokeWidth],
   ]);
 }
 
@@ -572,7 +410,23 @@ export function shapeOfStyle(style, n, extraTurns = null) {
  * gallery and a plain black background with only the links.
  */
 export const LOOKS = [
-  { id: 'card', label: { en: 'Card (as in the gallery)', ru: 'Карточка (как в галерее)' }, values: {} },
+  {
+    id: 'card',
+    label: { en: 'Card (as in the gallery)', ru: 'Карточка (как в галерее)' },
+    values: {
+      ...SHAPE,
+      startGap: SHAPE.gap,
+      endGap: SHAPE.gap,
+      gap: SHAPE.gap,
+      strokeWidth: 2.4,
+      linejoin: 'round',
+      palette: 'site',
+      colors: '',
+      card: true,
+      bgColor: '#070b14',
+      placement: 'circle',
+    },
+  },
   {
     id: 'black',
     label: { en: 'Plain black', ru: 'Просто чёрный' },

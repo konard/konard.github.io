@@ -11,7 +11,6 @@
 //
 // Parsers return `{ links }` or `{ error }`, where `error` is an `{ en, ru }` text.
 import { encode } from './configurations';
-import { MAX_LINKS } from './glyph';
 
 const SUBSCRIPTS = '₀₁₂₃₄₅₆₇₈₉';
 const toSubscript = (k) =>
@@ -23,23 +22,30 @@ const fromSubscripts = (text) => text.replace(/[₀-₉]/g, (c) => String(SUBSCR
 
 const fail = (en, ru) => ({ error: { en, ru } });
 
-/** `{ links }` if every link refers only to links 0..n of a network of 1–9 links, otherwise `{ error }`. */
+/** `{ links }` if every link refers only to links 0..n of a nonempty network, otherwise `{ error }`. */
 export function check(links) {
   const n = links.length;
   if (n < 1) return fail('A network needs at least one link.', 'В сети должна быть хотя бы одна связь.');
-  if (n > MAX_LINKS)
-    return fail(`At most ${MAX_LINKS} links can be drawn.`, `Нарисовать можно не больше ${MAX_LINKS} связей.`);
-  const bad = links.flat().find((ref) => !Number.isInteger(ref) || ref < 0 || ref > n);
-  if (bad !== undefined)
+  if (links.some((pair) => !Array.isArray(pair) || pair.length !== 2))
+    return fail('Each link needs a source and target.', 'Каждой связи нужны начало и конец.');
+  const refs = links.flat();
+  const badIndex = refs.findIndex((ref) => !Number.isInteger(ref) || ref < 0 || ref > n);
+  if (badIndex !== -1)
     return fail(
-      `A link refers to ${bad}, but there are only the links 0…${n}.`,
-      `Связь ссылается на ${bad}, а есть только связи 0…${n}.`,
+      `A link refers to ${refs[badIndex]}, but there are only the links 0…${n}.`,
+      `Связь ссылается на ${refs[badIndex]}, а есть только связи 0…${n}.`,
     );
   return { links };
 }
 
 /** The code ("01 20") of a network written as "0120", "01 20", "01-20" or "01.20"; null if it is not one. */
 export function parseCode(text) {
+  if (/^\d+,\d+(;\d+,\d+)*$/.test(String(text))) {
+    const links = String(text)
+      .split(';')
+      .map((pair) => pair.split(',').map(Number));
+    return check(links).links ? encode(links) : null;
+  }
   const digits = String(text ?? '').replace(/[\s._-]/g, '');
   if (!/^\d+$/.test(digits) || digits.length % 2) return null;
   const links = digits.match(/../g).map((pair) => [Number(pair[0]), Number(pair[1])]);
@@ -51,7 +57,22 @@ export function parseNumber(text) {
   const raw = String(text).trim();
   const suffix = raw.match(/(?:([₀-₉]+)|_(\d+))$/);
   const base = suffix ? Number(fromSubscripts(suffix[1] || suffix[2])) : null;
-  const digits = raw.slice(0, suffix ? suffix.index : raw.length).replace(/[\s.-]/g, '');
+  const body = raw.slice(0, suffix ? suffix.index : raw.length);
+  if (/^\[\s*\d+(?:[\s,]+\d+)*\s*\]$/.test(body)) {
+    const digits = body
+      .slice(1, -1)
+      .trim()
+      .split(/[\s,]+/)
+      .map(Number);
+    if (digits.length % 2) return fail('Every link needs two digits.', 'Каждой связи нужны две цифры.');
+    if (base !== null && base !== digits.length / 2 + 1)
+      return fail(
+        'The base must be the number of links plus one.',
+        'Основание должно быть на единицу больше числа связей.',
+      );
+    return check(Array.from({ length: digits.length / 2 }, (_, i) => digits.slice(2 * i, 2 * i + 2)));
+  }
+  const digits = body.replace(/[\s.-]/g, '');
   if (!/^\d+$/.test(digits))
     return fail('Write the digits of the number, e.g. 0120₃.', 'Запишите цифры числа, например 0120₃.');
   if (digits.length % 2)
@@ -81,8 +102,13 @@ export function parseIndex(text, n) {
   const index = /^\d+$/.test(raw) ? BigInt(raw) : -1n;
   if (index < 0n || index >= count)
     return fail(`Write a whole number from 0 to ${count - 1n}.`, `Запишите целое число от 0 до ${count - 1n}.`);
-  const digits = index.toString(n + 1).padStart(2 * n, '0');
-  return check(digits.match(/../g).map((pair) => [Number(pair[0]), Number(pair[1])]));
+  let remainder = index;
+  const digits = new Array(2 * n).fill(0);
+  for (let k = digits.length - 1; k >= 0; k--) {
+    digits[k] = Number(remainder % BigInt(n + 1));
+    remainder /= BigInt(n + 1);
+  }
+  return check(Array.from({ length: n }, (_, i) => digits.slice(2 * i, 2 * i + 2)));
 }
 
 /**
@@ -122,6 +148,16 @@ function byNames(items) {
  * without the names), or the pairs with base subscripts "01₃ 20₃".
  */
 export function parseMath(text) {
+  if (/^[\d(),\s₀-₉]+$/.test(String(text)) && String(text).includes('(') && /[₀-₉]/.test(String(text))) {
+    const pattern = /\(\s*(\d+)\s*,\s*(\d+)\s*\)([₀-₉]+)/g;
+    const found = [...String(text).matchAll(pattern)];
+    if (
+      String(text).replace(pattern, '').trim() ||
+      found.some((p) => Number(fromSubscripts(p[3])) !== found.length + 1)
+    )
+      return fail('Every pair must have the network base.', 'У каждой пары должно быть основание сети.');
+    return check(found.map((p) => [Number(p[1]), Number(p[2])]));
+  }
   const raw = String(text)
     .trim()
     .replace(/^(?:λ|N²)\s*=\s*/, '');
@@ -160,7 +196,8 @@ export const theoryNotation = (links, notation = 'L') =>
   `${functionOf(notation)} = {${links.map(([s, t], i) => `${i + 1} ↦ (${s}, ${t})`).join(', ')}}`;
 
 /** "0120₃". */
-export const numberNotation = (links) => `${encode(links).replace(/ /g, '')}${toSubscript(links.length + 1)}`;
+export const numberNotation = (links) =>
+  `${links.length > 9 ? `[${links.flat().join(' ')}]` : encode(links).replace(/ /g, '')}${toSubscript(links.length + 1)}`;
 
 /** The decimal value of the N-ary number (a string): the position of the network among those of its size. */
 export const decimalOf = (links) =>
@@ -173,7 +210,7 @@ export const decimalOf = (links) =>
 export const linksText = (links, separator = ' ') => links.map(([s, t], i) => `(${i + 1}: ${s} ${t})`).join(separator);
 
 /** A new link (n + 1: 0 0), which refers to nothing yet. */
-export const addLink = (links) => (links.length >= MAX_LINKS ? links : [...links, [0, 0]]);
+export const addLink = (links) => [...links, [0, 0]];
 
 /**
  * Removes link `k` (1-based): references to it become references to 0, and

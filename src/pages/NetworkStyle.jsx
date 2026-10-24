@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { formatValue } from '../settings/fields';
 import { LOOKS, SIZES, STYLE_DEFAULTS, STYLE_SECTIONS, applyLook, normalizeStyle } from '../links/style';
+import { geometryAvailable } from '../links/style-geometry';
 import { useLang } from '../i18n/prefs';
 
 const SAVED_KEY = 'network.styles';
@@ -194,7 +195,7 @@ export function Looks({ style, onStyle }) {
 }
 
 /** Every option of the picture, section by section (issue #17). */
-export function StyleSections({ style, onStyle, children = null, only = null }) {
+export function StyleSections({ style, onStyle, children = null, only = null, links = null }) {
   const { t } = useLang();
   const set = (key, value) => onStyle(normalizeStyle({ ...style, [key]: value }));
   return STYLE_SECTIONS.filter((section) => !only || only.includes(section.id)).map((section) => {
@@ -225,7 +226,7 @@ export function StyleSections({ style, onStyle, children = null, only = null }) 
         {section.lead && <p className="settings__lead">{t(section.lead)}</p>}
         <ul className="settings__fields">
           {section.fields
-            .filter((field) => !field.when || field.when(style))
+            .filter((field) => (!field.when || field.when(style)) && geometryAvailable(field.key, style, links))
             .map((field) => (
               <Control
                 key={field.key}

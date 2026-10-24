@@ -166,7 +166,7 @@ export default function NetworkPage() {
               </p>
               <Looks style={style} onStyle={setStyle} />
               <div className="network__styles">
-                <StyleSections style={style} onStyle={setStyle}>
+                <StyleSections links={links} style={style} onStyle={setStyle}>
                   <div className="network__actions">
                     <button type="button" className="button button--small" onClick={applySolved}>
                       {t({ en: 'Write the turns into the table of links', ru: 'Записать повороты в таблицу связей' })}

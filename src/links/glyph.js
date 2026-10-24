@@ -1,8 +1,8 @@
-// Draws a network of 1–9 doublet links as one symbol, after the blueprint of
+// Draws a finite network of doublet links as one symbol, after the blueprint of
 // github.com/konard/links-visuals: every link is ONE continuous curve in its
 // own colour. It starts with a bar at its source, passes through its own
-// middle and ends with an arrow at its target; nothing interrupts the line in
-// the middle. Other links refer to a link by touching its middle. A reference
+// middle and ends with an arrow at its target; optional middle cuts are off
+// by default. Other links refer to a link by touching its middle. A reference
 // to 0 (nothing) is a free end, a reference to the link itself is a loop that
 // returns to its own middle, so (1: 1 1) is a symmetric figure eight (∞).
 //
@@ -15,11 +15,12 @@
 // the shapes of its start, end and middle, and turn each end on its own. The
 // defaults in SHAPE draw exactly the symbols of the gallery and the rain.
 
+import { trimCurve } from './curve-tools';
+import { placeLinks } from './placement';
+
 export const SIZE = 100;
 export const STROKE = 2.4;
-/** The most links a symbol draws: a code has one digit per reference, so its base n + 1 is at most 10. */
-export const MAX_LINKS = 9;
-/** One colour per real link: link 1, 2, 3, 4 (the gallery), then 5–9 for the editor. */
+/** Gallery colours; the editor cycles this palette beyond nine links. */
 export const COLORS = [
   '#22d3ee',
   '#c084fc',
@@ -45,12 +46,22 @@ export const MARKERS = ['bar', 'arrow', 'triangle', 'tail', 'dot', 'circle', 'sq
  * (neighbouring middles are 1 apart) unless they say SIZE units, angles in degrees.
  */
 export const SHAPE = {
+  placement: 'circle',
+  layoutAspect: 1,
+  columns: 0,
+  forceDistance: 1,
+  forceCharge: 0.6,
+  forceCollision: 0.6,
   rotation: 0, // turns the whole layout
   spread: 1, // distance between the middles, relative to the lengths of free ends and loops
   padding: 9, // free margin around the drawing, in SIZE units
   tension: 0.38, // how far a reference bends out, relative to the distance it spans
   bulge: 20, // how much a lone reference bends aside
   gap: 0.07, // ends stop this far from the middle they touch
+  startGap: null, // independent reference gaps; null keeps the legacy shared gap
+  endGap: null,
+  middleGapStart: 0, // optional cuts on either side of this link's own middle, SIZE units
+  middleGapEnd: 0,
   free: 1, // length of a free end (a reference to nothing), × the default
   loop: 1, // size of a self-reference loop, × the default
   lens: true, // a link that refers twice to the same link meets it at 45° (a lens)
@@ -65,6 +76,16 @@ export const SHAPE = {
   endAngle: 28,
   middle: 'none',
   middleSize: 2.2,
+  middleAngle: 30,
+  startOffset: 0, // marker displacement along the tangent, in SIZE units (positive is inward)
+  endOffset: 0,
+  middleOffset: 0,
+  startAcross: 0, // displacement across the tangent, in SIZE units
+  endAcross: 0,
+  middleAcross: 0,
+  startRotation: 0, // marker rotation independent of the line, in degrees
+  endRotation: 0,
+  middleRotation: 0,
   turns: [], // [source, target] turn of each link's ends in degrees, set by hand or by solveCollisions
 };
 
@@ -92,15 +113,7 @@ const reflect = (d, c) => sub(mul(c, 2 * dot(d, c)), d);
 const lens = (dir, chord, twice) => (twice ? unit(add(dir, chord)) : dir);
 
 /** Middles of the links (layout units) and the outward direction of each. */
-export function layout(n, { rotation = 0, spread = 1 } = {}) {
-  if (n === 1) return [{ at: [0, 0], out: rotate([0, -1], rotation * RAD) }];
-  const radius = (spread * 0.5) / Math.sin(Math.PI / n);
-  const start = (n === 2 ? Math.PI : n === 4 ? (-3 * Math.PI) / 4 : -Math.PI / 2) + rotation * RAD;
-  return Array.from({ length: n }, (_, i) => {
-    const out = [Math.cos(start + (2 * Math.PI * i) / n), Math.sin(start + (2 * Math.PI * i) / n)];
-    return { at: mul(out, radius), out };
-  });
-}
+export const layout = (n, options = {}, links = null) => placeLinks(n, options, links);
 
 /** Picks the side ±perp(d) whose loop, with axis between side and `away`, points outward. */
 function side(d, away, out) {
@@ -122,7 +135,7 @@ function approach(d, chord, twice, angle, o) {
 }
 
 /** The cubic segments of link `i` (0-based) and its two ends, in layout units. */
-function linkCurve(links, i, places, o) {
+export function linkCurve(links, i, places, o) {
   const n = links.length;
   const [s, t] = links[i];
   const { at: m, out } = places[i];
@@ -131,7 +144,8 @@ function linkCurve(links, i, places, o) {
   const loop = (n === 1 ? LONE.loop : LOOP) * o.loop;
   const [turnIn, turnOut] = (o.turns[i] || [0, 0]).map((a) => (a || 0) * RAD);
   const bulge = o.bulge * RAD;
-  const gap = o.gap;
+  const startGap = o.startGap ?? o.gap;
+  const endGap = o.endGap ?? o.gap;
   const tangent = rotate(out, Math.PI / 2);
   const tIn = other(s) ? unit(sub(m, places[s - 1].at)) : null;
   const tOut = other(t) ? unit(sub(places[t - 1].at, m)) : null;
@@ -142,8 +156,8 @@ function linkCurve(links, i, places, o) {
     const sum = add(tIn, tOut);
     d = length(sum) < 1e-9 ? side(tOut, [0, 0], out) : unit(sum);
   } else if (tIn || tOut) d = rotate(tIn || tOut, bulge);
-  else if (s && t) d = rotate(tangent, Math.PI / 4);
-  else d = tangent;
+  else if (s && t) d = rotate(tangent, Math.PI / 4 + bulge - SHAPE.bulge * RAD);
+  else d = rotate(tangent, bulge - SHAPE.bulge * RAD);
 
   let first;
   let start;
@@ -154,16 +168,22 @@ function linkCurve(links, i, places, o) {
     start = { at: from, dir };
   } else if (s === i + 1) {
     // A loop that leaves the middle sideways and comes back through it.
-    const away = rotate(t === i + 1 ? rotate(d, Math.PI / 2) : side(d, mul(d, -1), out), turnIn);
-    const from = add(m, mul(away, gap));
-    first = [from, add(m, mul(away, loop)), sub(m, mul(d, loop)), m];
+    const angle = o.angles === 'fixed' ? (o.sourceAngle - SHAPE.sourceAngle) * RAD : 0;
+    const away = rotate(t === i + 1 ? rotate(d, Math.PI / 2) : side(d, mul(d, -1), out), turnIn + angle);
+    const from = add(m, mul(away, startGap));
+    first = [
+      from,
+      add(m, mul(away, Math.max(loop, startGap + 0.01))),
+      sub(m, mul(d, (loop * Math.max(0.03, o.tension)) / SHAPE.tension)),
+      m,
+    ];
     start = { at: from, dir: away };
   } else {
     const p = places[s - 1].at;
     const chord = unit(sub(m, p));
     const dir = rotate(approach(d, chord, s === t, o.sourceAngle, o), turnIn);
     const k = o.tension * length(sub(m, p));
-    const from = add(p, mul(dir, gap));
+    const from = add(p, mul(dir, startGap));
     first = [from, add(from, mul(dir, k)), sub(m, mul(d, k)), m];
     start = { at: from, dir };
   }
@@ -177,16 +197,22 @@ function linkCurve(links, i, places, o) {
     end = { at: to, dir };
   } else if (t === i + 1) {
     // Point-symmetric to the source loop, so (1: 1 1) is an even ∞.
-    const away = rotate(s === i + 1 ? rotate(d, -Math.PI / 2) : side(d, d, out), turnOut);
-    const to = add(m, mul(away, gap));
-    second = [m, add(m, mul(d, loop)), add(m, mul(away, loop)), to];
+    const angle = o.angles === 'fixed' ? (o.targetAngle - SHAPE.targetAngle) * RAD : 0;
+    const away = rotate(s === i + 1 ? rotate(d, -Math.PI / 2) : side(d, d, out), turnOut - angle);
+    const to = add(m, mul(away, endGap));
+    second = [
+      m,
+      add(m, mul(d, (loop * Math.max(0.03, o.tension)) / SHAPE.tension)),
+      add(m, mul(away, Math.max(loop, endGap + 0.01))),
+      to,
+    ];
     end = { at: to, dir: mul(away, -1) };
   } else {
     const q = places[t - 1].at;
     const chord = unit(sub(q, m));
     const dir = rotate(approach(d, chord, s === t, o.targetAngle, o), turnOut);
     const k = o.tension * length(sub(q, m));
-    const to = sub(q, mul(dir, gap));
+    const to = sub(q, mul(dir, endGap));
     second = [m, add(m, mul(d, k)), sub(to, mul(dir, k)), to];
     end = { at: to, dir };
   }
@@ -205,22 +231,33 @@ export const shapeOf = (shape = {}) => ({ ...SHAPE, ...shape, turns: shape.turns
 /** The curves of every link in layout units, before they are scaled into the box. */
 export function layoutCurves(links, shape = {}) {
   const n = links.length;
-  if (n < 1 || n > MAX_LINKS) throw new RangeError(`A symbol draws 1–${MAX_LINKS} links, got ${n}`);
+  if (n < 1) throw new RangeError('A symbol needs at least one link');
   const o = shapeOf(shape);
-  const places = layout(n, o);
+  const places = layout(n, o, links);
   return links.map((_, i) => linkCurve(links, i, places, o));
 }
 
 /** The curves of every link, already scaled into the SIZE box. */
 export function glyphCurves(links, shape = {}) {
   const curves = layoutCurves(links, shape);
-  const pad = shapeOf(shape).padding;
+  const o = shapeOf(shape);
+  const markerRoom = Math.max(
+    ...['start', 'end', 'middle'].map((key) =>
+      o[key] === 'none' ? 0 : o[`${key}Size`] + Math.hypot(o[`${key}Offset`], o[`${key}Across`]),
+    ),
+  );
+  const pad = Math.min(48, Math.max(o.padding, markerRoom + (o.strokeWidth || 0) / 2));
   const points = curves.flatMap((c) =>
     c.segments.flatMap((seg) => Array.from({ length: 17 }, (_, k) => bezier(seg, k / 16))),
   );
   const xs = points.map((p) => p[0]);
   const ys = points.map((p) => p[1]);
-  const [minX, maxX, minY, maxY] = [Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys)];
+  const [minX, maxX, minY, maxY] = [
+    xs.reduce((a, b) => Math.min(a, b), Infinity),
+    xs.reduce((a, b) => Math.max(a, b), -Infinity),
+    ys.reduce((a, b) => Math.min(a, b), Infinity),
+    ys.reduce((a, b) => Math.max(a, b), -Infinity),
+  ];
   const scale = Math.min(SCALE, (SIZE - 2 * pad) / Math.max(maxX - minX, maxY - minY, 1e-9));
   const shift = [SIZE / 2 - ((minX + maxX) / 2) * scale, SIZE / 2 - ((minY + maxY) / 2) * scale];
   const place = (p) => add(mul(p, scale), shift);
@@ -293,13 +330,30 @@ export function marker(kind, at, dir, size, angle) {
 /** The parts of every link: its line and the shapes of its start, end and middle (`{ d, fill }`). */
 export function glyphParts(links, shape = {}) {
   const o = shapeOf(shape);
-  return glyphCurves(links, o).map(({ segments, start, end, middle }, i) => ({
-    line: `M${fmt(segments[0][0])}` + segments.map((seg) => `C${seg.slice(1).map(fmt).join(' ')}`).join(''),
-    start: marker(o.start, start.at, start.dir, o.startSize, o.startAngle),
-    end: marker(o.end, end.at, end.dir, o.endSize, o.endAngle),
-    middle: marker(o.middle, middle.at, middle.dir, o.middleSize, 30),
-    color: COLORS[i],
-  }));
+  const mark = (key, point) => {
+    const direction = key === 'end' ? -1 : 1;
+    const at = add(
+      add(point.at, mul(point.dir, direction * o[`${key}Offset`])),
+      mul(rotate(point.dir, Math.PI / 2), o[`${key}Across`]),
+    );
+    return marker(o[key], at, rotate(point.dir, o[`${key}Rotation`] * RAD), o[`${key}Size`], o[`${key}Angle`]);
+  };
+  return glyphCurves(links, o).map(({ segments, start, end, middle }, i) => {
+    const split = o.middleGapStart > 0 || o.middleGapEnd > 0;
+    const visible = [trimCurve(segments[0], o.middleGapStart), trimCurve(segments[1], o.middleGapEnd, true)].filter(
+      Boolean,
+    );
+    const line = split
+      ? visible.map((seg) => `M${fmt(seg[0])}C${seg.slice(1).map(fmt).join(' ')}`).join('')
+      : `M${fmt(segments[0][0])}` + segments.map((seg) => `C${seg.slice(1).map(fmt).join(' ')}`).join('');
+    return {
+      line,
+      start: mark('start', start),
+      end: mark('end', end),
+      middle: mark('middle', middle),
+      color: COLORS[i % COLORS.length],
+    };
+  });
 }
 
 /** One SVG path per link: the continuous line, the source bar and the target arrow. */

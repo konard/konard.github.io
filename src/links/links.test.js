@@ -205,10 +205,10 @@ describe('network symbols (issue #9 link visuals)', () => {
     });
   });
 
-  test('1–9 links fit into a symbol (the editor of issue #17 draws up to 9)', () => {
+  test('arbitrary finite link counts fit into a symbol', () => {
     expect(() => glyphPaths([])).toThrow(RangeError);
     expect(glyphPaths(decode('00 00 00 00 00')).length).toBeGreaterThan(0);
     expect(() => glyphPaths(Array.from({ length: 9 }, () => [0, 0]))).not.toThrow();
-    expect(() => glyphPaths(Array.from({ length: 10 }, () => [0, 0]))).toThrow(RangeError);
+    expect(glyphPaths(Array.from({ length: 100 }, () => [0, 0]))).toHaveLength(100);
   });
 });

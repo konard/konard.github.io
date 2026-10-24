@@ -7,6 +7,7 @@
     "@fontsource/electrolize": "^5.3.0",
     "@fontsource/orbitron": "^5.3.0",
     "@fontsource/share-tech-mono": "^5.3.0",
+    "d3-force": "^3.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
@@ -17,6 +18,7 @@
     "test": "vitest",
     "test:ci": "vitest run",
     "test:network:browser": "node experiments/network-e2e.mjs",
+    "test:network:issue19": "node experiments/issue-19-browser.mjs",
     "lint": "eslint . --max-warnings=0",
     "format": "prettier --write .",
     "format:check": "prettier --check .",

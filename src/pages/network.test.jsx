@@ -54,7 +54,7 @@ describe('the address keeps the network and its picture (issue #17)', () => {
     const { links, style } = readNetwork('?code=0120&card=false&end=dot');
     expect(links).toEqual(decode('01 20'));
     expect(style).toEqual(normalizeStyle({ card: false, end: 'dot' }));
-    expect(networkQuery(links, style)).toBe('?code=0120&end=dot&card=false');
+    expect(networkQuery(links, style)).toBe('?code=0120&end=dot');
     expect(networkQuery(links, STYLE_DEFAULTS)).toBe('?code=0120');
   });
 
@@ -136,7 +136,7 @@ describe('NetworkPage (issue #17)', () => {
     expect(field('Pairs with the base')).toHaveValue('01₄ 22₄ 00₄');
     fireEvent.change(screen.getByLabelText('Link 3: colour'), { target: { value: '#ff0000' } });
     expect(preview().innerHTML).toContain('#ff0000');
-    expect(search()).toContain('palette=custom');
+    expect(new URLSearchParams(search()).get('colors')).toContain('#ff0000');
     fireEvent.change(screen.getByLabelText('Link 2: turn of the target, °'), { target: { value: '30' } });
     expect(new URLSearchParams(search()).get('turns')).toBe('0 0,0 30');
     fireEvent.click(screen.getByRole('button', { name: 'Remove: Link 1' }));
@@ -150,13 +150,14 @@ describe('NetworkPage (issue #17)', () => {
   it('switches between the card and a plain black background, and every option changes the picture', () => {
     go('/network/?code=0120');
     render(<NetworkPage />);
-    expect(preview().innerHTML).toContain(STYLE_DEFAULTS.cardColor);
+    expect(preview().innerHTML).not.toContain(STYLE_DEFAULTS.cardColor);
     fireEvent.click(screen.getByRole('button', { name: 'Plain black' }));
     expect(preview().innerHTML).not.toContain(STYLE_DEFAULTS.cardColor);
     expect(preview().innerHTML).toContain('fill="#000000"');
-    expect(search()).toContain('card=false');
+    expect(new URLSearchParams(search()).get('card')).toBeNull();
     fireEvent.click(screen.getByRole('button', { name: 'Card (as in the gallery)' }));
-    expect(search()).toBe('?code=0120');
+    expect(new URLSearchParams(search()).get('card')).toBe('true');
+    expect(preview().innerHTML).toContain(STYLE_DEFAULTS.cardColor);
 
     fireEvent.change(screen.getByLabelText('End of a link'), { target: { value: 'dot' } });
     expect(search()).toContain('end=dot');
@@ -200,6 +201,6 @@ describe('NetworkPage (issue #17)', () => {
     expect(JSON.parse(localStorage.getItem('network.styles'))[0].name).toBe('Mine');
     fireEvent.click(screen.getByRole('button', { name: 'Card (as in the gallery)' }));
     fireEvent.click(screen.getByRole('button', { name: 'Mine' }));
-    expect(search()).toContain('card=false');
+    expect(new URLSearchParams(search()).get('card')).toBeNull();
   });
 });
