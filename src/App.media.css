@@ -12,8 +12,10 @@
 }
 
 @media (max-width: 720px) {
+  /* The row of section links stays on phones (it held only the ↑ before): it
+     scrolls sideways, like the row of pages. */
   .nav ul {
-    display: none;
+    min-width: 0;
   }
 
   .hero {

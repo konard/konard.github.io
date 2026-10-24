@@ -236,6 +236,47 @@
   background: rgb(var(--accent-rgb) / 0.12);
 }
 
+/* A row of links that scrolls sideways fades out at an edge with more links behind it
+   (data-more, set by components/edges.js), at any width. */
+.pages ul[data-more],
+.nav ul[data-more] {
+  --fade-left: #000;
+  --fade-right: #000;
+  mask-image: linear-gradient(90deg, var(--fade-left), #000 2rem, #000 calc(100% - 2rem), var(--fade-right));
+}
+
+.pages ul[data-more~='left'],
+.nav ul[data-more~='left'] {
+  --fade-left: transparent;
+}
+
+.pages ul[data-more~='right'],
+.nav ul[data-more~='right'] {
+  --fade-right: transparent;
+}
+
+/* On a phone the eight pages do not fit next to the name and the switches (issue #15:
+   only one and a half links were seen): they get a row of their own, which scrolls
+   sideways. */
+@media (max-width: 720px) {
+  .topbar__row {
+    flex-wrap: wrap;
+    row-gap: 0.35rem;
+    column-gap: 0.75rem;
+    padding-bottom: 0.4rem;
+  }
+
+  .pages {
+    order: 3;
+    flex: 1 0 100%;
+    margin: 0 -0.5rem;
+  }
+
+  .pages a {
+    padding: 0.3rem 0.65rem;
+  }
+}
+
 .nav__top {
   color: var(--muted);
   padding: 0 0.35rem;

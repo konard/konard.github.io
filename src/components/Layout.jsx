@@ -14,7 +14,9 @@ import '../skins.liquid.css';
 import '../skins.future.css';
 // Responsive and print overrides must come last.
 import '../App.media.css';
+import { useEffect, useRef } from 'react';
 import { motto } from '../data/motto';
+import { centreCurrent, watchEdges } from './edges';
 import { PAGES } from '../pages/pages';
 import { useLang } from '../i18n/prefs';
 import { useNotation } from '../links/notation';
@@ -31,6 +33,15 @@ import Sound from './Sound';
 export default function Layout({ page, sections = null, children, footer = null }) {
   const { t } = useLang();
   const { n } = useNotation();
+  const pages = useRef(null);
+  const sectionList = useRef(null);
+  const hasSections = Boolean(sections);
+  // On a narrow screen the lists of pages and sections scroll sideways: show the current
+  // page and fade the edges that have more links behind them.
+  useEffect(() => {
+    if (pages.current) centreCurrent(pages.current);
+    return watchEdges([pages.current, sectionList.current].filter(Boolean));
+  }, [page, hasSections]);
   return (
     <div className="app">
       <Cosmos />
@@ -42,7 +53,7 @@ export default function Layout({ page, sections = null, children, footer = null 
             konard<span className="nav__cursor">_</span>
           </a>
           <nav className="pages" aria-label="Pages">
-            <ul>
+            <ul ref={pages}>
               {PAGES.map((p) => (
                 <li key={p.id}>
                   <a href={p.href} aria-current={p.id === page ? 'page' : undefined}>
@@ -59,7 +70,7 @@ export default function Layout({ page, sections = null, children, footer = null 
             <a className="nav__top mono" href="#top" aria-label={t({ en: 'Back to top', ru: 'Наверх' })}>
               ↑
             </a>
-            <ul>
+            <ul ref={sectionList}>
               {sections.map(([id, label]) => (
                 <li key={id}>
                   <a href={`#${id}`}>{t(label)}</a>

@@ -1,0 +1,34 @@
+FAIL dark  360 / 0 2 pages seen in the top bar
+FAIL dark  360 /research/ 0 the current page is hidden in the top bar, 2 pages seen in the top bar
+FAIL dark  360 /blog/ 0 the current page is hidden in the top bar, 2 pages seen in the top bar
+ok   dark  768 /
+ok   dark  768 /research/
+FAIL dark  768 /blog/ 0 the current page is hidden in the top bar
+ok   dark 1280 /
+ok   dark 1280 /research/
+ok   dark 1280 /blog/
+ok   dark 1920 /
+ok   dark 1920 /research/
+ok   dark 1920 /blog/
+FAIL light  360 / 0 2 pages seen in the top bar
+FAIL light  360 /research/ 0 the current page is hidden in the top bar, 2 pages seen in the top bar
+FAIL light  360 /blog/ 0 the current page is hidden in the top bar, 2 pages seen in the top bar
+ok   light  768 /
+ok   light  768 /research/
+FAIL light  768 /blog/ 0 the current page is hidden in the top bar
+ok   light 1280 /
+ok   light 1280 /research/
+ok   light 1280 /blog/
+ok   light 1920 /
+ok   light 1920 /research/
+ok   light 1920 /blog/
+
+8 problems:
+dark  360 /: scrolls 0px; 2 pages seen in the top bar
+dark  360 /research/: scrolls 0px; the current page is hidden in the top bar, 2 pages seen in the top bar
+dark  360 /blog/: scrolls 0px; the current page is hidden in the top bar, 2 pages seen in the top bar
+dark  768 /blog/: scrolls 0px; the current page is hidden in the top bar
+light  360 /: scrolls 0px; 2 pages seen in the top bar
+light  360 /research/: scrolls 0px; the current page is hidden in the top bar, 2 pages seen in the top bar
+light  360 /blog/: scrolls 0px; the current page is hidden in the top bar, 2 pages seen in the top bar
+light  768 /blog/: scrolls 0px; the current page is hidden in the top bar
