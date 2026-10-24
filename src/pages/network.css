@@ -1,0 +1,333 @@
+/* ---------- The page of one network (issue #17) ---------- */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.network__code {
+  color: var(--accent);
+  font-size: 0.8em;
+}
+
+.network__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  align-items: start;
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+/* The picture stays in sight while the network is edited. */
+.network__view {
+  position: sticky;
+  top: 7.5rem;
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  min-width: 0;
+}
+
+.network__preview {
+  width: 100%;
+  max-height: 70vh;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.network__preview svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* A transparent picture is shown on a checkerboard, as image editors do. */
+.network__preview.is-transparent {
+  background: repeating-conic-gradient(#8884 0% 25%, transparent 0% 50%) 0 0 / 16px 16px;
+}
+
+.network__view figcaption {
+  color: var(--text-2);
+  font-size: 0.85rem;
+  overflow-wrap: anywhere;
+}
+
+.network__score {
+  color: var(--accent);
+}
+
+.network__panels {
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.network__panel {
+  min-width: 0;
+  padding: 1.1rem 1.2rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: rgb(var(--panel-rgb) / calc(0.82 * var(--glass-level, 0.4)));
+  scroll-margin-top: 7rem;
+}
+
+.network__panel h2,
+.settings__head h3 {
+  margin: 0 0 0.6rem;
+  font-size: 1.15rem;
+}
+
+.settings__head h3 {
+  margin: 0;
+}
+
+.network__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.8rem 0 0;
+}
+
+/* ---------- Notations ---------- */
+
+.notations {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.notations > p {
+  margin: 0;
+  font-size: 0.88rem;
+}
+
+.notation {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.notation label {
+  color: var(--text-2);
+  font-size: 0.85rem;
+}
+
+.notation input,
+.notation textarea,
+.looks input,
+.network-share__url input {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.95rem;
+}
+
+.notation textarea {
+  resize: vertical;
+}
+
+.notation input:focus-visible,
+.notation textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.notation.is-invalid input,
+.notation.is-invalid textarea {
+  border-color: var(--accent-3);
+}
+
+.notation__hint {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.notation__error {
+  color: var(--accent-3);
+  font-size: 0.8rem;
+}
+
+/* ---------- Links one by one ---------- */
+
+.links-table__scroll {
+  overflow-x: auto;
+}
+
+.links-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.links-table th,
+.links-table td {
+  padding: 0.3rem 0.35rem;
+  border-top: 1px solid var(--border);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.links-table thead th {
+  border-top: 0;
+  color: var(--text-2);
+  font-weight: 500;
+}
+
+.links-table__swatch {
+  display: inline-block;
+  width: 0.7rem;
+  height: 0.7rem;
+  margin-right: 0.4rem;
+  border-radius: 50%;
+  vertical-align: -0.05em;
+}
+
+.links-table select,
+.links-table input[type='number'] {
+  padding: 0.25rem 0.35rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+}
+
+.links-table input[type='number'] {
+  width: 4.2rem;
+}
+
+.links-table input[type='color'] {
+  width: 2.2rem;
+  height: 1.6rem;
+  padding: 0;
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  background: none;
+}
+
+/* ---------- Looks and options of the picture ---------- */
+
+.looks {
+  display: grid;
+  gap: 0.8rem;
+  margin-top: 1.2rem;
+}
+
+.looks__row,
+.looks__saved,
+.looks__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.looks__saved input {
+  width: auto;
+  flex: 0 1 16rem;
+}
+
+.looks__size select {
+  padding: 0.3rem 0.5rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+}
+
+.looks__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.looks__list li {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.network__styles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
+  align-items: start;
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+
+/* A text option takes the place of a select. */
+.setting__input input[type='text'] {
+  flex: 1;
+  min-width: 0;
+  padding: 0.35rem 0.5rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+}
+
+/* ---------- Save and share ---------- */
+
+.network-share {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.network-share .network__actions:first-child {
+  margin-top: 0;
+}
+
+.network-share .muted {
+  margin: 0.5rem 0 0;
+  font-size: 0.82rem;
+}
+
+.network-share__url {
+  display: grid;
+  gap: 0.25rem;
+  margin: 0.8rem 0 0;
+  font-size: 0.85rem;
+  color: var(--text-2);
+}
+
+.network-share__targets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0.8rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.network-share__status {
+  min-height: 1.2em;
+  margin: 0.4rem 0 0;
+  color: var(--accent);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 900px) {
+  .network__layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* On a narrow screen the picture comes first, above the editors. */
+  .network__view {
+    position: static;
+  }
+
+  .network__preview {
+    max-width: 28rem;
+    margin: 0 auto;
+  }
+}
