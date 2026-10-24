@@ -143,8 +143,7 @@ try {
   }
   passed('both complete issue example URLs');
 
-  // Real trusted clipboard click. Read back using another user gesture, so
-  // Firefox/WebKit may apply their native paste permission UI.
+  // Real trusted clipboard click; success requires the native write to resolve.
   await page.goto(`${base}/network/?code=11&width=512&height=512`);
   if (await page.getByRole('button', { name: 'Copy the image', exact: true }).isEnabled()) {
     if (engine === 'chromium') await context.grantPermissions(['clipboard-read', 'clipboard-write']);

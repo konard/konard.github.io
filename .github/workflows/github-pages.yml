@@ -156,6 +156,8 @@ jobs:
         run: npm run build
 
       - name: Install the browser
+        # package.json pins 1.63.0: 1.64.x's Linux WebKit stalls on glass panels.
+        # https://github.com/microsoft/playwright/issues/43426
         run: npx playwright install --with-deps "$ENGINE"
 
       - name: Verify existing editor features and image downloads

@@ -1,0 +1,31 @@
+{
+  "playwrightIssue": "https://github.com/microsoft/playwright/issues/43426",
+  "webkitIssue": "https://bugs.webkit.org/show_bug.cgi?id=327850",
+  "affected": {
+    "playwright": "1.64.1",
+    "webkitRevision": "2370",
+    "platform": "Linux"
+  },
+  "verifiedWorkaround": {
+    "playwright": "1.63.0",
+    "webkitRevision": "2359"
+  },
+  "gallery": {
+    "cards": 81,
+    "backdrop": "blur(3px) saturate(1)",
+    "seconds": 6.44,
+    "peakProcessTreeRssBytes": 1019383808
+  },
+  "failedCi": {
+    "run": 40128898256,
+    "sha": "ce4a35152cdbc0b1a9c86ced55261c8040447bf5",
+    "createdAt": "2026-10-24T20:14:38Z",
+    "shutdownAt": "2026-10-24T20:25:56Z",
+    "errorLogLines": [
+      1518,
+      1519
+    ],
+    "runnerOomConfirmed": false
+  },
+  "upstreamResearch": "Existing maintainer reports include reproduction and source investigation. Initial non-overlap fix is insufficient for overlap; restoring the old recursion guard reintroduces compositing errors. Use unaffected stable release until a complete fix ships."
+}
