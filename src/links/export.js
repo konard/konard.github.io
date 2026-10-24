@@ -5,7 +5,7 @@
 // that open the share dialogs of social networks.
 
 /** "links-network-01-20.png". */
-export const fileName = (code, ext) => `links-network-${code.replace(/ /g, '-')}.${ext}`;
+export const fileName = (code, ext) => `links-network-${code.replace(/[ ;,]/g, '-').slice(0, 160)}.${ext}`;
 
 export const svgBlob = (svg) => new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
 
@@ -34,7 +34,12 @@ export function rasterize(svg, { width, height, type = 'image/png', quality = 0.
           context.fillRect(0, 0, width, height);
         }
         context.drawImage(image, 0, 0, width, height);
-        canvas.toBlob((blob) => (blob ? resolve(blob) : reject(new Error(`${type} is not supported`))), type, quality);
+        canvas.toBlob(
+          (blob) =>
+            blob?.type === type ? resolve(blob) : reject(new Error(`${type} is not supported; use PNG instead`)),
+          type,
+          quality,
+        );
       } catch (error) {
         reject(error);
       } finally {
@@ -61,15 +66,29 @@ export function download(blob, name) {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
-export const copyText = (text) => navigator.clipboard.writeText(text);
+export const canCopyText = () => Boolean(navigator.clipboard?.writeText);
+export const canCopyImage = () =>
+  typeof ClipboardItem !== 'undefined' &&
+  Boolean(navigator.clipboard?.write) &&
+  (!ClipboardItem.supports || ClipboardItem.supports('image/png'));
+export const copyText = (text) =>
+  canCopyText() ? navigator.clipboard.writeText(text) : Promise.reject(new Error('Select and copy the link manually'));
 
 /** Copies an image blob (PNG: the format every clipboard takes). */
 export function copyImage(blob) {
-  if (typeof ClipboardItem === 'undefined' || !navigator.clipboard?.write)
-    return Promise.reject(new Error('Images cannot be copied in this browser'));
+  if (!canCopyImage()) {
+    // The caller may already have started conversion; consume a rejection too.
+    Promise.resolve(blob).catch(() => {});
+    return Promise.reject(new Error('Images cannot be copied in this browser; download PNG instead'));
+  }
   // Call write during the click, before rasterization resolves. Safari otherwise
   // loses user activation across the canvas/image async boundary (WebKit #222262).
-  return navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+  try {
+    return navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+  } catch (error) {
+    Promise.resolve(blob).catch(() => {});
+    return Promise.reject(error);
+  }
 }
 
 /** Whether the system share sheet can share `files` (or just a link without them). */
