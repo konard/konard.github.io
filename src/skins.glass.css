@@ -1,0 +1,105 @@
+/* ---------- Glass skin (issue #15) ----------
+   The default skin. Before issue #15 only some panels had the blur behind
+   them, so "Blur behind panels" did nothing to page cards, Habr cards, the
+   language cloud, the theory panels and others; now every panel of the site
+   (the same list as the liquid and futuristic skins) gets the same glass. */
+
+:root[data-skin-name='glass'] {
+  --border: rgb(var(--line-rgb) / var(--glass-edge, 0.14));
+  --gl-filter: blur(var(--glass-blur, 3px)) saturate(calc(var(--glass-saturation, 100) / 100));
+  --gl-shadow: 0 0 0 transparent;
+  --gl-light: 0 0 0 transparent;
+}
+
+:root[data-skin-name='glass'][data-glass-shadow='soft'] {
+  --gl-shadow: 0 8px 24px rgb(0 0 0 / 0.22);
+}
+
+:root[data-skin-name='glass'][data-glass-shadow='deep'] {
+  --gl-shadow: 0 18px 48px rgb(0 0 0 / 0.45);
+}
+
+:root[data-skin-name='glass'][data-glass-highlight='true'] {
+  --gl-light: inset 0 1px 0 rgb(255 255 255 / 0.14);
+}
+
+@media screen {
+  :root[data-skin-name='glass']
+    :is(
+      .card,
+      .chart,
+      .registry,
+      .project,
+      .skills__group,
+      .org,
+      .step,
+      .stat,
+      .position,
+      .ps-note,
+      .social,
+      .cloud,
+      .habr-card,
+      .page-card,
+      .psd,
+      .theory__formulas li,
+      .theory__hero,
+      .theory__network,
+      .version,
+      .filters,
+      .page-stats li,
+      .post,
+      .repo,
+      .field-card,
+      .stack__layer,
+      .symbols__grid li,
+      .settings__group
+    ) {
+    border-radius: var(--radius);
+    backdrop-filter: var(--gl-filter);
+  }
+
+  /* Shadows and the light on the upper edge, only when they are chosen, so the
+     hover glow of cards stays as it is otherwise. */
+  :root[data-skin-name='glass']:is(
+      [data-glass-shadow='soft'],
+      [data-glass-shadow='deep'],
+      [data-glass-highlight='true']
+    )
+    :is(
+      .card,
+      .chart,
+      .registry,
+      .project,
+      .skills__group,
+      .org,
+      .step,
+      .stat,
+      .position,
+      .ps-note,
+      .social,
+      .cloud,
+      .habr-card,
+      .page-card,
+      .psd,
+      .theory__formulas li,
+      .theory__hero,
+      .theory__network,
+      .version,
+      .filters,
+      .page-stats li,
+      .post,
+      .repo,
+      .field-card,
+      .stack__layer,
+      .symbols__grid li,
+      .settings__group
+    ) {
+    box-shadow: var(--gl-light), var(--gl-shadow);
+  }
+
+  /* Nested panels (repositories inside a stack layer or a page card) do not
+     blur twice: one blur behind the outer panel is enough and much cheaper. */
+  :root[data-skin-name='glass'] :is(.stack__layer, .page-card, .theory__hero) .repo {
+    backdrop-filter: none;
+  }
+}

@@ -2,6 +2,7 @@
 // gas nebula (domain-warped fractal noise) with twinkling stars. It renders at
 // a reduced resolution because the nebula is soft anyway, and falls back to
 // the CSS gradient behind the canvas where WebGL is unavailable.
+import { governor } from './governor';
 import { pixelRatio, watchSize } from './size';
 
 const VERTEX = `
@@ -22,6 +23,15 @@ uniform float hue;
 uniform float density;
 uniform float shine;
 uniform float vignette;
+// Issue #15: colours of the gas (dark, blue, pink, bright), the colour and the
+// size of the stars, and the zoom of the gas clouds.
+uniform vec3 c1;
+uniform vec3 c2;
+uniform vec3 c3;
+uniform vec3 c4;
+uniform vec3 starColor;
+uniform float starSize;
+uniform float zoom;
 
 float hash(vec2 p) {
   p = fract(p * vec2(123.34, 456.21));
@@ -47,30 +57,30 @@ float stars(vec2 frag, float size, float share, float speed) {
   vec2 g = frag / size;
   vec2 id = floor(g);
   float h = hash(id);
-  float on = step(1.0 - share * density, h);
+  float on = step(1.0 - min(1.0, share * density * starSize * starSize), h);
   vec2 offset = vec2(hash(id + 3.1), hash(id + 7.7)) - 0.5;
   float d = length(fract(g) - 0.5 - offset * 0.6);
   float twinkle = 0.55 + 0.45 * sin(tw * speed + h * 90.0);
   return on * twinkle * smoothstep(0.32, 0.0, d);
 }
 void main() {
-  vec2 uv = (gl_FragCoord.xy - 0.5 * r) / r.y;
+  vec2 uv = (gl_FragCoord.xy - 0.5 * r) / r.y / zoom;
   vec2 q = vec2(fbm(uv * 1.5 + t * 0.008), fbm(uv * 1.5 + vec2(5.2, 1.3) - t * 0.01));
   vec2 w = vec2(fbm(uv * 1.5 + 3.0 * q + vec2(1.7, 9.2) + t * 0.006), fbm(uv * 1.5 + 3.0 * q + vec2(8.3, 2.8)));
   float n = fbm(uv * 1.8 + 2.5 * w);
   vec3 col = vec3(0.012, 0.02, 0.05);
-  col = mix(col, vec3(0.13, 0.06, 0.32), smoothstep(0.35, 0.85, n));
-  col = mix(col, vec3(0.03, 0.42, 0.52), smoothstep(0.5, 1.0, n * w.x * 1.7));
-  col += vec3(0.65, 0.2, 0.5) * pow(smoothstep(0.55, 1.0, n * q.y * 1.9), 2.0) * 0.55;
-  col += vec3(0.9, 0.85, 1.0) * pow(smoothstep(0.75, 1.05, n * w.y * 1.6), 3.0) * 0.35;
+  col = mix(col, c1, smoothstep(0.35, 0.85, n));
+  col = mix(col, c2, smoothstep(0.5, 1.0, n * w.x * 1.7));
+  col += c3 * pow(smoothstep(0.55, 1.0, n * q.y * 1.9), 2.0) * 0.55;
+  col += c4 * pow(smoothstep(0.75, 1.05, n * w.y * 1.6), 3.0) * 0.35;
   col = max(rotateHue(col, hue), 0.0) * gas;
   // Darken the edges and the middle a bit so text on top stays readable.
   col *= 1.0 - vignette + vignette * smoothstep(1.3, 0.1, length(uv - vec2(0.35, 0.15)));
-  vec2 f = gl_FragCoord.xy / px;
+  vec2 f = gl_FragCoord.xy / px / starSize;
   vec3 sky = vec3(0.85, 0.92, 1.0) * stars(f, 3.0, 0.004, 1.3) * 0.8;
   sky += vec3(1.0) * stars(f + 17.0, 7.0, 0.006, 0.7);
   sky += vec3(0.7, 0.85, 1.0) * stars(f + 41.0, 19.0, 0.02, 0.4) * 1.2;
-  gl_FragColor = vec4(col + sky * shine, 1.0);
+  gl_FragColor = vec4(col + sky * starColor * shine, 1.0);
 }
 `;
 
@@ -94,7 +104,17 @@ export const NEBULA = {
   starBrightness: 1,
   twinkle: 1,
   vignette: 0.5,
+  zoom: 1,
+  starSize: 1,
+  starColor: '#ffffff',
+  color1: '#210f52',
+  color2: '#086b85',
+  color3: '#a63380',
+  color4: '#e6d9ff',
 };
+
+/** `#rrggbb` as three numbers from 0 to 1, for a vec3 uniform. */
+export const rgbOf = (hex) => [1, 3, 5].map((at) => parseInt(String(hex).slice(at, at + 2), 16) / 255 || 0);
 
 /**
  * Starts the nebula on `canvas`; returns a stop function whose `update(options)`
@@ -136,6 +156,15 @@ export function startNebula(canvas, options = {}) {
     [uniform('density'), () => o.stars],
     [uniform('shine'), () => o.starBrightness],
     [uniform('vignette'), () => o.vignette],
+    [uniform('zoom'), () => o.zoom],
+    [uniform('starSize'), () => o.starSize],
+  ];
+  const colours = [
+    [uniform('c1'), () => o.color1],
+    [uniform('c2'), () => o.color2],
+    [uniform('c3'), () => o.color3],
+    [uniform('c4'), () => o.color4],
+    [uniform('starColor'), () => o.starColor],
   ];
   // A random start makes every visit show a different part of the universe.
   // The nebula and the stars keep their own clocks, so both speeds can change
@@ -144,8 +173,10 @@ export function startNebula(canvas, options = {}) {
   let twinkle = time;
   let clock = performance.now();
 
+  // Lowers the resolution, then the frame rate, on a device that cannot keep up (issue #15).
+  const watch = governor();
   const resize = () => {
-    const ratio = pixelRatio() * o.scale;
+    const ratio = pixelRatio() * o.scale * watch.state.scale;
     canvas.width = Math.round((canvas.clientWidth || window.innerWidth) * ratio);
     canvas.height = Math.round((canvas.clientHeight || window.innerHeight) * ratio);
     gl.viewport(0, 0, canvas.width, canvas.height);
@@ -162,14 +193,18 @@ export function startNebula(canvas, options = {}) {
     gl.uniform1f(uT, time);
     gl.uniform1f(uTw, twinkle);
     looks.forEach(([location, value]) => gl.uniform1f(location, value()));
+    colours.forEach(([location, value]) => gl.uniform3f(location, ...rgbOf(value())));
     gl.drawArrays(gl.TRIANGLES, 0, 3);
   };
 
   let frame = 0;
   let last = 0;
+  let previous = 0;
   const loop = (now) => {
     frame = requestAnimationFrame(loop);
-    if (document.hidden || now - last < 1000 / o.fps) return;
+    if (watch(now - previous)) resize();
+    previous = now;
+    if (document.hidden || now - last < 1000 / (o.fps * watch.state.fps)) return;
     last = now;
     render(now);
   };

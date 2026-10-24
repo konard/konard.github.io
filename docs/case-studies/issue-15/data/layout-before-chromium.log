@@ -1,0 +1,7 @@
+glass: columns {"130":["motion","nebula","grid","share"],"728":["rain","skin","glass","theory"]}
+  column tops 432, 432 (difference 0 px), sideways overflow 0 px
+liquid: columns {"130":["motion","nebula","grid","rain","share"],"728":["skin","liquid","theory"]}
+  column tops 446, 446 (difference 0 px), sideways overflow 0 px
+futuristic: columns {"130":["motion","nebula","grid","rain","share"],"728":["skin","futuristic","theory"]}
+  column tops 416, 416 (difference 0 px), sideways overflow 0 px
+sections that change their column between glass and liquid: rain

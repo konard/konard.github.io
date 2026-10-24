@@ -6,7 +6,7 @@ import { setLang } from '../i18n/prefs';
 import { startNebula } from '../visuals/nebula';
 import { isReal } from '../links/configurations';
 import { resetSettings, setSettings } from '../settings/store';
-import { columnsFor, driftAt, pickerFor, startRain } from '../visuals/rain';
+import { columnsFor, driftAt, paddingFor, pickerFor, startRain } from '../visuals/rain';
 import Cosmos, { moves, nebulaOptions, rainOptions } from './Cosmos';
 import { DEFAULTS } from '../settings/schema';
 import HabrCards from './HabrCards';
@@ -201,17 +201,18 @@ describe('background follows the settings at once (issue #13)', () => {
     expect(moves('off', false)).toBe(false);
   });
 
-  it('turns the default settings into the options the layers always had', () => {
+  it('turns the default settings (issue #15) into the options of the layers', () => {
     expect(rainOptions(DEFAULTS, true)).toMatchObject({
-      grid: 64,
-      period: 24000,
-      step: 75,
-      fade: 0.085,
-      glow: 8,
-      glowColor: '#f0fffb',
-      lineWidth: 5.5,
-      speeds: 3,
-      density: 1,
+      grid: 48,
+      period: 109000,
+      step: 105,
+      fade: 0.075,
+      glow: 4,
+      glowColor: '#00a3d7',
+      lineWidth: 1,
+      padding: 0,
+      speeds: 2,
+      density: 0.5,
       restart: 0.05,
       visible: true,
     });
@@ -219,13 +220,21 @@ describe('background follows the settings at once (issue #13)', () => {
     expect(nebulaOptions(DEFAULTS)).toEqual({
       scale: 0.6,
       fps: 24,
-      speed: 1,
-      gas: 1,
-      hue: 0,
-      stars: 1,
-      starBrightness: 1,
-      twinkle: 1,
-      vignette: 0.5,
+      speed: 0.5,
+      gas: 0.35,
+      hue: 25,
+      stars: 1.2,
+      starBrightness: 0.8,
+      twinkle: 0.3,
+      vignette: 0.3,
+      // Issue #15: the colours of the gas are those the shader had before they became settings.
+      zoom: 1,
+      starSize: 1,
+      starColor: '#ffffff',
+      color1: '#210f52',
+      color2: '#086b85',
+      color3: '#a63380',
+      color4: '#e6d9ff',
     });
   });
 
@@ -262,6 +271,39 @@ describe('background follows the settings at once (issue #13)', () => {
     vi.advanceTimersByTime(3000);
     expect(calls.moves.length).toBe(drawn);
     expect(calls.fades.at(-1)).toBe('rgba(0, 0, 0, 1)');
+    stop();
+  });
+
+  it('keeps the glow the same size in CSS pixels on high-density screens (issue #15)', () => {
+    vi.useFakeTimers();
+    vi.stubGlobal('Path2D', class {});
+    vi.stubGlobal('devicePixelRatio', 2);
+    const { ctx, calls } = recorder();
+    const canvas = { getContext: () => ctx, clientWidth: 320, clientHeight: 400, style: {} };
+    const stop = startRain(canvas, { glow: 4, random: () => 0.5 });
+    vi.advanceTimersByTime(75 * 60);
+    // shadowBlur ignores the canvas transform, so 4 CSS pixels are 8 device pixels here.
+    expect(calls.glows.at(-1)).toBe(8);
+    stop();
+  });
+
+  it('keeps the chosen space around every symbol, never more than the cell allows (issue #15)', () => {
+    expect(paddingFor(24, 0)).toBe(0);
+    expect(paddingFor(24, 3)).toBe(3);
+    expect(paddingFor(24, 16)).toBe(9);
+    vi.stubGlobal('Path2D', class {});
+    const { ctx, calls } = recorder();
+    const scales = [];
+    ctx.scale = (x) => scales.push(x);
+    const canvas = { getContext: () => ctx, clientWidth: 640, clientHeight: 480, style: {} };
+    const stop = startRain(canvas, { animate: false, grid: 48, padding: 4 });
+    expect(calls.moves.length).toBeGreaterThan(10);
+    calls.moves.forEach(([x, y]) => {
+      expect((x - 4) % 24).toBe(0);
+      expect((y - 4) % 24).toBe(0);
+    });
+    // A symbol is 24 − 2 × 4 = 16 pixels of the 100 units it is drawn in.
+    expect(scales.at(-1)).toBeCloseTo(0.16);
     stop();
   });
 

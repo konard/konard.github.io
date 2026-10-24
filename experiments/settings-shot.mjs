@@ -4,15 +4,17 @@
 //   node experiments/settings-shot.mjs <path> '<settings JSON>' <out.png> [light|dark] [scrollY|full] [width]
 //
 // e.g. node experiments/settings-shot.mjs / '{"skin.name":"liquid"}' liquid.png dark
+// ENGINE=webkit or ENGINE=firefox takes another browser engine instead of Chromium.
+// PEEK=1 hides the page over the background, to show the background alone (issue #15).
 // Needs `npm run build` and `npx vite preview --port 4173` (BASE overrides the URL).
 // Prints the console errors of the page, so a broken page fails loudly.
 /* global document, window */
-import { chromium } from 'playwright';
+import { chromium, firefox, webkit } from 'playwright';
 
 const [path = '/', json = '{}', out = 'shot.png', theme = 'dark', scroll = '0', width = '1280'] = process.argv.slice(2);
 const base = process.env.BASE || 'http://localhost:4173';
 
-const browser = await chromium.launch();
+const browser = await { chromium, firefox, webkit }[process.env.ENGINE || 'chromium'].launch();
 const page = await browser.newPage({ viewport: { width: Number(width), height: 900 }, colorScheme: theme });
 const errors = [];
 page.on('pageerror', (error) => errors.push(error.message));
@@ -28,6 +30,7 @@ await page.addInitScript(
   [json, theme],
 );
 await page.goto(`${base}${path}`);
+if (process.env.PEEK) await page.addStyleTag({ content: 'main, .topbar, .footer { visibility: hidden; }' });
 await page.waitForTimeout(2500);
 if (scroll !== 'full' && Number(scroll)) {
   await page.evaluate((y) => window.scrollTo(0, y), Number(scroll));

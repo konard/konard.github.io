@@ -1,19 +1,25 @@
 /* ---------- Settings page (issue #13) ---------- */
 
 .settings__groups {
-  columns: 2 30rem;
-  column-gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 1rem;
   margin-top: 2rem;
 }
 
+.settings__column {
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+}
+
 .settings__group {
-  break-inside: avoid;
-  margin-bottom: 1rem;
+  min-width: 0;
   padding: 1.1rem 1.2rem 1.2rem;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: rgb(var(--panel-rgb) / calc(0.82 * var(--glass-level, 1)));
-  backdrop-filter: blur(var(--glass-blur, 6px));
+  background: rgb(var(--panel-rgb) / calc(0.82 * var(--glass-level, 0.4)));
   scroll-margin-top: 7rem;
 }
 
@@ -43,11 +49,49 @@
   list-style: none;
 }
 
+/* label | control | value | reset; a select or a switch takes the value column too. */
+/* Tabs of the star layers (issue #15). */
+.settings__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.8rem;
+}
+
+.settings__tab {
+  padding: 0.3rem 0.75rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: none;
+  color: var(--text-2);
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.settings__tab[aria-selected='true'] {
+  border-color: var(--accent);
+  color: var(--text);
+  background: rgb(var(--accent-rgb) / 0.14);
+}
+
+.settings__tab.is-on::after {
+  content: '';
+  display: inline-block;
+  width: 0.45rem;
+  height: 0.45rem;
+  margin-left: 0.45rem;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 6px var(--accent);
+  vertical-align: 0.1em;
+}
+
 .setting {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 4.4rem 1.7rem;
   align-items: center;
-  gap: 0.15rem 0.8rem;
+  gap: 0.15rem 0.6rem;
   padding: 0.35rem 0;
   border-top: 1px solid var(--border);
   font-size: 0.88rem;
@@ -76,8 +120,14 @@
 .setting__input {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
   min-width: 0;
+  min-height: 1.8rem;
+}
+
+.setting--select .setting__input,
+.setting--toggle .setting__input,
+.setting--tiles .setting__input {
+  grid-column: 2 / 4;
 }
 
 .setting__input input[type='range'] {
@@ -89,7 +139,7 @@
 .setting__input input[type='checkbox'] {
   width: 1.1rem;
   height: 1.1rem;
-  margin: 0 auto 0 0;
+  margin: 0;
   accent-color: var(--accent);
 }
 
@@ -113,16 +163,12 @@
   font: inherit;
 }
 
-.setting__input output {
-  min-width: 4.2rem;
+.setting__value {
+  overflow: hidden;
   color: var(--accent);
   font-size: 0.8rem;
   text-align: right;
-}
-
-.setting--color output {
-  margin-right: auto;
-  text-align: left;
+  white-space: nowrap;
 }
 
 .setting__reset {
@@ -138,6 +184,30 @@
 
 .setting__reset:disabled {
   visibility: hidden;
+}
+
+/* ▶ next to a sound (issue #15): plays it. */
+.setting__play {
+  flex: none;
+  width: 1.8rem;
+  height: 1.8rem;
+  margin-left: 0.4rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 50%;
+  background: none;
+  color: var(--accent);
+  font-size: 0.7rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.setting__play:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+.setting__play:disabled {
+  opacity: 0.35;
+  cursor: default;
 }
 
 .setting__hint {
@@ -167,8 +237,69 @@
   outline-offset: 2px;
 }
 
+/* Tiles with a preview of each corner of the custom frame (issue #15). */
+.corner-tiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  padding: 0.15rem 0;
+}
+
+.corner-tile {
+  display: grid;
+  place-items: center;
+  width: 2.3rem;
+  height: 2.3rem;
+  padding: 0.15rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: rgb(var(--deep-rgb) / 0.35);
+  color: var(--text-2);
+  cursor: pointer;
+}
+
+.corner-tile:hover {
+  border-color: var(--border-strong);
+}
+
+.corner-tile[aria-checked='true'] {
+  border-color: var(--accent);
+  background: rgb(var(--accent-rgb) / 0.14);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.corner-tile__svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.corner-tile__fill {
+  fill: rgb(var(--accent-rgb) / 0.08);
+}
+
+.corner-tile__edge,
+.corner-tile__accent {
+  fill: none;
+  stroke-linecap: square;
+}
+
+.corner-tile__edge {
+  stroke: rgb(var(--accent-rgb) / 0.45);
+  stroke-width: 1.2;
+}
+
+.corner-tile__accent {
+  stroke: var(--accent);
+  stroke-width: 2.4;
+}
+
+.corner-tiles__same {
+  margin-top: 0.7rem;
+}
+
 .settings__share {
-  column-span: all;
+  grid-column: 1 / -1;
 }
 
 .settings__json {
@@ -234,8 +365,25 @@
   transition: opacity 0.3s;
 }
 
+@media (max-width: 60rem) {
+  .settings__groups {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Phones: the label above, the control, value and reset below it. */
 @media (max-width: 560px) {
   .setting {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr) 4.4rem 1.7rem;
+  }
+
+  .setting label {
+    grid-column: 1 / -1;
+  }
+
+  .setting--select .setting__input,
+  .setting--toggle .setting__input,
+  .setting--tiles .setting__input {
+    grid-column: 1 / 3;
   }
 }

@@ -6,6 +6,31 @@ import { changesOf, getSettings, loadSettings, resetSettings, setSettings, STORA
 
 const root = document.documentElement;
 
+/** The changes the author of issue #15 copied from the settings page; they became the defaults. */
+const ISSUE_15 = {
+  'nebula.level': 0.5,
+  'nebula.speed': 0.5,
+  'nebula.gas': 0.35,
+  'nebula.hue': 25,
+  'nebula.stars': 1.2,
+  'nebula.starBrightness': 0.8,
+  'nebula.twinkle': 0.3,
+  'nebula.vignette': 0.3,
+  'grid.size': 48,
+  'grid.period': 109,
+  'rain.level': 0.75,
+  'rain.step': 105,
+  'rain.speeds': 2,
+  'rain.density': 0.5,
+  'rain.fade': 0.075,
+  'rain.lineWidth': 1,
+  'rain.glow': 4,
+  'rain.glowColor': '#00a3d7',
+  'glass.level': 0.4,
+  'glass.blur': 3,
+  'glass.radius': 10,
+};
+
 describe('settings schema (issue #13)', () => {
   it('has unique keys whose defaults fit their own rules', () => {
     const keys = FIELDS.map((field) => field.key);
@@ -23,24 +48,20 @@ describe('settings schema (issue #13)', () => {
     );
   });
 
-  it('keeps the look of the site before settings existed by default', () => {
+  it('uses the settings preferred in issue #15 as the defaults', () => {
+    expect(DEFAULTS).toMatchObject(ISSUE_15);
+    expect(changesOf(normalize(RULES, ISSUE_15))).toEqual({});
+  });
+
+  it('keeps the rest of the look of the site before settings existed by default', () => {
     expect(DEFAULTS).toMatchObject({
       'motion.mode': 'auto',
-      'grid.size': 64,
-      'grid.period': 24,
-      'rain.step': 75,
-      'rain.fade': 0.085,
-      'rain.lineWidth': 5.5,
-      'rain.glow': 8,
-      'rain.glowColor': '#f0fffb',
+      'rain.padding': 0,
       'rain.minLinks': 1,
       'rain.maxLinks': 4,
       'rain.real': false,
       'nebula.resolution': 0.6,
       'nebula.fps': 24,
-      'nebula.vignette': 0.5,
-      'glass.blur': 6,
-      'glass.radius': 14,
       'skin.name': 'glass',
       'theory.notation': 'L',
     });
@@ -75,7 +96,7 @@ describe('checking stored settings', () => {
     expect(settings['grid.size']).toBe(128);
     expect(settings['nebula.fps']).toBe(24);
     expect(settings['skin.name']).toBe('glass');
-    expect(settings['rain.glowColor']).toBe('#f0fffb');
+    expect(settings['rain.glowColor']).toBe('#00a3d7');
     expect(settings['grid.on']).toBe(true);
     expect(settings['future.palette']).toBe('ares');
     expect(settings['liquid.tint']).toBe('accent');
@@ -90,16 +111,16 @@ describe('checking stored settings', () => {
     expect(element.getAttribute('data-grid-fade')).toBe('true');
     expect(element.getAttribute('data-theory-notation')).toBe('L');
     expect(element.style.getPropertyValue('--liquid-blur')).toBe('30px');
-    expect(element.style.getPropertyValue('--grid-size')).toBe('64px');
+    expect(element.style.getPropertyValue('--grid-size')).toBe('48px');
     expect(element.style.getPropertyValue('--liquid-saturation')).toBe('180');
-    expect(element.style.getPropertyValue('--rain-glow-color')).toBe('#f0fffb');
+    expect(element.style.getPropertyValue('--rain-glow-color')).toBe('#00a3d7');
     expect(element.style.getPropertyValue('--future-spacing')).toBe('0.08em');
   });
 });
 
 describe('settings store', () => {
   it('applies a change at once and remembers only what differs from the defaults', () => {
-    setSettings({ 'skin.name': 'futuristic', 'rain.step': 120, 'grid.size': 64 });
+    setSettings({ 'skin.name': 'futuristic', 'rain.step': 120, 'grid.size': 48 });
     expect(getSettings()['skin.name']).toBe('futuristic');
     expect(root.dataset.skinName).toBe('futuristic');
     expect(root.style.getPropertyValue('--rain-step')).toBe('120ms');

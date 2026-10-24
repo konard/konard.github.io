@@ -22,6 +22,7 @@
     "check:file-size": "bash scripts/check-file-line-limits.sh",
     "check": "npm run lint && npm run format:check && npm run check:file-size && npm run check:secrets",
     "build:data": "node scripts/build-data.cjs",
+    "build:frames": "node scripts/build-frames-css.mjs",
     "check:secrets": "secretlint \"**/*\" --secretlintignore .prettierignore",
     "prepare": "husky",
     "build:cv": "node scripts/build-cv-pdf.mjs"

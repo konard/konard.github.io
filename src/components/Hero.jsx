@@ -1,4 +1,4 @@
-import { cvPagePath } from '../cv/buildCv';
+import { cvPagePath } from '../cv/paths';
 import { useLang } from '../i18n/prefs';
 import { useNotation } from '../links/notation';
 

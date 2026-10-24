@@ -9,17 +9,21 @@ import '@fontsource/electrolize/latin-400.css';
 import '@fontsource/chakra-petch/latin-400.css';
 import '@fontsource/chakra-petch/latin-600.css';
 import '@fontsource/share-tech-mono/latin-400.css';
+import '../skins.glass.css';
 import '../skins.liquid.css';
 import '../skins.future.css';
 // Responsive and print overrides must come last.
 import '../App.media.css';
-import { profile } from '../data/profile';
+import { useEffect, useRef } from 'react';
+import { motto } from '../data/motto';
+import { centreCurrent, watchEdges } from './edges';
 import { PAGES } from '../pages/pages';
 import { useLang } from '../i18n/prefs';
 import { useNotation } from '../links/notation';
 import Cosmos from './Cosmos';
 import LiquidRefraction from './LiquidRefraction';
 import PrefSwitches from './PrefSwitches';
+import Sound from './Sound';
 
 /**
  * Shared frame of every page: the cosmic background, the page navigation
@@ -29,17 +33,27 @@ import PrefSwitches from './PrefSwitches';
 export default function Layout({ page, sections = null, children, footer = null }) {
   const { t } = useLang();
   const { n } = useNotation();
+  const pages = useRef(null);
+  const sectionList = useRef(null);
+  const hasSections = Boolean(sections);
+  // On a narrow screen the lists of pages and sections scroll sideways: show the current
+  // page and fade the edges that have more links behind them.
+  useEffect(() => {
+    if (pages.current) centreCurrent(pages.current);
+    return watchEdges([pages.current, sectionList.current].filter(Boolean));
+  }, [page, hasSections]);
   return (
     <div className="app">
       <Cosmos />
       <LiquidRefraction />
+      <Sound />
       <header className="topbar">
         <div className="topbar__row">
           <a className="nav__brand mono" href="/">
             konard<span className="nav__cursor">_</span>
           </a>
           <nav className="pages" aria-label="Pages">
-            <ul>
+            <ul ref={pages}>
               {PAGES.map((p) => (
                 <li key={p.id}>
                   <a href={p.href} aria-current={p.id === page ? 'page' : undefined}>
@@ -56,7 +70,7 @@ export default function Layout({ page, sections = null, children, footer = null 
             <a className="nav__top mono" href="#top" aria-label={t({ en: 'Back to top', ru: 'Наверх' })}>
               ↑
             </a>
-            <ul>
+            <ul ref={sectionList}>
               {sections.map(([id, label]) => (
                 <li key={id}>
                   <a href={`#${id}`}>{t(label)}</a>
@@ -70,7 +84,7 @@ export default function Layout({ page, sections = null, children, footer = null 
       <main>{children}</main>
 
       <footer className="footer">
-        <span className="mono">{n(profile.motto)}</span>
+        <span className="mono">{n(motto)}</span>
         <span>
           <a className="footer__settings" href="/settings/" aria-current={page === 'settings' ? 'page' : undefined}>
             {t({ en: 'Settings', ru: 'Настройки' })}

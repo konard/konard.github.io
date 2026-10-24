@@ -1,0 +1,52 @@
+[
+  {
+    "path": "/",
+    "fcp": 3056,
+    "lcp": 3056,
+    "tbt": 3359,
+    "fps": 13,
+    "kb": 217,
+    "scripts": 11,
+    "canvases": 2
+  },
+  {
+    "path": "/settings/",
+    "fcp": 2052,
+    "lcp": 2052,
+    "tbt": 2817,
+    "fps": 16,
+    "kb": 128,
+    "scripts": 6,
+    "canvases": 2
+  },
+  {
+    "path": "/art/",
+    "fcp": 2416,
+    "lcp": 2416,
+    "tbt": 3005,
+    "fps": 19,
+    "kb": 161,
+    "scripts": 10,
+    "canvases": 2
+  },
+  {
+    "path": "/blog/",
+    "fcp": 2064,
+    "lcp": 2064,
+    "tbt": 3830,
+    "fps": 15,
+    "kb": 135,
+    "scripts": 7,
+    "canvases": 2
+  },
+  {
+    "path": "/cv/",
+    "fcp": 1864,
+    "lcp": 1864,
+    "tbt": 2836,
+    "fps": 21,
+    "kb": 150,
+    "scripts": 7,
+    "canvases": 2
+  }
+]

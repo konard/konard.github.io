@@ -1,4 +1,4 @@
-import { formatPeriod } from '../cv/buildCv';
+import { formatPeriod } from '../cv/paths';
 import { useLang } from '../i18n/prefs';
 import { useNotation } from '../links/notation';
 import { Tooltip, useTooltip } from './Tooltip';

@@ -69,3 +69,4 @@ Nothing is committed to `docs/`; it only holds the case studies.
 - [`issue-9`](docs/case-studies/issue-9/README.md): link networks, the problem solving diagram and the ecosystem.
 - [`issue-11`](docs/case-studies/issue-11/README.md): the experience synced with hh.ru, a CV per position in EN/RU, the PDF styles and the themes.
 - [`issue-13`](docs/case-studies/issue-13/README.md): the rain on Safari, the settings page, the liquid glass and futuristic skins, only real references, the full associative stack and the R → R² notation.
+- [`issue-15`](docs/case-studies/issue-15/README.md): the new defaults and a test that every setting is applied, the settings layout, the sound design, background layers, each corner of the futuristic frames, presets and saved looks, phones and every screen.

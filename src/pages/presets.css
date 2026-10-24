@@ -1,0 +1,214 @@
+/* ---------- Presets of the settings page (issue #15) ---------- */
+
+.settings__presets {
+  margin-top: 2rem;
+}
+
+.settings__head-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.4rem;
+}
+
+.settings__subtitle {
+  margin: 1.3rem 0 0;
+  font-size: 0.95rem;
+}
+
+.presets {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 11.5rem), 1fr));
+  gap: 0.7rem;
+  margin: 0.9rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.preset,
+.preset__use {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  width: 100%;
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+}
+
+.preset {
+  height: 100%;
+  padding: 0.45rem 0.45rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: rgb(var(--panel-2-rgb) / 0.45);
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.preset__use {
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.preset:hover,
+.preset:focus-within {
+  border-color: var(--border-strong);
+}
+
+/* The look that is on now. */
+.preset[aria-pressed='true'],
+.preset--saved:has(.preset__use[aria-pressed='true']) {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.preset[aria-pressed='true'] .preset__name::after,
+.preset__use[aria-pressed='true'] .preset__name::after {
+  content: ' ✓';
+  color: var(--accent);
+}
+
+.preset__name {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.preset__text {
+  color: var(--text-2);
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
+/* The miniature: the universe, the grid, the stars, the rain, a beam and a panel of the skin. */
+.preset__mini {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border-radius: calc(var(--radius) * 0.6);
+  background-color: var(--bg);
+}
+
+.preset__grid {
+  position: absolute;
+  inset: 0;
+}
+
+.preset__star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: var(--text);
+}
+
+.preset__drop {
+  position: absolute;
+  width: 1.5px;
+  border-radius: 1px;
+  background: linear-gradient(transparent, currentColor);
+}
+
+.preset__beam {
+  position: absolute;
+  top: 36%;
+  right: 0;
+  left: 0;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent 25%, currentColor 62%, transparent 64%);
+}
+
+.preset__panel {
+  position: absolute;
+  bottom: 12%;
+  left: 9%;
+  width: 46%;
+  height: 42%;
+  border: 1px solid var(--border-strong);
+  background: rgb(var(--panel-rgb) / 0.6);
+}
+
+.preset__panel::before,
+.preset__panel::after {
+  content: '';
+  position: absolute;
+  left: 12%;
+  height: 3px;
+  border-radius: 2px;
+}
+
+.preset__panel::before {
+  top: 22%;
+  width: 45%;
+  background: var(--mini-accent);
+}
+
+.preset__panel::after {
+  top: 50%;
+  width: 70%;
+  background: var(--text-2);
+  opacity: 0.45;
+  box-shadow: 0 6px 0 var(--text-2);
+}
+
+.preset__panel--liquid {
+  border-color: rgb(255 255 255 / 0.5);
+  background: rgb(255 255 255 / 0.12);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.6);
+}
+
+.preset__panel--futuristic {
+  background: linear-gradient(180deg, rgb(var(--panel-rgb) / 0.75), rgb(var(--panel-rgb) / 0.35));
+}
+
+.preset__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.2rem;
+  margin-top: auto;
+}
+
+.presets__save,
+.presets__rename {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+}
+
+.presets__save input,
+.presets__rename input,
+.settings__link {
+  flex: 1 1 10rem;
+  min-width: 0;
+  padding: 0.4rem 0.65rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.85rem;
+}
+
+.settings__link {
+  width: 100%;
+  margin-top: 0.7rem;
+  font-size: 0.75rem;
+}
+
+/* Phones: two miniatures a row; the description stays in the tooltip of the card. */
+@media (max-width: 560px) {
+  .presets {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+
+  .preset__text {
+    display: none;
+  }
+}

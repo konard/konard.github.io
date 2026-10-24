@@ -249,10 +249,12 @@
     .tags li,
     .segmented,
     .prefs__theme,
+    .prefs__sound,
     .prefs__langs,
     .role-tabs a,
     .setting__input select,
-    .setting__reset
+    .setting__reset,
+    .setting__play
   ) {
   border-radius: 999px;
 }
