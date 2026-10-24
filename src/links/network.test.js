@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { decode } from './configurations';
-import { overlapCost, solveCollisions } from './collisions';
+import { overlapCost, pairCost, solveCollisions } from './collisions';
 import {
   addLink,
   check,
@@ -84,6 +84,15 @@ describe('notations of the editor (issue #17)', () => {
     const nine = Array.from({ length: 9 }, () => [9, 9]);
     expect(decimalOf(nine)).toBe(String(10n ** 18n - 1n));
     expect(parseIndex(String(10n ** 18n - 1n), 9).links).toEqual(nine);
+  });
+
+  it('rejects malformed notation instead of silently discarding part of the network', () => {
+    ['(1: 0 1) (2: 2)', '(1: 0 1) trailing', '((1: 0 1))'].forEach((text) => {
+      expect(parseLinks(text).error, text).toBeTruthy();
+    });
+    ['01₄ 20₄', '01₃ 20₄', '013 203', '01oops 20', 'λ = {1 ↦ (0, 1), 2 ↦ (2)}'].forEach((text) => {
+      expect(parseMath(text).error, text).toBeTruthy();
+    });
   });
 
   it('adds, removes and rewires links keeping the network consistent', () => {
@@ -212,6 +221,17 @@ describe('picture of a network (issue #17)', () => {
 });
 
 describe('fewer overlaps of lines (experimental, issue #17)', () => {
+  it('counts the same crossings regardless of link ordering', () => {
+    const a = [
+      [0, 0],
+      [1, 0],
+    ];
+    const b = [
+      [0.5, -1],
+      [0.5, 1],
+    ];
+    expect(pairCost(a, b, [[0, 0]])).toBe(pairCost(b, a, [[0, 0]]));
+  });
   it('turns the ends of the links so that their lines cross and touch less', () => {
     const tangled = decode('22 13 31');
     const result = solveCollisions(tangled, shapeOfStyle(STYLE_DEFAULTS, 3));
@@ -229,6 +249,21 @@ describe('fewer overlaps of lines (experimental, issue #17)', () => {
       const result = solveCollisions(decode(code), shapeOfStyle(STYLE_DEFAULTS, code.split(' ').length));
       expect(result.after).toBeLessThanOrEqual(result.before);
     });
+  });
+
+  it('keeps solved turns editable and preserves the preview when they are applied', () => {
+    for (const code of ['22 13 31', '23 31 12', '12 21']) {
+      const network = decode(code);
+      const style = normalizeStyle({ turns: '180 180,-180 180,170 -170' });
+      const result = solveCollisions(network, shapeOfStyle(style, network.length));
+      expect(result.after, code).toBeLessThanOrEqual(result.before);
+      expect(
+        result.turns.flat().every((angle) => Math.abs(angle) <= 180),
+        code,
+      ).toBe(true);
+      const applied = shapeOfStyle(withTurns(style, result.turns), network.length);
+      expect(overlapCost(network, applied), code).toBeCloseTo(result.after, 6);
+    }
   });
 });
 

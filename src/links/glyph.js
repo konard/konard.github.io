@@ -1,4 +1,4 @@
-// Draws a network of 1–4 doublet links as one symbol, after the blueprint of
+// Draws a network of 1–9 doublet links as one symbol, after the blueprint of
 // github.com/konard/links-visuals: every link is ONE continuous curve in its
 // own colour. It starts with a bar at its source, passes through its own
 // middle and ends with an arrow at its target; nothing interrupts the line in

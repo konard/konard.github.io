@@ -373,6 +373,10 @@ export const STYLE_SECTIONS = [
     id: 'caption',
     title: { en: 'Caption', ru: 'Подпись' },
     fields: [
+      select('notation', 'L', [option('L', 'L → L²'), option('R', 'R → R²')], {
+        en: 'Theory notation',
+        ru: 'Нотация теории',
+      }),
       select(
         'caption',
         'none',
@@ -631,7 +635,13 @@ export const LOOKS = [
 export function applyLook(style, id) {
   const look = LOOKS.find((l) => l.id === id);
   if (!look) return style;
-  const keep = { turns: style.turns, solve: style.solve, solveRange: style.solveRange, solveStep: style.solveStep };
+  const keep = {
+    notation: style.notation,
+    turns: style.turns,
+    solve: style.solve,
+    solveRange: style.solveRange,
+    solveStep: style.solveStep,
+  };
   const size = look.values.width ? {} : { width: style.width, height: style.height, quality: style.quality };
   return normalizeStyle({ ...STYLE_DEFAULTS, ...size, ...look.values, ...keep });
 }

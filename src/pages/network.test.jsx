@@ -4,6 +4,7 @@ import NetworkGallery, { networkHref } from '../components/NetworkGallery';
 import { NetworkExample } from '../components/MetaTheory';
 import { decode } from '../links/configurations';
 import { STYLE_DEFAULTS, normalizeStyle } from '../links/style';
+import { setSettings } from '../settings/store';
 import NetworkPage, { DEFAULT_CODE, networkQuery, readNetwork } from './NetworkPage';
 import { randomLinks, stepped } from './NetworkEditor';
 
@@ -60,6 +61,15 @@ describe('the address keeps the network and its picture (issue #17)', () => {
 });
 
 describe('NetworkPage (issue #17)', () => {
+  it('opens the shared theory notation regardless of the receiving browser settings', () => {
+    setSettings({ 'theory.notation': 'L' }, { save: false });
+    go('/network/?code=0120&caption=theory&notation=R');
+    render(<NetworkPage />);
+    expect(preview().textContent).toContain('N² =');
+    expect(field('Math notation (the links theory)')).toHaveValue('N² = {1 ↦ (0, 1), 2 ↦ (2, 0)}');
+    expect(new URLSearchParams(window.location.search).get('notation')).toBe('R');
+  });
+
   it('opens the network of the address and shows it in every notation', () => {
     go('/network/?code=0120');
     render(<NetworkPage />);

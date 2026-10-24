@@ -27,10 +27,12 @@ const polyline = (curve) =>
 
 const distance = (a, b) => Math.hypot(a[0] - b[0], a[1] - b[1]);
 
-function crosses(p1, p2, q1, q2) {
+function crossing(p1, p2, q1, q2) {
   const d = (a, b, c) => (b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0]);
   const [d1, d2, d3, d4] = [d(q1, q2, p1), d(q1, q2, p2), d(p1, p2, q1), d(p1, p2, q2)];
-  return d1 * d2 < 0 && d3 * d4 < 0;
+  if (!(d1 * d2 < 0 && d3 * d4 < 0)) return null;
+  const t = d1 / (d1 - d2);
+  return [p1[0] + t * (p2[0] - p1[0]), p1[1] + t * (p2[1] - p1[1])];
 }
 
 /** How much the lines of two links (polylines) overlap and cross; `middles` are exempt. */
@@ -39,7 +41,8 @@ export function pairCost(a, b, middles) {
   let cost = 0;
   for (let i = 0; i < a.length - 1; i++) {
     for (let j = 0; j < b.length - 1; j++) {
-      if (crosses(a[i], a[i + 1], b[j], b[j + 1]) && free(a[i])) cost += CROSSING;
+      const point = crossing(a[i], a[i + 1], b[j], b[j + 1]);
+      if (point && free(point)) cost += CROSSING;
     }
   }
   for (const p of a) {
@@ -84,7 +87,7 @@ export function solveCollisions(links, shape = {}, { range = 60, step = 15, pass
   const costOf = (i, line) => {
     let cost = 0;
     for (let j = 0; j < n; j++) if (j !== i) cost += pairCost(line, lines[j], middles);
-    return cost + turning([delta[i]]);
+    return cost + turning([total()[i]]);
   };
   const before = overlapCost(links, base);
   const candidates = [0];
@@ -98,6 +101,8 @@ export function solveCollisions(links, shape = {}, { range = 60, step = 15, pass
         let best = { angle: kept, cost: costOf(i, lines[i]), line: lines[i] };
         for (const angle of candidates) {
           if (angle === kept) continue;
+          // Applied turns go back through the editable table's −180…180° range.
+          if (Math.abs(start[i][end] + angle) > 180) continue;
           delta[i][end] = angle;
           const line = polyline(curvesOf()[i]);
           const cost = costOf(i, line);

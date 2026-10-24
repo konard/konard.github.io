@@ -90,8 +90,11 @@ export function parseIndex(text, n) {
  * the names may be left out ("(0 1) (2 0)") and then count from 1.
  */
 export function parseLinks(text) {
-  const found = [...String(text).matchAll(/\(\s*(?:(\d+)\s*:)?\s*(\d+)[\s,]+(\d+)\s*\)/g)];
-  if (!found.length) return fail('Write links as (1: 0 1) (2: 2 0).', 'Запишите связи как (1: 0 1) (2: 2 0).');
+  const raw = String(text);
+  const pattern = /\(\s*(?:(\d+)\s*:)?\s*(\d+)[\s,]+(\d+)\s*\)/g;
+  const found = [...raw.matchAll(pattern)];
+  if (!found.length || raw.replace(pattern, '').trim())
+    return fail('Write links as (1: 0 1) (2: 2 0).', 'Запишите связи как (1: 0 1) (2: 2 0).');
   return byNames(found.map(([, name, s, t]) => [name, Number(s), Number(t)]));
 }
 
@@ -119,23 +122,30 @@ function byNames(items) {
  * without the names), or the pairs with base subscripts "01₃ 20₃".
  */
 export function parseMath(text) {
-  const raw = String(text);
+  const raw = String(text)
+    .trim()
+    .replace(/^(?:λ|N²)\s*=\s*/, '');
+  const body = raw.startsWith('{') && raw.endsWith('}') ? raw.slice(1, -1).trim() : raw;
   if (raw.includes('(')) {
-    const found = [...raw.matchAll(/(?:(\d+)\s*(?:↦|->|→|=>|:)\s*)?\(\s*(\d+)\s*[,\s]\s*(\d+)\s*\)/g)];
-    if (!found.length)
+    const pattern = /(?:(\d+)\s*(?:↦|->|→|=>|:)\s*)?\(\s*(\d+)\s*[,\s]\s*(\d+)\s*\)/g;
+    const found = [...body.matchAll(pattern)];
+    const rest = body.replace(pattern, '|');
+    if (!found.length || !/^\|(?:\s*,?\s*\|)*$/.test(rest))
       return fail('Write the links as {1 ↦ (0, 1), 2 ↦ (2, 0)}.', 'Запишите связи как {1 ↦ (0, 1), 2 ↦ (2, 0)}.');
     return byNames(found.map(([, name, s, t]) => [name, Number(s), Number(t)]));
   }
-  const pairs = fromSubscripts(raw)
-    .trim()
-    .split(/\s+/)
-    .filter(Boolean)
-    .map((pair) => pair.slice(0, 2));
-  if (!pairs.length || pairs.some((pair) => !/^\d\d$/.test(pair)))
+  const pairs = body.split(/\s+/).filter(Boolean);
+  if (!pairs.length || pairs.some((pair) => !/^\d\d(?:[₀-₉]+|_\d+)?$/.test(pair)))
     return fail(
       'Write the links as {1 ↦ (0, 1), 2 ↦ (2, 0)} or 01₃ 20₃.',
       'Запишите связи как {1 ↦ (0, 1), 2 ↦ (2, 0)} или 01₃ 20₃.',
     );
+  // Every pair's base must agree with the size, just as the N-ary number's does.
+  const digits = pairs.map((pair) => pair.slice(0, 2)).join('');
+  for (const pair of pairs) {
+    const result = parseNumber(`${digits}${pair.slice(2)}`);
+    if (result.error) return result;
+  }
   return check(pairs.map((pair) => [Number(pair[0]), Number(pair[1])]));
 }
 
