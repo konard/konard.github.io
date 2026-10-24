@@ -3,7 +3,7 @@
 // in the dark and the light theme, it checks that nothing scrolls sideways, lists
 // the elements that stick out of the screen, checks that the current page is seen
 // in the top bar with at least three pages, and saves the first screen of every page.
-// main fails 7 of these checks (the top bar of phones), this branch none.
+// main fails 8 of these checks (the top bar of phones), this branch none.
 //   node experiments/responsive.mjs <screenshot dir> [paths...]
 /* global window, document, getComputedStyle */
 import { mkdirSync } from 'node:fs';
