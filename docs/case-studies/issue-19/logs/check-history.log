@@ -11,3 +11,14 @@
 > prettier --check .
 
 Checking formatting...
+All matched files use Prettier code style!
+
+> konard.github.io@0.1.0 check:file-size
+> bash scripts/check-file-line-limits.sh
+
+::warning file=experiments/collect-registries.cjs::experiments/collect-registries.cjs has 1354 lines (warning threshold 1350, limit 1500)
+Checked 201 files against the 1500-line limit.
+
+> konard.github.io@0.1.0 check:secrets
+> secretlint "**/*" --secretlintignore .prettierignore
+

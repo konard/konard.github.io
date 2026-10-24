@@ -1,0 +1,20 @@
+⋯ Backing up original state…
+✔ Done backing up original state (4041dd8)!
+⋯ Running tasks for staged files…
+    *.{js,jsx,cjs,mjs} — 10 files
+      ⋯ eslint --fix --max-warnings=0 --no-warn-ignored
+      ⋯ prettier --write
+
+✔ eslint --fix --max-warnings=0 --no-warn-ignored
+✔ prettier --write
+
+✔ Done running tasks for staged files!
+⋯ Staging changes from tasks…
+✔ Done staging changes from tasks!
+⋯ Cleaning up temporary files…
+✔ Done cleaning up temporary files!
+[issue-19-8244f16d7529 df0ec7a] Guard shared history paths and stabilize early touch and sharing
+ 10 files changed, 190 insertions(+), 27 deletions(-)
+ create mode 100644 experiments/issue-19-touch-probe.mjs
+ create mode 100644 src/history.js
+ create mode 100644 src/history.test.jsx

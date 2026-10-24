@@ -1,0 +1,27 @@
+⋯ Backing up original state…
+✔ Done backing up original state (7416586)!
+⋯ Running tasks for staged files…
+    *.{js,jsx,cjs,mjs} — 18 files
+      ⋯ eslint --fix --max-warnings=0 --no-warn-ignored
+      ⋯ prettier --write
+    *.{css,md,html,json,yml,yaml} — 3 files
+      ⋯ prettier --write
+
+✔ prettier --write
+✔ eslint --fix --max-warnings=0 --no-warn-ignored
+✔ prettier --write
+
+✔ Done running tasks for staged files!
+⋯ Staging changes from tasks…
+✔ Done staging changes from tasks!
+⋯ Cleaning up temporary files…
+✔ Done cleaning up temporary files!
+[issue-19-8244f16d7529 305a85e] Expand network geometry and scalable link placements
+ 21 files changed, 1240 insertions(+), 269 deletions(-)
+ create mode 100644 experiments/issue-19-browser.mjs
+ create mode 100644 src/links/curve-tools.js
+ create mode 100644 src/links/geometry-19.test.js
+ create mode 100644 src/links/mechanics-19.test.js
+ create mode 100644 src/links/placement-19.test.js
+ create mode 100644 src/links/placement.js
+ create mode 100644 src/links/style-geometry.js
