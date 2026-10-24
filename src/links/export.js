@@ -67,7 +67,9 @@ export const copyText = (text) => navigator.clipboard.writeText(text);
 export function copyImage(blob) {
   if (typeof ClipboardItem === 'undefined' || !navigator.clipboard?.write)
     return Promise.reject(new Error('Images cannot be copied in this browser'));
-  return navigator.clipboard.write([new ClipboardItem({ [blob.type]: blob })]);
+  // Call write during the click, before rasterization resolves. Safari otherwise
+  // loses user activation across the canvas/image async boundary (WebKit #222262).
+  return navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
 }
 
 /** Whether the system share sheet can share `files` (or just a link without them). */

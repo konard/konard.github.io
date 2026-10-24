@@ -1,0 +1,13 @@
+
+> konard.github.io@0.1.0 check
+> npm run lint && npm run format:check && npm run check:file-size && npm run check:secrets
+
+
+> konard.github.io@0.1.0 lint
+> eslint . --max-warnings=0
+
+
+> konard.github.io@0.1.0 format:check
+> prettier --check .
+
+Checking formatting...

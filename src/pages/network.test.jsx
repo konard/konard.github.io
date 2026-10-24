@@ -1,5 +1,5 @@
-import { fireEvent, render, screen, within } from '@testing-library/react';
-import { afterEach, describe, expect, it } from 'vitest';
+import { act, fireEvent, render, screen, within } from '@testing-library/react';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import NetworkGallery, { networkHref } from '../components/NetworkGallery';
 import { NetworkExample } from '../components/MetaTheory';
 import { decode } from '../links/configurations';
@@ -9,7 +9,13 @@ import NetworkPage, { DEFAULT_CODE, networkQuery, readNetwork } from './NetworkP
 import { randomLinks, stepped } from './NetworkEditor';
 
 const go = (url = '/') => window.history.replaceState(null, '', url);
+beforeEach(() => vi.useFakeTimers());
+const search = () => {
+  act(() => vi.advanceTimersByTime(450));
+  return window.location.search;
+};
 afterEach(() => {
+  vi.useRealTimers();
   go('/');
   localStorage.clear();
 });
@@ -64,9 +70,9 @@ describe('NetworkPage (issue #17)', () => {
   it('preserves an explicit page language in the address and shared link after editing', () => {
     go('/network/?code=0120&lang=ru');
     render(<NetworkPage />);
-    expect(new URLSearchParams(window.location.search).get('lang')).toBe('ru');
+    expect(new URLSearchParams(search()).get('lang')).toBe('ru');
     fireEvent.change(field('N-ary number'), { target: { value: '1122' } });
-    expect(window.location.search).toBe('?code=1122&lang=ru');
+    expect(search()).toBe('?code=1122&lang=ru');
     expect(field('Link to this picture')).toHaveValue(`${window.location.origin}/network/?code=1122&lang=ru`);
   });
 
@@ -76,7 +82,7 @@ describe('NetworkPage (issue #17)', () => {
     render(<NetworkPage />);
     expect(preview().textContent).toContain('N² =');
     expect(field('Math notation (the links theory)')).toHaveValue('N² = {1 ↦ (0, 1), 2 ↦ (2, 0)}');
-    expect(new URLSearchParams(window.location.search).get('notation')).toBe('R');
+    expect(new URLSearchParams(search()).get('notation')).toBe('R');
   });
 
   it('opens the network of the address and shows it in every notation', () => {
@@ -103,12 +109,12 @@ describe('NetworkPage (issue #17)', () => {
     expect(field('Math notation (the links theory)')).toHaveValue('λ = {1 ↦ (0, 1), 2 ↦ (2, 0), 3 ↦ (1, 1)}');
     // The field being typed in keeps its text.
     expect(field('N-ary number')).toHaveValue('012011₄');
-    expect(window.location.search).toBe('?code=012011');
+    expect(search()).toBe('?code=012011');
     expect(within(preview()).getByRole('img')).toHaveAccessibleName('Links network 01₄ 20₄ 11₄');
 
     fireEvent.change(field('Links notation'), { target: { value: '(1: 1 1)' } });
     expect(field('Pairs with the base')).toHaveValue('11₂');
-    expect(window.location.search).toBe('?code=11');
+    expect(search()).toBe('?code=11');
   });
 
   it('keeps an invalid text, says what is wrong and leaves the network as it was', () => {
@@ -130,13 +136,13 @@ describe('NetworkPage (issue #17)', () => {
     expect(field('Pairs with the base')).toHaveValue('01₄ 22₄ 00₄');
     fireEvent.change(screen.getByLabelText('Link 3: colour'), { target: { value: '#ff0000' } });
     expect(preview().innerHTML).toContain('#ff0000');
-    expect(window.location.search).toContain('palette=custom');
+    expect(search()).toContain('palette=custom');
     fireEvent.change(screen.getByLabelText('Link 2: turn of the target, °'), { target: { value: '30' } });
-    expect(new URLSearchParams(window.location.search).get('turns')).toBe('0 0,0 30');
+    expect(new URLSearchParams(search()).get('turns')).toBe('0 0,0 30');
     fireEvent.click(screen.getByRole('button', { name: 'Remove: Link 1' }));
     // Link 2 becomes link 1 and keeps its turn; references to the removed link become 0.
     expect(field('Pairs with the base')).toHaveValue('11₃ 00₃');
-    expect(new URLSearchParams(window.location.search).get('turns')).toBe('0 30');
+    expect(new URLSearchParams(search()).get('turns')).toBe('0 30');
     fireEvent.click(screen.getByRole('button', { name: /Next network/ }));
     expect(field('Pairs with the base')).toHaveValue('11₃ 01₃');
   });
@@ -148,12 +154,12 @@ describe('NetworkPage (issue #17)', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Plain black' }));
     expect(preview().innerHTML).not.toContain(STYLE_DEFAULTS.cardColor);
     expect(preview().innerHTML).toContain('fill="#000000"');
-    expect(window.location.search).toContain('card=false');
+    expect(search()).toContain('card=false');
     fireEvent.click(screen.getByRole('button', { name: 'Card (as in the gallery)' }));
-    expect(window.location.search).toBe('?code=0120');
+    expect(search()).toBe('?code=0120');
 
     fireEvent.change(screen.getByLabelText('End of a link'), { target: { value: 'dot' } });
-    expect(window.location.search).toContain('end=dot');
+    expect(search()).toContain('end=dot');
     fireEvent.change(screen.getByRole('combobox', { name: 'Background' }), { target: { value: 'transparent' } });
     expect(preview().className).toContain('is-transparent');
   });
@@ -164,10 +170,10 @@ describe('NetworkPage (issue #17)', () => {
     fireEvent.click(screen.getByLabelText('Reduce overlaps automatically'));
     expect(screen.getByText(/overlaps \d+\.\d → \d+\.\d/)).toBeInTheDocument();
     fireEvent.click(screen.getByRole('button', { name: 'Write the turns into the table of links' }));
-    expect(new URLSearchParams(window.location.search).get('turns')).toMatch(/-?\d+ -?\d+/);
+    expect(new URLSearchParams(search()).get('turns')).toMatch(/-?\d+ -?\d+/);
     expect(screen.queryByText(/overlaps \d+\.\d → /)).toBeNull();
     fireEvent.click(screen.getByRole('button', { name: 'Clear all turns' }));
-    expect(new URLSearchParams(window.location.search).get('turns')).toBeNull();
+    expect(new URLSearchParams(search()).get('turns')).toBeNull();
   });
 
   it('downloads, copies and links to the share dialogs with the address of the picture', () => {
@@ -194,6 +200,6 @@ describe('NetworkPage (issue #17)', () => {
     expect(JSON.parse(localStorage.getItem('network.styles'))[0].name).toBe('Mine');
     fireEvent.click(screen.getByRole('button', { name: 'Card (as in the gallery)' }));
     fireEvent.click(screen.getByRole('button', { name: 'Mine' }));
-    expect(window.location.search).toContain('card=false');
+    expect(search()).toContain('card=false');
   });
 });

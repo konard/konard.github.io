@@ -105,8 +105,7 @@ export default function NetworkShare({ code, links, svg, style, url, text }) {
           type="button"
           className="button"
           onClick={() =>
-            image(png)
-              .then(copyImage)
+            copyImage(image(png))
               .then(() => done({ en: 'Image copied.', ru: 'Изображение скопировано.' }))
               .catch(failed)
           }
