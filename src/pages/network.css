@@ -85,6 +85,12 @@
   margin: 0;
 }
 
+.network__lead {
+  margin: 0;
+  color: var(--text-2);
+  font-size: 0.88rem;
+}
+
 .network__actions {
   display: flex;
   flex-wrap: wrap;
@@ -218,7 +224,7 @@
 .looks {
   display: grid;
   gap: 0.8rem;
-  margin-top: 1.2rem;
+  margin-top: 1rem;
 }
 
 .looks__row,
@@ -258,7 +264,7 @@
 
 .network__styles {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
   align-items: start;
   gap: 1rem;
   margin-top: 1.2rem;

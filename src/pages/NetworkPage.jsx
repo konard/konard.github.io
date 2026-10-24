@@ -158,40 +158,38 @@ export default function NetworkPage() {
                 onRandom={() => setLinks(randomLinks(n))}
               />
             </section>
+            <section id="style" className="network__panel" aria-labelledby="style-title">
+              <h2 id="style-title">{t({ en: 'Style of the picture', ru: 'Оформление картинки' })}</h2>
+              <p className="network__lead">
+                {t({
+                  en: 'Start from a look and change any detail. A card like in the gallery, or no card at all and only the lines on a black or transparent background: both are here.',
+                  ru: 'Начните с готового оформления и меняйте любую деталь. Карточка как в галерее или без карточки, только линии на чёрном или прозрачном фоне: есть и то, и другое.',
+                })}
+              </p>
+              <Looks style={style} onStyle={setStyle} />
+              <div className="network__styles">
+                <StyleSections style={style} onStyle={setStyle}>
+                  <div className="network__actions">
+                    <button type="button" className="button button--small" onClick={applySolved}>
+                      {t({ en: 'Write the turns into the table of links', ru: 'Записать повороты в таблицу связей' })}
+                    </button>
+                    <button
+                      type="button"
+                      className="button button--small"
+                      disabled={!style.turns}
+                      onClick={() => setStyle({ ...style, turns: '' })}
+                    >
+                      {t({ en: 'Clear all turns', ru: 'Убрать все повороты' })}
+                    </button>
+                  </div>
+                </StyleSections>
+              </div>
+            </section>
             <section id="share" className="network__panel" aria-labelledby="share-title">
               <h2 id="share-title">{t({ en: 'Save and share', ru: 'Сохранить и поделиться' })}</h2>
               <NetworkShare code={code} links={links} svg={svg} style={style} url={url} text={text} />
             </section>
           </div>
-        </div>
-      </section>
-      <section className="section" id="style" aria-labelledby="style-title">
-        <h2 className="section__title" id="style-title">
-          {t({ en: 'Style of the picture', ru: 'Оформление картинки' })}
-        </h2>
-        <p className="section__lead">
-          {t({
-            en: 'Start from a look and change any detail. A card like in the gallery, or no card at all and only the lines on a black or transparent background: both are here.',
-            ru: 'Начните с готового оформления и меняйте любую деталь. Карточка как в галерее или без карточки, только линии на чёрном или прозрачном фоне: есть и то, и другое.',
-          })}
-        </p>
-        <Looks style={style} onStyle={setStyle} />
-        <div className="network__styles">
-          <StyleSections style={style} onStyle={setStyle}>
-            <div className="network__actions">
-              <button type="button" className="button button--small" onClick={applySolved}>
-                {t({ en: 'Write the turns into the table of links', ru: 'Записать повороты в таблицу связей' })}
-              </button>
-              <button
-                type="button"
-                className="button button--small"
-                disabled={!style.turns}
-                onClick={() => setStyle({ ...style, turns: '' })}
-              >
-                {t({ en: 'Clear all turns', ru: 'Убрать все повороты' })}
-              </button>
-            </div>
-          </StyleSections>
         </div>
       </section>
     </Layout>
