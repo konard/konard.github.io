@@ -7,6 +7,7 @@ import Presets from './Presets';
 import { useLang } from '../i18n/prefs';
 import { plural } from '../i18n/plural';
 import { getSaved, setSaved, withImported } from '../settings/presets';
+import { formatValue } from '../settings/fields';
 import { DEFAULTS, FIELDS, PALETTES, SECTIONS } from '../settings/schema';
 import { changesOf, resetSettings, setSettings, useSettings } from '../settings/store';
 import { cue } from '../sound/options';
@@ -14,19 +15,7 @@ import { cue } from '../sound/options';
 const SETTINGS = { en: ['setting', 'settings'], ru: ['настройка', 'настройки', 'настроек'] };
 const CHANGED = { en: ['differs', 'differ'], ru: ['отличается', 'отличаются', 'отличаются'] };
 
-const decimals = (step) => (String(step).split('.')[1] || '').length;
-
-/**
- * A value as people read it: shares as percents (0.6 → 60%), factors with ×,
- * the rest with its unit (75 ms, 64 px, 90°).
- */
-export function formatValue(field, value) {
-  const { unit = '', step = 1, max } = field;
-  if (unit === '%' && max <= 2) return `${Math.round(value * 100)}%`;
-  const number = value.toFixed(decimals(step));
-  if (unit === '%' || unit === '×' || unit === '°') return `${number}${unit}`;
-  return unit ? `${number} ${unit}` : number;
-}
+export { formatValue };
 
 // Two explicit columns instead of CSS multi-column layout (issue #15): with
 // multicol the browser rebalanced the sections whenever the skin section
