@@ -17,6 +17,9 @@ Objective: implement and verify every issue requirement in PR #20, on the prepar
 - [x] Preserve failed CI logs with timestamps/SHA. Reproduce Linux WebKit gallery stall under a memory guard, isolate backdrop filters, identify existing upstream regression, and verify the documented stable-version workaround without changing the skin.
 - [x] Commit the case study/browser CI and push only the prepared branch; review `gh pr diff` against the published revision.
 - [x] Confirm current main is an ancestor (no merge needed), update PR title/description with reproduction/tests/screenshots and Fixes #19.
-- [ ] List CI runs with timestamps/SHA, download and inspect non-passing logs, fix errors, verify final CI and clean working tree; mark PR #20 ready.
+- [x] List CI runs with timestamps/SHA, download and inspect non-passing logs, fix the renderer dependency regression, verify implementation CI run 40130587091 and mark PR #20 ready for review.
+- [x] Archive the passing implementation's raw logs, 69 CI screenshots and per-engine result JSON; preserve the final mobile field capture and pinned Chromium's 120 locally validated PDFs in the evidence.
+
+Implementation CI passed at 20:48:22 UTC on `996cf0d0a282f351ad66cefa0d02a3061008cffc`. PR #20 was marked ready after that run. The final evidence checkpoint adds documentation/artifacts and explicitly scrolls the mobile notation field into view before its screenshot; its focused WebKit run passed locally. Confirm the latest published revision's CI and clean working tree again before completion; the live PR check status is authoritative for that revision.
 
 Large command logs go to this case study or ci-logs. Keep experiment scripts in experiments/, bounded in input size. Run memory-heavy commands sequentially; tests use one worker locally. No package release automation exists, so no package version bump is needed for the private static site.

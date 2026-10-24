@@ -1,0 +1,1378 @@
+test	Set up job	﻿2026-10-24T20:39:24.1082095Z Current runner version: '2.338.0'
+test	Set up job	2026-10-24T20:39:24.1101949Z ##[group]Runner Image Provisioner
+test	Set up job	2026-10-24T20:39:24.1102679Z Hosted Compute Agent
+test	Set up job	2026-10-24T20:39:24.1103047Z Version: 20261021.618
+test	Set up job	2026-10-24T20:39:24.1103424Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+test	Set up job	2026-10-24T20:39:24.1103921Z Build Date: 2026-10-21T00:45:21Z
+test	Set up job	2026-10-24T20:39:24.1104339Z Worker ID: {2b250576-6fb8-479a-a6df-bcdbdd9909e4}
+test	Set up job	2026-10-24T20:39:24.1104839Z Region: westus3
+test	Set up job	2026-10-24T20:39:24.1105195Z Cloud: Azure
+test	Set up job	2026-10-24T20:39:24.1105542Z ##[endgroup]
+test	Set up job	2026-10-24T20:39:24.1106379Z ##[group]Operating System
+test	Set up job	2026-10-24T20:39:24.1106760Z Ubuntu
+test	Set up job	2026-10-24T20:39:24.1107184Z 24.04.5
+test	Set up job	2026-10-24T20:39:24.1107515Z LTS
+test	Set up job	2026-10-24T20:39:24.1107843Z ##[endgroup]
+test	Set up job	2026-10-24T20:39:24.1108365Z ##[group]Runner Image
+test	Set up job	2026-10-24T20:39:24.1108757Z Image: ubuntu-24.04
+test	Set up job	2026-10-24T20:39:24.1109147Z Version: 20261012.334.1
+test	Set up job	2026-10-24T20:39:24.1109829Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+test	Set up job	2026-10-24T20:39:24.1110927Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+test	Set up job	2026-10-24T20:39:24.1111501Z ##[endgroup]
+test	Set up job	2026-10-24T20:39:24.1112258Z ##[group]GITHUB_TOKEN Permissions
+test	Set up job	2026-10-24T20:39:24.1113517Z Contents: read
+test	Set up job	2026-10-24T20:39:24.1113870Z Metadata: read
+test	Set up job	2026-10-24T20:39:24.1114289Z ##[endgroup]
+test	Set up job	2026-10-24T20:39:24.1115664Z Secret source: Actions
+test	Set up job	2026-10-24T20:39:24.1116333Z Cache mode: write
+test	Set up job	2026-10-24T20:39:24.1116958Z Prepare workflow directory
+test	Set up job	2026-10-24T20:39:24.1366535Z Prepare all required actions
+test	Set up job	2026-10-24T20:39:24.1399295Z Getting action download info
+test	Set up job	2026-10-24T20:39:24.4424576Z Download action repository 'actions/checkout@v6' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+test	Set up job	2026-10-24T20:39:24.5213488Z Download action repository 'actions/setup-node@v6' (SHA:249970729cb0ef3589644e2896645e5dc5ba9c38)
+test	Set up job	2026-10-24T20:39:24.6141705Z Download action repository 'actions/upload-pages-artifact@v5' (SHA:fc324d3547104276b827a68afc52ff2a11cc49c9)
+test	Set up job	2026-10-24T20:39:24.9239341Z Getting action download info
+test	Set up job	2026-10-24T20:39:25.0445104Z Download action repository 'actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f' (SHA:bbbca2ddaa5d8feaa63e36b76fdaad77386f024f)
+test	Set up job	2026-10-24T20:39:25.3193767Z Complete job name: test
+test	Checkout source	﻿2026-10-24T20:39:25.3911307Z ##[group]Run actions/checkout@v6
+test	Checkout source	2026-10-24T20:39:25.3912217Z with:
+test	Checkout source	2026-10-24T20:39:25.3912787Z   persist-credentials: false
+test	Checkout source	2026-10-24T20:39:25.3913487Z   repository: konard/konard.github.io
+test	Checkout source	2026-10-24T20:39:25.3919544Z   token: ***
+test	Checkout source	2026-10-24T20:39:25.3920104Z   ssh-strict: true
+test	Checkout source	2026-10-24T20:39:25.3920676Z   ssh-user: git
+test	Checkout source	2026-10-24T20:39:25.3921222Z   clean: true
+test	Checkout source	2026-10-24T20:39:25.3921823Z   sparse-checkout-cone-mode: true
+test	Checkout source	2026-10-24T20:39:25.3922520Z   fetch-depth: 1
+test	Checkout source	2026-10-24T20:39:25.3923084Z   fetch-tags: false
+test	Checkout source	2026-10-24T20:39:25.3923662Z   show-progress: true
+test	Checkout source	2026-10-24T20:39:25.3924248Z   lfs: false
+test	Checkout source	2026-10-24T20:39:25.3924791Z   submodules: false
+test	Checkout source	2026-10-24T20:39:25.3925436Z   set-safe-directory: true
+test	Checkout source	2026-10-24T20:39:25.3926114Z   allow-unsafe-pr-checkout: false
+test	Checkout source	2026-10-24T20:39:25.3926883Z env:
+test	Checkout source	2026-10-24T20:39:25.3927403Z   GIT_CONFIG_COUNT: 1
+test	Checkout source	2026-10-24T20:39:25.3928025Z   GIT_CONFIG_KEY_0: init.defaultBranch
+test	Checkout source	2026-10-24T20:39:25.3928920Z   GIT_CONFIG_VALUE_0: main
+test	Checkout source	2026-10-24T20:39:25.3929593Z ##[endgroup]
+test	Checkout source	2026-10-24T20:39:25.4682019Z Syncing repository: konard/konard.github.io
+test	Checkout source	2026-10-24T20:39:25.4685013Z ##[group]Getting Git version info
+test	Checkout source	2026-10-24T20:39:25.4686539Z Working directory is '/home/runner/work/konard.github.io/konard.github.io'
+test	Checkout source	2026-10-24T20:39:25.4689134Z [command]/usr/bin/git version
+test	Checkout source	2026-10-24T20:39:25.4763888Z git version 2.55.0
+test	Checkout source	2026-10-24T20:39:25.4781603Z ##[endgroup]
+test	Checkout source	2026-10-24T20:39:25.4795431Z Temporarily overriding HOME='/home/runner/work/_temp/24c348ed-4965-4dc9-82a6-380248233599' before making global git config changes
+test	Checkout source	2026-10-24T20:39:25.4798310Z Adding repository directory to the temporary git global config as a safe directory
+test	Checkout source	2026-10-24T20:39:25.4801053Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/konard.github.io/konard.github.io
+test	Checkout source	2026-10-24T20:39:25.4854874Z Deleting the contents of '/home/runner/work/konard.github.io/konard.github.io'
+test	Checkout source	2026-10-24T20:39:25.4859568Z ##[group]Determining repository object format
+test	Checkout source	2026-10-24T20:39:25.4861708Z ##[endgroup]
+test	Checkout source	2026-10-24T20:39:25.4863762Z ##[group]Initializing the repository
+test	Checkout source	2026-10-24T20:39:25.4866214Z [command]/usr/bin/git init /home/runner/work/konard.github.io/konard.github.io
+test	Checkout source	2026-10-24T20:39:25.4987194Z Initialized empty Git repository in /home/runner/work/konard.github.io/konard.github.io/.git/
+test	Checkout source	2026-10-24T20:39:25.4996374Z [command]/usr/bin/git remote add origin https://github.com/konard/konard.github.io
+test	Checkout source	2026-10-24T20:39:25.5053623Z ##[endgroup]
+test	Checkout source	2026-10-24T20:39:25.5054754Z ##[group]Disabling automatic garbage collection
+test	Checkout source	2026-10-24T20:39:25.5057505Z [command]/usr/bin/git config --local gc.auto 0
+test	Checkout source	2026-10-24T20:39:25.5177672Z ##[endgroup]
+test	Checkout source	2026-10-24T20:39:25.5179550Z ##[group]Setting up auth
+test	Checkout source	2026-10-24T20:39:25.5185296Z Removing SSH command configuration
+test	Checkout source	2026-10-24T20:39:25.5187288Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+test	Checkout source	2026-10-24T20:39:25.5191951Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+test	Checkout source	2026-10-24T20:39:25.5509733Z Removing HTTP extra header
+test	Checkout source	2026-10-24T20:39:25.5515422Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+test	Checkout source	2026-10-24T20:39:25.5550506Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+test	Checkout source	2026-10-24T20:39:25.5738003Z Removing includeIf entries pointing to credentials config files
+test	Checkout source	2026-10-24T20:39:25.5743184Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+test	Checkout source	2026-10-24T20:39:25.5775492Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+test	Checkout source	2026-10-24T20:39:25.5965444Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-8d5f705c-f11b-4878-aa61-ea9562926f52.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+test	Checkout source	2026-10-24T20:39:25.6000404Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path /home/runner/work/_temp/git-credentials-8d5f705c-f11b-4878-aa61-ea9562926f52.config
+test	Checkout source	2026-10-24T20:39:25.6031911Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-8d5f705c-f11b-4878-aa61-ea9562926f52.config
+test	Checkout source	2026-10-24T20:39:25.6070750Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-8d5f705c-f11b-4878-aa61-ea9562926f52.config
+test	Checkout source	2026-10-24T20:39:25.6100310Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-8d5f705c-f11b-4878-aa61-ea9562926f52.config
+test	Checkout source	2026-10-24T20:39:25.6127473Z ##[endgroup]
+test	Checkout source	2026-10-24T20:39:25.6128608Z ##[group]Fetching the repository
+test	Checkout source	2026-10-24T20:39:25.6134106Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +971eb02c7c7b6509214efd8eba29de713f101db1:refs/remotes/pull/20/merge
+test	Checkout source	2026-10-24T20:39:30.9241338Z From https://github.com/konard/konard.github.io
+test	Checkout source	2026-10-24T20:39:30.9242140Z  * [new ref]         971eb02c7c7b6509214efd8eba29de713f101db1 -> pull/20/merge
+test	Checkout source	2026-10-24T20:39:30.9249535Z ##[endgroup]
+test	Checkout source	2026-10-24T20:39:30.9250066Z ##[group]Determining the checkout info
+test	Checkout source	2026-10-24T20:39:30.9250540Z ##[endgroup]
+test	Checkout source	2026-10-24T20:39:30.9250908Z [command]/usr/bin/git sparse-checkout disable
+test	Checkout source	2026-10-24T20:39:30.9301795Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+test	Checkout source	2026-10-24T20:39:30.9332792Z ##[group]Checking out the ref
+test	Checkout source	2026-10-24T20:39:30.9335852Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/20/merge
+test	Checkout source	2026-10-24T20:39:31.1801803Z Note: switching to 'refs/remotes/pull/20/merge'.
+test	Checkout source	2026-10-24T20:39:31.1802208Z 
+test	Checkout source	2026-10-24T20:39:31.1802493Z You are in 'detached HEAD' state. You can look around, make experimental
+test	Checkout source	2026-10-24T20:39:31.1802829Z changes and commit them, and you can discard any commits you make in this
+test	Checkout source	2026-10-24T20:39:31.1803115Z state without impacting any branches by switching back to a branch.
+test	Checkout source	2026-10-24T20:39:31.1803297Z 
+test	Checkout source	2026-10-24T20:39:31.1803459Z If you want to create a new branch to retain commits you create, you may
+test	Checkout source	2026-10-24T20:39:31.1803733Z do so (now or later) by using -c with the switch command. Example:
+test	Checkout source	2026-10-24T20:39:31.1803889Z 
+test	Checkout source	2026-10-24T20:39:31.1804017Z   git switch -c <new-branch-name>
+test	Checkout source	2026-10-24T20:39:31.1804163Z 
+test	Checkout source	2026-10-24T20:39:31.1804235Z Or undo this operation with:
+test	Checkout source	2026-10-24T20:39:31.1804338Z 
+test	Checkout source	2026-10-24T20:39:31.1804396Z   git switch -
+test	Checkout source	2026-10-24T20:39:31.1804506Z 
+test	Checkout source	2026-10-24T20:39:31.1804663Z Turn off this advice by setting config variable advice.detachedHead to false
+test	Checkout source	2026-10-24T20:39:31.1804842Z 
+test	Checkout source	2026-10-24T20:39:31.1805038Z HEAD is now at 971eb02 Merge 996cf0d0a282f351ad66cefa0d02a3061008cffc into aeb5b451e44765dc507521bc107b88cb984d422a
+test	Checkout source	2026-10-24T20:39:31.1823667Z ##[endgroup]
+test	Checkout source	2026-10-24T20:39:31.1865335Z [command]/usr/bin/git log -1 --format=%H
+test	Checkout source	2026-10-24T20:39:31.1892109Z 971eb02c7c7b6509214efd8eba29de713f101db1
+test	Checkout source	2026-10-24T20:39:31.1899946Z ##[group]Removing auth
+test	Checkout source	2026-10-24T20:39:31.1900192Z Removing SSH command configuration
+test	Checkout source	2026-10-24T20:39:31.1902721Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+test	Checkout source	2026-10-24T20:39:31.1931247Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+test	Checkout source	2026-10-24T20:39:31.2118469Z Removing HTTP extra header
+test	Checkout source	2026-10-24T20:39:31.2122617Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+test	Checkout source	2026-10-24T20:39:31.2152774Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+test	Checkout source	2026-10-24T20:39:31.2335429Z Removing includeIf entries pointing to credentials config files
+test	Checkout source	2026-10-24T20:39:31.2339285Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+test	Checkout source	2026-10-24T20:39:31.2364216Z includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path
+test	Checkout source	2026-10-24T20:39:31.2364819Z includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path
+test	Checkout source	2026-10-24T20:39:31.2365232Z includeif.gitdir:/github/workspace/.git.path
+test	Checkout source	2026-10-24T20:39:31.2365443Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+test	Checkout source	2026-10-24T20:39:31.2372933Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path
+test	Checkout source	2026-10-24T20:39:31.2395508Z /home/runner/work/_temp/git-credentials-8d5f705c-f11b-4878-aa61-ea9562926f52.config
+test	Checkout source	2026-10-24T20:39:31.2405501Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path /home/runner/work/_temp/git-credentials-8d5f705c-f11b-4878-aa61-ea9562926f52.config
+test	Checkout source	2026-10-24T20:39:31.2441756Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path
+test	Checkout source	2026-10-24T20:39:31.2464018Z /home/runner/work/_temp/git-credentials-8d5f705c-f11b-4878-aa61-ea9562926f52.config
+test	Checkout source	2026-10-24T20:39:31.2478192Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-8d5f705c-f11b-4878-aa61-ea9562926f52.config
+test	Checkout source	2026-10-24T20:39:31.2502764Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+test	Checkout source	2026-10-24T20:39:31.2555308Z /github/runner_temp/git-credentials-8d5f705c-f11b-4878-aa61-ea9562926f52.config
+test	Checkout source	2026-10-24T20:39:31.2561793Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-8d5f705c-f11b-4878-aa61-ea9562926f52.config
+test	Checkout source	2026-10-24T20:39:31.2593534Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+test	Checkout source	2026-10-24T20:39:31.2616208Z /github/runner_temp/git-credentials-8d5f705c-f11b-4878-aa61-ea9562926f52.config
+test	Checkout source	2026-10-24T20:39:31.2622000Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-8d5f705c-f11b-4878-aa61-ea9562926f52.config
+test	Checkout source	2026-10-24T20:39:31.2662636Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+test	Checkout source	2026-10-24T20:39:31.2842913Z Removing credentials config '/home/runner/work/_temp/git-credentials-8d5f705c-f11b-4878-aa61-ea9562926f52.config'
+test	Checkout source	2026-10-24T20:39:31.2851129Z ##[endgroup]
+test	Setup Node.js	﻿2026-10-24T20:39:31.3053606Z ##[group]Run actions/setup-node@v6
+test	Setup Node.js	2026-10-24T20:39:31.3053811Z with:
+test	Setup Node.js	2026-10-24T20:39:31.3053933Z   node-version: 24.x
+test	Setup Node.js	2026-10-24T20:39:31.3054060Z   cache: npm
+test	Setup Node.js	2026-10-24T20:39:31.3054180Z   check-latest: false
+test	Setup Node.js	2026-10-24T20:39:31.3055701Z   token: ***
+test	Setup Node.js	2026-10-24T20:39:31.3055838Z   package-manager-cache: true
+test	Setup Node.js	2026-10-24T20:39:31.3056001Z env:
+test	Setup Node.js	2026-10-24T20:39:31.3056123Z   GIT_CONFIG_COUNT: 1
+test	Setup Node.js	2026-10-24T20:39:31.3056273Z   GIT_CONFIG_KEY_0: init.defaultBranch
+test	Setup Node.js	2026-10-24T20:39:31.3056454Z   GIT_CONFIG_VALUE_0: main
+test	Setup Node.js	2026-10-24T20:39:31.3056588Z ##[endgroup]
+test	Setup Node.js	2026-10-24T20:39:31.4035456Z Found in cache @ /opt/hostedtoolcache/node/24.21.0/x64
+test	Setup Node.js	2026-10-24T20:39:31.4038316Z ##[group]Environment details
+test	Setup Node.js	2026-10-24T20:39:31.7200086Z node: v24.21.0
+test	Setup Node.js	2026-10-24T20:39:31.7200424Z npm: 11.19.0
+test	Setup Node.js	2026-10-24T20:39:31.7200641Z yarn: 1.22.22
+test	Setup Node.js	2026-10-24T20:39:31.7201299Z ##[endgroup]
+test	Setup Node.js	2026-10-24T20:39:31.7213790Z [command]/opt/hostedtoolcache/node/24.21.0/x64/bin/npm config get cache
+test	Setup Node.js	2026-10-24T20:39:32.2036406Z /home/runner/.npm
+test	Setup Node.js	2026-10-24T20:39:32.4205918Z Cache hit for: node-cache-Linux-x64-npm-4b6fecdc63c3716cba6176337524c48a8d6e1aa392c5a191c878ae010a03856b
+test	Setup Node.js	2026-10-24T20:39:33.5912214Z Received 37265328 of 37265328 (100.0%), 37.3 MBs/sec
+test	Setup Node.js	2026-10-24T20:39:33.5912671Z Cache Size: ~36 MB (37265328 B)
+test	Setup Node.js	2026-10-24T20:39:33.6002623Z [command]/usr/bin/tar -xf /home/runner/work/_temp/666aee39-594a-4473-ac4c-4709ab698d69/cache.tzst -P -C /home/runner/work/konard.github.io/konard.github.io --use-compress-program unzstd
+test	Setup Node.js	2026-10-24T20:39:33.6783386Z Cache restored successfully
+test	Setup Node.js	2026-10-24T20:39:33.6803513Z Cache restored from key: node-cache-Linux-x64-npm-4b6fecdc63c3716cba6176337524c48a8d6e1aa392c5a191c878ae010a03856b
+test	Install dependencies	﻿2026-10-24T20:39:33.6957905Z ##[group]Run npm ci
+test	Install dependencies	2026-10-24T20:39:33.6958520Z ^[[36;1mnpm ci^[[0m
+test	Install dependencies	2026-10-24T20:39:33.7184215Z shell: /usr/bin/bash -e {0}
+test	Install dependencies	2026-10-24T20:39:33.7184445Z env:
+test	Install dependencies	2026-10-24T20:39:33.7184585Z   GIT_CONFIG_COUNT: 1
+test	Install dependencies	2026-10-24T20:39:33.7184727Z   GIT_CONFIG_KEY_0: init.defaultBranch
+test	Install dependencies	2026-10-24T20:39:33.7184891Z   GIT_CONFIG_VALUE_0: main
+test	Install dependencies	2026-10-24T20:39:33.7185034Z ##[endgroup]
+test	Install dependencies	2026-10-24T20:39:36.7830871Z 
+test	Install dependencies	2026-10-24T20:39:36.7838626Z > konard.github.io@0.1.0 prepare
+test	Install dependencies	2026-10-24T20:39:36.7839037Z > husky
+test	Install dependencies	2026-10-24T20:39:36.7839145Z 
+test	Install dependencies	2026-10-24T20:39:36.8833999Z 
+test	Install dependencies	2026-10-24T20:39:36.8834855Z added 306 packages, and audited 307 packages in 3s
+test	Install dependencies	2026-10-24T20:39:36.8835166Z 
+test	Install dependencies	2026-10-24T20:39:36.8835328Z 79 packages are looking for funding
+test	Install dependencies	2026-10-24T20:39:36.8835667Z   run `npm fund` for details
+test	Install dependencies	2026-10-24T20:39:36.8842962Z 
+test	Install dependencies	2026-10-24T20:39:36.8843101Z found 0 vulnerabilities
+test	Run tests	﻿2026-10-24T20:39:36.9401036Z ##[group]Run npm run test:ci
+test	Run tests	2026-10-24T20:39:36.9401235Z ^[[36;1mnpm run test:ci^[[0m
+test	Run tests	2026-10-24T20:39:36.9455005Z shell: /usr/bin/bash -e {0}
+test	Run tests	2026-10-24T20:39:36.9455164Z env:
+test	Run tests	2026-10-24T20:39:36.9455416Z   GIT_CONFIG_COUNT: 1
+test	Run tests	2026-10-24T20:39:36.9455553Z   GIT_CONFIG_KEY_0: init.defaultBranch
+test	Run tests	2026-10-24T20:39:36.9455713Z   GIT_CONFIG_VALUE_0: main
+test	Run tests	2026-10-24T20:39:36.9455849Z ##[endgroup]
+test	Run tests	2026-10-24T20:39:37.0171181Z 
+test	Run tests	2026-10-24T20:39:37.0171808Z > konard.github.io@0.1.0 test:ci
+test	Run tests	2026-10-24T20:39:37.0172055Z > vitest run
+test	Run tests	2026-10-24T20:39:37.0172128Z 
+test	Run tests	2026-10-24T20:39:37.4881158Z ^[[33m(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+test	Run tests	2026-10-24T20:39:37.4882199Z   - import "./fields" without a file extension (src/settings/schema.js:15:32). Add the file extension
+test	Run tests	2026-10-24T20:39:37.4882834Z   - import "./schema.background" without a file extension (src/settings/schema.js:16:37). Add the file extension
+test	Run tests	2026-10-24T20:39:37.4883526Z   - import "./schema.layers" without a file extension (src/settings/schema.js:17:32). Add the file extension
+test	Run tests	2026-10-24T20:39:37.4884156Z   - import "./schema.skins" without a file extension (src/settings/schema.js:18:31). Add the file extension
+test	Run tests	2026-10-24T20:39:37.4884580Z   - import "./schema.sound" without a file extension (src/settings/schema.js:19:31). Add the file extension
+test	Run tests	2026-10-24T20:39:37.4884990Z   - import "./schema.skins" without a file extension (src/settings/schema.js:21:33). Add the file extension
+test	Run tests	2026-10-24T20:39:37.4885429Z   - import "./fields" without a file extension (src/settings/schema.sound.js:7:47). Add the file extension
+test	Run tests	2026-10-24T20:39:37.4885864Z   - import "./fields" without a file extension (src/settings/schema.background.js:3:54). Add the file extension
+test	Run tests	2026-10-24T20:39:37.4886282Z   - import "./fields" without a file extension (src/settings/schema.layers.js:8:54). Add the file extension
+test	Run tests	2026-10-24T20:39:37.4886698Z   - import "../skins.frames" without a file extension (src/settings/schema.skins.js:3:25). Add the file extension
+test	Run tests	2026-10-24T20:39:37.4887124Z   - import "./fields" without a file extension (src/settings/schema.skins.js:4:47). Add the file extension
+test	Run tests	2026-10-24T20:39:37.4887594Z Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.^[[39m
+test	Run tests	2026-10-24T20:39:37.5106290Z 
+test	Run tests	2026-10-24T20:39:37.5107969Z ^[[1m^[[30m^[[46m RUN ^[[49m^[[39m^[[22m ^[[36mv5.0.5 ^[[39m^[[90m/home/runner/work/konard.github.io/konard.github.io^[[39m
+test	Run tests	2026-10-24T20:39:37.5108402Z 
+test	Run tests	2026-10-24T20:39:38.6309537Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:38.7448422Z ^[[90mstderr^[[2m | src/components/visuals.test.jsx^[[2m > ^[[22m^[[2mbackground follows the settings at once (issue #13)^[[2m > ^[[22m^[[2mhides switched-off layers and keeps the universe off the page
+test	Run tests	2026-10-24T20:39:38.7452543Z ^[[22m^[[39mAn update to Cosmos inside a test was not wrapped in act(...).
+test	Run tests	2026-10-24T20:39:38.7453115Z 
+test	Run tests	2026-10-24T20:39:38.7454158Z When testing, code that causes React state updates should be wrapped into act(...):
+test	Run tests	2026-10-24T20:39:38.7454432Z 
+test	Run tests	2026-10-24T20:39:38.7454542Z act(() => {
+test	Run tests	2026-10-24T20:39:38.7454713Z   /* fire events that update state */
+test	Run tests	2026-10-24T20:39:38.7454875Z });
+test	Run tests	2026-10-24T20:39:38.7455015Z /* assert on the output */
+test	Run tests	2026-10-24T20:39:38.7455112Z 
+test	Run tests	2026-10-24T20:39:38.7455433Z This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+test	Run tests	2026-10-24T20:39:38.7455714Z 
+test	Run tests	2026-10-24T20:39:38.7455950Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:39.0672953Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:39.4128145Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:39.4670988Z  ^[[32m✓^[[39m src/components/visuals.test.jsx ^[[2m(^[[22m^[[2m29 tests^[[22m^[[2m)^[[22m^[[33m 849^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:39.4699267Z    ^[[32m✓^[[39m HabrCards ^[[2m(4)^[[22m
+test	Run tests	2026-10-24T20:39:39.4729280Z      ^[[33m^[[2m✓^[[22m^[[39m shows the snapshot when live data is off^[[33m 379^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:39.5161978Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:39.6955483Z  ^[[32m✓^[[39m src/sound/sound.test.jsx ^[[2m(^[[22m^[[2m19 tests^[[22m^[[2m)^[[22m^[[33m 923^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:39.7021752Z    ^[[32m✓^[[39m the settings of the sound ^[[2m(6)^[[22m
+test	Run tests	2026-10-24T20:39:39.7023055Z      ^[[33m^[[2m✓^[[22m^[[39m shows the tabs of the interactions only when the sound is on^[[33m 561^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:40.1226057Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:40.4750211Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:40.5513150Z  ^[[32m✓^[[39m src/links/network.test.js ^[[2m(^[[22m^[[2m18 tests^[[22m^[[2m)^[[22m^[[32m 178^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:40.6649543Z  ^[[32m✓^[[39m src/data/data.test.js ^[[2m(^[[22m^[[2m25 tests^[[22m^[[2m)^[[22m^[[32m 140^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:40.9164931Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:41.1257626Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:41.2711026Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:41.3989352Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:41.5033152Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:41.6072779Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:41.6226455Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:41.6230356Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:41.6274184Z ^[[90mstderr^[[2m | src/visuals/layers.test.jsx^[[2m > ^[[22m^[[2mthe background loads the code of a layer only when it is on (issue #15)^[[2m > ^[[22m^[[2mhas no star or beam canvas by default and adds them when switched on
+test	Run tests	2026-10-24T20:39:41.6284211Z ^[[22m^[[39mAn update to Cosmos inside a test was not wrapped in act(...).
+test	Run tests	2026-10-24T20:39:41.6284862Z 
+test	Run tests	2026-10-24T20:39:41.6285323Z When testing, code that causes React state updates should be wrapped into act(...):
+test	Run tests	2026-10-24T20:39:41.6285727Z 
+test	Run tests	2026-10-24T20:39:41.6285919Z act(() => {
+test	Run tests	2026-10-24T20:39:41.6286250Z   /* fire events that update state */
+test	Run tests	2026-10-24T20:39:41.6287186Z });
+test	Run tests	2026-10-24T20:39:41.6287500Z /* assert on the output */
+test	Run tests	2026-10-24T20:39:41.6287756Z 
+test	Run tests	2026-10-24T20:39:41.6288501Z This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+test	Run tests	2026-10-24T20:39:41.6289154Z 
+test	Run tests	2026-10-24T20:39:41.6289652Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:41.6480330Z  ^[[32m✓^[[39m src/visuals/layers.test.jsx ^[[2m(^[[22m^[[2m17 tests^[[22m^[[2m)^[[22m^[[32m 72^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:41.7931300Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:41.8411552Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:41.9730487Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:42.0227048Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:42.0434197Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:42.1719175Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:42.2073780Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:42.3090067Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:42.3406235Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:42.3756753Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:42.4550207Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:42.5523315Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:42.5602784Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:42.6641256Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:42.7531140Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:42.7914902Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:42.8472077Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:42.9204918Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:42.9673532Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:43.0986163Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:43.0998760Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:43.2693293Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:43.3477949Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:43.3627645Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:43.5731806Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:43.6173547Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:43.6228648Z  ^[[32m✓^[[39m src/pages/network.test.jsx ^[[2m(^[[22m^[[2m14 tests^[[22m^[[2m)^[[22m^[[33m 2102^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:43.6237735Z    ^[[32m✓^[[39m NetworkPage (issue #17) ^[[2m(10)^[[22m
+test	Run tests	2026-10-24T20:39:43.6238822Z      ^[[33m^[[2m✓^[[22m^[[39m edits the links one by one: references, colours, turns, adding and removing^[[33m 384^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:43.6241792Z      ^[[33m^[[2m✓^[[22m^[[39m saves a style in the browser and applies it again^[[33m 313^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:43.8667679Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:43.9350521Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:44.0064566Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:44.2221497Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:44.2699713Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:44.3698884Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:44.5249906Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:44.7424700Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:44.8500973Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:44.9593875Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:45.1491506Z ^[[90mstderr^[[2m | src/pages/settings.test.jsx^[[2m > ^[[22m^[[2msettings page layout (issue #15)^[[2m > ^[[22m^[[2mshows a setting only where it applies (issue #15)
+test	Run tests	2026-10-24T20:39:45.1519663Z ^[[22m^[[39mAn update to Cosmos inside a test was not wrapped in act(...).
+test	Run tests	2026-10-24T20:39:45.1538776Z 
+test	Run tests	2026-10-24T20:39:45.1569310Z When testing, code that causes React state updates should be wrapped into act(...):
+test	Run tests	2026-10-24T20:39:45.1598700Z 
+test	Run tests	2026-10-24T20:39:45.1599490Z act(() => {
+test	Run tests	2026-10-24T20:39:45.1629277Z   /* fire events that update state */
+test	Run tests	2026-10-24T20:39:45.1660597Z  ^[[32m✓^[[39m src/pages/settings.test.jsx ^[[2m(^[[22m^[[2m11 tests^[[22m^[[2m)^[[22m^[[33m 2637^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:45.1661348Z    ^[[32m✓^[[39m settings page (issue #13) ^[[2m(7)^[[22m
+test	Run tests	2026-10-24T20:39:45.1662299Z });
+test	Run tests	2026-10-24T20:39:45.1671117Z      ^[[33m^[[2m✓^[[22m^[[39m applies a change to the page at once and remembers it in this browser^[[33m 366^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:45.1672138Z      ^[[33m^[[2m✓^[[22m^[[39m shows the options of the chosen skin only^[[33m 496^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:45.1672975Z      ^[[33m^[[2m✓^[[22m^[[39m resets one setting, a section or everything^[[33m 338^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:45.1673951Z      ^[[33m^[[2m✓^[[22m^[[39m shows the changes as JSON and loads pasted settings^[[33m 344^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:45.1698982Z /* assert on the output */
+test	Run tests	2026-10-24T20:39:45.1699203Z 
+test	Run tests	2026-10-24T20:39:45.1699712Z This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+test	Run tests	2026-10-24T20:39:45.1700412Z An update to LiquidRefraction inside a test was not wrapped in act(...).
+test	Run tests	2026-10-24T20:39:45.1700701Z 
+test	Run tests	2026-10-24T20:39:45.1701206Z When testing, code that causes React state updates should be wrapped into act(...):
+test	Run tests	2026-10-24T20:39:45.1701738Z 
+test	Run tests	2026-10-24T20:39:45.1701854Z act(() => {
+test	Run tests	2026-10-24T20:39:45.1702189Z   /* fire events that update state */
+test	Run tests	2026-10-24T20:39:45.1702440Z });
+test	Run tests	2026-10-24T20:39:45.1702647Z /* assert on the output */
+test	Run tests	2026-10-24T20:39:45.1702802Z 
+test	Run tests	2026-10-24T20:39:45.1703359Z This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+test	Run tests	2026-10-24T20:39:45.1704037Z An update to Sound inside a test was not wrapped in act(...).
+test	Run tests	2026-10-24T20:39:45.1704288Z 
+test	Run tests	2026-10-24T20:39:45.1704599Z When testing, code that causes React state updates should be wrapped into act(...):
+test	Run tests	2026-10-24T20:39:45.1704916Z 
+test	Run tests	2026-10-24T20:39:45.1705001Z act(() => {
+test	Run tests	2026-10-24T20:39:45.1705231Z   /* fire events that update state */
+test	Run tests	2026-10-24T20:39:45.1705496Z });
+test	Run tests	2026-10-24T20:39:45.1705732Z /* assert on the output */
+test	Run tests	2026-10-24T20:39:45.1705880Z 
+test	Run tests	2026-10-24T20:39:45.1706440Z This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+test	Run tests	2026-10-24T20:39:45.1707213Z An update to PrefSwitches inside a test was not wrapped in act(...).
+test	Run tests	2026-10-24T20:39:45.1707475Z 
+test	Run tests	2026-10-24T20:39:45.1727155Z When testing, code that causes React state updates should be wrapped into act(...):
+test	Run tests	2026-10-24T20:39:45.1727554Z 
+test	Run tests	2026-10-24T20:39:45.1727657Z act(() => {
+test	Run tests	2026-10-24T20:39:45.1727903Z   /* fire events that update state */
+test	Run tests	2026-10-24T20:39:45.1728316Z });
+test	Run tests	2026-10-24T20:39:45.1728520Z /* assert on the output */
+test	Run tests	2026-10-24T20:39:45.1728676Z 
+test	Run tests	2026-10-24T20:39:45.1729223Z This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+test	Run tests	2026-10-24T20:39:45.1729967Z An update to Layout inside a test was not wrapped in act(...).
+test	Run tests	2026-10-24T20:39:45.1730612Z 
+test	Run tests	2026-10-24T20:39:45.1730938Z When testing, code that causes React state updates should be wrapped into act(...):
+test	Run tests	2026-10-24T20:39:45.1731428Z 
+test	Run tests	2026-10-24T20:39:45.1731514Z act(() => {
+test	Run tests	2026-10-24T20:39:45.1731748Z   /* fire events that update state */
+test	Run tests	2026-10-24T20:39:45.1732004Z });
+test	Run tests	2026-10-24T20:39:45.1745034Z /* assert on the output */
+test	Run tests	2026-10-24T20:39:45.1745365Z 
+test	Run tests	2026-10-24T20:39:45.1745963Z This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+test	Run tests	2026-10-24T20:39:45.1746712Z An update to SettingsPage inside a test was not wrapped in act(...).
+test	Run tests	2026-10-24T20:39:45.1746992Z 
+test	Run tests	2026-10-24T20:39:45.1747314Z When testing, code that causes React state updates should be wrapped into act(...):
+test	Run tests	2026-10-24T20:39:45.1747646Z 
+test	Run tests	2026-10-24T20:39:45.1747742Z act(() => {
+test	Run tests	2026-10-24T20:39:45.1747996Z   /* fire events that update state */
+test	Run tests	2026-10-24T20:39:45.1748427Z });
+test	Run tests	2026-10-24T20:39:45.1748650Z /* assert on the output */
+test	Run tests	2026-10-24T20:39:45.1748807Z 
+test	Run tests	2026-10-24T20:39:45.1749344Z This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+test	Run tests	2026-10-24T20:39:45.1749838Z 
+test	Run tests	2026-10-24T20:39:46.0989848Z  ^[[32m✓^[[39m src/data/experience.test.js ^[[2m(^[[22m^[[2m50 tests^[[22m^[[2m)^[[22m^[[32m 73^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:46.4028497Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:46.4966548Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:46.5793169Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:46.6565255Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:46.7040414Z  ^[[32m✓^[[39m src/links/links.test.js ^[[2m(^[[22m^[[2m17 tests^[[22m^[[2m)^[[22m^[[33m 2084^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:46.7090101Z    ^[[32m✓^[[39m network symbols (issue #9 link visuals) ^[[2m(7)^[[22m
+test	Run tests	2026-10-24T20:39:46.7108529Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:46.7109502Z      ^[[33m^[[2m✓^[[22m^[[39m every network is drawable and stays inside the box^[[33m 369^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:46.7157726Z      ^[[33m^[[2m✓^[[22m^[[39m every link is one unbroken line with matching tangents in its middle, in its own colour^[[33m 930^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:46.7169097Z      ^[[33m^[[2m✓^[[22m^[[39m ends touch the middles they refer to, references to 0 stay free^[[33m 415^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:46.7760805Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:46.8958846Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:47.0194367Z  ^[[32m✓^[[39m src/settings/presets.test.js ^[[2m(^[[22m^[[2m16 tests^[[22m^[[2m)^[[22m^[[32m 238^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:47.5189879Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:47.7477372Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:47.9489617Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:48.0942655Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:48.1860704Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:48.3679833Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:48.4499641Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:48.4630999Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:48.5390481Z  ^[[32m✓^[[39m src/skins.frames.test.jsx ^[[2m(^[[22m^[[2m13 tests^[[22m^[[2m)^[[22m^[[33m 1009^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:48.5429661Z    ^[[32m✓^[[39m custom frames: corner tiles (issue #15) ^[[2m(5)^[[22m
+test	Run tests	2026-10-24T20:39:48.5455138Z      ^[[33m^[[2m✓^[[22m^[[39m shows the corners only for the custom frame of the futuristic skin^[[33m 479^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:48.6126090Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:48.6671288Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:48.7281762Z  ^[[32m✓^[[39m src/cv/cv.test.jsx ^[[2m(^[[22m^[[2m130 tests^[[22m^[[2m)^[[22m^[[33m 754^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:48.7929649Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:48.8880417Z  ^[[32m✓^[[39m src/pages/pages.test.jsx ^[[2m(^[[22m^[[2m51 tests^[[22m^[[2m)^[[22m^[[33m 9949^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:48.8881588Z    ^[[32m✓^[[39m RepositoriesPage ^[[2m(2)^[[22m
+test	Run tests	2026-10-24T20:39:48.8882386Z      ^[[33m^[[2m✓^[[22m^[[39m summarizes every field and lists the examples of every profession^[[33m 1074^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:48.8883264Z      ^[[33m^[[2m✓^[[22m^[[39m filters the catalog by field and search, kept in the query string^[[33m 337^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:48.8883892Z    ^[[32m✓^[[39m ExperiencePage ^[[2m(20)^[[22m
+test	Run tests	2026-10-24T20:39:48.8884442Z      ^[[33m^[[2m✓^[[22m^[[39m shows every position without a role^[[33m 477^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:48.8885127Z    ^[[32m✓^[[39m NetworkGallery (issue #9) ^[[2m(3)^[[22m
+test	Run tests	2026-10-24T20:39:48.8885903Z      ^[[33m^[[2m✓^[[22m^[[39m draws all (N + 1)^(2N) networks of N links page by page, with base subscripts^[[33m 1122^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:48.8886676Z      ^[[33m^[[2m✓^[[22m^[[39m can show one network per renaming class^[[33m 498^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:48.8887508Z      ^[[33m^[[2m✓^[[22m^[[39m can show only networks whose links refer to real links, not to 0 (issue #13)^[[33m 311^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:48.8888433Z    ^[[32m✓^[[39m pages in Russian (issue #11) ^[[2m(5)^[[22m
+test	Run tests	2026-10-24T20:39:48.8888984Z      ^[[33m^[[2m✓^[[22m^[[39m RepositoriesPage^[[33m 605^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:48.8889475Z      ^[[33m^[[2m✓^[[22m^[[39m ResearchPage^[[33m 415^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:48.8889962Z      ^[[33m^[[2m✓^[[22m^[[39m AssociativePage^[[33m 692^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:49.4901162Z  ^[[32m✓^[[39m src/settings/settings.test.js ^[[2m(^[[22m^[[2m11 tests^[[22m^[[2m)^[[22m^[[32m 86^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:49.6884213Z  ^[[32m✓^[[39m src/workflow.test.js ^[[2m(^[[22m^[[2m13 tests^[[22m^[[2m)^[[22m^[[32m 19^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:50.3980013Z  ^[[32m✓^[[39m src/links/mechanics-19.test.js ^[[2m(^[[22m^[[2m6 tests^[[22m^[[2m)^[[22m^[[33m 844^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:50.3981064Z    ^[[32m✓^[[39m geometry and control audit (issue #19) ^[[2m(5)^[[22m
+test	Run tests	2026-10-24T20:39:50.3981985Z      ^[[33m^[[2m✓^[[22m^[[39m renders all 4,181 networks of 1–3 links with finite editor geometry^[[33m 514^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:50.3982937Z      ^[[33m^[[2m✓^[[22m^[[39m round trips every geometry control and exercises its visible range^[[33m 319^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:50.5462922Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:50.6076647Z  ^[[32m✓^[[39m src/skins.test.jsx ^[[2m(^[[22m^[[2m62 tests^[[22m^[[2m)^[[22m^[[32m 105^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:50.7761599Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:50.9492079Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:51.0217661Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:51.3340134Z  ^[[32m✓^[[39m src/pages/feed.test.js ^[[2m(^[[22m^[[2m15 tests^[[22m^[[2m)^[[22m^[[32m 67^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:51.3414179Z ^[[90mstderr^[[2m | src/pages/presets.test.jsx^[[2m > ^[[22m^[[2mpresets (issue #15)^[[2m > ^[[22m^[[2msave, apply, update, rename and delete looks of this browser
+test	Run tests	2026-10-24T20:39:51.3432004Z ^[[22m^[[39mAn update to Cosmos inside a test was not wrapped in act(...).
+test	Run tests	2026-10-24T20:39:51.3438363Z 
+test	Run tests	2026-10-24T20:39:51.3439260Z When testing, code that causes React state updates should be wrapped into act(...):
+test	Run tests	2026-10-24T20:39:51.3439714Z 
+test	Run tests	2026-10-24T20:39:51.3439908Z act(() => {
+test	Run tests	2026-10-24T20:39:51.3440255Z   /* fire events that update state */
+test	Run tests	2026-10-24T20:39:51.3440617Z });
+test	Run tests	2026-10-24T20:39:51.3440958Z /* assert on the output */
+test	Run tests	2026-10-24T20:39:51.3441261Z 
+test	Run tests	2026-10-24T20:39:51.3441981Z This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+test	Run tests	2026-10-24T20:39:51.3442801Z An update to LiquidRefraction inside a test was not wrapped in act(...).
+test	Run tests	2026-10-24T20:39:51.3443184Z 
+test	Run tests	2026-10-24T20:39:51.3443589Z When testing, code that causes React state updates should be wrapped into act(...):
+test	Run tests	2026-10-24T20:39:51.3444038Z 
+test	Run tests	2026-10-24T20:39:51.3444222Z act(() => {
+test	Run tests	2026-10-24T20:39:51.3444546Z   /* fire events that update state */
+test	Run tests	2026-10-24T20:39:51.3444903Z });
+test	Run tests	2026-10-24T20:39:51.3445202Z /* assert on the output */
+test	Run tests	2026-10-24T20:39:51.3445448Z 
+test	Run tests	2026-10-24T20:39:51.3446038Z This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+test	Run tests	2026-10-24T20:39:51.3446761Z An update to Sound inside a test was not wrapped in act(...).
+test	Run tests	2026-10-24T20:39:51.3447094Z 
+test	Run tests	2026-10-24T20:39:51.3447473Z When testing, code that causes React state updates should be wrapped into act(...):
+test	Run tests	2026-10-24T20:39:51.3447866Z 
+test	Run tests	2026-10-24T20:39:51.3448191Z act(() => {
+test	Run tests	2026-10-24T20:39:51.3448597Z   /* fire events that update state */
+test	Run tests	2026-10-24T20:39:51.3448930Z });
+test	Run tests	2026-10-24T20:39:51.3449224Z /* assert on the output */
+test	Run tests	2026-10-24T20:39:51.3449470Z 
+test	Run tests	2026-10-24T20:39:51.3450055Z This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+test	Run tests	2026-10-24T20:39:51.3450828Z An update to PrefSwitches inside a test was not wrapped in act(...).
+test	Run tests	2026-10-24T20:39:51.3451196Z 
+test	Run tests	2026-10-24T20:39:51.3451589Z When testing, code that causes React state updates should be wrapped into act(...):
+test	Run tests	2026-10-24T20:39:51.3452011Z 
+test	Run tests	2026-10-24T20:39:51.3452207Z act(() => {
+test	Run tests	2026-10-24T20:39:51.3452536Z   /* fire events that update state */
+test	Run tests	2026-10-24T20:39:51.3452878Z });
+test	Run tests	2026-10-24T20:39:51.3453180Z /* assert on the output */
+test	Run tests	2026-10-24T20:39:51.3453431Z 
+test	Run tests	2026-10-24T20:39:51.3454040Z This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+test	Run tests	2026-10-24T20:39:51.3454813Z An update to Layout inside a test was not wrapped in act(...).
+test	Run tests	2026-10-24T20:39:51.3455172Z 
+test	Run tests	2026-10-24T20:39:51.3455574Z When testing, code that causes React state updates should be wrapped into act(...):
+test	Run tests	2026-10-24T20:39:51.3455991Z 
+test	Run tests	2026-10-24T20:39:51.3456176Z act(() => {
+test	Run tests	2026-10-24T20:39:51.3456505Z   /* fire events that update state */
+test	Run tests	2026-10-24T20:39:51.3456848Z });
+test	Run tests	2026-10-24T20:39:51.3457153Z /* assert on the output */
+test	Run tests	2026-10-24T20:39:51.3457417Z 
+test	Run tests	2026-10-24T20:39:51.3458030Z This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+test	Run tests	2026-10-24T20:39:51.3459418Z An update to SettingsPage inside a test was not wrapped in act(...).
+test	Run tests	2026-10-24T20:39:51.3459776Z 
+test	Run tests	2026-10-24T20:39:51.3460175Z When testing, code that causes React state updates should be wrapped into act(...):
+test	Run tests	2026-10-24T20:39:51.3460576Z 
+test	Run tests	2026-10-24T20:39:51.3460764Z act(() => {
+test	Run tests	2026-10-24T20:39:51.3461084Z   /* fire events that update state */
+test	Run tests	2026-10-24T20:39:51.3461424Z });
+test	Run tests	2026-10-24T20:39:51.3461733Z /* assert on the output */
+test	Run tests	2026-10-24T20:39:51.3461979Z 
+test	Run tests	2026-10-24T20:39:51.3462580Z This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+test	Run tests	2026-10-24T20:39:51.3464019Z 
+test	Run tests	2026-10-24T20:39:51.4188580Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:51.7299711Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:51.8973537Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:51.9261571Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:51.9531268Z  ^[[32m✓^[[39m src/pages/presets.test.jsx ^[[2m(^[[22m^[[2m5 tests^[[22m^[[2m)^[[22m^[[33m 1650^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:51.9554708Z    ^[[32m✓^[[39m presets (issue #15) ^[[2m(5)^[[22m
+test	Run tests	2026-10-24T20:39:51.9555455Z      ^[[33m^[[2m✓^[[22m^[[39m come first on the settings page and in its section menu^[[33m 390^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:51.9556218Z      ^[[33m^[[2m✓^[[22m^[[39m save, apply, update, rename and delete looks of this browser^[[33m 398^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:51.9556985Z      ^[[33m^[[2m✓^[[22m^[[39m make a random look and copy a link to the current look^[[33m 311^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:52.2710176Z  ^[[32m✓^[[39m src/components/components.test.js ^[[2m(^[[22m^[[2m11 tests^[[22m^[[2m)^[[22m^[[32m 35^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:52.3590057Z ^[[90mstderr^[[2m | src/App.test.jsx^[[2m > ^[[22m^[[2mApp^[[2m > ^[[22m^[[2mrenders the name, headline and every CV section
+test	Run tests	2026-10-24T20:39:52.3599301Z ^[[22m^[[39mAn update to HabrCards inside a test was not wrapped in act(...).
+test	Run tests	2026-10-24T20:39:52.3599871Z 
+test	Run tests	2026-10-24T20:39:52.3600339Z When testing, code that causes React state updates should be wrapped into act(...):
+test	Run tests	2026-10-24T20:39:52.3605595Z 
+test	Run tests	2026-10-24T20:39:52.3668813Z act(() => {
+test	Run tests	2026-10-24T20:39:52.3671520Z   /* fire events that update state */
+test	Run tests	2026-10-24T20:39:52.3680085Z });
+test	Run tests	2026-10-24T20:39:52.3680340Z /* assert on the output */
+test	Run tests	2026-10-24T20:39:52.3680520Z 
+test	Run tests	2026-10-24T20:39:52.3680910Z This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+test	Run tests	2026-10-24T20:39:52.3681366Z 
+test	Run tests	2026-10-24T20:39:52.5049738Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:52.6009548Z ^[[90mstderr^[[2m | src/App.test.jsx^[[2m > ^[[22m^[[2mApp^[[2m > ^[[22m^[[2mevery navigation link points to an existing section
+test	Run tests	2026-10-24T20:39:52.6010510Z ^[[22m^[[39mAn update to HabrCards inside a test was not wrapped in act(...).
+test	Run tests	2026-10-24T20:39:52.6012915Z 
+test	Run tests	2026-10-24T20:39:52.6013548Z When testing, code that causes React state updates should be wrapped into act(...):
+test	Run tests	2026-10-24T20:39:52.6014597Z 
+test	Run tests	2026-10-24T20:39:52.6014824Z act(() => {
+test	Run tests	2026-10-24T20:39:52.6015210Z   /* fire events that update state */
+test	Run tests	2026-10-24T20:39:52.6015617Z });
+test	Run tests	2026-10-24T20:39:52.6015929Z /* assert on the output */
+test	Run tests	2026-10-24T20:39:52.6016204Z 
+test	Run tests	2026-10-24T20:39:52.6016860Z This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+test	Run tests	2026-10-24T20:39:52.6017517Z 
+test	Run tests	2026-10-24T20:39:52.7469717Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:52.8492370Z  ^[[32m✓^[[39m src/settings/applied.test.js ^[[2m(^[[22m^[[2m3 tests^[[22m^[[2m)^[[22m^[[32m 42^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:53.0140294Z ^[[90mstderr^[[2m | src/App.test.jsx^[[2m > ^[[22m^[[2mApp^[[2m > ^[[22m^[[2mshows companies on the timeline and social links
+test	Run tests	2026-10-24T20:39:53.0178318Z ^[[22m^[[39mAn update to HabrCards inside a test was not wrapped in act(...).
+test	Run tests	2026-10-24T20:39:53.0228651Z 
+test	Run tests	2026-10-24T20:39:53.0279839Z When testing, code that causes React state updates should be wrapped into act(...):
+test	Run tests	2026-10-24T20:39:53.0308464Z 
+test	Run tests	2026-10-24T20:39:53.0356230Z act(() => {
+test	Run tests	2026-10-24T20:39:53.0398930Z   /* fire events that update state */
+test	Run tests	2026-10-24T20:39:53.0449183Z });
+test	Run tests	2026-10-24T20:39:53.0476686Z /* assert on the output */
+test	Run tests	2026-10-24T20:39:53.0477655Z 
+test	Run tests	2026-10-24T20:39:53.0478480Z This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+test	Run tests	2026-10-24T20:39:53.0479235Z 
+test	Run tests	2026-10-24T20:39:53.1559728Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:53.2291379Z ^[[90mstderr^[[2m | src/App.test.jsx^[[2m > ^[[22m^[[2mApp^[[2m > ^[[22m^[[2mcontributions chart toggles between log and linear scale
+test	Run tests	2026-10-24T20:39:53.2311533Z ^[[22m^[[39mAn update to HabrCards inside a test was not wrapped in act(...).
+test	Run tests	2026-10-24T20:39:53.2448580Z 
+test	Run tests	2026-10-24T20:39:53.2484001Z When testing, code that causes React state updates should be wrapped into act(...):
+test	Run tests	2026-10-24T20:39:53.2484432Z 
+test	Run tests	2026-10-24T20:39:53.2484522Z act(() => {
+test	Run tests	2026-10-24T20:39:53.2484770Z   /* fire events that update state */
+test	Run tests	2026-10-24T20:39:53.2485043Z });
+test	Run tests	2026-10-24T20:39:53.2485261Z /* assert on the output */
+test	Run tests	2026-10-24T20:39:53.2485431Z 
+test	Run tests	2026-10-24T20:39:53.2485957Z This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+test	Run tests	2026-10-24T20:39:53.2486507Z 
+test	Run tests	2026-10-24T20:39:53.4370055Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:53.4631186Z  ^[[32m✓^[[39m src/links/placement-19.test.js ^[[2m(^[[22m^[[2m92 tests^[[22m^[[2m)^[[22m^[[33m 325^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:53.5210890Z ^[[90mstderr^[[2m | src/App.test.jsx^[[2m > ^[[22m^[[2mApp^[[2m > ^[[22m^[[2mchart bars expose a tooltip on focus
+test	Run tests	2026-10-24T20:39:53.5212048Z ^[[22m^[[39mAn update to HabrCards inside a test was not wrapped in act(...).
+test	Run tests	2026-10-24T20:39:53.5212425Z 
+test	Run tests	2026-10-24T20:39:53.5212851Z When testing, code that causes React state updates should be wrapped into act(...):
+test	Run tests	2026-10-24T20:39:53.5213263Z 
+test	Run tests	2026-10-24T20:39:53.5213423Z act(() => {
+test	Run tests	2026-10-24T20:39:53.5213746Z   /* fire events that update state */
+test	Run tests	2026-10-24T20:39:53.5214086Z });
+test	Run tests	2026-10-24T20:39:53.5214371Z /* assert on the output */
+test	Run tests	2026-10-24T20:39:53.5214655Z 
+test	Run tests	2026-10-24T20:39:53.5215319Z This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+test	Run tests	2026-10-24T20:39:53.5215919Z 
+test	Run tests	2026-10-24T20:39:53.6108278Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:53.6851809Z ^[[90mstderr^[[2m | src/App.test.jsx^[[2m > ^[[22m^[[2mApp^[[2m > ^[[22m^[[2mproject language filter narrows the list
+test	Run tests	2026-10-24T20:39:53.6854354Z ^[[22m^[[39mAn update to HabrCards inside a test was not wrapped in act(...).
+test	Run tests	2026-10-24T20:39:53.6854781Z 
+test	Run tests	2026-10-24T20:39:53.6855186Z When testing, code that causes React state updates should be wrapped into act(...):
+test	Run tests	2026-10-24T20:39:53.6855614Z 
+test	Run tests	2026-10-24T20:39:53.6855796Z act(() => {
+test	Run tests	2026-10-24T20:39:53.6856122Z   /* fire events that update state */
+test	Run tests	2026-10-24T20:39:53.6856457Z });
+test	Run tests	2026-10-24T20:39:53.6856760Z /* assert on the output */
+test	Run tests	2026-10-24T20:39:53.6857021Z 
+test	Run tests	2026-10-24T20:39:53.6857661Z This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+test	Run tests	2026-10-24T20:39:53.6858479Z 
+test	Run tests	2026-10-24T20:39:53.7869977Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:54.0030603Z ^[[90mstderr^[[2m | src/App.test.jsx^[[2m > ^[[22m^[[2mApp^[[2m > ^[[22m^[[2mlinks the CV and every position from the home page
+test	Run tests	2026-10-24T20:39:54.0032047Z ^[[22m^[[39mAn update to HabrCards inside a test was not wrapped in act(...).
+test	Run tests	2026-10-24T20:39:54.0032550Z 
+test	Run tests	2026-10-24T20:39:54.0033006Z When testing, code that causes React state updates should be wrapped into act(...):
+test	Run tests	2026-10-24T20:39:54.0033444Z 
+test	Run tests	2026-10-24T20:39:54.0033651Z act(() => {
+test	Run tests	2026-10-24T20:39:54.0034023Z   /* fire events that update state */
+test	Run tests	2026-10-24T20:39:54.0034404Z });
+test	Run tests	2026-10-24T20:39:54.0034721Z /* assert on the output */
+test	Run tests	2026-10-24T20:39:54.0034987Z 
+test	Run tests	2026-10-24T20:39:54.0036185Z This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+test	Run tests	2026-10-24T20:39:54.0068598Z 
+test	Run tests	2026-10-24T20:39:54.0663076Z ^[[90mstderr^[[2m | src/i18n/prefs.test.jsx^[[2m > ^[[22m^[[2mswitches^[[2m > ^[[22m^[[2mswitch the language everywhere, remember it and put it in the URL
+test	Run tests	2026-10-24T20:39:54.0714230Z ^[[22m^[[39mAn update to PrefSwitches inside a test was not wrapped in act(...).
+test	Run tests	2026-10-24T20:39:54.0714623Z 
+test	Run tests	2026-10-24T20:39:54.0714944Z When testing, code that causes React state updates should be wrapped into act(...):
+test	Run tests	2026-10-24T20:39:54.0715234Z 
+test	Run tests	2026-10-24T20:39:54.0715322Z act(() => {
+test	Run tests	2026-10-24T20:39:54.0715548Z   /* fire events that update state */
+test	Run tests	2026-10-24T20:39:54.0715807Z });
+test	Run tests	2026-10-24T20:39:54.0716026Z /* assert on the output */
+test	Run tests	2026-10-24T20:39:54.0716186Z 
+test	Run tests	2026-10-24T20:39:54.0716703Z This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+test	Run tests	2026-10-24T20:39:54.0717363Z An update to Greeting inside a test was not wrapped in act(...).
+test	Run tests	2026-10-24T20:39:54.0717651Z 
+test	Run tests	2026-10-24T20:39:54.0717940Z When testing, code that causes React state updates should be wrapped into act(...):
+test	Run tests	2026-10-24T20:39:54.0718429Z 
+test	Run tests	2026-10-24T20:39:54.0718507Z act(() => {
+test	Run tests	2026-10-24T20:39:54.0718723Z   /* fire events that update state */
+test	Run tests	2026-10-24T20:39:54.0718953Z });
+test	Run tests	2026-10-24T20:39:54.0719145Z /* assert on the output */
+test	Run tests	2026-10-24T20:39:54.0719282Z 
+test	Run tests	2026-10-24T20:39:54.0719762Z This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+test	Run tests	2026-10-24T20:39:54.0720240Z 
+test	Run tests	2026-10-24T20:39:54.0843636Z  ^[[32m✓^[[39m src/i18n/prefs.test.jsx ^[[2m(^[[22m^[[2m6 tests^[[22m^[[2m)^[[22m^[[32m 221^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:54.1304908Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:54.5289770Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:54.5850564Z ^[[90mstderr^[[2m | src/App.test.jsx^[[2m > ^[[22m^[[2mApp^[[2m > ^[[22m^[[2mis translated to Russian without untranslated objects
+test	Run tests	2026-10-24T20:39:54.5855262Z ^[[22m^[[39mAn update to HabrCards inside a test was not wrapped in act(...).
+test	Run tests	2026-10-24T20:39:54.5855799Z 
+test	Run tests	2026-10-24T20:39:54.5856250Z When testing, code that causes React state updates should be wrapped into act(...):
+test	Run tests	2026-10-24T20:39:54.5856702Z 
+test	Run tests	2026-10-24T20:39:54.5856905Z act(() => {
+test	Run tests	2026-10-24T20:39:54.5857255Z   /* fire events that update state */
+test	Run tests	2026-10-24T20:39:54.5857623Z });
+test	Run tests	2026-10-24T20:39:54.5857937Z /* assert on the output */
+test	Run tests	2026-10-24T20:39:54.5858374Z 
+test	Run tests	2026-10-24T20:39:54.5859012Z This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+test	Run tests	2026-10-24T20:39:54.5859596Z 
+test	Run tests	2026-10-24T20:39:54.6004137Z  ^[[32m✓^[[39m src/App.test.jsx ^[[2m(^[[22m^[[2m8 tests^[[22m^[[2m)^[[22m^[[33m 2983^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:54.6004819Z    ^[[32m✓^[[39m App ^[[2m(8)^[[22m
+test	Run tests	2026-10-24T20:39:54.6005308Z      ^[[33m^[[2m✓^[[22m^[[39m renders the name, headline and every CV section^[[33m 760^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:54.6005937Z      ^[[33m^[[2m✓^[[22m^[[39m shows companies on the timeline and social links^[[33m 405^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:54.6006565Z      ^[[33m^[[2m✓^[[22m^[[39m links the CV and every position from the home page^[[33m 320^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:54.6007232Z      ^[[33m^[[2m✓^[[22m^[[39m is translated to Russian without untranslated objects^[[33m 583^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:54.8150240Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:54.9501431Z  ^[[32m✓^[[39m src/links/notation.test.jsx ^[[2m(^[[22m^[[2m7 tests^[[22m^[[2m)^[[22m^[[33m 513^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:54.9502145Z    ^[[32m✓^[[39m notation of the links theory (issue #13) ^[[2m(7)^[[22m
+test	Run tests	2026-10-24T20:39:54.9502823Z      ^[[33m^[[2m✓^[[22m^[[39m switches the formula in the lead of the associative stack^[[33m 326^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:55.1011599Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:55.6496917Z  ^[[32m✓^[[39m src/pages/network-share.test.jsx ^[[2m(^[[22m^[[2m4 tests^[[22m^[[2m)^[[22m^[[32m 206^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:55.7915054Z  ^[[32m✓^[[39m src/links/geometry-19.test.js ^[[2m(^[[22m^[[2m8 tests^[[22m^[[2m)^[[22m^[[32m 23^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:56.3590271Z  ^[[32m✓^[[39m src/visuals/governor.test.js ^[[2m(^[[22m^[[2m5 tests^[[22m^[[2m)^[[22m^[[32m 8^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:56.5424808Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:56.7002532Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:56.7642407Z  ^[[32m✓^[[39m src/components/Sound.test.jsx ^[[2m(^[[22m^[[2m2 tests^[[22m^[[2m)^[[22m^[[32m 149^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:56.8090516Z Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+test	Run tests	2026-10-24T20:39:56.8677388Z  ^[[32m✓^[[39m src/pages/network-history.test.jsx ^[[2m(^[[22m^[[2m4 tests^[[22m^[[2m)^[[22m^[[33m 1930^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:56.8679846Z    ^[[33m^[[2m✓^[[22m^[[39m keeps the preview/share link live but writes history once after a drag and repeated releases^[[33m 1581^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:57.2179933Z  ^[[32m✓^[[39m src/components/edges.test.js ^[[2m(^[[22m^[[2m3 tests^[[22m^[[2m)^[[22m^[[32m 22^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:57.6068929Z  ^[[32m✓^[[39m src/history.test.jsx ^[[2m(^[[22m^[[2m2 tests^[[22m^[[2m)^[[22m^[[32m 22^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:57.9130653Z ^[[90mstderr^[[2m | src/cv/pdfChecks.test.js^[[2m > ^[[22m^[[2mCV PDF checks^[[2m > ^[[22m^[[2mpositioned parts of the CV are reported, plain ones are not
+test	Run tests	2026-10-24T20:39:57.9136828Z ^[[22m^[[39mNot implemented: Window's getComputedStyle() method: with pseudo-elements
+test	Run tests	2026-10-24T20:39:57.9137717Z Not implemented: Window's getComputedStyle() method: with pseudo-elements
+test	Run tests	2026-10-24T20:39:57.9138597Z Not implemented: Window's getComputedStyle() method: with pseudo-elements
+test	Run tests	2026-10-24T20:39:57.9139197Z Not implemented: Window's getComputedStyle() method: with pseudo-elements
+test	Run tests	2026-10-24T20:39:57.9139775Z Not implemented: Window's getComputedStyle() method: with pseudo-elements
+test	Run tests	2026-10-24T20:39:57.9140321Z Not implemented: Window's getComputedStyle() method: with pseudo-elements
+test	Run tests	2026-10-24T20:39:57.9141078Z Not implemented: Window's getComputedStyle() method: with pseudo-elements
+test	Run tests	2026-10-24T20:39:57.9141726Z Not implemented: Window's getComputedStyle() method: with pseudo-elements
+test	Run tests	2026-10-24T20:39:57.9142190Z 
+test	Run tests	2026-10-24T20:39:57.9146662Z  ^[[32m✓^[[39m src/links/clipboard.test.js ^[[2m(^[[22m^[[2m1 test^[[22m^[[2m)^[[22m^[[32m 6^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:57.9150463Z  ^[[32m✓^[[39m src/cv/pdfChecks.test.js ^[[2m(^[[22m^[[2m4 tests^[[22m^[[2m)^[[22m^[[32m 133^[[2mms^[[22m^[[39m
+test	Run tests	2026-10-24T20:39:57.9205519Z 
+test	Run tests	2026-10-24T20:39:57.9225504Z ^[[2m Test Files ^[[22m ^[[1m^[[32m34 passed^[[39m^[[22m^[[90m (34)^[[39m
+test	Run tests	2026-10-24T20:39:57.9226297Z ^[[2m      Tests ^[[22m ^[[1m^[[32m682 passed^[[39m^[[22m^[[90m (682)^[[39m
+test	Run tests	2026-10-24T20:39:57.9226793Z ^[[2m   Start at ^[[22m 20:39:37
+test	Run tests	2026-10-24T20:39:57.9227505Z ^[[2m   Duration ^[[22m 20.40s^[[2m (tests 53%, environment 33%, setup 7%, transform 4%, import 3%)^[[22m
+test	Run tests	2026-10-24T20:39:57.9227979Z 
+test	Run tests	2026-10-24T20:39:57.9228627Z ^[[2mEnvironment ^[[22m ^[[33mjsdom was created 34 times^[[39m^[[2m · 18.52s total, 33% of tracked time^[[22m
+test	Run tests	2026-10-24T20:39:57.9229771Z ^[[2m            ^[[22m ^[[2mcreate it once per worker with ^[[22m^[[33mpool: 'vmThreads'^[[39m^[[2m (keeps per-file isolation) or ^[[22m^[[33misolate: false^[[39m^[[2m (shares it across files)^[[22m
+test	Run tests	2026-10-24T20:39:57.9235775Z ^[[2m            ^[[22m ^[[2mlearn more: https://vitest.dev/guide/improving-performance#test-environments^[[22m
+test	Run tests	2026-10-24T20:39:57.9244949Z 
+test	Build the React app	﻿2026-10-24T20:39:57.9879570Z ##[group]Run npm run build
+test	Build the React app	2026-10-24T20:39:57.9879771Z ^[[36;1mnpm run build^[[0m
+test	Build the React app	2026-10-24T20:39:57.9935507Z shell: /usr/bin/bash -e {0}
+test	Build the React app	2026-10-24T20:39:57.9935717Z env:
+test	Build the React app	2026-10-24T20:39:57.9935854Z   GIT_CONFIG_COUNT: 1
+test	Build the React app	2026-10-24T20:39:57.9936017Z   GIT_CONFIG_KEY_0: init.defaultBranch
+test	Build the React app	2026-10-24T20:39:57.9936195Z   GIT_CONFIG_VALUE_0: main
+test	Build the React app	2026-10-24T20:39:57.9936567Z ##[endgroup]
+test	Build the React app	2026-10-24T20:39:58.0684744Z 
+test	Build the React app	2026-10-24T20:39:58.0685462Z > konard.github.io@0.1.0 build
+test	Build the React app	2026-10-24T20:39:58.0685821Z > vite build
+test	Build the React app	2026-10-24T20:39:58.0685937Z 
+test	Build the React app	2026-10-24T20:39:58.2381384Z ^[[33m(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+test	Build the React app	2026-10-24T20:39:58.2382416Z   - import "./fields" without a file extension (src/settings/schema.js:15:32). Add the file extension
+test	Build the React app	2026-10-24T20:39:58.2383136Z   - import "./schema.background" without a file extension (src/settings/schema.js:16:37). Add the file extension
+test	Build the React app	2026-10-24T20:39:58.2383949Z   - import "./schema.layers" without a file extension (src/settings/schema.js:17:32). Add the file extension
+test	Build the React app	2026-10-24T20:39:58.2384680Z   - import "./schema.skins" without a file extension (src/settings/schema.js:18:31). Add the file extension
+test	Build the React app	2026-10-24T20:39:58.2385346Z   - import "./schema.sound" without a file extension (src/settings/schema.js:19:31). Add the file extension
+test	Build the React app	2026-10-24T20:39:58.2386062Z   - import "./schema.skins" without a file extension (src/settings/schema.js:21:33). Add the file extension
+test	Build the React app	2026-10-24T20:39:58.2386734Z   - import "../skins.frames" without a file extension (src/settings/schema.skins.js:3:25). Add the file extension
+test	Build the React app	2026-10-24T20:39:58.2387423Z   - import "./fields" without a file extension (src/settings/schema.sound.js:7:47). Add the file extension
+test	Build the React app	2026-10-24T20:39:58.2388443Z   - import "./fields" without a file extension (src/settings/schema.layers.js:8:54). Add the file extension
+test	Build the React app	2026-10-24T20:39:58.2389124Z   - import "./fields" without a file extension (src/settings/schema.background.js:3:54). Add the file extension
+test	Build the React app	2026-10-24T20:39:58.2389817Z   - import "./fields" without a file extension (src/settings/schema.skins.js:4:47). Add the file extension
+test	Build the React app	2026-10-24T20:39:58.2390543Z Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.^[[39m
+test	Build the React app	2026-10-24T20:39:58.2475636Z ^[[36mvite v8.3.4 ^[[32mbuilding client environment for production...^[[36m^[[39m
+test	Build the React app	2026-10-24T20:39:58.2591936Z transforming...
+test	Build the React app	2026-10-24T20:39:58.3599667Z ✓ 185 modules transformed.
+test	Build the React app	2026-10-24T20:39:58.4143637Z rendering chunks...
+test	Build the React app	2026-10-24T20:39:58.6079721Z computing gzip size...
+test	Build the React app	2026-10-24T20:39:58.6129673Z build/assets/orbitron-latin-700-normal-4jsRXGGJ.woff2           6.52 kB
+test	Build the React app	2026-10-24T20:39:58.6130478Z build/assets/orbitron-latin-500-normal-DQ2gt4P1.woff2           6.59 kB
+test	Build the React app	2026-10-24T20:39:58.6131514Z build/blog/index.html                                           8.81 kB │ gzip:  2.80 kB
+test	Build the React app	2026-10-24T20:39:58.6132222Z build/cv/index.html                                             8.81 kB │ gzip:  2.82 kB
+test	Build the React app	2026-10-24T20:39:58.6132885Z build/assets/orbitron-latin-700-normal-DmYOh-W9.woff            8.96 kB
+test	Build the React app	2026-10-24T20:39:58.6133432Z build/assets/orbitron-latin-500-normal-BCCupJ8c.woff            9.03 kB
+test	Build the React app	2026-10-24T20:39:58.6134093Z build/settings/index.html                                       9.03 kB │ gzip:  2.82 kB
+test	Build the React app	2026-10-24T20:39:58.6134775Z build/art/index.html                                            9.07 kB │ gzip:  2.86 kB
+test	Build the React app	2026-10-24T20:39:58.6135435Z build/repositories/index.html                                   9.07 kB │ gzip:  2.85 kB
+test	Build the React app	2026-10-24T20:39:58.6136103Z build/network/index.html                                        9.10 kB │ gzip:  2.90 kB
+test	Build the React app	2026-10-24T20:39:58.6136710Z build/associative/index.html                                    9.14 kB │ gzip:  2.86 kB
+test	Build the React app	2026-10-24T20:39:58.6137302Z build/experience/index.html                                     9.18 kB │ gzip:  2.87 kB
+test	Build the React app	2026-10-24T20:39:58.6137867Z build/index.html                                                9.28 kB │ gzip:  2.96 kB
+test	Build the React app	2026-10-24T20:39:58.6139503Z build/research/index.html                                       9.33 kB │ gzip:  2.91 kB
+test	Build the React app	2026-10-24T20:39:58.6140021Z build/assets/chakra-petch-latin-400-normal-SafcrIr2.woff2       9.75 kB
+test	Build the React app	2026-10-24T20:39:58.6140528Z build/assets/chakra-petch-latin-600-normal-DVQm9bgb.woff2       9.96 kB
+test	Build the React app	2026-10-24T20:39:58.6141272Z build/assets/share-tech-mono-latin-400-normal-15MgdvEM.woff    10.23 kB
+test	Build the React app	2026-10-24T20:39:58.6141775Z build/assets/electrolize-latin-400-normal-DH2aMH81.woff        11.78 kB
+test	Build the React app	2026-10-24T20:39:58.6142266Z build/assets/chakra-petch-latin-400-normal-D7EtbySE.woff       13.16 kB
+test	Build the React app	2026-10-24T20:39:58.6142762Z build/assets/chakra-petch-latin-600-normal-DQKfcdKo.woff       13.43 kB
+test	Build the React app	2026-10-24T20:39:58.6143320Z build/assets/share-tech-mono-latin-400-normal-CCqdbj5z.woff2   13.50 kB
+test	Build the React app	2026-10-24T20:39:58.6143825Z build/assets/electrolize-latin-400-normal-RRVgdOY_.woff2       16.68 kB
+test	Build the React app	2026-10-24T20:39:58.6144457Z build/assets/cv-BmUP9Qgz.css                                    2.57 kB │ gzip:  1.06 kB
+test	Build the React app	2026-10-24T20:39:58.6145090Z build/assets/settings-5hXznQm5.css                              2.99 kB │ gzip:  1.09 kB
+test	Build the React app	2026-10-24T20:39:58.6145698Z build/assets/network-pdPMzaUy.css                               4.28 kB │ gzip:  1.34 kB
+test	Build the React app	2026-10-24T20:39:58.6146322Z build/assets/settings-DItcxARG.css                              5.43 kB │ gzip:  1.53 kB
+test	Build the React app	2026-10-24T20:39:58.6146954Z build/assets/Layout-DfGwNjuR.css                               97.52 kB │ gzip: 18.08 kB
+test	Build the React app	2026-10-24T20:39:58.6147637Z build/assets/mount-BUmsJRvQ.js                                  0.27 kB │ gzip:  0.23 kB │ map:     0.80 kB
+test	Build the React app	2026-10-24T20:39:58.6148522Z build/assets/plural-BPrnZ9qL.js                                 0.30 kB │ gzip:  0.25 kB │ map:     1.50 kB
+test	Build the React app	2026-10-24T20:39:58.6149191Z build/assets/format-CujfuUOf.js                                 0.45 kB │ gzip:  0.35 kB │ map:     1.75 kB
+test	Build the React app	2026-10-24T20:39:58.6149834Z build/assets/query-Bcup7kvS.js                                  0.49 kB │ gzip:  0.34 kB │ map:     1.80 kB
+test	Build the React app	2026-10-24T20:39:58.6150524Z build/assets/Section-DXY47bB8.js                                0.49 kB │ gzip:  0.30 kB │ map:     1.30 kB
+test	Build the React app	2026-10-24T20:39:58.6151204Z build/assets/Glyph-9NcBlpJf.js                                  0.53 kB │ gzip:  0.37 kB │ map:     1.68 kB
+test	Build the React app	2026-10-24T20:39:58.6151915Z build/assets/beams-Cd7nVAVl.js                                  3.05 kB │ gzip:  1.54 kB │ map:    12.30 kB
+test	Build the React app	2026-10-24T20:39:58.6152628Z build/assets/experience-Dyt0uL-P.js                             3.88 kB │ gzip:  1.69 kB │ map:    10.84 kB
+test	Build the React app	2026-10-24T20:39:58.6153405Z build/assets/Skills-CWHZyMmW.js                                 4.33 kB │ gzip:  1.83 kB │ map:    13.66 kB
+test	Build the React app	2026-10-24T20:39:58.6154103Z build/assets/repositories-C-GWQ_ON.js                           4.82 kB │ gzip:  1.97 kB │ map:    11.74 kB
+test	Build the React app	2026-10-24T20:39:58.6154779Z build/assets/art-DvwS-pGW.js                                    5.27 kB │ gzip:  2.35 kB │ map:    10.58 kB
+test	Build the React app	2026-10-24T20:39:58.6155462Z build/assets/theory-DLnm5Z1a.js                                 5.74 kB │ gzip:  2.52 kB │ map:     9.41 kB
+test	Build the React app	2026-10-24T20:39:58.6156115Z build/assets/stars-D_RpVvso.js                                  6.23 kB │ gzip:  2.81 kB │ map:    26.41 kB
+test	Build the React app	2026-10-24T20:39:58.6156843Z build/assets/NetworkGallery-e-h41wKI.js                         6.83 kB │ gzip:  2.90 kB │ map:    16.89 kB
+test	Build the React app	2026-10-24T20:39:58.6157533Z build/assets/presets-DC2o-cpe.js                                7.63 kB │ gzip:  3.56 kB │ map:    20.09 kB
+test	Build the React app	2026-10-24T20:39:58.6158700Z build/assets/schema.sound-CyRuYVkR.js                           8.24 kB │ gzip:  3.91 kB │ map:    17.89 kB
+test	Build the React app	2026-10-24T20:39:58.6159415Z build/assets/interactions-BtTy1ryl.js                           9.64 kB │ gzip:  3.79 kB │ map:    35.28 kB
+test	Build the React app	2026-10-24T20:39:58.6160077Z build/assets/cv-B0dlo-zi.js                                    11.44 kB │ gzip:  4.26 kB │ map:    33.28 kB
+test	Build the React app	2026-10-24T20:39:58.6160727Z build/assets/research-DNKPSyiN.js                              13.13 kB │ gzip:  5.16 kB │ map:    23.23 kB
+test	Build the React app	2026-10-24T20:39:58.6161789Z build/assets/MetaTheory--ypzykhu.js                            18.06 kB │ gzip:  6.92 kB │ map:    39.65 kB
+test	Build the React app	2026-10-24T20:39:58.6162496Z build/assets/settings-BcQvw582.js                              20.25 kB │ gzip:  6.73 kB │ map:    57.26 kB
+test	Build the React app	2026-10-24T20:39:58.6163309Z build/assets/paths-OpBJJVy1.js                                 29.24 kB │ gzip:  7.41 kB │ map:    57.07 kB
+test	Build the React app	2026-10-24T20:39:58.6163985Z build/assets/associative-DOY0Tb9h.js                           40.71 kB │ gzip: 12.97 kB │ map:    67.31 kB
+test	Build the React app	2026-10-24T20:39:58.6164654Z build/assets/network-DeQJ5hB-.js                               55.36 kB │ gzip: 20.37 kB │ map:   170.88 kB
+test	Build the React app	2026-10-24T20:39:58.6165302Z build/assets/index-BRvlALFE.js                                 56.58 kB │ gzip: 17.71 kB │ map:   130.07 kB
+test	Build the React app	2026-10-24T20:39:58.6165965Z build/assets/profile-B3cTOhHi.js                               74.68 kB │ gzip: 21.59 kB │ map:   118.72 kB
+test	Build the React app	2026-10-24T20:39:58.6166635Z build/assets/blog-4conwtuh.js                                  81.46 kB │ gzip: 18.38 kB │ map:   121.39 kB
+test	Build the React app	2026-10-24T20:39:58.6167294Z build/assets/RepoList-BPb75bnE.js                             227.93 kB │ gzip: 38.20 kB │ map:   303.78 kB
+test	Build the React app	2026-10-24T20:39:58.6167962Z build/assets/Layout-Cwl6Aux2.js                               298.70 kB │ gzip: 99.28 kB │ map: 1,315.60 kB
+test	Build the React app	2026-10-24T20:39:58.6168393Z 
+test	Build the React app	2026-10-24T20:39:58.6168552Z ^[[32m✓ built in 365ms^[[39m
+test	Install Chromium for the CV PDFs	﻿2026-10-24T20:39:58.6494897Z ##[group]Run npx playwright install --with-deps chromium
+test	Install Chromium for the CV PDFs	2026-10-24T20:39:58.6495197Z ^[[36;1mnpx playwright install --with-deps chromium^[[0m
+test	Install Chromium for the CV PDFs	2026-10-24T20:39:58.6547207Z shell: /usr/bin/bash -e {0}
+test	Install Chromium for the CV PDFs	2026-10-24T20:39:58.6547367Z env:
+test	Install Chromium for the CV PDFs	2026-10-24T20:39:58.6547479Z   GIT_CONFIG_COUNT: 1
+test	Install Chromium for the CV PDFs	2026-10-24T20:39:58.6547613Z   GIT_CONFIG_KEY_0: init.defaultBranch
+test	Install Chromium for the CV PDFs	2026-10-24T20:39:58.6547766Z   GIT_CONFIG_VALUE_0: main
+test	Install Chromium for the CV PDFs	2026-10-24T20:39:58.6547989Z ##[endgroup]
+test	Install Chromium for the CV PDFs	2026-10-24T20:39:59.1611110Z Installing dependencies...
+test	Install Chromium for the CV PDFs	2026-10-24T20:39:59.1673972Z Switching to root user to install dependencies...
+test	Install Chromium for the CV PDFs	2026-10-24T20:39:59.2442422Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+test	Install Chromium for the CV PDFs	2026-10-24T20:39:59.2844700Z Get:6 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+test	Install Chromium for the CV PDFs	2026-10-24T20:39:59.2956679Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+test	Install Chromium for the CV PDFs	2026-10-24T20:39:59.2971270Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+test	Install Chromium for the CV PDFs	2026-10-24T20:39:59.3002875Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+test	Install Chromium for the CV PDFs	2026-10-24T20:39:59.3016586Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+test	Install Chromium for the CV PDFs	2026-10-24T20:39:59.3410896Z Get:7 https://packages.microsoft.com/ubuntu/24.04/prod noble/main armhf Packages [12.4 kB]
+test	Install Chromium for the CV PDFs	2026-10-24T20:39:59.3498847Z Get:8 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [598 kB]
+test	Install Chromium for the CV PDFs	2026-10-24T20:39:59.3599792Z Get:9 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [660 kB]
+test	Install Chromium for the CV PDFs	2026-10-24T20:39:59.4231828Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1400 kB]
+test	Install Chromium for the CV PDFs	2026-10-24T20:39:59.4298698Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [310 kB]
+test	Install Chromium for the CV PDFs	2026-10-24T20:39:59.4303408Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1706 kB]
+test	Install Chromium for the CV PDFs	2026-10-24T20:39:59.4375313Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [342 kB]
+test	Install Chromium for the CV PDFs	2026-10-24T20:39:59.4394049Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [1805 kB]
+test	Install Chromium for the CV PDFs	2026-10-24T20:39:59.4460765Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [411 kB]
+test	Install Chromium for the CV PDFs	2026-10-24T20:39:59.5251506Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1146 kB]
+test	Install Chromium for the CV PDFs	2026-10-24T20:39:59.5294942Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [231 kB]
+test	Install Chromium for the CV PDFs	2026-10-24T20:39:59.5308254Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1222 kB]
+test	Install Chromium for the CV PDFs	2026-10-24T20:39:59.5350468Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [246 kB]
+test	Install Chromium for the CV PDFs	2026-10-24T20:39:59.5799655Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [1713 kB]
+test	Install Chromium for the CV PDFs	2026-10-24T20:39:59.5861315Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [392 kB]
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:07.2419289Z Fetched 12.6 MB in 1s (12.5 MB/s)
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:07.8914225Z Reading package lists...
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:07.9103934Z Reading package lists...
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.1066406Z Building dependency tree...
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.1072072Z Reading state information...
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2596540Z libasound2t64 is already the newest version (1.2.11-1ubuntu0.3).
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2596885Z libasound2t64 set to manually installed.
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2597132Z libatk-bridge2.0-0t64 is already the newest version (2.52.0-1build1).
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2597393Z libatk-bridge2.0-0t64 set to manually installed.
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2597625Z libatk1.0-0t64 is already the newest version (2.52.0-1build1).
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2597837Z libatk1.0-0t64 set to manually installed.
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2598306Z libatspi2.0-0t64 is already the newest version (2.52.0-1build1).
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2598570Z libatspi2.0-0t64 set to manually installed.
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2598785Z libcairo2 is already the newest version (1.18.0-3build1).
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2598999Z libcairo2 set to manually installed.
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2599731Z libcups2t64 is already the newest version (2.4.7-1.2ubuntu7.14).
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2599950Z libcups2t64 set to manually installed.
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2600174Z libdbus-1-3 is already the newest version (1.14.10-4ubuntu4.1).
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2600382Z libdbus-1-3 set to manually installed.
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2600603Z libdrm2 is already the newest version (2.4.125-1ubuntu0.1~24.04.2).
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2600815Z libdrm2 set to manually installed.
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2601026Z libgbm1 is already the newest version (25.2.8-0ubuntu0.24.04.4).
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2601228Z libgbm1 set to manually installed.
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2601434Z libnspr4 is already the newest version (2:4.35-1.1build1).
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2601639Z libnspr4 set to manually installed.
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2601857Z libpango-1.0-0 is already the newest version (1.52.1+ds-1build1).
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2602069Z libpango-1.0-0 set to manually installed.
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2602287Z libx11-6 is already the newest version (2:1.8.7-1ubuntu0.1).
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2602491Z libx11-6 set to manually installed.
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2602680Z libxcb1 is already the newest version (1.15-1ubuntu2).
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2602936Z libxcb1 set to manually installed.
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2603275Z libxcomposite1 is already the newest version (1:0.4.5-1build3).
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2603621Z libxcomposite1 set to manually installed.
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2603892Z libxdamage1 is already the newest version (1:1.1.6-1build1).
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2604094Z libxdamage1 set to manually installed.
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2604296Z libxext6 is already the newest version (2:1.3.4-1build2).
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2604494Z libxext6 set to manually installed.
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2604696Z libxfixes3 is already the newest version (1:6.0.0-2build1).
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2604905Z libxfixes3 set to manually installed.
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2605117Z libxkbcommon0 is already the newest version (1.6.0-1build1).
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2605341Z libxkbcommon0 set to manually installed.
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2605581Z libxrandr2 is already the newest version (2:1.5.2-2build1).
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2605802Z libxrandr2 set to manually installed.
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2606098Z fonts-noto-color-emoji is already the newest version (2.047-0ubuntu0.24.04.1).
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2606397Z libfontconfig1 is already the newest version (2.15.0-1.1ubuntu2).
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2606618Z libfontconfig1 set to manually installed.
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2606850Z libfreetype6 is already the newest version (2.13.2+dfsg-1ubuntu0.2).
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2607072Z libfreetype6 set to manually installed.
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2607294Z fonts-liberation is already the newest version (1:2.1.5-3).
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2607517Z fonts-liberation set to manually installed.
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2607730Z The following additional packages will be installed:
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2608265Z   gir1.2-glib-2.0 libglib2.0-bin libglib2.0-data libnss3-tools
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2608515Z   xfonts-encodings xfonts-utils xserver-common
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2610265Z Suggested packages:
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2610457Z   low-memory-monitor
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2610658Z Recommended packages:
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2610915Z   fonts-ipafont-mincho fonts-tlwg-loma xfonts-base
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2838733Z The following NEW packages will be installed:
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2842151Z   fonts-freefont-ttf fonts-ipafont-gothic fonts-tlwg-loma-otf fonts-unifont
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2848662Z   fonts-wqy-zenhei xfonts-cyrillic xfonts-encodings xfonts-scalable
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2849015Z   xfonts-utils
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2854755Z The following packages will be upgraded:
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2856911Z   gir1.2-glib-2.0 libglib2.0-0t64 libglib2.0-bin libglib2.0-data libnss3
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.2862448Z   libnss3-tools xserver-common xvfb
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.3021379Z 8 upgraded, 9 newly installed, 0 to remove and 92 not upgraded.
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.3021738Z Need to get 25.9 MB of archives.
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.3021983Z After this operation, 79.5 MB of additional disk space will be used.
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.3022562Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+test	Install Chromium for the CV PDFs	2026-10-24T20:40:08.8445792Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 fonts-ipafont-gothic all 00303-21ubuntu1 [3513 kB]
+test	Install Chromium for the CV PDFs	2026-10-24T20:41:00.4592425Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libglib2.0-data all 2.80.0-6ubuntu3.10 [50.2 kB]
+test	Install Chromium for the CV PDFs	2026-10-24T20:41:01.4724521Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libglib2.0-bin amd64 2.80.0-6ubuntu3.10 [97.9 kB]
+test	Install Chromium for the CV PDFs	2026-10-24T20:41:03.3631437Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 gir1.2-glib-2.0 amd64 2.80.0-6ubuntu3.10 [183 kB]
+test	Install Chromium for the CV PDFs	2026-10-24T20:41:06.2797437Z Get:6 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libglib2.0-0t64 amd64 2.80.0-6ubuntu3.10 [1548 kB]
+test	Install Chromium for the CV PDFs	2026-10-24T20:41:29.1626369Z Get:7 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 fonts-freefont-ttf all 20211204+svn4273-2 [5641 kB]
+test	Install Chromium for the CV PDFs	2026-10-24T20:42:54.6273886Z Get:8 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 fonts-tlwg-loma-otf all 1:0.7.3-1 [107 kB]
+test	Install Chromium for the CV PDFs	2026-10-24T20:42:56.7322107Z Get:9 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 fonts-unifont all 1:15.1.01-1build1 [2993 kB]
+test	Install Chromium for the CV PDFs	2026-10-24T20:43:42.4256231Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 fonts-wqy-zenhei all 0.9.45-8 [7472 kB]
+test	Install Chromium for the CV PDFs	2026-10-24T20:45:36.6632276Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libnss3 amd64 2:3.98-1ubuntu0.3 [1445 kB]
+test	Install Chromium for the CV PDFs	2026-10-24T20:45:59.9809247Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libnss3-tools amd64 2:3.98-1ubuntu0.3 [615 kB]
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:09.8698305Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 xfonts-encodings all 1:1.0.5-0ubuntu2 [578 kB]
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:19.8186232Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 xfonts-utils amd64 1:7.7+6build3 [94.4 kB]
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:21.6512895Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 xfonts-cyrillic all 1:1.0.5+nmu1 [384 kB]
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:27.9591635Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 xfonts-scalable all 1:1.0.3-1.3 [304 kB]
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:33.2400197Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 xserver-common all 2:21.1.12-1ubuntu1.9 [35.0 kB]
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:34.3653134Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 xvfb amd64 2:21.1.12-1ubuntu1.9 [877 kB]
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:48.6698255Z Fetched 25.9 MB in 6min 40s (64.8 kB/s)
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:48.6881960Z Selecting previously unselected package fonts-ipafont-gothic.
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:48.7144168Z (Reading database ... 
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:48.7144605Z (Reading database ... 5%
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:48.7144877Z (Reading database ... 10%
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:48.7145449Z (Reading database ... 15%
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:48.7145709Z (Reading database ... 20%
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:48.7145945Z (Reading database ... 25%
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:48.7146238Z (Reading database ... 30%
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:48.7146511Z (Reading database ... 35%
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:48.7146799Z (Reading database ... 40%
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:48.7147040Z (Reading database ... 45%
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:48.7147283Z (Reading database ... 50%
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:48.7181238Z (Reading database ... 55%
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:48.8335615Z (Reading database ... 60%
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:49.0415623Z (Reading database ... 65%
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:49.2446250Z (Reading database ... 70%
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:49.4337617Z (Reading database ... 75%
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:49.5959000Z (Reading database ... 80%
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:49.8025517Z (Reading database ... 85%
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:49.9865839Z (Reading database ... 90%
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:50.2014487Z (Reading database ... 95%
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:50.2014851Z (Reading database ... 100%
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:50.2015235Z (Reading database ... 203540 files and directories currently installed.)
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:50.2051391Z Preparing to unpack .../00-fonts-ipafont-gothic_00303-21ubuntu1_all.deb ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:50.2126869Z Unpacking fonts-ipafont-gothic (00303-21ubuntu1) ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:50.4307759Z Preparing to unpack .../01-libglib2.0-data_2.80.0-6ubuntu3.10_all.deb ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:50.4322693Z Unpacking libglib2.0-data (2.80.0-6ubuntu3.10) over (2.80.0-6ubuntu3.9) ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:50.4622667Z Preparing to unpack .../02-libglib2.0-bin_2.80.0-6ubuntu3.10_amd64.deb ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:50.4636630Z Unpacking libglib2.0-bin (2.80.0-6ubuntu3.10) over (2.80.0-6ubuntu3.9) ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:50.5323838Z Preparing to unpack .../03-gir1.2-glib-2.0_2.80.0-6ubuntu3.10_amd64.deb ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:50.5338504Z Unpacking gir1.2-glib-2.0:amd64 (2.80.0-6ubuntu3.10) over (2.80.0-6ubuntu3.9) ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:50.5696364Z Preparing to unpack .../04-libglib2.0-0t64_2.80.0-6ubuntu3.10_amd64.deb ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:50.5787689Z Unpacking libglib2.0-0t64:amd64 (2.80.0-6ubuntu3.10) over (2.80.0-6ubuntu3.9) ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:50.6204484Z Selecting previously unselected package fonts-freefont-ttf.
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:50.6303555Z Preparing to unpack .../05-fonts-freefont-ttf_20211204+svn4273-2_all.deb ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:50.6309178Z Unpacking fonts-freefont-ttf (20211204+svn4273-2) ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:50.7124819Z Selecting previously unselected package fonts-tlwg-loma-otf.
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:50.7217548Z Preparing to unpack .../06-fonts-tlwg-loma-otf_1%3a0.7.3-1_all.deb ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:50.7223552Z Unpacking fonts-tlwg-loma-otf (1:0.7.3-1) ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:50.7386312Z Selecting previously unselected package fonts-unifont.
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:50.7479190Z Preparing to unpack .../07-fonts-unifont_1%3a15.1.01-1build1_all.deb ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:50.7483663Z Unpacking fonts-unifont (1:15.1.01-1build1) ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:50.9339941Z Selecting previously unselected package fonts-wqy-zenhei.
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:50.9435623Z Preparing to unpack .../08-fonts-wqy-zenhei_0.9.45-8_all.deb ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:50.9520405Z Unpacking fonts-wqy-zenhei (0.9.45-8) ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.3842440Z Preparing to unpack .../09-libnss3_2%3a3.98-1ubuntu0.3_amd64.deb ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.3860117Z Unpacking libnss3:amd64 (2:3.98-1ubuntu0.3) over (2:3.98-1ubuntu0.2) ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.4405156Z Preparing to unpack .../10-libnss3-tools_2%3a3.98-1ubuntu0.3_amd64.deb ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.4418591Z Unpacking libnss3-tools (2:3.98-1ubuntu0.3) over (2:3.98-1ubuntu0.2) ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.4820544Z Selecting previously unselected package xfonts-encodings.
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.4918200Z Preparing to unpack .../11-xfonts-encodings_1%3a1.0.5-0ubuntu2_all.deb ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.4924274Z Unpacking xfonts-encodings (1:1.0.5-0ubuntu2) ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.5149490Z Selecting previously unselected package xfonts-utils.
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.5243521Z Preparing to unpack .../12-xfonts-utils_1%3a7.7+6build3_amd64.deb ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.5249559Z Unpacking xfonts-utils (1:7.7+6build3) ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.5538940Z Selecting previously unselected package xfonts-cyrillic.
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.5635227Z Preparing to unpack .../13-xfonts-cyrillic_1%3a1.0.5+nmu1_all.deb ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.5641875Z Unpacking xfonts-cyrillic (1:1.0.5+nmu1) ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.5907758Z Selecting previously unselected package xfonts-scalable.
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.6007311Z Preparing to unpack .../14-xfonts-scalable_1%3a1.0.3-1.3_all.deb ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.6012669Z Unpacking xfonts-scalable (1:1.0.3-1.3) ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.6303304Z Preparing to unpack .../15-xserver-common_2%3a21.1.12-1ubuntu1.9_all.deb ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.6317095Z Unpacking xserver-common (2:21.1.12-1ubuntu1.9) over (2:21.1.12-1ubuntu1.8) ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.6624535Z Preparing to unpack .../16-xvfb_2%3a21.1.12-1ubuntu1.9_amd64.deb ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.6639974Z Unpacking xvfb (2:21.1.12-1ubuntu1.9) over (2:21.1.12-1ubuntu1.8) ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.7196797Z Setting up fonts-wqy-zenhei (0.9.45-8) ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.7289329Z Setting up fonts-freefont-ttf (20211204+svn4273-2) ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.7303466Z Setting up libnss3:amd64 (2:3.98-1ubuntu0.3) ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.7317713Z Setting up libglib2.0-0t64:amd64 (2.80.0-6ubuntu3.10) ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.7476478Z Setting up libglib2.0-data (2.80.0-6ubuntu3.10) ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.7490728Z Setting up fonts-tlwg-loma-otf (1:0.7.3-1) ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.7504796Z Setting up xfonts-encodings (1:1.0.5-0ubuntu2) ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.7519056Z Setting up gir1.2-glib-2.0:amd64 (2.80.0-6ubuntu3.10) ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.7532919Z Setting up fonts-ipafont-gothic (00303-21ubuntu1) ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.7581093Z update-alternatives: using /usr/share/fonts/opentype/ipafont-gothic/ipag.ttf to provide /usr/share/fonts/truetype/fonts-japanese-gothic.ttf (fonts-japanese-gothic.ttf) in auto mode
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.7594088Z Setting up xserver-common (2:21.1.12-1ubuntu1.9) ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.7608855Z Setting up libnss3-tools (2:3.98-1ubuntu0.3) ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.7622267Z Setting up fonts-unifont (1:15.1.01-1build1) ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.7635453Z Setting up xvfb (2:21.1.12-1ubuntu1.9) ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.7649895Z Setting up libglib2.0-bin (2.80.0-6ubuntu3.10) ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.7663381Z Setting up xfonts-utils (1:7.7+6build3) ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.7694458Z Setting up xfonts-cyrillic (1:1.0.5+nmu1) ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.8113218Z Setting up xfonts-scalable (1:1.0.3-1.3) ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:51.8357325Z Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:53.1187822Z Processing triggers for man-db (2.12.0-4build2) ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:53.1207597Z Not building database; man-db/auto-update is not 'true'.
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:53.1219004Z Processing triggers for fontconfig (2.15.0-1.1ubuntu2) ...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:53.6467339Z 
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:53.6468268Z Running kernel seems to be up-to-date.
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:53.6468680Z 
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:53.6468837Z Restarting services...
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:53.6732628Z  systemctl restart php8.3-fpm.service polkit.service udisks2.service
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:53.7618636Z 
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:53.7619513Z Service restarts being deferred:
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:53.7619855Z  systemctl restart ModemManager.service
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:53.7620338Z  systemctl restart networkd-dispatcher.service
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:53.7620487Z 
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:53.7620631Z No containers need to be restarted.
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:53.7620787Z 
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:53.7620940Z No user sessions are running outdated binaries.
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:53.7621117Z 
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:53.7621368Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:54.6271343Z Downloading Chrome for Testing 153.0.8010.12 (playwright chromium v1243) from https://cdn.playwright.dev/builds/cft/153.0.8010.12/linux64/chrome-linux64.zip
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:54.9374490Z |                                                                                |   0% of 186.8 MiB
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:55.1109079Z |■■■■■■■■                                                                        |  10% of 186.8 MiB
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:55.1942637Z |■■■■■■■■■■■■■■■■                                                                |  20% of 186.8 MiB
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:55.2721780Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 186.8 MiB
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:55.3562390Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 186.8 MiB
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:55.4867379Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 186.8 MiB
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:55.7087918Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 186.8 MiB
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:55.7952453Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 186.8 MiB
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:55.8861856Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 186.8 MiB
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:55.9766250Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 186.8 MiB
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:56.0395853Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 186.8 MiB
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:58.1709983Z Chrome for Testing 153.0.8010.12 (playwright chromium v1243) downloaded to /home/runner/.cache/ms-playwright/chromium-1243
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:58.1713864Z Downloading FFmpeg (playwright ffmpeg v1011) from https://cdn.playwright.dev/dbazure/download/playwright/builds/ffmpeg/1011/ffmpeg-linux.zip
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:58.4335080Z |                                                                                |   0% of 2.3 MiB
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:58.4570121Z |■■■■■■■■                                                                        |  10% of 2.3 MiB
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:58.4652585Z |■■■■■■■■■■■■■■■■                                                                |  20% of 2.3 MiB
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:58.4733920Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 2.3 MiB
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:58.4768939Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 2.3 MiB
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:58.4821927Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 2.3 MiB
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:58.4890976Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 2.3 MiB
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:58.4905797Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 2.3 MiB
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:58.4923545Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 2.3 MiB
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:58.4971280Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 2.3 MiB
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:58.4983522Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 2.3 MiB
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:58.5378745Z FFmpeg (playwright ffmpeg v1011) downloaded to /home/runner/.cache/ms-playwright/ffmpeg-1011
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:58.5381391Z Downloading Chrome Headless Shell 153.0.8010.12 (playwright chromium-headless-shell v1243) from https://cdn.playwright.dev/builds/cft/153.0.8010.12/linux64/chrome-headless-shell-linux64.zip
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:58.8337080Z |                                                                                |   0% of 114.3 MiB
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:58.9905602Z |■■■■■■■■                                                                        |  10% of 114.3 MiB
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:59.0734434Z |■■■■■■■■■■■■■■■■                                                                |  20% of 114.3 MiB
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:59.1389414Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 114.3 MiB
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:59.2170102Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 114.3 MiB
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:59.2627062Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 114.3 MiB
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:59.3388605Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 114.3 MiB
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:59.4388422Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 114.3 MiB
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:59.5025078Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 114.3 MiB
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:59.5556792Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 114.3 MiB
+test	Install Chromium for the CV PDFs	2026-10-24T20:46:59.6101167Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 114.3 MiB
+test	Install Chromium for the CV PDFs	2026-10-24T20:47:01.1645237Z Chrome Headless Shell 153.0.8010.12 (playwright chromium-headless-shell v1243) downloaded to /home/runner/.cache/ms-playwright/chromium_headless_shell-1243
+test	Print the CV PDFs	﻿2026-10-24T20:47:01.1869835Z ##[group]Run npm run build:cv
+test	Print the CV PDFs	2026-10-24T20:47:01.1870038Z ^[[36;1mnpm run build:cv^[[0m
+test	Print the CV PDFs	2026-10-24T20:47:01.1924221Z shell: /usr/bin/bash -e {0}
+test	Print the CV PDFs	2026-10-24T20:47:01.1924376Z env:
+test	Print the CV PDFs	2026-10-24T20:47:01.1924519Z   GIT_CONFIG_COUNT: 1
+test	Print the CV PDFs	2026-10-24T20:47:01.1924655Z   GIT_CONFIG_KEY_0: init.defaultBranch
+test	Print the CV PDFs	2026-10-24T20:47:01.1924815Z   GIT_CONFIG_VALUE_0: main
+test	Print the CV PDFs	2026-10-24T20:47:01.1924949Z ##[endgroup]
+test	Print the CV PDFs	2026-10-24T20:47:01.2660788Z 
+test	Print the CV PDFs	2026-10-24T20:47:01.2661438Z > konard.github.io@0.1.0 build:cv
+test	Print the CV PDFs	2026-10-24T20:47:01.2661908Z > node scripts/build-cv-pdf.mjs
+test	Print the CV PDFs	2026-10-24T20:47:01.2662074Z 
+test	Print the CV PDFs	2026-10-24T20:48:18.0604253Z Printed 120 CV PDFs to build/cv/pdf/.
+test	Upload the build as the Pages artifact	﻿2026-10-24T20:48:18.1015823Z ##[group]Run actions/upload-pages-artifact@v5
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1016008Z with:
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1016119Z   path: build/
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1016238Z   include-hidden-files: true
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1016370Z   name: github-pages
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1016488Z   retention-days: 1
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1016603Z env:
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1016704Z   GIT_CONFIG_COUNT: 1
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1016829Z   GIT_CONFIG_KEY_0: init.defaultBranch
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1016977Z   GIT_CONFIG_VALUE_0: main
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1017099Z ##[endgroup]
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1064817Z ##[start-action display=Archive artifact;id=__actions_upload-pages-artifact.__run]
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1097550Z ##[group]Run echo ::group::Archive artifact
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1097771Z ^[[36;1mecho ::group::Archive artifact^[[0m
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1097911Z ^[[36;1mtar \^[[0m
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1098201Z ^[[36;1m  --dereference --hard-dereference \^[[0m
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1098391Z ^[[36;1m  --directory "$INPUT_PATH" \^[[0m
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1098553Z ^[[36;1m  -cvf "$RUNNER_TEMP/artifact.tar" \^[[0m
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1098759Z ^[[36;1m  --exclude=.git \^[[0m
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1098890Z ^[[36;1m  --exclude=.github \^[[0m
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1099017Z ^[[36;1m   \^[[0m
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1099118Z ^[[36;1m  .^[[0m
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1099226Z ^[[36;1mecho ::endgroup::^[[0m
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1120102Z shell: /usr/bin/sh -e {0}
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1120240Z env:
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1120349Z   GIT_CONFIG_COUNT: 1
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1120475Z   GIT_CONFIG_KEY_0: init.defaultBranch
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1120622Z   GIT_CONFIG_VALUE_0: main
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1120754Z   INPUT_PATH: build/
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1120868Z ##[endgroup]
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1153408Z ##[group]Archive artifact
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1166725Z ./
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1167382Z ./manifest.json
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1167580Z ./associative/
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1167796Z ./associative/index.html
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1168008Z ./art/
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1168356Z ./art/index.html
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1168541Z ./favicon.svg
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1168745Z ./blog/
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1168922Z ./blog/index.html
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1169098Z ./cv/
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1169253Z ./cv/index.html
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1178525Z ./cv/pdf/
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1188724Z ./cv/pdf/konstantin-diachenko-lead-academic-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1189126Z ./cv/pdf/konstantin-diachenko-research-classic-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1189495Z ./cv/pdf/konstantin-diachenko-all-technical-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1189845Z ./cv/pdf/konstantin-diachenko-cto-compact-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1190206Z ./cv/pdf/konstantin-diachenko-devops-classic-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1190595Z ./cv/pdf/konstantin-diachenko-rust-technical-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1190959Z ./cv/pdf/konstantin-diachenko-devops-compact-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1191318Z ./cv/pdf/konstantin-diachenko-lead-compact-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1191696Z ./cv/pdf/konstantin-diachenko-research-technical-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1192065Z ./cv/pdf/konstantin-diachenko-cto-classic-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1192437Z ./cv/pdf/konstantin-diachenko-research-academic-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1192803Z ./cv/pdf/konstantin-diachenko-data-compact-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1193164Z ./cv/pdf/konstantin-diachenko-trading-classic-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1193534Z ./cv/pdf/konstantin-diachenko-devops-academic-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1193899Z ./cv/pdf/konstantin-diachenko-data-compact-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1194283Z ./cv/pdf/konstantin-diachenko-ai-agents-academic-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1194673Z ./cv/pdf/konstantin-diachenko-rust-compact-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1195037Z ./cv/pdf/konstantin-diachenko-devops-academic-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1195418Z ./cv/pdf/konstantin-diachenko-ai-agents-classic-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1195809Z ./cv/pdf/konstantin-diachenko-lead-technical-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1196154Z ./cv/pdf/konstantin-diachenko-ml-classic-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1196518Z ./cv/pdf/konstantin-diachenko-devops-compact-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1196884Z ./cv/pdf/konstantin-diachenko-ai-agents-classic-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1197556Z ./cv/pdf/konstantin-diachenko-ml-academic-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1197927Z ./cv/pdf/konstantin-diachenko-fullstack-academic-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1198518Z ./cv/pdf/konstantin-diachenko-lead-classic-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1198886Z ./cv/pdf/konstantin-diachenko-developer-classic-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1199260Z ./cv/pdf/konstantin-diachenko-ai-agents-compact-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1199621Z ./cv/pdf/konstantin-diachenko-trading-classic-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1199985Z ./cv/pdf/konstantin-diachenko-backend-academic-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1200529Z ./cv/pdf/konstantin-diachenko-trading-compact-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1200890Z ./cv/pdf/konstantin-diachenko-data-academic-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1201270Z ./cv/pdf/konstantin-diachenko-fullstack-compact-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1201649Z ./cv/pdf/konstantin-diachenko-data-technical-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1202018Z ./cv/pdf/konstantin-diachenko-data-technical-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1202364Z ./cv/pdf/konstantin-diachenko-ml-academic-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1202758Z ./cv/pdf/konstantin-diachenko-fullstack-technical-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1203133Z ./cv/pdf/konstantin-diachenko-all-technical-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1203500Z ./cv/pdf/konstantin-diachenko-research-compact-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1203873Z ./cv/pdf/konstantin-diachenko-developer-compact-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1204260Z ./cv/pdf/konstantin-diachenko-ai-agents-academic-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1204625Z ./cv/pdf/konstantin-diachenko-all-compact-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1204996Z ./cv/pdf/konstantin-diachenko-ai-agents-technical-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1205362Z ./cv/pdf/konstantin-diachenko-dotnet-classic-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1205744Z ./cv/pdf/konstantin-diachenko-trading-compact-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1206123Z ./cv/pdf/konstantin-diachenko-ai-agents-technical-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1206499Z ./cv/pdf/konstantin-diachenko-research-academic-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1206859Z ./cv/pdf/konstantin-diachenko-backend-classic-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1207229Z ./cv/pdf/konstantin-diachenko-research-technical-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1207583Z ./cv/pdf/konstantin-diachenko-all-classic-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1207918Z ./cv/pdf/konstantin-diachenko-rust-compact-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1208353Z ./cv/pdf/konstantin-diachenko-lead-technical-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1208720Z ./cv/pdf/konstantin-diachenko-backend-technical-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1209077Z ./cv/pdf/konstantin-diachenko-rust-classic-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1209414Z ./cv/pdf/konstantin-diachenko-lead-classic-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1209780Z ./cv/pdf/konstantin-diachenko-developer-academic-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1210139Z ./cv/pdf/konstantin-diachenko-all-academic-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1210482Z ./cv/pdf/konstantin-diachenko-dotnet-academic-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1210831Z ./cv/pdf/konstantin-diachenko-ml-compact-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1211187Z ./cv/pdf/konstantin-diachenko-backend-technical-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1211532Z ./cv/pdf/konstantin-diachenko-ml-compact-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1211899Z ./cv/pdf/konstantin-diachenko-trading-technical-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1212270Z ./cv/pdf/konstantin-diachenko-techlead-technical-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1212631Z ./cv/pdf/konstantin-diachenko-data-academic-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1213005Z ./cv/pdf/konstantin-diachenko-fullstack-technical-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1213373Z ./cv/pdf/konstantin-diachenko-all-compact-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1213722Z ./cv/pdf/konstantin-diachenko-ml-technical-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1214080Z ./cv/pdf/konstantin-diachenko-techlead-classic-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1214446Z ./cv/pdf/konstantin-diachenko-backend-academic-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1214803Z ./cv/pdf/konstantin-diachenko-backend-compact-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1215171Z ./cv/pdf/konstantin-diachenko-fullstack-classic-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1215526Z ./cv/pdf/konstantin-diachenko-ml-technical-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1215872Z ./cv/pdf/konstantin-diachenko-all-academic-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1216369Z ./cv/pdf/konstantin-diachenko-cto-academic-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1216720Z ./cv/pdf/konstantin-diachenko-rust-academic-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1217060Z ./cv/pdf/konstantin-diachenko-all-classic-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1217408Z ./cv/pdf/konstantin-diachenko-rust-classic-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1217773Z ./cv/pdf/konstantin-diachenko-research-compact-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1218239Z ./cv/pdf/konstantin-diachenko-research-classic-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1218629Z ./cv/pdf/konstantin-diachenko-trading-technical-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1219093Z ./cv/pdf/konstantin-diachenko-data-classic-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1219450Z ./cv/pdf/konstantin-diachenko-techlead-technical-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1219814Z ./cv/pdf/konstantin-diachenko-backend-classic-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1220177Z ./cv/pdf/konstantin-diachenko-devops-technical-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1220541Z ./cv/pdf/konstantin-diachenko-techlead-academic-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1220924Z ./cv/pdf/konstantin-diachenko-ml-classic-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1221290Z ./cv/pdf/konstantin-diachenko-ai-agents-compact-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1221653Z ./cv/pdf/konstantin-diachenko-techlead-compact-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1222000Z ./cv/pdf/konstantin-diachenko-lead-compact-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1222358Z ./cv/pdf/konstantin-diachenko-fullstack-academic-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1222716Z ./cv/pdf/konstantin-diachenko-dotnet-classic-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1223060Z ./cv/pdf/konstantin-diachenko-data-classic-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1223418Z ./cv/pdf/konstantin-diachenko-fullstack-compact-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1223810Z ./cv/pdf/konstantin-diachenko-trading-academic-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1224161Z ./cv/pdf/konstantin-diachenko-dotnet-compact-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1224537Z ./cv/pdf/konstantin-diachenko-developer-technical-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1224889Z ./cv/pdf/konstantin-diachenko-cto-classic-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1225243Z ./cv/pdf/konstantin-diachenko-dotnet-technical-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1225601Z ./cv/pdf/konstantin-diachenko-rust-technical-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1225965Z ./cv/pdf/konstantin-diachenko-devops-classic-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1226341Z ./cv/pdf/konstantin-diachenko-developer-academic-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1226731Z ./cv/pdf/konstantin-diachenko-developer-technical-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1227116Z ./cv/pdf/konstantin-diachenko-devops-technical-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1227413Z ./cv/pdf/konstantin-diachenko-techlead-compact-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1227805Z ./cv/pdf/konstantin-diachenko-fullstack-classic-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1228269Z ./cv/pdf/konstantin-diachenko-dotnet-academic-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1228627Z ./cv/pdf/konstantin-diachenko-cto-technical-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1228986Z ./cv/pdf/konstantin-diachenko-trading-academic-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1229362Z ./cv/pdf/konstantin-diachenko-techlead-academic-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1229722Z ./cv/pdf/konstantin-diachenko-rust-academic-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1230072Z ./cv/pdf/konstantin-diachenko-backend-compact-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1230442Z ./cv/pdf/konstantin-diachenko-developer-compact-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1230803Z ./cv/pdf/konstantin-diachenko-lead-academic-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1231162Z ./cv/pdf/konstantin-diachenko-techlead-classic-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1231536Z ./cv/pdf/konstantin-diachenko-developer-classic-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1231893Z ./cv/pdf/konstantin-diachenko-dotnet-compact-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1232256Z ./cv/pdf/konstantin-diachenko-dotnet-technical-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1232628Z ./cv/pdf/konstantin-diachenko-cto-technical-ru.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1232981Z ./cv/pdf/konstantin-diachenko-cto-compact-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1233322Z ./cv/pdf/konstantin-diachenko-cto-academic-en.pdf
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1233583Z ./network/
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1233763Z ./network/index.html
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1233943Z ./settings/
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1234123Z ./settings/index.html
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1234274Z ./.nojekyll
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1234554Z ./assets/
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1234738Z ./assets/beams-Cd7nVAVl.js
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1235030Z ./assets/orbitron-latin-500-normal-DQ2gt4P1.woff2
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1235408Z ./assets/share-tech-mono-latin-400-normal-CCqdbj5z.woff2
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1235739Z ./assets/repositories-C-GWQ_ON.js
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1235995Z ./assets/profile-B3cTOhHi.js
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1236243Z ./assets/paths-OpBJJVy1.js.map
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1236497Z ./assets/research-DNKPSyiN.js.map
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1236711Z ./assets/theory-DLnm5Z1a.js
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1236958Z ./assets/MetaTheory--ypzykhu.js
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1237145Z ./assets/settings-DItcxARG.css
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1237294Z ./assets/cv-B0dlo-zi.js.map
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1237446Z ./assets/mount-BUmsJRvQ.js.map
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1237596Z ./assets/Glyph-9NcBlpJf.js
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1237737Z ./assets/plural-BPrnZ9qL.js
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1237923Z ./assets/art-DvwS-pGW.js.map
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1238261Z ./assets/associative-DOY0Tb9h.js
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1238529Z ./assets/repositories-C-GWQ_ON.js.map
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1238809Z ./assets/interactions-BtTy1ryl.js
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1239072Z ./assets/settings-BcQvw582.js
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1239318Z ./assets/experience-Dyt0uL-P.js
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1239557Z ./assets/blog-4conwtuh.js.map
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1239741Z ./assets/blog-4conwtuh.js
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1239905Z ./assets/MetaTheory--ypzykhu.js.map
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1240105Z ./assets/orbitron-latin-500-normal-BCCupJ8c.woff
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1240294Z ./assets/query-Bcup7kvS.js
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1240463Z ./assets/Skills-CWHZyMmW.js.map
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1240624Z ./assets/Layout-Cwl6Aux2.js
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1240787Z ./assets/schema.sound-CyRuYVkR.js
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1240952Z ./assets/query-Bcup7kvS.js.map
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1241097Z ./assets/Layout-DfGwNjuR.css
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1241252Z ./assets/Layout-Cwl6Aux2.js.map
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1247171Z ./assets/chakra-petch-latin-400-normal-D7EtbySE.woff
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1247497Z ./assets/NetworkGallery-e-h41wKI.js.map
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1247831Z ./assets/chakra-petch-latin-600-normal-DQKfcdKo.woff
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1248203Z ./assets/format-CujfuUOf.js
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1248490Z ./assets/electrolize-latin-400-normal-RRVgdOY_.woff2
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1248861Z ./assets/share-tech-mono-latin-400-normal-15MgdvEM.woff
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1249153Z ./assets/paths-OpBJJVy1.js
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1249338Z ./assets/art-DvwS-pGW.js
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1258442Z ./assets/network-pdPMzaUy.css
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1275467Z ./assets/beams-Cd7nVAVl.js.map
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1275701Z ./assets/experience-Dyt0uL-P.js.map
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1275887Z ./assets/interactions-BtTy1ryl.js.map
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1276043Z ./assets/stars-D_RpVvso.js
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1276251Z ./assets/schema.sound-CyRuYVkR.js.map
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1276517Z ./assets/Section-DXY47bB8.js
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1276802Z ./assets/orbitron-latin-700-normal-4jsRXGGJ.woff2
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1277114Z ./assets/index-BRvlALFE.js.map
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1277364Z ./assets/Skills-CWHZyMmW.js
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1277585Z ./assets/cv-B0dlo-zi.js
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1277823Z ./assets/RepoList-BPb75bnE.js.map
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1278162Z ./assets/index-BRvlALFE.js
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1278415Z ./assets/settings-BcQvw582.js.map
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1278671Z ./assets/format-CujfuUOf.js.map
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1278928Z ./assets/NetworkGallery-e-h41wKI.js
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1279190Z ./assets/theory-DLnm5Z1a.js.map
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1279503Z ./assets/electrolize-latin-400-normal-DH2aMH81.woff
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1279825Z ./assets/Section-DXY47bB8.js.map
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1280078Z ./assets/stars-D_RpVvso.js.map
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1280320Z ./assets/mount-BUmsJRvQ.js
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1280538Z ./assets/research-DNKPSyiN.js
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1280788Z ./assets/profile-B3cTOhHi.js.map
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1281026Z ./assets/RepoList-BPb75bnE.js
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1281334Z ./assets/chakra-petch-latin-400-normal-SafcrIr2.woff2
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1281826Z ./assets/associative-DOY0Tb9h.js.map
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1282093Z ./assets/presets-DC2o-cpe.js.map
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1282390Z ./assets/orbitron-latin-700-normal-DmYOh-W9.woff
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1282680Z ./assets/network-DeQJ5hB-.js
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1282991Z ./assets/chakra-petch-latin-600-normal-DVQm9bgb.woff2
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1283284Z ./assets/cv-BmUP9Qgz.css
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1283527Z ./assets/network-DeQJ5hB-.js.map
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1283784Z ./assets/plural-BPrnZ9qL.js.map
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1284018Z ./assets/presets-DC2o-cpe.js
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1284354Z ./assets/Glyph-9NcBlpJf.js.map
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1284513Z ./assets/settings-5hXznQm5.css
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1284645Z ./index.html
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1284754Z ./favicon.ico
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1284867Z ./experience/
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1284987Z ./experience/index.html
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1285113Z ./robots.txt
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1285218Z ./logo192.png
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1285331Z ./repositories/
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1285456Z ./repositories/index.html
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1285587Z ./research/
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1285779Z ./research/index.html
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1285953Z ./archive/
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1286110Z ./archive/media/
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1286305Z ./archive/media/vk-3972090_31753-1.jpg
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1286472Z ./archive/media/vk-3972090_31589-1.jpg
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1286641Z ./archive/media/vk-3972090_31701-1.jpg
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1286810Z ./archive/media/x-1990323098562994545-4.jpg
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1286984Z ./archive/media/vk-3972090_31702-1.jpg
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1287150Z ./archive/media/vk-3972090_31655-1.jpg
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1287313Z ./archive/media/vk-3972090_31667-1.jpg
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1287481Z ./archive/media/x-1990323098562994545-3.jpg
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1287650Z ./archive/media/vk-3972090_31699-1.jpg
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1287809Z ./archive/media/vk-3972090_31703-1.jpg
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1287971Z ./archive/media/vk-3972090_31659-1.jpg
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1288259Z ./archive/media/x-1990323098562994545-1.jpg
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1288434Z ./archive/media/vk-3972090_31618-1.jpg
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1288592Z ./archive/media/vk-3972090_31704-1.jpg
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1288763Z ./archive/media/x-1990323098562994545-2.jpg
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1288930Z ./archive/media/vk-3972090_31662-1.jpg
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1289084Z ./archive/media/vk-3972090_31580-1.jpg
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1289263Z ./archive/media/vk-3972090_31592-1-poster.jpg
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1289439Z ./archive/media/vk-3972090_31680-1.jpg
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1289598Z ./archive/media/vk-3972090_31664-1.jpg
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1289773Z ./archive/media/vk-3972090_31660-1-poster.jpg
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1289951Z ./archive/media/vk-3972090_31586-1.jpg
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1290111Z ./archive/media/vk-3972090_31656-1.jpg
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1290270Z ./archive/media/vk-3972090_31602-1.jpg
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1290427Z ./archive/media/vk-3972090_31707-1.jpg
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1290564Z ./logo512.png
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1293390Z ##[endgroup]
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1304132Z ##[end-action id=__actions_upload-pages-artifact.__run;outcome=success;conclusion=success;duration_ms=23]
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1307216Z ##[start-action display=Archive artifact;id=__actions_upload-pages-artifact.__run_2]
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1310686Z ##[end-action id=__actions_upload-pages-artifact.__run_2;outcome=skipped;conclusion=skipped;duration_ms=0]
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1312149Z ##[start-action display=Archive artifact;id=__actions_upload-pages-artifact.__run_3]
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1313902Z ##[end-action id=__actions_upload-pages-artifact.__run_3;outcome=skipped;conclusion=skipped;duration_ms=0]
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1314868Z ##[start-action display=Upload artifact;id=__actions_upload-pages-artifact.upload-artifact]
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1338922Z ##[group]Run actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1339140Z with:
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1339251Z   name: github-pages
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1339387Z   path: /home/runner/work/_temp/artifact.tar
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1339538Z   retention-days: 1
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1339777Z   if-no-files-found: error
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1339909Z   compression-level: 6
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1340028Z   overwrite: false
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1340151Z   include-hidden-files: false
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1340282Z   archive: true
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1340391Z env:
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1340491Z   GIT_CONFIG_COUNT: 1
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1340620Z   GIT_CONFIG_KEY_0: init.defaultBranch
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1340764Z   GIT_CONFIG_VALUE_0: main
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.1340887Z ##[endgroup]
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.2348816Z With the provided path, there will be 1 file uploaded
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.2356099Z Artifact name is valid!
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.2356725Z Root directory input is valid!
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.5704323Z Uploading artifact: github-pages.zip
+test	Upload the build as the Pages artifact	2026-10-24T20:48:18.5728228Z Beginning upload of artifact content to blob storage
+test	Upload the build as the Pages artifact	2026-10-24T20:48:19.6698475Z Uploaded bytes 8388608
+test	Upload the build as the Pages artifact	2026-10-24T20:48:19.7810811Z Uploaded bytes 10838361
+test	Upload the build as the Pages artifact	2026-10-24T20:48:19.8451986Z Finished uploading artifact content to blob storage!
+test	Upload the build as the Pages artifact	2026-10-24T20:48:19.8452704Z SHA256 digest of uploaded artifact is 28aa36cb9162a929d421cd32c914892d977487448955c1eaeb951936e66b00ef
+test	Upload the build as the Pages artifact	2026-10-24T20:48:19.8453235Z Finalizing artifact upload
+test	Upload the build as the Pages artifact	2026-10-24T20:48:20.4186363Z Artifact github-pages successfully finalized. Artifact ID 12575360847
+test	Upload the build as the Pages artifact	2026-10-24T20:48:20.4187125Z Artifact github-pages has been successfully uploaded! Final size is 10838361 bytes. Artifact ID is 12575360847
+test	Upload the build as the Pages artifact	2026-10-24T20:48:20.4189593Z Artifact download URL: https://github.com/konard/konard.github.io/actions/runs/40130587091/artifacts/12575360847
+test	Upload the build as the Pages artifact	2026-10-24T20:48:20.4292368Z ##[end-action id=__actions_upload-pages-artifact.upload-artifact;outcome=success;conclusion=success;duration_ms=2297]
+test	Post Setup Node.js	﻿2026-10-24T20:48:20.4362898Z Post job cleanup.
+test	Post Setup Node.js	2026-10-24T20:48:20.5198536Z Cache hit occurred on the primary key node-cache-Linux-x64-npm-4b6fecdc63c3716cba6176337524c48a8d6e1aa392c5a191c878ae010a03856b, not saving cache.
+test	Post Checkout source	﻿2026-10-24T20:48:20.5300881Z Post job cleanup.
+test	Post Checkout source	2026-10-24T20:48:20.5872136Z [command]/usr/bin/git version
+test	Post Checkout source	2026-10-24T20:48:20.5906819Z git version 2.55.0
+test	Post Checkout source	2026-10-24T20:48:20.5934340Z Temporarily overriding HOME='/home/runner/work/_temp/358834ed-6ab7-423d-ad25-aaac800d8d15' before making global git config changes
+test	Post Checkout source	2026-10-24T20:48:20.5935166Z Adding repository directory to the temporary git global config as a safe directory
+test	Post Checkout source	2026-10-24T20:48:20.5938262Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/konard.github.io/konard.github.io
+test	Post Checkout source	2026-10-24T20:48:20.5971028Z Removing SSH command configuration
+test	Post Checkout source	2026-10-24T20:48:20.5976559Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+test	Post Checkout source	2026-10-24T20:48:20.6011946Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+test	Post Checkout source	2026-10-24T20:48:20.6227391Z Removing HTTP extra header
+test	Post Checkout source	2026-10-24T20:48:20.6232602Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+test	Post Checkout source	2026-10-24T20:48:20.6270509Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+test	Post Checkout source	2026-10-24T20:48:20.6528517Z Removing includeIf entries pointing to credentials config files
+test	Post Checkout source	2026-10-24T20:48:20.6537325Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+test	Post Checkout source	2026-10-24T20:48:20.6571268Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+test	Complete job	﻿2026-10-24T20:48:20.6897575Z Cleaning up orphan processes

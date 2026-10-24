@@ -1,0 +1,197 @@
+﻿2026-10-24T20:37:11.7369374Z Current runner version: '2.338.0'
+2026-10-24T20:37:11.7395036Z ##[group]Runner Image Provisioner
+2026-10-24T20:37:11.7395950Z Hosted Compute Agent
+2026-10-24T20:37:11.7396538Z Version: 20261021.618
+2026-10-24T20:37:11.7397274Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-10-24T20:37:11.7397990Z Build Date: 2026-10-21T00:45:21Z
+2026-10-24T20:37:11.7398705Z Worker ID: {5ec5de38-8be6-4db3-9447-bc9810f002b7}
+2026-10-24T20:37:11.7399478Z Region: westus3
+2026-10-24T20:37:11.7400034Z Cloud: Azure
+2026-10-24T20:37:11.7400860Z ##[endgroup]
+2026-10-24T20:37:11.7402367Z ##[group]Operating System
+2026-10-24T20:37:11.7402972Z Ubuntu
+2026-10-24T20:37:11.7403640Z 24.04.5
+2026-10-24T20:37:11.7404152Z LTS
+2026-10-24T20:37:11.7404739Z ##[endgroup]
+2026-10-24T20:37:11.7405301Z ##[group]Runner Image
+2026-10-24T20:37:11.7405873Z Image: ubuntu-24.04
+2026-10-24T20:37:11.7406527Z Version: 20261012.334.1
+2026-10-24T20:37:11.7407791Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-24T20:37:11.7409386Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+2026-10-24T20:37:11.7410819Z ##[endgroup]
+2026-10-24T20:37:11.7412088Z ##[group]GITHUB_TOKEN Permissions
+2026-10-24T20:37:11.7414024Z Contents: read
+2026-10-24T20:37:11.7414725Z Metadata: read
+2026-10-24T20:37:11.7415276Z ##[endgroup]
+2026-10-24T20:37:11.7417453Z Secret source: Actions
+2026-10-24T20:37:11.7418453Z Cache mode: write
+2026-10-24T20:37:11.7419182Z Prepare workflow directory
+2026-10-24T20:37:11.7827983Z Prepare all required actions
+2026-10-24T20:37:11.7879410Z Getting action download info
+2026-10-24T20:37:12.0958580Z Download action repository 'actions/checkout@v6' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+2026-10-24T20:37:12.3216412Z Complete job name: lint-workflows
+2026-10-24T20:37:12.3798827Z ##[group]Pull down action image 'rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667'
+2026-10-24T20:37:12.3920814Z ##[command]/usr/bin/docker pull rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667
+2026-10-24T20:37:13.0134358Z docker.io/rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667: Pulling from rhysd/actionlint
+2026-10-24T20:37:13.2295722Z 589002ba0eae: Pulling fs layer
+2026-10-24T20:37:13.2296525Z c09af8888d6a: Pulling fs layer
+2026-10-24T20:37:13.2297122Z 4ccd7d76ca98: Pulling fs layer
+2026-10-24T20:37:13.2297707Z b6b4b7b0e257: Pulling fs layer
+2026-10-24T20:37:13.2298269Z b6b4b7b0e257: Waiting
+2026-10-24T20:37:13.4394921Z c09af8888d6a: Download complete
+2026-10-24T20:37:13.4456015Z 589002ba0eae: Verifying Checksum
+2026-10-24T20:37:13.4457385Z 589002ba0eae: Download complete
+2026-10-24T20:37:13.4458933Z 4ccd7d76ca98: Verifying Checksum
+2026-10-24T20:37:13.4459940Z 4ccd7d76ca98: Download complete
+2026-10-24T20:37:13.5620937Z 589002ba0eae: Pull complete
+2026-10-24T20:37:13.6144070Z c09af8888d6a: Pull complete
+2026-10-24T20:37:13.6714188Z b6b4b7b0e257: Verifying Checksum
+2026-10-24T20:37:13.6716542Z b6b4b7b0e257: Download complete
+2026-10-24T20:37:13.7198021Z 4ccd7d76ca98: Pull complete
+2026-10-24T20:37:14.3342151Z b6b4b7b0e257: Pull complete
+2026-10-24T20:37:14.3384376Z Digest: sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667
+2026-10-24T20:37:14.3390729Z Status: Downloaded newer image for rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667
+2026-10-24T20:37:14.3397748Z docker.io/rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667
+2026-10-24T20:37:14.3419061Z ##[endgroup]
+2026-10-24T20:37:14.3751937Z ##[group]Run actions/checkout@v6
+2026-10-24T20:37:14.3752988Z with:
+2026-10-24T20:37:14.3753305Z   persist-credentials: false
+2026-10-24T20:37:14.3753647Z   repository: konard/konard.github.io
+2026-10-24T20:37:14.3756127Z   token: ***
+2026-10-24T20:37:14.3756388Z   ssh-strict: true
+2026-10-24T20:37:14.3756645Z   ssh-user: git
+2026-10-24T20:37:14.3757270Z   clean: true
+2026-10-24T20:37:14.3757558Z   sparse-checkout-cone-mode: true
+2026-10-24T20:37:14.3757911Z   fetch-depth: 1
+2026-10-24T20:37:14.3758196Z   fetch-tags: false
+2026-10-24T20:37:14.3758461Z   show-progress: true
+2026-10-24T20:37:14.3758720Z   lfs: false
+2026-10-24T20:37:14.3758964Z   submodules: false
+2026-10-24T20:37:14.3759237Z   set-safe-directory: true
+2026-10-24T20:37:14.3759540Z   allow-unsafe-pr-checkout: false
+2026-10-24T20:37:14.3760371Z env:
+2026-10-24T20:37:14.3760632Z   GIT_CONFIG_COUNT: 1
+2026-10-24T20:37:14.3760922Z   GIT_CONFIG_KEY_0: init.defaultBranch
+2026-10-24T20:37:14.3761305Z   GIT_CONFIG_VALUE_0: main
+2026-10-24T20:37:14.3761583Z ##[endgroup]
+2026-10-24T20:37:14.4822064Z Syncing repository: konard/konard.github.io
+2026-10-24T20:37:14.4824340Z ##[group]Getting Git version info
+2026-10-24T20:37:14.4825140Z Working directory is '/home/runner/work/konard.github.io/konard.github.io'
+2026-10-24T20:37:14.4826405Z [command]/usr/bin/git version
+2026-10-24T20:37:14.4903587Z git version 2.55.0
+2026-10-24T20:37:14.4939981Z ##[endgroup]
+2026-10-24T20:37:14.4951098Z Temporarily overriding HOME='/home/runner/work/_temp/4f37ae45-cf8a-446d-8cf1-ef504d66ef98' before making global git config changes
+2026-10-24T20:37:14.4953298Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-24T20:37:14.4957899Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/konard.github.io/konard.github.io
+2026-10-24T20:37:14.5082793Z Deleting the contents of '/home/runner/work/konard.github.io/konard.github.io'
+2026-10-24T20:37:14.5087592Z ##[group]Determining repository object format
+2026-10-24T20:37:14.5091017Z ##[endgroup]
+2026-10-24T20:37:14.5091850Z ##[group]Initializing the repository
+2026-10-24T20:37:14.5097282Z [command]/usr/bin/git init /home/runner/work/konard.github.io/konard.github.io
+2026-10-24T20:37:14.5215173Z Initialized empty Git repository in /home/runner/work/konard.github.io/konard.github.io/.git/
+2026-10-24T20:37:14.5227513Z [command]/usr/bin/git remote add origin https://github.com/konard/konard.github.io
+2026-10-24T20:37:14.5292201Z ##[endgroup]
+2026-10-24T20:37:14.5292764Z ##[group]Disabling automatic garbage collection
+2026-10-24T20:37:14.5298068Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-24T20:37:14.5343088Z ##[endgroup]
+2026-10-24T20:37:14.5343834Z ##[group]Setting up auth
+2026-10-24T20:37:14.5345258Z Removing SSH command configuration
+2026-10-24T20:37:14.5354152Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-24T20:37:14.5400931Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-24T20:37:14.5788411Z Removing HTTP extra header
+2026-10-24T20:37:14.5795477Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-24T20:37:14.5835304Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-24T20:37:14.6056292Z Removing includeIf entries pointing to credentials config files
+2026-10-24T20:37:14.6063879Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-24T20:37:14.6102120Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-24T20:37:14.6357842Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-6c8d07ab-eb9e-4373-8391-c9c90a465eb5.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-24T20:37:14.6412932Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path /home/runner/work/_temp/git-credentials-6c8d07ab-eb9e-4373-8391-c9c90a465eb5.config
+2026-10-24T20:37:14.6460541Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-6c8d07ab-eb9e-4373-8391-c9c90a465eb5.config
+2026-10-24T20:37:14.6516713Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-6c8d07ab-eb9e-4373-8391-c9c90a465eb5.config
+2026-10-24T20:37:14.6564601Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-6c8d07ab-eb9e-4373-8391-c9c90a465eb5.config
+2026-10-24T20:37:14.6605205Z ##[endgroup]
+2026-10-24T20:37:14.6606230Z ##[group]Fetching the repository
+2026-10-24T20:37:14.6619717Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +971eb02c7c7b6509214efd8eba29de713f101db1:refs/remotes/pull/20/merge
+2026-10-24T20:37:19.7572042Z From https://github.com/konard/konard.github.io
+2026-10-24T20:37:19.7573167Z  * [new ref]         971eb02c7c7b6509214efd8eba29de713f101db1 -> pull/20/merge
+2026-10-24T20:37:19.7581517Z ##[endgroup]
+2026-10-24T20:37:19.7582713Z ##[group]Determining the checkout info
+2026-10-24T20:37:19.7583842Z ##[endgroup]
+2026-10-24T20:37:19.7587357Z [command]/usr/bin/git sparse-checkout disable
+2026-10-24T20:37:19.7652102Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-24T20:37:19.7687270Z ##[group]Checking out the ref
+2026-10-24T20:37:19.7701678Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/20/merge
+2026-10-24T20:37:20.0937808Z Note: switching to 'refs/remotes/pull/20/merge'.
+2026-10-24T20:37:20.0938440Z 
+2026-10-24T20:37:20.0938822Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-10-24T20:37:20.0939657Z changes and commit them, and you can discard any commits you make in this
+2026-10-24T20:37:20.0940440Z state without impacting any branches by switching back to a branch.
+2026-10-24T20:37:20.0941308Z 
+2026-10-24T20:37:20.0941534Z If you want to create a new branch to retain commits you create, you may
+2026-10-24T20:37:20.0942015Z do so (now or later) by using -c with the switch command. Example:
+2026-10-24T20:37:20.0942271Z 
+2026-10-24T20:37:20.0942418Z   git switch -c <new-branch-name>
+2026-10-24T20:37:20.0942611Z 
+2026-10-24T20:37:20.0942714Z Or undo this operation with:
+2026-10-24T20:37:20.0942880Z 
+2026-10-24T20:37:20.0942965Z   git switch -
+2026-10-24T20:37:20.0943129Z 
+2026-10-24T20:37:20.0943372Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-10-24T20:37:20.0943689Z 
+2026-10-24T20:37:20.0944049Z HEAD is now at 971eb02 Merge 996cf0d0a282f351ad66cefa0d02a3061008cffc into aeb5b451e44765dc507521bc107b88cb984d422a
+2026-10-24T20:37:20.0972945Z ##[endgroup]
+2026-10-24T20:37:20.1024896Z [command]/usr/bin/git log -1 --format=%H
+2026-10-24T20:37:20.1057558Z 971eb02c7c7b6509214efd8eba29de713f101db1
+2026-10-24T20:37:20.1071798Z ##[group]Removing auth
+2026-10-24T20:37:20.1072263Z Removing SSH command configuration
+2026-10-24T20:37:20.1077855Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-24T20:37:20.1123402Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-24T20:37:20.1374000Z Removing HTTP extra header
+2026-10-24T20:37:20.1383121Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-24T20:37:20.1421944Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-24T20:37:20.1658835Z Removing includeIf entries pointing to credentials config files
+2026-10-24T20:37:20.1663212Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-24T20:37:20.1694506Z includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path
+2026-10-24T20:37:20.1695668Z includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path
+2026-10-24T20:37:20.1701939Z includeif.gitdir:/github/workspace/.git.path
+2026-10-24T20:37:20.1702638Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-24T20:37:20.1704881Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path
+2026-10-24T20:37:20.1733174Z /home/runner/work/_temp/git-credentials-6c8d07ab-eb9e-4373-8391-c9c90a465eb5.config
+2026-10-24T20:37:20.1748796Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path /home/runner/work/_temp/git-credentials-6c8d07ab-eb9e-4373-8391-c9c90a465eb5.config
+2026-10-24T20:37:20.1803189Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path
+2026-10-24T20:37:20.1837139Z /home/runner/work/_temp/git-credentials-6c8d07ab-eb9e-4373-8391-c9c90a465eb5.config
+2026-10-24T20:37:20.1845019Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-6c8d07ab-eb9e-4373-8391-c9c90a465eb5.config
+2026-10-24T20:37:20.1886933Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-10-24T20:37:20.1952966Z /github/runner_temp/git-credentials-6c8d07ab-eb9e-4373-8391-c9c90a465eb5.config
+2026-10-24T20:37:20.1974061Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-6c8d07ab-eb9e-4373-8391-c9c90a465eb5.config
+2026-10-24T20:37:20.2006343Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-24T20:37:20.2033972Z /github/runner_temp/git-credentials-6c8d07ab-eb9e-4373-8391-c9c90a465eb5.config
+2026-10-24T20:37:20.2043210Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-6c8d07ab-eb9e-4373-8391-c9c90a465eb5.config
+2026-10-24T20:37:20.2082488Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-24T20:37:20.2353991Z Removing credentials config '/home/runner/work/_temp/git-credentials-6c8d07ab-eb9e-4373-8391-c9c90a465eb5.config'
+2026-10-24T20:37:20.2364097Z ##[endgroup]
+2026-10-24T20:37:20.2570635Z ##[group]Run docker://rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667
+2026-10-24T20:37:20.2571220Z with:
+2026-10-24T20:37:20.2571447Z   args: -color
+2026-10-24T20:37:20.2571643Z env:
+2026-10-24T20:37:20.2571819Z   GIT_CONFIG_COUNT: 1
+2026-10-24T20:37:20.2572045Z   GIT_CONFIG_KEY_0: init.defaultBranch
+2026-10-24T20:37:20.2572314Z   GIT_CONFIG_VALUE_0: main
+2026-10-24T20:37:20.2572539Z ##[endgroup]
+2026-10-24T20:37:20.2756061Z ##[command]/usr/bin/docker run --name rhysdactionlintsha256b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667_e20c23 --label 747ec9 --workdir /github/workspace --rm -e "GIT_CONFIG_COUNT" -e "GIT_CONFIG_KEY_0" -e "GIT_CONFIG_VALUE_0" -e "INPUT_ARGS" -e "HOME" -e "GITHUB_JOB" -e "GITHUB_REF" -e "GITHUB_SHA" -e "GITHUB_REPOSITORY" -e "GITHUB_REPOSITORY_OWNER" -e "GITHUB_REPOSITORY_OWNER_ID" -e "GITHUB_RUN_ID" -e "GITHUB_RUN_NUMBER" -e "GITHUB_RETENTION_DAYS" -e "GITHUB_RUN_ATTEMPT" -e "GITHUB_ACTOR_ID" -e "GITHUB_ACTOR" -e "GITHUB_WORKFLOW" -e "GITHUB_HEAD_REF" -e "GITHUB_BASE_REF" -e "GITHUB_EVENT_NAME" -e "GITHUB_SERVER_URL" -e "GITHUB_API_URL" -e "GITHUB_GRAPHQL_URL" -e "GITHUB_REF_NAME" -e "GITHUB_REF_PROTECTED" -e "GITHUB_REF_TYPE" -e "GITHUB_WORKFLOW_REF" -e "GITHUB_WORKFLOW_SHA" -e "GITHUB_REPOSITORY_ID" -e "GITHUB_TRIGGERING_ACTOR" -e "GITHUB_WORKSPACE" -e "GITHUB_ACTION" -e "GITHUB_EVENT_PATH" -e "GITHUB_ACTION_REPOSITORY" -e "GITHUB_ACTION_REF" -e "GITHUB_PATH" -e "GITHUB_ENV" -e "GITHUB_STEP_SUMMARY" -e "GITHUB_STATE" -e "GITHUB_OUTPUT" -e "GITHUB_ARTIFACTS" -e "GITHUB_ARTIFACTS_LIST" -e "RUNNER_OS" -e "RUNNER_ARCH" -e "RUNNER_NAME" -e "RUNNER_ENVIRONMENT" -e "RUNNER_TOOL_CACHE" -e "RUNNER_TEMP" -e "RUNNER_WORKSPACE" -e "ACTIONS_RUNTIME_URL" -e "ACTIONS_RUNTIME_TOKEN" -e "ACTIONS_CACHE_URL" -e "ACTIONS_RESULTS_URL" -e "ACTIONS_CACHE_MODE" -e "ACTIONS_ORCHESTRATION_ID" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work/_temp":"/github/runner_temp" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" -v "/home/runner/work/_temp/_runner_file_commands":"/github/file_commands" -v "/home/runner/work/konard.github.io/konard.github.io":"/github/workspace" rhysd/actionlint@sha256:b1934ee5f1c509618f2508e6eb47ee0d3520686341fec936f3b79331f9315667 -color
+2026-10-24T20:37:20.6636793Z Post job cleanup.
+2026-10-24T20:37:20.7575141Z [command]/usr/bin/git version
+2026-10-24T20:37:20.7622016Z git version 2.55.0
+2026-10-24T20:37:20.7670793Z Temporarily overriding HOME='/home/runner/work/_temp/e09a06df-94c4-4cc6-96b7-7233a7e084c0' before making global git config changes
+2026-10-24T20:37:20.7671827Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-24T20:37:20.7677758Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/konard.github.io/konard.github.io
+2026-10-24T20:37:20.7716685Z Removing SSH command configuration
+2026-10-24T20:37:20.7724170Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-24T20:37:20.7777601Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-24T20:37:20.8034484Z Removing HTTP extra header
+2026-10-24T20:37:20.8041287Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-24T20:37:20.8086327Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-24T20:37:20.8362565Z Removing includeIf entries pointing to credentials config files
+2026-10-24T20:37:20.8378539Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-24T20:37:20.8433290Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-24T20:37:20.8877315Z Cleaning up orphan processes
