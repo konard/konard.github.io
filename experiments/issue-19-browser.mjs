@@ -196,6 +196,7 @@ try {
     .evaluateAll((nodes) => nodes.some((node) => node.getBoundingClientRect().right > window.innerWidth));
   assert.equal(clipped, false, 'large notation fields must fit the mobile panel, even when the body hides overflow');
   assert.equal(await touch.getByLabel('Link 100: target', { exact: true }).inputValue(), '1');
+  await touch.getByLabel('Links notation', { exact: true }).scrollIntoViewIfNeeded();
   await shot(touch, 'mobile-100-links');
   await mobile.close();
   passed('touch gesture debounce, 100-link mobile editor and no horizontal overflow');
