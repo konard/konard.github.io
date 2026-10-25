@@ -1,0 +1,27 @@
+⋯ Backing up original state…
+✔ Done backing up original state (5b6681f)!
+⋯ Running tasks for staged files…
+    *.{js,jsx,cjs,mjs} — 11 files
+      ⋯ eslint --fix --max-warnings=0 --no-warn-ignored
+      ⋯ prettier --write
+    *.{css,md,html,json,yml,yaml} — 5 files
+      ⋯ prettier --write
+
+✔ prettier --write
+✔ eslint --fix --max-warnings=0 --no-warn-ignored
+✔ prettier --write
+
+✔ Done running tasks for staged files!
+⋯ Staging changes from tasks…
+✔ Done staging changes from tasks!
+⋯ Cleaning up temporary files…
+✔ Done cleaning up temporary files!
+[issue-21-823573f25e74 30e1517] Balance editor bends and defaults while preserving gallery geometry
+ 17 files changed, 431 insertions(+), 25 deletions(-)
+ delete mode 100644 .gitkeep
+ create mode 100644 docs/case-studies/issue-21/data/gallery-baseline.json
+ create mode 100644 docs/case-studies/issue-21/data/issue-21.json
+ create mode 100644 experiments/issue-21-baseline.mjs
+ create mode 100644 experiments/issue-21-browser.mjs
+ create mode 100644 src/links/geometry-21.test.js
+ create mode 100644 src/pages/network-21.test.jsx
