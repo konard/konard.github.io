@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { linksNotation, mathNotation, randomCode } from '../links/configurations';
-import { tr, useLang } from '../i18n/prefs';
+import { tr, useLang, useResolvedTheme } from '../i18n/prefs';
 import { useNotation } from '../links/notation';
 import { plural } from '../i18n/plural';
 import Glyph from './Glyph';
@@ -19,6 +19,7 @@ const LANGUAGE_NAMES = {
  * shows a random network of 1–4 links (`random` is injectable for tests).
  */
 export function NetworkExample({ example, random = Math.random }) {
+  const theme = useResolvedTheme();
   const [code, setCode] = useState(example.code);
   const size = code.split(' ').length;
   const isExample = code === example.code;
@@ -57,7 +58,7 @@ export function NetworkExample({ example, random = Math.random }) {
           en: `Every link is (index: source target), 0 is nothing; the math notation writes the same sources and targets as digits in base ${size + 1}. Click the symbol for another random network.`,
           ru: `Каждая связь — это (индекс: начало конец), 0 означает «ничего»; математическая нотация записывает те же начала и концы цифрами в системе счисления с основанием ${size + 1}. Нажмите на символ, чтобы увидеть другую случайную сеть.`,
         })}{' '}
-        <a className="theory__edit" href={networkHref(code)}>
+        <a className="theory__edit" href={networkHref(code, theme)}>
           {t({ en: 'Edit and share this network', ru: 'Изменить эту сеть и поделиться ею' })}
         </a>
       </p>

@@ -1,0 +1,18 @@
+{
+  "1": {
+    "count": 4,
+    "sha256": "a4d24826de08127e34e3c7a1b2d370d69f20459bf864e2ff75b46a297b9295a0"
+  },
+  "2": {
+    "count": 81,
+    "sha256": "2efb555e74ceaa60e5563a84d3d9d9aba2cd404d85b9aae6737d8fad7d8b51b0"
+  },
+  "3": {
+    "count": 4096,
+    "sha256": "4a065a992995869e352389e63633668be2967a03b9e1a7e9ce9f4d95d8ee0e71"
+  },
+  "4": {
+    "count": 512,
+    "sha256": "fac996dc039d805d0154c17deeb8b5996cfc0e98c9824b16a5a85b5f7bfa7702"
+  }
+}

@@ -28,7 +28,8 @@
     "build:frames": "node scripts/build-frames-css.mjs",
     "check:secrets": "secretlint \"**/*\" --secretlintignore .prettierignore",
     "prepare": "husky",
-    "build:cv": "node scripts/build-cv-pdf.mjs"
+    "build:cv": "node scripts/build-cv-pdf.mjs",
+    "test:network:issue21": "node experiments/issue-21-browser.mjs"
   },
   "homepage": "https://konard.github.io",
   "devDependencies": {

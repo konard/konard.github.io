@@ -68,7 +68,7 @@ export const STYLE_SECTIONS = [
       range('glow', 0, 0, 12, 0.5, { en: 'Glow', ru: 'Свечение' }),
       select(
         'palette',
-        'custom',
+        'site',
         [
           option('site', 'Site', 'Как на сайте'),
           option('neon', 'Neon', 'Неон'),
@@ -286,7 +286,7 @@ export const STYLE_SECTIONS = [
 
 /** The options kept per link: its colour (with the own colours) and the turns of its ends. */
 const PER_LINK = [
-  { key: 'colors', type: 'list', d: '#ff2600,#00f900,#fffb00,#0433ff,#34d399,#fb923c,#60a5fa,#f87171,#a3e635' },
+  { key: 'colors', type: 'list', d: COLORS.join(',') },
   { key: 'gap', type: 'range', d: 0.08, min: 0, max: 0.4 },
   { key: 'turns', type: 'list', d: '' },
 ];
@@ -339,6 +339,8 @@ function normalizeValue(field, value) {
 /** A complete, valid style: every option of `raw` checked, the rest the defaults. */
 export function normalizeStyle(raw = {}) {
   // Bookmarks from issue #17 used one gap for both references.
+  // Older shared links omitted palette=custom because it was the default.
+  if (raw?.colors !== undefined && raw?.palette === undefined) raw = { ...raw, palette: 'custom' };
   if (raw?.gap !== undefined) raw = { startGap: raw.gap, endGap: raw.gap, ...raw };
   return Object.fromEntries(STYLE_FIELDS.map((field) => [field.key, normalizeValue(field, raw?.[field.key])]));
 }
