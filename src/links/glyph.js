@@ -55,6 +55,7 @@ export const SHAPE = {
   rotation: 0, // turns the whole layout
   spread: 1, // distance between the middles, relative to the lengths of free ends and loops
   padding: 9, // free margin around the drawing, in SIZE units
+  bendMode: 'rotate', // legacy gallery/rain geometry; the editor opts into anchored curve bending
   tension: 0.38, // how far a reference bends out, relative to the distance it spans
   bulge: 20, // how much a lone reference bends aside
   gap: 0.07, // ends stop this far from the middle they touch
@@ -159,10 +160,19 @@ export function linkCurve(links, i, places, o) {
   else if (s && t) d = rotate(tangent, Math.PI / 4 + bulge - SHAPE.bulge * RAD);
   else d = rotate(tangent, bulge - SHAPE.bulge * RAD);
 
+  // Editor bending changes handles, with fixed endpoint axes. The legacy
+  // branch above remains the gallery/rain's original construction.
+  const balanced = o.bendMode === 'curve';
+  const freeAxis = balanced ? tIn || tOut || tangent : d;
+  if (balanced && !tIn && !tOut) {
+    d = s && t ? rotate(tangent, Math.PI / 4) : s || t ? tangent : rotate(tangent, bulge / 2);
+  }
+  const loopWidth = balanced ? 1 + (o.bulge - SHAPE.bulge) / 90 : 1;
+
   let first;
   let start;
   if (s === 0) {
-    const dir = rotate(d, turnIn);
+    const dir = rotate(freeAxis, turnIn);
     const from = sub(m, mul(dir, free));
     first = [from, add(from, mul(dir, free / 3)), sub(m, mul(d, free / 3)), m];
     start = { at: from, dir };
@@ -173,7 +183,7 @@ export function linkCurve(links, i, places, o) {
     const from = add(m, mul(away, startGap));
     first = [
       from,
-      add(m, mul(away, Math.max(loop, startGap + 0.01))),
+      add(m, mul(away, Math.max(loop * loopWidth, startGap + 0.01))),
       sub(m, mul(d, (loop * Math.max(0.03, o.tension)) / SHAPE.tension)),
       m,
     ];
@@ -191,19 +201,19 @@ export function linkCurve(links, i, places, o) {
   let second;
   let end;
   if (t === 0) {
-    const dir = rotate(d, turnOut);
+    const dir = rotate(freeAxis, turnOut);
     const to = add(m, mul(dir, free));
     second = [m, add(m, mul(d, free / 3)), sub(to, mul(dir, free / 3)), to];
     end = { at: to, dir };
   } else if (t === i + 1) {
     // Point-symmetric to the source loop, so (1: 1 1) is an even ∞.
     const angle = o.angles === 'fixed' ? (o.targetAngle - SHAPE.targetAngle) * RAD : 0;
-    const away = rotate(s === i + 1 ? rotate(d, -Math.PI / 2) : side(d, d, out), turnOut - angle);
+    const away = rotate(s === i + 1 ? rotate(d, -Math.PI / 2) : side(d, d, out), turnOut + (balanced ? angle : -angle));
     const to = add(m, mul(away, endGap));
     second = [
       m,
       add(m, mul(d, (loop * Math.max(0.03, o.tension)) / SHAPE.tension)),
-      add(m, mul(away, Math.max(loop, endGap + 0.01))),
+      add(m, mul(away, Math.max(loop * loopWidth, endGap + 0.01))),
       to,
     ];
     end = { at: to, dir: mul(away, -1) };

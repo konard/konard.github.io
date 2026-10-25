@@ -14,14 +14,17 @@ const names = {
 };
 export const EDITOR_SHAPE = {
   ...SHAPE,
+  bendMode: 'curve',
   angles: 'fixed',
-  targetAngle: 47,
-  tension: 0.33,
-  bulge: 45,
+  sourceAngle: 30,
+  targetAngle: 30,
+  tension: 0.4,
+  bulge: 20,
   startGap: 0.08,
   endGap: 0.08,
   startSize: 2.5,
   startAngle: 70,
+  startOffset: 2.5,
   endSize: 3.5,
   endAngle: 45,
   middle: 'dot',
@@ -70,6 +73,15 @@ export const GEOMETRY_SECTIONS = [
     title: { en: 'Shape of the links', ru: 'Форма связей' },
     fields: [
       select(
+        'bendMode',
+        EDITOR_SHAPE.bendMode,
+        [
+          option('curve', 'Bend the curve', 'Изгибать кривую'),
+          option('rotate', 'Legacy tangent rotation', 'Прежний поворот касательной'),
+        ],
+        { en: 'Bend behavior', ru: 'Поведение изгиба' },
+      ),
+      select(
         'angles',
         EDITOR_SHAPE.angles,
         [
@@ -91,11 +103,11 @@ export const GEOMETRY_SECTIONS = [
         ru: 'Две ссылки на одну связь образуют линзу',
       }),
       field('tension', 0, 1, 0.01, 'Curvature', 'Изгиб', { unit: '%' }),
-      field('bulge', 0, 90, 1, 'Bend of a single reference', 'Отклонение одиночной ссылки', {
+      field('bulge', 0, 90, 1, 'Bend', 'Изгиб кривой', {
         ...degrees,
         hint: {
-          en: 'Also turns the middle tangent of free links and self-reference loops.',
-          ru: 'Также поворачивает касательную середины свободных связей и петель.',
+          en: 'Curve mode bends free ends and widens self loops with fixed endpoints. Use Rotation to turn the whole network.',
+          ru: 'Режим кривой изгибает свободные концы и расширяет собственные петли с неподвижными концами. Для поворота всей сети используйте «Поворот».',
         },
       }),
       field('startGap', 0, 0.4, 0.01, 'Gap at the source reference', 'Зазор у начальной ссылки'),
@@ -174,6 +186,7 @@ export function geometryAvailable(key, style, links) {
       return any(([, t]) => t !== 0);
     case 'lens':
       return style.angles === 'mirror' && any(([s, t], i) => s === t && other(s, i));
+    case 'bendMode':
     case 'bulge':
       return any(([s, t], i) => !(other(s, i) && other(t, i)));
     case 'free':

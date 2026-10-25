@@ -1,0 +1,37 @@
+{
+  "engine": "firefox",
+  "before": false,
+  "date": "2026-10-25T10:32:19.873Z",
+  "checks": [
+    "both supplied URLs: explicit settings, controls, share and reload",
+    "five representative default editor configurations",
+    "gallery hover and navigation preserve dark/light link colors",
+    "theory example navigation also preserves light-theme colors",
+    "exported SVG equals preview",
+    "mobile preview fits viewport"
+  ],
+  "errors": [],
+  "version": "155.0",
+  "darkColors": {
+    "gallery": [
+      "rgb(34, 211, 238)",
+      "rgb(192, 132, 252)"
+    ],
+    "editor": [
+      "rgb(34, 211, 238)",
+      "rgb(192, 132, 252)"
+    ],
+    "decoration": "none"
+  },
+  "lightColors": {
+    "gallery": [
+      "rgb(14, 116, 144)",
+      "rgb(147, 51, 234)"
+    ],
+    "editor": [
+      "rgb(14, 116, 144)",
+      "rgb(147, 51, 234)"
+    ],
+    "decoration": "none"
+  }
+}

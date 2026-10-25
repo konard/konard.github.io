@@ -147,3 +147,15 @@ export function useTheme() {
   const theme = useSyncExternalStore(themeStore.subscribe, themeStore.get, () => 'auto');
   return { theme, setTheme };
 }
+
+/** The effective theme, including changes to the system preference in automatic mode. */
+const subscribeSystemTheme = (listener) => {
+  const media = window.matchMedia?.('(prefers-color-scheme: light)');
+  media?.addEventListener?.('change', listener);
+  return () => media?.removeEventListener?.('change', listener);
+};
+export function useResolvedTheme() {
+  const { theme } = useTheme();
+  const light = useSyncExternalStore(subscribeSystemTheme, prefersLight, () => false);
+  return resolveTheme(theme, light);
+}

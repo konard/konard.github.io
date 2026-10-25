@@ -8,7 +8,7 @@ import {
   representatives,
 } from '../links/configurations';
 import { COLORS } from '../links/glyph';
-import { useLang } from '../i18n/prefs';
+import { useLang, useResolvedTheme } from '../i18n/prefs';
 import { plural } from '../i18n/plural';
 import { formatNumber } from './format';
 import Glyph from './Glyph';
@@ -22,7 +22,8 @@ const superscript = (k) =>
     .map((d) => SUPERSCRIPTS[d])
     .join('');
 /** The page of one network (issue #17): /network/?code=0120. */
-export const networkHref = (code) => `/network/?code=${code.replace(/ /g, '')}`;
+export const networkHref = (code, theme = 'dark') =>
+  `/network/?code=${code.replace(/ /g, '')}${theme === 'light' ? '&palette=print' : ''}`;
 
 /** Three joined circles: drawn with circles and lines only, so the symbols stay the only paths of a card. */
 function ShareIcon() {
@@ -54,6 +55,7 @@ const CLASSES = { en: ['class', 'classes'], ru: ['класс', 'класса', '
  * that refers to 0, so links refer only to each other or to themselves: N^(2N).
  */
 export default function NetworkGallery({ initial = 2 }) {
+  const theme = useResolvedTheme();
   const [n, setN] = useState(initial);
   const [classes, setClasses] = useState(false);
   const [real, setReal] = useState(false);
@@ -146,13 +148,13 @@ export default function NetworkGallery({ initial = 2 }) {
       >
         {codes.map((code) => (
           <li key={code} title={linksNotation(code).join(' ')}>
-            <a className="symbols__card" href={networkHref(code)}>
+            <a className="symbols__card" href={networkHref(code, theme)}>
               <Glyph code={code} size={64} />
               <span className="mono">{mathNotation(code)}</span>
             </a>
             <a
               className="symbols__share"
-              href={`${networkHref(code)}#share`}
+              href={`${networkHref(code, theme)}#share`}
               aria-label={`${t({ en: 'Share', ru: 'Поделиться' })} ${mathNotation(code)}`}
               title={t({ en: 'Edit, download and share', ru: 'Изменить, скачать и поделиться' })}
             >

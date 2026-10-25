@@ -1,0 +1,118 @@
+(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - import "./fields" without a file extension (src/settings/schema.js:15:32). Add the file extension
+  - import "./schema.background" without a file extension (src/settings/schema.js:16:37). Add the file extension
+  - import "./schema.layers" without a file extension (src/settings/schema.js:17:32). Add the file extension
+  - import "./schema.skins" without a file extension (src/settings/schema.js:18:31). Add the file extension
+  - import "./schema.sound" without a file extension (src/settings/schema.js:19:31). Add the file extension
+  - import "./schema.skins" without a file extension (src/settings/schema.js:21:33). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.background.js:3:54). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.layers.js:8:54). Add the file extension
+  - import "../skins.frames" without a file extension (src/settings/schema.skins.js:3:25). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.sound.js:7:47). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.skins.js:4:47). Add the file extension
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1792923654115
+
+ ❯ src/links/geometry-21.test.js (6 tests | 5 failed) 73ms
+   ❯ balanced editor geometry (issue #21) (6)
+     × makes equal self-reference ends point-symmetric for all equal angles and bends 23ms
+     × changes curvature without moving free/loop anchors or rotating the whole symbol 5ms
+     × starts with a centered cross made by a bar intersecting the line 12ms
+     × uses gallery colors until the user explicitly changes them 6ms
+     × preserves the gallery and rain SVG byte for byte 6ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/links/geometry-21.test.js > balanced editor geometry (issue #21) > makes equal self-reference ends point-symmetric for all equal angles and bends
+AssertionError: expected 0.004545898437500011 to be less than 1e-10
+ ❯ near src/links/geometry-21.test.js:9:69
+      7|
+      8| const shape = (raw = {}, n = 1) => shapeOfStyle(normalizeStyle(raw), n…
+      9| const near = (a, b) => expect(Math.hypot(a[0] - b[0], a[1] - b[1])).to…
+       |                                                                     ^
+     10| const symmetric = ({ segments: [first, second], middle }) => {
+     11|   for (let k = 0; k <= 32; k++) {
+ ❯ symmetric src/links/geometry-21.test.js:13:5
+ ❯ src/links/geometry-21.test.js:23:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  src/links/geometry-21.test.js > balanced editor geometry (issue #21) > changes curvature without moving free/loop anchors or rotating the whole symbol
+AssertionError: expected 0.7607128711332589 to be less than 1e-10
+ ❯ near src/links/geometry-21.test.js:9:69
+      7|
+      8| const shape = (raw = {}, n = 1) => shapeOfStyle(normalizeStyle(raw), n…
+      9| const near = (a, b) => expect(Math.hypot(a[0] - b[0], a[1] - b[1])).to…
+       |                                                                     ^
+     10| const symmetric = ({ segments: [first, second], middle }) => {
+     11|   for (let k = 0; k <= 32; k++) {
+ ❯ src/links/geometry-21.test.js:35:9
+ ❯ src/links/geometry-21.test.js:34:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  src/links/geometry-21.test.js > balanced editor geometry (issue #21) > starts with a centered cross made by a bar intersecting the line
+AssertionError: expected +0 to be 2.5 // Object.is equality
+
+- Expected
++ Received
+
+- 2.5
++ 0
+
+ ❯ src/links/geometry-21.test.js:46:40
+     44|   it('starts with a centered cross made by a bar intersecting the line…
+     45|     expect(STYLE_DEFAULTS.start).toBe('bar');
+     46|     expect(STYLE_DEFAULTS.startOffset).toBe(STYLE_DEFAULTS.startSize);
+       |                                        ^
+     47|     expect(STYLE_DEFAULTS.startAcross).toBe(0);
+     48|     expect(STYLE_DEFAULTS.startRotation).toBe(0);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ FAIL  src/links/geometry-21.test.js > balanced editor geometry (issue #21) > uses gallery colors until the user explicitly changes them
+AssertionError: expected [ '#ff2600', '#00f900', …(2) ] to deeply equal [ '#22d3ee', '#c084fc', …(2) ]
+
+- Expected
++ Received
+
+  [
+-   "#22d3ee",
+-   "#c084fc",
+-   "#f472b6",
+-   "#facc15",
++   "#ff2600",
++   "#00f900",
++   "#fffb00",
++   "#0433ff",
+  ]
+
+ ❯ src/links/geometry-21.test.js:52:43
+     50|
+     51|   it('uses gallery colors until the user explicitly changes them', () …
+     52|     expect(linkColors(STYLE_DEFAULTS, 4)).toEqual(COLORS.slice(0, 4));
+       |                                           ^
+     53|     expect(linkColors(normalizeStyle({ palette: 'custom', colors: '#ff…
+     54|       '#ff2600', '#00f900',
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+ FAIL  src/links/geometry-21.test.js > balanced editor geometry (issue #21) > preserves the gallery and rain SVG byte for byte
+TypeError: The URL must be of scheme file
+ ❯ src/links/geometry-21.test.js:71:33
+     69|
+     70|   it('preserves the gallery and rain SVG byte for byte', () => {
+     71|     const baseline = JSON.parse(readFileSync(new URL('../../docs/case-…
+       |                                 ^
+     72|     for (const n of [1, 2, 3, 4]) {
+     73|       const hash = createHash('sha256');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  5 failed | 1 passed (6)
+   Start at  10:24:53
+   Duration  3.24s (environment 57%, transform 22%, setup 16%, tests 3%, import 2%, worker 1%)
+

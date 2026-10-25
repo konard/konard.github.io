@@ -119,9 +119,11 @@ describe('geometry and control audit (issue #19)', () => {
     expect(normalizeStyle()).toEqual(STYLE_DEFAULTS);
     expect(STYLE_DEFAULTS).toMatchObject({
       angles: 'fixed',
-      targetAngle: 47,
-      tension: 0.33,
-      bulge: 45,
+      sourceAngle: 30,
+      targetAngle: 30,
+      bendMode: 'curve',
+      tension: 0.4,
+      bulge: 20,
       startGap: 0.08,
       endGap: 0.08,
       rotation: 0,
@@ -133,7 +135,7 @@ describe('geometry and control audit (issue #19)', () => {
       middleSize: 2,
       strokeWidth: 1.3,
       linejoin: 'miter',
-      palette: 'custom',
+      palette: 'site',
       card: false,
       bgColor: '#000000',
       width: 2048,

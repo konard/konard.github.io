@@ -433,6 +433,10 @@
   text-decoration: none;
 }
 
+.symbols__card:hover {
+  text-decoration: none;
+}
+
 .symbols__card:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
