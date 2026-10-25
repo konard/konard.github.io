@@ -11,7 +11,7 @@
 //   - every sampled point of a line that comes closer than NEAR to a line of
 //     another link (the lines run together and overlap);
 //   - a little for every degree turned, so nothing turns without a reason.
-import { bezier, layoutCurves, shapeOf } from './glyph';
+import { bezier, layout, layoutCurves, linkCurve, shapeOf } from './glyph';
 
 const SAMPLES = 16; // points per Bézier segment
 const NEAR = 0.09; // lines closer than this overlap (a stroke is about 0.04)
@@ -81,9 +81,10 @@ export function solveCollisions(links, shape = {}, { range = 60, step = 15, pass
   const start = Array.from({ length: n }, (_, i) => base.turns[i] || [0, 0]);
   const delta = start.map(() => [0, 0]);
   const total = () => start.map((pair, i) => [pair[0] + delta[i][0], pair[1] + delta[i][1]]);
-  const curvesOf = () => layoutCurves(links, { ...base, turns: total() });
+  const places = layout(n, base, links);
+  const curveOf = (i) => linkCurve(links, i, places, { ...base, turns: total() });
   const middles = layoutCurves(links, base).map((c) => c.middle.at);
-  const lines = curvesOf().map(polyline);
+  const lines = links.map((_, i) => polyline(curveOf(i)));
   const costOf = (i, line) => {
     let cost = 0;
     for (let j = 0; j < n; j++) if (j !== i) cost += pairCost(line, lines[j], middles);
@@ -104,7 +105,7 @@ export function solveCollisions(links, shape = {}, { range = 60, step = 15, pass
           // Applied turns go back through the editable table's −180…180° range.
           if (Math.abs(start[i][end] + angle) > 180) continue;
           delta[i][end] = angle;
-          const line = polyline(curvesOf()[i]);
+          const line = polyline(curveOf(i));
           const cost = costOf(i, line);
           if (cost < best.cost - 1e-9) best = { angle, cost, line };
         }

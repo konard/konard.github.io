@@ -1,0 +1,86 @@
+(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - import "./fields" without a file extension (src/settings/schema.js:15:32). Add the file extension
+  - import "./schema.background" without a file extension (src/settings/schema.js:16:37). Add the file extension
+  - import "./schema.layers" without a file extension (src/settings/schema.js:17:32). Add the file extension
+  - import "./schema.skins" without a file extension (src/settings/schema.js:18:31). Add the file extension
+  - import "./schema.sound" without a file extension (src/settings/schema.js:19:31). Add the file extension
+  - import "./schema.skins" without a file extension (src/settings/schema.js:21:33). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.layers.js:8:54). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.sound.js:7:47). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.background.js:3:54). Add the file extension
+  - import "../skins.frames" without a file extension (src/settings/schema.skins.js:3:25). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.skins.js:4:47). Add the file extension
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1792870696173
+
+stderr | src/pages/network-share.test.jsx > invokes the share sheet within the click with a prepared image (Safari activation)
+An update to NetworkShare inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ❯ src/pages/network-share.test.jsx (3 tests | 3 failed) 402ms
+   × invokes the share sheet within the click with a prepared image (Safari activation) 303ms
+   × keeps link sharing available synchronously while a new image is being prepared 50ms
+   × disables image copying with a useful download alternative when the API is absent 42ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/pages/network-share.test.jsx > invokes the share sheet within the click with a prepared image (Safari activation)
+AssertionError: expected "vi.fn()" to be called 1 times, but got 0 times
+ ❯ src/pages/network-share.test.jsx:21:17
+     19|   active = true;
+     20|   fireEvent.click(screen.getByRole('button', { name: 'Share…' }));
+     21|   expect(share).toHaveBeenCalledTimes(1);
+       |                 ^
+     22|   expect(share.mock.calls[0][0].files[0].type).toBe('image/png');
+     23|   active = false;
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  src/pages/network-share.test.jsx > keeps link sharing available synchronously while a new image is being prepared
+AssertionError: expected "vi.fn()" to be called with arguments: [ { title: 'Network', …(2) } ]
+
+Number of calls: 0
+
+ ❯ src/pages/network-share.test.jsx:34:17
+     32|   const view = render(<NetworkShare {...props} />);
+     33|   fireEvent.click(screen.getByRole('button', { name: 'Share…' }));
+     34|   expect(share).toHaveBeenCalledWith({ title: props.text, text: props.…
+       |                 ^
+     35|   view.unmount();
+     36|   await act(async () => finish(new Blob(['png'], { type: 'image/png' }…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  src/pages/network-share.test.jsx > disables image copying with a useful download alternative when the API is absent
+Error: expect(element).toBeDisabled()
+
+Received element is not disabled:
+  <button
+  class="button"
+  type="button"
+/>
+ ❯ src/pages/network-share.test.jsx:43:66
+     41|   vi.stubGlobal('ClipboardItem', undefined);
+     42|   render(<NetworkShare {...props} />);
+     43|   expect(screen.getByRole('button', { name: 'Copy the image' })).toBeD…
+       |                                                                  ^
+     44|   expect(screen.getByRole('button', { name: 'Copy the image' }).title)…
+     45|   expect(screen.getByRole('button', { name: '⤓ PNG' })).toBeEnabled();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed (3)
+   Start at  19:49:38
+   Duration  2.08s (environment 56%, tests 21%, setup 12%, transform 8%, import 2%, worker 1%)
+

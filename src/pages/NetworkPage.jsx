@@ -20,6 +20,7 @@ import { LANGS, useLang } from '../i18n/prefs';
 import { LinksTable, Notations, randomLinks, stepped } from './NetworkEditor';
 import NetworkShare from './NetworkShare';
 import { Looks, StyleSections } from './NetworkStyle';
+import { useNetworkHistory } from './useNetworkHistory';
 
 /** The network of the theory's example: two points and the link between them. */
 export const DEFAULT_CODE = '11 22 12';
@@ -57,10 +58,7 @@ export default function NetworkPage() {
   const code = encode(links);
   const query = networkQuery(links, style, new URLSearchParams(window.location.search).get('lang'));
 
-  // The address always opens exactly this picture, without adding a history entry per change.
-  useEffect(() => {
-    window.history.replaceState(null, '', `${window.location.pathname}${query}${window.location.hash}`);
-  }, [query]);
+  useNetworkHistory(query);
   // The share icon of a gallery card opens /network/?code=…#share: the section is drawn after load.
   useEffect(() => {
     const target = window.location.hash && document.getElementById(window.location.hash.slice(1));
@@ -168,7 +166,7 @@ export default function NetworkPage() {
               </p>
               <Looks style={style} onStyle={setStyle} />
               <div className="network__styles">
-                <StyleSections style={style} onStyle={setStyle}>
+                <StyleSections links={links} style={style} onStyle={setStyle}>
                   <div className="network__actions">
                     <button type="button" className="button button--small" onClick={applySolved}>
                       {t({ en: 'Write the turns into the table of links', ru: 'Записать повороты в таблицу связей' })}

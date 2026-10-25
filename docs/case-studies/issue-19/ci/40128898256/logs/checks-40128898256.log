@@ -1,0 +1,272 @@
+﻿2026-10-24T20:14:41.8523263Z Current runner version: '2.338.0'
+2026-10-24T20:14:41.8550592Z ##[group]Runner Image Provisioner
+2026-10-24T20:14:41.8551640Z Hosted Compute Agent
+2026-10-24T20:14:41.8552268Z Version: 20261021.618
+2026-10-24T20:14:41.8552997Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-10-24T20:14:41.8553802Z Build Date: 2026-10-21T00:45:21Z
+2026-10-24T20:14:41.8554513Z Worker ID: {f80c4aba-316c-4b31-a5d8-440ed413a7b7}
+2026-10-24T20:14:41.8555320Z Region: westus2
+2026-10-24T20:14:41.8556244Z Cloud: Azure
+2026-10-24T20:14:41.8556828Z ##[endgroup]
+2026-10-24T20:14:41.8558470Z ##[group]Operating System
+2026-10-24T20:14:41.8559172Z Ubuntu
+2026-10-24T20:14:41.8559848Z 24.04.5
+2026-10-24T20:14:41.8560366Z LTS
+2026-10-24T20:14:41.8560969Z ##[endgroup]
+2026-10-24T20:14:41.8561607Z ##[group]Runner Image
+2026-10-24T20:14:41.8562223Z Image: ubuntu-24.04
+2026-10-24T20:14:41.8562834Z Version: 20261012.334.1
+2026-10-24T20:14:41.8564162Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-24T20:14:41.8566108Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+2026-10-24T20:14:41.8567147Z ##[endgroup]
+2026-10-24T20:14:41.8568358Z ##[group]GITHUB_TOKEN Permissions
+2026-10-24T20:14:41.8570422Z Contents: read
+2026-10-24T20:14:41.8571149Z Metadata: read
+2026-10-24T20:14:41.8571764Z ##[endgroup]
+2026-10-24T20:14:41.8573892Z Secret source: Actions
+2026-10-24T20:14:41.8574974Z Cache mode: write
+2026-10-24T20:14:41.8576028Z Prepare workflow directory
+2026-10-24T20:14:42.0307105Z Prepare all required actions
+2026-10-24T20:14:42.0381310Z Getting action download info
+2026-10-24T20:14:42.3980611Z Download action repository 'actions/checkout@v6' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+2026-10-24T20:14:42.5543251Z Download action repository 'actions/setup-node@v6' (SHA:249970729cb0ef3589644e2896645e5dc5ba9c38)
+2026-10-24T20:14:42.7783523Z Complete job name: checks
+2026-10-24T20:14:42.8719421Z ##[group]Run actions/checkout@v6
+2026-10-24T20:14:42.8720387Z with:
+2026-10-24T20:14:42.8720851Z   persist-credentials: false
+2026-10-24T20:14:42.8721419Z   repository: konard/konard.github.io
+2026-10-24T20:14:42.8725528Z   token: ***
+2026-10-24T20:14:42.8726194Z   ssh-strict: true
+2026-10-24T20:14:42.8726654Z   ssh-user: git
+2026-10-24T20:14:42.8727088Z   clean: true
+2026-10-24T20:14:42.8727540Z   sparse-checkout-cone-mode: true
+2026-10-24T20:14:42.8728075Z   fetch-depth: 1
+2026-10-24T20:14:42.8728502Z   fetch-tags: false
+2026-10-24T20:14:42.8728952Z   show-progress: true
+2026-10-24T20:14:42.8729399Z   lfs: false
+2026-10-24T20:14:42.8729810Z   submodules: false
+2026-10-24T20:14:42.8730253Z   set-safe-directory: true
+2026-10-24T20:14:42.8730754Z   allow-unsafe-pr-checkout: false
+2026-10-24T20:14:42.8731519Z env:
+2026-10-24T20:14:42.8731941Z   GIT_CONFIG_COUNT: 1
+2026-10-24T20:14:42.8732428Z   GIT_CONFIG_KEY_0: init.defaultBranch
+2026-10-24T20:14:42.8733005Z   GIT_CONFIG_VALUE_0: main
+2026-10-24T20:14:42.8733491Z ##[endgroup]
+2026-10-24T20:14:42.9792946Z Syncing repository: konard/konard.github.io
+2026-10-24T20:14:42.9795982Z ##[group]Getting Git version info
+2026-10-24T20:14:42.9797358Z Working directory is '/home/runner/work/konard.github.io/konard.github.io'
+2026-10-24T20:14:42.9799203Z [command]/usr/bin/git version
+2026-10-24T20:14:42.9913874Z git version 2.55.0
+2026-10-24T20:14:42.9939169Z ##[endgroup]
+2026-10-24T20:14:42.9957707Z Temporarily overriding HOME='/home/runner/work/_temp/17caa571-9e00-4e72-bb2b-3db323b6d7a6' before making global git config changes
+2026-10-24T20:14:42.9960189Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-24T20:14:42.9964959Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/konard.github.io/konard.github.io
+2026-10-24T20:14:43.0025369Z Deleting the contents of '/home/runner/work/konard.github.io/konard.github.io'
+2026-10-24T20:14:43.0029571Z ##[group]Determining repository object format
+2026-10-24T20:14:43.0031950Z ##[endgroup]
+2026-10-24T20:14:43.0033398Z ##[group]Initializing the repository
+2026-10-24T20:14:43.0037960Z [command]/usr/bin/git init /home/runner/work/konard.github.io/konard.github.io
+2026-10-24T20:14:43.0177315Z Initialized empty Git repository in /home/runner/work/konard.github.io/konard.github.io/.git/
+2026-10-24T20:14:43.0190936Z [command]/usr/bin/git remote add origin https://github.com/konard/konard.github.io
+2026-10-24T20:14:43.0245284Z ##[endgroup]
+2026-10-24T20:14:43.0246856Z ##[group]Disabling automatic garbage collection
+2026-10-24T20:14:43.0249549Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-24T20:14:43.0295502Z ##[endgroup]
+2026-10-24T20:14:43.0297737Z ##[group]Setting up auth
+2026-10-24T20:14:43.0299187Z Removing SSH command configuration
+2026-10-24T20:14:43.0307419Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-24T20:14:43.0362692Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-24T20:14:43.0779626Z Removing HTTP extra header
+2026-10-24T20:14:43.0786657Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-24T20:14:43.0825381Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-24T20:14:43.1049307Z Removing includeIf entries pointing to credentials config files
+2026-10-24T20:14:43.1056993Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-24T20:14:43.1095501Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-24T20:14:43.1330274Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-6266f67c-3acc-4d3a-a83d-2d9565463ad5.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-24T20:14:43.1373599Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path /home/runner/work/_temp/git-credentials-6266f67c-3acc-4d3a-a83d-2d9565463ad5.config
+2026-10-24T20:14:43.1412179Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-6266f67c-3acc-4d3a-a83d-2d9565463ad5.config
+2026-10-24T20:14:43.1453780Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-6266f67c-3acc-4d3a-a83d-2d9565463ad5.config
+2026-10-24T20:14:43.1490240Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-6266f67c-3acc-4d3a-a83d-2d9565463ad5.config
+2026-10-24T20:14:43.1522079Z ##[endgroup]
+2026-10-24T20:14:43.1523454Z ##[group]Fetching the repository
+2026-10-24T20:14:43.1533140Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +543bd6de9797433a205e94b15c9287bd948a8315:refs/remotes/pull/20/merge
+2026-10-24T20:14:47.1790480Z From https://github.com/konard/konard.github.io
+2026-10-24T20:14:47.1792305Z  * [new ref]         543bd6de9797433a205e94b15c9287bd948a8315 -> pull/20/merge
+2026-10-24T20:14:47.1797681Z ##[endgroup]
+2026-10-24T20:14:47.1799318Z ##[group]Determining the checkout info
+2026-10-24T20:14:47.1801160Z ##[endgroup]
+2026-10-24T20:14:47.1806887Z [command]/usr/bin/git sparse-checkout disable
+2026-10-24T20:14:47.1866375Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-24T20:14:47.1899828Z ##[group]Checking out the ref
+2026-10-24T20:14:47.1904293Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/20/merge
+2026-10-24T20:14:47.4777658Z Note: switching to 'refs/remotes/pull/20/merge'.
+2026-10-24T20:14:47.4778763Z 
+2026-10-24T20:14:47.4779388Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-10-24T20:14:47.4781070Z changes and commit them, and you can discard any commits you make in this
+2026-10-24T20:14:47.4782433Z state without impacting any branches by switching back to a branch.
+2026-10-24T20:14:47.4783210Z 
+2026-10-24T20:14:47.4783737Z If you want to create a new branch to retain commits you create, you may
+2026-10-24T20:14:47.4784972Z do so (now or later) by using -c with the switch command. Example:
+2026-10-24T20:14:47.4785983Z 
+2026-10-24T20:14:47.4786341Z   git switch -c <new-branch-name>
+2026-10-24T20:14:47.4786878Z 
+2026-10-24T20:14:47.4787199Z Or undo this operation with:
+2026-10-24T20:14:47.4787631Z 
+2026-10-24T20:14:47.4787923Z   git switch -
+2026-10-24T20:14:47.4788301Z 
+2026-10-24T20:14:47.4788905Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-10-24T20:14:47.4789503Z 
+2026-10-24T20:14:47.4790220Z HEAD is now at 543bd6d Merge ce4a35152cdbc0b1a9c86ced55261c8040447bf5 into aeb5b451e44765dc507521bc107b88cb984d422a
+2026-10-24T20:14:47.4807448Z ##[endgroup]
+2026-10-24T20:14:47.4857005Z [command]/usr/bin/git log -1 --format=%H
+2026-10-24T20:14:47.4886029Z 543bd6de9797433a205e94b15c9287bd948a8315
+2026-10-24T20:14:47.4895187Z ##[group]Removing auth
+2026-10-24T20:14:47.4896186Z Removing SSH command configuration
+2026-10-24T20:14:47.4899166Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-24T20:14:47.4934465Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-24T20:14:47.5160368Z Removing HTTP extra header
+2026-10-24T20:14:47.5165537Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-24T20:14:47.5201100Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-24T20:14:47.5425151Z Removing includeIf entries pointing to credentials config files
+2026-10-24T20:14:47.5430356Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-24T20:14:47.5460735Z includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path
+2026-10-24T20:14:47.5462228Z includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path
+2026-10-24T20:14:47.5466856Z includeif.gitdir:/github/workspace/.git.path
+2026-10-24T20:14:47.5467436Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-24T20:14:47.5471906Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path
+2026-10-24T20:14:47.5498464Z /home/runner/work/_temp/git-credentials-6266f67c-3acc-4d3a-a83d-2d9565463ad5.config
+2026-10-24T20:14:47.5517204Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path /home/runner/work/_temp/git-credentials-6266f67c-3acc-4d3a-a83d-2d9565463ad5.config
+2026-10-24T20:14:47.5554736Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path
+2026-10-24T20:14:47.5580500Z /home/runner/work/_temp/git-credentials-6266f67c-3acc-4d3a-a83d-2d9565463ad5.config
+2026-10-24T20:14:47.5624690Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-6266f67c-3acc-4d3a-a83d-2d9565463ad5.config
+2026-10-24T20:14:47.5663883Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-10-24T20:14:47.5691631Z /github/runner_temp/git-credentials-6266f67c-3acc-4d3a-a83d-2d9565463ad5.config
+2026-10-24T20:14:47.5708414Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-6266f67c-3acc-4d3a-a83d-2d9565463ad5.config
+2026-10-24T20:14:47.5743695Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-24T20:14:47.5769092Z /github/runner_temp/git-credentials-6266f67c-3acc-4d3a-a83d-2d9565463ad5.config
+2026-10-24T20:14:47.5778559Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-6266f67c-3acc-4d3a-a83d-2d9565463ad5.config
+2026-10-24T20:14:47.5821883Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-24T20:14:47.6046714Z Removing credentials config '/home/runner/work/_temp/git-credentials-6266f67c-3acc-4d3a-a83d-2d9565463ad5.config'
+2026-10-24T20:14:47.6055507Z ##[endgroup]
+2026-10-24T20:14:47.6446019Z ##[group]Run actions/setup-node@v6
+2026-10-24T20:14:47.6446412Z with:
+2026-10-24T20:14:47.6446661Z   node-version: 24.x
+2026-10-24T20:14:47.6446942Z   cache: npm
+2026-10-24T20:14:47.6447191Z   check-latest: false
+2026-10-24T20:14:47.6449992Z   token: ***
+2026-10-24T20:14:47.6450264Z   package-manager-cache: true
+2026-10-24T20:14:47.6450561Z env:
+2026-10-24T20:14:47.6450794Z   GIT_CONFIG_COUNT: 1
+2026-10-24T20:14:47.6451079Z   GIT_CONFIG_KEY_0: init.defaultBranch
+2026-10-24T20:14:47.6451400Z   GIT_CONFIG_VALUE_0: main
+2026-10-24T20:14:47.6451677Z ##[endgroup]
+2026-10-24T20:14:47.8018921Z Found in cache @ /opt/hostedtoolcache/node/24.21.0/x64
+2026-10-24T20:14:47.8022660Z ##[group]Environment details
+2026-10-24T20:14:50.0828237Z node: v24.21.0
+2026-10-24T20:14:50.0828647Z npm: 11.19.0
+2026-10-24T20:14:50.0828887Z yarn: 1.22.22
+2026-10-24T20:14:50.0830236Z ##[endgroup]
+2026-10-24T20:14:50.0852671Z [command]/opt/hostedtoolcache/node/24.21.0/x64/bin/npm config get cache
+2026-10-24T20:14:50.3559392Z /home/runner/.npm
+2026-10-24T20:14:50.6042946Z npm cache is not found
+2026-10-24T20:14:50.6205103Z ##[group]Run npm ci
+2026-10-24T20:14:50.6205502Z [36;1mnpm ci[0m
+2026-10-24T20:14:50.6548292Z shell: /usr/bin/bash -e {0}
+2026-10-24T20:14:50.6548683Z env:
+2026-10-24T20:14:50.6548967Z   GIT_CONFIG_COUNT: 1
+2026-10-24T20:14:50.6549311Z   GIT_CONFIG_KEY_0: init.defaultBranch
+2026-10-24T20:14:50.6549712Z   GIT_CONFIG_VALUE_0: main
+2026-10-24T20:14:50.6550062Z ##[endgroup]
+2026-10-24T20:14:56.8285959Z 
+2026-10-24T20:14:56.8292698Z > konard.github.io@0.1.0 prepare
+2026-10-24T20:14:56.8293166Z > husky
+2026-10-24T20:14:56.9138106Z 
+2026-10-24T20:14:56.9138226Z 
+2026-10-24T20:14:56.9139265Z added 306 packages, and audited 307 packages in 6s
+2026-10-24T20:14:56.9139899Z 
+2026-10-24T20:14:56.9140314Z 79 packages are looking for funding
+2026-10-24T20:14:56.9141273Z   run `npm fund` for details
+2026-10-24T20:14:56.9152809Z 
+2026-10-24T20:14:56.9153116Z found 0 vulnerabilities
+2026-10-24T20:14:56.9771896Z ##[group]Run npm run lint
+2026-10-24T20:14:56.9772236Z [36;1mnpm run lint[0m
+2026-10-24T20:14:56.9840332Z shell: /usr/bin/bash -e {0}
+2026-10-24T20:14:56.9840687Z env:
+2026-10-24T20:14:56.9840922Z   GIT_CONFIG_COUNT: 1
+2026-10-24T20:14:56.9841210Z   GIT_CONFIG_KEY_0: init.defaultBranch
+2026-10-24T20:14:56.9841544Z   GIT_CONFIG_VALUE_0: main
+2026-10-24T20:14:56.9841819Z ##[endgroup]
+2026-10-24T20:14:57.0965284Z 
+2026-10-24T20:14:57.0966201Z > konard.github.io@0.1.0 lint
+2026-10-24T20:14:57.0966802Z > eslint . --max-warnings=0
+2026-10-24T20:14:57.0967044Z 
+2026-10-24T20:15:02.4928427Z ##[group]Run npm run format:check
+2026-10-24T20:15:02.4928771Z [36;1mnpm run format:check[0m
+2026-10-24T20:15:02.4993034Z shell: /usr/bin/bash -e {0}
+2026-10-24T20:15:02.4993329Z env:
+2026-10-24T20:15:02.4993555Z   GIT_CONFIG_COUNT: 1
+2026-10-24T20:15:02.4993844Z   GIT_CONFIG_KEY_0: init.defaultBranch
+2026-10-24T20:15:02.4994193Z   GIT_CONFIG_VALUE_0: main
+2026-10-24T20:15:02.4994461Z ##[endgroup]
+2026-10-24T20:15:02.6041237Z 
+2026-10-24T20:15:02.6042012Z > konard.github.io@0.1.0 format:check
+2026-10-24T20:15:02.6042725Z > prettier --check .
+2026-10-24T20:15:02.6043003Z 
+2026-10-24T20:15:02.7034019Z Checking formatting...
+2026-10-24T20:15:05.9394165Z All matched files use Prettier code style!
+2026-10-24T20:15:05.9806891Z ##[group]Run npm run check:file-size
+2026-10-24T20:15:05.9807239Z [36;1mnpm run check:file-size[0m
+2026-10-24T20:15:05.9871801Z shell: /usr/bin/bash -e {0}
+2026-10-24T20:15:05.9872077Z env:
+2026-10-24T20:15:05.9872278Z   GIT_CONFIG_COUNT: 1
+2026-10-24T20:15:05.9872524Z   GIT_CONFIG_KEY_0: init.defaultBranch
+2026-10-24T20:15:05.9872814Z   GIT_CONFIG_VALUE_0: main
+2026-10-24T20:15:05.9873056Z ##[endgroup]
+2026-10-24T20:15:06.0981561Z 
+2026-10-24T20:15:06.0982203Z > konard.github.io@0.1.0 check:file-size
+2026-10-24T20:15:06.0982924Z > bash scripts/check-file-line-limits.sh
+2026-10-24T20:15:06.0983220Z 
+2026-10-24T20:15:06.1403858Z ##[warning]experiments/collect-registries.cjs has 1354 lines (warning threshold 1350, limit 1500)
+2026-10-24T20:15:06.5062620Z Checked 212 files against the 1500-line limit.
+2026-10-24T20:15:06.5184008Z ##[group]Run npm run check:secrets
+2026-10-24T20:15:06.5184349Z [36;1mnpm run check:secrets[0m
+2026-10-24T20:15:06.5246999Z shell: /usr/bin/bash -e {0}
+2026-10-24T20:15:06.5247281Z env:
+2026-10-24T20:15:06.5247489Z   GIT_CONFIG_COUNT: 1
+2026-10-24T20:15:06.5247765Z   GIT_CONFIG_KEY_0: init.defaultBranch
+2026-10-24T20:15:06.5248073Z   GIT_CONFIG_VALUE_0: main
+2026-10-24T20:15:06.5248322Z ##[endgroup]
+2026-10-24T20:15:06.6323700Z 
+2026-10-24T20:15:06.6324371Z > konard.github.io@0.1.0 check:secrets
+2026-10-24T20:15:06.6325048Z > secretlint "**/*" --secretlintignore .prettierignore
+2026-10-24T20:15:06.6325416Z 
+2026-10-24T20:15:07.0560040Z ##[group]Run npm audit --audit-level=moderate
+2026-10-24T20:15:07.0560429Z [36;1mnpm audit --audit-level=moderate[0m
+2026-10-24T20:15:07.0621575Z shell: /usr/bin/bash -e {0}
+2026-10-24T20:15:07.0621847Z env:
+2026-10-24T20:15:07.0622055Z   GIT_CONFIG_COUNT: 1
+2026-10-24T20:15:07.0622323Z   GIT_CONFIG_KEY_0: init.defaultBranch
+2026-10-24T20:15:07.0622628Z   GIT_CONFIG_VALUE_0: main
+2026-10-24T20:15:07.0622876Z ##[endgroup]
+2026-10-24T20:15:07.4912493Z found 0 vulnerabilities
+2026-10-24T20:15:07.5106190Z Post job cleanup.
+2026-10-24T20:15:07.6510064Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/konard.github.io/konard.github.io --files-from manifest.txt --use-compress-program zstdmt
+2026-10-24T20:15:09.0369167Z Sent 19726336 of 37320984 (52.9%), 18.8 MBs/sec
+2026-10-24T20:15:09.6000468Z Sent 37320984 of 37320984 (100.0%), 22.8 MBs/sec
+2026-10-24T20:15:09.9286215Z Cache saved with the key: node-cache-Linux-x64-npm-c73e2351f8447d7f6c4f75a2e1517f3e1003e148b43b69283676b4023e5920c9
+2026-10-24T20:15:09.9450294Z Post job cleanup.
+2026-10-24T20:15:10.0355161Z [command]/usr/bin/git version
+2026-10-24T20:15:10.0399727Z git version 2.55.0
+2026-10-24T20:15:10.0443632Z Temporarily overriding HOME='/home/runner/work/_temp/fb216450-d1bb-4524-a12c-602cadfe31bd' before making global git config changes
+2026-10-24T20:15:10.0445131Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-24T20:15:10.0450543Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/konard.github.io/konard.github.io
+2026-10-24T20:15:10.0485720Z Removing SSH command configuration
+2026-10-24T20:15:10.0493505Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-24T20:15:10.0539610Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-24T20:15:10.0790507Z Removing HTTP extra header
+2026-10-24T20:15:10.0799252Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-24T20:15:10.0840501Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-24T20:15:10.1101741Z Removing includeIf entries pointing to credentials config files
+2026-10-24T20:15:10.1115151Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-24T20:15:10.1157741Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-24T20:15:10.1557031Z Cleaning up orphan processes

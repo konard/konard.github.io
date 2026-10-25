@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   FORMATS,
   canShare,
+  canCopyImage,
+  canCopyText,
   copyImage,
   copyText,
   download,
@@ -20,6 +22,8 @@ import { useLang } from '../i18n/prefs';
 export default function NetworkShare({ code, links, svg, style, url, text }) {
   const { t } = useLang();
   const [status, setStatus] = useState('');
+  const [copying, setCopying] = useState(false);
+  const prepared = useRef(null);
   const done = (message) => setStatus(t(message));
   const failed = (error) => setStatus(`${t({ en: 'Did not work', ru: 'Не получилось' })}: ${error.message}`);
   const image = (format) =>
@@ -33,6 +37,29 @@ export default function NetworkShare({ code, links, svg, style, url, text }) {
     });
   const png = FORMATS[0];
 
+  // Web Share, like Clipboard, needs the call itself inside the user gesture.
+  // Prepare files beforehand; while conversion is pending the sheet shares the
+  // current link. Never share an image prepared for an older drawing.
+  useEffect(() => {
+    let cancelled = false;
+    let timer;
+    prepared.current = null;
+    if (canShare([new File([], 'network.png', { type: 'image/png' })])) {
+      // Avoid rasterizing a large canvas for every input event in a drag.
+      timer = setTimeout(() => {
+        rasterize(svg, { width: style.width, height: style.height, type: 'image/png' })
+          .then((blob) => {
+            if (!cancelled) prepared.current = { svg, blob };
+          })
+          .catch(() => {}); // Link sharing remains available if image conversion fails.
+      }, 200);
+    }
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
+  }, [svg, style.width, style.height]);
+
   const save = (format) =>
     image(format)
       .then((blob) => {
@@ -41,14 +68,14 @@ export default function NetworkShare({ code, links, svg, style, url, text }) {
       })
       .catch(failed);
 
-  const share = () =>
-    image(png)
-      .then((blob) => {
-        const files = [new File([blob], fileName(code, 'png'), { type: 'image/png' })];
-        return navigator.share(canShare(files) ? { files, title: text, text, url } : { title: text, text, url });
-      })
+  const share = () => {
+    const blob = prepared.current?.svg === svg ? prepared.current.blob : null;
+    const files = blob ? [new File([blob], fileName(code, 'png'), { type: 'image/png' })] : null;
+    return navigator
+      .share(files && canShare(files) ? { files, title: text, text, url } : { title: text, text, url })
       .then(() => done({ en: 'Shared.', ru: 'Отправлено.' }))
       .catch((error) => error.name !== 'AbortError' && failed(error));
+  };
 
   return (
     <div className="network-share">
@@ -93,6 +120,12 @@ export default function NetworkShare({ code, links, svg, style, url, text }) {
         <button
           type="button"
           className="button"
+          disabled={!canCopyText()}
+          title={
+            !canCopyText()
+              ? t({ en: 'Select and copy the link below.', ru: 'Выделите и скопируйте ссылку ниже.' })
+              : undefined
+          }
           onClick={() =>
             copyText(url)
               .then(() => done({ en: 'Link copied.', ru: 'Ссылка скопирована.' }))
@@ -104,18 +137,29 @@ export default function NetworkShare({ code, links, svg, style, url, text }) {
         <button
           type="button"
           className="button"
-          onClick={() =>
-            image(png)
-              .then(copyImage)
+          disabled={!canCopyImage() || copying}
+          title={
+            !canCopyImage()
+              ? t({
+                  en: 'Use PNG download: image copying is unavailable in this browser.',
+                  ru: 'Скачайте PNG: этот браузер не поддерживает копирование изображений.',
+                })
+              : undefined
+          }
+          onClick={() => {
+            setCopying(true);
+            return copyImage(image(png))
               .then(() => done({ en: 'Image copied.', ru: 'Изображение скопировано.' }))
               .catch(failed)
-          }
+              .finally(() => setCopying(false));
+          }}
         >
           {t({ en: 'Copy the image', ru: 'Скопировать изображение' })}
         </button>
         <button
           type="button"
           className="button"
+          disabled={!canCopyText()}
           onClick={() =>
             copyText(svg)
               .then(() => done({ en: 'SVG code copied.', ru: 'Код SVG скопирован.' }))

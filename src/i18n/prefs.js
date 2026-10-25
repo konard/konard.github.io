@@ -7,6 +7,7 @@
 // `prefers-color-scheme`. index.html applies the theme before the first paint
 // with the same rules (see THEME_SCRIPT in vite.config.js).
 import { useCallback, useSyncExternalStore } from 'react';
+import { replaceAddress } from '../history';
 
 export const LANGS = ['en', 'ru'];
 export const THEMES = ['auto', 'light', 'dark'];
@@ -116,7 +117,7 @@ export function setLang(lang, { save = true } = {}) {
   if (browser && save) {
     const params = new URLSearchParams(window.location.search);
     params.set('lang', lang);
-    window.history.replaceState(null, '', `${window.location.pathname}?${params}${window.location.hash}`);
+    replaceAddress(`${window.location.pathname}?${params}${window.location.hash}`);
   }
   langStore.set(lang);
 }

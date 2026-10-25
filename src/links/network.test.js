@@ -73,7 +73,8 @@ describe('notations of the editor (issue #17)', () => {
     expect(parseLinks('(1: 0 1) (1: 0 2)').error.en).toMatch(/each once/);
     expect(parseMath('hello').error).toBeTruthy();
     expect(check([]).error.en).toMatch(/at least one/);
-    expect(check(Array.from({ length: 10 }, () => [0, 0])).error.en).toBe('At most 9 links can be drawn.');
+    expect(check([[0]]).error).toBeTruthy();
+    expect(check(Array.from({ length: 10 }, () => [0, 0])).links).toHaveLength(10);
     expect(parseCode('0130')).toBeNull();
     expect(parseCode('<script>')).toBeNull();
   });
@@ -97,7 +98,7 @@ describe('notations of the editor (issue #17)', () => {
 
   it('adds, removes and rewires links keeping the network consistent', () => {
     expect(addLink(links)).toEqual([...links, [0, 0]]);
-    expect(addLink(Array.from({ length: 9 }, () => [0, 0]))).toHaveLength(9);
+    expect(addLink(Array.from({ length: 9 }, () => [0, 0]))).toHaveLength(10);
     // Removing link 1: references to it become 0, link 2 becomes link 1.
     expect(removeLink(links, 1)).toEqual([[1, 0]]);
     expect(removeLink(decode('11 22 12'), 2)).toEqual([
@@ -137,7 +138,7 @@ describe('style of the picture (issue #17)', () => {
     expect(styleToParams(STYLE_DEFAULTS).toString()).toBe('');
     const style = normalizeStyle({ card: false, bgColor: '#000000', end: 'dot', turns: '15 -30' });
     const params = styleToParams(style);
-    expect(Object.fromEntries(params)).toEqual({ card: 'false', bgColor: '#000000', end: 'dot', turns: '15 -30' });
+    expect(Object.fromEntries(params)).toEqual({ end: 'dot', turns: '15 -30' });
     expect(styleFromParams(new URLSearchParams(params.toString()))).toEqual(style);
     expect(styleFromParams(new URLSearchParams('strokeWidth=abc&unknown=1'))).toEqual(STYLE_DEFAULTS);
   });
@@ -187,11 +188,11 @@ describe('style of the picture (issue #17)', () => {
 
 describe('picture of a network (issue #17)', () => {
   it('is a standalone SVG of the chosen size with the links of the gallery', () => {
-    const svg = networkSvg(links, STYLE_DEFAULTS);
+    const svg = networkSvg(links, applyLook(STYLE_DEFAULTS, 'card'));
     expect(svg.startsWith('<svg xmlns="http://www.w3.org/2000/svg"')).toBe(true);
-    expect(svg).toContain('width="1024" height="1024"');
+    expect(svg).toContain('width="2048" height="2048"');
     expect(svg).toContain('aria-label="Links network 01₃ 20₃"');
-    // The card of the gallery is the default; the lines are the same curves as the symbols.
+    // The card preset preserves the gallery; the lines are the same curves as the symbols.
     expect(svg).toContain(STYLE_DEFAULTS.cardColor);
     const symbol = glyphSvg(links);
     const line = symbol.match(/ d="(M[^M"]+)/)[1];
@@ -205,7 +206,7 @@ describe('picture of a network (issue #17)', () => {
     expect(svg).not.toContain(STYLE_DEFAULTS.cardColor);
     expect(networkSvg(links, { background: 'linear' })).toContain('<linearGradient');
     expect(networkSvg(links, { background: 'radial' })).toContain('<radialGradient');
-    expect(networkSvg(links, { borderStyle: 'dashed' })).toContain('stroke-dasharray');
+    expect(networkSvg(links, { card: true, borderStyle: 'dashed' })).toContain('stroke-dasharray');
     expect(networkSvg(links, { glow: 2 })).toContain('feGaussianBlur');
   });
 

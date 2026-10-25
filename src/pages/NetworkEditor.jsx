@@ -14,7 +14,6 @@ import {
   signatureOf,
   theoryNotation,
 } from '../links/edit';
-import { MAX_LINKS } from '../links/glyph';
 import { useLang } from '../i18n/prefs';
 import { plural } from '../i18n/plural';
 import { formatNumber } from '../components/format';
@@ -82,8 +81,8 @@ export function Notations({ links, notation, onLinks }) {
     <div className="notations">
       <p className="muted">
         {t({
-          en: `${n} ${plural(n, lang, LINKS)} after the zero link 0, in a doublet network ${signatureOf(notation)}: one of ${formatNumber(Number(count), lang)} ${plural(Number(count), lang, OF_NETWORKS)} of ${n} ${plural(n, lang, OF_LINKS)}, written with ${2 * n} digits in base ${n + 1}. Every notation below can be edited; the others follow.`,
-          ru: `${n} ${plural(n, lang, LINKS)} после нулевой связи 0 в дуплетной сети ${signatureOf(notation)}: одна из ${formatNumber(Number(count), lang)} ${plural(Number(count), lang, OF_NETWORKS)} из ${n} ${plural(n, lang, OF_LINKS)}, записанная ${2 * n} цифрами в системе с основанием ${n + 1}. Любую запись ниже можно изменить, остальные изменятся вслед за ней.`,
+          en: `${n} ${plural(n, lang, LINKS)} after the zero link 0, in a doublet network ${signatureOf(notation)}: one of ${formatNumber(count, lang)} ${plural(Number(count), lang, OF_NETWORKS)} of ${n} ${plural(n, lang, OF_LINKS)}, written with ${2 * n} digits in base ${n + 1}. Every notation below can be edited; the others follow.`,
+          ru: `${n} ${plural(n, lang, LINKS)} после нулевой связи 0 в дуплетной сети ${signatureOf(notation)}: одна из ${formatNumber(count, lang)} ${plural(Number(count), lang, OF_NETWORKS)} из ${n} ${plural(n, lang, OF_LINKS)}, записанная ${2 * n} цифрами в системе с основанием ${n + 1}. Любую запись ниже можно изменить, остальные изменятся вслед за ней.`,
         })}
       </p>
       <NotationField
@@ -102,8 +101,8 @@ export function Notations({ links, notation, onLinks }) {
         id="notation-pairs"
         label={{ en: 'Pairs with the base', ru: 'Пары с основанием' }}
         hint={{
-          en: 'Source and target of each link as two digits, as under the symbols of the gallery.',
-          ru: 'Начало и конец каждой связи двумя цифрами, как под символами галереи.',
+          en: 'Source and target of each link as two digits (use (source,target) with a base for 10+ links), as under the symbols of the gallery.',
+          ru: 'Начало и конец каждой связи двумя цифрами (для 10+ связей — (начало,конец) с основанием), как под символами галереи.',
         }}
         value={mathNotation(encode(links))}
         format={(l) => mathNotation(encode(l))}
@@ -114,8 +113,8 @@ export function Notations({ links, notation, onLinks }) {
         id="notation-number"
         label={{ en: 'N-ary number', ru: 'N-ричное число' }}
         hint={{
-          en: `The whole network as one number of ${2 * n} digits in base ${n + 1}; add or remove two digits to add or remove a link.`,
-          ru: `Вся сеть как одно число из ${2 * n} цифр в системе с основанием ${n + 1}; две цифры больше или меньше — связью больше или меньше.`,
+          en: `The whole network as one number of ${2 * n} digits in base ${n + 1}; for 10+ links use space-separated digits in [brackets].`,
+          ru: `Вся сеть как одно число из ${2 * n} цифр в системе с основанием ${n + 1}; для 10+ связей разделяйте цифры пробелами в [скобках].`,
         }}
         value={numberNotation(links)}
         format={numberNotation}
@@ -154,6 +153,23 @@ export function Notations({ links, notation, onLinks }) {
 /** A choice of the link that an end refers to: 0 (nothing), the link itself or another link. */
 function ReferenceSelect({ id, value, n, self, onChange, label }) {
   const { t } = useLang();
+  // Avoid two n-option selects per row (quadratic DOM size) on large networks.
+  if (n > 50)
+    return (
+      <input
+        id={id}
+        type="number"
+        min={0}
+        max={n}
+        step={1}
+        value={value}
+        aria-label={label}
+        onChange={(event) => {
+          const ref = Number(event.target.value);
+          if (event.target.value !== '' && Number.isInteger(ref) && ref >= 0 && ref <= n) onChange(ref);
+        }}
+      />
+    );
   return (
     <select id={id} value={value} onChange={(event) => onChange(Number(event.target.value))} aria-label={label}>
       {Array.from({ length: n + 1 }, (_, ref) => (
@@ -270,7 +286,7 @@ export function LinksTable({ links, colors, turns, onLinks, onRemove, onColor, o
         </table>
       </div>
       <div className="network__actions">
-        <button type="button" className="button" disabled={n >= MAX_LINKS} onClick={() => onLinks(addLink(links))}>
+        <button type="button" className="button" onClick={() => onLinks(addLink(links))}>
           + {t({ en: 'Add a link', ru: 'Добавить связь' })}
         </button>
         <button type="button" className="button" onClick={() => onStep(-1)}>

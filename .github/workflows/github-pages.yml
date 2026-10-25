@@ -81,7 +81,7 @@ jobs:
         run: npm audit --audit-level=moderate
 
   test:
-    needs: [lint-workflows, checks]
+    needs: [lint-workflows, checks, network-browsers]
     runs-on: ubuntu-24.04
     timeout-minutes: 20
 
@@ -113,9 +113,6 @@ jobs:
       - name: Install Chromium for the CV PDFs
         run: npx playwright install --with-deps chromium
 
-      - name: Verify the network editor and image downloads in Chromium
-        run: npm run test:network:browser
-
       - name: Print the CV PDFs
         run: npm run build:cv
 
@@ -127,6 +124,55 @@ jobs:
         with:
           path: build/
           include-hidden-files: true
+
+  network-browsers:
+    needs: [lint-workflows, checks]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        engine: [chromium, firefox, webkit]
+    env:
+      ENGINE: ${{ matrix.engine }}
+      CAPTURE_DIR: browser-results/screenshots
+      RESULT_DIR: browser-results/data
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24.x'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build the editor
+        run: npm run build
+
+      - name: Install the browser
+        # package.json pins 1.63.0: 1.64.x's Linux WebKit stalls on glass panels.
+        # https://github.com/microsoft/playwright/issues/43426
+        run: npx playwright install --with-deps "$ENGINE"
+
+      - name: Verify existing editor features and image downloads
+        run: npm run test:network:browser
+
+      - name: Verify history, self loops, layouts, clipboard and mobile editing
+        run: npm run test:network:issue19
+
+      - name: Preserve browser evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: network-${{ matrix.engine }}
+          path: browser-results/
+          if-no-files-found: warn
 
   deploy:
     needs: test

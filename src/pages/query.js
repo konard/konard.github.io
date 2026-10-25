@@ -1,4 +1,5 @@
 import { useCallback, useState } from 'react';
+import { replaceAddress } from '../history';
 
 const read = (name) => (typeof window === 'undefined' ? null : new URLSearchParams(window.location.search).get(name));
 
@@ -15,11 +16,7 @@ export function useQueryParam(name, fallback = '') {
       if (next === fallback || next === '' || next == null) params.delete(name);
       else params.set(name, next);
       const search = params.toString();
-      window.history.replaceState(
-        null,
-        '',
-        `${window.location.pathname}${search ? `?${search}` : ''}${window.location.hash}`,
-      );
+      replaceAddress(`${window.location.pathname}${search ? `?${search}` : ''}${window.location.hash}`);
     },
     [name, fallback],
   );

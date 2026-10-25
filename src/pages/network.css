@@ -12,6 +12,7 @@
 .network__code {
   color: var(--accent);
   font-size: 0.8em;
+  overflow-wrap: anywhere;
 }
 
 .network__layout {
@@ -102,7 +103,9 @@
 
 .notations {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 0.8rem;
+  overflow-wrap: anywhere;
 }
 
 .notations > p {

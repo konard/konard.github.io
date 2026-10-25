@@ -29,19 +29,29 @@ export const baseOf = (n) => n + 1;
 export const networkCount = (n, { real = false } = {}) => (real ? n : baseOf(n)) ** (2 * n);
 
 /** Whether every link of the network refers only to real links, never to 0. */
-export const isReal = (code) => !/0/.test(code);
+export const isReal = (code) =>
+  code.includes(',') ? decode(code).every((pair) => pair.every((ref) => ref !== 0)) : !/0/.test(code);
 
 /** "00 10" → [[0, 0], [1, 0]]: link i + 1 is [source, target]. */
 export function decode(code) {
+  if (code.includes(',')) return code.split(';').map((pair) => pair.split(',').map(Number));
   return code.split(' ').map((pair) => [Number(pair[0]), Number(pair[1])]);
 }
 
 /** [[0, 0], [1, 0]] → "00 10". */
-export const encode = (links) => links.map(([s, t]) => `${s}${t}`).join(' ');
+export const encode = (links) =>
+  links.length > 9 ? links.map((pair) => pair.join(',')).join(';') : links.map(([s, t]) => `${s}${t}`).join(' ');
 
 /** `index` as `length` digits in `base` (also base 1, where the only number is 0), most significant first. */
 function digitsOf(index, base, length) {
   const digits = new Array(length).fill(0);
+  if (typeof index === 'bigint') {
+    for (let k = length - 1; k >= 0 && index > 0n; k--) {
+      digits[k] = Number(index % BigInt(base));
+      index /= BigInt(base);
+    }
+    return digits;
+  }
   for (let k = length - 1; k >= 0 && index > 0; k--) {
     digits[k] = index % base;
     index = Math.floor(index / base);
@@ -49,7 +59,7 @@ function digitsOf(index, base, length) {
   return digits;
 }
 
-const pairs = (digits) => digits.join('').match(/../g).join(' ');
+const pairs = (digits) => encode(Array.from({ length: digits.length / 2 }, (_, i) => digits.slice(2 * i, 2 * i + 2)));
 
 /**
  * The code of the `index`-th network of `n` links, counting in base n + 1;
@@ -60,8 +70,13 @@ export function codeAt(n, index, { real = false } = {}) {
   return pairs(digitsOf(index, n, 2 * n).map((d) => d + 1));
 }
 
-/** The position of a code among the networks of its size (inverse of codeAt). */
+/** Position of a code (inverse of codeAt); BigInt beyond nine links for exact large indices. */
 export function indexOf(code, { real = false } = {}) {
+  if (code.includes(',')) {
+    const links = decode(code);
+    const base = BigInt(real ? links.length : baseOf(links.length));
+    return links.flat().reduce((index, d) => index * base + BigInt(d - (real ? 1 : 0)), 0n);
+  }
   const n = code.split(' ').length;
   const base = real ? n : baseOf(n);
   return [...code.replace(/ /g, '')].reduce((index, d) => index * base + Number(d) - (real ? 1 : 0), 0);
@@ -69,11 +84,22 @@ export function indexOf(code, { real = false } = {}) {
 
 /** A random network of `n` links, or of 1–4 links when `n` is not given. */
 export function randomCode(random = Math.random, n = 1 + Math.floor(random() * 4), { real = false } = {}) {
+  // Sampling the astronomical total through Number would overflow or lose digits.
+  if (n > 9)
+    return pairs(Array.from({ length: 2 * n }, () => Math.floor(random() * (real ? n : n + 1)) + (real ? 1 : 0)));
   return codeAt(n, Math.floor(random() * networkCount(n, { real })), { real });
 }
 
 /** Math notation: the code with base subscripts, e.g. "10₂" or "01₃ 20₃". */
 export function mathNotation(code) {
+  if (code.includes(',')) {
+    const links = decode(code);
+    const base = String(links.length + 1)
+      .split('')
+      .map((d) => SUBSCRIPTS[d])
+      .join('');
+    return links.map(([s, t]) => `(${s},${t})${base}`).join(' ');
+  }
   const base = String(baseOf(code.split(' ').length))
     .split('')
     .map((d) => SUBSCRIPTS[d])

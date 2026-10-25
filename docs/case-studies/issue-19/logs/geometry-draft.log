@@ -1,0 +1,159 @@
+(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - import "./fields" without a file extension (src/settings/schema.js:15:32). Add the file extension
+  - import "./schema.background" without a file extension (src/settings/schema.js:16:37). Add the file extension
+  - import "./schema.layers" without a file extension (src/settings/schema.js:17:32). Add the file extension
+  - import "./schema.skins" without a file extension (src/settings/schema.js:18:31). Add the file extension
+  - import "./schema.sound" without a file extension (src/settings/schema.js:19:31). Add the file extension
+  - import "./schema.skins" without a file extension (src/settings/schema.js:21:33). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.sound.js:7:47). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.background.js:3:54). Add the file extension
+  - import "../skins.frames" without a file extension (src/settings/schema.skins.js:3:25). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.layers.js:8:54). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.skins.js:4:47). Add the file extension
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1792870696173
+
+ ❯ src/links/network.test.js (18 tests | 5 failed) 328ms
+   ❯ notations of the editor (issue #17) (6)
+     × explains what is wrong in English and Russian 11ms
+     × adds, removes and rewires links keeping the network consistent 14ms
+   ❯ style of the picture (issue #17) (4)
+     × keeps only the options that differ from the defaults in the address 6ms
+   ❯ picture of a network (issue #17) (3)
+     × is a standalone SVG of the chosen size with the links of the gallery 13ms
+     × draws a transparent background, no card and a wide image on request 7ms
+ ❯ src/links/links.test.js (17 tests | 1 failed) 5573ms
+   ❯ network symbols (issue #9 link visuals) (7)
+     × 1–9 links fit into a symbol (the editor of issue #17 draws up to 9) 11ms
+ ❯ src/links/geometry-19.test.js (8 tests | 1 failed) 40ms
+   ❯ self references obey geometry controls (issue #19) (8)
+     × moves every marker independently of its curve and allows an open ring in the middle 15ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/links/geometry-19.test.js > self references obey geometry controls (issue #19) > moves every marker independently of its curve and allows an open ring in the middle
+AssertionError: startOffset: expected 'M47.31 52.69C1.92 98.08 1.92 1.92 50 …' to be 'M47.03 52.97C-3.03 103.03 -3.03 -3.03…' // Object.is equality
+
+Expected: "M47.03 52.97C-3.03 103.03 -3.03 -3.03 50 50C103.03 103.03 103.03 -3.03 52.97 47.03"
+Received: "M47.31 52.69C1.92 98.08 1.92 1.92 50 50C98.08 98.08 98.08 1.92 52.69 47.31"
+
+ ❯ src/links/geometry-19.test.js:44:30
+     42|       const initial = glyphParts(links, options)[0];
+     43|       const next = glyphParts(links, { ...options, [key]: 10 })[0];
+     44|       expect(next.line, key).toBe(initial.line);
+       |                              ^
+     45|       const part = key.startsWith('start') ? 'start' : key.startsWith(…
+     46|       if (!key.endsWith('Rotation') || part !== 'middle') expect(next[…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ FAIL  src/links/links.test.js > network symbols (issue #9 link visuals) > 1–9 links fit into a symbol (the editor of issue #17 draws up to 9)
+AssertionError: expected function to throw an error, but it didn't
+ ❯ src/links/links.test.js:212:72
+    210|     expect(glyphPaths(decode('00 00 00 00 00')).length).toBeGreaterTha…
+    211|     expect(() => glyphPaths(Array.from({ length: 9 }, () => [0, 0]))).…
+    212|     expect(() => glyphPaths(Array.from({ length: 10 }, () => [0, 0])))…
+       |                                                                        ^
+    213|   });
+    214| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+ FAIL  src/links/network.test.js > notations of the editor (issue #17) > explains what is wrong in English and Russian
+TypeError: Cannot read properties of undefined (reading 'en')
+ ❯ src/links/network.test.js:76:60
+     74|     expect(parseMath('hello').error).toBeTruthy();
+     75|     expect(check([]).error.en).toMatch(/at least one/);
+     76|     expect(check(Array.from({ length: 10 }, () => [0, 0])).error.en).t…
+       |                                                            ^
+     77|     expect(parseCode('0130')).toBeNull();
+     78|     expect(parseCode('<script>')).toBeNull();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/7]⎯
+
+ FAIL  src/links/network.test.js > notations of the editor (issue #17) > adds, removes and rewires links keeping the network consistent
+AssertionError: expected [ [ +0, +0 ], [ +0, +0 ], …(8) ] to have a length of 9 but got 10
+
+- Expected
++ Received
+
+- 9
++ 10
+
+ ❯ src/links/network.test.js:100:62
+     98|   it('adds, removes and rewires links keeping the network consistent',…
+     99|     expect(addLink(links)).toEqual([...links, [0, 0]]);
+    100|     expect(addLink(Array.from({ length: 9 }, () => [0, 0]))).toHaveLen…
+       |                                                              ^
+    101|     // Removing link 1: references to it become 0, link 2 becomes link…
+    102|     expect(removeLink(links, 1)).toEqual([[1, 0]]);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/7]⎯
+
+ FAIL  src/links/network.test.js > style of the picture (issue #17) > keeps only the options that differ from the defaults in the address
+AssertionError: expected { end: 'dot', colors: '', …(1) } to deeply equal { card: 'false', …(3) }
+
+- Expected
++ Received
+
+  {
+-   "bgColor": "#000000",
+-   "card": "false",
++   "colors": "",
+    "end": "dot",
+    "turns": "15 -30",
+  }
+
+ ❯ src/links/network.test.js:140:40
+    138|     const style = normalizeStyle({ card: false, bgColor: '#000000', en…
+    139|     const params = styleToParams(style);
+    140|     expect(Object.fromEntries(params)).toEqual({ card: 'false', bgColo…
+       |                                        ^
+    141|     expect(styleFromParams(new URLSearchParams(params.toString()))).to…
+    142|     expect(styleFromParams(new URLSearchParams('strokeWidth=abc&unknow…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/7]⎯
+
+ FAIL  src/links/network.test.js > picture of a network (issue #17) > is a standalone SVG of the chosen size with the links of the gallery
+AssertionError: expected '<svg xmlns="http://www.w3.org/2000/sv…' to contain 'width="1024" height="1024"'
+
+Expected: "width="1024" height="1024""
+Received: "<svg xmlns="http://www.w3.org/2000/svg" width="2048" height="2048" viewBox="0 0 100 100" role="img" aria-label="Links network 01₃ 20₃"><title>Links network 01₃ 20₃</title><rect width="100" height="100" fill="#000000"/><g transform="translate(0 0) scale(1)" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="miter" opacity="1"><g stroke="#ff2600"><path d="M16.01 66.19C18.8 60.21 21.59 54.24 24.38 48.26C38.21 18.58 -12.95 43.01 20.65 47.73"/><path d="M18.28 67.25L13.75 65.14"/><path d="M18.54 44.94L20.65 47.73L17.85 49.84"/><path d="M23.38 48.26a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#ff2600"/></g><g stroke="#00f900"><path d="M74.92 49.85C105.67 64.19 85.34 18.58 71.5 48.26C68.71 54.24 65.93 60.21 63.14 66.19"/><path d="M73.86 52.12L75.98 47.58"/><path d="M66.43 65L63.14 66.19L61.94 62.91"/><path d="M70.5 48.26a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#00f900"/></g></g></svg>"
+
+ ❯ src/links/network.test.js:192:17
+    190|     const svg = networkSvg(links, STYLE_DEFAULTS);
+    191|     expect(svg.startsWith('<svg xmlns="http://www.w3.org/2000/svg"')).…
+    192|     expect(svg).toContain('width="1024" height="1024"');
+       |                 ^
+    193|     expect(svg).toContain('aria-label="Links network 01₃ 20₃"');
+    194|     // The card of the gallery is the default; the lines are the same …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/7]⎯
+
+ FAIL  src/links/network.test.js > picture of a network (issue #17) > draws a transparent background, no card and a wide image on request
+AssertionError: expected '<svg xmlns="http://www.w3.org/2000/sv…' to contain 'stroke-dasharray'
+
+Expected: "stroke-dasharray"
+Received: "<svg xmlns="http://www.w3.org/2000/svg" width="2048" height="2048" viewBox="0 0 100 100" role="img" aria-label="Links network 01₃ 20₃"><title>Links network 01₃ 20₃</title><rect width="100" height="100" fill="#000000"/><g transform="translate(0 0) scale(1)" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="miter" opacity="1"><g stroke="#22d3ee"><path d="M16.01 66.19C18.8 60.21 21.59 54.24 24.38 48.26C38.21 18.58 -12.95 43.01 20.65 47.73"/><path d="M18.28 67.25L13.75 65.14"/><path d="M18.54 44.94L20.65 47.73L17.85 49.84"/><path d="M23.38 48.26a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#22d3ee"/></g><g stroke="#c084fc"><path d="M74.92 49.85C105.67 64.19 85.34 18.58 71.5 48.26C68.71 54.24 65.93 60.21 63.14 66.19"/><path d="M73.86 52.12L75.98 47.58"/><path d="M66.43 65L63.14 66.19L61.94 62.91"/><path d="M70.5 48.26a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#c084fc"/></g></g></svg>"
+
+ ❯ src/links/network.test.js:208:58
+    206|     expect(networkSvg(links, { background: 'linear' })).toContain('<li…
+    207|     expect(networkSvg(links, { background: 'radial' })).toContain('<ra…
+    208|     expect(networkSvg(links, { borderStyle: 'dashed' })).toContain('st…
+       |                                                          ^
+    209|     expect(networkSvg(links, { glow: 2 })).toContain('feGaussianBlur');
+    210|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/7]⎯
+
+
+ Test Files  3 failed (3)
+      Tests  7 failed | 36 passed (43)
+   Start at  19:45:56
+   Duration  11.74s (tests 54%, environment 31%, setup 7%, transform 5%, import 3%, worker 1%)
+
+Environment  jsdom was created 3 times · 3.38s total, 31% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+
