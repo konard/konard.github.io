@@ -57,8 +57,8 @@ with WebKit on macOS. The new full headed Chromium attempt reached the unchanged
 local memory ceiling before completing (1,610,035,200 bytes owned RSS); it is
 recorded in `logs/chromium-display-capture.log`, not counted as a pass.
 
-The complete revised three-engine CI matrix must pass before the pull request is ready.
-A started or resource-bounded command is not recorded as a pass.
+The complete revised browser matrix passes in run 40275956453, as detailed
+below. A started or resource-bounded command is not recorded as a pass.
 
 ## Test calibration
 
@@ -131,3 +131,29 @@ macOS artifact is under `ci-evidence/40275387344/webkit/`. Its remaining failure
 was the same WebP assumption in the second legacy export loop, now using the
 same shared encoder/fallback verification. The final matrix also expands the
 pressure fixture to the exact **4,131 cards in all three engines**.
+
+## Final 4,131-card native-display matrix
+
+Run 40275956453 (`0bc96b4`, created 05:45:33 UTC) passes all four suites in
+Chromium 153 and Firefox 155 on Ubuntu 24.04, and WebKit 26.6 on macOS 15.
+All engines load exactly 4,131 cards with at most 176 active card filters,
+repeatedly scroll all skins and retain actual display blur. Glass / liquid /
+futuristic changed pixels: Chromium **132,706 / 72,235 / 125,621**, Firefox
+**134,525 / 72,488 / 127,151**, macOS WebKit **88,706 / 53,276 / 81,751**.
+All engines have zero page errors. Native SVG marker position errors are below
+0.0026 units and tangent perpendicularity dot products below 0.0028. The gap-only
+solver improves 6.5 → 3.8, with identical applied/shared geometry. All preceding
+export/history/layout/color/settings/clipboard/mobile regressions pass, including
+macOS's explicit unsupported-WebP fallback. Raw JSON, full viewport screenshots
+and native display probes are under `ci-evidence/40275956453/`.
+
+The same workflow completes successfully: **710 tests / 41 files** in 28.69s
+(full log lines 3366–3369), the dense 24-link gap search in 2.56s (line 3334),
+production builds, lint/format/line limits/secrets, workflow lint and dependency
+audit, followed by **120 CV PDFs** (line 3733). All required jobs pass; deployment
+is intentionally skipped for pull requests. The complete 4,069-line log is
+`ci-logs/workflow-40275956453.log`, with timestamps, SHA and job conclusions in
+`data/ci-40275956453.json`. The implementation is verified; subsequent evidence
+commits change only this case-study archive. Final head-check status is linked
+in the pull request to avoid recursively committing a new log after each
+archive-only commit.

@@ -1,0 +1,901 @@
+﻿2026-10-26T05:18:52.9979918Z Current runner version: '2.338.0'
+2026-10-26T05:18:53.0004983Z ##[group]Runner Image Provisioner
+2026-10-26T05:18:53.0005889Z Hosted Compute Agent
+2026-10-26T05:18:53.0006481Z Version: 20261021.618
+2026-10-26T05:18:53.0007245Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-10-26T05:18:53.0007985Z Build Date: 2026-10-21T00:45:21Z
+2026-10-26T05:18:53.0008750Z Worker ID: {aa822e9f-f2a4-4aa0-af1f-c52c05a18186}
+2026-10-26T05:18:53.0009518Z Region: centralus
+2026-10-26T05:18:53.0010080Z Cloud: Azure
+2026-10-26T05:18:53.0010679Z ##[endgroup]
+2026-10-26T05:18:53.0012134Z ##[group]Operating System
+2026-10-26T05:18:53.0013219Z Ubuntu
+2026-10-26T05:18:53.0013919Z 24.04.5
+2026-10-26T05:18:53.0014479Z LTS
+2026-10-26T05:18:53.0015146Z ##[endgroup]
+2026-10-26T05:18:53.0015768Z ##[group]Runner Image
+2026-10-26T05:18:53.0016365Z Image: ubuntu-24.04
+2026-10-26T05:18:53.0017025Z Version: 20261012.334.1
+2026-10-26T05:18:53.0018294Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-26T05:18:53.0020009Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+2026-10-26T05:18:53.0020991Z ##[endgroup]
+2026-10-26T05:18:53.0022171Z ##[group]GITHUB_TOKEN Permissions
+2026-10-26T05:18:53.0024521Z Contents: read
+2026-10-26T05:18:53.0025253Z Metadata: read
+2026-10-26T05:18:53.0025851Z ##[endgroup]
+2026-10-26T05:18:53.0028053Z Secret source: Actions
+2026-10-26T05:18:53.0029056Z Cache mode: write
+2026-10-26T05:18:53.0030078Z Prepare workflow directory
+2026-10-26T05:18:53.0565075Z Prepare all required actions
+2026-10-26T05:18:53.0611620Z Getting action download info
+2026-10-26T05:18:53.3289883Z Download action repository 'actions/checkout@v6' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+2026-10-26T05:18:53.4293120Z Download action repository 'actions/setup-node@v6' (SHA:249970729cb0ef3589644e2896645e5dc5ba9c38)
+2026-10-26T05:18:53.5236241Z Download action repository 'actions/upload-artifact@v7' (SHA:cf430e030ddbb5b0abf93d22962f4752f3646cd9)
+2026-10-26T05:18:54.1884314Z Complete job name: network-browsers (firefox)
+2026-10-26T05:18:54.2771785Z ##[group]Run actions/checkout@v6
+2026-10-26T05:18:54.2772981Z with:
+2026-10-26T05:18:54.2773505Z   persist-credentials: false
+2026-10-26T05:18:54.2774105Z   repository: konard/konard.github.io
+2026-10-26T05:18:54.2778458Z   token: ***
+2026-10-26T05:18:54.2778947Z   ssh-strict: true
+2026-10-26T05:18:54.2779426Z   ssh-user: git
+2026-10-26T05:18:54.2779902Z   clean: true
+2026-10-26T05:18:54.2780403Z   sparse-checkout-cone-mode: true
+2026-10-26T05:18:54.2780976Z   fetch-depth: 1
+2026-10-26T05:18:54.2781450Z   fetch-tags: false
+2026-10-26T05:18:54.2781943Z   show-progress: true
+2026-10-26T05:18:54.2782433Z   lfs: false
+2026-10-26T05:18:54.2783041Z   submodules: false
+2026-10-26T05:18:54.2783572Z   set-safe-directory: true
+2026-10-26T05:18:54.2784127Z   allow-unsafe-pr-checkout: false
+2026-10-26T05:18:54.2784960Z env:
+2026-10-26T05:18:54.2785444Z   GIT_CONFIG_COUNT: 1
+2026-10-26T05:18:54.2786010Z   GIT_CONFIG_KEY_0: init.defaultBranch
+2026-10-26T05:18:54.2786650Z   GIT_CONFIG_VALUE_0: main
+2026-10-26T05:18:54.2787173Z   ENGINE: firefox
+2026-10-26T05:18:54.2787637Z ##[endgroup]
+2026-10-26T05:18:54.3806272Z Syncing repository: konard/konard.github.io
+2026-10-26T05:18:54.3809562Z ##[group]Getting Git version info
+2026-10-26T05:18:54.3811259Z Working directory is '/home/runner/work/konard.github.io/konard.github.io'
+2026-10-26T05:18:54.3814067Z [command]/usr/bin/git version
+2026-10-26T05:18:54.3917667Z git version 2.55.0
+2026-10-26T05:18:54.3949339Z ##[endgroup]
+2026-10-26T05:18:54.3966202Z Temporarily overriding HOME='/home/runner/work/_temp/fc9c89dc-9c37-431d-bab6-2f684ef2d22f' before making global git config changes
+2026-10-26T05:18:54.3968770Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-26T05:18:54.3974118Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/konard.github.io/konard.github.io
+2026-10-26T05:18:54.4034910Z Deleting the contents of '/home/runner/work/konard.github.io/konard.github.io'
+2026-10-26T05:18:54.4039280Z ##[group]Determining repository object format
+2026-10-26T05:18:54.4041637Z ##[endgroup]
+2026-10-26T05:18:54.4043288Z ##[group]Initializing the repository
+2026-10-26T05:18:54.4047375Z [command]/usr/bin/git init /home/runner/work/konard.github.io/konard.github.io
+2026-10-26T05:18:54.4192481Z Initialized empty Git repository in /home/runner/work/konard.github.io/konard.github.io/.git/
+2026-10-26T05:18:54.4205051Z [command]/usr/bin/git remote add origin https://github.com/konard/konard.github.io
+2026-10-26T05:18:54.4274053Z ##[endgroup]
+2026-10-26T05:18:54.4275535Z ##[group]Disabling automatic garbage collection
+2026-10-26T05:18:54.4286340Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-26T05:18:54.4321718Z ##[endgroup]
+2026-10-26T05:18:54.4323175Z ##[group]Setting up auth
+2026-10-26T05:18:54.4324148Z Removing SSH command configuration
+2026-10-26T05:18:54.4335094Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-26T05:18:54.4380052Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-26T05:18:54.4760367Z Removing HTTP extra header
+2026-10-26T05:18:54.4767665Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-26T05:18:54.4806506Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-26T05:18:54.5026755Z Removing includeIf entries pointing to credentials config files
+2026-10-26T05:18:54.5033580Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-26T05:18:54.5071651Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-26T05:18:54.5306131Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-f2c5f8c1-382c-4bdb-b624-c3c10b59107d.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-26T05:18:54.5349089Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path /home/runner/work/_temp/git-credentials-f2c5f8c1-382c-4bdb-b624-c3c10b59107d.config
+2026-10-26T05:18:54.5384819Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-f2c5f8c1-382c-4bdb-b624-c3c10b59107d.config
+2026-10-26T05:18:54.5432141Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-f2c5f8c1-382c-4bdb-b624-c3c10b59107d.config
+2026-10-26T05:18:54.5466693Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-f2c5f8c1-382c-4bdb-b624-c3c10b59107d.config
+2026-10-26T05:18:54.5497440Z ##[endgroup]
+2026-10-26T05:18:54.5498298Z ##[group]Fetching the repository
+2026-10-26T05:18:54.5505987Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +2e0036a0d09c0cfa9083baa3148d3ae90d42fec7:refs/remotes/pull/24/merge
+2026-10-26T05:19:00.8655280Z From https://github.com/konard/konard.github.io
+2026-10-26T05:19:00.8656637Z  * [new ref]         2e0036a0d09c0cfa9083baa3148d3ae90d42fec7 -> pull/24/merge
+2026-10-26T05:19:00.8660802Z ##[endgroup]
+2026-10-26T05:19:00.8661453Z ##[group]Determining the checkout info
+2026-10-26T05:19:00.8662749Z ##[endgroup]
+2026-10-26T05:19:00.8668463Z [command]/usr/bin/git sparse-checkout disable
+2026-10-26T05:19:00.8726203Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-26T05:19:00.8758961Z ##[group]Checking out the ref
+2026-10-26T05:19:00.8763051Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/24/merge
+2026-10-26T05:19:01.4751411Z Note: switching to 'refs/remotes/pull/24/merge'.
+2026-10-26T05:19:01.4752123Z 
+2026-10-26T05:19:01.4753036Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-10-26T05:19:01.4754398Z changes and commit them, and you can discard any commits you make in this
+2026-10-26T05:19:01.4755431Z state without impacting any branches by switching back to a branch.
+2026-10-26T05:19:01.4755977Z 
+2026-10-26T05:19:01.4756404Z If you want to create a new branch to retain commits you create, you may
+2026-10-26T05:19:01.4757366Z do so (now or later) by using -c with the switch command. Example:
+2026-10-26T05:19:01.4757930Z 
+2026-10-26T05:19:01.4758194Z   git switch -c <new-branch-name>
+2026-10-26T05:19:01.4758599Z 
+2026-10-26T05:19:01.4758828Z Or undo this operation with:
+2026-10-26T05:19:01.4759242Z 
+2026-10-26T05:19:01.4759442Z   git switch -
+2026-10-26T05:19:01.4759777Z 
+2026-10-26T05:19:01.4760227Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-10-26T05:19:01.4761004Z 
+2026-10-26T05:19:01.4761771Z HEAD is now at 2e0036a Merge a20ae9c84c7f2c9717a49e924c777cccdfd79d3d into 38afa6dbafe5da0bcdd1778bb647d2dbf89aee39
+2026-10-26T05:19:01.4832475Z ##[endgroup]
+2026-10-26T05:19:01.4836244Z [command]/usr/bin/git log -1 --format=%H
+2026-10-26T05:19:01.4866094Z 2e0036a0d09c0cfa9083baa3148d3ae90d42fec7
+2026-10-26T05:19:01.4877672Z ##[group]Removing auth
+2026-10-26T05:19:01.4878312Z Removing SSH command configuration
+2026-10-26T05:19:01.4883027Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-26T05:19:01.4920620Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-26T05:19:01.5177080Z Removing HTTP extra header
+2026-10-26T05:19:01.5184216Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-26T05:19:01.5223363Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-26T05:19:01.5470404Z Removing includeIf entries pointing to credentials config files
+2026-10-26T05:19:01.5475465Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-26T05:19:01.5510132Z includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path
+2026-10-26T05:19:01.5511576Z includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path
+2026-10-26T05:19:01.5513156Z includeif.gitdir:/github/workspace/.git.path
+2026-10-26T05:19:01.5514196Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-26T05:19:01.5521283Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path
+2026-10-26T05:19:01.5552140Z /home/runner/work/_temp/git-credentials-f2c5f8c1-382c-4bdb-b624-c3c10b59107d.config
+2026-10-26T05:19:01.5568608Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git.path /home/runner/work/_temp/git-credentials-f2c5f8c1-382c-4bdb-b624-c3c10b59107d.config
+2026-10-26T05:19:01.5609398Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path
+2026-10-26T05:19:01.5637305Z /home/runner/work/_temp/git-credentials-f2c5f8c1-382c-4bdb-b624-c3c10b59107d.config
+2026-10-26T05:19:01.5649279Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-f2c5f8c1-382c-4bdb-b624-c3c10b59107d.config
+2026-10-26T05:19:01.5689473Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-10-26T05:19:01.5718308Z /github/runner_temp/git-credentials-f2c5f8c1-382c-4bdb-b624-c3c10b59107d.config
+2026-10-26T05:19:01.5738104Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-f2c5f8c1-382c-4bdb-b624-c3c10b59107d.config
+2026-10-26T05:19:01.5775187Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-26T05:19:01.5801462Z /github/runner_temp/git-credentials-f2c5f8c1-382c-4bdb-b624-c3c10b59107d.config
+2026-10-26T05:19:01.5811334Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-f2c5f8c1-382c-4bdb-b624-c3c10b59107d.config
+2026-10-26T05:19:01.5851923Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-26T05:19:01.6073413Z Removing credentials config '/home/runner/work/_temp/git-credentials-f2c5f8c1-382c-4bdb-b624-c3c10b59107d.config'
+2026-10-26T05:19:01.6099552Z ##[endgroup]
+2026-10-26T05:19:01.6366384Z ##[group]Run actions/setup-node@v6
+2026-10-26T05:19:01.6366686Z with:
+2026-10-26T05:19:01.6366884Z   node-version: 24.x
+2026-10-26T05:19:01.6367095Z   cache: npm
+2026-10-26T05:19:01.6367285Z   check-latest: false
+2026-10-26T05:19:01.6370316Z   token: ***
+2026-10-26T05:19:01.6370558Z   package-manager-cache: true
+2026-10-26T05:19:01.6370799Z env:
+2026-10-26T05:19:01.6370978Z   GIT_CONFIG_COUNT: 1
+2026-10-26T05:19:01.6371202Z   GIT_CONFIG_KEY_0: init.defaultBranch
+2026-10-26T05:19:01.6371462Z   GIT_CONFIG_VALUE_0: main
+2026-10-26T05:19:01.6371684Z   ENGINE: firefox
+2026-10-26T05:19:01.6371874Z ##[endgroup]
+2026-10-26T05:19:01.7921246Z Found in cache @ /opt/hostedtoolcache/node/24.21.0/x64
+2026-10-26T05:19:01.7925343Z ##[group]Environment details
+2026-10-26T05:19:02.2067806Z node: v24.21.0
+2026-10-26T05:19:02.2068201Z npm: 11.19.0
+2026-10-26T05:19:02.2068534Z yarn: 1.22.22
+2026-10-26T05:19:02.2069844Z ##[endgroup]
+2026-10-26T05:19:02.2090273Z [command]/opt/hostedtoolcache/node/24.21.0/x64/bin/npm config get cache
+2026-10-26T05:19:02.3237386Z /home/runner/.npm
+2026-10-26T05:19:02.4621629Z Cache hit for: node-cache-Linux-x64-npm-4b6fecdc63c3716cba6176337524c48a8d6e1aa392c5a191c878ae010a03856b
+2026-10-26T05:19:03.3799177Z Received 37264338 of 37264338 (100.0%), 47.8 MBs/sec
+2026-10-26T05:19:03.3799968Z Cache Size: ~36 MB (37264338 B)
+2026-10-26T05:19:03.3831820Z [command]/usr/bin/tar -xf /home/runner/work/_temp/97e39b32-c279-4e95-8deb-e7d40a6f8033/cache.tzst -P -C /home/runner/work/konard.github.io/konard.github.io --use-compress-program unzstd
+2026-10-26T05:19:03.4862949Z Cache restored successfully
+2026-10-26T05:19:03.4883633Z Cache restored from key: node-cache-Linux-x64-npm-4b6fecdc63c3716cba6176337524c48a8d6e1aa392c5a191c878ae010a03856b
+2026-10-26T05:19:03.5050652Z ##[group]Run npm ci
+2026-10-26T05:19:03.5050977Z [36;1mnpm ci[0m
+2026-10-26T05:19:03.5341725Z shell: /usr/bin/bash -e {0}
+2026-10-26T05:19:03.5342064Z env:
+2026-10-26T05:19:03.5342331Z   GIT_CONFIG_COUNT: 1
+2026-10-26T05:19:03.5342943Z   GIT_CONFIG_KEY_0: init.defaultBranch
+2026-10-26T05:19:03.5343314Z   GIT_CONFIG_VALUE_0: main
+2026-10-26T05:19:03.5343617Z   ENGINE: firefox
+2026-10-26T05:19:03.5343889Z ##[endgroup]
+2026-10-26T05:19:07.7038436Z 
+2026-10-26T05:19:07.7047521Z > konard.github.io@0.1.0 prepare
+2026-10-26T05:19:07.7048080Z > husky
+2026-10-26T05:19:07.7048320Z 
+2026-10-26T05:19:07.7841340Z 
+2026-10-26T05:19:07.7842872Z added 306 packages, and audited 307 packages in 4s
+2026-10-26T05:19:07.7843383Z 
+2026-10-26T05:19:07.7843710Z 79 packages are looking for funding
+2026-10-26T05:19:07.7844410Z   run `npm fund` for details
+2026-10-26T05:19:07.7856837Z 
+2026-10-26T05:19:07.7857462Z found 0 vulnerabilities
+2026-10-26T05:19:07.8513906Z ##[group]Run npm run build
+2026-10-26T05:19:07.8514346Z [36;1mnpm run build[0m
+2026-10-26T05:19:07.8578180Z shell: /usr/bin/bash -e {0}
+2026-10-26T05:19:07.8578436Z env:
+2026-10-26T05:19:07.8578627Z   GIT_CONFIG_COUNT: 1
+2026-10-26T05:19:07.8579040Z   GIT_CONFIG_KEY_0: init.defaultBranch
+2026-10-26T05:19:07.8579321Z   GIT_CONFIG_VALUE_0: main
+2026-10-26T05:19:07.8579557Z   ENGINE: firefox
+2026-10-26T05:19:07.8579757Z ##[endgroup]
+2026-10-26T05:19:07.9587953Z 
+2026-10-26T05:19:07.9588665Z > konard.github.io@0.1.0 build
+2026-10-26T05:19:07.9589321Z > vite build
+2026-10-26T05:19:07.9589553Z 
+2026-10-26T05:19:08.2206957Z [33m(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+2026-10-26T05:19:08.2208213Z   - import "./fields" without a file extension (src/settings/schema.js:15:32). Add the file extension
+2026-10-26T05:19:08.2209296Z   - import "./schema.background" without a file extension (src/settings/schema.js:16:37). Add the file extension
+2026-10-26T05:19:08.2210269Z   - import "./schema.layers" without a file extension (src/settings/schema.js:17:32). Add the file extension
+2026-10-26T05:19:08.2211553Z   - import "./schema.skins" without a file extension (src/settings/schema.js:18:31). Add the file extension
+2026-10-26T05:19:08.2213321Z   - import "./schema.sound" without a file extension (src/settings/schema.js:19:31). Add the file extension
+2026-10-26T05:19:08.2214495Z   - import "./schema.skins" without a file extension (src/settings/schema.js:21:33). Add the file extension
+2026-10-26T05:19:08.2215759Z   - import "./fields" without a file extension (src/settings/schema.layers.js:8:54). Add the file extension
+2026-10-26T05:19:08.2216863Z   - import "./fields" without a file extension (src/settings/schema.background.js:3:54). Add the file extension
+2026-10-26T05:19:08.2218162Z   - import "../skins.frames" without a file extension (src/settings/schema.skins.js:3:25). Add the file extension
+2026-10-26T05:19:08.2219290Z   - import "./fields" without a file extension (src/settings/schema.sound.js:7:47). Add the file extension
+2026-10-26T05:19:08.2220602Z   - import "./fields" without a file extension (src/settings/schema.skins.js:4:47). Add the file extension
+2026-10-26T05:19:08.2221796Z Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.[39m
+2026-10-26T05:19:08.2381214Z [36mvite v8.3.4 [32mbuilding client environment for production...[36m[39m
+2026-10-26T05:19:08.2492989Z transforming...
+2026-10-26T05:19:08.4106449Z ✓ 191 modules transformed.
+2026-10-26T05:19:08.4822189Z rendering chunks...
+2026-10-26T05:19:08.7310101Z computing gzip size...
+2026-10-26T05:19:08.7411621Z build/assets/orbitron-latin-700-normal-4jsRXGGJ.woff2           6.52 kB
+2026-10-26T05:19:08.7412998Z build/assets/orbitron-latin-500-normal-DQ2gt4P1.woff2           6.59 kB
+2026-10-26T05:19:08.7414585Z build/blog/index.html                                           8.81 kB │ gzip:   2.80 kB
+2026-10-26T05:19:08.7415802Z build/cv/index.html                                             8.81 kB │ gzip:   2.83 kB
+2026-10-26T05:19:08.7416825Z build/assets/orbitron-latin-700-normal-DmYOh-W9.woff            8.96 kB
+2026-10-26T05:19:08.7417840Z build/assets/orbitron-latin-500-normal-BCCupJ8c.woff            9.03 kB
+2026-10-26T05:19:08.7418553Z build/settings/index.html                                       9.03 kB │ gzip:   2.82 kB
+2026-10-26T05:19:08.7419224Z build/art/index.html                                            9.07 kB │ gzip:   2.86 kB
+2026-10-26T05:19:08.7419885Z build/repositories/index.html                                   9.07 kB │ gzip:   2.84 kB
+2026-10-26T05:19:08.7420542Z build/network/index.html                                        9.10 kB │ gzip:   2.90 kB
+2026-10-26T05:19:08.7421209Z build/associative/index.html                                    9.14 kB │ gzip:   2.86 kB
+2026-10-26T05:19:08.7422317Z build/experience/index.html                                     9.18 kB │ gzip:   2.86 kB
+2026-10-26T05:19:08.7423549Z build/index.html                                                9.28 kB │ gzip:   2.96 kB
+2026-10-26T05:19:08.7424727Z build/research/index.html                                       9.33 kB │ gzip:   2.91 kB
+2026-10-26T05:19:08.7426116Z build/assets/chakra-petch-latin-400-normal-SafcrIr2.woff2       9.75 kB
+2026-10-26T05:19:08.7427221Z build/assets/chakra-petch-latin-600-normal-DVQm9bgb.woff2       9.96 kB
+2026-10-26T05:19:08.7428137Z build/assets/share-tech-mono-latin-400-normal-15MgdvEM.woff    10.23 kB
+2026-10-26T05:19:08.7428727Z build/assets/electrolize-latin-400-normal-DH2aMH81.woff        11.78 kB
+2026-10-26T05:19:08.7429306Z build/assets/chakra-petch-latin-400-normal-D7EtbySE.woff       13.16 kB
+2026-10-26T05:19:08.7429881Z build/assets/chakra-petch-latin-600-normal-DQKfcdKo.woff       13.43 kB
+2026-10-26T05:19:08.7430452Z build/assets/share-tech-mono-latin-400-normal-CCqdbj5z.woff2   13.50 kB
+2026-10-26T05:19:08.7431031Z build/assets/electrolize-latin-400-normal-RRVgdOY_.woff2       16.68 kB
+2026-10-26T05:19:08.7431785Z build/assets/cv-BmUP9Qgz.css                                    2.57 kB │ gzip:   1.06 kB
+2026-10-26T05:19:08.7434045Z build/assets/settings-5hXznQm5.css                              2.99 kB │ gzip:   1.09 kB
+2026-10-26T05:19:08.7435167Z build/assets/network-DprZNcRK.css                               5.00 kB │ gzip:   1.46 kB
+2026-10-26T05:19:08.7436250Z build/assets/settings-DItcxARG.css                              5.43 kB │ gzip:   1.53 kB
+2026-10-26T05:19:08.7437435Z build/assets/Layout-C_fx4x0n.css                               97.30 kB │ gzip:  18.06 kB
+2026-10-26T05:19:08.7438242Z build/assets/mount-u1F2mKEb.js                                  0.27 kB │ gzip:   0.23 kB │ map:     0.80 kB
+2026-10-26T05:19:08.7439053Z build/assets/plural-BPrnZ9qL.js                                 0.30 kB │ gzip:   0.25 kB │ map:     1.50 kB
+2026-10-26T05:19:08.7439844Z build/assets/format-CujfuUOf.js                                 0.45 kB │ gzip:   0.35 kB │ map:     1.75 kB
+2026-10-26T05:19:08.7440605Z build/assets/query-zuMTUBca.js                                  0.49 kB │ gzip:   0.34 kB │ map:     1.80 kB
+2026-10-26T05:19:08.7441365Z build/assets/Section-YM_o4C_e.js                                0.49 kB │ gzip:   0.30 kB │ map:     1.30 kB
+2026-10-26T05:19:08.7442130Z build/assets/Glyph-BRt8p1t5.js                                  0.53 kB │ gzip:   0.37 kB │ map:     1.68 kB
+2026-10-26T05:19:08.7443462Z build/assets/beams-DU6BqTOL.js                                  3.05 kB │ gzip:   1.54 kB │ map:    12.30 kB
+2026-10-26T05:19:08.7444538Z build/assets/experience-BWqWi9Xp.js                             3.88 kB │ gzip:   1.68 kB │ map:    10.84 kB
+2026-10-26T05:19:08.7445356Z build/assets/Skills-nZxA9bmo.js                                 4.33 kB │ gzip:   1.82 kB │ map:    13.66 kB
+2026-10-26T05:19:08.7446199Z build/assets/repositories-9LXb-K9j.js                           4.82 kB │ gzip:   1.97 kB │ map:    11.74 kB
+2026-10-26T05:19:08.7446998Z build/assets/art-Bfz4NYp9.js                                    5.27 kB │ gzip:   2.34 kB │ map:    10.58 kB
+2026-10-26T05:19:08.7447758Z build/assets/theory-DLnm5Z1a.js                                 5.74 kB │ gzip:   2.52 kB │ map:     9.41 kB
+2026-10-26T05:19:08.7448588Z build/assets/NetworkGallery-v8EiQ8TD.js                         6.14 kB │ gzip:   2.64 kB │ map:    15.17 kB
+2026-10-26T05:19:08.7449405Z build/assets/stars-DoiLS2xj.js                                  6.23 kB │ gzip:   2.81 kB │ map:    26.41 kB
+2026-10-26T05:19:08.7450185Z build/assets/presets-B8oTeC3W.js                                7.63 kB │ gzip:   3.56 kB │ map:    20.09 kB
+2026-10-26T05:19:08.7450980Z build/assets/schema.sound-CyRuYVkR.js                           8.24 kB │ gzip:   3.91 kB │ map:    17.89 kB
+2026-10-26T05:19:08.7451783Z build/assets/interactions-BQi0T-pD.js                           9.64 kB │ gzip:   3.79 kB │ map:    35.28 kB
+2026-10-26T05:19:08.7452998Z build/assets/cv-DOxA_QoW.js                                    11.44 kB │ gzip:   4.26 kB │ map:    33.26 kB
+2026-10-26T05:19:08.7453870Z build/assets/research-CwvE6Qcq.js                              13.13 kB │ gzip:   5.16 kB │ map:    23.23 kB
+2026-10-26T05:19:08.7454678Z build/assets/MetaTheory-y8TQ6NZK.js                            18.08 kB │ gzip:   6.93 kB │ map:    39.77 kB
+2026-10-26T05:19:08.7455659Z build/assets/settings-CQhu4sLP.js                              20.25 kB │ gzip:   6.71 kB │ map:    57.22 kB
+2026-10-26T05:19:08.7456443Z build/assets/paths-iXHxKvZd.js                                 29.24 kB │ gzip:   7.41 kB │ map:    57.07 kB
+2026-10-26T05:19:08.7457226Z build/assets/associative-DqafLTlR.js                           40.71 kB │ gzip:  12.97 kB │ map:    67.31 kB
+2026-10-26T05:19:08.7458013Z build/assets/index-S5xnGbti.js                                 56.57 kB │ gzip:  17.69 kB │ map:   130.06 kB
+2026-10-26T05:19:08.7458789Z build/assets/network-CkTz9-kz.js                               62.58 kB │ gzip:  22.80 kB │ map:   195.94 kB
+2026-10-26T05:19:08.7459593Z build/assets/profile-DX6SdHhC.js                               74.68 kB │ gzip:  21.60 kB │ map:   118.72 kB
+2026-10-26T05:19:08.7460371Z build/assets/blog-DoMddGs-.js                                  81.46 kB │ gzip:  18.37 kB │ map:   121.41 kB
+2026-10-26T05:19:08.7461147Z build/assets/RepoList-Dbj2sVt9.js                             227.93 kB │ gzip:  38.20 kB │ map:   303.78 kB
+2026-10-26T05:19:08.7461932Z build/assets/Layout-E0bk32kx.js                               301.29 kB │ gzip: 100.38 kB │ map: 1,326.64 kB
+2026-10-26T05:19:08.7462287Z 
+2026-10-26T05:19:08.7462977Z [32m✓ built in 503ms[39m
+2026-10-26T05:19:08.7781349Z ##[group]Run npx playwright install --with-deps "$ENGINE"
+2026-10-26T05:19:08.7781805Z [36;1mnpx playwright install --with-deps "$ENGINE"[0m
+2026-10-26T05:19:08.7843833Z shell: /usr/bin/bash -e {0}
+2026-10-26T05:19:08.7844130Z env:
+2026-10-26T05:19:08.7844357Z   GIT_CONFIG_COUNT: 1
+2026-10-26T05:19:08.7844644Z   GIT_CONFIG_KEY_0: init.defaultBranch
+2026-10-26T05:19:08.7844989Z   GIT_CONFIG_VALUE_0: main
+2026-10-26T05:19:08.7845265Z   ENGINE: firefox
+2026-10-26T05:19:08.7845508Z ##[endgroup]
+2026-10-26T05:19:09.5364234Z Installing dependencies...
+2026-10-26T05:19:09.5448856Z Switching to root user to install dependencies...
+2026-10-26T05:19:09.6418030Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-10-26T05:19:09.6797225Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2026-10-26T05:19:09.6804207Z Get:6 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+2026-10-26T05:19:09.6812394Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+2026-10-26T05:19:09.6865681Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+2026-10-26T05:19:09.6878210Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+2026-10-26T05:19:09.8060559Z Get:7 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [661 kB]
+2026-10-26T05:19:09.8295376Z Get:8 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [598 kB]
+2026-10-26T05:19:09.8596045Z Get:9 https://packages.microsoft.com/ubuntu/24.04/prod noble/main armhf Packages [12.4 kB]
+2026-10-26T05:19:09.8614998Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1400 kB]
+2026-10-26T05:19:09.8697344Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [310 kB]
+2026-10-26T05:19:09.8707041Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1706 kB]
+2026-10-26T05:19:09.8824409Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [342 kB]
+2026-10-26T05:19:09.8835187Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [1805 kB]
+2026-10-26T05:19:09.8938250Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [411 kB]
+2026-10-26T05:19:09.9744612Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1146 kB]
+2026-10-26T05:19:09.9806063Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [231 kB]
+2026-10-26T05:19:09.9824816Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1222 kB]
+2026-10-26T05:19:09.9885434Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [246 kB]
+2026-10-26T05:19:10.0373211Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [1713 kB]
+2026-10-26T05:19:10.0448584Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [392 kB]
+2026-10-26T05:19:13.2676013Z Fetched 12.6 MB in 1s (10.0 MB/s)
+2026-10-26T05:19:14.2125704Z Reading package lists...
+2026-10-26T05:19:14.2363322Z Reading package lists...
+2026-10-26T05:19:14.4275798Z Building dependency tree...
+2026-10-26T05:19:14.4281830Z Reading state information...
+2026-10-26T05:19:14.5696753Z libasound2t64 is already the newest version (1.2.11-1ubuntu0.3).
+2026-10-26T05:19:14.5697941Z libasound2t64 set to manually installed.
+2026-10-26T05:19:14.5698751Z libatk1.0-0t64 is already the newest version (2.52.0-1build1).
+2026-10-26T05:19:14.5699579Z libatk1.0-0t64 set to manually installed.
+2026-10-26T05:19:14.5700358Z libcairo-gobject2 is already the newest version (1.18.0-3build1).
+2026-10-26T05:19:14.5701162Z libcairo-gobject2 set to manually installed.
+2026-10-26T05:19:14.5701913Z libcairo2 is already the newest version (1.18.0-3build1).
+2026-10-26T05:19:14.5702893Z libcairo2 set to manually installed.
+2026-10-26T05:19:14.5704201Z libdbus-1-3 is already the newest version (1.14.10-4ubuntu4.1).
+2026-10-26T05:19:14.5705031Z libdbus-1-3 set to manually installed.
+2026-10-26T05:19:14.5705903Z libfontconfig1 is already the newest version (2.15.0-1.1ubuntu2).
+2026-10-26T05:19:14.5706763Z libfontconfig1 set to manually installed.
+2026-10-26T05:19:14.5707582Z libfreetype6 is already the newest version (2.13.2+dfsg-1ubuntu0.2).
+2026-10-26T05:19:14.5708342Z libfreetype6 set to manually installed.
+2026-10-26T05:19:14.5709146Z libgdk-pixbuf-2.0-0 is already the newest version (2.42.10+dfsg-3ubuntu3.3).
+2026-10-26T05:19:14.5709918Z libgdk-pixbuf-2.0-0 set to manually installed.
+2026-10-26T05:19:14.5710409Z libgtk-3-0t64 is already the newest version (3.24.41-4ubuntu1.3).
+2026-10-26T05:19:14.5710867Z libgtk-3-0t64 set to manually installed.
+2026-10-26T05:19:14.5711309Z libpango-1.0-0 is already the newest version (1.52.1+ds-1build1).
+2026-10-26T05:19:14.5711746Z libpango-1.0-0 set to manually installed.
+2026-10-26T05:19:14.5712208Z libpangocairo-1.0-0 is already the newest version (1.52.1+ds-1build1).
+2026-10-26T05:19:14.5713063Z libpangocairo-1.0-0 set to manually installed.
+2026-10-26T05:19:14.5713886Z libx11-6 is already the newest version (2:1.8.7-1ubuntu0.1).
+2026-10-26T05:19:14.5714578Z libx11-6 set to manually installed.
+2026-10-26T05:19:14.5715021Z libx11-xcb1 is already the newest version (2:1.8.7-1ubuntu0.1).
+2026-10-26T05:19:14.5715443Z libx11-xcb1 set to manually installed.
+2026-10-26T05:19:14.5715846Z libxcb-shm0 is already the newest version (1.15-1ubuntu2).
+2026-10-26T05:19:14.5716238Z libxcb-shm0 set to manually installed.
+2026-10-26T05:19:14.5716615Z libxcb1 is already the newest version (1.15-1ubuntu2).
+2026-10-26T05:19:14.5716985Z libxcb1 set to manually installed.
+2026-10-26T05:19:14.5717660Z libxcomposite1 is already the newest version (1:0.4.5-1build3).
+2026-10-26T05:19:14.5718098Z libxcomposite1 set to manually installed.
+2026-10-26T05:19:14.5718527Z libxcursor1 is already the newest version (1:1.2.1-1build1).
+2026-10-26T05:19:14.5718927Z libxcursor1 set to manually installed.
+2026-10-26T05:19:14.5719331Z libxdamage1 is already the newest version (1:1.1.6-1build1).
+2026-10-26T05:19:14.5719722Z libxdamage1 set to manually installed.
+2026-10-26T05:19:14.5720111Z libxext6 is already the newest version (2:1.3.4-1build2).
+2026-10-26T05:19:14.5720777Z libxext6 set to manually installed.
+2026-10-26T05:19:14.5721470Z libxfixes3 is already the newest version (1:6.0.0-2build1).
+2026-10-26T05:19:14.5722182Z libxfixes3 set to manually installed.
+2026-10-26T05:19:14.5723109Z libxi6 is already the newest version (2:1.8.1-1build1).
+2026-10-26T05:19:14.5723710Z libxi6 set to manually installed.
+2026-10-26T05:19:14.5724114Z libxrandr2 is already the newest version (2:1.5.2-2build1).
+2026-10-26T05:19:14.5724719Z libxrandr2 set to manually installed.
+2026-10-26T05:19:14.5725141Z libxrender1 is already the newest version (1:0.9.10-1.1build1).
+2026-10-26T05:19:14.5725558Z libxrender1 set to manually installed.
+2026-10-26T05:19:14.5726059Z fonts-noto-color-emoji is already the newest version (2.047-0ubuntu0.24.04.1).
+2026-10-26T05:19:14.5726926Z fonts-liberation is already the newest version (1:2.1.5-3).
+2026-10-26T05:19:14.5727704Z fonts-liberation set to manually installed.
+2026-10-26T05:19:14.5728522Z The following additional packages will be installed:
+2026-10-26T05:19:14.5729130Z   gir1.2-glib-2.0 libavutil58 libcodec2-1.2 libdav1d7 libglib2.0-bin
+2026-10-26T05:19:14.5729710Z   libglib2.0-data libgsm1 libhwy1t64 libjxl0.7 libmp3lame0 libopus0 librav1e0
+2026-10-26T05:19:14.5730279Z   librsvg2-2 libshine3 libsoxr0 libspeex1 libsvtav1enc1d1 libswresample4
+2026-10-26T05:19:14.5730878Z   libtheora0 libtwolame0 libva-drm2 libva-x11-2 libva2 libvdpau1 libvorbisenc2
+2026-10-26T05:19:14.5731823Z   libvpl2 libvpx9 libx264-164 libx265-199 libxvidcore4 libzvbi-common
+2026-10-26T05:19:14.5733122Z   libzvbi0t64 ocl-icd-libopencl1 xfonts-encodings xfonts-utils xserver-common
+2026-10-26T05:19:14.5733931Z Suggested packages:
+2026-10-26T05:19:14.5734877Z   libcuda1 libnvcuvid1 libnvidia-encode1 low-memory-monitor opus-tools
+2026-10-26T05:19:14.5735630Z   librsvg2-bin speex opencl-icd
+2026-10-26T05:19:14.5736124Z Recommended packages:
+2026-10-26T05:19:14.5736791Z   fonts-ipafont-mincho fonts-tlwg-loma librsvg2-common va-driver-all
+2026-10-26T05:19:14.5737629Z   | va-driver vdpau-driver-all | vdpau-driver xfonts-base
+2026-10-26T05:19:14.6033302Z The following NEW packages will be installed:
+2026-10-26T05:19:14.6034237Z   fonts-freefont-ttf fonts-ipafont-gothic fonts-tlwg-loma-otf fonts-unifont
+2026-10-26T05:19:14.6035401Z   fonts-wqy-zenhei libavcodec60 libavutil58 libcodec2-1.2 libdav1d7 libgsm1
+2026-10-26T05:19:14.6036901Z   libhwy1t64 libjxl0.7 libmp3lame0 libopus0 librav1e0 librsvg2-2 libshine3
+2026-10-26T05:19:14.6038041Z   libsoxr0 libspeex1 libsvtav1enc1d1 libswresample4 libtheora0 libtwolame0
+2026-10-26T05:19:14.6039028Z   libva-drm2 libva-x11-2 libva2 libvdpau1 libvorbisenc2 libvpl2 libvpx9
+2026-10-26T05:19:14.6039981Z   libx264-164 libx265-199 libxvidcore4 libzvbi-common libzvbi0t64
+2026-10-26T05:19:14.6041030Z   ocl-icd-libopencl1 xfonts-cyrillic xfonts-encodings xfonts-scalable
+2026-10-26T05:19:14.6041833Z   xfonts-utils
+2026-10-26T05:19:14.6044888Z The following packages will be upgraded:
+2026-10-26T05:19:14.6050310Z   gir1.2-glib-2.0 libglib2.0-0t64 libglib2.0-bin libglib2.0-data
+2026-10-26T05:19:14.6050964Z   xserver-common xvfb
+2026-10-26T05:19:14.6223588Z 6 upgraded, 40 newly installed, 0 to remove and 94 not upgraded.
+2026-10-26T05:19:14.6224123Z Need to get 51.6 MB of archives.
+2026-10-26T05:19:14.6224579Z After this operation, 168 MB of additional disk space will be used.
+2026-10-26T05:19:14.6225393Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-10-26T05:19:14.6731445Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 fonts-ipafont-gothic all 00303-21ubuntu1 [3513 kB]
+2026-10-26T05:19:14.7453731Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libglib2.0-data all 2.80.0-6ubuntu3.10 [50.2 kB]
+2026-10-26T05:19:14.7801630Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libglib2.0-bin amd64 2.80.0-6ubuntu3.10 [97.9 kB]
+2026-10-26T05:19:14.8150747Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 gir1.2-glib-2.0 amd64 2.80.0-6ubuntu3.10 [183 kB]
+2026-10-26T05:19:14.8548251Z Get:6 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libglib2.0-0t64 amd64 2.80.0-6ubuntu3.10 [1548 kB]
+2026-10-26T05:19:14.9024077Z Get:7 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 fonts-freefont-ttf all 20211204+svn4273-2 [5641 kB]
+2026-10-26T05:19:14.9790984Z Get:8 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 fonts-tlwg-loma-otf all 1:0.7.3-1 [107 kB]
+2026-10-26T05:19:15.0146271Z Get:9 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 fonts-unifont all 1:15.1.01-1build1 [2993 kB]
+2026-10-26T05:19:15.0815479Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 fonts-wqy-zenhei all 0.9.45-8 [7472 kB]
+2026-10-26T05:19:15.2067487Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 libva2 amd64 2.20.0-2ubuntu0.2 [66.4 kB]
+2026-10-26T05:19:15.2430173Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 libva-drm2 amd64 2.20.0-2ubuntu0.2 [7124 B]
+2026-10-26T05:19:15.2767923Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 libva-x11-2 amd64 2.20.0-2ubuntu0.2 [12.0 kB]
+2026-10-26T05:19:15.3091630Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libvdpau1 amd64 1.5-2build1 [27.8 kB]
+2026-10-26T05:19:15.3411801Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libvpl2 amd64 2023.3.0-1build1 [99.8 kB]
+2026-10-26T05:19:15.3736777Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 ocl-icd-libopencl1 amd64 2.3.2-1build1 [38.5 kB]
+2026-10-26T05:19:15.4056895Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libavutil58 amd64 7:6.1.1-3ubuntu5 [401 kB]
+2026-10-26T05:19:15.4397782Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libcodec2-1.2 amd64 1.2.0-2build1 [8998 kB]
+2026-10-26T05:19:15.5509184Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libdav1d7 amd64 1.4.1-1build1 [604 kB]
+2026-10-26T05:19:15.6287026Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libgsm1 amd64 1.0.22-1build1 [27.8 kB]
+2026-10-26T05:19:15.6608641Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libhwy1t64 amd64 1.0.7-8.1build1 [584 kB]
+2026-10-26T05:19:15.6962210Z Get:22 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 libjxl0.7 amd64 0.7.0-10.2ubuntu6.1 [1001 kB]
+2026-10-26T05:19:15.7336155Z Get:23 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libmp3lame0 amd64 3.100-6build1 [142 kB]
+2026-10-26T05:19:15.7661861Z Get:24 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libopus0 amd64 1.4-1build1 [208 kB]
+2026-10-26T05:19:15.7991871Z Get:25 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 librav1e0 amd64 0.7.1-2 [1022 kB]
+2026-10-26T05:19:15.8367792Z Get:26 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 librsvg2-2 amd64 2.58.0+dfsg-1ubuntu0.1 [2141 kB]
+2026-10-26T05:19:15.8809529Z Get:27 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libshine3 amd64 3.1.1-2build1 [23.2 kB]
+2026-10-26T05:19:15.9127393Z Get:28 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libspeex1 amd64 1.2.1-2ubuntu2.24.04.1 [59.6 kB]
+2026-10-26T05:19:15.9448263Z Get:29 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libsvtav1enc1d1 amd64 1.7.0+dfsg-2build1 [2425 kB]
+2026-10-26T05:19:15.9866554Z Get:30 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libsoxr0 amd64 0.1.3-4build3 [80.0 kB]
+2026-10-26T05:19:16.0478820Z Get:31 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libswresample4 amd64 7:6.1.1-3ubuntu5 [63.8 kB]
+2026-10-26T05:19:16.0849712Z Get:32 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libtheora0 amd64 1.1.1+dfsg.1-16.1build3 [211 kB]
+2026-10-26T05:19:16.1459191Z Get:33 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libtwolame0 amd64 0.4.0-2build3 [52.3 kB]
+2026-10-26T05:19:16.1753858Z Get:34 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 libvorbisenc2 amd64 1.3.7-1build3 [80.8 kB]
+2026-10-26T05:19:16.2101898Z Get:35 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libvpx9 amd64 1.14.0-1ubuntu2.3 [1143 kB]
+2026-10-26T05:19:16.2531570Z Get:36 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libx264-164 amd64 2:0.164.3108+git31e19f9-1 [604 kB]
+2026-10-26T05:19:16.2903644Z Get:37 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libx265-199 amd64 3.5-2build1 [1226 kB]
+2026-10-26T05:19:16.3354166Z Get:38 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libxvidcore4 amd64 2:1.3.7-1build1 [219 kB]
+2026-10-26T05:19:16.4156377Z Get:39 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libzvbi-common all 0.2.42-2 [42.4 kB]
+2026-10-26T05:19:16.4437106Z Get:40 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libzvbi0t64 amd64 0.2.42-2 [261 kB]
+2026-10-26T05:19:16.4744883Z Get:41 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libavcodec60 amd64 7:6.1.1-3ubuntu5 [5851 kB]
+2026-10-26T05:19:16.5728492Z Get:42 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 xfonts-encodings all 1:1.0.5-0ubuntu2 [578 kB]
+2026-10-26T05:19:16.6037517Z Get:43 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 xfonts-utils amd64 1:7.7+6build3 [94.4 kB]
+2026-10-26T05:19:16.6325687Z Get:44 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 xfonts-cyrillic all 1:1.0.5+nmu1 [384 kB]
+2026-10-26T05:19:16.6624527Z Get:45 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 xfonts-scalable all 1:1.0.3-1.3 [304 kB]
+2026-10-26T05:19:16.6924677Z Get:46 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 xserver-common all 2:21.1.12-1ubuntu1.9 [35.0 kB]
+2026-10-26T05:19:16.7210699Z Get:47 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 xvfb amd64 2:21.1.12-1ubuntu1.9 [877 kB]
+2026-10-26T05:19:16.9999643Z Fetched 51.6 MB in 2s (24.4 MB/s)
+2026-10-26T05:19:17.0235982Z Selecting previously unselected package fonts-ipafont-gothic.
+2026-10-26T05:19:17.0559437Z (Reading database ... 
+2026-10-26T05:19:17.0560265Z (Reading database ... 5%
+2026-10-26T05:19:17.0560643Z (Reading database ... 10%
+2026-10-26T05:19:17.0560992Z (Reading database ... 15%
+2026-10-26T05:19:17.0561295Z (Reading database ... 20%
+2026-10-26T05:19:17.0561590Z (Reading database ... 25%
+2026-10-26T05:19:17.0561881Z (Reading database ... 30%
+2026-10-26T05:19:17.0563078Z (Reading database ... 35%
+2026-10-26T05:19:17.0563603Z (Reading database ... 40%
+2026-10-26T05:19:17.0563966Z (Reading database ... 45%
+2026-10-26T05:19:17.0564262Z (Reading database ... 50%
+2026-10-26T05:19:17.0605747Z (Reading database ... 55%
+2026-10-26T05:19:17.1225979Z (Reading database ... 60%
+2026-10-26T05:19:17.2631230Z (Reading database ... 65%
+2026-10-26T05:19:17.4653272Z (Reading database ... 70%
+2026-10-26T05:19:17.6652479Z (Reading database ... 75%
+2026-10-26T05:19:17.7380994Z (Reading database ... 80%
+2026-10-26T05:19:17.8695773Z (Reading database ... 85%
+2026-10-26T05:19:17.9789985Z (Reading database ... 90%
+2026-10-26T05:19:18.0968773Z (Reading database ... 95%
+2026-10-26T05:19:18.0969278Z (Reading database ... 100%
+2026-10-26T05:19:18.0970006Z (Reading database ... 203540 files and directories currently installed.)
+2026-10-26T05:19:18.1009779Z Preparing to unpack .../00-fonts-ipafont-gothic_00303-21ubuntu1_all.deb ...
+2026-10-26T05:19:18.1101663Z Unpacking fonts-ipafont-gothic (00303-21ubuntu1) ...
+2026-10-26T05:19:18.3524488Z Preparing to unpack .../01-libglib2.0-data_2.80.0-6ubuntu3.10_all.deb ...
+2026-10-26T05:19:18.3543910Z Unpacking libglib2.0-data (2.80.0-6ubuntu3.10) over (2.80.0-6ubuntu3.9) ...
+2026-10-26T05:19:18.3867348Z Preparing to unpack .../02-libglib2.0-bin_2.80.0-6ubuntu3.10_amd64.deb ...
+2026-10-26T05:19:18.3884232Z Unpacking libglib2.0-bin (2.80.0-6ubuntu3.10) over (2.80.0-6ubuntu3.9) ...
+2026-10-26T05:19:18.4401594Z Preparing to unpack .../03-gir1.2-glib-2.0_2.80.0-6ubuntu3.10_amd64.deb ...
+2026-10-26T05:19:18.4421287Z Unpacking gir1.2-glib-2.0:amd64 (2.80.0-6ubuntu3.10) over (2.80.0-6ubuntu3.9) ...
+2026-10-26T05:19:18.4801924Z Preparing to unpack .../04-libglib2.0-0t64_2.80.0-6ubuntu3.10_amd64.deb ...
+2026-10-26T05:19:18.4865848Z Unpacking libglib2.0-0t64:amd64 (2.80.0-6ubuntu3.10) over (2.80.0-6ubuntu3.9) ...
+2026-10-26T05:19:18.5288431Z Selecting previously unselected package fonts-freefont-ttf.
+2026-10-26T05:19:18.5414675Z Preparing to unpack .../05-fonts-freefont-ttf_20211204+svn4273-2_all.deb ...
+2026-10-26T05:19:18.5424976Z Unpacking fonts-freefont-ttf (20211204+svn4273-2) ...
+2026-10-26T05:19:18.6173322Z Selecting previously unselected package fonts-tlwg-loma-otf.
+2026-10-26T05:19:18.6297454Z Preparing to unpack .../06-fonts-tlwg-loma-otf_1%3a0.7.3-1_all.deb ...
+2026-10-26T05:19:18.6305585Z Unpacking fonts-tlwg-loma-otf (1:0.7.3-1) ...
+2026-10-26T05:19:18.6498925Z Selecting previously unselected package fonts-unifont.
+2026-10-26T05:19:18.6621992Z Preparing to unpack .../07-fonts-unifont_1%3a15.1.01-1build1_all.deb ...
+2026-10-26T05:19:18.6629855Z Unpacking fonts-unifont (1:15.1.01-1build1) ...
+2026-10-26T05:19:18.7654096Z Selecting previously unselected package fonts-wqy-zenhei.
+2026-10-26T05:19:18.7776635Z Preparing to unpack .../08-fonts-wqy-zenhei_0.9.45-8_all.deb ...
+2026-10-26T05:19:18.7879128Z Unpacking fonts-wqy-zenhei (0.9.45-8) ...
+2026-10-26T05:19:19.2517331Z Selecting previously unselected package libva2:amd64.
+2026-10-26T05:19:19.2641238Z Preparing to unpack .../09-libva2_2.20.0-2ubuntu0.2_amd64.deb ...
+2026-10-26T05:19:19.2648541Z Unpacking libva2:amd64 (2.20.0-2ubuntu0.2) ...
+2026-10-26T05:19:19.2856008Z Selecting previously unselected package libva-drm2:amd64.
+2026-10-26T05:19:19.2979390Z Preparing to unpack .../10-libva-drm2_2.20.0-2ubuntu0.2_amd64.deb ...
+2026-10-26T05:19:19.2986479Z Unpacking libva-drm2:amd64 (2.20.0-2ubuntu0.2) ...
+2026-10-26T05:19:19.3177362Z Selecting previously unselected package libva-x11-2:amd64.
+2026-10-26T05:19:19.3300508Z Preparing to unpack .../11-libva-x11-2_2.20.0-2ubuntu0.2_amd64.deb ...
+2026-10-26T05:19:19.3307654Z Unpacking libva-x11-2:amd64 (2.20.0-2ubuntu0.2) ...
+2026-10-26T05:19:19.3502165Z Selecting previously unselected package libvdpau1:amd64.
+2026-10-26T05:19:19.3625364Z Preparing to unpack .../12-libvdpau1_1.5-2build1_amd64.deb ...
+2026-10-26T05:19:19.3633026Z Unpacking libvdpau1:amd64 (1.5-2build1) ...
+2026-10-26T05:19:19.3834999Z Selecting previously unselected package libvpl2.
+2026-10-26T05:19:19.3957241Z Preparing to unpack .../13-libvpl2_2023.3.0-1build1_amd64.deb ...
+2026-10-26T05:19:19.3965077Z Unpacking libvpl2 (2023.3.0-1build1) ...
+2026-10-26T05:19:19.4189077Z Selecting previously unselected package ocl-icd-libopencl1:amd64.
+2026-10-26T05:19:19.4312405Z Preparing to unpack .../14-ocl-icd-libopencl1_2.3.2-1build1_amd64.deb ...
+2026-10-26T05:19:19.4319183Z Unpacking ocl-icd-libopencl1:amd64 (2.3.2-1build1) ...
+2026-10-26T05:19:19.4535336Z Selecting previously unselected package libavutil58:amd64.
+2026-10-26T05:19:19.4659213Z Preparing to unpack .../15-libavutil58_7%3a6.1.1-3ubuntu5_amd64.deb ...
+2026-10-26T05:19:19.4666226Z Unpacking libavutil58:amd64 (7:6.1.1-3ubuntu5) ...
+2026-10-26T05:19:19.4908273Z Selecting previously unselected package libcodec2-1.2:amd64.
+2026-10-26T05:19:19.5032815Z Preparing to unpack .../16-libcodec2-1.2_1.2.0-2build1_amd64.deb ...
+2026-10-26T05:19:19.5039646Z Unpacking libcodec2-1.2:amd64 (1.2.0-2build1) ...
+2026-10-26T05:19:19.5768677Z Selecting previously unselected package libdav1d7:amd64.
+2026-10-26T05:19:19.5892041Z Preparing to unpack .../17-libdav1d7_1.4.1-1build1_amd64.deb ...
+2026-10-26T05:19:19.5898681Z Unpacking libdav1d7:amd64 (1.4.1-1build1) ...
+2026-10-26T05:19:19.6153252Z Selecting previously unselected package libgsm1:amd64.
+2026-10-26T05:19:19.6277661Z Preparing to unpack .../18-libgsm1_1.0.22-1build1_amd64.deb ...
+2026-10-26T05:19:19.6285766Z Unpacking libgsm1:amd64 (1.0.22-1build1) ...
+2026-10-26T05:19:19.6484017Z Selecting previously unselected package libhwy1t64:amd64.
+2026-10-26T05:19:19.6607108Z Preparing to unpack .../19-libhwy1t64_1.0.7-8.1build1_amd64.deb ...
+2026-10-26T05:19:19.6614194Z Unpacking libhwy1t64:amd64 (1.0.7-8.1build1) ...
+2026-10-26T05:19:19.6907948Z Selecting previously unselected package libjxl0.7:amd64.
+2026-10-26T05:19:19.7033302Z Preparing to unpack .../20-libjxl0.7_0.7.0-10.2ubuntu6.1_amd64.deb ...
+2026-10-26T05:19:19.7042878Z Unpacking libjxl0.7:amd64 (0.7.0-10.2ubuntu6.1) ...
+2026-10-26T05:19:19.7360388Z Selecting previously unselected package libmp3lame0:amd64.
+2026-10-26T05:19:19.7483690Z Preparing to unpack .../21-libmp3lame0_3.100-6build1_amd64.deb ...
+2026-10-26T05:19:19.7491875Z Unpacking libmp3lame0:amd64 (3.100-6build1) ...
+2026-10-26T05:19:19.7696258Z Selecting previously unselected package libopus0:amd64.
+2026-10-26T05:19:19.7819306Z Preparing to unpack .../22-libopus0_1.4-1build1_amd64.deb ...
+2026-10-26T05:19:19.7826303Z Unpacking libopus0:amd64 (1.4-1build1) ...
+2026-10-26T05:19:19.8037202Z Selecting previously unselected package librav1e0:amd64.
+2026-10-26T05:19:19.8160172Z Preparing to unpack .../23-librav1e0_0.7.1-2_amd64.deb ...
+2026-10-26T05:19:19.8167120Z Unpacking librav1e0:amd64 (0.7.1-2) ...
+2026-10-26T05:19:19.8487631Z Selecting previously unselected package librsvg2-2:amd64.
+2026-10-26T05:19:19.8610947Z Preparing to unpack .../24-librsvg2-2_2.58.0+dfsg-1ubuntu0.1_amd64.deb ...
+2026-10-26T05:19:19.8618441Z Unpacking librsvg2-2:amd64 (2.58.0+dfsg-1ubuntu0.1) ...
+2026-10-26T05:19:19.9087668Z Selecting previously unselected package libshine3:amd64.
+2026-10-26T05:19:19.9213268Z Preparing to unpack .../25-libshine3_3.1.1-2build1_amd64.deb ...
+2026-10-26T05:19:19.9220433Z Unpacking libshine3:amd64 (3.1.1-2build1) ...
+2026-10-26T05:19:19.9410634Z Selecting previously unselected package libspeex1:amd64.
+2026-10-26T05:19:19.9535099Z Preparing to unpack .../26-libspeex1_1.2.1-2ubuntu2.24.04.1_amd64.deb ...
+2026-10-26T05:19:19.9547219Z Unpacking libspeex1:amd64 (1.2.1-2ubuntu2.24.04.1) ...
+2026-10-26T05:19:19.9738180Z Selecting previously unselected package libsvtav1enc1d1:amd64.
+2026-10-26T05:19:19.9859235Z Preparing to unpack .../27-libsvtav1enc1d1_1.7.0+dfsg-2build1_amd64.deb ...
+2026-10-26T05:19:19.9866697Z Unpacking libsvtav1enc1d1:amd64 (1.7.0+dfsg-2build1) ...
+2026-10-26T05:19:20.0316830Z Selecting previously unselected package libsoxr0:amd64.
+2026-10-26T05:19:20.0441437Z Preparing to unpack .../28-libsoxr0_0.1.3-4build3_amd64.deb ...
+2026-10-26T05:19:20.0448280Z Unpacking libsoxr0:amd64 (0.1.3-4build3) ...
+2026-10-26T05:19:20.0662900Z Selecting previously unselected package libswresample4:amd64.
+2026-10-26T05:19:20.0786367Z Preparing to unpack .../29-libswresample4_7%3a6.1.1-3ubuntu5_amd64.deb ...
+2026-10-26T05:19:20.0793932Z Unpacking libswresample4:amd64 (7:6.1.1-3ubuntu5) ...
+2026-10-26T05:19:20.0994122Z Selecting previously unselected package libtheora0:amd64.
+2026-10-26T05:19:20.1117306Z Preparing to unpack .../30-libtheora0_1.1.1+dfsg.1-16.1build3_amd64.deb ...
+2026-10-26T05:19:20.1124776Z Unpacking libtheora0:amd64 (1.1.1+dfsg.1-16.1build3) ...
+2026-10-26T05:19:20.1350466Z Selecting previously unselected package libtwolame0:amd64.
+2026-10-26T05:19:20.1476563Z Preparing to unpack .../31-libtwolame0_0.4.0-2build3_amd64.deb ...
+2026-10-26T05:19:20.1483498Z Unpacking libtwolame0:amd64 (0.4.0-2build3) ...
+2026-10-26T05:19:20.1685002Z Selecting previously unselected package libvorbisenc2:amd64.
+2026-10-26T05:19:20.1810844Z Preparing to unpack .../32-libvorbisenc2_1.3.7-1build3_amd64.deb ...
+2026-10-26T05:19:20.1817470Z Unpacking libvorbisenc2:amd64 (1.3.7-1build3) ...
+2026-10-26T05:19:20.2030070Z Selecting previously unselected package libvpx9:amd64.
+2026-10-26T05:19:20.2152170Z Preparing to unpack .../33-libvpx9_1.14.0-1ubuntu2.3_amd64.deb ...
+2026-10-26T05:19:20.2159256Z Unpacking libvpx9:amd64 (1.14.0-1ubuntu2.3) ...
+2026-10-26T05:19:20.2464120Z Selecting previously unselected package libx264-164:amd64.
+2026-10-26T05:19:20.2586789Z Preparing to unpack .../34-libx264-164_2%3a0.164.3108+git31e19f9-1_amd64.deb ...
+2026-10-26T05:19:20.2593831Z Unpacking libx264-164:amd64 (2:0.164.3108+git31e19f9-1) ...
+2026-10-26T05:19:20.2863184Z Selecting previously unselected package libx265-199:amd64.
+2026-10-26T05:19:20.2985313Z Preparing to unpack .../35-libx265-199_3.5-2build1_amd64.deb ...
+2026-10-26T05:19:20.2992968Z Unpacking libx265-199:amd64 (3.5-2build1) ...
+2026-10-26T05:19:20.3620641Z Selecting previously unselected package libxvidcore4:amd64.
+2026-10-26T05:19:20.3744805Z Preparing to unpack .../36-libxvidcore4_2%3a1.3.7-1build1_amd64.deb ...
+2026-10-26T05:19:20.3752130Z Unpacking libxvidcore4:amd64 (2:1.3.7-1build1) ...
+2026-10-26T05:19:20.3960017Z Selecting previously unselected package libzvbi-common.
+2026-10-26T05:19:20.4083054Z Preparing to unpack .../37-libzvbi-common_0.2.42-2_all.deb ...
+2026-10-26T05:19:20.4089154Z Unpacking libzvbi-common (0.2.42-2) ...
+2026-10-26T05:19:20.4372518Z Selecting previously unselected package libzvbi0t64:amd64.
+2026-10-26T05:19:20.4496686Z Preparing to unpack .../38-libzvbi0t64_0.2.42-2_amd64.deb ...
+2026-10-26T05:19:20.4504294Z Unpacking libzvbi0t64:amd64 (0.2.42-2) ...
+2026-10-26T05:19:20.4737475Z Selecting previously unselected package libavcodec60:amd64.
+2026-10-26T05:19:20.4860835Z Preparing to unpack .../39-libavcodec60_7%3a6.1.1-3ubuntu5_amd64.deb ...
+2026-10-26T05:19:20.4868704Z Unpacking libavcodec60:amd64 (7:6.1.1-3ubuntu5) ...
+2026-10-26T05:19:20.5626736Z Selecting previously unselected package xfonts-encodings.
+2026-10-26T05:19:20.5750501Z Preparing to unpack .../40-xfonts-encodings_1%3a1.0.5-0ubuntu2_all.deb ...
+2026-10-26T05:19:20.5757381Z Unpacking xfonts-encodings (1:1.0.5-0ubuntu2) ...
+2026-10-26T05:19:20.6034009Z Selecting previously unselected package xfonts-utils.
+2026-10-26T05:19:20.6159152Z Preparing to unpack .../41-xfonts-utils_1%3a7.7+6build3_amd64.deb ...
+2026-10-26T05:19:20.6167329Z Unpacking xfonts-utils (1:7.7+6build3) ...
+2026-10-26T05:19:20.6490672Z Selecting previously unselected package xfonts-cyrillic.
+2026-10-26T05:19:20.6614323Z Preparing to unpack .../42-xfonts-cyrillic_1%3a1.0.5+nmu1_all.deb ...
+2026-10-26T05:19:20.6621196Z Unpacking xfonts-cyrillic (1:1.0.5+nmu1) ...
+2026-10-26T05:19:20.6953868Z Selecting previously unselected package xfonts-scalable.
+2026-10-26T05:19:20.7076103Z Preparing to unpack .../43-xfonts-scalable_1%3a1.0.3-1.3_all.deb ...
+2026-10-26T05:19:20.7085050Z Unpacking xfonts-scalable (1:1.0.3-1.3) ...
+2026-10-26T05:19:20.7441465Z Preparing to unpack .../44-xserver-common_2%3a21.1.12-1ubuntu1.9_all.deb ...
+2026-10-26T05:19:20.7461481Z Unpacking xserver-common (2:21.1.12-1ubuntu1.9) over (2:21.1.12-1ubuntu1.8) ...
+2026-10-26T05:19:20.7792299Z Preparing to unpack .../45-xvfb_2%3a21.1.12-1ubuntu1.9_amd64.deb ...
+2026-10-26T05:19:20.7846930Z Unpacking xvfb (2:21.1.12-1ubuntu1.9) over (2:21.1.12-1ubuntu1.8) ...
+2026-10-26T05:19:20.8443778Z Setting up libhwy1t64:amd64 (1.0.7-8.1build1) ...
+2026-10-26T05:19:20.8464956Z Setting up libspeex1:amd64 (1.2.1-2ubuntu2.24.04.1) ...
+2026-10-26T05:19:20.8481549Z Setting up libshine3:amd64 (3.1.1-2build1) ...
+2026-10-26T05:19:20.8503648Z Setting up libvpl2 (2023.3.0-1build1) ...
+2026-10-26T05:19:20.9635466Z Setting up libx264-164:amd64 (2:0.164.3108+git31e19f9-1) ...
+2026-10-26T05:19:20.9653097Z Setting up libtwolame0:amd64 (0.4.0-2build3) ...
+2026-10-26T05:19:20.9670342Z Setting up libgsm1:amd64 (1.0.22-1build1) ...
+2026-10-26T05:19:20.9687441Z Setting up libsoxr0:amd64 (0.1.3-4build3) ...
+2026-10-26T05:19:20.9706322Z Setting up libcodec2-1.2:amd64 (1.2.0-2build1) ...
+2026-10-26T05:19:20.9724126Z Setting up fonts-wqy-zenhei (0.9.45-8) ...
+2026-10-26T05:19:20.9838824Z Setting up fonts-freefont-ttf (20211204+svn4273-2) ...
+2026-10-26T05:19:20.9858572Z Setting up libsvtav1enc1d1:amd64 (1.7.0+dfsg-2build1) ...
+2026-10-26T05:19:20.9876154Z Setting up libxvidcore4:amd64 (2:1.3.7-1build1) ...
+2026-10-26T05:19:20.9893875Z Setting up librav1e0:amd64 (0.7.1-2) ...
+2026-10-26T05:19:20.9914533Z Setting up libglib2.0-0t64:amd64 (2.80.0-6ubuntu3.10) ...
+2026-10-26T05:19:21.0019149Z Setting up libglib2.0-data (2.80.0-6ubuntu3.10) ...
+2026-10-26T05:19:21.0037534Z Setting up fonts-tlwg-loma-otf (1:0.7.3-1) ...
+2026-10-26T05:19:21.0054861Z Setting up libva2:amd64 (2.20.0-2ubuntu0.2) ...
+2026-10-26T05:19:21.0077547Z Setting up xfonts-encodings (1:1.0.5-0ubuntu2) ...
+2026-10-26T05:19:21.0096693Z Setting up libopus0:amd64 (1.4-1build1) ...
+2026-10-26T05:19:21.0117178Z Setting up gir1.2-glib-2.0:amd64 (2.80.0-6ubuntu3.10) ...
+2026-10-26T05:19:21.0136815Z Setting up libjxl0.7:amd64 (0.7.0-10.2ubuntu6.1) ...
+2026-10-26T05:19:21.0155999Z Setting up libx265-199:amd64 (3.5-2build1) ...
+2026-10-26T05:19:21.0175715Z Setting up libvpx9:amd64 (1.14.0-1ubuntu2.3) ...
+2026-10-26T05:19:21.0194458Z Setting up libdav1d7:amd64 (1.4.1-1build1) ...
+2026-10-26T05:19:21.0213172Z Setting up libva-drm2:amd64 (2.20.0-2ubuntu0.2) ...
+2026-10-26T05:19:21.0236973Z Setting up fonts-ipafont-gothic (00303-21ubuntu1) ...
+2026-10-26T05:19:21.0301836Z update-alternatives: using /usr/share/fonts/opentype/ipafont-gothic/ipag.ttf to provide /usr/share/fonts/truetype/fonts-japanese-gothic.ttf (fonts-japanese-gothic.ttf) in auto mode
+2026-10-26T05:19:21.0317027Z Setting up ocl-icd-libopencl1:amd64 (2.3.2-1build1) ...
+2026-10-26T05:19:21.0337031Z Setting up libvdpau1:amd64 (1.5-2build1) ...
+2026-10-26T05:19:21.0362782Z Setting up libtheora0:amd64 (1.1.1+dfsg.1-16.1build3) ...
+2026-10-26T05:19:21.0383122Z Setting up xserver-common (2:21.1.12-1ubuntu1.9) ...
+2026-10-26T05:19:21.0401739Z Setting up libva-x11-2:amd64 (2.20.0-2ubuntu0.2) ...
+2026-10-26T05:19:21.0420110Z Setting up libzvbi-common (0.2.42-2) ...
+2026-10-26T05:19:21.0438326Z Setting up libmp3lame0:amd64 (3.100-6build1) ...
+2026-10-26T05:19:21.0457174Z Setting up libvorbisenc2:amd64 (1.3.7-1build3) ...
+2026-10-26T05:19:21.0476156Z Setting up fonts-unifont (1:15.1.01-1build1) ...
+2026-10-26T05:19:21.0493226Z Setting up libzvbi0t64:amd64 (0.2.42-2) ...
+2026-10-26T05:19:21.0510760Z Setting up xvfb (2:21.1.12-1ubuntu1.9) ...
+2026-10-26T05:19:21.0528319Z Setting up libglib2.0-bin (2.80.0-6ubuntu3.10) ...
+2026-10-26T05:19:21.0584433Z Setting up libavutil58:amd64 (7:6.1.1-3ubuntu5) ...
+2026-10-26T05:19:21.0606959Z Setting up xfonts-utils (1:7.7+6build3) ...
+2026-10-26T05:19:21.0649522Z Setting up librsvg2-2:amd64 (2.58.0+dfsg-1ubuntu0.1) ...
+2026-10-26T05:19:21.0671081Z Setting up libswresample4:amd64 (7:6.1.1-3ubuntu5) ...
+2026-10-26T05:19:21.0692032Z Setting up libavcodec60:amd64 (7:6.1.1-3ubuntu5) ...
+2026-10-26T05:19:21.0711774Z Setting up xfonts-cyrillic (1:1.0.5+nmu1) ...
+2026-10-26T05:19:21.1008715Z Setting up xfonts-scalable (1:1.0.3-1.3) ...
+2026-10-26T05:19:21.1285973Z Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+2026-10-26T05:19:21.1681511Z Processing triggers for man-db (2.12.0-4build2) ...
+2026-10-26T05:19:21.1704726Z Not building database; man-db/auto-update is not 'true'.
+2026-10-26T05:19:21.1717105Z Processing triggers for fontconfig (2.15.0-1.1ubuntu2) ...
+2026-10-26T05:19:21.8322305Z 
+2026-10-26T05:19:21.8323174Z Running kernel seems to be up-to-date.
+2026-10-26T05:19:21.8323578Z 
+2026-10-26T05:19:21.8323754Z Restarting services...
+2026-10-26T05:19:21.8767479Z  systemctl restart packagekit.service php8.3-fpm.service polkit.service udisks2.service
+2026-10-26T05:19:22.0073473Z 
+2026-10-26T05:19:22.0074732Z Service restarts being deferred:
+2026-10-26T05:19:22.0093679Z  systemctl restart ModemManager.service
+2026-10-26T05:19:22.0094418Z  systemctl restart networkd-dispatcher.service
+2026-10-26T05:19:22.0094856Z 
+2026-10-26T05:19:22.0095134Z No containers need to be restarted.
+2026-10-26T05:19:22.0095487Z 
+2026-10-26T05:19:22.0095860Z No user sessions are running outdated binaries.
+2026-10-26T05:19:22.0096275Z 
+2026-10-26T05:19:22.0096849Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2026-10-26T05:19:22.8880137Z Downloading Firefox 155.0 (playwright firefox v1543) from https://cdn.playwright.dev/dbazure/download/playwright/builds/firefox/1543/firefox-ubuntu-24.04.zip
+2026-10-26T05:19:23.2855500Z |                                                                                |   0% of 109.5 MiB
+2026-10-26T05:19:23.4740199Z |■■■■■■■■                                                                        |  10% of 109.5 MiB
+2026-10-26T05:19:23.5394892Z |■■■■■■■■■■■■■■■■                                                                |  20% of 109.5 MiB
+2026-10-26T05:19:23.5884437Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 109.5 MiB
+2026-10-26T05:19:23.6394395Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 109.5 MiB
+2026-10-26T05:19:23.6979176Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 109.5 MiB
+2026-10-26T05:19:23.7716648Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 109.5 MiB
+2026-10-26T05:19:23.8325824Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 109.5 MiB
+2026-10-26T05:19:23.8934411Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 109.5 MiB
+2026-10-26T05:19:23.9480856Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 109.5 MiB
+2026-10-26T05:19:24.0104377Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 109.5 MiB
+2026-10-26T05:19:26.2098386Z Firefox 155.0 (playwright firefox v1543) downloaded to /home/runner/.cache/ms-playwright/firefox-1543
+2026-10-26T05:19:26.2102290Z Downloading FFmpeg (playwright ffmpeg v1011) from https://cdn.playwright.dev/dbazure/download/playwright/builds/ffmpeg/1011/ffmpeg-linux.zip
+2026-10-26T05:19:26.5898764Z |                                                                                |   0% of 2.3 MiB
+2026-10-26T05:19:26.6294549Z |■■■■■■■■                                                                        |  10% of 2.3 MiB
+2026-10-26T05:19:26.6450039Z |■■■■■■■■■■■■■■■■                                                                |  20% of 2.3 MiB
+2026-10-26T05:19:26.6586595Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 2.3 MiB
+2026-10-26T05:19:26.6696181Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 2.3 MiB
+2026-10-26T05:19:26.6726751Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 2.3 MiB
+2026-10-26T05:19:26.6847095Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 2.3 MiB
+2026-10-26T05:19:26.6866561Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 2.3 MiB
+2026-10-26T05:19:26.6886208Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 2.3 MiB
+2026-10-26T05:19:26.6988899Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 2.3 MiB
+2026-10-26T05:19:26.6999508Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 2.3 MiB
+2026-10-26T05:19:26.7618480Z FFmpeg (playwright ffmpeg v1011) downloaded to /home/runner/.cache/ms-playwright/ffmpeg-1011
+2026-10-26T05:19:26.8903657Z ##[group]Run npm run test:network:browser
+2026-10-26T05:19:26.8904042Z [36;1mnpm run test:network:browser[0m
+2026-10-26T05:19:26.8965820Z shell: /usr/bin/bash -e {0}
+2026-10-26T05:19:26.8966077Z env:
+2026-10-26T05:19:26.8966277Z   GIT_CONFIG_COUNT: 1
+2026-10-26T05:19:26.8966522Z   GIT_CONFIG_KEY_0: init.defaultBranch
+2026-10-26T05:19:26.8966812Z   GIT_CONFIG_VALUE_0: main
+2026-10-26T05:19:26.8967048Z   ENGINE: firefox
+2026-10-26T05:19:26.8967300Z   CAPTURE_DIR: browser-results/screenshots/editor
+2026-10-26T05:19:26.8967613Z ##[endgroup]
+2026-10-26T05:19:27.0047581Z 
+2026-10-26T05:19:27.0048104Z > konard.github.io@0.1.0 test:network:browser
+2026-10-26T05:19:27.0048911Z > node experiments/network-e2e.mjs
+2026-10-26T05:19:27.0049163Z 
+2026-10-26T05:19:27.5040705Z [33m(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+2026-10-26T05:19:27.5042855Z   - import "./fields" without a file extension (src/settings/schema.js:15:32). Add the file extension
+2026-10-26T05:19:27.5044315Z   - import "./schema.background" without a file extension (src/settings/schema.js:16:37). Add the file extension
+2026-10-26T05:19:27.5045731Z   - import "./schema.layers" without a file extension (src/settings/schema.js:17:32). Add the file extension
+2026-10-26T05:19:27.5047219Z   - import "./schema.skins" without a file extension (src/settings/schema.js:18:31). Add the file extension
+2026-10-26T05:19:27.5048596Z   - import "./schema.sound" without a file extension (src/settings/schema.js:19:31). Add the file extension
+2026-10-26T05:19:27.5049943Z   - import "./schema.skins" without a file extension (src/settings/schema.js:21:33). Add the file extension
+2026-10-26T05:19:27.5051463Z   - import "./fields" without a file extension (src/settings/schema.sound.js:7:47). Add the file extension
+2026-10-26T05:19:27.5053081Z   - import "./fields" without a file extension (src/settings/schema.background.js:3:54). Add the file extension
+2026-10-26T05:19:27.5054522Z   - import "./fields" without a file extension (src/settings/schema.layers.js:8:54). Add the file extension
+2026-10-26T05:19:27.5055748Z   - import "../skins.frames" without a file extension (src/settings/schema.skins.js:3:25). Add the file extension
+2026-10-26T05:19:27.5056577Z   - import "./fields" without a file extension (src/settings/schema.skins.js:4:47). Add the file extension
+2026-10-26T05:19:27.5057383Z Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.[39m
+2026-10-26T05:19:30.5717373Z firefox: gallery hover, focus and navigation passed
+2026-10-26T05:19:32.1314010Z firefox: notation editing and invalid input passed
+2026-10-26T05:19:33.7371856Z firefox: live preview and SVG styling passed
+2026-10-26T05:19:34.4050540Z firefox: overlap reduction and applied turns/gaps passed
+2026-10-26T05:19:35.1558311Z firefox: shared URL renders the same SVG in a fresh browser
+2026-10-26T05:19:35.5543955Z firefox: verified svg download (1153 bytes)
+2026-10-26T05:19:35.6386265Z firefox: verified png download (42579 bytes)
+2026-10-26T05:19:35.7991942Z firefox: verified jpg download (60821 bytes)
+2026-10-26T05:19:35.9667567Z firefox: verified webp download (23376 bytes)
+2026-10-26T05:19:36.0299727Z firefox: verified lino download (27 bytes)
+2026-10-26T05:19:39.8627166Z firefox: network editor browser checks passed
+2026-10-26T05:19:40.2299866Z ##[group]Run npm run test:network:issue19
+2026-10-26T05:19:40.2300293Z [36;1mnpm run test:network:issue19[0m
+2026-10-26T05:19:40.2362152Z shell: /usr/bin/bash -e {0}
+2026-10-26T05:19:40.2362421Z env:
+2026-10-26T05:19:40.2362825Z   GIT_CONFIG_COUNT: 1
+2026-10-26T05:19:40.2363145Z   GIT_CONFIG_KEY_0: init.defaultBranch
+2026-10-26T05:19:40.2363453Z   GIT_CONFIG_VALUE_0: main
+2026-10-26T05:19:40.2363690Z   ENGINE: firefox
+2026-10-26T05:19:40.2363952Z   CAPTURE_DIR: browser-results/screenshots/issue19
+2026-10-26T05:19:40.2364334Z   RESULT_DIR: browser-results/data/issue19
+2026-10-26T05:19:40.2364630Z ##[endgroup]
+2026-10-26T05:19:40.3371738Z 
+2026-10-26T05:19:40.3372173Z > konard.github.io@0.1.0 test:network:issue19
+2026-10-26T05:19:40.3373008Z > node experiments/issue-19-browser.mjs
+2026-10-26T05:19:40.3373293Z 
+2026-10-26T05:19:40.8362952Z [33m(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+2026-10-26T05:19:40.8364823Z   - import "./fields" without a file extension (src/settings/schema.js:15:32). Add the file extension
+2026-10-26T05:19:40.8366312Z   - import "./schema.background" without a file extension (src/settings/schema.js:16:37). Add the file extension
+2026-10-26T05:19:40.8368218Z   - import "./schema.layers" without a file extension (src/settings/schema.js:17:32). Add the file extension
+2026-10-26T05:19:40.8369684Z   - import "./schema.skins" without a file extension (src/settings/schema.js:18:31). Add the file extension
+2026-10-26T05:19:40.8371150Z   - import "./schema.sound" without a file extension (src/settings/schema.js:19:31). Add the file extension
+2026-10-26T05:19:40.8372904Z   - import "./schema.skins" without a file extension (src/settings/schema.js:21:33). Add the file extension
+2026-10-26T05:19:40.8374447Z   - import "./fields" without a file extension (src/settings/schema.background.js:3:54). Add the file extension
+2026-10-26T05:19:40.8375962Z   - import "./fields" without a file extension (src/settings/schema.sound.js:7:47). Add the file extension
+2026-10-26T05:19:40.8377439Z   - import "../skins.frames" without a file extension (src/settings/schema.skins.js:3:25). Add the file extension
+2026-10-26T05:19:40.8378879Z   - import "./fields" without a file extension (src/settings/schema.layers.js:8:54). Add the file extension
+2026-10-26T05:19:40.8380331Z   - import "./fields" without a file extension (src/settings/schema.skins.js:4:47). Add the file extension
+2026-10-26T05:19:40.8381885Z Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.[39m
+2026-10-26T05:19:42.8794897Z firefox: self-loop leaving/entering angles, curvature and bend
+2026-10-26T05:19:47.8054810Z firefox: 120-event drag, repeated releases, history SecurityError and retry
+2026-10-26T05:19:48.2414271Z firefox: independent marker offsets and ring cuts survive URL round trip
+2026-10-26T05:19:49.8567762Z firefox: 17 links, seven distinct placements and large-notation reload
+2026-10-26T05:19:50.4991532Z firefox: both complete issue example URLs
+2026-10-26T05:19:50.8336073Z firefox: actual PNG clipboard write completed from a trusted click
+2026-10-26T05:19:51.1195326Z firefox: PNG, JPEG and WebP exports
+2026-10-26T05:19:53.1355900Z firefox: touch gesture debounce, 100-link mobile editor and no horizontal overflow
+2026-10-26T05:19:53.5141314Z ##[group]Run npm run test:network:issue21
+2026-10-26T05:19:53.5141683Z [36;1mnpm run test:network:issue21[0m
+2026-10-26T05:19:53.5203258Z shell: /usr/bin/bash -e {0}
+2026-10-26T05:19:53.5203516Z env:
+2026-10-26T05:19:53.5203713Z   GIT_CONFIG_COUNT: 1
+2026-10-26T05:19:53.5203967Z   GIT_CONFIG_KEY_0: init.defaultBranch
+2026-10-26T05:19:53.5204258Z   GIT_CONFIG_VALUE_0: main
+2026-10-26T05:19:53.5204504Z   ENGINE: firefox
+2026-10-26T05:19:53.5204768Z   CAPTURE_DIR: browser-results/screenshots/issue21
+2026-10-26T05:19:53.5205125Z   RESULT_DIR: browser-results/data/issue21
+2026-10-26T05:19:53.5205421Z ##[endgroup]
+2026-10-26T05:19:53.6218669Z 
+2026-10-26T05:19:53.6219157Z > konard.github.io@0.1.0 test:network:issue21
+2026-10-26T05:19:53.6219700Z > node experiments/issue-21-browser.mjs
+2026-10-26T05:19:53.6219961Z 
+2026-10-26T05:19:54.1171907Z [33m(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+2026-10-26T05:19:54.1193964Z   - import "./fields" without a file extension (src/settings/schema.js:15:32). Add the file extension
+2026-10-26T05:19:54.1204608Z   - import "./schema.background" without a file extension (src/settings/schema.js:16:37). Add the file extension
+2026-10-26T05:19:54.1224719Z   - import "./schema.layers" without a file extension (src/settings/schema.js:17:32). Add the file extension
+2026-10-26T05:19:54.1243421Z   - import "./schema.skins" without a file extension (src/settings/schema.js:18:31). Add the file extension
+2026-10-26T05:19:54.1245097Z   - import "./schema.sound" without a file extension (src/settings/schema.js:19:31). Add the file extension
+2026-10-26T05:19:54.1246891Z   - import "./schema.skins" without a file extension (src/settings/schema.js:21:33). Add the file extension
+2026-10-26T05:19:54.1247979Z   - import "./fields" without a file extension (src/settings/schema.sound.js:7:47). Add the file extension
+2026-10-26T05:19:54.1249443Z   - import "../skins.frames" without a file extension (src/settings/schema.skins.js:3:25). Add the file extension
+2026-10-26T05:19:54.1250550Z   - import "./fields" without a file extension (src/settings/schema.layers.js:8:54). Add the file extension
+2026-10-26T05:19:54.1251591Z   - import "./fields" without a file extension (src/settings/schema.skins.js:4:47). Add the file extension
+2026-10-26T05:19:54.1252716Z   - import "./fields" without a file extension (src/settings/schema.background.js:3:54). Add the file extension
+2026-10-26T05:19:54.1254285Z Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.[39m
+2026-10-26T05:19:57.7856254Z firefox: both supplied URLs: explicit settings, controls, share and reload
+2026-10-26T05:19:59.3197404Z firefox: five representative default editor configurations
+2026-10-26T05:20:01.3578684Z firefox: gallery hover and navigation preserve dark/light link colors
+2026-10-26T05:20:02.3335667Z firefox: theory example navigation also preserves light-theme colors
+2026-10-26T05:20:02.7111980Z firefox: exported SVG equals preview
+2026-10-26T05:20:03.1124265Z firefox: mobile preview fits viewport
+2026-10-26T05:20:03.5048179Z ##[group]Run npm run test:network:issue23
+2026-10-26T05:20:03.5048533Z [36;1mnpm run test:network:issue23[0m
+2026-10-26T05:20:03.5110209Z shell: /usr/bin/bash -e {0}
+2026-10-26T05:20:03.5110468Z env:
+2026-10-26T05:20:03.5110690Z   GIT_CONFIG_COUNT: 1
+2026-10-26T05:20:03.5110944Z   GIT_CONFIG_KEY_0: init.defaultBranch
+2026-10-26T05:20:03.5111234Z   GIT_CONFIG_VALUE_0: main
+2026-10-26T05:20:03.5111473Z   ENGINE: firefox
+2026-10-26T05:20:03.5111742Z   CAPTURE_DIR: browser-results/screenshots/issue23
+2026-10-26T05:20:03.5112089Z   RESULT_DIR: browser-results/data/issue23
+2026-10-26T05:20:03.5112378Z ##[endgroup]
+2026-10-26T05:20:03.6147219Z 
+2026-10-26T05:20:03.6147957Z > konard.github.io@0.1.0 test:network:issue23
+2026-10-26T05:20:03.6148809Z > node experiments/issue-23-browser.mjs
+2026-10-26T05:20:03.6149330Z 
+2026-10-26T05:20:04.1208968Z [33m(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+2026-10-26T05:20:04.1210420Z   - import "./fields" without a file extension (src/settings/schema.js:15:32). Add the file extension
+2026-10-26T05:20:04.1211644Z   - import "./schema.background" without a file extension (src/settings/schema.js:16:37). Add the file extension
+2026-10-26T05:20:04.1213027Z   - import "./schema.layers" without a file extension (src/settings/schema.js:17:32). Add the file extension
+2026-10-26T05:20:04.1214271Z   - import "./schema.skins" without a file extension (src/settings/schema.js:18:31). Add the file extension
+2026-10-26T05:20:04.1215646Z   - import "./schema.sound" without a file extension (src/settings/schema.js:19:31). Add the file extension
+2026-10-26T05:20:04.1217042Z   - import "./schema.skins" without a file extension (src/settings/schema.js:21:33). Add the file extension
+2026-10-26T05:20:04.1218423Z   - import "./fields" without a file extension (src/settings/schema.background.js:3:54). Add the file extension
+2026-10-26T05:20:04.1219237Z   - import "./fields" without a file extension (src/settings/schema.layers.js:8:54). Add the file extension
+2026-10-26T05:20:04.1220005Z   - import "./fields" without a file extension (src/settings/schema.sound.js:7:47). Add the file extension
+2026-10-26T05:20:04.1221002Z   - import "../skins.frames" without a file extension (src/settings/schema.skins.js:3:25). Add the file extension
+2026-10-26T05:20:04.1221813Z   - import "./fields" without a file extension (src/settings/schema.skins.js:4:47). Add the file extension
+2026-10-26T05:20:04.1223560Z Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.[39m
+2026-10-26T05:20:05.9453229Z firefox: neutral defaults for free links
+2026-10-26T05:20:06.6671599Z firefox: both displaced bars agree with native SVG path position and tangent
+2026-10-26T05:20:08.1171382Z firefox: individual gaps and gap-only solver survive apply/share/reload
+2026-10-26T05:20:08.9055833Z {"cards":243,"filtered":66,"y":906.7166748046875,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+2026-10-26T05:20:09.3099045Z {"cards":729,"filtered":176,"y":3304.716552734375,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+2026-10-26T05:20:09.8971509Z {"cards":1215,"filtered":176,"y":7637.716796875,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+2026-10-26T05:20:10.1168559Z {"cards":1215,"filtered":165,"y":6306.716796875,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+2026-10-26T05:20:10.3911391Z {"cards":1215,"filtered":104,"y":11768.716796875,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+2026-10-26T05:20:10.6042903Z {"cards":1215,"filtered":165,"y":3029.716552734375,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+2026-10-26T05:20:10.8173045Z {"cards":1215,"filtered":104,"y":11768.716796875,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+2026-10-26T05:20:11.7045906Z node:internal/modules/run_main:107
+2026-10-26T05:20:11.7046553Z     triggerUncaughtException(
+2026-10-26T05:20:11.7047063Z     ^
+2026-10-26T05:20:11.7047322Z 
+2026-10-26T05:20:11.7048675Z AssertionError [ERR_ASSERTION]: glass: header blur must affect actual pixels (0)
+2026-10-26T05:20:11.7050031Z     at file:///home/runner/work/konard.github.io/konard.github.io/experiments/issue-23-browser.mjs:196:5 {
+2026-10-26T05:20:11.7050889Z   generatedMessage: false,
+2026-10-26T05:20:11.7051292Z   code: 'ERR_ASSERTION',
+2026-10-26T05:20:11.7051671Z   actual: false,
+2026-10-26T05:20:11.7052004Z   expected: true,
+2026-10-26T05:20:11.7052336Z   operator: '==',
+2026-10-26T05:20:11.7052911Z   diff: 'simple'
+2026-10-26T05:20:11.7053238Z }
+2026-10-26T05:20:11.7053403Z 
+2026-10-26T05:20:11.7053540Z Node.js v24.21.0
+2026-10-26T05:20:11.7275019Z ##[error]Process completed with exit code 1.
+2026-10-26T05:20:11.7376786Z ##[group]Run actions/upload-artifact@v7
+2026-10-26T05:20:11.7377107Z with:
+2026-10-26T05:20:11.7377307Z   name: network-firefox
+2026-10-26T05:20:11.7377543Z   path: browser-results/
+2026-10-26T05:20:11.7377782Z   if-no-files-found: warn
+2026-10-26T05:20:11.7378014Z   compression-level: 6
+2026-10-26T05:20:11.7378231Z   overwrite: false
+2026-10-26T05:20:11.7378445Z   include-hidden-files: false
+2026-10-26T05:20:11.7378681Z   archive: true
+2026-10-26T05:20:11.7378877Z env:
+2026-10-26T05:20:11.7379059Z   GIT_CONFIG_COUNT: 1
+2026-10-26T05:20:11.7379287Z   GIT_CONFIG_KEY_0: init.defaultBranch
+2026-10-26T05:20:11.7379558Z   GIT_CONFIG_VALUE_0: main
+2026-10-26T05:20:11.7379786Z   ENGINE: firefox
+2026-10-26T05:20:11.7379983Z ##[endgroup]
+2026-10-26T05:20:11.8900131Z With the provided path, there will be 43 files uploaded
+2026-10-26T05:20:11.8913478Z Artifact name is valid!
+2026-10-26T05:20:11.8914089Z Root directory input is valid!
+2026-10-26T05:20:12.1796039Z Uploading artifact: network-firefox.zip
+2026-10-26T05:20:12.1845925Z Beginning upload of artifact content to blob storage
+2026-10-26T05:20:12.8339796Z Uploaded bytes 4866845
+2026-10-26T05:20:12.8699481Z Finished uploading artifact content to blob storage!
+2026-10-26T05:20:12.8701402Z SHA256 digest of uploaded artifact is 2006c4f57788e1e4ba9f75be1d50b814d2925bd00b857882c0db790e40e26b91
+2026-10-26T05:20:12.8702893Z Finalizing artifact upload
+2026-10-26T05:20:13.3596986Z Artifact network-firefox successfully finalized. Artifact ID 12629142252
+2026-10-26T05:20:13.3598207Z Artifact network-firefox has been successfully uploaded! Final size is 4866845 bytes. Artifact ID is 12629142252
+2026-10-26T05:20:13.3601659Z Artifact download URL: https://github.com/konard/konard.github.io/actions/runs/40273493595/artifacts/12629142252
+2026-10-26T05:20:13.3816895Z Post job cleanup.
+2026-10-26T05:20:13.4661187Z [command]/usr/bin/git version
+2026-10-26T05:20:13.4708389Z git version 2.55.0
+2026-10-26T05:20:13.4750142Z Temporarily overriding HOME='/home/runner/work/_temp/29ec0133-86a2-465d-92cd-4e3fb66da865' before making global git config changes
+2026-10-26T05:20:13.4751999Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-26T05:20:13.4756552Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/konard.github.io/konard.github.io
+2026-10-26T05:20:13.4790035Z Removing SSH command configuration
+2026-10-26T05:20:13.4797387Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-26T05:20:13.4846924Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-26T05:20:13.5096463Z Removing HTTP extra header
+2026-10-26T05:20:13.5102432Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-26T05:20:13.5139703Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-26T05:20:13.5401993Z Removing includeIf entries pointing to credentials config files
+2026-10-26T05:20:13.5410068Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-26T05:20:13.5450974Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-26T05:20:13.5845771Z Cleaning up orphan processes

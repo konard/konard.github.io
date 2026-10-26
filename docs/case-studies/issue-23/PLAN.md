@@ -23,10 +23,12 @@ issue #21, in PR #24. Work only on issue-23-729a1009db7c and leave PR unmerged.
 - [x] Run focused tests, full unit tests, lint/format/file size/secrets/audit/build,
       and existing/new browser suites sequentially within memory limit.
 - [x] Commit implementation and final cut-budget correction as separate atomic steps.
-- [ ] Push only the prepared branch after local checks.
-- [ ] Fetch default branch and ensure it is included; review full PR diff for regressions.
-- [ ] Update PR title/body with reproduction, tests, screenshot comparisons and Fixes #23.
-- [ ] List recent CI runs with timestamps/SHA; download and inspect fresh failure logs;
+- [x] Push only the prepared branch after local checks.
+- [x] Fetch default branch and ensure it is included; review full PR diff for regressions.
+- [x] Update PR title/body with reproduction, tests, screenshot comparisons and Fixes #23 / #21.
+- [x] List recent CI runs with timestamps/SHA; download and inspect fresh failure logs;
       fix all failing checks and verify latest commit passes every CI check.
-- [ ] Re-read issue/PR feedback; confirm requirement inventory is complete, working tree
-      clean, all commands finished, and mark PR #24 ready.
+- [x] Re-read issue/PR feedback; confirm requirement inventory and source review are
+      complete. Archive the passing source-validation run and review screenshots.
+- [x] Prepare the final evidence commit; track its CI, clean-tree confirmation and
+      ready status directly on PR #24 (avoids recursive evidence-only commits).

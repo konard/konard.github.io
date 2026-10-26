@@ -65,8 +65,10 @@ layout rotation, marker rotation and loop bend all have neutral zero defaults.
 The reproducible local defect is **unbounded filter requests**, not a CSS rule
 turning off the top bar. Its computed blur remains `blur(14px)` even in the old
 large-gallery run. The two supplied Safari screenshots are the evidence of actual
-intermittent pixel loss. Automated Linux Chromium/WebKit cannot prove the exact
-macOS/Safari GPU failure. The solution removes the avoidable pressure at its
+intermittent pixel loss. Native macOS WebKit now passes the full reported 4,131-card load, repeated
+scrolling and actual display-pixel blur checks in all three skins. This verifies
+the mitigation on that platform; it does not identify or independently reproduce
+the original intermittent Safari/OS/GPU failure. The solution removes the avoidable pressure at its
 source, preserves the visual design in view and verifies that offscreen filters
 stay disabled when lists grow or skins change. It does not claim that computed
 CSS alone proves pixel blur. Final screenshots and the Safari originals are
@@ -120,11 +122,43 @@ Sources were consulted online on 2026-10-26; local snapshots are in `research/`.
   requested skin or risk retaining more surfaces. Neither is needed for the
   measured issue. The header's visible blur remains enabled.
 
-There is no new proven third-party bug to report. The repository already pins
+The first implementation CI run, 40273493595 (`a20ae9c`, 05:18 UTC), passed all
+three existing suites on all three Linux engines but failed the new pixel check
+in Firefox and WebKit (`header blur must affect actual pixels (0)`). Downloaded
+logs are in `ci-logs/`; Firefox's failing assertion is at lines 847–858 of its
+job log. These are fresh runs after the implementation, not the prepared-branch
+pass listed above.
+
+A standalone HTML fixture separated two test-platform limitations from the
+application. On Firefox 155, display capture changes exactly 128,000 pixels when
+blur is disabled, while `page.screenshot()` changes zero. This confirms the
+snapshot API omits a visibly rendered effect. Mozilla tracks the non-WebRender
+snapshot path in [bug 1657997](https://bugzilla.mozilla.org/show_bug.cgi?id=1657997).
+The new [Playwright report #43646](https://github.com/microsoft/playwright/issues/43646)
+contains a complete reproduction, a framebuffer-capture workaround and a suggested
+investigation of its `drawSnapshot` implementation. It is a test tooling defect,
+not an explanation for the original Safari blink.
+
+The Linux WebKit GTK display in this container also omits blur in that minimal
+fixture; changing screenshot methods does not restore it. Its EGL startup
+reports unavailable DRI3 acceleration. The official
+[WebKit graphics documentation](https://docs.webkit.org/Ports/WebKitGTK%20and%20WPE%20WebKit/Graphics.html)
+distinguishes its accelerated and non-accelerated drawing paths. Forcing
+compositing/always-on acceleration did not enable the effect in this container;
+those bounded attempts are archived and not counted as passes. WebKit's matrix
+entry now runs on macOS to test the reported platform, with native display
+capture. Linux Chromium/Firefox use Xvfb display capture. All three engines must
+still pass the actual-pixel assertion for all three skins. No assertion is
+silently skipped or replaced with computed CSS. The standalone fixture is
+`experiments/issue-23-blur-probe.mjs`, with a dependency-free capture helper.
+Early `*-probe-*` images/logs are calibration data; only the stable standalone
+`*-minimal-*` captures establish the API/display difference.
+
+The repository already pins
 Playwright 1.63 because of the separately reported Linux WebKit regression
 [microsoft/playwright#43426](https://github.com/microsoft/playwright/issues/43426)
 from the earlier study. This fix preserves that pin; it does not present that
-unrelated report as completion of #23. A Safari vendor report would require an
+unrelated report as completion of #23. A vendor report about the original Safari blink would require an
 isolated OS/version/GPU reproduction; the archived originals and optional panel
 counts preserve the information needed to investigate any recurrence.
 
@@ -146,7 +180,20 @@ npm run build:cv
 ```
 
 Repeat the four network suites with Firefox and WebKit. CI runs all four in its
-existing three-engine matrix and uploads data/screenshots even on failure.
+three-engine matrix and uploads data/screenshots even on failure. For issue #23's
+pixel probe, Firefox needs display capture; WebKit runs on macOS rather than the
+non-accelerated Linux GTK renderer. On Linux:
+
+```sh
+mkdir -p /tmp/issue23-display
+ENGINE=firefox XWD_FILE=/tmp/issue23-display/Xvfb_screen0 \
+  xvfb-run -a -s '-screen 0 1600x1200x24 -fbdir /tmp/issue23-display' \
+  npm run test:network:issue23
+```
+
+On macOS, use `ENGINE=webkit DISPLAY_CAPTURE=1 npm run test:network:issue23`.
+The standalone fixture uses a smaller 1600×700×24 display and does not need a
+production build. It prints changed-pixel counts for both capture methods.
 The long-gallery experiment is finite and should run under the existing memory
 guard in this 2.92GiB container:
 
@@ -162,3 +209,49 @@ captures the old state and must not be used to label a current build as baseline
 `issue-23-solver-caps.mjs` independently measures the final fitted cut budgets. Logs are
 retained under `logs/`, browser measurements under `data/` and comparison images
 under `screenshots/`. The final validation inventory is recorded in `VALIDATION.md`.
+
+The first macOS matrix run (40275047300, `1098eca`) passed PNG/JPEG/SVG
+downloads but the old export harness timed out waiting for a WebP download
+(`ci-logs/webkit-macos-40275047300.log:442`). The app already rejects unavailable
+canvas encoders with an explicit PNG alternative. The harness now probes actual
+encoder support and verifies that message when WebP is unavailable; formats
+that can be encoded still require real files, MIME signatures and image
+dimensions. Independent browser suites continue after a sibling suite fails,
+while the job still fails if any suite fails. In that run, Chromium and Firefox
+passed all four suites, with real display blur in all skins; complete artifacts
+are archived under `ci-evidence/40275047300/`.
+
+## Final native-display browser evidence
+
+Run [40275956453](https://github.com/konard/konard.github.io/actions/runs/40275956453),
+created 2026-10-26 05:45:33 UTC at `0bc96b4296c5e904e8674cb37431f3801b0da18c`,
+passes **all four browser suites in every engine**. Each engine loads the exact
+reported 4,131 cards and repeatedly scrolls all three skins, with zero page
+errors. Between 55 and 176 card filters remain active across the recorded
+samples; the original code retained all 4,131. Native SVG marker error is below
+0.0026 image units in every engine; the gap-only solver improves 6.5 → 3.8 and
+its applied/shared result matches the preview. Complete downloaded artifacts
+are in `ci-evidence/40275956453/`, including all measurements and screenshots.
+
+| Engine / platform | Glass changed pixels | Liquid changed pixels | Futuristic changed pixels |
+| --- | ---: | ---: | ---: |
+| Chromium 153 / Ubuntu 24.04 | 132,706 | 72,235 | 125,621 |
+| Firefox 155 / Ubuntu 24.04 | 134,525 | 72,488 | 127,151 |
+| WebKit 26.6 / macOS 15 | 88,706 | 53,276 | 81,751 |
+
+Counts compare a fixed stripe fixture behind the real header, with and without
+its blur. Every value exceeds the same 5,000-pixel assertion. Linux captures
+read the 1,600×1,200 Xvfb framebuffer; macOS captures read its 1,024×768 native
+display, including the visible browser window. The macOS display clips the
+right side of the larger browser viewport, so counts are not a cross-platform
+quality ranking. Ordinary viewport screenshots are also retained. Element-only
+mobile captures can include the sticky header over scrolled content; the clean
+mobile control render in `screenshots/mobile-gaps.png` is used for review.
+
+![Native macOS WebKit gallery after 4,131 cards](ci-evidence/40275956453/webkit/screenshots/issue23/webkit-after-gallery-glass-display.png)
+
+The complete workflow also passes all 710 unit tests, builds, dependency/security
+and formatting checks, workflow lint, and all 120 CV PDFs. Deployment remains
+skipped on pull requests by design. See `VALIDATION.md` for log line references.
+Final evidence-only commit checks are tracked on PR #24; the archived source run
+remains the reproducible baseline for these unchanged application sources.

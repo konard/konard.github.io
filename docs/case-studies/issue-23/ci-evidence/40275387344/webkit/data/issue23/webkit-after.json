@@ -1,0 +1,153 @@
+{
+  "engine": "webkit",
+  "capture": "display",
+  "date": "2026-10-26T05:42:11.339Z",
+  "checks": [
+    "neutral defaults for free links",
+    "both displaced bars agree with native SVG path position and tangent",
+    "individual gaps and gap-only solver survive apply/share/reload",
+    "bounded blur surfaces and fixed header through 1215 cards, repeated scrolling and all skins",
+    "individual gap controls fit the Russian mobile editor"
+  ],
+  "samples": [
+    {
+      "cards": 243,
+      "filtered": 55,
+      "y": 742,
+      "barFilter": "blur(14px)",
+      "barSurface": "topbar",
+      "barTop": 0
+    },
+    {
+      "cards": 729,
+      "filtered": 176,
+      "y": 3255,
+      "barFilter": "blur(14px)",
+      "barSurface": "topbar",
+      "barTop": 0
+    },
+    {
+      "cards": 1215,
+      "filtered": 176,
+      "y": 7586,
+      "barFilter": "blur(14px)",
+      "barSurface": "topbar",
+      "barTop": 0
+    },
+    {
+      "cards": 1215,
+      "filtered": 165,
+      "y": 6255,
+      "barFilter": "blur(14px)",
+      "barSurface": "topbar",
+      "barTop": 0
+    },
+    {
+      "cards": 1215,
+      "filtered": 104,
+      "y": 11715,
+      "barFilter": "blur(14px)",
+      "barSurface": "topbar",
+      "barTop": 0
+    },
+    {
+      "cards": 1215,
+      "filtered": 165,
+      "y": 2979,
+      "barFilter": "blur(14px)",
+      "barSurface": "topbar",
+      "barTop": 0
+    },
+    {
+      "cards": 1215,
+      "filtered": 104,
+      "y": 11715,
+      "barFilter": "blur(14px)",
+      "barSurface": "topbar",
+      "barTop": 0,
+      "blurredPixels": 88710
+    },
+    {
+      "cards": 1215,
+      "filtered": 165,
+      "y": 6269,
+      "barFilter": "blur(18px) saturate(1.8) brightness(1.08)",
+      "barSurface": "topbar__row",
+      "barTop": 0
+    },
+    {
+      "cards": 1215,
+      "filtered": 104,
+      "y": 11729,
+      "barFilter": "blur(18px) saturate(1.8) brightness(1.08)",
+      "barSurface": "topbar__row",
+      "barTop": 0
+    },
+    {
+      "cards": 1215,
+      "filtered": 165,
+      "y": 2993,
+      "barFilter": "blur(18px) saturate(1.8) brightness(1.08)",
+      "barSurface": "topbar__row",
+      "barTop": 0
+    },
+    {
+      "cards": 1215,
+      "filtered": 104,
+      "y": 11729,
+      "barFilter": "blur(18px) saturate(1.8) brightness(1.08)",
+      "barSurface": "topbar__row",
+      "barTop": 0,
+      "blurredPixels": 53077
+    },
+    {
+      "cards": 1215,
+      "filtered": 165,
+      "y": 6267,
+      "barFilter": "blur(12px)",
+      "barSurface": "topbar",
+      "barTop": 0
+    },
+    {
+      "cards": 1215,
+      "filtered": 104,
+      "y": 11728,
+      "barFilter": "blur(12px)",
+      "barSurface": "topbar",
+      "barTop": 0
+    },
+    {
+      "cards": 1215,
+      "filtered": 165,
+      "y": 2991,
+      "barFilter": "blur(12px)",
+      "barSurface": "topbar",
+      "barTop": 0
+    },
+    {
+      "cards": 1215,
+      "filtered": 104,
+      "y": 11728,
+      "barFilter": "blur(12px)",
+      "barSurface": "topbar",
+      "barTop": 0,
+      "blurredPixels": 81751
+    }
+  ],
+  "errors": [],
+  "version": "26.6",
+  "markerChecks": [
+    {
+      "distance": 0.002566633602213021,
+      "dot": 0.002722332159602035
+    },
+    {
+      "distance": 0.00256236906197452,
+      "dot": 0.0009915361655204488
+    }
+  ],
+  "solver": {
+    "score": " · overlaps 6.5 → 3.8",
+    "applied": "http://localhost:4179/network/?code=221331&solveRange=0&gaps=0+0.28+%7E+%7E%2C0+%7E+%7E+%7E%2C%7E+0.28+%7E+%7E"
+  }
+}
