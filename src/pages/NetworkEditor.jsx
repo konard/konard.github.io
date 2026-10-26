@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import NetworkGaps from './NetworkGaps';
 import { canonical, decode, encode, mathNotation } from '../links/configurations';
 import {
   addLink,
@@ -190,101 +191,107 @@ function ReferenceSelect({ id, value, n, self, onChange, label }) {
  * The links one by one: what each refers to, its colour and the turns of its
  * ends, with buttons to add and remove links and to move through the networks.
  */
-export function LinksTable({ links, colors, turns, onLinks, onRemove, onColor, onTurn, onStep, onRandom }) {
+export function LinksTable({
+  links,
+  colors,
+  turns,
+  gaps,
+  style,
+  onGap,
+  onLinks,
+  onRemove,
+  onColor,
+  onTurn,
+  onStep,
+  onRandom,
+}) {
   const { t } = useLang();
   const n = links.length;
   const start = t({ en: 'source', ru: 'начало' });
   const end = t({ en: 'target', ru: 'конец' });
   return (
     <div className="links-table">
-      <div className="links-table__scroll">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">{t({ en: 'Link', ru: 'Связь' })}</th>
-              <th scope="col">{t({ en: 'Source', ru: 'Начало' })}</th>
-              <th scope="col">{t({ en: 'Target', ru: 'Конец' })}</th>
-              <th scope="col">{t({ en: 'Colour', ru: 'Цвет' })}</th>
-              <th scope="col">{t({ en: 'Turn of the source', ru: 'Поворот начала' })}</th>
-              <th scope="col">{t({ en: 'Turn of the target', ru: 'Поворот конца' })}</th>
-              <th scope="col">
-                <span className="visually-hidden">{t({ en: 'Remove', ru: 'Удалить' })}</span>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {links.map(([s, tg], i) => {
-              const name = `${t({ en: 'Link', ru: 'Связь' })} ${i + 1}`;
-              return (
-                <tr key={i}>
-                  <th scope="row" className="mono">
-                    <span className="links-table__swatch" style={{ background: colors[i] }} aria-hidden="true" />
-                    {i + 1}
-                  </th>
-                  <td>
+      <p className="network__lead">
+        {t({
+          en: 'Each card contains all settings for one link. Empty gaps follow the global values shown in the fields. Reference gaps use layout units; middle cuts use 1/100 of the symbol.',
+          ru: 'В каждой карточке — все настройки одной связи. Пустые зазоры следуют общим значениям из подсказок. Зазоры ссылок — в единицах размещения, разрывы середины — в 1/100 символа.',
+        })}
+      </p>
+      <ul className="link-cards" aria-label={t({ en: 'Link configurations', ru: 'Настройки связей' })}>
+        {links.map(([s, tg], i) => {
+          const name = `${t({ en: 'Link', ru: 'Связь' })} ${i + 1}`;
+          return (
+            <li className="link-card" key={i}>
+              <div className="link-card__head">
+                <h3>
+                  <span className="links-table__swatch" style={{ background: colors[i] }} aria-hidden="true" />
+                  {name}
+                </h3>
+                <button
+                  type="button"
+                  className="button button--small"
+                  disabled={n <= 1}
+                  onClick={() => onRemove(i + 1)}
+                  aria-label={`${t({ en: 'Remove', ru: 'Удалить' })}: ${name}`}
+                  title={t({
+                    en: 'References to this link become references to 0',
+                    ru: 'Ссылки на эту связь станут ссылками на 0',
+                  })}
+                >
+                  ✕
+                </button>
+              </div>
+              <div className="link-card__fields">
+                {[
+                  [s, start, 'source'],
+                  [tg, end, 'target'],
+                ].map(([value, label, id], e) => (
+                  <label key={id} htmlFor={`link-${i + 1}-${id}`}>
+                    {t(e ? { en: 'Target', ru: 'Конец' } : { en: 'Source', ru: 'Начало' })}
                     <ReferenceSelect
-                      id={`link-${i + 1}-source`}
-                      value={s}
+                      id={`link-${i + 1}-${id}`}
+                      value={value}
                       n={n}
                       self={i + 1}
-                      label={`${name}: ${start}`}
-                      onChange={(ref) => onLinks(setReference(links, i, 0, ref))}
+                      label={`${name}: ${label}`}
+                      onChange={(ref) => onLinks(setReference(links, i, e, ref))}
                     />
-                  </td>
-                  <td>
-                    <ReferenceSelect
-                      id={`link-${i + 1}-target`}
-                      value={tg}
-                      n={n}
-                      self={i + 1}
-                      label={`${name}: ${end}`}
-                      onChange={(ref) => onLinks(setReference(links, i, 1, ref))}
-                    />
-                  </td>
-                  <td>
+                  </label>
+                ))}
+                <label>
+                  {t({ en: 'Colour', ru: 'Цвет' })}
+                  <input
+                    type="color"
+                    value={colors[i]}
+                    aria-label={`${name}: ${t({ en: 'colour', ru: 'цвет' })}`}
+                    onChange={(event) => onColor(i, event.target.value)}
+                  />
+                </label>
+                {[0, 1].map((e) => (
+                  <label key={e}>
+                    {t(
+                      e
+                        ? { en: 'Turn of the target, °', ru: 'Поворот конца, °' }
+                        : { en: 'Turn of the source, °', ru: 'Поворот начала, °' },
+                    )}
                     <input
-                      type="color"
-                      value={colors[i]}
-                      aria-label={`${name}: ${t({ en: 'colour', ru: 'цвет' })}`}
-                      onChange={(event) => onColor(i, event.target.value)}
+                      type="number"
+                      className="mono"
+                      min={-180}
+                      max={180}
+                      step={5}
+                      value={turns[i][e]}
+                      aria-label={`${name}: ${t({ en: 'turn of the', ru: 'поворот' })} ${e ? end : start}, °`}
+                      onChange={(event) => onTurn(i, e, Number(event.target.value) || 0)}
                     />
-                  </td>
-                  {[0, 1].map((e) => (
-                    <td key={e}>
-                      <input
-                        type="number"
-                        className="mono"
-                        min={-180}
-                        max={180}
-                        step={5}
-                        value={turns[i][e]}
-                        aria-label={`${name}: ${t({ en: 'turn of the', ru: 'поворот' })} ${e ? end : start}, °`}
-                        onChange={(event) => onTurn(i, e, Number(event.target.value) || 0)}
-                      />
-                      °
-                    </td>
-                  ))}
-                  <td>
-                    <button
-                      type="button"
-                      className="button button--small"
-                      disabled={n <= 1}
-                      onClick={() => onRemove(i + 1)}
-                      aria-label={`${t({ en: 'Remove', ru: 'Удалить' })}: ${name}`}
-                      title={t({
-                        en: 'References to this link become references to 0',
-                        ru: 'Ссылки на эту связь станут ссылками на 0',
-                      })}
-                    >
-                      ✕
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
+                  </label>
+                ))}
+              </div>
+              <NetworkGaps i={i} row={gaps[i]} style={style} onGap={onGap} />
+            </li>
+          );
+        })}
+      </ul>
       <div className="network__actions">
         <button type="button" className="button" onClick={() => onLinks(addLink(links))}>
           + {t({ en: 'Add a link', ru: 'Добавить связь' })}

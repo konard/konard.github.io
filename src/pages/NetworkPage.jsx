@@ -20,7 +20,6 @@ import {
 import { LANGS, useLang } from '../i18n/prefs';
 import { LinksTable, Notations, randomLinks, stepped } from './NetworkEditor';
 import NetworkShare from './NetworkShare';
-import NetworkGaps from './NetworkGaps';
 import { Looks, StyleSections } from './NetworkStyle';
 import { useNetworkHistory } from './useNetworkHistory';
 
@@ -69,6 +68,7 @@ export default function NetworkPage() {
 
   const shape = shapeOfStyle(style, n);
   const solverOptions = {
+    debug: style.solveDebug,
     range: style.solveRange,
     step: style.solveStep,
     adjustGaps: style.solveGaps,
@@ -159,14 +159,6 @@ export default function NetworkPage() {
                 links={links}
                 colors={colors}
                 turns={turns}
-                onLinks={changeLinks}
-                onRemove={remove}
-                onColor={(i, value) => setStyle(withColor(style, n, i, value))}
-                onTurn={turn}
-                onStep={(step) => setLinks(stepped(links, step))}
-                onRandom={() => setLinks(randomLinks(n))}
-              />
-              <NetworkGaps
                 gaps={gaps}
                 style={style}
                 onGap={(i, k, value) =>
@@ -177,6 +169,12 @@ export default function NetworkPage() {
                     ),
                   )
                 }
+                onLinks={changeLinks}
+                onRemove={remove}
+                onColor={(i, value) => setStyle(withColor(style, n, i, value))}
+                onTurn={turn}
+                onStep={(step) => setLinks(stepped(links, step))}
+                onRandom={() => setLinks(randomLinks(n))}
               />
             </section>
             <section className="network__panel" id="style" aria-labelledby="style-title">
