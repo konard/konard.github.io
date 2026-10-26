@@ -100,7 +100,11 @@ function backdrop(style, w, h, defs) {
  * style; it is normalized). `notation` is 'L' or 'R' for the caption in math
  * notation, `extraTurns` the turns found by the solver of overlaps.
  */
-export function networkSvg(links, rawStyle = {}, { notation = null, extraTurns = null, title = '' } = {}) {
+export function networkSvg(
+  links,
+  rawStyle = {},
+  { notation = null, extraTurns = null, extraGaps = null, title = '' } = {},
+) {
   const style = normalizeStyle(rawStyle);
   const n = links.length;
   const short = Math.min(style.width, style.height);
@@ -115,7 +119,7 @@ export function networkSvg(links, rawStyle = {}, { notation = null, extraTurns =
   const [x, y] = [(w - side) / 2, edge + (h - 2 * edge - room - side) / 2];
 
   const colors = linkColors(style, n);
-  const parts = glyphParts(links, shapeOfStyle(style, n, extraTurns));
+  const parts = glyphParts(links, shapeOfStyle(style, n, extraTurns, extraGaps));
   const dash = dashArray(style.dash, style.strokeWidth, style.linecap);
   const lines = parts
     .map(({ line, start, end, middle }, i) => {

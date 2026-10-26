@@ -48,16 +48,15 @@ try {
   await page.goto(`${base}/art/#symbols`);
   const card = page.locator('.symbols__grid li').first();
   const galleryCode = new URL(await card.locator('.symbols__card').getAttribute('href'), base).searchParams.get('code');
-  const icon = card.locator('.symbols__share');
-  await page.mouse.move(0, 0);
-  assert.equal(await icon.evaluate((node) => getComputedStyle(node).opacity), '0');
+  assert.equal(await card.locator('a').count(), 1, 'one full-card editor link');
   await card.hover();
-  await page.waitForFunction(() => getComputedStyle(document.querySelector('.symbols__share')).opacity === '1');
+  assert.equal(await card.locator('a').evaluate((node) => getComputedStyle(node).textDecorationLine), 'none');
   await shot(page, 'gallery-hover');
-  await icon.click();
+  await card.locator('a').click();
   await page.waitForURL('**/network/**');
   await codeIs(page, galleryCode);
-  assert.equal(new URL(page.url()).hash, '#share');
+  // Existing direct share-section URLs still work after removing the redundant icon.
+  await page.goto(`${base}/network/?code=${galleryCode}#share`);
   await page.waitForFunction(() => document.getElementById('share').getBoundingClientRect().top < window.innerHeight);
   await page.goto(`${base}/art/#symbols`);
   await page.locator('.symbols__card').first().focus();
@@ -124,9 +123,9 @@ try {
   assert(to < from, `solver should improve the tangled example: ${score}`);
   await shot(page, 'collisions-after', page.locator('.network__preview'));
   const solvedSvg = await svgOf(page);
-  await page.getByRole('button', { name: 'Write the turns into the table of links', exact: true }).click();
-  assert.equal(await svgOf(page), solvedSvg, 'applying turns must preserve the preview');
-  console.log(`${engine}: overlap reduction and applied turns passed`);
+  await page.getByRole('button', { name: 'Apply turns and gaps to links', exact: true }).click();
+  assert.equal(await svgOf(page), solvedSvg, 'applying turns and gaps must preserve the preview');
+  console.log(`${engine}: overlap reduction and applied turns/gaps passed`);
 
   await page.getByRole('button', { name: 'Social card 1200 × 630', exact: true }).click();
   await page.getByLabel('Theory notation', { exact: true }).selectOption('R');

@@ -24,17 +24,13 @@ const field = (name) => screen.getByLabelText(name);
 const preview = () => document.querySelector('.network__preview');
 
 describe('gallery cards open the page of their network (issue #17)', () => {
-  it('links each card to /network/ and has a share icon that only the hover shows', () => {
+  it('links each card to /network/ with one navigation target', () => {
     render(<NetworkGallery initial={1} />);
     const list = screen.getByRole('list', { name: 'Networks of 1 link' });
     const first = list.firstChild;
     expect(within(first).getAllByRole('link')[0]).toHaveAttribute('href', '/network/?code=00');
-    const share = within(first).getByRole('link', { name: 'Share 00₂' });
-    expect(share).toHaveAttribute('href', '/network/?code=00#share');
-    expect(share.className).toBe('symbols__share');
-    // The icon has no text and no paths: the card still reads as its notation only.
+    expect(within(first).getAllByRole('link')).toHaveLength(1);
     expect(first.textContent).toBe('00₂');
-    expect(share.querySelectorAll('path')).toHaveLength(0);
     expect(networkHref('01 20')).toBe('/network/?code=0120');
   });
 
@@ -170,7 +166,7 @@ describe('NetworkPage (issue #17)', () => {
     render(<NetworkPage />);
     fireEvent.click(screen.getByLabelText('Reduce overlaps automatically'));
     expect(screen.getByText(/overlaps \d+\.\d → \d+\.\d/)).toBeInTheDocument();
-    fireEvent.click(screen.getByRole('button', { name: 'Write the turns into the table of links' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Apply turns and gaps to links' }));
     expect(new URLSearchParams(search()).get('turns')).toMatch(/-?\d+ -?\d+/);
     expect(screen.queryByText(/overlaps \d+\.\d → /)).toBeNull();
     fireEvent.click(screen.getByRole('button', { name: 'Clear all turns' }));

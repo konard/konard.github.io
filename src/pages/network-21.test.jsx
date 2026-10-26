@@ -6,7 +6,7 @@ import { setTheme } from '../i18n/prefs';
 
 afterEach(() => act(() => setTheme('dark', { save: false })));
 
-it('updates both gallery links and theory examples when their displayed theme changes', () => {
+it('updates gallery navigation and theory examples when their displayed theme changes', () => {
   act(() => setTheme('dark', { save: false }));
   render(
     <>
@@ -18,10 +18,6 @@ it('updates both gallery links and theory examples when their displayed theme ch
   expect(card()).toHaveAttribute('href', '/network/?code=00');
   act(() => setTheme('light', { save: false }));
   expect(card()).toHaveAttribute('href', '/network/?code=00&palette=print');
-  expect(screen.getByRole('link', { name: 'Share 00₂' })).toHaveAttribute(
-    'href',
-    '/network/?code=00&palette=print#share',
-  );
   expect(screen.getByRole('link', { name: 'Edit and share this network' })).toHaveAttribute(
     'href',
     '/network/?code=112212&palette=print',

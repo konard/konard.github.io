@@ -174,7 +174,7 @@ export function Looks({ style, onStyle }) {
               <button
                 type="button"
                 className="button button--small"
-                onClick={() => onStyle({ ...item.style, turns: style.turns, solve: style.solve })}
+                onClick={() => onStyle({ ...item.style, turns: style.turns, gaps: style.gaps, solve: style.solve })}
               >
                 {item.name}
               </button>

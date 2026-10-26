@@ -15,7 +15,7 @@
 // the shapes of its start, end and middle, and turn each end on its own. The
 // defaults in SHAPE draw exactly the symbols of the gallery and the rain.
 
-import { trimCurve } from './curve-tools';
+import { pointAlongCurve, trimCurve } from './curve-tools';
 import { placeLinks } from './placement';
 
 export const SIZE = 100;
@@ -58,6 +58,7 @@ export const SHAPE = {
   bendMode: 'rotate', // legacy gallery/rain geometry; the editor opts into anchored curve bending
   tension: 0.38, // how far a reference bends out, relative to the distance it spans
   bulge: 20, // how much a lone reference bends aside
+  loopBend: 0, // independent loop width in editor curve mode
   gap: 0.07, // ends stop this far from the middle they touch
   startGap: null, // independent reference gaps; null keeps the legacy shared gap
   endGap: null,
@@ -78,7 +79,7 @@ export const SHAPE = {
   middle: 'none',
   middleSize: 2.2,
   middleAngle: 30,
-  startOffset: 0, // marker displacement along the tangent, in SIZE units (positive is inward)
+  startOffset: 0, // marker displacement along the curve, in SIZE units (positive is inward)
   endOffset: 0,
   middleOffset: 0,
   startAcross: 0, // displacement across the tangent, in SIZE units
@@ -88,6 +89,7 @@ export const SHAPE = {
   endRotation: 0,
   middleRotation: 0,
   turns: [], // [source, target] turn of each link's ends in degrees, set by hand or by solveCollisions
+  linkGaps: [], // [source gap, target gap, cut before middle, cut after middle]; null inherits
 };
 
 const RAD = Math.PI / 180;
@@ -145,8 +147,8 @@ export function linkCurve(links, i, places, o) {
   const loop = (n === 1 ? LONE.loop : LOOP) * o.loop;
   const [turnIn, turnOut] = (o.turns[i] || [0, 0]).map((a) => (a || 0) * RAD);
   const bulge = o.bulge * RAD;
-  const startGap = o.startGap ?? o.gap;
-  const endGap = o.endGap ?? o.gap;
+  const startGap = o.linkGaps[i]?.[0] ?? o.startGap ?? o.gap;
+  const endGap = o.linkGaps[i]?.[1] ?? o.endGap ?? o.gap;
   const tangent = rotate(out, Math.PI / 2);
   const tIn = other(s) ? unit(sub(m, places[s - 1].at)) : null;
   const tOut = other(t) ? unit(sub(places[t - 1].at, m)) : null;
@@ -167,7 +169,7 @@ export function linkCurve(links, i, places, o) {
   if (balanced && !tIn && !tOut) {
     d = s && t ? rotate(tangent, Math.PI / 4) : s || t ? tangent : rotate(tangent, bulge / 2);
   }
-  const loopWidth = balanced ? 1 + (o.bulge - SHAPE.bulge) / 90 : 1;
+  const loopWidth = balanced ? Math.exp((o.bulge + o.loopBend) / 180) : 1;
 
   let first;
   let start;
@@ -247,9 +249,8 @@ export function layoutCurves(links, shape = {}) {
   return links.map((_, i) => linkCurve(links, i, places, o));
 }
 
-/** The curves of every link, already scaled into the SIZE box. */
-export function glyphCurves(links, shape = {}) {
-  const curves = layoutCurves(links, shape);
+/** Shared fitting transform, also used to score middle cuts in image units. */
+export function curveTransform(curves, shape = {}) {
   const o = shapeOf(shape);
   const markerRoom = Math.max(
     ...['start', 'end', 'middle'].map((key) =>
@@ -270,6 +271,13 @@ export function glyphCurves(links, shape = {}) {
   ];
   const scale = Math.min(SCALE, (SIZE - 2 * pad) / Math.max(maxX - minX, maxY - minY, 1e-9));
   const shift = [SIZE / 2 - ((minX + maxX) / 2) * scale, SIZE / 2 - ((minY + maxY) / 2) * scale];
+  return { scale, shift };
+}
+
+/** The curves of every link, already scaled into the SIZE box. */
+export function glyphCurves(links, shape = {}) {
+  const curves = layoutCurves(links, shape);
+  const { scale, shift } = curveTransform(curves, shape);
   const place = (p) => add(mul(p, scale), shift);
   return curves.map((c) => ({
     segments: c.segments.map((seg) => seg.map(place)),
@@ -340,17 +348,18 @@ export function marker(kind, at, dir, size, angle) {
 /** The parts of every link: its line and the shapes of its start, end and middle (`{ d, fill }`). */
 export function glyphParts(links, shape = {}) {
   const o = shapeOf(shape);
-  const mark = (key, point) => {
+  const mark = (key, point, segments) => {
     const direction = key === 'end' ? -1 : 1;
-    const at = add(
-      add(point.at, mul(point.dir, direction * o[`${key}Offset`])),
-      mul(rotate(point.dir, Math.PI / 2), o[`${key}Across`]),
-    );
+    const offset = direction * o[`${key}Offset`];
+    if (offset !== 0) point = pointAlongCurve(segments, offset, key);
+    const at = add(point.at, mul(rotate(point.dir, Math.PI / 2), o[`${key}Across`]));
     return marker(o[key], at, rotate(point.dir, o[`${key}Rotation`] * RAD), o[`${key}Size`], o[`${key}Angle`]);
   };
   return glyphCurves(links, o).map(({ segments, start, end, middle }, i) => {
-    const split = o.middleGapStart > 0 || o.middleGapEnd > 0;
-    const visible = [trimCurve(segments[0], o.middleGapStart), trimCurve(segments[1], o.middleGapEnd, true)].filter(
+    const middleGapStart = o.linkGaps[i]?.[2] ?? o.middleGapStart;
+    const middleGapEnd = o.linkGaps[i]?.[3] ?? o.middleGapEnd;
+    const split = middleGapStart > 0 || middleGapEnd > 0;
+    const visible = [trimCurve(segments[0], middleGapStart), trimCurve(segments[1], middleGapEnd, true)].filter(
       Boolean,
     );
     const line = split
@@ -358,9 +367,9 @@ export function glyphParts(links, shape = {}) {
       : `M${fmt(segments[0][0])}` + segments.map((seg) => `C${seg.slice(1).map(fmt).join(' ')}`).join('');
     return {
       line,
-      start: mark('start', start),
-      end: mark('end', end),
-      middle: mark('middle', middle),
+      start: mark('start', start, segments),
+      end: mark('end', end, segments),
+      middle: mark('middle', middle, segments),
       color: COLORS[i % COLORS.length],
     };
   });

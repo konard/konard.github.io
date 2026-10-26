@@ -135,8 +135,6 @@ jobs:
         engine: [chromium, firefox, webkit]
     env:
       ENGINE: ${{ matrix.engine }}
-      CAPTURE_DIR: browser-results/screenshots
-      RESULT_DIR: browser-results/data
     steps:
       - name: Checkout source
         uses: actions/checkout@v6
@@ -162,12 +160,26 @@ jobs:
 
       - name: Verify existing editor features and image downloads
         run: npm run test:network:browser
+        env:
+          CAPTURE_DIR: browser-results/screenshots/editor
 
       - name: Verify history, self loops, layouts, clipboard and mobile editing
         run: npm run test:network:issue19
+        env:
+          CAPTURE_DIR: browser-results/screenshots/issue19
+          RESULT_DIR: browser-results/data/issue19
 
       - name: Verify editor geometry, source colors and shared settings
         run: npm run test:network:issue21
+        env:
+          CAPTURE_DIR: browser-results/screenshots/issue21
+          RESULT_DIR: browser-results/data/issue21
+
+      - name: Verify curved markers, per-link gaps and bounded gallery blur surfaces
+        run: npm run test:network:issue23
+        env:
+          CAPTURE_DIR: browser-results/screenshots/issue23
+          RESULT_DIR: browser-results/data/issue23
 
       - name: Preserve browser evidence
         if: always()

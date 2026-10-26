@@ -12,6 +12,7 @@
 import { color, option, range, select, toggle } from '../settings/fields';
 import { COLORS, SHAPE } from './glyph';
 import { GEOMETRY_SECTIONS } from './style-geometry';
+import { linkGaps, normalizeGaps } from './gaps';
 
 /** Link colours: the site's, and a few more sets of nine. */
 export const PALETTES = {
@@ -273,12 +274,15 @@ export const STYLE_SECTIONS = [
     id: 'experimental',
     title: { en: 'Experimental: fewer overlaps', ru: 'Эксперимент: меньше наложений' },
     lead: {
-      en: 'Turns the ends of the links, so each link leaves and enters at an angle that overlaps the other links less. The turns are added to the turns of each link in the table of links.',
-      ru: 'Поворачивает концы связей, чтобы каждая связь выходила и входила под углом, при котором она меньше накладывается на другие. Повороты прибавляются к поворотам каждой связи в таблице связей.',
+      en: 'Turns the ends and optionally adjusts individual reference gaps and middle cuts to reduce crossings. Small cuts are preferred; manual values are the starting point. Apply the result to keep editing it.',
+      ru: 'Поворачивает концы и при желании меняет зазоры ссылок и разрывы середины отдельных связей. Предпочитает небольшие разрывы и начинает с ручных значений. Примените результат, чтобы продолжить редактирование.',
     },
     fields: [
       toggle('solve', false, { en: 'Reduce overlaps automatically', ru: 'Уменьшать наложения автоматически' }),
-      range('solveRange', 60, 10, 120, 5, { en: 'Largest turn', ru: 'Наибольший поворот' }, { unit: '°' }),
+      toggle('solveGaps', true, { en: 'Adjust individual gaps', ru: 'Менять отдельные зазоры' }),
+      range('solveGapRange', 0.2, 0, 1, 0.05, { en: 'Largest reference gap change', ru: 'Изменение зазора ссылки' }),
+      range('solveMiddleRange', 4, 0, 15, 0.5, { en: 'Largest middle cut change', ru: 'Изменение разрыва середины' }),
+      range('solveRange', 60, 0, 180, 5, { en: 'Largest turn', ru: 'Наибольший поворот' }, { unit: '°' }),
       range('solveStep', 15, 5, 30, 5, { en: 'Turn step', ru: 'Шаг поворота' }, { unit: '°' }),
     ],
   },
@@ -289,6 +293,7 @@ const PER_LINK = [
   { key: 'colors', type: 'list', d: COLORS.join(',') },
   { key: 'gap', type: 'range', d: 0.08, min: 0, max: 0.4 },
   { key: 'turns', type: 'list', d: '' },
+  { key: 'gaps', type: 'list', d: '' },
 ];
 
 export const STYLE_FIELDS = [...STYLE_SECTIONS.flatMap((section) => section.fields), ...PER_LINK];
@@ -299,6 +304,7 @@ const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
 /** A per-link list "a,b,c" of colours, or of turns "source target". */
 function normalizeList(key, value) {
+  if (key === 'gaps') return normalizeGaps(value);
   const items = String(value ?? '').split(',');
   if (key === 'colors')
     return items.every((c) => HEX.test(c.trim())) ? items.map((c) => c.trim().toLowerCase()).join(',') : '';
@@ -392,15 +398,16 @@ export function withColor(style, n, i, value) {
 }
 
 /** The shape options of glyph.js taken from a style. */
-export function shapeOfStyle(style, n, extraTurns = null) {
+export function shapeOfStyle(style, n, extraTurns = null, extraGaps = null) {
   const turns = linkTurns(style, n).map((pair, i) =>
     extraTurns ? [pair[0] + extraTurns[i][0], pair[1] + extraTurns[i][1]] : pair,
   );
   return Object.fromEntries([
     ...Object.keys(SHAPE)
-      .filter((key) => key !== 'turns')
+      .filter((key) => !['turns', 'linkGaps'].includes(key))
       .map((key) => [key, style[key]]),
     ['turns', turns],
+    ['linkGaps', extraGaps || linkGaps(style, n)],
     ['strokeWidth', style.strokeWidth],
   ]);
 }
@@ -494,9 +501,13 @@ export function applyLook(style, id) {
   const keep = {
     notation: style.notation,
     turns: style.turns,
+    gaps: style.gaps,
     solve: style.solve,
     solveRange: style.solveRange,
     solveStep: style.solveStep,
+    solveGaps: style.solveGaps,
+    solveGapRange: style.solveGapRange,
+    solveMiddleRange: style.solveMiddleRange,
   };
   const size = look.values.width ? {} : { width: style.width, height: style.height, quality: style.quality };
   return normalizeStyle({ ...STYLE_DEFAULTS, ...size, ...look.values, ...keep });

@@ -123,7 +123,7 @@ describe('geometry and control audit (issue #19)', () => {
       targetAngle: 30,
       bendMode: 'curve',
       tension: 0.4,
-      bulge: 20,
+      bulge: 0,
       startGap: 0.08,
       endGap: 0.08,
       rotation: 0,
