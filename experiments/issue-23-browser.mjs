@@ -5,6 +5,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { chromium, firefox, webkit } from 'playwright';
 import { preview } from 'vite';
+import { displayScreenshot } from './issue-23-display-capture.mjs';
 const engine = process.env.ENGINE || 'chromium';
 const output = process.env.CAPTURE_DIR || 'docs/case-studies/issue-23/screenshots';
 const data = process.env.RESULT_DIR || 'docs/case-studies/issue-23/data';
@@ -13,7 +14,15 @@ const batches = Math.min(8, Math.max(2, Number(process.env.CARD_BATCHES) || 2));
 await mkdir(output, { recursive: true });
 await mkdir(data, { recursive: true });
 const server = await preview({ preview: { port: 4179, strictPort: true } });
-const results = { engine, date: new Date().toISOString(), checks: [], samples: [], errors: [] };
+const display = Boolean(process.env.XWD_FILE) || process.env.DISPLAY_CAPTURE === '1';
+const results = {
+  engine,
+  capture: display ? 'display' : 'api',
+  date: new Date().toISOString(),
+  checks: [],
+  samples: [],
+  errors: [],
+};
 const pass = (name) => {
   results.checks.push(name);
   console.log(`${engine}: ${name}`);
@@ -21,7 +30,7 @@ const pass = (name) => {
 const shot = (page, name, element = page) => element.screenshot({ path: join(output, `${engine}-after-${name}.png`) });
 let browser;
 try {
-  browser = await { chromium, firefox, webkit }[engine].launch();
+  browser = await { chromium, firefox, webkit }[engine].launch({ headless: !display });
   results.version = browser.version();
   const context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, reducedMotion: 'reduce' });
   await context.addInitScript(() => {
@@ -153,6 +162,10 @@ try {
       await sample();
     }
     await shot(page, `gallery-${skin}`);
+    if (display) {
+      await page.waitForTimeout(500);
+      await displayScreenshot(join(output, `${engine}-after-gallery-${skin}-display.png`));
+    }
     // Exercise the actual compositor, not just computed CSS: a sharp pattern
     // behind the header must render differently when its blur is disabled.
     await page.evaluate(() => {
@@ -163,14 +176,21 @@ try {
       document.body.append(pattern);
     });
     const bar = page.locator('.topbar');
-    const blurred = await bar.screenshot({ animations: 'disabled' });
+    const capture = async (state) => {
+      // Firefox snapshot APIs can omit backdrop effects. Read the actual
+      // Xvfb/macOS display after allowing the compositor update to complete.
+      await page.waitForTimeout(500);
+      const path = join(output, `${engine}-header-${skin}-${state}.png`);
+      return display ? displayScreenshot(path) : bar.screenshot({ path, animations: 'disabled' });
+    };
+    const blurred = await capture('blurred');
     await bar.evaluate((node) => {
       for (const surface of [node, ...node.children]) {
         surface.style.setProperty('backdrop-filter', 'none', 'important');
         surface.style.setProperty('-webkit-backdrop-filter', 'none', 'important');
       }
     });
-    const sharp = await bar.screenshot({ animations: 'disabled' });
+    const sharp = await capture('sharp');
     const different = await page.evaluate(
       async ([a, b]) => {
         const pixels = async (source) => {
