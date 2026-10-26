@@ -14,6 +14,7 @@ import '../skins.liquid.css';
 import '../skins.future.css';
 // Responsive and print overrides must come last.
 import '../App.media.css';
+import '../panels.css';
 import { useEffect, useRef } from 'react';
 import { motto } from '../data/motto';
 import { centreCurrent, watchEdges } from './edges';
@@ -24,6 +25,7 @@ import Cosmos from './Cosmos';
 import LiquidRefraction from './LiquidRefraction';
 import PrefSwitches from './PrefSwitches';
 import Sound from './Sound';
+import { watchPanelVisibility } from './panelVisibility';
 
 /**
  * Shared frame of every page: the cosmic background, the page navigation
@@ -34,6 +36,8 @@ export default function Layout({ page, sections = null, children, footer = null 
   const { t } = useLang();
   const { n } = useNotation();
   const pages = useRef(null);
+  const content = useRef(null);
+  useEffect(() => watchPanelVisibility(content.current), []);
   const sectionList = useRef(null);
   const hasSections = Boolean(sections);
   // On a narrow screen the lists of pages and sections scroll sideways: show the current
@@ -81,7 +85,7 @@ export default function Layout({ page, sections = null, children, footer = null 
         )}
       </header>
 
-      <main>{children}</main>
+      <main ref={content}>{children}</main>
 
       <footer className="footer">
         <span className="mono">{n(motto)}</span>

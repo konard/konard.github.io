@@ -127,16 +127,22 @@ jobs:
 
   network-browsers:
     needs: [lint-workflows, checks]
-    runs-on: ubuntu-24.04
+    runs-on: ${{ matrix.os }}
     timeout-minutes: 15
     strategy:
       fail-fast: false
       matrix:
-        engine: [chromium, firefox, webkit]
+        include:
+          - engine: chromium
+            os: ubuntu-24.04
+          - engine: firefox
+            os: ubuntu-24.04
+          # This container's Linux GTK renderer omits backdrop effects on
+          # screen. Test WebKit on macOS, the platform used by the reported bug.
+          - engine: webkit
+            os: macos-15
     env:
       ENGINE: ${{ matrix.engine }}
-      CAPTURE_DIR: browser-results/screenshots
-      RESULT_DIR: browser-results/data
     steps:
       - name: Checkout source
         uses: actions/checkout@v6
@@ -156,18 +162,45 @@ jobs:
         run: npm run build
 
       - name: Install the browser
+        id: browser
         # package.json pins 1.63.0: 1.64.x's Linux WebKit stalls on glass panels.
         # https://github.com/microsoft/playwright/issues/43426
         run: npx playwright install --with-deps "$ENGINE"
 
       - name: Verify existing editor features and image downloads
         run: npm run test:network:browser
+        env:
+          CAPTURE_DIR: browser-results/screenshots/editor
 
       - name: Verify history, self loops, layouts, clipboard and mobile editing
+        if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
         run: npm run test:network:issue19
+        env:
+          CAPTURE_DIR: browser-results/screenshots/issue19
+          RESULT_DIR: browser-results/data/issue19
 
       - name: Verify editor geometry, source colors and shared settings
+        if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
         run: npm run test:network:issue21
+        env:
+          CAPTURE_DIR: browser-results/screenshots/issue21
+          RESULT_DIR: browser-results/data/issue21
+
+      - name: Verify curved markers, per-link gaps and bounded gallery blur surfaces
+        if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
+        # Capture the actual compositor, including Firefox backdrop effects.
+        run: |
+          if [[ "$RUNNER_OS" == "macOS" ]]; then
+            DISPLAY_CAPTURE=1 npm run test:network:issue23
+          else
+            mkdir -p "$(dirname "$XWD_FILE")"
+            xvfb-run -a -s "-screen 0 1600x1200x24 -fbdir $(dirname "$XWD_FILE")" npm run test:network:issue23
+          fi
+        env:
+          CARD_BATCHES: '8' # The exact reported 4,131-card load, in every engine.
+          XWD_FILE: ${{ runner.temp }}/issue23-display/Xvfb_screen0
+          CAPTURE_DIR: browser-results/screenshots/issue23
+          RESULT_DIR: browser-results/data/issue23
 
       - name: Preserve browser evidence
         if: always()

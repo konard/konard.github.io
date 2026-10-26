@@ -1,0 +1,93 @@
+(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - import "./fields" without a file extension (src/settings/schema.js:15:32). Add the file extension
+  - import "./schema.background" without a file extension (src/settings/schema.js:16:37). Add the file extension
+  - import "./schema.layers" without a file extension (src/settings/schema.js:17:32). Add the file extension
+  - import "./schema.skins" without a file extension (src/settings/schema.js:18:31). Add the file extension
+  - import "./schema.sound" without a file extension (src/settings/schema.js:19:31). Add the file extension
+  - import "./schema.skins" without a file extension (src/settings/schema.js:21:33). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.sound.js:7:47). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.layers.js:8:54). Add the file extension
+  - import "../skins.frames" without a file extension (src/settings/schema.skins.js:3:25). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.background.js:3:54). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.skins.js:4:47). Add the file extension
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1792988113729
+
+ ❯ src/links/geometry-23.test.js (4 tests | 4 failed) 42ms
+   ❯ issue 23 geometry regressions (4)
+     × defaults to straight free links with neutral bend and rotation 17ms
+     × accepts signed bends and endpoint angles over a full turn 2ms
+     × moves a source bar along its cubic and rotates it with the local tangent 16ms
+     × preserves independent per-link gaps through normalization and sharing 2ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/links/geometry-23.test.js > issue 23 geometry regressions > defaults to straight free links with neutral bend and rotation
+AssertionError: expected 20 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 20
+
+ ❯ src/links/geometry-23.test.js:12:34
+     10| describe('issue 23 geometry regressions', () => {
+     11|   it('defaults to straight free links with neutral bend and rotation',…
+     12|     expect(STYLE_DEFAULTS.bulge).toBe(0);
+       |                                  ^
+     13|     expect(STYLE_DEFAULTS.rotation).toBe(0);
+     14|     const [curve] = layoutCurves([[0, 0]], shape());
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  src/links/geometry-23.test.js > issue 23 geometry regressions > accepts signed bends and endpoint angles over a full turn
+AssertionError: bulge: expected 0 to be less than or equal to -180
+ ❯ src/links/geometry-23.test.js:23:30
+     21|     for (const key of ['bulge', 'rotation', 'sourceAngle', 'targetAngl…
+     22|       const field = STYLE_FIELDS.find((f) => f.key === key);
+     23|       expect(field.min, key).toBeLessThanOrEqual(-180);
+       |                              ^
+     24|       expect(field.max, key).toBeGreaterThanOrEqual(180);
+     25|       expect(normalizeStyle({ [key]: -150 })[key]).toBe(-150);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  src/links/geometry-23.test.js > issue 23 geometry regressions > moves a source bar along its cubic and rotates it with the local tangent
+AssertionError: expected 1.7065901712585045 to be less than 0.02
+ ❯ src/links/geometry-23.test.js:42:27
+     40|       if (distance < best.distance) best = { distance, t };
+     41|     }
+     42|     expect(best.distance).toBeLessThan(0.02);
+       |                           ^
+     43|     const tangent = sub(bezier(curve.segments[0], best.t+0.00001), bez…
+     44|     const bar = [x2-x1,y2-y1];
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  src/links/geometry-23.test.js > issue 23 geometry regressions > preserves independent per-link gaps through normalization and sharing
+AssertionError: expected undefined to be '0.2 0.3 4 5,~ 0 0 0' // Object.is equality
+
+- Expected:
+"0.2 0.3 4 5,~ 0 0 0"
+
++ Received:
+undefined
+
+ ❯ src/links/geometry-23.test.js:50:24
+     48|   it('preserves independent per-link gaps through normalization and sh…
+     49|     const style = normalizeStyle({ gaps: '0.2 0.3 4 5,~ 0 0 0' });
+     50|     expect(style.gaps).toBe('0.2 0.3 4 5,~ 0 0 0');
+       |                        ^
+     51|     expect(styleFromParams(styleToParams(style))).toEqual(style);
+     52|     const links = [[1,1],[2,2]];
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed (4)
+   Start at  04:18:26
+   Duration  2.52s (environment 60%, transform 21%, setup 14%, tests 2%, import 2%, worker 1%)
+

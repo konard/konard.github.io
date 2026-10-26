@@ -11,7 +11,9 @@
 //   - every sampled point of a line that comes closer than NEAR to a line of
 //     another link (the lines run together and overlap);
 //   - a little for every degree turned, so nothing turns without a reason.
-import { bezier, layout, layoutCurves, linkCurve, shapeOf } from './glyph';
+import { bezier, curveTransform, layout, layoutCurves, linkCurve, shapeOf } from './glyph';
+import { trimCurve } from './curve-tools';
+import { adjustCollisionGaps } from './collision-gaps';
 
 const SAMPLES = 16; // points per Bézier segment
 const NEAR = 0.09; // lines closer than this overlap (a stroke is about 0.04)
@@ -20,7 +22,7 @@ const CROSSING = 1;
 const CLOSE = 0.25;
 const TURNING = 0.002; // per degree
 
-const polyline = (curve) =>
+export const polyline = (curve) =>
   curve.segments.flatMap((seg, k) =>
     Array.from({ length: SAMPLES + (k ? 0 : 1) }, (_, j) => bezier(seg, (j + (k ? 1 : 0)) / SAMPLES)),
   );
@@ -37,21 +39,22 @@ function crossing(p1, p2, q1, q2) {
 
 /** How much the lines of two links (polylines) overlap and cross; `middles` are exempt. */
 export function pairCost(a, b, middles) {
-  const free = (p) => middles.every((m) => distance(p, m) > MIDDLE);
+  const free = (p) => p && middles.every((m) => distance(p, m) > MIDDLE);
   let cost = 0;
   for (let i = 0; i < a.length - 1; i++) {
     for (let j = 0; j < b.length - 1; j++) {
+      if (!a[i] || !a[i + 1] || !b[j] || !b[j + 1]) continue;
       const point = crossing(a[i], a[i + 1], b[j], b[j + 1]);
       if (point && free(point)) cost += CROSSING;
     }
   }
   for (const p of a) {
     if (!free(p)) continue;
-    if (b.some((q) => distance(p, q) < NEAR)) cost += CLOSE;
+    if (b.some((q) => q && distance(p, q) < NEAR)) cost += CLOSE;
   }
   for (const q of b) {
     if (!free(q)) continue;
-    if (a.some((p) => distance(p, q) < NEAR)) cost += CLOSE;
+    if (a.some((p) => p && distance(p, q) < NEAR)) cost += CLOSE;
   }
   return cost;
 }
@@ -61,7 +64,9 @@ const turning = (turns) => turns.flat().reduce((sum, a) => sum + Math.abs(a), 0)
 /** The cost of a drawing of `links` with `shape` (lower is cleaner). */
 export function overlapCost(links, shape = {}) {
   const curves = layoutCurves(links, shape);
-  const lines = curves.map(polyline);
+  const o = shapeOf(shape);
+  const scale = curveTransform(curves, o).scale;
+  const lines = curves.map((curve, i) => visiblePolyline(curve, o, i, scale));
   const middles = curves.map((c) => c.middle.at);
   let cost = turning(shapeOf(shape).turns);
   for (let i = 0; i < lines.length; i++)
@@ -75,7 +80,14 @@ export function overlapCost(links, shape = {}) {
  * degrees in steps of `step`. Returns the turns found (`delta`, to add to the
  * starting turns), the turns in total (`turns`) and the cost before and after.
  */
-export function solveCollisions(links, shape = {}, { range = 60, step = 15, passes = 3 } = {}) {
+export function solveCollisions(
+  links,
+  shape = {},
+  { range = 60, step = 15, passes = 3, adjustGaps = false, gapRange = 0.2, middleRange = 4 } = {},
+) {
+  range = Math.min(180, Math.max(0, Number(range) || 0));
+  step = Math.max(1, Number(step) || 15);
+  passes = Math.min(10, Math.max(0, Number(passes) || 0));
   const n = links.length;
   const base = shapeOf(shape);
   const start = Array.from({ length: n }, (_, i) => base.turns[i] || [0, 0]);
@@ -84,7 +96,8 @@ export function solveCollisions(links, shape = {}, { range = 60, step = 15, pass
   const places = layout(n, base, links);
   const curveOf = (i) => linkCurve(links, i, places, { ...base, turns: total() });
   const middles = layoutCurves(links, base).map((c) => c.middle.at);
-  const lines = links.map((_, i) => polyline(curveOf(i)));
+  const scale = curveTransform(layoutCurves(links, base), base).scale;
+  const lines = links.map((_, i) => visiblePolyline(curveOf(i), base, i, scale));
   const costOf = (i, line) => {
     let cost = 0;
     for (let j = 0; j < n; j++) if (j !== i) cost += pairCost(line, lines[j], middles);
@@ -105,7 +118,7 @@ export function solveCollisions(links, shape = {}, { range = 60, step = 15, pass
           // Applied turns go back through the editable table's −180…180° range.
           if (Math.abs(start[i][end] + angle) > 180) continue;
           delta[i][end] = angle;
-          const line = polyline(curveOf(i));
+          const line = visiblePolyline(curveOf(i), base, i, scale);
           const cost = costOf(i, line);
           if (cost < best.cost - 1e-9) best = { angle, cost, line };
         }
@@ -116,5 +129,29 @@ export function solveCollisions(links, shape = {}, { range = 60, step = 15, pass
     }
     if (!improved) break;
   }
-  return { delta, turns: total(), before, after: overlapCost(links, { ...base, turns: total() }) };
+  let result = {
+    delta,
+    turns: total(),
+    linkGaps: base.linkGaps,
+    before,
+    after: overlapCost(links, { ...base, turns: total() }),
+  };
+  // Middle cuts use image units: a turn can change fitting scale. Reject a
+  // cached candidate if the exact complete drawing would become worse.
+  if (result.after > before)
+    result = { delta: start.map(() => [0, 0]), turns: start, linkGaps: base.linkGaps, before, after: before };
+  return adjustGaps ? adjustCollisionGaps(links, base, result, { gapRange, middleRange, passes }) : result;
+}
+
+/** Keep each cut as a real break: no artificial chord across the missing middle. */
+export function visiblePolyline(curve, o, i, scale) {
+  const before = o.linkGaps[i]?.[2] ?? o.middleGapStart;
+  const after = o.linkGaps[i]?.[3] ?? o.middleGapEnd;
+  if (!before && !after) return polyline(curve);
+  return curve.segments.flatMap((segment, k) => {
+    const kept = trimCurve(segment, (k ? after : before) / scale, Boolean(k));
+    return kept
+      ? [...(k ? [null] : []), ...Array.from({ length: SAMPLES + 1 }, (_, j) => bezier(kept, j / SAMPLES))]
+      : [];
+  });
 }

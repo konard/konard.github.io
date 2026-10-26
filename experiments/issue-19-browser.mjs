@@ -5,6 +5,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { chromium, firefox, webkit } from 'playwright';
 import { preview } from 'vite';
+import { verifyWebpFallback } from './network-export-support.mjs';
 
 const engine = process.env.ENGINE || 'chromium';
 const output = process.env.CAPTURE_DIR || 'docs/case-studies/issue-19/screenshots';
@@ -158,12 +159,16 @@ try {
   }
 
   for (const format of ['PNG', 'JPEG', 'WebP']) {
+    if (format === 'WebP' && (await verifyWebpFallback(page))) {
+      passed('unsupported WebP encoder exposes PNG fallback');
+      continue;
+    }
     const pending = page.waitForEvent('download');
     await page.getByRole('button', { name: `⤓ ${format}`, exact: true }).click();
     const downloaded = await pending;
     assert.equal(await downloaded.failure(), null);
   }
-  passed('PNG, JPEG and WebP exports');
+  passed('PNG/JPEG downloads and WebP download or explicit PNG fallback');
   await context.close();
 
   const mobile = await browser.newContext({

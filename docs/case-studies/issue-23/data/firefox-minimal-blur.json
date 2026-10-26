@@ -1,0 +1,8 @@
+{
+  "engine": "firefox",
+  "version": "155.0",
+  "pixels": {
+    "Api": 0,
+    "Display": 128000
+  }
+}

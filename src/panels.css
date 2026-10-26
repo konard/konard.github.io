@@ -1,0 +1,9 @@
+/* Offscreen cards keep their skin, size and accessible content, with no
+   backdrop filter. The shared observer enables this only in supporting browsers.
+   This rule must win over every skin, including hover and SVG refraction. */
+@media screen {
+  [data-panel-visibility='on'] :is(.symbols__grid > li, .repo, .post):not([data-in-viewport='true']) {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+}

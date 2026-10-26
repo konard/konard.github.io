@@ -4,6 +4,7 @@ import './network.css';
 import Layout from '../components/Layout';
 import { decode, encode, mathNotation } from '../links/configurations';
 import { solveCollisions } from '../links/collisions';
+import { linkGaps, withGaps } from '../links/gaps';
 import { parseCode, removeLink, theoryNotation } from '../links/edit';
 import { networkSvg } from '../links/render';
 import {
@@ -19,6 +20,7 @@ import {
 import { LANGS, useLang } from '../i18n/prefs';
 import { LinksTable, Notations, randomLinks, stepped } from './NetworkEditor';
 import NetworkShare from './NetworkShare';
+import NetworkGaps from './NetworkGaps';
 import { Looks, StyleSections } from './NetworkStyle';
 import { useNetworkHistory } from './useNetworkHistory';
 
@@ -59,33 +61,42 @@ export default function NetworkPage() {
   const query = networkQuery(links, style, new URLSearchParams(window.location.search).get('lang'));
 
   useNetworkHistory(query);
-  // The share icon of a gallery card opens /network/?code=…#share: the section is drawn after load.
+  // Existing links may open a section directly, such as /network/?code=…#share.
   useEffect(() => {
     const target = window.location.hash && document.getElementById(window.location.hash.slice(1));
     target?.scrollIntoView?.();
   }, []);
 
   const shape = shapeOfStyle(style, n);
-  const shapeKey = JSON.stringify([code, shape, style.solveRange, style.solveStep]);
+  const solverOptions = {
+    range: style.solveRange,
+    step: style.solveStep,
+    adjustGaps: style.solveGaps,
+    gapRange: style.solveGapRange,
+    middleRange: style.solveMiddleRange,
+  };
+  const shapeKey = JSON.stringify([code, shape, solverOptions]);
   // The experimental solver of overlaps; it runs only when it is switched on or asked for.
   const solved = useMemo(
-    () => (style.solve ? solveCollisions(links, shape, { range: style.solveRange, step: style.solveStep }) : null),
+    () => (style.solve ? solveCollisions(links, shape, solverOptions) : null),
     // shapeKey stands for links, shape and the options of the solver.
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [shapeKey, style.solve],
   );
   const svg = useMemo(
-    () => networkSvg(links, style, { notation, extraTurns: solved?.delta }),
+    () => networkSvg(links, style, { notation, extraTurns: solved?.delta, extraGaps: solved?.linkGaps }),
     [links, style, notation, solved],
   );
   const colors = linkColors(style, n);
   const turns = linkTurns(style, n);
+  const gaps = linkGaps(style, n);
 
   const changeLinks = (next) => setLinks(next);
   const remove = (k) => {
     const keep = (list) => list.filter((_, i) => i !== k - 1);
     setLinks(removeLink(links, k));
     let next = withTurns(style, keep(linkTurns(style, n)));
+    next = withGaps(next, keep(gaps));
     if (style.palette === 'custom') next = { ...next, colors: keep(linkColors(style, n)).join(',') };
     setStyle(next);
   };
@@ -97,8 +108,8 @@ export default function NetworkPage() {
       ),
     );
   const applySolved = () => {
-    const found = solveCollisions(links, shape, { range: style.solveRange, step: style.solveStep });
-    setStyle({ ...withTurns(style, found.turns), solve: false });
+    const found = solved || solveCollisions(links, shape, solverOptions);
+    setStyle({ ...withGaps(withTurns(style, found.turns), found.linkGaps), solve: false });
   };
 
   const url = `${window.location.origin}/network/${query}`;
@@ -155,6 +166,18 @@ export default function NetworkPage() {
                 onStep={(step) => setLinks(stepped(links, step))}
                 onRandom={() => setLinks(randomLinks(n))}
               />
+              <NetworkGaps
+                gaps={gaps}
+                style={style}
+                onGap={(i, k, value) =>
+                  setStyle(
+                    withGaps(
+                      style,
+                      gaps.map((row, j) => (j === i ? row.map((v, column) => (column === k ? value : v)) : row)),
+                    ),
+                  )
+                }
+              />
             </section>
             <section className="network__panel" id="style" aria-labelledby="style-title">
               <h2 id="style-title">{t({ en: 'Style of the picture', ru: 'Оформление картинки' })}</h2>
@@ -169,7 +192,7 @@ export default function NetworkPage() {
                 <StyleSections links={links} style={style} onStyle={setStyle}>
                   <div className="network__actions">
                     <button type="button" className="button button--small" onClick={applySolved}>
-                      {t({ en: 'Write the turns into the table of links', ru: 'Записать повороты в таблицу связей' })}
+                      {t({ en: 'Apply turns and gaps to links', ru: 'Применить повороты и зазоры связей' })}
                     </button>
                     <button
                       type="button"

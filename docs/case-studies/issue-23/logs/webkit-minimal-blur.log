@@ -1,0 +1,17 @@
+{"engine":"webkit","version":"26.6","pixels":{"Api":0,"Display":0}}
+node:internal/modules/run_main:111
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: the actual display must distinguish blurred and sharp headers
+    at file:///tmp/gh-issue-solver-1792988113729/experiments/issue-23-blur-probe.mjs:57:3 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v26.12.1
+{"guard": "completed", "exitCode": 1, "peakRssBytes": 744792064, "peakCgroupBytes": 2110828544, "seconds": 5.67}

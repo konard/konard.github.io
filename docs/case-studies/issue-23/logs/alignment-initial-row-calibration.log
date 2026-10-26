@@ -1,0 +1,2300 @@
+(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - import "./fields" without a file extension (src/settings/schema.js:15:32). Add the file extension
+  - import "./schema.background" without a file extension (src/settings/schema.js:16:37). Add the file extension
+  - import "./schema.layers" without a file extension (src/settings/schema.js:17:32). Add the file extension
+  - import "./schema.skins" without a file extension (src/settings/schema.js:18:31). Add the file extension
+  - import "./schema.sound" without a file extension (src/settings/schema.js:19:31). Add the file extension
+  - import "./schema.skins" without a file extension (src/settings/schema.js:21:33). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.background.js:3:54). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.layers.js:8:54). Add the file extension
+  - import "../skins.frames" without a file extension (src/settings/schema.skins.js:3:25). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.sound.js:7:47). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.skins.js:4:47). Add the file extension
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.
+{"skin":"glass","theme":"dark","lang":"en","width":360,"path":"/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"glass","theme":"dark","lang":"en","width":360,"path":"/experience/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"glass","theme":"dark","lang":"en","width":360,"path":"/repositories/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"glass","theme":"dark","lang":"en","width":360,"path":"/research/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"glass","theme":"dark","lang":"en","width":360,"path":"/associative/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"glass","theme":"dark","lang":"en","width":360,"path":"/art/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"glass","theme":"dark","lang":"en","width":360,"path":"/blog/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"glass","theme":"dark","lang":"en","width":360,"path":"/cv/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"glass","theme":"dark","lang":"en","width":360,"path":"/settings/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"glass","theme":"dark","lang":"en","width":360,"path":"/network/?code=112212","issues":["overlapping header controls","overlapping header controls"]}
+audited glass dark en 360
+audited glass dark en 1440
+{"skin":"glass","theme":"dark","lang":"ru","width":360,"path":"/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"glass","theme":"dark","lang":"ru","width":360,"path":"/experience/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"glass","theme":"dark","lang":"ru","width":360,"path":"/repositories/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"glass","theme":"dark","lang":"ru","width":360,"path":"/research/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"glass","theme":"dark","lang":"ru","width":360,"path":"/associative/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"glass","theme":"dark","lang":"ru","width":360,"path":"/art/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"glass","theme":"dark","lang":"ru","width":360,"path":"/blog/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"glass","theme":"dark","lang":"ru","width":360,"path":"/cv/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"glass","theme":"dark","lang":"ru","width":360,"path":"/settings/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"glass","theme":"dark","lang":"ru","width":360,"path":"/network/?code=112212","issues":["overlapping header controls","overlapping header controls"]}
+audited glass dark ru 360
+audited glass dark ru 1440
+{"skin":"glass","theme":"light","lang":"en","width":360,"path":"/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"glass","theme":"light","lang":"en","width":360,"path":"/experience/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"glass","theme":"light","lang":"en","width":360,"path":"/repositories/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"glass","theme":"light","lang":"en","width":360,"path":"/research/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"glass","theme":"light","lang":"en","width":360,"path":"/associative/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"glass","theme":"light","lang":"en","width":360,"path":"/art/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"glass","theme":"light","lang":"en","width":360,"path":"/blog/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"glass","theme":"light","lang":"en","width":360,"path":"/cv/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"glass","theme":"light","lang":"en","width":360,"path":"/settings/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"glass","theme":"light","lang":"en","width":360,"path":"/network/?code=112212","issues":["overlapping header controls","overlapping header controls"]}
+audited glass light en 360
+audited glass light en 1440
+{"skin":"glass","theme":"light","lang":"ru","width":360,"path":"/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"glass","theme":"light","lang":"ru","width":360,"path":"/experience/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"glass","theme":"light","lang":"ru","width":360,"path":"/repositories/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"glass","theme":"light","lang":"ru","width":360,"path":"/research/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"glass","theme":"light","lang":"ru","width":360,"path":"/associative/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"glass","theme":"light","lang":"ru","width":360,"path":"/art/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"glass","theme":"light","lang":"ru","width":360,"path":"/blog/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"glass","theme":"light","lang":"ru","width":360,"path":"/cv/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"glass","theme":"light","lang":"ru","width":360,"path":"/settings/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"glass","theme":"light","lang":"ru","width":360,"path":"/network/?code=112212","issues":["overlapping header controls","overlapping header controls"]}
+audited glass light ru 360
+audited glass light ru 1440
+{"skin":"liquid","theme":"dark","lang":"en","width":360,"path":"/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"liquid","theme":"dark","lang":"en","width":360,"path":"/experience/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"liquid","theme":"dark","lang":"en","width":360,"path":"/repositories/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"liquid","theme":"dark","lang":"en","width":360,"path":"/research/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"liquid","theme":"dark","lang":"en","width":360,"path":"/associative/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"liquid","theme":"dark","lang":"en","width":360,"path":"/art/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"liquid","theme":"dark","lang":"en","width":360,"path":"/blog/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"liquid","theme":"dark","lang":"en","width":360,"path":"/cv/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"liquid","theme":"dark","lang":"en","width":360,"path":"/settings/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"liquid","theme":"dark","lang":"en","width":360,"path":"/network/?code=112212","issues":["overlapping header controls","overlapping header controls"]}
+audited liquid dark en 360
+audited liquid dark en 1440
+{"skin":"liquid","theme":"dark","lang":"ru","width":360,"path":"/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"liquid","theme":"dark","lang":"ru","width":360,"path":"/experience/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"liquid","theme":"dark","lang":"ru","width":360,"path":"/repositories/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"liquid","theme":"dark","lang":"ru","width":360,"path":"/research/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"liquid","theme":"dark","lang":"ru","width":360,"path":"/associative/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"liquid","theme":"dark","lang":"ru","width":360,"path":"/art/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"liquid","theme":"dark","lang":"ru","width":360,"path":"/blog/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"liquid","theme":"dark","lang":"ru","width":360,"path":"/cv/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"liquid","theme":"dark","lang":"ru","width":360,"path":"/settings/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"liquid","theme":"dark","lang":"ru","width":360,"path":"/network/?code=112212","issues":["overlapping header controls","overlapping header controls"]}
+audited liquid dark ru 360
+audited liquid dark ru 1440
+{"skin":"liquid","theme":"light","lang":"en","width":360,"path":"/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"liquid","theme":"light","lang":"en","width":360,"path":"/experience/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"liquid","theme":"light","lang":"en","width":360,"path":"/repositories/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"liquid","theme":"light","lang":"en","width":360,"path":"/research/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"liquid","theme":"light","lang":"en","width":360,"path":"/associative/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"liquid","theme":"light","lang":"en","width":360,"path":"/art/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"liquid","theme":"light","lang":"en","width":360,"path":"/blog/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"liquid","theme":"light","lang":"en","width":360,"path":"/cv/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"liquid","theme":"light","lang":"en","width":360,"path":"/settings/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"liquid","theme":"light","lang":"en","width":360,"path":"/network/?code=112212","issues":["overlapping header controls","overlapping header controls"]}
+audited liquid light en 360
+audited liquid light en 1440
+{"skin":"liquid","theme":"light","lang":"ru","width":360,"path":"/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"liquid","theme":"light","lang":"ru","width":360,"path":"/experience/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"liquid","theme":"light","lang":"ru","width":360,"path":"/repositories/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"liquid","theme":"light","lang":"ru","width":360,"path":"/research/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"liquid","theme":"light","lang":"ru","width":360,"path":"/associative/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"liquid","theme":"light","lang":"ru","width":360,"path":"/art/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"liquid","theme":"light","lang":"ru","width":360,"path":"/blog/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"liquid","theme":"light","lang":"ru","width":360,"path":"/cv/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"liquid","theme":"light","lang":"ru","width":360,"path":"/settings/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"liquid","theme":"light","lang":"ru","width":360,"path":"/network/?code=112212","issues":["overlapping header controls","overlapping header controls"]}
+audited liquid light ru 360
+audited liquid light ru 1440
+{"skin":"futuristic","theme":"dark","lang":"en","width":360,"path":"/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"futuristic","theme":"dark","lang":"en","width":360,"path":"/experience/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"futuristic","theme":"dark","lang":"en","width":360,"path":"/repositories/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"futuristic","theme":"dark","lang":"en","width":360,"path":"/research/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"futuristic","theme":"dark","lang":"en","width":360,"path":"/associative/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"futuristic","theme":"dark","lang":"en","width":360,"path":"/art/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"futuristic","theme":"dark","lang":"en","width":360,"path":"/blog/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"futuristic","theme":"dark","lang":"en","width":360,"path":"/cv/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"futuristic","theme":"dark","lang":"en","width":360,"path":"/settings/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"futuristic","theme":"dark","lang":"en","width":360,"path":"/network/?code=112212","issues":["overlapping header controls","overlapping header controls"]}
+audited futuristic dark en 360
+audited futuristic dark en 1440
+{"skin":"futuristic","theme":"dark","lang":"ru","width":360,"path":"/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"futuristic","theme":"dark","lang":"ru","width":360,"path":"/experience/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"futuristic","theme":"dark","lang":"ru","width":360,"path":"/repositories/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"futuristic","theme":"dark","lang":"ru","width":360,"path":"/research/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"futuristic","theme":"dark","lang":"ru","width":360,"path":"/associative/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"futuristic","theme":"dark","lang":"ru","width":360,"path":"/art/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"futuristic","theme":"dark","lang":"ru","width":360,"path":"/blog/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"futuristic","theme":"dark","lang":"ru","width":360,"path":"/cv/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"futuristic","theme":"dark","lang":"ru","width":360,"path":"/settings/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"futuristic","theme":"dark","lang":"ru","width":360,"path":"/network/?code=112212","issues":["overlapping header controls","overlapping header controls"]}
+audited futuristic dark ru 360
+audited futuristic dark ru 1440
+{"skin":"futuristic","theme":"light","lang":"en","width":360,"path":"/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"futuristic","theme":"light","lang":"en","width":360,"path":"/experience/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"futuristic","theme":"light","lang":"en","width":360,"path":"/repositories/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"futuristic","theme":"light","lang":"en","width":360,"path":"/research/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"futuristic","theme":"light","lang":"en","width":360,"path":"/associative/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"futuristic","theme":"light","lang":"en","width":360,"path":"/art/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"futuristic","theme":"light","lang":"en","width":360,"path":"/blog/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"futuristic","theme":"light","lang":"en","width":360,"path":"/cv/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"futuristic","theme":"light","lang":"en","width":360,"path":"/settings/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"futuristic","theme":"light","lang":"en","width":360,"path":"/network/?code=112212","issues":["overlapping header controls","overlapping header controls"]}
+audited futuristic light en 360
+audited futuristic light en 1440
+{"skin":"futuristic","theme":"light","lang":"ru","width":360,"path":"/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"futuristic","theme":"light","lang":"ru","width":360,"path":"/experience/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"futuristic","theme":"light","lang":"ru","width":360,"path":"/repositories/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"futuristic","theme":"light","lang":"ru","width":360,"path":"/research/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"futuristic","theme":"light","lang":"ru","width":360,"path":"/associative/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"futuristic","theme":"light","lang":"ru","width":360,"path":"/art/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"futuristic","theme":"light","lang":"ru","width":360,"path":"/blog/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"futuristic","theme":"light","lang":"ru","width":360,"path":"/cv/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"futuristic","theme":"light","lang":"ru","width":360,"path":"/settings/","issues":["overlapping header controls","overlapping header controls"]}
+{"skin":"futuristic","theme":"light","lang":"ru","width":360,"path":"/network/?code=112212","issues":["overlapping header controls","overlapping header controls"]}
+audited futuristic light ru 360
+audited futuristic light ru 1440
+node:internal/modules/run_main:111
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
++ [
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/',
++     skin: 'glass',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/experience/',
++     skin: 'glass',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/repositories/',
++     skin: 'glass',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/research/',
++     skin: 'glass',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/associative/',
++     skin: 'glass',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/art/',
++     skin: 'glass',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/blog/',
++     skin: 'glass',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/cv/',
++     skin: 'glass',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/settings/',
++     skin: 'glass',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/network/?code=112212',
++     skin: 'glass',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/',
++     skin: 'glass',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/experience/',
++     skin: 'glass',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/repositories/',
++     skin: 'glass',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/research/',
++     skin: 'glass',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/associative/',
++     skin: 'glass',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/art/',
++     skin: 'glass',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/blog/',
++     skin: 'glass',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/cv/',
++     skin: 'glass',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/settings/',
++     skin: 'glass',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/network/?code=112212',
++     skin: 'glass',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/',
++     skin: 'glass',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/experience/',
++     skin: 'glass',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/repositories/',
++     skin: 'glass',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/research/',
++     skin: 'glass',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/associative/',
++     skin: 'glass',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/art/',
++     skin: 'glass',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/blog/',
++     skin: 'glass',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/cv/',
++     skin: 'glass',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/settings/',
++     skin: 'glass',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/network/?code=112212',
++     skin: 'glass',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/',
++     skin: 'glass',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/experience/',
++     skin: 'glass',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/repositories/',
++     skin: 'glass',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/research/',
++     skin: 'glass',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/associative/',
++     skin: 'glass',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/art/',
++     skin: 'glass',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/blog/',
++     skin: 'glass',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/cv/',
++     skin: 'glass',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/settings/',
++     skin: 'glass',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/network/?code=112212',
++     skin: 'glass',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/',
++     skin: 'liquid',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/experience/',
++     skin: 'liquid',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/repositories/',
++     skin: 'liquid',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/research/',
++     skin: 'liquid',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/associative/',
++     skin: 'liquid',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/art/',
++     skin: 'liquid',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/blog/',
++     skin: 'liquid',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/cv/',
++     skin: 'liquid',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/settings/',
++     skin: 'liquid',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/network/?code=112212',
++     skin: 'liquid',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/',
++     skin: 'liquid',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/experience/',
++     skin: 'liquid',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/repositories/',
++     skin: 'liquid',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/research/',
++     skin: 'liquid',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/associative/',
++     skin: 'liquid',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/art/',
++     skin: 'liquid',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/blog/',
++     skin: 'liquid',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/cv/',
++     skin: 'liquid',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/settings/',
++     skin: 'liquid',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/network/?code=112212',
++     skin: 'liquid',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/',
++     skin: 'liquid',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/experience/',
++     skin: 'liquid',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/repositories/',
++     skin: 'liquid',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/research/',
++     skin: 'liquid',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/associative/',
++     skin: 'liquid',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/art/',
++     skin: 'liquid',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/blog/',
++     skin: 'liquid',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/cv/',
++     skin: 'liquid',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/settings/',
++     skin: 'liquid',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/network/?code=112212',
++     skin: 'liquid',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/',
++     skin: 'liquid',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/experience/',
++     skin: 'liquid',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/repositories/',
++     skin: 'liquid',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/research/',
++     skin: 'liquid',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/associative/',
++     skin: 'liquid',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/art/',
++     skin: 'liquid',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/blog/',
++     skin: 'liquid',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/cv/',
++     skin: 'liquid',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/settings/',
++     skin: 'liquid',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/network/?code=112212',
++     skin: 'liquid',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/',
++     skin: 'futuristic',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/experience/',
++     skin: 'futuristic',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/repositories/',
++     skin: 'futuristic',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/research/',
++     skin: 'futuristic',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/associative/',
++     skin: 'futuristic',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/art/',
++     skin: 'futuristic',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/blog/',
++     skin: 'futuristic',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/cv/',
++     skin: 'futuristic',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/settings/',
++     skin: 'futuristic',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/network/?code=112212',
++     skin: 'futuristic',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/',
++     skin: 'futuristic',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/experience/',
++     skin: 'futuristic',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/repositories/',
++     skin: 'futuristic',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/research/',
++     skin: 'futuristic',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/associative/',
++     skin: 'futuristic',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/art/',
++     skin: 'futuristic',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/blog/',
++     skin: 'futuristic',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/cv/',
++     skin: 'futuristic',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/settings/',
++     skin: 'futuristic',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/network/?code=112212',
++     skin: 'futuristic',
++     theme: 'dark',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/',
++     skin: 'futuristic',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/experience/',
++     skin: 'futuristic',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/repositories/',
++     skin: 'futuristic',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/research/',
++     skin: 'futuristic',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/associative/',
++     skin: 'futuristic',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/art/',
++     skin: 'futuristic',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/blog/',
++     skin: 'futuristic',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/cv/',
++     skin: 'futuristic',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/settings/',
++     skin: 'futuristic',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'en',
++     path: '/network/?code=112212',
++     skin: 'futuristic',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/',
++     skin: 'futuristic',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/experience/',
++     skin: 'futuristic',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/repositories/',
++     skin: 'futuristic',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/research/',
++     skin: 'futuristic',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/associative/',
++     skin: 'futuristic',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/art/',
++     skin: 'futuristic',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/blog/',
++     skin: 'futuristic',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/cv/',
++     skin: 'futuristic',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/settings/',
++     skin: 'futuristic',
++     theme: 'light',
++     width: 360
++   },
++   {
++     issues: [
++       'overlapping header controls',
++       'overlapping header controls'
++     ],
++     lang: 'ru',
++     path: '/network/?code=112212',
++     skin: 'futuristic',
++     theme: 'light',
++     width: 360
++   }
++ ]
+- []
+
+    at file:///tmp/gh-issue-solver-1792988113729/experiments/issue-23-alignment.mjs:104:10 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: [
+    {
+      skin: 'glass',
+      theme: 'dark',
+      lang: 'en',
+      width: 360,
+      path: '/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'dark',
+      lang: 'en',
+      width: 360,
+      path: '/experience/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'dark',
+      lang: 'en',
+      width: 360,
+      path: '/repositories/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'dark',
+      lang: 'en',
+      width: 360,
+      path: '/research/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'dark',
+      lang: 'en',
+      width: 360,
+      path: '/associative/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'dark',
+      lang: 'en',
+      width: 360,
+      path: '/art/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'dark',
+      lang: 'en',
+      width: 360,
+      path: '/blog/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'dark',
+      lang: 'en',
+      width: 360,
+      path: '/cv/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'dark',
+      lang: 'en',
+      width: 360,
+      path: '/settings/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'dark',
+      lang: 'en',
+      width: 360,
+      path: '/network/?code=112212',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'dark',
+      lang: 'ru',
+      width: 360,
+      path: '/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'dark',
+      lang: 'ru',
+      width: 360,
+      path: '/experience/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'dark',
+      lang: 'ru',
+      width: 360,
+      path: '/repositories/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'dark',
+      lang: 'ru',
+      width: 360,
+      path: '/research/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'dark',
+      lang: 'ru',
+      width: 360,
+      path: '/associative/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'dark',
+      lang: 'ru',
+      width: 360,
+      path: '/art/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'dark',
+      lang: 'ru',
+      width: 360,
+      path: '/blog/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'dark',
+      lang: 'ru',
+      width: 360,
+      path: '/cv/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'dark',
+      lang: 'ru',
+      width: 360,
+      path: '/settings/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'dark',
+      lang: 'ru',
+      width: 360,
+      path: '/network/?code=112212',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'light',
+      lang: 'en',
+      width: 360,
+      path: '/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'light',
+      lang: 'en',
+      width: 360,
+      path: '/experience/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'light',
+      lang: 'en',
+      width: 360,
+      path: '/repositories/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'light',
+      lang: 'en',
+      width: 360,
+      path: '/research/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'light',
+      lang: 'en',
+      width: 360,
+      path: '/associative/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'light',
+      lang: 'en',
+      width: 360,
+      path: '/art/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'light',
+      lang: 'en',
+      width: 360,
+      path: '/blog/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'light',
+      lang: 'en',
+      width: 360,
+      path: '/cv/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'light',
+      lang: 'en',
+      width: 360,
+      path: '/settings/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'light',
+      lang: 'en',
+      width: 360,
+      path: '/network/?code=112212',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'light',
+      lang: 'ru',
+      width: 360,
+      path: '/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'light',
+      lang: 'ru',
+      width: 360,
+      path: '/experience/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'light',
+      lang: 'ru',
+      width: 360,
+      path: '/repositories/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'light',
+      lang: 'ru',
+      width: 360,
+      path: '/research/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'light',
+      lang: 'ru',
+      width: 360,
+      path: '/associative/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'light',
+      lang: 'ru',
+      width: 360,
+      path: '/art/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'light',
+      lang: 'ru',
+      width: 360,
+      path: '/blog/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'light',
+      lang: 'ru',
+      width: 360,
+      path: '/cv/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'light',
+      lang: 'ru',
+      width: 360,
+      path: '/settings/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'glass',
+      theme: 'light',
+      lang: 'ru',
+      width: 360,
+      path: '/network/?code=112212',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'dark',
+      lang: 'en',
+      width: 360,
+      path: '/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'dark',
+      lang: 'en',
+      width: 360,
+      path: '/experience/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'dark',
+      lang: 'en',
+      width: 360,
+      path: '/repositories/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'dark',
+      lang: 'en',
+      width: 360,
+      path: '/research/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'dark',
+      lang: 'en',
+      width: 360,
+      path: '/associative/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'dark',
+      lang: 'en',
+      width: 360,
+      path: '/art/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'dark',
+      lang: 'en',
+      width: 360,
+      path: '/blog/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'dark',
+      lang: 'en',
+      width: 360,
+      path: '/cv/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'dark',
+      lang: 'en',
+      width: 360,
+      path: '/settings/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'dark',
+      lang: 'en',
+      width: 360,
+      path: '/network/?code=112212',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'dark',
+      lang: 'ru',
+      width: 360,
+      path: '/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'dark',
+      lang: 'ru',
+      width: 360,
+      path: '/experience/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'dark',
+      lang: 'ru',
+      width: 360,
+      path: '/repositories/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'dark',
+      lang: 'ru',
+      width: 360,
+      path: '/research/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'dark',
+      lang: 'ru',
+      width: 360,
+      path: '/associative/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'dark',
+      lang: 'ru',
+      width: 360,
+      path: '/art/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'dark',
+      lang: 'ru',
+      width: 360,
+      path: '/blog/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'dark',
+      lang: 'ru',
+      width: 360,
+      path: '/cv/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'dark',
+      lang: 'ru',
+      width: 360,
+      path: '/settings/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'dark',
+      lang: 'ru',
+      width: 360,
+      path: '/network/?code=112212',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'light',
+      lang: 'en',
+      width: 360,
+      path: '/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'light',
+      lang: 'en',
+      width: 360,
+      path: '/experience/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'light',
+      lang: 'en',
+      width: 360,
+      path: '/repositories/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'light',
+      lang: 'en',
+      width: 360,
+      path: '/research/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'light',
+      lang: 'en',
+      width: 360,
+      path: '/associative/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'light',
+      lang: 'en',
+      width: 360,
+      path: '/art/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'light',
+      lang: 'en',
+      width: 360,
+      path: '/blog/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'light',
+      lang: 'en',
+      width: 360,
+      path: '/cv/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'light',
+      lang: 'en',
+      width: 360,
+      path: '/settings/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'light',
+      lang: 'en',
+      width: 360,
+      path: '/network/?code=112212',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'light',
+      lang: 'ru',
+      width: 360,
+      path: '/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'light',
+      lang: 'ru',
+      width: 360,
+      path: '/experience/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'light',
+      lang: 'ru',
+      width: 360,
+      path: '/repositories/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'light',
+      lang: 'ru',
+      width: 360,
+      path: '/research/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'light',
+      lang: 'ru',
+      width: 360,
+      path: '/associative/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'light',
+      lang: 'ru',
+      width: 360,
+      path: '/art/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'light',
+      lang: 'ru',
+      width: 360,
+      path: '/blog/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'light',
+      lang: 'ru',
+      width: 360,
+      path: '/cv/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'light',
+      lang: 'ru',
+      width: 360,
+      path: '/settings/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'liquid',
+      theme: 'light',
+      lang: 'ru',
+      width: 360,
+      path: '/network/?code=112212',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'futuristic',
+      theme: 'dark',
+      lang: 'en',
+      width: 360,
+      path: '/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'futuristic',
+      theme: 'dark',
+      lang: 'en',
+      width: 360,
+      path: '/experience/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'futuristic',
+      theme: 'dark',
+      lang: 'en',
+      width: 360,
+      path: '/repositories/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'futuristic',
+      theme: 'dark',
+      lang: 'en',
+      width: 360,
+      path: '/research/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'futuristic',
+      theme: 'dark',
+      lang: 'en',
+      width: 360,
+      path: '/associative/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'futuristic',
+      theme: 'dark',
+      lang: 'en',
+      width: 360,
+      path: '/art/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'futuristic',
+      theme: 'dark',
+      lang: 'en',
+      width: 360,
+      path: '/blog/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'futuristic',
+      theme: 'dark',
+      lang: 'en',
+      width: 360,
+      path: '/cv/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'futuristic',
+      theme: 'dark',
+      lang: 'en',
+      width: 360,
+      path: '/settings/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'futuristic',
+      theme: 'dark',
+      lang: 'en',
+      width: 360,
+      path: '/network/?code=112212',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'futuristic',
+      theme: 'dark',
+      lang: 'ru',
+      width: 360,
+      path: '/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'futuristic',
+      theme: 'dark',
+      lang: 'ru',
+      width: 360,
+      path: '/experience/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'futuristic',
+      theme: 'dark',
+      lang: 'ru',
+      width: 360,
+      path: '/repositories/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'futuristic',
+      theme: 'dark',
+      lang: 'ru',
+      width: 360,
+      path: '/research/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'futuristic',
+      theme: 'dark',
+      lang: 'ru',
+      width: 360,
+      path: '/associative/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'futuristic',
+      theme: 'dark',
+      lang: 'ru',
+      width: 360,
+      path: '/art/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'futuristic',
+      theme: 'dark',
+      lang: 'ru',
+      width: 360,
+      path: '/blog/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'futuristic',
+      theme: 'dark',
+      lang: 'ru',
+      width: 360,
+      path: '/cv/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'futuristic',
+      theme: 'dark',
+      lang: 'ru',
+      width: 360,
+      path: '/settings/',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    {
+      skin: 'futuristic',
+      theme: 'dark',
+      lang: 'ru',
+      width: 360,
+      path: '/network/?code=112212',
+      issues: [ 'overlapping header controls', 'overlapping header controls' ]
+    },
+    ... 20 more items
+  ],
+  expected: [],
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v26.12.1

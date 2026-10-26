@@ -1,0 +1,25 @@
+(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - import "./fields" without a file extension (src/settings/schema.js:15:32). Add the file extension
+  - import "./schema.background" without a file extension (src/settings/schema.js:16:37). Add the file extension
+  - import "./schema.layers" without a file extension (src/settings/schema.js:17:32). Add the file extension
+  - import "./schema.skins" without a file extension (src/settings/schema.js:18:31). Add the file extension
+  - import "./schema.sound" without a file extension (src/settings/schema.js:19:31). Add the file extension
+  - import "./schema.skins" without a file extension (src/settings/schema.js:21:33). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.background.js:3:54). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.layers.js:8:54). Add the file extension
+  - import "../skins.frames" without a file extension (src/settings/schema.skins.js:3:25). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.skins.js:4:47). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.sound.js:7:47). Add the file extension
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.
+{"cards":243,"filtered":243,"barFilter":"blur(14px)","y":719}
+{"cards":729,"filtered":729,"barFilter":"blur(14px)","y":3232}
+{"cards":1215,"filtered":1215,"barFilter":"blur(14px)","y":7563}
+{"cards":1701,"filtered":1701,"barFilter":"blur(14px)","y":11894}
+{"cards":2187,"filtered":2187,"barFilter":"blur(14px)","y":16225}
+{"cards":2673,"filtered":2673,"barFilter":"blur(14px)","y":20557}
+{"cards":3159,"filtered":3159,"barFilter":"blur(14px)","y":24888}
+{"cards":3645,"filtered":3645,"barFilter":"blur(14px)","y":29317}
+{"cards":4131,"filtered":4131,"barFilter":"blur(14px)","y":33649}
+{"cards":4131,"filtered":4131,"barFilter":"blur(14px)","y":42316}
+{"engine":"chromium","date":"2026-10-26T04:23:32.824Z","samples":[{"cards":243,"filtered":243,"barFilter":"blur(14px)","y":719},{"cards":729,"filtered":729,"barFilter":"blur(14px)","y":3232},{"cards":1215,"filtered":1215,"barFilter":"blur(14px)","y":7563},{"cards":1701,"filtered":1701,"barFilter":"blur(14px)","y":11894},{"cards":2187,"filtered":2187,"barFilter":"blur(14px)","y":16225},{"cards":2673,"filtered":2673,"barFilter":"blur(14px)","y":20557},{"cards":3159,"filtered":3159,"barFilter":"blur(14px)","y":24888},{"cards":3645,"filtered":3645,"barFilter":"blur(14px)","y":29317},{"cards":4131,"filtered":4131,"barFilter":"blur(14px)","y":33649},{"cards":4131,"filtered":4131,"barFilter":"blur(14px)","y":42316}]}
+{"guard": "completed", "exitCode": 0, "peakRssBytes": 1394089984, "peakCgroupBytes": 2324881408, "seconds": 29.81}

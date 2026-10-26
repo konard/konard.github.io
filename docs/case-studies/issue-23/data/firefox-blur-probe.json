@@ -1,0 +1,14 @@
+[
+  {
+    "engine": "firefox",
+    "parent": "body",
+    "filter": "blur(14px)",
+    "pixels": 0
+  },
+  {
+    "engine": "firefox",
+    "parent": ".app",
+    "filter": "blur(14px)",
+    "pixels": 0
+  }
+]

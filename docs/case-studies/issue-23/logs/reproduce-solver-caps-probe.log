@@ -1,0 +1,54 @@
+(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - import "./fields" without a file extension (src/settings/schema.js:15:32). Add the file extension
+  - import "./schema.background" without a file extension (src/settings/schema.js:16:37). Add the file extension
+  - import "./schema.layers" without a file extension (src/settings/schema.js:17:32). Add the file extension
+  - import "./schema.skins" without a file extension (src/settings/schema.js:18:31). Add the file extension
+  - import "./schema.sound" without a file extension (src/settings/schema.js:19:31). Add the file extension
+  - import "./schema.skins" without a file extension (src/settings/schema.js:21:33). Add the file extension
+  - import "../skins.frames" without a file extension (src/settings/schema.skins.js:3:25). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.sound.js:7:47). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.layers.js:8:54). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.skins.js:4:47). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.background.js:3:54). Add the file extension
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.
+{"n":3,"violations":[]}
+{"n":6,"violations":[]}
+{"n":12,"violations":[]}
+{"n":24,"violations":[{"i":5,"k":0,"cut":3.81,"length":11.958601626362277},{"i":9,"k":1,"cut":4.935,"length":15.488778889716608}]}
+node:internal/modules/run_main:111
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
++ [
++   {
++     cut: 3.81,
++     i: 5,
++     k: 0,
++     length: 11.958601626362277
++   },
++   {
++     cut: 4.935,
++     i: 9,
++     k: 1,
++     length: 15.488778889716608
++   }
++ ]
+- []
+
+    at file:///tmp/gh-issue-solver-1792988113729/experiments/issue-23-solver-caps.mjs:28:12 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: [
+    { i: 5, k: 0, cut: 3.81, length: 11.958601626362277 },
+    { i: 9, k: 1, cut: 4.935, length: 15.488778889716608 }
+  ],
+  expected: [],
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v26.12.1
+{"guard": "completed", "exitCode": 1, "peakRssBytes": 254443520, "peakCgroupBytes": 1968566272, "seconds": 7.51}

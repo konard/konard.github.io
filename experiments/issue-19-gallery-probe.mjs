@@ -49,7 +49,7 @@ try {
   const result = await page.evaluate(() => ({
     cards: document.querySelectorAll('.symbols__grid li').length,
     filter: getComputedStyle(document.querySelector('.symbols__grid li')).backdropFilter,
-    opacity: getComputedStyle(document.querySelector('.symbols__share')).opacity,
+    cardLinks: document.querySelector('.symbols__grid li').querySelectorAll('a').length,
   }));
   await page.screenshot({ path: `/tmp/issue-19-gallery-${mode}.png` });
   console.log(JSON.stringify({ mode, stage: 'passed', ...result }));

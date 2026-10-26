@@ -1,0 +1,14 @@
+
+> konard.github.io@0.1.0 lint
+> eslint . --max-warnings=0
+
+
+/tmp/gh-issue-solver-1792988113729/experiments/issue-23-browser.mjs
+   22:7   error  'change' is assigned a value but never used  no-unused-vars
+  137:32  error  'StorageEvent' is not defined                no-undef
+  140:83  error  'innerHeight' is not defined                 no-undef
+  142:58  error  'requestAnimationFrame' is not defined       no-undef
+  142:86  error  'requestAnimationFrame' is not defined       no-undef
+
+✖ 5 problems (5 errors, 0 warnings)
+

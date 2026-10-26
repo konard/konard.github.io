@@ -19,7 +19,8 @@ export const EDITOR_SHAPE = {
   sourceAngle: 30,
   targetAngle: 30,
   tension: 0.4,
-  bulge: 20,
+  bulge: 0,
+  loopBend: 0,
   startGap: 0.08,
   endGap: 0.08,
   startSize: 2.5,
@@ -90,11 +91,11 @@ export const GEOMETRY_SECTIONS = [
         ],
         { en: 'Angles of the ends', ru: 'Углы концов' },
       ),
-      field('sourceAngle', -90, 90, 1, 'Leaving angle', 'Угол выхода', {
+      field('sourceAngle', -180, 180, 1, 'Leaving angle', 'Угол выхода', {
         ...degrees,
         when: (s) => s.angles === 'fixed',
       }),
-      field('targetAngle', -90, 90, 1, 'Entering angle', 'Угол входа', {
+      field('targetAngle', -180, 180, 1, 'Entering angle', 'Угол входа', {
         ...degrees,
         when: (s) => s.angles === 'fixed',
       }),
@@ -102,20 +103,28 @@ export const GEOMETRY_SECTIONS = [
         en: 'Two references to one link make a lens',
         ru: 'Две ссылки на одну связь образуют линзу',
       }),
-      field('tension', 0, 1, 0.01, 'Curvature', 'Изгиб', { unit: '%' }),
-      field('bulge', 0, 90, 1, 'Bend', 'Изгиб кривой', {
+      field('tension', 0, 2, 0.01, 'Curvature', 'Изгиб', { unit: '%' }),
+      field('bulge', -180, 180, 1, 'Bend', 'Изгиб кривой', {
         ...degrees,
         hint: {
           en: 'Curve mode bends free ends and widens self loops with fixed endpoints. Use Rotation to turn the whole network.',
           ru: 'Режим кривой изгибает свободные концы и расширяет собственные петли с неподвижными концами. Для поворота всей сети используйте «Поворот».',
         },
       }),
-      field('startGap', 0, 0.4, 0.01, 'Gap at the source reference', 'Зазор у начальной ссылки'),
-      field('endGap', 0, 0.4, 0.01, 'Gap at the target reference', 'Зазор у конечной ссылки'),
-      field('free', 0.2, 3, 0.05, 'Length of a free end', 'Длина свободного конца', { unit: '×' }),
-      field('loop', 0.3, 2.5, 0.05, 'Size of a loop', 'Размер петли', { unit: '×' }),
-      field('spread', 0.5, 2.5, 0.05, 'Distance between links', 'Расстояние между связями', { unit: '×' }),
-      field('rotation', 0, 359, 1, 'Rotation', 'Поворот', degrees),
+      field('loopBend', -180, 180, 1, 'Loop bend', 'Изгиб петли', {
+        ...degrees,
+        hint: {
+          en: 'Widens or narrows self-reference loops independently of straight free ends. Zero keeps balanced loops.',
+          ru: 'Расширяет или сужает собственные петли независимо от прямых свободных концов. Ноль сохраняет сбалансированные петли.',
+        },
+        when: (s) => s.bendMode === 'curve',
+      }),
+      field('startGap', 0, 1, 0.01, 'Gap at the source reference', 'Зазор у начальной ссылки'),
+      field('endGap', 0, 1, 0.01, 'Gap at the target reference', 'Зазор у конечной ссылки'),
+      field('free', 0.05, 5, 0.05, 'Length of a free end', 'Длина свободного конца', { unit: '×' }),
+      field('loop', 0.05, 5, 0.05, 'Size of a loop', 'Размер петли', { unit: '×' }),
+      field('spread', 0.1, 5, 0.05, 'Distance between links', 'Расстояние между связями', { unit: '×' }),
+      field('rotation', -180, 359, 1, 'Rotation', 'Поворот', degrees),
       field('padding', 0, 40, 1, 'Margin', 'Поля', { unit: '%' }),
     ],
   },
@@ -145,8 +154,8 @@ export const GEOMETRY_SECTIONS = [
           field(`${key}Offset`, -20, 20, 0.1, `Offset of the ${en}`, `Сдвиг ${ru}`, {
             when: shown,
             hint: {
-              en: 'Along the tangent; positive moves an endpoint marker into the line. Units: 1/100 of the symbol.',
-              ru: 'Вдоль касательной; положительное значение смещает концевой маркер внутрь линии. Единица — 1/100 символа.',
+              en: 'Distance along the curve; the marker follows its tangent. Positive moves an endpoint marker inward. Beyond an end, the tangent extends the path. Units: 1/100 of the symbol.',
+              ru: 'Расстояние вдоль кривой; маркер следует её касательной. Положительное значение смещает концевой маркер внутрь. За концом путь продолжается по касательной. Единица — 1/100 символа.',
             },
           }),
           field(`${key}Across`, -20, 20, 0.1, `Sideways offset of the ${en}`, `Поперечный сдвиг ${ru}`, {
@@ -158,13 +167,13 @@ export const GEOMETRY_SECTIONS = [
           }),
         ];
       }),
-      field('middleGapStart', 0, 15, 0.1, 'Cut before the middle', 'Разрыв перед серединой', {
+      field('middleGapStart', 0, 30, 0.1, 'Cut before the middle', 'Разрыв перед серединой', {
         hint: {
           en: 'Optional: for a ring, try half its size on each side. Zero keeps the line continuous.',
           ru: 'Необязательно: для кольца попробуйте половину его размера с каждой стороны. Ноль оставляет линию непрерывной.',
         },
       }),
-      field('middleGapEnd', 0, 15, 0.1, 'Cut after the middle', 'Разрыв после середины'),
+      field('middleGapEnd', 0, 30, 0.1, 'Cut after the middle', 'Разрыв после середины'),
     ],
   },
 ];
@@ -192,6 +201,7 @@ export function geometryAvailable(key, style, links) {
     case 'free':
       return any(([s, t]) => s === 0 || t === 0);
     case 'loop':
+    case 'loopBend':
       return any(([s, t], i) => s === i + 1 || t === i + 1);
     case 'forceDistance':
       return any(([s, t], i) => other(s, i) || other(t, i));
