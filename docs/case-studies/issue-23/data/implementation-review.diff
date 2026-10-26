@@ -1,0 +1,2196 @@
+diff --git a/.github/workflows/github-pages.yml b/.github/workflows/github-pages.yml
+index dea1f51..272a283 100644
+--- a/.github/workflows/github-pages.yml
++++ b/.github/workflows/github-pages.yml
+@@ -135,8 +135,6 @@ jobs:
+         engine: [chromium, firefox, webkit]
+     env:
+       ENGINE: ${{ matrix.engine }}
+-      CAPTURE_DIR: browser-results/screenshots
+-      RESULT_DIR: browser-results/data
+     steps:
+       - name: Checkout source
+         uses: actions/checkout@v6
+@@ -162,12 +160,26 @@ jobs:
+ 
+       - name: Verify existing editor features and image downloads
+         run: npm run test:network:browser
++        env:
++          CAPTURE_DIR: browser-results/screenshots/editor
+ 
+       - name: Verify history, self loops, layouts, clipboard and mobile editing
+         run: npm run test:network:issue19
++        env:
++          CAPTURE_DIR: browser-results/screenshots/issue19
++          RESULT_DIR: browser-results/data/issue19
+ 
+       - name: Verify editor geometry, source colors and shared settings
+         run: npm run test:network:issue21
++        env:
++          CAPTURE_DIR: browser-results/screenshots/issue21
++          RESULT_DIR: browser-results/data/issue21
++
++      - name: Verify curved markers, per-link gaps and bounded gallery blur surfaces
++        run: npm run test:network:issue23
++        env:
++          CAPTURE_DIR: browser-results/screenshots/issue23
++          RESULT_DIR: browser-results/data/issue23
+ 
+       - name: Preserve browser evidence
+         if: always()
+diff --git a/experiments/issue-19-gallery-probe.mjs b/experiments/issue-19-gallery-probe.mjs
+index e596e0c..822381a 100644
+--- a/experiments/issue-19-gallery-probe.mjs
++++ b/experiments/issue-19-gallery-probe.mjs
+@@ -49,7 +49,7 @@ try {
+   const result = await page.evaluate(() => ({
+     cards: document.querySelectorAll('.symbols__grid li').length,
+     filter: getComputedStyle(document.querySelector('.symbols__grid li')).backdropFilter,
+-    opacity: getComputedStyle(document.querySelector('.symbols__share')).opacity,
++    cardLinks: document.querySelector('.symbols__grid li').querySelectorAll('a').length,
+   }));
+   await page.screenshot({ path: `/tmp/issue-19-gallery-${mode}.png` });
+   console.log(JSON.stringify({ mode, stage: 'passed', ...result }));
+diff --git a/experiments/issue-23-alignment.mjs b/experiments/issue-23-alignment.mjs
+new file mode 100644
+index 0000000..5c5feb4
+--- /dev/null
++++ b/experiments/issue-23-alignment.mjs
+@@ -0,0 +1,116 @@
++// Finite site-wide alignment audit: every HTML entry, both languages/themes,
++// all skins, desktop and phone. Scrolling navigation/tables remain intentional.
++/* global window, document, getComputedStyle */
++import assert from 'node:assert/strict';
++import { mkdir, writeFile } from 'node:fs/promises';
++import { chromium } from 'playwright';
++import { preview } from 'vite';
++const phase = process.env.PHASE || 'after';
++const output = 'docs/case-studies/issue-23';
++const paths = [
++  '/',
++  '/experience/',
++  '/repositories/',
++  '/research/',
++  '/associative/',
++  '/art/',
++  '/blog/',
++  '/cv/',
++  '/settings/',
++  '/network/?code=112212',
++];
++const server = await preview({ preview: { port: 4179, strictPort: true } });
++let browser;
++const results = [];
++const errors = [];
++try {
++  browser = await chromium.launch();
++  await mkdir(`${output}/screenshots`, { recursive: true });
++  for (const skin of ['glass', 'liquid', 'futuristic'])
++    for (const theme of ['dark', 'light'])
++      for (const lang of ['en', 'ru'])
++        for (const width of [360, 1440]) {
++          const context = await browser.newContext({
++            viewport: { width, height: width === 360 ? 844 : 1000 },
++            reducedMotion: 'reduce',
++          });
++          await context.addInitScript(
++            ({ skin, theme, lang }) => {
++              localStorage.setItem('theme', theme);
++              localStorage.setItem('lang', lang);
++              localStorage.setItem('settings', JSON.stringify({ 'motion.mode': 'off', 'skin.name': skin }));
++            },
++            { skin, theme, lang },
++          );
++          const page = await context.newPage();
++          page.setDefaultTimeout(15000);
++          page.on('pageerror', (error) => errors.push(error.message));
++          for (const path of paths) {
++            await page.goto(`http://localhost:4179${path}`);
++            await page.locator('main').waitFor();
++            await page.evaluate(() => document.fonts.ready);
++            if (path.startsWith('/network/')) await page.locator('.link-gaps summary').click();
++            const issues = await page.evaluate(() => {
++              const viewport = document.documentElement.clientWidth;
++              const issues = [];
++              if (document.documentElement.scrollWidth > window.innerWidth + 1) issues.push('document overflow');
++              for (const node of document.querySelectorAll(
++                'main input, main select, main button, main textarea, main summary, .topbar__row > *',
++              )) {
++                if (node.closest('details:not([open])') && node.tagName !== 'SUMMARY') continue;
++                const box = node.getBoundingClientRect();
++                if (!box.width || !box.height) continue;
++                let parent = node.parentElement;
++                let scrolling = false;
++                while (parent && parent !== document.body) {
++                  const overflow = getComputedStyle(parent).overflowX;
++                  if (['auto', 'scroll', 'hidden', 'clip'].includes(overflow)) {
++                    scrolling = true;
++                    break;
++                  }
++                  parent = parent.parentElement;
++                }
++                if (!scrolling && (box.left < -1 || box.right > viewport + 1))
++                  issues.push(
++                    `${node.tagName} ${node.id || node.className}: ${Math.round(box.left)}..${Math.round(box.right)}`,
++                  );
++                const container = node.closest('.link-gaps fieldset, .setting, .network__panel');
++                if (container && !node.closest('.links-table__scroll')) {
++                  const outer = container.getBoundingClientRect();
++                  if (box.right > outer.right + 1 || box.left < outer.left - 1)
++                    issues.push(`control outside ${container.className}: ${node.id || node.type}`);
++                }
++              }
++              const row = document.querySelector('.topbar__row');
++              if (row) {
++                const boxes = [...row.children].map((n) => n.getBoundingClientRect());
++                for (let i = 0; i < boxes.length; i++)
++                  for (let j = i + 1; j < boxes.length; j++) {
++                    const x = Math.min(boxes[i].right, boxes[j].right) - Math.max(boxes[i].left, boxes[j].left);
++                    const y = Math.min(boxes[i].bottom, boxes[j].bottom) - Math.max(boxes[i].top, boxes[j].top);
++                    if (x > 1 && y > 1) issues.push('overlapping header controls');
++                  }
++              }
++              return issues;
++            });
++            results.push({ skin, theme, lang, width, path, issues });
++            if (issues.length) {
++              console.log(JSON.stringify(results.at(-1)));
++              await page.screenshot({ path: `${output}/screenshots/${phase}-alignment-failure-${results.length}.png` });
++            }
++            if (theme === 'dark' && lang === 'ru' && width === 360 && path.startsWith('/network/'))
++              await page.screenshot({ path: `${output}/screenshots/${phase}-mobile-${skin}.png`, fullPage: true });
++          }
++          console.log(`audited ${skin} ${theme} ${lang} ${width}`);
++          await context.close();
++        }
++  assert.deepEqual(errors, []);
++  assert.deepEqual(
++    results.filter((result) => result.issues.length),
++    [],
++  );
++} finally {
++  await writeFile(`${output}/data/alignment-${phase}.json`, JSON.stringify({ results, errors }, null, 2) + '\n');
++  await browser?.close();
++  await server.close();
++}
+diff --git a/experiments/issue-23-baseline.mjs b/experiments/issue-23-baseline.mjs
+new file mode 100644
+index 0000000..768d057
+--- /dev/null
++++ b/experiments/issue-23-baseline.mjs
+@@ -0,0 +1,60 @@
++/* global document, window, getComputedStyle */
++// Bounded reproduction: 4,131 cards (the report shows 4,131), one browser at a time.
++import { chromium, webkit } from 'playwright';
++import { preview } from 'vite';
++import { mkdir, writeFile } from 'node:fs/promises';
++const engine = process.env.ENGINE || 'chromium';
++const output = 'docs/case-studies/issue-23';
++const server = await preview({ preview: { port: 4179, strictPort: true } });
++let browser;
++const result = { engine, date: new Date().toISOString(), samples: [] };
++try {
++  browser = await { chromium, webkit }[engine].launch();
++  const context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, reducedMotion: 'reduce' });
++  await context.addInitScript(() => {
++    localStorage.setItem('theme', 'dark');
++    localStorage.setItem('lang', 'en');
++    localStorage.setItem('settings', JSON.stringify({ 'motion.mode': 'off' }));
++  });
++  const page = await context.newPage();
++  page.setDefaultTimeout(15000);
++  await mkdir(`${output}/screenshots`, { recursive: true });
++  await page.goto('http://localhost:4179/network/?code=00000000');
++  await page.locator('.network__preview').screenshot({ path: `${output}/screenshots/${engine}-before-free.png` });
++  await page.goto('http://localhost:4179/network/?code=11&startOffset=12&endOffset=12');
++  await page.locator('.network__preview').screenshot({ path: `${output}/screenshots/${engine}-before-markers.png` });
++  await page.goto('http://localhost:4179/art/#symbols');
++  await page.getByRole('button', { name: /^4 links/ }).click();
++  const sample = async () => {
++    result.samples.push(
++      await page.evaluate(() => ({
++        cards: document.querySelectorAll('.symbols__grid li').length,
++        filtered: [...document.querySelectorAll('.symbols__grid li')].filter(
++          (n) => getComputedStyle(n).backdropFilter !== 'none',
++        ).length,
++        barFilter: getComputedStyle(document.querySelector('.topbar')).backdropFilter,
++        y: window.scrollY,
++      })),
++    );
++    console.log(JSON.stringify(result.samples.at(-1)));
++    await writeFile(`${output}/data/${engine}-baseline.json`, JSON.stringify(result, null, 2));
++  };
++  await page.locator('.symbols__grid li').first().hover();
++  await page
++    .locator('.symbols__grid li')
++    .first()
++    .screenshot({ path: `${output}/screenshots/${engine}-before-card.png` });
++  await sample();
++  for (let k = 0; k < 8; k++) {
++    await page.getByRole('button', { name: /^Show more/ }).click();
++    await sample();
++  }
++  await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight - 1100));
++  await page.screenshot({ path: `${output}/screenshots/${engine}-before-gallery.png` });
++  await sample();
++  console.log(JSON.stringify(result));
++} finally {
++  await writeFile(`${output}/data/${engine}-baseline.json`, JSON.stringify(result, null, 2) + '\n');
++  await browser?.close();
++  await server.close();
++}
+diff --git a/experiments/issue-23-browser.mjs b/experiments/issue-23-browser.mjs
+new file mode 100644
+index 0000000..64337e0
+--- /dev/null
++++ b/experiments/issue-23-browser.mjs
+@@ -0,0 +1,220 @@
++// Regression checks for #23, against the production build, one engine at a time.
++/* global document, window, getComputedStyle, StorageEvent, requestAnimationFrame, innerHeight, Image */
++import assert from 'node:assert/strict';
++import { mkdir, writeFile } from 'node:fs/promises';
++import { join } from 'node:path';
++import { chromium, firefox, webkit } from 'playwright';
++import { preview } from 'vite';
++const engine = process.env.ENGINE || 'chromium';
++const output = process.env.CAPTURE_DIR || 'docs/case-studies/issue-23/screenshots';
++const data = process.env.RESULT_DIR || 'docs/case-studies/issue-23/data';
++// CI tests 1,215 cards. The local, memory-guarded stress run tests the reported 4,131.
++const batches = Math.min(8, Math.max(2, Number(process.env.CARD_BATCHES) || 2));
++await mkdir(output, { recursive: true });
++await mkdir(data, { recursive: true });
++const server = await preview({ preview: { port: 4179, strictPort: true } });
++const results = { engine, date: new Date().toISOString(), checks: [], samples: [], errors: [] };
++const pass = (name) => {
++  results.checks.push(name);
++  console.log(`${engine}: ${name}`);
++};
++const shot = (page, name, element = page) => element.screenshot({ path: join(output, `${engine}-after-${name}.png`) });
++let browser;
++try {
++  browser = await { chromium, firefox, webkit }[engine].launch();
++  results.version = browser.version();
++  const context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, reducedMotion: 'reduce' });
++  await context.addInitScript(() => {
++    localStorage.setItem('theme', 'dark');
++    localStorage.setItem('lang', 'en');
++    localStorage.setItem('settings', JSON.stringify({ 'motion.mode': 'off' }));
++  });
++  const page = await context.newPage();
++  page.setDefaultTimeout(15000);
++  page.on('pageerror', (error) => results.errors.push(error.message));
++  await page.goto('http://localhost:4179/network/?code=00000000');
++  assert.equal(await page.locator('#style-bulge').inputValue(), '0');
++  await shot(page, 'free', page.locator('.network__preview'));
++  pass('neutral defaults for free links');
++  await page.goto('http://localhost:4179/network/?code=11&startOffset=12&endOffset=12');
++  await shot(page, 'markers', page.locator('.network__preview'));
++  await page.goto('http://localhost:4179/network/?code=00&bulge=130&startOffset=12&endOffset=12&end=bar');
++  const markerChecks = await page
++    .locator('.network__preview g[stroke]')
++    .first()
++    .evaluate((group) => {
++      const [path, start, end] = group.querySelectorAll('path');
++      const length = path.getTotalLength();
++      return [start, end].map((marker, i) => {
++        const [x, y, u, v] = marker
++          .getAttribute('d')
++          .match(/-?\d+(?:\.\d+)?/g)
++          .map(Number);
++        const distance = i ? length - 12 : 12;
++        const p = path.getPointAtLength(distance);
++        const a = path.getPointAtLength(distance - 0.01);
++        const b = path.getPointAtLength(distance + 0.01);
++        return {
++          distance: Math.hypot((x + u) / 2 - p.x, (y + v) / 2 - p.y),
++          dot: Math.abs(
++            ((u - x) * (b.x - a.x) + (v - y) * (b.y - a.y)) /
++              Math.hypot(u - x, v - y) /
++              Math.hypot(b.x - a.x, b.y - a.y),
++          ),
++        };
++      });
++    });
++  for (const result of markerChecks) {
++    assert(result.distance < 0.05, JSON.stringify(result));
++    assert(result.dot < 0.015);
++  }
++  results.markerChecks = markerChecks;
++  pass('both displaced bars agree with native SVG path position and tangent');
++  await page.goto('http://localhost:4179/network/?code=221331&solveRange=0');
++  await page.locator('.link-gaps summary').click();
++  const gap = page.getByLabel('Link 1: Gap at the source reference', { exact: true });
++  await gap.fill('0.25');
++  await page.getByLabel('Link 2: Cut after the middle', { exact: true }).fill('4');
++  const shared = await page.getByLabel('Link to this picture', { exact: true }).inputValue();
++  const drawing = await page.locator('.network__preview').innerHTML();
++  await page.goto(shared);
++  assert.equal(await page.locator('.network__preview').innerHTML(), drawing);
++  assert.equal(await gap.inputValue(), '0.25');
++  await shot(page, 'gaps');
++  await page.goto('http://localhost:4179/network/?code=221331&solveRange=0');
++  await page.locator('#style-solve').check();
++  const preview = await page.locator('.network__preview').innerHTML();
++  const score = await page.locator('.network__score').innerText();
++  await page.getByRole('button', { name: 'Apply turns and gaps to links', exact: true }).click();
++  assert.equal(await page.locator('.network__preview').innerHTML(), preview);
++  const applied = await page.getByLabel('Link to this picture', { exact: true }).inputValue();
++  assert(new URL(applied).searchParams.has('gaps'));
++  await page.goto(applied);
++  assert.equal(await page.locator('.network__preview').innerHTML(), preview);
++  results.solver = { score, applied };
++  pass('individual gaps and gap-only solver survive apply/share/reload');
++  await page.goto('http://localhost:4179/art/#symbols');
++  await page.getByRole('button', { name: /^4 links/ }).click();
++  const sample = async () => {
++    await page.waitForFunction(() => {
++      const cards = [...document.querySelectorAll('.symbols__grid > li')];
++      return (
++        cards.length &&
++        cards.every((node) => {
++          const box = node.getBoundingClientRect();
++          if (box.top < innerHeight && box.bottom > 0) return node.dataset.inViewport === 'true';
++          if (box.top > innerHeight + 220 || box.bottom < -220) return node.dataset.inViewport !== 'true';
++          return true;
++        })
++      );
++    });
++    const state = await page.evaluate(() => {
++      const cards = [...document.querySelectorAll('.symbols__grid > li')];
++      const filtered = cards.filter((n) => getComputedStyle(n).backdropFilter !== 'none').length;
++      const bar = document.querySelector('.topbar');
++      // Liquid's floating mode blurs its two capsules rather than the wrapper.
++      const surface = getComputedStyle(bar).backdropFilter === 'none' ? bar.firstElementChild : bar;
++      return {
++        cards: cards.length,
++        filtered,
++        y: window.scrollY,
++        barFilter: getComputedStyle(surface).backdropFilter,
++        barSurface: surface.className,
++        barTop: bar.getBoundingClientRect().top,
++      };
++    });
++    results.samples.push(state);
++    console.log(JSON.stringify(state));
++    // 11 columns × roughly 16 rows fit inside the viewport plus prefetch band.
++    assert(state.filtered > 0 && state.filtered < 250, JSON.stringify(state));
++    assert.match(state.barFilter, /blur\(/);
++    assert(Math.abs(state.barTop) < 1);
++  };
++  await page.locator('.symbols__grid li').first().hover();
++  assert.equal(await page.locator('.symbols__grid li').first().locator('a').count(), 1);
++  await shot(page, 'card', page.locator('.symbols__grid li').first());
++  await sample();
++  for (let k = 0; k < batches; k++) {
++    await page.getByRole('button', { name: /^Show more/ }).click();
++    await sample();
++  }
++  for (const skin of ['glass', 'liquid', 'futuristic']) {
++    await page.evaluate((skin) => {
++      localStorage.setItem('settings', JSON.stringify({ 'motion.mode': 'off', 'skin.name': skin }));
++      window.dispatchEvent(new StorageEvent('storage', { key: 'settings' }));
++    }, skin);
++    for (const fraction of [0.5, 1, 0.2, 1]) {
++      await page.evaluate((f) => {
++        const box = document.querySelector('.symbols__grid').getBoundingClientRect();
++        window.scrollTo(0, window.scrollY + box.top + box.height * f - innerHeight * 0.7);
++      }, fraction);
++      // Wait for observer delivery and compositing after every discontinuous scroll.
++      await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
++      await sample();
++    }
++    await shot(page, `gallery-${skin}`);
++    // Exercise the actual compositor, not just computed CSS: a sharp pattern
++    // behind the header must render differently when its blur is disabled.
++    await page.evaluate(() => {
++      const pattern = document.createElement('div');
++      pattern.id = 'blur-probe';
++      pattern.style.cssText =
++        'position:fixed;inset:0 0 auto;height:120px;z-index:9;pointer-events:none;background:repeating-linear-gradient(90deg,#000 0 4px,#fff 4px 8px)';
++      document.body.append(pattern);
++    });
++    const bar = page.locator('.topbar');
++    const blurred = await bar.screenshot({ animations: 'disabled' });
++    await bar.evaluate((node) => {
++      for (const surface of [node, ...node.children]) {
++        surface.style.setProperty('backdrop-filter', 'none', 'important');
++        surface.style.setProperty('-webkit-backdrop-filter', 'none', 'important');
++      }
++    });
++    const sharp = await bar.screenshot({ animations: 'disabled' });
++    const different = await page.evaluate(
++      async ([a, b]) => {
++        const pixels = async (source) => {
++          const img = new Image();
++          img.src = `data:image/png;base64,${source}`;
++          await img.decode();
++          const canvas = document.createElement('canvas');
++          canvas.width = img.width;
++          canvas.height = img.height;
++          const ctx = canvas.getContext('2d');
++          ctx.drawImage(img, 0, 0);
++          return ctx.getImageData(0, 0, img.width, img.height).data;
++        };
++        const [x, y] = await Promise.all([pixels(a), pixels(b)]);
++        let count = 0;
++        for (let i = 0; i < x.length; i += 4)
++          if (Math.abs(x[i] - y[i]) + Math.abs(x[i + 1] - y[i + 1]) + Math.abs(x[i + 2] - y[i + 2]) > 30) count++;
++        return count;
++      },
++      [blurred.toString('base64'), sharp.toString('base64')],
++    );
++    results.samples.at(-1).blurredPixels = different;
++    assert(different > 5000, `${skin}: header blur must affect actual pixels (${different})`);
++    await bar.evaluate((node) => [node, ...node.children].forEach((surface) => surface.removeAttribute('style')));
++    await page.locator('#blur-probe').evaluate((node) => node.remove());
++  }
++  pass(
++    `bounded blur surfaces and fixed header through ${results.samples.at(-1).cards} cards, repeated scrolling and all skins`,
++  );
++  // Release the large gallery before the separate mobile editor capture.
++  await context.close();
++  const mobile = await browser.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: 'reduce' });
++  const phone = await mobile.newPage();
++  phone.setDefaultTimeout(15000);
++  phone.on('pageerror', (error) => results.errors.push(error.message));
++  await phone.goto('http://localhost:4179/network/?code=221331&gaps=0.25+~+~+~,~+~+~+4&lang=ru');
++  await phone.locator('.link-gaps summary').click();
++  await shot(phone, 'mobile-gaps', phone.locator('.link-gaps'));
++  assert(await phone.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1));
++  pass('individual gap controls fit the Russian mobile editor');
++  assert.deepEqual(results.errors, []);
++  await mobile.close();
++} finally {
++  await writeFile(join(data, `${engine}-after.json`), JSON.stringify(results, null, 2) + '\n');
++  await browser?.close();
++  await server.close();
++}
+diff --git a/experiments/issue-23-capture.mjs b/experiments/issue-23-capture.mjs
+new file mode 100644
+index 0000000..ae31b49
+--- /dev/null
++++ b/experiments/issue-23-capture.mjs
+@@ -0,0 +1,28 @@
++// Readable mobile review evidence; the browser suites separately test 844px phones.
++/* global window, document */
++import { chromium } from 'playwright';
++import { preview } from 'vite';
++const server = await preview({ preview: { port: 4179, strictPort: true } });
++let browser;
++try {
++  browser = await chromium.launch();
++  const context = await browser.newContext({ viewport: { width: 390, height: 1200 }, reducedMotion: 'reduce' });
++  await context.addInitScript(() => {
++    localStorage.setItem('theme', 'dark');
++    localStorage.setItem('settings', JSON.stringify({ 'motion.mode': 'off' }));
++  });
++  const page = await context.newPage();
++  page.setDefaultTimeout(15000);
++  await page.goto('http://localhost:4179/network/?code=221331&gaps=0.25+~+~+~,~+~+~+4&lang=ru');
++  await page.locator('.link-gaps summary').click();
++  await page.evaluate(() => {
++    const gaps = document.querySelector('.link-gaps').getBoundingClientRect();
++    const header = document.querySelector('.topbar').getBoundingClientRect();
++    window.scrollBy(0, gaps.top - header.bottom - 16);
++  });
++  await page.locator('.link-gaps').screenshot({ path: 'docs/case-studies/issue-23/screenshots/mobile-gaps.png' });
++  await context.close();
++} finally {
++  await browser?.close();
++  await server.close();
++}
+diff --git a/experiments/issue-23-solver-caps.mjs b/experiments/issue-23-solver-caps.mjs
+new file mode 100644
+index 0000000..f7c6c14
+--- /dev/null
++++ b/experiments/issue-23-solver-caps.mjs
+@@ -0,0 +1,32 @@
++// Independently measure the visible, fitted halves after all gap/angle changes.
++import assert from 'node:assert/strict';
++import { createServer } from 'vite';
++const server = await createServer({ server: { middlewareMode: true } });
++try {
++  const { solveCollisions } = await server.ssrLoadModule('/src/links/collisions.js');
++  const { bezier, glyphCurves } = await server.ssrLoadModule('/src/links/glyph.js');
++  const { STYLE_DEFAULTS, shapeOfStyle } = await server.ssrLoadModule('/src/links/style.js');
++  for (const n of [3, 6, 12, 24]) {
++    const links = Array.from({ length: n }, (_, i) => [((i + 1) % n) + 1, ((i + Math.floor(n / 2)) % n) + 1]);
++    const shape = shapeOfStyle(STYLE_DEFAULTS, n);
++    const result = solveCollisions(links, shape, { range: 0, adjustGaps: true, gapRange: 1, middleRange: 15 });
++    const violations = [];
++    glyphCurves(links, { ...shape, turns: result.turns, linkGaps: result.linkGaps }).forEach((curve, i) => {
++      curve.segments.forEach((segment, k) => {
++        let length = 0;
++        let previous = segment[0];
++        for (let j = 1; j <= 1024; j++) {
++          const p = bezier(segment, j / 1024);
++          length += Math.hypot(p[0] - previous[0], p[1] - previous[1]);
++          previous = p;
++        }
++        const cut = result.linkGaps[i]?.[k + 2] ?? 0;
++        if (cut > length * 0.3 + 0.001) violations.push({ i, k, cut, length });
++      });
++    });
++    console.log(JSON.stringify({ n, violations }));
++    assert.deepEqual(violations, []);
++  }
++} finally {
++  await server.close();
++}
+diff --git a/experiments/issue-23-solver-scale.mjs b/experiments/issue-23-solver-scale.mjs
+new file mode 100644
+index 0000000..54fb1d1
+--- /dev/null
++++ b/experiments/issue-23-solver-scale.mjs
+@@ -0,0 +1,17 @@
++// Finite dense layouts: record the cost of gap-only search as networks grow.
++import { createServer } from 'vite';
++const server = await createServer({ server: { middlewareMode: true } });
++try {
++  const { solveCollisions } = await server.ssrLoadModule('/src/links/collisions.js');
++  const { STYLE_DEFAULTS, shapeOfStyle } = await server.ssrLoadModule('/src/links/style.js');
++  for (const n of [3, 6, 12, 24]) {
++    const links = Array.from({ length: n }, (_, i) => [((i + 1) % n) + 1, ((i + Math.floor(n / 2)) % n) + 1]);
++    const start = performance.now();
++    const result = solveCollisions(links, shapeOfStyle(STYLE_DEFAULTS, n), { range: 0, adjustGaps: true });
++    console.log(
++      JSON.stringify({ n, milliseconds: performance.now() - start, before: result.before, after: result.after }),
++    );
++  }
++} finally {
++  await server.close();
++}
+diff --git a/experiments/issue-23-solver.mjs b/experiments/issue-23-solver.mjs
+new file mode 100644
+index 0000000..7839973
+--- /dev/null
++++ b/experiments/issue-23-solver.mjs
+@@ -0,0 +1,29 @@
++// Small deterministic fixtures: verify gaps can help even with turn search off.
++import { createServer } from 'vite';
++const server = await createServer({ server: { middlewareMode: true } });
++try {
++  const { solveCollisions } = await server.ssrLoadModule('/src/links/collisions.js');
++  const { decode } = await server.ssrLoadModule('/src/links/configurations.js');
++  const { STYLE_DEFAULTS, normalizeStyle, shapeOfStyle } = await server.ssrLoadModule('/src/links/style.js');
++  for (const code of ['22 13 31', '23 31 12', '12 21', '11 22 12', '22 33 11']) {
++    const links = decode(code);
++    const result = solveCollisions(links, shapeOfStyle(STYLE_DEFAULTS, links.length), {
++      range: 0,
++      adjustGaps: true,
++    });
++    console.log(JSON.stringify({ code, ...result }));
++  }
++  for (const code of ['22 13 31', '23 31 12', '12 21', '00 00 00 00']) {
++    const links = decode(code);
++    const style = normalizeStyle({ free: 3 });
++    const result = solveCollisions(links, shapeOfStyle(style, links.length), {
++      range: 0,
++      adjustGaps: true,
++      gapRange: 0,
++      middleRange: 15,
++    });
++    console.log(JSON.stringify({ kind: 'middle-only', code, ...result }));
++  }
++} finally {
++  await server.close();
++}
+diff --git a/experiments/network-e2e.mjs b/experiments/network-e2e.mjs
+index d9d2b56..c95dab4 100644
+--- a/experiments/network-e2e.mjs
++++ b/experiments/network-e2e.mjs
+@@ -48,16 +48,15 @@ try {
+   await page.goto(`${base}/art/#symbols`);
+   const card = page.locator('.symbols__grid li').first();
+   const galleryCode = new URL(await card.locator('.symbols__card').getAttribute('href'), base).searchParams.get('code');
+-  const icon = card.locator('.symbols__share');
+-  await page.mouse.move(0, 0);
+-  assert.equal(await icon.evaluate((node) => getComputedStyle(node).opacity), '0');
++  assert.equal(await card.locator('a').count(), 1, 'one full-card editor link');
+   await card.hover();
+-  await page.waitForFunction(() => getComputedStyle(document.querySelector('.symbols__share')).opacity === '1');
++  assert.equal(await card.locator('a').evaluate((node) => getComputedStyle(node).textDecorationLine), 'none');
+   await shot(page, 'gallery-hover');
+-  await icon.click();
++  await card.locator('a').click();
+   await page.waitForURL('**/network/**');
+   await codeIs(page, galleryCode);
+-  assert.equal(new URL(page.url()).hash, '#share');
++  // Existing direct share-section URLs still work after removing the redundant icon.
++  await page.goto(`${base}/network/?code=${galleryCode}#share`);
+   await page.waitForFunction(() => document.getElementById('share').getBoundingClientRect().top < window.innerHeight);
+   await page.goto(`${base}/art/#symbols`);
+   await page.locator('.symbols__card').first().focus();
+@@ -124,9 +123,9 @@ try {
+   assert(to < from, `solver should improve the tangled example: ${score}`);
+   await shot(page, 'collisions-after', page.locator('.network__preview'));
+   const solvedSvg = await svgOf(page);
+-  await page.getByRole('button', { name: 'Write the turns into the table of links', exact: true }).click();
+-  assert.equal(await svgOf(page), solvedSvg, 'applying turns must preserve the preview');
+-  console.log(`${engine}: overlap reduction and applied turns passed`);
++  await page.getByRole('button', { name: 'Apply turns and gaps to links', exact: true }).click();
++  assert.equal(await svgOf(page), solvedSvg, 'applying turns and gaps must preserve the preview');
++  console.log(`${engine}: overlap reduction and applied turns/gaps passed`);
+ 
+   await page.getByRole('button', { name: 'Social card 1200 × 630', exact: true }).click();
+   await page.getByLabel('Theory notation', { exact: true }).selectOption('R');
+diff --git a/package.json b/package.json
+index 9f68ae9..b8cd4fb 100644
+--- a/package.json
++++ b/package.json
+@@ -29,7 +29,8 @@
+     "check:secrets": "secretlint \"**/*\" --secretlintignore .prettierignore",
+     "prepare": "husky",
+     "build:cv": "node scripts/build-cv-pdf.mjs",
+-    "test:network:issue21": "node experiments/issue-21-browser.mjs"
++    "test:network:issue21": "node experiments/issue-21-browser.mjs",
++    "test:network:issue23": "node experiments/issue-23-browser.mjs"
+   },
+   "homepage": "https://konard.github.io",
+   "devDependencies": {
+diff --git a/src/components/Layout.jsx b/src/components/Layout.jsx
+index e5b1e00..be2de12 100644
+--- a/src/components/Layout.jsx
++++ b/src/components/Layout.jsx
+@@ -14,6 +14,7 @@ import '../skins.liquid.css';
+ import '../skins.future.css';
+ // Responsive and print overrides must come last.
+ import '../App.media.css';
++import '../panels.css';
+ import { useEffect, useRef } from 'react';
+ import { motto } from '../data/motto';
+ import { centreCurrent, watchEdges } from './edges';
+@@ -24,6 +25,7 @@ import Cosmos from './Cosmos';
+ import LiquidRefraction from './LiquidRefraction';
+ import PrefSwitches from './PrefSwitches';
+ import Sound from './Sound';
++import { watchPanelVisibility } from './panelVisibility';
+ 
+ /**
+  * Shared frame of every page: the cosmic background, the page navigation
+@@ -34,6 +36,8 @@ export default function Layout({ page, sections = null, children, footer = null
+   const { t } = useLang();
+   const { n } = useNotation();
+   const pages = useRef(null);
++  const content = useRef(null);
++  useEffect(() => watchPanelVisibility(content.current), []);
+   const sectionList = useRef(null);
+   const hasSections = Boolean(sections);
+   // On a narrow screen the lists of pages and sections scroll sideways: show the current
+@@ -81,7 +85,7 @@ export default function Layout({ page, sections = null, children, footer = null
+         )}
+       </header>
+ 
+-      <main>{children}</main>
++      <main ref={content}>{children}</main>
+ 
+       <footer className="footer">
+         <span className="mono">{n(motto)}</span>
+diff --git a/src/components/NetworkGallery.jsx b/src/components/NetworkGallery.jsx
+index 31a1fa9..c8eec3a 100644
+--- a/src/components/NetworkGallery.jsx
++++ b/src/components/NetworkGallery.jsx
+@@ -25,20 +25,6 @@ const superscript = (k) =>
+ export const networkHref = (code, theme = 'dark') =>
+   `/network/?code=${code.replace(/ /g, '')}${theme === 'light' ? '&palette=print' : ''}`;
+ 
+-/** Three joined circles: drawn with circles and lines only, so the symbols stay the only paths of a card. */
+-function ShareIcon() {
+-  return (
+-    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
+-      <g fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+-        <line x1="8.6" y1="10.7" x2="15.4" y2="6.6" />
+-        <line x1="8.6" y1="13.3" x2="15.4" y2="17.4" />
+-        <circle cx="18" cy="5" r="3" />
+-        <circle cx="6" cy="12" r="3" />
+-        <circle cx="18" cy="19" r="3" />
+-      </g>
+-    </svg>
+-  );
+-}
+ const LINKS = { en: ['link', 'links'], ru: ['связь', 'связи', 'связей'] };
+ // "of N links": Russian needs the genitive after «из».
+ const OF_LINKS = { en: ['link', 'links'], ru: ['связи', 'связей', 'связей'] };
+@@ -152,14 +138,6 @@ export default function NetworkGallery({ initial = 2 }) {
+               <Glyph code={code} size={64} />
+               <span className="mono">{mathNotation(code)}</span>
+             </a>
+-            <a
+-              className="symbols__share"
+-              href={`${networkHref(code, theme)}#share`}
+-              aria-label={`${t({ en: 'Share', ru: 'Поделиться' })} ${mathNotation(code)}`}
+-              title={t({ en: 'Edit, download and share', ru: 'Изменить, скачать и поделиться' })}
+-            >
+-              <ShareIcon />
+-            </a>
+           </li>
+         ))}
+       </ul>
+diff --git a/src/components/panelVisibility.js b/src/components/panelVisibility.js
+new file mode 100644
+index 0000000..edf629f
+--- /dev/null
++++ b/src/components/panelVisibility.js
+@@ -0,0 +1,55 @@
++// Keep the number of live backdrop-filter surfaces proportional to the viewport,
++// including when a gallery, feed or repository list grows by thousands of items.
++export const PANEL_SELECTOR = '.symbols__grid > li, .repo, .post';
++export function watchPanelVisibility(root) {
++  if (!root || typeof IntersectionObserver === 'undefined') return () => {};
++  const observed = new Set();
++  const debug = () => {
++    try {
++      if (localStorage.getItem('ui.debug') === '1')
++        console.debug('[ui.panels]', {
++          total: observed.size,
++          active: [...observed].filter((n) => n.dataset.inViewport === 'true').length,
++        });
++    } catch {
++      /* storage may be disabled */
++    }
++  };
++  const observer = new IntersectionObserver(
++    (entries) => {
++      entries.forEach(({ target, isIntersecting }) => {
++        if (isIntersecting) target.dataset.inViewport = 'true';
++        else delete target.dataset.inViewport;
++      });
++      debug();
++    },
++    { rootMargin: '200px 0px' },
++  );
++  const add = (node) => {
++    if (node.nodeType !== 1) return;
++    const panels = [...node.querySelectorAll(PANEL_SELECTOR)];
++    if (node.matches(PANEL_SELECTOR)) panels.unshift(node);
++    for (const panel of panels)
++      if (!observed.has(panel)) {
++        observed.add(panel);
++        observer.observe(panel);
++      }
++  };
++  root.dataset.panelVisibility = 'on';
++  add(root);
++  const mutations = new MutationObserver((entries) => {
++    for (const entry of entries) entry.addedNodes.forEach(add);
++    for (const panel of observed)
++      if (!root.contains(panel)) {
++        observer.unobserve(panel);
++        observed.delete(panel);
++      }
++  });
++  mutations.observe(root, { childList: true, subtree: true });
++  return () => {
++    observer.disconnect();
++    mutations.disconnect();
++    delete root.dataset.panelVisibility;
++    for (const panel of observed) delete panel.dataset.inViewport;
++  };
++}
+diff --git a/src/components/panelVisibility.test.js b/src/components/panelVisibility.test.js
+new file mode 100644
+index 0000000..b6e564a
+--- /dev/null
++++ b/src/components/panelVisibility.test.js
+@@ -0,0 +1,52 @@
++import { afterEach, expect, it, vi } from 'vitest';
++import { watchPanelVisibility } from './panelVisibility';
++
++afterEach(() => {
++  vi.unstubAllGlobals();
++  document.body.replaceChildren();
++});
++it('bounds live panels, observes appended lists and cleans up removed panels', async () => {
++  let enter;
++  const observer = { observe: vi.fn(), unobserve: vi.fn(), disconnect: vi.fn() };
++  vi.stubGlobal(
++    'IntersectionObserver',
++    vi.fn(function (callback, options) {
++      enter = callback;
++      expect(options.rootMargin).toBe('200px 0px');
++      return observer;
++    }),
++  );
++  const root = document.createElement('main');
++  root.innerHTML = '<ul class="symbols__grid"><li>card</li></ul><article class="post">post</article>';
++  document.body.append(root);
++  const cleanup = watchPanelVisibility(root);
++  const card = root.querySelector('li');
++  const post = root.querySelector('.post');
++  expect(observer.observe).toHaveBeenCalledTimes(2);
++  expect(root.dataset.panelVisibility).toBe('on');
++  enter([
++    { target: card, isIntersecting: true },
++    { target: post, isIntersecting: false },
++  ]);
++  expect(card.dataset.inViewport).toBe('true');
++  expect(post.dataset.inViewport).toBeUndefined();
++  const repo = document.createElement('article');
++  repo.className = 'repo';
++  root.append(repo);
++  await Promise.resolve();
++  expect(observer.observe).toHaveBeenCalledWith(repo);
++  card.remove();
++  await Promise.resolve();
++  expect(observer.unobserve).toHaveBeenCalledWith(card);
++  enter([{ target: post, isIntersecting: true }]);
++  cleanup();
++  expect(observer.disconnect).toHaveBeenCalledOnce();
++  expect(root.dataset.panelVisibility).toBeUndefined();
++  expect(post.dataset.inViewport).toBeUndefined();
++});
++it('preserves the original presentation if IntersectionObserver is unavailable', () => {
++  vi.stubGlobal('IntersectionObserver', undefined);
++  const root = document.createElement('main');
++  watchPanelVisibility(root)();
++  expect(root.dataset.panelVisibility).toBeUndefined();
++});
+diff --git a/src/links/collision-gap-cache.js b/src/links/collision-gap-cache.js
+new file mode 100644
+index 0000000..e4f3e5f
+--- /dev/null
++++ b/src/links/collision-gap-cache.js
+@@ -0,0 +1,63 @@
++// Changing one gap normally affects only that link's pair scores. A reference
++// gap can also change the fitted scale: then every existing image-unit middle
++// cut must be rescored. Keep that uncommon case exact as well.
++import { pairCost, visiblePolyline } from './collisions';
++import { curveTransform } from './glyph';
++
++export class GapScoreCache {
++  constructor(curves, shape) {
++    this.curves = curves;
++    this.shape = shape;
++    this.middles = curves.map((curve) => curve.middle.at);
++    Object.assign(this, this.fullState(curveTransform(curves, shape).scale));
++  }
++
++  fullState(scale) {
++    const lines = this.curves.map((curve, i) => visiblePolyline(curve, this.shape, i, scale));
++    const pairs = lines.map(() => Array(lines.length).fill(0));
++    let total = 0;
++    for (let i = 0; i < lines.length; i++)
++      for (let j = i + 1; j < lines.length; j++) {
++        pairs[i][j] = pairs[j][i] = pairCost(lines[i], lines[j], this.middles);
++        total += pairs[i][j];
++      }
++    return { scale, lines, pairs, total };
++  }
++
++  measure(i, curve) {
++    const previous = this.curves[i];
++    this.curves[i] = curve;
++    const scale = curve === previous ? this.scale : curveTransform(this.curves, this.shape).scale;
++    const cuts = this.curves.some(
++      (_, j) =>
++        (this.shape.linkGaps[j]?.[2] ?? this.shape.middleGapStart) > 0 ||
++        (this.shape.linkGaps[j]?.[3] ?? this.shape.middleGapEnd) > 0,
++    );
++    let state;
++    if (scale !== this.scale && cuts) state = this.fullState(scale);
++    else {
++      const line = visiblePolyline(curve, this.shape, i, scale);
++      const pairRow = this.lines.map((other, j) => (i === j ? 0 : pairCost(line, other, this.middles)));
++      const sum = (values) => values.reduce((a, b) => a + b, 0);
++      state = { scale, line, pairRow, total: this.total - sum(this.pairs[i]) + sum(pairRow) };
++    }
++    this.curves[i] = previous;
++    return { ...state, i, curve };
++  }
++
++  accept(state) {
++    const { i, curve, scale, total } = state;
++    this.curves[i] = curve;
++    this.scale = scale;
++    this.total = total;
++    if (state.lines) {
++      this.lines = state.lines;
++      this.pairs = state.pairs;
++    } else {
++      this.lines[i] = state.line;
++      state.pairRow.forEach((cost, j) => {
++        this.pairs[i][j] = this.pairs[j][i] = cost;
++      });
++    }
++  }
++}
+diff --git a/src/links/collision-gaps.js b/src/links/collision-gaps.js
+new file mode 100644
+index 0000000..094014f
+--- /dev/null
++++ b/src/links/collision-gaps.js
+@@ -0,0 +1,80 @@
++// A second coordinate-descent stage: try modest gaps after turning the ends.
++// Score the exact visible curves and penalize extra cuts so the solver cannot
++// "solve" a diagram by erasing it. Manual gaps remain the starting point.
++import { overlapCost } from './collisions';
++import { GapScoreCache } from './collision-gap-cache';
++import { GAP_FIELDS } from './gaps';
++import { bezier, layout, layoutCurves, linkCurve } from './glyph';
++
++export function adjustCollisionGaps(links, base, result, { gapRange, middleRange, passes }) {
++  gapRange = Math.min(1, Math.max(0, Number(gapRange) || 0));
++  middleRange = Math.min(15, Math.max(0, Number(middleRange) || 0));
++  const rows = links.map((_, i) => GAP_FIELDS.map((_, k) => base.linkGaps[i]?.[k] ?? null));
++  const initial = rows.map((row) => row.map((v, k) => v ?? base[GAP_FIELDS[k].key] ?? base.gap));
++  const currentShape = () => ({ ...base, turns: result.turns, linkGaps: rows });
++  const places = layout(links.length, base, links);
++  const cache = new GapScoreCache(layoutCurves(links, currentShape()), currentShape());
++  const turningCost = result.after - cache.total;
++  const halfLength = (i, k) => {
++    const segment = cache.curves[i].segments[k];
++    let length = 0;
++    let previous = segment[0];
++    for (let j = 1; j <= 64; j++) {
++      const point = bezier(segment, j / 64);
++      length += Math.hypot(point[0] - previous[0], point[1] - previous[1]);
++      previous = point;
++    }
++    return length * cache.scale;
++  };
++  const penalty = () =>
++    rows.reduce(
++      (sum, row, i) =>
++        sum + row.reduce((s, v, k) => s + Math.abs((v ?? initial[i][k]) - initial[i][k]) * (k < 2 ? 0.1 : 0.025), 0),
++      0,
++    );
++  let bestScore = result.after;
++  for (let pass = 0; pass < Math.min(passes, 2); pass++) {
++    let improved = false;
++    for (let i = 0; i < links.length; i++)
++      for (let k = 0; k < 4; k++) {
++        if (k < 2 && links[i][k] === 0) continue;
++        const kept = rows[i][k];
++        const range = k < 2 ? gapRange : middleRange;
++        if (!range) continue;
++        // Never shorten an existing manual cut just to satisfy the automatic
++        // cap. New cuts may consume at most 30% of either half of the line.
++        const max = k < 2 ? 1 : Math.max(initial[i][k], Math.min(30, halfLength(i, k - 2) * 0.3));
++        let best = kept;
++        let bestState;
++        for (const fraction of [-1, -0.5, 0.5, 1]) {
++          const value = Math.round(Math.max(0, Math.min(max, initial[i][k] + range * fraction)) * 1000) / 1000;
++          if (value === (kept ?? initial[i][k])) continue;
++          rows[i][k] = value;
++          const curve = k < 2 ? linkCurve(links, i, places, currentShape()) : cache.curves[i];
++          const candidate = cache.measure(i, curve);
++          const score = turningCost + candidate.total + penalty();
++          if (score < bestScore - 1e-9) {
++            bestScore = score;
++            best = value;
++            bestState = candidate;
++          }
++        }
++        rows[i][k] = best;
++        if (bestState) {
++          cache.accept(bestState);
++          improved = true;
++        }
++      }
++    if (!improved) break;
++  }
++  // Later reference-gap changes can shorten earlier halves or their fitted
++  // scale. Enforce the cut budget against the final geometry as well.
++  rows.forEach((row, i) => {
++    for (let k = 2; k < 4; k++) {
++      const max = Math.max(initial[i][k], Math.min(30, halfLength(i, k - 2) * 0.3));
++      if (row[k] > max) row[k] = Math.floor(max * 1000) / 1000;
++    }
++  });
++  const after = overlapCost(links, currentShape());
++  return after <= result.after ? { ...result, linkGaps: rows, after } : result;
++}
+diff --git a/src/links/collisions.js b/src/links/collisions.js
+index d264247..2428bc1 100644
+--- a/src/links/collisions.js
++++ b/src/links/collisions.js
+@@ -11,7 +11,9 @@
+ //   - every sampled point of a line that comes closer than NEAR to a line of
+ //     another link (the lines run together and overlap);
+ //   - a little for every degree turned, so nothing turns without a reason.
+-import { bezier, layout, layoutCurves, linkCurve, shapeOf } from './glyph';
++import { bezier, curveTransform, layout, layoutCurves, linkCurve, shapeOf } from './glyph';
++import { trimCurve } from './curve-tools';
++import { adjustCollisionGaps } from './collision-gaps';
+ 
+ const SAMPLES = 16; // points per Bézier segment
+ const NEAR = 0.09; // lines closer than this overlap (a stroke is about 0.04)
+@@ -20,7 +22,7 @@ const CROSSING = 1;
+ const CLOSE = 0.25;
+ const TURNING = 0.002; // per degree
+ 
+-const polyline = (curve) =>
++export const polyline = (curve) =>
+   curve.segments.flatMap((seg, k) =>
+     Array.from({ length: SAMPLES + (k ? 0 : 1) }, (_, j) => bezier(seg, (j + (k ? 1 : 0)) / SAMPLES)),
+   );
+@@ -37,21 +39,22 @@ function crossing(p1, p2, q1, q2) {
+ 
+ /** How much the lines of two links (polylines) overlap and cross; `middles` are exempt. */
+ export function pairCost(a, b, middles) {
+-  const free = (p) => middles.every((m) => distance(p, m) > MIDDLE);
++  const free = (p) => p && middles.every((m) => distance(p, m) > MIDDLE);
+   let cost = 0;
+   for (let i = 0; i < a.length - 1; i++) {
+     for (let j = 0; j < b.length - 1; j++) {
++      if (!a[i] || !a[i + 1] || !b[j] || !b[j + 1]) continue;
+       const point = crossing(a[i], a[i + 1], b[j], b[j + 1]);
+       if (point && free(point)) cost += CROSSING;
+     }
+   }
+   for (const p of a) {
+     if (!free(p)) continue;
+-    if (b.some((q) => distance(p, q) < NEAR)) cost += CLOSE;
++    if (b.some((q) => q && distance(p, q) < NEAR)) cost += CLOSE;
+   }
+   for (const q of b) {
+     if (!free(q)) continue;
+-    if (a.some((p) => distance(p, q) < NEAR)) cost += CLOSE;
++    if (a.some((p) => p && distance(p, q) < NEAR)) cost += CLOSE;
+   }
+   return cost;
+ }
+@@ -61,7 +64,9 @@ const turning = (turns) => turns.flat().reduce((sum, a) => sum + Math.abs(a), 0)
+ /** The cost of a drawing of `links` with `shape` (lower is cleaner). */
+ export function overlapCost(links, shape = {}) {
+   const curves = layoutCurves(links, shape);
+-  const lines = curves.map(polyline);
++  const o = shapeOf(shape);
++  const scale = curveTransform(curves, o).scale;
++  const lines = curves.map((curve, i) => visiblePolyline(curve, o, i, scale));
+   const middles = curves.map((c) => c.middle.at);
+   let cost = turning(shapeOf(shape).turns);
+   for (let i = 0; i < lines.length; i++)
+@@ -75,7 +80,14 @@ export function overlapCost(links, shape = {}) {
+  * degrees in steps of `step`. Returns the turns found (`delta`, to add to the
+  * starting turns), the turns in total (`turns`) and the cost before and after.
+  */
+-export function solveCollisions(links, shape = {}, { range = 60, step = 15, passes = 3 } = {}) {
++export function solveCollisions(
++  links,
++  shape = {},
++  { range = 60, step = 15, passes = 3, adjustGaps = false, gapRange = 0.2, middleRange = 4 } = {},
++) {
++  range = Math.min(180, Math.max(0, Number(range) || 0));
++  step = Math.max(1, Number(step) || 15);
++  passes = Math.min(10, Math.max(0, Number(passes) || 0));
+   const n = links.length;
+   const base = shapeOf(shape);
+   const start = Array.from({ length: n }, (_, i) => base.turns[i] || [0, 0]);
+@@ -84,7 +96,8 @@ export function solveCollisions(links, shape = {}, { range = 60, step = 15, pass
+   const places = layout(n, base, links);
+   const curveOf = (i) => linkCurve(links, i, places, { ...base, turns: total() });
+   const middles = layoutCurves(links, base).map((c) => c.middle.at);
+-  const lines = links.map((_, i) => polyline(curveOf(i)));
++  const scale = curveTransform(layoutCurves(links, base), base).scale;
++  const lines = links.map((_, i) => visiblePolyline(curveOf(i), base, i, scale));
+   const costOf = (i, line) => {
+     let cost = 0;
+     for (let j = 0; j < n; j++) if (j !== i) cost += pairCost(line, lines[j], middles);
+@@ -105,7 +118,7 @@ export function solveCollisions(links, shape = {}, { range = 60, step = 15, pass
+           // Applied turns go back through the editable table's −180…180° range.
+           if (Math.abs(start[i][end] + angle) > 180) continue;
+           delta[i][end] = angle;
+-          const line = polyline(curveOf(i));
++          const line = visiblePolyline(curveOf(i), base, i, scale);
+           const cost = costOf(i, line);
+           if (cost < best.cost - 1e-9) best = { angle, cost, line };
+         }
+@@ -116,5 +129,29 @@ export function solveCollisions(links, shape = {}, { range = 60, step = 15, pass
+     }
+     if (!improved) break;
+   }
+-  return { delta, turns: total(), before, after: overlapCost(links, { ...base, turns: total() }) };
++  let result = {
++    delta,
++    turns: total(),
++    linkGaps: base.linkGaps,
++    before,
++    after: overlapCost(links, { ...base, turns: total() }),
++  };
++  // Middle cuts use image units: a turn can change fitting scale. Reject a
++  // cached candidate if the exact complete drawing would become worse.
++  if (result.after > before)
++    result = { delta: start.map(() => [0, 0]), turns: start, linkGaps: base.linkGaps, before, after: before };
++  return adjustGaps ? adjustCollisionGaps(links, base, result, { gapRange, middleRange, passes }) : result;
++}
++
++/** Keep each cut as a real break: no artificial chord across the missing middle. */
++export function visiblePolyline(curve, o, i, scale) {
++  const before = o.linkGaps[i]?.[2] ?? o.middleGapStart;
++  const after = o.linkGaps[i]?.[3] ?? o.middleGapEnd;
++  if (!before && !after) return polyline(curve);
++  return curve.segments.flatMap((segment, k) => {
++    const kept = trimCurve(segment, (k ? after : before) / scale, Boolean(k));
++    return kept
++      ? [...(k ? [null] : []), ...Array.from({ length: SAMPLES + 1 }, (_, j) => bezier(kept, j / SAMPLES))]
++      : [];
++  });
+ }
+diff --git a/src/links/curve-23.test.js b/src/links/curve-23.test.js
+new file mode 100644
+index 0000000..8316b89
+--- /dev/null
++++ b/src/links/curve-23.test.js
+@@ -0,0 +1,52 @@
++import { expect, it } from 'vitest';
++import { pointAlongCurve } from './curve-tools';
++import { bezier, glyphCurves, glyphParts } from './glyph';
++import { normalizeStyle, shapeOfStyle } from './style';
++const numbers = (path) => path.match(/-?\d+(?:\.\d+)?/g).map(Number);
++const sub = (a, b) => a.map((v, i) => v - b[i]);
++it('places endpoint and middle markers on both halves with local tangents, even across the join', () => {
++  for (const key of ['start', 'end', 'middle']) {
++    for (const offset of [-12, 12, 20]) {
++      const shape = shapeOfStyle(
++        normalizeStyle({
++          bulge: 130,
++          start: 'bar',
++          end: 'bar',
++          middle: 'bar',
++          startOffset: 0,
++          [`${key}Offset`]: offset,
++        }),
++        1,
++      );
++      const [curve] = glyphCurves([[1, 1]], shape);
++      const expected = pointAlongCurve(curve.segments, key === 'end' ? -offset : offset, key);
++      const marker = glyphParts([[1, 1]], shape)[0][key];
++      const [x, y, u, v] = numbers(marker.d);
++      expect(Math.hypot(x + u - 2 * expected.at[0], y + v - 2 * expected.at[1])).toBeLessThan(0.02);
++      expect(Math.abs((u - x) * expected.dir[0] + (v - y) * expected.dir[1])).toBeLessThan(0.025);
++    }
++  }
++});
++it('measures path distance rather than a tangent translation and extends ends safely', () => {
++  const segments = [
++    [
++      [0, 0],
++      [0, 10],
++      [10, 10],
++      [10, 0],
++    ],
++    [
++      [10, 0],
++      [10, -10],
++      [20, -10],
++      [20, 0],
++    ],
++  ];
++  const at = pointAlongCurve(segments, 10);
++  expect(Math.hypot(...sub(at.at, bezier(segments[0], 0.5)))).toBeLessThan(0.001);
++  expect(pointAlongCurve(segments, 25).at[0]).toBeGreaterThan(10);
++  expect(pointAlongCurve(segments, 0, 'middle').at).toEqual([10, 0]);
++  expect(pointAlongCurve(segments, -4).at).toEqual([0, -4]);
++  expect(pointAlongCurve(segments, 4, 'end').at).toEqual([20, 4]);
++  expect(pointAlongCurve([Array(4).fill([3, 5])], 10)).toEqual({ at: [13, 5], dir: [1, 0] });
++});
+diff --git a/src/links/curve-tools.js b/src/links/curve-tools.js
+index 4727fa9..cb3d816 100644
+--- a/src/links/curve-tools.js
++++ b/src/links/curve-tools.js
+@@ -31,3 +31,60 @@ export function trimCurve(segment, amount, fromStart = false) {
+   }
+   return null;
+ }
++
++const evaluate = ([a, b, c, d], t) => {
++  const u = 1 - t;
++  return a.map((v, i) => u * u * u * v + 3 * u * u * t * b[i] + 3 * u * t * t * c[i] + t * t * t * d[i]);
++};
++const tangent = ([a, b, c, d], t) => {
++  const u = 1 - t;
++  let dir = a.map((v, i) => 3 * u * u * (b[i] - v) + 6 * u * t * (c[i] - b[i]) + 3 * t * t * (d[i] - c[i]));
++  if (Math.hypot(...dir) < 1e-10) {
++    dir = evaluate([a, b, c, d], Math.min(1, t + 1e-5)).map(
++      (v, i) => v - evaluate([a, b, c, d], Math.max(0, t - 1e-5))[i],
++    );
++  }
++  const length = Math.hypot(...dir);
++  return length < 1e-12 ? [1, 0] : dir.map((v) => v / length);
++};
++
++/** Arc-length placement on a cubic chain; out-of-path offsets extend its end tangent.
++ * A bounded 256-sample table per cubic gives sub-pixel accuracy in the 100-unit box.
++ * Middle offsets start at the join, positive in the direction of the line.
++ */
++export function pointAlongCurve(segments, offset, origin = 'start') {
++  const table = [{ length: 0, segment: 0, t: 0 }];
++  let length = 0;
++  let middleLength = 0;
++  for (let i = 0; i < segments.length; i++) {
++    let previous = segments[i][0];
++    for (let k = 1; k <= 256; k++) {
++      const t = k / 256;
++      const point = evaluate(segments[i], t);
++      length += distance(previous, point);
++      table.push({ length, segment: i, t });
++      previous = point;
++    }
++    if (i === 0) middleLength = length;
++  }
++  const target = offset + (origin === 'end' ? length : origin === 'middle' ? middleLength : 0);
++  if (target <= 0 || target >= length) {
++    const first = target <= 0;
++    const segment = first ? segments[0] : segments.at(-1);
++    const at = first ? segment[0] : segment[3];
++    const dir = tangent(segment, first ? 0 : 1);
++    return { at: at.map((v, i) => v + dir[i] * (first ? target : target - length)), dir };
++  }
++  let lo = 1;
++  let hi = table.length - 1;
++  while (lo < hi) {
++    const mid = (lo + hi) >> 1;
++    if (table[mid].length < target) lo = mid + 1;
++    else hi = mid;
++  }
++  const right = table[lo];
++  const left = table[lo - 1];
++  const startT = left.segment === right.segment ? left.t : 0;
++  const t = startT + ((right.t - startT) * (target - left.length)) / Math.max(right.length - left.length, 1e-12);
++  return { at: evaluate(segments[right.segment], t), dir: tangent(segments[right.segment], t) };
++}
+diff --git a/src/links/gaps.js b/src/links/gaps.js
+new file mode 100644
+index 0000000..ac11980
+--- /dev/null
++++ b/src/links/gaps.js
+@@ -0,0 +1,30 @@
++// Per-link overrides share the global units: reference gaps in layout units,
++// middle cuts in 1/100 of the symbol. Null inherits, including after global edits.
++export const GAP_FIELDS = [
++  { key: 'startGap', max: 1, step: 0.01, label: { en: 'Gap at the source reference', ru: 'Зазор у начальной ссылки' } },
++  { key: 'endGap', max: 1, step: 0.01, label: { en: 'Gap at the target reference', ru: 'Зазор у конечной ссылки' } },
++  { key: 'middleGapStart', max: 30, step: 0.1, label: { en: 'Cut before the middle', ru: 'Разрыв перед серединой' } },
++  { key: 'middleGapEnd', max: 30, step: 0.1, label: { en: 'Cut after the middle', ru: 'Разрыв после середины' } },
++];
++export function normalizeGaps(value) {
++  const rows = String(value ?? '')
++    .split(',')
++    .map((row) => {
++      const values = row.trim().split(/\s+/);
++      return GAP_FIELDS.map(({ max }, i) => {
++        const raw = values[i];
++        const number = raw === undefined || raw === '~' || raw === '' ? NaN : Number(raw);
++        return Number.isFinite(number) ? Math.round(Math.min(max, Math.max(0, number)) * 1000) / 1000 : null;
++      });
++    });
++  while (rows.length && rows.at(-1).every((v) => v === null)) rows.pop();
++  return rows.map((row) => row.map((v) => (v === null ? '~' : v)).join(' ')).join(',');
++}
++export function linkGaps(style, n) {
++  const rows = style.gaps
++    ? style.gaps.split(',').map((row) => row.split(' ').map((v) => (v === '~' ? null : Number(v))))
++    : [];
++  return Array.from({ length: n }, (_, i) => rows[i] || [null, null, null, null]);
++}
++export const gapsText = (rows) => rows.map((row) => row.map((v) => (v == null ? '~' : v)).join(' ')).join(',');
++export const withGaps = (style, rows) => ({ ...style, gaps: normalizeGaps(gapsText(rows)) });
+diff --git a/src/links/geometry-23.test.js b/src/links/geometry-23.test.js
+new file mode 100644
+index 0000000..bbc2841
+--- /dev/null
++++ b/src/links/geometry-23.test.js
+@@ -0,0 +1,84 @@
++import { describe, expect, it } from 'vitest';
++import { bezier, glyphCurves, glyphParts, layoutCurves } from './glyph';
++import { STYLE_DEFAULTS, STYLE_FIELDS, normalizeStyle, shapeOfStyle, styleFromParams, styleToParams } from './style';
++
++const shape = (raw = {}, n = 1) => shapeOfStyle(normalizeStyle(raw), n);
++const numbers = (path) => path.match(/-?\d+(?:\.\d+)?/g).map(Number);
++const sub = (a, b) => a.map((v, i) => v - b[i]);
++const cross = (a, b) => a[0] * b[1] - a[1] * b[0];
++
++describe('issue 23 geometry regressions', () => {
++  it('defaults to straight free links with neutral bend and rotation', () => {
++    expect(STYLE_DEFAULTS.bulge).toBe(0);
++    expect(STYLE_DEFAULTS.rotation).toBe(0);
++    const [curve] = layoutCurves([[0, 0]], shape());
++    const axis = sub(curve.end.at, curve.start.at);
++    for (const segment of curve.segments)
++      for (let k = 0; k <= 20; k++)
++        expect(Math.abs(cross(sub(bezier(segment, k / 20), curve.start.at), axis))).toBeLessThan(1e-10);
++  });
++
++  it('accepts signed bends and endpoint angles over a full turn', () => {
++    for (const key of ['bulge', 'rotation', 'sourceAngle', 'targetAngle']) {
++      const field = STYLE_FIELDS.find((f) => f.key === key);
++      expect(field.min, key).toBeLessThanOrEqual(-180);
++      expect(field.max, key).toBeGreaterThanOrEqual(180);
++      expect(normalizeStyle({ [key]: -150 })[key]).toBe(-150);
++    }
++  });
++
++  it('adjusts self/partial loop width independently while leaving free links straight', () => {
++    const free = layoutCurves([[0, 0]], shape());
++    for (const loopBend of [-180, 0, 180]) {
++      expect(layoutCurves([[0, 0]], shape({ loopBend }))).toEqual(free);
++      for (const links of [[[1, 1]], [[0, 1]], [[1, 0]]]) {
++        const [base] = layoutCurves(links, shape());
++        const [curve] = layoutCurves(links, shape({ loopBend }));
++        expect(curve.start.at).toEqual(base.start.at);
++        expect(curve.end.at).toEqual(base.end.at);
++        if (loopBend !== 0) expect(curve.segments).not.toEqual(base.segments);
++        if (links[0][0] === 0) expect(curve.segments[0]).toEqual(base.segments[0]);
++        if (links[0][1] === 0) expect(curve.segments[1]).toEqual(base.segments[1]);
++      }
++    }
++  });
++
++  it('moves a source bar along its cubic and rotates it with the local tangent', () => {
++    const options = shape({ bulge: 90, startOffset: 12 });
++    const [curve] = glyphCurves([[0, 0]], options);
++    const [part] = glyphParts([[0, 0]], options);
++    const [x1, y1, x2, y2] = numbers(part.start.d);
++    const at = [(x1 + x2) / 2, (y1 + y2) / 2];
++    let best = { distance: Infinity };
++    for (let k = 0; k <= 10000; k++) {
++      const t = k / 10000;
++      const p = bezier(curve.segments[0], t);
++      const distance = Math.hypot(...sub(p, at));
++      if (distance < best.distance) best = { distance, t };
++    }
++    expect(best.distance).toBeLessThan(0.02);
++    const tangent = sub(bezier(curve.segments[0], best.t + 0.00001), bezier(curve.segments[0], best.t - 0.00001));
++    const bar = [x2 - x1, y2 - y1];
++    expect(
++      Math.abs((tangent[0] * bar[0] + tangent[1] * bar[1]) / Math.hypot(...tangent) / Math.hypot(...bar)),
++    ).toBeLessThan(0.005);
++  });
++
++  it('preserves independent per-link gaps through normalization and sharing', () => {
++    const style = normalizeStyle({ gaps: '0.2 0.3 4 5,~ 0 0 0' });
++    expect(style.gaps).toBe('0.2 0.3 4 5,~ 0 0 0');
++    expect(styleFromParams(styleToParams(style))).toEqual(style);
++    const links = [
++      [1, 1],
++      [2, 2],
++    ];
++    const curves = layoutCurves(links, shapeOfStyle(style, 2));
++    const distance = (a, b) => Math.hypot(...sub(a, b));
++    expect(distance(curves[0].start.at, curves[0].middle.at)).toBeCloseTo(0.2, 10);
++    expect(distance(curves[0].end.at, curves[0].middle.at)).toBeCloseTo(0.3, 10);
++    expect(distance(curves[1].start.at, curves[1].middle.at)).toBeCloseTo(STYLE_DEFAULTS.startGap, 10);
++    const parts = glyphParts(links, shapeOfStyle(style, 2));
++    expect(parts[0].line.match(/M/g)).toHaveLength(2);
++    expect(parts[1].line.match(/M/g)).toHaveLength(1);
++  });
++});
+diff --git a/src/links/glyph.js b/src/links/glyph.js
+index 74417c7..a8860e1 100644
+--- a/src/links/glyph.js
++++ b/src/links/glyph.js
+@@ -15,7 +15,7 @@
+ // the shapes of its start, end and middle, and turn each end on its own. The
+ // defaults in SHAPE draw exactly the symbols of the gallery and the rain.
+ 
+-import { trimCurve } from './curve-tools';
++import { pointAlongCurve, trimCurve } from './curve-tools';
+ import { placeLinks } from './placement';
+ 
+ export const SIZE = 100;
+@@ -58,6 +58,7 @@ export const SHAPE = {
+   bendMode: 'rotate', // legacy gallery/rain geometry; the editor opts into anchored curve bending
+   tension: 0.38, // how far a reference bends out, relative to the distance it spans
+   bulge: 20, // how much a lone reference bends aside
++  loopBend: 0, // independent loop width in editor curve mode
+   gap: 0.07, // ends stop this far from the middle they touch
+   startGap: null, // independent reference gaps; null keeps the legacy shared gap
+   endGap: null,
+@@ -78,7 +79,7 @@ export const SHAPE = {
+   middle: 'none',
+   middleSize: 2.2,
+   middleAngle: 30,
+-  startOffset: 0, // marker displacement along the tangent, in SIZE units (positive is inward)
++  startOffset: 0, // marker displacement along the curve, in SIZE units (positive is inward)
+   endOffset: 0,
+   middleOffset: 0,
+   startAcross: 0, // displacement across the tangent, in SIZE units
+@@ -88,6 +89,7 @@ export const SHAPE = {
+   endRotation: 0,
+   middleRotation: 0,
+   turns: [], // [source, target] turn of each link's ends in degrees, set by hand or by solveCollisions
++  linkGaps: [], // [source gap, target gap, cut before middle, cut after middle]; null inherits
+ };
+ 
+ const RAD = Math.PI / 180;
+@@ -145,8 +147,8 @@ export function linkCurve(links, i, places, o) {
+   const loop = (n === 1 ? LONE.loop : LOOP) * o.loop;
+   const [turnIn, turnOut] = (o.turns[i] || [0, 0]).map((a) => (a || 0) * RAD);
+   const bulge = o.bulge * RAD;
+-  const startGap = o.startGap ?? o.gap;
+-  const endGap = o.endGap ?? o.gap;
++  const startGap = o.linkGaps[i]?.[0] ?? o.startGap ?? o.gap;
++  const endGap = o.linkGaps[i]?.[1] ?? o.endGap ?? o.gap;
+   const tangent = rotate(out, Math.PI / 2);
+   const tIn = other(s) ? unit(sub(m, places[s - 1].at)) : null;
+   const tOut = other(t) ? unit(sub(places[t - 1].at, m)) : null;
+@@ -167,7 +169,7 @@ export function linkCurve(links, i, places, o) {
+   if (balanced && !tIn && !tOut) {
+     d = s && t ? rotate(tangent, Math.PI / 4) : s || t ? tangent : rotate(tangent, bulge / 2);
+   }
+-  const loopWidth = balanced ? 1 + (o.bulge - SHAPE.bulge) / 90 : 1;
++  const loopWidth = balanced ? Math.exp((o.bulge + o.loopBend) / 180) : 1;
+ 
+   let first;
+   let start;
+@@ -247,9 +249,8 @@ export function layoutCurves(links, shape = {}) {
+   return links.map((_, i) => linkCurve(links, i, places, o));
+ }
+ 
+-/** The curves of every link, already scaled into the SIZE box. */
+-export function glyphCurves(links, shape = {}) {
+-  const curves = layoutCurves(links, shape);
++/** Shared fitting transform, also used to score middle cuts in image units. */
++export function curveTransform(curves, shape = {}) {
+   const o = shapeOf(shape);
+   const markerRoom = Math.max(
+     ...['start', 'end', 'middle'].map((key) =>
+@@ -270,6 +271,13 @@ export function glyphCurves(links, shape = {}) {
+   ];
+   const scale = Math.min(SCALE, (SIZE - 2 * pad) / Math.max(maxX - minX, maxY - minY, 1e-9));
+   const shift = [SIZE / 2 - ((minX + maxX) / 2) * scale, SIZE / 2 - ((minY + maxY) / 2) * scale];
++  return { scale, shift };
++}
++
++/** The curves of every link, already scaled into the SIZE box. */
++export function glyphCurves(links, shape = {}) {
++  const curves = layoutCurves(links, shape);
++  const { scale, shift } = curveTransform(curves, shape);
+   const place = (p) => add(mul(p, scale), shift);
+   return curves.map((c) => ({
+     segments: c.segments.map((seg) => seg.map(place)),
+@@ -340,17 +348,18 @@ export function marker(kind, at, dir, size, angle) {
+ /** The parts of every link: its line and the shapes of its start, end and middle (`{ d, fill }`). */
+ export function glyphParts(links, shape = {}) {
+   const o = shapeOf(shape);
+-  const mark = (key, point) => {
++  const mark = (key, point, segments) => {
+     const direction = key === 'end' ? -1 : 1;
+-    const at = add(
+-      add(point.at, mul(point.dir, direction * o[`${key}Offset`])),
+-      mul(rotate(point.dir, Math.PI / 2), o[`${key}Across`]),
+-    );
++    const offset = direction * o[`${key}Offset`];
++    if (offset !== 0) point = pointAlongCurve(segments, offset, key);
++    const at = add(point.at, mul(rotate(point.dir, Math.PI / 2), o[`${key}Across`]));
+     return marker(o[key], at, rotate(point.dir, o[`${key}Rotation`] * RAD), o[`${key}Size`], o[`${key}Angle`]);
+   };
+   return glyphCurves(links, o).map(({ segments, start, end, middle }, i) => {
+-    const split = o.middleGapStart > 0 || o.middleGapEnd > 0;
+-    const visible = [trimCurve(segments[0], o.middleGapStart), trimCurve(segments[1], o.middleGapEnd, true)].filter(
++    const middleGapStart = o.linkGaps[i]?.[2] ?? o.middleGapStart;
++    const middleGapEnd = o.linkGaps[i]?.[3] ?? o.middleGapEnd;
++    const split = middleGapStart > 0 || middleGapEnd > 0;
++    const visible = [trimCurve(segments[0], middleGapStart), trimCurve(segments[1], middleGapEnd, true)].filter(
+       Boolean,
+     );
+     const line = split
+@@ -358,9 +367,9 @@ export function glyphParts(links, shape = {}) {
+       : `M${fmt(segments[0][0])}` + segments.map((seg) => `C${seg.slice(1).map(fmt).join(' ')}`).join('');
+     return {
+       line,
+-      start: mark('start', start),
+-      end: mark('end', end),
+-      middle: mark('middle', middle),
++      start: mark('start', start, segments),
++      end: mark('end', end, segments),
++      middle: mark('middle', middle, segments),
+       color: COLORS[i % COLORS.length],
+     };
+   });
+diff --git a/src/links/mechanics-19.test.js b/src/links/mechanics-19.test.js
+index 5de4298..7edadf1 100644
+--- a/src/links/mechanics-19.test.js
++++ b/src/links/mechanics-19.test.js
+@@ -123,7 +123,7 @@ describe('geometry and control audit (issue #19)', () => {
+       targetAngle: 30,
+       bendMode: 'curve',
+       tension: 0.4,
+-      bulge: 20,
++      bulge: 0,
+       startGap: 0.08,
+       endGap: 0.08,
+       rotation: 0,
+diff --git a/src/links/render.js b/src/links/render.js
+index 89c41f0..8efab96 100644
+--- a/src/links/render.js
++++ b/src/links/render.js
+@@ -100,7 +100,11 @@ function backdrop(style, w, h, defs) {
+  * style; it is normalized). `notation` is 'L' or 'R' for the caption in math
+  * notation, `extraTurns` the turns found by the solver of overlaps.
+  */
+-export function networkSvg(links, rawStyle = {}, { notation = null, extraTurns = null, title = '' } = {}) {
++export function networkSvg(
++  links,
++  rawStyle = {},
++  { notation = null, extraTurns = null, extraGaps = null, title = '' } = {},
++) {
+   const style = normalizeStyle(rawStyle);
+   const n = links.length;
+   const short = Math.min(style.width, style.height);
+@@ -115,7 +119,7 @@ export function networkSvg(links, rawStyle = {}, { notation = null, extraTurns =
+   const [x, y] = [(w - side) / 2, edge + (h - 2 * edge - room - side) / 2];
+ 
+   const colors = linkColors(style, n);
+-  const parts = glyphParts(links, shapeOfStyle(style, n, extraTurns));
++  const parts = glyphParts(links, shapeOfStyle(style, n, extraTurns, extraGaps));
+   const dash = dashArray(style.dash, style.strokeWidth, style.linecap);
+   const lines = parts
+     .map(({ line, start, end, middle }, i) => {
+diff --git a/src/links/solver-23.test.js b/src/links/solver-23.test.js
+new file mode 100644
+index 0000000..354a59f
+--- /dev/null
++++ b/src/links/solver-23.test.js
+@@ -0,0 +1,97 @@
++import { expect, it } from 'vitest';
++import { decode } from './configurations';
++import { overlapCost, pairCost, solveCollisions } from './collisions';
++import { withGaps } from './gaps';
++import { bezier, glyphCurves } from './glyph';
++import { networkSvg } from './render';
++import { STYLE_DEFAULTS, normalizeStyle, shapeOfStyle, styleFromParams, styleToParams, withTurns } from './style';
++
++it('reduces overlaps by adjusting individual gaps with angle search disabled', () => {
++  const links = decode('22 13 31');
++  const shape = shapeOfStyle(STYLE_DEFAULTS, 3);
++  const result = solveCollisions(links, shape, { range: 0, adjustGaps: true });
++  expect(result.delta.flat().every((angle) => angle === 0)).toBe(true);
++  expect(result.after).toBeLessThan(result.before);
++  expect(result.linkGaps.some((row) => row.some((value) => value !== null))).toBe(true);
++  const applied = withGaps(withTurns(STYLE_DEFAULTS, result.turns), result.linkGaps);
++  expect(overlapCost(links, shapeOfStyle(applied, 3))).toBeCloseTo(result.after, 6);
++  expect(networkSvg(links, applied)).toBe(
++    networkSvg(links, STYLE_DEFAULTS, {
++      extraTurns: result.delta,
++      extraGaps: result.linkGaps,
++    }),
++  );
++  expect(styleFromParams(styleToParams(applied))).toEqual(normalizeStyle(applied));
++});
++it('bounds manual gap adjustments, preserves the input and never increases the exact score', () => {
++  const links = decode('23 31 12');
++  const style = normalizeStyle({ gaps: '0.5 0.7 20 25,0.4 0.3 2 3' });
++  const shape = shapeOfStyle(style, 3);
++  const original = structuredClone(shape);
++  const result = solveCollisions(links, shape, { adjustGaps: true, gapRange: 0.1, middleRange: 2 });
++  expect(shape).toEqual(original);
++  expect(result.after).toBeLessThanOrEqual(result.before);
++  result.linkGaps.forEach((row, i) =>
++    row.forEach((value, k) => {
++      const initial =
++        original.linkGaps[i]?.[k] ?? original[['startGap', 'endGap', 'middleGapStart', 'middleGapEnd'][k]];
++      expect(Math.abs((value ?? initial) - initial)).toBeLessThanOrEqual((k < 2 ? 0.1 : 2) + 1e-9);
++    }),
++  );
++  const applied = withGaps(withTurns(style, result.turns), result.linkGaps);
++  expect(overlapCost(links, shapeOfStyle(applied, 3))).toBeCloseTo(result.after, 6);
++});
++it('does not count an artificial crossing through a cut in the middle', () => {
++  const line = [[-1, 0], [-0.4, 0], null, [0.4, 0], [1, 0]];
++  const cross = [
++    [0, -1],
++    [0, 1],
++  ];
++  expect(pairCost(line, cross, [])).toBe(0);
++  expect(pairCost(line.filter(Boolean), cross, [])).toBeGreaterThan(0);
++});
++
++it('also reduces overlaps by center cuts alone, without reference gap or angle changes', () => {
++  const links = decode('22 13 31');
++  const result = solveCollisions(links, shapeOfStyle(STYLE_DEFAULTS, 3), {
++    range: 0,
++    adjustGaps: true,
++    gapRange: 0,
++    middleRange: 15,
++  });
++  expect(result.after).toBeLessThan(result.before);
++  expect(result.linkGaps.some((row) => row[2] > 0 || row[3] > 0)).toBe(true);
++  expect(result.linkGaps.every((row) => row[0] === null && row[1] === null)).toBe(true);
++  expect(result.turns.flat().every((value) => value === 0)).toBe(true);
++});
++
++it('bounds gap search cost for a dense 24-link drawing and returns its exact score', () => {
++  const links = Array.from({ length: 24 }, (_, i) => [((i + 1) % 24) + 1, ((i + 12) % 24) + 1]);
++  const shape = shapeOfStyle(STYLE_DEFAULTS, links.length);
++  const started = performance.now();
++  const result = solveCollisions(links, shape, { range: 0, adjustGaps: true });
++  expect(performance.now() - started).toBeLessThan(10000);
++  expect(result.after).toBeLessThan(result.before);
++  expect(overlapCost(links, { ...shape, turns: result.turns, linkGaps: result.linkGaps })).toBeCloseTo(result.after, 8);
++}, 15000);
++
++it('keeps automatic cuts within the final fitted half-length after reference gaps change', () => {
++  const links = Array.from({ length: 24 }, (_, i) => [((i + 1) % 24) + 1, ((i + 12) % 24) + 1]);
++  const shape = shapeOfStyle(STYLE_DEFAULTS, links.length);
++  const result = solveCollisions(links, shape, { range: 0, adjustGaps: true, gapRange: 1, middleRange: 15 });
++  expect(result.after).toBeLessThan(result.before);
++  const fitted = { ...shape, turns: result.turns, linkGaps: result.linkGaps };
++  glyphCurves(links, fitted).forEach((curve, i) => {
++    curve.segments.forEach((segment, k) => {
++      let length = 0;
++      let previous = segment[0];
++      for (let j = 1; j <= 1024; j++) {
++        const point = bezier(segment, j / 1024);
++        length += Math.hypot(point[0] - previous[0], point[1] - previous[1]);
++        previous = point;
++      }
++      expect(result.linkGaps[i]?.[k + 2] ?? 0).toBeLessThanOrEqual(length * 0.3 + 0.001);
++    });
++  });
++  expect(overlapCost(links, fitted)).toBeCloseTo(result.after, 8);
++}, 15000);
+diff --git a/src/links/style-geometry.js b/src/links/style-geometry.js
+index 6a24464..62c3a58 100644
+--- a/src/links/style-geometry.js
++++ b/src/links/style-geometry.js
+@@ -19,7 +19,8 @@ export const EDITOR_SHAPE = {
+   sourceAngle: 30,
+   targetAngle: 30,
+   tension: 0.4,
+-  bulge: 20,
++  bulge: 0,
++  loopBend: 0,
+   startGap: 0.08,
+   endGap: 0.08,
+   startSize: 2.5,
+@@ -90,11 +91,11 @@ export const GEOMETRY_SECTIONS = [
+         ],
+         { en: 'Angles of the ends', ru: 'Углы концов' },
+       ),
+-      field('sourceAngle', -90, 90, 1, 'Leaving angle', 'Угол выхода', {
++      field('sourceAngle', -180, 180, 1, 'Leaving angle', 'Угол выхода', {
+         ...degrees,
+         when: (s) => s.angles === 'fixed',
+       }),
+-      field('targetAngle', -90, 90, 1, 'Entering angle', 'Угол входа', {
++      field('targetAngle', -180, 180, 1, 'Entering angle', 'Угол входа', {
+         ...degrees,
+         when: (s) => s.angles === 'fixed',
+       }),
+@@ -102,20 +103,28 @@ export const GEOMETRY_SECTIONS = [
+         en: 'Two references to one link make a lens',
+         ru: 'Две ссылки на одну связь образуют линзу',
+       }),
+-      field('tension', 0, 1, 0.01, 'Curvature', 'Изгиб', { unit: '%' }),
+-      field('bulge', 0, 90, 1, 'Bend', 'Изгиб кривой', {
++      field('tension', 0, 2, 0.01, 'Curvature', 'Изгиб', { unit: '%' }),
++      field('bulge', -180, 180, 1, 'Bend', 'Изгиб кривой', {
+         ...degrees,
+         hint: {
+           en: 'Curve mode bends free ends and widens self loops with fixed endpoints. Use Rotation to turn the whole network.',
+           ru: 'Режим кривой изгибает свободные концы и расширяет собственные петли с неподвижными концами. Для поворота всей сети используйте «Поворот».',
+         },
+       }),
+-      field('startGap', 0, 0.4, 0.01, 'Gap at the source reference', 'Зазор у начальной ссылки'),
+-      field('endGap', 0, 0.4, 0.01, 'Gap at the target reference', 'Зазор у конечной ссылки'),
+-      field('free', 0.2, 3, 0.05, 'Length of a free end', 'Длина свободного конца', { unit: '×' }),
+-      field('loop', 0.3, 2.5, 0.05, 'Size of a loop', 'Размер петли', { unit: '×' }),
+-      field('spread', 0.5, 2.5, 0.05, 'Distance between links', 'Расстояние между связями', { unit: '×' }),
+-      field('rotation', 0, 359, 1, 'Rotation', 'Поворот', degrees),
++      field('loopBend', -180, 180, 1, 'Loop bend', 'Изгиб петли', {
++        ...degrees,
++        hint: {
++          en: 'Widens or narrows self-reference loops independently of straight free ends. Zero keeps balanced loops.',
++          ru: 'Расширяет или сужает собственные петли независимо от прямых свободных концов. Ноль сохраняет сбалансированные петли.',
++        },
++        when: (s) => s.bendMode === 'curve',
++      }),
++      field('startGap', 0, 1, 0.01, 'Gap at the source reference', 'Зазор у начальной ссылки'),
++      field('endGap', 0, 1, 0.01, 'Gap at the target reference', 'Зазор у конечной ссылки'),
++      field('free', 0.05, 5, 0.05, 'Length of a free end', 'Длина свободного конца', { unit: '×' }),
++      field('loop', 0.05, 5, 0.05, 'Size of a loop', 'Размер петли', { unit: '×' }),
++      field('spread', 0.1, 5, 0.05, 'Distance between links', 'Расстояние между связями', { unit: '×' }),
++      field('rotation', -180, 359, 1, 'Rotation', 'Поворот', degrees),
+       field('padding', 0, 40, 1, 'Margin', 'Поля', { unit: '%' }),
+     ],
+   },
+@@ -145,8 +154,8 @@ export const GEOMETRY_SECTIONS = [
+           field(`${key}Offset`, -20, 20, 0.1, `Offset of the ${en}`, `Сдвиг ${ru}`, {
+             when: shown,
+             hint: {
+-              en: 'Along the tangent; positive moves an endpoint marker into the line. Units: 1/100 of the symbol.',
+-              ru: 'Вдоль касательной; положительное значение смещает концевой маркер внутрь линии. Единица — 1/100 символа.',
++              en: 'Distance along the curve; the marker follows its tangent. Positive moves an endpoint marker inward. Beyond an end, the tangent extends the path. Units: 1/100 of the symbol.',
++              ru: 'Расстояние вдоль кривой; маркер следует её касательной. Положительное значение смещает концевой маркер внутрь. За концом путь продолжается по касательной. Единица — 1/100 символа.',
+             },
+           }),
+           field(`${key}Across`, -20, 20, 0.1, `Sideways offset of the ${en}`, `Поперечный сдвиг ${ru}`, {
+@@ -158,13 +167,13 @@ export const GEOMETRY_SECTIONS = [
+           }),
+         ];
+       }),
+-      field('middleGapStart', 0, 15, 0.1, 'Cut before the middle', 'Разрыв перед серединой', {
++      field('middleGapStart', 0, 30, 0.1, 'Cut before the middle', 'Разрыв перед серединой', {
+         hint: {
+           en: 'Optional: for a ring, try half its size on each side. Zero keeps the line continuous.',
+           ru: 'Необязательно: для кольца попробуйте половину его размера с каждой стороны. Ноль оставляет линию непрерывной.',
+         },
+       }),
+-      field('middleGapEnd', 0, 15, 0.1, 'Cut after the middle', 'Разрыв после середины'),
++      field('middleGapEnd', 0, 30, 0.1, 'Cut after the middle', 'Разрыв после середины'),
+     ],
+   },
+ ];
+@@ -192,6 +201,7 @@ export function geometryAvailable(key, style, links) {
+     case 'free':
+       return any(([s, t]) => s === 0 || t === 0);
+     case 'loop':
++    case 'loopBend':
+       return any(([s, t], i) => s === i + 1 || t === i + 1);
+     case 'forceDistance':
+       return any(([s, t], i) => other(s, i) || other(t, i));
+diff --git a/src/links/style.js b/src/links/style.js
+index c0405f1..c791f06 100644
+--- a/src/links/style.js
++++ b/src/links/style.js
+@@ -12,6 +12,7 @@
+ import { color, option, range, select, toggle } from '../settings/fields';
+ import { COLORS, SHAPE } from './glyph';
+ import { GEOMETRY_SECTIONS } from './style-geometry';
++import { linkGaps, normalizeGaps } from './gaps';
+ 
+ /** Link colours: the site's, and a few more sets of nine. */
+ export const PALETTES = {
+@@ -273,12 +274,15 @@ export const STYLE_SECTIONS = [
+     id: 'experimental',
+     title: { en: 'Experimental: fewer overlaps', ru: 'Эксперимент: меньше наложений' },
+     lead: {
+-      en: 'Turns the ends of the links, so each link leaves and enters at an angle that overlaps the other links less. The turns are added to the turns of each link in the table of links.',
+-      ru: 'Поворачивает концы связей, чтобы каждая связь выходила и входила под углом, при котором она меньше накладывается на другие. Повороты прибавляются к поворотам каждой связи в таблице связей.',
++      en: 'Turns the ends and optionally adjusts individual reference gaps and middle cuts to reduce crossings. Small cuts are preferred; manual values are the starting point. Apply the result to keep editing it.',
++      ru: 'Поворачивает концы и при желании меняет зазоры ссылок и разрывы середины отдельных связей. Предпочитает небольшие разрывы и начинает с ручных значений. Примените результат, чтобы продолжить редактирование.',
+     },
+     fields: [
+       toggle('solve', false, { en: 'Reduce overlaps automatically', ru: 'Уменьшать наложения автоматически' }),
+-      range('solveRange', 60, 10, 120, 5, { en: 'Largest turn', ru: 'Наибольший поворот' }, { unit: '°' }),
++      toggle('solveGaps', true, { en: 'Adjust individual gaps', ru: 'Менять отдельные зазоры' }),
++      range('solveGapRange', 0.2, 0, 1, 0.05, { en: 'Largest reference gap change', ru: 'Изменение зазора ссылки' }),
++      range('solveMiddleRange', 4, 0, 15, 0.5, { en: 'Largest middle cut change', ru: 'Изменение разрыва середины' }),
++      range('solveRange', 60, 0, 180, 5, { en: 'Largest turn', ru: 'Наибольший поворот' }, { unit: '°' }),
+       range('solveStep', 15, 5, 30, 5, { en: 'Turn step', ru: 'Шаг поворота' }, { unit: '°' }),
+     ],
+   },
+@@ -289,6 +293,7 @@ const PER_LINK = [
+   { key: 'colors', type: 'list', d: COLORS.join(',') },
+   { key: 'gap', type: 'range', d: 0.08, min: 0, max: 0.4 },
+   { key: 'turns', type: 'list', d: '' },
++  { key: 'gaps', type: 'list', d: '' },
+ ];
+ 
+ export const STYLE_FIELDS = [...STYLE_SECTIONS.flatMap((section) => section.fields), ...PER_LINK];
+@@ -299,6 +304,7 @@ const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+ 
+ /** A per-link list "a,b,c" of colours, or of turns "source target". */
+ function normalizeList(key, value) {
++  if (key === 'gaps') return normalizeGaps(value);
+   const items = String(value ?? '').split(',');
+   if (key === 'colors')
+     return items.every((c) => HEX.test(c.trim())) ? items.map((c) => c.trim().toLowerCase()).join(',') : '';
+@@ -392,15 +398,16 @@ export function withColor(style, n, i, value) {
+ }
+ 
+ /** The shape options of glyph.js taken from a style. */
+-export function shapeOfStyle(style, n, extraTurns = null) {
++export function shapeOfStyle(style, n, extraTurns = null, extraGaps = null) {
+   const turns = linkTurns(style, n).map((pair, i) =>
+     extraTurns ? [pair[0] + extraTurns[i][0], pair[1] + extraTurns[i][1]] : pair,
+   );
+   return Object.fromEntries([
+     ...Object.keys(SHAPE)
+-      .filter((key) => key !== 'turns')
++      .filter((key) => !['turns', 'linkGaps'].includes(key))
+       .map((key) => [key, style[key]]),
+     ['turns', turns],
++    ['linkGaps', extraGaps || linkGaps(style, n)],
+     ['strokeWidth', style.strokeWidth],
+   ]);
+ }
+@@ -494,9 +501,13 @@ export function applyLook(style, id) {
+   const keep = {
+     notation: style.notation,
+     turns: style.turns,
++    gaps: style.gaps,
+     solve: style.solve,
+     solveRange: style.solveRange,
+     solveStep: style.solveStep,
++    solveGaps: style.solveGaps,
++    solveGapRange: style.solveGapRange,
++    solveMiddleRange: style.solveMiddleRange,
+   };
+   const size = look.values.width ? {} : { width: style.width, height: style.height, quality: style.quality };
+   return normalizeStyle({ ...STYLE_DEFAULTS, ...size, ...look.values, ...keep });
+diff --git a/src/pages/NetworkGaps.jsx b/src/pages/NetworkGaps.jsx
+new file mode 100644
+index 0000000..078d8cc
+--- /dev/null
++++ b/src/pages/NetworkGaps.jsx
+@@ -0,0 +1,39 @@
++import { GAP_FIELDS } from '../links/gaps';
++import { useLang } from '../i18n/prefs';
++
++export default function NetworkGaps({ gaps, style, onGap }) {
++  const { t } = useLang();
++  return (
++    <details className="link-gaps">
++      <summary>{t({ en: 'Gaps for each link', ru: 'Зазоры каждой связи' })}</summary>
++      <p className="network__lead">
++        {t({
++          en: 'Leave a field empty to follow the global value shown as its placeholder. Reference gaps use layout units; middle cuts use 1/100 of the symbol.',
++          ru: 'Пустое поле следует общему значению из подсказки. Зазоры ссылок — в единицах размещения; разрывы середины — в 1/100 символа.',
++        })}
++      </p>
++      {gaps.map((row, i) => (
++        <fieldset key={i}>
++          <legend>
++            {t({ en: 'Link', ru: 'Связь' })} {i + 1}
++          </legend>
++          {GAP_FIELDS.map((field, k) => (
++            <label key={field.key}>
++              {t(field.label)}
++              <input
++                type="number"
++                min={0}
++                max={field.max}
++                step={field.step}
++                aria-label={`${t({ en: 'Link', ru: 'Связь' })} ${i + 1}: ${t(field.label)}`}
++                value={row[k] ?? ''}
++                placeholder={String(style[field.key])}
++                onChange={(event) => onGap(i, k, event.target.value === '' ? null : Number(event.target.value))}
++              />
++            </label>
++          ))}
++        </fieldset>
++      ))}
++    </details>
++  );
++}
+diff --git a/src/pages/NetworkPage.jsx b/src/pages/NetworkPage.jsx
+index f608e98..b276c09 100644
+--- a/src/pages/NetworkPage.jsx
++++ b/src/pages/NetworkPage.jsx
+@@ -4,6 +4,7 @@ import './network.css';
+ import Layout from '../components/Layout';
+ import { decode, encode, mathNotation } from '../links/configurations';
+ import { solveCollisions } from '../links/collisions';
++import { linkGaps, withGaps } from '../links/gaps';
+ import { parseCode, removeLink, theoryNotation } from '../links/edit';
+ import { networkSvg } from '../links/render';
+ import {
+@@ -19,6 +20,7 @@ import {
+ import { LANGS, useLang } from '../i18n/prefs';
+ import { LinksTable, Notations, randomLinks, stepped } from './NetworkEditor';
+ import NetworkShare from './NetworkShare';
++import NetworkGaps from './NetworkGaps';
+ import { Looks, StyleSections } from './NetworkStyle';
+ import { useNetworkHistory } from './useNetworkHistory';
+ 
+@@ -59,33 +61,42 @@ export default function NetworkPage() {
+   const query = networkQuery(links, style, new URLSearchParams(window.location.search).get('lang'));
+ 
+   useNetworkHistory(query);
+-  // The share icon of a gallery card opens /network/?code=…#share: the section is drawn after load.
++  // Existing links may open a section directly, such as /network/?code=…#share.
+   useEffect(() => {
+     const target = window.location.hash && document.getElementById(window.location.hash.slice(1));
+     target?.scrollIntoView?.();
+   }, []);
+ 
+   const shape = shapeOfStyle(style, n);
+-  const shapeKey = JSON.stringify([code, shape, style.solveRange, style.solveStep]);
++  const solverOptions = {
++    range: style.solveRange,
++    step: style.solveStep,
++    adjustGaps: style.solveGaps,
++    gapRange: style.solveGapRange,
++    middleRange: style.solveMiddleRange,
++  };
++  const shapeKey = JSON.stringify([code, shape, solverOptions]);
+   // The experimental solver of overlaps; it runs only when it is switched on or asked for.
+   const solved = useMemo(
+-    () => (style.solve ? solveCollisions(links, shape, { range: style.solveRange, step: style.solveStep }) : null),
++    () => (style.solve ? solveCollisions(links, shape, solverOptions) : null),
+     // shapeKey stands for links, shape and the options of the solver.
+     // eslint-disable-next-line react-hooks/exhaustive-deps
+     [shapeKey, style.solve],
+   );
+   const svg = useMemo(
+-    () => networkSvg(links, style, { notation, extraTurns: solved?.delta }),
++    () => networkSvg(links, style, { notation, extraTurns: solved?.delta, extraGaps: solved?.linkGaps }),
+     [links, style, notation, solved],
+   );
+   const colors = linkColors(style, n);
+   const turns = linkTurns(style, n);
++  const gaps = linkGaps(style, n);
+ 
+   const changeLinks = (next) => setLinks(next);
+   const remove = (k) => {
+     const keep = (list) => list.filter((_, i) => i !== k - 1);
+     setLinks(removeLink(links, k));
+     let next = withTurns(style, keep(linkTurns(style, n)));
++    next = withGaps(next, keep(gaps));
+     if (style.palette === 'custom') next = { ...next, colors: keep(linkColors(style, n)).join(',') };
+     setStyle(next);
+   };
+@@ -97,8 +108,8 @@ export default function NetworkPage() {
+       ),
+     );
+   const applySolved = () => {
+-    const found = solveCollisions(links, shape, { range: style.solveRange, step: style.solveStep });
+-    setStyle({ ...withTurns(style, found.turns), solve: false });
++    const found = solved || solveCollisions(links, shape, solverOptions);
++    setStyle({ ...withGaps(withTurns(style, found.turns), found.linkGaps), solve: false });
+   };
+ 
+   const url = `${window.location.origin}/network/${query}`;
+@@ -155,6 +166,18 @@ export default function NetworkPage() {
+                 onStep={(step) => setLinks(stepped(links, step))}
+                 onRandom={() => setLinks(randomLinks(n))}
+               />
++              <NetworkGaps
++                gaps={gaps}
++                style={style}
++                onGap={(i, k, value) =>
++                  setStyle(
++                    withGaps(
++                      style,
++                      gaps.map((row, j) => (j === i ? row.map((v, column) => (column === k ? value : v)) : row)),
++                    ),
++                  )
++                }
++              />
+             </section>
+             <section className="network__panel" id="style" aria-labelledby="style-title">
+               <h2 id="style-title">{t({ en: 'Style of the picture', ru: 'Оформление картинки' })}</h2>
+@@ -169,7 +192,7 @@ export default function NetworkPage() {
+                 <StyleSections links={links} style={style} onStyle={setStyle}>
+                   <div className="network__actions">
+                     <button type="button" className="button button--small" onClick={applySolved}>
+-                      {t({ en: 'Write the turns into the table of links', ru: 'Записать повороты в таблицу связей' })}
++                      {t({ en: 'Apply turns and gaps to links', ru: 'Применить повороты и зазоры связей' })}
+                     </button>
+                     <button
+                       type="button"
+diff --git a/src/pages/NetworkStyle.jsx b/src/pages/NetworkStyle.jsx
+index 39001e8..48a326d 100644
+--- a/src/pages/NetworkStyle.jsx
++++ b/src/pages/NetworkStyle.jsx
+@@ -174,7 +174,7 @@ export function Looks({ style, onStyle }) {
+               <button
+                 type="button"
+                 className="button button--small"
+-                onClick={() => onStyle({ ...item.style, turns: style.turns, solve: style.solve })}
++                onClick={() => onStyle({ ...item.style, turns: style.turns, gaps: style.gaps, solve: style.solve })}
+               >
+                 {item.name}
+               </button>
+diff --git a/src/pages/network-21.test.jsx b/src/pages/network-21.test.jsx
+index 9017ea5..ef00362 100644
+--- a/src/pages/network-21.test.jsx
++++ b/src/pages/network-21.test.jsx
+@@ -6,7 +6,7 @@ import { setTheme } from '../i18n/prefs';
+ 
+ afterEach(() => act(() => setTheme('dark', { save: false })));
+ 
+-it('updates both gallery links and theory examples when their displayed theme changes', () => {
++it('updates gallery navigation and theory examples when their displayed theme changes', () => {
+   act(() => setTheme('dark', { save: false }));
+   render(
+     <>
+@@ -18,10 +18,6 @@ it('updates both gallery links and theory examples when their displayed theme ch
+   expect(card()).toHaveAttribute('href', '/network/?code=00');
+   act(() => setTheme('light', { save: false }));
+   expect(card()).toHaveAttribute('href', '/network/?code=00&palette=print');
+-  expect(screen.getByRole('link', { name: 'Share 00₂' })).toHaveAttribute(
+-    'href',
+-    '/network/?code=00&palette=print#share',
+-  );
+   expect(screen.getByRole('link', { name: 'Edit and share this network' })).toHaveAttribute(
+     'href',
+     '/network/?code=112212&palette=print',
+diff --git a/src/pages/network-23.test.jsx b/src/pages/network-23.test.jsx
+new file mode 100644
+index 0000000..a20c7ad
+--- /dev/null
++++ b/src/pages/network-23.test.jsx
+@@ -0,0 +1,33 @@
++import { act, fireEvent, render, screen, within } from '@testing-library/react';
++import { afterEach, expect, it, vi } from 'vitest';
++import NetworkPage from './NetworkPage';
++import NetworkGallery from '../components/NetworkGallery';
++
++afterEach(() => {
++  vi.useRealTimers();
++  window.history.replaceState(null, '', '/');
++});
++it('offers one aligned navigation target per gallery card', () => {
++  render(<NetworkGallery initial={1} />);
++  const list = screen.getByRole('list', { name: 'Networks of 1 link' });
++  expect(within(list).getAllByRole('link')).toHaveLength(4);
++  expect(list.querySelector('.symbols__share')).toBeNull();
++});
++it('edits independent gaps, resets inheritance and preserves gaps when removing a link', () => {
++  vi.useFakeTimers();
++  window.history.replaceState(null, '', '/network/?code=1122');
++  render(<NetworkPage />);
++  const gap = (i, label) => screen.getByLabelText(`Link ${i}: ${label}`);
++  const first = gap(1, 'Gap at the source reference');
++  expect(first).toHaveValue(null);
++  expect(first).toHaveAttribute('placeholder', '0.08');
++  fireEvent.change(first, { target: { value: '0.25' } });
++  fireEvent.change(gap(2, 'Cut after the middle'), { target: { value: '4' } });
++  act(() => vi.advanceTimersByTime(450));
++  expect(new URLSearchParams(window.location.search).get('gaps')).toBe('0.25 ~ ~ ~,~ ~ ~ 4');
++  fireEvent.click(screen.getByRole('button', { name: 'Remove: Link 1' }));
++  expect(gap(1, 'Cut after the middle')).toHaveValue(4);
++  fireEvent.change(gap(1, 'Cut after the middle'), { target: { value: '' } });
++  act(() => vi.advanceTimersByTime(450));
++  expect(new URLSearchParams(window.location.search).has('gaps')).toBe(false);
++});
+diff --git a/src/pages/network.css b/src/pages/network.css
+index bfef046..2196c11 100644
+--- a/src/pages/network.css
++++ b/src/pages/network.css
+@@ -340,3 +340,54 @@
+     margin: 0 auto;
+   }
+ }
++
++.link-gaps {
++  margin-top: 1rem;
++}
++.link-gaps summary {
++  cursor: pointer;
++  color: var(--accent);
++}
++.link-gaps fieldset {
++  display: grid;
++  grid-template-columns: repeat(2, minmax(0, 1fr));
++  gap: 0.5rem 1rem;
++  min-width: 0;
++  margin: 0.8rem 0;
++  padding: 0.6rem;
++  border: 1px solid var(--border);
++  border-radius: 8px;
++}
++.link-gaps label {
++  display: grid;
++  gap: 0.25rem;
++  min-width: 0;
++  font-size: 0.85rem;
++  color: var(--text-2);
++}
++.link-gaps input {
++  width: 100%;
++  min-width: 0;
++  padding: 0.3rem 0.4rem;
++  border: 1px solid var(--border-strong);
++  border-radius: 6px;
++  background: var(--surface);
++  color: var(--text);
++  font: inherit;
++}
++.links-table td {
++  vertical-align: middle;
++}
++.links-table select {
++  max-width: 10rem;
++}
++.looks__size {
++  display: flex;
++  flex-wrap: wrap;
++  align-items: center;
++  gap: 0.4rem;
++}
++.looks__size select {
++  min-width: 0;
++  max-width: 100%;
++}
+diff --git a/src/pages/network.test.jsx b/src/pages/network.test.jsx
+index 5b33667..8a6e267 100644
+--- a/src/pages/network.test.jsx
++++ b/src/pages/network.test.jsx
+@@ -24,17 +24,13 @@ const field = (name) => screen.getByLabelText(name);
+ const preview = () => document.querySelector('.network__preview');
+ 
+ describe('gallery cards open the page of their network (issue #17)', () => {
+-  it('links each card to /network/ and has a share icon that only the hover shows', () => {
++  it('links each card to /network/ with one navigation target', () => {
+     render(<NetworkGallery initial={1} />);
+     const list = screen.getByRole('list', { name: 'Networks of 1 link' });
+     const first = list.firstChild;
+     expect(within(first).getAllByRole('link')[0]).toHaveAttribute('href', '/network/?code=00');
+-    const share = within(first).getByRole('link', { name: 'Share 00₂' });
+-    expect(share).toHaveAttribute('href', '/network/?code=00#share');
+-    expect(share.className).toBe('symbols__share');
+-    // The icon has no text and no paths: the card still reads as its notation only.
++    expect(within(first).getAllByRole('link')).toHaveLength(1);
+     expect(first.textContent).toBe('00₂');
+-    expect(share.querySelectorAll('path')).toHaveLength(0);
+     expect(networkHref('01 20')).toBe('/network/?code=0120');
+   });
+ 
+@@ -170,7 +166,7 @@ describe('NetworkPage (issue #17)', () => {
+     render(<NetworkPage />);
+     fireEvent.click(screen.getByLabelText('Reduce overlaps automatically'));
+     expect(screen.getByText(/overlaps \d+\.\d → \d+\.\d/)).toBeInTheDocument();
+-    fireEvent.click(screen.getByRole('button', { name: 'Write the turns into the table of links' }));
++    fireEvent.click(screen.getByRole('button', { name: 'Apply turns and gaps to links' }));
+     expect(new URLSearchParams(search()).get('turns')).toMatch(/-?\d+ -?\d+/);
+     expect(screen.queryByText(/overlaps \d+\.\d → /)).toBeNull();
+     fireEvent.click(screen.getByRole('button', { name: 'Clear all turns' }));
+diff --git a/src/pages/pages.css b/src/pages/pages.css
+index 5723746..d3ad562 100644
+--- a/src/pages/pages.css
++++ b/src/pages/pages.css
+@@ -447,34 +447,6 @@
+   height: 64px;
+ }
+ 
+-/* The share icon appears on hover (and on keyboard focus, so it can be reached without a mouse). */
+-.symbols__share {
+-  position: absolute;
+-  top: 0.2rem;
+-  right: 0.2rem;
+-  display: grid;
+-  place-items: center;
+-  width: 1.6rem;
+-  height: 1.6rem;
+-  border: 1px solid var(--border);
+-  border-radius: 50%;
+-  background: rgb(var(--panel-rgb) / 0.85);
+-  color: var(--accent);
+-  opacity: 0;
+-  transition: opacity 0.15s ease;
+-}
+-
+-.symbols__grid li:hover .symbols__share,
+-.symbols__share:focus-visible {
+-  opacity: 1;
+-}
+-
+-.symbols__share:hover,
+-.symbols__share:focus-visible {
+-  border-color: var(--accent);
+-  color: var(--text);
+-}
+-
+ .symbols__grid span {
+   font-size: 0.6rem;
+   color: var(--muted);
+diff --git a/src/panels.css b/src/panels.css
+new file mode 100644
+index 0000000..122230b
+--- /dev/null
++++ b/src/panels.css
+@@ -0,0 +1,9 @@
++/* Offscreen cards keep their skin, size and accessible content, with no
++   backdrop filter. The shared observer enables this only in supporting browsers.
++   This rule must win over every skin, including hover and SVG refraction. */
++@media screen {
++  [data-panel-visibility='on'] :is(.symbols__grid > li, .repo, .post):not([data-in-viewport='true']) {
++    -webkit-backdrop-filter: none !important;
++    backdrop-filter: none !important;
++  }
++}

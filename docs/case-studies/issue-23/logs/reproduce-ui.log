@@ -1,0 +1,267 @@
+(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - import "./fields" without a file extension (src/settings/schema.js:15:32). Add the file extension
+  - import "./schema.background" without a file extension (src/settings/schema.js:16:37). Add the file extension
+  - import "./schema.layers" without a file extension (src/settings/schema.js:17:32). Add the file extension
+  - import "./schema.skins" without a file extension (src/settings/schema.js:18:31). Add the file extension
+  - import "./schema.sound" without a file extension (src/settings/schema.js:19:31). Add the file extension
+  - import "./schema.skins" without a file extension (src/settings/schema.js:21:33). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.sound.js:7:47). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.background.js:3:54). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.layers.js:8:54). Add the file extension
+  - import "../skins.frames" without a file extension (src/settings/schema.skins.js:3:25). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.skins.js:4:47). Add the file extension
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1792988113729
+
+Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+ ❯ src/pages/network-23.test.jsx (2 tests | 2 failed) 1331ms
+   × offers one aligned navigation target per gallery card 525ms
+   × edits independent gaps, resets inheritance and preserves gaps when removing a link 800ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/pages/network-23.test.jsx > offers one aligned navigation target per gallery card
+AssertionError: expected [ …(8) ] to have a length of 4 but got 8
+
+- Expected
++ Received
+
+- 4
++ 8
+
+ ❯ src/pages/network-23.test.jsx:10:45
+      8|   render(<NetworkGallery initial={1}/>);
+      9|   const list = screen.getByRole('list',{name:'Networks of 1 link'});
+     10|   expect(within(list).getAllByRole('link')).toHaveLength(4);
+       |                                             ^
+     11|   expect(list.querySelector('.symbols__share')).toBeNull();
+     12| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  src/pages/network-23.test.jsx > edits independent gaps, resets inheritance and preserves gaps when removing a link
+TestingLibraryElementError: Unable to find a label with the text of: Link 1: Gap at the source reference
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"app"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33maria-hidden[39m=[32m"true"[39m
+        [33mclass[39m=[32m"cosmos"[39m
+      [36m>[39m
+        [36m<canvas[39m
+          [33mclass[39m=[32m"cosmos__universe"[39m
+        [36m/>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"cosmos__grid"[39m
+        [36m/>[39m
+        [36m<canvas[39m
+          [33mclass[39m=[32m"cosmos__rain"[39m
+        [36m/>[39m
+      [36m</div>[39m
+      [36m<header[39m
+        [33mclass[39m=[32m"topbar"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"topbar__row"[39m
+        [36m>[39m
+          [36m<a[39m
+            [33mclass[39m=[32m"nav__brand mono"[39m
+            [33mhref[39m=[32m"/"[39m
+          [36m>[39m
+            [0mkonard[0m
+            [36m<span[39m
+              [33mclass[39m=[32m"nav__cursor"[39m
+            [36m>[39m
+              [0m_[0m
+            [36m</span>[39m
+          [36m</a>[39m
+          [36m<nav[39m
+            [33maria-label[39m=[32m"Pages"[39m
+            [33mclass[39m=[32m"pages"[39m
+          [36m>[39m
+            [36m<ul>[39m
+              [36m<li>[39m
+                [36m<a[39m
+                  [33mhref[39m=[32m"/"[39m
+                [36m>[39m
+                  [0mCV[0m
+                [36m</a>[39m
+              [36m</li>[39m
+              [36m<li>[39m
+                [36m<a[39m
+                  [33mhref[39m=[32m"/experience/"[39m
+                [36m>[39m
+                  [0mExperience[0m
+                [36m</a>[39m
+              [36m</li>[39m
+              [36m<li>[39m
+                [36m<a[39m
+                  [33mhref[39m=[32m"/repositories/"[39m
+                [36m>[39m
+                  [0mRepositories[0m
+                [36m</a>[39m
+              [36m</li>[39m
+              [36m<li>[39m
+                [36m<a[39m
+                  [33mhref[39m=[32m"/research/"[39m
+                [36m>[39m
+                  [0mResearch[0m
+                [36m</a>[39m
+              [36m</li>[39m
+              [36m<li>[39m
+                [36m<a[39m
+                  [33mhref[39m=[32m"/associative/"[39m
+                [36m>[39m
+                  [0mAssociative stack[0m
+                [36m</a>[39m
+              [36m</li>[39m
+              [36m<li>[39m
+                [36m<a[39m
+                  [33mhref[39m=[32m"/art/"[39m
+                [36m>[39m
+                  [0mArt & other[0m
+                [36m</a>[39m
+              [36m</li>[39m
+              [36m<li>[39m
+                [36m<a[39m
+                  [33mhref[39m=[32m"/blog/"[39m
+                [36m>[39m
+                  [0mBlog[0m
+                [36m</a>[39m
+              [36m</li>[39m
+            [36m</ul>[39m
+          [36m</nav>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"prefs"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33maria-label[39m=[32m"Language"[39m
+              [33mclass[39m=[32m"prefs__langs"[39m
+              [33mrole[39m=[32m"group"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-pressed[39m=[32m"true"[39m
+                [33mclass[39m=[32m"prefs__button mono"[39m
+                [33mlang[39m=[32m"en"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [0mEN[0m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-pressed[39m=[32m"false"[39m
+                [33mclass[39m=[32m"prefs__button mono"[39m
+                [33mlang[39m=[32m"ru"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [0mRU[0m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Sounds of the interface"[39m
+              [33maria-pressed[39m=[32m"false"[39m
+              [33mclass[39m=[32m"prefs__button prefs__sound"[39m
+              [33mtitle[39m=[32m"Sound: off"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mviewBox[39m=[32m"0 0 16 16"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M2 6h3l4-3v10l-4-3H2z"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33mclass[39m=[32m"prefs__waves"[39m
+                  [33md[39m=[32m"M11 6l4 4M15 6l-4 4"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</button>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Theme: system. Switch to: light"[39m
+              [33mclass[39m=[32m"prefs__button prefs__theme"[39m
+              [33mdata-theme-choice[39m=[32m"auto"[39m
+              [33mtitle[39m=[32m"Theme: system"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33maria-hidden[39m=[32m"true"[39m
+              [36m>[39m
+                [0m◐[0m
+              [36m</span>[39m
+            [36m</button>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<nav[39m
+          [33maria-label[39m=[32m"Sections"[39m
+          [33mclass[39m=[32m"nav"[39m
+        [36m>[39m
+          [36m<a[39m
+            [33maria-label[39m=[32m"Back to top"[39m
+            [33mclass[39m=[32m"nav__top mono"[39m
+            [33mhref[39m=[32m"#top"[39m
+          [36m>[39m
+            [0m↑[0m
+          [36m</a>[39m
+          [36m<ul>[39m
+            [36m<li>[39m
+              [36m<a[39m
+                [33mhref[39m=[32m"#notations"[39m
+              [36m>[39m
+                [0mNotations[0m
+              [36m</a>[39m
+            [36m</li>[39m
+            [36m<li>[39m
+              [36m<a[39m
+                [33mhref[39m=[32m"#links"[39m
+              [36m>[39m
+                [0mLinks[0m
+              [36m</a>[39m
+            [36m</li>[39m
+            [36m<li>[39m
+              [36m<a[39m
+                [33mhref[39m=[32m"#style"[39m
+              [36m>[39m
+                [0mStyle[0m
+              [36m</a>[39m
+            [36m</li>[39m
+            [36m<li>[39m
+              [36m<a[39m
+                [33mhref[39m=[32m"#share"[39m
+              [36m>[39m
+                [0mShare[0m
+              [36m</a>[39m
+            [36m</li>[39m
+          [36m</ul>[39m
+        [36m</nav>[39m
+      [36m</header>[39m
+      [36m<main>[39m
+        [36m<section[39m
+          [33mclass[39m=[32m"section network"[39m
+          [33mid[39m=[32m"top"[39m
+        [36m...
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getAllByLabelText node_modules/@testing-library/dom/dist/queries/label-text.js:111:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ gap src/pages/network-23.test.jsx:17:33
+     15|   window.history.replaceState(null,'','/network/?code=1122');
+     16|   render(<NetworkPage/>);
+     17|   const gap = (i,label)=>screen.getByLabelText(`Link ${i}: ${label}`);
+       |                                 ^
+     18|   const first = gap(1,'Gap at the source reference');
+     19|   expect(first).toHaveValue(null);
+ ❯ src/pages/network-23.test.jsx:18:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed (2)
+   Start at  04:20:29
+   Duration  5.13s (environment 34%, tests 28%, transform 23%, setup 10%, import 4%, worker 1%)
+

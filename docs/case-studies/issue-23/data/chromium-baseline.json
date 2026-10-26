@@ -1,0 +1,66 @@
+{
+  "engine": "chromium",
+  "date": "2026-10-26T04:23:32.824Z",
+  "samples": [
+    {
+      "cards": 243,
+      "filtered": 243,
+      "barFilter": "blur(14px)",
+      "y": 719
+    },
+    {
+      "cards": 729,
+      "filtered": 729,
+      "barFilter": "blur(14px)",
+      "y": 3232
+    },
+    {
+      "cards": 1215,
+      "filtered": 1215,
+      "barFilter": "blur(14px)",
+      "y": 7563
+    },
+    {
+      "cards": 1701,
+      "filtered": 1701,
+      "barFilter": "blur(14px)",
+      "y": 11894
+    },
+    {
+      "cards": 2187,
+      "filtered": 2187,
+      "barFilter": "blur(14px)",
+      "y": 16225
+    },
+    {
+      "cards": 2673,
+      "filtered": 2673,
+      "barFilter": "blur(14px)",
+      "y": 20557
+    },
+    {
+      "cards": 3159,
+      "filtered": 3159,
+      "barFilter": "blur(14px)",
+      "y": 24888
+    },
+    {
+      "cards": 3645,
+      "filtered": 3645,
+      "barFilter": "blur(14px)",
+      "y": 29317
+    },
+    {
+      "cards": 4131,
+      "filtered": 4131,
+      "barFilter": "blur(14px)",
+      "y": 33649
+    },
+    {
+      "cards": 4131,
+      "filtered": 4131,
+      "barFilter": "blur(14px)",
+      "y": 42316
+    }
+  ]
+}
