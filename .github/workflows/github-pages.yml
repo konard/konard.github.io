@@ -162,6 +162,7 @@ jobs:
         run: npm run build
 
       - name: Install the browser
+        id: browser
         # package.json pins 1.63.0: 1.64.x's Linux WebKit stalls on glass panels.
         # https://github.com/microsoft/playwright/issues/43426
         run: npx playwright install --with-deps "$ENGINE"
@@ -172,18 +173,21 @@ jobs:
           CAPTURE_DIR: browser-results/screenshots/editor
 
       - name: Verify history, self loops, layouts, clipboard and mobile editing
+        if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
         run: npm run test:network:issue19
         env:
           CAPTURE_DIR: browser-results/screenshots/issue19
           RESULT_DIR: browser-results/data/issue19
 
       - name: Verify editor geometry, source colors and shared settings
+        if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
         run: npm run test:network:issue21
         env:
           CAPTURE_DIR: browser-results/screenshots/issue21
           RESULT_DIR: browser-results/data/issue21
 
       - name: Verify curved markers, per-link gaps and bounded gallery blur surfaces
+        if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
         # Capture the actual compositor, including Firefox backdrop effects.
         run: |
           if [[ "$RUNNER_OS" == "macOS" ]]; then
