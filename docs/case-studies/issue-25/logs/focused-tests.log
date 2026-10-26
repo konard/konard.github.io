@@ -1,0 +1,71 @@
+(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - import "./fields" without a file extension (src/settings/schema.js:15:32). Add the file extension
+  - import "./schema.background" without a file extension (src/settings/schema.js:16:37). Add the file extension
+  - import "./schema.layers" without a file extension (src/settings/schema.js:17:32). Add the file extension
+  - import "./schema.skins" without a file extension (src/settings/schema.js:18:31). Add the file extension
+  - import "./schema.sound" without a file extension (src/settings/schema.js:19:31). Add the file extension
+  - import "./schema.skins" without a file extension (src/settings/schema.js:21:33). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.background.js:3:54). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.layers.js:8:54). Add the file extension
+  - import "../skins.frames" without a file extension (src/settings/schema.skins.js:3:25). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.sound.js:7:47). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.skins.js:4:47). Add the file extension
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793047110454
+
+ ❯ src/links/solver-23.test.js (6 tests | 2 failed) 42256ms
+   × bounds gap search cost for a dense 24-link drawing and returns its exact score 19059ms
+   × keeps automatic cuts within the final fitted half-length after reference gaps change 22241ms
+ ❯ src/links/issue-25.test.js (4 tests | 1 failed) 237ms
+   × discovers separated reference gaps for 2222 without manual gaps 205ms
+Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/links/issue-25.test.js > discovers separated reference gaps for 2222 without manual gaps
+TypeError: actual value must be number or bigint, received "object"
+ ❯ src/links/issue-25.test.js:16:33
+     14|   const result = solveCollisions(links, shape, { adjustGaps: true });
+     15|   expect(result.linkGaps[0][0]).toBeGreaterThan(0.08);
+     16|   expect(result.linkGaps[0][1]).toBeGreaterThan(0.08);
+       |                                 ^
+     17|   expect(result.after).toBeLessThan(result.before);
+     18|   const applied = withGaps(withTurns(style, result.turns), result.link…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  src/links/solver-23.test.js > bounds gap search cost for a dense 24-link drawing and returns its exact score
+AssertionError: expected 19052.400727 to be less than 10000
+ ❯ src/links/solver-23.test.js:73:39
+     71|   const started = performance.now();
+     72|   const result = solveCollisions(links, shape, { range: 0, adjustGaps:…
+     73|   expect(performance.now() - started).toBeLessThan(10000);
+       |                                       ^
+     74|   expect(result.after).toBeLessThan(result.before);
+     75|   expect(overlapCost(links, { ...shape, turns: result.turns, linkGaps:…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  src/links/solver-23.test.js > keeps automatic cuts within the final fitted half-length after reference gaps change
+Error: Test timed out in 15000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ src/links/solver-23.test.js:78:1
+     76| }, 15000);
+     77|
+     78| it('keeps automatic cuts within the final fitted half-length after ref…
+       | ^
+     79|   const links = Array.from({ length: 24 }, (_, i) => [((i + 1) % 24) +…
+     80|   const shape = shapeOfStyle(STYLE_DEFAULTS, links.length);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  2 failed | 1 passed (3)
+      Tests  3 failed | 8 passed (11)
+   Start at  20:45:59
+   Duration  51.11s (tests 87%, environment 8%, transform 2%, setup 2%, import 1%)
+
+    Isolate  3 workers spawned · ~1.56s startup each (spawn + environment, per file)
+             at least ~3.12s faster with isolate: false — reuses workers across files instead of one per file
+

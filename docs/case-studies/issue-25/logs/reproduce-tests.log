@@ -1,0 +1,3481 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793047110454
+
+ ❯ src/pages/network-25.test.jsx (1 test | 1 failed) 2431ms
+   × keeps every per-link input visible in one card, with no disclosure 2425ms
+ ❯ src/links/issue-25.test.js (6 tests | 5 failed) 238ms
+   × discovers separated reference gaps for 2222 without manual gaps 167ms
+   × scores painted markers and user selected spacing, including near reference middles 4ms
+   × recognizes the supplied perfect manual arrangement and keeps diagnostics opt-in 14ms
+   × keeps acute arrow tips sharp independent of line corners, with balanced extent by default 18ms
+   × round trips rounded arrows, legacy lengths and spacing settings 13ms
+
+ Test Files  2 failed (2)
+      Tests  6 failed | 1 passed (7)
+   Start at  21:08:03
+   Duration  8.20s (environment 45%, tests 36%, setup 9%, transform 5%, import 3%, worker 1%)
+
+Environment  jsdom was created 2 times · 3.29s total, 45% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+
+(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - import "./fields" without a file extension (src/settings/schema.js:15:32). Add the file extension
+  - import "./schema.background" without a file extension (src/settings/schema.js:16:37). Add the file extension
+  - import "./schema.layers" without a file extension (src/settings/schema.js:17:32). Add the file extension
+  - import "./schema.skins" without a file extension (src/settings/schema.js:18:31). Add the file extension
+  - import "./schema.sound" without a file extension (src/settings/schema.js:19:31). Add the file extension
+  - import "./schema.skins" without a file extension (src/settings/schema.js:21:33). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.background.js:3:54). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.layers.js:8:54). Add the file extension
+  - import "../skins.frames" without a file extension (src/settings/schema.skins.js:3:25). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.sound.js:7:47). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.skins.js:4:47). Add the file extension
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.
+Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/links/issue-25.test.js > discovers separated reference gaps for 2222 without manual gaps
+TypeError: actual value must be number or bigint, received "object"
+ ❯ src/links/issue-25.test.js:15:33
+     13|   const shape = shapeOfStyle(style, 2);
+     14|   const result = solveCollisions(links, shape, { adjustGaps: true });
+     15|   expect(result.linkGaps[0][0]).toBeGreaterThan(0.08);
+       |                                 ^
+     16|   expect(result.linkGaps[0][1]).toBeGreaterThan(0.08);
+     17|   expect(result.after).toBeLessThan(result.before);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  src/links/issue-25.test.js > scores painted markers and user selected spacing, including near reference middles
+AssertionError: expected 1 to be less than 1
+ ❯ src/links/issue-25.test.js:26:64
+     24| it('scores painted markers and user selected spacing, including near r…
+     25|   const cost = (patch) => overlapCost(links, shapeOfStyle(fixture(patc…
+     26|   expect(cost({ start: 'none', end: 'none', middle: 'none' })).toBeLes…
+       |                                                                ^
+     27|   expect(cost({ clearance: 6 })).toBeGreaterThan(cost({ clearance: 0 }…
+     28|   expect(cost({ strokeWidth: 5 })).toBeGreaterThan(cost({ strokeWidth:…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ FAIL  src/links/issue-25.test.js > recognizes the supplied perfect manual arrangement and keeps diagnostics opt-in
+AssertionError: expected "debug" to be called with arguments: [ '[network solver]', …(1) ]
+
+Number of calls: 0
+
+ ❯ src/links/issue-25.test.js:39:19
+     37|     expect(debug).not.toHaveBeenCalled();
+     38|     solveCollisions(links, shape, { passes: 0, debug: true });
+     39|     expect(debug).toHaveBeenCalledWith('[network solver]', expect.obje…
+       |                   ^
+     40|   } finally {
+     41|     debug.mockRestore();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+ FAIL  src/links/issue-25.test.js > keeps acute arrow tips sharp independent of line corners, with balanced extent by default
+AssertionError: expected '<svg xmlns="http://www.w3.org/2000/sv…' to match /stroke-linejoin="miter" stroke-miterl…/
+
+- Expected:
+/stroke-linejoin="miter" stroke-miterlimit="[\d.]+"/
+
++ Received:
+"<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"2048\" height=\"2048\" viewBox=\"0 0 100 100\" role=\"img\" aria-label=\"Links network 22₃ 22₃\"><title>Links network 22₃ 22₃</title><rect width=\"100\" height=\"100\" fill=\"#000000\"/><g transform=\"translate(0 0) scale(1)\" fill=\"none\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" opacity=\"1\"><g stroke=\"#22d3ee\"><path d=\"M47.2 63.89C40.99 40.7 26 14.32 50 14.32C74 14.32 59.01 40.7 52.8 63.89\"/><path d=\"M48.93 60.78L44.13 62.17\"/><path d=\"M53.99 60.6L52.8 63.89L53.4 60.44\"/><path d=\"M49 14.32a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#22d3ee\"/></g><g stroke=\"#c084fc\"><path d=\"M53.39 70.92C83.94 40.38 85.73 110.05 50 74.32C14.27 38.59 16.06 108.26 46.61 77.71\"/><path d=\"M56.88 71.05L53.53 67.35\"/><path d=\"M43.92 79.96L46.61 77.71L44.36 80.39\"/><path d=\"M49 74.32a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#c084fc\"/></g></g></svg>"
+
+ ❯ src/links/issue-25.test.js:48:17
+     46|     const style = fixture({ turns: '15 -15', gaps: '0.18 0.18 ~ ~', en…
+     47|     const svg = networkSvg(links, style);
+     48|     expect(svg).toMatch(/stroke-linejoin="miter" stroke-miterlimit="[\…
+       |                 ^
+     49|     const part = glyphParts(links, shapeOfStyle(style, 2))[0];
+     50|     const numbers = (path) => path.match(/-?\d+(?:\.\d+)?/g).map(Numbe…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/6]⎯
+
+ FAIL  src/links/issue-25.test.js > round trips rounded arrows, legacy lengths and spacing settings
+AssertionError: expected undefined to be 'round' // Object.is equality
+
+- Expected:
+"round"
+
++ Received:
+undefined
+
+ ❯ src/links/issue-25.test.js:64:27
+     62|   const style = fixture({ arrowJoin: 'round', balanceArrows: false, cl…
+     63|   expect(styleFromParams(styleToParams(style))).toEqual(style);
+     64|   expect(style.arrowJoin).toBe('round');
+       |                           ^
+     65|   expect(style.balanceArrows).toBe(false);
+     66|   expect(style.clearance).toBe(4.5);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/6]⎯
+
+ FAIL  src/pages/network-25.test.jsx > keeps every per-link input visible in one card, with no disclosure
+TestingLibraryElementError: Unable to find an accessible element with the role "list" and name "Link configurations"
+
+Here are the accessible roles:
+
+  banner:
+
+  Name "":
+  [36m<header[39m
+    [33mclass[39m=[32m"topbar"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<header[39m
+    [33mclass[39m=[32m"settings__head"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<header[39m
+    [33mclass[39m=[32m"settings__head"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<header[39m
+    [33mclass[39m=[32m"settings__head"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<header[39m
+    [33mclass[39m=[32m"settings__head"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<header[39m
+    [33mclass[39m=[32m"settings__head"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<header[39m
+    [33mclass[39m=[32m"settings__head"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<header[39m
+    [33mclass[39m=[32m"settings__head"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<header[39m
+    [33mclass[39m=[32m"settings__head"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  link:
+
+  Name "konard_":
+  [36m<a[39m
+    [33mclass[39m=[32m"nav__brand mono"[39m
+    [33mhref[39m=[32m"/"[39m
+  [36m/>[39m
+
+  Name "CV":
+  [36m<a[39m
+    [33mhref[39m=[32m"/"[39m
+  [36m/>[39m
+
+  Name "Experience":
+  [36m<a[39m
+    [33mhref[39m=[32m"/experience/"[39m
+  [36m/>[39m
+
+  Name "Repositories":
+  [36m<a[39m
+    [33mhref[39m=[32m"/repositories/"[39m
+  [36m/>[39m
+
+  Name "Research":
+  [36m<a[39m
+    [33mhref[39m=[32m"/research/"[39m
+  [36m/>[39m
+
+  Name "Associative stack":
+  [36m<a[39m
+    [33mhref[39m=[32m"/associative/"[39m
+  [36m/>[39m
+
+  Name "Art & other":
+  [36m<a[39m
+    [33mhref[39m=[32m"/art/"[39m
+  [36m/>[39m
+
+  Name "Blog":
+  [36m<a[39m
+    [33mhref[39m=[32m"/blog/"[39m
+  [36m/>[39m
+
+  Name "Back to top":
+  [36m<a[39m
+    [33maria-label[39m=[32m"Back to top"[39m
+    [33mclass[39m=[32m"nav__top mono"[39m
+    [33mhref[39m=[32m"#top"[39m
+  [36m/>[39m
+
+  Name "Notations":
+  [36m<a[39m
+    [33mhref[39m=[32m"#notations"[39m
+  [36m/>[39m
+
+  Name "Links":
+  [36m<a[39m
+    [33mhref[39m=[32m"#links"[39m
+  [36m/>[39m
+
+  Name "Style":
+  [36m<a[39m
+    [33mhref[39m=[32m"#style"[39m
+  [36m/>[39m
+
+  Name "Share":
+  [36m<a[39m
+    [33mhref[39m=[32m"#share"[39m
+  [36m/>[39m
+
+  Name "All networks of 1–4 links":
+  [36m<a[39m
+    [33mhref[39m=[32m"/art/#symbols"[39m
+  [36m/>[39m
+
+  Name "X (Twitter)":
+  [36m<a[39m
+    [33mclass[39m=[32m"button button--small"[39m
+    [33mdata-share[39m=[32m"x"[39m
+    [33mhref[39m=[32m"https://x.com/intent/tweet?text=Links%20network%2022%E2%82%83%2022%E2%82%83%3A%20%CE%BB%20%3D%20%7B1%20%E2%86%A6%20(2%2C%202)%2C%202%20%E2%86%A6%20(2%2C%202)%7D&url=http%3A%2F%2Flocalhost%3A3000%2Fnetwork%2F%3Fcode%3D2222%26lang%3Den"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "Telegram":
+  [36m<a[39m
+    [33mclass[39m=[32m"button button--small"[39m
+    [33mdata-share[39m=[32m"telegram"[39m
+    [33mhref[39m=[32m"https://t.me/share/url?url=http%3A%2F%2Flocalhost%3A3000%2Fnetwork%2F%3Fcode%3D2222%26lang%3Den&text=Links%20network%2022%E2%82%83%2022%E2%82%83%3A%20%CE%BB%20%3D%20%7B1%20%E2%86%A6%20(2%2C%202)%2C%202%20%E2%86%A6%20(2%2C%202)%7D"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "VK":
+  [36m<a[39m
+    [33mclass[39m=[32m"button button--small"[39m
+    [33mdata-share[39m=[32m"vk"[39m
+    [33mhref[39m=[32m"https://vk.com/share.php?url=http%3A%2F%2Flocalhost%3A3000%2Fnetwork%2F%3Fcode%3D2222%26lang%3Den&title=Links%20network%2022%E2%82%83%2022%E2%82%83%3A%20%CE%BB%20%3D%20%7B1%20%E2%86%A6%20(2%2C%202)%2C%202%20%E2%86%A6%20(2%2C%202)%7D"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "Facebook":
+  [36m<a[39m
+    [33mclass[39m=[32m"button button--small"[39m
+    [33mdata-share[39m=[32m"facebook"[39m
+    [33mhref[39m=[32m"https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A3000%2Fnetwork%2F%3Fcode%3D2222%26lang%3Den"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "LinkedIn":
+  [36m<a[39m
+    [33mclass[39m=[32m"button button--small"[39m
+    [33mdata-share[39m=[32m"linkedin"[39m
+    [33mhref[39m=[32m"https://www.linkedin.com/sharing/share-offsite/?url=http%3A%2F%2Flocalhost%3A3000%2Fnetwork%2F%3Fcode%3D2222%26lang%3Den"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "Reddit":
+  [36m<a[39m
+    [33mclass[39m=[32m"button button--small"[39m
+    [33mdata-share[39m=[32m"reddit"[39m
+    [33mhref[39m=[32m"https://www.reddit.com/submit?url=http%3A%2F%2Flocalhost%3A3000%2Fnetwork%2F%3Fcode%3D2222%26lang%3Den&title=Links%20network%2022%E2%82%83%2022%E2%82%83%3A%20%CE%BB%20%3D%20%7B1%20%E2%86%A6%20(2%2C%202)%2C%202%20%E2%86%A6%20(2%2C%202)%7D"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "Bluesky":
+  [36m<a[39m
+    [33mclass[39m=[32m"button button--small"[39m
+    [33mdata-share[39m=[32m"bluesky"[39m
+    [33mhref[39m=[32m"https://bsky.app/intent/compose?text=Links%20network%2022%E2%82%83%2022%E2%82%83%3A%20%CE%BB%20%3D%20%7B1%20%E2%86%A6%20(2%2C%202)%2C%202%20%E2%86%A6%20(2%2C%202)%7D%20http%3A%2F%2Flocalhost%3A3000%2Fnetwork%2F%3Fcode%3D2222%26lang%3Den"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "Mastodon":
+  [36m<a[39m
+    [33mclass[39m=[32m"button button--small"[39m
+    [33mdata-share[39m=[32m"mastodon"[39m
+    [33mhref[39m=[32m"https://mastodonshare.com/?text=Links%20network%2022%E2%82%83%2022%E2%82%83%3A%20%CE%BB%20%3D%20%7B1%20%E2%86%A6%20(2%2C%202)%2C%202%20%E2%86%A6%20(2%2C%202)%7D&url=http%3A%2F%2Flocalhost%3A3000%2Fnetwork%2F%3Fcode%3D2222%26lang%3Den"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "WhatsApp":
+  [36m<a[39m
+    [33mclass[39m=[32m"button button--small"[39m
+    [33mdata-share[39m=[32m"whatsapp"[39m
+    [33mhref[39m=[32m"https://wa.me/?text=Links%20network%2022%E2%82%83%2022%E2%82%83%3A%20%CE%BB%20%3D%20%7B1%20%E2%86%A6%20(2%2C%202)%2C%202%20%E2%86%A6%20(2%2C%202)%7D%20http%3A%2F%2Flocalhost%3A3000%2Fnetwork%2F%3Fcode%3D2222%26lang%3Den"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "E-mail":
+  [36m<a[39m
+    [33mclass[39m=[32m"button button--small"[39m
+    [33mdata-share[39m=[32m"email"[39m
+    [33mhref[39m=[32m"mailto:?subject=Links%20network%2022%E2%82%83%2022%E2%82%83%3A%20%CE%BB%20%3D%20%7B1%20%E2%86%A6%20(2%2C%202)%2C%202%20%E2%86%A6%20(2%2C%202)%7D&body=Links%20network%2022%E2%82%83%2022%E2%82%83%3A%20%CE%BB%20%3D%20%7B1%20%E2%86%A6%20(2%2C%202)%2C%202%20%E2%86%A6%20(2%2C%202)%7D%20http%3A%2F%2Flocalhost%3A3000%2Fnetwork%2F%3Fcode%3D2222%26lang%3Den"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "Settings":
+  [36m<a[39m
+    [33mclass[39m=[32m"footer__settings"[39m
+    [33mhref[39m=[32m"/settings/"[39m
+  [36m/>[39m
+
+  Name "links theory":
+  [36m<a[39m
+    [33mhref[39m=[32m"https://github.com/link-foundation/meta-theory"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "links-visuals":
+  [36m<a[39m
+    [33mhref[39m=[32m"https://github.com/konard/links-visuals"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "twittermatrix":
+  [36m<a[39m
+    [33mhref[39m=[32m"https://github.com/konard/twittermatrix"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "source":
+  [36m<a[39m
+    [33mhref[39m=[32m"https://github.com/konard/konard.github.io"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  navigation:
+
+  Name "Pages":
+  [36m<nav[39m
+    [33maria-label[39m=[32m"Pages"[39m
+    [33mclass[39m=[32m"pages"[39m
+  [36m/>[39m
+
+  Name "Sections":
+  [36m<nav[39m
+    [33maria-label[39m=[32m"Sections"[39m
+    [33mclass[39m=[32m"nav"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  list:
+
+  Name "":
+  [36m<ul />[39m
+
+  Name "":
+  [36m<ul />[39m
+
+  Name "":
+  [36m<ul[39m
+    [33mclass[39m=[32m"settings__fields"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<ul[39m
+    [33mclass[39m=[32m"settings__fields"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<ul[39m
+    [33mclass[39m=[32m"settings__fields"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<ul[39m
+    [33mclass[39m=[32m"settings__fields"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<ul[39m
+    [33mclass[39m=[32m"settings__fields"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<ul[39m
+    [33mclass[39m=[32m"settings__fields"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<ul[39m
+    [33mclass[39m=[32m"settings__fields"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<ul[39m
+    [33mclass[39m=[32m"settings__fields"[39m
+  [36m/>[39m
+
+  Name "Share to":
+  [36m<ul[39m
+    [33maria-label[39m=[32m"Share to"[39m
+    [33mclass[39m=[32m"network-share__targets"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  listitem:
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--select"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--range"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--select"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--select"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--range"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--range"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--range"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--range"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--range"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--range"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--range"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--range"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--range"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--range"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--range"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--select"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--range"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--range"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--range"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--range"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--select"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--range"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--range"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--range"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--range"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--range"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--select"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--range"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--range"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--range"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--range"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--range"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--range"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--select"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--select"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--select"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--range"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--range"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--select"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--select"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--color"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--toggle"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--select"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--select"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--range"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--range"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--range"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--toggle"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--toggle"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--range"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--range"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--range"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li[39m
+    [33mclass[39m=[32m"setting setting--range"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  --------------------------------------------------
+  group:
+
+  Name "Language":
+  [36m<div[39m
+    [33maria-label[39m=[32m"Language"[39m
+    [33mclass[39m=[32m"prefs__langs"[39m
+    [33mrole[39m=[32m"group"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<details[39m
+    [33mclass[39m=[32m"link-gaps"[39m
+  [36m/>[39m
+
+  Name "Link 1":
+  [36m<fieldset />[39m
+
+  Name "Link 2":
+  [36m<fieldset />[39m
+
+  Name "Looks":
+  [36m<div[39m
+    [33maria-label[39m=[32m"Looks"[39m
+    [33mclass[39m=[32m"looks__row"[39m
+    [33mrole[39m=[32m"group"[39m
+  [36m/>[39m
+
+  Name "Download":
+  [36m<div[39m
+    [33maria-label[39m=[32m"Download"[39m
+    [33mclass[39m=[32m"network__actions"[39m
+    [33mrole[39m=[32m"group"[39m
+  [36m/>[39m
+
+  Name "Copy":
+  [36m<div[39m
+    [33maria-label[39m=[32m"Copy"[39m
+    [33mclass[39m=[32m"network__actions"[39m
+    [33mrole[39m=[32m"group"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  button:
+
+  Name "EN":
+  [36m<button[39m
+    [33maria-pressed[39m=[32m"true"[39m
+    [33mclass[39m=[32m"prefs__button mono"[39m
+    [33mlang[39m=[32m"en"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "RU":
+  [36m<button[39m
+    [33maria-pressed[39m=[32m"false"[39m
+    [33mclass[39m=[32m"prefs__button mono"[39m
+    [33mlang[39m=[32m"ru"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Sounds of the interface":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Sounds of the interface"[39m
+    [33maria-pressed[39m=[32m"false"[39m
+    [33mclass[39m=[32m"prefs__button prefs__sound"[39m
+    [33mtitle[39m=[32m"Sound: off"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Theme: system. Switch to: light":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Theme: system. Switch to: light"[39m
+    [33mclass[39m=[32m"prefs__button prefs__theme"[39m
+    [33mdata-theme-choice[39m=[32m"auto"[39m
+    [33mtitle[39m=[32m"Theme: system"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Remove: Link 1":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Remove: Link 1"[39m
+    [33mclass[39m=[32m"button button--small"[39m
+    [33mtitle[39m=[32m"References to this link become references to 0"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Remove: Link 2":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Remove: Link 2"[39m
+    [33mclass[39m=[32m"button button--small"[39m
+    [33mtitle[39m=[32m"References to this link become references to 0"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "+ Add a link":
+  [36m<button[39m
+    [33mclass[39m=[32m"button"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "← Previous network":
+  [36m<button[39m
+    [33mclass[39m=[32m"button"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Next network →":
+  [36m<button[39m
+    [33mclass[39m=[32m"button"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Random network":
+  [36m<button[39m
+    [33mclass[39m=[32m"button"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Smallest renaming":
+  [36m<button[39m
+    [33mclass[39m=[32m"button"[39m
+    [33mtitle[39m=[32m"The same network with the links renamed so that its code is the smallest"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Card (as in the gallery)":
+  [36m<button[39m
+    [33mclass[39m=[32m"button button--small"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Plain black":
+  [36m<button[39m
+    [33mclass[39m=[32m"button button--small"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Transparent":
+  [36m<button[39m
+    [33mclass[39m=[32m"button button--small"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Paper":
+  [36m<button[39m
+    [33mclass[39m=[32m"button button--small"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Blueprint":
+  [36m<button[39m
+    [33mclass[39m=[32m"button button--small"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Neon":
+  [36m<button[39m
+    [33mclass[39m=[32m"button button--small"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Social card 1200 × 630":
+  [36m<button[39m
+    [33mclass[39m=[32m"button button--small"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Save the style":
+  [36m<button[39m
+    [33mclass[39m=[32m"button button--small"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Reset":
+  [36m<button[39m
+    [33mclass[39m=[32m"button button--small"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Placement":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Placement"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Horizontal layout scale":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Horizontal layout scale"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Reset":
+  [36m<button[39m
+    [33mclass[39m=[32m"button button--small"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Bend behavior":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Bend behavior"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Angles of the ends":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Angles of the ends"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Leaving angle":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Leaving angle"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Entering angle":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Entering angle"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Curvature":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Curvature"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Bend":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Bend"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Loop bend":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Loop bend"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Gap at the source reference":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Gap at the source reference"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Gap at the target reference":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Gap at the target reference"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Size of a loop":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Size of a loop"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Distance between links":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Distance between links"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Rotation":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Rotation"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Margin":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Margin"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Reset":
+  [36m<button[39m
+    [33mclass[39m=[32m"button button--small"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Start of a link":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Start of a link"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Size of the start":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Size of the start"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Offset of the start":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Offset of the start"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Sideways offset of the start":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Sideways offset of the start"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Rotation of the start":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Rotation of the start"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: End of a link":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: End of a link"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Size of the end":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Size of the end"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Angle of the end":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Angle of the end"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Offset of the end":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Offset of the end"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Sideways offset of the end":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Sideways offset of the end"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Rotation of the end":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Rotation of the end"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Middle of a link":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Middle of a link"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Size of the middle":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Size of the middle"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Offset of the middle":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Offset of the middle"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Sideways offset of the middle":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Sideways offset of the middle"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Cut before the middle":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Cut before the middle"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Cut after the middle":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Cut after the middle"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Reset":
+  [36m<button[39m
+    [33mclass[39m=[32m"button button--small"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Line width":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Line width"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Line style":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Line style"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Line ends":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Line ends"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Corners":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Corners"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Opacity":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Opacity"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Glow":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Glow"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Colours of the links":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Colours of the links"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Reset":
+  [36m<button[39m
+    [33mclass[39m=[32m"button button--small"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Background":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Background"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Background colour":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Background colour"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Card around the symbol":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Card around the symbol"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Reset":
+  [36m<button[39m
+    [33mclass[39m=[32m"button button--small"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Theory notation":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Theory notation"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Caption":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Caption"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Reset":
+  [36m<button[39m
+    [33mclass[39m=[32m"button button--small"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Width":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Width"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Height":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Height"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: JPEG and WebP quality":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: JPEG and WebP quality"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Reset":
+  [36m<button[39m
+    [33mclass[39m=[32m"button button--small"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Reduce overlaps automatically":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Reduce overlaps automatically"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Adjust individual gaps":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Adjust individual gaps"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Largest reference gap change":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Largest reference gap change"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Largest middle cut change":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Largest middle cut change"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Largest turn":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Largest turn"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Back to the default: Turn step":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Back to the default: Turn step"[39m
+    [33mclass[39m=[32m"setting__reset"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Back to the default"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Apply turns and gaps to links":
+  [36m<button[39m
+    [33mclass[39m=[32m"button button--small"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Clear all turns":
+  [36m<button[39m
+    [33mclass[39m=[32m"button button--small"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "⤓ SVG":
+  [36m<button[39m
+    [33mclass[39m=[32m"button"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "⤓ PNG":
+  [36m<button[39m
+    [33mclass[39m=[32m"button"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "⤓ JPEG":
+  [36m<button[39m
+    [33mclass[39m=[32m"button"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "⤓ WebP":
+  [36m<button[39m
+    [33mclass[39m=[32m"button"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "⤓ .lino":
+  [36m<button[39m
+    [33mclass[39m=[32m"button"[39m
+    [33mtitle[39m=[32m"The network as a links notation file"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Copy the link":
+  [36m<button[39m
+    [33mclass[39m=[32m"button"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Select and copy the link below."[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Copy the image":
+  [36m<button[39m
+    [33mclass[39m=[32m"button"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtitle[39m=[32m"Use PNG download: image copying is unavailable in this browser."[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Copy the SVG code":
+  [36m<button[39m
+    [33mclass[39m=[32m"button"[39m
+    [33mdisabled[39m=[32m""[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  main:
+
+  Name "":
+  [36m<main />[39m
+
+  --------------------------------------------------
+  heading:
+
+  Name "Links network 22₃ 22₃":
+  [36m<h1[39m
+    [33mclass[39m=[32m"section__title"[39m
+  [36m/>[39m
+
+  Name "Notations":
+  [36m<h2[39m
+    [33mid[39m=[32m"notations-title"[39m
+  [36m/>[39m
+
+  Name "Links":
+  [36m<h2[39m
+    [33mid[39m=[32m"links-title"[39m
+  [36m/>[39m
+
+  Name "Style of the picture":
+  [36m<h2[39m
+    [33mid[39m=[32m"style-title"[39m
+  [36m/>[39m
+
+  Name "Placement in space":
+  [36m<h3[39m
+    [33mid[39m=[32m"style-section-placement-title"[39m
+  [36m/>[39m
+
+  Name "Shape of the links":
+  [36m<h3[39m
+    [33mid[39m=[32m"style-section-shape-title"[39m
+  [36m/>[39m
+
+  Name "Start, end and middle":
+  [36m<h3[39m
+    [33mid[39m=[32m"style-section-ends-title"[39m
+  [36m/>[39m
+
+  Name "Lines and colours":
+  [36m<h3[39m
+    [33mid[39m=[32m"style-section-lines-title"[39m
+  [36m/>[39m
+
+  Name "Background and card":
+  [36m<h3[39m
+    [33mid[39m=[32m"style-section-background-title"[39m
+  [36m/>[39m
+
+  Name "Caption":
+  [36m<h3[39m
+    [33mid[39m=[32m"style-section-caption-title"[39m
+  [36m/>[39m
+
+  Name "Image size":
+  [36m<h3[39m
+    [33mid[39m=[32m"style-section-image-title"[39m
+  [36m/>[39m
+
+  Name "Experimental: fewer overlaps":
+  [36m<h3[39m
+    [33mid[39m=[32m"style-section-experimental-title"[39m
+  [36m/>[39m
+
+  Name "Save and share":
+  [36m<h2[39m
+    [33mid[39m=[32m"share-title"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"section__lead"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"muted"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"network__lead"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"network__lead"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"settings__lead"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"muted"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"network-share__url"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"muted"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  figure:
+
+  Name "":
+  [36m<figure[39m
+    [33mclass[39m=[32m"network__view"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  img:
+
+  Name "Links network 22₃ 22₃":
+  [36m<svg[39m
+    [33maria-label[39m=[32m"Links network 22₃ 22₃"[39m
+    [33mheight[39m=[32m"2048"[39m
+    [33mrole[39m=[32m"img"[39m
+    [33mviewBox[39m=[32m"0 0 100 100"[39m
+    [33mwidth[39m=[32m"2048"[39m
+    [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  region:
+
+  Name "Notations":
+  [36m<section[39m
+    [33maria-labelledby[39m=[32m"notations-title"[39m
+    [33mclass[39m=[32m"network__panel"[39m
+    [33mid[39m=[32m"notations"[39m
+  [36m/>[39m
+
+  Name "Links":
+  [36m<section[39m
+    [33maria-labelledby[39m=[32m"links-title"[39m
+    [33mclass[39m=[32m"network__panel"[39m
+    [33mid[39m=[32m"links"[39m
+  [36m/>[39m
+
+  Name "Style of the picture":
+  [36m<section[39m
+    [33maria-labelledby[39m=[32m"style-title"[39m
+    [33mclass[39m=[32m"network__panel"[39m
+    [33mid[39m=[32m"style"[39m
+  [36m/>[39m
+
+  Name "Placement in space":
+  [36m<section[39m
+    [33maria-labelledby[39m=[32m"style-section-placement-title"[39m
+    [33mclass[39m=[32m"settings__group"[39m
+    [33mid[39m=[32m"style-section-placement"[39m
+  [36m/>[39m
+
+  Name "Shape of the links":
+  [36m<section[39m
+    [33maria-labelledby[39m=[32m"style-section-shape-title"[39m
+    [33mclass[39m=[32m"settings__group"[39m
+    [33mid[39m=[32m"style-section-shape"[39m
+  [36m/>[39m
+
+  Name "Start, end and middle":
+  [36m<section[39m
+    [33maria-labelledby[39m=[32m"style-section-ends-title"[39m
+    [33mclass[39m=[32m"settings__group"[39m
+    [33mid[39m=[32m"style-section-ends"[39m
+  [36m/>[39m
+
+  Name "Lines and colours":
+  [36m<section[39m
+    [33maria-labelledby[39m=[32m"style-section-lines-title"[39m
+    [33mclass[39m=[32m"settings__group"[39m
+    [33mid[39m=[32m"style-section-lines"[39m
+  [36m/>[39m
+
+  Name "Background and card":
+  [36m<section[39m
+    [33maria-labelledby[39m=[32m"style-section-background-title"[39m
+    [33mclass[39m=[32m"settings__group"[39m
+    [33mid[39m=[32m"style-section-background"[39m
+  [36m/>[39m
+
+  Name "Caption":
+  [36m<section[39m
+    [33maria-labelledby[39m=[32m"style-section-caption-title"[39m
+    [33mclass[39m=[32m"settings__group"[39m
+    [33mid[39m=[32m"style-section-caption"[39m
+  [36m/>[39m
+
+  Name "Image size":
+  [36m<section[39m
+    [33maria-labelledby[39m=[32m"style-section-image-title"[39m
+    [33mclass[39m=[32m"settings__group"[39m
+    [33mid[39m=[32m"style-section-image"[39m
+  [36m/>[39m
+
+  Name "Experimental: fewer overlaps":
+  [36m<section[39m
+    [33maria-labelledby[39m=[32m"style-section-experimental-title"[39m
+    [33mclass[39m=[32m"settings__group"[39m
+    [33mid[39m=[32m"style-section-experimental"[39m
+  [36m/>[39m
+
+  Name "Save and share":
+  [36m<section[39m
+    [33maria-labelledby[39m=[32m"share-title"[39m
+    [33mclass[39m=[32m"network__panel"[39m
+    [33mid[39m=[32m"share"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  textbox:
+
+  Name "Math notation (the links theory)":
+  [36m<input[39m
+    [33maria-describedby[39m=[32m"notation-theory-note"[39m
+    [33mautocomplete[39m=[32m"off"[39m
+    [33mclass[39m=[32m"mono"[39m
+    [33mid[39m=[32m"notation-theory"[39m
+    [33mspellcheck[39m=[32m"false"[39m
+    [33mvalue[39m=[32m"λ = {1 ↦ (2, 2), 2 ↦ (2, 2)}"[39m
+  [36m/>[39m
+
+  Name "Pairs with the base":
+  [36m<input[39m
+    [33maria-describedby[39m=[32m"notation-pairs-note"[39m
+    [33mautocomplete[39m=[32m"off"[39m
+    [33mclass[39m=[32m"mono"[39m
+    [33mid[39m=[32m"notation-pairs"[39m
+    [33mspellcheck[39m=[32m"false"[39m
+    [33mvalue[39m=[32m"22₃ 22₃"[39m
+  [36m/>[39m
+
+  Name "N-ary number":
+  [36m<input[39m
+    [33maria-describedby[39m=[32m"notation-number-note"[39m
+    [33mautocomplete[39m=[32m"off"[39m
+    [33mclass[39m=[32m"mono"[39m
+    [33mid[39m=[32m"notation-number"[39m
+    [33mspellcheck[39m=[32m"false"[39m
+    [33mvalue[39m=[32m"2222₃"[39m
+  [36m/>[39m
+
+  Name "The same number in decimal":
+  [36m<input[39m
+    [33maria-describedby[39m=[32m"notation-decimal-note"[39m
+    [33mautocomplete[39m=[32m"off"[39m
+    [33mclass[39m=[32m"mono"[39m
+    [33mid[39m=[32m"notation-decimal"[39m
+    [33mspellcheck[39m=[32m"false"[39m
+    [33mvalue[39m=[32m"80"[39m
+  [36m/>[39m
+
+  Name "Links notation":
+  [36m<textarea[39m
+    [33maria-describedby[39m=[32m"notation-links-note"[39m
+    [33mautocomplete[39m=[32m"off"[39m
+    [33mclass[39m=[32m"mono"[39m
+    [33mid[39m=[32m"notation-links"[39m
+    [33mrows[39m=[32m"2"[39m
+    [33mspellcheck[39m=[32m"false"[39m
+  [36m/>[39m
+
+  Name "Name of the style":
+  [36m<input[39m
+    [33maria-label[39m=[32m"Name of the style"[39m
+    [33mmaxlength[39m=[32m"40"[39m
+    [33mplaceholder[39m=[32m"Name of the style"[39m
+    [33mtype[39m=[32m"text"[39m
+    [33mvalue[39m=[32m""[39m
+  [36m/>[39m
+
+  Name "Link to this picture":
+  [36m<input[39m
+    [33mclass[39m=[32m"mono"[39m
+    [33mid[39m=[32m"network-url"[39m
+    [33mreadonly[39m=[32m""[39m
+    [33mvalue[39m=[32m"http://localhost:3000/network/?code=2222&lang=en"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  table:
+
+  Name "":
+  [36m<table />[39m
+
+  --------------------------------------------------
+  rowgroup:
+
+  Name "":
+  [36m<thead />[39m
+
+  Name "":
+  [36m<tbody />[39m
+
+  --------------------------------------------------
+  row:
+
+  Name "Link Source Target Colour Turn of the source Turn of the target Remove":
+  [36m<tr />[39m
+
+  Name "1 2 2 Link 1: colour 0 ° 0 ° ✕":
+  [36m<tr />[39m
+
+  Name "2 2 — itself 2 — itself Link 2: colour 0 ° 0 ° ✕":
+  [36m<tr />[39m
+
+  --------------------------------------------------
+  columnheader:
+
+  Name "Link":
+  [36m<th[39m
+    [33mscope[39m=[32m"col"[39m
+  [36m/>[39m
+
+  Name "Source":
+  [36m<th[39m
+    [33mscope[39m=[32m"col"[39m
+  [36m/>[39m
+
+  Name "Target":
+  [36m<th[39m
+    [33mscope[39m=[32m"col"[39m
+  [36m/>[39m
+
+  Name "Colour":
+  [36m<th[39m
+    [33mscope[39m=[32m"col"[39m
+  [36m/>[39m
+
+  Name "Turn of the source":
+  [36m<th[39m
+    [33mscope[39m=[32m"col"[39m
+  [36m/>[39m
+
+  Name "Turn of the target":
+  [36m<th[39m
+    [33mscope[39m=[32m"col"[39m
+  [36m/>[39m
+
+  Name "Remove":
+  [36m<th[39m
+    [33mscope[39m=[32m"col"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  rowheader:
+
+  Name "1":
+  [36m<th[39m
+    [33mclass[39m=[32m"mono"[39m
+    [33mscope[39m=[32m"row"[39m
+  [36m/>[39m
+
+  Name "2":
+  [36m<th[39m
+    [33mclass[39m=[32m"mono"[39m
+    [33mscope[39m=[32m"row"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  cell:
+
+  Name "2":
+  [36m<td />[39m
+
+  Name "2":
+  [36m<td />[39m
+
+  Name "Link 1: colour":
+  [36m<td />[39m
+
+  Name "0 °":
+  [36m<td />[39m
+
+  Name "0 °":
+  [36m<td />[39m
+
+  Name "✕":
+  [36m<td />[39m
+
+  Name "2 — itself":
+  [36m<td />[39m
+
+  Name "2 — itself":
+  [36m<td />[39m
+
+  Name "Link 2: colour":
+  [36m<td />[39m
+
+  Name "0 °":
+  [36m<td />[39m
+
+  Name "0 °":
+  [36m<td />[39m
+
+  Name "✕":
+  [36m<td />[39m
+
+  --------------------------------------------------
+  combobox:
+
+  Name "Link 1: source":
+  [36m<select[39m
+    [33maria-label[39m=[32m"Link 1: source"[39m
+    [33mid[39m=[32m"link-1-source"[39m
+  [36m/>[39m
+
+  Name "Link 1: target":
+  [36m<select[39m
+    [33maria-label[39m=[32m"Link 1: target"[39m
+    [33mid[39m=[32m"link-1-target"[39m
+  [36m/>[39m
+
+  Name "Link 2: source":
+  [36m<select[39m
+    [33maria-label[39m=[32m"Link 2: source"[39m
+    [33mid[39m=[32m"link-2-source"[39m
+  [36m/>[39m
+
+  Name "Link 2: target":
+  [36m<select[39m
+    [33maria-label[39m=[32m"Link 2: target"[39m
+    [33mid[39m=[32m"link-2-target"[39m
+  [36m/>[39m
+
+  Name "Image size":
+  [36m<select />[39m
+
+  Name "Placement":
+  [36m<select[39m
+    [33mid[39m=[32m"style-placement"[39m
+  [36m/>[39m
+
+  Name "Bend behavior":
+  [36m<select[39m
+    [33mid[39m=[32m"style-bendMode"[39m
+  [36m/>[39m
+
+  Name "Angles of the ends":
+  [36m<select[39m
+    [33mid[39m=[32m"style-angles"[39m
+  [36m/>[39m
+
+  Name "Start of a link":
+  [36m<select[39m
+    [33mid[39m=[32m"style-start"[39m
+  [36m/>[39m
+
+  Name "End of a link":
+  [36m<select[39m
+    [33mid[39m=[32m"style-end"[39m
+  [36m/>[39m
+
+  Name "Middle of a link":
+  [36m<select[39m
+    [33mid[39m=[32m"style-middle"[39m
+  [36m/>[39m
+
+  Name "Line style":
+  [36m<select[39m
+    [33mid[39m=[32m"style-dash"[39m
+  [36m/>[39m
+
+  Name "Line ends":
+  [36m<select[39m
+    [33mid[39m=[32m"style-linecap"[39m
+  [36m/>[39m
+
+  Name "Corners":
+  [36m<select[39m
+    [33mid[39m=[32m"style-linejoin"[39m
+  [36m/>[39m
+
+  Name "Colours of the links":
+  [36m<select[39m
+    [33mid[39m=[32m"style-palette"[39m
+  [36m/>[39m
+
+  Name "Background":
+  [36m<select[39m
+    [33mid[39m=[32m"style-background"[39m
+  [36m/>[39m
+
+  Name "Theory notation":
+  [36m<select[39m
+    [33mid[39m=[32m"style-notation"[39m
+  [36m/>[39m
+
+  Name "Caption":
+  [36m<select[39m
+    [33mid[39m=[32m"style-caption"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  option:
+
+  Name "0 — nothing":
+  [36m<option[39m
+    [33mvalue[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "1 — itself":
+  [36m<option[39m
+    [33mvalue[39m=[32m"1"[39m
+  [36m/>[39m
+
+  Name "2":
+  [36m<option[39m
+    [33mvalue[39m=[32m"2"[39m
+  [36m/>[39m
+
+  Name "0 — nothing":
+  [36m<option[39m
+    [33mvalue[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "1 — itself":
+  [36m<option[39m
+    [33mvalue[39m=[32m"1"[39m
+  [36m/>[39m
+
+  Name "2":
+  [36m<option[39m
+    [33mvalue[39m=[32m"2"[39m
+  [36m/>[39m
+
+  Name "0 — nothing":
+  [36m<option[39m
+    [33mvalue[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "1":
+  [36m<option[39m
+    [33mvalue[39m=[32m"1"[39m
+  [36m/>[39m
+
+  Name "2 — itself":
+  [36m<option[39m
+    [33mvalue[39m=[32m"2"[39m
+  [36m/>[39m
+
+  Name "0 — nothing":
+  [36m<option[39m
+    [33mvalue[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "1":
+  [36m<option[39m
+    [33mvalue[39m=[32m"1"[39m
+  [36m/>[39m
+
+  Name "2 — itself":
+  [36m<option[39m
+    [33mvalue[39m=[32m"2"[39m
+  [36m/>[39m
+
+  Name "2048 × 2048 (own)":
+  [36m<option[39m
+    [33mvalue[39m=[32m"-1"[39m
+  [36m/>[39m
+
+  Name "512 × 512":
+  [36m<option[39m
+    [33mvalue[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "1024 × 1024":
+  [36m<option[39m
+    [33mvalue[39m=[32m"1"[39m
+  [36m/>[39m
+
+  Name "2048 × 2048":
+  [36m<option[39m
+    [33mvalue[39m=[32m"2"[39m
+  [36m/>[39m
+
+  Name "Instagram 1080 × 1080":
+  [36m<option[39m
+    [33mvalue[39m=[32m"3"[39m
+  [36m/>[39m
+
+  Name "Open Graph 1200 × 630":
+  [36m<option[39m
+    [33mvalue[39m=[32m"4"[39m
+  [36m/>[39m
+
+  Name "X 1600 × 900":
+  [36m<option[39m
+    [33mvalue[39m=[32m"5"[39m
+  [36m/>[39m
+
+  Name "Stories 1080 × 1920":
+  [36m<option[39m
+    [33mvalue[39m=[32m"6"[39m
+  [36m/>[39m
+
+  Name "Automatic (circle for 1–4, hexagonal after)":
+  [36m<option[39m
+    [33mvalue[39m=[32m"auto"[39m
+  [36m/>[39m
+
+  Name "Circle":
+  [36m<option[39m
+    [33mvalue[39m=[32m"circle"[39m
+  [36m/>[39m
+
+  Name "Square grid":
+  [36m<option[39m
+    [33mvalue[39m=[32m"square"[39m
+  [36m/>[39m
+
+  Name "Hexagonal grid":
+  [36m<option[39m
+    [33mvalue[39m=[32m"hex"[39m
+  [36m/>[39m
+
+  Name "Dice":
+  [36m<option[39m
+    [33mvalue[39m=[32m"dice"[39m
+  [36m/>[39m
+
+  Name "Playing cards":
+  [36m<option[39m
+    [33mvalue[39m=[32m"cards"[39m
+  [36m/>[39m
+
+  Name "Sunflower spiral":
+  [36m<option[39m
+    [33mvalue[39m=[32m"spiral"[39m
+  [36m/>[39m
+
+  Name "Physical forces":
+  [36m<option[39m
+    [33mvalue[39m=[32m"force"[39m
+  [36m/>[39m
+
+  Name "Bend the curve":
+  [36m<option[39m
+    [33mvalue[39m=[32m"curve"[39m
+  [36m/>[39m
+
+  Name "Legacy tangent rotation":
+  [36m<option[39m
+    [33mvalue[39m=[32m"rotate"[39m
+  [36m/>[39m
+
+  Name "Mirror the middle (as in the gallery)":
+  [36m<option[39m
+    [33mvalue[39m=[32m"mirror"[39m
+  [36m/>[39m
+
+  Name "Fixed angles":
+  [36m<option[39m
+    [33mvalue[39m=[32m"fixed"[39m
+  [36m/>[39m
+
+  Name "Bar":
+  [36m<option[39m
+    [33mvalue[39m=[32m"bar"[39m
+  [36m/>[39m
+
+  Name "Arrow":
+  [36m<option[39m
+    [33mvalue[39m=[32m"arrow"[39m
+  [36m/>[39m
+
+  Name "Triangle":
+  [36m<option[39m
+    [33mvalue[39m=[32m"triangle"[39m
+  [36m/>[39m
+
+  Name "Tail (reversed arrow)":
+  [36m<option[39m
+    [33mvalue[39m=[32m"tail"[39m
+  [36m/>[39m
+
+  Name "Dot":
+  [36m<option[39m
+    [33mvalue[39m=[32m"dot"[39m
+  [36m/>[39m
+
+  Name "Ring":
+  [36m<option[39m
+    [33mvalue[39m=[32m"circle"[39m
+  [36m/>[39m
+
+  Name "Square":
+  [36m<option[39m
+    [33mvalue[39m=[32m"square"[39m
+  [36m/>[39m
+
+  Name "Diamond":
+  [36m<option[39m
+    [33mvalue[39m=[32m"diamond"[39m
+  [36m/>[39m
+
+  Name "None":
+  [36m<option[39m
+    [33mvalue[39m=[32m"none"[39m
+  [36m/>[39m
+
+  Name "Bar":
+  [36m<option[39m
+    [33mvalue[39m=[32m"bar"[39m
+  [36m/>[39m
+
+  Name "Arrow":
+  [36m<option[39m
+    [33mvalue[39m=[32m"arrow"[39m
+  [36m/>[39m
+
+  Name "Triangle":
+  [36m<option[39m
+    [33mvalue[39m=[32m"triangle"[39m
+  [36m/>[39m
+
+  Name "Tail (reversed arrow)":
+  [36m<option[39m
+    [33mvalue[39m=[32m"tail"[39m
+  [36m/>[39m
+
+  Name "Dot":
+  [36m<option[39m
+    [33mvalue[39m=[32m"dot"[39m
+  [36m/>[39m
+
+  Name "Ring":
+  [36m<option[39m
+    [33mvalue[39m=[32m"circle"[39m
+  [36m/>[39m
+
+  Name "Square":
+  [36m<option[39m
+    [33mvalue[39m=[32m"square"[39m
+  [36m/>[39m
+
+  Name "Diamond":
+  [36m<option[39m
+    [33mvalue[39m=[32m"diamond"[39m
+  [36m/>[39m
+
+  Name "None":
+  [36m<option[39m
+    [33mvalue[39m=[32m"none"[39m
+  [36m/>[39m
+
+  Name "Bar":
+  [36m<option[39m
+    [33mvalue[39m=[32m"bar"[39m
+  [36m/>[39m
+
+  Name "Arrow":
+  [36m<option[39m
+    [33mvalue[39m=[32m"arrow"[39m
+  [36m/>[39m
+
+  Name "Triangle":
+  [36m<option[39m
+    [33mvalue[39m=[32m"triangle"[39m
+  [36m/>[39m
+
+  Name "Tail (reversed arrow)":
+  [36m<option[39m
+    [33mvalue[39m=[32m"tail"[39m
+  [36m/>[39m
+
+  Name "Dot":
+  [36m<option[39m
+    [33mvalue[39m=[32m"dot"[39m
+  [36m/>[39m
+
+  Name "Ring":
+  [36m<option[39m
+    [33mvalue[39m=[32m"circle"[39m
+  [36m/>[39m
+
+  Name "Square":
+  [36m<option[39m
+    [33mvalue[39m=[32m"square"[39m
+  [36m/>[39m
+
+  Name "Diamond":
+  [36m<option[39m
+    [33mvalue[39m=[32m"diamond"[39m
+  [36m/>[39m
+
+  Name "None":
+  [36m<option[39m
+    [33mvalue[39m=[32m"none"[39m
+  [36m/>[39m
+
+  Name "Solid":
+  [36m<option[39m
+    [33mvalue[39m=[32m"solid"[39m
+  [36m/>[39m
+
+  Name "Dashed":
+  [36m<option[39m
+    [33mvalue[39m=[32m"dashed"[39m
+  [36m/>[39m
+
+  Name "Dotted":
+  [36m<option[39m
+    [33mvalue[39m=[32m"dotted"[39m
+  [36m/>[39m
+
+  Name "Dash and dot":
+  [36m<option[39m
+    [33mvalue[39m=[32m"dashdot"[39m
+  [36m/>[39m
+
+  Name "Long dashes":
+  [36m<option[39m
+    [33mvalue[39m=[32m"long"[39m
+  [36m/>[39m
+
+  Name "Round":
+  [36m<option[39m
+    [33mvalue[39m=[32m"round"[39m
+  [36m/>[39m
+
+  Name "Flat":
+  [36m<option[39m
+    [33mvalue[39m=[32m"butt"[39m
+  [36m/>[39m
+
+  Name "Square":
+  [36m<option[39m
+    [33mvalue[39m=[32m"square"[39m
+  [36m/>[39m
+
+  Name "Round":
+  [36m<option[39m
+    [33mvalue[39m=[32m"round"[39m
+  [36m/>[39m
+
+  Name "Sharp":
+  [36m<option[39m
+    [33mvalue[39m=[32m"miter"[39m
+  [36m/>[39m
+
+  Name "Bevelled":
+  [36m<option[39m
+    [33mvalue[39m=[32m"bevel"[39m
+  [36m/>[39m
+
+  Name "Site":
+  [36m<option[39m
+    [33mvalue[39m=[32m"site"[39m
+  [36m/>[39m
+
+  Name "Neon":
+  [36m<option[39m
+    [33mvalue[39m=[32m"neon"[39m
+  [36m/>[39m
+
+  Name "Pastel":
+  [36m<option[39m
+    [33mvalue[39m=[32m"pastel"[39m
+  [36m/>[39m
+
+  Name "Warm":
+  [36m<option[39m
+    [33mvalue[39m=[32m"warm"[39m
+  [36m/>[39m
+
+  Name "Cold":
+  [36m<option[39m
+    [33mvalue[39m=[32m"cold"[39m
+  [36m/>[39m
+
+  Name "For light backgrounds":
+  [36m<option[39m
+    [33mvalue[39m=[32m"print"[39m
+  [36m/>[39m
+
+  Name "One colour":
+  [36m<option[39m
+    [33mvalue[39m=[32m"mono"[39m
+  [36m/>[39m
+
+  Name "Own colour of each link":
+  [36m<option[39m
+    [33mvalue[39m=[32m"custom"[39m
+  [36m/>[39m
+
+  Name "Transparent":
+  [36m<option[39m
+    [33mvalue[39m=[32m"transparent"[39m
+  [36m/>[39m
+
+  Name "One colour":
+  [36m<option[39m
+    [33mvalue[39m=[32m"solid"[39m
+  [36m/>[39m
+
+  Name "Linear gradient":
+  [36m<option[39m
+    [33mvalue[39m=[32m"linear"[39m
+  [36m/>[39m
+
+  Name "Radial gradient":
+  [36m<option[39m
+    [33mvalue[39m=[32m"radial"[39m
+  [36m/>[39m
+
+  Name "L → L²":
+  [36m<option[39m
+    [33mvalue[39m=[32m"L"[39m
+  [36m/>[39m
+
+  Name "R → R²":
+  [36m<option[39m
+    [33mvalue[39m=[32m"R"[39m
+  [36m/>[39m
+
+  Name "None":
+  [36m<option[39m
+    [33mvalue[39m=[32m"none"[39m
+  [36m/>[39m
+
+  Name "Math notation":
+  [36m<option[39m
+    [33mvalue[39m=[32m"theory"[39m
+  [36m/>[39m
+
+  Name "Pairs with the base":
+  [36m<option[39m
+    [33mvalue[39m=[32m"pairs"[39m
+  [36m/>[39m
+
+  Name "N-ary number":
+  [36m<option[39m
+    [33mvalue[39m=[32m"number"[39m
+  [36m/>[39m
+
+  Name "Links notation":
+  [36m<option[39m
+    [33mvalue[39m=[32m"links"[39m
+  [36m/>[39m
+
+  Name "Own text":
+  [36m<option[39m
+    [33mvalue[39m=[32m"custom"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  spinbutton:
+
+  Name "Link 1: turn of the source, °":
+  [36m<input[39m
+    [33maria-label[39m=[32m"Link 1: turn of the source, °"[39m
+    [33mclass[39m=[32m"mono"[39m
+    [33mmax[39m=[32m"180"[39m
+    [33mmin[39m=[32m"-180"[39m
+    [33mstep[39m=[32m"5"[39m
+    [33mtype[39m=[32m"number"[39m
+    [33mvalue[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "Link 1: turn of the target, °":
+  [36m<input[39m
+    [33maria-label[39m=[32m"Link 1: turn of the target, °"[39m
+    [33mclass[39m=[32m"mono"[39m
+    [33mmax[39m=[32m"180"[39m
+    [33mmin[39m=[32m"-180"[39m
+    [33mstep[39m=[32m"5"[39m
+    [33mtype[39m=[32m"number"[39m
+    [33mvalue[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "Link 2: turn of the source, °":
+  [36m<input[39m
+    [33maria-label[39m=[32m"Link 2: turn of the source, °"[39m
+    [33mclass[39m=[32m"mono"[39m
+    [33mmax[39m=[32m"180"[39m
+    [33mmin[39m=[32m"-180"[39m
+    [33mstep[39m=[32m"5"[39m
+    [33mtype[39m=[32m"number"[39m
+    [33mvalue[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "Link 2: turn of the target, °":
+  [36m<input[39m
+    [33maria-label[39m=[32m"Link 2: turn of the target, °"[39m
+    [33mclass[39m=[32m"mono"[39m
+    [33mmax[39m=[32m"180"[39m
+    [33mmin[39m=[32m"-180"[39m
+    [33mstep[39m=[32m"5"[39m
+    [33mtype[39m=[32m"number"[39m
+    [33mvalue[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "Link 1: Gap at the source reference":
+  [36m<input[39m
+    [33maria-label[39m=[32m"Link 1: Gap at the source reference"[39m
+    [33mmax[39m=[32m"1"[39m
+    [33mmin[39m=[32m"0"[39m
+    [33mplaceholder[39m=[32m"0.08"[39m
+    [33mstep[39m=[32m"0.01"[39m
+    [33mtype[39m=[32m"number"[39m
+    [33mvalue[39m=[32m""[39m
+  [36m/>[39m
+
+  Name "Link 1: Gap at the target reference":
+  [36m<input[39m
+    [33maria-label[39m=[32m"Link 1: Gap at the target reference"[39m
+    [33mmax[39m=[32m"1"[39m
+    [33mmin[39m=[32m"0"[39m
+    [33mplaceholder[39m=[32m"0.08"[39m
+    [33mstep[39m=[32m"0.01"[39m
+    [33mtype[39m=[32m"number"[39m
+    [33mvalue[39m=[32m""[39m
+  [36m/>[39m
+
+  Name "Link 1: Cut before the middle":
+  [36m<input[39m
+    [33maria-label[39m=[32m"Link 1: Cut before the middle"[39m
+    [33mmax[39m=[32m"30"[39m
+    [33mmin[39m=[32m"0"[39m
+    [33mplaceholder[39m=[32m"0"[39m
+    [33mstep[39m=[32m"0.1"[39m
+    [33mtype[39m=[32m"number"[39m
+    [33mvalue[39m=[32m""[39m
+  [36m/>[39m
+
+  Name "Link 1: Cut after the middle":
+  [36m<input[39m
+    [33maria-label[39m=[32m"Link 1: Cut after the middle"[39m
+    [33mmax[39m=[32m"30"[39m
+    [33mmin[39m=[32m"0"[39m
+    [33mplaceholder[39m=[32m"0"[39m
+    [33mstep[39m=[32m"0.1"[39m
+    [33mtype[39m=[32m"number"[39m
+    [33mvalue[39m=[32m""[39m
+  [36m/>[39m
+
+  Name "Link 2: Gap at the source reference":
+  [36m<input[39m
+    [33maria-label[39m=[32m"Link 2: Gap at the source reference"[39m
+    [33mmax[39m=[32m"1"[39m
+    [33mmin[39m=[32m"0"[39m
+    [33mplaceholder[39m=[32m"0.08"[39m
+    [33mstep[39m=[32m"0.01"[39m
+    [33mtype[39m=[32m"number"[39m
+    [33mvalue[39m=[32m""[39m
+  [36m/>[39m
+
+  Name "Link 2: Gap at the target reference":
+  [36m<input[39m
+    [33maria-label[39m=[32m"Link 2: Gap at the target reference"[39m
+    [33mmax[39m=[32m"1"[39m
+    [33mmin[39m=[32m"0"[39m
+    [33mplaceholder[39m=[32m"0.08"[39m
+    [33mstep[39m=[32m"0.01"[39m
+    [33mtype[39m=[32m"number"[39m
+    [33mvalue[39m=[32m""[39m
+  [36m/>[39m
+
+  Name "Link 2: Cut before the middle":
+  [36m<input[39m
+    [33maria-label[39m=[32m"Link 2: Cut before the middle"[39m
+    [33mmax[39m=[32m"30"[39m
+    [33mmin[39m=[32m"0"[39m
+    [33mplaceholder[39m=[32m"0"[39m
+    [33mstep[39m=[32m"0.1"[39m
+    [33mtype[39m=[32m"number"[39m
+    [33mvalue[39m=[32m""[39m
+  [36m/>[39m
+
+  Name "Link 2: Cut after the middle":
+  [36m<input[39m
+    [33maria-label[39m=[32m"Link 2: Cut after the middle"[39m
+    [33mmax[39m=[32m"30"[39m
+    [33mmin[39m=[32m"0"[39m
+    [33mplaceholder[39m=[32m"0"[39m
+    [33mstep[39m=[32m"0.1"[39m
+    [33mtype[39m=[32m"number"[39m
+    [33mvalue[39m=[32m""[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  slider:
+
+  Name "Horizontal layout scale":
+  [36m<input[39m
+    [33mid[39m=[32m"style-layoutAspect"[39m
+    [33mmax[39m=[32m"3"[39m
+    [33mmin[39m=[32m"0.3"[39m
+    [33mstep[39m=[32m"0.05"[39m
+    [33mtype[39m=[32m"range"[39m
+    [33mvalue[39m=[32m"1"[39m
+  [36m/>[39m
+
+  Name "Leaving angle":
+  [36m<input[39m
+    [33mid[39m=[32m"style-sourceAngle"[39m
+    [33mmax[39m=[32m"180"[39m
+    [33mmin[39m=[32m"-180"[39m
+    [33mstep[39m=[32m"1"[39m
+    [33mtype[39m=[32m"range"[39m
+    [33mvalue[39m=[32m"30"[39m
+  [36m/>[39m
+
+  Name "Entering angle":
+  [36m<input[39m
+    [33mid[39m=[32m"style-targetAngle"[39m
+    [33mmax[39m=[32m"180"[39m
+    [33mmin[39m=[32m"-180"[39m
+    [33mstep[39m=[32m"1"[39m
+    [33mtype[39m=[32m"range"[39m
+    [33mvalue[39m=[32m"30"[39m
+  [36m/>[39m
+
+  Name "Curvature":
+  [36m<input[39m
+    [33mid[39m=[32m"style-tension"[39m
+    [33mmax[39m=[32m"2"[39m
+    [33mmin[39m=[32m"0"[39m
+    [33mstep[39m=[32m"0.01"[39m
+    [33mtype[39m=[32m"range"[39m
+    [33mvalue[39m=[32m"0.4"[39m
+  [36m/>[39m
+
+  Name "Bend":
+  [36m<input[39m
+    [33mid[39m=[32m"style-bulge"[39m
+    [33mmax[39m=[32m"180"[39m
+    [33mmin[39m=[32m"-180"[39m
+    [33mstep[39m=[32m"1"[39m
+    [33mtype[39m=[32m"range"[39m
+    [33mvalue[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "Loop bend":
+  [36m<input[39m
+    [33mid[39m=[32m"style-loopBend"[39m
+    [33mmax[39m=[32m"180"[39m
+    [33mmin[39m=[32m"-180"[39m
+    [33mstep[39m=[32m"1"[39m
+    [33mtype[39m=[32m"range"[39m
+    [33mvalue[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "Gap at the source reference":
+  [36m<input[39m
+    [33mid[39m=[32m"style-startGap"[39m
+    [33mmax[39m=[32m"1"[39m
+    [33mmin[39m=[32m"0"[39m
+    [33mstep[39m=[32m"0.01"[39m
+    [33mtype[39m=[32m"range"[39m
+    [33mvalue[39m=[32m"0.08"[39m
+  [36m/>[39m
+
+  Name "Gap at the target reference":
+  [36m<input[39m
+    [33mid[39m=[32m"style-endGap"[39m
+    [33mmax[39m=[32m"1"[39m
+    [33mmin[39m=[32m"0"[39m
+    [33mstep[39m=[32m"0.01"[39m
+    [33mtype[39m=[32m"range"[39m
+    [33mvalue[39m=[32m"0.08"[39m
+  [36m/>[39m
+
+  Name "Size of a loop":
+  [36m<input[39m
+    [33mid[39m=[32m"style-loop"[39m
+    [33mmax[39m=[32m"5"[39m
+    [33mmin[39m=[32m"0.05"[39m
+    [33mstep[39m=[32m"0.05"[39m
+    [33mtype[39m=[32m"range"[39m
+    [33mvalue[39m=[32m"1"[39m
+  [36m/>[39m
+
+  Name "Distance between links":
+  [36m<input[39m
+    [33mid[39m=[32m"style-spread"[39m
+    [33mmax[39m=[32m"5"[39m
+    [33mmin[39m=[32m"0.1"[39m
+    [33mstep[39m=[32m"0.05"[39m
+    [33mtype[39m=[32m"range"[39m
+    [33mvalue[39m=[32m"1"[39m
+  [36m/>[39m
+
+  Name "Rotation":
+  [36m<input[39m
+    [33mid[39m=[32m"style-rotation"[39m
+    [33mmax[39m=[32m"359"[39m
+    [33mmin[39m=[32m"-180"[39m
+    [33mstep[39m=[32m"1"[39m
+    [33mtype[39m=[32m"range"[39m
+    [33mvalue[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "Margin":
+  [36m<input[39m
+    [33mid[39m=[32m"style-padding"[39m
+    [33mmax[39m=[32m"40"[39m
+    [33mmin[39m=[32m"0"[39m
+    [33mstep[39m=[32m"1"[39m
+    [33mtype[39m=[32m"range"[39m
+    [33mvalue[39m=[32m"9"[39m
+  [36m/>[39m
+
+  Name "Size of the start":
+  [36m<input[39m
+    [33mid[39m=[32m"style-startSize"[39m
+    [33mmax[39m=[32m"15"[39m
+    [33mmin[39m=[32m"0.5"[39m
+    [33mstep[39m=[32m"0.1"[39m
+    [33mtype[39m=[32m"range"[39m
+    [33mvalue[39m=[32m"2.5"[39m
+  [36m/>[39m
+
+  Name "Offset of the start":
+  [36m<input[39m
+    [33mid[39m=[32m"style-startOffset"[39m
+    [33mmax[39m=[32m"20"[39m
+    [33mmin[39m=[32m"-20"[39m
+    [33mstep[39m=[32m"0.1"[39m
+    [33mtype[39m=[32m"range"[39m
+    [33mvalue[39m=[32m"2.5"[39m
+  [36m/>[39m
+
+  Name "Sideways offset of the start":
+  [36m<input[39m
+    [33mid[39m=[32m"style-startAcross"[39m
+    [33mmax[39m=[32m"20"[39m
+    [33mmin[39m=[32m"-20"[39m
+    [33mstep[39m=[32m"0.1"[39m
+    [33mtype[39m=[32m"range"[39m
+    [33mvalue[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "Rotation of the start":
+  [36m<input[39m
+    [33mid[39m=[32m"style-startRotation"[39m
+    [33mmax[39m=[32m"180"[39m
+    [33mmin[39m=[32m"-180"[39m
+    [33mstep[39m=[32m"1"[39m
+    [33mtype[39m=[32m"range"[39m
+    [33mvalue[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "Size of the end":
+  [36m<input[39m
+    [33mid[39m=[32m"style-endSize"[39m
+    [33mmax[39m=[32m"15"[39m
+    [33mmin[39m=[32m"0.5"[39m
+    [33mstep[39m=[32m"0.1"[39m
+    [33mtype[39m=[32m"range"[39m
+    [33mvalue[39m=[32m"3.5"[39m
+  [36m/>[39m
+
+  Name "Angle of the end":
+  [36m<input[39m
+    [33mid[39m=[32m"style-endAngle"[39m
+    [33mmax[39m=[32m"85"[39m
+    [33mmin[39m=[32m"5"[39m
+    [33mstep[39m=[32m"1"[39m
+    [33mtype[39m=[32m"range"[39m
+    [33mvalue[39m=[32m"45"[39m
+  [36m/>[39m
+
+  Name "Offset of the end":
+  [36m<input[39m
+    [33mid[39m=[32m"style-endOffset"[39m
+    [33mmax[39m=[32m"20"[39m
+    [33mmin[39m=[32m"-20"[39m
+    [33mstep[39m=[32m"0.1"[39m
+    [33mtype[39m=[32m"range"[39m
+    [33mvalue[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "Sideways offset of the end":
+  [36m<input[39m
+    [33mid[39m=[32m"style-endAcross"[39m
+    [33mmax[39m=[32m"20"[39m
+    [33mmin[39m=[32m"-20"[39m
+    [33mstep[39m=[32m"0.1"[39m
+    [33mtype[39m=[32m"range"[39m
+    [33mvalue[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "Rotation of the end":
+  [36m<input[39m
+    [33mid[39m=[32m"style-endRotation"[39m
+    [33mmax[39m=[32m"180"[39m
+    [33mmin[39m=[32m"-180"[39m
+    [33mstep[39m=[32m"1"[39m
+    [33mtype[39m=[32m"range"[39m
+    [33mvalue[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "Size of the middle":
+  [36m<input[39m
+    [33mid[39m=[32m"style-middleSize"[39m
+    [33mmax[39m=[32m"15"[39m
+    [33mmin[39m=[32m"0.5"[39m
+    [33mstep[39m=[32m"0.1"[39m
+    [33mtype[39m=[32m"range"[39m
+    [33mvalue[39m=[32m"2"[39m
+  [36m/>[39m
+
+  Name "Offset of the middle":
+  [36m<input[39m
+    [33mid[39m=[32m"style-middleOffset"[39m
+    [33mmax[39m=[32m"20"[39m
+    [33mmin[39m=[32m"-20"[39m
+    [33mstep[39m=[32m"0.1"[39m
+    [33mtype[39m=[32m"range"[39m
+    [33mvalue[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "Sideways offset of the middle":
+  [36m<input[39m
+    [33mid[39m=[32m"style-middleAcross"[39m
+    [33mmax[39m=[32m"20"[39m
+    [33mmin[39m=[32m"-20"[39m
+    [33mstep[39m=[32m"0.1"[39m
+    [33mtype[39m=[32m"range"[39m
+    [33mvalue[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "Cut before the middle":
+  [36m<input[39m
+    [33mid[39m=[32m"style-middleGapStart"[39m
+    [33mmax[39m=[32m"30"[39m
+    [33mmin[39m=[32m"0"[39m
+    [33mstep[39m=[32m"0.1"[39m
+    [33mtype[39m=[32m"range"[39m
+    [33mvalue[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "Cut after the middle":
+  [36m<input[39m
+    [33mid[39m=[32m"style-middleGapEnd"[39m
+    [33mmax[39m=[32m"30"[39m
+    [33mmin[39m=[32m"0"[39m
+    [33mstep[39m=[32m"0.1"[39m
+    [33mtype[39m=[32m"range"[39m
+    [33mvalue[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "Line width":
+  [36m<input[39m
+    [33mid[39m=[32m"style-strokeWidth"[39m
+    [33mmax[39m=[32m"10"[39m
+    [33mmin[39m=[32m"0.5"[39m
+    [33mstep[39m=[32m"0.1"[39m
+    [33mtype[39m=[32m"range"[39m
+    [33mvalue[39m=[32m"1.3"[39m
+  [36m/>[39m
+
+  Name "Opacity":
+  [36m<input[39m
+    [33mid[39m=[32m"style-opacity"[39m
+    [33mmax[39m=[32m"1"[39m
+    [33mmin[39m=[32m"0.1"[39m
+    [33mstep[39m=[32m"0.05"[39m
+    [33mtype[39m=[32m"range"[39m
+    [33mvalue[39m=[32m"1"[39m
+  [36m/>[39m
+
+  Name "Glow":
+  [36m<input[39m
+    [33mid[39m=[32m"style-glow"[39m
+    [33mmax[39m=[32m"12"[39m
+    [33mmin[39m=[32m"0"[39m
+    [33mstep[39m=[32m"0.5"[39m
+    [33mtype[39m=[32m"range"[39m
+    [33mvalue[39m=[32m"0"[39m
+  [36m/>[39m
+
+  Name "Width":
+  [36m<input[39m
+    [33mid[39m=[32m"style-width"[39m
+    [33mmax[39m=[32m"4096"[39m
+    [33mmin[39m=[32m"64"[39m
+    [33mstep[39m=[32m"1"[39m
+    [33mtype[39m=[32m"range"[39m
+    [33mvalue[39m=[32m"2048"[39m
+  [36m/>[39m
+
+  Name "Height":
+  [36m<input[39m
+    [33mid[39m=[32m"style-height"[39m
+    [33mmax[39m=[32m"4096"[39m
+    [33mmin[39m=[32m"64"[39m
+    [33mstep[39m=[32m"1"[39m
+    [33mtype[39m=[32m"range"[39m
+    [33mvalue[39m=[32m"2048"[39m
+  [36m/>[39m
+
+  Name "JPEG and WebP quality":
+  [36m<input[39m
+    [33mid[39m=[32m"style-quality"[39m
+    [33mmax[39m=[32m"1"[39m
+    [33mmin[39m=[32m"0.5"[39m
+    [33mstep[39m=[32m"0.01"[39m
+    [33mtype[39m=[32m"range"[39m
+    [33mvalue[39m=[32m"0.92"[39m
+  [36m/>[39m
+
+  Name "Largest reference gap change":
+  [36m<input[39m
+    [33mid[39m=[32m"style-solveGapRange"[39m
+    [33mmax[39m=[32m"1"[39m
+    [33mmin[39m=[32m"0"[39m
+    [33mstep[39m=[32m"0.05"[39m
+    [33mtype[39m=[32m"range"[39m
+    [33mvalue[39m=[32m"0.2"[39m
+  [36m/>[39m
+
+  Name "Largest middle cut change":
+  [36m<input[39m
+    [33mid[39m=[32m"style-solveMiddleRange"[39m
+    [33mmax[39m=[32m"15"[39m
+    [33mmin[39m=[32m"0"[39m
+    [33mstep[39m=[32m"0.5"[39m
+    [33mtype[39m=[32m"range"[39m
+    [33mvalue[39m=[32m"4"[39m
+  [36m/>[39m
+
+  Name "Largest turn":
+  [36m<input[39m
+    [33mid[39m=[32m"style-solveRange"[39m
+    [33mmax[39m=[32m"180"[39m
+    [33mmin[39m=[32m"0"[39m
+    [33mstep[39m=[32m"5"[39m
+    [33mtype[39m=[32m"range"[39m
+    [33mvalue[39m=[32m"60"[39m
+  [36m/>[39m
+
+  Name "Turn step":
+  [36m<input[39m
+    [33mid[39m=[32m"style-solveStep"[39m
+    [33mmax[39m=[32m"30"[39m
+    [33mmin[39m=[32m"5"[39m
+    [33mstep[39m=[32m"5"[39m
+    [33mtype[39m=[32m"range"[39m
+    [33mvalue[39m=[32m"15"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  status:
+
+  Name "":
+  [36m<output[39m
+    [33mclass[39m=[32m"setting__value mono"[39m
+    [33mfor[39m=[32m"style-layoutAspect"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<output[39m
+    [33mclass[39m=[32m"setting__value mono"[39m
+    [33mfor[39m=[32m"style-sourceAngle"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<output[39m
+    [33mclass[39m=[32m"setting__value mono"[39m
+    [33mfor[39m=[32m"style-targetAngle"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<output[39m
+    [33mclass[39m=[32m"setting__value mono"[39m
+    [33mfor[39m=[32m"style-tension"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<output[39m
+    [33mclass[39m=[32m"setting__value mono"[39m
+    [33mfor[39m=[32m"style-bulge"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<output[39m
+    [33mclass[39m=[32m"setting__value mono"[39m
+    [33mfor[39m=[32m"style-loopBend"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<output[39m
+    [33mclass[39m=[32m"setting__value mono"[39m
+    [33mfor[39m=[32m"style-startGap"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<output[39m
+    [33mclass[39m=[32m"setting__value mono"[39m
+    [33mfor[39m=[32m"style-endGap"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<output[39m
+    [33mclass[39m=[32m"setting__value mono"[39m
+    [33mfor[39m=[32m"style-loop"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<output[39m
+    [33mclass[39m=[32m"setting__value mono"[39m
+    [33mfor[39m=[32m"style-spread"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<output[39m
+    [33mclass[39m=[32m"setting__value mono"[39m
+    [33mfor[39m=[32m"style-rotation"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<output[39m
+    [33mclass[39m=[32m"setting__value mono"[39m
+    [33mfor[39m=[32m"style-padding"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<output[39m
+    [33mclass[39m=[32m"setting__value mono"[39m
+    [33mfor[39m=[32m"style-startSize"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<output[39m
+    [33mclass[39m=[32m"setting__value mono"[39m
+    [33mfor[39m=[32m"style-startOffset"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<output[39m
+    [33mclass[39m=[32m"setting__value mono"[39m
+    [33mfor[39m=[32m"style-startAcross"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<output[39m
+    [33mclass[39m=[32m"setting__value mono"[39m
+    [33mfor[39m=[32m"style-startRotation"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<output[39m
+    [33mclass[39m=[32m"setting__value mono"[39m
+    [33mfor[39m=[32m"style-endSize"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<output[39m
+    [33mclass[39m=[32m"setting__value mono"[39m
+    [33mfor[39m=[32m"style-endAngle"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<output[39m
+    [33mclass[39m=[32m"setting__value mono"[39m
+    [33mfor[39m=[32m"style-endOffset"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<output[39m
+    [33mclass[39m=[32m"setting__value mono"[39m
+    [33mfor[39m=[32m"style-endAcross"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<output[39m
+    [33mclass[39m=[32m"setting__value mono"[39m
+    [33mfor[39m=[32m"style-endRotation"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<output[39m
+    [33mclass[39m=[32m"setting__value mono"[39m
+    [33mfor[39m=[32m"style-middleSize"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<output[39m
+    [33mclass[39m=[32m"setting__value mono"[39m
+    [33mfor[39m=[32m"style-middleOffset"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<output[39m
+    [33mclass[39m=[32m"setting__value mono"[39m
+    [33mfor[39m=[32m"style-middleAcross"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<output[39m
+    [33mclass[39m=[32m"setting__value mono"[39m
+    [33mfor[39m=[32m"style-middleGapStart"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<output[39m
+    [33mclass[39m=[32m"setting__value mono"[39m
+    [33mfor[39m=[32m"style-middleGapEnd"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<output[39m
+    [33mclass[39m=[32m"setting__value mono"[39m
+    [33mfor[39m=[32m"style-strokeWidth"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<output[39m
+    [33mclass[39m=[32m"setting__value mono"[39m
+    [33mfor[39m=[32m"style-opacity"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<output[39m
+    [33mclass[39m=[32m"setting__value mono"[39m
+    [33mfor[39m=[32m"style-glow"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<output[39m
+    [33mclass[39m=[32m"setting__value mono"[39m
+    [33mfor[39m=[32m"style-bgColor"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<output[39m
+    [33mclass[39m=[32m"setting__value mono"[39m
+    [33mfor[39m=[32m"style-width"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<output[39m
+    [33mclass[39m=[32m"setting__value mono"[39m
+    [33mfor[39m=[32m"style-height"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<output[39m
+    [33mclass[39m=[32m"setting__value mono"[39m
+    [33mfor[39m=[32m"style-quality"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<output[39m
+    [33mclass[39m=[32m"setting__value mono"[39m
+    [33mfor[39m=[32m"style-solveGapRange"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<output[39m
+    [33mclass[39m=[32m"setting__value mono"[39m
+    [33mfor[39m=[32m"style-solveMiddleRange"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<output[39m
+    [33mclass[39m=[32m"setting__value mono"[39m
+    [33mfor[39m=[32m"style-solveRange"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<output[39m
+    [33mclass[39m=[32m"setting__value mono"[39m
+    [33mfor[39m=[32m"style-solveStep"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p[39m
+    [33maria-live[39m=[32m"polite"[39m
+    [33mclass[39m=[32m"network-share__status"[39m
+    [33mrole[39m=[32m"status"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  checkbox:
+
+  Name "Card around the symbol":
+  [36m<input[39m
+    [33mid[39m=[32m"style-card"[39m
+    [33mtype[39m=[32m"checkbox"[39m
+  [36m/>[39m
+
+  Name "Reduce overlaps automatically":
+  [36m<input[39m
+    [33mid[39m=[32m"style-solve"[39m
+    [33mtype[39m=[32m"checkbox"[39m
+  [36m/>[39m
+
+  Name "Adjust individual gaps":
+  [36m<input[39m
+    [33mchecked[39m=[32m""[39m
+    [33mid[39m=[32m"style-solveGaps"[39m
+    [33mtype[39m=[32m"checkbox"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  contentinfo:
+
+  Name "":
+  [36m<footer[39m
+    [33mclass[39m=[32m"footer"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"app"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33maria-hidden[39m=[32m"true"[39m
+        [33mclass[39m=[32m"cosmos"[39m
+      [36m>[39m
+        [36m<canvas[39m
+          [33mclass[39m=[32m"cosmos__universe"[39m
+        [36m/>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"cosmos__grid"[39m
+        [36m/>[39m
+        [36m<canvas[39m
+          [33mclass[39m=[32m"cosmos__rain"[39m
+        [36m/>[39m
+      [36m</div>[39m
+      [36m<header[39m
+        [33mclass[39m=[32m"topbar"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"topbar__row"[39m
+        [36m>[39m
+          [36m<a[39m
+            [33mclass[39m=[32m"nav__brand mono"[39m
+            [33mhref[39m=[32m"/"[39m
+          [36m>[39m
+            [0mkonard[0m
+            [36m<span[39m
+              [33mclass[39m=[32m"nav__cursor"[39m
+            [36m>[39m
+              [0m_[0m
+            [36m</span>[39m
+          [36m</a>[39m
+          [36m<nav[39m
+            [33maria-label[39m=[32m"Pages"[39m
+            [33mclass[39m=[32m"pages"[39m
+          [36m>[39m
+            [36m<ul>[39m
+              [36m<li>[39m
+                [36m<a[39m
+                  [33mhref[39m=[32m"/"[39m
+                [36m>[39m
+                  [0mCV[0m
+                [36m</a>[39m
+              [36m</li>[39m
+              [36m<li>[39m
+                [36m<a[39m
+                  [33mhref[39m=[32m"/experience/"[39m
+                [36m>[39m
+                  [0mExperience[0m
+                [36m</a>[39m
+              [36m</li>[39m
+              [36m<li>[39m
+                [36m<a[39m
+                  [33mhref[39m=[32m"/repositories/"[39m
+                [36m>[39m
+                  [0mRepositories[0m
+                [36m</a>[39m
+              [36m</li>[39m
+              [36m<li>[39m
+                [36m<a[39m
+                  [33mhref[39m=[32m"/research/"[39m
+                [36m>[39m
+                  [0mResearch[0m
+                [36m</a>[39m
+              [36m</li>[39m
+              [36m<li>[39m
+                [36m<a[39m
+                  [33mhref[39m=[32m"/associative/"[39m
+                [36m>[39m
+                  [0mAssociative stack[0m
+                [36m</a>[39m
+              [36m</li>[39m
+              [36m<li>[39m
+                [36m<a[39m
+                  [33mhref[39m=[32m"/art/"[39m
+                [36m>[39m
+                  [0mArt & other[0m
+                [36m</a>[39m
+              [36m</li>[39m
+              [36m<li>[39m
+                [36m<a[39m
+                  [33mhref[39m=[32m"/blog/"[39m
+                [36m>[39m
+                  [0mBlog[0m
+                [36m</a>[39m
+              [36m</li>[39m
+            [36m</ul>[39m
+          [36m</nav>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"prefs"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33maria-label[39m=[32m"Language"[39m
+              [33mclass[39m=[32m"prefs__langs"[39m
+              [33mrole[39m=[32m"group"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-pressed[39m=[32m"true"[39m
+                [33mclass[39m=[32m"prefs__button mono"[39m
+                [33mlang[39m=[32m"en"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [0mEN[0m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-pressed[39m=[32m"false"[39m
+                [33mclass[39m=[32m"prefs__button mono"[39m
+                [33mlang[39m=[32m"ru"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [0mRU[0m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Sounds of the interface"[39m
+              [33maria-pressed[39m=[32m"false"[39m
+              [33mclass[39m=[32m"prefs__button prefs__sound"[39m
+              [33mtitle[39m=[32m"Sound: off"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<svg[39m
+                [33maria-hidden[39m=[32m"true"[39m
+                [33mviewBox[39m=[32m"0 0 16 16"[39m
+              [36m>[39m
+                [36m<path[39m
+                  [33md[39m=[32m"M2 6h3l4-3v10l-4-3H2z"[39m
+                [36m/>[39m
+                [36m<path[39m
+                  [33mclass[39m=[32m"prefs__waves"[39m
+                  [33md[39m=[32m"M11 6l4 4M15 6l-4 4"[39m
+                [36m/>[39m
+              [36m</svg>[39m
+            [36m</button>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Theme: system. Switch to: light"[39m
+              [33mclass[39m=[32m"prefs__button prefs__theme"[39m
+              [33mdata-theme-choice[39m=[32m"auto"[39m
+              [33mtitle[39m=[32m"Theme: system"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [36m<span[39m
+                [33maria-hidden[39m=[32m"true"[39m
+              [36m>[39m
+                [0m◐[0m
+              [36m</span>[39m
+            [36m</button>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<nav[39m
+          [33maria-label[39m=[32m"Sections"[39m
+          [33mclass[39m=[32m"nav"[39m
+        [36m>[39m
+          [36m<a[39m
+            [33maria-label[39m=[32m"Back to top"[39m
+            [33mclass[39m=[32m"nav__top mono"[39m
+            [33mhref[39m=[32m"#top"[39m
+          [36m>[39m
+            [0m↑[0m
+          [36m</a>[39m
+          [36m<ul>[39m
+            [36m<li>[39m
+              [36m<a[39m
+                [33mhref[39m=[32m"#notations"[39m
+              [36m>[39m
+                [0mNotations[0m
+              [36m</a>[39m
+            [36m</li>[39m
+            [36m<li>[39m
+              [36m<a[39m
+                [33mhref[39m=[32m"#links"[39m
+              [36m>[39m
+                [0mLinks[0m
+              [36m</a>[39m
+            [36m</li>[39m
+            [36m<li>[39m
+              [36m<a[39m
+                [33mhref[39m=[32m"#style"[39m
+              [36m>[39m
+                [0mStyle[0m
+              [36m</a>[39m
+            [36m</li>[39m
+            [36m<li>[39m
+              [36m<a[39m
+                [33mhref[39m=[32m"#share"[39m
+              [36m>[39m
+                [0mShare[0m
+              [36m</a>[39m
+            [36m</li>[39m
+          [36m</ul>[39m
+        [36m</nav>[39m
+      [36m</header>[39m
+      [36m<main>[39m
+        [36m<section[39m
+          [33mclass[39m=[32m"section network"[39m
+          [33mid[39m=[32m"top"[39m
+        [36m...
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/pages/network-25.test.jsx:8:23
+      6|   window.history.replaceState(null, '', '/network/?code=2222&lang=en');
+      7|   render(<NetworkPage />);
+      8|   const list = screen.getByRole('list', { name: 'Link configurations' …
+       |                       ^
+      9|   const cards = within(list).getAllByRole('listitem');
+     10|   expect(cards).toHaveLength(2);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/6]⎯
+

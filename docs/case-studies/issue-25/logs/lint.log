@@ -1,0 +1,10 @@
+
+> konard.github.io@0.1.0 lint
+> eslint . --max-warnings=0
+
+
+/tmp/gh-issue-solver-1793047110454/experiments/issue-25-baseline.mjs
+  1:11  error  'localStorage' is already defined as a built-in global variable  no-redeclare
+
+✖ 1 problem (1 error, 0 warnings)
+

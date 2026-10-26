@@ -1,0 +1,19 @@
+⋯ Backing up original state…
+✔ Done backing up original state (f9b4be9)!
+⋯ Running tasks for staged files…
+    *.{js,jsx,cjs,mjs} — 9 files
+      ⋯ eslint --fix --max-warnings=0 --no-warn-ignored
+      ⋯ prettier --write
+
+✔ eslint --fix --max-warnings=0 --no-warn-ignored
+✔ prettier --write
+
+✔ Done running tasks for staged files!
+⋯ Staging changes from tasks…
+✔ Done staging changes from tasks!
+⋯ Cleaning up temporary files…
+✔ Done cleaning up temporary files!
+[issue-25-665823cdf9ad a9001c9] Optimize painted spacing and balance sharp arrow endpoints
+ 9 files changed, 413 insertions(+), 39 deletions(-)
+ create mode 100644 src/links/issue-25.test.js
+ create mode 100644 src/links/painted-collisions.js

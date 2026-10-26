@@ -1,0 +1,5 @@
+experiments/issue-25-baseline.mjs 100ms (unchanged)
+experiments/issue-25-browser.mjs 122ms
+experiments/issue-25-pixels.mjs 24ms
+experiments/issue-25-reproduce.mjs 10ms (unchanged)
+experiments/issue-25-solver.mjs 10ms (unchanged)

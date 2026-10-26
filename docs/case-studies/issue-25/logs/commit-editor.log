@@ -1,0 +1,22 @@
+⋯ Backing up original state…
+✔ Done backing up original state (7a8ba38)!
+⋯ Running tasks for staged files…
+    *.{js,jsx,cjs,mjs} — 8 files
+      ⋯ eslint --fix --max-warnings=0 --no-warn-ignored
+      ⋯ prettier --write
+    *.{css,md,html,json,yml,yaml} — 3 files
+      ⋯ prettier --write
+
+✔ prettier --write
+✔ eslint --fix --max-warnings=0 --no-warn-ignored
+✔ prettier --write
+
+✔ Done running tasks for staged files!
+⋯ Staging changes from tasks…
+✔ Done staging changes from tasks!
+⋯ Cleaning up temporary files…
+✔ Done cleaning up temporary files!
+[issue-25-665823cdf9ad 3d077c2] Group all per-link settings in responsive cards and verify native arrow paint
+ 11 files changed, 356 insertions(+), 206 deletions(-)
+ create mode 100644 experiments/issue-25-browser.mjs
+ create mode 100644 src/pages/network-25.test.jsx
