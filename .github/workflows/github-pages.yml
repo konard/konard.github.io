@@ -202,6 +202,13 @@ jobs:
           CAPTURE_DIR: browser-results/screenshots/issue23
           RESULT_DIR: browser-results/data/issue23
 
+      - name: Verify automatic spacing, sharp balanced arrows and per-link cards
+        if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
+        run: npm run test:network:issue25
+        env:
+          CAPTURE_DIR: browser-results/screenshots/issue25
+          RESULT_DIR: browser-results/data/issue25
+
       - name: Preserve browser evidence
         if: always()
         uses: actions/upload-artifact@v7

@@ -15,6 +15,9 @@ const names = {
 export const EDITOR_SHAPE = {
   ...SHAPE,
   bendMode: 'curve',
+  arrowJoin: 'miter',
+  balanceArrows: true,
+  clearance: 1,
   angles: 'fixed',
   sourceAngle: 30,
   targetAngle: 30,
@@ -132,6 +135,28 @@ export const GEOMETRY_SECTIONS = [
     id: 'ends',
     title: { en: 'Start, end and middle', ru: 'Начало, конец и середина' },
     fields: [
+      select(
+        'arrowJoin',
+        'miter',
+        [
+          option('miter', 'Sharp', 'Острые'),
+          option('round', 'Rounded', 'Скруглённые'),
+          option('bevel', 'Bevelled', 'Срезанные'),
+          option('inherit', 'Follow line corners', 'Как углы линий'),
+        ],
+        { en: 'Arrow corners', ru: 'Углы стрелок' },
+      ),
+      toggle(
+        'balanceArrows',
+        true,
+        { en: 'Balance sharp arrow lengths', ru: 'Выравнивать длину острых стрелок' },
+        {
+          hint: {
+            en: 'Shortens the line by the painted tip extension. Switch off for legacy lengths. Explicit marker offsets and rotations remain intentional.',
+            ru: 'Укорачивает линию на выступ острия. Выключите для прежней длины. Явные сдвиги и повороты маркеров сохраняются.',
+          },
+        },
+      ),
       ...['start', 'end', 'middle'].flatMap((key, i) => {
         const en = ['start', 'end', 'middle'][i];
         const ru = ['начала', 'конца', 'середины'][i];

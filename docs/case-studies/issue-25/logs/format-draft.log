@@ -1,0 +1,18 @@
+src/links/glyph.js 510ms
+src/links/render.js 76ms
+src/links/style.js 135ms
+src/links/style-geometry.js 52ms
+src/links/collisions.js 97ms
+src/links/collision-gap-cache.js 49ms
+src/links/collision-gaps.js 21ms (unchanged)
+src/links/painted-collisions.js 17ms
+src/links/issue-25.test.js 39ms
+src/pages/NetworkEditor.jsx 81ms
+src/pages/NetworkGaps.jsx 12ms
+src/pages/NetworkPage.jsx 74ms (unchanged)
+src/pages/network-25.test.jsx 10ms
+src/pages/network.css 205ms
+experiments/issue-23-browser.mjs 140ms (unchanged)
+experiments/issue-23-alignment.mjs 47ms (unchanged)
+experiments/issue-23-capture.mjs 8ms (unchanged)
+experiments/issue-25-baseline.mjs 14ms

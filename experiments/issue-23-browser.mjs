@@ -80,7 +80,6 @@ try {
   results.markerChecks = markerChecks;
   pass('both displaced bars agree with native SVG path position and tangent');
   await page.goto('http://localhost:4179/network/?code=221331&solveRange=0');
-  await page.locator('.link-gaps summary').click();
   const gap = page.getByLabel('Link 1: Gap at the source reference', { exact: true });
   await gap.fill('0.25');
   await page.getByLabel('Link 2: Cut after the middle', { exact: true }).fill('4');
@@ -227,8 +226,7 @@ try {
   phone.setDefaultTimeout(15000);
   phone.on('pageerror', (error) => results.errors.push(error.message));
   await phone.goto('http://localhost:4179/network/?code=221331&gaps=0.25+~+~+~,~+~+~+4&lang=ru');
-  await phone.locator('.link-gaps summary').click();
-  await shot(phone, 'mobile-gaps', phone.locator('.link-gaps'));
+  await shot(phone, 'mobile-gaps', phone.locator('.link-cards'));
   assert(await phone.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1));
   pass('individual gap controls fit the Russian mobile editor');
   assert.deepEqual(results.errors, []);

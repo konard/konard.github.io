@@ -1,0 +1,17 @@
+⋯ Backing up original state…
+✔ Done backing up original state (1002a93)!
+⋯ Running tasks for staged files…
+    *.{js,jsx,cjs,mjs} — 1 file
+      ⋯ eslint --fix --max-warnings=0 --no-warn-ignored
+      ⋯ prettier --write
+
+✔ eslint --fix --max-warnings=0 --no-warn-ignored
+✔ prettier --write
+
+✔ Done running tasks for staged files!
+⋯ Staging changes from tasks…
+✔ Done staging changes from tasks!
+⋯ Cleaning up temporary files…
+✔ Done cleaning up temporary files!
+[issue-25-665823cdf9ad ffce48f] Supersample acute arrow paint consistently across browser platforms
+ 1 file changed, 19 insertions(+), 9 deletions(-)

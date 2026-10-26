@@ -89,6 +89,10 @@ export const SHAPE = {
   endRotation: 0,
   middleRotation: 0,
   turns: [], // [source, target] turn of each link's ends in degrees, set by hand or by solveCollisions
+  arrowJoin: 'inherit', // editor can keep arrow corners sharp independently of line joins
+  balanceArrows: false, // legacy gallery geometry; editor compensates the painted tip extension
+  clearance: null, // null retains legacy scoring; editor uses image-unit space between painted edges
+  linecap: 'round',
   linkGaps: [], // [source gap, target gap, cut before middle, cut after middle]; null inherits
 };
 
@@ -300,7 +304,7 @@ const polygon = (points) => `M${points.map(fmt).join('L')}Z`;
  * is its size in SIZE units, `angle` the half-angle of an arrow head.
  * Returns `{ d, fill }`; filled shapes are painted in the link colour.
  */
-export function marker(kind, at, dir, size, angle) {
+function markerPath(kind, at, dir, size, angle) {
   const a = angle * RAD;
   const across = rotate(dir, Math.PI / 2);
   const back = mul(dir, -size);
@@ -345,17 +349,83 @@ export function marker(kind, at, dir, size, angle) {
   }
 }
 
+/** Arrow stroke joins have a geometric extension beyond their path vertex. */
+export function arrowMiterLimit(angle, outline = [], kind = 'arrow') {
+  // SVG coordinates are rounded for export. At acute angles that tiny change
+  // can cross the nominal miter threshold, so measure the exported arms too.
+  const [tip, a, b] = kind === 'triangle' ? [outline[0], outline[1], outline[2]] : [outline[1], outline[0], outline[2]];
+  let actual = 0;
+  if (tip && a && b) {
+    const u = sub(a, tip);
+    const v = sub(b, tip);
+    const cosine = dot(u, v) / (length(u) * length(v) || 1);
+    actual = 1 / Math.sqrt(Math.max(1e-12, (1 - Math.min(1, cosine)) / 2));
+  }
+  return Math.max(4, 1 / Math.sin(angle * RAD), actual) + 0.01;
+}
+
+/** Keep the same painted outward extent as the nominal round/flat line end.
+ * Move the endpoint and its adjacent handle together, retaining its tangent
+ * and the curve's middle. The legacy option leaves both unchanged.
+ */
+export function paintedCurve(curve, o) {
+  if (!o.balanceArrows || o.arrowJoin !== 'miter') return curve;
+  const segments = curve.segments.map((segment) => segment.map((p) => [...p]));
+  const result = { ...curve, segments };
+  for (const key of ['start', 'end']) {
+    if (!(key === 'end' ? ['arrow', 'triangle'] : ['tail']).includes(o[key])) continue;
+    // Explicit marker displacement/rotation is intentional and keeps its meaning.
+    if (o[`${key}Offset`] || o[`${key}Across`] || o[`${key}Rotation`]) continue;
+    const cap = o.linecap === 'butt' ? 0 : (o.strokeWidth || 0) / 2;
+    const extra = (o.strokeWidth || 0) / 2 / Math.sin(o[`${key}Angle`] * RAD);
+    // A lens has one common outward axis. Its equally gapped ends therefore
+    // share an exact painted boundary, even when the tip tangent is oblique.
+    const common = sub(mul(add(curve.start.at, curve.end.at), 0.5), curve.middle.at);
+    const axis = length(common) > 1e-6 ? common : sub(curve[key].at, curve.middle.at);
+    const outward = length(axis) > 1e-6 ? unit(axis) : mul(curve[key].dir, key === 'end' ? 1 : -1);
+    const move = add(mul(curve[key].dir, key === 'end' ? -extra : extra), mul(outward, cap));
+    const segment = segments[key === 'end' ? 1 : 0];
+    for (const j of key === 'end' ? [2, 3] : [0, 1]) segment[j] = add(segment[j], move);
+    result[key] = { ...curve[key], at: add(curve[key].at, move) };
+  }
+  return result;
+}
+
+/** Path plus a bounded outline for collision scoring, from the same marker. */
+export function marker(kind, at, dir, size, angle) {
+  const result = markerPath(kind, at, dir, size, angle);
+  if (!result.d) return { ...result, outline: [] };
+  let outline;
+  if (kind === 'dot' || kind === 'circle') {
+    outline = Array.from({ length: 17 }, (_, k) => add(at, mul(rotate(dir, (k * Math.PI) / 8), size / 2)));
+  } else {
+    const values = result.d.match(/-?\d+(?:\.\d+)?/g).map(Number);
+    outline = Array.from({ length: values.length / 2 }, (_, i) => values.slice(i * 2, i * 2 + 2));
+    if (result.fill) outline.push(outline[0]);
+  }
+  return { ...result, outline };
+}
+
+/** Shared placement for rendering and scoring, including curve-following offsets. */
+export function curveMarkers(curve, o) {
+  return Object.fromEntries(
+    ['start', 'end', 'middle'].map((key) => {
+      let point = curve[key];
+      const offset = (key === 'end' ? -1 : 1) * o[`${key}Offset`];
+      if (offset !== 0) point = pointAlongCurve(curve.segments, offset, key);
+      const at = add(point.at, mul(rotate(point.dir, Math.PI / 2), o[`${key}Across`]));
+      return [key, marker(o[key], at, rotate(point.dir, o[`${key}Rotation`] * RAD), o[`${key}Size`], o[`${key}Angle`])];
+    }),
+  );
+}
+
 /** The parts of every link: its line and the shapes of its start, end and middle (`{ d, fill }`). */
 export function glyphParts(links, shape = {}) {
   const o = shapeOf(shape);
-  const mark = (key, point, segments) => {
-    const direction = key === 'end' ? -1 : 1;
-    const offset = direction * o[`${key}Offset`];
-    if (offset !== 0) point = pointAlongCurve(segments, offset, key);
-    const at = add(point.at, mul(rotate(point.dir, Math.PI / 2), o[`${key}Across`]));
-    return marker(o[key], at, rotate(point.dir, o[`${key}Rotation`] * RAD), o[`${key}Size`], o[`${key}Angle`]);
-  };
-  return glyphCurves(links, o).map(({ segments, start, end, middle }, i) => {
+  return glyphCurves(links, o).map((raw, i) => {
+    const curve = paintedCurve(raw, o);
+    const { segments } = curve;
+    const marks = curveMarkers(curve, o);
     const middleGapStart = o.linkGaps[i]?.[2] ?? o.middleGapStart;
     const middleGapEnd = o.linkGaps[i]?.[3] ?? o.middleGapEnd;
     const split = middleGapStart > 0 || middleGapEnd > 0;
@@ -367,9 +437,7 @@ export function glyphParts(links, shape = {}) {
       : `M${fmt(segments[0][0])}` + segments.map((seg) => `C${seg.slice(1).map(fmt).join(' ')}`).join('');
     return {
       line,
-      start: mark('start', start, segments),
-      end: mark('end', end, segments),
-      middle: mark('middle', middle, segments),
+      ...marks,
       color: COLORS[i % COLORS.length],
     };
   });

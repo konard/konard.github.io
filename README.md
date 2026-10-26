@@ -18,6 +18,10 @@ the network and image settings, including the theory notation. The editor suppor
 any finite link count, symmetric start/end/middle markers and cuts, and circle,
 grid, dice, playing-card, spiral and deterministic force placements. Circle is
 automatic for 1–4 links, hexagonal placement after four.
+Each link has a card with its references, color, turns and four gap overrides.
+Automatic spacing considers painted lines and markers with a configurable
+clearance. Sharp arrows stay pointed at acute angles and compensate their
+painted tip length by default; rounded corners and legacy lengths are available.
 
 It is a React 19 app built with [Vite](https://vite.dev) and tested with [Vitest](https://vitest.dev), with hand-written SVG/CSS charts and no runtime API calls.
 All numbers come from data snapshots committed to the repository.
@@ -32,6 +36,7 @@ npm run check      # ESLint, Prettier, file size limits and secret scan
 npm run build      # production build in build/
 npm run test:network:browser # editor and real downloads; ENGINE=firefox|webkit also supported
 npm run test:network:issue19 # history, loops, layouts, clipboard and touch regressions
+npm run test:network:issue25 # automatic spacing, native arrow pixels, per-link cards and mobile layouts
 npm run build:cv   # prints every CV of build/ to build/cv/pdf/ (needs `npx playwright install chromium`)
 ```
 
@@ -83,3 +88,4 @@ Nothing is committed to `docs/`; it only holds the case studies.
 - [`issue-15`](docs/case-studies/issue-15/README.md): the new defaults and a test that every setting is applied, the settings layout, the sound design, background layers, each corner of the futuristic frames, presets and saved looks, phones and every screen.
 - [`issue-17`](docs/case-studies/issue-17/README.md): the network editor, notation parsers, SVG styling, image downloads, share links and experimental overlap reduction, with browser screenshots.
 - [`issue-19`](docs/case-studies/issue-19/README.md): Safari history and clipboard fixes, symmetric loop/marker geometry, middle cuts, scalable arrangements and cross-browser regression evidence.
+- [`issue-25`](docs/case-studies/issue-25/README.md): painted-shape spacing, acute arrow tips, balanced endpoints and per-link configuration cards, with archived reports and browser evidence.

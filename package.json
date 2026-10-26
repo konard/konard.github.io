@@ -30,7 +30,8 @@
     "prepare": "husky",
     "build:cv": "node scripts/build-cv-pdf.mjs",
     "test:network:issue21": "node experiments/issue-21-browser.mjs",
-    "test:network:issue23": "node experiments/issue-23-browser.mjs"
+    "test:network:issue23": "node experiments/issue-23-browser.mjs",
+    "test:network:issue25": "node experiments/issue-25-browser.mjs"
   },
   "homepage": "https://konard.github.io",
   "devDependencies": {

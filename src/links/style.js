@@ -279,6 +279,21 @@ export const STYLE_SECTIONS = [
     },
     fields: [
       toggle('solve', false, { en: 'Reduce overlaps automatically', ru: 'Уменьшать наложения автоматически' }),
+      range(
+        'clearance',
+        1,
+        0,
+        10,
+        0.25,
+        { en: 'Space between strokes', ru: 'Промежуток между линиями' },
+        {
+          hint: {
+            en: 'Preferred minimum space between painted lines and markers, in 1/100 of the symbol. The solver finds the nearest arrangement within its search limits.',
+            ru: 'Желаемый минимальный промежуток между линиями и маркерами в 1/100 символа. Поиск находит ближайшую конфигурацию в заданных пределах.',
+          },
+        },
+      ),
+      toggle('solveDebug', false, { en: 'Solver diagnostics in console', ru: 'Диагностика поиска в консоли' }),
       toggle('solveGaps', true, { en: 'Adjust individual gaps', ru: 'Менять отдельные зазоры' }),
       range('solveGapRange', 0.2, 0, 1, 0.05, { en: 'Largest reference gap change', ru: 'Изменение зазора ссылки' }),
       range('solveMiddleRange', 4, 0, 15, 0.5, { en: 'Largest middle cut change', ru: 'Изменение разрыва середины' }),
@@ -409,6 +424,7 @@ export function shapeOfStyle(style, n, extraTurns = null, extraGaps = null) {
     ['turns', turns],
     ['linkGaps', extraGaps || linkGaps(style, n)],
     ['strokeWidth', style.strokeWidth],
+    ['linecap', style.linecap],
   ]);
 }
 
@@ -508,6 +524,8 @@ export function applyLook(style, id) {
     solveGaps: style.solveGaps,
     solveGapRange: style.solveGapRange,
     solveMiddleRange: style.solveMiddleRange,
+    clearance: style.clearance,
+    solveDebug: style.solveDebug,
   };
   const size = look.values.width ? {} : { width: style.width, height: style.height, quality: style.quality };
   return normalizeStyle({ ...STYLE_DEFAULTS, ...size, ...look.values, ...keep });

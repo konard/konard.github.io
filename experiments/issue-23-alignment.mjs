@@ -49,7 +49,6 @@ try {
             await page.goto(`http://localhost:4179${path}`);
             await page.locator('main').waitFor();
             await page.evaluate(() => document.fonts.ready);
-            if (path.startsWith('/network/')) await page.locator('.link-gaps summary').click();
             const issues = await page.evaluate(() => {
               const viewport = document.documentElement.clientWidth;
               const issues = [];

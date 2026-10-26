@@ -2,6 +2,7 @@
 // gap can also change the fitted scale: then every existing image-unit middle
 // cut must be rescored. Keep that uncommon case exact as well.
 import { pairCost, visiblePolyline } from './collisions';
+import { selfCost } from './painted-collisions';
 import { curveTransform } from './glyph';
 
 export class GapScoreCache {
@@ -15,7 +16,7 @@ export class GapScoreCache {
   fullState(scale) {
     const lines = this.curves.map((curve, i) => visiblePolyline(curve, this.shape, i, scale));
     const pairs = lines.map(() => Array(lines.length).fill(0));
-    let total = 0;
+    let total = lines.reduce((sum, line) => sum + selfCost(line), 0);
     for (let i = 0; i < lines.length; i++)
       for (let j = i + 1; j < lines.length; j++) {
         pairs[i][j] = pairs[j][i] = pairCost(lines[i], lines[j], this.middles);
@@ -27,19 +28,28 @@ export class GapScoreCache {
   measure(i, curve) {
     const previous = this.curves[i];
     this.curves[i] = curve;
-    const scale = curve === previous ? this.scale : curveTransform(this.curves, this.shape).scale;
+    // Freeze the fitted scale during painted-coordinate descent. A refit moves
+    // every image-unit marker and would make each candidate quadratic in N.
+    // The caller refits and verifies the complete exact score before returning.
+    const scale =
+      curve === previous || this.shape.clearance != null ? this.scale : curveTransform(this.curves, this.shape).scale;
     const cuts = this.curves.some(
       (_, j) =>
         (this.shape.linkGaps[j]?.[2] ?? this.shape.middleGapStart) > 0 ||
         (this.shape.linkGaps[j]?.[3] ?? this.shape.middleGapEnd) > 0,
     );
     let state;
-    if (scale !== this.scale && cuts) state = this.fullState(scale);
+    if (scale !== this.scale && (cuts || this.shape.clearance != null)) state = this.fullState(scale);
     else {
       const line = visiblePolyline(curve, this.shape, i, scale);
       const pairRow = this.lines.map((other, j) => (i === j ? 0 : pairCost(line, other, this.middles)));
       const sum = (values) => values.reduce((a, b) => a + b, 0);
-      state = { scale, line, pairRow, total: this.total - sum(this.pairs[i]) + sum(pairRow) };
+      state = {
+        scale,
+        line,
+        pairRow,
+        total: this.total - sum(this.pairs[i]) + sum(pairRow) - selfCost(this.lines[i]) + selfCost(line),
+      };
     }
     this.curves[i] = previous;
     return { ...state, i, curve };

@@ -14,13 +14,12 @@ try {
   const page = await context.newPage();
   page.setDefaultTimeout(15000);
   await page.goto('http://localhost:4179/network/?code=221331&gaps=0.25+~+~+~,~+~+~+4&lang=ru');
-  await page.locator('.link-gaps summary').click();
   await page.evaluate(() => {
-    const gaps = document.querySelector('.link-gaps').getBoundingClientRect();
+    const gaps = document.querySelector('.link-cards').getBoundingClientRect();
     const header = document.querySelector('.topbar').getBoundingClientRect();
     window.scrollBy(0, gaps.top - header.bottom - 16);
   });
-  await page.locator('.link-gaps').screenshot({ path: 'docs/case-studies/issue-23/screenshots/mobile-gaps.png' });
+  await page.locator('.link-cards').screenshot({ path: 'docs/case-studies/issue-23/screenshots/mobile-gaps.png' });
   await context.close();
 } finally {
   await browser?.close();

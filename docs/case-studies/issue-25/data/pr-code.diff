@@ -1,0 +1,1442 @@
+diff --git a/.github/workflows/github-pages.yml b/.github/workflows/github-pages.yml
+index ed5b75f..71b6564 100644
+--- a/.github/workflows/github-pages.yml
++++ b/.github/workflows/github-pages.yml
+@@ -202,6 +202,13 @@ jobs:
+           CAPTURE_DIR: browser-results/screenshots/issue23
+           RESULT_DIR: browser-results/data/issue23
+ 
++      - name: Verify automatic spacing, sharp balanced arrows and per-link cards
++        if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
++        run: npm run test:network:issue25
++        env:
++          CAPTURE_DIR: browser-results/screenshots/issue25
++          RESULT_DIR: browser-results/data/issue25
++
+       - name: Preserve browser evidence
+         if: always()
+         uses: actions/upload-artifact@v7
+diff --git a/.gitkeep b/.gitkeep
+new file mode 100644
+index 0000000..978ef07
+--- /dev/null
++++ b/.gitkeep
+@@ -0,0 +1 @@
++# .gitkeep file auto-generated at 2026-10-26T20:38:49.129Z for PR creation at branch issue-25-665823cdf9ad for issue https://github.com/konard/konard.github.io/issues/25
+\ No newline at end of file
+diff --git a/experiments/issue-23-alignment.mjs b/experiments/issue-23-alignment.mjs
+index 5c5feb4..362568e 100644
+--- a/experiments/issue-23-alignment.mjs
++++ b/experiments/issue-23-alignment.mjs
+@@ -49,7 +49,6 @@ try {
+             await page.goto(`http://localhost:4179${path}`);
+             await page.locator('main').waitFor();
+             await page.evaluate(() => document.fonts.ready);
+-            if (path.startsWith('/network/')) await page.locator('.link-gaps summary').click();
+             const issues = await page.evaluate(() => {
+               const viewport = document.documentElement.clientWidth;
+               const issues = [];
+diff --git a/experiments/issue-23-browser.mjs b/experiments/issue-23-browser.mjs
+index 6bdf2ed..b8af5e1 100644
+--- a/experiments/issue-23-browser.mjs
++++ b/experiments/issue-23-browser.mjs
+@@ -80,7 +80,6 @@ try {
+   results.markerChecks = markerChecks;
+   pass('both displaced bars agree with native SVG path position and tangent');
+   await page.goto('http://localhost:4179/network/?code=221331&solveRange=0');
+-  await page.locator('.link-gaps summary').click();
+   const gap = page.getByLabel('Link 1: Gap at the source reference', { exact: true });
+   await gap.fill('0.25');
+   await page.getByLabel('Link 2: Cut after the middle', { exact: true }).fill('4');
+@@ -227,8 +226,7 @@ try {
+   phone.setDefaultTimeout(15000);
+   phone.on('pageerror', (error) => results.errors.push(error.message));
+   await phone.goto('http://localhost:4179/network/?code=221331&gaps=0.25+~+~+~,~+~+~+4&lang=ru');
+-  await phone.locator('.link-gaps summary').click();
+-  await shot(phone, 'mobile-gaps', phone.locator('.link-gaps'));
++  await shot(phone, 'mobile-gaps', phone.locator('.link-cards'));
+   assert(await phone.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1));
+   pass('individual gap controls fit the Russian mobile editor');
+   assert.deepEqual(results.errors, []);
+diff --git a/experiments/issue-23-capture.mjs b/experiments/issue-23-capture.mjs
+index ae31b49..738f99d 100644
+--- a/experiments/issue-23-capture.mjs
++++ b/experiments/issue-23-capture.mjs
+@@ -14,13 +14,12 @@ try {
+   const page = await context.newPage();
+   page.setDefaultTimeout(15000);
+   await page.goto('http://localhost:4179/network/?code=221331&gaps=0.25+~+~+~,~+~+~+4&lang=ru');
+-  await page.locator('.link-gaps summary').click();
+   await page.evaluate(() => {
+-    const gaps = document.querySelector('.link-gaps').getBoundingClientRect();
++    const gaps = document.querySelector('.link-cards').getBoundingClientRect();
+     const header = document.querySelector('.topbar').getBoundingClientRect();
+     window.scrollBy(0, gaps.top - header.bottom - 16);
+   });
+-  await page.locator('.link-gaps').screenshot({ path: 'docs/case-studies/issue-23/screenshots/mobile-gaps.png' });
++  await page.locator('.link-cards').screenshot({ path: 'docs/case-studies/issue-23/screenshots/mobile-gaps.png' });
+   await context.close();
+ } finally {
+   await browser?.close();
+diff --git a/experiments/issue-25-browser.mjs b/experiments/issue-25-browser.mjs
+new file mode 100644
+index 0000000..e60a164
+--- /dev/null
++++ b/experiments/issue-25-browser.mjs
+@@ -0,0 +1,143 @@
++// Real-browser regressions for issue #25; finite fixtures, one engine at a time.
++/* global document, Image, getComputedStyle, innerWidth */
++import assert from 'node:assert/strict';
++import { mkdir, writeFile } from 'node:fs/promises';
++import { join } from 'node:path';
++import { chromium, firefox, webkit } from 'playwright';
++import { preview } from 'vite';
++const engine = process.env.ENGINE || 'chromium';
++const output = process.env.CAPTURE_DIR || 'docs/case-studies/issue-25/screenshots';
++const data = process.env.RESULT_DIR || 'docs/case-studies/issue-25/data';
++await mkdir(output, { recursive: true });
++await mkdir(data, { recursive: true });
++const server = await preview({ preview: { port: 4185, strictPort: true } });
++let browser;
++const results = { engine, date: new Date().toISOString(), checks: [], errors: [], cases: {} };
++try {
++  browser = await { chromium, firefox, webkit }[engine].launch();
++  results.version = browser.version();
++  const context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, reducedMotion: 'reduce' });
++  await context.addInitScript(() => {
++    localStorage.setItem('theme', 'dark');
++    localStorage.setItem('lang', 'en');
++    localStorage.setItem('settings', JSON.stringify({ 'motion.mode': 'off' }));
++  });
++  const page = await context.newPage();
++  page.setDefaultTimeout(15000);
++  page.on('pageerror', (error) => results.errors.push(error.message));
++  const go = async (query) => {
++    await page.goto(`http://localhost:4185/network/?code=2222&lang=en&rotation=90&${query}`);
++    await page.locator('.network__preview svg').waitFor();
++  };
++  const shot = async (name, element = page.locator('.network__preview')) =>
++    element.screenshot({ path: join(output, `${engine}-after-${name}.png`) });
++  const manual = 'turns=15+-15&gaps=0.18+0.18+%7E+%7E';
++  for (const [name, query] of Object.entries({
++    manual,
++    auto: 'solve=true',
++    'auto-gaps': 'solve=true&gaps=0.18+0.18+%7E+%7E',
++    acute: `${manual}&endAngle=5`,
++    rounded: `${manual}&arrowJoin=round`,
++    legacy: `${manual}&balanceArrows=false&arrowJoin=inherit`,
++  })) {
++    await go(query);
++    await shot(name);
++    results.cases[name] = {
++      svg: await page.locator('.network__preview').innerHTML(),
++      caption: await page.locator('figcaption').innerText(),
++    };
++    if (name.startsWith('auto')) {
++      const preview = await page.locator('.network__preview').innerHTML();
++      await page.getByRole('button', { name: 'Apply turns and gaps to links', exact: true }).click();
++      assert.equal(await page.locator('.network__preview').innerHTML(), preview);
++      const url = await page.getByLabel('Link to this picture', { exact: true }).inputValue();
++      assert(new URL(url).searchParams.has('gaps'));
++      assert(Number(await page.getByLabel('Link 1: Gap at the source reference', { exact: true }).inputValue()) > 0.08);
++      assert(Number(await page.getByLabel('Link 1: Gap at the target reference', { exact: true }).inputValue()) > 0.08);
++      await page.goto(url);
++      assert.equal(await page.locator('.network__preview').innerHTML(), preview);
++      results.checks.push(`${name}: apply/share/reload preserves exact drawing and discovered gaps`);
++    }
++  }
++  // Inspect actual rasterized SVG paint, independently of the geometry helper.
++  // Equally gapped lens endpoints must have the same horizontal pixel boundary.
++  results.pixels = [];
++  for (const angle of [5, 15, 45]) {
++    await go(`${manual}&endAngle=${angle}&linejoin=round`);
++    const measurement = await page.locator('.network__preview svg').evaluate(async (svg) => {
++      const image = new Image();
++      const url = URL.createObjectURL(new Blob([svg.outerHTML], { type: 'image/svg+xml' }));
++      try {
++        image.src = url;
++        await image.decode();
++        const canvas = document.createElement('canvas');
++        canvas.width = canvas.height = 1000;
++        const ctx = canvas.getContext('2d');
++        ctx.drawImage(image, 0, 0, 1000, 1000);
++        const pixels = ctx.getImageData(0, 0, 1000, 1000).data;
++        const bottom = [-1, -1];
++        for (let y = 0; y < 1000; y++)
++          for (let x = 0; x < 1000; x++) {
++            const i = (y * 1000 + x) * 4;
++            // Include antialias coverage: an acute tip occupies only part of
++            // its last pixel, so exact full-color matching truncates it.
++            if (pixels[i + 2] > 5 && pixels[i] < pixels[i + 2] * 0.3 && pixels[i + 1] > pixels[i + 2] * 0.7)
++              bottom[x < 500 ? 0 : 1] = y;
++          }
++        const arrow = svg.querySelectorAll('g[stroke]')[0].querySelectorAll('path')[2];
++        return {
++          bottom,
++          join: getComputedStyle(arrow).strokeLinejoin,
++          limit: Number(getComputedStyle(arrow).strokeMiterlimit),
++        };
++      } finally {
++        URL.revokeObjectURL(url);
++      }
++    });
++    assert(measurement.bottom.every((y) => y > 0));
++    assert(Math.abs(measurement.bottom[0] - measurement.bottom[1]) <= 1, JSON.stringify({ angle, measurement }));
++    assert.equal(measurement.join, 'miter');
++    assert(measurement.limit >= 1 / Math.sin((angle * Math.PI) / 180));
++    results.pixels.push({ angle, ...measurement });
++  }
++  results.checks.push('native SVG rasterization: sharp acute tips and aligned painted boundaries at 5°, 15°, 45°');
++  await go(manual);
++  const cards = page.getByRole('list', { name: 'Link configurations' });
++  assert.equal(await cards.getByRole('listitem').count(), 2);
++  assert.equal(await cards.locator('details').count(), 0);
++  await shot('editor', cards);
++  await page.locator('#links').scrollIntoViewIfNeeded();
++  await shot('desktop', page);
++  await page.getByLabel('Link 1: Gap at the source reference', { exact: true }).fill('0.21');
++  await page.getByLabel('Link 2: Cut after the middle', { exact: true }).fill('3');
++  const changed = await page.getByLabel('Link to this picture', { exact: true }).inputValue();
++  const drawing = await page.locator('.network__preview').innerHTML();
++  await page.goto(changed);
++  assert.equal(await page.locator('.network__preview').innerHTML(), drawing);
++  await page.getByRole('button', { name: 'Remove: Link 1', exact: true }).click();
++  assert.equal(await page.getByLabel('Link 1: Cut after the middle', { exact: true }).inputValue(), '3');
++  results.checks.push('visible card fields, editing, inheritance, sharing and removal/renumbering');
++  for (const lang of ['en', 'ru']) {
++    await page.setViewportSize({ width: 390, height: 844 });
++    await page.goto(`http://localhost:4185/network/?code=2222&rotation=90&${manual}&lang=${lang}`);
++    await page.locator('#links').scrollIntoViewIfNeeded();
++    const bounds = await page.evaluate(() => {
++      const overflow = [...document.querySelectorAll('.link-card input, .link-card select')].filter((node) => {
++        const a = node.getBoundingClientRect();
++        const b = node.closest('.link-card').getBoundingClientRect();
++        return a.left < b.left || a.right > b.right || a.width < 40;
++      }).length;
++      return { width: document.documentElement.scrollWidth, viewport: innerWidth, overflow };
++    });
++    assert.equal(bounds.width, bounds.viewport);
++    assert.equal(bounds.overflow, 0);
++    await shot(`mobile-${lang}`, page);
++  }
++  results.checks.push('English/Russian mobile card controls fit without horizontal scrolling');
++  assert.deepEqual(results.errors, []);
++  console.log(JSON.stringify(results.checks, null, 2));
++} finally {
++  await writeFile(join(data, `${engine}-browser.json`), JSON.stringify(results, null, 2));
++  await browser?.close();
++  await server.httpServer.close();
++}
+diff --git a/package.json b/package.json
+index b8cd4fb..f259fc7 100644
+--- a/package.json
++++ b/package.json
+@@ -30,7 +30,8 @@
+     "prepare": "husky",
+     "build:cv": "node scripts/build-cv-pdf.mjs",
+     "test:network:issue21": "node experiments/issue-21-browser.mjs",
+-    "test:network:issue23": "node experiments/issue-23-browser.mjs"
++    "test:network:issue23": "node experiments/issue-23-browser.mjs",
++    "test:network:issue25": "node experiments/issue-25-browser.mjs"
+   },
+   "homepage": "https://konard.github.io",
+   "devDependencies": {
+diff --git a/src/links/collision-gap-cache.js b/src/links/collision-gap-cache.js
+index e4f3e5f..32cdbce 100644
+--- a/src/links/collision-gap-cache.js
++++ b/src/links/collision-gap-cache.js
+@@ -2,6 +2,7 @@
+ // gap can also change the fitted scale: then every existing image-unit middle
+ // cut must be rescored. Keep that uncommon case exact as well.
+ import { pairCost, visiblePolyline } from './collisions';
++import { selfCost } from './painted-collisions';
+ import { curveTransform } from './glyph';
+ 
+ export class GapScoreCache {
+@@ -15,7 +16,7 @@ export class GapScoreCache {
+   fullState(scale) {
+     const lines = this.curves.map((curve, i) => visiblePolyline(curve, this.shape, i, scale));
+     const pairs = lines.map(() => Array(lines.length).fill(0));
+-    let total = 0;
++    let total = lines.reduce((sum, line) => sum + selfCost(line), 0);
+     for (let i = 0; i < lines.length; i++)
+       for (let j = i + 1; j < lines.length; j++) {
+         pairs[i][j] = pairs[j][i] = pairCost(lines[i], lines[j], this.middles);
+@@ -27,19 +28,28 @@ export class GapScoreCache {
+   measure(i, curve) {
+     const previous = this.curves[i];
+     this.curves[i] = curve;
+-    const scale = curve === previous ? this.scale : curveTransform(this.curves, this.shape).scale;
++    // Freeze the fitted scale during painted-coordinate descent. A refit moves
++    // every image-unit marker and would make each candidate quadratic in N.
++    // The caller refits and verifies the complete exact score before returning.
++    const scale =
++      curve === previous || this.shape.clearance != null ? this.scale : curveTransform(this.curves, this.shape).scale;
+     const cuts = this.curves.some(
+       (_, j) =>
+         (this.shape.linkGaps[j]?.[2] ?? this.shape.middleGapStart) > 0 ||
+         (this.shape.linkGaps[j]?.[3] ?? this.shape.middleGapEnd) > 0,
+     );
+     let state;
+-    if (scale !== this.scale && cuts) state = this.fullState(scale);
++    if (scale !== this.scale && (cuts || this.shape.clearance != null)) state = this.fullState(scale);
+     else {
+       const line = visiblePolyline(curve, this.shape, i, scale);
+       const pairRow = this.lines.map((other, j) => (i === j ? 0 : pairCost(line, other, this.middles)));
+       const sum = (values) => values.reduce((a, b) => a + b, 0);
+-      state = { scale, line, pairRow, total: this.total - sum(this.pairs[i]) + sum(pairRow) };
++      state = {
++        scale,
++        line,
++        pairRow,
++        total: this.total - sum(this.pairs[i]) + sum(pairRow) - selfCost(this.lines[i]) + selfCost(line),
++      };
+     }
+     this.curves[i] = previous;
+     return { ...state, i, curve };
+diff --git a/src/links/collision-gaps.js b/src/links/collision-gaps.js
+index 094014f..cba20e5 100644
+--- a/src/links/collision-gaps.js
++++ b/src/links/collision-gaps.js
+@@ -4,13 +4,17 @@
+ import { overlapCost } from './collisions';
+ import { GapScoreCache } from './collision-gap-cache';
+ import { GAP_FIELDS } from './gaps';
+-import { bezier, layout, layoutCurves, linkCurve } from './glyph';
++import { bezier, layout, layoutCurves, linkCurve, curveTransform } from './glyph';
+ 
+ export function adjustCollisionGaps(links, base, result, { gapRange, middleRange, passes }) {
+   gapRange = Math.min(1, Math.max(0, Number(gapRange) || 0));
+   middleRange = Math.min(15, Math.max(0, Number(middleRange) || 0));
+-  const rows = links.map((_, i) => GAP_FIELDS.map((_, k) => base.linkGaps[i]?.[k] ?? null));
+-  const initial = rows.map((row) => row.map((v, k) => v ?? base[GAP_FIELDS[k].key] ?? base.gap));
++  const rows = links.map((_, i) => GAP_FIELDS.map((_, k) => result.linkGaps[i]?.[k] ?? base.linkGaps[i]?.[k] ?? null));
++  // Refine the previous stage's drawing, while keeping bounds and penalties
++  // relative to the user's original gaps throughout the joint search.
++  const initial = links.map((_, i) =>
++    GAP_FIELDS.map((field, k) => base.linkGaps[i]?.[k] ?? base[field.key] ?? base.gap),
++  );
+   const currentShape = () => ({ ...base, turns: result.turns, linkGaps: rows });
+   const places = layout(links.length, base, links);
+   const cache = new GapScoreCache(layoutCurves(links, currentShape()), currentShape());
+@@ -32,7 +36,7 @@ export function adjustCollisionGaps(links, base, result, { gapRange, middleRange
+         sum + row.reduce((s, v, k) => s + Math.abs((v ?? initial[i][k]) - initial[i][k]) * (k < 2 ? 0.1 : 0.025), 0),
+       0,
+     );
+-  let bestScore = result.after;
++  let bestScore = result.after + penalty();
+   for (let pass = 0; pass < Math.min(passes, 2); pass++) {
+     let improved = false;
+     for (let i = 0; i < links.length; i++)
+@@ -46,8 +50,14 @@ export function adjustCollisionGaps(links, base, result, { gapRange, middleRange
+         const max = k < 2 ? 1 : Math.max(initial[i][k], Math.min(30, halfLength(i, k - 2) * 0.3));
+         let best = kept;
+         let bestState;
+-        for (const fraction of [-1, -0.5, 0.5, 1]) {
+-          const value = Math.round(Math.max(0, Math.min(max, initial[i][k] + range * fraction)) * 1000) / 1000;
++        for (const fraction of [-1, -0.75, -0.5, -0.25, 0.25, 0.5, 0.75, 1]) {
++          const center = pass ? (kept ?? initial[i][k]) : initial[i][k];
++          const radius = pass ? range / 4 : range;
++          const value =
++            Math.round(
++              Math.max(0, initial[i][k] - range, Math.min(max, initial[i][k] + range, center + radius * fraction)) *
++                1000,
++            ) / 1000;
+           if (value === (kept ?? initial[i][k])) continue;
+           rows[i][k] = value;
+           const curve = k < 2 ? linkCurve(links, i, places, currentShape()) : cache.curves[i];
+@@ -69,6 +79,7 @@ export function adjustCollisionGaps(links, base, result, { gapRange, middleRange
+   }
+   // Later reference-gap changes can shorten earlier halves or their fitted
+   // scale. Enforce the cut budget against the final geometry as well.
++  cache.scale = curveTransform(cache.curves, currentShape()).scale;
+   rows.forEach((row, i) => {
+     for (let k = 2; k < 4; k++) {
+       const max = Math.max(initial[i][k], Math.min(30, halfLength(i, k - 2) * 0.3));
+diff --git a/src/links/collisions.js b/src/links/collisions.js
+index 2428bc1..5a65dca 100644
+--- a/src/links/collisions.js
++++ b/src/links/collisions.js
+@@ -5,14 +5,13 @@
+ // (coordinate descent). Only the turned link changes, so only its pairs with
+ // the other links are measured again.
+ //
+-// The cost of a drawing, in layout units (neighbouring middles are 1 apart):
+-//   - every crossing of the lines of two links, away from the middles where
+-//     links touch on purpose;
+-//   - every sampled point of a line that comes closer than NEAR to a line of
+-//     another link (the lines run together and overlap);
+-//   - a little for every degree turned, so nothing turns without a reason.
+-import { bezier, curveTransform, layout, layoutCurves, linkCurve, shapeOf } from './glyph';
++// Editor scoring includes painted shafts, markers, fills and requested space
++// between them, including near referenced middles. The original centerline
++// scoring remains available for legacy shapes whose clearance is null.
++// A small turn penalty discourages changing angles without a reason.
++import { bezier, curveTransform, layout, layoutCurves, linkCurve, shapeOf, paintedCurve, curveMarkers } from './glyph';
+ import { trimCurve } from './curve-tools';
++import { paintedPairCost, selfCost } from './painted-collisions';
+ import { adjustCollisionGaps } from './collision-gaps';
+ 
+ const SAMPLES = 16; // points per Bézier segment
+@@ -39,6 +38,7 @@ function crossing(p1, p2, q1, q2) {
+ 
+ /** How much the lines of two links (polylines) overlap and cross; `middles` are exempt. */
+ export function pairCost(a, b, middles) {
++  if (a.width !== undefined || b.width !== undefined) return paintedPairCost(a, b);
+   const free = (p) => p && middles.every((m) => distance(p, m) > MIDDLE);
+   let cost = 0;
+   for (let i = 0; i < a.length - 1; i++) {
+@@ -68,7 +68,7 @@ export function overlapCost(links, shape = {}) {
+   const scale = curveTransform(curves, o).scale;
+   const lines = curves.map((curve, i) => visiblePolyline(curve, o, i, scale));
+   const middles = curves.map((c) => c.middle.at);
+-  let cost = turning(shapeOf(shape).turns);
++  let cost = turning(shapeOf(shape).turns) + lines.reduce((sum, line) => sum + selfCost(line), 0);
+   for (let i = 0; i < lines.length; i++)
+     for (let j = i + 1; j < lines.length; j++) cost += pairCost(lines[i], lines[j], middles);
+   return cost;
+@@ -80,11 +80,7 @@ export function overlapCost(links, shape = {}) {
+  * degrees in steps of `step`. Returns the turns found (`delta`, to add to the
+  * starting turns), the turns in total (`turns`) and the cost before and after.
+  */
+-export function solveCollisions(
+-  links,
+-  shape = {},
+-  { range = 60, step = 15, passes = 3, adjustGaps = false, gapRange = 0.2, middleRange = 4 } = {},
+-) {
++function solveTurns(links, shape = {}, { range = 60, step = 15, passes = 3 } = {}) {
+   range = Math.min(180, Math.max(0, Number(range) || 0));
+   step = Math.max(1, Number(step) || 15);
+   passes = Math.min(10, Math.max(0, Number(passes) || 0));
+@@ -99,7 +95,7 @@ export function solveCollisions(
+   const scale = curveTransform(layoutCurves(links, base), base).scale;
+   const lines = links.map((_, i) => visiblePolyline(curveOf(i), base, i, scale));
+   const costOf = (i, line) => {
+-    let cost = 0;
++    let cost = selfCost(line);
+     for (let j = 0; j < n; j++) if (j !== i) cost += pairCost(line, lines[j], middles);
+     return cost + turning([total()[i]]);
+   };
+@@ -140,11 +136,34 @@ export function solveCollisions(
+   // cached candidate if the exact complete drawing would become worse.
+   if (result.after > before)
+     result = { delta: start.map(() => [0, 0]), turns: start, linkGaps: base.linkGaps, before, after: before };
+-  return adjustGaps ? adjustCollisionGaps(links, base, result, { gapRange, middleRange, passes }) : result;
++
++  return result;
++}
++
++/** Gap-first search avoids the angle-only local minimum at collapsed
++ * reference ends. Turn the separated drawing, then refine the gaps again.
++ * Every stage returns an exact refitted score and preserves the user's bounds.
++ */
++export function solveCollisions(links, shape = {}, options = {}) {
++  const { adjustGaps = false, gapRange = 0.2, middleRange = 4, passes = 3, debug = false } = options;
++  const base = shapeOf(shape);
++  let result;
++  if (adjustGaps) {
++    const turns = links.map((_, i) => base.turns[i] || [0, 0]);
++    const before = overlapCost(links, base);
++    const initial = { turns, delta: turns.map(() => [0, 0]), linkGaps: base.linkGaps, before, after: before };
++    const gaps = adjustCollisionGaps(links, base, initial, { gapRange, middleRange, passes });
++    result = solveTurns(links, { ...base, linkGaps: gaps.linkGaps }, options);
++    result.before = before;
++    result = adjustCollisionGaps(links, base, result, { gapRange, middleRange, passes });
++  } else result = solveTurns(links, base, options);
++  if (debug) console.debug('[network solver]', { links: links.length, options, clearance: base.clearance, ...result });
++  return result;
+ }
+ 
+ /** Keep each cut as a real break: no artificial chord across the missing middle. */
+ export function visiblePolyline(curve, o, i, scale) {
++  if (o.clearance !== null && o.clearance !== undefined) return paintedPolyline(curve, o, i, scale);
+   const before = o.linkGaps[i]?.[2] ?? o.middleGapStart;
+   const after = o.linkGaps[i]?.[3] ?? o.middleGapEnd;
+   if (!before && !after) return polyline(curve);
+@@ -155,3 +174,61 @@ export function visiblePolyline(curve, o, i, scale) {
+       : [];
+   });
+ }
++
++/** Same fitted geometry, cuts and markers as the SVG, converted back to layout units. */
++function paintedPolyline(raw, o, i, scale) {
++  const fit = (point) => point.map((v) => v * scale);
++  const curve = paintedCurve(
++    {
++      segments: raw.segments.map((segment) => segment.map(fit)),
++      ...Object.fromEntries(['start', 'end', 'middle'].map((key) => [key, { ...raw[key], at: fit(raw[key].at) }])),
++    },
++    o,
++  );
++  const marks = curveMarkers(curve, o);
++  const decorate = (points, fills = []) =>
++    Object.assign(points, { width: (o.strokeWidth || 0) / scale, clearance: o.clearance / scale, fills });
++  const markLine = (m) => {
++    const points = m.outline.map((p) => p.map((v) => v / scale));
++    // Include the actual sharp miter tip, which is outside the marker centerline.
++    return decorate(points, m.fill ? [points] : []);
++  };
++  const markerLines = ['start', 'end', 'middle'].map((key) => {
++    const line = markLine(marks[key]);
++    if (o.arrowJoin === 'miter' && ['arrow', 'triangle', 'tail'].includes(o[key]) && line.length >= 3) {
++      const index = o[key] === 'triangle' ? 0 : 1;
++      const tip = line[index];
++      const previous = line[o[key] === 'triangle' ? 1 : 0];
++      const next = line[2];
++      const mid = previous.map((v, j) => (v + next[j]) / 2);
++      const dir = tip.map((v, j) => v - mid[j]);
++      const length = Math.hypot(...dir) || 1;
++      const extra = (o.strokeWidth || 0) / 2 / Math.sin((o[`${key}Angle`] * Math.PI) / 180) / scale;
++      // Conservatively include the painted apex as well as stroked arms.
++      line.push(
++        null,
++        tip.map((v, j) => v + (dir[j] / length) * extra),
++        tip,
++      );
++    }
++    return line;
++  });
++  const halves = curve.segments.map((segment, k) => {
++    const amount = o.linkGaps[i]?.[k + 2] ?? o[k ? 'middleGapEnd' : 'middleGapStart'];
++    const kept = trimCurve(segment, amount, Boolean(k));
++    return decorate(
++      kept ? Array.from({ length: SAMPLES + 1 }, (_, j) => bezier(kept, j / SAMPLES).map((v) => v / scale)) : [],
++    );
++  });
++  const all = decorate(
++    [...halves[0], null, ...halves[1], ...markerLines.flatMap((line) => [null, ...line])],
++    markerLines.flatMap((line) => line.fills),
++  );
++  all.self =
++    paintedPairCost(markerLines[0], markerLines[1]) +
++    paintedPairCost(markerLines[0], halves[1]) +
++    paintedPairCost(markerLines[1], halves[0]) +
++    paintedPairCost(markerLines[2], markerLines[0]) +
++    paintedPairCost(markerLines[2], markerLines[1]);
++  return all;
++}
+diff --git a/src/links/glyph.js b/src/links/glyph.js
+index a8860e1..ebd266e 100644
+--- a/src/links/glyph.js
++++ b/src/links/glyph.js
+@@ -89,6 +89,10 @@ export const SHAPE = {
+   endRotation: 0,
+   middleRotation: 0,
+   turns: [], // [source, target] turn of each link's ends in degrees, set by hand or by solveCollisions
++  arrowJoin: 'inherit', // editor can keep arrow corners sharp independently of line joins
++  balanceArrows: false, // legacy gallery geometry; editor compensates the painted tip extension
++  clearance: null, // null retains legacy scoring; editor uses image-unit space between painted edges
++  linecap: 'round',
+   linkGaps: [], // [source gap, target gap, cut before middle, cut after middle]; null inherits
+ };
+ 
+@@ -300,7 +304,7 @@ const polygon = (points) => `M${points.map(fmt).join('L')}Z`;
+  * is its size in SIZE units, `angle` the half-angle of an arrow head.
+  * Returns `{ d, fill }`; filled shapes are painted in the link colour.
+  */
+-export function marker(kind, at, dir, size, angle) {
++function markerPath(kind, at, dir, size, angle) {
+   const a = angle * RAD;
+   const across = rotate(dir, Math.PI / 2);
+   const back = mul(dir, -size);
+@@ -345,17 +349,83 @@ export function marker(kind, at, dir, size, angle) {
+   }
+ }
+ 
++/** Arrow stroke joins have a geometric extension beyond their path vertex. */
++export function arrowMiterLimit(angle, outline = [], kind = 'arrow') {
++  // SVG coordinates are rounded for export. At acute angles that tiny change
++  // can cross the nominal miter threshold, so measure the exported arms too.
++  const [tip, a, b] = kind === 'triangle' ? [outline[0], outline[1], outline[2]] : [outline[1], outline[0], outline[2]];
++  let actual = 0;
++  if (tip && a && b) {
++    const u = sub(a, tip);
++    const v = sub(b, tip);
++    const cosine = dot(u, v) / (length(u) * length(v) || 1);
++    actual = 1 / Math.sqrt(Math.max(1e-12, (1 - Math.min(1, cosine)) / 2));
++  }
++  return Math.max(4, 1 / Math.sin(angle * RAD), actual) + 0.01;
++}
++
++/** Keep the same painted outward extent as the nominal round/flat line end.
++ * Move the endpoint and its adjacent handle together, retaining its tangent
++ * and the curve's middle. The legacy option leaves both unchanged.
++ */
++export function paintedCurve(curve, o) {
++  if (!o.balanceArrows || o.arrowJoin !== 'miter') return curve;
++  const segments = curve.segments.map((segment) => segment.map((p) => [...p]));
++  const result = { ...curve, segments };
++  for (const key of ['start', 'end']) {
++    if (!(key === 'end' ? ['arrow', 'triangle'] : ['tail']).includes(o[key])) continue;
++    // Explicit marker displacement/rotation is intentional and keeps its meaning.
++    if (o[`${key}Offset`] || o[`${key}Across`] || o[`${key}Rotation`]) continue;
++    const cap = o.linecap === 'butt' ? 0 : (o.strokeWidth || 0) / 2;
++    const extra = (o.strokeWidth || 0) / 2 / Math.sin(o[`${key}Angle`] * RAD);
++    // A lens has one common outward axis. Its equally gapped ends therefore
++    // share an exact painted boundary, even when the tip tangent is oblique.
++    const common = sub(mul(add(curve.start.at, curve.end.at), 0.5), curve.middle.at);
++    const axis = length(common) > 1e-6 ? common : sub(curve[key].at, curve.middle.at);
++    const outward = length(axis) > 1e-6 ? unit(axis) : mul(curve[key].dir, key === 'end' ? 1 : -1);
++    const move = add(mul(curve[key].dir, key === 'end' ? -extra : extra), mul(outward, cap));
++    const segment = segments[key === 'end' ? 1 : 0];
++    for (const j of key === 'end' ? [2, 3] : [0, 1]) segment[j] = add(segment[j], move);
++    result[key] = { ...curve[key], at: add(curve[key].at, move) };
++  }
++  return result;
++}
++
++/** Path plus a bounded outline for collision scoring, from the same marker. */
++export function marker(kind, at, dir, size, angle) {
++  const result = markerPath(kind, at, dir, size, angle);
++  if (!result.d) return { ...result, outline: [] };
++  let outline;
++  if (kind === 'dot' || kind === 'circle') {
++    outline = Array.from({ length: 17 }, (_, k) => add(at, mul(rotate(dir, (k * Math.PI) / 8), size / 2)));
++  } else {
++    const values = result.d.match(/-?\d+(?:\.\d+)?/g).map(Number);
++    outline = Array.from({ length: values.length / 2 }, (_, i) => values.slice(i * 2, i * 2 + 2));
++    if (result.fill) outline.push(outline[0]);
++  }
++  return { ...result, outline };
++}
++
++/** Shared placement for rendering and scoring, including curve-following offsets. */
++export function curveMarkers(curve, o) {
++  return Object.fromEntries(
++    ['start', 'end', 'middle'].map((key) => {
++      let point = curve[key];
++      const offset = (key === 'end' ? -1 : 1) * o[`${key}Offset`];
++      if (offset !== 0) point = pointAlongCurve(curve.segments, offset, key);
++      const at = add(point.at, mul(rotate(point.dir, Math.PI / 2), o[`${key}Across`]));
++      return [key, marker(o[key], at, rotate(point.dir, o[`${key}Rotation`] * RAD), o[`${key}Size`], o[`${key}Angle`])];
++    }),
++  );
++}
++
+ /** The parts of every link: its line and the shapes of its start, end and middle (`{ d, fill }`). */
+ export function glyphParts(links, shape = {}) {
+   const o = shapeOf(shape);
+-  const mark = (key, point, segments) => {
+-    const direction = key === 'end' ? -1 : 1;
+-    const offset = direction * o[`${key}Offset`];
+-    if (offset !== 0) point = pointAlongCurve(segments, offset, key);
+-    const at = add(point.at, mul(rotate(point.dir, Math.PI / 2), o[`${key}Across`]));
+-    return marker(o[key], at, rotate(point.dir, o[`${key}Rotation`] * RAD), o[`${key}Size`], o[`${key}Angle`]);
+-  };
+-  return glyphCurves(links, o).map(({ segments, start, end, middle }, i) => {
++  return glyphCurves(links, o).map((raw, i) => {
++    const curve = paintedCurve(raw, o);
++    const { segments } = curve;
++    const marks = curveMarkers(curve, o);
+     const middleGapStart = o.linkGaps[i]?.[2] ?? o.middleGapStart;
+     const middleGapEnd = o.linkGaps[i]?.[3] ?? o.middleGapEnd;
+     const split = middleGapStart > 0 || middleGapEnd > 0;
+@@ -367,9 +437,7 @@ export function glyphParts(links, shape = {}) {
+       : `M${fmt(segments[0][0])}` + segments.map((seg) => `C${seg.slice(1).map(fmt).join(' ')}`).join('');
+     return {
+       line,
+-      start: mark('start', start, segments),
+-      end: mark('end', end, segments),
+-      middle: mark('middle', middle, segments),
++      ...marks,
+       color: COLORS[i % COLORS.length],
+     };
+   });
+diff --git a/src/links/issue-25.test.js b/src/links/issue-25.test.js
+new file mode 100644
+index 0000000..f5f4faa
+--- /dev/null
++++ b/src/links/issue-25.test.js
+@@ -0,0 +1,72 @@
++import { expect, it, vi } from 'vitest';
++import { decode } from './configurations';
++import { solveCollisions, overlapCost } from './collisions';
++import { glyphParts, glyphCurves } from './glyph';
++import { networkSvg } from './render';
++import { normalizeStyle, shapeOfStyle, styleFromParams, styleToParams, withTurns } from './style';
++import { withGaps } from './gaps';
++
++const links = decode('22 22');
++const fixture = (patch = {}) => normalizeStyle({ rotation: 90, ...patch });
++it('discovers separated reference gaps for 2222 without manual gaps', () => {
++  const style = fixture();
++  const shape = shapeOfStyle(style, 2);
++  const result = solveCollisions(links, shape, { adjustGaps: true });
++  expect(result.linkGaps[0][0]).toBeGreaterThan(0.08);
++  expect(result.linkGaps[0][1]).toBeGreaterThan(0.08);
++  expect(result.after).toBeLessThan(result.before);
++  const applied = withGaps(withTurns(style, result.turns), result.linkGaps);
++  expect(networkSvg(links, style, { extraTurns: result.delta, extraGaps: result.linkGaps })).toBe(
++    networkSvg(links, applied),
++  );
++  expect(overlapCost(links, shapeOfStyle(applied, 2))).toBeCloseTo(result.after, 8);
++});
++it('scores painted markers and user selected spacing, including near reference middles', () => {
++  const cost = (patch) => overlapCost(links, shapeOfStyle(fixture(patch), 2));
++  expect(cost({ start: 'none', end: 'none', middle: 'none' })).toBeLessThan(cost({}));
++  expect(cost({ clearance: 6 })).toBeGreaterThan(cost({ clearance: 0 }));
++  expect(cost({ strokeWidth: 5 })).toBeGreaterThan(cost({ strokeWidth: 0.5 }));
++});
++it('recognizes the supplied perfect manual arrangement and keeps diagnostics opt-in', () => {
++  const shape = shapeOfStyle(fixture({ turns: '15 -15', gaps: '0.18 0.18 ~ ~' }), 2);
++  // Only the 30 degrees of existing turns contribute; no painted overlap.
++  expect(overlapCost(links, shape)).toBeCloseTo(30 * 0.002, 8);
++  const debug = vi.spyOn(console, 'debug').mockImplementation(() => {});
++  try {
++    solveCollisions(links, shape, { passes: 0 });
++    expect(debug).not.toHaveBeenCalled();
++    solveCollisions(links, shape, { passes: 0, debug: true });
++    expect(debug).toHaveBeenCalledWith('[network solver]', expect.objectContaining({ links: 2, clearance: 1 }));
++  } finally {
++    debug.mockRestore();
++  }
++});
++it('keeps acute arrow tips sharp independent of line corners, with balanced extent by default', () => {
++  for (const endAngle of [5, 15, 45]) {
++    const style = fixture({ turns: '15 -15', gaps: '0.18 0.18 ~ ~', endAngle, linejoin: 'round' });
++    const svg = networkSvg(links, style);
++    expect(svg).toMatch(/stroke-linejoin="miter" stroke-miterlimit="[\d.]+"/);
++    const part = glyphParts(links, shapeOfStyle(style, 2))[0];
++    const numbers = (path) => path.match(/-?\d+(?:\.\d+)?/g).map(Number);
++    const start = numbers(part.line).slice(0, 2);
++    const tip = numbers(part.end.d).slice(2, 4);
++    const raw = glyphParts(links, shapeOfStyle({ ...style, balanceArrows: false }, 2))[0];
++    const rawTip = numbers(raw.end.d).slice(2, 4);
++    expect(tip[1]).toBeLessThan(rawTip[1]);
++    const extension = style.strokeWidth / 2 / Math.sin((endAngle * Math.PI) / 180);
++    const curve = glyphCurves(links, shapeOfStyle(style, 2))[0];
++    expect(Math.abs(tip[1] + extension * curve.end.dir[1] - (start[1] + style.strokeWidth / 2))).toBeLessThan(0.03);
++  }
++});
++it('round trips rounded arrows, legacy lengths and spacing settings', () => {
++  const style = fixture({ arrowJoin: 'round', balanceArrows: false, clearance: 4.5 });
++  expect(styleFromParams(styleToParams(style))).toEqual(style);
++  expect(style.arrowJoin).toBe('round');
++  expect(style.balanceArrows).toBe(false);
++  expect(style.clearance).toBe(4.5);
++});
++it('keeps zero-gap self loops finite when both endpoints coincide with their middle', () => {
++  const style = fixture({ start: 'tail', startOffset: 0, startGap: 0, endGap: 0 });
++  const svg = networkSvg(decode('11'), style);
++  expect(svg).not.toMatch(/NaN|Infinity/);
++});
+diff --git a/src/links/painted-collisions.js b/src/links/painted-collisions.js
+new file mode 100644
+index 0000000..b94bf15
+--- /dev/null
++++ b/src/links/painted-collisions.js
+@@ -0,0 +1,86 @@
++// Collision scoring of painted pieces in layout units. Distances are between
++// segments, not just sampled vertices, so parallel close strokes are detected.
++// Middle disks and marker interiors are included; intentional attachment of a
++// marker to its own shaft is excluded by the caller.
++const pointDistance2 = (p, a, b) => {
++  const x = b[0] - a[0];
++  const y = b[1] - a[1];
++  const t = Math.max(0, Math.min(1, ((p[0] - a[0]) * x + (p[1] - a[1]) * y) / (x * x + y * y || 1)));
++  return (p[0] - a[0] - t * x) ** 2 + (p[1] - a[1] - t * y) ** 2;
++};
++const side = (a, b, p) => (b[0] - a[0]) * (p[1] - a[1]) - (b[1] - a[1]) * (p[0] - a[0]);
++const intersects = (a, b, c, d) => side(a, b, c) * side(a, b, d) < 0 && side(c, d, a) * side(c, d, b) < 0;
++const inside = (p, polygon) => {
++  let yes = false;
++  for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
++    const a = polygon[i];
++    const b = polygon[j];
++    if (a[1] > p[1] !== b[1] > p[1] && p[0] < ((b[0] - a[0]) * (p[1] - a[1])) / (b[1] - a[1]) + a[0]) yes = !yes;
++  }
++  return yes;
++};
++const segmentCache = new WeakMap();
++const segments = (line) => {
++  if (segmentCache.has(line)) return segmentCache.get(line);
++  const result = [];
++  for (let i = 1; i < line.length; i++) {
++    const a = line[i - 1];
++    const b = line[i];
++    if (a && b)
++      result.push({
++        a,
++        b,
++        x0: Math.min(a[0], b[0]),
++        x1: Math.max(a[0], b[0]),
++        y0: Math.min(a[1], b[1]),
++        y1: Math.max(a[1], b[1]),
++      });
++  }
++  segmentCache.set(line, result);
++  return result;
++};
++export function paintedPairCost(a, b) {
++  const stroke = ((a.width || 0) + (b.width || 0)) / 2;
++  const clearance = Math.max(a.clearance || 0, b.clearance || 0);
++  const near = stroke + clearance;
++  let cost = 0;
++  for (const first of segments(a)) {
++    const p = first.a;
++    const q = first.b;
++    for (const second of segments(b)) {
++      if (
++        first.x1 + near < second.x0 ||
++        second.x1 + near < first.x0 ||
++        first.y1 + near < second.y0 ||
++        second.y1 + near < first.y0
++      )
++        continue;
++      const r = second.a;
++      const s = second.b;
++      const crosses = intersects(p, q, r, s);
++      const distance = crosses
++        ? 0
++        : Math.sqrt(
++            Math.min(
++              pointDistance2(p, r, s),
++              pointDistance2(q, r, s),
++              pointDistance2(r, p, q),
++              pointDistance2(s, p, q),
++            ),
++          );
++      if (distance < near) {
++        // Overlap dominates clearance preference. Continuous distance terms
++        // give gap search a gradient even when no crossing count changes.
++        cost += (crosses ? 1 : 0) + 0.25 * (1 - distance / Math.max(near, 1e-12));
++        if (distance < stroke) cost += 0.5 * (1 - distance / Math.max(stroke, 1e-12));
++      }
++    }
++  }
++  for (const [first, second] of [
++    [a, b],
++    [b, a],
++  ])
++    for (const polygon of second.fills || []) if (first.some((point) => point && inside(point, polygon))) cost += 2;
++  return cost;
++}
++export const selfCost = (line) => line.self || 0;
+diff --git a/src/links/render.js b/src/links/render.js
+index 8efab96..1f8263f 100644
+--- a/src/links/render.js
++++ b/src/links/render.js
+@@ -5,7 +5,7 @@
+ // caption is escaped, so a shared link cannot put markup into the picture.
+ import { mathNotation, encode } from './configurations';
+ import { linksText, numberNotation, decimalOf, theoryNotation } from './edit';
+-import { SIZE, glyphParts } from './glyph';
++import { SIZE, glyphParts, arrowMiterLimit } from './glyph';
+ import { linkColors, normalizeStyle, shapeOfStyle } from './style';
+ 
+ const FONTS = {
+@@ -125,7 +125,14 @@ export function networkSvg(
+     .map(({ line, start, end, middle }, i) => {
+       const shapes = [start, end, middle]
+         .filter((m) => m.d)
+-        .map((m) => `<path d="${m.d}"${m.fill ? ` fill="${colors[i]}"` : ''}/>`)
++        .map((m) => {
++          const key = m === start ? 'start' : m === end ? 'end' : 'middle';
++          const arrow = ['arrow', 'triangle', 'tail'].includes(style[key]) && style.arrowJoin !== 'inherit';
++          const join = arrow
++            ? ` stroke-linejoin="${style.arrowJoin}" stroke-miterlimit="${arrowMiterLimit(style[`${key}Angle`], m.outline, style[key])}"`
++            : '';
++          return `<path d="${m.d}"${m.fill ? ` fill="${colors[i]}"` : ''}${join}/>`;
++        })
+         .join('');
+       return `<g stroke="${colors[i]}"><path d="${line}"${dash ? ` stroke-dasharray="${dash}"` : ''}/>${shapes}</g>`;
+     })
+diff --git a/src/links/style-geometry.js b/src/links/style-geometry.js
+index 62c3a58..d155f3a 100644
+--- a/src/links/style-geometry.js
++++ b/src/links/style-geometry.js
+@@ -15,6 +15,9 @@ const names = {
+ export const EDITOR_SHAPE = {
+   ...SHAPE,
+   bendMode: 'curve',
++  arrowJoin: 'miter',
++  balanceArrows: true,
++  clearance: 1,
+   angles: 'fixed',
+   sourceAngle: 30,
+   targetAngle: 30,
+@@ -132,6 +135,28 @@ export const GEOMETRY_SECTIONS = [
+     id: 'ends',
+     title: { en: 'Start, end and middle', ru: 'Начало, конец и середина' },
+     fields: [
++      select(
++        'arrowJoin',
++        'miter',
++        [
++          option('miter', 'Sharp', 'Острые'),
++          option('round', 'Rounded', 'Скруглённые'),
++          option('bevel', 'Bevelled', 'Срезанные'),
++          option('inherit', 'Follow line corners', 'Как углы линий'),
++        ],
++        { en: 'Arrow corners', ru: 'Углы стрелок' },
++      ),
++      toggle(
++        'balanceArrows',
++        true,
++        { en: 'Balance sharp arrow lengths', ru: 'Выравнивать длину острых стрелок' },
++        {
++          hint: {
++            en: 'Shortens the line by the painted tip extension. Switch off for legacy lengths. Explicit marker offsets and rotations remain intentional.',
++            ru: 'Укорачивает линию на выступ острия. Выключите для прежней длины. Явные сдвиги и повороты маркеров сохраняются.',
++          },
++        },
++      ),
+       ...['start', 'end', 'middle'].flatMap((key, i) => {
+         const en = ['start', 'end', 'middle'][i];
+         const ru = ['начала', 'конца', 'середины'][i];
+diff --git a/src/links/style.js b/src/links/style.js
+index c791f06..1fef3dd 100644
+--- a/src/links/style.js
++++ b/src/links/style.js
+@@ -279,6 +279,21 @@ export const STYLE_SECTIONS = [
+     },
+     fields: [
+       toggle('solve', false, { en: 'Reduce overlaps automatically', ru: 'Уменьшать наложения автоматически' }),
++      range(
++        'clearance',
++        1,
++        0,
++        10,
++        0.25,
++        { en: 'Space between strokes', ru: 'Промежуток между линиями' },
++        {
++          hint: {
++            en: 'Preferred minimum space between painted lines and markers, in 1/100 of the symbol. The solver finds the nearest arrangement within its search limits.',
++            ru: 'Желаемый минимальный промежуток между линиями и маркерами в 1/100 символа. Поиск находит ближайшую конфигурацию в заданных пределах.',
++          },
++        },
++      ),
++      toggle('solveDebug', false, { en: 'Solver diagnostics in console', ru: 'Диагностика поиска в консоли' }),
+       toggle('solveGaps', true, { en: 'Adjust individual gaps', ru: 'Менять отдельные зазоры' }),
+       range('solveGapRange', 0.2, 0, 1, 0.05, { en: 'Largest reference gap change', ru: 'Изменение зазора ссылки' }),
+       range('solveMiddleRange', 4, 0, 15, 0.5, { en: 'Largest middle cut change', ru: 'Изменение разрыва середины' }),
+@@ -409,6 +424,7 @@ export function shapeOfStyle(style, n, extraTurns = null, extraGaps = null) {
+     ['turns', turns],
+     ['linkGaps', extraGaps || linkGaps(style, n)],
+     ['strokeWidth', style.strokeWidth],
++    ['linecap', style.linecap],
+   ]);
+ }
+ 
+@@ -508,6 +524,8 @@ export function applyLook(style, id) {
+     solveGaps: style.solveGaps,
+     solveGapRange: style.solveGapRange,
+     solveMiddleRange: style.solveMiddleRange,
++    clearance: style.clearance,
++    solveDebug: style.solveDebug,
+   };
+   const size = look.values.width ? {} : { width: style.width, height: style.height, quality: style.quality };
+   return normalizeStyle({ ...STYLE_DEFAULTS, ...size, ...look.values, ...keep });
+diff --git a/src/pages/NetworkEditor.jsx b/src/pages/NetworkEditor.jsx
+index 635ef03..1eff8ef 100644
+--- a/src/pages/NetworkEditor.jsx
++++ b/src/pages/NetworkEditor.jsx
+@@ -1,4 +1,5 @@
+ import { useState } from 'react';
++import NetworkGaps from './NetworkGaps';
+ import { canonical, decode, encode, mathNotation } from '../links/configurations';
+ import {
+   addLink,
+@@ -190,101 +191,107 @@ function ReferenceSelect({ id, value, n, self, onChange, label }) {
+  * The links one by one: what each refers to, its colour and the turns of its
+  * ends, with buttons to add and remove links and to move through the networks.
+  */
+-export function LinksTable({ links, colors, turns, onLinks, onRemove, onColor, onTurn, onStep, onRandom }) {
++export function LinksTable({
++  links,
++  colors,
++  turns,
++  gaps,
++  style,
++  onGap,
++  onLinks,
++  onRemove,
++  onColor,
++  onTurn,
++  onStep,
++  onRandom,
++}) {
+   const { t } = useLang();
+   const n = links.length;
+   const start = t({ en: 'source', ru: 'начало' });
+   const end = t({ en: 'target', ru: 'конец' });
+   return (
+     <div className="links-table">
+-      <div className="links-table__scroll">
+-        <table>
+-          <thead>
+-            <tr>
+-              <th scope="col">{t({ en: 'Link', ru: 'Связь' })}</th>
+-              <th scope="col">{t({ en: 'Source', ru: 'Начало' })}</th>
+-              <th scope="col">{t({ en: 'Target', ru: 'Конец' })}</th>
+-              <th scope="col">{t({ en: 'Colour', ru: 'Цвет' })}</th>
+-              <th scope="col">{t({ en: 'Turn of the source', ru: 'Поворот начала' })}</th>
+-              <th scope="col">{t({ en: 'Turn of the target', ru: 'Поворот конца' })}</th>
+-              <th scope="col">
+-                <span className="visually-hidden">{t({ en: 'Remove', ru: 'Удалить' })}</span>
+-              </th>
+-            </tr>
+-          </thead>
+-          <tbody>
+-            {links.map(([s, tg], i) => {
+-              const name = `${t({ en: 'Link', ru: 'Связь' })} ${i + 1}`;
+-              return (
+-                <tr key={i}>
+-                  <th scope="row" className="mono">
+-                    <span className="links-table__swatch" style={{ background: colors[i] }} aria-hidden="true" />
+-                    {i + 1}
+-                  </th>
+-                  <td>
+-                    <ReferenceSelect
+-                      id={`link-${i + 1}-source`}
+-                      value={s}
+-                      n={n}
+-                      self={i + 1}
+-                      label={`${name}: ${start}`}
+-                      onChange={(ref) => onLinks(setReference(links, i, 0, ref))}
+-                    />
+-                  </td>
+-                  <td>
++      <p className="network__lead">
++        {t({
++          en: 'Each card contains all settings for one link. Empty gaps follow the global values shown in the fields. Reference gaps use layout units; middle cuts use 1/100 of the symbol.',
++          ru: 'В каждой карточке — все настройки одной связи. Пустые зазоры следуют общим значениям из подсказок. Зазоры ссылок — в единицах размещения, разрывы середины — в 1/100 символа.',
++        })}
++      </p>
++      <ul className="link-cards" aria-label={t({ en: 'Link configurations', ru: 'Настройки связей' })}>
++        {links.map(([s, tg], i) => {
++          const name = `${t({ en: 'Link', ru: 'Связь' })} ${i + 1}`;
++          return (
++            <li className="link-card" key={i}>
++              <div className="link-card__head">
++                <h3>
++                  <span className="links-table__swatch" style={{ background: colors[i] }} aria-hidden="true" />
++                  {name}
++                </h3>
++                <button
++                  type="button"
++                  className="button button--small"
++                  disabled={n <= 1}
++                  onClick={() => onRemove(i + 1)}
++                  aria-label={`${t({ en: 'Remove', ru: 'Удалить' })}: ${name}`}
++                  title={t({
++                    en: 'References to this link become references to 0',
++                    ru: 'Ссылки на эту связь станут ссылками на 0',
++                  })}
++                >
++                  ✕
++                </button>
++              </div>
++              <div className="link-card__fields">
++                {[
++                  [s, start, 'source'],
++                  [tg, end, 'target'],
++                ].map(([value, label, id], e) => (
++                  <label key={id} htmlFor={`link-${i + 1}-${id}`}>
++                    {t(e ? { en: 'Target', ru: 'Конец' } : { en: 'Source', ru: 'Начало' })}
+                     <ReferenceSelect
+-                      id={`link-${i + 1}-target`}
+-                      value={tg}
++                      id={`link-${i + 1}-${id}`}
++                      value={value}
+                       n={n}
+                       self={i + 1}
+-                      label={`${name}: ${end}`}
+-                      onChange={(ref) => onLinks(setReference(links, i, 1, ref))}
++                      label={`${name}: ${label}`}
++                      onChange={(ref) => onLinks(setReference(links, i, e, ref))}
+                     />
+-                  </td>
+-                  <td>
++                  </label>
++                ))}
++                <label>
++                  {t({ en: 'Colour', ru: 'Цвет' })}
++                  <input
++                    type="color"
++                    value={colors[i]}
++                    aria-label={`${name}: ${t({ en: 'colour', ru: 'цвет' })}`}
++                    onChange={(event) => onColor(i, event.target.value)}
++                  />
++                </label>
++                {[0, 1].map((e) => (
++                  <label key={e}>
++                    {t(
++                      e
++                        ? { en: 'Turn of the target, °', ru: 'Поворот конца, °' }
++                        : { en: 'Turn of the source, °', ru: 'Поворот начала, °' },
++                    )}
+                     <input
+-                      type="color"
+-                      value={colors[i]}
+-                      aria-label={`${name}: ${t({ en: 'colour', ru: 'цвет' })}`}
+-                      onChange={(event) => onColor(i, event.target.value)}
++                      type="number"
++                      className="mono"
++                      min={-180}
++                      max={180}
++                      step={5}
++                      value={turns[i][e]}
++                      aria-label={`${name}: ${t({ en: 'turn of the', ru: 'поворот' })} ${e ? end : start}, °`}
++                      onChange={(event) => onTurn(i, e, Number(event.target.value) || 0)}
+                     />
+-                  </td>
+-                  {[0, 1].map((e) => (
+-                    <td key={e}>
+-                      <input
+-                        type="number"
+-                        className="mono"
+-                        min={-180}
+-                        max={180}
+-                        step={5}
+-                        value={turns[i][e]}
+-                        aria-label={`${name}: ${t({ en: 'turn of the', ru: 'поворот' })} ${e ? end : start}, °`}
+-                        onChange={(event) => onTurn(i, e, Number(event.target.value) || 0)}
+-                      />
+-                      °
+-                    </td>
+-                  ))}
+-                  <td>
+-                    <button
+-                      type="button"
+-                      className="button button--small"
+-                      disabled={n <= 1}
+-                      onClick={() => onRemove(i + 1)}
+-                      aria-label={`${t({ en: 'Remove', ru: 'Удалить' })}: ${name}`}
+-                      title={t({
+-                        en: 'References to this link become references to 0',
+-                        ru: 'Ссылки на эту связь станут ссылками на 0',
+-                      })}
+-                    >
+-                      ✕
+-                    </button>
+-                  </td>
+-                </tr>
+-              );
+-            })}
+-          </tbody>
+-        </table>
+-      </div>
++                  </label>
++                ))}
++              </div>
++              <NetworkGaps i={i} row={gaps[i]} style={style} onGap={onGap} />
++            </li>
++          );
++        })}
++      </ul>
+       <div className="network__actions">
+         <button type="button" className="button" onClick={() => onLinks(addLink(links))}>
+           + {t({ en: 'Add a link', ru: 'Добавить связь' })}
+diff --git a/src/pages/NetworkGaps.jsx b/src/pages/NetworkGaps.jsx
+index 078d8cc..84e3131 100644
+--- a/src/pages/NetworkGaps.jsx
++++ b/src/pages/NetworkGaps.jsx
+@@ -1,39 +1,26 @@
+ import { GAP_FIELDS } from '../links/gaps';
+ import { useLang } from '../i18n/prefs';
+ 
+-export default function NetworkGaps({ gaps, style, onGap }) {
++/** All four overrides stay visible inside their link's card. */
++export default function NetworkGaps({ i, row, style, onGap }) {
+   const { t } = useLang();
+   return (
+-    <details className="link-gaps">
+-      <summary>{t({ en: 'Gaps for each link', ru: 'Зазоры каждой связи' })}</summary>
+-      <p className="network__lead">
+-        {t({
+-          en: 'Leave a field empty to follow the global value shown as its placeholder. Reference gaps use layout units; middle cuts use 1/100 of the symbol.',
+-          ru: 'Пустое поле следует общему значению из подсказки. Зазоры ссылок — в единицах размещения; разрывы середины — в 1/100 символа.',
+-        })}
+-      </p>
+-      {gaps.map((row, i) => (
+-        <fieldset key={i}>
+-          <legend>
+-            {t({ en: 'Link', ru: 'Связь' })} {i + 1}
+-          </legend>
+-          {GAP_FIELDS.map((field, k) => (
+-            <label key={field.key}>
+-              {t(field.label)}
+-              <input
+-                type="number"
+-                min={0}
+-                max={field.max}
+-                step={field.step}
+-                aria-label={`${t({ en: 'Link', ru: 'Связь' })} ${i + 1}: ${t(field.label)}`}
+-                value={row[k] ?? ''}
+-                placeholder={String(style[field.key])}
+-                onChange={(event) => onGap(i, k, event.target.value === '' ? null : Number(event.target.value))}
+-              />
+-            </label>
+-          ))}
+-        </fieldset>
++    <div className="link-gaps link-card__fields">
++      {GAP_FIELDS.map((field, k) => (
++        <label key={field.key}>
++          {t(field.label)}
++          <input
++            type="number"
++            min={0}
++            max={field.max}
++            step={field.step}
++            aria-label={`${t({ en: 'Link', ru: 'Связь' })} ${i + 1}: ${t(field.label)}`}
++            value={row[k] ?? ''}
++            placeholder={String(style[field.key])}
++            onChange={(event) => onGap(i, k, event.target.value === '' ? null : Number(event.target.value))}
++          />
++        </label>
+       ))}
+-    </details>
++    </div>
+   );
+ }
+diff --git a/src/pages/NetworkPage.jsx b/src/pages/NetworkPage.jsx
+index b276c09..a169c13 100644
+--- a/src/pages/NetworkPage.jsx
++++ b/src/pages/NetworkPage.jsx
+@@ -20,7 +20,6 @@ import {
+ import { LANGS, useLang } from '../i18n/prefs';
+ import { LinksTable, Notations, randomLinks, stepped } from './NetworkEditor';
+ import NetworkShare from './NetworkShare';
+-import NetworkGaps from './NetworkGaps';
+ import { Looks, StyleSections } from './NetworkStyle';
+ import { useNetworkHistory } from './useNetworkHistory';
+ 
+@@ -69,6 +68,7 @@ export default function NetworkPage() {
+ 
+   const shape = shapeOfStyle(style, n);
+   const solverOptions = {
++    debug: style.solveDebug,
+     range: style.solveRange,
+     step: style.solveStep,
+     adjustGaps: style.solveGaps,
+@@ -159,14 +159,6 @@ export default function NetworkPage() {
+                 links={links}
+                 colors={colors}
+                 turns={turns}
+-                onLinks={changeLinks}
+-                onRemove={remove}
+-                onColor={(i, value) => setStyle(withColor(style, n, i, value))}
+-                onTurn={turn}
+-                onStep={(step) => setLinks(stepped(links, step))}
+-                onRandom={() => setLinks(randomLinks(n))}
+-              />
+-              <NetworkGaps
+                 gaps={gaps}
+                 style={style}
+                 onGap={(i, k, value) =>
+@@ -177,6 +169,12 @@ export default function NetworkPage() {
+                     ),
+                   )
+                 }
++                onLinks={changeLinks}
++                onRemove={remove}
++                onColor={(i, value) => setStyle(withColor(style, n, i, value))}
++                onTurn={turn}
++                onStep={(step) => setLinks(stepped(links, step))}
++                onRandom={() => setLinks(randomLinks(n))}
+               />
+             </section>
+             <section className="network__panel" id="style" aria-labelledby="style-title">
+diff --git a/src/pages/network-25.test.jsx b/src/pages/network-25.test.jsx
+new file mode 100644
+index 0000000..c42a744
+--- /dev/null
++++ b/src/pages/network-25.test.jsx
+@@ -0,0 +1,30 @@
++import { fireEvent, render, screen, within } from '@testing-library/react';
++import { afterEach, expect, it } from 'vitest';
++import NetworkPage from './NetworkPage';
++afterEach(() => window.history.replaceState(null, '', '/'));
++it('keeps every per-link input visible in one card, with no disclosure', () => {
++  window.history.replaceState(null, '', '/network/?code=2222&lang=en');
++  render(<NetworkPage />);
++  const list = screen.getByRole('list', { name: 'Link configurations' });
++  const cards = within(list).getAllByRole('listitem');
++  expect(cards).toHaveLength(2);
++  expect(list.querySelector('details')).toBeNull();
++  for (const [i, card] of cards.entries()) {
++    const fields = within(card);
++    for (const label of [
++      'source',
++      'target',
++      'colour',
++      'turn of the source, °',
++      'turn of the target, °',
++      'Gap at the source reference',
++      'Gap at the target reference',
++      'Cut before the middle',
++      'Cut after the middle',
++    ])
++      expect(fields.getByLabelText(`Link ${i + 1}: ${label}`)).toBeVisible();
++  }
++  fireEvent.change(within(cards[1]).getByLabelText('Link 2: Cut after the middle'), { target: { value: '3' } });
++  fireEvent.click(within(cards[0]).getByRole('button', { name: 'Remove: Link 1' }));
++  expect(screen.getByLabelText('Link 1: Cut after the middle')).toHaveValue(3);
++});
+diff --git a/src/pages/network.css b/src/pages/network.css
+index 2196c11..746503e 100644
+--- a/src/pages/network.css
++++ b/src/pages/network.css
+@@ -166,60 +166,76 @@
+ 
+ /* ---------- Links one by one ---------- */
+ 
+-.links-table__scroll {
+-  overflow-x: auto;
++.link-cards {
++  list-style: none;
++  display: grid;
++  gap: 1rem;
++  margin: 1rem 0 0;
++  padding: 0;
+ }
+-
+-.links-table table {
+-  width: 100%;
+-  border-collapse: collapse;
+-  font-size: 0.85rem;
++.link-card {
++  min-width: 0;
++  padding: 0.85rem;
++  border: 1px solid var(--border-strong);
++  border-radius: 12px;
++  background: var(--surface);
+ }
+-
+-.links-table th,
+-.links-table td {
+-  padding: 0.3rem 0.35rem;
+-  border-top: 1px solid var(--border);
+-  text-align: left;
+-  white-space: nowrap;
++.link-card__head {
++  display: flex;
++  align-items: center;
++  justify-content: space-between;
++  gap: 0.5rem;
++  margin-bottom: 0.7rem;
+ }
+-
+-.links-table thead th {
+-  border-top: 0;
+-  color: var(--text-2);
+-  font-weight: 500;
++.link-card__head h3 {
++  margin: 0;
++  font-size: 1rem;
+ }
+-
+ .links-table__swatch {
+   display: inline-block;
+   width: 0.7rem;
+   height: 0.7rem;
+-  margin-right: 0.4rem;
++  margin-right: 0.45rem;
+   border-radius: 50%;
+-  vertical-align: -0.05em;
+ }
+-
+-.links-table select,
+-.links-table input[type='number'] {
+-  padding: 0.25rem 0.35rem;
++.link-card__fields {
++  display: grid;
++  grid-template-columns: repeat(2, minmax(0, 1fr));
++  gap: 0.6rem 1rem;
++}
++.link-card label {
++  display: grid;
++  align-content: start;
++  gap: 0.25rem;
++  min-width: 0;
++  color: var(--text-2);
++  font-size: 0.85rem;
++}
++.link-card input,
++.link-card select {
++  box-sizing: border-box;
++  width: 100%;
++  min-width: 0;
++  padding: 0.35rem 0.4rem;
+   border: 1px solid var(--border-strong);
+   border-radius: 6px;
+   background: var(--surface);
+   color: var(--text);
+   font: inherit;
+ }
+-
+-.links-table input[type='number'] {
+-  width: 4.2rem;
++.link-card input[type='color'] {
++  height: 2rem;
++  padding: 0.15rem;
+ }
+-
+-.links-table input[type='color'] {
+-  width: 2.2rem;
+-  height: 1.6rem;
+-  padding: 0;
+-  border: 1px solid var(--border-strong);
+-  border-radius: 6px;
+-  background: none;
++.link-card input:focus-visible,
++.link-card select:focus-visible {
++  outline: 2px solid var(--accent);
++  outline-offset: 2px;
++}
++@media (max-width: 420px) {
++  .link-card__fields {
++    grid-template-columns: minmax(0, 1fr);
++  }
+ }
+ 
+ /* ---------- Looks and options of the picture ---------- */
+@@ -342,44 +358,9 @@
+ }
+ 
+ .link-gaps {
+-  margin-top: 1rem;
+-}
+-.link-gaps summary {
+-  cursor: pointer;
+-  color: var(--accent);
+-}
+-.link-gaps fieldset {
+-  display: grid;
+-  grid-template-columns: repeat(2, minmax(0, 1fr));
+-  gap: 0.5rem 1rem;
+-  min-width: 0;
+-  margin: 0.8rem 0;
+-  padding: 0.6rem;
+-  border: 1px solid var(--border);
+-  border-radius: 8px;
+-}
+-.link-gaps label {
+-  display: grid;
+-  gap: 0.25rem;
+-  min-width: 0;
+-  font-size: 0.85rem;
+-  color: var(--text-2);
+-}
+-.link-gaps input {
+-  width: 100%;
+-  min-width: 0;
+-  padding: 0.3rem 0.4rem;
+-  border: 1px solid var(--border-strong);
+-  border-radius: 6px;
+-  background: var(--surface);
+-  color: var(--text);
+-  font: inherit;
+-}
+-.links-table td {
+-  vertical-align: middle;
+-}
+-.links-table select {
+-  max-width: 10rem;
++  margin-top: 0.8rem;
++  padding-top: 0.8rem;
++  border-top: 1px solid var(--border);
+ }
+ .looks__size {
+   display: flex;

@@ -5,7 +5,7 @@
 // caption is escaped, so a shared link cannot put markup into the picture.
 import { mathNotation, encode } from './configurations';
 import { linksText, numberNotation, decimalOf, theoryNotation } from './edit';
-import { SIZE, glyphParts } from './glyph';
+import { SIZE, glyphParts, arrowMiterLimit } from './glyph';
 import { linkColors, normalizeStyle, shapeOfStyle } from './style';
 
 const FONTS = {
@@ -125,7 +125,14 @@ export function networkSvg(
     .map(({ line, start, end, middle }, i) => {
       const shapes = [start, end, middle]
         .filter((m) => m.d)
-        .map((m) => `<path d="${m.d}"${m.fill ? ` fill="${colors[i]}"` : ''}/>`)
+        .map((m) => {
+          const key = m === start ? 'start' : m === end ? 'end' : 'middle';
+          const arrow = ['arrow', 'triangle', 'tail'].includes(style[key]) && style.arrowJoin !== 'inherit';
+          const join = arrow
+            ? ` stroke-linejoin="${style.arrowJoin}" stroke-miterlimit="${arrowMiterLimit(style[`${key}Angle`], m.outline, style[key])}"`
+            : '';
+          return `<path d="${m.d}"${m.fill ? ` fill="${colors[i]}"` : ''}${join}/>`;
+        })
         .join('');
       return `<g stroke="${colors[i]}"><path d="${line}"${dash ? ` stroke-dasharray="${dash}"` : ''}/>${shapes}</g>`;
     })

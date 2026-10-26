@@ -1,0 +1,8 @@
+src/links/collisions.js 279ms
+src/links/collision-gap-cache.js 42ms
+src/links/collision-gaps.js 28ms (unchanged)
+src/links/painted-collisions.js 66ms
+src/links/style.js 168ms (unchanged)
+src/links/style-geometry.js 50ms (unchanged)
+experiments/issue-25-solver.mjs 9ms
+experiments/issue-25-reproduce.mjs 12ms
