@@ -5,14 +5,13 @@
 // (coordinate descent). Only the turned link changes, so only its pairs with
 // the other links are measured again.
 //
-// The cost of a drawing, in layout units (neighbouring middles are 1 apart):
-//   - every crossing of the lines of two links, away from the middles where
-//     links touch on purpose;
-//   - every sampled point of a line that comes closer than NEAR to a line of
-//     another link (the lines run together and overlap);
-//   - a little for every degree turned, so nothing turns without a reason.
-import { bezier, curveTransform, layout, layoutCurves, linkCurve, shapeOf } from './glyph';
+// Editor scoring includes painted shafts, markers, fills and requested space
+// between them, including near referenced middles. The original centerline
+// scoring remains available for legacy shapes whose clearance is null.
+// A small turn penalty discourages changing angles without a reason.
+import { bezier, curveTransform, layout, layoutCurves, linkCurve, shapeOf, paintedCurve, curveMarkers } from './glyph';
 import { trimCurve } from './curve-tools';
+import { paintedPairCost, selfCost } from './painted-collisions';
 import { adjustCollisionGaps } from './collision-gaps';
 
 const SAMPLES = 16; // points per Bézier segment
@@ -39,6 +38,7 @@ function crossing(p1, p2, q1, q2) {
 
 /** How much the lines of two links (polylines) overlap and cross; `middles` are exempt. */
 export function pairCost(a, b, middles) {
+  if (a.width !== undefined || b.width !== undefined) return paintedPairCost(a, b);
   const free = (p) => p && middles.every((m) => distance(p, m) > MIDDLE);
   let cost = 0;
   for (let i = 0; i < a.length - 1; i++) {
@@ -68,7 +68,7 @@ export function overlapCost(links, shape = {}) {
   const scale = curveTransform(curves, o).scale;
   const lines = curves.map((curve, i) => visiblePolyline(curve, o, i, scale));
   const middles = curves.map((c) => c.middle.at);
-  let cost = turning(shapeOf(shape).turns);
+  let cost = turning(shapeOf(shape).turns) + lines.reduce((sum, line) => sum + selfCost(line), 0);
   for (let i = 0; i < lines.length; i++)
     for (let j = i + 1; j < lines.length; j++) cost += pairCost(lines[i], lines[j], middles);
   return cost;
@@ -80,11 +80,7 @@ export function overlapCost(links, shape = {}) {
  * degrees in steps of `step`. Returns the turns found (`delta`, to add to the
  * starting turns), the turns in total (`turns`) and the cost before and after.
  */
-export function solveCollisions(
-  links,
-  shape = {},
-  { range = 60, step = 15, passes = 3, adjustGaps = false, gapRange = 0.2, middleRange = 4 } = {},
-) {
+function solveTurns(links, shape = {}, { range = 60, step = 15, passes = 3 } = {}) {
   range = Math.min(180, Math.max(0, Number(range) || 0));
   step = Math.max(1, Number(step) || 15);
   passes = Math.min(10, Math.max(0, Number(passes) || 0));
@@ -99,7 +95,7 @@ export function solveCollisions(
   const scale = curveTransform(layoutCurves(links, base), base).scale;
   const lines = links.map((_, i) => visiblePolyline(curveOf(i), base, i, scale));
   const costOf = (i, line) => {
-    let cost = 0;
+    let cost = selfCost(line);
     for (let j = 0; j < n; j++) if (j !== i) cost += pairCost(line, lines[j], middles);
     return cost + turning([total()[i]]);
   };
@@ -140,11 +136,34 @@ export function solveCollisions(
   // cached candidate if the exact complete drawing would become worse.
   if (result.after > before)
     result = { delta: start.map(() => [0, 0]), turns: start, linkGaps: base.linkGaps, before, after: before };
-  return adjustGaps ? adjustCollisionGaps(links, base, result, { gapRange, middleRange, passes }) : result;
+
+  return result;
+}
+
+/** Gap-first search avoids the angle-only local minimum at collapsed
+ * reference ends. Turn the separated drawing, then refine the gaps again.
+ * Every stage returns an exact refitted score and preserves the user's bounds.
+ */
+export function solveCollisions(links, shape = {}, options = {}) {
+  const { adjustGaps = false, gapRange = 0.2, middleRange = 4, passes = 3, debug = false } = options;
+  const base = shapeOf(shape);
+  let result;
+  if (adjustGaps) {
+    const turns = links.map((_, i) => base.turns[i] || [0, 0]);
+    const before = overlapCost(links, base);
+    const initial = { turns, delta: turns.map(() => [0, 0]), linkGaps: base.linkGaps, before, after: before };
+    const gaps = adjustCollisionGaps(links, base, initial, { gapRange, middleRange, passes });
+    result = solveTurns(links, { ...base, linkGaps: gaps.linkGaps }, options);
+    result.before = before;
+    result = adjustCollisionGaps(links, base, result, { gapRange, middleRange, passes });
+  } else result = solveTurns(links, base, options);
+  if (debug) console.debug('[network solver]', { links: links.length, options, clearance: base.clearance, ...result });
+  return result;
 }
 
 /** Keep each cut as a real break: no artificial chord across the missing middle. */
 export function visiblePolyline(curve, o, i, scale) {
+  if (o.clearance !== null && o.clearance !== undefined) return paintedPolyline(curve, o, i, scale);
   const before = o.linkGaps[i]?.[2] ?? o.middleGapStart;
   const after = o.linkGaps[i]?.[3] ?? o.middleGapEnd;
   if (!before && !after) return polyline(curve);
@@ -154,4 +173,62 @@ export function visiblePolyline(curve, o, i, scale) {
       ? [...(k ? [null] : []), ...Array.from({ length: SAMPLES + 1 }, (_, j) => bezier(kept, j / SAMPLES))]
       : [];
   });
+}
+
+/** Same fitted geometry, cuts and markers as the SVG, converted back to layout units. */
+function paintedPolyline(raw, o, i, scale) {
+  const fit = (point) => point.map((v) => v * scale);
+  const curve = paintedCurve(
+    {
+      segments: raw.segments.map((segment) => segment.map(fit)),
+      ...Object.fromEntries(['start', 'end', 'middle'].map((key) => [key, { ...raw[key], at: fit(raw[key].at) }])),
+    },
+    o,
+  );
+  const marks = curveMarkers(curve, o);
+  const decorate = (points, fills = []) =>
+    Object.assign(points, { width: (o.strokeWidth || 0) / scale, clearance: o.clearance / scale, fills });
+  const markLine = (m) => {
+    const points = m.outline.map((p) => p.map((v) => v / scale));
+    // Include the actual sharp miter tip, which is outside the marker centerline.
+    return decorate(points, m.fill ? [points] : []);
+  };
+  const markerLines = ['start', 'end', 'middle'].map((key) => {
+    const line = markLine(marks[key]);
+    if (o.arrowJoin === 'miter' && ['arrow', 'triangle', 'tail'].includes(o[key]) && line.length >= 3) {
+      const index = o[key] === 'triangle' ? 0 : 1;
+      const tip = line[index];
+      const previous = line[o[key] === 'triangle' ? 1 : 0];
+      const next = line[2];
+      const mid = previous.map((v, j) => (v + next[j]) / 2);
+      const dir = tip.map((v, j) => v - mid[j]);
+      const length = Math.hypot(...dir) || 1;
+      const extra = (o.strokeWidth || 0) / 2 / Math.sin((o[`${key}Angle`] * Math.PI) / 180) / scale;
+      // Conservatively include the painted apex as well as stroked arms.
+      line.push(
+        null,
+        tip.map((v, j) => v + (dir[j] / length) * extra),
+        tip,
+      );
+    }
+    return line;
+  });
+  const halves = curve.segments.map((segment, k) => {
+    const amount = o.linkGaps[i]?.[k + 2] ?? o[k ? 'middleGapEnd' : 'middleGapStart'];
+    const kept = trimCurve(segment, amount, Boolean(k));
+    return decorate(
+      kept ? Array.from({ length: SAMPLES + 1 }, (_, j) => bezier(kept, j / SAMPLES).map((v) => v / scale)) : [],
+    );
+  });
+  const all = decorate(
+    [...halves[0], null, ...halves[1], ...markerLines.flatMap((line) => [null, ...line])],
+    markerLines.flatMap((line) => line.fills),
+  );
+  all.self =
+    paintedPairCost(markerLines[0], markerLines[1]) +
+    paintedPairCost(markerLines[0], halves[1]) +
+    paintedPairCost(markerLines[1], halves[0]) +
+    paintedPairCost(markerLines[2], markerLines[0]) +
+    paintedPairCost(markerLines[2], markerLines[1]);
+  return all;
 }

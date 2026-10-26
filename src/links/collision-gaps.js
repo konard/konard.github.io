@@ -4,13 +4,17 @@
 import { overlapCost } from './collisions';
 import { GapScoreCache } from './collision-gap-cache';
 import { GAP_FIELDS } from './gaps';
-import { bezier, layout, layoutCurves, linkCurve } from './glyph';
+import { bezier, layout, layoutCurves, linkCurve, curveTransform } from './glyph';
 
 export function adjustCollisionGaps(links, base, result, { gapRange, middleRange, passes }) {
   gapRange = Math.min(1, Math.max(0, Number(gapRange) || 0));
   middleRange = Math.min(15, Math.max(0, Number(middleRange) || 0));
-  const rows = links.map((_, i) => GAP_FIELDS.map((_, k) => base.linkGaps[i]?.[k] ?? null));
-  const initial = rows.map((row) => row.map((v, k) => v ?? base[GAP_FIELDS[k].key] ?? base.gap));
+  const rows = links.map((_, i) => GAP_FIELDS.map((_, k) => result.linkGaps[i]?.[k] ?? base.linkGaps[i]?.[k] ?? null));
+  // Refine the previous stage's drawing, while keeping bounds and penalties
+  // relative to the user's original gaps throughout the joint search.
+  const initial = links.map((_, i) =>
+    GAP_FIELDS.map((field, k) => base.linkGaps[i]?.[k] ?? base[field.key] ?? base.gap),
+  );
   const currentShape = () => ({ ...base, turns: result.turns, linkGaps: rows });
   const places = layout(links.length, base, links);
   const cache = new GapScoreCache(layoutCurves(links, currentShape()), currentShape());
@@ -32,7 +36,7 @@ export function adjustCollisionGaps(links, base, result, { gapRange, middleRange
         sum + row.reduce((s, v, k) => s + Math.abs((v ?? initial[i][k]) - initial[i][k]) * (k < 2 ? 0.1 : 0.025), 0),
       0,
     );
-  let bestScore = result.after;
+  let bestScore = result.after + penalty();
   for (let pass = 0; pass < Math.min(passes, 2); pass++) {
     let improved = false;
     for (let i = 0; i < links.length; i++)
@@ -46,8 +50,14 @@ export function adjustCollisionGaps(links, base, result, { gapRange, middleRange
         const max = k < 2 ? 1 : Math.max(initial[i][k], Math.min(30, halfLength(i, k - 2) * 0.3));
         let best = kept;
         let bestState;
-        for (const fraction of [-1, -0.5, 0.5, 1]) {
-          const value = Math.round(Math.max(0, Math.min(max, initial[i][k] + range * fraction)) * 1000) / 1000;
+        for (const fraction of [-1, -0.75, -0.5, -0.25, 0.25, 0.5, 0.75, 1]) {
+          const center = pass ? (kept ?? initial[i][k]) : initial[i][k];
+          const radius = pass ? range / 4 : range;
+          const value =
+            Math.round(
+              Math.max(0, initial[i][k] - range, Math.min(max, initial[i][k] + range, center + radius * fraction)) *
+                1000,
+            ) / 1000;
           if (value === (kept ?? initial[i][k])) continue;
           rows[i][k] = value;
           const curve = k < 2 ? linkCurve(links, i, places, currentShape()) : cache.curves[i];
@@ -69,6 +79,7 @@ export function adjustCollisionGaps(links, base, result, { gapRange, middleRange
   }
   // Later reference-gap changes can shorten earlier halves or their fitted
   // scale. Enforce the cut budget against the final geometry as well.
+  cache.scale = curveTransform(cache.curves, currentShape()).scale;
   rows.forEach((row, i) => {
     for (let k = 2; k < 4; k++) {
       const max = Math.max(initial[i][k], Math.min(30, halfLength(i, k - 2) * 0.3));
