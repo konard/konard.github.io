@@ -46,7 +46,18 @@ package publication/release workflow, so there is no package version bump.
 - CV build: **all 120 PDFs pass** page-count limits, text-layer and reading-order
   checks. See `logs/cv-pdfs.log`.
 
-The complete three-engine CI matrix must pass before the pull request is ready.
+First CI run 40273493595, on implementation SHA `a20ae9c`, passed all three
+existing browser suites in Chromium, Firefox and Linux WebKit. Its new pixel
+check failed in Firefox/WebKit with zero changed pixels. Logs are preserved in
+`ci-logs/`. The standalone Firefox probe proves the screenshot API omits a
+visibly rendered blur (API 0 / display 128,000 pixels); The Linux WebKit minimal
+GTK fixture lacks actual display blur, too. See the research/API discussion in
+the case study and the upstream report. CI now uses actual display capture,
+with WebKit on macOS. The new full headed Chromium attempt reached the unchanged
+local memory ceiling before completing (1,610,035,200 bytes owned RSS); it is
+recorded in `logs/chromium-display-capture.log`, not counted as a pass.
+
+The complete revised three-engine CI matrix must pass before the pull request is ready.
 A started or resource-bounded command is not recorded as a pass.
 
 ## Test calibration
@@ -100,3 +111,23 @@ both failed before the correction (`logs/reproduce-solver-caps-probe.log` and
 cuts against the completed geometry, retaining manual starting cuts and the
 exact-score rejection check. All four bounded layouts (3/6/12/24 links) and the
 regression pass; see `logs/solver-caps.log` and `logs/solver-caps-test.log`.
+
+## First native-display CI run
+
+Run 40275047300 (`1098eca`, 05:35:32 UTC) passed all four suites in Chromium and
+Firefox, including 1,215 cards and repeated scrolls. Changed display pixels for
+glass / liquid / futuristic: Chromium **132,706 / 72,235 / 125,621**; Firefox
+**134,525 / 72,488 / 127,151**. Both have zero page errors. Complete raw browser
+artifacts, including native SVG marker measurements and before/after pixel
+probe screenshots, are archived under `ci-evidence/40275047300/`. WebKit/macOS
+failed the older harness's WebP-download assumption; its actual-encoder support
+probe now verifies the pre-existing PNG fallback on that platform. The complete
+workflow and failed job logs are preserved, with the timeout at job-log line 442.
+
+Run 40275387344 (`14cbefc`) then passed the issue #21 and #23 suites on native
+macOS WebKit 26.6. With 1,215 cards loaded, its three skin probes changed
+**88,710 / 53,077 / 81,751** display pixels, with zero page errors. The complete
+macOS artifact is under `ci-evidence/40275387344/webkit/`. Its remaining failure
+was the same WebP assumption in the second legacy export loop, now using the
+same shared encoder/fallback verification. The final matrix also expands the
+pressure fixture to the exact **4,131 cards in all three engines**.

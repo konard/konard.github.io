@@ -6,6 +6,7 @@ import { mkdir, readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { chromium, firefox, webkit } from 'playwright';
 import { preview } from 'vite';
+import { verifyWebpFallback } from './network-export-support.mjs';
 
 const engine = process.env.ENGINE || 'chromium';
 const output = process.env.CAPTURE_DIR;
@@ -149,26 +150,9 @@ try {
     ['WebP', 'webp'],
     ['.lino', 'lino'],
   ]) {
-    // Safari's native canvas encoder can lack WebP although it decodes WebP.
-    // Verify the app's existing explicit PNG fallback instead of waiting for a
-    // download that this platform cannot encode. Other formats remain required.
-    if (ext === 'webp') {
-      const supported = await page.evaluate(
-        () =>
-          new Promise((resolve) =>
-            document.createElement('canvas').toBlob((b) => resolve(b?.type === 'image/webp'), 'image/webp'),
-          ),
-      );
-      if (!supported) {
-        await page.getByRole('button', { name: `⤓ ${label}`, exact: true }).click();
-        await page.waitForFunction(() =>
-          document
-            .querySelector('.network-share__status')
-            ?.textContent.includes('image/webp is not supported; use PNG instead'),
-        );
-        console.log(`${engine}: unsupported WebP encoder exposes PNG fallback`);
-        continue;
-      }
+    if (ext === 'webp' && (await verifyWebpFallback(page))) {
+      console.log(`${engine}: unsupported WebP encoder exposes PNG fallback`);
+      continue;
     }
     const waiting = page.waitForEvent('download');
     await page.getByRole('button', { name: `⤓ ${label}`, exact: true }).click();

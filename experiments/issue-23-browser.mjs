@@ -9,7 +9,7 @@ import { displayScreenshot } from './issue-23-display-capture.mjs';
 const engine = process.env.ENGINE || 'chromium';
 const output = process.env.CAPTURE_DIR || 'docs/case-studies/issue-23/screenshots';
 const data = process.env.RESULT_DIR || 'docs/case-studies/issue-23/data';
-// CI tests 1,215 cards. The local, memory-guarded stress run tests the reported 4,131.
+// Default: 1,215 cards. CI and guarded stress runs test the reported 4,131.
 const batches = Math.min(8, Math.max(2, Number(process.env.CARD_BATCHES) || 2));
 await mkdir(output, { recursive: true });
 await mkdir(data, { recursive: true });
