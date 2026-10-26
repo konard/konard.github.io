@@ -2,6 +2,7 @@ import { expect, it } from 'vitest';
 import { decode } from './configurations';
 import { overlapCost, pairCost, solveCollisions } from './collisions';
 import { withGaps } from './gaps';
+import { bezier, glyphCurves } from './glyph';
 import { networkSvg } from './render';
 import { STYLE_DEFAULTS, normalizeStyle, shapeOfStyle, styleFromParams, styleToParams, withTurns } from './style';
 
@@ -72,4 +73,25 @@ it('bounds gap search cost for a dense 24-link drawing and returns its exact sco
   expect(performance.now() - started).toBeLessThan(10000);
   expect(result.after).toBeLessThan(result.before);
   expect(overlapCost(links, { ...shape, turns: result.turns, linkGaps: result.linkGaps })).toBeCloseTo(result.after, 8);
+}, 15000);
+
+it('keeps automatic cuts within the final fitted half-length after reference gaps change', () => {
+  const links = Array.from({ length: 24 }, (_, i) => [((i + 1) % 24) + 1, ((i + 12) % 24) + 1]);
+  const shape = shapeOfStyle(STYLE_DEFAULTS, links.length);
+  const result = solveCollisions(links, shape, { range: 0, adjustGaps: true, gapRange: 1, middleRange: 15 });
+  expect(result.after).toBeLessThan(result.before);
+  const fitted = { ...shape, turns: result.turns, linkGaps: result.linkGaps };
+  glyphCurves(links, fitted).forEach((curve, i) => {
+    curve.segments.forEach((segment, k) => {
+      let length = 0;
+      let previous = segment[0];
+      for (let j = 1; j <= 1024; j++) {
+        const point = bezier(segment, j / 1024);
+        length += Math.hypot(point[0] - previous[0], point[1] - previous[1]);
+        previous = point;
+      }
+      expect(result.linkGaps[i]?.[k + 2] ?? 0).toBeLessThanOrEqual(length * 0.3 + 0.001);
+    });
+  });
+  expect(overlapCost(links, fitted)).toBeCloseTo(result.after, 8);
 }, 15000);

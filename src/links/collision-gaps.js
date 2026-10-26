@@ -67,6 +67,14 @@ export function adjustCollisionGaps(links, base, result, { gapRange, middleRange
       }
     if (!improved) break;
   }
+  // Later reference-gap changes can shorten earlier halves or their fitted
+  // scale. Enforce the cut budget against the final geometry as well.
+  rows.forEach((row, i) => {
+    for (let k = 2; k < 4; k++) {
+      const max = Math.max(initial[i][k], Math.min(30, halfLength(i, k - 2) * 0.3));
+      if (row[k] > max) row[k] = Math.floor(max * 1000) / 1000;
+    }
+  });
   const after = overlapCost(links, currentShape());
   return after <= result.after ? { ...result, linkGaps: rows, after } : result;
 }
