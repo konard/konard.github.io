@@ -1,0 +1,113 @@
+(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - import "./fields" without a file extension (src/settings/schema.js:15:32). Add the file extension
+  - import "./schema.background" without a file extension (src/settings/schema.js:16:37). Add the file extension
+  - import "./schema.layers" without a file extension (src/settings/schema.js:17:32). Add the file extension
+  - import "./schema.skins" without a file extension (src/settings/schema.js:18:31). Add the file extension
+  - import "./schema.sound" without a file extension (src/settings/schema.js:19:31). Add the file extension
+  - import "./schema.skins" without a file extension (src/settings/schema.js:21:33). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.background.js:3:54). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.layers.js:8:54). Add the file extension
+  - import "../skins.frames" without a file extension (src/settings/schema.skins.js:3:25). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.sound.js:7:47). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.skins.js:4:47). Add the file extension
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.
+Geometry, URL and number editing checks passed. Auditing sliders.
+Keyboard: style-layoutAspect
+Keyboard: style-sourceAngle
+Keyboard: style-targetAngle
+Keyboard: style-tension
+Keyboard: style-bulge
+Keyboard: style-loopBend
+Keyboard: style-startGap
+Keyboard: style-endGap
+Keyboard: style-loop
+Keyboard: style-spread
+Keyboard: style-rotation
+Keyboard: style-padding
+Keyboard: style-startSize
+Keyboard: style-startOffset
+Keyboard: style-startAcross
+Keyboard: style-startRotation
+Keyboard: style-endSize
+Keyboard: style-endAngle
+Keyboard: style-endOffset
+Keyboard: style-endAcross
+Keyboard: style-endRotation
+Keyboard: style-middleSize
+Keyboard: style-middleOffset
+Keyboard: style-middleAcross
+Keyboard: style-middleGapStart
+Keyboard: style-middleGapEnd
+Keyboard: style-strokeWidth
+Keyboard: style-opacity
+Keyboard: style-glow
+Keyboard: style-width
+Keyboard: style-height
+Keyboard: style-quality
+Keyboard: style-clearance
+Keyboard: style-solveGapRange
+Keyboard: style-solveMiddleRange
+Keyboard: style-solveRange
+Keyboard: style-solveStep
+Keyboard: setting-nebula-level
+Keyboard: setting-nebula-speed
+Keyboard: setting-nebula-gas
+Keyboard: setting-nebula-hue
+Keyboard: setting-nebula-stars
+Keyboard: setting-nebula-starBrightness
+Keyboard: setting-nebula-twinkle
+Keyboard: setting-nebula-vignette
+Keyboard: setting-nebula-zoom
+Keyboard: setting-nebula-starSize
+Keyboard: setting-nebula-resolution
+Keyboard: setting-nebula-fps
+Keyboard: setting-stars-level
+Keyboard: setting-stars-fps
+Keyboard: setting-stars1-count
+Keyboard: setting-stars1-size
+Keyboard: setting-stars1-sizeSpread
+Keyboard: setting-stars1-hueSpread
+Keyboard: setting-stars1-brightness
+Keyboard: setting-stars1-glow
+Keyboard: setting-stars1-twinkle
+Keyboard: setting-stars1-twinkleDepth
+Keyboard: setting-stars1-rotation
+Keyboard: setting-stars1-spin
+Keyboard: setting-stars1-direction
+Keyboard: setting-stars1-speed
+Keyboard: setting-stars1-streak
+Keyboard: setting-grid-level
+Keyboard: setting-grid-size
+Keyboard: setting-grid-period
+Keyboard: setting-grid-width
+Keyboard: setting-beams-level
+Keyboard: setting-beams-count
+Keyboard: setting-beams-speed
+Keyboard: setting-beams-length
+Keyboard: setting-beams-width
+Keyboard: setting-beams-glow
+Keyboard: setting-beams-pause
+Keyboard: setting-rain-level
+Keyboard: setting-rain-step
+Keyboard: setting-rain-speeds
+Keyboard: setting-rain-density
+Keyboard: setting-rain-restart
+Keyboard: setting-rain-fade
+Keyboard: setting-rain-lineWidth
+Keyboard: setting-rain-padding
+Keyboard: setting-rain-glow
+Keyboard: setting-rain-minLinks
+Keyboard: setting-rain-maxLinks
+Keyboard: setting-glass-level
+Keyboard: setting-glass-blur
+Keyboard: setting-glass-bar
+Keyboard: setting-glass-radius
+Keyboard: setting-glass-saturation
+Keyboard: setting-glass-edge
+[
+  "historical URL upgrades through history, compacts default rows, and reloads the exact SVG",
+  "native rasterized closed gaps agree within 0.12 image units at 5°, 15°, 45°, 85°",
+  "automatic spacing preserves the closed link, changes open references, and applies/shares/reloads exactly",
+  "0.07↔0.08 arrows/native stepping, inherited native/keyboard steps, negative typing, select-all, delete, Home and Tab",
+  "all 37 rendered network and 55 settings sliders support all eight navigation keys"
+]

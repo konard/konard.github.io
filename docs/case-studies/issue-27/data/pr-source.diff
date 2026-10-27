@@ -1,0 +1,4297 @@
+diff --git a/.github/workflows/github-pages.yml b/.github/workflows/github-pages.yml
+index 71b6564..f369bf8 100644
+--- a/.github/workflows/github-pages.yml
++++ b/.github/workflows/github-pages.yml
+@@ -209,6 +209,13 @@ jobs:
+           CAPTURE_DIR: browser-results/screenshots/issue25
+           RESULT_DIR: browser-results/data/issue25
+ 
++      - name: Verify equal closed gaps, historical URLs and numeric keyboard controls
++        if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
++        run: npm run test:network:issue27
++        env:
++          CAPTURE_DIR: browser-results/screenshots/issue27
++          RESULT_DIR: browser-results/data/issue27
++
+       - name: Preserve browser evidence
+         if: always()
+         uses: actions/upload-artifact@v7
+diff --git a/.gitkeep b/.gitkeep
+new file mode 100644
+index 0000000..1f8c4cf
+--- /dev/null
++++ b/.gitkeep
+@@ -0,0 +1 @@
++# .gitkeep file auto-generated at 2026-10-27T19:52:00.320Z for PR creation at branch issue-27-5cf85bfa2348 for issue https://github.com/konard/konard.github.io/issues/27
+\ No newline at end of file
+diff --git a/docs/case-studies/issue-27/data/url-schema-history.json b/docs/case-studies/issue-27/data/url-schema-history.json
+new file mode 100644
+index 0000000..bd4691a
+--- /dev/null
++++ b/docs/case-studies/issue-27/data/url-schema-history.json
+@@ -0,0 +1,3270 @@
++[
++  {
++    "sha": "a9001c9cb3ce7763a1f2674efa76693236526bf0",
++    "fields": [
++      {
++        "key": "placement",
++        "type": "select",
++        "d": "auto",
++        "options": [
++          "auto",
++          "circle",
++          "square",
++          "hex",
++          "dice",
++          "cards",
++          "spiral",
++          "force"
++        ]
++      },
++      {
++        "key": "layoutAspect",
++        "type": "range",
++        "d": 1,
++        "min": 0.3,
++        "max": 3
++      },
++      {
++        "key": "columns",
++        "type": "range",
++        "d": 0,
++        "min": 0,
++        "max": 30
++      },
++      {
++        "key": "forceDistance",
++        "type": "range",
++        "d": 1,
++        "min": 0.2,
++        "max": 3
++      },
++      {
++        "key": "forceCharge",
++        "type": "range",
++        "d": 0.6,
++        "min": 0.2,
++        "max": 3
++      },
++      {
++        "key": "forceCollision",
++        "type": "range",
++        "d": 0.6,
++        "min": 0.2,
++        "max": 3
++      },
++      {
++        "key": "bendMode",
++        "type": "select",
++        "d": "curve",
++        "options": [
++          "curve",
++          "rotate"
++        ]
++      },
++      {
++        "key": "angles",
++        "type": "select",
++        "d": "fixed",
++        "options": [
++          "mirror",
++          "fixed"
++        ]
++      },
++      {
++        "key": "sourceAngle",
++        "type": "range",
++        "d": 30,
++        "min": -180,
++        "max": 180
++      },
++      {
++        "key": "targetAngle",
++        "type": "range",
++        "d": 30,
++        "min": -180,
++        "max": 180
++      },
++      {
++        "key": "lens",
++        "type": "toggle",
++        "d": true
++      },
++      {
++        "key": "tension",
++        "type": "range",
++        "d": 0.4,
++        "min": 0,
++        "max": 2
++      },
++      {
++        "key": "bulge",
++        "type": "range",
++        "d": 0,
++        "min": -180,
++        "max": 180
++      },
++      {
++        "key": "loopBend",
++        "type": "range",
++        "d": 0,
++        "min": -180,
++        "max": 180
++      },
++      {
++        "key": "startGap",
++        "type": "range",
++        "d": 0.08,
++        "min": 0,
++        "max": 1
++      },
++      {
++        "key": "endGap",
++        "type": "range",
++        "d": 0.08,
++        "min": 0,
++        "max": 1
++      },
++      {
++        "key": "free",
++        "type": "range",
++        "d": 1,
++        "min": 0.05,
++        "max": 5
++      },
++      {
++        "key": "loop",
++        "type": "range",
++        "d": 1,
++        "min": 0.05,
++        "max": 5
++      },
++      {
++        "key": "spread",
++        "type": "range",
++        "d": 1,
++        "min": 0.1,
++        "max": 5
++      },
++      {
++        "key": "rotation",
++        "type": "range",
++        "d": 0,
++        "min": -180,
++        "max": 359
++      },
++      {
++        "key": "padding",
++        "type": "range",
++        "d": 9,
++        "min": 0,
++        "max": 40
++      },
++      {
++        "key": "arrowJoin",
++        "type": "select",
++        "d": "miter",
++        "options": [
++          "miter",
++          "round",
++          "bevel",
++          "inherit"
++        ]
++      },
++      {
++        "key": "balanceArrows",
++        "type": "toggle",
++        "d": true
++      },
++      {
++        "key": "start",
++        "type": "select",
++        "d": "bar",
++        "options": [
++          "bar",
++          "arrow",
++          "triangle",
++          "tail",
++          "dot",
++          "circle",
++          "square",
++          "diamond",
++          "none"
++        ]
++      },
++      {
++        "key": "startSize",
++        "type": "range",
++        "d": 2.5,
++        "min": 0.5,
++        "max": 15
++      },
++      {
++        "key": "startAngle",
++        "type": "range",
++        "d": 70,
++        "min": 5,
++        "max": 85
++      },
++      {
++        "key": "startOffset",
++        "type": "range",
++        "d": 2.5,
++        "min": -20,
++        "max": 20
++      },
++      {
++        "key": "startAcross",
++        "type": "range",
++        "d": 0,
++        "min": -20,
++        "max": 20
++      },
++      {
++        "key": "startRotation",
++        "type": "range",
++        "d": 0,
++        "min": -180,
++        "max": 180
++      },
++      {
++        "key": "end",
++        "type": "select",
++        "d": "arrow",
++        "options": [
++          "bar",
++          "arrow",
++          "triangle",
++          "tail",
++          "dot",
++          "circle",
++          "square",
++          "diamond",
++          "none"
++        ]
++      },
++      {
++        "key": "endSize",
++        "type": "range",
++        "d": 3.5,
++        "min": 0.5,
++        "max": 15
++      },
++      {
++        "key": "endAngle",
++        "type": "range",
++        "d": 45,
++        "min": 5,
++        "max": 85
++      },
++      {
++        "key": "endOffset",
++        "type": "range",
++        "d": 0,
++        "min": -20,
++        "max": 20
++      },
++      {
++        "key": "endAcross",
++        "type": "range",
++        "d": 0,
++        "min": -20,
++        "max": 20
++      },
++      {
++        "key": "endRotation",
++        "type": "range",
++        "d": 0,
++        "min": -180,
++        "max": 180
++      },
++      {
++        "key": "middle",
++        "type": "select",
++        "d": "dot",
++        "options": [
++          "bar",
++          "arrow",
++          "triangle",
++          "tail",
++          "dot",
++          "circle",
++          "square",
++          "diamond",
++          "none"
++        ]
++      },
++      {
++        "key": "middleSize",
++        "type": "range",
++        "d": 2,
++        "min": 0.5,
++        "max": 15
++      },
++      {
++        "key": "middleAngle",
++        "type": "range",
++        "d": 30,
++        "min": 5,
++        "max": 85
++      },
++      {
++        "key": "middleOffset",
++        "type": "range",
++        "d": 0,
++        "min": -20,
++        "max": 20
++      },
++      {
++        "key": "middleAcross",
++        "type": "range",
++        "d": 0,
++        "min": -20,
++        "max": 20
++      },
++      {
++        "key": "middleRotation",
++        "type": "range",
++        "d": 0,
++        "min": -180,
++        "max": 180
++      },
++      {
++        "key": "middleGapStart",
++        "type": "range",
++        "d": 0,
++        "min": 0,
++        "max": 30
++      },
++      {
++        "key": "middleGapEnd",
++        "type": "range",
++        "d": 0,
++        "min": 0,
++        "max": 30
++      },
++      {
++        "key": "strokeWidth",
++        "type": "range",
++        "d": 1.3,
++        "min": 0.5,
++        "max": 10
++      },
++      {
++        "key": "dash",
++        "type": "select",
++        "d": "solid",
++        "options": [
++          "solid",
++          "dashed",
++          "dotted",
++          "dashdot",
++          "long"
++        ]
++      },
++      {
++        "key": "linecap",
++        "type": "select",
++        "d": "round",
++        "options": [
++          "round",
++          "butt",
++          "square"
++        ]
++      },
++      {
++        "key": "linejoin",
++        "type": "select",
++        "d": "miter",
++        "options": [
++          "round",
++          "miter",
++          "bevel"
++        ]
++      },
++      {
++        "key": "opacity",
++        "type": "range",
++        "d": 1,
++        "min": 0.1,
++        "max": 1
++      },
++      {
++        "key": "glow",
++        "type": "range",
++        "d": 0,
++        "min": 0,
++        "max": 12
++      },
++      {
++        "key": "palette",
++        "type": "select",
++        "d": "site",
++        "options": [
++          "site",
++          "neon",
++          "pastel",
++          "warm",
++          "cold",
++          "print",
++          "mono",
++          "custom"
++        ]
++      },
++      {
++        "key": "monoColor",
++        "type": "color",
++        "d": "#e6edf7"
++      },
++      {
++        "key": "background",
++        "type": "select",
++        "d": "solid",
++        "options": [
++          "transparent",
++          "solid",
++          "linear",
++          "radial"
++        ]
++      },
++      {
++        "key": "bgColor",
++        "type": "color",
++        "d": "#000000"
++      },
++      {
++        "key": "bgColor2",
++        "type": "color",
++        "d": "#1e1b4b"
++      },
++      {
++        "key": "bgAngle",
++        "type": "range",
++        "d": 135,
++        "min": 0,
++        "max": 359
++      },
++      {
++        "key": "card",
++        "type": "toggle",
++        "d": false
++      },
++      {
++        "key": "cardColor",
++        "type": "color",
++        "d": "#0d1220"
++      },
++      {
++        "key": "cardOpacity",
++        "type": "range",
++        "d": 0.8,
++        "min": 0,
++        "max": 1
++      },
++      {
++        "key": "borderStyle",
++        "type": "select",
++        "d": "solid",
++        "options": [
++          "solid",
++          "dashed",
++          "dotted",
++          "double",
++          "none"
++        ]
++      },
++      {
++        "key": "border",
++        "type": "range",
++        "d": 0.6,
++        "min": 0.1,
++        "max": 6
++      },
++      {
++        "key": "borderColor",
++        "type": "color",
++        "d": "#2b3b57"
++      },
++      {
++        "key": "radius",
++        "type": "range",
++        "d": 10,
++        "min": 0,
++        "max": 50
++      },
++      {
++        "key": "inset",
++        "type": "range",
++        "d": 3,
++        "min": 0,
++        "max": 30
++      },
++      {
++        "key": "notation",
++        "type": "select",
++        "d": "L",
++        "options": [
++          "L",
++          "R"
++        ]
++      },
++      {
++        "key": "caption",
++        "type": "select",
++        "d": "none",
++        "options": [
++          "none",
++          "theory",
++          "pairs",
++          "number",
++          "links",
++          "custom"
++        ]
++      },
++      {
++        "key": "captionText",
++        "type": "text",
++        "d": "",
++        "max": 80
++      },
++      {
++        "key": "captionColor",
++        "type": "color",
++        "d": "#7d8aa3"
++      },
++      {
++        "key": "captionSize",
++        "type": "range",
++        "d": 6,
++        "min": 3,
++        "max": 14
++      },
++      {
++        "key": "captionFont",
++        "type": "select",
++        "d": "mono",
++        "options": [
++          "mono",
++          "sans",
++          "serif"
++        ]
++      },
++      {
++        "key": "width",
++        "type": "range",
++        "d": 2048,
++        "min": 64,
++        "max": 4096
++      },
++      {
++        "key": "height",
++        "type": "range",
++        "d": 2048,
++        "min": 64,
++        "max": 4096
++      },
++      {
++        "key": "quality",
++        "type": "range",
++        "d": 0.92,
++        "min": 0.5,
++        "max": 1
++      },
++      {
++        "key": "solve",
++        "type": "toggle",
++        "d": false
++      },
++      {
++        "key": "clearance",
++        "type": "range",
++        "d": 1,
++        "min": 0,
++        "max": 10
++      },
++      {
++        "key": "solveDebug",
++        "type": "toggle",
++        "d": false
++      },
++      {
++        "key": "solveGaps",
++        "type": "toggle",
++        "d": true
++      },
++      {
++        "key": "solveGapRange",
++        "type": "range",
++        "d": 0.2,
++        "min": 0,
++        "max": 1
++      },
++      {
++        "key": "solveMiddleRange",
++        "type": "range",
++        "d": 4,
++        "min": 0,
++        "max": 15
++      },
++      {
++        "key": "solveRange",
++        "type": "range",
++        "d": 60,
++        "min": 0,
++        "max": 180
++      },
++      {
++        "key": "solveStep",
++        "type": "range",
++        "d": 15,
++        "min": 5,
++        "max": 30
++      },
++      {
++        "key": "colors",
++        "type": "list",
++        "d": "#22d3ee,#c084fc,#f472b6,#facc15,#34d399,#fb923c,#60a5fa,#f87171,#a3e635"
++      },
++      {
++        "key": "gap",
++        "type": "range",
++        "d": 0.08,
++        "min": 0,
++        "max": 0.4
++      },
++      {
++        "key": "turns",
++        "type": "list",
++        "d": ""
++      },
++      {
++        "key": "gaps",
++        "type": "list",
++        "d": ""
++      }
++    ]
++  },
++  {
++    "sha": "d2bd08a4efe6dfe935a16f5375bfed81b3b27dec",
++    "fields": [
++      {
++        "key": "placement",
++        "type": "select",
++        "d": "auto",
++        "options": [
++          "auto",
++          "circle",
++          "square",
++          "hex",
++          "dice",
++          "cards",
++          "spiral",
++          "force"
++        ]
++      },
++      {
++        "key": "layoutAspect",
++        "type": "range",
++        "d": 1,
++        "min": 0.3,
++        "max": 3
++      },
++      {
++        "key": "columns",
++        "type": "range",
++        "d": 0,
++        "min": 0,
++        "max": 30
++      },
++      {
++        "key": "forceDistance",
++        "type": "range",
++        "d": 1,
++        "min": 0.2,
++        "max": 3
++      },
++      {
++        "key": "forceCharge",
++        "type": "range",
++        "d": 0.6,
++        "min": 0.2,
++        "max": 3
++      },
++      {
++        "key": "forceCollision",
++        "type": "range",
++        "d": 0.6,
++        "min": 0.2,
++        "max": 3
++      },
++      {
++        "key": "bendMode",
++        "type": "select",
++        "d": "curve",
++        "options": [
++          "curve",
++          "rotate"
++        ]
++      },
++      {
++        "key": "angles",
++        "type": "select",
++        "d": "fixed",
++        "options": [
++          "mirror",
++          "fixed"
++        ]
++      },
++      {
++        "key": "sourceAngle",
++        "type": "range",
++        "d": 30,
++        "min": -180,
++        "max": 180
++      },
++      {
++        "key": "targetAngle",
++        "type": "range",
++        "d": 30,
++        "min": -180,
++        "max": 180
++      },
++      {
++        "key": "lens",
++        "type": "toggle",
++        "d": true
++      },
++      {
++        "key": "tension",
++        "type": "range",
++        "d": 0.4,
++        "min": 0,
++        "max": 2
++      },
++      {
++        "key": "bulge",
++        "type": "range",
++        "d": 0,
++        "min": -180,
++        "max": 180
++      },
++      {
++        "key": "loopBend",
++        "type": "range",
++        "d": 0,
++        "min": -180,
++        "max": 180
++      },
++      {
++        "key": "startGap",
++        "type": "range",
++        "d": 0.08,
++        "min": 0,
++        "max": 1
++      },
++      {
++        "key": "endGap",
++        "type": "range",
++        "d": 0.08,
++        "min": 0,
++        "max": 1
++      },
++      {
++        "key": "free",
++        "type": "range",
++        "d": 1,
++        "min": 0.05,
++        "max": 5
++      },
++      {
++        "key": "loop",
++        "type": "range",
++        "d": 1,
++        "min": 0.05,
++        "max": 5
++      },
++      {
++        "key": "spread",
++        "type": "range",
++        "d": 1,
++        "min": 0.1,
++        "max": 5
++      },
++      {
++        "key": "rotation",
++        "type": "range",
++        "d": 0,
++        "min": -180,
++        "max": 359
++      },
++      {
++        "key": "padding",
++        "type": "range",
++        "d": 9,
++        "min": 0,
++        "max": 40
++      },
++      {
++        "key": "start",
++        "type": "select",
++        "d": "bar",
++        "options": [
++          "bar",
++          "arrow",
++          "triangle",
++          "tail",
++          "dot",
++          "circle",
++          "square",
++          "diamond",
++          "none"
++        ]
++      },
++      {
++        "key": "startSize",
++        "type": "range",
++        "d": 2.5,
++        "min": 0.5,
++        "max": 15
++      },
++      {
++        "key": "startAngle",
++        "type": "range",
++        "d": 70,
++        "min": 5,
++        "max": 85
++      },
++      {
++        "key": "startOffset",
++        "type": "range",
++        "d": 2.5,
++        "min": -20,
++        "max": 20
++      },
++      {
++        "key": "startAcross",
++        "type": "range",
++        "d": 0,
++        "min": -20,
++        "max": 20
++      },
++      {
++        "key": "startRotation",
++        "type": "range",
++        "d": 0,
++        "min": -180,
++        "max": 180
++      },
++      {
++        "key": "end",
++        "type": "select",
++        "d": "arrow",
++        "options": [
++          "bar",
++          "arrow",
++          "triangle",
++          "tail",
++          "dot",
++          "circle",
++          "square",
++          "diamond",
++          "none"
++        ]
++      },
++      {
++        "key": "endSize",
++        "type": "range",
++        "d": 3.5,
++        "min": 0.5,
++        "max": 15
++      },
++      {
++        "key": "endAngle",
++        "type": "range",
++        "d": 45,
++        "min": 5,
++        "max": 85
++      },
++      {
++        "key": "endOffset",
++        "type": "range",
++        "d": 0,
++        "min": -20,
++        "max": 20
++      },
++      {
++        "key": "endAcross",
++        "type": "range",
++        "d": 0,
++        "min": -20,
++        "max": 20
++      },
++      {
++        "key": "endRotation",
++        "type": "range",
++        "d": 0,
++        "min": -180,
++        "max": 180
++      },
++      {
++        "key": "middle",
++        "type": "select",
++        "d": "dot",
++        "options": [
++          "bar",
++          "arrow",
++          "triangle",
++          "tail",
++          "dot",
++          "circle",
++          "square",
++          "diamond",
++          "none"
++        ]
++      },
++      {
++        "key": "middleSize",
++        "type": "range",
++        "d": 2,
++        "min": 0.5,
++        "max": 15
++      },
++      {
++        "key": "middleAngle",
++        "type": "range",
++        "d": 30,
++        "min": 5,
++        "max": 85
++      },
++      {
++        "key": "middleOffset",
++        "type": "range",
++        "d": 0,
++        "min": -20,
++        "max": 20
++      },
++      {
++        "key": "middleAcross",
++        "type": "range",
++        "d": 0,
++        "min": -20,
++        "max": 20
++      },
++      {
++        "key": "middleRotation",
++        "type": "range",
++        "d": 0,
++        "min": -180,
++        "max": 180
++      },
++      {
++        "key": "middleGapStart",
++        "type": "range",
++        "d": 0,
++        "min": 0,
++        "max": 30
++      },
++      {
++        "key": "middleGapEnd",
++        "type": "range",
++        "d": 0,
++        "min": 0,
++        "max": 30
++      },
++      {
++        "key": "strokeWidth",
++        "type": "range",
++        "d": 1.3,
++        "min": 0.5,
++        "max": 10
++      },
++      {
++        "key": "dash",
++        "type": "select",
++        "d": "solid",
++        "options": [
++          "solid",
++          "dashed",
++          "dotted",
++          "dashdot",
++          "long"
++        ]
++      },
++      {
++        "key": "linecap",
++        "type": "select",
++        "d": "round",
++        "options": [
++          "round",
++          "butt",
++          "square"
++        ]
++      },
++      {
++        "key": "linejoin",
++        "type": "select",
++        "d": "miter",
++        "options": [
++          "round",
++          "miter",
++          "bevel"
++        ]
++      },
++      {
++        "key": "opacity",
++        "type": "range",
++        "d": 1,
++        "min": 0.1,
++        "max": 1
++      },
++      {
++        "key": "glow",
++        "type": "range",
++        "d": 0,
++        "min": 0,
++        "max": 12
++      },
++      {
++        "key": "palette",
++        "type": "select",
++        "d": "site",
++        "options": [
++          "site",
++          "neon",
++          "pastel",
++          "warm",
++          "cold",
++          "print",
++          "mono",
++          "custom"
++        ]
++      },
++      {
++        "key": "monoColor",
++        "type": "color",
++        "d": "#e6edf7"
++      },
++      {
++        "key": "background",
++        "type": "select",
++        "d": "solid",
++        "options": [
++          "transparent",
++          "solid",
++          "linear",
++          "radial"
++        ]
++      },
++      {
++        "key": "bgColor",
++        "type": "color",
++        "d": "#000000"
++      },
++      {
++        "key": "bgColor2",
++        "type": "color",
++        "d": "#1e1b4b"
++      },
++      {
++        "key": "bgAngle",
++        "type": "range",
++        "d": 135,
++        "min": 0,
++        "max": 359
++      },
++      {
++        "key": "card",
++        "type": "toggle",
++        "d": false
++      },
++      {
++        "key": "cardColor",
++        "type": "color",
++        "d": "#0d1220"
++      },
++      {
++        "key": "cardOpacity",
++        "type": "range",
++        "d": 0.8,
++        "min": 0,
++        "max": 1
++      },
++      {
++        "key": "borderStyle",
++        "type": "select",
++        "d": "solid",
++        "options": [
++          "solid",
++          "dashed",
++          "dotted",
++          "double",
++          "none"
++        ]
++      },
++      {
++        "key": "border",
++        "type": "range",
++        "d": 0.6,
++        "min": 0.1,
++        "max": 6
++      },
++      {
++        "key": "borderColor",
++        "type": "color",
++        "d": "#2b3b57"
++      },
++      {
++        "key": "radius",
++        "type": "range",
++        "d": 10,
++        "min": 0,
++        "max": 50
++      },
++      {
++        "key": "inset",
++        "type": "range",
++        "d": 3,
++        "min": 0,
++        "max": 30
++      },
++      {
++        "key": "notation",
++        "type": "select",
++        "d": "L",
++        "options": [
++          "L",
++          "R"
++        ]
++      },
++      {
++        "key": "caption",
++        "type": "select",
++        "d": "none",
++        "options": [
++          "none",
++          "theory",
++          "pairs",
++          "number",
++          "links",
++          "custom"
++        ]
++      },
++      {
++        "key": "captionText",
++        "type": "text",
++        "d": "",
++        "max": 80
++      },
++      {
++        "key": "captionColor",
++        "type": "color",
++        "d": "#7d8aa3"
++      },
++      {
++        "key": "captionSize",
++        "type": "range",
++        "d": 6,
++        "min": 3,
++        "max": 14
++      },
++      {
++        "key": "captionFont",
++        "type": "select",
++        "d": "mono",
++        "options": [
++          "mono",
++          "sans",
++          "serif"
++        ]
++      },
++      {
++        "key": "width",
++        "type": "range",
++        "d": 2048,
++        "min": 64,
++        "max": 4096
++      },
++      {
++        "key": "height",
++        "type": "range",
++        "d": 2048,
++        "min": 64,
++        "max": 4096
++      },
++      {
++        "key": "quality",
++        "type": "range",
++        "d": 0.92,
++        "min": 0.5,
++        "max": 1
++      },
++      {
++        "key": "solve",
++        "type": "toggle",
++        "d": false
++      },
++      {
++        "key": "solveGaps",
++        "type": "toggle",
++        "d": true
++      },
++      {
++        "key": "solveGapRange",
++        "type": "range",
++        "d": 0.2,
++        "min": 0,
++        "max": 1
++      },
++      {
++        "key": "solveMiddleRange",
++        "type": "range",
++        "d": 4,
++        "min": 0,
++        "max": 15
++      },
++      {
++        "key": "solveRange",
++        "type": "range",
++        "d": 60,
++        "min": 0,
++        "max": 180
++      },
++      {
++        "key": "solveStep",
++        "type": "range",
++        "d": 15,
++        "min": 5,
++        "max": 30
++      },
++      {
++        "key": "colors",
++        "type": "list",
++        "d": "#22d3ee,#c084fc,#f472b6,#facc15,#34d399,#fb923c,#60a5fa,#f87171,#a3e635"
++      },
++      {
++        "key": "gap",
++        "type": "range",
++        "d": 0.08,
++        "min": 0,
++        "max": 0.4
++      },
++      {
++        "key": "turns",
++        "type": "list",
++        "d": ""
++      },
++      {
++        "key": "gaps",
++        "type": "list",
++        "d": ""
++      }
++    ]
++  },
++  {
++    "sha": "30e15178735dbf2f8a1726f4d78f73d9abceed9f",
++    "fields": [
++      {
++        "key": "placement",
++        "type": "select",
++        "d": "auto",
++        "options": [
++          "auto",
++          "circle",
++          "square",
++          "hex",
++          "dice",
++          "cards",
++          "spiral",
++          "force"
++        ]
++      },
++      {
++        "key": "layoutAspect",
++        "type": "range",
++        "d": 1,
++        "min": 0.3,
++        "max": 3
++      },
++      {
++        "key": "columns",
++        "type": "range",
++        "d": 0,
++        "min": 0,
++        "max": 30
++      },
++      {
++        "key": "forceDistance",
++        "type": "range",
++        "d": 1,
++        "min": 0.2,
++        "max": 3
++      },
++      {
++        "key": "forceCharge",
++        "type": "range",
++        "d": 0.6,
++        "min": 0.2,
++        "max": 3
++      },
++      {
++        "key": "forceCollision",
++        "type": "range",
++        "d": 0.6,
++        "min": 0.2,
++        "max": 3
++      },
++      {
++        "key": "bendMode",
++        "type": "select",
++        "d": "curve",
++        "options": [
++          "curve",
++          "rotate"
++        ]
++      },
++      {
++        "key": "angles",
++        "type": "select",
++        "d": "fixed",
++        "options": [
++          "mirror",
++          "fixed"
++        ]
++      },
++      {
++        "key": "sourceAngle",
++        "type": "range",
++        "d": 30,
++        "min": -90,
++        "max": 90
++      },
++      {
++        "key": "targetAngle",
++        "type": "range",
++        "d": 30,
++        "min": -90,
++        "max": 90
++      },
++      {
++        "key": "lens",
++        "type": "toggle",
++        "d": true
++      },
++      {
++        "key": "tension",
++        "type": "range",
++        "d": 0.4,
++        "min": 0,
++        "max": 1
++      },
++      {
++        "key": "bulge",
++        "type": "range",
++        "d": 20,
++        "min": 0,
++        "max": 90
++      },
++      {
++        "key": "startGap",
++        "type": "range",
++        "d": 0.08,
++        "min": 0,
++        "max": 0.4
++      },
++      {
++        "key": "endGap",
++        "type": "range",
++        "d": 0.08,
++        "min": 0,
++        "max": 0.4
++      },
++      {
++        "key": "free",
++        "type": "range",
++        "d": 1,
++        "min": 0.2,
++        "max": 3
++      },
++      {
++        "key": "loop",
++        "type": "range",
++        "d": 1,
++        "min": 0.3,
++        "max": 2.5
++      },
++      {
++        "key": "spread",
++        "type": "range",
++        "d": 1,
++        "min": 0.5,
++        "max": 2.5
++      },
++      {
++        "key": "rotation",
++        "type": "range",
++        "d": 0,
++        "min": 0,
++        "max": 359
++      },
++      {
++        "key": "padding",
++        "type": "range",
++        "d": 9,
++        "min": 0,
++        "max": 40
++      },
++      {
++        "key": "start",
++        "type": "select",
++        "d": "bar",
++        "options": [
++          "bar",
++          "arrow",
++          "triangle",
++          "tail",
++          "dot",
++          "circle",
++          "square",
++          "diamond",
++          "none"
++        ]
++      },
++      {
++        "key": "startSize",
++        "type": "range",
++        "d": 2.5,
++        "min": 0.5,
++        "max": 15
++      },
++      {
++        "key": "startAngle",
++        "type": "range",
++        "d": 70,
++        "min": 5,
++        "max": 85
++      },
++      {
++        "key": "startOffset",
++        "type": "range",
++        "d": 2.5,
++        "min": -20,
++        "max": 20
++      },
++      {
++        "key": "startAcross",
++        "type": "range",
++        "d": 0,
++        "min": -20,
++        "max": 20
++      },
++      {
++        "key": "startRotation",
++        "type": "range",
++        "d": 0,
++        "min": -180,
++        "max": 180
++      },
++      {
++        "key": "end",
++        "type": "select",
++        "d": "arrow",
++        "options": [
++          "bar",
++          "arrow",
++          "triangle",
++          "tail",
++          "dot",
++          "circle",
++          "square",
++          "diamond",
++          "none"
++        ]
++      },
++      {
++        "key": "endSize",
++        "type": "range",
++        "d": 3.5,
++        "min": 0.5,
++        "max": 15
++      },
++      {
++        "key": "endAngle",
++        "type": "range",
++        "d": 45,
++        "min": 5,
++        "max": 85
++      },
++      {
++        "key": "endOffset",
++        "type": "range",
++        "d": 0,
++        "min": -20,
++        "max": 20
++      },
++      {
++        "key": "endAcross",
++        "type": "range",
++        "d": 0,
++        "min": -20,
++        "max": 20
++      },
++      {
++        "key": "endRotation",
++        "type": "range",
++        "d": 0,
++        "min": -180,
++        "max": 180
++      },
++      {
++        "key": "middle",
++        "type": "select",
++        "d": "dot",
++        "options": [
++          "bar",
++          "arrow",
++          "triangle",
++          "tail",
++          "dot",
++          "circle",
++          "square",
++          "diamond",
++          "none"
++        ]
++      },
++      {
++        "key": "middleSize",
++        "type": "range",
++        "d": 2,
++        "min": 0.5,
++        "max": 15
++      },
++      {
++        "key": "middleAngle",
++        "type": "range",
++        "d": 30,
++        "min": 5,
++        "max": 85
++      },
++      {
++        "key": "middleOffset",
++        "type": "range",
++        "d": 0,
++        "min": -20,
++        "max": 20
++      },
++      {
++        "key": "middleAcross",
++        "type": "range",
++        "d": 0,
++        "min": -20,
++        "max": 20
++      },
++      {
++        "key": "middleRotation",
++        "type": "range",
++        "d": 0,
++        "min": -180,
++        "max": 180
++      },
++      {
++        "key": "middleGapStart",
++        "type": "range",
++        "d": 0,
++        "min": 0,
++        "max": 15
++      },
++      {
++        "key": "middleGapEnd",
++        "type": "range",
++        "d": 0,
++        "min": 0,
++        "max": 15
++      },
++      {
++        "key": "strokeWidth",
++        "type": "range",
++        "d": 1.3,
++        "min": 0.5,
++        "max": 10
++      },
++      {
++        "key": "dash",
++        "type": "select",
++        "d": "solid",
++        "options": [
++          "solid",
++          "dashed",
++          "dotted",
++          "dashdot",
++          "long"
++        ]
++      },
++      {
++        "key": "linecap",
++        "type": "select",
++        "d": "round",
++        "options": [
++          "round",
++          "butt",
++          "square"
++        ]
++      },
++      {
++        "key": "linejoin",
++        "type": "select",
++        "d": "miter",
++        "options": [
++          "round",
++          "miter",
++          "bevel"
++        ]
++      },
++      {
++        "key": "opacity",
++        "type": "range",
++        "d": 1,
++        "min": 0.1,
++        "max": 1
++      },
++      {
++        "key": "glow",
++        "type": "range",
++        "d": 0,
++        "min": 0,
++        "max": 12
++      },
++      {
++        "key": "palette",
++        "type": "select",
++        "d": "site",
++        "options": [
++          "site",
++          "neon",
++          "pastel",
++          "warm",
++          "cold",
++          "print",
++          "mono",
++          "custom"
++        ]
++      },
++      {
++        "key": "monoColor",
++        "type": "color",
++        "d": "#e6edf7"
++      },
++      {
++        "key": "background",
++        "type": "select",
++        "d": "solid",
++        "options": [
++          "transparent",
++          "solid",
++          "linear",
++          "radial"
++        ]
++      },
++      {
++        "key": "bgColor",
++        "type": "color",
++        "d": "#000000"
++      },
++      {
++        "key": "bgColor2",
++        "type": "color",
++        "d": "#1e1b4b"
++      },
++      {
++        "key": "bgAngle",
++        "type": "range",
++        "d": 135,
++        "min": 0,
++        "max": 359
++      },
++      {
++        "key": "card",
++        "type": "toggle",
++        "d": false
++      },
++      {
++        "key": "cardColor",
++        "type": "color",
++        "d": "#0d1220"
++      },
++      {
++        "key": "cardOpacity",
++        "type": "range",
++        "d": 0.8,
++        "min": 0,
++        "max": 1
++      },
++      {
++        "key": "borderStyle",
++        "type": "select",
++        "d": "solid",
++        "options": [
++          "solid",
++          "dashed",
++          "dotted",
++          "double",
++          "none"
++        ]
++      },
++      {
++        "key": "border",
++        "type": "range",
++        "d": 0.6,
++        "min": 0.1,
++        "max": 6
++      },
++      {
++        "key": "borderColor",
++        "type": "color",
++        "d": "#2b3b57"
++      },
++      {
++        "key": "radius",
++        "type": "range",
++        "d": 10,
++        "min": 0,
++        "max": 50
++      },
++      {
++        "key": "inset",
++        "type": "range",
++        "d": 3,
++        "min": 0,
++        "max": 30
++      },
++      {
++        "key": "notation",
++        "type": "select",
++        "d": "L",
++        "options": [
++          "L",
++          "R"
++        ]
++      },
++      {
++        "key": "caption",
++        "type": "select",
++        "d": "none",
++        "options": [
++          "none",
++          "theory",
++          "pairs",
++          "number",
++          "links",
++          "custom"
++        ]
++      },
++      {
++        "key": "captionText",
++        "type": "text",
++        "d": "",
++        "max": 80
++      },
++      {
++        "key": "captionColor",
++        "type": "color",
++        "d": "#7d8aa3"
++      },
++      {
++        "key": "captionSize",
++        "type": "range",
++        "d": 6,
++        "min": 3,
++        "max": 14
++      },
++      {
++        "key": "captionFont",
++        "type": "select",
++        "d": "mono",
++        "options": [
++          "mono",
++          "sans",
++          "serif"
++        ]
++      },
++      {
++        "key": "width",
++        "type": "range",
++        "d": 2048,
++        "min": 64,
++        "max": 4096
++      },
++      {
++        "key": "height",
++        "type": "range",
++        "d": 2048,
++        "min": 64,
++        "max": 4096
++      },
++      {
++        "key": "quality",
++        "type": "range",
++        "d": 0.92,
++        "min": 0.5,
++        "max": 1
++      },
++      {
++        "key": "solve",
++        "type": "toggle",
++        "d": false
++      },
++      {
++        "key": "solveRange",
++        "type": "range",
++        "d": 60,
++        "min": 10,
++        "max": 120
++      },
++      {
++        "key": "solveStep",
++        "type": "range",
++        "d": 15,
++        "min": 5,
++        "max": 30
++      },
++      {
++        "key": "colors",
++        "type": "list",
++        "d": "#22d3ee,#c084fc,#f472b6,#facc15,#34d399,#fb923c,#60a5fa,#f87171,#a3e635"
++      },
++      {
++        "key": "gap",
++        "type": "range",
++        "d": 0.08,
++        "min": 0,
++        "max": 0.4
++      },
++      {
++        "key": "turns",
++        "type": "list",
++        "d": ""
++      }
++    ]
++  },
++  {
++    "sha": "305a85e2c2792f3f66c530b94856f52df80b524d",
++    "fields": [
++      {
++        "key": "placement",
++        "type": "select",
++        "d": "auto",
++        "options": [
++          "auto",
++          "circle",
++          "square",
++          "hex",
++          "dice",
++          "cards",
++          "spiral",
++          "force"
++        ]
++      },
++      {
++        "key": "layoutAspect",
++        "type": "range",
++        "d": 1,
++        "min": 0.3,
++        "max": 3
++      },
++      {
++        "key": "columns",
++        "type": "range",
++        "d": 0,
++        "min": 0,
++        "max": 30
++      },
++      {
++        "key": "forceDistance",
++        "type": "range",
++        "d": 1,
++        "min": 0.2,
++        "max": 3
++      },
++      {
++        "key": "forceCharge",
++        "type": "range",
++        "d": 0.6,
++        "min": 0.2,
++        "max": 3
++      },
++      {
++        "key": "forceCollision",
++        "type": "range",
++        "d": 0.6,
++        "min": 0.2,
++        "max": 3
++      },
++      {
++        "key": "angles",
++        "type": "select",
++        "d": "fixed",
++        "options": [
++          "mirror",
++          "fixed"
++        ]
++      },
++      {
++        "key": "sourceAngle",
++        "type": "range",
++        "d": 30,
++        "min": -90,
++        "max": 90
++      },
++      {
++        "key": "targetAngle",
++        "type": "range",
++        "d": 47,
++        "min": -90,
++        "max": 90
++      },
++      {
++        "key": "lens",
++        "type": "toggle",
++        "d": true
++      },
++      {
++        "key": "tension",
++        "type": "range",
++        "d": 0.33,
++        "min": 0,
++        "max": 1
++      },
++      {
++        "key": "bulge",
++        "type": "range",
++        "d": 45,
++        "min": 0,
++        "max": 90
++      },
++      {
++        "key": "startGap",
++        "type": "range",
++        "d": 0.08,
++        "min": 0,
++        "max": 0.4
++      },
++      {
++        "key": "endGap",
++        "type": "range",
++        "d": 0.08,
++        "min": 0,
++        "max": 0.4
++      },
++      {
++        "key": "free",
++        "type": "range",
++        "d": 1,
++        "min": 0.2,
++        "max": 3
++      },
++      {
++        "key": "loop",
++        "type": "range",
++        "d": 1,
++        "min": 0.3,
++        "max": 2.5
++      },
++      {
++        "key": "spread",
++        "type": "range",
++        "d": 1,
++        "min": 0.5,
++        "max": 2.5
++      },
++      {
++        "key": "rotation",
++        "type": "range",
++        "d": 0,
++        "min": 0,
++        "max": 359
++      },
++      {
++        "key": "padding",
++        "type": "range",
++        "d": 9,
++        "min": 0,
++        "max": 40
++      },
++      {
++        "key": "start",
++        "type": "select",
++        "d": "bar",
++        "options": [
++          "bar",
++          "arrow",
++          "triangle",
++          "tail",
++          "dot",
++          "circle",
++          "square",
++          "diamond",
++          "none"
++        ]
++      },
++      {
++        "key": "startSize",
++        "type": "range",
++        "d": 2.5,
++        "min": 0.5,
++        "max": 15
++      },
++      {
++        "key": "startAngle",
++        "type": "range",
++        "d": 70,
++        "min": 5,
++        "max": 85
++      },
++      {
++        "key": "startOffset",
++        "type": "range",
++        "d": 0,
++        "min": -20,
++        "max": 20
++      },
++      {
++        "key": "startAcross",
++        "type": "range",
++        "d": 0,
++        "min": -20,
++        "max": 20
++      },
++      {
++        "key": "startRotation",
++        "type": "range",
++        "d": 0,
++        "min": -180,
++        "max": 180
++      },
++      {
++        "key": "end",
++        "type": "select",
++        "d": "arrow",
++        "options": [
++          "bar",
++          "arrow",
++          "triangle",
++          "tail",
++          "dot",
++          "circle",
++          "square",
++          "diamond",
++          "none"
++        ]
++      },
++      {
++        "key": "endSize",
++        "type": "range",
++        "d": 3.5,
++        "min": 0.5,
++        "max": 15
++      },
++      {
++        "key": "endAngle",
++        "type": "range",
++        "d": 45,
++        "min": 5,
++        "max": 85
++      },
++      {
++        "key": "endOffset",
++        "type": "range",
++        "d": 0,
++        "min": -20,
++        "max": 20
++      },
++      {
++        "key": "endAcross",
++        "type": "range",
++        "d": 0,
++        "min": -20,
++        "max": 20
++      },
++      {
++        "key": "endRotation",
++        "type": "range",
++        "d": 0,
++        "min": -180,
++        "max": 180
++      },
++      {
++        "key": "middle",
++        "type": "select",
++        "d": "dot",
++        "options": [
++          "bar",
++          "arrow",
++          "triangle",
++          "tail",
++          "dot",
++          "circle",
++          "square",
++          "diamond",
++          "none"
++        ]
++      },
++      {
++        "key": "middleSize",
++        "type": "range",
++        "d": 2,
++        "min": 0.5,
++        "max": 15
++      },
++      {
++        "key": "middleAngle",
++        "type": "range",
++        "d": 30,
++        "min": 5,
++        "max": 85
++      },
++      {
++        "key": "middleOffset",
++        "type": "range",
++        "d": 0,
++        "min": -20,
++        "max": 20
++      },
++      {
++        "key": "middleAcross",
++        "type": "range",
++        "d": 0,
++        "min": -20,
++        "max": 20
++      },
++      {
++        "key": "middleRotation",
++        "type": "range",
++        "d": 0,
++        "min": -180,
++        "max": 180
++      },
++      {
++        "key": "middleGapStart",
++        "type": "range",
++        "d": 0,
++        "min": 0,
++        "max": 15
++      },
++      {
++        "key": "middleGapEnd",
++        "type": "range",
++        "d": 0,
++        "min": 0,
++        "max": 15
++      },
++      {
++        "key": "strokeWidth",
++        "type": "range",
++        "d": 1.3,
++        "min": 0.5,
++        "max": 10
++      },
++      {
++        "key": "dash",
++        "type": "select",
++        "d": "solid",
++        "options": [
++          "solid",
++          "dashed",
++          "dotted",
++          "dashdot",
++          "long"
++        ]
++      },
++      {
++        "key": "linecap",
++        "type": "select",
++        "d": "round",
++        "options": [
++          "round",
++          "butt",
++          "square"
++        ]
++      },
++      {
++        "key": "linejoin",
++        "type": "select",
++        "d": "miter",
++        "options": [
++          "round",
++          "miter",
++          "bevel"
++        ]
++      },
++      {
++        "key": "opacity",
++        "type": "range",
++        "d": 1,
++        "min": 0.1,
++        "max": 1
++      },
++      {
++        "key": "glow",
++        "type": "range",
++        "d": 0,
++        "min": 0,
++        "max": 12
++      },
++      {
++        "key": "palette",
++        "type": "select",
++        "d": "custom",
++        "options": [
++          "site",
++          "neon",
++          "pastel",
++          "warm",
++          "cold",
++          "print",
++          "mono",
++          "custom"
++        ]
++      },
++      {
++        "key": "monoColor",
++        "type": "color",
++        "d": "#e6edf7"
++      },
++      {
++        "key": "background",
++        "type": "select",
++        "d": "solid",
++        "options": [
++          "transparent",
++          "solid",
++          "linear",
++          "radial"
++        ]
++      },
++      {
++        "key": "bgColor",
++        "type": "color",
++        "d": "#000000"
++      },
++      {
++        "key": "bgColor2",
++        "type": "color",
++        "d": "#1e1b4b"
++      },
++      {
++        "key": "bgAngle",
++        "type": "range",
++        "d": 135,
++        "min": 0,
++        "max": 359
++      },
++      {
++        "key": "card",
++        "type": "toggle",
++        "d": false
++      },
++      {
++        "key": "cardColor",
++        "type": "color",
++        "d": "#0d1220"
++      },
++      {
++        "key": "cardOpacity",
++        "type": "range",
++        "d": 0.8,
++        "min": 0,
++        "max": 1
++      },
++      {
++        "key": "borderStyle",
++        "type": "select",
++        "d": "solid",
++        "options": [
++          "solid",
++          "dashed",
++          "dotted",
++          "double",
++          "none"
++        ]
++      },
++      {
++        "key": "border",
++        "type": "range",
++        "d": 0.6,
++        "min": 0.1,
++        "max": 6
++      },
++      {
++        "key": "borderColor",
++        "type": "color",
++        "d": "#2b3b57"
++      },
++      {
++        "key": "radius",
++        "type": "range",
++        "d": 10,
++        "min": 0,
++        "max": 50
++      },
++      {
++        "key": "inset",
++        "type": "range",
++        "d": 3,
++        "min": 0,
++        "max": 30
++      },
++      {
++        "key": "notation",
++        "type": "select",
++        "d": "L",
++        "options": [
++          "L",
++          "R"
++        ]
++      },
++      {
++        "key": "caption",
++        "type": "select",
++        "d": "none",
++        "options": [
++          "none",
++          "theory",
++          "pairs",
++          "number",
++          "links",
++          "custom"
++        ]
++      },
++      {
++        "key": "captionText",
++        "type": "text",
++        "d": "",
++        "max": 80
++      },
++      {
++        "key": "captionColor",
++        "type": "color",
++        "d": "#7d8aa3"
++      },
++      {
++        "key": "captionSize",
++        "type": "range",
++        "d": 6,
++        "min": 3,
++        "max": 14
++      },
++      {
++        "key": "captionFont",
++        "type": "select",
++        "d": "mono",
++        "options": [
++          "mono",
++          "sans",
++          "serif"
++        ]
++      },
++      {
++        "key": "width",
++        "type": "range",
++        "d": 2048,
++        "min": 64,
++        "max": 4096
++      },
++      {
++        "key": "height",
++        "type": "range",
++        "d": 2048,
++        "min": 64,
++        "max": 4096
++      },
++      {
++        "key": "quality",
++        "type": "range",
++        "d": 0.92,
++        "min": 0.5,
++        "max": 1
++      },
++      {
++        "key": "solve",
++        "type": "toggle",
++        "d": false
++      },
++      {
++        "key": "solveRange",
++        "type": "range",
++        "d": 60,
++        "min": 10,
++        "max": 120
++      },
++      {
++        "key": "solveStep",
++        "type": "range",
++        "d": 15,
++        "min": 5,
++        "max": 30
++      },
++      {
++        "key": "colors",
++        "type": "list",
++        "d": "#ff2600,#00f900,#fffb00,#0433ff,#34d399,#fb923c,#60a5fa,#f87171,#a3e635"
++      },
++      {
++        "key": "gap",
++        "type": "range",
++        "d": 0.08,
++        "min": 0,
++        "max": 0.4
++      },
++      {
++        "key": "turns",
++        "type": "list",
++        "d": ""
++      }
++    ]
++  },
++  {
++    "sha": "6d102eed6c3eb41f57b04568ec3a1b800c2ceef6",
++    "fields": [
++      {
++        "key": "angles",
++        "type": "select",
++        "d": "mirror",
++        "options": [
++          "mirror",
++          "fixed"
++        ]
++      },
++      {
++        "key": "sourceAngle",
++        "type": "range",
++        "d": 30,
++        "min": -90,
++        "max": 90
++      },
++      {
++        "key": "targetAngle",
++        "type": "range",
++        "d": 30,
++        "min": -90,
++        "max": 90
++      },
++      {
++        "key": "lens",
++        "type": "toggle",
++        "d": true
++      },
++      {
++        "key": "tension",
++        "type": "range",
++        "d": 0.38,
++        "min": 0,
++        "max": 1
++      },
++      {
++        "key": "bulge",
++        "type": "range",
++        "d": 20,
++        "min": 0,
++        "max": 90
++      },
++      {
++        "key": "gap",
++        "type": "range",
++        "d": 0.07,
++        "min": 0,
++        "max": 0.4
++      },
++      {
++        "key": "free",
++        "type": "range",
++        "d": 1,
++        "min": 0.2,
++        "max": 3
++      },
++      {
++        "key": "loop",
++        "type": "range",
++        "d": 1,
++        "min": 0.3,
++        "max": 2.5
++      },
++      {
++        "key": "spread",
++        "type": "range",
++        "d": 1,
++        "min": 0.5,
++        "max": 2.5
++      },
++      {
++        "key": "rotation",
++        "type": "range",
++        "d": 0,
++        "min": 0,
++        "max": 359
++      },
++      {
++        "key": "padding",
++        "type": "range",
++        "d": 9,
++        "min": 0,
++        "max": 40
++      },
++      {
++        "key": "start",
++        "type": "select",
++        "d": "bar",
++        "options": [
++          "bar",
++          "arrow",
++          "triangle",
++          "tail",
++          "dot",
++          "circle",
++          "square",
++          "diamond",
++          "none"
++        ]
++      },
++      {
++        "key": "startSize",
++        "type": "range",
++        "d": 3.6,
++        "min": 0.5,
++        "max": 15
++      },
++      {
++        "key": "startAngle",
++        "type": "range",
++        "d": 28,
++        "min": 5,
++        "max": 85
++      },
++      {
++        "key": "end",
++        "type": "select",
++        "d": "arrow",
++        "options": [
++          "bar",
++          "arrow",
++          "triangle",
++          "tail",
++          "dot",
++          "circle",
++          "square",
++          "diamond",
++          "none"
++        ]
++      },
++      {
++        "key": "endSize",
++        "type": "range",
++        "d": 5.5,
++        "min": 0.5,
++        "max": 15
++      },
++      {
++        "key": "endAngle",
++        "type": "range",
++        "d": 28,
++        "min": 5,
++        "max": 85
++      },
++      {
++        "key": "middle",
++        "type": "select",
++        "d": "none",
++        "options": [
++          "bar",
++          "arrow",
++          "triangle",
++          "tail",
++          "dot",
++          "circle",
++          "square",
++          "diamond",
++          "none"
++        ]
++      },
++      {
++        "key": "middleSize",
++        "type": "range",
++        "d": 2.2,
++        "min": 0.5,
++        "max": 12
++      },
++      {
++        "key": "strokeWidth",
++        "type": "range",
++        "d": 2.4,
++        "min": 0.5,
++        "max": 10
++      },
++      {
++        "key": "dash",
++        "type": "select",
++        "d": "solid",
++        "options": [
++          "solid",
++          "dashed",
++          "dotted",
++          "dashdot",
++          "long"
++        ]
++      },
++      {
++        "key": "linecap",
++        "type": "select",
++        "d": "round",
++        "options": [
++          "round",
++          "butt",
++          "square"
++        ]
++      },
++      {
++        "key": "linejoin",
++        "type": "select",
++        "d": "round",
++        "options": [
++          "round",
++          "miter",
++          "bevel"
++        ]
++      },
++      {
++        "key": "opacity",
++        "type": "range",
++        "d": 1,
++        "min": 0.1,
++        "max": 1
++      },
++      {
++        "key": "glow",
++        "type": "range",
++        "d": 0,
++        "min": 0,
++        "max": 12
++      },
++      {
++        "key": "palette",
++        "type": "select",
++        "d": "site",
++        "options": [
++          "site",
++          "neon",
++          "pastel",
++          "warm",
++          "cold",
++          "print",
++          "mono",
++          "custom"
++        ]
++      },
++      {
++        "key": "monoColor",
++        "type": "color",
++        "d": "#e6edf7"
++      },
++      {
++        "key": "background",
++        "type": "select",
++        "d": "solid",
++        "options": [
++          "transparent",
++          "solid",
++          "linear",
++          "radial"
++        ]
++      },
++      {
++        "key": "bgColor",
++        "type": "color",
++        "d": "#070b14"
++      },
++      {
++        "key": "bgColor2",
++        "type": "color",
++        "d": "#1e1b4b"
++      },
++      {
++        "key": "bgAngle",
++        "type": "range",
++        "d": 135,
++        "min": 0,
++        "max": 359
++      },
++      {
++        "key": "card",
++        "type": "toggle",
++        "d": true
++      },
++      {
++        "key": "cardColor",
++        "type": "color",
++        "d": "#0d1220"
++      },
++      {
++        "key": "cardOpacity",
++        "type": "range",
++        "d": 0.8,
++        "min": 0,
++        "max": 1
++      },
++      {
++        "key": "borderStyle",
++        "type": "select",
++        "d": "solid",
++        "options": [
++          "solid",
++          "dashed",
++          "dotted",
++          "double",
++          "none"
++        ]
++      },
++      {
++        "key": "border",
++        "type": "range",
++        "d": 0.6,
++        "min": 0.1,
++        "max": 6
++      },
++      {
++        "key": "borderColor",
++        "type": "color",
++        "d": "#2b3b57"
++      },
++      {
++        "key": "radius",
++        "type": "range",
++        "d": 10,
++        "min": 0,
++        "max": 50
++      },
++      {
++        "key": "inset",
++        "type": "range",
++        "d": 3,
++        "min": 0,
++        "max": 30
++      },
++      {
++        "key": "notation",
++        "type": "select",
++        "d": "L",
++        "options": [
++          "L",
++          "R"
++        ]
++      },
++      {
++        "key": "caption",
++        "type": "select",
++        "d": "none",
++        "options": [
++          "none",
++          "theory",
++          "pairs",
++          "number",
++          "links",
++          "custom"
++        ]
++      },
++      {
++        "key": "captionText",
++        "type": "text",
++        "d": "",
++        "max": 80
++      },
++      {
++        "key": "captionColor",
++        "type": "color",
++        "d": "#7d8aa3"
++      },
++      {
++        "key": "captionSize",
++        "type": "range",
++        "d": 6,
++        "min": 3,
++        "max": 14
++      },
++      {
++        "key": "captionFont",
++        "type": "select",
++        "d": "mono",
++        "options": [
++          "mono",
++          "sans",
++          "serif"
++        ]
++      },
++      {
++        "key": "width",
++        "type": "range",
++        "d": 1024,
++        "min": 64,
++        "max": 4096
++      },
++      {
++        "key": "height",
++        "type": "range",
++        "d": 1024,
++        "min": 64,
++        "max": 4096
++      },
++      {
++        "key": "quality",
++        "type": "range",
++        "d": 0.92,
++        "min": 0.5,
++        "max": 1
++      },
++      {
++        "key": "solve",
++        "type": "toggle",
++        "d": false
++      },
++      {
++        "key": "solveRange",
++        "type": "range",
++        "d": 60,
++        "min": 10,
++        "max": 120
++      },
++      {
++        "key": "solveStep",
++        "type": "range",
++        "d": 15,
++        "min": 5,
++        "max": 30
++      },
++      {
++        "key": "colors",
++        "type": "list",
++        "d": ""
++      },
++      {
++        "key": "turns",
++        "type": "list",
++        "d": ""
++      }
++    ]
++  },
++  {
++    "sha": "7be35e9dd8025cd1fb36ab6eaf12fcb8a8f90fc5",
++    "fields": [
++      {
++        "key": "angles",
++        "type": "select",
++        "d": "mirror",
++        "options": [
++          "mirror",
++          "fixed"
++        ]
++      },
++      {
++        "key": "sourceAngle",
++        "type": "range",
++        "d": 30,
++        "min": -90,
++        "max": 90
++      },
++      {
++        "key": "targetAngle",
++        "type": "range",
++        "d": 30,
++        "min": -90,
++        "max": 90
++      },
++      {
++        "key": "lens",
++        "type": "toggle",
++        "d": true
++      },
++      {
++        "key": "tension",
++        "type": "range",
++        "d": 0.38,
++        "min": 0,
++        "max": 1
++      },
++      {
++        "key": "bulge",
++        "type": "range",
++        "d": 20,
++        "min": 0,
++        "max": 90
++      },
++      {
++        "key": "gap",
++        "type": "range",
++        "d": 0.07,
++        "min": 0,
++        "max": 0.4
++      },
++      {
++        "key": "free",
++        "type": "range",
++        "d": 1,
++        "min": 0.2,
++        "max": 3
++      },
++      {
++        "key": "loop",
++        "type": "range",
++        "d": 1,
++        "min": 0.3,
++        "max": 2.5
++      },
++      {
++        "key": "spread",
++        "type": "range",
++        "d": 1,
++        "min": 0.5,
++        "max": 2.5
++      },
++      {
++        "key": "rotation",
++        "type": "range",
++        "d": 0,
++        "min": 0,
++        "max": 359
++      },
++      {
++        "key": "padding",
++        "type": "range",
++        "d": 9,
++        "min": 0,
++        "max": 40
++      },
++      {
++        "key": "start",
++        "type": "select",
++        "d": "bar",
++        "options": [
++          "bar",
++          "arrow",
++          "triangle",
++          "tail",
++          "dot",
++          "circle",
++          "square",
++          "diamond",
++          "none"
++        ]
++      },
++      {
++        "key": "startSize",
++        "type": "range",
++        "d": 3.6,
++        "min": 0.5,
++        "max": 15
++      },
++      {
++        "key": "startAngle",
++        "type": "range",
++        "d": 28,
++        "min": 5,
++        "max": 85
++      },
++      {
++        "key": "end",
++        "type": "select",
++        "d": "arrow",
++        "options": [
++          "bar",
++          "arrow",
++          "triangle",
++          "tail",
++          "dot",
++          "circle",
++          "square",
++          "diamond",
++          "none"
++        ]
++      },
++      {
++        "key": "endSize",
++        "type": "range",
++        "d": 5.5,
++        "min": 0.5,
++        "max": 15
++      },
++      {
++        "key": "endAngle",
++        "type": "range",
++        "d": 28,
++        "min": 5,
++        "max": 85
++      },
++      {
++        "key": "middle",
++        "type": "select",
++        "d": "none",
++        "options": [
++          "bar",
++          "arrow",
++          "triangle",
++          "tail",
++          "dot",
++          "circle",
++          "square",
++          "diamond",
++          "none"
++        ]
++      },
++      {
++        "key": "middleSize",
++        "type": "range",
++        "d": 2.2,
++        "min": 0.5,
++        "max": 12
++      },
++      {
++        "key": "strokeWidth",
++        "type": "range",
++        "d": 2.4,
++        "min": 0.5,
++        "max": 10
++      },
++      {
++        "key": "dash",
++        "type": "select",
++        "d": "solid",
++        "options": [
++          "solid",
++          "dashed",
++          "dotted",
++          "dashdot",
++          "long"
++        ]
++      },
++      {
++        "key": "linecap",
++        "type": "select",
++        "d": "round",
++        "options": [
++          "round",
++          "butt",
++          "square"
++        ]
++      },
++      {
++        "key": "linejoin",
++        "type": "select",
++        "d": "round",
++        "options": [
++          "round",
++          "miter",
++          "bevel"
++        ]
++      },
++      {
++        "key": "opacity",
++        "type": "range",
++        "d": 1,
++        "min": 0.1,
++        "max": 1
++      },
++      {
++        "key": "glow",
++        "type": "range",
++        "d": 0,
++        "min": 0,
++        "max": 12
++      },
++      {
++        "key": "palette",
++        "type": "select",
++        "d": "site",
++        "options": [
++          "site",
++          "neon",
++          "pastel",
++          "warm",
++          "cold",
++          "print",
++          "mono",
++          "custom"
++        ]
++      },
++      {
++        "key": "monoColor",
++        "type": "color",
++        "d": "#e6edf7"
++      },
++      {
++        "key": "background",
++        "type": "select",
++        "d": "solid",
++        "options": [
++          "transparent",
++          "solid",
++          "linear",
++          "radial"
++        ]
++      },
++      {
++        "key": "bgColor",
++        "type": "color",
++        "d": "#070b14"
++      },
++      {
++        "key": "bgColor2",
++        "type": "color",
++        "d": "#1e1b4b"
++      },
++      {
++        "key": "bgAngle",
++        "type": "range",
++        "d": 135,
++        "min": 0,
++        "max": 359
++      },
++      {
++        "key": "card",
++        "type": "toggle",
++        "d": true
++      },
++      {
++        "key": "cardColor",
++        "type": "color",
++        "d": "#0d1220"
++      },
++      {
++        "key": "cardOpacity",
++        "type": "range",
++        "d": 0.8,
++        "min": 0,
++        "max": 1
++      },
++      {
++        "key": "borderStyle",
++        "type": "select",
++        "d": "solid",
++        "options": [
++          "solid",
++          "dashed",
++          "dotted",
++          "double",
++          "none"
++        ]
++      },
++      {
++        "key": "border",
++        "type": "range",
++        "d": 0.6,
++        "min": 0.1,
++        "max": 6
++      },
++      {
++        "key": "borderColor",
++        "type": "color",
++        "d": "#2b3b57"
++      },
++      {
++        "key": "radius",
++        "type": "range",
++        "d": 10,
++        "min": 0,
++        "max": 50
++      },
++      {
++        "key": "inset",
++        "type": "range",
++        "d": 3,
++        "min": 0,
++        "max": 30
++      },
++      {
++        "key": "caption",
++        "type": "select",
++        "d": "none",
++        "options": [
++          "none",
++          "theory",
++          "pairs",
++          "number",
++          "links",
++          "custom"
++        ]
++      },
++      {
++        "key": "captionText",
++        "type": "text",
++        "d": "",
++        "max": 80
++      },
++      {
++        "key": "captionColor",
++        "type": "color",
++        "d": "#7d8aa3"
++      },
++      {
++        "key": "captionSize",
++        "type": "range",
++        "d": 6,
++        "min": 3,
++        "max": 14
++      },
++      {
++        "key": "captionFont",
++        "type": "select",
++        "d": "mono",
++        "options": [
++          "mono",
++          "sans",
++          "serif"
++        ]
++      },
++      {
++        "key": "width",
++        "type": "range",
++        "d": 1024,
++        "min": 64,
++        "max": 4096
++      },
++      {
++        "key": "height",
++        "type": "range",
++        "d": 1024,
++        "min": 64,
++        "max": 4096
++      },
++      {
++        "key": "quality",
++        "type": "range",
++        "d": 0.92,
++        "min": 0.5,
++        "max": 1
++      },
++      {
++        "key": "solve",
++        "type": "toggle",
++        "d": false
++      },
++      {
++        "key": "solveRange",
++        "type": "range",
++        "d": 60,
++        "min": 10,
++        "max": 120
++      },
++      {
++        "key": "solveStep",
++        "type": "range",
++        "d": 15,
++        "min": 5,
++        "max": 30
++      },
++      {
++        "key": "colors",
++        "type": "list",
++        "d": ""
++      },
++      {
++        "key": "turns",
++        "type": "list",
++        "d": ""
++      }
++    ]
++  }
++]
+\ No newline at end of file
+diff --git a/experiments/issue-27-baseline.mjs b/experiments/issue-27-baseline.mjs
+new file mode 100644
+index 0000000..471fdac
+--- /dev/null
++++ b/experiments/issue-27-baseline.mjs
+@@ -0,0 +1,35 @@
++import { chromium } from 'playwright';
++import { preview } from 'vite';
++import { mkdir, writeFile } from 'node:fs/promises';
++const dir = 'docs/case-studies/issue-27';
++await mkdir(`${dir}/screenshots`, { recursive: true });
++const server = await preview({ preview: { port: 4187, strictPort: true } });
++let browser;
++try {
++  browser = await chromium.launch();
++  const page = await browser.newPage({ viewport: { width: 1440, height: 1000 }, reducedMotion: 'reduce' });
++  await page.addInitScript(() => {
++    localStorage.setItem('theme', 'dark');
++    localStorage.setItem('settings', JSON.stringify({ 'motion.mode': 'off' }));
++  });
++  const cases = {
++    equal: 'rotation=-90&turns=0+0%2C-15+15&gaps=0.08+0.08+%7E+%7E%2C0.18+0.18+%7E+%7E',
++    unequal: 'rotation=-90&turns=0+0%2C-15+15&gaps=0.08+0.07+%7E+%7E%2C0.18+0.18+%7E+%7E',
++    auto: 'rotation=-90&solve=true',
++  };
++  const results = {};
++  for (const [name, query] of Object.entries(cases)) {
++    await page.goto(`http://localhost:4187/network/?code=1111&lang=en&${query}`);
++    await page.locator('.network__preview svg').waitFor();
++    await page.locator('.network__preview').screenshot({ path: `${dir}/screenshots/before-${name}.png` });
++    results[name] = {
++      svg: await page.locator('.network__preview').innerHTML(),
++      score: await page.locator('figcaption').innerText(),
++    };
++  }
++  await page.locator('#links').screenshot({ path: `${dir}/screenshots/before-editor.png` });
++  await writeFile(`${dir}/data/baseline.json`, JSON.stringify(results, null, 2));
++} finally {
++  await browser?.close();
++  await server.httpServer.close();
++}
+diff --git a/experiments/issue-27-browser.mjs b/experiments/issue-27-browser.mjs
+new file mode 100644
+index 0000000..3be3d19
+--- /dev/null
++++ b/experiments/issue-27-browser.mjs
+@@ -0,0 +1,208 @@
++// Real-browser geometry, keyboard and old bookmark regressions; finite fixtures.
++/* global document, Image */
++import assert from 'node:assert/strict';
++import { mkdir, writeFile } from 'node:fs/promises';
++import { join } from 'node:path';
++import { chromium, firefox, webkit } from 'playwright';
++import { preview } from 'vite';
++const engine = process.env.ENGINE || 'chromium';
++const output = process.env.CAPTURE_DIR || 'docs/case-studies/issue-27/screenshots';
++const data = process.env.RESULT_DIR || 'docs/case-studies/issue-27/data';
++await mkdir(output, { recursive: true });
++await mkdir(data, { recursive: true });
++const server = await preview({ preview: { port: 4187, strictPort: true } });
++const result = { engine, date: new Date().toISOString(), checks: [], errors: [] };
++let browser;
++try {
++  browser = await { chromium, firefox, webkit }[engine].launch();
++  result.version = browser.version();
++  const page = await browser.newPage({ viewport: { width: 1440, height: 1000 }, reducedMotion: 'reduce' });
++  page.setDefaultTimeout(15000);
++  page.on('pageerror', (error) => result.errors.push(error.message));
++  await page.addInitScript(() => {
++    localStorage.setItem('theme', 'dark');
++    localStorage.setItem('lang', 'en');
++    localStorage.setItem('settings', JSON.stringify({ 'motion.mode': 'off' }));
++  });
++  const go = async (query = '') => {
++    await page.goto(`http://localhost:4187/network/?code=1111&lang=en&rotation=-90&${query}`);
++    await page.locator('.network__preview svg').waitFor();
++  };
++  const shot = async (name, element = page.locator('.network__preview')) =>
++    element.screenshot({ path: join(output, `${engine}-after-${name}.png`) });
++  const manual = 'turns=0+0%2C-15+15&gaps=0.08+0.08+%7E+%7E%2C0.18+0.18+%7E+%7E';
++  await go(manual);
++  const initial = await page.locator('.network__preview').innerHTML();
++  await page.waitForURL((url) => url.searchParams.get('turns') === ',-15 15');
++  assert.equal(new URL(page.url()).searchParams.get('gaps'), '0.08 0.08,0.18 0.18');
++  assert.equal(await page.locator('.network__preview').innerHTML(), initial);
++  await page.reload();
++  assert.equal(await page.locator('.network__preview').innerHTML(), initial);
++  await shot('equal');
++  await page.locator('#links').scrollIntoViewIfNeeded();
++  await shot('editor', page);
++  result.checks.push('historical URL upgrades through history, compacts default rows, and reloads the exact SVG');
++
++  // Independent paint check: find nearest cyan pixels in narrow sectors around
++  // the opposite closed ends, excluding the central dot and crossing shaft.
++  result.paint = [];
++  for (const angle of [5, 15, 45, 85]) {
++    await go(`${manual}&endAngle=${angle}`);
++    const measurement = await page.locator('.network__preview svg').evaluate(async (svg) => {
++      const size = 2000;
++      const copy = svg.cloneNode(true);
++      copy.setAttribute('width', size);
++      copy.setAttribute('height', size);
++      const line = svg.querySelector('g[stroke] path');
++      const numbers = line
++        .getAttribute('d')
++        .match(/-?\d+(?:\.\d+)?/g)
++        .map(Number);
++      const middle = numbers.slice(6, 8).map((v) => (v * size) / 100);
++      const starts = numbers.slice(0, 2).map((v) => (v * size) / 100);
++      const dir = starts.map((v, i) => v - middle[i]);
++      const length = Math.hypot(...dir);
++      const axis = dir.map((v) => v / length);
++      const image = new Image();
++      const url = URL.createObjectURL(new Blob([copy.outerHTML], { type: 'image/svg+xml' }));
++      try {
++        image.src = url;
++        await image.decode();
++        const canvas = document.createElement('canvas');
++        canvas.width = canvas.height = size;
++        const ctx = canvas.getContext('2d');
++        ctx.drawImage(image, 0, 0);
++        const pixels = ctx.getImageData(0, 0, size, size).data;
++        const nearest = [Infinity, Infinity];
++        for (let y = 0; y < size; y++)
++          for (let x = 0; x < size; x++) {
++            const p = (y * size + x) * 4;
++            if (!(pixels[p + 2] > 40 && pixels[p] < pixels[p + 2] * 0.3 && pixels[p + 1] > pixels[p + 2] * 0.7))
++              continue;
++            const dx = x + 0.5 - middle[0];
++            const dy = y + 0.5 - middle[1];
++            const radius = Math.hypot(dx, dy);
++            const projection = dx * axis[0] + dy * axis[1];
++            if (radius > (2.5 * size) / 100 && Math.abs(projection) / radius > 0.99)
++              nearest[projection > 0 ? 0 : 1] = Math.min(nearest[projection > 0 ? 0 : 1], (radius * 100) / size);
++          }
++        return { nearest, size };
++      } finally {
++        URL.revokeObjectURL(url);
++      }
++    });
++    assert(measurement.nearest.every(Number.isFinite));
++    assert(Math.abs(measurement.nearest[0] - measurement.nearest[1]) < 0.12, JSON.stringify({ angle, measurement }));
++    result.paint.push({ angle, ...measurement });
++  }
++  result.checks.push('native rasterized closed gaps agree within 0.12 image units at 5°, 15°, 45°, 85°');
++  await go('solve=true');
++  await shot('auto');
++  const preview = await page.locator('.network__preview').innerHTML();
++  await page.getByRole('button', { name: 'Apply turns and gaps to links', exact: true }).click();
++  for (const name of ['Gap at the source reference', 'Gap at the target reference']) {
++    assert.equal(await page.getByLabel(`Link 1: ${name}`, { exact: true }).inputValue(), '');
++    assert(Number(await page.getByLabel(`Link 2: ${name}`, { exact: true }).inputValue()) > 0.08);
++  }
++  assert.equal(await page.locator('.network__preview').innerHTML(), preview);
++  await page.goto(await page.getByLabel('Link to this picture', { exact: true }).inputValue());
++  assert.equal(await page.locator('.network__preview').innerHTML(), preview);
++  result.checks.push(
++    'automatic spacing preserves the closed link, changes open references, and applies/shares/reloads exactly',
++  );
++
++  await go(manual);
++  const gap = page.getByLabel('Link 1: Gap at the target reference', { exact: true });
++  await gap.fill('0.07');
++  await gap.press('ArrowUp');
++  assert.equal(await gap.inputValue(), '0.08');
++  await gap.press('ArrowDown');
++  assert.equal(await gap.inputValue(), '0.07');
++  // Native stepUp/Down use the same HTML constraints as the spinner buttons.
++  for (const [method, expected] of [
++    ['stepUp', '0.08'],
++    ['stepDown', '0.07'],
++  ]) {
++    await gap.evaluate((input, method) => {
++      input[method]();
++      input.dispatchEvent(new Event('input', { bubbles: true }));
++    }, method);
++    assert.equal(await gap.inputValue(), expected);
++    const shared = await page.getByLabel('Link to this picture', { exact: true }).inputValue();
++    assert.equal(new URL(shared).searchParams.get('gaps').split(',')[0].split(' ')[1], expected);
++  }
++  await gap.fill('0.075');
++  await gap.press('ArrowUp');
++  assert.equal(await gap.inputValue(), '0.08');
++  await gap.fill('');
++  await gap.press('ArrowUp');
++  assert.equal(await gap.inputValue(), '0.09');
++  const turn = page.getByLabel('Link 2: turn of the source, °', { exact: true });
++  await turn.fill('');
++  await turn.pressSequentially('-25');
++  assert.equal(await turn.inputValue(), '-25');
++  await turn.press('ControlOrMeta+A');
++  await turn.press('Backspace');
++  assert.equal(await turn.inputValue(), '');
++  await turn.pressSequentially('-15');
++  await turn.press('Tab');
++  assert.equal(await turn.inputValue(), '-15');
++  await gap.fill('0.07');
++  await gap.press('Home');
++  assert.equal(await gap.inputValue(), '0.07');
++  result.checks.push(
++    '0.07↔0.08 arrows/native stepping, inherited decimal steps, negative typing, select-all, delete, Home and Tab',
++  );
++
++  console.log('Geometry, URL and number editing checks passed. Auditing sliders.');
++  const audit = async (selector) => {
++    const controls = await page.locator(selector).evaluateAll((inputs) =>
++      inputs.map((input) => ({
++        id: input.id,
++        min: +input.min,
++        max: +input.max,
++        step: +input.step,
++        value: +input.value,
++      })),
++    );
++    for (const control of controls) {
++      console.log(`Keyboard: ${control.id}`);
++      const input = page.locator(`[id="${control.id}"]`);
++      let current = control.value;
++      for (const [key, count] of [
++        ['ArrowUp', 1],
++        ['ArrowDown', -1],
++        ['ArrowRight', 1],
++        ['ArrowLeft', -1],
++        ['PageUp', 10],
++        ['PageDown', -10],
++        ['Home', 0],
++        ['End', 0],
++      ]) {
++        const expected =
++          key === 'Home'
++            ? control.min
++            : key === 'End'
++              ? control.max
++              : Math.min(control.max, Math.max(control.min, current + count * control.step));
++        await input.press(key);
++        current = Number(await input.inputValue());
++        assert(Math.abs(current - expected) < 1e-8, JSON.stringify({ control, key, current, expected }));
++      }
++    }
++    return controls.map((control) => control.id);
++  };
++  await go('');
++  result.networkRanges = await audit('input[type="range"]');
++  await page.goto('http://localhost:4187/settings/?lang=en');
++  result.settingsRanges = await audit('input[type="range"]');
++  result.checks.push(
++    `all ${result.networkRanges.length} rendered network and ${result.settingsRanges.length} settings sliders support all eight navigation keys`,
++  );
++  assert.deepEqual(result.errors, []);
++  console.log(JSON.stringify(result.checks, null, 2));
++} finally {
++  await writeFile(join(data, `${engine}-browser.json`), JSON.stringify(result, null, 2));
++  await browser?.close();
++  await server.httpServer.close();
++}
+diff --git a/experiments/issue-27-mcp.mjs b/experiments/issue-27-mcp.mjs
+new file mode 100644
+index 0000000..5d96b17
+--- /dev/null
++++ b/experiments/issue-27-mcp.mjs
+@@ -0,0 +1,28 @@
++// Function expression consumed by Playwright MCP browser_run_code_unsafe.
++async (page) => {
++  await page.setViewportSize({ width: 1440, height: 1000 });
++  await page.goto(
++    'http://localhost:4187/network/?code=1111&lang=en&rotation=-90&turns=0+0%2C-15+15&gaps=0.08+0.08+%7E+%7E%2C0.18+0.18+%7E+%7E',
++  );
++  const gap = page.getByLabel('Link 1: Gap at the target reference', { exact: true });
++  await gap.fill('0.07');
++  await gap.hover();
++  const box = await gap.boundingBox();
++  await page.mouse.click(box.x + box.width - 12, box.y + box.height / 2 - 3);
++  if ((await gap.inputValue()) !== '0.08') throw new Error('Native spinner Up should move 0.07 to 0.08');
++  await page.mouse.click(box.x + box.width - 12, box.y + box.height / 2 + 3);
++  if ((await gap.inputValue()) !== '0.07') throw new Error('Native spinner Down should restore 0.07');
++  await gap.press('ArrowUp');
++  if ((await gap.inputValue()) !== '0.08') throw new Error('Keyboard Up should restore 0.08');
++  const result = {
++    date: new Date().toISOString(),
++    checks: [
++      'actual native spinner Up: 0.07→0.08',
++      'actual native spinner Down: 0.08→0.07',
++      'keyboard Up restores equal 0.08 gaps',
++    ],
++    url: await page.getByLabel('Link to this picture', { exact: true }).inputValue(),
++  };
++  await page.locator('.network__preview').scrollIntoViewIfNeeded();
++  return result;
++};
+diff --git a/experiments/issue-27-measure.mjs b/experiments/issue-27-measure.mjs
+new file mode 100644
+index 0000000..9a75d9b
+--- /dev/null
++++ b/experiments/issue-27-measure.mjs
+@@ -0,0 +1,32 @@
++// Bounded geometric and solver probes; no stress inputs. Run before/after a fix.
++import { createServer } from 'vite';
++import { writeFile } from 'node:fs/promises';
++const server = await createServer({ server: { middlewareMode: true } });
++try {
++  const { normalizeStyle, shapeOfStyle } = await server.ssrLoadModule('/src/links/style.js');
++  const { glyphCurves, paintedCurve } = await server.ssrLoadModule('/src/links/glyph.js');
++  const { solveCollisions } = await server.ssrLoadModule('/src/links/collisions.js');
++  const links = [
++    [1, 1],
++    [1, 1],
++  ];
++  const results = [];
++  for (const gap of [0, 0.01, 0.06, 0.07, 0.079999, 0.08, 0.080001, 0.09]) {
++    const style = normalizeStyle({ rotation: -90, turns: '0 0,-15 15', gaps: `0.08 ${gap} ~ ~,0.18 0.18 ~ ~` });
++    const shape = shapeOfStyle(style, 2);
++    const raw = glyphCurves(links, shape)[0];
++    const painted = paintedCurve(raw, shape);
++    const cap = style.strokeWidth / 2;
++    const extra = cap / Math.sin((style.endAngle * Math.PI) / 180);
++    const apex = painted.end.at.map((v, i) => v + extra * painted.end.dir[i]);
++    const source = Math.hypot(...raw.start.at.map((v, i) => v - raw.middle.at[i])) - cap;
++    const target = Math.hypot(...apex.map((v, i) => v - raw.middle.at[i]));
++    results.push({ gap, source, target, rawEnd: raw.end.at, paintedEnd: painted.end.at, apex });
++  }
++  const shape = shapeOfStyle(normalizeStyle({ rotation: -90 }), 2);
++  results.push({ solver: solveCollisions(links, shape, { adjustGaps: true }) });
++  console.log(JSON.stringify(results, null, 2));
++  if (process.env.RESULT_FILE) await writeFile(process.env.RESULT_FILE, JSON.stringify(results, null, 2));
++} finally {
++  await server.close();
++}
+diff --git a/experiments/issue-27-url-history.mjs b/experiments/issue-27-url-history.mjs
+new file mode 100644
+index 0000000..0d2f2d9
+--- /dev/null
++++ b/experiments/issue-27-url-history.mjs
+@@ -0,0 +1,53 @@
++// Audit every revision that changed the URL style schema. Archived metadata
++// becomes a stable fixture; runtime tests never depend on Git/network access.
++import assert from 'node:assert/strict';
++import { execFileSync } from 'node:child_process';
++import { mkdir, rm, writeFile } from 'node:fs/promises';
++import { createServer } from 'vite';
++const revisions = execFileSync(
++  'git',
++  ['log', '--format=%H', '406a2b4', '--', 'src/links/style.js', 'src/links/style-geometry.js'],
++  { encoding: 'utf8' },
++)
++  .trim()
++  .split('\n');
++const server = await createServer({ server: { middlewareMode: true } });
++const data = [];
++try {
++  const current = await server.ssrLoadModule('/src/links/style.js');
++  const keys = new Set(current.STYLE_FIELDS.map((field) => field.key));
++  for (const sha of revisions) {
++    const dir = `experiments/out/issue-27-history/${sha}`;
++    await mkdir(dir, { recursive: true });
++    const archive = execFileSync('git', ['archive', sha, 'src'], { maxBuffer: 16 * 1024 * 1024 });
++    execFileSync('tar', ['-x', '-C', dir], { input: archive });
++    const legacy = await server.ssrLoadModule(`/${dir}/src/links/style.js`);
++    const fields = legacy.STYLE_FIELDS.map(({ key, type, d, min, max, options }) => ({
++      key,
++      type,
++      d,
++      min,
++      max,
++      options: options?.map((option) => option.value),
++    }));
++    for (const field of fields) {
++      assert(keys.has(field.key), `Removed historical URL key: ${sha} ${field.key}`);
++      const now = current.STYLE_FIELDS.find(({ key }) => key === field.key);
++      if (field.type === 'range') {
++        assert(now.min <= field.min && now.max >= field.max, `Narrowed historical range: ${sha} ${field.key}`);
++      }
++      if (field.type === 'select')
++        for (const value of field.options)
++          assert(
++            now.options.some((item) => item.value === value),
++            `Removed historical enum: ${sha} ${field.key}=${value}`,
++          );
++    }
++    data.push({ sha, fields });
++  }
++  await writeFile('docs/case-studies/issue-27/data/url-schema-history.json', JSON.stringify(data, null, 2));
++  console.log(`All ${data.length} historical schemas retain all keys, valid numeric ranges and enum values.`);
++} finally {
++  await server.close();
++  await rm('experiments/out/issue-27-history', { recursive: true, force: true });
++}
+diff --git a/package.json b/package.json
+index f259fc7..81ce45e 100644
+--- a/package.json
++++ b/package.json
+@@ -31,7 +31,8 @@
+     "build:cv": "node scripts/build-cv-pdf.mjs",
+     "test:network:issue21": "node experiments/issue-21-browser.mjs",
+     "test:network:issue23": "node experiments/issue-23-browser.mjs",
+-    "test:network:issue25": "node experiments/issue-25-browser.mjs"
++    "test:network:issue25": "node experiments/issue-25-browser.mjs",
++    "test:network:issue27": "node experiments/issue-27-browser.mjs"
+   },
+   "homepage": "https://konard.github.io",
+   "devDependencies": {
+diff --git a/src/components/NumberInput.jsx b/src/components/NumberInput.jsx
+new file mode 100644
+index 0000000..5b9e4ad
+--- /dev/null
++++ b/src/components/NumberInput.jsx
+@@ -0,0 +1,33 @@
++import { useState } from 'react';
++import { numericKey } from './numericKeys';
++
++/** Keep intermediate text (empty, minus, decimal point) while a number is
++ * being edited. Valid values still update the preview immediately.
++ */
++export default function NumberInput({ value, onValue, fallback = 0, ...props }) {
++  const [draft, setDraft] = useState(null);
++  const active = draft && Object.is(draft.at, value);
++  const set = (next) => {
++    setDraft(null);
++    onValue(next);
++  };
++  return (
++    <input
++      {...props}
++      type="number"
++      value={active ? draft.text : (value ?? '')}
++      onChange={(event) => {
++        const text = event.target.value;
++        const next = text === '' ? null : Number(text);
++        if (event.target.validity.badInput) {
++          setDraft({ text, at: value });
++          return;
++        }
++        onValue(next);
++        setDraft({ text, at: next ?? value });
++      }}
++      onBlur={() => setDraft(null)}
++      onKeyDown={(event) => numericKey(event, set, value ?? fallback)}
++    />
++  );
++}
+diff --git a/src/components/numericKeys.js b/src/components/numericKeys.js
+new file mode 100644
+index 0000000..3f43515
+--- /dev/null
++++ b/src/components/numericKeys.js
+@@ -0,0 +1,25 @@
++/** Consistent range keys across engines. Number fields keep text navigation
++ * and platform editing shortcuts; blank overrides step from their inheritance.
++ */
++export function numericKey(event, change, fallback = 0) {
++  if (event.altKey || event.ctrlKey || event.metaKey) return;
++  const input = event.currentTarget;
++  const range = input.type === 'range';
++  const directions = { ArrowUp: 1, ArrowDown: -1, PageUp: 10, PageDown: -10 };
++  if (range) Object.assign(directions, { ArrowRight: 1, ArrowLeft: -1 });
++  const direction = directions[event.key];
++  const boundary = range && ['Home', 'End'].includes(event.key);
++  if (!direction && !boundary) return;
++  event.preventDefault();
++  const min = input.min === '' ? -Infinity : Number(input.min);
++  const max = input.max === '' ? Infinity : Number(input.max);
++  const step = Number(input.step) || 1;
++  const current = input.value === '' ? fallback : Number(input.value);
++  const base = Number.isFinite(min) ? min : 0;
++  const position = (current - base) / step;
++  const ticks = direction * (event.shiftKey && Math.abs(direction) === 1 ? 10 : 1);
++  const snapped = direction > 0 ? Math.floor(position + 1e-9) : Math.ceil(position - 1e-9);
++  const next = boundary ? (event.key === 'Home' ? min : max) : base + (snapped + ticks) * step;
++  // Avoid accumulating binary decimal error in React state and shared URLs.
++  change(Number(Math.min(max, Math.max(min, next)).toFixed(10)));
++}
+diff --git a/src/components/numericKeys.test.js b/src/components/numericKeys.test.js
+new file mode 100644
+index 0000000..c65af88
+--- /dev/null
++++ b/src/components/numericKeys.test.js
+@@ -0,0 +1,52 @@
++import { expect, it, vi } from 'vitest';
++import { numericKey } from './numericKeys';
++import { STYLE_FIELDS } from '../links/style';
++import { FIELDS } from '../settings/schema';
++
++const key = (input, name, modifiers = {}, fallback = 0) => {
++  const change = vi.fn();
++  const event = { currentTarget: input, key: name, preventDefault: vi.fn(), ...modifiers };
++  numericKey(event, change, fallback);
++  return { value: change.mock.calls[0]?.[0], prevented: event.preventDefault.mock.calls.length > 0 };
++};
++it('steps off-grid typed numbers to the next valid decimal instead of accumulating a step mismatch', () => {
++  const input = Object.assign(document.createElement('input'), {
++    type: 'number',
++    min: '0',
++    max: '1',
++    step: '0.01',
++    value: '0.075',
++  });
++  expect(key(input, 'ArrowUp').value).toBe(0.08);
++  expect(key(input, 'ArrowDown').value).toBe(0.07);
++  expect(key(input, 'PageUp').value).toBe(0.17);
++  input.value = '';
++  expect(key(input, 'ArrowUp', {}, 0.08).value).toBe(0.09);
++  expect(key(input, 'ArrowUp', { shiftKey: true }, 0.08).value).toBe(0.18);
++  for (const name of ['ArrowLeft', 'ArrowRight', 'Home', 'End', 'Tab', 'Backspace', 'Delete', 'Escape', 'Enter'])
++    expect(key(input, name).prevented).toBe(false);
++  for (const modifier of ['ctrlKey', 'metaKey', 'altKey'])
++    expect(key(input, 'ArrowUp', { [modifier]: true }).prevented).toBe(false);
++});
++it('supports all eight navigation keys at valid limits for every slider schema, including conditional controls', () => {
++  for (const field of [...STYLE_FIELDS, ...FIELDS].filter((field) => field.type === 'range' && field.step)) {
++    const input = Object.assign(document.createElement('input'), {
++      type: 'range',
++      min: String(field.min),
++      max: String(field.max),
++      step: String(field.step),
++      value: String(field.d),
++    });
++    for (const name of ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'PageUp', 'PageDown', 'Home', 'End']) {
++      const { value, prevented } = key(input, name);
++      expect(prevented, `${field.key}: ${name}`).toBe(true);
++      expect(value, field.key).toBeGreaterThanOrEqual(field.min);
++      expect(value, field.key).toBeLessThanOrEqual(field.max);
++      expect(Number.isFinite(value), field.key).toBe(true);
++    }
++    input.value = String(field.min);
++    expect(key(input, 'ArrowDown').value).toBe(field.min);
++    input.value = String(field.max);
++    expect(key(input, 'ArrowUp').value).toBe(field.max);
++  }
++});
+diff --git a/src/links/collision-gaps.js b/src/links/collision-gaps.js
+index cba20e5..927606c 100644
+--- a/src/links/collision-gaps.js
++++ b/src/links/collision-gaps.js
+@@ -41,6 +41,7 @@ export function adjustCollisionGaps(links, base, result, { gapRange, middleRange
+     let improved = false;
+     for (let i = 0; i < links.length; i++)
+       for (let k = 0; k < 4; k++) {
++        if (links[i][k % 2] === i + 1) continue;
+         if (k < 2 && links[i][k] === 0) continue;
+         const kept = rows[i][k];
+         const range = k < 2 ? gapRange : middleRange;
+@@ -82,6 +83,7 @@ export function adjustCollisionGaps(links, base, result, { gapRange, middleRange
+   cache.scale = curveTransform(cache.curves, currentShape()).scale;
+   rows.forEach((row, i) => {
+     for (let k = 2; k < 4; k++) {
++      if (links[i][k % 2] === i + 1) continue;
+       const max = Math.max(initial[i][k], Math.min(30, halfLength(i, k - 2) * 0.3));
+       if (row[k] > max) row[k] = Math.floor(max * 1000) / 1000;
+     }
+diff --git a/src/links/collisions.js b/src/links/collisions.js
+index 5a65dca..aed9605 100644
+--- a/src/links/collisions.js
++++ b/src/links/collisions.js
+@@ -107,6 +107,8 @@ function solveTurns(links, shape = {}, { range = 60, step = 15, passes = 3 } = {
+     let improved = false;
+     for (let i = 0; i < n; i++) {
+       for (let end = 0; end < 2; end++) {
++        // A self-closed half is already positioned; move the open references.
++        if (links[i][end] === i + 1) continue;
+         const kept = delta[i][end];
+         let best = { angle: kept, cost: costOf(i, lines[i]), line: lines[i] };
+         for (const angle of candidates) {
+@@ -180,6 +182,7 @@ function paintedPolyline(raw, o, i, scale) {
+   const fit = (point) => point.map((v) => v * scale);
+   const curve = paintedCurve(
+     {
++      ...raw,
+       segments: raw.segments.map((segment) => segment.map(fit)),
+       ...Object.fromEntries(['start', 'end', 'middle'].map((key) => [key, { ...raw[key], at: fit(raw[key].at) }])),
+     },
+diff --git a/src/links/glyph.js b/src/links/glyph.js
+index ebd266e..17bbf73 100644
+--- a/src/links/glyph.js
++++ b/src/links/glyph.js
+@@ -232,7 +232,7 @@ export function linkCurve(links, i, places, o) {
+     second = [m, add(m, mul(d, k)), sub(to, mul(dir, k)), to];
+     end = { at: to, dir };
+   }
+-  return { segments: [first, second], start, end, middle: { at: m, dir: d } };
++  return { segments: [first, second], start, end, middle: { at: m, dir: d }, sharedReference: s === t && other(s) };
+ }
+ 
+ /** The point at parameter u ∈ [0, 1] of a cubic Bézier segment. */
+@@ -284,6 +284,7 @@ export function glyphCurves(links, shape = {}) {
+   const { scale, shift } = curveTransform(curves, shape);
+   const place = (p) => add(mul(p, scale), shift);
+   return curves.map((c) => ({
++    sharedReference: c.sharedReference,
+     segments: c.segments.map((seg) => seg.map(place)),
+     start: { at: place(c.start.at), dir: c.start.dir },
+     end: { at: place(c.end.at), dir: c.end.dir },
+@@ -380,8 +381,10 @@ export function paintedCurve(curve, o) {
+     const extra = (o.strokeWidth || 0) / 2 / Math.sin(o[`${key}Angle`] * RAD);
+     // A lens has one common outward axis. Its equally gapped ends therefore
+     // share an exact painted boundary, even when the tip tangent is oblique.
+-    const common = sub(mul(add(curve.start.at, curve.end.at), 0.5), curve.middle.at);
+-    const axis = length(common) > 1e-6 ? common : sub(curve[key].at, curve.middle.at);
++    // Only a lens shares an outward axis. Self-reference endpoints point
++    // toward their own middle: averaging their opposite positions flips the
++    // cap correction as soon as the two gaps cross equality (issue #27).
++    const axis = curve.sharedReference ? sub(mul(add(curve.start.at, curve.end.at), 0.5), curve.middle.at) : [0, 0];
+     const outward = length(axis) > 1e-6 ? unit(axis) : mul(curve[key].dir, key === 'end' ? 1 : -1);
+     const move = add(mul(curve[key].dir, key === 'end' ? -extra : extra), mul(outward, cap));
+     const segment = segments[key === 'end' ? 1 : 0];
+diff --git a/src/links/issue-27.test.js b/src/links/issue-27.test.js
+new file mode 100644
+index 0000000..ee3668f
+--- /dev/null
++++ b/src/links/issue-27.test.js
+@@ -0,0 +1,80 @@
++import { expect, it } from 'vitest';
++import { glyphCurves, paintedCurve } from './glyph';
++import { overlapCost, solveCollisions } from './collisions';
++import { normalizeStyle, shapeOfStyle, linkTurns, styleFromParams, styleToParams } from './style';
++import { linkGaps } from './gaps';
++
++const links = [
++  [1, 1],
++  [1, 1],
++];
++const setup = (patch = {}) => shapeOfStyle(normalizeStyle({ rotation: -90, turns: '0 0,-15 15', ...patch }), 2);
++const extent = (shape) => {
++  const raw = glyphCurves(links, shape)[0];
++  const paint = paintedCurve(raw, shape);
++  const extra = shape.strokeWidth / 2 / Math.sin((shape.endAngle * Math.PI) / 180);
++  const apex = paint.end.at.map((v, i) => v + extra * paint.end.dir[i]);
++  const radius = (p) => Math.hypot(...p.map((v, i) => v - raw.middle.at[i]));
++  return { source: radius(raw.start.at) - shape.strokeWidth / 2, target: radius(apex) };
++};
++it('measures exactly equal painted gaps at both ends of the closed 1111 link', () => {
++  for (const rotation of [-90, 0, 45, 90])
++    for (const endAngle of [5, 15, 45, 85]) {
++      const measured = extent(setup({ rotation, endAngle }));
++      expect(measured.target).toBeCloseTo(measured.source, 9);
++    }
++});
++it('changes the target gap continuously through 0.07 and 0.08 without moving the source gap', () => {
++  const samples = [0.06, 0.07, 0.079, 0.08, 0.081, 0.09].map((gap) =>
++    extent(setup({ gaps: `0.08 ${gap} ~ ~,0.18 0.18 ~ ~` })),
++  );
++  for (let i = 1; i < samples.length; i++) {
++    expect(samples[i].source).toBeCloseTo(samples[0].source, 9);
++    const step = [0.01, 0.009, 0.001, 0.001, 0.009][i - 1];
++    expect(samples[i].target - samples[i - 1].target).toBeCloseTo(step * 60, 8);
++  }
++});
++it('preserves closed halves and discovers gaps and turns on the open 1111 link', () => {
++  const shape = shapeOfStyle(normalizeStyle({ rotation: -90 }), 2);
++  const result = solveCollisions(links, shape, { adjustGaps: true });
++  expect(result.turns[0]).toEqual([0, 0]);
++  expect(result.linkGaps[0]).toEqual(shape.linkGaps[0]);
++  expect(result.linkGaps[1][0]).toBeGreaterThan(0.08);
++  expect(result.linkGaps[1][1]).toBeGreaterThan(0.08);
++  expect(result.after).toBeLessThan(result.before);
++  expect(overlapCost(links, { ...shape, turns: result.turns, linkGaps: result.linkGaps })).toBeCloseTo(result.after, 8);
++});
++it('recognizes the exact reported arrangement with the closed gaps corrected to equality', () => {
++  const shape = setup({ gaps: '0.08 0.08 ~ ~,0.18 0.18 ~ ~' });
++  expect(overlapCost(links, shape)).toBeCloseTo(30 * 0.002, 8);
++  const result = solveCollisions(links, shape, { adjustGaps: true });
++  expect(result.turns[0]).toEqual([0, 0]);
++  expect(result.linkGaps[0]).toEqual([0.08, 0.08, null, null]);
++});
++it('preserves the closed side and its middle cut on a partially self-referencing link', () => {
++  const partial = [
++    [1, 2],
++    [1, 1],
++  ];
++  const shape = setup({ turns: '15 0', gaps: '0.09 ~ 1 ~' });
++  const result = solveCollisions(partial, shape, { adjustGaps: true });
++  expect(result.turns[0][0]).toBe(15);
++  expect(result.linkGaps[0][0]).toBe(0.09);
++  expect(result.linkGaps[0][2]).toBe(1);
++});
++it('accepts old turn/gap rows and serializes skipped defaults compactly', () => {
++  const old = styleFromParams(new URLSearchParams('turns=0+0%2C-15+15&gaps=~+~+~+~%2C0.18+0.18+~+~'));
++  const compact = styleToParams(old);
++  expect(compact.get('turns')).toBe(',-15 15');
++  expect(compact.get('gaps')).toBe(',0.18 0.18');
++  const next = styleFromParams(compact);
++  expect(linkTurns(next, 2)).toEqual([
++    [0, 0],
++    [-15, 15],
++  ]);
++  expect(linkGaps(next, 2)).toEqual([
++    [null, null, null, null],
++    [0.18, 0.18, null, null],
++  ]);
++  expect(styleFromParams(styleToParams(next))).toEqual(next);
++});
+diff --git a/src/links/style.js b/src/links/style.js
+index 1fef3dd..e4b9631 100644
+--- a/src/links/style.js
++++ b/src/links/style.js
+@@ -274,8 +274,8 @@ export const STYLE_SECTIONS = [
+     id: 'experimental',
+     title: { en: 'Experimental: fewer overlaps', ru: 'Эксперимент: меньше наложений' },
+     lead: {
+-      en: 'Turns the ends and optionally adjusts individual reference gaps and middle cuts to reduce crossings. Small cuts are preferred; manual values are the starting point. Apply the result to keep editing it.',
+-      ru: 'Поворачивает концы и при желании меняет зазоры ссылок и разрывы середины отдельных связей. Предпочитает небольшие разрывы и начинает с ручных значений. Примените результат, чтобы продолжить редактирование.',
++      en: 'Turns open references and optionally adjusts their individual gaps and middle cuts to reduce crossings. Self-closed halves keep their angles, gaps and cuts. Small cuts are preferred; manual values are the starting point. Apply the result to keep editing it.',
++      ru: 'Поворачивает открытые ссылки и при желании меняет их зазоры и разрывы середины для уменьшения наложений. Замкнутые половины сохраняют углы, зазоры и разрывы. Предпочитает небольшие разрывы и начинает с ручных значений. Примените результат, чтобы продолжить редактирование.',
+     },
+     fields: [
+       toggle('solve', false, { en: 'Reduce overlaps automatically', ru: 'Уменьшать наложения автоматически' }),
+@@ -370,7 +370,18 @@ export function normalizeStyle(raw = {}) {
+ export function styleToParams(style) {
+   const params = new URLSearchParams();
+   STYLE_FIELDS.forEach(({ key }) => {
+-    if (style[key] !== STYLE_DEFAULTS[key]) params.set(key, String(style[key]));
++    let value = String(style[key]);
++    if (key === 'turns')
++      value = normalizeList(key, value)
++        .split(',')
++        .map((row) => (row === '0 0' ? '' : row))
++        .join(',');
++    if (key === 'gaps')
++      value = normalizeGaps(value)
++        .split(',')
++        .map((row) => row.replace(/(?: ?~)+$/, ''))
++        .join(',');
++    if (value !== String(STYLE_DEFAULTS[key])) params.set(key, value);
+   });
+   return params;
+ }
+diff --git a/src/links/url-history-27.test.js b/src/links/url-history-27.test.js
+new file mode 100644
+index 0000000..bb72d40
+--- /dev/null
++++ b/src/links/url-history-27.test.js
+@@ -0,0 +1,44 @@
++import { readFileSync } from 'node:fs';
++import { join } from 'node:path';
++import { expect, it } from 'vitest';
++import { STYLE_FIELDS, normalizeStyle, styleFromParams, styleToParams } from './style';
++
++const history = JSON.parse(
++  readFileSync(join(__dirname, '../../docs/case-studies/issue-27/data/url-schema-history.json'), 'utf8'),
++);
++it.each(history)('retains every URL field and option from published schema $sha', ({ fields }) => {
++  for (const field of fields) {
++    const current = STYLE_FIELDS.find(({ key }) => key === field.key);
++    expect(current, field.key).toBeDefined();
++    const values =
++      field.type === 'range'
++        ? [field.min, field.d, field.max]
++        : field.type === 'select'
++          ? field.options
++          : field.type === 'toggle'
++            ? [false, true]
++            : [field.d];
++    for (const value of values) {
++      const params = new URLSearchParams({ [field.key]: String(value) });
++      const style = styleFromParams(params);
++      expect(style[field.key], `${field.key}=${value}`).toEqual(normalizeStyle({ [field.key]: value })[field.key]);
++      if (field.type !== 'list') expect(style[field.key], field.key).toEqual(value);
++      expect(styleFromParams(styleToParams(style)), `${field.key}=${value}`).toEqual(style);
++    }
++  }
++});
++it('preserves legacy gap aliases, explicit colors and empty rows without moving subsequent link indices', () => {
++  const old = styleFromParams(
++    new URLSearchParams(
++      'gap=0.2&endGap=0.3&colors=%23ABCDEF,%23123456&turns=0+0,0+0,15+-15&gaps=~+~+~+~,~+0+~+~,0.18+0.18+~+~',
++    ),
++  );
++  expect(old.startGap).toBe(0.2);
++  expect(old.endGap).toBe(0.3);
++  expect(old.palette).toBe('custom');
++  expect(old.colors).toBe('#abcdef,#123456');
++  const params = styleToParams(old);
++  expect(params.get('turns')).toBe(',,15 -15');
++  expect(params.get('gaps')).toBe(',~ 0,0.18 0.18');
++  expect(styleFromParams(params)).toEqual(old);
++});
+diff --git a/src/pages/NetworkEditor.jsx b/src/pages/NetworkEditor.jsx
+index 1eff8ef..9d8500b 100644
+--- a/src/pages/NetworkEditor.jsx
++++ b/src/pages/NetworkEditor.jsx
+@@ -18,6 +18,7 @@ import {
+ import { useLang } from '../i18n/prefs';
+ import { plural } from '../i18n/plural';
+ import { formatNumber } from '../components/format';
++import NumberInput from '../components/NumberInput';
+ 
+ const LINKS = { en: ['link', 'links'], ru: ['связь', 'связи', 'связей'] };
+ // "of N links", "one of N networks": Russian needs the genitive after «из».
+@@ -157,17 +158,15 @@ function ReferenceSelect({ id, value, n, self, onChange, label }) {
+   // Avoid two n-option selects per row (quadratic DOM size) on large networks.
+   if (n > 50)
+     return (
+-      <input
++      <NumberInput
+         id={id}
+-        type="number"
+         min={0}
+         max={n}
+         step={1}
+         value={value}
+         aria-label={label}
+-        onChange={(event) => {
+-          const ref = Number(event.target.value);
+-          if (event.target.value !== '' && Number.isInteger(ref) && ref >= 0 && ref <= n) onChange(ref);
++        onValue={(ref) => {
++          if (ref !== null && Number.isInteger(ref) && ref >= 0 && ref <= n) onChange(ref);
+         }}
+       />
+     );
+@@ -274,15 +273,16 @@ export function LinksTable({
+                         ? { en: 'Turn of the target, °', ru: 'Поворот конца, °' }
+                         : { en: 'Turn of the source, °', ru: 'Поворот начала, °' },
+                     )}
+-                    <input
+-                      type="number"
++                    <NumberInput
+                       className="mono"
+                       min={-180}
+                       max={180}
+                       step={5}
+                       value={turns[i][e]}
+                       aria-label={`${name}: ${t({ en: 'turn of the', ru: 'поворот' })} ${e ? end : start}, °`}
+-                      onChange={(event) => onTurn(i, e, Number(event.target.value) || 0)}
++                      onValue={(value) => {
++                        if (value !== null) onTurn(i, e, value);
++                      }}
+                     />
+                   </label>
+                 ))}
+diff --git a/src/pages/NetworkGaps.jsx b/src/pages/NetworkGaps.jsx
+index 84e3131..8d86eb4 100644
+--- a/src/pages/NetworkGaps.jsx
++++ b/src/pages/NetworkGaps.jsx
+@@ -1,5 +1,6 @@
+ import { GAP_FIELDS } from '../links/gaps';
+ import { useLang } from '../i18n/prefs';
++import NumberInput from '../components/NumberInput';
+ 
+ /** All four overrides stay visible inside their link's card. */
+ export default function NetworkGaps({ i, row, style, onGap }) {
+@@ -9,15 +10,15 @@ export default function NetworkGaps({ i, row, style, onGap }) {
+       {GAP_FIELDS.map((field, k) => (
+         <label key={field.key}>
+           {t(field.label)}
+-          <input
+-            type="number"
++          <NumberInput
+             min={0}
+             max={field.max}
+             step={field.step}
+             aria-label={`${t({ en: 'Link', ru: 'Связь' })} ${i + 1}: ${t(field.label)}`}
+-            value={row[k] ?? ''}
++            value={row[k]}
++            fallback={style[field.key]}
+             placeholder={String(style[field.key])}
+-            onChange={(event) => onGap(i, k, event.target.value === '' ? null : Number(event.target.value))}
++            onValue={(value) => onGap(i, k, value)}
+           />
+         </label>
+       ))}
+diff --git a/src/pages/NetworkStyle.jsx b/src/pages/NetworkStyle.jsx
+index 48a326d..fe721b1 100644
+--- a/src/pages/NetworkStyle.jsx
++++ b/src/pages/NetworkStyle.jsx
+@@ -3,6 +3,7 @@ import { formatValue } from '../settings/fields';
+ import { LOOKS, SIZES, STYLE_DEFAULTS, STYLE_SECTIONS, applyLook, normalizeStyle } from '../links/style';
+ import { geometryAvailable } from '../links/style-geometry';
+ import { useLang } from '../i18n/prefs';
++import { numericKey } from '../components/numericKeys';
+ 
+ const SAVED_KEY = 'network.styles';
+ const MAX_SAVED = 12;
+@@ -46,6 +47,7 @@ function Control({ field, value, onChange }) {
+         max={field.max}
+         step={field.step}
+         value={value}
++        onKeyDown={(event) => numericKey(event, onChange)}
+         onChange={(event) => onChange(Number(event.target.value))}
+       />
+     );
+diff --git a/src/pages/SettingsPage.jsx b/src/pages/SettingsPage.jsx
+index f0ebe8e..1476776 100644
+--- a/src/pages/SettingsPage.jsx
++++ b/src/pages/SettingsPage.jsx
+@@ -11,6 +11,7 @@ import { formatValue } from '../settings/fields';
+ import { DEFAULTS, FIELDS, PALETTES, SECTIONS } from '../settings/schema';
+ import { changesOf, resetSettings, setSettings, useSettings } from '../settings/store';
+ import { cue } from '../sound/options';
++import { numericKey } from '../components/numericKeys';
+ 
+ const SETTINGS = { en: ['setting', 'settings'], ru: ['настройка', 'настройки', 'настроек'] };
+ const CHANGED = { en: ['differs', 'differ'], ru: ['отличается', 'отличаются', 'отличаются'] };
+@@ -41,6 +42,7 @@ function Control({ field, value, settings }) {
+         max={field.max}
+         step={field.step}
+         value={value}
++        onKeyDown={(event) => numericKey(event, set)}
+         onChange={(event) => set(Number(event.target.value))}
+       />
+     );
+diff --git a/src/pages/network-23.test.jsx b/src/pages/network-23.test.jsx
+index a20c7ad..7fac9a5 100644
+--- a/src/pages/network-23.test.jsx
++++ b/src/pages/network-23.test.jsx
+@@ -24,7 +24,7 @@ it('edits independent gaps, resets inheritance and preserves gaps when removing
+   fireEvent.change(first, { target: { value: '0.25' } });
+   fireEvent.change(gap(2, 'Cut after the middle'), { target: { value: '4' } });
+   act(() => vi.advanceTimersByTime(450));
+-  expect(new URLSearchParams(window.location.search).get('gaps')).toBe('0.25 ~ ~ ~,~ ~ ~ 4');
++  expect(new URLSearchParams(window.location.search).get('gaps')).toBe('0.25,~ ~ ~ 4');
+   fireEvent.click(screen.getByRole('button', { name: 'Remove: Link 1' }));
+   expect(gap(1, 'Cut after the middle')).toHaveValue(4);
+   fireEvent.change(gap(1, 'Cut after the middle'), { target: { value: '' } });
+diff --git a/src/pages/network-27.test.jsx b/src/pages/network-27.test.jsx
+new file mode 100644
+index 0000000..38f0582
+--- /dev/null
++++ b/src/pages/network-27.test.jsx
+@@ -0,0 +1,64 @@
++import { act, fireEvent, render, screen } from '@testing-library/react';
++import { afterEach, expect, it, vi } from 'vitest';
++import NetworkPage from './NetworkPage';
++
++afterEach(() => {
++  vi.useRealTimers();
++  window.history.replaceState(null, '', '/');
++});
++const open = () => {
++  window.history.replaceState(
++    null,
++    '',
++    '/network/?code=1111&lang=en&turns=0+0%2C-15+15&gaps=~+~+~+~%2C0.18+0.18+~+~#links',
++  );
++  render(<NetworkPage />);
++};
++it('upgrades an old URL in browser history while preserving its drawing, language and anchor', () => {
++  vi.useFakeTimers();
++  open();
++  const drawing = document.querySelector('.network__preview').innerHTML;
++  const replace = vi.spyOn(window.history, 'replaceState');
++  act(() => vi.advanceTimersByTime(450));
++  const params = new URLSearchParams(window.location.search);
++  expect(params.get('turns')).toBe(',-15 15');
++  expect(params.get('gaps')).toBe(',0.18 0.18');
++  expect(params.get('lang')).toBe('en');
++  expect(window.location.hash).toBe('#links');
++  expect(replace).toHaveBeenCalledTimes(1);
++  expect(document.querySelector('.network__preview').innerHTML).toBe(drawing);
++  replace.mockRestore();
++});
++it('steps inherited gaps from the displayed global value, with decimal precision', () => {
++  open();
++  const input = screen.getByLabelText('Link 1: Gap at the target reference');
++  expect(input).toHaveValue(null);
++  fireEvent.keyDown(input, { key: 'ArrowUp' });
++  expect(input).toHaveValue(0.09);
++  fireEvent.keyDown(input, { key: 'ArrowDown' });
++  expect(input).toHaveValue(0.08);
++  fireEvent.keyDown(input, { key: 'PageDown' });
++  expect(input).toHaveValue(0);
++});
++it('supports page steps on every range while preserving modified editing shortcuts', () => {
++  open();
++  const input = screen.getByLabelText('Gap at the target reference', { selector: 'input[type="range"]' });
++  fireEvent.keyDown(input, { key: 'PageUp' });
++  expect(input).toHaveValue('0.18');
++  fireEvent.keyDown(input, { key: 'Home' });
++  expect(input).toHaveValue('0');
++  fireEvent.keyDown(input, { key: 'End' });
++  expect(input).toHaveValue('1');
++});
++it('allows clearing a turn while typing a replacement and retains text-navigation keys', () => {
++  open();
++  const input = screen.getByLabelText('Link 2: turn of the source, °');
++  fireEvent.change(input, { target: { value: '' } });
++  expect(input).toHaveValue(null);
++  fireEvent.change(input, { target: { value: '-25' } });
++  expect(input).toHaveValue(-25);
++  fireEvent.keyDown(input, { key: 'Home' });
++  expect(input).toHaveValue(-25);
++  fireEvent.keyDown(input, { key: 'a', ctrlKey: true });
++  expect(input).toHaveValue(-25);
++});
+diff --git a/src/pages/network.test.jsx b/src/pages/network.test.jsx
+index 8a6e267..0121f63 100644
+--- a/src/pages/network.test.jsx
++++ b/src/pages/network.test.jsx
+@@ -134,7 +134,7 @@ describe('NetworkPage (issue #17)', () => {
+     expect(preview().innerHTML).toContain('#ff0000');
+     expect(new URLSearchParams(search()).get('colors')).toContain('#ff0000');
+     fireEvent.change(screen.getByLabelText('Link 2: turn of the target, °'), { target: { value: '30' } });
+-    expect(new URLSearchParams(search()).get('turns')).toBe('0 0,0 30');
++    expect(new URLSearchParams(search()).get('turns')).toBe(',0 30');
+     fireEvent.click(screen.getByRole('button', { name: 'Remove: Link 1' }));
+     // Link 2 becomes link 1 and keeps its turn; references to the removed link become 0.
+     expect(field('Pairs with the base')).toHaveValue('11₃ 00₃');

@@ -1,0 +1,427 @@
+{
+  "artifact": "network-webkit",
+  "run": 40579640992,
+  "headSha": "400b4d777354d0c3cb00530e863b64e7f9743a0b",
+  "files": [
+    {
+      "path": "data/issue19/webkit-browser.json",
+      "bytes": 680,
+      "sha256": "23b9cdfd014098dce96e43d30881bd9fe5d3a667346d5d572194867cd5f9b619",
+      "archived": true
+    },
+    {
+      "path": "data/issue21/webkit-after.json",
+      "bytes": 878,
+      "sha256": "02f1c9e578b9716a2d9f1996e801e7cdba13dded50a7c27e91557eae33ce166b",
+      "archived": true
+    },
+    {
+      "path": "data/issue23/webkit-after.json",
+      "bytes": 4379,
+      "sha256": "86846e62844f43c0706be1585bfdf35b28fa5ed40db65ac43e2f3f3b2bb2352d",
+      "archived": true
+    },
+    {
+      "path": "data/issue25/webkit-browser.json",
+      "bytes": 8171,
+      "sha256": "5bfe19092820f72b0fe80bb3442aeb251e4ab7362d1fb2d476e1bd8e5aaf8613",
+      "archived": true
+    },
+    {
+      "path": "data/issue27/webkit-browser.json",
+      "bytes": 3640,
+      "sha256": "e7127849f76d60f64b347fcfc78b6fdd2c4d08c84199b44389689effa4f86f25",
+      "archived": true
+    },
+    {
+      "path": "screenshots/editor/after-style-preview.png",
+      "bytes": 494451,
+      "sha256": "e44ba54652481395f5e5629c02ea3ebef5a7be111ad2ffb4018567b8d39e5bc8",
+      "archived": false
+    },
+    {
+      "path": "screenshots/editor/collisions-after.png",
+      "bytes": 33817,
+      "sha256": "a6fccfca60759beb9d4a46dbc5a988fa91d5ba447665453f01b3d69589436839",
+      "archived": false
+    },
+    {
+      "path": "screenshots/editor/collisions-before.png",
+      "bytes": 34842,
+      "sha256": "f66374bc0067ec63e5132b9a860db5b9805546e0fdba773907a4e8edfe692b5e",
+      "archived": false
+    },
+    {
+      "path": "screenshots/editor/gallery-hover.png",
+      "bytes": 634066,
+      "sha256": "ba7020f25b0dfe3ce87f88b4ad87f5bd6f6d49b0dc54897ae98d2800efc7ae9b",
+      "archived": false
+    },
+    {
+      "path": "screenshots/editor/network-desktop.png",
+      "bytes": 512189,
+      "sha256": "24ba8f2e4e72f3135ac189000e76dc660c24373e439fdbc7a6307a0b422ede91",
+      "archived": false
+    },
+    {
+      "path": "screenshots/editor/network-light.png",
+      "bytes": 565664,
+      "sha256": "df27f466ef43ccdf93c418bebbae91f0317572c0c3d8c95e59284dba3ff7d83a",
+      "archived": false
+    },
+    {
+      "path": "screenshots/editor/network-mobile-ru.png",
+      "bytes": 240452,
+      "sha256": "b879e2e5873d8c8b39a77a6bdce149c35ae7c1465aa2fa92c90a32eba6e86507",
+      "archived": false
+    },
+    {
+      "path": "screenshots/editor/plain-black.png",
+      "bytes": 34830,
+      "sha256": "e6f6c92a2d3e0f65eff0a007a8518a0b6bec63e0dc8863f2687d1635b7194020",
+      "archived": false
+    },
+    {
+      "path": "screenshots/editor/sharing.png",
+      "bytes": 533176,
+      "sha256": "1d15889b534debea36fd5b7a8c38bf5ede2738c198b7b626094a879819682823",
+      "archived": false
+    },
+    {
+      "path": "screenshots/editor/transparent.png",
+      "bytes": 93512,
+      "sha256": "79d074d2a00b2a2c6fb049e15c2d41f01f494be8f54552e661015979326cbcda",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/webkit-after-history-error.png",
+      "bytes": 501638,
+      "sha256": "b5230db5ee390fdf85a343071ef908fadb8e98dd7c8ef037e382acaa7ffd18a2",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/webkit-after-loops.png",
+      "bytes": 496320,
+      "sha256": "30518f087e3fae371cf9b25155d65ee11a14f8dfb894fd3581601cef9799107d",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/webkit-layout-cards.png",
+      "bytes": 79228,
+      "sha256": "8b67fa52ef7cc130803f4867f319ed00b6c8270707344c2a159fa1a17ffd1c8f",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/webkit-layout-circle.png",
+      "bytes": 73167,
+      "sha256": "8579e862b62c9a4e50a3189870157c462f8d19655c544d8d4296578dad042b15",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/webkit-layout-dice.png",
+      "bytes": 63772,
+      "sha256": "e287587e618a36593c296c39aa77a94d302f292a2d40eb2a840d261d667f3cf8",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/webkit-layout-force.png",
+      "bytes": 71812,
+      "sha256": "5d4ef172707d0ab517ea636436e9b52206950d1f614d212cea698afd9c81350a",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/webkit-layout-hex.png",
+      "bytes": 83712,
+      "sha256": "91e5fb435d64d8173ba7abe4189a80e8efc289798fb999ee88ccf1fda64dbebf",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/webkit-layout-spiral.png",
+      "bytes": 99374,
+      "sha256": "0632d6290176df63d9cd364fc42d2c81aee28540770c12b1b7065da9ade9d7e4",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/webkit-layout-square.png",
+      "bytes": 95817,
+      "sha256": "42cac1d91e9790cf9ebbd482f0e8aad38d47f7dff7a64a12ce2cbbac39d45d46",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/webkit-mobile-100-links.png",
+      "bytes": 670581,
+      "sha256": "d6da707345f51493ae64ddc403d78892a27b5f372186671f02be87393d68976b",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/webkit-ring-and-offsets.png",
+      "bytes": 34852,
+      "sha256": "653c267d2c92736ae73d05467f3353179199c9c88b929ead3aecfe871598c5dd",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/webkit-supplied-1.png",
+      "bytes": 21154,
+      "sha256": "7c7209987d42d44532937de97384d6285bb2aafb8fd51eeaf55cc764655ede63",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/webkit-supplied-2.png",
+      "bytes": 25952,
+      "sha256": "ec1f33a9914775d6cb13eb41e7891aeac1976c7c8a42de71fe4c865dd5ce488f",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue21/webkit-after-default-00000000.png",
+      "bytes": 15974,
+      "sha256": "53b287583f67ef837cd28bbb85159cfddee08cc5905460bf35bdd863cd41a5d8",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue21/webkit-after-default-1122.png",
+      "bytes": 28026,
+      "sha256": "67386086f84edacc8b967953b271bf7832aa8043ecf2aab24e24740ae8bf1f18",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue21/webkit-after-default-112212.png",
+      "bytes": 34831,
+      "sha256": "8d1f293b689069e20b85180b9ed3a772708b05c91e6ffba010d119dcdd39bd4f",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue21/webkit-after-default-1221.png",
+      "bytes": 20689,
+      "sha256": "a3826d3bd3214bbce998a1c87425d4092cfef040eee0608f3824c68e29af03f1",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue21/webkit-after-default-221331.png",
+      "bytes": 34756,
+      "sha256": "5ca07de04375a1760b5e1cf917e0b0ae92dec7af2b0e354421efdbaac553d5b7",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue21/webkit-after-gallery-dark.png",
+      "bytes": 3372,
+      "sha256": "bf43f767aec20da7dcf2e24619dfc2fe52e68031b591d0e96294abe198b007db",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue21/webkit-after-gallery-light.png",
+      "bytes": 2975,
+      "sha256": "9a5eb020b409ff86a936a9a44212fd00d454f58797fa0fb215faa055ac9c78ad",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue21/webkit-after-mobile.png",
+      "bytes": 18857,
+      "sha256": "560e292d592e2539e90b1e856fe289731a5e2e52327b492dd98b4139af69d0c0",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue21/webkit-after-supplied-1-symbol.png",
+      "bytes": 30234,
+      "sha256": "b8f9e7e61de5765989c3b9843a91b74f6c2e0d976bbeda7cca91edfd66c425ef",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue21/webkit-after-supplied-1.png",
+      "bytes": 459800,
+      "sha256": "1f8f86ec3912fbe13ee1618e0cce22e5fa9fc2ceff0ef6362da3696600f98fc6",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue21/webkit-after-supplied-2-symbol.png",
+      "bytes": 24577,
+      "sha256": "d3acb3f467e3dccba47da8d6907e5b8a350625350e5d1d20295cac570d4df69f",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue21/webkit-after-supplied-2.png",
+      "bytes": 461802,
+      "sha256": "ac1314ddaeed768a5e7caa70407ee2f998d027706939422d13b85eaa615fcbd0",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/webkit-after-card.png",
+      "bytes": 4457,
+      "sha256": "2c01678a3cf64cf742d9803be440504f682af23fe96c47453b733207f4b5115f",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/webkit-after-free.png",
+      "bytes": 15910,
+      "sha256": "ed911fc65d5edefa5bde3e6551f09b21381252956d08cab31563e087d61ef29a",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/webkit-after-gallery-futuristic-display.png",
+      "bytes": 602841,
+      "sha256": "d4f6f69e78b7966e6fca8aa0f2ebf4518175280d6152f38b754d38a2244c89ce",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/webkit-after-gallery-futuristic.png",
+      "bytes": 1080534,
+      "sha256": "4f15be3f1da77379e3c60402f5976e56128642bd2db629b0031e1cdb6eaf245d",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/webkit-after-gallery-glass-display.png",
+      "bytes": 401638,
+      "sha256": "5ef18cdf3fdc98566734c186f52ffd0fc692f8b2ed89754665fcd9ab1fa10cef",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/webkit-after-gallery-glass.png",
+      "bytes": 722747,
+      "sha256": "d5c16fc5c5fbded7dbe025a42a463efb83fa2d6698486f737d3bf143ca5cc0ae",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/webkit-after-gallery-liquid-display.png",
+      "bytes": 669533,
+      "sha256": "6a22907ca56d81c147a49f7b2ce26cee509fbc499ef5a624c695e22677e98d39",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/webkit-after-gallery-liquid.png",
+      "bytes": 1155647,
+      "sha256": "f101fa59baaea391285a2ae5d4edd356301d9c1b3013da2db266015c2a9caf10",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/webkit-after-gaps.png",
+      "bytes": 515415,
+      "sha256": "ac42705a35d1fb2bf838c12ef81c2d5e42a354792fbe50a1507a1899698449ad",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/webkit-after-markers.png",
+      "bytes": 20804,
+      "sha256": "74ae4bf55f2c7040c7e64f6b1a1c2e5ef9810254f2f399a562dfff4eb7b964c2",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/webkit-after-mobile-gaps.png",
+      "bytes": 126978,
+      "sha256": "fba20b09b9bae19e7567eeedf817a39be9d05698d362c2d7348c0c3fd41263cf",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/webkit-header-futuristic-blurred.png",
+      "bytes": 570117,
+      "sha256": "0d35a5c9a1150ca806d3521e561fc242935b39b0b54eb8d2d228505f77271b86",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/webkit-header-futuristic-sharp.png",
+      "bytes": 564530,
+      "sha256": "650f712cb91794ec78e81e96d5fb7e7dd4e679198f3560d9bd3bf9436981c601",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/webkit-header-glass-blurred.png",
+      "bytes": 350129,
+      "sha256": "ef8e8c06a8bb72c4fd85824b61e89f3ae073f735276c3049675337a075697d12",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/webkit-header-glass-sharp.png",
+      "bytes": 363797,
+      "sha256": "5e40b630d0b6f40d2df90aa2cdc202f52d3d6a0f1c1dc63604e56d4e06ad9e8a",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/webkit-header-liquid-blurred.png",
+      "bytes": 547247,
+      "sha256": "72762d85ba902e47d513581cf43ed102dd2308307da7ef6d08f706766cff8492",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/webkit-header-liquid-sharp.png",
+      "bytes": 591202,
+      "sha256": "4d7d131c089e631c95852d1203f130e453b177f397bab6b629ea4904dd8de8a1",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue25/webkit-after-acute.png",
+      "bytes": 26703,
+      "sha256": "ab2cba0a46021c3716f030a1737e2b4a781e66ae8ad90dfcfea3a602610ada22",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue25/webkit-after-auto-gaps.png",
+      "bytes": 26996,
+      "sha256": "bc9118c0461e9cb544ca529da1a4275ba4d5111d6b563d13e6f8693880da1ec5",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue25/webkit-after-auto.png",
+      "bytes": 26991,
+      "sha256": "e00fa092b998335c840bd767ddaeb707ed159a3334a5de993524dbbea1ff0d4f",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue25/webkit-after-desktop.png",
+      "bytes": 403282,
+      "sha256": "568236d9a9a6320dc9725f79daff18e3478243668febb5ea20109fe983d2216c",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue25/webkit-after-editor.png",
+      "bytes": 65978,
+      "sha256": "55269b577eed0bc64e3ca344fd0c14017ffd66aa761bea146b1a1bfa3e3379dc",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue25/webkit-after-legacy.png",
+      "bytes": 26244,
+      "sha256": "e0468d22291c56b67c30acc431d848f284c7f3d771b40849a446647a650820be",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue25/webkit-after-manual.png",
+      "bytes": 26309,
+      "sha256": "428a9faaee1efdc9ecef713001130b1ed5bae96a57becdd75a49b07602d03fb5",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue25/webkit-after-mobile-en.png",
+      "bytes": 94525,
+      "sha256": "e406e190330349d0b2aca189bcf4ce33f720e38ff24595afd98525a0924f71b4",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue25/webkit-after-mobile-ru.png",
+      "bytes": 100619,
+      "sha256": "b537d451e6e8c79237c017de2990a29ebe77633d2665c818556178e8f075991e",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue25/webkit-after-rounded.png",
+      "bytes": 26239,
+      "sha256": "8e622f8a1364a55ffd623be723c31b0585b634a0b2021728ee49c8a4c199507f",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue27/webkit-after-auto.png",
+      "bytes": 26968,
+      "sha256": "ce633b2e128885bd28b7067c66d8db2b96f2a85439433dcd4b5579ec92062923",
+      "archived": true
+    },
+    {
+      "path": "screenshots/issue27/webkit-after-editor.png",
+      "bytes": 367413,
+      "sha256": "286afd8418d7d74afc5d6a36267718bc4a5765ac2d7c506ef79a6b8236e4f2f5",
+      "archived": true
+    },
+    {
+      "path": "screenshots/issue27/webkit-after-equal.png",
+      "bytes": 26208,
+      "sha256": "b02466936743e3dc1ef0e73042bce30315be1e65ebacd5537348e0a12eafdc68",
+      "archived": true
+    }
+  ]
+}

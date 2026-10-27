@@ -1,0 +1,115 @@
+(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - import "./fields" without a file extension (src/settings/schema.js:15:32). Add the file extension
+  - import "./schema.background" without a file extension (src/settings/schema.js:16:37). Add the file extension
+  - import "./schema.layers" without a file extension (src/settings/schema.js:17:32). Add the file extension
+  - import "./schema.skins" without a file extension (src/settings/schema.js:18:31). Add the file extension
+  - import "./schema.sound" without a file extension (src/settings/schema.js:19:31). Add the file extension
+  - import "./schema.skins" without a file extension (src/settings/schema.js:21:33). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.sound.js:7:47). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.background.js:3:54). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.layers.js:8:54). Add the file extension
+  - import "../skins.frames" without a file extension (src/settings/schema.skins.js:3:25). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.skins.js:4:47). Add the file extension
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793130700371
+
+ ❯ src/links/issue-27.test.js (5 tests | 5 failed) 429ms
+   × measures exactly equal painted gaps at both ends of the closed 1111 link 18ms
+   × changes the target gap continuously through 0.07 and 0.08 without moving the source gap 9ms
+   × preserves closed halves and discovers gaps and turns on the open 1111 link 293ms
+   × preserves the closed side and its middle cut on a partially self-referencing link 100ms
+   × accepts old turn/gap rows and serializes skipped defaults compactly 4ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/links/issue-27.test.js > measures exactly equal painted gaps at both ends of the closed 1111 link
+AssertionError: expected 5.450000000000007 to be close to 4.150000000000006, received difference is 1.3000000000000016, but expected 5e-10
+ ❯ src/links/issue-27.test.js:21:31
+     19|     for (const endAngle of [5, 15, 45, 85]) {
+     20|       const measured = extent(setup({ rotation, endAngle }));
+     21|       expect(measured.target).toBeCloseTo(measured.source, 9);
+       |                               ^
+     22|     }
+     23| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  src/links/issue-27.test.js > changes the target gap continuously through 0.07 and 0.08 without moving the source gap
+AssertionError: expected 1.3600000000000136 to be close to 0.06, received difference is 1.3000000000000136, but expected 5e-9
+ ❯ src/links/issue-27.test.js:31:55
+     29|     expect(samples[i].source).toBeCloseTo(samples[0].source, 9);
+     30|     const step = [0.01, 0.009, 0.001, 0.001, 0.009][i - 1];
+     31|     expect(samples[i].target - samples[i - 1].target).toBeCloseTo(step…
+       |                                                       ^
+     32|   }
+     33| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  src/links/issue-27.test.js > preserves closed halves and discovers gaps and turns on the open 1111 link
+AssertionError: expected [ 0.218, null, null, +0 ] to deeply equal [ null, null, null, null ]
+
+- Expected
++ Received
+
+  [
+-   null,
+-   null,
++   0.218,
+    null,
+    null,
++   0,
+  ]
+
+ ❯ src/links/issue-27.test.js:38:30
+     36|   const result = solveCollisions(links, shape, { adjustGaps: true });
+     37|   expect(result.turns[0]).toEqual([0, 0]);
+     38|   expect(result.linkGaps[0]).toEqual(shape.linkGaps[0]);
+       |                              ^
+     39|   expect(result.linkGaps[1][0]).toBeGreaterThan(0.08);
+     40|   expect(result.linkGaps[1][1]).toBeGreaterThan(0.08);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ FAIL  src/links/issue-27.test.js > preserves the closed side and its middle cut on a partially self-referencing link
+AssertionError: expected +0 to be 15 // Object.is equality
+
+- Expected
++ Received
+
+- 15
++ 0
+
+ ❯ src/links/issue-27.test.js:48:30
+     46|   const shape = setup({ turns: '15 0', gaps: '0.09 ~ 1 ~' });
+     47|   const result = solveCollisions(partial, shape, { adjustGaps: true });
+     48|   expect(result.turns[0][0]).toBe(15);
+       |                              ^
+     49|   expect(result.linkGaps[0][0]).toBe(0.09);
+     50|   expect(result.linkGaps[0][2]).toBe(1);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+ FAIL  src/links/issue-27.test.js > accepts old turn/gap rows and serializes skipped defaults compactly
+AssertionError: expected '0 0,-15 15' to be ',-15 15' // Object.is equality
+
+Expected: ",-15 15"
+Received: "0 0,-15 15"
+
+ ❯ src/links/issue-27.test.js:55:32
+     53|   const old = styleFromParams(new URLSearchParams('turns=0+0%2C-15+15&…
+     54|   const compact = styleToParams(old);
+     55|   expect(compact.get('turns')).toBe(',-15 15');
+       |                                ^
+     56|   expect(compact.get('gaps')).toBe(',0.18 0.18');
+     57|   const next = styleFromParams(compact);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  5 failed (5)
+   Start at  19:55:46
+   Duration  3.33s (environment 45%, transform 25%, tests 14%, setup 12%, import 3%)
+

@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-27T20:35:45.536Z",
+  "checks": [
+    "actual native spinner Up: 0.07\u21920.08",
+    "actual native spinner Down: 0.08\u21920.07",
+    "keyboard Up restores equal 0.08 gaps",
+    "native spinner Down/Up from inheritance: 0.08\u21920.07 / 0.09"
+  ],
+  "url": "http://localhost:4187/network/?code=1111&rotation=-90&turns=%2C-15+15&gaps=0.08+0.08%2C0.18+0.18&lang=en"
+}

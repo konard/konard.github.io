@@ -1,0 +1,125 @@
+diff --git a/experiments/issue-27-browser.mjs b/experiments/issue-27-browser.mjs
+index 3be3d19..7cda529 100644
+--- a/experiments/issue-27-browser.mjs
++++ b/experiments/issue-27-browser.mjs
+@@ -134,6 +134,26 @@ try {
+   await gap.fill('0.075');
+   await gap.press('ArrowUp');
+   assert.equal(await gap.inputValue(), '0.08');
++  // Pointer events precede the browser's native spinner action. Inheritance
++  // must be available to that action without changing the saved override.
++  for (const [method, expected] of [
++    ['stepDown', '0.07'],
++    ['stepUp', '0.09'],
++  ]) {
++    await gap.fill('');
++    const inherited = await page.getByLabel('Link to this picture', { exact: true }).inputValue();
++    await gap.dispatchEvent('pointerdown');
++    assert.equal(await page.getByLabel('Link to this picture', { exact: true }).inputValue(), inherited);
++    await gap.evaluate((input, method) => {
++      input[method]();
++      input.dispatchEvent(new Event('input', { bubbles: true }));
++    }, method);
++    assert.equal(await gap.inputValue(), expected);
++  }
++  await gap.fill('');
++  await gap.dispatchEvent('pointerdown');
++  await gap.press('Tab');
++  assert.equal(await gap.inputValue(), '');
+   await gap.fill('');
+   await gap.press('ArrowUp');
+   assert.equal(await gap.inputValue(), '0.09');
+@@ -151,7 +171,7 @@ try {
+   await gap.press('Home');
+   assert.equal(await gap.inputValue(), '0.07');
+   result.checks.push(
+-    '0.07↔0.08 arrows/native stepping, inherited decimal steps, negative typing, select-all, delete, Home and Tab',
++    '0.07↔0.08 arrows/native stepping, inherited native/keyboard steps, negative typing, select-all, delete, Home and Tab',
+   );
+ 
+   console.log('Geometry, URL and number editing checks passed. Auditing sliders.');
+diff --git a/experiments/issue-27-mcp.mjs b/experiments/issue-27-mcp.mjs
+index 5d96b17..aea7ea6 100644
+--- a/experiments/issue-27-mcp.mjs
++++ b/experiments/issue-27-mcp.mjs
+@@ -1,5 +1,6 @@
+-// Function expression consumed by Playwright MCP browser_run_code_unsafe.
+-async (page) => {
++// Function consumed by Playwright MCP browser_run_code_unsafe.
++// eslint-disable-next-line no-unused-vars -- Evaluated as a callback by Playwright MCP.
++async function verify(page) {
+   await page.setViewportSize({ width: 1440, height: 1000 });
+   await page.goto(
+     'http://localhost:4187/network/?code=1111&lang=en&rotation=-90&turns=0+0%2C-15+15&gaps=0.08+0.08+%7E+%7E%2C0.18+0.18+%7E+%7E',
+@@ -14,15 +15,23 @@ async (page) => {
+   if ((await gap.inputValue()) !== '0.07') throw new Error('Native spinner Down should restore 0.07');
+   await gap.press('ArrowUp');
+   if ((await gap.inputValue()) !== '0.08') throw new Error('Keyboard Up should restore 0.08');
++  await gap.fill('');
++  await page.mouse.click(box.x + box.width - 12, box.y + box.height / 2 + 3);
++  if ((await gap.inputValue()) !== '0.07') throw new Error('Inherited native Down should start at 0.08');
++  await gap.fill('');
++  await page.mouse.click(box.x + box.width - 12, box.y + box.height / 2 - 3);
++  if ((await gap.inputValue()) !== '0.09') throw new Error('Inherited native Up should start at 0.08');
++  await gap.press('ArrowDown');
+   const result = {
+     date: new Date().toISOString(),
+     checks: [
+       'actual native spinner Up: 0.07→0.08',
+       'actual native spinner Down: 0.08→0.07',
+       'keyboard Up restores equal 0.08 gaps',
++      'native spinner Down/Up from inheritance: 0.08→0.07 / 0.09',
+     ],
+     url: await page.getByLabel('Link to this picture', { exact: true }).inputValue(),
+   };
+   await page.locator('.network__preview').scrollIntoViewIfNeeded();
+   return result;
+-};
++}
+diff --git a/src/components/NumberInput.jsx b/src/components/NumberInput.jsx
+index 5b9e4ad..d57aeab 100644
+--- a/src/components/NumberInput.jsx
++++ b/src/components/NumberInput.jsx
+@@ -16,6 +16,12 @@ export default function NumberInput({ value, onValue, fallback = 0, ...props })
+       {...props}
+       type="number"
+       value={active ? draft.text : (value ?? '')}
++      onPointerDown={(event) => {
++        // Native spinner actions run after pointerdown and use the DOM value,
++        // never its placeholder. A draft primes inheritance without saving an
++        // override when the user merely focuses, then leaves, an empty field.
++        if (value == null && event.currentTarget.value === '') setDraft({ text: String(fallback), at: value });
++      }}
+       onChange={(event) => {
+         const text = event.target.value;
+         const next = text === '' ? null : Number(text);
+diff --git a/src/pages/network-27.test.jsx b/src/pages/network-27.test.jsx
+index 38f0582..a12a8cb 100644
+--- a/src/pages/network-27.test.jsx
++++ b/src/pages/network-27.test.jsx
+@@ -40,6 +40,25 @@ it('steps inherited gaps from the displayed global value, with decimal precision
+   fireEvent.keyDown(input, { key: 'PageDown' });
+   expect(input).toHaveValue(0);
+ });
++it('starts native spinner clicks from inheritance without making a plain focus an explicit override', () => {
++  open();
++  const input = screen.getByLabelText('Link 1: Gap at the target reference');
++  const shared = screen.getByLabelText('Link to this picture');
++  const inherited = shared.value;
++  fireEvent.pointerDown(input);
++  expect(shared.value).toBe(inherited);
++  input.stepDown();
++  fireEvent.input(input);
++  expect(input).toHaveValue(0.07);
++  fireEvent.change(input, { target: { value: '' } });
++  fireEvent.pointerDown(input);
++  fireEvent.blur(input);
++  expect(input).toHaveValue(null);
++  fireEvent.pointerDown(input);
++  input.stepUp();
++  fireEvent.input(input);
++  expect(input).toHaveValue(0.09);
++});
+ it('supports page steps on every range while preserving modified editing shortcuts', () => {
+   open();
+   const input = screen.getByLabelText('Gap at the target reference', { selector: 'input[type="range"]' });

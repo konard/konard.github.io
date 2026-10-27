@@ -1,0 +1,427 @@
+{
+  "artifact": "network-firefox",
+  "run": 40579640992,
+  "headSha": "400b4d777354d0c3cb00530e863b64e7f9743a0b",
+  "files": [
+    {
+      "path": "data/issue19/firefox-browser.json",
+      "bytes": 628,
+      "sha256": "5aea279041c11b765df0dec4692c0c2288a78987b0a4c7671c408686d5e22dc7",
+      "archived": true
+    },
+    {
+      "path": "data/issue21/firefox-after.json",
+      "bytes": 880,
+      "sha256": "13b5aa18f614e47bfebe52bfa14d262fdcd8324a4080b9683850a266bff463f3",
+      "archived": true
+    },
+    {
+      "path": "data/issue23/firefox-after.json",
+      "bytes": 4594,
+      "sha256": "7f119ffa04136555fef3b094141a87a5f2850127c5d189e2b6fd2fda6cffb055",
+      "archived": true
+    },
+    {
+      "path": "data/issue25/firefox-browser.json",
+      "bytes": 8171,
+      "sha256": "b17ab372608d9105d6f6e8f36d91bb8cc9c33c0481a73211c5d419d326318d47",
+      "archived": true
+    },
+    {
+      "path": "data/issue27/firefox-browser.json",
+      "bytes": 3638,
+      "sha256": "60333140eae3783eb39cd2ffdbf388b7c5d42697d08ab6885c3c17e5ca37aaf8",
+      "archived": true
+    },
+    {
+      "path": "screenshots/editor/after-style-preview.png",
+      "bytes": 293272,
+      "sha256": "303549a8cc51ee0ff2299dcf815ef93810227da8bffb1dc552e27715965317d4",
+      "archived": false
+    },
+    {
+      "path": "screenshots/editor/collisions-after.png",
+      "bytes": 28192,
+      "sha256": "4c73667e55250bd18fccd607feaf2337406695d6f42f0ba38ac3692991ad4032",
+      "archived": false
+    },
+    {
+      "path": "screenshots/editor/collisions-before.png",
+      "bytes": 29694,
+      "sha256": "8f2169b4567af88d305810c4243eb97aafd837839dd136cce583956615fb7011",
+      "archived": false
+    },
+    {
+      "path": "screenshots/editor/gallery-hover.png",
+      "bytes": 387359,
+      "sha256": "eed60dfb47b5173549813b550354b6ae32498a08e0b5bc8ef144f6db1ef36569",
+      "archived": false
+    },
+    {
+      "path": "screenshots/editor/network-desktop.png",
+      "bytes": 301099,
+      "sha256": "d7c23c4ceb91735d442ad700ce8f0234951e9743a077624d0a4bcb9c77d34ff2",
+      "archived": false
+    },
+    {
+      "path": "screenshots/editor/network-light.png",
+      "bytes": 289923,
+      "sha256": "f3e7bc3420a10faefe23309891450a6b87afb5d4b24ee9a448a0e6fcfcf765c0",
+      "archived": false
+    },
+    {
+      "path": "screenshots/editor/network-mobile-ru.png",
+      "bytes": 147442,
+      "sha256": "de7194e48daf071bfd1729a44ed53eba1b2cb800b3446ce1f97df8901245307b",
+      "archived": false
+    },
+    {
+      "path": "screenshots/editor/plain-black.png",
+      "bytes": 29346,
+      "sha256": "1eabec60e33b213772b41b9ea8bd5e3e87f89bffec9788e644feace8cbe17a14",
+      "archived": false
+    },
+    {
+      "path": "screenshots/editor/sharing.png",
+      "bytes": 326043,
+      "sha256": "2794d9301c92dbce93100ff47f7e6f1c7cd7314c3a57548fe3734e7b5a5c57cc",
+      "archived": false
+    },
+    {
+      "path": "screenshots/editor/transparent.png",
+      "bytes": 71440,
+      "sha256": "d38bcfa80028d728532b59a784bee41f016b28864e71b68bbdb4df4e819637a3",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/firefox-after-history-error.png",
+      "bytes": 299487,
+      "sha256": "c7befaa00a74fda1cf6fa914f6f3293db2eefd58ee3548cdf1fea71e067e1aab",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/firefox-after-loops.png",
+      "bytes": 290815,
+      "sha256": "3452dd4c169c382ea6a60e9cfd742690e9fcd2ae3ec8ebc76d8bb42046c5b355",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/firefox-layout-cards.png",
+      "bytes": 69647,
+      "sha256": "2ad4b1580ccc9320dce200234b36a63ec9be5e50a3bbe5afe73b7f99457172e6",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/firefox-layout-circle.png",
+      "bytes": 65539,
+      "sha256": "84fff2be70750964a081ecd3794df19c0f146cc194a6b3c469824d03d0ca815a",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/firefox-layout-dice.png",
+      "bytes": 57969,
+      "sha256": "31e04188115de15a826ae5abd15366eb4287bc0dcf2a1234360645fcd1756a8c",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/firefox-layout-force.png",
+      "bytes": 62360,
+      "sha256": "86599e30743c3037fa006228b66cf81bf7501a20a6df58105e2f83ef2bb46a81",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/firefox-layout-hex.png",
+      "bytes": 75331,
+      "sha256": "f3cd66193e402ff10befe74a1b8f0dcc3b0c0bc230eb81e4014b52ca90a1af76",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/firefox-layout-spiral.png",
+      "bytes": 88320,
+      "sha256": "b375f6805439317f31cb5b7c5d886d206047dfef09a2c6281d3093e1a50c7cb9",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/firefox-layout-square.png",
+      "bytes": 84240,
+      "sha256": "311e5ee80255887a41306ced5b6c74395b5d84b15bf5a30cfbd37839bb678466",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/firefox-mobile-100-links.png",
+      "bytes": 406169,
+      "sha256": "e7c63d67ef42a86ec4639567122282452eb5d6713078d4f30b669dfb4e3383c4",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/firefox-ring-and-offsets.png",
+      "bytes": 32066,
+      "sha256": "87727bd64e00d59101f65504cb24005b8f7cb4398bcb9e17d70c3fc67dd3aa40",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/firefox-supplied-1.png",
+      "bytes": 14812,
+      "sha256": "7f22912cf7731eb5e0f0b6fa2461346ee51cb0788ff126e9b5725294cdf71f43",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/firefox-supplied-2.png",
+      "bytes": 19465,
+      "sha256": "a5e0a2689e90065ec1afb10bd6a8462a7a6b4155002a966e4ba7896546a24d7c",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue21/firefox-after-default-00000000.png",
+      "bytes": 9978,
+      "sha256": "448b5f2b9490c45c53d1c221fa80b892b582889d9b1dca894afe995c8ce7caf1",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue21/firefox-after-default-1122.png",
+      "bytes": 24030,
+      "sha256": "ed87ce1eeb72465f9884981a7957825b954ec2810e6d08523004137522483c2f",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue21/firefox-after-default-112212.png",
+      "bytes": 29071,
+      "sha256": "09c97fe03ca3813fdd3152159c8d5ae64ac3e95550bbc44092bacdc2f5a32bf3",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue21/firefox-after-default-1221.png",
+      "bytes": 15257,
+      "sha256": "58e1f53411ce0fe40bebdb12d7810af73b29ade3fc650050b0e2a0ca157c77d0",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue21/firefox-after-default-221331.png",
+      "bytes": 29718,
+      "sha256": "62c112e076adde3100e9bc266058d41687155b5b0e2992c01f59d2127919ecc7",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue21/firefox-after-gallery-dark.png",
+      "bytes": 2467,
+      "sha256": "5aba79f8b220e47c585a04879f47e990f6fe67511c750886f2010a637573f987",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue21/firefox-after-gallery-light.png",
+      "bytes": 2330,
+      "sha256": "ae2861e4706479ce965473fb4f820faeb8f112cf6bfa06fb670a3f926c084b2c",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue21/firefox-after-mobile.png",
+      "bytes": 16826,
+      "sha256": "56b69799012b33d0e9ef0374e791ad2b99ae4d88ba5e7363bd43f48fb5bc33ff",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue21/firefox-after-supplied-1-symbol.png",
+      "bytes": 26454,
+      "sha256": "f032086008adaeb599ce1c9247ca8c23ff5ba9d66d4499705f4adbcd3645f350",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue21/firefox-after-supplied-1.png",
+      "bytes": 280335,
+      "sha256": "2bab4b9fa653bcdbaece663aa3c588b7119792ce0aa8066f6204cec0fb8c2dee",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue21/firefox-after-supplied-2-symbol.png",
+      "bytes": 18255,
+      "sha256": "5c162c30d1e3319717dd654f0fc7246927df310abacee342df691dbe7ef4ba0f",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue21/firefox-after-supplied-2.png",
+      "bytes": 292600,
+      "sha256": "c1b0c4342b5648fe1d9342374e061ae6c087f8bfcb259714b44b162b1e0fa040",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/firefox-after-card.png",
+      "bytes": 4363,
+      "sha256": "4eac520d7412dcdd26b78b200fa83eba2a8f35dc26144395315b3fea3a8ee0b4",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/firefox-after-free.png",
+      "bytes": 10100,
+      "sha256": "e05f6b1f9d918d03071d246687cf13184e579586e44fe164ccce0400e4b1183c",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/firefox-after-gallery-futuristic-display.png",
+      "bytes": 447703,
+      "sha256": "fc24426b2357a6a16cb5162a487bb56a3c99a1d7a94a4a94c9372e15ecb0eb6f",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/firefox-after-gallery-futuristic.png",
+      "bytes": 596993,
+      "sha256": "77f98d6eff2dd421f9ca9b65fbb2975c7b71b029725ff56900c44303a827463b",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/firefox-after-gallery-glass-display.png",
+      "bytes": 461139,
+      "sha256": "f4e188bdfa0944917bbfb8bcfbb00518a0e20f637e3e6856cc7fa178e8af438c",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/firefox-after-gallery-glass.png",
+      "bytes": 566706,
+      "sha256": "bfda7621a2093b9f0f7475a91f0a6f0a5060eccc4c978c24b7e7923b049d72d5",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/firefox-after-gallery-liquid-display.png",
+      "bytes": 622389,
+      "sha256": "8b86fce6bade8071cf9e026a787ab0e666064dd2bd29e9b8cf44ca09a73c7267",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/firefox-after-gallery-liquid.png",
+      "bytes": 797982,
+      "sha256": "6f345cf213ab7544d4ce23ed6b3397b918f5e2933bdebed6e86eac6d97e633e9",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/firefox-after-gaps.png",
+      "bytes": 373831,
+      "sha256": "947f7b1e5395ed36de3318364b54cac094e928388bc1a299d5d4d1c07ee604cf",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/firefox-after-markers.png",
+      "bytes": 15030,
+      "sha256": "d9e5fc2f8543cd904eb62ef2aa1a31f3b618b1f390870b75c1aaf888224579b1",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/firefox-after-mobile-gaps.png",
+      "bytes": 101991,
+      "sha256": "c3896e8f731ecc28faeffe1dd296e94fff4bc980c782d319e8a7eb801cdaaaeb",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/firefox-header-futuristic-blurred.png",
+      "bytes": 415743,
+      "sha256": "f8bc8d6c34349e71c6bc66559e41ff00087fd935ec74a04043d346f4b651b1d5",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/firefox-header-futuristic-sharp.png",
+      "bytes": 417570,
+      "sha256": "588622c1857b21026c6686d4484f89f6d2220e7d743c894f7c485fefb9945a37",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/firefox-header-glass-blurred.png",
+      "bytes": 408079,
+      "sha256": "1009a3bd9744169a68090e2c6fa2058be184bdf9a7ace66368856d0690aaebbc",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/firefox-header-glass-sharp.png",
+      "bytes": 407957,
+      "sha256": "0ee6a6b4c54e7151015d5b7598cb8f8bb5d059b2d6a7383520092846bd72aff8",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/firefox-header-liquid-blurred.png",
+      "bytes": 515315,
+      "sha256": "9115a762caaa63c0ef968f2c971889a051509e7168399f613463df3e3da62be6",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/firefox-header-liquid-sharp.png",
+      "bytes": 516704,
+      "sha256": "921ec660c5cd5e074088a8f370dfca43040eb2769b8e6c98cb637d508fca983b",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue25/firefox-after-acute.png",
+      "bytes": 22474,
+      "sha256": "b7faa6332646d1e03e9290a6451af19722267d675c7d6025014330b8c50f093f",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue25/firefox-after-auto-gaps.png",
+      "bytes": 22539,
+      "sha256": "b4f6828e47cc109fecdec178dc35cd294b7f55a73d2a5e118381a2a6b411795a",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue25/firefox-after-auto.png",
+      "bytes": 22376,
+      "sha256": "05bf5f6bf21771ae48c00d72600ec720b7ed2b769510894f02f06712d0721d3a",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue25/firefox-after-desktop.png",
+      "bytes": 217366,
+      "sha256": "81364a71118a08a6572cb101e66da31cfe87687ccce11e89cff5d0507f7f9ce5",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue25/firefox-after-editor.png",
+      "bytes": 56686,
+      "sha256": "0ce592ede65fffeca5a48049d8d94ee18fd614e1224c5f0074eb66c1e92dd221",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue25/firefox-after-legacy.png",
+      "bytes": 21825,
+      "sha256": "3b48fcf16b9d8c31266707bfaed550888c895e3104c6d6e14af73cb6276735d0",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue25/firefox-after-manual.png",
+      "bytes": 22010,
+      "sha256": "677b9c0b90b385c060c06a0d948ccb01585e366cbd8f4211d7ec8818a18753f2",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue25/firefox-after-mobile-en.png",
+      "bytes": 63096,
+      "sha256": "fbb0a3b3349d4fb1f7cc056b8fb2af8b4d5bd1513a113bae0cc822b5ffd7377b",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue25/firefox-after-mobile-ru.png",
+      "bytes": 66305,
+      "sha256": "23d86529fc68e45be60c31c85d1305d143c7f3b1444421df19628fe16028b77e",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue25/firefox-after-rounded.png",
+      "bytes": 21859,
+      "sha256": "30fddb16baa4d9d64b803625794474a71a94e56009b15482772ddfa8c2cbe584",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue27/firefox-after-auto.png",
+      "bytes": 22329,
+      "sha256": "1eb5272f2b04992329075338a21915c021efa34965a11cc9dafa419f6b024dfa",
+      "archived": true
+    },
+    {
+      "path": "screenshots/issue27/firefox-after-editor.png",
+      "bytes": 217041,
+      "sha256": "422260398844af3f04aa4152408197b88a7d541ec390443647f36c7f85786940",
+      "archived": true
+    },
+    {
+      "path": "screenshots/issue27/firefox-after-equal.png",
+      "bytes": 22061,
+      "sha256": "d6828b554fc63441adc59c8cac715a830645b1252d720a0cc24a9fda438f24f9",
+      "archived": true
+    }
+  ]
+}

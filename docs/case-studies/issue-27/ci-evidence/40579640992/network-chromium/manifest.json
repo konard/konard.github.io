@@ -1,0 +1,427 @@
+{
+  "artifact": "network-chromium",
+  "run": 40579640992,
+  "headSha": "400b4d777354d0c3cb00530e863b64e7f9743a0b",
+  "files": [
+    {
+      "path": "data/issue19/chromium-browser.json",
+      "bytes": 629,
+      "sha256": "7d6f89cc3e79a7a948776061f3e5f66bda91f8008ee71a1d0c32210fe352f6e9",
+      "archived": true
+    },
+    {
+      "path": "data/issue21/chromium-after.json",
+      "bytes": 889,
+      "sha256": "0ab0896029b15f9481b08963627c0e61ab3f69e1e35ff924eac73cd1719e144b",
+      "archived": true
+    },
+    {
+      "path": "data/issue23/chromium-after.json",
+      "bytes": 4395,
+      "sha256": "db8f81bdacef97cca3d990727c64b9a72a1f0ca51519b4f24753376634115c5f",
+      "archived": true
+    },
+    {
+      "path": "data/issue25/chromium-browser.json",
+      "bytes": 8179,
+      "sha256": "9d69c8d381550ef27799d5820b12574e3f694763df9a6e94422c7f29acb03d44",
+      "archived": true
+    },
+    {
+      "path": "data/issue27/chromium-browser.json",
+      "bytes": 3647,
+      "sha256": "8964c2b42622c8a296fe7c83e7b27f3db889bd5b4709db0aef865169695ba7d5",
+      "archived": true
+    },
+    {
+      "path": "screenshots/editor/after-style-preview.png",
+      "bytes": 294909,
+      "sha256": "74734c3e862792922e51b09c2c6b47ae8b16131dd10913f819892602d6978f08",
+      "archived": false
+    },
+    {
+      "path": "screenshots/editor/collisions-after.png",
+      "bytes": 24188,
+      "sha256": "a8c537324acad39d9dc5a53947859c004e3b3364713c331fc995cc51009f0e1d",
+      "archived": false
+    },
+    {
+      "path": "screenshots/editor/collisions-before.png",
+      "bytes": 25009,
+      "sha256": "ebb8ac12bc628ff99aef65127a55288a6f4655b684284e6119f82fbc7b2824f1",
+      "archived": false
+    },
+    {
+      "path": "screenshots/editor/gallery-hover.png",
+      "bytes": 464211,
+      "sha256": "bc9a3e5e1a1375423e6c5f5c4be8c8a24d6a627ccd25de3d4e7ea245a3598f7a",
+      "archived": false
+    },
+    {
+      "path": "screenshots/editor/network-desktop.png",
+      "bytes": 358602,
+      "sha256": "f5ac8d547b8feafb032462122685eef4d97977efc5cae753629ef1e779e3e7ae",
+      "archived": false
+    },
+    {
+      "path": "screenshots/editor/network-light.png",
+      "bytes": 347147,
+      "sha256": "d55cf8cb90eec2bb0024ef317601faccb9f19b686a0056657bdf070ab6a682b0",
+      "archived": false
+    },
+    {
+      "path": "screenshots/editor/network-mobile-ru.png",
+      "bytes": 159667,
+      "sha256": "e7d3d3839bd50151e9d08fb2089e5b7027b0f0bf9f594bb6a4639eb7d7863365",
+      "archived": false
+    },
+    {
+      "path": "screenshots/editor/plain-black.png",
+      "bytes": 25146,
+      "sha256": "ce36de764b06fbd7aa57c902162c972a7f0e0f2be54017f60d91c7e464d89d4f",
+      "archived": false
+    },
+    {
+      "path": "screenshots/editor/sharing.png",
+      "bytes": 352839,
+      "sha256": "24cb74577ce0d0d46e3bb5a6aaaa05194925af34e14d5f031079083423cc25a2",
+      "archived": false
+    },
+    {
+      "path": "screenshots/editor/transparent.png",
+      "bytes": 81338,
+      "sha256": "cb5cbbb7785ac1005164de0d2f75996e70295e6b2df5e74a3026e52e2b44d234",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/chromium-after-history-error.png",
+      "bytes": 342154,
+      "sha256": "14662a51941fe1268f18ea7094dde1073668aacfab534eeede09516a4c77e934",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/chromium-after-loops.png",
+      "bytes": 338264,
+      "sha256": "1fae708b0bb1da2348253380cb47b23453bbb0f29f5bab211a5ebe2490242553",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/chromium-layout-cards.png",
+      "bytes": 62991,
+      "sha256": "9ad4e2177d1f83b9200e29f7ed0648b5342dcc1457cdb20de4661847e2829875",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/chromium-layout-circle.png",
+      "bytes": 58701,
+      "sha256": "3afbfa47b2972777135a0b89ce1fc970a53ebcbbf6070f5deae80122e9ff7b46",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/chromium-layout-dice.png",
+      "bytes": 49064,
+      "sha256": "834ea3aaf76f80777f9a4ee799fccc8d7f62418e05704c637c224f18a58f5f06",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/chromium-layout-force.png",
+      "bytes": 55223,
+      "sha256": "b2a1b99cac79cf9e61c746e8f1aaa1f6b97a22b720ec4f290fcb0b8404000382",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/chromium-layout-hex.png",
+      "bytes": 66168,
+      "sha256": "7a0aaa349c236553fe9144341cdc6b846bc14c4b9b63f9baf6a1c65cae27fe43",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/chromium-layout-spiral.png",
+      "bytes": 78378,
+      "sha256": "87468bc2fb0bfc607a97cbce520bfb7482bebdfaceadf2a30cd357c83cb90f54",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/chromium-layout-square.png",
+      "bytes": 76815,
+      "sha256": "afb915e0b6ff10f47576a27a6743099f01312f21e18ab9bfc7d75e0e67478177",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/chromium-mobile-100-links.png",
+      "bytes": 493315,
+      "sha256": "4b893c8bcf687d2af3d1588aaa548a4ac732df83fa66bacd9f2eebda9c890c80",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/chromium-ring-and-offsets.png",
+      "bytes": 24581,
+      "sha256": "4ea02ffe3c6ceb3d4e46d33315aca298f459557ece1fecf8dc7e00dc52654d87",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/chromium-supplied-1.png",
+      "bytes": 12904,
+      "sha256": "ad3fe50611a6d5e134c94be2df2c0a7e935517d04bc8f2834782fc39454f2153",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue19/chromium-supplied-2.png",
+      "bytes": 17113,
+      "sha256": "29dd73326252b67b5e0bbbe1d9ebf0b48316fcefc98727b74b93edbf8ac4c214",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue21/chromium-after-default-00000000.png",
+      "bytes": 9067,
+      "sha256": "1e16c66dac93aa130cd25807e050bccf3fb5fedfb59f97d5e1ab8ba5ac81a908",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue21/chromium-after-default-1122.png",
+      "bytes": 19490,
+      "sha256": "37f90e76537c55c0803a2556224dbb67be570f9247d5f63c3345c2454ab48d56",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue21/chromium-after-default-112212.png",
+      "bytes": 25177,
+      "sha256": "72fe2a4e85d6c349af9ad26eacd93ba979a4949ba08bdfa3ed3fd000791ba208",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue21/chromium-after-default-1221.png",
+      "bytes": 13545,
+      "sha256": "65136a3818862f077c906aaf1174537143d59ad00fa9a8e3eb91a257e7704a8a",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue21/chromium-after-default-221331.png",
+      "bytes": 24959,
+      "sha256": "a1769224c22404dcb5e69bc89238fa083c1f9132407204576c70b72756da6222",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue21/chromium-after-gallery-dark.png",
+      "bytes": 2473,
+      "sha256": "8aa9b96f6129d7b555293fa67510a01c8f12d5198c56f8b4dabcaad8f5e814ba",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue21/chromium-after-gallery-light.png",
+      "bytes": 2198,
+      "sha256": "2cdf58f7cfdbc2aec6c59bff05944241ad6541d50d496a515ae774b107208c9a",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue21/chromium-after-mobile.png",
+      "bytes": 14102,
+      "sha256": "78d0ca3d97e0a5b5c369c661389edf514a1bac764b322fae583716765e09029f",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue21/chromium-after-supplied-1-symbol.png",
+      "bytes": 21095,
+      "sha256": "35a35abbe774988065fd854da46e6f3f138e57bfa2a5ae83c924215938b4ee09",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue21/chromium-after-supplied-1.png",
+      "bytes": 253267,
+      "sha256": "339b89aca6dfbbc18009dd2e90b24a3c2ecd3dd1c3924a7cf31140f249b7a6d3",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue21/chromium-after-supplied-2-symbol.png",
+      "bytes": 16887,
+      "sha256": "766a40d7837e9c8bb36ea3154e2750301ce2c3aafc4f0a107ae14846cecb606d",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue21/chromium-after-supplied-2.png",
+      "bytes": 310746,
+      "sha256": "6f5a90fdbea19e0f7815162175cdcb7408747ece35ea5dcfecdd6baefb78707f",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/chromium-after-card.png",
+      "bytes": 3582,
+      "sha256": "0737502d0334cba1183eb04299b232aec7515ceab204bd78ce621e37fd5b0971",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/chromium-after-free.png",
+      "bytes": 9286,
+      "sha256": "75558b9badcb598a17469c839ff01227d3b7aaadf412bb03464910e997556ee9",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/chromium-after-gallery-futuristic-display.png",
+      "bytes": 550590,
+      "sha256": "dd2b6595fc12e7b780fa950b41554b13e76adde15c124e5e91abb877d49acb53",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/chromium-after-gallery-futuristic.png",
+      "bytes": 587608,
+      "sha256": "1ba58b60ae392382e0973eace2ac7f0707fa0be4afb6df4503a60a682dca2760",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/chromium-after-gallery-glass-display.png",
+      "bytes": 484500,
+      "sha256": "dc914b3621e4677f17024828d3b5879f026c84c7e3cde243698e4596fe735823",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/chromium-after-gallery-glass.png",
+      "bytes": 482982,
+      "sha256": "f275120f43b9b8e9c467e7984cd9762edcd130fcf20ebd9bd654b6ff522762a3",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/chromium-after-gallery-liquid-display.png",
+      "bytes": 872559,
+      "sha256": "d62ae9fdeb36a8bd9a8f3c069f4d61b3e8c89ce94bc3bb18b26d06d6d5182639",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/chromium-after-gallery-liquid.png",
+      "bytes": 703797,
+      "sha256": "ee14f1c647ff9d5c71a766e3cc2f7ad6d5569c6dc2429ade6275921ba7bea3f6",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/chromium-after-gaps.png",
+      "bytes": 361299,
+      "sha256": "0ece1667f655e082cda1bfe07c24fd23691feebbbc5d21788fd42428c0f55ba1",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/chromium-after-markers.png",
+      "bytes": 13805,
+      "sha256": "1c4e23df28852c1c4ff527a558d3a8d10ecd836a57e89a92fc8ab441ee2f56a2",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/chromium-after-mobile-gaps.png",
+      "bytes": 83275,
+      "sha256": "4c88df40d1e4c28d5899c2a92a42a34ae03b0d9659fa2336ce1d3957041c1eab",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/chromium-header-futuristic-blurred.png",
+      "bytes": 512374,
+      "sha256": "019dff8f23e91cae010b83120a2e4999ba94c6852620e3e13c52534892e086ca",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/chromium-header-futuristic-sharp.png",
+      "bytes": 513317,
+      "sha256": "838517a03df6f820cfd7347494ab055444d2f6e823581f2760047ffe595a743e",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/chromium-header-glass-blurred.png",
+      "bytes": 419220,
+      "sha256": "952a01148a35c46f317786bca139ea985264adc8083f54456802cf9c6fda6a63",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/chromium-header-glass-sharp.png",
+      "bytes": 418714,
+      "sha256": "587d4c4b14542af7a26ade14a9de9e50dd2cff34180eb410132053cec4d43c99",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/chromium-header-liquid-blurred.png",
+      "bytes": 707000,
+      "sha256": "97688d07e697c529abe6bf7c55d972a88a9735924037cdb6849fcb25e2594921",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue23/chromium-header-liquid-sharp.png",
+      "bytes": 707488,
+      "sha256": "821523573bcdff69dcc3ddf1a66d0fecfe6a63892a7840a65c5c3fce0b8b3028",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue25/chromium-after-acute.png",
+      "bytes": 18280,
+      "sha256": "f950b2f53826cbe3d57ed9e53e0b9ed98b458e33653ca0fbdb16b959962ef1a6",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue25/chromium-after-auto-gaps.png",
+      "bytes": 18516,
+      "sha256": "c9d0ad0a4fc827b9bac3265b7cf6cec2988a7fd2dbe8bcef3b55a6297006da0b",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue25/chromium-after-auto.png",
+      "bytes": 18377,
+      "sha256": "1e3248562e130df3af0aad1895f9c6075f93a28267b9ffe29c4c87ed5b3e09ff",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue25/chromium-after-desktop.png",
+      "bytes": 222255,
+      "sha256": "98b6bfc8b3da22d306ef5238a2848195349bff99436d85979ed7f077aed2e4a1",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue25/chromium-after-editor.png",
+      "bytes": 47068,
+      "sha256": "1b8d46c279a4c89d1e9f0f1e064f08b82c8ae1be82034a3b535d8257bbf33b86",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue25/chromium-after-legacy.png",
+      "bytes": 17873,
+      "sha256": "bf788cba045555838e7c78037d433289704953ba879f19f23ec2b5bf68f89e73",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue25/chromium-after-manual.png",
+      "bytes": 17973,
+      "sha256": "7aac14eab94b0d83ce3dc3f5883275b99f8b2bd941d5d43a71482392cc6e65ef",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue25/chromium-after-mobile-en.png",
+      "bytes": 67050,
+      "sha256": "60eff8e3a0c58790c498758c8dd37f6ba798de52727b00f13e254a13aa6e3a50",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue25/chromium-after-mobile-ru.png",
+      "bytes": 65959,
+      "sha256": "73f6f89a74f9b05b844cf8b363c80e1739e06031003fa9f5aa2dc1c003c4c9df",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue25/chromium-after-rounded.png",
+      "bytes": 17859,
+      "sha256": "987dc8044ac7792caeeea71864c6c36fc554e15785cf91761c12f68fad7584b5",
+      "archived": false
+    },
+    {
+      "path": "screenshots/issue27/chromium-after-auto.png",
+      "bytes": 18332,
+      "sha256": "0f0e1cfd4a326a95392b5544dd1ed606220f133945363c8c13da797908ec7d9b",
+      "archived": true
+    },
+    {
+      "path": "screenshots/issue27/chromium-after-editor.png",
+      "bytes": 231100,
+      "sha256": "016587839365e7a455e304958bd25228ba14cba74eb0f6e5116c75135a1564c8",
+      "archived": true
+    },
+    {
+      "path": "screenshots/issue27/chromium-after-equal.png",
+      "bytes": 18018,
+      "sha256": "ae2362d227f7f01f479d7588ee1d36068397daa86da0776860e207560bbc0247",
+      "archived": true
+    }
+  ]
+}
