@@ -232,7 +232,7 @@ export function linkCurve(links, i, places, o) {
     second = [m, add(m, mul(d, k)), sub(to, mul(dir, k)), to];
     end = { at: to, dir };
   }
-  return { segments: [first, second], start, end, middle: { at: m, dir: d } };
+  return { segments: [first, second], start, end, middle: { at: m, dir: d }, sharedReference: s === t && other(s) };
 }
 
 /** The point at parameter u ∈ [0, 1] of a cubic Bézier segment. */
@@ -284,6 +284,7 @@ export function glyphCurves(links, shape = {}) {
   const { scale, shift } = curveTransform(curves, shape);
   const place = (p) => add(mul(p, scale), shift);
   return curves.map((c) => ({
+    sharedReference: c.sharedReference,
     segments: c.segments.map((seg) => seg.map(place)),
     start: { at: place(c.start.at), dir: c.start.dir },
     end: { at: place(c.end.at), dir: c.end.dir },
@@ -380,8 +381,10 @@ export function paintedCurve(curve, o) {
     const extra = (o.strokeWidth || 0) / 2 / Math.sin(o[`${key}Angle`] * RAD);
     // A lens has one common outward axis. Its equally gapped ends therefore
     // share an exact painted boundary, even when the tip tangent is oblique.
-    const common = sub(mul(add(curve.start.at, curve.end.at), 0.5), curve.middle.at);
-    const axis = length(common) > 1e-6 ? common : sub(curve[key].at, curve.middle.at);
+    // Only a lens shares an outward axis. Self-reference endpoints point
+    // toward their own middle: averaging their opposite positions flips the
+    // cap correction as soon as the two gaps cross equality (issue #27).
+    const axis = curve.sharedReference ? sub(mul(add(curve.start.at, curve.end.at), 0.5), curve.middle.at) : [0, 0];
     const outward = length(axis) > 1e-6 ? unit(axis) : mul(curve[key].dir, key === 'end' ? 1 : -1);
     const move = add(mul(curve[key].dir, key === 'end' ? -extra : extra), mul(outward, cap));
     const segment = segments[key === 'end' ? 1 : 0];

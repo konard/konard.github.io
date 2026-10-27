@@ -134,7 +134,7 @@ describe('NetworkPage (issue #17)', () => {
     expect(preview().innerHTML).toContain('#ff0000');
     expect(new URLSearchParams(search()).get('colors')).toContain('#ff0000');
     fireEvent.change(screen.getByLabelText('Link 2: turn of the target, °'), { target: { value: '30' } });
-    expect(new URLSearchParams(search()).get('turns')).toBe('0 0,0 30');
+    expect(new URLSearchParams(search()).get('turns')).toBe(',0 30');
     fireEvent.click(screen.getByRole('button', { name: 'Remove: Link 1' }));
     // Link 2 becomes link 1 and keeps its turn; references to the removed link become 0.
     expect(field('Pairs with the base')).toHaveValue('11₃ 00₃');

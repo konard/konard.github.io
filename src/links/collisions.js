@@ -107,6 +107,8 @@ function solveTurns(links, shape = {}, { range = 60, step = 15, passes = 3 } = {
     let improved = false;
     for (let i = 0; i < n; i++) {
       for (let end = 0; end < 2; end++) {
+        // A self-closed half is already positioned; move the open references.
+        if (links[i][end] === i + 1) continue;
         const kept = delta[i][end];
         let best = { angle: kept, cost: costOf(i, lines[i]), line: lines[i] };
         for (const angle of candidates) {
@@ -180,6 +182,7 @@ function paintedPolyline(raw, o, i, scale) {
   const fit = (point) => point.map((v) => v * scale);
   const curve = paintedCurve(
     {
+      ...raw,
       segments: raw.segments.map((segment) => segment.map(fit)),
       ...Object.fromEntries(['start', 'end', 'middle'].map((key) => [key, { ...raw[key], at: fit(raw[key].at) }])),
     },

@@ -11,6 +11,7 @@ import { formatValue } from '../settings/fields';
 import { DEFAULTS, FIELDS, PALETTES, SECTIONS } from '../settings/schema';
 import { changesOf, resetSettings, setSettings, useSettings } from '../settings/store';
 import { cue } from '../sound/options';
+import { numericKey } from '../components/numericKeys';
 
 const SETTINGS = { en: ['setting', 'settings'], ru: ['настройка', 'настройки', 'настроек'] };
 const CHANGED = { en: ['differs', 'differ'], ru: ['отличается', 'отличаются', 'отличаются'] };
@@ -41,6 +42,7 @@ function Control({ field, value, settings }) {
         max={field.max}
         step={field.step}
         value={value}
+        onKeyDown={(event) => numericKey(event, set)}
         onChange={(event) => set(Number(event.target.value))}
       />
     );
