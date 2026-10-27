@@ -1,0 +1,201 @@
+{
+  "engine": "chromium",
+  "capture": "display",
+  "date": "2026-10-27T20:38:58.785Z",
+  "checks": [
+    "neutral defaults for free links",
+    "both displaced bars agree with native SVG path position and tangent",
+    "individual gaps and gap-only solver survive apply/share/reload",
+    "bounded blur surfaces and fixed header through 4131 cards, repeated scrolling and all skins",
+    "individual gap controls fit the Russian mobile editor"
+  ],
+  "samples": [
+    {
+      "cards": 243,
+      "filtered": 55,
+      "y": 791,
+      "barFilter": "blur(14px)",
+      "barSurface": "topbar",
+      "barTop": 0
+    },
+    {
+      "cards": 729,
+      "filtered": 176,
+      "y": 3304,
+      "barFilter": "blur(14px)",
+      "barSurface": "topbar",
+      "barTop": 0
+    },
+    {
+      "cards": 1215,
+      "filtered": 176,
+      "y": 7635,
+      "barFilter": "blur(14px)",
+      "barSurface": "topbar",
+      "barTop": 0
+    },
+    {
+      "cards": 1701,
+      "filtered": 176,
+      "y": 11967,
+      "barFilter": "blur(14px)",
+      "barSurface": "topbar",
+      "barTop": 0
+    },
+    {
+      "cards": 2187,
+      "filtered": 176,
+      "y": 16298,
+      "barFilter": "blur(14px)",
+      "barSurface": "topbar",
+      "barTop": 0
+    },
+    {
+      "cards": 2673,
+      "filtered": 176,
+      "y": 20629,
+      "barFilter": "blur(14px)",
+      "barSurface": "topbar",
+      "barTop": 0
+    },
+    {
+      "cards": 3159,
+      "filtered": 176,
+      "y": 24960,
+      "barFilter": "blur(14px)",
+      "barSurface": "topbar",
+      "barTop": 0
+    },
+    {
+      "cards": 3645,
+      "filtered": 176,
+      "y": 29390,
+      "barFilter": "blur(14px)",
+      "barSurface": "topbar",
+      "barTop": 0
+    },
+    {
+      "cards": 4131,
+      "filtered": 176,
+      "y": 33721,
+      "barFilter": "blur(14px)",
+      "barSurface": "topbar",
+      "barTop": 0
+    },
+    {
+      "cards": 4131,
+      "filtered": 176,
+      "y": 19348,
+      "barFilter": "blur(14px)",
+      "barSurface": "topbar",
+      "barTop": 0
+    },
+    {
+      "cards": 4131,
+      "filtered": 105,
+      "y": 37851,
+      "barFilter": "blur(14px)",
+      "barSurface": "topbar",
+      "barTop": 0
+    },
+    {
+      "cards": 4131,
+      "filtered": 165,
+      "y": 8246,
+      "barFilter": "blur(14px)",
+      "barSurface": "topbar",
+      "barTop": 0
+    },
+    {
+      "cards": 4131,
+      "filtered": 105,
+      "y": 37851,
+      "barFilter": "blur(14px)",
+      "barSurface": "topbar",
+      "barTop": 0,
+      "blurredPixels": 132706
+    },
+    {
+      "cards": 4131,
+      "filtered": 176,
+      "y": 19362,
+      "barFilter": "blur(18px) saturate(1.8) brightness(1.08)",
+      "barSurface": "topbar__row",
+      "barTop": 0
+    },
+    {
+      "cards": 4131,
+      "filtered": 105,
+      "y": 37865,
+      "barFilter": "blur(18px) saturate(1.8) brightness(1.08)",
+      "barSurface": "topbar__row",
+      "barTop": 0
+    },
+    {
+      "cards": 4131,
+      "filtered": 165,
+      "y": 8260,
+      "barFilter": "blur(18px) saturate(1.8) brightness(1.08)",
+      "barSurface": "topbar__row",
+      "barTop": 0
+    },
+    {
+      "cards": 4131,
+      "filtered": 105,
+      "y": 37865,
+      "barFilter": "blur(18px) saturate(1.8) brightness(1.08)",
+      "barSurface": "topbar__row",
+      "barTop": 0,
+      "blurredPixels": 72235
+    },
+    {
+      "cards": 4131,
+      "filtered": 176,
+      "y": 19361,
+      "barFilter": "blur(12px)",
+      "barSurface": "topbar",
+      "barTop": 0
+    },
+    {
+      "cards": 4131,
+      "filtered": 105,
+      "y": 37864,
+      "barFilter": "blur(12px)",
+      "barSurface": "topbar",
+      "barTop": 0
+    },
+    {
+      "cards": 4131,
+      "filtered": 165,
+      "y": 8259,
+      "barFilter": "blur(12px)",
+      "barSurface": "topbar",
+      "barTop": 0
+    },
+    {
+      "cards": 4131,
+      "filtered": 105,
+      "y": 37864,
+      "barFilter": "blur(12px)",
+      "barSurface": "topbar",
+      "barTop": 0,
+      "blurredPixels": 125621
+    }
+  ],
+  "errors": [],
+  "version": "153.0.8010.12",
+  "markerChecks": [
+    {
+      "distance": 0.0025149737768015183,
+      "dot": 0.001750954319605118
+    },
+    {
+      "distance": 0.002514973776804837,
+      "dot": 0.00006646842353732868
+    }
+  ],
+  "solver": {
+    "score": " · overlaps 10.4 → 3.3",
+    "applied": "http://localhost:4179/network/?code=221331&solveRange=0&gaps=%7E+0.28+0%2C0.28+%7E+1.5%2C%7E+0.18"
+  }
+}

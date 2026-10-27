@@ -41,6 +41,7 @@ export function adjustCollisionGaps(links, base, result, { gapRange, middleRange
     let improved = false;
     for (let i = 0; i < links.length; i++)
       for (let k = 0; k < 4; k++) {
+        if (links[i][k % 2] === i + 1) continue;
         if (k < 2 && links[i][k] === 0) continue;
         const kept = rows[i][k];
         const range = k < 2 ? gapRange : middleRange;
@@ -82,6 +83,7 @@ export function adjustCollisionGaps(links, base, result, { gapRange, middleRange
   cache.scale = curveTransform(cache.curves, currentShape()).scale;
   rows.forEach((row, i) => {
     for (let k = 2; k < 4; k++) {
+      if (links[i][k % 2] === i + 1) continue;
       const max = Math.max(initial[i][k], Math.min(30, halfLength(i, k - 2) * 0.3));
       if (row[k] > max) row[k] = Math.floor(max * 1000) / 1000;
     }

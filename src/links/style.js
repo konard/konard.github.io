@@ -274,8 +274,8 @@ export const STYLE_SECTIONS = [
     id: 'experimental',
     title: { en: 'Experimental: fewer overlaps', ru: 'Эксперимент: меньше наложений' },
     lead: {
-      en: 'Turns the ends and optionally adjusts individual reference gaps and middle cuts to reduce crossings. Small cuts are preferred; manual values are the starting point. Apply the result to keep editing it.',
-      ru: 'Поворачивает концы и при желании меняет зазоры ссылок и разрывы середины отдельных связей. Предпочитает небольшие разрывы и начинает с ручных значений. Примените результат, чтобы продолжить редактирование.',
+      en: 'Turns open references and optionally adjusts their individual gaps and middle cuts to reduce crossings. Self-closed halves keep their angles, gaps and cuts. Small cuts are preferred; manual values are the starting point. Apply the result to keep editing it.',
+      ru: 'Поворачивает открытые ссылки и при желании меняет их зазоры и разрывы середины для уменьшения наложений. Замкнутые половины сохраняют углы, зазоры и разрывы. Предпочитает небольшие разрывы и начинает с ручных значений. Примените результат, чтобы продолжить редактирование.',
     },
     fields: [
       toggle('solve', false, { en: 'Reduce overlaps automatically', ru: 'Уменьшать наложения автоматически' }),
@@ -370,7 +370,18 @@ export function normalizeStyle(raw = {}) {
 export function styleToParams(style) {
   const params = new URLSearchParams();
   STYLE_FIELDS.forEach(({ key }) => {
-    if (style[key] !== STYLE_DEFAULTS[key]) params.set(key, String(style[key]));
+    let value = String(style[key]);
+    if (key === 'turns')
+      value = normalizeList(key, value)
+        .split(',')
+        .map((row) => (row === '0 0' ? '' : row))
+        .join(',');
+    if (key === 'gaps')
+      value = normalizeGaps(value)
+        .split(',')
+        .map((row) => row.replace(/(?: ?~)+$/, ''))
+        .join(',');
+    if (value !== String(STYLE_DEFAULTS[key])) params.set(key, value);
   });
   return params;
 }

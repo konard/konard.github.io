@@ -209,6 +209,13 @@ jobs:
           CAPTURE_DIR: browser-results/screenshots/issue25
           RESULT_DIR: browser-results/data/issue25
 
+      - name: Verify equal closed gaps, historical URLs and numeric keyboard controls
+        if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
+        run: npm run test:network:issue27
+        env:
+          CAPTURE_DIR: browser-results/screenshots/issue27
+          RESULT_DIR: browser-results/data/issue27
+
       - name: Preserve browser evidence
         if: always()
         uses: actions/upload-artifact@v7

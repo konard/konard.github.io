@@ -1,0 +1,12 @@
+### Result
+{"date":"2026-10-27T20:31:14.590Z","expected":"0.07","actual":"0","url":"http://localhost:4187/network/?code=1111&rotation=-90&turns=%2C-15+15&gaps=0.08+0%2C0.18+0.18&lang=en"}
+### Ran Playwright code
+```js
+await (async (page) => { await page.setViewportSize({width:1440,height:1000}); await page.goto('http://localhost:4187/network/?code=1111&lang=en&rotation=-90&turns=,-15+15&gaps=0.08+0.08,0.18+0.18'); const gap=page.getByLabel('Link 1: Gap at the target reference',{exact:true}); await gap.fill(''); await gap.hover(); const box=await gap.boundingBox(); await page.mouse.click(box.x+box.width-12,box.y+box.height/2+3); const result={date:new Date().toISOString(),expected:'0.07',actual:await gap.inputValue(),url:await page.getByLabel('Link to this picture',{exact:true}).inputValue()}; await page.screenshot({path:'/tmp/gh-issue-solver-1793130700371/docs/case-studies/issue-27/screenshots/native-spinner-before.png'}); return result; })(page);
+```
+### Page
+- Page URL: http://localhost:4187/network/?code=1111&rotation=-90&turns=%2C-15+15&gaps=0.08+0%2C0.18+0.18&lang=en
+- Page Title: Links network editor — Konstantin Diachenko (konard)
+- Console: 0 errors, 4 warnings
+### Events
+- New console entries: .playwright-mcp/console-2026-10-27T20-31-11-748Z.log#L1-L4

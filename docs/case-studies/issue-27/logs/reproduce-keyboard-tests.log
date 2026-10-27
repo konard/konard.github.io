@@ -1,0 +1,84 @@
+(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - import "./fields" without a file extension (src/settings/schema.js:15:32). Add the file extension
+  - import "./schema.background" without a file extension (src/settings/schema.js:16:37). Add the file extension
+  - import "./schema.layers" without a file extension (src/settings/schema.js:17:32). Add the file extension
+  - import "./schema.skins" without a file extension (src/settings/schema.js:18:31). Add the file extension
+  - import "./schema.sound" without a file extension (src/settings/schema.js:19:31). Add the file extension
+  - import "./schema.skins" without a file extension (src/settings/schema.js:21:33). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.layers.js:8:54). Add the file extension
+  - import "../skins.frames" without a file extension (src/settings/schema.skins.js:3:25). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.background.js:3:54). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.sound.js:7:47). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.skins.js:4:47). Add the file extension
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793130700371
+
+Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+ ❯ src/pages/network-27.test.jsx (4 tests | 3 failed) 1432ms
+   × steps inherited gaps from the displayed global value, with decimal precision 330ms
+   × supports page steps on every range while preserving modified editing shortcuts 377ms
+   × allows clearing a turn while typing a replacement and retains text-navigation keys 188ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/pages/network-27.test.jsx > steps inherited gaps from the displayed global value, with decimal precision
+Error: expect(element).toHaveValue(0.09)
+
+Expected the element to have value:
+  0.09
+Received:
+  null
+ ❯ src/pages/network-27.test.jsx:30:17
+     28|   expect(input).toHaveValue(null);
+     29|   fireEvent.keyDown(input, { key: 'ArrowUp' });
+     30|   expect(input).toHaveValue(0.09);
+       |                 ^
+     31|   fireEvent.keyDown(input, { key: 'ArrowDown' });
+     32|   expect(input).toHaveValue(0.08);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  src/pages/network-27.test.jsx > supports page steps on every range while preserving modified editing shortcuts
+Error: expect(element).toHaveValue(0.18)
+
+Expected the element to have value:
+  0.18
+Received:
+  0.08
+ ❯ src/pages/network-27.test.jsx:40:17
+     38|   const input = screen.getByLabelText('Gap at the target reference', {…
+     39|   fireEvent.keyDown(input, { key: 'PageUp' });
+     40|   expect(input).toHaveValue('0.18');
+       |                 ^
+     41|   fireEvent.keyDown(input, { key: 'Home' });
+     42|   expect(input).toHaveValue('0');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  src/pages/network-27.test.jsx > allows clearing a turn while typing a replacement and retains text-navigation keys
+Error: expect(element).toHaveValue(null)
+
+Expected the element to have value:
+  null
+Received:
+  0
+ ❯ src/pages/network-27.test.jsx:50:17
+     48|   const input = screen.getByLabelText('Link 2: turn of the source, °');
+     49|   fireEvent.change(input, { target: { value: '' } });
+     50|   expect(input).toHaveValue(null);
+       |                 ^
+     51|   fireEvent.change(input, { target: { value: '-25' } });
+     52|   expect(input).toHaveValue(-25);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed | 1 passed (4)
+   Start at  19:57:09
+   Duration  4.37s (tests 35%, environment 27%, transform 26%, setup 8%, import 4%, worker 1%)
+

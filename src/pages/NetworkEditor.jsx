@@ -18,6 +18,7 @@ import {
 import { useLang } from '../i18n/prefs';
 import { plural } from '../i18n/plural';
 import { formatNumber } from '../components/format';
+import NumberInput from '../components/NumberInput';
 
 const LINKS = { en: ['link', 'links'], ru: ['связь', 'связи', 'связей'] };
 // "of N links", "one of N networks": Russian needs the genitive after «из».
@@ -157,17 +158,15 @@ function ReferenceSelect({ id, value, n, self, onChange, label }) {
   // Avoid two n-option selects per row (quadratic DOM size) on large networks.
   if (n > 50)
     return (
-      <input
+      <NumberInput
         id={id}
-        type="number"
         min={0}
         max={n}
         step={1}
         value={value}
         aria-label={label}
-        onChange={(event) => {
-          const ref = Number(event.target.value);
-          if (event.target.value !== '' && Number.isInteger(ref) && ref >= 0 && ref <= n) onChange(ref);
+        onValue={(ref) => {
+          if (ref !== null && Number.isInteger(ref) && ref >= 0 && ref <= n) onChange(ref);
         }}
       />
     );
@@ -274,15 +273,16 @@ export function LinksTable({
                         ? { en: 'Turn of the target, °', ru: 'Поворот конца, °' }
                         : { en: 'Turn of the source, °', ru: 'Поворот начала, °' },
                     )}
-                    <input
-                      type="number"
+                    <NumberInput
                       className="mono"
                       min={-180}
                       max={180}
                       step={5}
                       value={turns[i][e]}
                       aria-label={`${name}: ${t({ en: 'turn of the', ru: 'поворот' })} ${e ? end : start}, °`}
-                      onChange={(event) => onTurn(i, e, Number(event.target.value) || 0)}
+                      onValue={(value) => {
+                        if (value !== null) onTurn(i, e, value);
+                      }}
                     />
                   </label>
                 ))}

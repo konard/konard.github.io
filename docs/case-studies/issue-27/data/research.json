@@ -1,0 +1,41 @@
+{
+  "researchedAt": "2026-10-27",
+  "sources": [
+    {
+      "url": "https://www.w3.org/TR/SVG/painting.html#StrokeMiterlimitProperty",
+      "title": "SVG 2 painting",
+      "finding": "Sharp miter geometry extends paint beyond a path vertex; cap geometry contributes to the actual painted endpoint. The application must compensate with a stable axis."
+    },
+    {
+      "url": "https://html.spec.whatwg.org/multipage/input.html#number-state-(type=number)",
+      "title": "HTML number input",
+      "finding": "Number controls use their value, step, minimum and step base. A placeholder is not the inherited numerical value. Native decimal stepping needs an explicit fractional step."
+    },
+    {
+      "url": "https://html.spec.whatwg.org/multipage/input.html#dom-input-stepup",
+      "title": "HTML stepping algorithms",
+      "finding": "Stepping an off-grid value snaps to a valid value in the chosen direction; the shared keyboard handler follows those semantics."
+    },
+    {
+      "url": "https://www.w3.org/WAI/ARIA/apg/patterns/slider/",
+      "title": "WAI slider pattern",
+      "finding": "Arrow keys change one step, Home/End select bounds, and optional PageUp/PageDown supply larger steps."
+    },
+    {
+      "url": "https://www.w3.org/WAI/ARIA/apg/patterns/spinbutton/",
+      "title": "WAI spinbutton pattern",
+      "finding": "Supports increment/decrement, optional larger increments and ordinary platform text editing. Native editable input text navigation remains available."
+    },
+    {
+      "url": "https://www.radix-ui.com/primitives/docs/components/slider",
+      "title": "Radix Slider alternative",
+      "finding": "Custom slider supports step, bounds, keyboard navigation and controlled state. Useful for custom multi-thumb needs; adding it is unnecessary for this native input fix."
+    },
+    {
+      "url": "https://react-aria.adobe.com/NumberField",
+      "title": "React Aria NumberField alternative",
+      "finding": "Provides number entry, stepper controls, bounds and localized numeric formatting. A candidate for a future localized input design; current native controls retain existing styling and semantics."
+    }
+  ],
+  "method": "Official source pages browsed with web tools. Findings are paraphrases. The full HTML input page loaded during initial research; a later anchored fetch timed out."
+}

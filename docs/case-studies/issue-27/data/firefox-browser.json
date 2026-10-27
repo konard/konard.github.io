@@ -1,0 +1,143 @@
+{
+  "engine": "firefox",
+  "date": "2026-10-27T20:39:18.004Z",
+  "checks": [
+    "historical URL upgrades through history, compacts default rows, and reloads the exact SVG",
+    "native rasterized closed gaps agree within 0.12 image units at 5°, 15°, 45°, 85°",
+    "automatic spacing preserves the closed link, changes open references, and applies/shares/reloads exactly",
+    "0.07↔0.08 arrows/native stepping, inherited native/keyboard steps, negative typing, select-all, delete, Home and Tab",
+    "all 37 rendered network and 55 settings sliders support all eight navigation keys"
+  ],
+  "errors": [],
+  "version": "155.0",
+  "paint": [
+    {
+      "angle": 5,
+      "nearest": [
+        4.150740897719349,
+        4.193167060826456
+      ],
+      "size": 2000
+    },
+    {
+      "angle": 15,
+      "nearest": [
+        4.150740897719349,
+        4.193167060826456
+      ],
+      "size": 2000
+    },
+    {
+      "angle": 45,
+      "nearest": [
+        4.150740897719349,
+        4.157841988339621
+      ],
+      "size": 2000
+    },
+    {
+      "angle": 85,
+      "nearest": [
+        4.150740897719349,
+        4.157841988339621
+      ],
+      "size": 2000
+    }
+  ],
+  "networkRanges": [
+    "style-layoutAspect",
+    "style-sourceAngle",
+    "style-targetAngle",
+    "style-tension",
+    "style-bulge",
+    "style-loopBend",
+    "style-startGap",
+    "style-endGap",
+    "style-loop",
+    "style-spread",
+    "style-rotation",
+    "style-padding",
+    "style-startSize",
+    "style-startOffset",
+    "style-startAcross",
+    "style-startRotation",
+    "style-endSize",
+    "style-endAngle",
+    "style-endOffset",
+    "style-endAcross",
+    "style-endRotation",
+    "style-middleSize",
+    "style-middleOffset",
+    "style-middleAcross",
+    "style-middleGapStart",
+    "style-middleGapEnd",
+    "style-strokeWidth",
+    "style-opacity",
+    "style-glow",
+    "style-width",
+    "style-height",
+    "style-quality",
+    "style-clearance",
+    "style-solveGapRange",
+    "style-solveMiddleRange",
+    "style-solveRange",
+    "style-solveStep"
+  ],
+  "settingsRanges": [
+    "setting-nebula-level",
+    "setting-nebula-speed",
+    "setting-nebula-gas",
+    "setting-nebula-hue",
+    "setting-nebula-stars",
+    "setting-nebula-starBrightness",
+    "setting-nebula-twinkle",
+    "setting-nebula-vignette",
+    "setting-nebula-zoom",
+    "setting-nebula-starSize",
+    "setting-nebula-resolution",
+    "setting-nebula-fps",
+    "setting-stars-level",
+    "setting-stars-fps",
+    "setting-stars1-count",
+    "setting-stars1-size",
+    "setting-stars1-sizeSpread",
+    "setting-stars1-hueSpread",
+    "setting-stars1-brightness",
+    "setting-stars1-glow",
+    "setting-stars1-twinkle",
+    "setting-stars1-twinkleDepth",
+    "setting-stars1-rotation",
+    "setting-stars1-spin",
+    "setting-stars1-direction",
+    "setting-stars1-speed",
+    "setting-stars1-streak",
+    "setting-grid-level",
+    "setting-grid-size",
+    "setting-grid-period",
+    "setting-grid-width",
+    "setting-beams-level",
+    "setting-beams-count",
+    "setting-beams-speed",
+    "setting-beams-length",
+    "setting-beams-width",
+    "setting-beams-glow",
+    "setting-beams-pause",
+    "setting-rain-level",
+    "setting-rain-step",
+    "setting-rain-speeds",
+    "setting-rain-density",
+    "setting-rain-restart",
+    "setting-rain-fade",
+    "setting-rain-lineWidth",
+    "setting-rain-padding",
+    "setting-rain-glow",
+    "setting-rain-minLinks",
+    "setting-rain-maxLinks",
+    "setting-glass-level",
+    "setting-glass-blur",
+    "setting-glass-bar",
+    "setting-glass-radius",
+    "setting-glass-saturation",
+    "setting-glass-edge"
+  ]
+}

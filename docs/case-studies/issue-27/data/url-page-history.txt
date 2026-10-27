@@ -1,0 +1,8 @@
+3d077c2 2026-10-26T21:07:15+00:00 Group all per-link settings in responsive cards and verify native arrow paint
+d2bd08a 2026-10-26T05:08:29+00:00 Stabilize gallery blur and refine network editor geometry
+df0ec7a 2026-10-24T20:12:49+00:00 Guard shared history paths and stabilize early touch and sharing
+305a85e 2026-10-24T20:12:29+00:00 Expand network geometry and scalable link placements
+fbda646 2026-10-24T19:43:24+00:00 Debounce network URL updates and preserve Safari clipboard activation
+02fa81e 2026-10-24T17:12:28+00:00 Preserve the explicit page language when editing and sharing networks
+6d102ee 2026-10-24T17:08:42+00:00 Fix network editor parsing, shared notation, solver turns and sticky preview
+af98b80 2026-10-24T15:25:03+00:00 The page /network/: one network with a sticky preview, every notation editable (the others follow, an invalid text says what is wrong), a table of links with references, colours and turns, add/remove/previous/next/random/smallest renaming, looks (card as in the gallery, plain black, transparent, paper, blueprint, neon, social card), every option of the picture in sections, saved styles, image sizes, the experimental reduction of overlaps, downloads of SVG, PNG, JPEG, WebP and .lino, copies, the system share sheet and social share links; the address keeps the network and every changed option (issue #17)

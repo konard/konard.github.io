@@ -1,0 +1,3270 @@
+[
+  {
+    "sha": "a9001c9cb3ce7763a1f2674efa76693236526bf0",
+    "fields": [
+      {
+        "key": "placement",
+        "type": "select",
+        "d": "auto",
+        "options": [
+          "auto",
+          "circle",
+          "square",
+          "hex",
+          "dice",
+          "cards",
+          "spiral",
+          "force"
+        ]
+      },
+      {
+        "key": "layoutAspect",
+        "type": "range",
+        "d": 1,
+        "min": 0.3,
+        "max": 3
+      },
+      {
+        "key": "columns",
+        "type": "range",
+        "d": 0,
+        "min": 0,
+        "max": 30
+      },
+      {
+        "key": "forceDistance",
+        "type": "range",
+        "d": 1,
+        "min": 0.2,
+        "max": 3
+      },
+      {
+        "key": "forceCharge",
+        "type": "range",
+        "d": 0.6,
+        "min": 0.2,
+        "max": 3
+      },
+      {
+        "key": "forceCollision",
+        "type": "range",
+        "d": 0.6,
+        "min": 0.2,
+        "max": 3
+      },
+      {
+        "key": "bendMode",
+        "type": "select",
+        "d": "curve",
+        "options": [
+          "curve",
+          "rotate"
+        ]
+      },
+      {
+        "key": "angles",
+        "type": "select",
+        "d": "fixed",
+        "options": [
+          "mirror",
+          "fixed"
+        ]
+      },
+      {
+        "key": "sourceAngle",
+        "type": "range",
+        "d": 30,
+        "min": -180,
+        "max": 180
+      },
+      {
+        "key": "targetAngle",
+        "type": "range",
+        "d": 30,
+        "min": -180,
+        "max": 180
+      },
+      {
+        "key": "lens",
+        "type": "toggle",
+        "d": true
+      },
+      {
+        "key": "tension",
+        "type": "range",
+        "d": 0.4,
+        "min": 0,
+        "max": 2
+      },
+      {
+        "key": "bulge",
+        "type": "range",
+        "d": 0,
+        "min": -180,
+        "max": 180
+      },
+      {
+        "key": "loopBend",
+        "type": "range",
+        "d": 0,
+        "min": -180,
+        "max": 180
+      },
+      {
+        "key": "startGap",
+        "type": "range",
+        "d": 0.08,
+        "min": 0,
+        "max": 1
+      },
+      {
+        "key": "endGap",
+        "type": "range",
+        "d": 0.08,
+        "min": 0,
+        "max": 1
+      },
+      {
+        "key": "free",
+        "type": "range",
+        "d": 1,
+        "min": 0.05,
+        "max": 5
+      },
+      {
+        "key": "loop",
+        "type": "range",
+        "d": 1,
+        "min": 0.05,
+        "max": 5
+      },
+      {
+        "key": "spread",
+        "type": "range",
+        "d": 1,
+        "min": 0.1,
+        "max": 5
+      },
+      {
+        "key": "rotation",
+        "type": "range",
+        "d": 0,
+        "min": -180,
+        "max": 359
+      },
+      {
+        "key": "padding",
+        "type": "range",
+        "d": 9,
+        "min": 0,
+        "max": 40
+      },
+      {
+        "key": "arrowJoin",
+        "type": "select",
+        "d": "miter",
+        "options": [
+          "miter",
+          "round",
+          "bevel",
+          "inherit"
+        ]
+      },
+      {
+        "key": "balanceArrows",
+        "type": "toggle",
+        "d": true
+      },
+      {
+        "key": "start",
+        "type": "select",
+        "d": "bar",
+        "options": [
+          "bar",
+          "arrow",
+          "triangle",
+          "tail",
+          "dot",
+          "circle",
+          "square",
+          "diamond",
+          "none"
+        ]
+      },
+      {
+        "key": "startSize",
+        "type": "range",
+        "d": 2.5,
+        "min": 0.5,
+        "max": 15
+      },
+      {
+        "key": "startAngle",
+        "type": "range",
+        "d": 70,
+        "min": 5,
+        "max": 85
+      },
+      {
+        "key": "startOffset",
+        "type": "range",
+        "d": 2.5,
+        "min": -20,
+        "max": 20
+      },
+      {
+        "key": "startAcross",
+        "type": "range",
+        "d": 0,
+        "min": -20,
+        "max": 20
+      },
+      {
+        "key": "startRotation",
+        "type": "range",
+        "d": 0,
+        "min": -180,
+        "max": 180
+      },
+      {
+        "key": "end",
+        "type": "select",
+        "d": "arrow",
+        "options": [
+          "bar",
+          "arrow",
+          "triangle",
+          "tail",
+          "dot",
+          "circle",
+          "square",
+          "diamond",
+          "none"
+        ]
+      },
+      {
+        "key": "endSize",
+        "type": "range",
+        "d": 3.5,
+        "min": 0.5,
+        "max": 15
+      },
+      {
+        "key": "endAngle",
+        "type": "range",
+        "d": 45,
+        "min": 5,
+        "max": 85
+      },
+      {
+        "key": "endOffset",
+        "type": "range",
+        "d": 0,
+        "min": -20,
+        "max": 20
+      },
+      {
+        "key": "endAcross",
+        "type": "range",
+        "d": 0,
+        "min": -20,
+        "max": 20
+      },
+      {
+        "key": "endRotation",
+        "type": "range",
+        "d": 0,
+        "min": -180,
+        "max": 180
+      },
+      {
+        "key": "middle",
+        "type": "select",
+        "d": "dot",
+        "options": [
+          "bar",
+          "arrow",
+          "triangle",
+          "tail",
+          "dot",
+          "circle",
+          "square",
+          "diamond",
+          "none"
+        ]
+      },
+      {
+        "key": "middleSize",
+        "type": "range",
+        "d": 2,
+        "min": 0.5,
+        "max": 15
+      },
+      {
+        "key": "middleAngle",
+        "type": "range",
+        "d": 30,
+        "min": 5,
+        "max": 85
+      },
+      {
+        "key": "middleOffset",
+        "type": "range",
+        "d": 0,
+        "min": -20,
+        "max": 20
+      },
+      {
+        "key": "middleAcross",
+        "type": "range",
+        "d": 0,
+        "min": -20,
+        "max": 20
+      },
+      {
+        "key": "middleRotation",
+        "type": "range",
+        "d": 0,
+        "min": -180,
+        "max": 180
+      },
+      {
+        "key": "middleGapStart",
+        "type": "range",
+        "d": 0,
+        "min": 0,
+        "max": 30
+      },
+      {
+        "key": "middleGapEnd",
+        "type": "range",
+        "d": 0,
+        "min": 0,
+        "max": 30
+      },
+      {
+        "key": "strokeWidth",
+        "type": "range",
+        "d": 1.3,
+        "min": 0.5,
+        "max": 10
+      },
+      {
+        "key": "dash",
+        "type": "select",
+        "d": "solid",
+        "options": [
+          "solid",
+          "dashed",
+          "dotted",
+          "dashdot",
+          "long"
+        ]
+      },
+      {
+        "key": "linecap",
+        "type": "select",
+        "d": "round",
+        "options": [
+          "round",
+          "butt",
+          "square"
+        ]
+      },
+      {
+        "key": "linejoin",
+        "type": "select",
+        "d": "miter",
+        "options": [
+          "round",
+          "miter",
+          "bevel"
+        ]
+      },
+      {
+        "key": "opacity",
+        "type": "range",
+        "d": 1,
+        "min": 0.1,
+        "max": 1
+      },
+      {
+        "key": "glow",
+        "type": "range",
+        "d": 0,
+        "min": 0,
+        "max": 12
+      },
+      {
+        "key": "palette",
+        "type": "select",
+        "d": "site",
+        "options": [
+          "site",
+          "neon",
+          "pastel",
+          "warm",
+          "cold",
+          "print",
+          "mono",
+          "custom"
+        ]
+      },
+      {
+        "key": "monoColor",
+        "type": "color",
+        "d": "#e6edf7"
+      },
+      {
+        "key": "background",
+        "type": "select",
+        "d": "solid",
+        "options": [
+          "transparent",
+          "solid",
+          "linear",
+          "radial"
+        ]
+      },
+      {
+        "key": "bgColor",
+        "type": "color",
+        "d": "#000000"
+      },
+      {
+        "key": "bgColor2",
+        "type": "color",
+        "d": "#1e1b4b"
+      },
+      {
+        "key": "bgAngle",
+        "type": "range",
+        "d": 135,
+        "min": 0,
+        "max": 359
+      },
+      {
+        "key": "card",
+        "type": "toggle",
+        "d": false
+      },
+      {
+        "key": "cardColor",
+        "type": "color",
+        "d": "#0d1220"
+      },
+      {
+        "key": "cardOpacity",
+        "type": "range",
+        "d": 0.8,
+        "min": 0,
+        "max": 1
+      },
+      {
+        "key": "borderStyle",
+        "type": "select",
+        "d": "solid",
+        "options": [
+          "solid",
+          "dashed",
+          "dotted",
+          "double",
+          "none"
+        ]
+      },
+      {
+        "key": "border",
+        "type": "range",
+        "d": 0.6,
+        "min": 0.1,
+        "max": 6
+      },
+      {
+        "key": "borderColor",
+        "type": "color",
+        "d": "#2b3b57"
+      },
+      {
+        "key": "radius",
+        "type": "range",
+        "d": 10,
+        "min": 0,
+        "max": 50
+      },
+      {
+        "key": "inset",
+        "type": "range",
+        "d": 3,
+        "min": 0,
+        "max": 30
+      },
+      {
+        "key": "notation",
+        "type": "select",
+        "d": "L",
+        "options": [
+          "L",
+          "R"
+        ]
+      },
+      {
+        "key": "caption",
+        "type": "select",
+        "d": "none",
+        "options": [
+          "none",
+          "theory",
+          "pairs",
+          "number",
+          "links",
+          "custom"
+        ]
+      },
+      {
+        "key": "captionText",
+        "type": "text",
+        "d": "",
+        "max": 80
+      },
+      {
+        "key": "captionColor",
+        "type": "color",
+        "d": "#7d8aa3"
+      },
+      {
+        "key": "captionSize",
+        "type": "range",
+        "d": 6,
+        "min": 3,
+        "max": 14
+      },
+      {
+        "key": "captionFont",
+        "type": "select",
+        "d": "mono",
+        "options": [
+          "mono",
+          "sans",
+          "serif"
+        ]
+      },
+      {
+        "key": "width",
+        "type": "range",
+        "d": 2048,
+        "min": 64,
+        "max": 4096
+      },
+      {
+        "key": "height",
+        "type": "range",
+        "d": 2048,
+        "min": 64,
+        "max": 4096
+      },
+      {
+        "key": "quality",
+        "type": "range",
+        "d": 0.92,
+        "min": 0.5,
+        "max": 1
+      },
+      {
+        "key": "solve",
+        "type": "toggle",
+        "d": false
+      },
+      {
+        "key": "clearance",
+        "type": "range",
+        "d": 1,
+        "min": 0,
+        "max": 10
+      },
+      {
+        "key": "solveDebug",
+        "type": "toggle",
+        "d": false
+      },
+      {
+        "key": "solveGaps",
+        "type": "toggle",
+        "d": true
+      },
+      {
+        "key": "solveGapRange",
+        "type": "range",
+        "d": 0.2,
+        "min": 0,
+        "max": 1
+      },
+      {
+        "key": "solveMiddleRange",
+        "type": "range",
+        "d": 4,
+        "min": 0,
+        "max": 15
+      },
+      {
+        "key": "solveRange",
+        "type": "range",
+        "d": 60,
+        "min": 0,
+        "max": 180
+      },
+      {
+        "key": "solveStep",
+        "type": "range",
+        "d": 15,
+        "min": 5,
+        "max": 30
+      },
+      {
+        "key": "colors",
+        "type": "list",
+        "d": "#22d3ee,#c084fc,#f472b6,#facc15,#34d399,#fb923c,#60a5fa,#f87171,#a3e635"
+      },
+      {
+        "key": "gap",
+        "type": "range",
+        "d": 0.08,
+        "min": 0,
+        "max": 0.4
+      },
+      {
+        "key": "turns",
+        "type": "list",
+        "d": ""
+      },
+      {
+        "key": "gaps",
+        "type": "list",
+        "d": ""
+      }
+    ]
+  },
+  {
+    "sha": "d2bd08a4efe6dfe935a16f5375bfed81b3b27dec",
+    "fields": [
+      {
+        "key": "placement",
+        "type": "select",
+        "d": "auto",
+        "options": [
+          "auto",
+          "circle",
+          "square",
+          "hex",
+          "dice",
+          "cards",
+          "spiral",
+          "force"
+        ]
+      },
+      {
+        "key": "layoutAspect",
+        "type": "range",
+        "d": 1,
+        "min": 0.3,
+        "max": 3
+      },
+      {
+        "key": "columns",
+        "type": "range",
+        "d": 0,
+        "min": 0,
+        "max": 30
+      },
+      {
+        "key": "forceDistance",
+        "type": "range",
+        "d": 1,
+        "min": 0.2,
+        "max": 3
+      },
+      {
+        "key": "forceCharge",
+        "type": "range",
+        "d": 0.6,
+        "min": 0.2,
+        "max": 3
+      },
+      {
+        "key": "forceCollision",
+        "type": "range",
+        "d": 0.6,
+        "min": 0.2,
+        "max": 3
+      },
+      {
+        "key": "bendMode",
+        "type": "select",
+        "d": "curve",
+        "options": [
+          "curve",
+          "rotate"
+        ]
+      },
+      {
+        "key": "angles",
+        "type": "select",
+        "d": "fixed",
+        "options": [
+          "mirror",
+          "fixed"
+        ]
+      },
+      {
+        "key": "sourceAngle",
+        "type": "range",
+        "d": 30,
+        "min": -180,
+        "max": 180
+      },
+      {
+        "key": "targetAngle",
+        "type": "range",
+        "d": 30,
+        "min": -180,
+        "max": 180
+      },
+      {
+        "key": "lens",
+        "type": "toggle",
+        "d": true
+      },
+      {
+        "key": "tension",
+        "type": "range",
+        "d": 0.4,
+        "min": 0,
+        "max": 2
+      },
+      {
+        "key": "bulge",
+        "type": "range",
+        "d": 0,
+        "min": -180,
+        "max": 180
+      },
+      {
+        "key": "loopBend",
+        "type": "range",
+        "d": 0,
+        "min": -180,
+        "max": 180
+      },
+      {
+        "key": "startGap",
+        "type": "range",
+        "d": 0.08,
+        "min": 0,
+        "max": 1
+      },
+      {
+        "key": "endGap",
+        "type": "range",
+        "d": 0.08,
+        "min": 0,
+        "max": 1
+      },
+      {
+        "key": "free",
+        "type": "range",
+        "d": 1,
+        "min": 0.05,
+        "max": 5
+      },
+      {
+        "key": "loop",
+        "type": "range",
+        "d": 1,
+        "min": 0.05,
+        "max": 5
+      },
+      {
+        "key": "spread",
+        "type": "range",
+        "d": 1,
+        "min": 0.1,
+        "max": 5
+      },
+      {
+        "key": "rotation",
+        "type": "range",
+        "d": 0,
+        "min": -180,
+        "max": 359
+      },
+      {
+        "key": "padding",
+        "type": "range",
+        "d": 9,
+        "min": 0,
+        "max": 40
+      },
+      {
+        "key": "start",
+        "type": "select",
+        "d": "bar",
+        "options": [
+          "bar",
+          "arrow",
+          "triangle",
+          "tail",
+          "dot",
+          "circle",
+          "square",
+          "diamond",
+          "none"
+        ]
+      },
+      {
+        "key": "startSize",
+        "type": "range",
+        "d": 2.5,
+        "min": 0.5,
+        "max": 15
+      },
+      {
+        "key": "startAngle",
+        "type": "range",
+        "d": 70,
+        "min": 5,
+        "max": 85
+      },
+      {
+        "key": "startOffset",
+        "type": "range",
+        "d": 2.5,
+        "min": -20,
+        "max": 20
+      },
+      {
+        "key": "startAcross",
+        "type": "range",
+        "d": 0,
+        "min": -20,
+        "max": 20
+      },
+      {
+        "key": "startRotation",
+        "type": "range",
+        "d": 0,
+        "min": -180,
+        "max": 180
+      },
+      {
+        "key": "end",
+        "type": "select",
+        "d": "arrow",
+        "options": [
+          "bar",
+          "arrow",
+          "triangle",
+          "tail",
+          "dot",
+          "circle",
+          "square",
+          "diamond",
+          "none"
+        ]
+      },
+      {
+        "key": "endSize",
+        "type": "range",
+        "d": 3.5,
+        "min": 0.5,
+        "max": 15
+      },
+      {
+        "key": "endAngle",
+        "type": "range",
+        "d": 45,
+        "min": 5,
+        "max": 85
+      },
+      {
+        "key": "endOffset",
+        "type": "range",
+        "d": 0,
+        "min": -20,
+        "max": 20
+      },
+      {
+        "key": "endAcross",
+        "type": "range",
+        "d": 0,
+        "min": -20,
+        "max": 20
+      },
+      {
+        "key": "endRotation",
+        "type": "range",
+        "d": 0,
+        "min": -180,
+        "max": 180
+      },
+      {
+        "key": "middle",
+        "type": "select",
+        "d": "dot",
+        "options": [
+          "bar",
+          "arrow",
+          "triangle",
+          "tail",
+          "dot",
+          "circle",
+          "square",
+          "diamond",
+          "none"
+        ]
+      },
+      {
+        "key": "middleSize",
+        "type": "range",
+        "d": 2,
+        "min": 0.5,
+        "max": 15
+      },
+      {
+        "key": "middleAngle",
+        "type": "range",
+        "d": 30,
+        "min": 5,
+        "max": 85
+      },
+      {
+        "key": "middleOffset",
+        "type": "range",
+        "d": 0,
+        "min": -20,
+        "max": 20
+      },
+      {
+        "key": "middleAcross",
+        "type": "range",
+        "d": 0,
+        "min": -20,
+        "max": 20
+      },
+      {
+        "key": "middleRotation",
+        "type": "range",
+        "d": 0,
+        "min": -180,
+        "max": 180
+      },
+      {
+        "key": "middleGapStart",
+        "type": "range",
+        "d": 0,
+        "min": 0,
+        "max": 30
+      },
+      {
+        "key": "middleGapEnd",
+        "type": "range",
+        "d": 0,
+        "min": 0,
+        "max": 30
+      },
+      {
+        "key": "strokeWidth",
+        "type": "range",
+        "d": 1.3,
+        "min": 0.5,
+        "max": 10
+      },
+      {
+        "key": "dash",
+        "type": "select",
+        "d": "solid",
+        "options": [
+          "solid",
+          "dashed",
+          "dotted",
+          "dashdot",
+          "long"
+        ]
+      },
+      {
+        "key": "linecap",
+        "type": "select",
+        "d": "round",
+        "options": [
+          "round",
+          "butt",
+          "square"
+        ]
+      },
+      {
+        "key": "linejoin",
+        "type": "select",
+        "d": "miter",
+        "options": [
+          "round",
+          "miter",
+          "bevel"
+        ]
+      },
+      {
+        "key": "opacity",
+        "type": "range",
+        "d": 1,
+        "min": 0.1,
+        "max": 1
+      },
+      {
+        "key": "glow",
+        "type": "range",
+        "d": 0,
+        "min": 0,
+        "max": 12
+      },
+      {
+        "key": "palette",
+        "type": "select",
+        "d": "site",
+        "options": [
+          "site",
+          "neon",
+          "pastel",
+          "warm",
+          "cold",
+          "print",
+          "mono",
+          "custom"
+        ]
+      },
+      {
+        "key": "monoColor",
+        "type": "color",
+        "d": "#e6edf7"
+      },
+      {
+        "key": "background",
+        "type": "select",
+        "d": "solid",
+        "options": [
+          "transparent",
+          "solid",
+          "linear",
+          "radial"
+        ]
+      },
+      {
+        "key": "bgColor",
+        "type": "color",
+        "d": "#000000"
+      },
+      {
+        "key": "bgColor2",
+        "type": "color",
+        "d": "#1e1b4b"
+      },
+      {
+        "key": "bgAngle",
+        "type": "range",
+        "d": 135,
+        "min": 0,
+        "max": 359
+      },
+      {
+        "key": "card",
+        "type": "toggle",
+        "d": false
+      },
+      {
+        "key": "cardColor",
+        "type": "color",
+        "d": "#0d1220"
+      },
+      {
+        "key": "cardOpacity",
+        "type": "range",
+        "d": 0.8,
+        "min": 0,
+        "max": 1
+      },
+      {
+        "key": "borderStyle",
+        "type": "select",
+        "d": "solid",
+        "options": [
+          "solid",
+          "dashed",
+          "dotted",
+          "double",
+          "none"
+        ]
+      },
+      {
+        "key": "border",
+        "type": "range",
+        "d": 0.6,
+        "min": 0.1,
+        "max": 6
+      },
+      {
+        "key": "borderColor",
+        "type": "color",
+        "d": "#2b3b57"
+      },
+      {
+        "key": "radius",
+        "type": "range",
+        "d": 10,
+        "min": 0,
+        "max": 50
+      },
+      {
+        "key": "inset",
+        "type": "range",
+        "d": 3,
+        "min": 0,
+        "max": 30
+      },
+      {
+        "key": "notation",
+        "type": "select",
+        "d": "L",
+        "options": [
+          "L",
+          "R"
+        ]
+      },
+      {
+        "key": "caption",
+        "type": "select",
+        "d": "none",
+        "options": [
+          "none",
+          "theory",
+          "pairs",
+          "number",
+          "links",
+          "custom"
+        ]
+      },
+      {
+        "key": "captionText",
+        "type": "text",
+        "d": "",
+        "max": 80
+      },
+      {
+        "key": "captionColor",
+        "type": "color",
+        "d": "#7d8aa3"
+      },
+      {
+        "key": "captionSize",
+        "type": "range",
+        "d": 6,
+        "min": 3,
+        "max": 14
+      },
+      {
+        "key": "captionFont",
+        "type": "select",
+        "d": "mono",
+        "options": [
+          "mono",
+          "sans",
+          "serif"
+        ]
+      },
+      {
+        "key": "width",
+        "type": "range",
+        "d": 2048,
+        "min": 64,
+        "max": 4096
+      },
+      {
+        "key": "height",
+        "type": "range",
+        "d": 2048,
+        "min": 64,
+        "max": 4096
+      },
+      {
+        "key": "quality",
+        "type": "range",
+        "d": 0.92,
+        "min": 0.5,
+        "max": 1
+      },
+      {
+        "key": "solve",
+        "type": "toggle",
+        "d": false
+      },
+      {
+        "key": "solveGaps",
+        "type": "toggle",
+        "d": true
+      },
+      {
+        "key": "solveGapRange",
+        "type": "range",
+        "d": 0.2,
+        "min": 0,
+        "max": 1
+      },
+      {
+        "key": "solveMiddleRange",
+        "type": "range",
+        "d": 4,
+        "min": 0,
+        "max": 15
+      },
+      {
+        "key": "solveRange",
+        "type": "range",
+        "d": 60,
+        "min": 0,
+        "max": 180
+      },
+      {
+        "key": "solveStep",
+        "type": "range",
+        "d": 15,
+        "min": 5,
+        "max": 30
+      },
+      {
+        "key": "colors",
+        "type": "list",
+        "d": "#22d3ee,#c084fc,#f472b6,#facc15,#34d399,#fb923c,#60a5fa,#f87171,#a3e635"
+      },
+      {
+        "key": "gap",
+        "type": "range",
+        "d": 0.08,
+        "min": 0,
+        "max": 0.4
+      },
+      {
+        "key": "turns",
+        "type": "list",
+        "d": ""
+      },
+      {
+        "key": "gaps",
+        "type": "list",
+        "d": ""
+      }
+    ]
+  },
+  {
+    "sha": "30e15178735dbf2f8a1726f4d78f73d9abceed9f",
+    "fields": [
+      {
+        "key": "placement",
+        "type": "select",
+        "d": "auto",
+        "options": [
+          "auto",
+          "circle",
+          "square",
+          "hex",
+          "dice",
+          "cards",
+          "spiral",
+          "force"
+        ]
+      },
+      {
+        "key": "layoutAspect",
+        "type": "range",
+        "d": 1,
+        "min": 0.3,
+        "max": 3
+      },
+      {
+        "key": "columns",
+        "type": "range",
+        "d": 0,
+        "min": 0,
+        "max": 30
+      },
+      {
+        "key": "forceDistance",
+        "type": "range",
+        "d": 1,
+        "min": 0.2,
+        "max": 3
+      },
+      {
+        "key": "forceCharge",
+        "type": "range",
+        "d": 0.6,
+        "min": 0.2,
+        "max": 3
+      },
+      {
+        "key": "forceCollision",
+        "type": "range",
+        "d": 0.6,
+        "min": 0.2,
+        "max": 3
+      },
+      {
+        "key": "bendMode",
+        "type": "select",
+        "d": "curve",
+        "options": [
+          "curve",
+          "rotate"
+        ]
+      },
+      {
+        "key": "angles",
+        "type": "select",
+        "d": "fixed",
+        "options": [
+          "mirror",
+          "fixed"
+        ]
+      },
+      {
+        "key": "sourceAngle",
+        "type": "range",
+        "d": 30,
+        "min": -90,
+        "max": 90
+      },
+      {
+        "key": "targetAngle",
+        "type": "range",
+        "d": 30,
+        "min": -90,
+        "max": 90
+      },
+      {
+        "key": "lens",
+        "type": "toggle",
+        "d": true
+      },
+      {
+        "key": "tension",
+        "type": "range",
+        "d": 0.4,
+        "min": 0,
+        "max": 1
+      },
+      {
+        "key": "bulge",
+        "type": "range",
+        "d": 20,
+        "min": 0,
+        "max": 90
+      },
+      {
+        "key": "startGap",
+        "type": "range",
+        "d": 0.08,
+        "min": 0,
+        "max": 0.4
+      },
+      {
+        "key": "endGap",
+        "type": "range",
+        "d": 0.08,
+        "min": 0,
+        "max": 0.4
+      },
+      {
+        "key": "free",
+        "type": "range",
+        "d": 1,
+        "min": 0.2,
+        "max": 3
+      },
+      {
+        "key": "loop",
+        "type": "range",
+        "d": 1,
+        "min": 0.3,
+        "max": 2.5
+      },
+      {
+        "key": "spread",
+        "type": "range",
+        "d": 1,
+        "min": 0.5,
+        "max": 2.5
+      },
+      {
+        "key": "rotation",
+        "type": "range",
+        "d": 0,
+        "min": 0,
+        "max": 359
+      },
+      {
+        "key": "padding",
+        "type": "range",
+        "d": 9,
+        "min": 0,
+        "max": 40
+      },
+      {
+        "key": "start",
+        "type": "select",
+        "d": "bar",
+        "options": [
+          "bar",
+          "arrow",
+          "triangle",
+          "tail",
+          "dot",
+          "circle",
+          "square",
+          "diamond",
+          "none"
+        ]
+      },
+      {
+        "key": "startSize",
+        "type": "range",
+        "d": 2.5,
+        "min": 0.5,
+        "max": 15
+      },
+      {
+        "key": "startAngle",
+        "type": "range",
+        "d": 70,
+        "min": 5,
+        "max": 85
+      },
+      {
+        "key": "startOffset",
+        "type": "range",
+        "d": 2.5,
+        "min": -20,
+        "max": 20
+      },
+      {
+        "key": "startAcross",
+        "type": "range",
+        "d": 0,
+        "min": -20,
+        "max": 20
+      },
+      {
+        "key": "startRotation",
+        "type": "range",
+        "d": 0,
+        "min": -180,
+        "max": 180
+      },
+      {
+        "key": "end",
+        "type": "select",
+        "d": "arrow",
+        "options": [
+          "bar",
+          "arrow",
+          "triangle",
+          "tail",
+          "dot",
+          "circle",
+          "square",
+          "diamond",
+          "none"
+        ]
+      },
+      {
+        "key": "endSize",
+        "type": "range",
+        "d": 3.5,
+        "min": 0.5,
+        "max": 15
+      },
+      {
+        "key": "endAngle",
+        "type": "range",
+        "d": 45,
+        "min": 5,
+        "max": 85
+      },
+      {
+        "key": "endOffset",
+        "type": "range",
+        "d": 0,
+        "min": -20,
+        "max": 20
+      },
+      {
+        "key": "endAcross",
+        "type": "range",
+        "d": 0,
+        "min": -20,
+        "max": 20
+      },
+      {
+        "key": "endRotation",
+        "type": "range",
+        "d": 0,
+        "min": -180,
+        "max": 180
+      },
+      {
+        "key": "middle",
+        "type": "select",
+        "d": "dot",
+        "options": [
+          "bar",
+          "arrow",
+          "triangle",
+          "tail",
+          "dot",
+          "circle",
+          "square",
+          "diamond",
+          "none"
+        ]
+      },
+      {
+        "key": "middleSize",
+        "type": "range",
+        "d": 2,
+        "min": 0.5,
+        "max": 15
+      },
+      {
+        "key": "middleAngle",
+        "type": "range",
+        "d": 30,
+        "min": 5,
+        "max": 85
+      },
+      {
+        "key": "middleOffset",
+        "type": "range",
+        "d": 0,
+        "min": -20,
+        "max": 20
+      },
+      {
+        "key": "middleAcross",
+        "type": "range",
+        "d": 0,
+        "min": -20,
+        "max": 20
+      },
+      {
+        "key": "middleRotation",
+        "type": "range",
+        "d": 0,
+        "min": -180,
+        "max": 180
+      },
+      {
+        "key": "middleGapStart",
+        "type": "range",
+        "d": 0,
+        "min": 0,
+        "max": 15
+      },
+      {
+        "key": "middleGapEnd",
+        "type": "range",
+        "d": 0,
+        "min": 0,
+        "max": 15
+      },
+      {
+        "key": "strokeWidth",
+        "type": "range",
+        "d": 1.3,
+        "min": 0.5,
+        "max": 10
+      },
+      {
+        "key": "dash",
+        "type": "select",
+        "d": "solid",
+        "options": [
+          "solid",
+          "dashed",
+          "dotted",
+          "dashdot",
+          "long"
+        ]
+      },
+      {
+        "key": "linecap",
+        "type": "select",
+        "d": "round",
+        "options": [
+          "round",
+          "butt",
+          "square"
+        ]
+      },
+      {
+        "key": "linejoin",
+        "type": "select",
+        "d": "miter",
+        "options": [
+          "round",
+          "miter",
+          "bevel"
+        ]
+      },
+      {
+        "key": "opacity",
+        "type": "range",
+        "d": 1,
+        "min": 0.1,
+        "max": 1
+      },
+      {
+        "key": "glow",
+        "type": "range",
+        "d": 0,
+        "min": 0,
+        "max": 12
+      },
+      {
+        "key": "palette",
+        "type": "select",
+        "d": "site",
+        "options": [
+          "site",
+          "neon",
+          "pastel",
+          "warm",
+          "cold",
+          "print",
+          "mono",
+          "custom"
+        ]
+      },
+      {
+        "key": "monoColor",
+        "type": "color",
+        "d": "#e6edf7"
+      },
+      {
+        "key": "background",
+        "type": "select",
+        "d": "solid",
+        "options": [
+          "transparent",
+          "solid",
+          "linear",
+          "radial"
+        ]
+      },
+      {
+        "key": "bgColor",
+        "type": "color",
+        "d": "#000000"
+      },
+      {
+        "key": "bgColor2",
+        "type": "color",
+        "d": "#1e1b4b"
+      },
+      {
+        "key": "bgAngle",
+        "type": "range",
+        "d": 135,
+        "min": 0,
+        "max": 359
+      },
+      {
+        "key": "card",
+        "type": "toggle",
+        "d": false
+      },
+      {
+        "key": "cardColor",
+        "type": "color",
+        "d": "#0d1220"
+      },
+      {
+        "key": "cardOpacity",
+        "type": "range",
+        "d": 0.8,
+        "min": 0,
+        "max": 1
+      },
+      {
+        "key": "borderStyle",
+        "type": "select",
+        "d": "solid",
+        "options": [
+          "solid",
+          "dashed",
+          "dotted",
+          "double",
+          "none"
+        ]
+      },
+      {
+        "key": "border",
+        "type": "range",
+        "d": 0.6,
+        "min": 0.1,
+        "max": 6
+      },
+      {
+        "key": "borderColor",
+        "type": "color",
+        "d": "#2b3b57"
+      },
+      {
+        "key": "radius",
+        "type": "range",
+        "d": 10,
+        "min": 0,
+        "max": 50
+      },
+      {
+        "key": "inset",
+        "type": "range",
+        "d": 3,
+        "min": 0,
+        "max": 30
+      },
+      {
+        "key": "notation",
+        "type": "select",
+        "d": "L",
+        "options": [
+          "L",
+          "R"
+        ]
+      },
+      {
+        "key": "caption",
+        "type": "select",
+        "d": "none",
+        "options": [
+          "none",
+          "theory",
+          "pairs",
+          "number",
+          "links",
+          "custom"
+        ]
+      },
+      {
+        "key": "captionText",
+        "type": "text",
+        "d": "",
+        "max": 80
+      },
+      {
+        "key": "captionColor",
+        "type": "color",
+        "d": "#7d8aa3"
+      },
+      {
+        "key": "captionSize",
+        "type": "range",
+        "d": 6,
+        "min": 3,
+        "max": 14
+      },
+      {
+        "key": "captionFont",
+        "type": "select",
+        "d": "mono",
+        "options": [
+          "mono",
+          "sans",
+          "serif"
+        ]
+      },
+      {
+        "key": "width",
+        "type": "range",
+        "d": 2048,
+        "min": 64,
+        "max": 4096
+      },
+      {
+        "key": "height",
+        "type": "range",
+        "d": 2048,
+        "min": 64,
+        "max": 4096
+      },
+      {
+        "key": "quality",
+        "type": "range",
+        "d": 0.92,
+        "min": 0.5,
+        "max": 1
+      },
+      {
+        "key": "solve",
+        "type": "toggle",
+        "d": false
+      },
+      {
+        "key": "solveRange",
+        "type": "range",
+        "d": 60,
+        "min": 10,
+        "max": 120
+      },
+      {
+        "key": "solveStep",
+        "type": "range",
+        "d": 15,
+        "min": 5,
+        "max": 30
+      },
+      {
+        "key": "colors",
+        "type": "list",
+        "d": "#22d3ee,#c084fc,#f472b6,#facc15,#34d399,#fb923c,#60a5fa,#f87171,#a3e635"
+      },
+      {
+        "key": "gap",
+        "type": "range",
+        "d": 0.08,
+        "min": 0,
+        "max": 0.4
+      },
+      {
+        "key": "turns",
+        "type": "list",
+        "d": ""
+      }
+    ]
+  },
+  {
+    "sha": "305a85e2c2792f3f66c530b94856f52df80b524d",
+    "fields": [
+      {
+        "key": "placement",
+        "type": "select",
+        "d": "auto",
+        "options": [
+          "auto",
+          "circle",
+          "square",
+          "hex",
+          "dice",
+          "cards",
+          "spiral",
+          "force"
+        ]
+      },
+      {
+        "key": "layoutAspect",
+        "type": "range",
+        "d": 1,
+        "min": 0.3,
+        "max": 3
+      },
+      {
+        "key": "columns",
+        "type": "range",
+        "d": 0,
+        "min": 0,
+        "max": 30
+      },
+      {
+        "key": "forceDistance",
+        "type": "range",
+        "d": 1,
+        "min": 0.2,
+        "max": 3
+      },
+      {
+        "key": "forceCharge",
+        "type": "range",
+        "d": 0.6,
+        "min": 0.2,
+        "max": 3
+      },
+      {
+        "key": "forceCollision",
+        "type": "range",
+        "d": 0.6,
+        "min": 0.2,
+        "max": 3
+      },
+      {
+        "key": "angles",
+        "type": "select",
+        "d": "fixed",
+        "options": [
+          "mirror",
+          "fixed"
+        ]
+      },
+      {
+        "key": "sourceAngle",
+        "type": "range",
+        "d": 30,
+        "min": -90,
+        "max": 90
+      },
+      {
+        "key": "targetAngle",
+        "type": "range",
+        "d": 47,
+        "min": -90,
+        "max": 90
+      },
+      {
+        "key": "lens",
+        "type": "toggle",
+        "d": true
+      },
+      {
+        "key": "tension",
+        "type": "range",
+        "d": 0.33,
+        "min": 0,
+        "max": 1
+      },
+      {
+        "key": "bulge",
+        "type": "range",
+        "d": 45,
+        "min": 0,
+        "max": 90
+      },
+      {
+        "key": "startGap",
+        "type": "range",
+        "d": 0.08,
+        "min": 0,
+        "max": 0.4
+      },
+      {
+        "key": "endGap",
+        "type": "range",
+        "d": 0.08,
+        "min": 0,
+        "max": 0.4
+      },
+      {
+        "key": "free",
+        "type": "range",
+        "d": 1,
+        "min": 0.2,
+        "max": 3
+      },
+      {
+        "key": "loop",
+        "type": "range",
+        "d": 1,
+        "min": 0.3,
+        "max": 2.5
+      },
+      {
+        "key": "spread",
+        "type": "range",
+        "d": 1,
+        "min": 0.5,
+        "max": 2.5
+      },
+      {
+        "key": "rotation",
+        "type": "range",
+        "d": 0,
+        "min": 0,
+        "max": 359
+      },
+      {
+        "key": "padding",
+        "type": "range",
+        "d": 9,
+        "min": 0,
+        "max": 40
+      },
+      {
+        "key": "start",
+        "type": "select",
+        "d": "bar",
+        "options": [
+          "bar",
+          "arrow",
+          "triangle",
+          "tail",
+          "dot",
+          "circle",
+          "square",
+          "diamond",
+          "none"
+        ]
+      },
+      {
+        "key": "startSize",
+        "type": "range",
+        "d": 2.5,
+        "min": 0.5,
+        "max": 15
+      },
+      {
+        "key": "startAngle",
+        "type": "range",
+        "d": 70,
+        "min": 5,
+        "max": 85
+      },
+      {
+        "key": "startOffset",
+        "type": "range",
+        "d": 0,
+        "min": -20,
+        "max": 20
+      },
+      {
+        "key": "startAcross",
+        "type": "range",
+        "d": 0,
+        "min": -20,
+        "max": 20
+      },
+      {
+        "key": "startRotation",
+        "type": "range",
+        "d": 0,
+        "min": -180,
+        "max": 180
+      },
+      {
+        "key": "end",
+        "type": "select",
+        "d": "arrow",
+        "options": [
+          "bar",
+          "arrow",
+          "triangle",
+          "tail",
+          "dot",
+          "circle",
+          "square",
+          "diamond",
+          "none"
+        ]
+      },
+      {
+        "key": "endSize",
+        "type": "range",
+        "d": 3.5,
+        "min": 0.5,
+        "max": 15
+      },
+      {
+        "key": "endAngle",
+        "type": "range",
+        "d": 45,
+        "min": 5,
+        "max": 85
+      },
+      {
+        "key": "endOffset",
+        "type": "range",
+        "d": 0,
+        "min": -20,
+        "max": 20
+      },
+      {
+        "key": "endAcross",
+        "type": "range",
+        "d": 0,
+        "min": -20,
+        "max": 20
+      },
+      {
+        "key": "endRotation",
+        "type": "range",
+        "d": 0,
+        "min": -180,
+        "max": 180
+      },
+      {
+        "key": "middle",
+        "type": "select",
+        "d": "dot",
+        "options": [
+          "bar",
+          "arrow",
+          "triangle",
+          "tail",
+          "dot",
+          "circle",
+          "square",
+          "diamond",
+          "none"
+        ]
+      },
+      {
+        "key": "middleSize",
+        "type": "range",
+        "d": 2,
+        "min": 0.5,
+        "max": 15
+      },
+      {
+        "key": "middleAngle",
+        "type": "range",
+        "d": 30,
+        "min": 5,
+        "max": 85
+      },
+      {
+        "key": "middleOffset",
+        "type": "range",
+        "d": 0,
+        "min": -20,
+        "max": 20
+      },
+      {
+        "key": "middleAcross",
+        "type": "range",
+        "d": 0,
+        "min": -20,
+        "max": 20
+      },
+      {
+        "key": "middleRotation",
+        "type": "range",
+        "d": 0,
+        "min": -180,
+        "max": 180
+      },
+      {
+        "key": "middleGapStart",
+        "type": "range",
+        "d": 0,
+        "min": 0,
+        "max": 15
+      },
+      {
+        "key": "middleGapEnd",
+        "type": "range",
+        "d": 0,
+        "min": 0,
+        "max": 15
+      },
+      {
+        "key": "strokeWidth",
+        "type": "range",
+        "d": 1.3,
+        "min": 0.5,
+        "max": 10
+      },
+      {
+        "key": "dash",
+        "type": "select",
+        "d": "solid",
+        "options": [
+          "solid",
+          "dashed",
+          "dotted",
+          "dashdot",
+          "long"
+        ]
+      },
+      {
+        "key": "linecap",
+        "type": "select",
+        "d": "round",
+        "options": [
+          "round",
+          "butt",
+          "square"
+        ]
+      },
+      {
+        "key": "linejoin",
+        "type": "select",
+        "d": "miter",
+        "options": [
+          "round",
+          "miter",
+          "bevel"
+        ]
+      },
+      {
+        "key": "opacity",
+        "type": "range",
+        "d": 1,
+        "min": 0.1,
+        "max": 1
+      },
+      {
+        "key": "glow",
+        "type": "range",
+        "d": 0,
+        "min": 0,
+        "max": 12
+      },
+      {
+        "key": "palette",
+        "type": "select",
+        "d": "custom",
+        "options": [
+          "site",
+          "neon",
+          "pastel",
+          "warm",
+          "cold",
+          "print",
+          "mono",
+          "custom"
+        ]
+      },
+      {
+        "key": "monoColor",
+        "type": "color",
+        "d": "#e6edf7"
+      },
+      {
+        "key": "background",
+        "type": "select",
+        "d": "solid",
+        "options": [
+          "transparent",
+          "solid",
+          "linear",
+          "radial"
+        ]
+      },
+      {
+        "key": "bgColor",
+        "type": "color",
+        "d": "#000000"
+      },
+      {
+        "key": "bgColor2",
+        "type": "color",
+        "d": "#1e1b4b"
+      },
+      {
+        "key": "bgAngle",
+        "type": "range",
+        "d": 135,
+        "min": 0,
+        "max": 359
+      },
+      {
+        "key": "card",
+        "type": "toggle",
+        "d": false
+      },
+      {
+        "key": "cardColor",
+        "type": "color",
+        "d": "#0d1220"
+      },
+      {
+        "key": "cardOpacity",
+        "type": "range",
+        "d": 0.8,
+        "min": 0,
+        "max": 1
+      },
+      {
+        "key": "borderStyle",
+        "type": "select",
+        "d": "solid",
+        "options": [
+          "solid",
+          "dashed",
+          "dotted",
+          "double",
+          "none"
+        ]
+      },
+      {
+        "key": "border",
+        "type": "range",
+        "d": 0.6,
+        "min": 0.1,
+        "max": 6
+      },
+      {
+        "key": "borderColor",
+        "type": "color",
+        "d": "#2b3b57"
+      },
+      {
+        "key": "radius",
+        "type": "range",
+        "d": 10,
+        "min": 0,
+        "max": 50
+      },
+      {
+        "key": "inset",
+        "type": "range",
+        "d": 3,
+        "min": 0,
+        "max": 30
+      },
+      {
+        "key": "notation",
+        "type": "select",
+        "d": "L",
+        "options": [
+          "L",
+          "R"
+        ]
+      },
+      {
+        "key": "caption",
+        "type": "select",
+        "d": "none",
+        "options": [
+          "none",
+          "theory",
+          "pairs",
+          "number",
+          "links",
+          "custom"
+        ]
+      },
+      {
+        "key": "captionText",
+        "type": "text",
+        "d": "",
+        "max": 80
+      },
+      {
+        "key": "captionColor",
+        "type": "color",
+        "d": "#7d8aa3"
+      },
+      {
+        "key": "captionSize",
+        "type": "range",
+        "d": 6,
+        "min": 3,
+        "max": 14
+      },
+      {
+        "key": "captionFont",
+        "type": "select",
+        "d": "mono",
+        "options": [
+          "mono",
+          "sans",
+          "serif"
+        ]
+      },
+      {
+        "key": "width",
+        "type": "range",
+        "d": 2048,
+        "min": 64,
+        "max": 4096
+      },
+      {
+        "key": "height",
+        "type": "range",
+        "d": 2048,
+        "min": 64,
+        "max": 4096
+      },
+      {
+        "key": "quality",
+        "type": "range",
+        "d": 0.92,
+        "min": 0.5,
+        "max": 1
+      },
+      {
+        "key": "solve",
+        "type": "toggle",
+        "d": false
+      },
+      {
+        "key": "solveRange",
+        "type": "range",
+        "d": 60,
+        "min": 10,
+        "max": 120
+      },
+      {
+        "key": "solveStep",
+        "type": "range",
+        "d": 15,
+        "min": 5,
+        "max": 30
+      },
+      {
+        "key": "colors",
+        "type": "list",
+        "d": "#ff2600,#00f900,#fffb00,#0433ff,#34d399,#fb923c,#60a5fa,#f87171,#a3e635"
+      },
+      {
+        "key": "gap",
+        "type": "range",
+        "d": 0.08,
+        "min": 0,
+        "max": 0.4
+      },
+      {
+        "key": "turns",
+        "type": "list",
+        "d": ""
+      }
+    ]
+  },
+  {
+    "sha": "6d102eed6c3eb41f57b04568ec3a1b800c2ceef6",
+    "fields": [
+      {
+        "key": "angles",
+        "type": "select",
+        "d": "mirror",
+        "options": [
+          "mirror",
+          "fixed"
+        ]
+      },
+      {
+        "key": "sourceAngle",
+        "type": "range",
+        "d": 30,
+        "min": -90,
+        "max": 90
+      },
+      {
+        "key": "targetAngle",
+        "type": "range",
+        "d": 30,
+        "min": -90,
+        "max": 90
+      },
+      {
+        "key": "lens",
+        "type": "toggle",
+        "d": true
+      },
+      {
+        "key": "tension",
+        "type": "range",
+        "d": 0.38,
+        "min": 0,
+        "max": 1
+      },
+      {
+        "key": "bulge",
+        "type": "range",
+        "d": 20,
+        "min": 0,
+        "max": 90
+      },
+      {
+        "key": "gap",
+        "type": "range",
+        "d": 0.07,
+        "min": 0,
+        "max": 0.4
+      },
+      {
+        "key": "free",
+        "type": "range",
+        "d": 1,
+        "min": 0.2,
+        "max": 3
+      },
+      {
+        "key": "loop",
+        "type": "range",
+        "d": 1,
+        "min": 0.3,
+        "max": 2.5
+      },
+      {
+        "key": "spread",
+        "type": "range",
+        "d": 1,
+        "min": 0.5,
+        "max": 2.5
+      },
+      {
+        "key": "rotation",
+        "type": "range",
+        "d": 0,
+        "min": 0,
+        "max": 359
+      },
+      {
+        "key": "padding",
+        "type": "range",
+        "d": 9,
+        "min": 0,
+        "max": 40
+      },
+      {
+        "key": "start",
+        "type": "select",
+        "d": "bar",
+        "options": [
+          "bar",
+          "arrow",
+          "triangle",
+          "tail",
+          "dot",
+          "circle",
+          "square",
+          "diamond",
+          "none"
+        ]
+      },
+      {
+        "key": "startSize",
+        "type": "range",
+        "d": 3.6,
+        "min": 0.5,
+        "max": 15
+      },
+      {
+        "key": "startAngle",
+        "type": "range",
+        "d": 28,
+        "min": 5,
+        "max": 85
+      },
+      {
+        "key": "end",
+        "type": "select",
+        "d": "arrow",
+        "options": [
+          "bar",
+          "arrow",
+          "triangle",
+          "tail",
+          "dot",
+          "circle",
+          "square",
+          "diamond",
+          "none"
+        ]
+      },
+      {
+        "key": "endSize",
+        "type": "range",
+        "d": 5.5,
+        "min": 0.5,
+        "max": 15
+      },
+      {
+        "key": "endAngle",
+        "type": "range",
+        "d": 28,
+        "min": 5,
+        "max": 85
+      },
+      {
+        "key": "middle",
+        "type": "select",
+        "d": "none",
+        "options": [
+          "bar",
+          "arrow",
+          "triangle",
+          "tail",
+          "dot",
+          "circle",
+          "square",
+          "diamond",
+          "none"
+        ]
+      },
+      {
+        "key": "middleSize",
+        "type": "range",
+        "d": 2.2,
+        "min": 0.5,
+        "max": 12
+      },
+      {
+        "key": "strokeWidth",
+        "type": "range",
+        "d": 2.4,
+        "min": 0.5,
+        "max": 10
+      },
+      {
+        "key": "dash",
+        "type": "select",
+        "d": "solid",
+        "options": [
+          "solid",
+          "dashed",
+          "dotted",
+          "dashdot",
+          "long"
+        ]
+      },
+      {
+        "key": "linecap",
+        "type": "select",
+        "d": "round",
+        "options": [
+          "round",
+          "butt",
+          "square"
+        ]
+      },
+      {
+        "key": "linejoin",
+        "type": "select",
+        "d": "round",
+        "options": [
+          "round",
+          "miter",
+          "bevel"
+        ]
+      },
+      {
+        "key": "opacity",
+        "type": "range",
+        "d": 1,
+        "min": 0.1,
+        "max": 1
+      },
+      {
+        "key": "glow",
+        "type": "range",
+        "d": 0,
+        "min": 0,
+        "max": 12
+      },
+      {
+        "key": "palette",
+        "type": "select",
+        "d": "site",
+        "options": [
+          "site",
+          "neon",
+          "pastel",
+          "warm",
+          "cold",
+          "print",
+          "mono",
+          "custom"
+        ]
+      },
+      {
+        "key": "monoColor",
+        "type": "color",
+        "d": "#e6edf7"
+      },
+      {
+        "key": "background",
+        "type": "select",
+        "d": "solid",
+        "options": [
+          "transparent",
+          "solid",
+          "linear",
+          "radial"
+        ]
+      },
+      {
+        "key": "bgColor",
+        "type": "color",
+        "d": "#070b14"
+      },
+      {
+        "key": "bgColor2",
+        "type": "color",
+        "d": "#1e1b4b"
+      },
+      {
+        "key": "bgAngle",
+        "type": "range",
+        "d": 135,
+        "min": 0,
+        "max": 359
+      },
+      {
+        "key": "card",
+        "type": "toggle",
+        "d": true
+      },
+      {
+        "key": "cardColor",
+        "type": "color",
+        "d": "#0d1220"
+      },
+      {
+        "key": "cardOpacity",
+        "type": "range",
+        "d": 0.8,
+        "min": 0,
+        "max": 1
+      },
+      {
+        "key": "borderStyle",
+        "type": "select",
+        "d": "solid",
+        "options": [
+          "solid",
+          "dashed",
+          "dotted",
+          "double",
+          "none"
+        ]
+      },
+      {
+        "key": "border",
+        "type": "range",
+        "d": 0.6,
+        "min": 0.1,
+        "max": 6
+      },
+      {
+        "key": "borderColor",
+        "type": "color",
+        "d": "#2b3b57"
+      },
+      {
+        "key": "radius",
+        "type": "range",
+        "d": 10,
+        "min": 0,
+        "max": 50
+      },
+      {
+        "key": "inset",
+        "type": "range",
+        "d": 3,
+        "min": 0,
+        "max": 30
+      },
+      {
+        "key": "notation",
+        "type": "select",
+        "d": "L",
+        "options": [
+          "L",
+          "R"
+        ]
+      },
+      {
+        "key": "caption",
+        "type": "select",
+        "d": "none",
+        "options": [
+          "none",
+          "theory",
+          "pairs",
+          "number",
+          "links",
+          "custom"
+        ]
+      },
+      {
+        "key": "captionText",
+        "type": "text",
+        "d": "",
+        "max": 80
+      },
+      {
+        "key": "captionColor",
+        "type": "color",
+        "d": "#7d8aa3"
+      },
+      {
+        "key": "captionSize",
+        "type": "range",
+        "d": 6,
+        "min": 3,
+        "max": 14
+      },
+      {
+        "key": "captionFont",
+        "type": "select",
+        "d": "mono",
+        "options": [
+          "mono",
+          "sans",
+          "serif"
+        ]
+      },
+      {
+        "key": "width",
+        "type": "range",
+        "d": 1024,
+        "min": 64,
+        "max": 4096
+      },
+      {
+        "key": "height",
+        "type": "range",
+        "d": 1024,
+        "min": 64,
+        "max": 4096
+      },
+      {
+        "key": "quality",
+        "type": "range",
+        "d": 0.92,
+        "min": 0.5,
+        "max": 1
+      },
+      {
+        "key": "solve",
+        "type": "toggle",
+        "d": false
+      },
+      {
+        "key": "solveRange",
+        "type": "range",
+        "d": 60,
+        "min": 10,
+        "max": 120
+      },
+      {
+        "key": "solveStep",
+        "type": "range",
+        "d": 15,
+        "min": 5,
+        "max": 30
+      },
+      {
+        "key": "colors",
+        "type": "list",
+        "d": ""
+      },
+      {
+        "key": "turns",
+        "type": "list",
+        "d": ""
+      }
+    ]
+  },
+  {
+    "sha": "7be35e9dd8025cd1fb36ab6eaf12fcb8a8f90fc5",
+    "fields": [
+      {
+        "key": "angles",
+        "type": "select",
+        "d": "mirror",
+        "options": [
+          "mirror",
+          "fixed"
+        ]
+      },
+      {
+        "key": "sourceAngle",
+        "type": "range",
+        "d": 30,
+        "min": -90,
+        "max": 90
+      },
+      {
+        "key": "targetAngle",
+        "type": "range",
+        "d": 30,
+        "min": -90,
+        "max": 90
+      },
+      {
+        "key": "lens",
+        "type": "toggle",
+        "d": true
+      },
+      {
+        "key": "tension",
+        "type": "range",
+        "d": 0.38,
+        "min": 0,
+        "max": 1
+      },
+      {
+        "key": "bulge",
+        "type": "range",
+        "d": 20,
+        "min": 0,
+        "max": 90
+      },
+      {
+        "key": "gap",
+        "type": "range",
+        "d": 0.07,
+        "min": 0,
+        "max": 0.4
+      },
+      {
+        "key": "free",
+        "type": "range",
+        "d": 1,
+        "min": 0.2,
+        "max": 3
+      },
+      {
+        "key": "loop",
+        "type": "range",
+        "d": 1,
+        "min": 0.3,
+        "max": 2.5
+      },
+      {
+        "key": "spread",
+        "type": "range",
+        "d": 1,
+        "min": 0.5,
+        "max": 2.5
+      },
+      {
+        "key": "rotation",
+        "type": "range",
+        "d": 0,
+        "min": 0,
+        "max": 359
+      },
+      {
+        "key": "padding",
+        "type": "range",
+        "d": 9,
+        "min": 0,
+        "max": 40
+      },
+      {
+        "key": "start",
+        "type": "select",
+        "d": "bar",
+        "options": [
+          "bar",
+          "arrow",
+          "triangle",
+          "tail",
+          "dot",
+          "circle",
+          "square",
+          "diamond",
+          "none"
+        ]
+      },
+      {
+        "key": "startSize",
+        "type": "range",
+        "d": 3.6,
+        "min": 0.5,
+        "max": 15
+      },
+      {
+        "key": "startAngle",
+        "type": "range",
+        "d": 28,
+        "min": 5,
+        "max": 85
+      },
+      {
+        "key": "end",
+        "type": "select",
+        "d": "arrow",
+        "options": [
+          "bar",
+          "arrow",
+          "triangle",
+          "tail",
+          "dot",
+          "circle",
+          "square",
+          "diamond",
+          "none"
+        ]
+      },
+      {
+        "key": "endSize",
+        "type": "range",
+        "d": 5.5,
+        "min": 0.5,
+        "max": 15
+      },
+      {
+        "key": "endAngle",
+        "type": "range",
+        "d": 28,
+        "min": 5,
+        "max": 85
+      },
+      {
+        "key": "middle",
+        "type": "select",
+        "d": "none",
+        "options": [
+          "bar",
+          "arrow",
+          "triangle",
+          "tail",
+          "dot",
+          "circle",
+          "square",
+          "diamond",
+          "none"
+        ]
+      },
+      {
+        "key": "middleSize",
+        "type": "range",
+        "d": 2.2,
+        "min": 0.5,
+        "max": 12
+      },
+      {
+        "key": "strokeWidth",
+        "type": "range",
+        "d": 2.4,
+        "min": 0.5,
+        "max": 10
+      },
+      {
+        "key": "dash",
+        "type": "select",
+        "d": "solid",
+        "options": [
+          "solid",
+          "dashed",
+          "dotted",
+          "dashdot",
+          "long"
+        ]
+      },
+      {
+        "key": "linecap",
+        "type": "select",
+        "d": "round",
+        "options": [
+          "round",
+          "butt",
+          "square"
+        ]
+      },
+      {
+        "key": "linejoin",
+        "type": "select",
+        "d": "round",
+        "options": [
+          "round",
+          "miter",
+          "bevel"
+        ]
+      },
+      {
+        "key": "opacity",
+        "type": "range",
+        "d": 1,
+        "min": 0.1,
+        "max": 1
+      },
+      {
+        "key": "glow",
+        "type": "range",
+        "d": 0,
+        "min": 0,
+        "max": 12
+      },
+      {
+        "key": "palette",
+        "type": "select",
+        "d": "site",
+        "options": [
+          "site",
+          "neon",
+          "pastel",
+          "warm",
+          "cold",
+          "print",
+          "mono",
+          "custom"
+        ]
+      },
+      {
+        "key": "monoColor",
+        "type": "color",
+        "d": "#e6edf7"
+      },
+      {
+        "key": "background",
+        "type": "select",
+        "d": "solid",
+        "options": [
+          "transparent",
+          "solid",
+          "linear",
+          "radial"
+        ]
+      },
+      {
+        "key": "bgColor",
+        "type": "color",
+        "d": "#070b14"
+      },
+      {
+        "key": "bgColor2",
+        "type": "color",
+        "d": "#1e1b4b"
+      },
+      {
+        "key": "bgAngle",
+        "type": "range",
+        "d": 135,
+        "min": 0,
+        "max": 359
+      },
+      {
+        "key": "card",
+        "type": "toggle",
+        "d": true
+      },
+      {
+        "key": "cardColor",
+        "type": "color",
+        "d": "#0d1220"
+      },
+      {
+        "key": "cardOpacity",
+        "type": "range",
+        "d": 0.8,
+        "min": 0,
+        "max": 1
+      },
+      {
+        "key": "borderStyle",
+        "type": "select",
+        "d": "solid",
+        "options": [
+          "solid",
+          "dashed",
+          "dotted",
+          "double",
+          "none"
+        ]
+      },
+      {
+        "key": "border",
+        "type": "range",
+        "d": 0.6,
+        "min": 0.1,
+        "max": 6
+      },
+      {
+        "key": "borderColor",
+        "type": "color",
+        "d": "#2b3b57"
+      },
+      {
+        "key": "radius",
+        "type": "range",
+        "d": 10,
+        "min": 0,
+        "max": 50
+      },
+      {
+        "key": "inset",
+        "type": "range",
+        "d": 3,
+        "min": 0,
+        "max": 30
+      },
+      {
+        "key": "caption",
+        "type": "select",
+        "d": "none",
+        "options": [
+          "none",
+          "theory",
+          "pairs",
+          "number",
+          "links",
+          "custom"
+        ]
+      },
+      {
+        "key": "captionText",
+        "type": "text",
+        "d": "",
+        "max": 80
+      },
+      {
+        "key": "captionColor",
+        "type": "color",
+        "d": "#7d8aa3"
+      },
+      {
+        "key": "captionSize",
+        "type": "range",
+        "d": 6,
+        "min": 3,
+        "max": 14
+      },
+      {
+        "key": "captionFont",
+        "type": "select",
+        "d": "mono",
+        "options": [
+          "mono",
+          "sans",
+          "serif"
+        ]
+      },
+      {
+        "key": "width",
+        "type": "range",
+        "d": 1024,
+        "min": 64,
+        "max": 4096
+      },
+      {
+        "key": "height",
+        "type": "range",
+        "d": 1024,
+        "min": 64,
+        "max": 4096
+      },
+      {
+        "key": "quality",
+        "type": "range",
+        "d": 0.92,
+        "min": 0.5,
+        "max": 1
+      },
+      {
+        "key": "solve",
+        "type": "toggle",
+        "d": false
+      },
+      {
+        "key": "solveRange",
+        "type": "range",
+        "d": 60,
+        "min": 10,
+        "max": 120
+      },
+      {
+        "key": "solveStep",
+        "type": "range",
+        "d": 15,
+        "min": 5,
+        "max": 30
+      },
+      {
+        "key": "colors",
+        "type": "list",
+        "d": ""
+      },
+      {
+        "key": "turns",
+        "type": "list",
+        "d": ""
+      }
+    ]
+  }
+]

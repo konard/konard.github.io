@@ -1,0 +1,16 @@
+{
+  "engine": "webkit",
+  "date": "2026-10-27T20:21:45.007Z",
+  "checks": [
+    "self-loop leaving/entering angles, curvature and bend",
+    "120-event drag, repeated releases, history SecurityError and retry",
+    "independent marker offsets and ring cuts survive URL round trip",
+    "17 links, seven distinct placements and large-notation reload",
+    "both complete issue example URLs",
+    "actual PNG clipboard write completed from a trusted click",
+    "unsupported WebP encoder exposes PNG fallback",
+    "PNG/JPEG downloads and WebP download or explicit PNG fallback",
+    "touch gesture debounce, 100-link mobile editor and no horizontal overflow"
+  ],
+  "errors": []
+}
