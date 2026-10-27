@@ -40,6 +40,25 @@ it('steps inherited gaps from the displayed global value, with decimal precision
   fireEvent.keyDown(input, { key: 'PageDown' });
   expect(input).toHaveValue(0);
 });
+it('starts native spinner clicks from inheritance without making a plain focus an explicit override', () => {
+  open();
+  const input = screen.getByLabelText('Link 1: Gap at the target reference');
+  const shared = screen.getByLabelText('Link to this picture');
+  const inherited = shared.value;
+  fireEvent.pointerDown(input);
+  expect(shared.value).toBe(inherited);
+  input.stepDown();
+  fireEvent.input(input);
+  expect(input).toHaveValue(0.07);
+  fireEvent.change(input, { target: { value: '' } });
+  fireEvent.pointerDown(input);
+  fireEvent.blur(input);
+  expect(input).toHaveValue(null);
+  fireEvent.pointerDown(input);
+  input.stepUp();
+  fireEvent.input(input);
+  expect(input).toHaveValue(0.09);
+});
 it('supports page steps on every range while preserving modified editing shortcuts', () => {
   open();
   const input = screen.getByLabelText('Gap at the target reference', { selector: 'input[type="range"]' });

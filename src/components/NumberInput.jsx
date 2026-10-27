@@ -16,6 +16,12 @@ export default function NumberInput({ value, onValue, fallback = 0, ...props }) 
       {...props}
       type="number"
       value={active ? draft.text : (value ?? '')}
+      onPointerDown={(event) => {
+        // Native spinner actions run after pointerdown and use the DOM value,
+        // never its placeholder. A draft primes inheritance without saving an
+        // override when the user merely focuses, then leaves, an empty field.
+        if (value == null && event.currentTarget.value === '') setDraft({ text: String(fallback), at: value });
+      }}
       onChange={(event) => {
         const text = event.target.value;
         const next = text === '' ? null : Number(text);

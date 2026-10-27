@@ -134,6 +134,26 @@ try {
   await gap.fill('0.075');
   await gap.press('ArrowUp');
   assert.equal(await gap.inputValue(), '0.08');
+  // Pointer events precede the browser's native spinner action. Inheritance
+  // must be available to that action without changing the saved override.
+  for (const [method, expected] of [
+    ['stepDown', '0.07'],
+    ['stepUp', '0.09'],
+  ]) {
+    await gap.fill('');
+    const inherited = await page.getByLabel('Link to this picture', { exact: true }).inputValue();
+    await gap.dispatchEvent('pointerdown');
+    assert.equal(await page.getByLabel('Link to this picture', { exact: true }).inputValue(), inherited);
+    await gap.evaluate((input, method) => {
+      input[method]();
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+    }, method);
+    assert.equal(await gap.inputValue(), expected);
+  }
+  await gap.fill('');
+  await gap.dispatchEvent('pointerdown');
+  await gap.press('Tab');
+  assert.equal(await gap.inputValue(), '');
   await gap.fill('');
   await gap.press('ArrowUp');
   assert.equal(await gap.inputValue(), '0.09');
@@ -151,7 +171,7 @@ try {
   await gap.press('Home');
   assert.equal(await gap.inputValue(), '0.07');
   result.checks.push(
-    '0.07↔0.08 arrows/native stepping, inherited decimal steps, negative typing, select-all, delete, Home and Tab',
+    '0.07↔0.08 arrows/native stepping, inherited native/keyboard steps, negative typing, select-all, delete, Home and Tab',
   );
 
   console.log('Geometry, URL and number editing checks passed. Auditing sliders.');
