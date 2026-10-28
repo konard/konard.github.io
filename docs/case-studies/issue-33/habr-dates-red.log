@@ -1,0 +1,465 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793202346423
+
+ ❯ src/components/habr-dates-33.test.jsx (2 tests | 2 failed) 233ms
+   × dates the remaining Habr snapshot when profile refresh is incomplete 171ms
+   × dates the remaining Habr snapshot when articles refresh is incomplete 55ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/habr-dates-33.test.jsx > dates the remaining Habr snapshot when profile refresh is incomplete
+TestingLibraryElementError: Unable to find an element with the text: /remaining figures use the snapshot of 2026-10-28/. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"habr"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"habr__summary"[39m
+      [36m>[39m
+        [36m<a[39m
+          [33mclass[39m=[32m"habr__company"[39m
+          [33mhref[39m=[32m"https://habr.com/ru/companies/deepfoundation/"[39m
+          [33mrel[39m=[32m"noopener noreferrer"[39m
+          [33mtarget[39m=[32m"_blank"[39m
+        [36m>[39m
+          [0mDeep.Foundation[0m
+        [36m</a>[39m
+        [36m<span>[39m
+          [0mrating[0m
+          [0m [0m
+          [36m<strong>[39m
+            [0m43.47[0m
+          [36m</strong>[39m
+          [0m ·[0m
+          [0m [0m
+          [0m57 subscribers[0m
+        [36m</span>[39m
+        [36m<span>[39m
+          [36m<a[39m
+            [33mhref[39m=[32m"https://habr.com/ru/users/Konard/"[39m
+            [33mrel[39m=[32m"noopener noreferrer"[39m
+            [33mtarget[39m=[32m"_blank"[39m
+          [36m>[39m
+            [0m@[0m
+            [0mKonard[0m
+          [36m</a>[39m
+          [0m [0m
+          [0mkarma[0m
+          [0m [0m
+          [36m<strong>[39m
+            [0m6[0m
+          [36m</strong>[39m
+        [36m</span>[39m
+        [36m<span>[39m
+          [0m1 article[0m
+          [0m · [0m
+          [0m1 view[0m
+          [0m · [0m
+          [0m4 bookmarks[0m
+        [36m</span>[39m
+        [36m<span[39m
+          [33maria-live[39m=[32m"polite"[39m
+          [33mclass[39m=[32m"habr__status habr__status--live"[39m
+        [36m>[39m
+          [0mlive numbers from the Habr API[0m
+          [0m [0m
+          [36m<a[39m
+            [33maria-label[39m=[32m"Data effective dates"[39m
+            [33mclass[39m=[32m"data-mark"[39m
+            [33mhref[39m=[32m"#data-sources"[39m
+          [36m>[39m
+            [0m(*)[0m
+          [36m</a>[39m
+        [36m</span>[39m
+      [36m</div>[39m
+      [36m<ul[39m
+        [33mclass[39m=[32m"habr__cards"[39m
+      [36m>[39m
+        [36m<li[39m
+          [33mclass[39m=[32m"habr-card"[39m
+          [33mstyle[39m=[32m"--float-delay: 0s; --float-time: 7s;"[39m
+        [36m>[39m
+          [36m<a[39m
+            [33mclass[39m=[32m"habr-card__link"[39m
+            [33mhref[39m=[32m"https://habr.com/ru/articles/1018142/"[39m
+            [33mlang[39m=[32m"ru"[39m
+            [33mrel[39m=[32m"noopener noreferrer"[39m
+            [33mtarget[39m=[32m"_blank"[39m
+          [36m>[39m
+            [36m<img[39m
+              [33malt[39m=[32m""[39m
+              [33mclass[39m=[32m"habr-card__image"[39m
+              [33mloading[39m=[32m"lazy"[39m
+              [33msrc[39m=[32m"https://habrastorage.org/getpro/habr/upload_files/719/dbf/658/719dbf6585add0d9efcc068fe2529185.png"[39m
+            [36m/>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"habr-card__meta"[39m
+            [36m>[39m
+              [0mApr 2026[0m
+              [0m · [0m
+              [0mRU[0m
+            [36m</span>[39m
+            [36m<h3[39m
+              [33mclass[39m=[32m"habr-card__title"[39m
+            [36m>[39m
+              [0mМета-теория связей 0.0.3[0m
+            [36m</h3>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"habr-card__hubs"[39m
+            [36m>[39m
+              [0mМатематика · Ненормальное программирование · Программирование[0m
+            [36m</span>[39m
+          [36m</a>[39m
+          [36m<dl[39m
+            [33mclass[39m=[32m"habr-card__stats"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mtitle[39m=[32m"1 views"[39m
+            [36m>[39m
+              [36m<dt>[39m
+                [36m<span[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                [36m>[39m
+                  [0m👁[0m
+                [36m</span>[39m
+                [0m [0m
+                [0mviews[0m
+              [36m</dt>[39m
+              [36m<dd>[39m
+                [0m1[0m
+                [0m [0m
+                [36m<a[39m
+                  [33maria-label[39m=[32m"Data effective dates"[39m
+                  [33mclass[39m=[32m"data-mark"[39m
+                  [33mhref[39m=[32m"#data-sources"[39m
+                [36m>[39m
+                  [0m(*)[0m
+                [36m</a>[39m
+              [36m</dd>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mtitle[39m=[32m"2 karma"[39m
+            [36m>[39m
+              [36m<dt>[39m
+                [36m<span[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                [36m>[39m
+                  [0m▲[0m
+                [36m</span>[39m
+                [0m [0m
+                [0mkarma[0m
+              [36m</dt>[39m
+              [36m<dd>[39m
+                [0m2[0m
+                [0m [0m
+                [36m<a[39m
+                  [33maria-label[39m=[32m"Data effective dates"[39m
+                  [33mclass[39m=[32m"data-mark"[39m
+                  [33mhref[39m=[32m"#data-sources"[39m
+                [36m>[39m
+                  [0m(*)[0m
+                [36m</a>[39m
+              [36m</dd>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mtitle[39m=[32m"4 bookmarks"[39m
+            [36m>[39m
+              [36m<dt>[39m
+                [36m<span[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                [36m>[39m
+                  [0m🔖[0m
+                [36m</span>[39m
+                [0m [0m
+                [0mbookmarks[0m
+              [36m</dt>[39m
+              [36m<dd>[39m
+                [0m4[0m
+                [0m [0m
+                [36m<a[39m
+                  [33maria-label[39m=[32m"Data effective dates"[39m
+                  [33mclass[39m=[32m"data-mark"[39m
+                  [33mhref[39m=[32m"#data-sources"[39m
+                [36m>[39m
+                  [0m(*)[0m
+                [36m</a>[39m
+              [36m</dd>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mtitle[39m=[32m"5 comments"[39m
+            [36m>[39m
+              [36m<dt>[39m
+                [36m<span[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                [36m>[39m
+                  [0m💬[0m
+                [36m</span>[39m
+                [0m [0m
+                [0mcomments[0m
+              [36m</dt>[39m
+              [36m<dd>[39m
+                [0m5[0m
+                [0m [0m
+                [36m<a[39m
+                  [33maria-label[39m=[32m"Data effective dates"[39m
+                  [33mclass[39m=[32m"data-mark"[39m
+                  [33mhref[39m=[32m"#data-sources"[39m
+                [36m>[39m
+                  [0m(*)[0m
+                [36m</a>[39m
+              [36m</dd>[39m
+            [36m</div>[39m
+          [36m</dl>[39m
+        [36m</li>[39m
+      [36m</ul>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/habr-dates-33.test.jsx:33:17
+     31|   render(<HabrCards snapshot={snapshot} fetchImpl={fetchImpl} />);
+     32|   await waitFor(() => expect(screen.queryByText(/refreshing from Habr/…
+     33|   expect(screen.getByText(new RegExp(`remaining figures use the snapsh…
+       |                 ^
+     34|     .toBeInTheDocument();
+     35|   expect(screen.queryByText(/live numbers from the Habr API/)).toBeNul…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  src/components/habr-dates-33.test.jsx > dates the remaining Habr snapshot when articles refresh is incomplete
+TestingLibraryElementError: Unable to find an element with the text: /remaining figures use the snapshot of 2026-10-28/. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"habr"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"habr__summary"[39m
+      [36m>[39m
+        [36m<a[39m
+          [33mclass[39m=[32m"habr__company"[39m
+          [33mhref[39m=[32m"https://habr.com/ru/companies/deepfoundation/"[39m
+          [33mrel[39m=[32m"noopener noreferrer"[39m
+          [33mtarget[39m=[32m"_blank"[39m
+        [36m>[39m
+          [0mDeep.Foundation[0m
+        [36m</a>[39m
+        [36m<span>[39m
+          [0mrating[0m
+          [0m [0m
+          [36m<strong>[39m
+            [0m10[0m
+          [36m</strong>[39m
+          [0m ·[0m
+          [0m [0m
+          [0m20 subscribers[0m
+        [36m</span>[39m
+        [36m<span>[39m
+          [36m<a[39m
+            [33mhref[39m=[32m"https://habr.com/ru/users/Konard/"[39m
+            [33mrel[39m=[32m"noopener noreferrer"[39m
+            [33mtarget[39m=[32m"_blank"[39m
+          [36m>[39m
+            [0m@[0m
+            [0mKonard[0m
+          [36m</a>[39m
+          [0m [0m
+          [0mkarma[0m
+          [0m [0m
+          [36m<strong>[39m
+            [0m30[0m
+          [36m</strong>[39m
+        [36m</span>[39m
+        [36m<span>[39m
+          [0m1 article[0m
+          [0m · [0m
+          [0m1,746 views[0m
+          [0m · [0m
+          [0m18 bookmarks[0m
+        [36m</span>[39m
+        [36m<span[39m
+          [33maria-live[39m=[32m"polite"[39m
+          [33mclass[39m=[32m"habr__status habr__status--live"[39m
+        [36m>[39m
+          [0mlive numbers from the Habr API[0m
+          [0m [0m
+          [36m<a[39m
+            [33maria-label[39m=[32m"Data effective dates"[39m
+            [33mclass[39m=[32m"data-mark"[39m
+            [33mhref[39m=[32m"#data-sources"[39m
+          [36m>[39m
+            [0m(*)[0m
+          [36m</a>[39m
+        [36m</span>[39m
+      [36m</div>[39m
+      [36m<ul[39m
+        [33mclass[39m=[32m"habr__cards"[39m
+      [36m>[39m
+        [36m<li[39m
+          [33mclass[39m=[32m"habr-card"[39m
+          [33mstyle[39m=[32m"--float-delay: 0s; --float-time: 7s;"[39m
+        [36m>[39m
+          [36m<a[39m
+            [33mclass[39m=[32m"habr-card__link"[39m
+            [33mhref[39m=[32m"https://habr.com/ru/articles/1018142/"[39m
+            [33mlang[39m=[32m"ru"[39m
+            [33mrel[39m=[32m"noopener noreferrer"[39m
+            [33mtarget[39m=[32m"_blank"[39m
+          [36m>[39m
+            [36m<img[39m
+              [33malt[39m=[32m""[39m
+              [33mclass[39m=[32m"habr-card__image"[39m
+              [33mloading[39m=[32m"lazy"[39m
+              [33msrc[39m=[32m"https://habrastorage.org/getpro/habr/upload_files/719/dbf/658/719dbf6585add0d9efcc068fe2529185.png"[39m
+            [36m/>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"habr-card__meta"[39m
+            [36m>[39m
+              [0mApr 2026[0m
+              [0m · [0m
+              [0mRU[0m
+            [36m</span>[39m
+            [36m<h3[39m
+              [33mclass[39m=[32m"habr-card__title"[39m
+            [36m>[39m
+              [0mМета-теория связей 0.0.3[0m
+            [36m</h3>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"habr-card__hubs"[39m
+            [36m>[39m
+              [0mМатематика · Ненормальное программирование · Программирование[0m
+            [36m</span>[39m
+          [36m</a>[39m
+          [36m<dl[39m
+            [33mclass[39m=[32m"habr-card__stats"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mtitle[39m=[32m"1,746 views"[39m
+            [36m>[39m
+              [36m<dt>[39m
+                [36m<span[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                [36m>[39m
+                  [0m👁[0m
+                [36m</span>[39m
+                [0m [0m
+                [0mviews[0m
+              [36m</dt>[39m
+              [36m<dd>[39m
+                [0m1.7K[0m
+                [0m [0m
+                [36m<a[39m
+                  [33maria-label[39m=[32m"Data effective dates"[39m
+                  [33mclass[39m=[32m"data-mark"[39m
+                  [33mhref[39m=[32m"#data-sources"[39m
+                [36m>[39m
+                  [0m(*)[0m
+                [36m</a>[39m
+              [36m</dd>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mtitle[39m=[32m"3 karma"[39m
+            [36m>[39m
+              [36m<dt>[39m
+                [36m<span[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                [36m>[39m
+                  [0m▲[0m
+                [36m</span>[39m
+                [0m [0m
+                [0mkarma[0m
+              [36m</dt>[39m
+              [36m<dd>[39m
+                [0m3[0m
+                [0m [0m
+                [36m<a[39m
+                  [33maria-label[39m=[32m"Data effective dates"[39m
+                  [33mclass[39m=[32m"data-mark"[39m
+                  [33mhref[39m=[32m"#data-sources"[39m
+                [36m>[39m
+                  [0m(*)[0m
+                [36m</a>[39m
+              [36m</dd>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mtitle[39m=[32m"18 bookmarks"[39m
+            [36m>[39m
+              [36m<dt>[39m
+                [36m<span[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                [36m>[39m
+                  [0m🔖[0m
+                [36m</span>[39m
+                [0m [0m
+                [0mbookmarks[0m
+              [36m</dt>[39m
+              [36m<dd>[39m
+                [0m18[0m
+                [0m [0m
+                [36m<a[39m
+                  [33maria-label[39m=[32m"Data effective dates"[39m
+                  [33mclass[39m=[32m"data-mark"[39m
+                  [33mhref[39m=[32m"#data-sources"[39m
+                [36m>[39m
+                  [0m(*)[0m
+                [36m</a>[39m
+              [36m</dd>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mtitle[39m=[32m"2 comments"[39m
+            [36m>[39m
+              [36m<dt>[39m
+                [36m<span[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                [36m>[39m
+                  [0m💬[0m
+                [36m</span>[39m
+                [0m [0m
+                [0mcomments[0m
+              [36m</dt>[39m
+              [36m<dd>[39m
+                [0m2[0m
+                [0m [0m
+                [36m<a[39m
+                  [33maria-label[39m=[32m"Data effective dates"[39m
+                  [33mclass[39m=[32m"data-mark"[39m
+                  [33mhref[39m=[32m"#data-sources"[39m
+                [36m>[39m
+                  [0m(*)[0m
+                [36m</a>[39m
+              [36m</dd>[39m
+            [36m</div>[39m
+          [36m</dl>[39m
+        [36m</li>[39m
+      [36m</ul>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/habr-dates-33.test.jsx:33:17
+     31|   render(<HabrCards snapshot={snapshot} fetchImpl={fetchImpl} />);
+     32|   await waitFor(() => expect(screen.queryByText(/refreshing from Habr/…
+     33|   expect(screen.getByText(new RegExp(`remaining figures use the snapsh…
+       |                 ^
+     34|     .toBeInTheDocument();
+     35|   expect(screen.queryByText(/live numbers from the Habr API/)).toBeNul…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed (2)
+   Start at  18:32:37
+   Duration  3.32s (environment 67%, setup 16%, tests 8%, transform 7%, import 1%, worker 1%)
+

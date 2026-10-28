@@ -23,8 +23,10 @@ Automatic spacing considers painted lines and markers with a configurable
 clearance. Sharp arrows stay pointed at acute angles and compensate their
 painted tip length by default; rounded corners and legacy lengths are available.
 
-It is a React 19 app built with [Vite](https://vite.dev) and tested with [Vitest](https://vitest.dev), with hand-written SVG/CSS charts and no runtime API calls.
-All numbers come from data snapshots committed to the repository.
+It is a React 19 app built with [Vite](https://vite.dev) and tested with [Vitest](https://vitest.dev), with hand-written SVG/CSS charts.
+The daily GitHub calendar and Habr cards can refresh from public services. Other
+indicators use committed snapshots, with effective dates and sources in each
+page's footer. The calendar retains its first-party snapshot if a mirror disagrees.
 
 ## Development
 
@@ -32,7 +34,7 @@ Use Node.js 24 or newer. The commit hook checks all maintained Python and shell
 scripts, so install its linters before committing:
 
 ```bash
-python -m pip install ruff==0.14.2 shellcheck-py==0.11.0.1
+python -m pip install ruff==0.17.3 shellcheck-py==0.11.0.1
 ```
 
 ```bash
@@ -47,6 +49,7 @@ npm run test:network:browser # editor and real downloads; ENGINE=firefox|webkit 
 npm run test:network:issue19 # history, loops, layouts, clipboard and touch regressions
 npm run test:network:issue25 # automatic spacing, native arrow pixels, per-link cards and mobile layouts
 npm run test:network:issue29 # paired sliders, preserved manual layouts and mirrored reference spacing
+npm run test:indicators:browser # daily calendar, source lines, social fallback and mobile layouts
 npm run build:cv   # prints every CV of build/ to build/cv/pdf/ (needs `npx playwright install chromium`)
 ```
 
@@ -66,22 +69,31 @@ fresh review when a dependency with install scripts changes version.
 
 ## Updating the data
 
-| What                                                          | Where                                |
-| ------------------------------------------------------------- | ------------------------------------ |
-| Jobs (EN/RU texts, dates, bullets for the CV, tags and roles) | `src/data/experience.js`             |
-| Positions: their jobs, skills, products and CV strengths      | `src/data/positions.js`              |
-| Education, skills, publications, contacts, featured projects  | `src/data/profile.js` (hand-curated) |
-| GitHub, npm, crates.io, NuGet and Stack Overflow numbers      | `src/data/github.json` (generated)   |
+| What                                                          | Where                                    |
+| ------------------------------------------------------------- | ---------------------------------------- |
+| Jobs (EN/RU texts, dates, bullets for the CV, tags and roles) | `src/data/experience.js`                 |
+| Positions: their jobs, skills, products and CV strengths      | `src/data/positions.js`                  |
+| Education, skills, publications, contacts, featured projects  | `src/data/profile.js` (hand-curated)     |
+| GitHub, npm, crates.io, NuGet and Stack Overflow numbers      | `src/data/github.json` (generated)       |
+| Daily calendar and personal public source attribution         | `src/data/indicators.json` (generated)   |
+| Per-language repository source lines                          | `src/data/repositories.json` (generated) |
 
 To refresh the generated data:
 
 ```bash
-experiments/collect-github-data.sh       # repositories and organizations (needs gh auth)
-experiments/collect-contributions.sh     # yearly contribution totals (GraphQL)
-npm run build:data                       # writes src/data/github.json
+node experiments/collect-public-profile.mjs # anonymous profile; never use an authenticated self response
+node experiments/collect-repositories.cjs docs/case-studies/issue-33/data
+node experiments/collect-organizations.cjs docs/case-studies/issue-33/data
+node experiments/collect-indicators.cjs      # annual history and public contribution discovery
+node experiments/collect-public-calendar.mjs # exact anonymous GitHub profile graph
+npm run build:data                          # rebuilds website data from the saved evidence
 ```
 
-`src/data/data.test.js` fails if `github.json` is out of date with the snapshots.
+The [issue 33 case study](docs/case-studies/issue-33/README.md) documents the full
+refresh, including registry/community/social collectors, public visibility checks,
+the repository census and pinned cloc setup. Run that census before rebuilding
+new repository snapshots. Data tests reject stale generated files, missing
+repository measurements and authenticated private profile settings.
 
 ## Deployment
 
@@ -99,7 +111,7 @@ failures up to three times and fail on authorization errors or missing evidence.
 Read jobs cancel superseded runs; deployments share a non-cancelling writer group.
 
 GitHub Pages must be set to **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-Nothing is committed to `docs/`; it only holds the case studies.
+The generated site is never committed to `docs/`; that directory holds the case studies.
 
 ## Case studies
 
@@ -114,3 +126,4 @@ Nothing is committed to `docs/`; it only holds the case studies.
 - [`issue-25`](docs/case-studies/issue-25/README.md): painted-shape spacing, acute arrow tips, balanced endpoints and per-link configuration cards, with archived reports and browser evidence.
 - [`issue-27`](docs/case-studies/issue-27/README.md): continuous equal closed gaps, numeric editing, historical URL compatibility and keyboard controls.
 - [`issue-29`](docs/case-studies/issue-29/README.md): paired sliders, individual resets, preserved manual layouts and symmetric automatic references, with the inherited requirement audit and cross-browser evidence.
+- [`issue-33`](docs/case-studies/issue-33/README.md): dated public indicators, repository and personal source lines, the exact GitHub calendar, social embeds and a complete associative ecosystem audit.

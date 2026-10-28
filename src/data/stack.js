@@ -985,6 +985,7 @@ export const STACK = [
           ru: 'Бот для групп, который проверяет факты и исправляет ошибки.',
         },
       ],
+      ['link-assistant/law', { en: 'Legal research and tools.', ru: 'Правовые исследования и инструменты.' }],
       ['link-assistant/legal', { en: 'A legal assistant.', ru: 'Юридический ассистент.' }],
       [
         'link-assistant/market-research',

@@ -22,6 +22,7 @@ import { PAGES } from '../pages/pages';
 import { useLang } from '../i18n/prefs';
 import { useNotation } from '../links/notation';
 import Cosmos from './Cosmos';
+import DataSources, { DataMark } from './DataSources';
 import LiquidRefraction from './LiquidRefraction';
 import PrefSwitches from './PrefSwitches';
 import Sound from './Sound';
@@ -85,7 +86,16 @@ export default function Layout({ page, sections = null, children, footer = null 
         )}
       </header>
 
-      <main ref={content}>{children}</main>
+      <main ref={content}>
+        <p className="snapshot-notice">
+          {t({
+            en: 'Numerical indicators: dated public-source data',
+            ru: 'Числовые показатели: датированные публичные данные',
+          })}{' '}
+          <DataMark />
+        </p>
+        {children}
+      </main>
 
       <footer className="footer">
         <span className="mono">{n(motto)}</span>
@@ -111,6 +121,7 @@ export default function Layout({ page, sections = null, children, footer = null 
             {t({ en: 'source', ru: 'исходный код' })}
           </a>
         </span>
+        <DataSources />
       </footer>
     </div>
   );

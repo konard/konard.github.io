@@ -1,0 +1,2 @@
+core.preloadIndex=true, status=128, stderr=fatal: unable to create threaded lstat: Resource temporarily unavailable
+core.preloadIndex=false, status=0, stderr=

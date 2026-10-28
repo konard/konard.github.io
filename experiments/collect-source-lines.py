@@ -4,7 +4,7 @@
 Use: python experiments/collect-source-lines.py --cloc /path/to/cloc-2.10.pl
 Full default-branch history is needed: shallow blame would misattribute old lines.
 A disk-backed set deduplicates original commit/path/line identities across mirrors.
-Only counts and public SHAs are retained, never commit emails or private metadata.
+Public output retains counts and public SHAs, never commit emails or private metadata.
 """
 
 import argparse
@@ -608,8 +608,8 @@ def main():
                 print(str(error.stdout)[-2000:], flush=True)
         save('source-lines.json', result)
         identity_file.write_text(json.dumps(identities))
-    # Summaries remain reproducible from the committed per-repository results,
-    # even if a collector resumes after its temporary SQLite cache was removed.
+    # Summaries remain reproducible from the committed per-repository results;
+    # resuming attribution also requires the matching deduplication cache.
     result['languages'] = {}
     for measurement in result['repositories'].values():
         for language, count in measurement['authoredLines'].items():

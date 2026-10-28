@@ -1,0 +1,33 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793202346423
+
+ ❯ src/data/calendar.test.js (13 tests | 1 failed) 86ms
+   × rejects decreases today and checks the last snapshot day after it becomes historical 17ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/data/calendar.test.js > rejects decreases today and checks the last snapshot day after it becomes historical
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ src/data/calendar.test.js:74:49
+     72|   const actual = structuredClone(reference);
+     73|   actual.weeks.at(-1).contributionDays.at(-1).contributionCount -= 1;
+     74|   expect(agreesWithSnapshot(actual, reference)).toBe(false);
+       |                                                 ^
+     75|   actual.weeks.at(-1).contributionDays.at(-1).contributionCount += 2;
+     76|   actual.weeks.at(-1).contributionDays.push({
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 12 passed (13)
+   Start at  17:45:27
+   Duration  2.07s (environment 70%, setup 15%, transform 9%, tests 5%, worker 1%, import 1%)
+

@@ -1,0 +1,18 @@
+test_interrupted_json_write_recovers_committed_attribution_on_resume (__main__.SourceLinesTests.test_interrupted_json_write_recovers_committed_attribution_on_resume) ... 1/1 fixture/public
+1/1 fixture/public
+Complete: 1 repositories, 0 errors
+FAIL
+
+======================================================================
+FAIL: test_interrupted_json_write_recovers_committed_attribution_on_resume (__main__.SourceLinesTests.test_interrupted_json_write_recovers_committed_attribution_on_resume)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/gh-issue-solver-1793202346423/experiments/test_source_lines.py", line 70, in test_interrupted_json_write_recovers_committed_attribution_on_resume
+    self.assertEqual(result['totalAuthoredLines'], 1)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 1
+
+----------------------------------------------------------------------
+Ran 1 test in 1.469s
+
+FAILED (failures=1)

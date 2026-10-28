@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-20T20:12:03.177Z",
+  "generatedAt": "2026-10-28T15:51:36.196Z",
   "sources": {
     "x": "https://cdn.syndication.twimg.com/tweet-result (ids from post-urls.txt)",
     "telegram": "post-urls.txt only (no public channel configured)",
@@ -8,10 +8,118 @@
     ]
   },
   "counts": {
-    "vk": 60,
+    "vk": 64,
     "x": 3
   },
   "posts": [
+    {
+      "id": "vk:3972090_31787",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31787",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2026-10-25T19:56:23.000Z",
+      "lang": "ru",
+      "text": "",
+      "html": "",
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://sun9-47.userapi.com/s/v1/ig2/aSNTy5JrrelD8DjqnArbXAwdfOdAjDmDx4LrWTqOIUIrS8jd_4XHZVum8Ngx1XLBChTR2MDrJ0ImLFPjVtoVU92j.jpg?quality=95&crop=0,0,1280,1280&as=32x32,48x48,72x72,108x108,160x160,240x240,360x360,480x480,540x540,640x640,720x720,1080x1080,1280x1280&from=bu&u=brWk6MXAtL8-pyDsq0rVcbfV-rI_asBOaL8YkP-YZM0&cs=640x0",
+          "alt": "",
+          "file": "/archive/media/vk-3972090_31787-1.jpg"
+        }
+      ],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31787"
+      },
+      "archivedAt": "2026-10-28T15:51:36.196Z"
+    },
+    {
+      "id": "vk:3972090_31785",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31785",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2026-10-25T19:55:43.000Z",
+      "lang": "ru",
+      "text": "",
+      "html": "",
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://sun9-80.userapi.com/s/v1/ig2/Kxz8WEKEd13MOPo_nID3F0tZWm0UGUEjlk_7pn4V-J0bw5tWEc2NSyU5YqUHl-BcLfN_PnL17y1rBQnXv_5JNDeO.jpg?quality=95&crop=0,0,1280,1280&as=32x32,48x48,72x72,108x108,160x160,240x240,360x360,480x480,540x540,640x640,720x720,1080x1080,1280x1280&from=bu&u=HqUvlXvTRHsCkKMUH33m5LrKR_M0tGhGfewRPC4Yuws&cs=640x0",
+          "alt": "",
+          "file": "/archive/media/vk-3972090_31785-1.jpg"
+        }
+      ],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31785"
+      },
+      "archivedAt": "2026-10-28T15:51:36.196Z"
+    },
+    {
+      "id": "vk:3972090_31783",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31783",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2026-10-24T18:51:30.000Z",
+      "lang": "ru",
+      "text": "",
+      "html": "",
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://sun9-87.userapi.com/s/v1/ig2/7FJVj3V7JN_rdZmYSpHtC1_BryDcm17o8yxKaKr2I74RbpJ5xj7jZF9ejDIDdzPy9ULoODppEy_RtYFTSwaoQG7z.jpg?quality=95&crop=0,0,2048,2048&as=32x32,48x48,72x72,108x108,160x160,240x240,360x360,480x480,540x540,640x640,720x720,1080x1080,1280x1280,1440x1440,2048x2048&from=bu&u=kO05ZmugasjqXhLhzDyc6V7okkIK9PqHsRErHRlXMzc&cs=640x0",
+          "alt": "",
+          "file": "/archive/media/vk-3972090_31783-1.jpg"
+        }
+      ],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31783"
+      },
+      "archivedAt": "2026-10-28T15:51:36.196Z"
+    },
+    {
+      "id": "vk:3972090_31781",
+      "network": "vk",
+      "url": "https://vk.com/wall3972090_31781",
+      "author": {
+        "name": "Константин Дьяченко",
+        "handle": "konard",
+        "url": "https://vk.com/konard"
+      },
+      "publishedAt": "2026-10-24T18:34:10.000Z",
+      "lang": "ru",
+      "text": "",
+      "html": "",
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://sun9-37.userapi.com/s/v1/ig2/KLMCk41Xx7Swjois1zQizhRqeL9sJ2RnpAFbiPuGYj6-3sNO9yczPT1GXsT6g0TY9QbXZtwCVPG4j-zM3ozmieyW.jpg?quality=95&crop=0,0,2048,2048&as=32x32,48x48,72x72,108x108,160x160,240x240,360x360,480x480,540x540,640x640,720x720,1080x1080,1280x1280,1440x1440,2048x2048&from=bu&u=DD6aTPDWHLB0prL7TRgYCi78XL3cKzuVOyHYI-WHZf8&cs=640x0",
+          "alt": "",
+          "file": "/archive/media/vk-3972090_31781-1.jpg"
+        }
+      ],
+      "embed": {
+        "type": "vk",
+        "id": "3972090_31781"
+      },
+      "archivedAt": "2026-10-28T15:51:36.196Z"
+    },
     {
       "id": "vk:3972090_31776",
       "network": "vk",
@@ -65,15 +173,15 @@
       },
       "publishedAt": "2026-05-17T11:29:38.000Z",
       "lang": "ru",
-      "text": "https://github.com/link-foundation/meta-theory - мета-теория связей - архивы предыдущих черновик и свежий черновик, который в процессе оформления на http://habr.com/ru/articles/1018142\nhttps://github.com/linksplatform/doublets-rs - стабильные дуплеты на Rust\nhttps://github.com/linksplatform/doublets-web - стабильные дуплеты в вебе через WebAssambly\nhttps://github.com/link-foundation/links-notation - стабильная нотация связей\nhttps://github.com/link-foundation/lino-env - .lenv файлы в нотации связей\nhttps://github.com/link-foundation/lino-arguments - парсер аргументов в нотации связей и традиционные опции\nhttps://github.com/link-foundation/lino-rest-api - REST API, но вместо json - нотация связей\nhttps://github.com/link-foundation/lino-objects-codec - кодек/декодер объектов в нотацию связей и обратно\nhttps://github.com/link-foundation/lino-i18n - библиотека по интернационализации, но вся интернационализация записана нотацией связей\nhttps://github.com/link-foundation/log-lazy - л\u0000енивое логирование, если логирование отключено, операции необходимые исключительно для форматирвования сообщения в лог не выполняются, то есть когда лог выключен, это позволяет обеспечивать near zero cost\nhttps://github.com/link-foundation/command-stream - библиотека по управлению CLI командами кодом\nhttps://github.com/link-foundation/browser-commander - управление браузером с приятными анимациями, чтобы было приятно смотреть и не стыдно показать или записать ролик, а так же абстракция разницы между Playwright и Puppeteer\nhttps://github.com/link-assistant/agent-commander - управление AI агентами через CLI (Claude, Codex, Gemini, Qwen, Agent)\nhttps://github.com/link-assistant/agent - AI агент для автономного режима (форк OpenCode)\nhttps://github.com/link-foundation/js-ai-driven-development-pipeline-template - шаблон CI/CD на JS с билдами приложений\nhttps://github.com/link-foundation/rust-ai-driven-development-pipeline-template - шаблон CI/CD для Rust\nhttps://github.com/link-foundation/relative-meta-logic - свой прувер (аналог Rocq/Lean) на нотации связей, с фундаментом из связей (очевидно), в процессе финальная доработа с Романом Вертушкиным\nhttps://github.com/link-foundation/link-cli - полная реализация СУБД + языка запросов на нотации связей поверх Rust и C#\nhttps://github.com/link-foundation/box - докер контейнеры для одноразовых песочниц для разработки или ИИ, чтобы у ИИ с одной стороны была среда с предустановленным ПО, с другой стороны возможность легко сломать что угодно и контейнер целиком можно было бы выбросить и попробовать заново\nhttps://github.com/link-assistant/hive-mind - робот программист с глубокой интеграцией с GitHub, соответствующий Git/GitHub Flow",
-      "html": "<a href=\"https://github.com/link-foundation/meta-theory\">github.com/link-found...</a> - мета-теория связей - архивы предыдущих черновик и свежий черновик, который в процессе оформления на <a href=\"http://habr.com/ru/articles/1018142\">habr.com/ru/article...</a><br><a href=\"https://github.com/linksplatform/doublets-rs\">github.com/linksplatf...</a> - стабильные дуплеты на Rust<br><a href=\"https://github.com/linksplatform/doublets-web\">github.com/linksplatf...</a> - стабильные дуплеты в вебе через WebAssambly<br><a href=\"https://github.com/link-foundation/links-notation\">github.com/link-found...</a> - стабильная нотация связей<br><a href=\"https://github.com/link-foundation/lino-env\">github.com/link-found...</a> - .lenv файлы в нотации связей<br><a href=\"https://github.com/link-foundation/lino-arguments\">github.com/link-found...</a> - парсер аргументов в нотации связей и традиционные опции<br><a href=\"https://github.com/link-foundation/lino-rest-api\">github.com/link-found...</a> - REST API, но вместо json - нотация связей<br><a href=\"https://github.com/link-foundation/lino-objects-codec\">github.com/link-found...</a> - кодек/декодер объектов в нотацию связей и обратно<br><a href=\"https://github.com/link-foundation/lino-i18n\">github.com/link-found...</a> - библиотека по интернационализации, но вся интернационализация записана нотацией связей<br><a href=\"https://github.com/link-foundation/log-lazy\">github.com/link-found...</a> - л\u0000енивое логирование, если логирование отключено, операции необходимые исключительно для форматирвования сообщения в лог не выполняются, то есть когда лог выключен, это позволяет обеспечивать near zero cost<br><a href=\"https://github.com/link-foundation/command-stream\">github.com/link-found...</a> - библиотека по управлению CLI командами кодом<br><a href=\"https://github.com/link-foundation/browser-commander\">github.com/link-found...</a> - управление браузером с приятными анимациями, чтобы было приятно смотреть и не стыдно показать или записать ролик, а так же абстракция разницы между Playwright и Puppeteer<br><a href=\"https://github.com/link-assistant/agent-commander\">github.com/link-assis...</a> - управление AI агентами через CLI (Claude, Codex, Gemini, Qwen, Agent)<br><a href=\"https://github.com/link-assistant/agent\">github.com/link-assis...</a> - AI агент для автономного режима (форк OpenCode)<br><a href=\"https://github.com/link-foundation/js-ai-driven-development-pipeline-template\">github.com/link-found...</a> - шаблон CI/CD на JS с билдами приложений<br><a href=\"https://github.com/link-foundation/rust-ai-driven-development-pipeline-template\">github.com/link-found...</a> - шаблон CI/CD для Rust<br><a href=\"https://github.com/link-foundation/relative-meta-logic\">github.com/link-found...</a> - свой прувер (аналог Rocq/Lean) на нотации связей, с фундаментом из связей (очевидно), в процессе финальная доработа с Романом Вертушкиным<br><a href=\"https://github.com/link-foundation/link-cli\">github.com/link-found...</a> - полная реализация СУБД + языка запросов на нотации связей поверх Rust и C#<br><a href=\"https://github.com/link-foundation/box\">github.com/link-found...</a> - докер контейнеры для одноразовых песочниц для разработки или ИИ, чтобы у ИИ с одной стороны была среда с предустановленным ПО, с другой стороны возможность легко сломать что угодно и контейнер целиком можно было бы выбросить и попробовать заново<br><a href=\"https://github.com/link-assistant/hive-mind\">github.com/link-assis...</a> - робот программист с глубокой интеграцией с GitHub, соответствующий Git/GitHub Flow",
+      "text": "https://github.com/link-foundation/meta-theory - мета-теория связей - архивы предыдущих черновик и свежий черновик, который в процессе оформления на http://habr.com/ru/articles/1018142\nhttps://github.com/linksplatform/doublets-rs - стабильные дуплеты на Rust\nhttps://github.com/linksplatform/doublets-web - стабильные дуплеты в вебе через WebAssambly\nhttps://github.com/link-foundation/links-notation - стабильная нотация связей\nhttps://github.com/link-foundation/lino-env - .lenv файлы в нотации связей\nhttps://github.com/link-foundation/lino-arguments - парсер аргументов в нотации связей и традиционные опции\nhttps://github.com/link-foundation/lino-rest-api - REST API, но вместо json - нотация связей\nhttps://github.com/link-foundation/lino-objects-codec - кодек/декодер объектов в нотацию связей и обратно\nhttps://github.com/link-foundation/lino-i18n - библиотека по интернационализации, но вся интернационализация записана нотацией связей\nhttps://github.com/link-foundation/log-lazy - ленивое логирование, если логирование отключено, операции необходимые исключительно для форматирвования сообщения в лог не выполняются, то есть когда лог выключен, это позволяет обеспечивать near zero cost\nhttps://github.com/link-foundation/command-stream - библиотека по управлению CLI командами кодом\nhttps://github.com/link-foundation/browser-commander - управление браузером с приятными анимациями, чтобы было приятно смотреть и не стыдно показать или записать ролик, а так же абстракция разницы между Playwright и Puppeteer\nhttps://github.com/link-assistant/agent-commander - управление AI агентами через CLI (Claude, Codex, Gemini, Qwen, Agent)\nhttps://github.com/link-assistant/agent - AI агент для автономного режима (форк OpenCode)\nhttps://github.com/link-foundation/js-ai-driven-development-pipeline-template - шаблон CI/CD на JS с билдами приложений\nhttps://github.com/link-foundation/rust-ai-driven-development-pipeline-template - шаблон CI/CD для Rust\nhttps://github.com/link-foundation/relative-meta-logic - свой прувер (аналог Rocq/Lean) на нотации связей, с фундаментом из связей (очевидно), в процессе финальная доработа с Романом Вертушкиным\nhttps://github.com/link-foundation/link-cli - полная реализация СУБД + языка запросов на нотации связей поверх Rust и C#\nhttps://github.com/link-foundation/box - докер контейнеры для одноразовых песочниц для разработки или ИИ, чтобы у ИИ с одной стороны была среда с предустановленным ПО, с другой стороны возможность легко сломать что угодно и контейнер целиком можно было бы выбросить и попробовать заново\nhttps://github.com/link-assistant/hive-mind - робот программист с глубокой интеграцией с GitHub, соответствующий Git/GitHub Flow",
+      "html": "<a href=\"https://github.com/link-foundation/meta-theory\">github.com/link-found...</a> - мета-теория связей - архивы предыдущих черновик и свежий черновик, который в процессе оформления на <a href=\"http://habr.com/ru/articles/1018142\">habr.com/ru/article...</a><br><a href=\"https://github.com/linksplatform/doublets-rs\">github.com/linksplatf...</a> - стабильные дуплеты на Rust<br><a href=\"https://github.com/linksplatform/doublets-web\">github.com/linksplatf...</a> - стабильные дуплеты в вебе через WebAssambly<br><a href=\"https://github.com/link-foundation/links-notation\">github.com/link-found...</a> - стабильная нотация связей<br><a href=\"https://github.com/link-foundation/lino-env\">github.com/link-found...</a> - .lenv файлы в нотации связей<br><a href=\"https://github.com/link-foundation/lino-arguments\">github.com/link-found...</a> - парсер аргументов в нотации связей и традиционные опции<br><a href=\"https://github.com/link-foundation/lino-rest-api\">github.com/link-found...</a> - REST API, но вместо json - нотация связей<br><a href=\"https://github.com/link-foundation/lino-objects-codec\">github.com/link-found...</a> - кодек/декодер объектов в нотацию связей и обратно<br><a href=\"https://github.com/link-foundation/lino-i18n\">github.com/link-found...</a> - библиотека по интернационализации, но вся интернационализация записана нотацией связей<br><a href=\"https://github.com/link-foundation/log-lazy\">github.com/link-found...</a> - ленивое логирование, если логирование отключено, операции необходимые исключительно для форматирвования сообщения в лог не выполняются, то есть когда лог выключен, это позволяет обеспечивать near zero cost<br><a href=\"https://github.com/link-foundation/command-stream\">github.com/link-found...</a> - библиотека по управлению CLI командами кодом<br><a href=\"https://github.com/link-foundation/browser-commander\">github.com/link-found...</a> - управление браузером с приятными анимациями, чтобы было приятно смотреть и не стыдно показать или записать ролик, а так же абстракция разницы между Playwright и Puppeteer<br><a href=\"https://github.com/link-assistant/agent-commander\">github.com/link-assis...</a> - управление AI агентами через CLI (Claude, Codex, Gemini, Qwen, Agent)<br><a href=\"https://github.com/link-assistant/agent\">github.com/link-assis...</a> - AI агент для автономного режима (форк OpenCode)<br><a href=\"https://github.com/link-foundation/js-ai-driven-development-pipeline-template\">github.com/link-found...</a> - шаблон CI/CD на JS с билдами приложений<br><a href=\"https://github.com/link-foundation/rust-ai-driven-development-pipeline-template\">github.com/link-found...</a> - шаблон CI/CD для Rust<br><a href=\"https://github.com/link-foundation/relative-meta-logic\">github.com/link-found...</a> - свой прувер (аналог Rocq/Lean) на нотации связей, с фундаментом из связей (очевидно), в процессе финальная доработа с Романом Вертушкиным<br><a href=\"https://github.com/link-foundation/link-cli\">github.com/link-found...</a> - полная реализация СУБД + языка запросов на нотации связей поверх Rust и C#<br><a href=\"https://github.com/link-foundation/box\">github.com/link-found...</a> - докер контейнеры для одноразовых песочниц для разработки или ИИ, чтобы у ИИ с одной стороны была среда с предустановленным ПО, с другой стороны возможность легко сломать что угодно и контейнер целиком можно было бы выбросить и попробовать заново<br><a href=\"https://github.com/link-assistant/hive-mind\">github.com/link-assis...</a> - робот программист с глубокой интеграцией с GitHub, соответствующий Git/GitHub Flow",
       "media": [],
       "embed": {
         "type": "vk",
         "id": "3972090_31767"
       },
       "archivedAt": "2026-10-19T16:42:53.029Z",
-      "updatedAt": "2026-10-19T16:47:51.173Z"
+      "updatedAt": "2026-10-28T15:51:36.196Z"
     },
     {
       "id": "vk:3972090_31766",
@@ -175,7 +283,7 @@
       "media": [
         {
           "type": "photo",
-          "url": "https://sun9-15.userapi.com/s/v1/ig2/AkULXjfuFdEYYtg55Ae9lElRRnD73Ci11-6XD8yR4XxzRY3O-OzUGBaaxW-VrhaL_mR5p6YnvWJxcFtVbYckywaBhpUrEg.jpg?quality=95&as=32x24,48x35,72x53,108x79,160x118,240x177,360x265,480x353,540x397,640x471,720x530,1080x794,1280x941,1440x1059,2072x1524&from=bu&u=Em9kvaA_QfBw9lTOyh7ns-Aw12gBWaJaE30iqj05wiA&cs=640x0",
+          "url": "https://sun9-15.userapi.com/s/v1/ig2/33iJbRekW-p_SQ_CXO_2OW4XWbB-_YH-vxFax0_xb9HBmztU3z5mGmjLdFqI9tCoxKnQ41_d0O9pi46_R4IzW6F6.jpg?quality=95&as=32x24,48x35,72x53,108x79,160x118,240x177,360x265,480x353,540x397,640x471,720x530,1080x794,1280x941,1440x1059,2072x1524&from=bu&u=vwORVyxIZGLiL3dKZwenzrYK16HyEv4gsZXXj6x7Vvo&cs=640x0",
           "alt": "",
           "file": "/archive/media/vk-3972090_31753-1.jpg"
         }
@@ -185,7 +293,7 @@
         "id": "3972090_31753"
       },
       "archivedAt": "2026-10-19T16:42:53.029Z",
-      "updatedAt": "2026-10-19T16:47:51.173Z"
+      "updatedAt": "2026-10-28T15:51:36.196Z"
     },
     {
       "id": "vk:3972090_31734",
@@ -280,7 +388,7 @@
       "media": [
         {
           "type": "photo",
-          "url": "https://sun9-9.userapi.com/s/v1/ig2/638LagJWWlIY-KcrLP5SmFsJQHbYDvcIaCiMP-kwjhiOeQWiJTsHKGVYDjGP-ABs6kzwLYWHatEOEZ-en6-smDoCMJnV7w.jpg?quality=95&as=32x39,48x59,72x88,108x132,160x196,240x294,360x441,480x588,540x661,640x784,720x881,1080x1322,1280x1567,1440x1763,1730x2118&from=bu&u=rlIsc6d-9-VtbQjM7gXg8m9kFvaJFZPHHiadAz2EIyo&cs=1080x0",
+          "url": "https://sun9-9.userapi.com/s/v1/ig2/LrqKt5o205apGvYIxPSJRZ7026lwcUBvNUu2IiBco4Zjx41j3QDn_Zwoyi24ZAlLoFXMIphI9i1Y5pxYT2oiRUO-.jpg?quality=95&as=32x39,48x59,72x88,108x132,160x196,240x294,360x441,480x588,540x661,640x784,720x881,1080x1322,1280x1567,1440x1763,1730x2118&from=bu&u=1wmMA2gv0_eIUXEtlFZ7eD775t86PflDFheD1IxNZpw&cs=1080x0",
           "alt": "",
           "file": "/archive/media/vk-3972090_31703-1.jpg"
         }
@@ -290,7 +398,7 @@
         "id": "3972090_31703"
       },
       "archivedAt": "2026-10-19T16:42:53.029Z",
-      "updatedAt": "2026-10-19T16:47:51.173Z"
+      "updatedAt": "2026-10-28T15:51:36.196Z"
     },
     {
       "id": "vk:3972090_31702",
@@ -1243,7 +1351,7 @@
           "type": "photo",
           "url": "https://sun9-63.userapi.com/s/v1/ig2/8BKCRG4ReplKDmis9oj2Plyb7QQ871hSHWsDhTG9V_pj2PbAnfFAcrb-SVn0LTCVhMvz2IUQKiUX_ZuD0qPqlogj.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x854,720x960,1080x1441,1280x1708,1440x1921,1919x2560&from=bu&u=1zOJLFdidsPHRoTPwnbww9Ky_iL5THyHix7l7zj7rQY&cs=1080x0",
           "alt": "",
-          "fileError": "not downloadable on 2026-10-20 (the CDN returned no image)"
+          "fileError": "not downloadable on 2026-10-28 (the CDN returned no image)"
         }
       ],
       "embed": {
@@ -1417,7 +1525,7 @@
           "type": "photo",
           "url": "https://sun9-56.userapi.com/s/v1/ig2/YWPH8TS3a-2v2F4VW-nVV5MvR0MSaMR7S8RWVEccKU2xUsy5wdW7Y0kSJdGCJDJ74WABsgrXSUn82soX7olWFp3M.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x959,1440x1079,2560x1919&from=bu&u=6Aq0vwwGPEwyS-722bOYbBsEd-llrmm6JKk2B945Lrc&cs=640x0",
           "alt": "",
-          "fileError": "not downloadable on 2026-10-20 (the CDN returned no image)"
+          "fileError": "not downloadable on 2026-10-28 (the CDN returned no image)"
         }
       ],
       "embed": {

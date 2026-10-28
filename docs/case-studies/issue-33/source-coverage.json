@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "snapshotCollectedAt": "2026-10-28T21:40:14.862576+00:00",
+  "measuredRepositories": 1737,
+  "displayedRepositoriesWithWholeRepositoryCounts": 527,
+  "publicInventoryRepositories": 1912,
+  "nonNoiseInventoryRepositoriesCovered": 1303,
+  "attributedNonblankLines": 13224518,
+  "clocLanguageCategories": 95,
+  "creditedRepositories": 805,
+  "externalAccountCreditedRepositories": 260,
+  "externalAccountAttributedLines": 4461732,
+  "errors": {}
+}

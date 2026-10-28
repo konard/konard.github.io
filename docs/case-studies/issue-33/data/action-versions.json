@@ -1,0 +1,36 @@
+{
+  "checkedAt": "2026-10-28T21:53:48.439411+00:00",
+  "actions": {
+    "actions/checkout": {
+      "tag_name": "v7.0.1",
+      "html_url": "https://github.com/actions/checkout/releases/tag/v7.0.1",
+      "published_at": "2026-07-20T15:10:05Z"
+    },
+    "actions/setup-node": {
+      "tag_name": "v7.1.0",
+      "html_url": "https://github.com/actions/setup-node/releases/tag/v7.1.0",
+      "published_at": "2026-10-08T02:52:34Z"
+    },
+    "actions/setup-python": {
+      "tag_name": "v7.1.0",
+      "html_url": "https://github.com/actions/setup-python/releases/tag/v7.1.0",
+      "published_at": "2026-10-22T02:56:04Z"
+    },
+    "actions/deploy-pages": {
+      "tag_name": "v5.0.1",
+      "html_url": "https://github.com/actions/deploy-pages/releases/tag/v5.0.1",
+      "published_at": "2026-09-01T21:31:19Z"
+    },
+    "lycheeverse/lychee-action": {
+      "tag_name": "v2.9.0",
+      "html_url": "https://github.com/lycheeverse/lychee-action/releases/tag/v2.9.0",
+      "published_at": "2026-07-09T15:31:00Z"
+    },
+    "github/codeql-action": {
+      "tag_name": "v4.39.1",
+      "html_url": "https://github.com/github/codeql-action/releases/tag/v4.39.1",
+      "published_at": "2026-10-21T15:48:42Z"
+    }
+  },
+  "method": "Official latest stable releases; CodeQL action releases are selected by vN.N.N tags because the latest-release endpoint also returns separately versioned CodeQL bundles."
+}

@@ -33,7 +33,8 @@
     "test:network:issue23": "node experiments/issue-23-browser.mjs",
     "test:network:issue25": "node experiments/issue-25-browser.mjs",
     "test:network:issue27": "node experiments/issue-27-browser.mjs",
-    "test:network:issue29": "node experiments/issue-29-browser.mjs"
+    "test:network:issue29": "node experiments/issue-29-browser.mjs",
+    "test:indicators:browser": "node experiments/issue-33-browser.mjs"
   },
   "homepage": "https://konard.github.io",
   "devDependencies": {

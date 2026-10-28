@@ -1,5 +1,6 @@
 import Layout from '../components/Layout';
 import { formatNumber } from '../components/format';
+import { DataMark } from '../components/DataSources';
 import RepoList, { RepoItem } from '../components/RepoList';
 import Section from '../components/Section';
 import { fields, professions } from '../data/fields';
@@ -46,7 +47,9 @@ export default function RepositoriesPage() {
         <ul className="page-stats">
           {Object.entries(KINDS).map(([id, k]) => (
             <li key={id}>
-              <strong className="mono">{number(allRepositories.filter((r) => r.kind === id).length)}</strong>
+              <strong className="mono">
+                {number(allRepositories.filter((r) => r.kind === id).length)} <DataMark />
+              </strong>
               <span>{t(k.label)}</span>
               <small>{t(k.summary)}</small>
             </li>
@@ -104,7 +107,10 @@ export default function RepositoriesPage() {
             return (
               <li key={f.id} className="field-card" id={`field-${f.id}`}>
                 <h3>
-                  {t(f.name)} <span className="mono muted">{list.length}</span>
+                  {t(f.name)}{' '}
+                  <span className="mono muted">
+                    {list.length} <DataMark />
+                  </span>
                 </h3>
                 <p>{t(f.summary)}</p>
                 <p className="field-card__top">

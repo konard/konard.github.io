@@ -1,4 +1,5 @@
 import Layout from '../components/Layout';
+import { DataMark } from '../components/DataSources';
 import RepoList, { RepoItem } from '../components/RepoList';
 import NetworkGallery from '../components/NetworkGallery';
 import Section from '../components/Section';
@@ -100,7 +101,8 @@ export default function ArtPage() {
           {t({
             en: `${art} ${plural(art, lang, EXPERIMENTS)}, the full alphabet of link symbols, and ${other.length} ${plural(other.length, lang, REPOSITORIES)} not fit any other field.`,
             ru: `${art} ${plural(art, lang, EXPERIMENTS)}, полный алфавит символов связей и ${other.length} ${plural(other.length, lang, REPOSITORIES)} ни к одной другой области.`,
-          })}
+          })}{' '}
+          <DataMark />
         </p>
       </header>
 

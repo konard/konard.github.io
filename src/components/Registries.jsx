@@ -1,6 +1,7 @@
 import { tr, useLang } from '../i18n/prefs';
 import { plural } from '../i18n/plural';
 import { formatCompact, formatNumber } from './format';
+import { DataMark } from './DataSources';
 
 // The units and notes come from scripts/registries.cjs in English; known ones are
 // translated here, unknown ones are shown as they are.
@@ -62,7 +63,7 @@ export default function Registries({ registries, summary }) {
             </a>
             <div className="registry__numbers">
               <span>
-                <strong>{formatNumber(r.packages, lang)}</strong> {plural(r.packages, lang, PACKAGES)}
+                <strong>{formatNumber(r.packages, lang)}</strong> {plural(r.packages, lang, PACKAGES)} <DataMark />
               </span>
               {r.downloadsUnit ? (
                 <span>

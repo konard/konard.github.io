@@ -1,0 +1,105 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793202346423
+
+stderr | src/components/indicators-33.test.jsx > shows a daily contribution calendar and personal open-source code totals
+An update to HabrCards inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ❯ src/components/indicators-33.test.jsx (3 tests | 3 failed) 878ms
+   × shows a daily contribution calendar and personal open-source code totals 821ms
+   × shows code, comments and blanks for every repository language 35ms
+   × tries the original social embed by default and keeps an archive fallback 17ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/indicators-33.test.jsx > shows a daily contribution calendar and personal open-source code totals
+AssertionError: expected 0 to be greater than or equal to 365
+ ❯ src/components/indicators-33.test.jsx:8:76
+      6| it('shows a daily contribution calendar and personal open-source code …
+      7|   const { container } = render(<App />);
+      8|   expect(container.querySelectorAll('.contribution-calendar__day').len…
+       |                                                                            ^
+      9|   expect(screen.getByRole('heading', { name: 'My open-source code' }))…
+     10|   expect(screen.getByText(/Closed-source experience/)).toBeInTheDocume…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  src/components/indicators-33.test.jsx > shows code, comments and blanks for every repository language
+TestingLibraryElementError: Unable to find an element with the text: /20 source lines/. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<li[39m
+      [33mclass[39m=[32m"repo"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"repo__head"[39m
+      [36m>[39m
+        [36m<a[39m
+          [33mclass[39m=[32m"repo__name"[39m
+          [33mhref[39m=[32m"https://github.com/example/project"[39m
+          [33mrel[39m=[32m"noopener noreferrer"[39m
+          [33mtarget[39m=[32m"_blank"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"muted"[39m
+          [36m>[39m
+            [0mexample[0m
+            [0m/[0m
+          [36m</span>[39m
+          [0mproject[0m
+        [36m</a>[39m
+        [36m<span[39m
+          [33mclass[39m=[32m"repo__meta mono"[39m
+        [36m>[39m
+          [36m<span[39m
+            [33mtitle[39m=[32m"last push"[39m
+          [36m>[39m
+            [0m2026-10[0m
+          [36m</span>[39m
+        [36m</span>[39m
+      [36m</div>[39m
+    [36m</li>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/indicators-33.test.jsx:19:17
+     17|       pushedAt: '2026-10-28', sourceLines: { JavaScript: { code: 20, c…
+     18|   );
+     19|   expect(screen.getByText(/20 source lines/)).toBeInTheDocument();
+       |                 ^
+     20|   expect(screen.getByText(/JavaScript: 20 code/)).toBeInTheDocument();
+     21| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  src/components/indicators-33.test.jsx > tries the original social embed by default and keeps an archive fallback
+AssertionError: expected null not to be null
+ ❯ src/components/indicators-33.test.jsx:27:70
+     25|     publishedAt: '2026-10-28T00:00:00Z', embed: { type: 'x', id: '1' }…
+     26|   const { container } = render(<Story story={{ posts: [post] }} lang="…
+     27|   expect(container.querySelector('iframe, [data-social-embed]')).not.t…
+       |                                                                      ^
+     28|   expect(screen.getByText(/Historical text/)).toBeInTheDocument();
+     29| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed (3)
+   Start at  15:49:18
+   Duration  5.17s (transform 43%, environment 25%, tests 18%, setup 7%, import 6%)
+

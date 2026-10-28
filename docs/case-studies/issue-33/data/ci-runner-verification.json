@@ -1,0 +1,65 @@
+{
+  "headSha": "98d769a1ab61b3c512c36c914a6eac8ceaea7380",
+  "createdAt": "2026-10-28T18:49:17Z",
+  "status": "completed",
+  "conclusion": "success",
+  "url": "https://github.com/konard/konard.github.io/actions/runs/40748655886",
+  "jobs": [
+    {
+      "name": "lint-workflows",
+      "conclusion": "success"
+    },
+    {
+      "name": "prepare",
+      "conclusion": "success"
+    },
+    {
+      "name": "checks",
+      "conclusion": "success"
+    },
+    {
+      "name": "codeql (javascript-typescript)",
+      "conclusion": "success"
+    },
+    {
+      "name": "tooling",
+      "conclusion": "success"
+    },
+    {
+      "name": "codeql (python)",
+      "conclusion": "success"
+    },
+    {
+      "name": "codeql (actions)",
+      "conclusion": "success"
+    },
+    {
+      "name": "docs",
+      "conclusion": "success"
+    },
+    {
+      "name": "network-browsers (chromium, ubuntu-24.04)",
+      "conclusion": "success"
+    },
+    {
+      "name": "network-browsers (firefox, ubuntu-24.04)",
+      "conclusion": "success"
+    },
+    {
+      "name": "network-browsers (webkit, macos-15-intel)",
+      "conclusion": "success"
+    },
+    {
+      "name": "test",
+      "conclusion": "success"
+    },
+    {
+      "name": "pipeline-status",
+      "conclusion": "success"
+    },
+    {
+      "name": "deploy",
+      "conclusion": "skipped"
+    }
+  ]
+}

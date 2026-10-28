@@ -1,6 +1,7 @@
 import { useLang } from '../i18n/prefs';
 import { plural } from '../i18n/plural';
 import { formatNumber } from './format';
+import { DataMark } from './DataSources';
 
 const REPOSITORIES = { en: ['repository', 'repositories'], ru: ['репозиторий', 'репозитория', 'репозиториев'] };
 // «в N репозиториях»: the prepositional case after «в».
@@ -26,6 +27,7 @@ export default function LanguageCloud({ languages, extra = [], favorites = [] })
           en: `All ${total} languages detected by GitHub${others.length > 0 ? ` and ${others.length} more from the skills list` : ''}. Size shows how many repositories use the language.`,
           ru: `Языки, найденные GitHub, — всего ${total}${others.length > 0 ? `, и ещё ${others.length} из списка навыков` : ''}. Размер показывает, в скольких репозиториях используется язык.`,
         })}
+        <DataMark />
       </p>
       <ul className="cloud__list" aria-label={t({ en: 'All languages', ru: 'Все языки' })}>
         {sorted.map((l) => (

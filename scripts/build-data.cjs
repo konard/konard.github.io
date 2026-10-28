@@ -1,11 +1,8 @@
 #!/usr/bin/env node
-// Aggregates raw public data from docs/case-studies/issue-1/data and
-// docs/case-studies/issue-7/data into the compact src/data/github.json and
-// src/data/repositories.json consumed by the website.
-// Refresh the raw data with experiments/collect-github-data.sh,
-// experiments/collect-contributions.sh, experiments/collect-repositories.cjs,
-// experiments/collect-organizations.cjs and experiments/collect-registries.cjs,
-// then run `npm run build:data`.
+// Aggregates the refreshed public snapshots in docs/case-studies/issue-33/data
+// into the compact data files consumed by the website.
+// Refresh the public profile, calendar and dated collectors documented in the
+// issue-33 case study, then run `npm run build:data`.
 const fs = require('fs');
 const path = require('path');
 
@@ -13,8 +10,7 @@ const { buildRegistries } = require('./registries.cjs');
 const { buildRepositories, isHiddenOwner, isNoise, readCollected, shownRepositories } = require('./repositories.cjs');
 
 const root = path.join(__dirname, '..');
-const dataDir = path.join(root, 'docs', 'case-studies', 'issue-1', 'data');
-const issue7Dir = path.join(root, 'docs', 'case-studies', 'issue-7', 'data');
+const dataDir = path.join(root, 'docs', 'case-studies', 'issue-33', 'data');
 const outFile = path.join(root, 'src', 'data', 'github.json');
 const habrFile = path.join(root, 'src', 'data', 'habr.json');
 
@@ -64,8 +60,8 @@ function featuredNames() {
 function build({ write = true } = {}) {
   const featured = featuredNames();
   const user = read('github-user.json');
-  const contributions = read('github-contributions.json');
-  const { user: userNow, organizations } = read('organizations.json', issue7Dir);
+  const contributions = read('contributions.json').years;
+  const { user: userNow, organizations } = read('organizations.json');
   // Hidden organizations, empty repositories, broken forks and copies of
   // projects that are not public are left out of every number on the website.
   const collected = shownRepositories().shown;
@@ -140,7 +136,7 @@ function build({ write = true } = {}) {
   };
 
   const result = {
-    generatedFrom: ['docs/case-studies/issue-1/data', 'docs/case-studies/issue-7/data'],
+    generatedFrom: ['docs/case-studies/issue-33/data'],
     profile: {
       login: user.login,
       name: user.name,
@@ -182,6 +178,8 @@ function build({ write = true } = {}) {
     fs.mkdirSync(path.dirname(outFile), { recursive: true });
     fs.writeFileSync(outFile, JSON.stringify(result, null, 2) + '\n');
     fs.writeFileSync(habrFile, JSON.stringify(buildHabr(), null, 2) + '\n');
+    fs.writeFileSync(path.join(root, 'src/data/posts.json'), fs.readFileSync(path.join(dataDir, 'posts.json'), 'utf8'));
+    require('./build-indicators.cjs').buildIndicators();
   }
   return result;
 }
@@ -189,7 +187,7 @@ function build({ write = true } = {}) {
 // Snapshot of the Deep.Foundation and @Konard Habr articles; the website
 // refreshes the statistics live from the public Habr API when it can.
 function buildHabr() {
-  const habr = read('habr.json', issue7Dir);
+  const habr = read('habr.json');
   return {
     collectedAt: habr.collectedAt,
     company: habr.company,

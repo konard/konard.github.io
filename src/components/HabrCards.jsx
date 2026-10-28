@@ -3,6 +3,7 @@ import { fetchHabrCards, fetchHabrStatistics, mergeHabr } from '../data/habrLive
 import { useLang } from '../i18n/prefs';
 import { plural } from '../i18n/plural';
 import { formatCompact, formatNumber } from './format';
+import { DataMark } from './DataSources';
 
 const STATS = [
   ['views', { en: 'views', ru: 'просмотры' }, '👁'],
@@ -37,7 +38,8 @@ export default function HabrCards({ snapshot, live = true, fetchImpl }) {
       .then(([stats, cards]) => {
         if (cancelled) return;
         setHabr(mergeHabr(snapshot, stats, cards));
-        setStatus('live');
+        const updated = snapshot.articles.filter((article) => stats[article.id]).length;
+        setStatus(cards && updated === snapshot.articles.length ? 'live' : cards || updated ? 'partial' : 'snapshot');
       })
       .catch(() => !cancelled && setStatus('snapshot'));
     return () => {
@@ -71,8 +73,17 @@ export default function HabrCards({ snapshot, live = true, fetchImpl }) {
         <span className={`habr__status habr__status--${status}`} aria-live="polite">
           {status === 'live' && t({ en: 'live numbers from the Habr API', ru: 'актуальные данные из API Хабра' })}
           {status === 'loading' && t({ en: 'refreshing from Habr…', ru: 'обновление с Хабра…' })}
+          {status === 'partial' &&
+            t({
+              en: `Some numbers updated from Habr; remaining figures use the snapshot of ${snapshot.collectedAt.slice(0, 10)}`,
+              ru: `Часть чисел обновлена с Хабра; остальные показатели — из снимка от ${snapshot.collectedAt.slice(0, 10)}`,
+            })}
           {status === 'snapshot' &&
-            t({ en: `snapshot of ${habr.collectedAt.slice(0, 10)}`, ru: `снимок от ${habr.collectedAt.slice(0, 10)}` })}
+            t({
+              en: `snapshot of ${habr.collectedAt.slice(0, 10)}`,
+              ru: `снимок от ${habr.collectedAt.slice(0, 10)}`,
+            })}{' '}
+          <DataMark />
         </span>
       </div>
       <ul className="habr__cards">
@@ -103,7 +114,9 @@ export default function HabrCards({ snapshot, live = true, fetchImpl }) {
                   <dt>
                     <span aria-hidden="true">{icon}</span> {t(label)}
                   </dt>
-                  <dd>{formatCompact(a.statistics[key], lang)}</dd>
+                  <dd>
+                    {formatCompact(a.statistics[key], lang)} <DataMark />
+                  </dd>
                 </div>
               ))}
             </dl>

@@ -1,0 +1,17 @@
+test_saved_patches_remain_in_repository_counts_but_not_personal_programming_totals (__main__.SourceLinesTests.test_saved_patches_remain_in_repository_counts_but_not_personal_programming_totals) ... FAIL
+
+======================================================================
+FAIL: test_saved_patches_remain_in_repository_counts_but_not_personal_programming_totals (__main__.SourceLinesTests.test_saved_patches_remain_in_repository_counts_but_not_personal_programming_totals)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/gh-issue-solver-1793202346423/experiments/test_source_lines.py", line 52, in test_saved_patches_remain_in_repository_counts_but_not_personal_programming_totals
+    self.assertEqual(result['authoredLines'], {})
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'diff': 6} != {}
+- {'diff': 6}
++ {}
+
+----------------------------------------------------------------------
+Ran 1 test in 0.733s
+
+FAILED (failures=1)

@@ -1,0 +1,15 @@
+983/1737 konard/BookShop
+984/1737 konard/CEHR2005-GCS-TS
+Traceback (most recent call last):
+  File "/tmp/gh-issue-solver-1793202346423/experiments/collect-source-lines.py", line 612, in <module>
+    # even if a collector resumes after its temporary SQLite cache was removed.
+  File "/tmp/gh-issue-solver-1793202346423/experiments/collect-source-lines.py", line 571, in main
+    identities = json.loads(identity_file.read_text()) if identity_file.exists() else {}
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<8 lines>...
+    for index, name in enumerate(names):
+    ^^^^^^^^^
+  File "/tmp/gh-issue-solver-1793202346423/experiments/collect-source-lines.py", line 384, in collect
+    'sourceLinesScope': previous.get('sourceLinesScope', 'whole-repository'),
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'sourceLinesScope'

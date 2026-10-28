@@ -6,6 +6,7 @@ import { useLang } from '../i18n/prefs';
 import { useNotation } from '../links/notation';
 import { plural } from '../i18n/plural';
 import { formatNumber } from './format';
+import { DataMark } from './DataSources';
 
 const FIELD_NAMES = Object.fromEntries(fields.map((f) => [f.id, f.name]));
 const STARS = { en: ['star', 'stars'], ru: ['звезда', 'звезды', 'звёзд'] };
@@ -31,9 +32,10 @@ export function RepoItem({ repo, note = null }) {
           {repo.stars > 0 && (
             <span aria-label={`${formatNumber(repo.stars, lang)} ${plural(repo.stars, lang, STARS)}`}>
               ★ {formatNumber(repo.stars, lang)}
+              <DataMark />
             </span>
           )}
-          <span title={t({ en: 'last push', ru: 'последнее обновление' })}>{repo.pushedAt.slice(0, 7)}</span>
+          <span title={t({ en: 'last push', ru: 'последнее обновление' })}>{repo.pushedAt?.slice(0, 7)}</span>
           {repo.archived && <span>{t({ en: 'archived', ru: 'в архиве' })}</span>}
         </span>
       </div>
@@ -44,6 +46,41 @@ export function RepoItem({ repo, note = null }) {
           <a href={`https://github.com/${repo.copyOf}`} target="_blank" rel="noopener noreferrer">
             {repo.copyOf}
           </a>
+        </p>
+      )}
+      {repo.sourceLines ? (
+        <details className="repo__lines">
+          <summary>
+            {formatNumber(
+              Object.values(repo.sourceLines).reduce((sum, l) => sum + l.code, 0),
+              lang,
+            )}{' '}
+            {t({ en: 'source lines', ru: 'строк кода' })} <DataMark />
+          </summary>
+          <ul>
+            {Object.entries(repo.sourceLines)
+              .sort((a, b) => b[1].code - a[1].code)
+              .map(([language, counts]) => (
+                <li key={language}>
+                  {language}: {formatNumber(counts.code, lang)} {t({ en: 'code', ru: 'код' })} ·{' '}
+                  {formatNumber(counts.comment, lang)} {t({ en: 'comments', ru: 'комментарии' })} ·{' '}
+                  {formatNumber(counts.blank, lang)} {t({ en: 'blank', ru: 'пустые' })}
+                </li>
+              ))}
+          </ul>
+          {repo.sourceSha && (
+            <a
+              href={`https://github.com/${repo.fullName}/tree/${repo.sourceSha}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t({ en: 'Measured revision', ru: 'Измеренная версия' })} · {repo.sourceCollectedAt?.slice(0, 10)}
+            </a>
+          )}
+        </details>
+      ) : (
+        <p className="repo__lines muted">
+          {t({ en: 'Line count unavailable', ru: 'Число строк недоступно' })} <DataMark />
         </p>
       )}
       {repo.fields.length > 0 && (

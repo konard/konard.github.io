@@ -1,0 +1,30 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793202346423
+
+ ❯ src/data/indicators.test.js (6 tests | 1 failed | 5 skipped) 155ms
+   × rebuilds the website social fallback from the dated public archive 150ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/data/indicators.test.js > rebuilds the website social fallback from the dated public archive
+AssertionError: expected undefined to be type of 'string'
+
+Expected: "string"
+Received: "undefined"
+
+ ❯ src/data/indicators.test.js:14:21
+     12|     require('../../scripts/build-data.cjs').build();
+     13|     const archive = writes.get(path.resolve('src/data/posts.json'));
+     14|     expect(archive).toBeTypeOf('string');
+       |                     ^
+     15|     expect(JSON.parse(archive)).toEqual(read('posts'));
+     16|   } finally {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 5 skipped (6)
+   Start at  19:14:22
+   Duration  2.12s (environment 62%, setup 15%, transform 10%, tests 9%, import 3%, worker 1%)
+
