@@ -120,3 +120,16 @@ The original collector networking code was extracted without changing its reques
 retry, throttling or concurrency behavior. Existing tests and browser/PDF suites
 remain enabled. Formatting changes to Python helpers also remove a genuine E401
 multiple-import warning. No feature or supported browser is removed.
+
+## Security findings versus successful execution
+
+The final review also compared CodeQL result handling in both pinned complete
+trees and recent merged related PRs (JavaScript 255 and Python 99). Both analyze
+jobs upload SARIF, but their terminal gates inspect only job execution outcomes.
+Neither gate guarantees zero findings. The website's real ten-finding report
+shows that distinction: workflow 40675994571 passed while check 122774900583
+failed. The new per-language SARIF result gate rejects findings/missing reports;
+all queries, scans and the independent GitHub check remain enabled. JS report
+266 and Python report 122 document the shared contract gap without asserting
+that the templates themselves currently have security findings. Search results,
+related PR details and report bodies are archived as *-template-sarif-*.

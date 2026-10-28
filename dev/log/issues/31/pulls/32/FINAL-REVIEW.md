@@ -58,3 +58,20 @@ behavioral test confirm the setting, and a workflow regression fails before the
 change and passes after it. Shared reports JS 265 and Python 121 document the
 same default configuration in both templates. Final hosted verification checks
 that all three security scans run without diff-limit warnings.
+
+The exact-head review caught the separate Advanced Security check failing even
+though run 40675994571 succeeded. All ten open PR-merge alerts are now in scope,
+including unchanged lines. SECURITY.md records the reproductions, component
+choices and every fix. Archive text compatibility is checked over all 63 posts;
+only literal NULs are normalized as browsers already do. Existing data and media
+are unchanged. Final review checks the independent CodeQL result and full alert
+list before readiness, retaining full language/query coverage.
+
+The new result gate makes every CodeQL job fail for any SARIF finding instead
+of relying only on the independent check. Twelve tests cover report/CLI behavior,
+and replay of the real ten-finding report fails as intended; real clean Python
+SARIF passes. Local complete validation now passes 833 tests in 55 suites. All
+63 archived post bodies retain their text except two explicitly documented HTML5
+NUL normalizations; existing archive JSON and media are unchanged. Dynamic label
+assertions use RegExp.escape in both page test files. Shared reports JS 266 and
+Python 122 include the actual false-green evidence and pinned template sources.

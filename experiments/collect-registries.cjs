@@ -49,7 +49,7 @@ const NAMES = [USER, ...ORGS]; // generic account names probed on smaller regist
 const log = (...args) => console.error(`[${new Date().toISOString().slice(11, 19)}]`, ...args);
 
 // ---------------------------------------------------------------- networking
-const { request, pool, gh, ghRetry, sleep } = require('./registry-network.cjs');
+const { request, pool, gh, ghRetry, sleep, npmMetadataUrl } = require('./registry-network.cjs');
 
 // ------------------------------------------------------------------- helpers
 const repos = JSON.parse(fs.readFileSync(REPOS_FILE, 'utf8'));
@@ -272,7 +272,7 @@ async function collectNpm(manifest) {
   const unknown = names.filter((n) => !access.has(n.name));
   let manifestHits = 0;
   await pool(unknown, 8, async (n) => {
-    const res = await request(`https://registry.npmjs.org/${n.name.replace('/', '%2f')}/latest`);
+    const res = await request(npmMetadataUrl(n.name));
     if (
       res.ok &&
       res.data &&
@@ -289,7 +289,7 @@ async function collectNpm(manifest) {
   const all = [...access.keys()].sort();
   const meta = new Map();
   await pool(all, 8, async (name) => {
-    const res = await request(`https://registry.npmjs.org/${name.replace('/', '%2f')}/latest`);
+    const res = await request(npmMetadataUrl(name));
     meta.set(name, res.ok ? res.data : null);
   });
 

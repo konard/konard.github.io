@@ -134,3 +134,24 @@ branch. Deployment verification is exercised through local HTTP server fixtures
 that accept valid content and reject old commits, HTML assets and missing files.
 The uploaded Pages artifact uses the official tar-in-ZIP format. The final PR
 status is checked against the exact latest head after all evidence is committed.
+
+## Separate Advanced Security gate
+
+Run 40675994571 (head dfb1f91) has successful workflow jobs and clean raw logs,
+but its separate CodeQL check 122774900583 fails. Three changed-line annotations
+are not the whole scope: the complete PR-merge API reports ten alerts.
+SECURITY.md inventories all ten, distinguishes real defects from trusted-input
+and plain-text contexts, and maps fixes and bounded regressions. The final
+verification includes all check runs and zero open PR-merge alerts, not just
+gh run watch's workflow result.
+
+The ten findings now have code fixes and regression coverage. The original
+security reproductions fail nine cases; the corrected focused run passes 192.
+The full current run passes 833 tests in 55 suites (unit-security-final.log).
+The new SARIF gate also rejects the actual ten-finding report and accepts the
+real clean Python report; security-gate-real-*.log records the CLI outcomes.
+This closes the workflow false green without waiting for the independent check.
+Missing, malformed and incomplete reports fail as well. Shared upstream reports
+are JavaScript 266 and Python 122; the website implementation is independent.
+Fresh install, production build and all static checks are repeated for this
+security correction; the final exact-head hosted scan remains required.

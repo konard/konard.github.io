@@ -1,0 +1,11 @@
+CodeQL reported 10 unresolved finding(s):
+js/redos at experiments/archive-posts.cjs:167
+js/redos at src/links/edit.js:169
+js/incomplete-multi-character-sanitization at experiments/archive-posts.cjs:297
+js/incomplete-sanitization at experiments/collect-registries.cjs:275
+js/incomplete-sanitization at experiments/collect-registries.cjs:292
+js/incomplete-sanitization at src/pages/pages.test.jsx:115
+js/bad-code-sanitization at experiments/rain-scale.mjs:42
+js/bad-code-sanitization at vite.config.js:25
+js/incomplete-hostname-regexp at experiments/issue-19-browser.mjs:137
+js/incomplete-hostname-regexp at experiments/issue-21-browser.mjs:46

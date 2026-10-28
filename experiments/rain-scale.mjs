@@ -12,6 +12,7 @@
 //   node experiments/rain-scale.mjs [base-url] [late|normal] [screenshot.png]
 /* global document */
 import { chromium } from 'playwright';
+import { delayedStylesheets } from './delayed-stylesheets.mjs';
 
 const base = process.argv[2] || 'http://localhost:4173';
 const late = (process.argv[3] || 'late') === 'late';
@@ -36,11 +37,7 @@ const page = await browser.newPage({
 if (late)
   await page.route(/\/(index\.html)?$|\/[a-z]+\/$/, async (route) => {
     const response = await route.fetch();
-    const html = (await response.text()).replace(
-      /<link rel="stylesheet"[^>]*href="([^"]+)"[^>]*>/g,
-      (_, href) =>
-        `<script type="module">setTimeout(() => { const l = document.createElement('link'); l.rel = 'stylesheet'; l.href = ${JSON.stringify(href)}; document.head.append(l); }, 300)</script>`,
-    );
+    const html = delayedStylesheets(await response.text());
     await route.fulfill({ response, body: html });
   });
 let failed = false;

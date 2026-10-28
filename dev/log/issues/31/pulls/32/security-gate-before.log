@@ -1,0 +1,27 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793179854506
+
+ ❯ src/workflow.test.js (16 tests | 1 failed) 74ms
+   ❯ GitHub Actions best practices (9)
+     × security findings fail the workflow as well as the separate GitHub check 15ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/workflow.test.js > GitHub Actions best practices > security findings fail the workflow as well as the separate GitHub check
+AssertionError: expected -1 to be greater than 2
+ ❯ src/workflow.test.js:143:18
+    141|     const analyze = steps.findIndex((step) => step.uses === 'github/co…
+    142|     const gate = steps.findIndex((step) => step.run?.includes('scripts…
+    143|     expect(gate).toBeGreaterThan(analyze);
+       |                  ^
+    144|     expect(steps[analyze].with.output).toBe(steps[gate].env.SARIF_DIR);
+    145|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 15 passed (16)
+   Start at  11:24:53
+   Duration  1.99s (environment 68%, setup 14%, transform 10%, tests 4%, import 3%, worker 1%)
+

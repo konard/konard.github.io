@@ -10,7 +10,7 @@
 //   links notation          (1: 0 1) (2: 2 0)               (github.com/link-foundation/links-notation)
 //
 // Parsers return `{ links }` or `{ error }`, where `error` is an `{ en, ru }` text.
-import { encode } from './configurations';
+import { encode } from './configurations.js';
 
 const SUBSCRIPTS = '₀₁₂₃₄₅₆₇₈₉';
 const toSubscript = (k) =>
@@ -166,7 +166,12 @@ export function parseMath(text) {
     const pattern = /(?:(\d+)\s*(?:↦|->|→|=>|:)\s*)?\(\s*(\d+)\s*[,\s]\s*(\d+)\s*\)/g;
     const found = [...body.matchAll(pattern)];
     const rest = body.replace(pattern, '|');
-    if (!found.length || !/^\|(?:\s*,?\s*\|)*$/.test(rest))
+    if (
+      !found.length ||
+      !rest.startsWith('|') ||
+      !rest.endsWith('|') ||
+      rest.split('|').some((separator) => separator.trim() !== '' && separator.trim() !== ',')
+    )
       return fail('Write the links as {1 ↦ (0, 1), 2 ↦ (2, 0)}.', 'Запишите связи как {1 ↦ (0, 1), 2 ↦ (2, 0)}.');
     return byNames(found.map(([, name, s, t]) => [name, Number(s), Number(t)]));
   }

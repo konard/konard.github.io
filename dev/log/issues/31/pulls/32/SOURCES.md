@@ -49,3 +49,16 @@ Both reports include pinned source locations, the original failed run, the SDK's
 network-error path and the distinction between transport failures and permanent
 policy refusals. These are reports of the same defect, not required sub-issues;
 this PR fixes the website without waiting for upstream changes.
+
+## Security parser and encoding components
+
+- [parse5 fragment parser](https://parse5.js.org/functions/parse5.parseFragment.html) and [source locations](https://parse5.js.org/interfaces/parse5.ParserOptions.html): use HTML5 tokenization and tree construction for source extraction and text conversion. parse5 8.0.1 was already locked via jsdom; declare it directly instead of relying on transitive availability. It is a parser, so the archive still rebuilds only its explicit formatting allowlist and HTTP(S) href attributes. No page scripts execute.
+- [CodeQL inefficient-regex guidance](https://codeql.github.com/codeql-query-help/javascript/js-redos/): ambiguous repetition causes exponential backtracking. Replacing the math separator regex with a linear split/trim check preserves syntax; replacing HTML recognition with a parser handles quoting and malformed markup together. Native RE2 or disabling the query would add compatibility constraints or conceal the problem.
+- [CodeQL script-construction guidance](https://codeql.github.com/codeql-query-help/javascript/js-bad-code-sanitization/): JSON.stringify alone does not protect an HTML script boundary. The shared encoder replaces HTML-significant characters and Unicode line separators after JSON quoting; tests verify exact JSON round trips and actual HTML parsing. The settings rules are trusted repository data, while the delayed-CSS experiment reads a fetched href; the same robust encoding handles both contexts.
+- [ECMAScript RegExp.escape](https://tc39.es/ecma262/multipage/text-processing.html#sec-regexp.escape): use the runtime's literal-pattern encoder in dynamic page-label tests instead of maintaining a partial custom escape regex.
+- [DOMPurify](https://github.com/cure53/DOMPurify) and [sanitize-html](https://github.com/apostrophecms/sanitize-html) are existing sanitizer alternatives. The archive also needs original-source element boundaries and plain text with specific line-break/shortened-link behavior, so parse5 plus the existing narrow formatting policy avoids a second HTML parser or DOM implementation. The real archived corpus and malicious markup fixtures verify that policy.
+
+## CodeQL outcome contract
+
+- [Pinned analyze-action output and upload contract](https://github.com/github/codeql-action/blob/9b3254085494b55a0f7c4c2b3d2d52cc712ce370/analyze/action.yml): preserve analysis/upload, then inspect the resulting SARIF rather than assuming successful execution means no findings.
+- [JavaScript template report 266](https://github.com/link-foundation/js-ai-driven-development-pipeline-template/issues/266) and [Python template report 122](https://github.com/link-foundation/python-ai-driven-development-pipeline-template/issues/122): both terminal gates inspect job outcomes and inherit the same false-green possibility. The actual ten-finding website report and a clean Python report verify the proposed result gate. Duplicate searches, recent related merged PRs, pinned template coverage and complete issue bodies are archived here.

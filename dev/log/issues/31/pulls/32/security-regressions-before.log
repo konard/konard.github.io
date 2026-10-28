@@ -1,0 +1,176 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793179854506
+
+ ❯ src/security-regressions.test.js (20 tests | 9 failed) 4102ms
+   × math parsing bounds malicious backtracking inputs 2024ms
+   × html parsing bounds malicious backtracking inputs 2015ms
+   × npm metadata names form exactly one URL component: @scope/a/b?x=1#fragment 4ms
+   × npm metadata names form exactly one URL component: x%2Fy 4ms
+   × inline JSON preserves data without terminating the containing script 3ms
+   × the delayed stylesheet probe keeps a hostile href as data 9ms
+   × issue example extraction accepts the exact hostname and Markdown boundaries 4ms
+   × archive text uses HTML parsing, while retaining encoded literal markup as text 3ms
+   × archive element extraction respects quoted angle brackets and real elements 2ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 9 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/security-regressions.test.js > math parsing bounds malicious backtracking inputs
+ FAIL  src/security-regressions.test.js > html parsing bounds malicious backtracking inputs
+AssertionError: expected 'spawnSync /home/box/.nvm/versions/nod…' to be undefined
+
+- Expected:
+undefined
+
++ Received:
+"spawnSync /home/box/.nvm/versions/node/v26.12.1/bin/node ETIMEDOUT"
+
+ ❯ src/security-regressions.test.js:20:48
+     18|     { encoding: 'utf8', timeout: 2000, maxBuffer: 65536 },
+     19|   );
+     20|   expect(result.error?.message, result.stderr).toBeUndefined();
+       |                                                ^
+     21|   expect(result.status, result.stderr).toBe(0);
+     22|   expect(result.stdout).toContain('without hanging');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/9]⎯
+
+ FAIL  src/security-regressions.test.js > npm metadata names form exactly one URL component: @scope/a/b?x=1#fragment
+AssertionError: expected '?x=1' to be '' // Object.is equality
+
+- Expected
++ Received
+
++ ?x=1
+
+ ❯ src/security-regressions.test.js:42:24
+     40|     const url = new URL(npmMetadataUrl(name));
+     41|     expect(url.origin).toBe('https://registry.npmjs.org');
+     42|     expect(url.search).toBe('');
+       |                        ^
+     43|     expect(url.hash).toBe('');
+     44|     expect(url.pathname.split('/')).toHaveLength(3);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/9]⎯
+
+ FAIL  src/security-regressions.test.js > npm metadata names form exactly one URL component: x%2Fy
+AssertionError: expected 'x/y' to be 'x%2Fy' // Object.is equality
+
+Expected: "x%2Fy"
+Received: "x/y"
+
+ ❯ src/security-regressions.test.js:45:60
+     43|     expect(url.hash).toBe('');
+     44|     expect(url.pathname.split('/')).toHaveLength(3);
+     45|     expect(decodeURIComponent(url.pathname.split('/')[1])).toBe(name);
+       |                                                            ^
+     46|     expect(url.pathname.endsWith('/latest')).toBe(true);
+     47|   },
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/9]⎯
+
+ FAIL  src/security-regressions.test.js > inline JSON preserves data without terminating the containing script
+AssertionError: expected '{"text":"</script><script>globalThis.…' not to match /[<>&\u2028\u2029]/
+
+- Expected:
+/[<>&\u2028\u2029]/
+
++ Received:
+"{\"text\":\"</script><script>globalThis.injected=true</script>  \",\"path\":\"a\\\\b\\\"\\n&<>\"}"
+
+ ❯ src/security-regressions.test.js:53:23
+     51|   const value = { text: '</script><script>globalThis.injected=true</sc…
+     52|   const encoded = inlineJSON(value);
+     53|   expect(encoded).not.toMatch(/[<>&\u2028\u2029]/);
+       |                       ^
+     54|   expect(JSON.parse(encoded)).toEqual(value);
+     55|   const nodes = scripts(`<script>globalThis.settings=${encoded}</scrip…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/9]⎯
+
+ FAIL  src/security-regressions.test.js > the delayed stylesheet probe keeps a hostile href as data
+AssertionError: expected [ { nodeName: 'script', …(5) }, …(1) ] to have a length of 1 but got 2
+
+- Expected
++ Received
+
+- 1
++ 2
+
+ ❯ src/security-regressions.test.js:64:17
+     62|   const html = delayedStylesheets(`<link rel="stylesheet" href="${href…
+     63|   const nodes = scripts(html);
+     64|   expect(nodes).toHaveLength(1);
+       |                 ^
+     65|   const append = vi.fn();
+     66|   const document = { createElement: () => ({}), head: { append } };
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/9]⎯
+
+ FAIL  src/security-regressions.test.js > issue example extraction accepts the exact hostname and Markdown boundaries
+AssertionError: expected [ …(4) ] to deeply equal [ …(2) ]
+
+- Expected
++ Received
+
+  [
+    "https://konard.github.io/network/?code=0120",
+    "https://konard.github.io/network/?code=00&width=256",
++   "https://konardxgithubyio/network/?code=11",
++   "https://konard.githubxio/network/?code=11",
+  ]
+
+ ❯ src/security-regressions.test.js:81:39
+     79|       'https://konard.github.io.evil.test/network/?code=11',
+     80|   );
+     81|   expect(urls.map((url) => url.href)).toEqual([
+       |                                       ^
+     82|     'https://konard.github.io/network/?code=0120',
+     83|     'https://konard.github.io/network/?code=00&width=256',
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/9]⎯
+
+ FAIL  src/security-regressions.test.js > archive text uses HTML parsing, while retaining encoded literal markup as text
+AssertionError: expected '<script' to be '' // Object.is equality
+
+- Expected
++ Received
+
++ <script
+
+ ❯ src/security-regressions.test.js:98:33
+     96|   expect(htmlToText('<p>A<br>B</p><blockquote>C</blockquote><pre>D</pr…
+     97|   expect(htmlToText('<a href="https://example.test/full?x=1&amp;y=2">e…
+     98|   expect(htmlToText('<script')).toBe('');
+       |                                 ^
+     99|   expect(htmlToText('&lt;script&gt;literal&lt;/script&gt;')).toBe('<sc…
+    100| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/9]⎯
+
+ FAIL  src/security-regressions.test.js > archive element extraction respects quoted angle brackets and real elements
+AssertionError: expected [ …(2) ] to deeply equal [ Array(1) ]
+
+- Expected
++ Received
+
+  [
+    "<div title=\"a > b\" data-testid=\"post\"><p>Text</p></div>",
++   "<p>data-testid=\"post\"</p>",
+  ]
+
+ ❯ src/security-regressions.test.js:104:83
+    102| test('archive element extraction respects quoted angle brackets and re…
+    103|   const outer = '<div title="a > b" data-testid="post"><p>Text</p></di…
+    104|   expect(findElements(outer + '<p>data-testid="post"</p>', 'data-testi…
+       |                                                                                   ^
+    105|   expect(innerOf(outer)).toBe('<p>Text</p>');
+    106|   expect(attr('href="https://example.test/?a=1&amp;b=2"', 'href')).toB…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/9]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  9 failed | 11 passed (20)
+   Start at  11:16:25
+   Duration  6.15s (tests 70%, environment 18%, transform 8%, setup 4%)
+

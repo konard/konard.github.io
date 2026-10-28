@@ -22,3 +22,8 @@ raw platform logs for warnings as well as annotations, then mark
 PR 32 ready and confirm a clean tree. The PR description and GitHub check metadata
 record the final head/run and ready state after this snapshot is committed; no
 subsequent evidence-only commit is necessary to duplicate GitHub's status record.
+
+- [x] Resolve all ten alerts exposed by full CodeQL analysis, including existing code; add bounded reproductions and behavioral tests.
+- [ ] Verify the separate Advanced Security check and zero open PR-merge alerts, in addition to the workflow and raw logs.
+
+- [x] Reproduce the false-green security job, enforce actual SARIF results and test real failing/clean reports; report the shared contract gap in both templates.

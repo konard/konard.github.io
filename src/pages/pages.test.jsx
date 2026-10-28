@@ -111,9 +111,10 @@ describe('ExperiencePage', () => {
     expect(role.jobs.length).toBeGreaterThan(0);
     expect(count(screen.getByRole('list', { name: 'Career timeline' }))).toBe(role.jobs.length);
     const tab = screen.getByRole('navigation', { name: 'Positions' });
-    expect(
-      within(tab).getByRole('link', { name: new RegExp(`^${name.replace(/[/.]/g, '\\$&')} \\d+$`) }),
-    ).toHaveAttribute('aria-current', 'page');
+    expect(within(tab).getByRole('link', { name: new RegExp(`^${RegExp.escape(name)} \\d+$`) })).toHaveAttribute(
+      'aria-current',
+      'page',
+    );
     // The CV of the position: its page and its prebuilt PDF.
     expect(screen.getByRole('link', { name: 'Download CV' })).toHaveAttribute('href', `/cv/?role=${id}&lang=en`);
     expect(screen.getByRole('link', { name: 'PDF' })).toHaveAttribute(
@@ -203,7 +204,7 @@ describe('AssociativePage', () => {
     const { container } = render(<AssociativePage />);
     const index = within(screen.getByRole('navigation', { name: 'Layers of the stack' }));
     STACK.forEach((l) => {
-      const link = index.getByRole('link', { name: new RegExp(`^\\d+\\. ${tr(l.title, 'en')} `) });
+      const link = index.getByRole('link', { name: new RegExp(`^\\d+\\. ${RegExp.escape(tr(l.title, 'en'))} `) });
       expect(link).toHaveAttribute('href', `#layer-${l.id}`);
       expect(link).toHaveTextContent(String(l.repos.length));
       expect(container.querySelectorAll(`#layer-${l.id} > .repos > .repo`)).toHaveLength(l.repos.length);

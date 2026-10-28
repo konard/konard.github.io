@@ -95,4 +95,8 @@ async function ghRetry(args, tries = 3) {
   }
 }
 
-module.exports = { request, pool, gh, ghRetry, sleep };
+function npmMetadataUrl(name) {
+  return `https://registry.npmjs.org/${encodeURIComponent(name)}/latest`;
+}
+
+module.exports = { request, pool, gh, ghRetry, sleep, npmMetadataUrl };

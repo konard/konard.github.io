@@ -1,0 +1,39 @@
+
+> konard.github.io@0.1.0 test:ci
+> vitest run
+
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793179854506
+
+ ❯ src/security-regressions.test.js (21 tests | 1 failed) 333ms
+   × all archived posts preserve their text through repeated sanitization 9ms
+::debug::Creating Artifact archive with compressionLevel: 6
+::debug::Zip write high watermark value 8388608
+::debug::Zip read high watermark value 8388608
+::debug::Zip stream for upload has ended.
+::debug::Zip stream for upload has finished.
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/security-regressions.test.js > all archived posts preserve their text through repeated sanitization
+TypeError: The URL must be of scheme file
+ ❯ src/security-regressions.test.js:116:32
+    114|
+    115| test('all archived posts preserve their text through repeated sanitiza…
+    116|   const { posts } = JSON.parse(readFileSync(new URL('./data/posts.json…
+       |                                ^
+    117|   expect(posts.length).toBeGreaterThan(0);
+    118|   for (const post of posts) {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 53 passed (54)
+      Tests  1 failed | 819 passed (820)
+   Start at  11:19:51
+   Duration  195.37s (tests 53%, environment 33%, setup 7%, import 4%, transform 2%, worker 1%)
+
+Environment  jsdom was created 54 times · 61.28s total, 33% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+

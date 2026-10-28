@@ -135,6 +135,15 @@ describe('GitHub Actions best practices', () => {
     expect(config['paths-ignore']).not.toContain('scripts');
   });
 
+  test('security findings fail the workflow as well as the separate GitHub check', () => {
+    const doc = yaml.load(fs.readFileSync(path.join(workflowsDir, 'github-pages.yml'), 'utf8'));
+    const steps = doc.jobs.codeql.steps;
+    const analyze = steps.findIndex((step) => step.uses === 'github/codeql-action/analyze@v4');
+    const gate = steps.findIndex((step) => step.run?.includes('scripts/check-codeql-results.mjs'));
+    expect(gate).toBeGreaterThan(analyze);
+    expect(steps[analyze].with.output).toBe(steps[gate].env.SARIF_DIR);
+  });
+
   test('deploy publishes the tested build instead of rebuilding it', () => {
     const doc = yaml.load(fs.readFileSync(path.join(workflowsDir, 'github-pages.yml'), 'utf8'));
     expect(doc.jobs.deploy.needs).toContain('test');
