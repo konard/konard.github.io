@@ -1,0 +1,32 @@
+{
+  "collectedAt": "2026-10-28T17:36:51.807Z",
+  "repository": "konard/public-logs",
+  "sha": "2dbcd2fb9279bca1440ba7a7d1590d3b2ef53ef2",
+  "tree": "2dbcd2fb9279bca1440ba7a7d1590d3b2ef53ef2",
+  "truncated": false,
+  "files": 2300,
+  "totalBytes": 117743125559,
+  "extensions": {
+    "txt": 2095,
+    "part-00": 100,
+    "part-01": 100,
+    "part-02": 3,
+    "log": 1,
+    "complete": 1
+  },
+  "examples": [
+    {
+      "path": "log-tmp-hive-mind-log-upload-05OgEp-sanitized/tmp-hive-mind-log-upload-05OgEp-sanitized.log.txt",
+      "size": 31898446
+    },
+    {
+      "path": "log-tmp-hive-mind-log-upload-0BoslM-sanitized/tmp-hive-mind-log-upload-0BoslM-sanitized.log.txt",
+      "size": 50160181
+    },
+    {
+      "path": "log-tmp-hive-mind-log-upload-2Mq4hb-sanitized/tmp-hive-mind-log-upload-2Mq4hb-sanitized.log.txt",
+      "size": 58236850
+    }
+  ],
+  "decision": "Generated log archive, not a software project. Apply the existing generated-log noise policy; retain this repository in the complete associative audit. No source-code lines are omitted by excluding these log-text/chunk files."
+}
