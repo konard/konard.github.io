@@ -115,6 +115,16 @@ The initial combined shell invocation ended with status 143 after the first edit
 
 `docs-check.log` records the passing documentation check. A fresh fetch confirms that `main` at `bb88ed9437a1b26cb43b7fc1436fe885080c113d` is already an ancestor of the working branch.
 
+## Pull request review
+
+The complete implementation at `c7ea669c447ffb11fd76b0d5de1a696aada2634d` passed [run 40776059468](https://github.com/konard/konard.github.io/actions/runs/40776059468), created at 21:56:41 and completed at 22:10:14, after the implementation commit at 21:56:19. All 13 required jobs succeeded: preparation, Chromium, Firefox, native Intel macOS WebKit, unit/build/PDF verification, documentation, tooling, workflow linting, source checks, three CodeQL analyses and the pipeline gate. Deployment was correctly skipped for the pull request. The test log confirms 865 passing tests in 62 files and all 120 CV PDFs. Immutable run/job metadata is preserved in `data/ci-feature-verification.json`.
+
+PR 34 was marked ready for review after this run passed. The following evidence-only commit adds these CI/review records, completes the plan and removes the prepared placeholder. Its fresh CI outcome and exact final SHA are recorded in the PR validation section; the pull request remains unmerged.
+
+GitHub's combined `gh pr diff 34` endpoint rejects this data-rich pull request with HTTP 406 because it exceeds 20,000 diff lines. Review therefore used the complete local base-to-head diff and all paginated GitHub pull-request file records. Every one of the 176 paths and blob SHAs matches the pushed implementation commit `c7ea669c447ffb11fd76b0d5de1a696aada2634d`; the aggregate comparison is preserved in `data/pr-review-verification.json`. The 4,253-line source/configuration diff was read in bounded chunks, while the collected datasets are checked by production-data coverage, regeneration, privacy and independent checkpoint verification. The preserved historical failure logs were reviewed separately with the line references above.
+
+The review found no new functional regressions. Annual charts, multilingual social deduplication, the editor/gallery, existing keyboard interactions and all CV variants remain covered by their passing regressions. The generated `konard/public-logs` archive is deliberately reclassified under the source catalog's generated-log rule; its public metadata remains in the complete audit. The prepared-branch `.gitkeep` placeholder is removed. A fresh issue/sub-issue and all three PR-comment-type check found no new feedback or required sub-issues.
+
 ## Preserved limitations
 
 GitHub Packages' token lacks `read:packages`; current public package pages provide rounded download totals, which remain explicitly labeled as rounded rather than exact. Additional-registry discovery preserves two truncated trees and the inaccessible public-tree error as known coverage limits, not zero results. These pre-existing collector constraints do not block the requested repository source measurements.
