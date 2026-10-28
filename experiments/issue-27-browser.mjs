@@ -101,7 +101,7 @@ try {
   const preview = await page.locator('.network__preview').innerHTML();
   await page.getByRole('button', { name: 'Apply turns and gaps to links', exact: true }).click();
   for (const name of ['Gap at the source reference', 'Gap at the target reference']) {
-    assert.equal(await page.getByLabel(`Link 1: ${name}`, { exact: true }).inputValue(), '');
+    assert.equal(await page.getByLabel(`Link 1: ${name} (value)`, { exact: true }).inputValue(), '');
     assert(Number(await page.getByLabel(`Link 2: ${name}`, { exact: true }).inputValue()) > 0.08);
   }
   assert.equal(await page.locator('.network__preview').innerHTML(), preview);
@@ -112,7 +112,7 @@ try {
   );
 
   await go(manual);
-  const gap = page.getByLabel('Link 1: Gap at the target reference', { exact: true });
+  const gap = page.getByLabel('Link 1: Gap at the target reference (value)', { exact: true });
   await gap.fill('0.07');
   await gap.press('ArrowUp');
   assert.equal(await gap.inputValue(), '0.08');
@@ -157,7 +157,7 @@ try {
   await gap.fill('');
   await gap.press('ArrowUp');
   assert.equal(await gap.inputValue(), '0.09');
-  const turn = page.getByLabel('Link 2: turn of the source, °', { exact: true });
+  const turn = page.getByLabel('Link 2: turn of the source, ° (value)', { exact: true });
   await turn.fill('');
   await turn.pressSequentially('-25');
   assert.equal(await turn.inputValue(), '-25');

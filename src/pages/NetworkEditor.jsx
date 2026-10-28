@@ -257,7 +257,7 @@ export function LinksTable({
                     />
                   </label>
                 ))}
-                <label>
+                <label className="link-card__colour">
                   {t({ en: 'Colour', ru: 'Цвет' })}
                   <input
                     type="color"
@@ -266,28 +266,8 @@ export function LinksTable({
                     onChange={(event) => onColor(i, event.target.value)}
                   />
                 </label>
-                {[0, 1].map((e) => (
-                  <label key={e}>
-                    {t(
-                      e
-                        ? { en: 'Turn of the target, °', ru: 'Поворот конца, °' }
-                        : { en: 'Turn of the source, °', ru: 'Поворот начала, °' },
-                    )}
-                    <NumberInput
-                      className="mono"
-                      min={-180}
-                      max={180}
-                      step={5}
-                      value={turns[i][e]}
-                      aria-label={`${name}: ${t({ en: 'turn of the', ru: 'поворот' })} ${e ? end : start}, °`}
-                      onValue={(value) => {
-                        if (value !== null) onTurn(i, e, value);
-                      }}
-                    />
-                  </label>
-                ))}
               </div>
-              <NetworkGaps i={i} row={gaps[i]} style={style} onGap={onGap} />
+              <NetworkGaps i={i} row={gaps[i]} style={style} onGap={onGap} turns={turns[i]} onTurn={onTurn} />
             </li>
           );
         })}

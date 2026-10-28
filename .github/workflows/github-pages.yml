@@ -216,6 +216,13 @@ jobs:
           CAPTURE_DIR: browser-results/screenshots/issue27
           RESULT_DIR: browser-results/data/issue27
 
+      - name: Verify paired sliders, preserved manual layouts and symmetric automatic references
+        if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
+        run: npm run test:network:issue29
+        env:
+          CAPTURE_DIR: browser-results/screenshots/issue29
+          RESULT_DIR: browser-results/data/issue29
+
       - name: Preserve browser evidence
         if: always()
         uses: actions/upload-artifact@v7

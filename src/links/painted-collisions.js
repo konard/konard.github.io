@@ -84,3 +84,25 @@ export function paintedPairCost(a, b) {
   return cost;
 }
 export const selfCost = (line) => line.self || 0;
+
+/** Minimum space between painted boundaries, in the caller's units. */
+export function paintedDistance(a, b) {
+  let nearest = Infinity;
+  for (const p of segments(a))
+    for (const q of segments(b)) {
+      if (intersects(p.a, p.b, q.a, q.b)) return 0;
+      nearest = Math.min(
+        nearest,
+        pointDistance2(p.a, q.a, q.b),
+        pointDistance2(p.b, q.a, q.b),
+        pointDistance2(q.a, p.a, p.b),
+        pointDistance2(q.b, p.a, p.b),
+      );
+    }
+  for (const [first, second] of [
+    [a, b],
+    [b, a],
+  ])
+    for (const polygon of second.fills || []) if (first.some((point) => point && inside(point, polygon))) return 0;
+  return Math.max(0, Math.sqrt(nearest) - ((a.width || 0) + (b.width || 0)) / 2);
+}

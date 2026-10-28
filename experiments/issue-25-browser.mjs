@@ -118,7 +118,7 @@ try {
   await shot('editor', cards);
   await page.locator('#links').scrollIntoViewIfNeeded();
   await shot('desktop', page);
-  await page.getByLabel('Link 1: Gap at the source reference', { exact: true }).fill('0.21');
+  await page.getByLabel('Link 1: Gap at the source reference (value)', { exact: true }).fill('0.21');
   await page.getByLabel('Link 2: Cut after the middle', { exact: true }).fill('3');
   const changed = await page.getByLabel('Link to this picture', { exact: true }).inputValue();
   const drawing = await page.locator('.network__preview').innerHTML();

@@ -18,7 +18,7 @@ it('edits independent gaps, resets inheritance and preserves gaps when removing 
   window.history.replaceState(null, '', '/network/?code=1122');
   render(<NetworkPage />);
   const gap = (i, label) => screen.getByLabelText(`Link ${i}: ${label}`);
-  const first = gap(1, 'Gap at the source reference');
+  const first = gap(1, 'Gap at the source reference (value)');
   expect(first).toHaveValue(null);
   expect(first).toHaveAttribute('placeholder', '0.08');
   fireEvent.change(first, { target: { value: '0.25' } });

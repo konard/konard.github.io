@@ -274,8 +274,8 @@ export const STYLE_SECTIONS = [
     id: 'experimental',
     title: { en: 'Experimental: fewer overlaps', ru: 'Эксперимент: меньше наложений' },
     lead: {
-      en: 'Turns open references and optionally adjusts their individual gaps and middle cuts to reduce crossings. Self-closed halves keep their angles, gaps and cuts. Small cuts are preferred; manual values are the starting point. Apply the result to keep editing it.',
-      ru: 'Поворачивает открытые ссылки и при желании меняет их зазоры и разрывы середины для уменьшения наложений. Замкнутые половины сохраняют углы, зазоры и разрывы. Предпочитает небольшие разрывы и начинает с ручных значений. Примените результат, чтобы продолжить редактирование.',
+      en: 'Keeps manual drawings that already meet the requested spacing. Otherwise turns open references and optionally adjusts their gaps and middle cuts. References to a closed link prefer mirrored ends and uniform spaces. Self-closed halves keep their angles, gaps and cuts. Apply the result to keep editing it.',
+      ru: 'Сохраняет ручную настройку, если требуемые зазоры уже соблюдены. Иначе поворачивает открытые ссылки и при желании меняет их зазоры и разрывы середины. Ссылки на замкнутую связь предпочитает делать зеркальными, с равномерными промежутками. Замкнутые половины сохраняют углы, зазоры и разрывы. Примените результат, чтобы продолжить редактирование.',
     },
     fields: [
       toggle('solve', false, { en: 'Reduce overlaps automatically', ru: 'Уменьшать наложения автоматически' }),
@@ -297,8 +297,8 @@ export const STYLE_SECTIONS = [
       toggle('solveGaps', true, { en: 'Adjust individual gaps', ru: 'Менять отдельные зазоры' }),
       range('solveGapRange', 0.2, 0, 1, 0.05, { en: 'Largest reference gap change', ru: 'Изменение зазора ссылки' }),
       range('solveMiddleRange', 4, 0, 15, 0.5, { en: 'Largest middle cut change', ru: 'Изменение разрыва середины' }),
-      range('solveRange', 60, 0, 180, 5, { en: 'Largest turn', ru: 'Наибольший поворот' }, { unit: '°' }),
-      range('solveStep', 15, 5, 30, 5, { en: 'Turn step', ru: 'Шаг поворота' }, { unit: '°' }),
+      range('solveRange', 60, 0, 180, 1, { en: 'Largest turn', ru: 'Наибольший поворот' }, { unit: '°' }),
+      range('solveStep', 1, 1, 30, 1, { en: 'Turn step', ru: 'Шаг поворота' }, { unit: '°' }),
     ],
   },
 ];

@@ -5,7 +5,7 @@ async function verify(page) {
   await page.goto(
     'http://localhost:4187/network/?code=1111&lang=en&rotation=-90&turns=0+0%2C-15+15&gaps=0.08+0.08+%7E+%7E%2C0.18+0.18+%7E+%7E',
   );
-  const gap = page.getByLabel('Link 1: Gap at the target reference', { exact: true });
+  const gap = page.getByLabel('Link 1: Gap at the target reference (value)', { exact: true });
   await gap.fill('0.07');
   await gap.hover();
   const box = await gap.boundingBox();

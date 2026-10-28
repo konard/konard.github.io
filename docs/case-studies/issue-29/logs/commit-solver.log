@@ -1,0 +1,26 @@
+⋯ Backing up original state…
+✔ Done backing up original state (f906c7e)!
+⋯ Running tasks for staged files…
+    *.{js,jsx,cjs,mjs} — 8 files
+      ⋯ eslint --fix --max-warnings=0 --no-warn-ignored
+      ⋯ prettier --write
+    *.{css,md,html,json,yml,yaml} — 2 files
+      ⋯ prettier --write
+
+✔ prettier --write
+✔ eslint --fix --max-warnings=0 --no-warn-ignored
+✔ prettier --write
+
+✔ Done running tasks for staged files!
+⋯ Staging changes from tasks…
+✔ Done staging changes from tasks!
+⋯ Cleaning up temporary files…
+✔ Done cleaning up temporary files!
+[issue-29-2c98572a467a 95bb216] Preserve satisfied layouts and jointly space mirrored reference ends
+ 11 files changed, 541 insertions(+), 24 deletions(-)
+ create mode 100644 experiments/issue-29-baseline.mjs
+ create mode 100644 experiments/issue-29-before.sh
+ create mode 100644 experiments/issue-29-browser.mjs
+ create mode 100644 experiments/issue-29-measure.mjs
+ create mode 100644 src/links/collision-symmetry.js
+ create mode 100644 src/links/issue-29.test.js
