@@ -1,3 +1,4 @@
+import { execFileSync } from 'node:child_process';
 import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
@@ -23,6 +24,14 @@ export const THEME_SCRIPT = `(function(){try{var t=localStorage.getItem('theme')
 const inline = (fn) => String(fn).replace(/\s*\n\s*/g, ' ');
 export const SETTINGS_SCRIPT = `(function(){try{${inline(normalize)};${inline(applySettings)};var r=${JSON.stringify(CSS_RULES)};applySettings(document.documentElement,r,normalize(r,JSON.parse(localStorage.getItem('settings')||'{}')))}catch(e){}})();`;
 
+const buildIdentity = () => ({
+  name: 'build-identity',
+  generateBundle() {
+    const sha = process.env.GITHUB_SHA || execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
+    this.emitFile({ type: 'asset', fileName: 'build-info.json', source: JSON.stringify({ sha }) + '\n' });
+  },
+});
+
 const themeBeforePaint = () => ({
   name: 'theme-before-paint',
   transformIndexHtml: () => [{ tag: 'script', children: THEME_SCRIPT + SETTINGS_SCRIPT, injectTo: 'head-prepend' }],
@@ -31,7 +40,7 @@ const themeBeforePaint = () => ({
 // The site is served from the root of https://konard.github.io, and the
 // deploy job publishes build/ with actions/deploy-pages (see .github/workflows/github-pages.yml).
 export default defineConfig({
-  plugins: [react(), themeBeforePaint()],
+  plugins: [react(), themeBeforePaint(), buildIdentity()],
   build: {
     outDir: 'build',
     sourcemap: true,
@@ -46,5 +55,6 @@ export default defineConfig({
     setupFiles: './src/setupTests.js',
     include: ['src/**/*.test.{js,jsx}'],
     testTimeout: 10000,
+    maxWorkers: 1,
   },
 });

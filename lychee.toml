@@ -1,0 +1,10 @@
+# Only maintained documentation is passed by the workflow. Historical snapshots
+# contain intentional references to external trees and are excluded at input.
+max_retries = 3
+timeout = 30
+max_concurrency = 4
+exclude_loopback = true
+cache = true
+max_cache_age = "1d"
+# Avoid persistent false positives from bot/login-only social profile endpoints.
+exclude = ["^https://(www\\.)?(x\\.com|vk\\.com)/"]

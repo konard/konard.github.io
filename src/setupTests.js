@@ -8,6 +8,11 @@ import { setLang, setTheme } from './i18n/prefs';
 import { setSaved } from './settings/presets';
 import { resetSettings } from './settings/store';
 
+// jsdom has no canvas renderer. Exercise the unsupported-context fallback in
+// component tests; drawing tests supply their own contexts and browser CI checks
+// real pixels. Avoid jsdom emitting an error for every animation frame.
+HTMLCanvasElement.prototype.getContext = () => null;
+
 // Every test starts in English with the system theme, default settings and no saved looks, whatever an earlier test switched to.
 afterEach(() => {
   cleanup();

@@ -26,7 +26,9 @@ describe('GitHub Actions workflows', () => {
       .join('\n');
 
     test('the tested build is uploaded as the Pages artifact', () => {
-      const upload = testJob.steps.find((s) => (s.uses || '').startsWith('actions/upload-pages-artifact@'));
+      const upload = testJob.steps.find(
+        (s) => s.uses === './.github/actions/upload-artifact' && s.with?.pages === 'true',
+      );
       expect(upload).toBeDefined();
       expect(upload.with.path).toBe('build/');
       const build = testJob.steps.findIndex((s) => s.run === 'npm run build');
@@ -37,7 +39,9 @@ describe('GitHub Actions workflows', () => {
     // Issue #11: the "Download PDF" links point at PDFs printed after the build.
     test('the CV PDFs are printed into the build before it is uploaded', () => {
       const index = (run) => testJob.steps.findIndex((s) => s.run === run);
-      const upload = testJob.steps.findIndex((s) => (s.uses || '').startsWith('actions/upload-pages-artifact@'));
+      const upload = testJob.steps.findIndex(
+        (s) => s.uses === './.github/actions/upload-artifact' && s.with?.pages === 'true',
+      );
       expect(index('npx playwright install --with-deps chromium')).toBeGreaterThan(index('npm run build'));
       expect(index('npm run build:cv')).toBeGreaterThan(index('npx playwright install --with-deps chromium'));
       expect(upload).toBeGreaterThan(index('npm run build:cv'));
@@ -115,13 +119,27 @@ describe('GitHub Actions best practices', () => {
 
   test('main deploys are never cancelled by a newer push', () => {
     const doc = yaml.load(fs.readFileSync(path.join(workflowsDir, 'github-pages.yml'), 'utf8'));
-    expect(doc.concurrency['cancel-in-progress']).toBe("${{ github.event_name == 'pull_request' }}");
+    expect(doc.concurrency).toBeUndefined();
+    expect(doc.jobs.deploy.concurrency['cancel-in-progress']).toBe(false);
+    expect(doc.jobs.deploy.concurrency.group).toBe('main-writer-${{ github.repository }}-main');
   });
 
   test('deploy publishes the tested build instead of rebuilding it', () => {
     const doc = yaml.load(fs.readFileSync(path.join(workflowsDir, 'github-pages.yml'), 'utf8'));
-    expect(doc.jobs.deploy.needs).toBe('test');
+    expect(doc.jobs.deploy.needs).toContain('test');
     expect(doc.jobs.deploy.steps.some((s) => (s.run || '').includes('npm run build'))).toBe(false);
     expect(doc.jobs.deploy.steps.some((s) => (s.uses || '').startsWith('actions/deploy-pages@'))).toBe(true);
+  });
+
+  test.each(docs)('%s has a terminal gate covering every job and no success overrides', (_file, doc) => {
+    const { 'pipeline-status': gate, ...required } = doc.jobs;
+    expect([...gate.needs].sort()).toEqual(Object.keys(required).sort());
+    expect(gate.if).toContain('!cancelled()');
+    expect(doc.on.pull_request).not.toHaveProperty('paths-ignore');
+    expect(doc.on.schedule).toHaveLength(1);
+    Object.values(doc.jobs).forEach((job) => {
+      expect(job['continue-on-error']).toBeUndefined();
+      job.steps.forEach((step) => expect(step['continue-on-error']).toBeUndefined());
+    });
   });
 });

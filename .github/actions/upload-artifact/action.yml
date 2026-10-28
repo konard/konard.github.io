@@ -1,0 +1,15 @@
+name: Upload artifact with bounded retries
+description: Use GitHub's artifact SDK and retry transient transport failures only.
+inputs:
+  name:
+    description: Unique artifact name within this workflow run
+    required: true
+  path:
+    description: Directory containing evidence or the built site
+    required: true
+  pages:
+    description: Package the site as the GitHub Pages artifact.tar
+    default: 'false'
+runs:
+  using: node24
+  main: index.mjs

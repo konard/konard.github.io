@@ -5,7 +5,7 @@
 // strength they do not become CSS variables (`css: false`). They are off by
 // default and their code is loaded only when one of them is switched on, so
 // the default page stays as light as before.
-import { color, option, range, select, toggle } from './fields';
+import { color, option, range, select, toggle } from './fields.js';
 
 export const STAR_LAYERS = [1, 2, 3, 4];
 

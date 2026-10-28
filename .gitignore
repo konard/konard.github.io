@@ -27,3 +27,10 @@ yarn-error.log*
 
 # contact sheets and screenshots written by experiments/contact-sheet.mjs
 /experiments/out
+
+# Python/tool and generated CI evidence
+__pycache__/
+.ruff_cache/
+/browser-results/
+/lychee/
+/.lycheecache

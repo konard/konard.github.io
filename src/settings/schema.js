@@ -12,13 +12,13 @@
 // choices and switches become attributes of <html> (`skin.name` →
 // `data-skin-name="liquid"`), colours become CSS variables; see apply.js.
 
-import { option, select } from './fields';
-import { BACKGROUND_SECTIONS } from './schema.background';
-import { LAYER_SECTIONS } from './schema.layers';
-import { SKIN_SECTIONS } from './schema.skins';
-import { SOUND_SECTION } from './schema.sound';
+import { option, select } from './fields.js';
+import { BACKGROUND_SECTIONS } from './schema.background.js';
+import { LAYER_SECTIONS } from './schema.layers.js';
+import { SKIN_SECTIONS } from './schema.skins.js';
+import { SOUND_SECTION } from './schema.sound.js';
 
-export { PALETTES, SKINS } from './schema.skins';
+export { PALETTES, SKINS } from './schema.skins.js';
 
 /**
  * Sections of the settings page; `when(settings)` hides a section that does not

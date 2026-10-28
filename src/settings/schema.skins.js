@@ -1,7 +1,7 @@
 // Sections of the skins (issues #13 and #15): the choice of a skin and the
 // options of glass, liquid glass and the futuristic HUD; see schema.js.
-import { CORNERS } from '../skins.frames';
-import { option, range, select, toggle } from './fields';
+import { CORNERS } from '../skins.frames.js';
+import { option, range, select, toggle } from './fields.js';
 
 /** Futuristic palettes of konard/immortality: [id, English name, Russian name, neon colour]. */
 export const PALETTES = [

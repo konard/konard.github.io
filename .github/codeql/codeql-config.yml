@@ -1,0 +1,6 @@
+name: Website and CI source
+paths-ignore:
+  - dev/log
+  - docs/case-studies
+  - build
+  - node_modules

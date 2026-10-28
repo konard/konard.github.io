@@ -37,6 +37,7 @@
   },
   "homepage": "https://konard.github.io",
   "devDependencies": {
+    "@actions/artifact": "6.3.1",
     "@eslint/js": "^10.0.1",
     "@secretlint/secretlint-rule-preset-recommend": "^13.0.7",
     "@testing-library/dom": "^10.4.2",
@@ -59,7 +60,7 @@
   },
   "type": "module",
   "engines": {
-    "node": ">=22"
+    "node": ">=24"
   },
   "lint-staged": {
     "*.{js,jsx,cjs,mjs}": [
@@ -69,5 +70,10 @@
     "*.{css,md,html,json,yml,yaml}": [
       "prettier --write"
     ]
+  },
+  "overrides": {
+    "archiver-utils": {
+      "glob": "^14.0.3"
+    }
   }
 }

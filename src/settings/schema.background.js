@@ -1,6 +1,6 @@
 // Sections of the background (issues #13 and #15): motion, the universe, the
 // grid and the rain of link networks; see schema.js.
-import { color, option, range, select, toggle } from './fields';
+import { color, option, range, select, toggle } from './fields.js';
 
 export const BACKGROUND_SECTIONS = [
   {

@@ -28,11 +28,20 @@ All numbers come from data snapshots committed to the repository.
 
 ## Development
 
+Use Node.js 24 or newer. Install the Python and shell linters used by CI before
+committing changes to those files:
+
+```bash
+python -m pip install ruff==0.14.2 shellcheck-py==0.11.0.1
+```
+
 ```bash
 npm ci
 npm start          # dev server at http://localhost:3000
 npm run test:ci    # unit, data and workflow tests
 npm run check      # ESLint, Prettier, file size limits and secret scan
+python scripts/check-python.py && ruff check . && ruff format --check .
+git ls-files -z '*.sh' '.husky/*' ':(exclude)dev/log/**' ':(exclude)docs/**' | xargs -0 shellcheck
 npm run build      # production build in build/
 npm run test:network:browser # editor and real downloads; ENGINE=firefox|webkit also supported
 npm run test:network:issue19 # history, loops, layouts, clipboard and touch regressions
@@ -72,9 +81,17 @@ npm run build:data                       # writes src/data/github.json
 ## Deployment
 
 `.github/workflows/github-pages.yml` lints the workflows (actionlint), runs `npm run check` and `npm audit`, then the tests and the build, for pull requests and for pushes to `main`.
+It also checks Python and shell helpers, documentation links, workflow security
+with zizmor, and JavaScript, Python and Actions with CodeQL. A weekly run audits
+the committed lockfile. Documentation-only changes skip browser/PDF builds;
+`pipeline-status` rejects failures and unexpected skips in every required job.
 A browser matrix checks the network editor, clipboard, touch editing and actual image downloads in Chromium, Firefox and WebKit.
 The `test` job prints the CV PDFs with `npm run build:cv`, then uploads the tested build as the GitHub Pages artifact.
 On `main`, the `deploy` job publishes that artifact with `actions/deploy-pages`, then `scripts/check-deployed-site.sh` fails the run unless https://konard.github.io serves the app.
+The probe checks the built commit, JavaScript asset and PDF signature, with a
+finite retry budget for CDN propagation. Artifact uploads retry transient network
+failures up to three times and fail on authorization errors or missing evidence.
+Read jobs cancel superseded runs; deployments share a non-cancelling writer group.
 
 GitHub Pages must be set to **Settings → Pages → Build and deployment → Source: GitHub Actions**.
 Nothing is committed to `docs/`; it only holds the case studies.
