@@ -13,6 +13,7 @@ import { bezier, curveTransform, layout, layoutCurves, linkCurve, shapeOf, paint
 import { trimCurve } from './curve-tools';
 import { paintedPairCost, selfCost } from './painted-collisions';
 import { adjustCollisionGaps } from './collision-gaps';
+import { symmetricReferences } from './collision-symmetry';
 
 const SAMPLES = 16; // points per Bézier segment
 const NEAR = 0.09; // lines closer than this overlap (a stroke is about 0.04)
@@ -59,7 +60,7 @@ export function pairCost(a, b, middles) {
   return cost;
 }
 
-const turning = (turns) => turns.flat().reduce((sum, a) => sum + Math.abs(a), 0) * TURNING;
+export const turningCost = (turns) => turns.flat().reduce((sum, a) => sum + Math.abs(a), 0) * TURNING;
 
 /** The cost of a drawing of `links` with `shape` (lower is cleaner). */
 export function overlapCost(links, shape = {}) {
@@ -68,7 +69,7 @@ export function overlapCost(links, shape = {}) {
   const scale = curveTransform(curves, o).scale;
   const lines = curves.map((curve, i) => visiblePolyline(curve, o, i, scale));
   const middles = curves.map((c) => c.middle.at);
-  let cost = turning(shapeOf(shape).turns) + lines.reduce((sum, line) => sum + selfCost(line), 0);
+  let cost = turningCost(shapeOf(shape).turns) + lines.reduce((sum, line) => sum + selfCost(line), 0);
   for (let i = 0; i < lines.length; i++)
     for (let j = i + 1; j < lines.length; j++) cost += pairCost(lines[i], lines[j], middles);
   return cost;
@@ -80,14 +81,15 @@ export function overlapCost(links, shape = {}) {
  * degrees in steps of `step`. Returns the turns found (`delta`, to add to the
  * starting turns), the turns in total (`turns`) and the cost before and after.
  */
-function solveTurns(links, shape = {}, { range = 60, step = 15, passes = 3 } = {}) {
+function solveTurns(links, shape = {}, { range = 60, step = 1, passes = 3 } = {}, origins) {
   range = Math.min(180, Math.max(0, Number(range) || 0));
-  step = Math.max(1, Number(step) || 15);
+  step = Math.max(1, Number(step) || 1);
   passes = Math.min(10, Math.max(0, Number(passes) || 0));
   const n = links.length;
   const base = shapeOf(shape);
-  const start = Array.from({ length: n }, (_, i) => base.turns[i] || [0, 0]);
-  const delta = start.map(() => [0, 0]);
+  const initial = Array.from({ length: n }, (_, i) => base.turns[i] || [0, 0]);
+  const start = initial.map((pair, i) => origins?.[i] || pair);
+  const delta = initial.map((pair, i) => pair.map((angle, end) => angle - start[i][end]));
   const total = () => start.map((pair, i) => [pair[0] + delta[i][0], pair[1] + delta[i][1]]);
   const places = layout(n, base, links);
   const curveOf = (i) => linkCurve(links, i, places, { ...base, turns: total() });
@@ -97,7 +99,7 @@ function solveTurns(links, shape = {}, { range = 60, step = 15, passes = 3 } = {
   const costOf = (i, line) => {
     let cost = selfCost(line);
     for (let j = 0; j < n; j++) if (j !== i) cost += pairCost(line, lines[j], middles);
-    return cost + turning([total()[i]]);
+    return cost + turningCost([total()[i]]);
   };
   const before = overlapCost(links, base);
   const candidates = [0];
@@ -137,7 +139,13 @@ function solveTurns(links, shape = {}, { range = 60, step = 15, passes = 3 } = {
   // Middle cuts use image units: a turn can change fitting scale. Reject a
   // cached candidate if the exact complete drawing would become worse.
   if (result.after > before)
-    result = { delta: start.map(() => [0, 0]), turns: start, linkGaps: base.linkGaps, before, after: before };
+    result = {
+      delta: initial.map((pair, i) => pair.map((angle, end) => angle - start[i][end])),
+      turns: initial,
+      linkGaps: base.linkGaps,
+      before,
+      after: before,
+    };
 
   return result;
 }
@@ -149,17 +157,35 @@ function solveTurns(links, shape = {}, { range = 60, step = 15, passes = 3 } = {
 export function solveCollisions(links, shape = {}, options = {}) {
   const { adjustGaps = false, gapRange = 0.2, middleRange = 4, passes = 3, debug = false } = options;
   const base = shapeOf(shape);
-  let result;
-  if (adjustGaps) {
-    const turns = links.map((_, i) => base.turns[i] || [0, 0]);
-    const before = overlapCost(links, base);
-    const initial = { turns, delta: turns.map(() => [0, 0]), linkGaps: base.linkGaps, before, after: before };
-    const gaps = adjustCollisionGaps(links, base, initial, { gapRange, middleRange, passes });
-    result = solveTurns(links, { ...base, linkGaps: gaps.linkGaps }, options);
-    result.before = before;
-    result = adjustCollisionGaps(links, base, result, { gapRange, middleRange, passes });
-  } else result = solveTurns(links, base, options);
-  if (debug) console.debug('[network solver]', { links: links.length, options, clearance: base.clearance, ...result });
+  const turns = links.map((_, i) => [...(base.turns[i] || [0, 0])]);
+  const before = overlapCost(links, base);
+  let result = { turns, delta: turns.map(() => [0, 0]), linkGaps: base.linkGaps, before, after: before };
+  // Existing angles are intentional. A turn penalty is only a search tie-break,
+  // never a reason to move a drawing already satisfying painted clearance.
+  const satisfied = (value) => value.after - turningCost(value.turns) <= 1e-9;
+  if (!satisfied(result) && passes > 0) {
+    if (adjustGaps) {
+      result = symmetricReferences(links, base, result, options);
+      if (!satisfied(result)) {
+        result = adjustCollisionGaps(links, base, result, { gapRange, middleRange, passes });
+        if (!satisfied(result)) {
+          const found = solveTurns(links, { ...base, turns: result.turns, linkGaps: result.linkGaps }, options, turns);
+          result = { ...found, before };
+          if (!satisfied(result)) result = adjustCollisionGaps(links, base, result, { gapRange, middleRange, passes });
+        }
+      }
+    } else result = solveTurns(links, base, options);
+  }
+  result.delta = result.turns.map((pair, i) => pair.map((a, e) => a - turns[i][e]));
+  if (debug)
+    console.debug('[network solver]', {
+      links: links.length,
+      options,
+      clearance: base.clearance,
+      ...result,
+      collisionCost: result.after - turningCost(result.turns),
+      preservedSatisfied: satisfied({ after: before, turns }),
+    });
   return result;
 }
 
@@ -227,6 +253,10 @@ function paintedPolyline(raw, o, i, scale) {
     [...halves[0], null, ...halves[1], ...markerLines.flatMap((line) => [null, ...line])],
     markerLines.flatMap((line) => line.fills),
   );
+  all.ends = markerLines.slice(0, 2).map((marker, k) => {
+    const endpoint = (k ? curve.end.at : curve.start.at).map((v) => v / scale);
+    return decorate([endpoint, endpoint, null, ...marker], marker.fills);
+  });
   all.self =
     paintedPairCost(markerLines[0], markerLines[1]) +
     paintedPairCost(markerLines[0], halves[1]) +
