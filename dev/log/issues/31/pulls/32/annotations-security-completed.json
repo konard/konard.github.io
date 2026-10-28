@@ -1,0 +1,41 @@
+[
+  {
+    "check": "pipeline-status",
+    "path": ".github",
+    "blob_href": "https://github.com/konard/konard.github.io/blob/67ca6ef0cda668aea13cb1460b4bc7c56ec904e8/.github",
+    "start_line": 53,
+    "start_column": null,
+    "end_line": 53,
+    "end_column": null,
+    "annotation_level": "notice",
+    "title": "",
+    "message": "deploy skipped by its documented event/change condition.",
+    "raw_details": ""
+  },
+  {
+    "check": "docs",
+    "path": ".github",
+    "blob_href": "https://github.com/konard/konard.github.io/blob/67ca6ef0cda668aea13cb1460b4bc7c56ec904e8/.github",
+    "start_line": 149,
+    "start_column": null,
+    "end_line": 149,
+    "end_column": null,
+    "annotation_level": "notice",
+    "title": "",
+    "message": "Summary report available at: https://github.com/konard/konard.github.io/actions/runs/40681082933#summary-122792035757",
+    "raw_details": ""
+  },
+  {
+    "check": "network-browsers (webkit, macos-15)",
+    "path": ".github",
+    "blob_href": "https://github.com/konard/konard.github.io/blob/67ca6ef0cda668aea13cb1460b4bc7c56ec904e8/.github",
+    "start_line": 1,
+    "start_column": null,
+    "end_line": 1,
+    "end_column": null,
+    "annotation_level": "notice",
+    "title": "",
+    "message": "Due to capacity constraints, jobs targeting macOS arm64 runners may experience longer queue times.",
+    "raw_details": ""
+  }
+]

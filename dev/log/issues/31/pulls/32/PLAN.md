@@ -24,6 +24,9 @@ record the final head/run and ready state after this snapshot is committed; no
 subsequent evidence-only commit is necessary to duplicate GitHub's status record.
 
 - [x] Resolve all ten alerts exposed by full CodeQL analysis, including existing code; add bounded reproductions and behavioral tests.
-- [ ] Verify the separate Advanced Security check and zero open PR-merge alerts, in addition to the workflow and raw logs.
+- [x] Verify the separate Advanced Security check and zero open PR-merge alerts, in addition to the workflow and raw logs.
 
 - [x] Reproduce the false-green security job, enforce actual SARIF results and test real failing/clean reports; report the shared contract gap in both templates.
+
+- [x] Complete full hosted validation at 67ca6ef (run 40681082933), including 833 tests, all seven suites on all three engines, 120 PDFs, real uploads, independent CodeQL and zero open alerts; inspect complete raw logs and all annotations.
+- [x] Archive successful full-run logs, exact-head checks, every security result and the final per-file PR diff review. All requested implementation and verification criteria are satisfied; final-head CI/readiness is recorded in the PR after this evidence snapshot.

@@ -68,3 +68,10 @@ findings also fail the aggregate gate; clean job execution alone cannot pass.
 [JS #266](https://github.com/link-foundation/js-ai-driven-development-pipeline-template/issues/266)
 and [Python #122](https://github.com/link-foundation/python-ai-driven-development-pipeline-template/issues/122)
 report that shared template limitation. All 833 local tests pass in 55 suites.
+
+The complete implementation passed hosted run 40681082933 at 67ca6ef: all 833
+tests, all seven browser suites on three engines, all 120 PDFs and every real
+artifact upload. Independent CodeQL succeeds, all three reports have zero
+findings and the complete open PR-merge alert list is empty. Full raw logs and
+check metadata are archived in this folder; VERIFICATION.md provides line
+references and distinguishes informational notices from warnings/errors.

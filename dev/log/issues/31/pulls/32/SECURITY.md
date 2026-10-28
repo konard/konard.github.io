@@ -66,3 +66,16 @@ A fresh npm ci has no warnings or vulnerabilities. No data/media changed.
 The same aggregate-gate limitation was verified in both pinned templates and
 reported as JavaScript issue 266 and Python issue 122. Their current scans are
 not claimed to contain findings; the shared defect is the outcome contract.
+
+## Hosted security verification
+
+At head 67ca6ef0cda668aea13cb1460b4bc7c56ec904e8, run 40681082933
+passes all three full language analyses and their new report gates. The separate
+Advanced Security CodeQL check 122792092688 succeeds with zero annotations.
+The complete paginated open-alert API for refs/pull/32/merge returns zero alerts
+(security-alerts-after.json). Analysis IDs 2044460113 (JavaScript), 2044456719
+(Python) and 2044456506 (Actions) each report zero results and no extraction error;
+all use the current PR merge SHA ecc981c9125fcdd755e8ca1386265874a36bee3a.
+Each raw language job log is preserved in ci-logs/security-fixed-*-40681082933.log.
+JavaScript's gate reports no findings at line 2947, Python at 1889 and Actions at
+1721. These prove the ten fixes without query exclusions or alert dismissals.
