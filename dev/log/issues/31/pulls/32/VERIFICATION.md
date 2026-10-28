@@ -30,6 +30,13 @@
   tests both paths and `staged-hook-final.log` verifies the real staged snapshot.
   Archived sources retain their original contents and are never used as hook
   policy; all 118 archived files still match the 603-path inventory hashes.
+- `install-script-regression-before.log` fails for the unreviewed, optional
+  macOS dependency fsevents@2.3.3. `install-script-probe-before.log` reproduces
+  the actual npm advisory with a one-package macOS-targeted install on Linux.
+  `install-script-probe-after.log` preserves both the warning baseline and its
+  absence with the exact-version repository approval; all six regression cases
+  pass in `install-script-regression-after.log`. The probe is offline and never
+  loads the native binary. Future dependency versions require another review.
 
 ## Local validation
 
@@ -49,6 +56,11 @@ regression. `source-archive-final.log`: all 24 tests in the three affected suite
 also passed in isolation. `build-source-archive.log` is the production build after
 that correction. `check-source-archive-final.log` records the final lint, format,
 file-limit and secret checks, including the offline SDK reproduction.
+
+After the script-review fix, `unit-script-review-final.log` records all 53 suites
+and 798 tests passing. `check-script-review-final.log` preserves passing source
+checks. `npm-ci-script-review-final.log` and `audit-script-review-final.log` record
+the clean fresh install and zero advisories after adding the pinned approval.
 
 The editor, issue 19 and issue 21 Chromium browser logs pass. `pdf-final.log`
 records all 120 PDFs printed and validated. The local gallery probe is bounded at
@@ -75,6 +87,22 @@ In that log, lines 8125/9050/9762 verify all three evidence artifacts; lines
 10471–10472 record 53 suites/795 tests, line 10786 all 120 CV PDFs and line 10806
 the Pages artifact's successful finalization. Statuses and the exact tested SHA
 are preserved in `ci-first-completed.json`.
+
+Raw log review of run 40672107686 (head a9fd72dc064199ba5a9a5bb53200ea6cb7ae8ba7)
+found a warning despite all checks succeeding and no warning annotations.
+`ci-logs/pre-script-review-40672107686.log:9346` records npm 11.19.0 reporting
+fsevents@2.3.3 as unreviewed on macOS. The first implementation run also contains
+the warning at lines 9310–9313. Neither run is claimed as warning-free.
+The registry advertises an install command (`node-gyp rebuild`), while the
+integrity-pinned published tar contains a prebuilt binary, no binding.gyp and
+no install lifecycle command. npm retains the lockfile's hasInstallScript flag
+and emits a sentinel advisory. The reviewed exact-version approval preserves
+existing installation behavior without approving other packages or versions.
+Published/registry manifests and the tar inventory are archived as
+`fsevents-2.3.3-*`; deleting valid registry-derived lock metadata, blanket script
+approval and hiding npm warnings were rejected. The templates do not use this
+dependency; their artifact defect reports remain applicable independently.
+Final verification must inspect raw logs as well as check annotations.
 
 A PR deliberately skips deployment. No live site was overwritten from this
 branch. Deployment verification is exercised through local HTTP server fixtures

@@ -5,6 +5,22 @@ import path from 'node:path';
 
 const root = path.resolve(import.meta.dirname, '..');
 
+test('install-script reviews cover locked dependencies on every supported platform', () => {
+  const manifest = JSON.parse(readFileSync(path.join(root, 'package.json'), 'utf8'));
+  const lock = JSON.parse(readFileSync(path.join(root, 'package-lock.json'), 'utf8'));
+  const reviews = manifest.allowScripts ?? {};
+  const unreviewed = Object.entries(lock.packages)
+    .filter(([location, pkg]) => location && pkg.hasInstallScript)
+    .map(([location, pkg]) => `${location.split('node_modules/').at(-1)}@${pkg.version}`)
+    .filter((key) => typeof reviews[key] !== 'boolean');
+  // Include optional macOS packages even when tests run on Linux. An upgrade
+  // needs another review rather than silently inheriting script permission.
+  expect(unreviewed).toEqual([]);
+  for (const [key, allowed] of Object.entries(reviews)) {
+    if (allowed) expect(key).toMatch(/@\d+\.\d+\.\d+$/);
+  }
+});
+
 test('the complete Vite configuration dependency graph loads with native ESM', () => {
   expect(() =>
     execFileSync(process.execPath, ['--input-type=module', '-e', 'await import("./vite.config.js")'], {

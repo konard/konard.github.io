@@ -62,6 +62,9 @@
   "engines": {
     "node": ">=24"
   },
+  "allowScripts": {
+    "fsevents@2.3.3": true
+  },
   "lint-staged": {
     "*.{js,jsx,cjs,mjs}": [
       "eslint --config eslint.config.js --fix --max-warnings=0 --no-warn-ignored",

@@ -50,6 +50,11 @@ npm run test:network:issue29 # paired sliders, preserved manual layouts and mirr
 npm run build:cv   # prints every CV of build/ to build/cv/pdf/ (needs `npx playwright install chromium`)
 ```
 
+When updating dependencies, review install scripts on every locked platform,
+including optional macOS packages. `package.json` records reviews in
+`allowScripts`, pinned to the reviewed versions; the regression suite requires a
+fresh review when a dependency with install scripts changes version.
+
 `npm run build:cv` fails if:
 
 - a CV for a position takes more than 2 pages;

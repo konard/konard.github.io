@@ -31,7 +31,7 @@
   have no target in this private static website.
 - The latest fetched default branch is 508cfed490c3946fffca440f8f2d31a8733b8d35
   and is already an ancestor of this branch. No merge or history rewrite is needed.
-- Local final validation: 53 suites / 797 tests, source checks, native build,
+- Local final validation: 53 suites / 798 tests, source checks, native build,
   Python/Ruff/ShellCheck, workflow/security audits, zero lockfile advisories,
   six Chromium browser suites and all 120 PDFs. The local gallery probe was
   stopped by its memory guard; the full case passed on all hosted engines.
@@ -42,3 +42,11 @@
 
 Shared reports: JavaScript template issue 264 and Python template issue 120.
 They are upstream reports, not outstanding website acceptance criteria.
+
+Final raw-log inspection caught the macOS-only npm fsevents review warning that
+was absent from check annotations. Both metadata sources were reviewed, the
+actual npm warning was reproduced before changes, and only fsevents@2.3.3 is
+approved. The regression covers optional packages on all locked platforms and
+requires a new review after any version change. VERIFICATION.md records the
+warning locations, before/after probe and requirement mapping. Final-head CI
+must show clean npm output on macOS in addition to passing statuses.
