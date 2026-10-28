@@ -27,7 +27,16 @@ export const SETTINGS_SCRIPT = `(function(){try{${inline(normalize)};${inline(ap
 const buildIdentity = () => ({
   name: 'build-identity',
   generateBundle() {
-    const sha = process.env.GITHUB_SHA || execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
+    let sha = process.env.GITHUB_SHA;
+    if (!sha) {
+      try {
+        sha = execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8', stdio: 'pipe' }).trim();
+      } catch {
+        // Source archives remain buildable without Git. Hosted deploys always
+        // supply GITHUB_SHA and the deployment probe requires that exact SHA.
+        sha = 'unversioned';
+      }
+    }
     this.emitFile({ type: 'asset', fileName: 'build-info.json', source: JSON.stringify({ sha }) + '\n' });
   },
 });

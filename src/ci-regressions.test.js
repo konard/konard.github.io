@@ -14,6 +14,35 @@ test('the complete Vite configuration dependency graph loads with native ESM', (
   ).not.toThrow();
 });
 
+test('build identity also works from a source archive without Git metadata', () => {
+  const dir = mkdtempSync(path.join(tmpdir(), 'issue31-no-git-'));
+  try {
+    writeFileSync(path.join(dir, 'git'), '#!/bin/sh\nexit 128\n', { mode: 0o755 });
+    const output = execFileSync(
+      process.execPath,
+      [
+        '--input-type=module',
+        '-e',
+        `
+      const config = (await import('./vite.config.js')).default;
+      config.plugins.find(p => p.name === 'build-identity').generateBundle.call({
+        emitFile: asset => console.log(asset.source)
+      });
+    `,
+      ],
+      {
+        cwd: root,
+        env: { ...process.env, PATH: `${dir}:${process.env.PATH}`, GITHUB_SHA: '' },
+        stdio: 'pipe',
+        encoding: 'utf8',
+      },
+    );
+    expect(JSON.parse(output).sha).toBe('unversioned');
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
 test('deployment verification rejects old assets and HTML pretending to be a PDF', () => {
   const dir = mkdtempSync(path.join(tmpdir(), 'issue31-deploy-'));
   try {
