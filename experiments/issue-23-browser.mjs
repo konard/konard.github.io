@@ -29,6 +29,7 @@ const pass = (name) => {
 };
 const shot = (page, name, element = page) => element.screenshot({ path: join(output, `${engine}-after-${name}.png`) });
 let browser;
+let diagnosticPage;
 try {
   browser = await { chromium, firefox, webkit }[engine].launch({ headless: !display });
   results.version = browser.version();
@@ -39,8 +40,14 @@ try {
     localStorage.setItem('settings', JSON.stringify({ 'motion.mode': 'off' }));
   });
   const page = await context.newPage();
+  diagnosticPage = page;
   page.setDefaultTimeout(15000);
   page.on('pageerror', (error) => results.errors.push(error.message));
+  page.on('requestfailed', (request) => {
+    (results.requestFailures ||= []).push({ url: request.url(), failure: request.failure() });
+  });
+  if (process.env.TRACE_BROWSER === '1')
+    page.on('console', (message) => console.log(`${engine} browser ${message.type()}: ${message.text()}`));
   await page.goto('http://localhost:4179/network/?code=00000000');
   assert.equal(await page.locator('#style-bulge').inputValue(), '0');
   await shot(page, 'free', page.locator('.network__preview'));
@@ -223,6 +230,7 @@ try {
   await context.close();
   const mobile = await browser.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: 'reduce' });
   const phone = await mobile.newPage();
+  diagnosticPage = phone;
   phone.setDefaultTimeout(15000);
   phone.on('pageerror', (error) => results.errors.push(error.message));
   await phone.goto('http://localhost:4179/network/?code=221331&gaps=0.25+~+~+~,~+~+~+4&lang=ru');
@@ -231,6 +239,31 @@ try {
   pass('individual gap controls fit the Russian mobile editor');
   assert.deepEqual(results.errors, []);
   await mobile.close();
+} catch (error) {
+  results.failure = { message: error.message, url: diagnosticPage?.url() };
+  if (diagnosticPage && !diagnosticPage.isClosed()) {
+    let timer;
+    try {
+      results.failure.document = await Promise.race([
+        diagnosticPage.evaluate(() => ({
+          readyState: document.readyState,
+          visibility: document.visibilityState,
+          text: document.body.innerText.slice(0, 5000),
+          scripts: [...document.scripts].map((script) => script.src),
+          controls: [...document.querySelectorAll('[id^="style-"]')].map((control) => control.id),
+        })),
+        new Promise((_, reject) => {
+          timer = setTimeout(() => reject(new Error('Diagnostic document capture did not respond')), 5000);
+        }),
+      ]);
+      await diagnosticPage.screenshot({ path: join(output, `${engine}-failure.png`), timeout: 5000 });
+    } catch (captureError) {
+      results.failure.captureError = captureError.message;
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+  throw error;
 } finally {
   await writeFile(join(data, `${engine}-after.json`), JSON.stringify(results, null, 2) + '\n');
   await browser?.close();
