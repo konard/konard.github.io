@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
-import yaml from 'js-yaml';
+import * as yaml from 'js-yaml';
 
 export function pipelineFailures(needs, allowedSkips, expectedJobs) {
   if (!needs || typeof needs !== 'object' || Array.isArray(needs)) throw new Error('Missing job results');
