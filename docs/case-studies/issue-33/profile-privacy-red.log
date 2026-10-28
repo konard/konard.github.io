@@ -1,0 +1,41 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793202346423
+
+ ❯ src/data/profile-privacy.test.js (1 test | 1 failed) 28ms
+   × preserves public profile fields without authenticated account settings 19ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/data/profile-privacy.test.js > preserves public profile fields without authenticated account settings
+AssertionError: expected [ 'collaborators', 'disk_usage', …(5) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "collaborators",
++   "disk_usage",
++   "owned_private_repos",
++   "plan",
++   "private_gists",
++   "total_private_repos",
++   "two_factor_authentication",
++ ]
+
+ ❯ src/data/profile-privacy.test.js:16:74
+     14|     'two_factor_authentication',
+     15|   ];
+     16|   expect(privateFields.filter((field) => Object.hasOwn(profile, field)…
+       |                                                                          ^
+     17|   expect(profile.login).toBe('konard');
+     18| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  17:42:44
+   Duration  1.88s (environment 68%, setup 18%, transform 11%, tests 2%, worker 1%, import 1%)
+
