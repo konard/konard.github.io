@@ -357,7 +357,7 @@ def count_files(repo, cloc):
     return files
 
 
-def collect(name, cloc, database, identities, whole_repository=True, author_head=None, previous=None):
+def collect(name, cloc, database, identities, whole_repository=True, author_head=None, previous=None, trace=False):
     if not whole_repository and author_head and author_head['hasPersonalCommits'] is False:
         # This public SHA's history was queried using GitHub's verified user ID.
         # No matching commit means blame cannot grant personal credit. Do not
@@ -452,13 +452,19 @@ def collect(name, cloc, database, identities, whole_repository=True, author_head
                 for filename, stat in files.items()
                 if stat['language'] not in NON_CODE and filename.removeprefix('./') in candidates
             ]
+            if trace:
+                print(f'{name}: prefetching history for {len(source_paths)} source files', flush=True)
             prefetch_authored_history(repo, source_paths, historical_candidates)
+            processed = 0
             for filename, stat in files.items():
                 if stat['language'] in NON_CODE or filename.removeprefix('./') not in candidates:
                     continue
                 count = blame_file(repo, filename.removeprefix('./'), stat['language'], identities, database, name)
                 if count:
                     authored[stat['language']] = authored.get(stat['language'], 0) + count
+                processed += 1
+                if trace and (processed % 100 == 0 or processed == len(source_paths)):
+                    print(f'{name}: attributed {processed}/{len(source_paths)} source files', flush=True)
         return {
             'sha': sha,
             'sourceLinesScope': 'whole-repository' if whole_repository else 'authorship-candidates',
@@ -476,7 +482,9 @@ def main():
         action='store_true',
         help='Rebuild all measurements and deduplication state from current public heads',
     )
-    parser.add_argument('--verbose', action='store_true', help='Include bounded subprocess diagnostics on errors')
+    parser.add_argument(
+        '--verbose', action='store_true', help='Trace source-file progress and bounded error diagnostics'
+    )
     parser.add_argument('--only', help='Comma-separated public repositories for a focused verification')
     args = parser.parse_args()
     # Finite memory/stack limits for clone, Perl counting and blame subprocesses.
@@ -568,6 +576,7 @@ def main():
                 whole_repository=name in owned,
                 author_head=heads.get(name),
                 previous=by_sha.get(heads.get(name, {}).get('sha')),
+                trace=args.verbose,
             )
             database.execute('INSERT OR REPLACE INTO measurements VALUES (?, ?)', (name, json.dumps(measurement)))
             database.commit()
