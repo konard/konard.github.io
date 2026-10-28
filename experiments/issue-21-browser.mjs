@@ -5,6 +5,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { chromium, firefox, webkit } from 'playwright';
 import { preview } from 'vite';
+import { networkExampleUrls } from './network-example-urls.mjs';
 
 const engine = process.env.ENGINE || 'chromium';
 const before = process.env.BEFORE === '1';
@@ -43,7 +44,7 @@ try {
   page.on('pageerror', (error) => results.errors.push(error.message));
 
   const issue = JSON.parse(await readFile('docs/case-studies/issue-21/data/issue-21.json', 'utf8'));
-  const urls = [...issue.body.matchAll(/https:\/\/konard.github.io\/network\/\?[^\s]+/g)].map((m) => new URL(m[0]));
+  const urls = networkExampleUrls(issue.body);
   for (const [i, url] of urls.entries()) {
     await page.goto(base + url.pathname + url.search);
     await page.locator('.network__preview svg').waitFor();

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Archives konard's public posts from X, Telegram channels and VK walls into a
 // normalized JSON file, so the blog can render them even if the originals (and
-// their embeds) disappear. No dependencies; requires Node 22+ (global fetch).
+// their embeds) disappear. Run npm ci first; requires Node 24+ (global fetch).
 //
 // Usage:
 //   node experiments/archive-posts.cjs [options]
@@ -145,167 +145,7 @@ async function archiveMedia(post, prev) {
 }
 
 // ---------- HTML helpers ----------
-const VOID = new Set([
-  'area',
-  'base',
-  'br',
-  'col',
-  'embed',
-  'hr',
-  'img',
-  'input',
-  'link',
-  'meta',
-  'source',
-  'track',
-  'wbr',
-]);
-const ALLOWED = new Set(['a', 'b', 'strong', 'i', 'em', 'u', 's', 'code', 'pre', 'br', 'p', 'blockquote']);
-const ALIAS = { del: 's', strike: 's', ins: 'u', 'tg-spoiler': null };
-const DROP_CONTENT = new Set(['script', 'style', 'svg', 'template', 'noscript', 'button']);
-const TAG_RE =
-  /<!--[\s\S]*?-->|<(\/?)([a-zA-Z][\w:-]*)((?:\s+[^\s=>/]+(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+))?)*)\s*(\/?)>/g;
-
-function attr(attrs, name) {
-  const m = (attrs || '').match(new RegExp(`(?:^|\\s)${name}\\s*=\\s*(?:"([^"]*)"|'([^']*)'|([^\\s>]+))`, 'i'));
-  return m ? decodeEntities(m[1] ?? m[2] ?? m[3]) : null;
-}
-
-const NAMED = {
-  amp: '&',
-  lt: '<',
-  gt: '>',
-  quot: '"',
-  apos: "'",
-  nbsp: ' ',
-  laquo: '«',
-  raquo: '»',
-  mdash: '—',
-  ndash: '–',
-  hellip: '…',
-};
-function decodeEntities(s) {
-  return String(s).replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, (m, e) => {
-    if (e[0] === '#') {
-      const cp = e[1] === 'x' || e[1] === 'X' ? parseInt(e.slice(2), 16) : parseInt(e.slice(1), 10);
-      try {
-        return String.fromCodePoint(cp);
-      } catch {
-        return m;
-      }
-    }
-    return NAMED[e.toLowerCase()] ?? m;
-  });
-}
-const escapeHtml = (s) =>
-  String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-
-// Returns the outer HTML of the element whose start tag begins at `start`.
-function outerElement(html, start) {
-  TAG_RE.lastIndex = start;
-  let depth = 0;
-  let m;
-  while ((m = TAG_RE.exec(html))) {
-    if (m[0].startsWith('<!--')) continue;
-    const name = m[2].toLowerCase();
-    if (VOID.has(name) || m[4]) {
-      if (depth === 0) return html.slice(start, TAG_RE.lastIndex);
-      continue;
-    }
-    depth += m[1] ? -1 : 1;
-    if (depth === 0) return html.slice(start, TAG_RE.lastIndex);
-  }
-  return html.slice(start);
-}
-function innerOf(outer) {
-  const a = outer.indexOf('>') + 1;
-  const b = outer.lastIndexOf('</');
-  return b > a ? outer.slice(a, b) : '';
-}
-function findElements(html, needle) {
-  const out = [];
-  let i = 0;
-  while ((i = html.indexOf(needle, i)) !== -1) {
-    const s = html.lastIndexOf('<', i);
-    out.push(outerElement(html, s));
-    i += needle.length;
-  }
-  return out;
-}
-
-// Keeps only formatting tags; links keep a safe absolute href only. Output is balanced.
-function sanitize(html, { resolveHref = (h) => h } = {}) {
-  let out = '';
-  const stack = []; // [name, keptName|null]
-  let dropDepth = 0;
-  let last = 0;
-  TAG_RE.lastIndex = 0;
-  let m;
-  const text = (t) => {
-    if (!dropDepth) out += t.replace(/[<>]/g, (c) => (c === '<' ? '&lt;' : '&gt;'));
-  };
-  while ((m = TAG_RE.exec(html))) {
-    text(html.slice(last, m.index));
-    last = TAG_RE.lastIndex;
-    if (m[0].startsWith('<!--')) continue;
-    const [, close, rawName, attrs, selfClose] = m;
-    const name = rawName.toLowerCase();
-    if (close) {
-      const idx = stack.map((x) => x[0]).lastIndexOf(name);
-      if (idx === -1) continue;
-      while (stack.length > idx) {
-        const [n, kept] = stack.pop();
-        if (DROP_CONTENT.has(n)) dropDepth--;
-        else if (kept && !dropDepth) out += `</${kept}>`;
-      }
-      continue;
-    }
-    if (VOID.has(name) || selfClose) {
-      if (name === 'br' && !dropDepth) out += '<br>';
-      continue;
-    }
-    if (DROP_CONTENT.has(name)) {
-      stack.push([name, null]);
-      dropDepth++;
-      continue;
-    }
-    let kept = name in ALIAS ? ALIAS[name] : ALLOWED.has(name) ? name : null;
-    if (kept === 'i' && /\bemoji\b/.test(attr(attrs, 'class') || '')) kept = null;
-    if (kept === 'b' && stack.some((x) => x[0] === 'i' && x[1] === null)) kept = null; // emoji <i><b>
-    let open = kept ? `<${kept}>` : '';
-    if (kept === 'a') {
-      const href = resolveHref(attr(attrs, 'href') || '');
-      if (/^https?:\/\//i.test(href)) open = `<a href="${escapeHtml(href)}">`;
-      else ((kept = null), (open = ''));
-    }
-    stack.push([name, kept]);
-    if (!dropDepth) out += open;
-  }
-  text(html.slice(last));
-  while (stack.length) {
-    const [n, kept] = stack.pop();
-    if (!DROP_CONTENT.has(n) && kept) out += `</${kept}>`;
-  }
-  return out
-    .replace(/[ \t]*<br>[ \t]*/g, '<br>')
-    .replace(/(\s*<br>\s*){3,}/g, '<br><br>')
-    .replace(/^(\s|<br>)+|(\s|<br>)+$/g, '');
-}
-
-function htmlToText(html) {
-  return decodeEntities(
-    html
-      // Links shortened for display ("github.com/link-found...") become their full URL in plain text.
-      .replace(/<a href="([^"]+)">[^<]*?(?:\.\.\.|…)<\/a>/g, (m, href) => href)
-      .replace(/<br>/g, '\n')
-      .replace(/<\/(p|blockquote|pre)>/g, '\n')
-      .replace(/<[^>]+>/g, ''),
-  )
-    .replace(/\u00a0/g, ' ')
-    .replace(/[ \t]+\n/g, '\n')
-    .replace(/\n{3,}/g, '\n\n')
-    .trim();
-}
+const { attr, decodeEntities, escapeHtml, findElements, innerOf, sanitize, htmlToText } = require('./post-html.cjs');
 
 function detectLang(text, fallback = 'en') {
   const cyr = (text.match(/[Ѐ-ӿ]/g) || []).length;
@@ -734,7 +574,10 @@ async function main() {
   log(JSON.stringify({ out: OUT, changed, counts: output.counts, report }, null, 2));
 }
 
-main().catch((e) => {
-  console.error(e);
-  process.exit(1);
-});
+module.exports = { sanitize, htmlToText, findElements, innerOf, attr, decodeEntities, escapeHtml };
+
+if (require.main === module)
+  main().catch((e) => {
+    console.error(e);
+    process.exit(1);
+  });

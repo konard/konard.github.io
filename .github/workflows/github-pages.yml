@@ -4,22 +4,16 @@ on:
   push:
     branches:
       - main
-    paths-ignore:
-      - 'docs/**'
-      - 'dev/**'
   pull_request:
     branches:
       - main
   workflow_dispatch:
+  schedule:
+    - cron: '0 6 * * 1'
 
 # Least-privilege default; only the deploy job may publish to Pages.
 permissions:
   contents: read
-
-# Cancel superseded pull request runs, but never a deploy on main.
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 # actions/checkout runs `git init` before any step can configure Git; this
 # silences its "default branch name" hint.
@@ -29,14 +23,48 @@ env:
   GIT_CONFIG_VALUE_0: main
 
 jobs:
+  prepare:
+    concurrency:
+      group: check-${{ github.workflow }}-${{ github.ref }}-prepare
+      cancel-in-progress: true
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      pages: read
+    outputs:
+      code: ${{ steps.changes.outputs.code }}
+      docs: ${{ steps.changes.outputs.docs }}
+    steps:
+      - name: Checkout the merge result
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: '24.x'
+      - name: Verify merge freshness and detect changes
+        id: changes
+        run: node scripts/ci-changes.mjs
+      - name: Check GitHub Pages configuration before building
+        run: node scripts/check-pages.mjs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REQUIRE_PAGES: ${{ github.event_name != 'pull_request' && 'true' || 'false' }}
+
   # Lint the workflows themselves (actionlint also runs shellcheck on run: blocks).
   lint-workflows:
+    concurrency:
+      group: check-${{ github.workflow }}-${{ github.ref }}-lint-workflows
+      cancel-in-progress: true
     runs-on: ubuntu-24.04
     timeout-minutes: 10
 
     steps:
       - name: Checkout source
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           persist-credentials: false
 
@@ -47,17 +75,21 @@ jobs:
 
   # Fast checks run before the tests and the build.
   checks:
+    concurrency:
+      group: check-${{ github.workflow }}-${{ github.ref }}-checks
+      cancel-in-progress: true
+    needs: prepare
     runs-on: ubuntu-24.04
     timeout-minutes: 10
 
     steps:
       - name: Checkout source
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           persist-credentials: false
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: '24.x'
           cache: npm
@@ -78,22 +110,26 @@ jobs:
         run: npm run check:secrets
 
       - name: Audit dependencies
-        run: npm audit --audit-level=moderate
+        run: npm audit --package-lock-only --audit-level=moderate
 
   test:
-    needs: [lint-workflows, checks, network-browsers]
+    concurrency:
+      group: check-${{ github.workflow }}-${{ github.ref }}-test
+      cancel-in-progress: true
+    needs: [prepare, lint-workflows, checks, network-browsers]
+    if: needs.prepare.outputs.code == 'true'
     runs-on: ubuntu-24.04
     timeout-minutes: 20
 
     steps:
       # On pull requests this is the merge result with main, not the branch head.
       - name: Checkout source
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           persist-credentials: false
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: '24.x'
           cache: npm
@@ -119,14 +155,19 @@ jobs:
       # GitHub Pages is set to deploy from GitHub Actions, so the site is
       # published from this artifact, not from a branch or the docs/ folder.
       # Pull requests upload it too, so a broken artifact fails before merge.
-      - name: Upload the build as the Pages artifact
-        uses: actions/upload-pages-artifact@v5
+      - name: Upload the build as the Pages artifact with bounded transport retries
+        uses: ./.github/actions/upload-artifact
         with:
+          name: github-pages
           path: build/
-          include-hidden-files: true
+          pages: 'true'
 
   network-browsers:
-    needs: [lint-workflows, checks]
+    concurrency:
+      group: check-${{ github.workflow }}-${{ github.ref }}-network-browsers-${{ matrix.engine }}
+      cancel-in-progress: true
+    needs: [prepare, lint-workflows, checks, tooling]
+    if: needs.prepare.outputs.code == 'true'
     runs-on: ${{ matrix.os }}
     timeout-minutes: 15
     strategy:
@@ -145,12 +186,12 @@ jobs:
       ENGINE: ${{ matrix.engine }}
     steps:
       - name: Checkout source
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           persist-credentials: false
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: '24.x'
           cache: npm
@@ -166,6 +207,11 @@ jobs:
         # package.json pins 1.63.0: 1.64.x's Linux WebKit stalls on glass panels.
         # https://github.com/microsoft/playwright/issues/43426
         run: npx playwright install --with-deps "$ENGINE"
+
+      - name: Initialize browser evidence
+        run: |
+          mkdir -p browser-results
+          node -e 'require("node:fs").writeFileSync("browser-results/run.json", JSON.stringify({sha: process.env.GITHUB_SHA, engine: process.env.ENGINE}))'
 
       - name: Verify existing editor features and image downloads
         run: npm run test:network:browser
@@ -223,17 +269,23 @@ jobs:
           CAPTURE_DIR: browser-results/screenshots/issue29
           RESULT_DIR: browser-results/data/issue29
 
-      - name: Preserve browser evidence
-        if: always()
-        uses: actions/upload-artifact@v7
+      - name: Preserve browser evidence with bounded transport retries
+        if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
+        uses: ./.github/actions/upload-artifact
         with:
           name: network-${{ matrix.engine }}
           path: browser-results/
-          if-no-files-found: warn
 
   deploy:
-    needs: test
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    concurrency:
+      group: main-writer-${{ github.repository }}-main
+      cancel-in-progress: false
+    needs: [prepare, test, tooling, docs, codeql]
+    if: >-
+      !cancelled() && github.event_name != 'pull_request' && github.event_name != 'schedule' &&
+      github.ref == 'refs/heads/main' && needs.prepare.outputs.code == 'true' &&
+      needs.test.result == 'success' && needs.tooling.result == 'success' && needs.codeql.result == 'success' &&
+      (needs.docs.result == 'success' || needs.prepare.outputs.docs == 'false')
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     permissions:
@@ -251,7 +303,7 @@ jobs:
 
       # A green deploy must mean the site is really there (issue #5).
       - name: Checkout source
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           persist-credentials: false
           sparse-checkout: scripts
@@ -260,3 +312,143 @@ jobs:
         run: bash scripts/check-deployed-site.sh "$PAGE_URL"
         env:
           PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+
+  tooling:
+    concurrency:
+      group: check-${{ github.workflow }}-${{ github.ref }}-tooling
+      cancel-in-progress: true
+    needs: prepare
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Setup Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+      - name: Install pinned source linters
+        run: python -m pip install ruff==0.14.2 shellcheck-py==0.11.0.1
+      - name: Check Python syntax, lint and formatting
+        run: |
+          python scripts/check-python.py
+          ruff check .
+          ruff format --check .
+      - name: Check every standalone shell script and hook
+        run: git ls-files -z '*.sh' '.husky/*' ':(exclude)dev/log/**' ':(exclude)docs/**' | xargs -0 shellcheck
+      - name: Audit workflow security, including low-confidence credential findings
+        uses: zizmorcore/zizmor-action@v0.6.4
+        with:
+          version: 1.30.1
+          advanced-security: false
+          annotations: true
+          min-confidence: low
+          config: .github/zizmor.yml
+          inputs: .github/
+      - name: Audit pedantic image pins
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >-
+          pipx run zizmor==1.30.1 --config .github/zizmor.yml
+          --persona pedantic --min-severity high --min-confidence high .github/
+
+  docs:
+    concurrency:
+      group: check-${{ github.workflow }}-${{ github.ref }}-docs
+      cancel-in-progress: true
+    needs: [prepare, checks]
+    if: needs.prepare.outputs.docs == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Check required documentation
+        run: node scripts/check-docs.mjs
+      - name: Restore link cache
+        uses: actions/cache@v5
+        with:
+          path: .lycheecache
+          key: lychee-${{ runner.os }}-${{ github.sha }}
+          restore-keys: lychee-${{ runner.os }}-
+      - name: Check maintained documentation links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --no-progress --config lychee.toml README.md
+          fail: true
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+  codeql:
+    # Evidence-heavy PRs can exceed GitHub's 300-file compare API limit.
+    # Run full analysis for every language instead of requesting a partial diff.
+    env:
+      CODEQL_ACTION_DIFF_INFORMED_QUERIES: 'false'
+    concurrency:
+      group: check-${{ github.workflow }}-${{ github.ref }}-codeql-${{ matrix.language }}
+      cancel-in-progress: true
+    needs: prepare
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      security-events: write
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [javascript-typescript, python, actions]
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v4
+        with:
+          languages: ${{ matrix.language }}
+          config-file: ./.github/codeql/codeql-config.yml
+          build-mode: none
+      - name: Analyze source
+        uses: github/codeql-action/analyze@v4
+        with:
+          output: ${{ runner.temp }}/codeql-results
+      - name: Setup Node.js for the security gate
+        uses: actions/setup-node@v7
+        with:
+          node-version: '24.x'
+      - name: Reject unresolved security findings
+        run: node scripts/check-codeql-results.mjs "$SARIF_DIR"
+        env:
+          SARIF_DIR: ${{ runner.temp }}/codeql-results
+
+  pipeline-status:
+    concurrency:
+      group: check-${{ github.workflow }}-${{ github.ref }}-pipeline-status
+      cancel-in-progress: true
+    if: ${{ !cancelled() }}
+    needs: [prepare, lint-workflows, checks, tooling, docs, codeql, network-browsers, test, deploy]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: '24.x'
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Verify every required outcome
+        run: node scripts/check-pipeline-status.mjs
+        env:
+          NEEDS_JSON: ${{ toJSON(needs) }}
+          CODE_CHANGED: ${{ needs.prepare.outputs.code }}
+          DOCS_CHANGED: ${{ needs.prepare.outputs.docs }}
+          SHOULD_DEPLOY: ${{ github.event_name != 'pull_request' && github.event_name != 'schedule' && github.ref == 'refs/heads/main' && needs.prepare.outputs.code == 'true' }}

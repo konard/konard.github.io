@@ -1,1 +1,9 @@
-npx lint-staged
+#!/bin/sh
+set -eu
+npx lint-staged --config package.json
+npm run check:file-size
+npm run check:secrets
+python scripts/check-python.py
+ruff check .
+ruff format --check .
+git ls-files -z '*.sh' '.husky/*' ':(exclude)dev/log/**' ':(exclude)docs/**' | xargs -0 shellcheck

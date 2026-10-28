@@ -1,0 +1,53 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793179854506
+
+ ❯ src/ci-regressions.test.js (4 tests | 1 failed) 1321ms
+   × build identity also works from a source archive without Git metadata 474ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/ci-regressions.test.js > build identity also works from a source archive without Git metadata
+Error: Command failed: /home/box/.nvm/versions/node/v26.12.1/bin/node --input-type=module -e 
+      const config = (await import('./vite.config.js')).default;
+      config.plugins.find(p => p.name === 'build-identity').generateBundle.call({
+        emitFile: asset => console.log(asset.source)
+      });
+    
+node:internal/errors:999
+  const err = new Error(message);
+              ^
+
+Error: Command failed: git rev-parse HEAD
+    at genericNodeError (node:internal/errors:999:15)
+    at wrappedFn (node:internal/errors:544:14)
+    at checkExecSyncError (node:child_process:990:11)
+    at execFileSync (node:child_process:1026:15)
+    at Object.generateBundle (file:///tmp/gh-issue-solver-1793179854506/vite.config.js:30:43)
+    at file:///tmp/gh-issue-solver-1793179854506/[eval1]:3:76 {
+  status: 128,
+  signal: null,
+  output: [ null, '', '' ],
+  pid: 11624,
+  stdout: '',
+  stderr: ''
+}
+
+Node.js v26.12.1
+
+ ❯ Object.generateBundle vite.config.js:30:43
+ ❯ src/ci-regressions.test.js:21:20
+     19|   try {
+     20|     writeFileSync(path.join(dir, 'git'), '#!/bin/sh\nexit 128\n', { mo…
+     21|     const output = execFileSync(process.execPath, ['--input-type=modul…
+       |                    ^
+     22|       const config = (await import('./vite.config.js')).default;
+     23|       config.plugins.find(p => p.name === 'build-identity').generateBu…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 3 passed (4)
+   Start at  10:00:47
+   Duration  3.33s (tests 43%, environment 39%, setup 10%, transform 6%, worker 1%)
+

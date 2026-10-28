@@ -1,0 +1,51 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793179854506
+
+ ❯ src/ci-regressions.test.js (5 tests | 1 failed) 1871ms
+   × the commit hook applies repository lint rules to archived package examples 699ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/ci-regressions.test.js > the commit hook applies repository lint rules to archived package examples
+AssertionError: expected [Function] to not throw an error but 'Error: Command failed: /home/box/.nvm…' was thrown
+
+- Expected:
+undefined
+
++ Received:
+"Error: Command failed: /home/box/.nvm/versions/node/v26.12.1/bin/node /tmp/gh-issue-solver-1793179854506/node_modules/lint-staged/bin/lint-staged.js --config package.json
+⚠ Skipping backup because there’s no initial commit yet. This might result in data loss.
+
+✖ node /tmp/gh-issue-solver-1793179854506/node_modules/eslint/bin/eslint.js --fix --max-warnings=0 --no-warn-ignored
+
+✖ node /tmp/gh-issue-solver-1793179854506/node_modules/eslint/bin/eslint.js --fix --max-warnings=0 --no-warn-ignored:
+
+Oops! Something went wrong! :(
+
+ESLint: 10.13.0
+
+Error: Archived config executed
+    at file:///tmp/issue31-hooks-MoFHyK/archive/eslint.config.js?mtime=1793182815328:1:7
+    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)
+    at async node:internal/modules/esm/loader:650:26
+    at async dynamicImportConfig (/tmp/gh-issue-solver-1793179854506/node_modules/eslint/lib/config/config-loader.js:185:17)
+    at async loadConfigFile (/tmp/gh-issue-solver-1793179854506/node_modules/eslint/lib/config/config-loader.js:275:9)
+    at async ConfigLoader.calculateConfigArray (/tmp/gh-issue-solver-1793179854506/node_modules/eslint/lib/config/config-loader.js:594:23)
+"
+
+ ❯ src/ci-regressions.test.js:114:11
+    112|         stdio: 'pipe',
+    113|       }),
+    114|     ).not.toThrow();
+       |           ^
+    115|   } finally {
+    116|     rmSync(dir, { recursive: true, force: true });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 4 passed (5)
+   Start at  10:20:11
+   Duration  4.05s (tests 50%, environment 38%, setup 7%, transform 4%, worker 1%)
+

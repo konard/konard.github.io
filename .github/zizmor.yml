@@ -1,0 +1,15 @@
+# Match the templates' trust policy; all other publishers require full hashes.
+rules:
+  unpinned-uses:
+    config:
+      policies:
+        actions/*: ref-pin
+        github/*: ref-pin
+        zizmorcore/*: ref-pin
+        lycheeverse/*: ref-pin
+        '*': hash-pin
+  # actionlint 1.7.12 cannot parse GitHub's new $/ local-action syntax.
+  # Remove when rhysd/actionlint#711 / #732 are released; applies only here.
+  self-repository:
+    ignore:
+      - github-pages.yml

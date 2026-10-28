@@ -9,7 +9,7 @@ import SettingsPage from './SettingsPage';
 const presets = () => document.getElementById('presets');
 const builtIn = (name) =>
   within(within(presets()).getByRole('list', { name: 'Presets of the site' })).getByRole('button', {
-    name: new RegExp(`^${name}`),
+    name: new RegExp(`^${RegExp.escape(name)}`),
   });
 
 describe('presets (issue #15)', () => {

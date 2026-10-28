@@ -1,0 +1,39 @@
+
+> konard.github.io@0.1.0 test:ci
+> vitest run src/ci-regressions.test.js
+
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793179854506
+
+ ❯ src/ci-regressions.test.js (6 tests | 1 failed) 1874ms
+   × install-script reviews cover locked dependencies on every supported platform 26ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/ci-regressions.test.js > install-script reviews cover locked dependencies on every supported platform
+AssertionError: expected [ 'fsevents@2.3.3' ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "fsevents@2.3.3",
++ ]
+
+ ❯ src/ci-regressions.test.js:18:22
+     16|   // Include optional macOS packages even when tests run on Linux. An …
+     17|   // needs another review rather than silently inheriting script permi…
+     18|   expect(unreviewed).toEqual([]);
+       |                      ^
+     19|   for (const [key, allowed] of Object.entries(reviews)) {
+     20|     if (allowed) expect(key).toMatch(/@\d+\.\d+\.\d+$/);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 5 passed (6)
+   Start at  10:40:12
+   Duration  3.79s (tests 54%, environment 32%, setup 8%, transform 5%, worker 1%)
+

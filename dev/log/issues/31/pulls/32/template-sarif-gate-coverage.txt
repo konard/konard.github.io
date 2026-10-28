@@ -1,0 +1,2 @@
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:91:      # Annotations instead of SARIF: forks of this template do not necessarily
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:121:      # Annotations instead of SARIF: forks of this template do not necessarily

@@ -1,8 +1,10 @@
+import { execFileSync } from 'node:child_process';
 import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { applySettings, normalize } from './src/settings/apply.js';
 import { CSS_RULES } from './src/settings/schema.js';
+import { inlineJSON } from './scripts/inline-json.mjs';
 
 // Every page is its own HTML entry (a real URL on GitHub Pages, no client-side
 // routing). The home page must stay `index` so build/index.html keeps its name.
@@ -21,7 +23,24 @@ export const THEME_SCRIPT = `(function(){try{var t=localStorage.getItem('theme')
 // before the first paint with the same rules as src/settings/store.js, so a
 // visitor with the futuristic skin never sees the glass one first.
 const inline = (fn) => String(fn).replace(/\s*\n\s*/g, ' ');
-export const SETTINGS_SCRIPT = `(function(){try{${inline(normalize)};${inline(applySettings)};var r=${JSON.stringify(CSS_RULES)};applySettings(document.documentElement,r,normalize(r,JSON.parse(localStorage.getItem('settings')||'{}')))}catch(e){}})();`;
+export const SETTINGS_SCRIPT = `(function(){try{${inline(normalize)};${inline(applySettings)};var r=${inlineJSON(CSS_RULES)};applySettings(document.documentElement,r,normalize(r,JSON.parse(localStorage.getItem('settings')||'{}')))}catch(e){}})();`;
+
+const buildIdentity = () => ({
+  name: 'build-identity',
+  generateBundle() {
+    let sha = process.env.GITHUB_SHA;
+    if (!sha) {
+      try {
+        sha = execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8', stdio: 'pipe' }).trim();
+      } catch {
+        // Source archives remain buildable without Git. Hosted deploys always
+        // supply GITHUB_SHA and the deployment probe requires that exact SHA.
+        sha = 'unversioned';
+      }
+    }
+    this.emitFile({ type: 'asset', fileName: 'build-info.json', source: JSON.stringify({ sha }) + '\n' });
+  },
+});
 
 const themeBeforePaint = () => ({
   name: 'theme-before-paint',
@@ -31,7 +50,7 @@ const themeBeforePaint = () => ({
 // The site is served from the root of https://konard.github.io, and the
 // deploy job publishes build/ with actions/deploy-pages (see .github/workflows/github-pages.yml).
 export default defineConfig({
-  plugins: [react(), themeBeforePaint()],
+  plugins: [react(), themeBeforePaint(), buildIdentity()],
   build: {
     outDir: 'build',
     sourcemap: true,
@@ -46,5 +65,6 @@ export default defineConfig({
     setupFiles: './src/setupTests.js',
     include: ['src/**/*.test.{js,jsx}'],
     testTimeout: 10000,
+    maxWorkers: 1,
   },
 });

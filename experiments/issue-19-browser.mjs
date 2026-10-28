@@ -5,6 +5,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { chromium, firefox, webkit } from 'playwright';
 import { preview } from 'vite';
+import { networkExampleUrls } from './network-example-urls.mjs';
 import { verifyWebpFallback } from './network-export-support.mjs';
 
 const engine = process.env.ENGINE || 'chromium';
@@ -134,10 +135,7 @@ try {
 
   // Both complete example URLs from the issue, including the rotated one.
   const issue = JSON.parse(await readFile('docs/case-studies/issue-19/data/issue.json', 'utf8'));
-  for (const [i, url] of [...issue.body.matchAll(/https:\/\/konard.github.io\/network\/\?[^\s`]+/g)].map((m, i) => [
-    i,
-    m[0],
-  ])) {
+  for (const [i, url] of networkExampleUrls(issue.body).entries()) {
     await page.goto(base + new URL(url).pathname + new URL(url).search);
     assert(!/NaN|Infinity|undefined/.test(await svgOf(page)));
     await shot(page, `supplied-${i + 1}`, page.locator('.network__preview'));

@@ -1,0 +1,13 @@
+/tmp/issue31-templates/python/.github/workflows/docs.yml:74:        uses: actions/upload-artifact@v7
+/tmp/issue31-templates/python/.github/workflows/docs.yml:90:        uses: actions/upload-pages-artifact@v5
+/tmp/issue31-templates/python/.github/workflows/links.yml:126:        uses: actions/upload-artifact@v7
+/tmp/issue31-templates/python/.github/workflows/release.yml:431:        uses: actions/upload-artifact@v7
+/tmp/issue31-templates/python/.github/workflows/release.yml:904:        uses: actions/upload-artifact@v7
+/tmp/issue31-templates/js/.github/workflows/javascript-first-example.yml:135:      - uses: actions/upload-artifact@v7
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:86:        uses: actions/upload-artifact@v7
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:94:        uses: actions/upload-pages-artifact@v5
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:169:        uses: actions/upload-artifact@v7
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:214:        uses: actions/upload-artifact@v7
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:365:        uses: actions/upload-artifact@v7
+/tmp/issue31-templates/js/.github/workflows/links.yml:126:        uses: actions/upload-artifact@v7
+/tmp/issue31-templates/js/.github/workflows/release.yml:873:        uses: actions/upload-artifact@v7

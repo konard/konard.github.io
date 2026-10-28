@@ -1,0 +1,14 @@
+src/workflow.test.js 136ms
+scripts/upload-artifact.mjs 40ms
+.github/actions/upload-artifact/action.yml 19ms (unchanged)
+.github/actions/upload-artifact/index.mjs 4ms (unchanged)
+.github/codeql/codeql-config.yml 4ms (unchanged)
+[error] .github/workflows/github-pages.yml: SyntaxError: A block sequence may not be used as an implicit map key (24:1)
+[error]   22 |       group: check-${{ github.workflow }}-${{ github.ref }}-schedule
+[error]   23 |       cancel-in-progress: true
+[error] > 24 |     - cron: '0 6 * * 1'
+[error]      | ^
+[error]   25 |
+[error]   26 | # Least-privilege default; only the deploy job may publish to Pages.
+[error]   27 | permissions:
+.github/zizmor.yml 6ms (unchanged)

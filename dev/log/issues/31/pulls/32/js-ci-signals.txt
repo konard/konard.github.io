@@ -1,0 +1,842 @@
+.github/actions/setup-buildx-resilient/action.yml:8:   straight from Docker Hub, and a transient registry timeout there fails the
+.github/actions/setup-buildx-resilient/action.yml:38:     - name: Pre-pull BuildKit image (retry + registry-mirror fallback)
+.github/actions/setup-buildx-resilient/action.yml:55:         # Returns 0 on the first successful pull, non-zero if all attempts fail.
+.github/actions/setup-buildx-resilient/action.yml:68:               echo "==> Pull failed, waiting ${delay}s before next attempt..."
+.github/actions/setup-buildx-resilient/action.yml:79:           exit 0
+.github/actions/setup-buildx-resilient/action.yml:89:         #    locally and never touches the failing registry.
+.github/actions/setup-buildx-resilient/action.yml:92:           echo "==> Canonical pull failed; trying registry mirror ${mirror_ref}"
+.github/actions/setup-buildx-resilient/action.yml:96:             exit 0
+.github/actions/setup-buildx-resilient/action.yml:98:           echo "==> Mirror pull from ${REGISTRY_MIRROR} also failed"
+.github/actions/setup-buildx-resilient/action.yml:103:         # case while making the common transient-failure case recover.
+.github/actions/setup-buildx-resilient/action.yml:104:         echo "==> WARNING: could not pre-pull ${BUILDKIT_IMAGE} from canonical registry or mirror; letting setup-buildx try its own boot pull"
+.github/workflows/example-app.yml:41:     timeout-minutes: 10
+.github/workflows/example-app.yml:44:       cancel-in-progress: true
+.github/workflows/example-app.yml:54:           persist-credentials: false
+.github/workflows/example-app.yml:63:       # Pull requests never deploy, so they only warn; main fails with the
+.github/workflows/example-app.yml:69:           PAGES_MODE: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && 'require' || 'warn' }}
+.github/workflows/example-app.yml:77:         run: npm ci --prefix examples/universal-app --no-audit --no-fund
+.github/workflows/example-app.yml:90:           if-no-files-found: error
+.github/workflows/example-app.yml:106:     timeout-minutes: 10
+.github/workflows/example-app.yml:109:       cancel-in-progress: false
+.github/workflows/example-app.yml:122:           NODE_OPTIONS: --disable-warning=DEP0040
+.github/workflows/example-app.yml:127:     timeout-minutes: 20
+.github/workflows/example-app.yml:130:       cancel-in-progress: true
+.github/workflows/example-app.yml:132:       fail-fast: false
+.github/workflows/example-app.yml:138:           persist-credentials: false
+.github/workflows/example-app.yml:148:         run: npm ci --prefix examples/universal-app --no-audit --no-fund
+.github/workflows/example-app.yml:159:               exit 0
+.github/workflows/example-app.yml:164:           exit 1
+.github/workflows/example-app.yml:173:           if-no-files-found: error
+.github/workflows/example-app.yml:179:     timeout-minutes: 30
+.github/workflows/example-app.yml:182:       cancel-in-progress: true
+.github/workflows/example-app.yml:186:           persist-credentials: false
+.github/workflows/example-app.yml:205:         run: npm ci --prefix examples/universal-app --no-audit --no-fund
+.github/workflows/example-app.yml:220:           if-no-files-found: warn
+.github/workflows/example-app.yml:226:     timeout-minutes: 30
+.github/workflows/example-app.yml:229:       cancel-in-progress: true
+.github/workflows/example-app.yml:233:           persist-credentials: false
+.github/workflows/example-app.yml:243:         run: npm ci --prefix examples/universal-app --no-audit --no-fund
+.github/workflows/example-app.yml:263:     timeout-minutes: 20
+.github/workflows/example-app.yml:266:       cancel-in-progress: false
+.github/workflows/example-app.yml:287:           persist-credentials: false
+.github/workflows/example-app.yml:295:         run: npm ci --prefix examples/universal-app --no-audit --no-fund
+.github/workflows/example-app.yml:301:           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+.github/workflows/example-app.yml:302:         run: npm install --no-save --package-lock=false --no-audit --no-fund browser-commander@0.8.1 playwright@1.59.1 # zizmor: ignore[adhoc-packages]
+.github/workflows/example-app.yml:311:           # The assignment fails the step when git fails; a test on $(...)
+.github/workflows/example-app.yml:312:           # would read the failure as no drift.
+.github/workflows/example-app.yml:336:           # Configure gh as a step-scoped Git credential helper. The checkout
+.github/workflows/example-app.yml:337:           # remains credential-free during dependency installation.
+.github/workflows/example-app.yml:346:             exit 0
+.github/workflows/example-app.yml:349:           # Do not add [skip ci]: a fallback PR needs its required checks.
+.github/workflows/example-app.yml:352:             node scripts/push-main-with-rebase-retry.mjs origin main --label preview-images
+.github/workflows/example-app.yml:354:             exit 0
+.github/workflows/example-app.yml:357:           if ! node scripts/push-main-with-rebase-retry.mjs origin main --label preview-images; then
+.github/workflows/example-app.yml:359:             exit 1
+.github/workflows/example-app.yml:363:       - name: Upload screenshot failure artifacts
+.github/workflows/example-app.yml:364:         if: failure()
+.github/workflows/example-app.yml:367:           name: preview-regen-failure-${{ github.run_id }}
+.github/workflows/example-app.yml:370:           if-no-files-found: ignore
+.github/workflows/example-app.yml:373:       # claiming a commit that a failed step never made.
+.github/workflows/example-app.yml:395:   # Terminal status gate: runs even when the jobs above fail or are
+.github/workflows/example-app.yml:396:   # cancelled, and turns a `timeout-minutes` kill (reported as cancelled)
+.github/workflows/example-app.yml:402:     timeout-minutes: 5
+.github/workflows/example-app.yml:405:       cancel-in-progress: true
+.github/workflows/example-app.yml:407:     # implicit "every dependency succeeded" condition and is skipped in
+.github/workflows/example-app.yml:421:           persist-credentials: false
+.github/workflows/example-app.yml:428:       - name: Fail the run when a required job was cancelled or failed
+.github/workflows/javascript-first-example.yml:32:     timeout-minutes: 10
+.github/workflows/javascript-first-example.yml:35:       cancel-in-progress: true
+.github/workflows/javascript-first-example.yml:40:           persist-credentials: false
+.github/workflows/javascript-first-example.yml:50:     timeout-minutes: 10
+.github/workflows/javascript-first-example.yml:53:       cancel-in-progress: true
+.github/workflows/javascript-first-example.yml:58:           persist-credentials: false
+.github/workflows/javascript-first-example.yml:68:     timeout-minutes: 10
+.github/workflows/javascript-first-example.yml:71:       cancel-in-progress: true
+.github/workflows/javascript-first-example.yml:76:           persist-credentials: false
+.github/workflows/javascript-first-example.yml:87:     timeout-minutes: 10
+.github/workflows/javascript-first-example.yml:90:       cancel-in-progress: true
+.github/workflows/javascript-first-example.yml:95:           persist-credentials: false
+.github/workflows/javascript-first-example.yml:105:     timeout-minutes: 10
+.github/workflows/javascript-first-example.yml:108:       cancel-in-progress: true
+.github/workflows/javascript-first-example.yml:113:           persist-credentials: false
+.github/workflows/javascript-first-example.yml:123:     timeout-minutes: 10
+.github/workflows/javascript-first-example.yml:126:       cancel-in-progress: true
+.github/workflows/javascript-first-example.yml:131:           persist-credentials: false
+.github/workflows/javascript-first-example.yml:139:           if-no-files-found: error
+.github/workflows/javascript-first-gate.yml:33:     timeout-minutes: 30
+.github/workflows/javascript-first-gate.yml:45:           persist-credentials: false
+.github/workflows/javascript-first-gate.yml:60:           bash -e -o pipefail -c "$CHECK_COMMAND"
+.github/workflows/javascript-first-gate.yml:65:           bash -e -o pipefail -c "$CHECK_COMMAND"
+.github/workflows/javascript-first-gate.yml:70:           bash -e -o pipefail -c "$CHECK_COMMAND"
+.github/workflows/links.yml:48:     timeout-minutes: 10
+.github/workflows/links.yml:51:       cancel-in-progress: true
+.github/workflows/links.yml:57:           persist-credentials: false
+.github/workflows/links.yml:84:             --timeout 30
+.github/workflows/links.yml:92:           # Don't fail the workflow immediately - we want to check web archive first
+.github/workflows/links.yml:93:           fail: false
+.github/workflows/links.yml:101:       - name: Re-check transient link failures
+.github/workflows/links.yml:102:         # Retry transport errors, 429, and 5xx within a shared budget.
+.github/workflows/links.yml:113:         # `!= 'true'`, never `== 'false'`: a skipped re-check leaves the
+.github/workflows/links.yml:114:         # output empty, and only the != form fails safe.
+.github/workflows/links.yml:130:           if-no-files-found: warn
+.github/workflows/links.yml:132:       - name: Fail if broken links were found
+.github/workflows/links.yml:154:           exit 1
+.github/workflows/links.yml:156:   # Terminal status gate: runs even when the jobs above fail or are
+.github/workflows/links.yml:157:   # cancelled, and turns a `timeout-minutes` kill (reported as cancelled)
+.github/workflows/links.yml:163:     timeout-minutes: 5
+.github/workflows/links.yml:166:       cancel-in-progress: true
+.github/workflows/links.yml:168:     # implicit "every dependency succeeded" condition and is skipped in
+.github/workflows/links.yml:177:           persist-credentials: false
+.github/workflows/links.yml:184:       - name: Fail the run when a required job was cancelled or failed
+.github/workflows/release.yml:55:     timeout-minutes: 5
+.github/workflows/release.yml:65:       cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+.github/workflows/release.yml:75:           persist-credentials: false
+.github/workflows/release.yml:88:   # See: hive-mind CI/CD best practices principle #5 (fast-fail job ordering)
+.github/workflows/release.yml:94:     # Typical run: <10s. Tight cap fails fast on syntax-check hangs.
+.github/workflows/release.yml:95:     timeout-minutes: 5
+.github/workflows/release.yml:98:       cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+.github/workflows/release.yml:105:           persist-credentials: false
+.github/workflows/release.yml:115:     timeout-minutes: 5
+.github/workflows/release.yml:118:       cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+.github/workflows/release.yml:127:           persist-credentials: false
+.github/workflows/release.yml:147:     timeout-minutes: 5
+.github/workflows/release.yml:150:       cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+.github/workflows/release.yml:156:           persist-credentials: false
+.github/workflows/release.yml:173:     timeout-minutes: 10
+.github/workflows/release.yml:176:       cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+.github/workflows/release.yml:183:           persist-credentials: false
+.github/workflows/release.yml:218:     timeout-minutes: 10
+.github/workflows/release.yml:221:       cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+.github/workflows/release.yml:235:           persist-credentials: false
+.github/workflows/release.yml:254:       # Exercise versioning without credentials, even if release-preflight fails.
+.github/workflows/release.yml:255:       # Restore consumed changesets and metadata on success or failure so lint
+.github/workflows/release.yml:266:           LINT_ALL_WARNINGS: ${{ github.event_name != 'pull_request' && '1' || '0' }}
+.github/workflows/release.yml:278:   # Fast-fail: slow test matrix only runs after fast checks pass (hive-mind principle #5)
+.github/workflows/release.yml:284:     # budget below (see scripts/run-with-budget-warning.sh); this cap is
+.github/workflows/release.yml:286:     # expire first. A job killed by timeout-minutes reports *cancelled*,
+.github/workflows/release.yml:287:     # which hides the failure -- see docs/CI-TIMEOUT-BUDGETS.md.
+.github/workflows/release.yml:288:     timeout-minutes: 15
+.github/workflows/release.yml:291:       cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+.github/workflows/release.yml:302:     # release. Skipped fast checks count as non-failures only after one of
+.github/workflows/release.yml:313:       (needs.changeset-check.result == 'success' || needs.changeset-check.result == 'skipped') &&
+.github/workflows/release.yml:314:       (needs.test-compilation.result == 'success' || needs.test-compilation.result == 'skipped') &&
+.github/workflows/release.yml:315:       (needs.lint.result == 'success' || needs.lint.result == 'skipped') &&
+.github/workflows/release.yml:316:       (needs.check-file-line-limits.result == 'success' || needs.check-file-line-limits.result == 'skipped')
+.github/workflows/release.yml:318:       fail-fast: false
+.github/workflows/release.yml:327:           persist-credentials: false
+.github/workflows/release.yml:349:         run: bash scripts/run-with-budget-warning.sh 300 "Node.js test suite" npm test
+.github/workflows/release.yml:365:         # --timeout caps an *individual* test at 30s, matching Node's
+.github/workflows/release.yml:366:         # --test-timeout budget while leaving headroom for cold runners.
+.github/workflows/release.yml:370:         run: bash scripts/run-with-budget-warning.sh 200 "Bun test suite" bun test --timeout 30000
+.github/workflows/release.yml:381:         run: bash scripts/run-with-budget-warning.sh 100 "Deno test suite" deno test -A --parallel
+.github/workflows/release.yml:384:   # Builds the Dockerfile without pushing so a broken image fails the pull
+.github/workflows/release.yml:387:   # which have no registry credentials. Skipped when no Dockerfile exists.
+.github/workflows/release.yml:393:     timeout-minutes: 30
+.github/workflows/release.yml:396:       cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+.github/workflows/release.yml:407:           persist-credentials: false
+.github/workflows/release.yml:419:         # A `uses:` step cannot be wrapped by run-with-budget-warning.sh, so
+.github/workflows/release.yml:420:         # it declares its deadline with a step-level timeout-minutes: an
+.github/workflows/release.yml:421:         # exhausted step budget fails the step, while an exhausted job cap
+.github/workflows/release.yml:423:         timeout-minutes: 20
+.github/workflows/release.yml:445:     timeout-minutes: 5
+.github/workflows/release.yml:448:       cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+.github/workflows/release.yml:455:           persist-credentials: false
+.github/workflows/release.yml:469:   # credentials can write before the expensive jobs spend their minutes
+.github/workflows/release.yml:472:   # authorisation, so scripts/preflight-credentials.sh probes with an
+.github/workflows/release.yml:473:   # attempted write: a refused credential fails the run seconds in instead
+.github/workflows/release.yml:478:     timeout-minutes: 5
+.github/workflows/release.yml:489:           persist-credentials: false
+.github/workflows/release.yml:491:       - name: Probe every release credential
+.github/workflows/release.yml:493:           # Release mode (push to main, manual instant release) fails the run
+.github/workflows/release.yml:494:           # on a refused credential. Report mode (pull requests -- a fork has
+.github/workflows/release.yml:508:         run: bash scripts/preflight-credentials.sh
+.github/workflows/release.yml:528:     timeout-minutes: 65
+.github/workflows/release.yml:531:       cancel-in-progress: false
+.github/workflows/release.yml:542:       !contains(needs.*.result, 'failure') &&
+.github/workflows/release.yml:555:       # One of two checkouts in this workflow that keep credentials in
+.github/workflows/release.yml:559:       # repository sets persist-credentials: false.
+.github/workflows/release.yml:562:           persist-credentials: true
+.github/workflows/release.yml:574:       # Fail-closed before the install step: changesets 3.x shells out to the
+.github/workflows/release.yml:583:         run: bash scripts/run-with-budget-warning.sh 240 "Release dependency install" npm ci
+.github/workflows/release.yml:622:           (steps.check_release.outputs.should_release == 'true' && steps.check_release.outputs.skip_bump == 'true')
+.github/workflows/release.yml:633:         run: bash scripts/run-with-budget-warning.sh 1800 "npm publish and registry verification" node scripts/publish-to-npm.mjs --should-pull
+.github/workflows/release.yml:639:         run: bash scripts/run-with-budget-warning.sh 600 "npm package smoke test" node scripts/smoke-test-package.mjs --package-version "$PACKAGE_VERSION"
+.github/workflows/release.yml:684:       !contains(needs.*.result, 'failure') &&
+.github/workflows/release.yml:688:     timeout-minutes: 65
+.github/workflows/release.yml:691:       cancel-in-progress: false
+.github/workflows/release.yml:703:       # The second checkout in this workflow that keeps credentials in
+.github/workflows/release.yml:707:       # persist-credentials: false.
+.github/workflows/release.yml:710:           persist-credentials: true
+.github/workflows/release.yml:747:         run: bash scripts/run-with-budget-warning.sh 1800 "npm publish and registry verification" node scripts/publish-to-npm.mjs
+.github/workflows/release.yml:753:         run: bash scripts/run-with-budget-warning.sh 600 "npm package smoke test" node scripts/smoke-test-package.mjs --package-version "$PACKAGE_VERSION"
+.github/workflows/release.yml:778:     timeout-minutes: 45
+.github/workflows/release.yml:781:       cancel-in-progress: false
+.github/workflows/release.yml:809:           persist-credentials: false
+.github/workflows/release.yml:825:         run: bash scripts/run-with-budget-warning.sh 1800 "Docker npm availability wait" node scripts/wait-for-npm.mjs --release-version "${VERSION}"
+.github/workflows/release.yml:833:     timeout-minutes: 30
+.github/workflows/release.yml:835:       fail-fast: false
+.github/workflows/release.yml:848:           persist-credentials: false
+.github/workflows/release.yml:852:         # Step-level budget below the job's timeout-minutes backstop; see
+.github/workflows/release.yml:853:         # docs/CI-TIMEOUT-BUDGETS.md.
+.github/workflows/release.yml:854:         timeout-minutes: 20
+.github/workflows/release.yml:877:           if-no-files-found: error
+.github/workflows/release.yml:884:     timeout-minutes: 30
+.github/workflows/release.yml:887:       cancel-in-progress: false
+.github/workflows/release.yml:895:           persist-credentials: false
+.github/workflows/release.yml:909:           NODE_OPTIONS: --disable-warning=DEP0005
+.github/workflows/release.yml:926:             exit 1
+.github/workflows/release.yml:941:               exit 1
+.github/workflows/release.yml:946:                 exit 1
+.github/workflows/release.yml:963:     timeout-minutes: 10
+.github/workflows/release.yml:966:       cancel-in-progress: false
+.github/workflows/release.yml:972:       # dependency installation does not need a credential in .git/config.
+.github/workflows/release.yml:975:           persist-credentials: false
+.github/workflows/release.yml:984:             exit 1
+.github/workflows/release.yml:1034:   # GitHub reports jobs killed by timeout-minutes as cancelled rather than
+.github/workflows/release.yml:1035:   # failed. Observe every job and excuse only cancellations that the tested
+.github/workflows/release.yml:1040:     timeout-minutes: 5
+.github/workflows/release.yml:1043:       cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+.github/workflows/release.yml:1066:           persist-credentials: false
+.github/workflows/release.yml:1073:       - name: Fail the run when a required job was cancelled or failed
+.github/workflows/security.yml:27:     timeout-minutes: 30
+.github/workflows/security.yml:30:       cancel-in-progress: true
+.github/workflows/security.yml:36:       fail-fast: false
+.github/workflows/security.yml:42:           persist-credentials: false
+.github/workflows/security.yml:59:     timeout-minutes: 5
+.github/workflows/security.yml:62:       cancel-in-progress: true
+.github/workflows/security.yml:68:           persist-credentials: false
+.github/workflows/security.yml:87:     timeout-minutes: 10
+.github/workflows/security.yml:90:       cancel-in-progress: true
+.github/workflows/security.yml:97:           persist-credentials: false
+.github/workflows/security.yml:102:           fail-on-severity: high
+.github/workflows/security.yml:103:           comment-summary-in-pr: on-failure
+.github/workflows/security.yml:105:   npm-audit:
+.github/workflows/security.yml:106:     name: Audit npm lock (${{ matrix.directory }})
+.github/workflows/security.yml:108:     timeout-minutes: 10
+.github/workflows/security.yml:110:       group: check-${{ github.workflow }}-${{ github.ref }}-npm-audit-${{ matrix.directory }}
+.github/workflows/security.yml:111:       cancel-in-progress: true
+.github/workflows/security.yml:113:       fail-fast: false
+.github/workflows/security.yml:119:           persist-credentials: false
+.github/workflows/security.yml:125:       - name: Audit current lock
+.github/workflows/security.yml:127:         run: npm audit --package-lock-only --audit-level=high
+.github/workflows/security.yml:129:   # Terminal status gate: runs even when the jobs above fail or are
+.github/workflows/security.yml:130:   # cancelled, and turns a `timeout-minutes` kill (reported as cancelled)
+.github/workflows/security.yml:136:     timeout-minutes: 5
+.github/workflows/security.yml:139:       cancel-in-progress: true
+.github/workflows/security.yml:141:     # implicit "every dependency succeeded" condition and is skipped in
+.github/workflows/security.yml:149:       - npm-audit
+.github/workflows/security.yml:153:           persist-credentials: false
+.github/workflows/security.yml:160:       - name: Fail the run when a required job was cancelled or failed
+.github/workflows/workflows.yml:40:     timeout-minutes: 10
+.github/workflows/workflows.yml:43:       cancel-in-progress: true
+.github/workflows/workflows.yml:47:           persist-credentials: false
+.github/workflows/workflows.yml:51:       # PATH silently skips the shell checks and exits 0 - worth knowing when
+.github/workflows/workflows.yml:52:       # reproducing a failure locally:
+.github/workflows/workflows.yml:56:       # credentials (the same reasoning as the `'*': hash-pin` policy in
+.github/workflows/workflows.yml:68:     timeout-minutes: 10
+.github/workflows/workflows.yml:71:       cancel-in-progress: true
+.github/workflows/workflows.yml:75:           persist-credentials: false
+.github/workflows/workflows.yml:80:   # needs list is hand-maintained, so a job left out of it could fail while
+.github/workflows/workflows.yml:86:     timeout-minutes: 10
+.github/workflows/workflows.yml:89:       cancel-in-progress: true
+.github/workflows/workflows.yml:93:           persist-credentials: false
+.github/workflows/workflows.yml:112:     timeout-minutes: 10
+.github/workflows/workflows.yml:115:       cancel-in-progress: true
+.github/workflows/workflows.yml:119:           persist-credentials: false
+.github/workflows/workflows.yml:122:       # have code scanning enabled, and the job should fail loudly either way.
+.github/workflows/workflows.yml:136:           # Low, not medium: the artipacked audit reports at Low confidence,
+.github/workflows/workflows.yml:138:           # persist-credentials: false. tests/checkout-credentials.test.js
+.github/workflows/workflows.yml:145:       # pedantic surfaces dozens of stylistic findings. But the audits that
+.github/workflows/workflows.yml:153:       - name: Audit for pedantic-only high-severity findings
+.github/workflows/workflows.yml:154:         timeout-minutes: 10
+.github/workflows/workflows.yml:162:   # Terminal status gate: runs even when the jobs above fail or are
+.github/workflows/workflows.yml:163:   # cancelled, and turns a `timeout-minutes` kill (reported as cancelled)
+.github/workflows/workflows.yml:169:     timeout-minutes: 5
+.github/workflows/workflows.yml:172:       cancel-in-progress: true
+.github/workflows/workflows.yml:174:     # implicit "every dependency succeeded" condition and is skipped in
+.github/workflows/workflows.yml:186:           persist-credentials: false
+.github/workflows/workflows.yml:193:       - name: Fail the run when a required job was cancelled or failed
+.github/zizmor.yml:22:   # actionlint fail with "invalid format because ref is missing".
+.lycheeignore:1: # Lychee ignore patterns - regex patterns for URLs to skip during link checking
+README.md:37: bun test --timeout 30000
+README.md:142: > create a package that does not exist yet (the first publish fails with
+README.md:159: The GitHub Actions workflow (`.github/workflows/release.yml`) implements a fast-fail pipeline:
+README.md:164: 2. **Lint, format & secrets scan**: ESLint, Prettier, jscpd, and [secretlint](https://github.com/secretlint/secretlint) for credential leak detection
+README.md:181: #### Reasonable Timeouts
+README.md:183: Every CI job declares an explicit `timeout-minutes` so hung steps fail
+README.md:189: kills as **cancelled**, not **failed**. Long steps therefore own an
+README.md:190: explicit budget via `scripts/run-with-budget-warning.sh`, which warns at
+README.md:191: 70% of the budget and fails the step with exit code 124 when it expires.
+README.md:192: See [CI-TIMEOUT-BUDGETS.md](docs/CI-TIMEOUT-BUDGETS.md).
+README.md:195: `npm test` runs `node --test --test-timeout=30000`, and the CI Bun
+README.md:196: runner uses `bun test --timeout 30000`. Both bound a _single test_, not
+README.md:198: provide a single global per-test timeout flag, so Deno tests are
+README.md:207: - **PR Validation**: Only validates changesets **added by the current PR**, not pre-existing ones from other merged PRs. This prevents false failures when multiple PRs merge before a release cycle completes.
+README.md:213: This design decouples PR validation from the need to pull changes from the default branch, reducing conflicts and ensuring that even if CI/CD fails, all unpublished changesets will still get published when the error is resolved.
+README.md:222: _Deploy from a branch_. Without it, the `pages-deploy` job fails on
+README.md:223: `actions/deploy-pages` with `Get Pages site failed` /
+README.md:224: `Failed to create deployment`. After flipping the source, the workflow
+README.md:344: | `bun test --timeout 30000`           | Run tests with Bun and a 30s per-test cap             |
+eslint.config.js:37:         setTimeout: 'readonly',
+eslint.config.js:38:         clearTimeout: 'readonly',
+eslint.config.js:68:       'require-await': 'warn',
+eslint.config.js:72:         'warn',
+eslint.config.js:82:       complexity: ['warn', 15], // Cyclomatic complexity - allow more complex logic than strict 8
+eslint.config.js:83:       'max-depth': ['warn', 5], // Maximum nesting depth - slightly more lenient than strict 4
+eslint.config.js:85:         'warn',
+eslint.config.js:88:           skipBlankLines: true,
+eslint.config.js:89:           skipComments: true,
+eslint.config.js:92:       'max-params': ['warn', 6], // Maximum function parameters - slightly more lenient than strict 5
+eslint.config.js:93:       'max-statements': ['warn', 60], // Maximum statements per function - reasonable limit for orchestration functions
+package.json:25:     "test": "node --test --test-timeout=30000 tests/*.test.js",
+package.json:85:       "eslint --fix --max-warnings 0 --no-warn-ignored",
+scripts/bootstrap-dependencies.mjs:11:  * handling: on failure it prints a GitHub `::error::` annotation naming the
+scripts/bootstrap-dependencies.mjs:28:  * one. Never throws: a failed write must not mask the real diagnostic.
+scripts/bootstrap-dependencies.mjs:52:  * Load module-scope dependencies, reporting a load failure through the
+scripts/bootstrap-dependencies.mjs:54:  * non-zero exit code.
+scripts/bootstrap-dependencies.mjs:69:     exit = process.exit,
+scripts/changeset-version.mjs:30: // this script reports the failure and writes its outputs, and the process
+scripts/changeset-version.mjs:56:   // --legacy-peer-deps keeps a peer-dependency conflict from failing the
+scripts/check-changesets.mjs:76:     console.warn(`Warning: Failed to read ${filePath}: ${error.message}`);
+scripts/check-dependency-graph.sh:4: # that only an administrator can change, so pull requests skip the review
+scripts/check-dependency-graph.sh:5: # with a warning while pushes to main fail with instructions.
+scripts/check-dependency-graph.sh:8: # is disabled. Rate limits, server errors and network failures are retried
+scripts/check-dependency-graph.sh:16: # DEPENDENCY_GRAPH_RETRY_SECONDS (default 10) and DEPENDENCY_GRAPH_DEBUG=1,
+scripts/check-dependency-graph.sh:18: set -euo pipefail
+scripts/check-dependency-graph.sh:23: RETRY_SECONDS="${DEPENDENCY_GRAPH_RETRY_SECONDS:-10}"
+scripts/check-dependency-graph.sh:30: # Prints enabled, disabled or retry for one answer of `gh api`.
+scripts/check-dependency-graph.sh:36:     echo retry
+scripts/check-dependency-graph.sh:40:     echo retry
+scripts/check-dependency-graph.sh:50:   debug "attempt $attempt/$ATTEMPTS: exit $status, verdict $verdict, answer: $response"
+scripts/check-dependency-graph.sh:51:   if [ "$verdict" != retry ]; then
+scripts/check-dependency-graph.sh:56:     echo "GitHub did not give a definite answer (attempt $attempt/$ATTEMPTS); retrying in ${RETRY_SECONDS}s."
+scripts/check-dependency-graph.sh:57:     sleep "$RETRY_SECONDS"
+scripts/check-dependency-graph.sh:67: [ "$state" = enabled ] && { echo "The dependency graph is enabled."; exit 0; }
+scripts/check-dependency-graph.sh:80:   exit 1
+scripts/check-dependency-graph.sh:82: echo "::warning::$message Skipping dependency review for this pull request."
+scripts/check-docker-build.mjs:7:  * credentials, which fork pull requests never have. The build check only
+scripts/check-docker-build.mjs:9:  * builds it, so a Dockerfile regression fails the pull request before the
+scripts/check-docker-build.mjs:38:   // Repositories without a Dockerfile skip the check; this is not an error.
+scripts/check-docker-build.mjs:92:       `Docker build check is skipped: no Dockerfile at ${config.dockerfile}`
+scripts/check-file-line-limits.sh:22: # Exit codes:
+scripts/check-file-line-limits.sh:28: set -euo pipefail
+scripts/check-file-line-limits.sh:31: WARN_THRESHOLD=1350
+scripts/check-file-line-limits.sh:36: FAILURES=''
+scripts/check-file-line-limits.sh:37: WARNINGS=''
+scripts/check-file-line-limits.sh:40: # Counts lines in FILE and records a warning or failure when it crosses
+scripts/check-file-line-limits.sh:41: # the warning threshold or hard limit. The GitHub annotation hint is
+scripts/check-file-line-limits.sh:61:     FAILURES="${FAILURES}${file}\n"
+scripts/check-file-line-limits.sh:62:   elif [ "$line_count" -gt "$WARN_THRESHOLD" ]; then
+scripts/check-file-line-limits.sh:63:     echo "WARNING: $file has $line_count lines (approaching limit of ${LIMIT}, warning threshold: ${WARN_THRESHOLD})"
+scripts/check-file-line-limits.sh:64:     echo "::warning file=$file::File has $line_count lines (approaching limit of ${LIMIT}). ${hint}"
+scripts/check-file-line-limits.sh:65:     WARNINGS="${WARNINGS}${file}\n"
+scripts/check-file-line-limits.sh:78:   exit 2
+scripts/check-file-line-limits.sh:99:   exit 2
+scripts/check-file-line-limits.sh:103: if [ -n "$WARNINGS" ]; then
+scripts/check-file-line-limits.sh:104:   echo "The following files are approaching the ${LIMIT} line limit (>${WARN_THRESHOLD} lines):"
+scripts/check-file-line-limits.sh:105:   printf '%b' "$WARNINGS" | sed '/^$/d; s/^/  /'
+scripts/check-file-line-limits.sh:111: if [ -n "$FAILURES" ]; then
+scripts/check-file-line-limits.sh:113:   printf '%b' "$FAILURES" | sed '/^$/d; s/^/  /'
+scripts/check-file-line-limits.sh:116:   exit 1
+scripts/check-file-line-limits.sh:119: echo "Checked $CHECKED tracked files against a ${LIMIT}-line limit (warning at ${WARN_THRESHOLD})."
+scripts/check-mjs-syntax.sh:9: # Exit code 0 = all files pass syntax check; non-zero = syntax error found.
+scripts/check-mjs-syntax.sh:11: set -euo pipefail
+scripts/check-mjs-syntax.sh:21:         timeout 10s node --check "$file"
+scripts/check-package-manager.mjs:4:  * Fails the release before any install when the package manager could be
+scripts/check-package-manager.mjs:23:  * Exit codes: 0 = declared npm (warnings allowed), 1 = the release would
+scripts/check-package-manager.mjs:105:     console.warn(
+scripts/check-package-manager.mjs:106:       `::warning::lockfile(s) for another package manager at the repository ` +
+scripts/check-package-manager.mjs:114:     console.error('Package manager declaration check failed:');
+scripts/check-pages.sh:8: #   PAGES_MODE=warn    -- pull requests: annotate, write enabled=false and
+scripts/check-pages.sh:9: #                         exit 0 so the pull request is not blocked.
+scripts/check-pages.sh:10: #   PAGES_MODE=require -- default branch: fail with the setting to change
+scripts/check-pages.sh:14: # Any other failure fails closed in both modes.
+scripts/check-pages.sh:15: set -euo pipefail
+scripts/check-pages.sh:28:   warn | require) ;;
+scripts/check-pages.sh:30:     echo "::error::PAGES_MODE must be warn or require, got '${mode}'."
+scripts/check-pages.sh:31:     exit 2
+scripts/check-pages.sh:43:     exit 0
+scripts/check-pages.sh:50:     exit 1
+scripts/check-pages.sh:56: if [ "${mode}" = "warn" ]; then
+scripts/check-pages.sh:57:   echo "::warning::${problem}, so the example app will not deploy from main. ${instruction}"
+scripts/check-pages.sh:58:   exit 0
+scripts/check-pages.sh:61: exit 1
+scripts/check-pipeline-status.sh:2: # Turn unexplained job failures and cancellations into a terminal red gate.
+scripts/check-pipeline-status.sh:3: set -euo pipefail
+scripts/check-pipeline-status.sh:41:       : !["success", "skipped", "cancelled"].includes(result);
+scripts/check-pipeline-status.sh:85:     if ! table="$(WORKFLOW_FILE="${workflow}" JOB_NAMES="${names}" bash "${script_dir}/read-job-cancel-in-progress.sh" 2>&1)"; then
+scripts/check-pipeline-status.sh:100:     trace "cancelled ${name}: cancel-in-progress=${value}, superseded=${superseded}"
+scripts/check-pipeline-status.sh:111:           "it sets cancel-in-progress: true, so a supersede can cancel it"
+scripts/check-pipeline-status.sh:115:           "it sets cancel-in-progress: false, so a supersede queues behind it"
+scripts/check-pipeline-status.sh:127:           "${reason:-its cancel-in-progress value is an expression or otherwise unreadable}"
+scripts/check-pipeline-status.sh:133: failed_lines="$(select_by_result not-success)"
+scripts/check-pipeline-status.sh:135: failed="$(join_names "${failed_lines}")"
+scripts/check-pipeline-status.sh:138: echo "Failed jobs:    ${failed:-<none>}"
+scripts/check-pipeline-status.sh:142: if [ -n "${failed}" ]; then
+scripts/check-pipeline-status.sh:143:   echo "::error title=Pipeline failed::Failing jobs: ${failed}"
+scripts/check-pipeline-status.sh:166:     echo "::warning title=Cancelled jobs in a superseded run::${superseded_jobs}. This run is no longer the head of ${branch_name}, and these jobs cancel in progress."
+scripts/check-pipeline-status.sh:169:     echo "::error title=Pipeline has cancelled jobs::${overrun_jobs}. No supersede accounts for these cancellations; timeout-minutes would otherwise leave the run grey."
+scripts/check-pipeline-status.sh:175:   echo "All required jobs succeeded or were legitimately skipped."
+scripts/check-pipeline-status.sh:178: exit "${status}"
+scripts/check-release-needed.mjs:29:  *   - skip_bump: 'true' when recovering the existing version without changesets
+scripts/check-release-needed.mjs:85:     setOutput('skip_bump', 'false');
+scripts/check-release-needed.mjs:103:       setOutput('skip_bump', 'true');
+scripts/check-release-needed.mjs:111:       setOutput('skip_bump', 'false');
+scripts/check-release-needed.mjs:118:     setOutput('skip_bump', 'true');
+scripts/check-required-docs.sh:18: # Exit codes:
+scripts/check-required-docs.sh:23: set -euo pipefail
+scripts/check-required-docs.sh:66:   exit 0
+scripts/check-required-docs.sh:71:   exit 2
+scripts/check-required-docs.sh:74: FAILURES=''
+scripts/check-required-docs.sh:86:     FAILURES="${FAILURES}${path}|missing file\n"
+scripts/check-required-docs.sh:96:       FAILURES="${FAILURES}${path}|${section}\n"
+scripts/check-required-docs.sh:106: VIOLATION_COUNT=$(printf '%b' "$FAILURES" | grep -c . || true)
+scripts/check-required-docs.sh:111:   printf '%b' "$FAILURES" | sed '/^$/d; s/^/  /'
+scripts/check-required-docs.sh:112:   exit 1
+scripts/check-status-gate-covers-all-jobs.mjs:4:  * Fails when a job in a workflow is missing from the terminal status job's
+scripts/check-status-gate-covers-all-jobs.mjs:5:  * `needs`, i.e. when its failure cannot turn the run red.
+scripts/check-status-gate-covers-all-jobs.mjs:8:  * `if: !cancelled()`, `needs:` every other job, and turns any failure among
+scripts/check-status-gate-covers-all-jobs.mjs:10:  * out of it can fail while the gate reports success. This script derives
+scripts/check-status-gate-covers-all-jobs.mjs:18:  * Exit codes:
+scripts/check-status-gate-covers-all-jobs.mjs:20:  *   1 = a gate has a hole: a job's failure cannot fail the run
+scripts/check-status-gate-covers-all-jobs.mjs:163:           `::error file=${file}::job '${job}' is not in ${gateName}.needs; its failure cannot fail the run`
+scripts/check-status-gate-covers-all-jobs.mjs:175:   // Exit 1 ("the gate has a hole") and exit 2 ("the gate is missing or the
+scripts/check-version.mjs:4: // Git/ref/JSON errors fail the guard. Only same-repository release PRs from the
+scripts/check-version.mjs:35:   console.error(`::error::Version check failed: ${error.message}`);
+scripts/check-web-archive.mjs:19:  *     answer (default: lychee/recovered.txt). Listed URLs are skipped; a
+scripts/check-web-archive.mjs:20:  *     missing file skips nothing.
+scripts/check-web-archive.mjs:25:  * Exit codes:
+scripts/check-web-archive.mjs:31: import { setTimeout as sleep } from 'node:timers/promises';
+scripts/check-web-archive.mjs:99:   // failures (a missing local file, an unresolvable root-relative link) that
+scripts/check-web-archive.mjs:102:     /^\s*(?:\*|-)\s+\[(?:4\d\d|5\d\d|ERROR|TIMEOUT|UNKNOWN)\]\s+<?([^\s>|)]+)>?/gim;
+scripts/check-web-archive.mjs:133:  * send a healthy URL to the Wayback Machine and fail the job on it.
+scripts/check-web-archive.mjs:180: async function fetchWaybackSnapshot(apiUrl, { fetchImpl, timeoutMs }) {
+scripts/check-web-archive.mjs:182:   const timer = globalThis.setTimeout(
+scripts/check-web-archive.mjs:183:     () => controller.abort(new Error(`Timed out after ${timeoutMs}ms`)),
+scripts/check-web-archive.mjs:184:     timeoutMs
+scripts/check-web-archive.mjs:207:     globalThis.clearTimeout(timer);
+scripts/check-web-archive.mjs:211: function validateLookupOptions({ attempts, timeoutMs, delayMs }) {
+scripts/check-web-archive.mjs:215:     !Number.isFinite(timeoutMs) ||
+scripts/check-web-archive.mjs:216:     timeoutMs <= 0 ||
+scripts/check-web-archive.mjs:221:       'Wayback attempts and timeout must be positive; delay must be nonnegative'
+scripts/check-web-archive.mjs:227:  * Check the availability API with bounded retries for transient lookup failures.
+scripts/check-web-archive.mjs:238:     timeoutMs = 10000,
+scripts/check-web-archive.mjs:242:   validateLookupOptions({ attempts, timeoutMs, delayMs });
+scripts/check-web-archive.mjs:244:   let failure;
+scripts/check-web-archive.mjs:248:         `  Retrying Wayback lookup (attempt ${attempt}/${attempts}) after: ${failure}`
+scripts/check-web-archive.mjs:253:       return await fetchWaybackSnapshot(apiUrl, { fetchImpl, timeoutMs });
+scripts/check-web-archive.mjs:255:       failure = error.message;
+scripts/check-web-archive.mjs:258:   return { ...NOT_ARCHIVED, error: `${failure} (after ${attempts} attempts)` };
+scripts/check-web-archive.mjs:279:  * equivalent, so they can never be `all_archived` and always fail the check.
+scripts/check-web-archive.mjs:368:   lookupFailures,
+scripts/check-web-archive.mjs:375:   for (const { url, error } of lookupFailures) {
+scripts/check-web-archive.mjs:377:       `::error title=Broken link - Web Archive lookup failed::${url}: ${error}\n` +
+scripts/check-web-archive.mjs:386:     lookupFailures.length === 0;
+scripts/check-web-archive.mjs:417:     console.log('No lychee output file found. Skipping web archive check.');
+scripts/check-web-archive.mjs:454:   const lookupFailures = [];
+scripts/check-web-archive.mjs:461:       console.log(`  ✗ Web Archive lookup failed: ${result.error}`);
+scripts/check-web-archive.mjs:462:       lookupFailures.push({ url, error: result.error });
+scripts/check-web-archive.mjs:473:     await new Promise((resolve) => globalThis.setTimeout(resolve, 500));
+scripts/check-web-archive.mjs:480:       lookupFailures,
+scripts/create-github-release.mjs:209:   return 'unknown exit status';
+scripts/create-github-release.mjs:223:     throw new Error(`gh api failed to start: ${result.error.message}`);
+scripts/create-github-release.mjs:238:     `gh api failed with ${getGhExitDescription(result)}${details}`
+scripts/create-github-release.mjs:287:       stdout(`GitHub release already exists: ${tag}. Skipping creation.`);
+scripts/create-manual-changeset.mjs:25: // this script reports the failure and writes its outputs, and the process
+scripts/debug-print.mjs:6:  * When a dependency fails to load, a bare `$ is not a function` says nothing
+scripts/debug-print.mjs:30:  * reason a script or a test fails, so an unreadable variable counts as unset.
+scripts/detect-code-changes.mjs:16: // This lets PR synchronize runs skip slow checks when the pushed range
+scripts/detect-code-changes.mjs:221:       `Workflow run lookup failed (${error?.message ?? error}); the previous head stays unverified.`
+scripts/format-github-release.mjs:25: // this script reports the failure and writes its outputs, and the process
+scripts/format-release-notes.mjs:38: // this script reports the failure and writes its outputs, and the process
+scripts/format-release-notes.mjs:103:   // Skip only a generated npm badge image.
+scripts/github-release-state.mjs:25:         signal: AbortSignal.timeout(15000),
+scripts/github-release-state.mjs:38:     logger.warn(`GitHub release state unknown for ${tag}: ${error.message}`);
+scripts/install-git-hooks.mjs:22:     debug('Skipping Git hooks: CI or HUSKY=0');
+scripts/install-git-hooks.mjs:26:     debug('Skipping Git hooks: no Git repository');
+scripts/instant-version-bump.mjs:37: // this script reports the failure and writes its outputs, and the process
+scripts/instant-version-bump.mjs:154:   // --legacy-peer-deps keeps a peer-dependency conflict from failing the
+scripts/land-via-pull-request.mjs:7:  * rejection is not a lost race, so the rebase-and-retry recovery cannot help:
+scripts/land-via-pull-request.mjs:33: import { CommandFailedError, runCommand, runStrict } from './run-command.mjs';
+scripts/land-via-pull-request.mjs:55:   return new Promise((resolve) => globalThis.setTimeout(resolve, ms));
+scripts/land-via-pull-request.mjs:120:  * Whether a failed merge is the short mergeability-computation race that is
+scripts/land-via-pull-request.mjs:121:  * safe to retry. Policy, authentication, and failed-check errors are invariant
+scripts/land-via-pull-request.mjs:126: export function isTransientMergeFailure(result) {
+scripts/land-via-pull-request.mjs:134:  * Merge a pull request, retrying while GitHub is still computing mergeability.
+scripts/land-via-pull-request.mjs:136:  * `gh pr merge` fails with "Pull request is not mergeable" for a few seconds
+scripts/land-via-pull-request.mjs:138:  * transient state as a hard failure aborts a release one poll away from
+scripts/land-via-pull-request.mjs:150: export async function mergePullRequestWithRetry({
+scripts/land-via-pull-request.mjs:168:     if (!isTransientMergeFailure(last) || attempt === maxAttempts) {
+scripts/land-via-pull-request.mjs:172:       `Merge attempt ${attempt} of ${maxAttempts} did not succeed yet; GitHub may still be computing mergeability. Retrying...`
+scripts/land-via-pull-request.mjs:177:   throw new CommandFailedError('gh', args, last);
+scripts/land-via-pull-request.mjs:183:  * retried. Once checks exist, `gh pr checks --watch --fail-fast` waits for
+scripts/land-via-pull-request.mjs:184:  * completion and returns a real failed check without a merge attempt.
+scripts/land-via-pull-request.mjs:204:   const args = ['pr', 'checks', url, '--required', '--watch', '--fail-fast'];
+scripts/land-via-pull-request.mjs:222:       `No pull-request checks discovered yet (attempt ${attempt} of ${maxAttempts}); retrying...`
+scripts/land-via-pull-request.mjs:227:   throw new CommandFailedError('gh', args, last);
+scripts/land-via-pull-request.mjs:488:   await mergePullRequestWithRetry({
+scripts/lint-changed-lines.mjs:2:  * Helpers for reporting ESLint warnings only on changed lines.
+scripts/lint-changed-lines.mjs:4:  * Errors are always reported, everywhere. Warnings are noise when they come
+scripts/lint-changed-lines.mjs:7:  * file and drop warnings that fall outside that set.
+scripts/lint-changed-lines.mjs:62:  * Keep every error, and keep warnings only when they touch a changed line of a
+scripts/lint-changed-lines.mjs:72: export function filterWarningsToChangedLines(results, changedLines, cwd) {
+scripts/lint-changed-lines.mjs:105:       warningCount: messages.filter((message) => message.severity === 1).length,
+scripts/lint-changed-lines.mjs:106:       fixableWarningCount: messages.filter(
+scripts/lint-changed-lines.mjs:114:  * Exit code for the reported results: any error or any reported warning
+scripts/lint-changed-lines.mjs:115:  * fails. The pre-commit hook runs ESLint with --max-warnings 0, so CI rejects
+scripts/lint-changed-lines.mjs:116:  * what a skipped hook would have rejected.
+scripts/lint-changed-lines.mjs:122:   return reported.some((result) => result.errorCount + result.warningCount > 0)
+scripts/lint.mjs:6:  * All files are linted for errors. Warnings are reported only on lines that
+scripts/lint.mjs:8:  * actionable findings. Every reported error or warning fails the run. Set
+scripts/lint.mjs:9:  * LINT_ALL_WARNINGS=1 to report every warning, as pushes to main do.
+scripts/lint.mjs:16:   filterWarningsToChangedLines,
+scripts/lint.mjs:76:     process.env.LINT_ALL_WARNINGS === '1' ? null : collectChangedLines();
+scripts/lint.mjs:79:     ? filterWarningsToChangedLines(results, changedLines, process.cwd())
+scripts/lint.mjs:89:   const hiddenWarnings =
+scripts/lint.mjs:90:     results.reduce((total, result) => total + result.warningCount, 0) -
+scripts/lint.mjs:91:     reported.reduce((total, result) => total + result.warningCount, 0);
+scripts/lint.mjs:93:   if (hiddenWarnings > 0) {
+scripts/lint.mjs:95:       `${hiddenWarnings} warning(s) on unchanged lines were not reported. Run LINT_ALL_WARNINGS=1 npm run lint to see them.`
+scripts/merge-changesets.mjs:12:  * - Fails if any changeset cannot be parsed
+scripts/merge-changesets.mjs:130:     throw new Error(`Failed to read ${filePath}: ${error.message}`, {
+scripts/npm-registry.mjs:100:       `Failed to fetch npm package metadata for ${packageName}: ${response.status} ${response.statusText}`
+scripts/pr-comparison.mjs:11: /** Resolve both commits before comparing; a failed lookup must never pass CI. */
+scripts/preflight-credentials.sh:3: # Prove the release credentials can write before any expensive job runs.
+scripts/preflight-credentials.sh:15: #   release -- push to main / manual instant release. A refused credential
+scripts/preflight-credentials.sh:16: #              fails the run here, before the matrix spends a minute.
+scripts/preflight-credentials.sh:21: #   1. Report every failure, not the first -- no probe aborts the script.
+scripts/preflight-credentials.sh:22: #   2. Report `unknown`, never a guess: a timeout or a 429 has not said the
+scripts/preflight-credentials.sh:23: #      credential is broken. Every configured target must verify in release
+scripts/preflight-credentials.sh:27: # No set -e on purpose: rule 1 means one failed probe must not hide the rest.
+scripts/preflight-credentials.sh:35: CURL_TIMEOUT="${PREFLIGHT_CURL_TIMEOUT:-15}"
+scripts/preflight-credentials.sh:39: n_fail=0
+scripts/preflight-credentials.sh:41: failures=''
+scripts/preflight-credentials.sh:50:   n_fail=$((n_fail + 1))
+scripts/preflight-credentials.sh:51:   failures="${failures}${failures:+${NEWLINE}}$1"
+scripts/preflight-credentials.sh:52:   printf '  FAIL: %s\n' "$*"
+scripts/preflight-credentials.sh:62: # Prints "body\nstatus"; a network failure yields an empty status, which the
+scripts/preflight-credentials.sh:66:   body=$(curl -sS --max-time "$CURL_TIMEOUT" -o - -w "${NEWLINE}%{http_code}" "$@" 2>/dev/null)
+scripts/preflight-credentials.sh:83: # so the failure names the maintainer action that fixes this repository.
+scripts/preflight-credentials.sh:144:         printf '  SKIP: npm package exchange returned 404; checking the documented NPM_TOKEN bootstrap fallback\n'
+scripts/preflight-credentials.sh:171:       printf '  SKIP: NPM_TOKEN is not set; OIDC trusted publishing is the publish path (NPM_TOKEN is the bootstrap fallback for a package npm does not have yet)\n'
+scripts/preflight-credentials.sh:205:         bad "npm accepted NPM_TOKEN, but account '${login}' is not a maintainer of this package -- the publish would fail"
+scripts/preflight-credentials.sh:230:     printf '  SKIP: DOCKERHUB_IMAGE is not set -- Docker publishing is disabled (scripts/check-docker-publish.mjs)\n'
+scripts/preflight-credentials.sh:235:     bad "DOCKERHUB_IMAGE is set (${image}) but DOCKERHUB_USERNAME or DOCKERHUB_TOKEN is missing -- docker-publish would fail at login"
+scripts/preflight-credentials.sh:253:   headers=$(curl -sS --max-time "$CURL_TIMEOUT" -D - -o /dev/null \
+scripts/preflight-credentials.sh:267:         curl -sS --max-time "$CURL_TIMEOUT" -o /dev/null -X DELETE \
+scripts/preflight-credentials.sh:282:       unknown "Docker Hub answered ${status:-no status} to the write probe (no verdict on the credential)"
+scripts/preflight-credentials.sh:303:     printf '| failed | %d |\n' "$n_fail"
+scripts/preflight-credentials.sh:305:     if [ -n "$failures" ]; then
+scripts/preflight-credentials.sh:306:       printf '\n**Failed**\n\n'
+scripts/preflight-credentials.sh:307:       printf '%s\n' "$failures" | while IFS= read -r line; do
+scripts/preflight-credentials.sh:312:       printf '\n**Unknown** (no verdict -- a probe that did not answer has not said the credential is broken)\n\n'
+scripts/preflight-credentials.sh:323: printf '\nRelease preflight: %d verified, %d failed, %d unknown\n' \
+scripts/preflight-credentials.sh:324:   "$verified" "$n_fail" "$n_unknown"
+scripts/preflight-credentials.sh:326: if [ "$n_fail" -gt 0 ]; then
+scripts/preflight-credentials.sh:328:     emit_annotations error "$failures"
+scripts/preflight-credentials.sh:329:     append_summary failed
+scripts/preflight-credentials.sh:330:     printf '::error::release-preflight: refusing to release with %d refused credential(s)\n' "$n_fail"
+scripts/preflight-credentials.sh:331:     exit 1
+scripts/preflight-credentials.sh:333:   emit_annotations warning "$failures"
+scripts/preflight-credentials.sh:334:   append_summary failed
+scripts/preflight-credentials.sh:335:   printf 'Report mode: the failures above are advisory -- pull requests may come from forks without publishing secrets.\n'
+scripts/preflight-credentials.sh:336:   exit 0
+scripts/preflight-credentials.sh:343:     emit_annotations warning "$unknowns"
+scripts/preflight-credentials.sh:345:     printf '::error::release-preflight: not all configured targets verified (%d unknown) -- refusing to release on an unproven credential set\n' "$n_unknown"
+scripts/preflight-credentials.sh:346:     exit 1
+scripts/preflight-credentials.sh:348:   emit_annotations warning "$unknowns"
+scripts/preflight-credentials.sh:350:   printf 'Report mode: some credentials remain unverified -- advisory only.\n'
+scripts/preflight-credentials.sh:351:   exit 0
+scripts/preflight-credentials.sh:355: exit 0
+scripts/publish-failure-classifier.mjs:2:  * Classify npm publish failures and build actionable guidance.
+scripts/publish-failure-classifier.mjs:4:  * Some publish failures are permanent: retrying a 404/401/403 (or any auth /
+scripts/publish-failure-classifier.mjs:15: // Failures caused by authentication / registry configuration. Retrying these is
+scripts/publish-failure-classifier.mjs:17: // "Failed to publish after N attempts" message.
+scripts/publish-failure-classifier.mjs:18: export const NON_RETRYABLE_PATTERNS = [
+scripts/publish-failure-classifier.mjs:32:  * Determine whether a detected failure is caused by authentication / registry
+scripts/publish-failure-classifier.mjs:37: export function isNonRetryableFailure(output) {
+scripts/publish-failure-classifier.mjs:39:   return NON_RETRYABLE_PATTERNS.some((pattern) =>
+scripts/publish-failure-classifier.mjs:46:  * registry-configuration publish failure (most commonly an E404 on the very
+scripts/publish-failure-classifier.mjs:48:  * @param {string} packageName - The package that failed to publish
+scripts/publish-failure-classifier.mjs:51: export function buildAuthFailureGuidance(packageName) {
+scripts/publish-failure-classifier.mjs:54:     '=== NPM PUBLISH AUTHENTICATION / REGISTRY FAILURE ===',
+scripts/publish-failure-classifier.mjs:56:     `Failed to publish ${packageName}. This is an authentication or registry`,
+scripts/publish-retry.mjs:2:  * Publish orchestration helpers that keep the two failure domains separate:
+scripts/publish-retry.mjs:4:  * - the publish command itself failing (retryable: run `changeset publish` again)
+scripts/publish-retry.mjs:6:  *   propagated yet (NOT retryable by republishing: the only correct response is
+scripts/publish-retry.mjs:10:  * samples a race: when it misses, republishing fails with "cannot publish over
+scripts/publish-retry.mjs:12:  * failure.
+scripts/publish-retry.mjs:27:   return new Promise((resolve) => globalThis.setTimeout(resolve, ms));
+scripts/publish-retry.mjs:32:  * Such an error is a cue to verify, not to fail.
+scripts/publish-retry.mjs:37:  * false failure, an over-eager match costs one bounded polling loop.
+scripts/publish-retry.mjs:46:   // situation the patterns above describe, and the window this retry loop
+scripts/publish-retry.mjs:149:  * live and republishing would fail with a conflict.
+scripts/publish-retry.mjs:160:   error.nonRetryable = true;
+scripts/publish-retry.mjs:161:   error.verificationFailed = true;
+scripts/publish-retry.mjs:168:  * The publish command is retried only when the publish itself failed. Once a
+scripts/publish-retry.mjs:173:  * fails the release.
+scripts/publish-retry.mjs:179:  * @param {number} [options.retryDelay]
+scripts/publish-retry.mjs:185: export async function publishWithRetry({
+scripts/publish-retry.mjs:189:   retryDelay = 10000,
+scripts/publish-retry.mjs:214:     if (error?.nonRetryable) {
+scripts/publish-retry.mjs:220:         `Publish failed: ${error?.message}, waiting ${retryDelay / 1000}s before retry...`
+scripts/publish-retry.mjs:222:       await sleepFn(retryDelay);
+scripts/publish-retry.mjs:229:       lastError || new Error(`Failed to publish after ${maxRetries} attempts`),
+scripts/publish-to-npm.mjs:27:   buildAuthFailureGuidance,
+scripts/publish-to-npm.mjs:28:   isNonRetryableFailure,
+scripts/publish-to-npm.mjs:29: } from './publish-failure-classifier.mjs';
+scripts/publish-to-npm.mjs:32:   publishWithRetry,
+scripts/publish-to-npm.mjs:34: } from './publish-retry.mjs';
+scripts/publish-to-npm.mjs:40: // this script reports the failure and writes its outputs, and the process
+scripts/publish-to-npm.mjs:71: const RETRY_DELAY = 10000; // 10 seconds
+scripts/publish-to-npm.mjs:77: // Patterns that indicate publish failure in changeset output
+scripts/publish-to-npm.mjs:79: const FAILURE_PATTERNS = [
+scripts/publish-to-npm.mjs:80:   'packages failed to publish',
+scripts/publish-to-npm.mjs:91:  * Check if the output contains any failure patterns
+scripts/publish-to-npm.mjs:93:  * @returns {string|null} - The matched failure pattern or null if no failure detected
+scripts/publish-to-npm.mjs:95: function detectPublishFailure(output) {
+scripts/publish-to-npm.mjs:97:   for (const pattern of FAILURE_PATTERNS) {
+scripts/publish-to-npm.mjs:137:     // IMPORTANT: Use .run({ capture: true }) to capture output for failure detection
+scripts/publish-to-npm.mjs:153:     // Restore cwd on error before retry
+scripts/publish-to-npm.mjs:162:  * Analyze publish result for failures using multi-layer detection
+scripts/publish-to-npm.mjs:165:  * @returns {Error|null} - Error if failure detected, null otherwise
+scripts/publish-to-npm.mjs:176:   // command-stream mirrors captured output live; retain it for failure analysis.
+scripts/publish-to-npm.mjs:177:   // Check for failure patterns in output (most reliable for changeset)
+scripts/publish-to-npm.mjs:178:   const failurePattern = detectPublishFailure(combinedOutput);
+scripts/publish-to-npm.mjs:179:   if (failurePattern) {
+scripts/publish-to-npm.mjs:180:     console.error(`Detected publish failure: "${failurePattern}"`);
+scripts/publish-to-npm.mjs:181:     return new Error(`Publish failed: detected "${failurePattern}" in output`);
+scripts/publish-to-npm.mjs:184:   // Check exit code (if available and non-zero)
+scripts/publish-to-npm.mjs:187:     return new Error(`Publish failed with exit code ${publishResult.code}`);
+scripts/publish-to-npm.mjs:195:  * Verification is a separate failure domain handled by publishWithRetry.
+scripts/publish-to-npm.mjs:215:     // Mark authentication / registry-configuration failures as non-retryable so
+scripts/publish-to-npm.mjs:216:     // the retry loop can fail fast with actionable guidance without burning
+scripts/publish-to-npm.mjs:218:     if (!isAlreadyPublishedError(output) && isNonRetryableFailure(output)) {
+scripts/publish-to-npm.mjs:219:       analysisError.nonRetryable = true;
+scripts/publish-to-npm.mjs:263:     // Publish to npm using OIDC trusted publishing with retry logic
+scripts/publish-to-npm.mjs:264:     // Multi-layer failure detection guards against a publish command that
+scripts/publish-to-npm.mjs:267:     // The publish command is retried only when the publish itself failed.
+scripts/publish-to-npm.mjs:270:     const { success, error } = await publishWithRetry({
+scripts/publish-to-npm.mjs:274:       retryDelay: RETRY_DELAY,
+scripts/publish-to-npm.mjs:286:     console.error(`\u274C Publish failed: ${error.message}`);
+scripts/publish-to-npm.mjs:288:     // retrying, so print actionable guidance for the operator.
+scripts/publish-to-npm.mjs:289:     if (error?.nonRetryable && !error?.verificationFailed) {
+scripts/publish-to-npm.mjs:290:       console.error(buildAuthFailureGuidance(packageName));
+scripts/push-failure-classifier.mjs:18:  * fail, and the log claims a race that never happened.
+scripts/push-failure-classifier.mjs:81:  * can never satisfy a rule, and misreading it as a lost race burns the retry
+scripts/push-main-with-rebase-retry.mjs:12:  * Before the GH013 report in link-foundation/js-ai-driven-development-pipeline-template#143 every failure was treated as case 1: under a `pull_request`
+scripts/push-main-with-rebase-retry.mjs:13:  * ruleset both attempts failed, the release job died after the version bump had
+scripts/push-main-with-rebase-retry.mjs:18:  *   node scripts/push-main-with-rebase-retry.mjs [remote] [branch] [options]
+scripts/push-main-with-rebase-retry.mjs:35: } from './push-failure-classifier.mjs';
+scripts/push-main-with-rebase-retry.mjs:36: import { CommandFailedError, runCommand, runStrict } from './run-command.mjs';
+scripts/push-main-with-rebase-retry.mjs:64:  * otherwise a generic name. Never fails the push over a missing package.json.
+scripts/push-main-with-rebase-retry.mjs:129:     // Auth, network, or anything else a rebase cannot fix: fail with the real
+scripts/push-main-with-rebase-retry.mjs:130:     // error, no misleading retry.
+scripts/push-main-with-rebase-retry.mjs:131:     throw new CommandFailedError('git', pushArgs, first);
+scripts/push-main-with-rebase-retry.mjs:135:     `::warning::Initial push failed; rebasing on ${remote}/${branch} before retry.`
+scripts/push-main-with-rebase-retry.mjs:144:     logger.log('Push succeeded after rebase retry.');
+scripts/push-main-with-rebase-retry.mjs:156:   throw new CommandFailedError('git', pushArgs, second);
+scripts/push-main-with-rebase-retry.mjs:180:   process.argv[1].endsWith('push-main-with-rebase-retry.mjs');
+scripts/read-job-cancel-in-progress.sh:2: # Read effective concurrency.cancel-in-progress values for named workflow jobs.
+scripts/read-job-cancel-in-progress.sh:4: set -euo pipefail
+scripts/read-job-cancel-in-progress.sh:22:     print("read-job-cancel-in-progress: %s" % exc, file=sys.stderr)
+scripts/read-job-cancel-in-progress.sh:55:         found = re.match(r"\s*cancel-in-progress:\s*(.*)$", line)
+scripts/recheck-broken-links.mjs:4:  * Re-check transport failures and transient HTTP 429/5xx responses.
+scripts/recheck-broken-links.mjs:6:  * lychee's `--max-retries` cannot retry a connection reset during connect
+scripts/recheck-broken-links.mjs:10:  * address range — is reported as broken without a single retry. This script
+scripts/recheck-broken-links.mjs:30:  *     failures and every one of them answered healthy on re-check. Consumers
+scripts/recheck-broken-links.mjs:32:  *     skipped or crashed step leaves the output empty, and only the `!=`
+scripts/recheck-broken-links.mjs:33:  *     form fails safe.
+scripts/recheck-broken-links.mjs:35:  * Exit codes:
+scripts/recheck-broken-links.mjs:36:  *   - 0 in every case. This script downgrades failures; it never raises
+scripts/recheck-broken-links.mjs:49: const REQUEST_TIMEOUT_MS = 30_000;
+scripts/recheck-broken-links.mjs:57:  * Split the lychee markdown report into per-failure records.
+scripts/recheck-broken-links.mjs:59:  * A failure is "answered" when a numeric status marker is present ([404])
+scripts/recheck-broken-links.mjs:60:  * or the detail says "Rejected status code". Such an answer is retryable
+scripts/recheck-broken-links.mjs:61:  * only for 429 or 5xx. Other markers denote unanswered failures.
+scripts/recheck-broken-links.mjs:63:  * @returns {Array<{marker: string, url: string, detail: string, answered: boolean, retryable: boolean}>}
+scripts/recheck-broken-links.mjs:65: export function parseLycheeFailures(content) {
+scripts/recheck-broken-links.mjs:66:   const failures = [];
+scripts/recheck-broken-links.mjs:86:     const retryable = !answered || isTransientStatus(status);
+scripts/recheck-broken-links.mjs:87:     failures.push({ marker, url, detail, answered, retryable });
+scripts/recheck-broken-links.mjs:90:   return failures;
+scripts/recheck-broken-links.mjs:153: /** Resolve only GitHub blob/tree pages; credentials never go to the page host. */
+scripts/recheck-broken-links.mjs:197:  * answers accepted or the budget runs out. Only transport failures, 429,
+scripts/recheck-broken-links.mjs:199:  * @param {string[]} urls - The transient failures from lychee
+scripts/recheck-broken-links.mjs:209:     ((ms) => new Promise((resolve) => setTimeout(resolve, ms)));
+scripts/recheck-broken-links.mjs:223:     const timeoutId = setTimeout(
+scripts/recheck-broken-links.mjs:225:       Math.min(REQUEST_TIMEOUT_MS, remaining)
+scripts/recheck-broken-links.mjs:250:       clearTimeout(timeoutId);
+scripts/recheck-broken-links.mjs:279:     log(`Waiting ${waitMs}ms before retrying ${pending.length} link(s)`);
+scripts/recheck-broken-links.mjs:297:  * Whether the re-check cleared every failure in the complete lychee report.
+scripts/recheck-broken-links.mjs:299:  * error from hiding an answered failure such as a 404.
+scripts/recheck-broken-links.mjs:300:  * @param {{finalFailureCount: number, stillBrokenCount: number, unansweredCount: number, recoveredCount: number}} counts
+scripts/recheck-broken-links.mjs:303: export function allFailuresRecovered(counts) {
+scripts/recheck-broken-links.mjs:305:     counts.finalFailureCount === 0 &&
+scripts/recheck-broken-links.mjs:319:   const failures = parseLycheeFailures(content);
+scripts/recheck-broken-links.mjs:321:   const finalFailures = failures.filter(
+scripts/recheck-broken-links.mjs:322:     (failure) => !failure.retryable || !/^https?:\/\//i.test(failure.url)
+scripts/recheck-broken-links.mjs:324:   const unanswered = failures
+scripts/recheck-broken-links.mjs:325:     .filter((failure) => failure.retryable && /^https?:\/\//i.test(failure.url))
+scripts/recheck-broken-links.mjs:326:     .map((failure) => failure.url);
+scripts/recheck-broken-links.mjs:329:     `Re-check: ${failures.length} lychee failure(s), ${finalFailures.length} final, ${unanswered.length} transient or unanswered`
+scripts/recheck-broken-links.mjs:364:     allFailuresRecovered({
+scripts/recheck-broken-links.mjs:365:       finalFailureCount: finalFailures.length,
+scripts/recheck-broken-links.mjs:378: // The re-check only ever downgrades failures, so any crash here must not
+scripts/recheck-broken-links.mjs:379: // mask itself as a verdict: exit 0 in every case.
+scripts/run-command.mjs:7:  * non-zero exit code, restoring `set -e` semantics.
+scripts/run-command.mjs:13:  * Error carrying the full result of a failed command so callers can classify
+scripts/run-command.mjs:14:  * the failure (see push-failure-classifier.mjs) without parsing a message.
+scripts/run-command.mjs:16: export class CommandFailedError extends Error {
+scripts/run-command.mjs:24:       `Command failed (exit ${result.code}): ${command} ${args.join(' ')}\n${
+scripts/run-command.mjs:28:     this.name = 'CommandFailedError';
+scripts/run-command.mjs:39:  * Never throws on a non-zero exit code; it resolves with the code instead.
+scripts/run-command.mjs:73:  * Run a command and throw a CommandFailedError when it exits non-zero.
+scripts/run-command.mjs:83:     throw new CommandFailedError(command, args, result);
+scripts/run-with-budget-warning.sh:2: # run-with-budget-warning.sh
+scripts/run-with-budget-warning.sh:7: # `timeout-minutes` on a job is a backstop, never the deadline: GitHub
+scripts/run-with-budget-warning.sh:8: # reports a job killed by it as *cancelled*, not *failed*, so a genuine
+scripts/run-with-budget-warning.sh:11: # exits non-zero instead, which GitHub reports as a failure with a title
+scripts/run-with-budget-warning.sh:15: #   bash scripts/run-with-budget-warning.sh SECONDS LABEL COMMAND [ARG...]
+scripts/run-with-budget-warning.sh:18: #   BUDGET_WARN_PERCENT   emit a warning at this share of the budget (default 70)
+scripts/run-with-budget-warning.sh:29: # Exit codes: the command's own status, or 124 on timeout (matching timeout(1)).
+scripts/run-with-budget-warning.sh:30: set -uo pipefail
+scripts/run-with-budget-warning.sh:34:   exit 2
+scripts/run-with-budget-warning.sh:44:     exit 2
+scripts/run-with-budget-warning.sh:50:   exit 2
+scripts/run-with-budget-warning.sh:53: warn_percent="${BUDGET_WARN_PERCENT:-70}"
+scripts/run-with-budget-warning.sh:60: warn_seconds=$((budget_seconds * warn_percent / 100))
+scripts/run-with-budget-warning.sh:68:     exit 2
+scripts/run-with-budget-warning.sh:80:   exit 2
+scripts/run-with-budget-warning.sh:130: # why timeout(1) is not sufficient here.
+scripts/run-with-budget-warning.sh:155: # the same failure status for a missing process and a live process owned by a
+scripts/run-with-budget-warning.sh:202:     trace "survivors after SIG${signal}; retrying as root"
+scripts/run-with-budget-warning.sh:239:   echo "::error title=${label} exceeded its execution budget::${label} did not finish within its ${budget_seconds}s budget, so termination was requested. Shorten the step or raise its budget (keeping it below the job's timeout-minutes backstop)."
+scripts/run-with-budget-warning.sh:256:   exit 124
+scripts/run-with-budget-warning.sh:259: echo "Running ${label} with a ${budget_seconds}s budget (warning at ${warn_seconds}s)."
+scripts/run-with-budget-warning.sh:262: warned=false
+scripts/run-with-budget-warning.sh:265:   if [ "${warned}" = false ] && [ "${SECONDS}" -ge "${warn_seconds}" ]; then
+scripts/run-with-budget-warning.sh:266:     warned=true
+scripts/run-with-budget-warning.sh:267:     echo "::warning title=${label} is approaching its execution budget::${label} has run for ${SECONDS}s of its ${budget_seconds}s budget."
+scripts/run-with-budget-warning.sh:282: # The status file is authoritative: the wrapper subshell's own exit status is
+scripts/run-with-budget-warning.sh:289: echo "${label} finished in ${SECONDS}s of its ${budget_seconds}s budget (exit ${status})."
+scripts/run-with-budget-warning.sh:290: exit "${status}"
+scripts/sanitize-npm-userconfig.mjs:12:  * npm 11 warns about this key, while setup-node may still write it.
+scripts/sanitize-npm-userconfig.mjs:28:  * @param {{log: Function, warn: Function}} [options.logger]
+scripts/sanitize-npm-userconfig.mjs:32:  * @returns {{path: string, removed: boolean, skipped: boolean}}
+scripts/sanitize-npm-userconfig.mjs:47:     return { path: '', removed: false, skipped: true };
+scripts/sanitize-npm-userconfig.mjs:51:     logger.warn(`npm user config does not exist: ${userConfigPath}`);
+scripts/sanitize-npm-userconfig.mjs:52:     return { path: userConfigPath, removed: false, skipped: true };
+scripts/sanitize-npm-userconfig.mjs:60:     return { path: userConfigPath, removed: false, skipped: false };
+scripts/sanitize-npm-userconfig.mjs:65:   return { path: userConfigPath, removed: true, skipped: false };
+scripts/setup-npm.mjs:111:       `Failed to fetch npm registry metadata: ${response.status} ${response.statusText}`
+scripts/setup-npm.mjs:127: // ships with a broken npm 10.9.7 that is missing the 'promise-retry' module,
+scripts/setup-npm.mjs:128: // causing `npm install -g` to fail with MODULE_NOT_FOUND.
+scripts/setup-npm.mjs:155:   // truncation (curl exit 18) must not leave a half-populated directory, and
+scripts/setup-npm.mjs:157:   // twice. `--retry` alone does not cover exit 18; `--retry-all-errors` is
+scripts/setup-npm.mjs:160:   await $`curl -fsSL --retry 3 --retry-delay 2 --retry-all-errors "${npmRelease.tarballUrl}" -o "${tarball}"`;
+scripts/setup-npm.mjs:180:     console.warn(`Warning: ${name} failed: ${error.message}`);
+scripts/setup-npm.mjs:185: function failUnsupportedNodeVersion(nodeVersion) {
+scripts/setup-npm.mjs:193: function failUnsupportedNpmVersion(npmVersion) {
+scripts/setup-npm.mjs:207:     failUnsupportedNodeVersion(nodeVersion);
+scripts/setup-npm.mjs:228:     console.warn(
+scripts/setup-npm.mjs:246:     failUnsupportedNpmVersion(updatedVersion);
+scripts/setup-npm.mjs:259:       failUnsupportedNodeVersion(process.version);
+scripts/simulate-fresh-merge.sh:13: # Exit code 0 = merge succeeded or not needed; non-zero = merge conflict detected.
+scripts/simulate-fresh-merge.sh:17: set -euo pipefail
+scripts/simulate-fresh-merge.sh:34: # A transient failure of this one fetch used to end the job under
+scripts/simulate-fresh-merge.sh:35: # set -e (a runner-side DNS blip turned a required check red). Retry with
+scripts/simulate-fresh-merge.sh:36: # backoff; a base branch that truly cannot be fetched must still fail,
+scripts/simulate-fresh-merge.sh:37: # because silently skipping the merge simulation is the false negative this
+scripts/simulate-fresh-merge.sh:39: fetch_with_retry() {
+scripts/simulate-fresh-merge.sh:42:   local delay="${FRESH_MERGE_RETRY_DELAY_SECONDS:-5}"
+scripts/simulate-fresh-merge.sh:49:       echo "::error::git fetch origin $* failed $max_attempts times; the base branch could not be read" >&2
+scripts/simulate-fresh-merge.sh:52:     echo "git fetch origin $* failed (attempt $attempt/$max_attempts); retrying in $((delay * attempt))s" >&2
+scripts/simulate-fresh-merge.sh:58: fetch_with_retry "$BASE_REF"
+scripts/simulate-fresh-merge.sh:87:     exit 1
+scripts/smoke-test-package.mjs:22: const DEFAULT_SERVER_TIMEOUT_SECONDS = 15;
+scripts/smoke-test-package.mjs:24: const BOOLEAN_OPTIONS = new Set(['skip-cli', 'skip-library']);
+scripts/smoke-test-package.mjs:26:   'Usage: node scripts/smoke-test-package.mjs --package-version <version> [--package-name <name>] [--js-root <path>] [--max-attempts <count>] [--sleep-seconds <count>] [--cli-args <args>] [--skip-cli] [--skip-library] [--server-bin <bin>] [--server-args <args>] [--server-health-url <url>]';
+scripts/smoke-test-package.mjs:147:     serverTimeoutSeconds: positiveValue(
+scripts/smoke-test-package.mjs:148:       'server-timeout-seconds',
+scripts/smoke-test-package.mjs:149:       ['SMOKE_TEST_SERVER_TIMEOUT_SECONDS'],
+scripts/smoke-test-package.mjs:150:       DEFAULT_SERVER_TIMEOUT_SECONDS
+scripts/smoke-test-package.mjs:152:     skipCli: parseBoolean(cliValue('skip-cli', ['SMOKE_TEST_SKIP_CLI'])),
+scripts/smoke-test-package.mjs:153:     skipLibrary: parseBoolean(
+scripts/smoke-test-package.mjs:154:       cliValue('skip-library', ['SMOKE_TEST_SKIP_LIBRARY'])
+scripts/smoke-test-package.mjs:228:     globalThis.setTimeout(resolve, seconds * 1000)
+scripts/smoke-test-package.mjs:251:           '--no-audit',
+scripts/smoke-test-package.mjs:261:           `Failed to install ${packageSpec} after ${maxAttempts} attempts: ${error.message}`,
+scripts/smoke-test-package.mjs:267:         `Install failed; waiting ${sleepSeconds}s for npm registry propagation`
+scripts/smoke-test-package.mjs:317:   skipLibrary = false,
+scripts/smoke-test-package.mjs:321:   if (skipLibrary || !hasLibraryEntryPoint(installedPackageJson)) {
+scripts/smoke-test-package.mjs:322:     stdout('No library smoke test configured; skipping');
+scripts/smoke-test-package.mjs:335:   skipCli = false,
+scripts/smoke-test-package.mjs:340:   if (skipCli || binEntries.length === 0) {
+scripts/smoke-test-package.mjs:341:     stdout('No CLI smoke test configured; skipping');
+scripts/smoke-test-package.mjs:357:   timeoutSeconds = DEFAULT_SERVER_TIMEOUT_SECONDS,
+scripts/smoke-test-package.mjs:360:   const deadline = Date.now() + timeoutSeconds * 1000;
+scripts/smoke-test-package.mjs:385:   serverTimeoutSeconds = DEFAULT_SERVER_TIMEOUT_SECONDS,
+scripts/smoke-test-package.mjs:390:     stdout('No HTTP server smoke test configured; skipping');
+scripts/smoke-test-package.mjs:409:       timeoutSeconds: serverTimeoutSeconds,
+scripts/smoke-test-package.mjs:415:       `HTTP server smoke test failed: ${error.message}\nServer stderr:\n${stderr}`,
+scripts/smoke-test-package.mjs:432:   serverTimeoutSeconds = DEFAULT_SERVER_TIMEOUT_SECONDS,
+scripts/smoke-test-package.mjs:433:   skipCli = false,
+scripts/smoke-test-package.mjs:434:   skipLibrary = false,
+scripts/smoke-test-package.mjs:473:       skipLibrary,
+scripts/smoke-test-package.mjs:483:       skipCli,
+scripts/smoke-test-package.mjs:492:       serverTimeoutSeconds,
+scripts/smoke-test-package.mjs:536:     stderr(`[smoke-test] FAILED: ${error.message}`);
+scripts/update-preview-images.mjs:15:  *   node scripts/update-preview-images.mjs --skip-build   # reuse existing dist
+scripts/update-preview-images.mjs:80:   const args = { skipBuild: false };
+scripts/update-preview-images.mjs:82:     if (value === '--skip-build') {
+scripts/update-preview-images.mjs:83:       args.skipBuild = true;
+scripts/update-preview-images.mjs:123:       await runNpm(['install', '--no-audit', '--no-fund'], exampleAppRoot);
+scripts/update-preview-images.mjs:246:       timeout: 30000,
+scripts/update-preview-images.mjs:247:       verificationTimeout: 5000,
+scripts/update-preview-images.mjs:255:     await commander.waitForSelector({ selector: '.app-shell', timeout: 10000 });
+scripts/update-preview-images.mjs:258:       timeout: 10000,
+scripts/update-preview-images.mjs:295:     console.log('Usage: node scripts/update-preview-images.mjs [--skip-build]');
+scripts/update-preview-images.mjs:299:   if (!args.skipBuild) {
+scripts/use-module.mjs:85:  * The errexit switch is the semantics every release script is written
+scripts/use-module.mjs:89:  * probe for a non-zero outcome (`push-main-with-rebase-retry.mjs`,
+scripts/use-module.mjs:101:   if (shell && typeof shell.errexit === 'function') {
+scripts/use-module.mjs:105:       'command-stream did not expose shell.errexit; $ keeps resolve-on-exit semantics'
+scripts/validate-changeset.mjs:10:  * - Fails on unavailable comparisons; local scanning requires ALLOW_LOCAL_CHANGESET_SCAN=true
+scripts/validate-changeset.mjs:31:     console.log('Skipping changeset validation for dependabot[bot]');
+scripts/validate-changeset.mjs:51:     console.log('Skipping changeset validation for a trusted release PR');
+scripts/validate-changeset.mjs:145:       error: `Failed to read changeset file: ${error.message}`,
+scripts/version-and-commit.mjs:36: // this script reports the failure and writes its outputs, and the process
+scripts/version-and-commit.mjs:267:       // A failure here aborts the release before anything is written.
+scripts/version-and-commit.mjs:273:       // Push directly to main, rebasing and retrying if another main writer won
+scripts/version-and-commit.mjs:279:       // through any of its strategies; errexit turns that exit into a
+scripts/version-and-commit.mjs:284:         await $`node scripts/push-main-with-rebase-retry.mjs origin main --label ${newVersion}`.run(
+scripts/version-and-commit.mjs:289:           `Failed to push version ${newVersion} to main: ${error.message}`,
+scripts/wait-for-npm.mjs:135:   return `check failed: ${[httpStatus, result.error].filter(Boolean).join(' ')}`;
+scripts/wait-for-npm.mjs:202:     // `fetch` reports transport failures as a bare "fetch failed"; the cause
+scripts/wait-for-npm.mjs:218:     globalThis.setTimeout(resolve, seconds * 1000)
+scripts/wait-for-npm.mjs:283:  * Build the failure message for an exhausted wait.
+scripts/wait-for-npm.mjs:289: export function formatFailureMessage(packageSpecifier, result, maxAttempts) {
+scripts/wait-for-npm.mjs:299:     `all ${maxAttempts} attempts failed to reach the registry.${reason} ` +
+scripts/wait-for-npm.mjs:300:     `This does NOT mean the publish failed.${where}`
+scripts/wait-for-npm.mjs:350:         formatFailureMessage(packageSpecifier, result, config.maxAttempts)

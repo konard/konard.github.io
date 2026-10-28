@@ -1,0 +1,38 @@
+[
+  {
+    "path": ".github",
+    "blob_href": "https://github.com/konard/konard.github.io/blob/6c1d9b724e8f903d7cfab0a4e53ebb5697224d02/.github",
+    "start_line": 53,
+    "start_column": null,
+    "end_line": 53,
+    "end_column": null,
+    "annotation_level": "notice",
+    "title": "",
+    "message": "deploy skipped by its documented event/change condition.",
+    "raw_details": ""
+  },
+  {
+    "path": ".github",
+    "blob_href": "https://github.com/konard/konard.github.io/blob/6c1d9b724e8f903d7cfab0a4e53ebb5697224d02/.github",
+    "start_line": 1,
+    "start_column": null,
+    "end_line": 1,
+    "end_column": null,
+    "annotation_level": "notice",
+    "title": "",
+    "message": "Due to capacity constraints, jobs targeting macOS arm64 runners may experience longer queue times.",
+    "raw_details": ""
+  },
+  {
+    "path": ".github",
+    "blob_href": "https://github.com/konard/konard.github.io/blob/6c1d9b724e8f903d7cfab0a4e53ebb5697224d02/.github",
+    "start_line": 149,
+    "start_column": null,
+    "end_line": 149,
+    "end_column": null,
+    "annotation_level": "notice",
+    "title": "",
+    "message": "Summary report available at: https://github.com/konard/konard.github.io/actions/runs/40668100515#summary-122748063318",
+    "raw_details": ""
+  }
+]

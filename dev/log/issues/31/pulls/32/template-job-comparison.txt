@@ -1,0 +1,252 @@
+/tmp/issue31-templates/js/.github/workflows/security.yml:1:name: Security
+/tmp/issue31-templates/js/.github/workflows/security.yml:4:  push:
+/tmp/issue31-templates/js/.github/workflows/security.yml:6:  pull_request:
+/tmp/issue31-templates/js/.github/workflows/security.yml:8:  schedule:
+/tmp/issue31-templates/js/.github/workflows/security.yml:10:  workflow_dispatch:
+/tmp/issue31-templates/js/.github/workflows/security.yml:14:  contents: read
+/tmp/issue31-templates/js/.github/workflows/security.yml:19:  GIT_CONFIG_COUNT: '1'
+/tmp/issue31-templates/js/.github/workflows/security.yml:20:  GIT_CONFIG_KEY_0: init.defaultBranch
+/tmp/issue31-templates/js/.github/workflows/security.yml:21:  GIT_CONFIG_VALUE_0: main
+/tmp/issue31-templates/js/.github/workflows/security.yml:24:  codeql:
+/tmp/issue31-templates/js/.github/workflows/security.yml:28:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/security.yml:56:  dependency-graph:
+/tmp/issue31-templates/js/.github/workflows/security.yml:60:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/security.yml:82:  dependency-review:
+/tmp/issue31-templates/js/.github/workflows/security.yml:88:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/security.yml:105:  npm-audit:
+/tmp/issue31-templates/js/.github/workflows/security.yml:109:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/security.yml:110:      group: check-${{ github.workflow }}-${{ github.ref }}-npm-audit-${{ matrix.directory }}
+/tmp/issue31-templates/js/.github/workflows/security.yml:127:        run: npm audit --package-lock-only --audit-level=high
+/tmp/issue31-templates/js/.github/workflows/security.yml:133:  pipeline-status:
+/tmp/issue31-templates/js/.github/workflows/security.yml:137:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/security.yml:149:      - npm-audit
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:1:name: Workflows
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:7:  push:
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:14:  pull_request:
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:20:  workflow_dispatch:
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:23:  contents: read
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:26:  GIT_CONFIG_COUNT: '1'
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:27:  GIT_CONFIG_KEY_0: init.defaultBranch
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:28:  GIT_CONFIG_VALUE_0: main
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:29:  ZIZMOR_VERSION: '1.30.1'
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:32:  actionlint:
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:36:    concurrency:
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:59:      # .github/zizmor.yml; the `unpinned-images` audit that would flag this
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:77:  zizmor:
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:81:    concurrency:
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:105:      # pedantic surfaces dozens of stylistic findings. But the audits that
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:124:  shellcheck:
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:128:    concurrency:
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:143:  pipeline-status:
+/tmp/issue31-templates/python/.github/workflows/security.yml:1:name: Security
+/tmp/issue31-templates/python/.github/workflows/security.yml:4:  push:
+/tmp/issue31-templates/python/.github/workflows/security.yml:6:  pull_request:
+/tmp/issue31-templates/python/.github/workflows/security.yml:7:  schedule:
+/tmp/issue31-templates/python/.github/workflows/security.yml:11:  contents: read
+/tmp/issue31-templates/python/.github/workflows/security.yml:14:  GIT_CONFIG_COUNT: '1'
+/tmp/issue31-templates/python/.github/workflows/security.yml:15:  GIT_CONFIG_KEY_0: init.defaultBranch
+/tmp/issue31-templates/python/.github/workflows/security.yml:16:  GIT_CONFIG_VALUE_0: main
+/tmp/issue31-templates/python/.github/workflows/security.yml:19:  dependency-audit:
+/tmp/issue31-templates/python/.github/workflows/security.yml:23:    concurrency:
+/tmp/issue31-templates/python/.github/workflows/security.yml:24:      group: check-${{ github.workflow }}-${{ github.ref }}-dependency-audit
+/tmp/issue31-templates/python/.github/workflows/security.yml:37:        run: python scripts/audit_dependencies.py
+/tmp/issue31-templates/python/.github/workflows/security.yml:39:  codeql:
+/tmp/issue31-templates/python/.github/workflows/security.yml:43:    concurrency:
+/tmp/issue31-templates/python/.github/workflows/security.yml:70:  dependency-review:
+/tmp/issue31-templates/python/.github/workflows/security.yml:101:  pipeline-status:
+/tmp/issue31-templates/python/.github/workflows/security.yml:104:      - dependency-audit
+/tmp/issue31-templates/python/.github/workflows/release.yml:1:name: CI/CD Pipeline
+/tmp/issue31-templates/python/.github/workflows/release.yml:4:  push:
+/tmp/issue31-templates/python/.github/workflows/release.yml:7:  pull_request:
+/tmp/issue31-templates/python/.github/workflows/release.yml:9:  workflow_dispatch:
+/tmp/issue31-templates/python/.github/workflows/release.yml:26:  contents: read
+/tmp/issue31-templates/python/.github/workflows/release.yml:29:  GIT_CONFIG_COUNT: '1'
+/tmp/issue31-templates/python/.github/workflows/release.yml:30:  GIT_CONFIG_KEY_0: init.defaultBranch
+/tmp/issue31-templates/python/.github/workflows/release.yml:31:  GIT_CONFIG_VALUE_0: main
+/tmp/issue31-templates/python/.github/workflows/release.yml:37:# concurrency group: a write that has started is never interrupted, and GitHub
+/tmp/issue31-templates/python/.github/workflows/release.yml:42:  detect-changes:
+/tmp/issue31-templates/python/.github/workflows/release.yml:46:    concurrency:
+/tmp/issue31-templates/python/.github/workflows/release.yml:104:  lint:
+/tmp/issue31-templates/python/.github/workflows/release.yml:108:    concurrency:
+/tmp/issue31-templates/python/.github/workflows/release.yml:129:        run: bash scripts/simulate-fresh-merge.sh
+/tmp/issue31-templates/python/.github/workflows/release.yml:207:  validate-docs:
+/tmp/issue31-templates/python/.github/workflows/release.yml:211:    concurrency:
+/tmp/issue31-templates/python/.github/workflows/release.yml:241:  release-preflight:
+/tmp/issue31-templates/python/.github/workflows/release.yml:273:  test:
+/tmp/issue31-templates/python/.github/workflows/release.yml:277:    concurrency:
+/tmp/issue31-templates/python/.github/workflows/release.yml:362:  build:
+/tmp/issue31-templates/python/.github/workflows/release.yml:366:    concurrency:
+/tmp/issue31-templates/python/.github/workflows/release.yml:435:          if-no-files-found: error
+/tmp/issue31-templates/python/.github/workflows/release.yml:439:  changelog:
+/tmp/issue31-templates/python/.github/workflows/release.yml:443:    concurrency:
+/tmp/issue31-templates/python/.github/workflows/release.yml:495:  docker-build:
+/tmp/issue31-templates/python/.github/workflows/release.yml:499:    concurrency:
+/tmp/issue31-templates/python/.github/workflows/release.yml:541:  auto-release:
+/tmp/issue31-templates/python/.github/workflows/release.yml:547:    concurrency:
+/tmp/issue31-templates/python/.github/workflows/release.yml:657:  manual-release:
+/tmp/issue31-templates/python/.github/workflows/release.yml:663:    concurrency:
+/tmp/issue31-templates/python/.github/workflows/release.yml:807:  docker-publish-config:
+/tmp/issue31-templates/python/.github/workflows/release.yml:853:  docker-publish-build:
+/tmp/issue31-templates/python/.github/workflows/release.yml:908:          if-no-files-found: error
+/tmp/issue31-templates/python/.github/workflows/release.yml:911:  docker-publish:
+/tmp/issue31-templates/python/.github/workflows/release.yml:963:  pipeline-status:
+/tmp/issue31-templates/python/.github/workflows/links.yml:1:name: Broken Link Checker
+/tmp/issue31-templates/python/.github/workflows/links.yml:4:  push:
+/tmp/issue31-templates/python/.github/workflows/links.yml:15:  pull_request:
+/tmp/issue31-templates/python/.github/workflows/links.yml:25:  workflow_dispatch:
+/tmp/issue31-templates/python/.github/workflows/links.yml:28:  contents: read
+/tmp/issue31-templates/python/.github/workflows/links.yml:31:  GIT_CONFIG_COUNT: '1'
+/tmp/issue31-templates/python/.github/workflows/links.yml:32:  GIT_CONFIG_KEY_0: init.defaultBranch
+/tmp/issue31-templates/python/.github/workflows/links.yml:33:  GIT_CONFIG_VALUE_0: main
+/tmp/issue31-templates/python/.github/workflows/links.yml:36:  link-checker:
+/tmp/issue31-templates/python/.github/workflows/links.yml:40:    concurrency:
+/tmp/issue31-templates/python/.github/workflows/links.yml:130:          if-no-files-found: error
+/tmp/issue31-templates/python/.github/workflows/links.yml:136:  pipeline-status:
+/tmp/issue31-templates/js/.github/workflows/javascript-first-gate.yml:1:name: JavaScript-first gate
+/tmp/issue31-templates/js/.github/workflows/javascript-first-gate.yml:4:  workflow_call:
+/tmp/issue31-templates/js/.github/workflows/javascript-first-gate.yml:28:  contents: read
+/tmp/issue31-templates/js/.github/workflows/javascript-first-gate.yml:31:  javascript-first:
+/tmp/issue31-templates/python/.github/workflows/docs.yml:1:name: Docs
+/tmp/issue31-templates/python/.github/workflows/docs.yml:15:  push:
+/tmp/issue31-templates/python/.github/workflows/docs.yml:22:  pull_request:
+/tmp/issue31-templates/python/.github/workflows/docs.yml:29:  workflow_dispatch:
+/tmp/issue31-templates/python/.github/workflows/docs.yml:34:  contents: read
+/tmp/issue31-templates/python/.github/workflows/docs.yml:36:concurrency:
+/tmp/issue31-templates/python/.github/workflows/docs.yml:37:  group: ${{ github.workflow }}-${{ github.ref }}
+/tmp/issue31-templates/python/.github/workflows/docs.yml:38:  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+/tmp/issue31-templates/python/.github/workflows/docs.yml:41:  GIT_CONFIG_COUNT: '1'
+/tmp/issue31-templates/python/.github/workflows/docs.yml:42:  GIT_CONFIG_KEY_0: init.defaultBranch
+/tmp/issue31-templates/python/.github/workflows/docs.yml:43:  GIT_CONFIG_VALUE_0: main
+/tmp/issue31-templates/python/.github/workflows/docs.yml:46:  build:
+/tmp/issue31-templates/python/.github/workflows/docs.yml:78:          if-no-files-found: error
+/tmp/issue31-templates/python/.github/workflows/docs.yml:94:  deploy:
+/tmp/issue31-templates/python/.github/workflows/docs.yml:121:  pipeline-status:
+/tmp/issue31-templates/js/.github/workflows/javascript-first-example.yml:1:name: JavaScript-first mixed-language example
+/tmp/issue31-templates/js/.github/workflows/javascript-first-example.yml:4:  pull_request:
+/tmp/issue31-templates/js/.github/workflows/javascript-first-example.yml:9:  push:
+/tmp/issue31-templates/js/.github/workflows/javascript-first-example.yml:16:  contents: read
+/tmp/issue31-templates/js/.github/workflows/javascript-first-example.yml:19:  javascript-first:
+/tmp/issue31-templates/js/.github/workflows/javascript-first-example.yml:27:  rust-check:
+/tmp/issue31-templates/js/.github/workflows/javascript-first-example.yml:33:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/javascript-first-example.yml:45:  rust-build:
+/tmp/issue31-templates/js/.github/workflows/javascript-first-example.yml:51:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/javascript-first-example.yml:63:  rust-test:
+/tmp/issue31-templates/js/.github/workflows/javascript-first-example.yml:69:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/javascript-first-example.yml:82:  rust-package:
+/tmp/issue31-templates/js/.github/workflows/javascript-first-example.yml:88:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/javascript-first-example.yml:100:  rust-container:
+/tmp/issue31-templates/js/.github/workflows/javascript-first-example.yml:106:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/javascript-first-example.yml:118:  rust-publish:
+/tmp/issue31-templates/js/.github/workflows/javascript-first-example.yml:124:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/javascript-first-example.yml:139:          if-no-files-found: error
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:1:name: Workflows
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:4:  push:
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:14:  pull_request:
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:23:  workflow_dispatch:
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:27:  contents: read
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:32:  GIT_CONFIG_COUNT: '1'
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:33:  GIT_CONFIG_KEY_0: init.defaultBranch
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:34:  GIT_CONFIG_VALUE_0: main
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:37:  actionlint:
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:41:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:63:          args: -color -ignore "unexpected key .queue. for .concurrency. section"
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:65:  shellcheck:
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:69:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:83:  status-gate-coverage:
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:87:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:109:  zizmor:
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:113:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:136:          # Low, not medium: the artipacked audit reports at Low confidence,
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:145:      # pedantic surfaces dozens of stylistic findings. But the audits that
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:166:  pipeline-status:
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:170:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:1:name: Example app
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:4:  pull_request:
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:14:  push:
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:25:  workflow_dispatch:
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:28:  contents: read
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:33:  GIT_CONFIG_COUNT: '1'
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:34:  GIT_CONFIG_KEY_0: init.defaultBranch
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:35:  GIT_CONFIG_VALUE_0: main
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:38:  web-build:
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:42:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:77:        run: npm ci --prefix examples/universal-app --no-audit --no-fund
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:90:          if-no-files-found: error
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:101:  pages-deploy:
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:107:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:124:  desktop-package:
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:128:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:148:        run: npm ci --prefix examples/universal-app --no-audit --no-fund
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:173:          if-no-files-found: error
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:175:  android-build:
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:180:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:205:        run: npm ci --prefix examples/universal-app --no-audit --no-fund
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:220:          if-no-files-found: warn
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:222:  ios-build:
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:227:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:243:        run: npm ci --prefix examples/universal-app --no-audit --no-fund
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:254:  preview-regen:
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:264:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:295:        run: npm ci --prefix examples/universal-app --no-audit --no-fund
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:302:        run: npm install --no-save --package-lock=false --no-audit --no-fund browser-commander@0.8.1 playwright@1.59.1 # zizmor: ignore[adhoc-packages]
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:370:          if-no-files-found: ignore
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:399:  pipeline-status:
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:403:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/links.yml:1:name: Broken Link Checker
+/tmp/issue31-templates/js/.github/workflows/links.yml:4:  push:
+/tmp/issue31-templates/js/.github/workflows/links.yml:17:  pull_request:
+/tmp/issue31-templates/js/.github/workflows/links.yml:29:  workflow_dispatch:
+/tmp/issue31-templates/js/.github/workflows/links.yml:33:  contents: read
+/tmp/issue31-templates/js/.github/workflows/links.yml:38:  GIT_CONFIG_COUNT: '1'
+/tmp/issue31-templates/js/.github/workflows/links.yml:39:  GIT_CONFIG_KEY_0: init.defaultBranch
+/tmp/issue31-templates/js/.github/workflows/links.yml:40:  GIT_CONFIG_VALUE_0: main
+/tmp/issue31-templates/js/.github/workflows/links.yml:43:  link-checker:
+/tmp/issue31-templates/js/.github/workflows/links.yml:49:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/links.yml:130:          if-no-files-found: warn
+/tmp/issue31-templates/js/.github/workflows/links.yml:160:  pipeline-status:
+/tmp/issue31-templates/js/.github/workflows/links.yml:164:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/release.yml:1:name: Checks and release
+/tmp/issue31-templates/js/.github/workflows/release.yml:4:  push:
+/tmp/issue31-templates/js/.github/workflows/release.yml:7:  pull_request:
+/tmp/issue31-templates/js/.github/workflows/release.yml:12:  workflow_dispatch:
+/tmp/issue31-templates/js/.github/workflows/release.yml:39:  contents: read
+/tmp/issue31-templates/js/.github/workflows/release.yml:44:  GIT_CONFIG_COUNT: '1'
+/tmp/issue31-templates/js/.github/workflows/release.yml:45:  GIT_CONFIG_KEY_0: init.defaultBranch
+/tmp/issue31-templates/js/.github/workflows/release.yml:46:  GIT_CONFIG_VALUE_0: main
+/tmp/issue31-templates/js/.github/workflows/release.yml:50:  detect-changes:
+/tmp/issue31-templates/js/.github/workflows/release.yml:63:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/release.yml:91:  test-compilation:
+/tmp/issue31-templates/js/.github/workflows/release.yml:96:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/release.yml:111:  check-file-line-limits:
+/tmp/issue31-templates/js/.github/workflows/release.yml:116:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/release.yml:133:        run: bash scripts/simulate-fresh-merge.sh
+/tmp/issue31-templates/js/.github/workflows/release.yml:143:  version-check:
+/tmp/issue31-templates/js/.github/workflows/release.yml:148:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/release.yml:169:  changeset-check:
+/tmp/issue31-templates/js/.github/workflows/release.yml:174:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/release.yml:212:  # See docs/case-studies/issue-23 for why fresh merge simulation is critical
+/tmp/issue31-templates/js/.github/workflows/release.yml:213:  lint:
+/tmp/issue31-templates/js/.github/workflows/release.yml:219:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/release.yml:241:        run: bash scripts/simulate-fresh-merge.sh
+/tmp/issue31-templates/js/.github/workflows/release.yml:279:  test:
+/tmp/issue31-templates/js/.github/workflows/release.yml:289:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/release.yml:334:        run: bash scripts/simulate-fresh-merge.sh
+/tmp/issue31-templates/js/.github/workflows/release.yml:388:  docker-build:
+/tmp/issue31-templates/js/.github/workflows/release.yml:394:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/release.yml:441:  validate-docs:
+/tmp/issue31-templates/js/.github/workflows/release.yml:446:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/release.yml:475:  release-preflight:
+/tmp/issue31-templates/js/.github/workflows/release.yml:511:  release:
+/tmp/issue31-templates/js/.github/workflows/release.yml:529:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/release.yml:661:  instant-release:
+/tmp/issue31-templates/js/.github/workflows/release.yml:689:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/release.yml:775:  docker-publish-config:
+/tmp/issue31-templates/js/.github/workflows/release.yml:779:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/release.yml:829:  docker-publish-build:
+/tmp/issue31-templates/js/.github/workflows/release.yml:877:          if-no-files-found: error
+/tmp/issue31-templates/js/.github/workflows/release.yml:880:  docker-publish:
+/tmp/issue31-templates/js/.github/workflows/release.yml:885:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/release.yml:952:  changeset-pr:
+/tmp/issue31-templates/js/.github/workflows/release.yml:964:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/release.yml:1037:  pipeline-status:
+/tmp/issue31-templates/js/.github/workflows/release.yml:1041:    concurrency:

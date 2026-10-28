@@ -1,0 +1,13 @@
+
+> konard.github.io@0.1.0 test:ci
+> vitest run src/workflow.test.js
+
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793179854506
+
+
+ Test Files  1 passed (1)
+      Tests  15 passed (15)
+   Start at  10:50:11
+   Duration  1.85s (environment 71%, setup 15%, transform 7%, tests 3%, import 3%, worker 1%)
+

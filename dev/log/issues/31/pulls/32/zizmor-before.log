@@ -1,0 +1,2986 @@
+ INFO zizmor: 🌈 zizmor v1.30.1
+DEBUG collect_inputs: zizmor::config: discovering config for local input `.` (root: `Some("/tmp/gh-issue-solver-1793179854506")`)
+DEBUG collect_inputs:discover_in_dir{path="." root=Some("/tmp/gh-issue-solver-1793179854506")}: zizmor::config: attempting config discovery for `.` (root: `Some("/tmp/gh-issue-solver-1793179854506")`)
+DEBUG collect_inputs:discover_in_dir{path="." root=Some("/tmp/gh-issue-solver-1793179854506")}:happy path: zizmor::config: no config candidates discovered relative to repository root
+DEBUG collect_inputs: ignore::gitignore: opened gitignore file: ./.gitignore
+DEBUG collect_inputs: globset: glob `Glob("**/npm-debug.log*")` converted to regex: `"(?-u)^(?:/?|.*/)npm\\-debug\\.log[^/]*$"`
+DEBUG collect_inputs: globset: glob `Glob("**/yarn-debug.log*")` converted to regex: `"(?-u)^(?:/?|.*/)yarn\\-debug\\.log[^/]*$"`
+DEBUG collect_inputs: globset: glob `Glob("**/yarn-error.log*")` converted to regex: `"(?-u)^(?:/?|.*/)yarn\\-error\\.log[^/]*$"`
+DEBUG collect_inputs: globset: built glob set; 6 literals, 6 basenames, 0 extensions, 0 prefixes, 0 suffixes, 0 required extensions, 3 regexes
+DEBUG collect_inputs: ignore::gitignore: opened gitignore file: ./.git/info/exclude
+DEBUG collect_inputs: globset: built glob set; 1 literals, 2 basenames, 0 extensions, 0 prefixes, 0 suffixes, 0 required extensions, 0 regexes
+DEBUG collect_inputs: ignore::walk: ignoring ./build: Ignore(IgnoreMatch(Gitignore(Glob { from: Some("./.gitignore"), original: "/build", actual: "build", is_whitelist: false, is_only_dir: false })))
+DEBUG collect_inputs: ignore::gitignore: opened gitignore file: ./.husky/_/.gitignore
+DEBUG collect_inputs: globset: glob `Glob("**/*")` converted to regex: `"(?-u)^(?:/?|.*/)[^/]*$"`
+DEBUG collect_inputs: globset: built glob set; 0 literals, 0 basenames, 0 extensions, 0 prefixes, 0 suffixes, 0 required extensions, 1 regexes
+DEBUG collect_inputs: ignore::walk: ignoring ./.husky/_/prepare-commit-msg: Ignore(IgnoreMatch(Gitignore(Glob { from: Some("./.husky/_/.gitignore"), original: "*", actual: "**/*", is_whitelist: false, is_only_dir: false })))
+DEBUG collect_inputs: ignore::walk: ignoring ./.husky/_/post-rewrite: Ignore(IgnoreMatch(Gitignore(Glob { from: Some("./.husky/_/.gitignore"), original: "*", actual: "**/*", is_whitelist: false, is_only_dir: false })))
+DEBUG collect_inputs: ignore::walk: ignoring ./.husky/_/commit-msg: Ignore(IgnoreMatch(Gitignore(Glob { from: Some("./.husky/_/.gitignore"), original: "*", actual: "**/*", is_whitelist: false, is_only_dir: false })))
+DEBUG collect_inputs: ignore::walk: ignoring ./.husky/_/.gitignore: Ignore(IgnoreMatch(Gitignore(Glob { from: Some("./.husky/_/.gitignore"), original: "*", actual: "**/*", is_whitelist: false, is_only_dir: false })))
+DEBUG collect_inputs: ignore::walk: ignoring ./.husky/_/pre-merge-commit: Ignore(IgnoreMatch(Gitignore(Glob { from: Some("./.husky/_/.gitignore"), original: "*", actual: "**/*", is_whitelist: false, is_only_dir: false })))
+DEBUG collect_inputs: ignore::walk: ignoring ./.husky/_/husky.sh: Ignore(IgnoreMatch(Gitignore(Glob { from: Some("./.husky/_/.gitignore"), original: "*", actual: "**/*", is_whitelist: false, is_only_dir: false })))
+DEBUG collect_inputs: ignore::walk: ignoring ./.husky/_/pre-push: Ignore(IgnoreMatch(Gitignore(Glob { from: Some("./.husky/_/.gitignore"), original: "*", actual: "**/*", is_whitelist: false, is_only_dir: false })))
+DEBUG collect_inputs: ignore::walk: ignoring ./.husky/_/post-commit: Ignore(IgnoreMatch(Gitignore(Glob { from: Some("./.husky/_/.gitignore"), original: "*", actual: "**/*", is_whitelist: false, is_only_dir: false })))
+DEBUG collect_inputs: ignore::walk: ignoring ./.husky/_/applypatch-msg: Ignore(IgnoreMatch(Gitignore(Glob { from: Some("./.husky/_/.gitignore"), original: "*", actual: "**/*", is_whitelist: false, is_only_dir: false })))
+DEBUG collect_inputs: ignore::walk: ignoring ./.husky/_/post-applypatch: Ignore(IgnoreMatch(Gitignore(Glob { from: Some("./.husky/_/.gitignore"), original: "*", actual: "**/*", is_whitelist: false, is_only_dir: false })))
+DEBUG collect_inputs: ignore::walk: ignoring ./.husky/_/post-checkout: Ignore(IgnoreMatch(Gitignore(Glob { from: Some("./.husky/_/.gitignore"), original: "*", actual: "**/*", is_whitelist: false, is_only_dir: false })))
+DEBUG collect_inputs: ignore::walk: ignoring ./.husky/_/pre-rebase: Ignore(IgnoreMatch(Gitignore(Glob { from: Some("./.husky/_/.gitignore"), original: "*", actual: "**/*", is_whitelist: false, is_only_dir: false })))
+DEBUG collect_inputs: ignore::walk: ignoring ./.husky/_/post-merge: Ignore(IgnoreMatch(Gitignore(Glob { from: Some("./.husky/_/.gitignore"), original: "*", actual: "**/*", is_whitelist: false, is_only_dir: false })))
+DEBUG collect_inputs: ignore::walk: ignoring ./.husky/_/pre-commit: Ignore(IgnoreMatch(Gitignore(Glob { from: Some("./.husky/_/.gitignore"), original: "*", actual: "**/*", is_whitelist: false, is_only_dir: false })))
+DEBUG collect_inputs: ignore::walk: ignoring ./.husky/_/pre-applypatch: Ignore(IgnoreMatch(Gitignore(Glob { from: Some("./.husky/_/.gitignore"), original: "*", actual: "**/*", is_whitelist: false, is_only_dir: false })))
+DEBUG collect_inputs: ignore::walk: ignoring ./.husky/_/pre-auto-gc: Ignore(IgnoreMatch(Gitignore(Glob { from: Some("./.husky/_/.gitignore"), original: "*", actual: "**/*", is_whitelist: false, is_only_dir: false })))
+DEBUG collect_inputs: ignore::walk: ignoring ./.husky/_/h: Ignore(IgnoreMatch(Gitignore(Glob { from: Some("./.husky/_/.gitignore"), original: "*", actual: "**/*", is_whitelist: false, is_only_dir: false })))
+DEBUG collect_inputs: ignore::gitignore: opened gitignore file: ./dev/log/issues/31/pulls/32/templates/python/.gitignore
+DEBUG collect_inputs: globset: glob `Glob("**/*.py[codz]")` converted to regex: `"(?-u)^(?:/?|.*/)[^/]*\\.py[codz]$"`
+DEBUG collect_inputs: globset: glob `Glob("**/.coverage.*")` converted to regex: `"(?-u)^(?:/?|.*/)\\.coverage\\.[^/]*$"`
+DEBUG collect_inputs: globset: built glob set; 6 literals, 69 basenames, 9 extensions, 0 prefixes, 0 suffixes, 3 required extensions, 2 regexes
+DEBUG collect_inputs: zizmor::registry::input: registering pre-commit config input as with key file://./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+DEBUG collect_inputs: zizmor::registry::input: registering workflow input as with key file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+DEBUG collect_inputs: zizmor::registry::input: registering workflow input as with key file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG collect_inputs: zizmor::registry::input: registering workflow input as with key file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+DEBUG collect_inputs: zizmor::registry::input: registering workflow input as with key file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+DEBUG collect_inputs: zizmor::registry::input: registering workflow input as with key file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+DEBUG collect_inputs: ignore::gitignore: opened gitignore file: ./dev/log/issues/31/pulls/32/templates/js/.gitignore
+DEBUG collect_inputs: globset: glob `Glob("**/npm-debug.log*")` converted to regex: `"(?-u)^(?:/?|.*/)npm\\-debug\\.log[^/]*$"`
+DEBUG collect_inputs: globset: glob `Glob("**/yarn-debug.log*")` converted to regex: `"(?-u)^(?:/?|.*/)yarn\\-debug\\.log[^/]*$"`
+DEBUG collect_inputs: globset: glob `Glob("**/yarn-error.log*")` converted to regex: `"(?-u)^(?:/?|.*/)yarn\\-error\\.log[^/]*$"`
+DEBUG collect_inputs: globset: glob `Glob("**/lerna-debug.log*")` converted to regex: `"(?-u)^(?:/?|.*/)lerna\\-debug\\.log[^/]*$"`
+DEBUG collect_inputs: globset: glob `Glob("**/.env.*")` converted to regex: `"(?-u)^(?:/?|.*/)\\.env\\.[^/]*$"`
+DEBUG collect_inputs: globset: glob `Glob("**/.pnp.*")` converted to regex: `"(?-u)^(?:/?|.*/)\\.pnp\\.[^/]*$"`
+DEBUG collect_inputs: globset: glob `Glob(".yarn/*")` converted to regex: `"(?-u)^\\.yarn/[^/]*$"`
+DEBUG collect_inputs: globset: glob `Glob("**/vite.config.js.timestamp-*")` converted to regex: `"(?-u)^(?:/?|.*/)vite\\.config\\.js\\.timestamp\\-[^/]*$"`
+DEBUG collect_inputs: globset: glob `Glob("**/vite.config.ts.timestamp-*")` converted to regex: `"(?-u)^(?:/?|.*/)vite\\.config\\.ts\\.timestamp\\-[^/]*$"`
+DEBUG collect_inputs: globset: built glob set; 9 literals, 35 basenames, 6 extensions, 0 prefixes, 2 suffixes, 2 required extensions, 9 regexes
+DEBUG collect_inputs: zizmor::registry::input: registering action input as with key file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+DEBUG collect_inputs: zizmor::registry::input: registering action input as with key file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+DEBUG collect_inputs: zizmor::registry::input: registering workflow input as with key file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+DEBUG collect_inputs: zizmor::registry::input: registering workflow input as with key file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG collect_inputs: zizmor::registry::input: registering workflow input as with key file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+DEBUG collect_inputs: zizmor::registry::input: registering workflow input as with key file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+DEBUG collect_inputs: zizmor::registry::input: registering workflow input as with key file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG collect_inputs: zizmor::registry::input: registering workflow input as with key file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+DEBUG collect_inputs: zizmor::registry::input: registering workflow input as with key file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+DEBUG collect_inputs: ignore::walk: ignoring ./node_modules: Ignore(IgnoreMatch(Gitignore(Glob { from: Some("./.gitignore"), original: "/node_modules", actual: "node_modules", is_whitelist: false, is_only_dir: false })))
+DEBUG collect_inputs: zizmor::registry::input: registering workflow input as with key file://./.github/workflows/github-pages.yml
+DEBUG collect_inputs: ignore::gitignore: opened gitignore file: ./.ruff_cache/.gitignore
+DEBUG collect_inputs: globset: glob `Glob("**/*")` converted to regex: `"(?-u)^(?:/?|.*/)[^/]*$"`
+DEBUG collect_inputs: globset: built glob set; 0 literals, 0 basenames, 0 extensions, 0 prefixes, 0 suffixes, 0 required extensions, 1 regexes
+DEBUG collect_inputs: ignore::walk: ignoring ./.ruff_cache/CACHEDIR.TAG: Ignore(IgnoreMatch(Gitignore(Glob { from: Some("./.ruff_cache/.gitignore"), original: "*", actual: "**/*", is_whitelist: false, is_only_dir: false })))
+DEBUG collect_inputs: ignore::walk: ignoring ./.ruff_cache/.gitignore: Ignore(IgnoreMatch(Gitignore(Glob { from: Some("./.ruff_cache/.gitignore"), original: "*", actual: "**/*", is_whitelist: false, is_only_dir: false })))
+DEBUG collect_inputs: ignore::walk: ignoring ./.ruff_cache/0.14.2: Ignore(IgnoreMatch(Gitignore(Glob { from: Some("./.ruff_cache/.gitignore"), original: "*", actual: "**/*", is_whitelist: false, is_only_dir: false })))
+DEBUG zizmor::registry: skipping impostor-commit: can't run without a GitHub API token
+DEBUG zizmor::registry: skipping ref-confusion: can't run without a GitHub API token
+DEBUG zizmor::registry: skipping known-vulnerable-actions: can't run without a GitHub API token
+DEBUG zizmor::registry: skipping stale-action-refs: can't run without a GitHub API token
+DEBUG zizmor::registry: skipping ref-version-mismatch: can't run without a GitHub API token
+DEBUG audit: zizmor: scheduling artipacked on file://./.github/workflows/github-pages.yml
+DEBUG audit: zizmor: scheduling unsound-contains on file://./.github/workflows/github-pages.yml
+DEBUG audit: zizmor: scheduling unsound-ternary on file://./.github/workflows/github-pages.yml
+DEBUG audit: zizmor: scheduling excessive-permissions on file://./.github/workflows/github-pages.yml
+DEBUG audit: zizmor: scheduling dangerous-triggers on file://./.github/workflows/github-pages.yml
+DEBUG audit: zizmor: scheduling use-trusted-publishing on file://./.github/workflows/github-pages.yml
+DEBUG audit: zizmor: scheduling template-injection on file://./.github/workflows/github-pages.yml
+DEBUG audit: zizmor: scheduling hardcoded-container-credentials on file://./.github/workflows/github-pages.yml
+DEBUG audit: zizmor: scheduling self-hosted-runner on file://./.github/workflows/github-pages.yml
+DEBUG audit: zizmor: scheduling unpinned-uses on file://./.github/workflows/github-pages.yml
+DEBUG audit: zizmor: scheduling undocumented-permissions on file://./.github/workflows/github-pages.yml
+DEBUG audit: zizmor: scheduling insecure-commands on file://./.github/workflows/github-pages.yml
+DEBUG audit: zizmor: scheduling github-env on file://./.github/workflows/github-pages.yml
+DEBUG audit: zizmor: scheduling cache-poisoning on file://./.github/workflows/github-pages.yml
+DEBUG audit: zizmor: scheduling secrets-inherit on file://./.github/workflows/github-pages.yml
+DEBUG audit: zizmor: scheduling bot-conditions on file://./.github/workflows/github-pages.yml
+DEBUG audit: zizmor: scheduling overprovisioned-secrets on file://./.github/workflows/github-pages.yml
+DEBUG audit: zizmor: scheduling unredacted-secrets on file://./.github/workflows/github-pages.yml
+DEBUG audit: zizmor: scheduling forbidden-uses on file://./.github/workflows/github-pages.yml
+DEBUG audit: zizmor: scheduling obfuscation on file://./.github/workflows/github-pages.yml
+DEBUG audit: zizmor: scheduling unpinned-images on file://./.github/workflows/github-pages.yml
+DEBUG audit: zizmor: scheduling anonymous-definition on file://./.github/workflows/github-pages.yml
+DEBUG audit: zizmor: scheduling unsound-condition on file://./.github/workflows/github-pages.yml
+DEBUG audit: zizmor: scheduling dependabot-execution on file://./.github/workflows/github-pages.yml
+DEBUG audit: zizmor: scheduling dependabot-cooldown on file://./.github/workflows/github-pages.yml
+DEBUG audit: zizmor: scheduling concurrency-limits on file://./.github/workflows/github-pages.yml
+DEBUG audit: zizmor: scheduling archived-uses on file://./.github/workflows/github-pages.yml
+DEBUG audit: zizmor: scheduling typosquat-uses on file://./.github/workflows/github-pages.yml
+DEBUG audit: zizmor: scheduling misfeature on file://./.github/workflows/github-pages.yml
+DEBUG audit: zizmor: scheduling secrets-outside-env on file://./.github/workflows/github-pages.yml
+DEBUG audit: zizmor: scheduling superfluous-actions on file://./.github/workflows/github-pages.yml
+DEBUG audit: zizmor: scheduling github-app on file://./.github/workflows/github-pages.yml
+DEBUG audit: zizmor: scheduling unpinned-tools on file://./.github/workflows/github-pages.yml
+DEBUG audit: zizmor: scheduling adhoc-packages on file://./.github/workflows/github-pages.yml
+DEBUG audit: zizmor: scheduling insecure-url-scheme on file://./.github/workflows/github-pages.yml
+DEBUG audit: zizmor: scheduling self-repository on file://./.github/workflows/github-pages.yml
+DEBUG audit:audit{input=Workflow(file://./.github/workflows/github-pages.yml)}: zizmor::audit::use_trusted_publishing: use-trusted-publishing: couldn't determine shell type for github-pages.yml step SymbolicLocation {
+    key: Local(
+        LocalKey {
+            group: Group(
+                ".",
+            ),
+            verbatim_path: "./.github/workflows/github-pages.yml",
+            native_path: "./.github/workflows/github-pages.yml",
+            best_identifier: ".github/workflows/github-pages.yml",
+        },
+    ),
+    annotation: "this step",
+    link: None,
+    route: Route {
+        route: [
+            Key(
+                "jobs",
+            ),
+            Key(
+                "network-browsers",
+            ),
+            Key(
+                "steps",
+            ),
+            Index(
+                2,
+            ),
+        ],
+    },
+    feature_kind: Normal,
+    kind: Related,
+}
+DEBUG audit:audit{input=Workflow(file://./.github/workflows/github-pages.yml)}: zizmor::audit::use_trusted_publishing: use-trusted-publishing: couldn't determine shell type for github-pages.yml step SymbolicLocation {
+    key: Local(
+        LocalKey {
+            group: Group(
+                ".",
+            ),
+            verbatim_path: "./.github/workflows/github-pages.yml",
+            native_path: "./.github/workflows/github-pages.yml",
+            best_identifier: ".github/workflows/github-pages.yml",
+        },
+    ),
+    annotation: "this step",
+    link: None,
+    route: Route {
+        route: [
+            Key(
+                "jobs",
+            ),
+            Key(
+                "network-browsers",
+            ),
+            Key(
+                "steps",
+            ),
+            Index(
+                3,
+            ),
+        ],
+    },
+    feature_kind: Normal,
+    kind: Related,
+}
+DEBUG audit:audit{input=Workflow(file://./.github/workflows/github-pages.yml)}: zizmor::audit::use_trusted_publishing: use-trusted-publishing: couldn't determine shell type for github-pages.yml step SymbolicLocation {
+    key: Local(
+        LocalKey {
+            group: Group(
+                ".",
+            ),
+            verbatim_path: "./.github/workflows/github-pages.yml",
+            native_path: "./.github/workflows/github-pages.yml",
+            best_identifier: ".github/workflows/github-pages.yml",
+        },
+    ),
+    annotation: "this step",
+    link: None,
+    route: Route {
+        route: [
+            Key(
+                "jobs",
+            ),
+            Key(
+                "network-browsers",
+            ),
+            Key(
+                "steps",
+            ),
+            Index(
+                4,
+            ),
+        ],
+    },
+    feature_kind: Normal,
+    kind: Related,
+}
+DEBUG audit:audit{input=Workflow(file://./.github/workflows/github-pages.yml)}: zizmor::audit::use_trusted_publishing: use-trusted-publishing: couldn't determine shell type for github-pages.yml step SymbolicLocation {
+    key: Local(
+        LocalKey {
+            group: Group(
+                ".",
+            ),
+            verbatim_path: "./.github/workflows/github-pages.yml",
+            native_path: "./.github/workflows/github-pages.yml",
+            best_identifier: ".github/workflows/github-pages.yml",
+        },
+    ),
+    annotation: "this step",
+    link: None,
+    route: Route {
+        route: [
+            Key(
+                "jobs",
+            ),
+            Key(
+                "network-browsers",
+            ),
+            Key(
+                "steps",
+            ),
+            Index(
+                5,
+            ),
+        ],
+    },
+    feature_kind: Normal,
+    kind: Related,
+}
+DEBUG audit:audit{input=Workflow(file://./.github/workflows/github-pages.yml)}: zizmor::audit::use_trusted_publishing: use-trusted-publishing: couldn't determine shell type for github-pages.yml step SymbolicLocation {
+    key: Local(
+        LocalKey {
+            group: Group(
+                ".",
+            ),
+            verbatim_path: "./.github/workflows/github-pages.yml",
+            native_path: "./.github/workflows/github-pages.yml",
+            best_identifier: ".github/workflows/github-pages.yml",
+        },
+    ),
+    annotation: "this step",
+    link: None,
+    route: Route {
+        route: [
+            Key(
+                "jobs",
+            ),
+            Key(
+                "network-browsers",
+            ),
+            Key(
+                "steps",
+            ),
+            Index(
+                6,
+            ),
+        ],
+    },
+    feature_kind: Normal,
+    kind: Related,
+}
+DEBUG audit:audit{input=Workflow(file://./.github/workflows/github-pages.yml)}: zizmor::audit::use_trusted_publishing: use-trusted-publishing: couldn't determine shell type for github-pages.yml step SymbolicLocation {
+    key: Local(
+        LocalKey {
+            group: Group(
+                ".",
+            ),
+            verbatim_path: "./.github/workflows/github-pages.yml",
+            native_path: "./.github/workflows/github-pages.yml",
+            best_identifier: ".github/workflows/github-pages.yml",
+        },
+    ),
+    annotation: "this step",
+    link: None,
+    route: Route {
+        route: [
+            Key(
+                "jobs",
+            ),
+            Key(
+                "network-browsers",
+            ),
+            Key(
+                "steps",
+            ),
+            Index(
+                7,
+            ),
+        ],
+    },
+    feature_kind: Normal,
+    kind: Related,
+}
+DEBUG audit:audit{input=Workflow(file://./.github/workflows/github-pages.yml)}: zizmor::audit::use_trusted_publishing: use-trusted-publishing: couldn't determine shell type for github-pages.yml step SymbolicLocation {
+    key: Local(
+        LocalKey {
+            group: Group(
+                ".",
+            ),
+            verbatim_path: "./.github/workflows/github-pages.yml",
+            native_path: "./.github/workflows/github-pages.yml",
+            best_identifier: ".github/workflows/github-pages.yml",
+        },
+    ),
+    annotation: "this step",
+    link: None,
+    route: Route {
+        route: [
+            Key(
+                "jobs",
+            ),
+            Key(
+                "network-browsers",
+            ),
+            Key(
+                "steps",
+            ),
+            Index(
+                8,
+            ),
+        ],
+    },
+    feature_kind: Normal,
+    kind: Related,
+}
+DEBUG audit:audit{input=Workflow(file://./.github/workflows/github-pages.yml)}: zizmor::audit::use_trusted_publishing: use-trusted-publishing: couldn't determine shell type for github-pages.yml step SymbolicLocation {
+    key: Local(
+        LocalKey {
+            group: Group(
+                ".",
+            ),
+            verbatim_path: "./.github/workflows/github-pages.yml",
+            native_path: "./.github/workflows/github-pages.yml",
+            best_identifier: ".github/workflows/github-pages.yml",
+        },
+    ),
+    annotation: "this step",
+    link: None,
+    route: Route {
+        route: [
+            Key(
+                "jobs",
+            ),
+            Key(
+                "network-browsers",
+            ),
+            Key(
+                "steps",
+            ),
+            Index(
+                9,
+            ),
+        ],
+    },
+    feature_kind: Normal,
+    kind: Related,
+}
+DEBUG audit:audit{input=Workflow(file://./.github/workflows/github-pages.yml)}: zizmor::audit::use_trusted_publishing: use-trusted-publishing: couldn't determine shell type for github-pages.yml step SymbolicLocation {
+    key: Local(
+        LocalKey {
+            group: Group(
+                ".",
+            ),
+            verbatim_path: "./.github/workflows/github-pages.yml",
+            native_path: "./.github/workflows/github-pages.yml",
+            best_identifier: ".github/workflows/github-pages.yml",
+        },
+    ),
+    annotation: "this step",
+    link: None,
+    route: Route {
+        route: [
+            Key(
+                "jobs",
+            ),
+            Key(
+                "network-browsers",
+            ),
+            Key(
+                "steps",
+            ),
+            Index(
+                10,
+            ),
+        ],
+    },
+    feature_kind: Normal,
+    kind: Related,
+}
+DEBUG audit:audit{input=Workflow(file://./.github/workflows/github-pages.yml)}: zizmor::audit::use_trusted_publishing: use-trusted-publishing: couldn't determine shell type for github-pages.yml step SymbolicLocation {
+    key: Local(
+        LocalKey {
+            group: Group(
+                ".",
+            ),
+            verbatim_path: "./.github/workflows/github-pages.yml",
+            native_path: "./.github/workflows/github-pages.yml",
+            best_identifier: ".github/workflows/github-pages.yml",
+        },
+    ),
+    annotation: "this step",
+    link: None,
+    route: Route {
+        route: [
+            Key(
+                "jobs",
+            ),
+            Key(
+                "network-browsers",
+            ),
+            Key(
+                "steps",
+            ),
+            Index(
+                11,
+            ),
+        ],
+    },
+    feature_kind: Normal,
+    kind: Related,
+}
+DEBUG audit:audit{input=Workflow(file://./.github/workflows/github-pages.yml)}: zizmor::audit::adhoc_packages: adhoc-packages: couldn't determine shell for step SymbolicLocation {
+    key: Local(
+        LocalKey {
+            group: Group(
+                ".",
+            ),
+            verbatim_path: "./.github/workflows/github-pages.yml",
+            native_path: "./.github/workflows/github-pages.yml",
+            best_identifier: ".github/workflows/github-pages.yml",
+        },
+    ),
+    annotation: "this step",
+    link: None,
+    route: Route {
+        route: [
+            Key(
+                "jobs",
+            ),
+            Key(
+                "network-browsers",
+            ),
+            Key(
+                "steps",
+            ),
+            Index(
+                2,
+            ),
+        ],
+    },
+    feature_kind: Normal,
+    kind: Related,
+}; assuming bash
+DEBUG audit:audit{input=Workflow(file://./.github/workflows/github-pages.yml)}: zizmor::audit::adhoc_packages: adhoc-packages: couldn't determine shell for step SymbolicLocation {
+    key: Local(
+        LocalKey {
+            group: Group(
+                ".",
+            ),
+            verbatim_path: "./.github/workflows/github-pages.yml",
+            native_path: "./.github/workflows/github-pages.yml",
+            best_identifier: ".github/workflows/github-pages.yml",
+        },
+    ),
+    annotation: "this step",
+    link: None,
+    route: Route {
+        route: [
+            Key(
+                "jobs",
+            ),
+            Key(
+                "network-browsers",
+            ),
+            Key(
+                "steps",
+            ),
+            Index(
+                3,
+            ),
+        ],
+    },
+    feature_kind: Normal,
+    kind: Related,
+}; assuming bash
+DEBUG audit:audit{input=Workflow(file://./.github/workflows/github-pages.yml)}: zizmor::audit::adhoc_packages: adhoc-packages: couldn't determine shell for step SymbolicLocation {
+    key: Local(
+        LocalKey {
+            group: Group(
+                ".",
+            ),
+            verbatim_path: "./.github/workflows/github-pages.yml",
+            native_path: "./.github/workflows/github-pages.yml",
+            best_identifier: ".github/workflows/github-pages.yml",
+        },
+    ),
+    annotation: "this step",
+    link: None,
+    route: Route {
+        route: [
+            Key(
+                "jobs",
+            ),
+            Key(
+                "network-browsers",
+            ),
+            Key(
+                "steps",
+            ),
+            Index(
+                4,
+            ),
+        ],
+    },
+    feature_kind: Normal,
+    kind: Related,
+}; assuming bash
+DEBUG audit:audit{input=Workflow(file://./.github/workflows/github-pages.yml)}: zizmor::audit::adhoc_packages: adhoc-packages: couldn't determine shell for step SymbolicLocation {
+    key: Local(
+        LocalKey {
+            group: Group(
+                ".",
+            ),
+            verbatim_path: "./.github/workflows/github-pages.yml",
+            native_path: "./.github/workflows/github-pages.yml",
+            best_identifier: ".github/workflows/github-pages.yml",
+        },
+    ),
+    annotation: "this step",
+    link: None,
+    route: Route {
+        route: [
+            Key(
+                "jobs",
+            ),
+            Key(
+                "network-browsers",
+            ),
+            Key(
+                "steps",
+            ),
+            Index(
+                5,
+            ),
+        ],
+    },
+    feature_kind: Normal,
+    kind: Related,
+}; assuming bash
+DEBUG audit:audit{input=Workflow(file://./.github/workflows/github-pages.yml)}: zizmor::audit::adhoc_packages: adhoc-packages: couldn't determine shell for step SymbolicLocation {
+    key: Local(
+        LocalKey {
+            group: Group(
+                ".",
+            ),
+            verbatim_path: "./.github/workflows/github-pages.yml",
+            native_path: "./.github/workflows/github-pages.yml",
+            best_identifier: ".github/workflows/github-pages.yml",
+        },
+    ),
+    annotation: "this step",
+    link: None,
+    route: Route {
+        route: [
+            Key(
+                "jobs",
+            ),
+            Key(
+                "network-browsers",
+            ),
+            Key(
+                "steps",
+            ),
+            Index(
+                6,
+            ),
+        ],
+    },
+    feature_kind: Normal,
+    kind: Related,
+}; assuming bash
+DEBUG audit:audit{input=Workflow(file://./.github/workflows/github-pages.yml)}: zizmor::audit::adhoc_packages: adhoc-packages: couldn't determine shell for step SymbolicLocation {
+    key: Local(
+        LocalKey {
+            group: Group(
+                ".",
+            ),
+            verbatim_path: "./.github/workflows/github-pages.yml",
+            native_path: "./.github/workflows/github-pages.yml",
+            best_identifier: ".github/workflows/github-pages.yml",
+        },
+    ),
+    annotation: "this step",
+    link: None,
+    route: Route {
+        route: [
+            Key(
+                "jobs",
+            ),
+            Key(
+                "network-browsers",
+            ),
+            Key(
+                "steps",
+            ),
+            Index(
+                7,
+            ),
+        ],
+    },
+    feature_kind: Normal,
+    kind: Related,
+}; assuming bash
+DEBUG audit:audit{input=Workflow(file://./.github/workflows/github-pages.yml)}: zizmor::audit::adhoc_packages: adhoc-packages: couldn't determine shell for step SymbolicLocation {
+    key: Local(
+        LocalKey {
+            group: Group(
+                ".",
+            ),
+            verbatim_path: "./.github/workflows/github-pages.yml",
+            native_path: "./.github/workflows/github-pages.yml",
+            best_identifier: ".github/workflows/github-pages.yml",
+        },
+    ),
+    annotation: "this step",
+    link: None,
+    route: Route {
+        route: [
+            Key(
+                "jobs",
+            ),
+            Key(
+                "network-browsers",
+            ),
+            Key(
+                "steps",
+            ),
+            Index(
+                8,
+            ),
+        ],
+    },
+    feature_kind: Normal,
+    kind: Related,
+}; assuming bash
+DEBUG audit:audit{input=Workflow(file://./.github/workflows/github-pages.yml)}: zizmor::audit::adhoc_packages: adhoc-packages: couldn't determine shell for step SymbolicLocation {
+    key: Local(
+        LocalKey {
+            group: Group(
+                ".",
+            ),
+            verbatim_path: "./.github/workflows/github-pages.yml",
+            native_path: "./.github/workflows/github-pages.yml",
+            best_identifier: ".github/workflows/github-pages.yml",
+        },
+    ),
+    annotation: "this step",
+    link: None,
+    route: Route {
+        route: [
+            Key(
+                "jobs",
+            ),
+            Key(
+                "network-browsers",
+            ),
+            Key(
+                "steps",
+            ),
+            Index(
+                9,
+            ),
+        ],
+    },
+    feature_kind: Normal,
+    kind: Related,
+}; assuming bash
+DEBUG audit:audit{input=Workflow(file://./.github/workflows/github-pages.yml)}: zizmor::audit::adhoc_packages: adhoc-packages: couldn't determine shell for step SymbolicLocation {
+    key: Local(
+        LocalKey {
+            group: Group(
+                ".",
+            ),
+            verbatim_path: "./.github/workflows/github-pages.yml",
+            native_path: "./.github/workflows/github-pages.yml",
+            best_identifier: ".github/workflows/github-pages.yml",
+        },
+    ),
+    annotation: "this step",
+    link: None,
+    route: Route {
+        route: [
+            Key(
+                "jobs",
+            ),
+            Key(
+                "network-browsers",
+            ),
+            Key(
+                "steps",
+            ),
+            Index(
+                10,
+            ),
+        ],
+    },
+    feature_kind: Normal,
+    kind: Related,
+}; assuming bash
+DEBUG audit:audit{input=Workflow(file://./.github/workflows/github-pages.yml)}: zizmor::audit::adhoc_packages: adhoc-packages: couldn't determine shell for step SymbolicLocation {
+    key: Local(
+        LocalKey {
+            group: Group(
+                ".",
+            ),
+            verbatim_path: "./.github/workflows/github-pages.yml",
+            native_path: "./.github/workflows/github-pages.yml",
+            best_identifier: ".github/workflows/github-pages.yml",
+        },
+    ),
+    annotation: "this step",
+    link: None,
+    route: Route {
+        route: [
+            Key(
+                "jobs",
+            ),
+            Key(
+                "network-browsers",
+            ),
+            Key(
+                "steps",
+            ),
+            Index(
+                11,
+            ),
+        ],
+    },
+    feature_kind: Normal,
+    kind: Related,
+}; assuming bash
+ INFO audit: zizmor: 🌈 completed ./.github/workflows/github-pages.yml
+DEBUG audit: zizmor: scheduling artipacked on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+DEBUG audit: zizmor: scheduling unsound-contains on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+DEBUG audit: zizmor: scheduling unsound-ternary on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+DEBUG audit: zizmor: scheduling excessive-permissions on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+DEBUG audit: zizmor: scheduling dangerous-triggers on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+DEBUG audit: zizmor: scheduling use-trusted-publishing on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+DEBUG audit: zizmor: scheduling template-injection on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+DEBUG audit: zizmor: scheduling hardcoded-container-credentials on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+DEBUG audit: zizmor: scheduling self-hosted-runner on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+DEBUG audit: zizmor: scheduling unpinned-uses on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+DEBUG audit: zizmor: scheduling undocumented-permissions on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+DEBUG audit: zizmor: scheduling insecure-commands on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+DEBUG audit: zizmor: scheduling github-env on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+DEBUG audit: zizmor: scheduling cache-poisoning on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+DEBUG audit: zizmor: scheduling secrets-inherit on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+DEBUG audit: zizmor: scheduling bot-conditions on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+DEBUG audit: zizmor: scheduling overprovisioned-secrets on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+DEBUG audit: zizmor: scheduling unredacted-secrets on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+DEBUG audit: zizmor: scheduling forbidden-uses on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+DEBUG audit: zizmor: scheduling obfuscation on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+DEBUG audit: zizmor: scheduling unpinned-images on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+DEBUG audit: zizmor: scheduling anonymous-definition on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+DEBUG audit: zizmor: scheduling unsound-condition on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+DEBUG audit: zizmor: scheduling dependabot-execution on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+DEBUG audit: zizmor: scheduling dependabot-cooldown on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+DEBUG audit: zizmor: scheduling concurrency-limits on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+DEBUG audit: zizmor: scheduling archived-uses on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+DEBUG audit: zizmor: scheduling typosquat-uses on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+DEBUG audit: zizmor: scheduling misfeature on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+DEBUG audit: zizmor: scheduling secrets-outside-env on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+DEBUG audit: zizmor: scheduling superfluous-actions on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+DEBUG audit: zizmor: scheduling github-app on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+DEBUG audit: zizmor: scheduling unpinned-tools on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+DEBUG audit: zizmor: scheduling adhoc-packages on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+DEBUG audit: zizmor: scheduling insecure-url-scheme on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+DEBUG audit: zizmor: scheduling self-repository on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+ INFO audit: zizmor: 🌈 completed ./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml
+DEBUG audit: zizmor: scheduling artipacked on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+DEBUG audit: zizmor: scheduling unsound-contains on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+DEBUG audit: zizmor: scheduling unsound-ternary on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+DEBUG audit: zizmor: scheduling excessive-permissions on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+DEBUG audit: zizmor: scheduling dangerous-triggers on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+DEBUG audit: zizmor: scheduling use-trusted-publishing on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+DEBUG audit: zizmor: scheduling template-injection on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+DEBUG audit: zizmor: scheduling hardcoded-container-credentials on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+DEBUG audit: zizmor: scheduling self-hosted-runner on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+DEBUG audit: zizmor: scheduling unpinned-uses on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+DEBUG audit: zizmor: scheduling undocumented-permissions on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+DEBUG audit: zizmor: scheduling insecure-commands on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+DEBUG audit: zizmor: scheduling github-env on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+DEBUG audit: zizmor: scheduling cache-poisoning on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+DEBUG audit: zizmor: scheduling secrets-inherit on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+DEBUG audit: zizmor: scheduling bot-conditions on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+DEBUG audit: zizmor: scheduling overprovisioned-secrets on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+DEBUG audit: zizmor: scheduling unredacted-secrets on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+DEBUG audit: zizmor: scheduling forbidden-uses on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+DEBUG audit: zizmor: scheduling obfuscation on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+DEBUG audit: zizmor: scheduling unpinned-images on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+DEBUG audit: zizmor: scheduling anonymous-definition on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+DEBUG audit: zizmor: scheduling unsound-condition on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+DEBUG audit: zizmor: scheduling dependabot-execution on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+DEBUG audit: zizmor: scheduling dependabot-cooldown on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+DEBUG audit: zizmor: scheduling concurrency-limits on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+DEBUG audit: zizmor: scheduling archived-uses on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+DEBUG audit: zizmor: scheduling typosquat-uses on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+DEBUG audit: zizmor: scheduling misfeature on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+DEBUG audit: zizmor: scheduling secrets-outside-env on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+DEBUG audit: zizmor: scheduling superfluous-actions on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+DEBUG audit: zizmor: scheduling github-app on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+DEBUG audit: zizmor: scheduling unpinned-tools on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+DEBUG audit: zizmor: scheduling adhoc-packages on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+DEBUG audit: zizmor: scheduling insecure-url-scheme on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+DEBUG audit: zizmor: scheduling self-repository on file://./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+ INFO audit: zizmor: 🌈 completed ./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml
+DEBUG audit: zizmor: scheduling artipacked on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG audit: zizmor: scheduling unsound-contains on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG audit: zizmor: scheduling unsound-ternary on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG audit: zizmor: scheduling excessive-permissions on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG audit: zizmor: scheduling dangerous-triggers on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG audit: zizmor: scheduling use-trusted-publishing on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG audit: zizmor: scheduling template-injection on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG audit: zizmor: scheduling hardcoded-container-credentials on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG audit: zizmor: scheduling self-hosted-runner on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG audit: zizmor: scheduling unpinned-uses on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG audit: zizmor: scheduling undocumented-permissions on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG audit: zizmor: scheduling insecure-commands on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG audit: zizmor: scheduling github-env on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG audit: zizmor: scheduling cache-poisoning on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG audit: zizmor: scheduling secrets-inherit on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG audit: zizmor: scheduling bot-conditions on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG audit: zizmor: scheduling overprovisioned-secrets on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG audit: zizmor: scheduling unredacted-secrets on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG audit: zizmor: scheduling forbidden-uses on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG audit: zizmor: scheduling obfuscation on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG audit: zizmor: scheduling unpinned-images on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG audit: zizmor: scheduling anonymous-definition on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG audit: zizmor: scheduling unsound-condition on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG audit: zizmor: scheduling dependabot-execution on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG audit: zizmor: scheduling dependabot-cooldown on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG audit: zizmor: scheduling concurrency-limits on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG audit: zizmor: scheduling archived-uses on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG audit: zizmor: scheduling typosquat-uses on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG audit: zizmor: scheduling misfeature on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG audit: zizmor: scheduling secrets-outside-env on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG audit: zizmor: scheduling superfluous-actions on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG audit: zizmor: scheduling github-app on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG audit: zizmor: scheduling unpinned-tools on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG audit: zizmor: scheduling adhoc-packages on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG audit: zizmor: scheduling insecure-url-scheme on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG audit: zizmor: scheduling self-repository on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG audit:audit{input=Workflow(file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml)}: zizmor::audit::use_trusted_publishing: use-trusted-publishing: couldn't determine shell type for example-app.yml step SymbolicLocation {
+    key: Local(
+        LocalKey {
+            group: Group(
+                ".",
+            ),
+            verbatim_path: "./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml",
+            native_path: "./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml",
+            best_identifier: "dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml",
+        },
+    ),
+    annotation: "this step",
+    link: None,
+    route: Route {
+        route: [
+            Key(
+                "jobs",
+            ),
+            Key(
+                "desktop-package",
+            ),
+            Key(
+                "steps",
+            ),
+            Index(
+                2,
+            ),
+        ],
+    },
+    feature_kind: Normal,
+    kind: Related,
+}
+DEBUG audit:audit{input=Workflow(file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml)}: zizmor::audit::adhoc_packages: adhoc-packages: couldn't determine shell for step SymbolicLocation {
+    key: Local(
+        LocalKey {
+            group: Group(
+                ".",
+            ),
+            verbatim_path: "./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml",
+            native_path: "./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml",
+            best_identifier: "dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml",
+        },
+    ),
+    annotation: "this step",
+    link: None,
+    route: Route {
+        route: [
+            Key(
+                "jobs",
+            ),
+            Key(
+                "desktop-package",
+            ),
+            Key(
+                "steps",
+            ),
+            Index(
+                2,
+            ),
+        ],
+    },
+    feature_kind: Normal,
+    kind: Related,
+}; assuming bash
+ INFO audit: zizmor: 🌈 completed ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml
+DEBUG audit: zizmor: scheduling artipacked on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+DEBUG audit: zizmor: scheduling unsound-contains on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+DEBUG audit: zizmor: scheduling unsound-ternary on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+DEBUG audit: zizmor: scheduling excessive-permissions on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+DEBUG audit: zizmor: scheduling dangerous-triggers on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+DEBUG audit: zizmor: scheduling use-trusted-publishing on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+DEBUG audit: zizmor: scheduling template-injection on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+DEBUG audit: zizmor: scheduling hardcoded-container-credentials on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+DEBUG audit: zizmor: scheduling self-hosted-runner on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+DEBUG audit: zizmor: scheduling unpinned-uses on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+DEBUG audit: zizmor: scheduling undocumented-permissions on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+DEBUG audit: zizmor: scheduling insecure-commands on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+DEBUG audit: zizmor: scheduling github-env on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+DEBUG audit: zizmor: scheduling cache-poisoning on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+DEBUG audit: zizmor: scheduling secrets-inherit on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+DEBUG audit: zizmor: scheduling bot-conditions on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+DEBUG audit: zizmor: scheduling overprovisioned-secrets on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+DEBUG audit: zizmor: scheduling unredacted-secrets on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+DEBUG audit: zizmor: scheduling forbidden-uses on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+DEBUG audit: zizmor: scheduling obfuscation on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+DEBUG audit: zizmor: scheduling unpinned-images on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+DEBUG audit: zizmor: scheduling anonymous-definition on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+DEBUG audit: zizmor: scheduling unsound-condition on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+DEBUG audit: zizmor: scheduling dependabot-execution on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+DEBUG audit: zizmor: scheduling dependabot-cooldown on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+DEBUG audit: zizmor: scheduling concurrency-limits on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+DEBUG audit: zizmor: scheduling archived-uses on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+DEBUG audit: zizmor: scheduling typosquat-uses on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+DEBUG audit: zizmor: scheduling misfeature on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+DEBUG audit: zizmor: scheduling secrets-outside-env on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+DEBUG audit: zizmor: scheduling superfluous-actions on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+DEBUG audit: zizmor: scheduling github-app on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+DEBUG audit: zizmor: scheduling unpinned-tools on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+DEBUG audit: zizmor: scheduling adhoc-packages on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+DEBUG audit: zizmor: scheduling insecure-url-scheme on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+DEBUG audit: zizmor: scheduling self-repository on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+ INFO audit: zizmor: 🌈 completed ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml
+DEBUG audit: zizmor: scheduling artipacked on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+DEBUG audit: zizmor: scheduling unsound-contains on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+DEBUG audit: zizmor: scheduling unsound-ternary on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+DEBUG audit: zizmor: scheduling excessive-permissions on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+DEBUG audit: zizmor: scheduling dangerous-triggers on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+DEBUG audit: zizmor: scheduling use-trusted-publishing on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+DEBUG audit: zizmor: scheduling template-injection on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+DEBUG audit: zizmor: scheduling hardcoded-container-credentials on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+DEBUG audit: zizmor: scheduling self-hosted-runner on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+DEBUG audit: zizmor: scheduling unpinned-uses on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+DEBUG audit: zizmor: scheduling undocumented-permissions on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+DEBUG audit: zizmor: scheduling insecure-commands on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+DEBUG audit: zizmor: scheduling github-env on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+DEBUG audit: zizmor: scheduling cache-poisoning on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+DEBUG audit: zizmor: scheduling secrets-inherit on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+DEBUG audit: zizmor: scheduling bot-conditions on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+DEBUG audit: zizmor: scheduling overprovisioned-secrets on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+DEBUG audit: zizmor: scheduling unredacted-secrets on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+DEBUG audit: zizmor: scheduling forbidden-uses on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+DEBUG audit: zizmor: scheduling obfuscation on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+DEBUG audit: zizmor: scheduling unpinned-images on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+DEBUG audit: zizmor: scheduling anonymous-definition on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+DEBUG audit: zizmor: scheduling unsound-condition on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+DEBUG audit: zizmor: scheduling dependabot-execution on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+DEBUG audit: zizmor: scheduling dependabot-cooldown on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+DEBUG audit: zizmor: scheduling concurrency-limits on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+DEBUG audit: zizmor: scheduling archived-uses on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+DEBUG audit: zizmor: scheduling typosquat-uses on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+DEBUG audit: zizmor: scheduling misfeature on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+DEBUG audit: zizmor: scheduling secrets-outside-env on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+DEBUG audit: zizmor: scheduling superfluous-actions on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+DEBUG audit: zizmor: scheduling github-app on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+DEBUG audit: zizmor: scheduling unpinned-tools on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+DEBUG audit: zizmor: scheduling adhoc-packages on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+DEBUG audit: zizmor: scheduling insecure-url-scheme on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+DEBUG audit: zizmor: scheduling self-repository on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+ INFO audit: zizmor: 🌈 completed ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-gate.yml
+DEBUG audit: zizmor: scheduling artipacked on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling unsound-contains on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling unsound-ternary on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling excessive-permissions on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling dangerous-triggers on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling use-trusted-publishing on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling template-injection on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling hardcoded-container-credentials on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling self-hosted-runner on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling unpinned-uses on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling undocumented-permissions on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling insecure-commands on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling github-env on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling cache-poisoning on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling secrets-inherit on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling bot-conditions on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling overprovisioned-secrets on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling unredacted-secrets on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling forbidden-uses on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling obfuscation on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling unpinned-images on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling anonymous-definition on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling unsound-condition on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling dependabot-execution on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling dependabot-cooldown on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling concurrency-limits on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling archived-uses on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling typosquat-uses on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling misfeature on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling secrets-outside-env on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling superfluous-actions on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling github-app on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling unpinned-tools on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling adhoc-packages on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling insecure-url-scheme on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling self-repository on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+ INFO audit: zizmor: 🌈 completed ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling artipacked on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling unsound-contains on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling unsound-ternary on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling excessive-permissions on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling dangerous-triggers on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling use-trusted-publishing on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling template-injection on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling hardcoded-container-credentials on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling self-hosted-runner on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling unpinned-uses on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling undocumented-permissions on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling insecure-commands on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling github-env on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling cache-poisoning on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling secrets-inherit on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling bot-conditions on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling overprovisioned-secrets on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling unredacted-secrets on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling forbidden-uses on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling obfuscation on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling unpinned-images on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling anonymous-definition on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling unsound-condition on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling dependabot-execution on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling dependabot-cooldown on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling concurrency-limits on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling archived-uses on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling typosquat-uses on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling misfeature on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling secrets-outside-env on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling superfluous-actions on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling github-app on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling unpinned-tools on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling adhoc-packages on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling insecure-url-scheme on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling self-repository on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG audit:audit{input=Workflow(file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml)}: zizmor::audit::use_trusted_publishing: use-trusted-publishing: couldn't determine shell type for release.yml step SymbolicLocation {
+    key: Local(
+        LocalKey {
+            group: Group(
+                ".",
+            ),
+            verbatim_path: "./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml",
+            native_path: "./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml",
+            best_identifier: "dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml",
+        },
+    ),
+    annotation: "this step",
+    link: None,
+    route: Route {
+        route: [
+            Key(
+                "jobs",
+            ),
+            Key(
+                "test",
+            ),
+            Key(
+                "steps",
+            ),
+            Index(
+                3,
+            ),
+        ],
+    },
+    feature_kind: Normal,
+    kind: Related,
+}
+DEBUG audit:audit{input=Workflow(file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml)}: zizmor::audit::use_trusted_publishing: use-trusted-publishing: couldn't determine shell type for release.yml step SymbolicLocation {
+    key: Local(
+        LocalKey {
+            group: Group(
+                ".",
+            ),
+            verbatim_path: "./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml",
+            native_path: "./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml",
+            best_identifier: "dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml",
+        },
+    ),
+    annotation: "this step",
+    link: None,
+    route: Route {
+        route: [
+            Key(
+                "jobs",
+            ),
+            Key(
+                "test",
+            ),
+            Key(
+                "steps",
+            ),
+            Index(
+                6,
+            ),
+        ],
+    },
+    feature_kind: Normal,
+    kind: Related,
+}
+DEBUG audit:audit{input=Workflow(file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml)}: zizmor::audit::use_trusted_publishing: use-trusted-publishing: couldn't determine shell type for release.yml step SymbolicLocation {
+    key: Local(
+        LocalKey {
+            group: Group(
+                ".",
+            ),
+            verbatim_path: "./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml",
+            native_path: "./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml",
+            best_identifier: "dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml",
+        },
+    ),
+    annotation: "this step",
+    link: None,
+    route: Route {
+        route: [
+            Key(
+                "jobs",
+            ),
+            Key(
+                "docker-publish-build",
+            ),
+            Key(
+                "steps",
+            ),
+            Index(
+                2,
+            ),
+        ],
+    },
+    feature_kind: Normal,
+    kind: Related,
+}
+DEBUG audit:audit{input=Workflow(file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml)}: zizmor::audit::adhoc_packages: adhoc-packages: couldn't determine shell for step SymbolicLocation {
+    key: Local(
+        LocalKey {
+            group: Group(
+                ".",
+            ),
+            verbatim_path: "./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml",
+            native_path: "./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml",
+            best_identifier: "dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml",
+        },
+    ),
+    annotation: "this step",
+    link: None,
+    route: Route {
+        route: [
+            Key(
+                "jobs",
+            ),
+            Key(
+                "test",
+            ),
+            Key(
+                "steps",
+            ),
+            Index(
+                3,
+            ),
+        ],
+    },
+    feature_kind: Normal,
+    kind: Related,
+}; assuming bash
+DEBUG audit:audit{input=Workflow(file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml)}: zizmor::audit::adhoc_packages: adhoc-packages: couldn't determine shell for step SymbolicLocation {
+    key: Local(
+        LocalKey {
+            group: Group(
+                ".",
+            ),
+            verbatim_path: "./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml",
+            native_path: "./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml",
+            best_identifier: "dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml",
+        },
+    ),
+    annotation: "this step",
+    link: None,
+    route: Route {
+        route: [
+            Key(
+                "jobs",
+            ),
+            Key(
+                "test",
+            ),
+            Key(
+                "steps",
+            ),
+            Index(
+                6,
+            ),
+        ],
+    },
+    feature_kind: Normal,
+    kind: Related,
+}; assuming bash
+DEBUG audit:audit{input=Workflow(file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml)}: zizmor::audit::adhoc_packages: adhoc-packages: couldn't determine shell for step SymbolicLocation {
+    key: Local(
+        LocalKey {
+            group: Group(
+                ".",
+            ),
+            verbatim_path: "./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml",
+            native_path: "./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml",
+            best_identifier: "dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml",
+        },
+    ),
+    annotation: "this step",
+    link: None,
+    route: Route {
+        route: [
+            Key(
+                "jobs",
+            ),
+            Key(
+                "docker-publish-build",
+            ),
+            Key(
+                "steps",
+            ),
+            Index(
+                2,
+            ),
+        ],
+    },
+    feature_kind: Normal,
+    kind: Related,
+}; assuming bash
+ INFO audit: zizmor: 🌈 completed ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling artipacked on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling unsound-contains on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling unsound-ternary on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling excessive-permissions on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling dangerous-triggers on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling use-trusted-publishing on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling template-injection on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling hardcoded-container-credentials on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling self-hosted-runner on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling unpinned-uses on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling undocumented-permissions on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling insecure-commands on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling github-env on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling cache-poisoning on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling secrets-inherit on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling bot-conditions on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling overprovisioned-secrets on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling unredacted-secrets on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling forbidden-uses on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling obfuscation on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling unpinned-images on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling anonymous-definition on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling unsound-condition on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling dependabot-execution on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling dependabot-cooldown on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling concurrency-limits on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling archived-uses on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling typosquat-uses on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling misfeature on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling secrets-outside-env on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling superfluous-actions on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling github-app on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling unpinned-tools on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling adhoc-packages on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling insecure-url-scheme on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling self-repository on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+ INFO audit: zizmor: 🌈 completed ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling artipacked on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling unsound-contains on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling unsound-ternary on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling excessive-permissions on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling dangerous-triggers on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling use-trusted-publishing on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling template-injection on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling hardcoded-container-credentials on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling self-hosted-runner on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling unpinned-uses on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling undocumented-permissions on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling insecure-commands on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling github-env on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling cache-poisoning on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling secrets-inherit on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling bot-conditions on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling overprovisioned-secrets on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling unredacted-secrets on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling forbidden-uses on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling obfuscation on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling unpinned-images on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling anonymous-definition on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling unsound-condition on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling dependabot-execution on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling dependabot-cooldown on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling concurrency-limits on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling archived-uses on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling typosquat-uses on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling misfeature on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling secrets-outside-env on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling superfluous-actions on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling github-app on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling unpinned-tools on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling adhoc-packages on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling insecure-url-scheme on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling self-repository on file://./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+ INFO audit: zizmor: 🌈 completed ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling artipacked on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+DEBUG audit: zizmor: scheduling unsound-contains on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+DEBUG audit: zizmor: scheduling unsound-ternary on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+DEBUG audit: zizmor: scheduling excessive-permissions on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+DEBUG audit: zizmor: scheduling dangerous-triggers on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+DEBUG audit: zizmor: scheduling use-trusted-publishing on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+DEBUG audit: zizmor: scheduling template-injection on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+DEBUG audit: zizmor: scheduling hardcoded-container-credentials on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+DEBUG audit: zizmor: scheduling self-hosted-runner on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+DEBUG audit: zizmor: scheduling unpinned-uses on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+DEBUG audit: zizmor: scheduling undocumented-permissions on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+DEBUG audit: zizmor: scheduling insecure-commands on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+DEBUG audit: zizmor: scheduling github-env on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+DEBUG audit: zizmor: scheduling cache-poisoning on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+DEBUG audit: zizmor: scheduling secrets-inherit on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+DEBUG audit: zizmor: scheduling bot-conditions on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+DEBUG audit: zizmor: scheduling overprovisioned-secrets on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+DEBUG audit: zizmor: scheduling unredacted-secrets on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+DEBUG audit: zizmor: scheduling forbidden-uses on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+DEBUG audit: zizmor: scheduling obfuscation on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+DEBUG audit: zizmor: scheduling unpinned-images on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+DEBUG audit: zizmor: scheduling anonymous-definition on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+DEBUG audit: zizmor: scheduling unsound-condition on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+DEBUG audit: zizmor: scheduling dependabot-execution on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+DEBUG audit: zizmor: scheduling dependabot-cooldown on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+DEBUG audit: zizmor: scheduling concurrency-limits on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+DEBUG audit: zizmor: scheduling archived-uses on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+DEBUG audit: zizmor: scheduling typosquat-uses on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+DEBUG audit: zizmor: scheduling misfeature on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+DEBUG audit: zizmor: scheduling secrets-outside-env on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+DEBUG audit: zizmor: scheduling superfluous-actions on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+DEBUG audit: zizmor: scheduling github-app on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+DEBUG audit: zizmor: scheduling unpinned-tools on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+DEBUG audit: zizmor: scheduling adhoc-packages on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+DEBUG audit: zizmor: scheduling insecure-url-scheme on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+DEBUG audit: zizmor: scheduling self-repository on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+ INFO audit: zizmor: 🌈 completed ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml
+DEBUG audit: zizmor: scheduling artipacked on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling unsound-contains on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling unsound-ternary on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling excessive-permissions on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling dangerous-triggers on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling use-trusted-publishing on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling template-injection on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling hardcoded-container-credentials on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling self-hosted-runner on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling unpinned-uses on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling undocumented-permissions on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling insecure-commands on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling github-env on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling cache-poisoning on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling secrets-inherit on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling bot-conditions on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling overprovisioned-secrets on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling unredacted-secrets on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling forbidden-uses on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling obfuscation on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling unpinned-images on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling anonymous-definition on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling unsound-condition on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling dependabot-execution on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling dependabot-cooldown on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling concurrency-limits on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling archived-uses on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling typosquat-uses on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling misfeature on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling secrets-outside-env on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling superfluous-actions on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling github-app on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling unpinned-tools on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling adhoc-packages on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling insecure-url-scheme on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling self-repository on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+ INFO audit: zizmor: 🌈 completed ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml
+DEBUG audit: zizmor: scheduling artipacked on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling unsound-contains on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling unsound-ternary on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling excessive-permissions on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling dangerous-triggers on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling use-trusted-publishing on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling template-injection on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling hardcoded-container-credentials on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling self-hosted-runner on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling unpinned-uses on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling undocumented-permissions on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling insecure-commands on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling github-env on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling cache-poisoning on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling secrets-inherit on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling bot-conditions on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling overprovisioned-secrets on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling unredacted-secrets on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling forbidden-uses on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling obfuscation on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling unpinned-images on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling anonymous-definition on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling unsound-condition on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling dependabot-execution on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling dependabot-cooldown on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling concurrency-limits on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling archived-uses on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling typosquat-uses on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling misfeature on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling secrets-outside-env on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling superfluous-actions on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling github-app on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling unpinned-tools on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling adhoc-packages on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling insecure-url-scheme on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling self-repository on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG audit:audit{input=Workflow(file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml)}: zizmor::audit::use_trusted_publishing: use-trusted-publishing: couldn't determine shell type for release.yml step SymbolicLocation {
+    key: Local(
+        LocalKey {
+            group: Group(
+                ".",
+            ),
+            verbatim_path: "./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml",
+            native_path: "./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml",
+            best_identifier: "dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml",
+        },
+    ),
+    annotation: "this step",
+    link: None,
+    route: Route {
+        route: [
+            Key(
+                "jobs",
+            ),
+            Key(
+                "docker-publish-build",
+            ),
+            Key(
+                "steps",
+            ),
+            Index(
+                4,
+            ),
+        ],
+    },
+    feature_kind: Normal,
+    kind: Related,
+}
+DEBUG audit:audit{input=Workflow(file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml)}: zizmor::audit::adhoc_packages: adhoc-packages: couldn't determine shell for step SymbolicLocation {
+    key: Local(
+        LocalKey {
+            group: Group(
+                ".",
+            ),
+            verbatim_path: "./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml",
+            native_path: "./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml",
+            best_identifier: "dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml",
+        },
+    ),
+    annotation: "this step",
+    link: None,
+    route: Route {
+        route: [
+            Key(
+                "jobs",
+            ),
+            Key(
+                "docker-publish-build",
+            ),
+            Key(
+                "steps",
+            ),
+            Index(
+                4,
+            ),
+        ],
+    },
+    feature_kind: Normal,
+    kind: Related,
+}; assuming bash
+ INFO audit: zizmor: 🌈 completed ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml
+DEBUG audit: zizmor: scheduling artipacked on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling unsound-contains on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling unsound-ternary on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling excessive-permissions on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling dangerous-triggers on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling use-trusted-publishing on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling template-injection on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling hardcoded-container-credentials on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling self-hosted-runner on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling unpinned-uses on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling undocumented-permissions on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling insecure-commands on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling github-env on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling cache-poisoning on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling secrets-inherit on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling bot-conditions on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling overprovisioned-secrets on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling unredacted-secrets on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling forbidden-uses on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling obfuscation on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling unpinned-images on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling anonymous-definition on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling unsound-condition on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling dependabot-execution on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling dependabot-cooldown on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling concurrency-limits on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling archived-uses on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling typosquat-uses on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling misfeature on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling secrets-outside-env on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling superfluous-actions on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling github-app on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling unpinned-tools on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling adhoc-packages on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling insecure-url-scheme on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling self-repository on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+ INFO audit: zizmor: 🌈 completed ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml
+DEBUG audit: zizmor: scheduling artipacked on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling unsound-contains on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling unsound-ternary on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling excessive-permissions on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling dangerous-triggers on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling use-trusted-publishing on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling template-injection on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling hardcoded-container-credentials on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling self-hosted-runner on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling unpinned-uses on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling undocumented-permissions on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling insecure-commands on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling github-env on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling cache-poisoning on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling secrets-inherit on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling bot-conditions on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling overprovisioned-secrets on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling unredacted-secrets on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling forbidden-uses on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling obfuscation on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling unpinned-images on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling anonymous-definition on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling unsound-condition on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling dependabot-execution on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling dependabot-cooldown on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling concurrency-limits on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling archived-uses on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling typosquat-uses on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling misfeature on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling secrets-outside-env on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling superfluous-actions on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling github-app on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling unpinned-tools on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling adhoc-packages on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling insecure-url-scheme on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling self-repository on file://./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+ INFO audit: zizmor: 🌈 completed ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml
+DEBUG audit: zizmor: scheduling artipacked on file://./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+DEBUG audit: zizmor: scheduling unsound-contains on file://./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+DEBUG audit: zizmor: scheduling unsound-ternary on file://./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+DEBUG audit: zizmor: scheduling excessive-permissions on file://./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+DEBUG audit: zizmor: scheduling dangerous-triggers on file://./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+DEBUG audit: zizmor: scheduling use-trusted-publishing on file://./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+DEBUG audit: zizmor: scheduling template-injection on file://./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+DEBUG audit: zizmor: scheduling hardcoded-container-credentials on file://./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+DEBUG audit: zizmor: scheduling self-hosted-runner on file://./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+DEBUG audit: zizmor: scheduling unpinned-uses on file://./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+DEBUG audit: zizmor: scheduling undocumented-permissions on file://./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+DEBUG audit: zizmor: scheduling insecure-commands on file://./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+DEBUG audit: zizmor: scheduling github-env on file://./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+DEBUG audit: zizmor: scheduling cache-poisoning on file://./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+DEBUG audit: zizmor: scheduling secrets-inherit on file://./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+DEBUG audit: zizmor: scheduling bot-conditions on file://./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+DEBUG audit: zizmor: scheduling overprovisioned-secrets on file://./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+DEBUG audit: zizmor: scheduling unredacted-secrets on file://./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+DEBUG audit: zizmor: scheduling forbidden-uses on file://./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+DEBUG audit: zizmor: scheduling obfuscation on file://./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+DEBUG audit: zizmor: scheduling unpinned-images on file://./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+DEBUG audit: zizmor: scheduling anonymous-definition on file://./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+DEBUG audit: zizmor: scheduling unsound-condition on file://./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+DEBUG audit: zizmor: scheduling dependabot-execution on file://./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+DEBUG audit: zizmor: scheduling dependabot-cooldown on file://./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+DEBUG audit: zizmor: scheduling concurrency-limits on file://./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+DEBUG audit: zizmor: scheduling archived-uses on file://./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+DEBUG audit: zizmor: scheduling typosquat-uses on file://./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+DEBUG audit: zizmor: scheduling misfeature on file://./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+DEBUG audit: zizmor: scheduling secrets-outside-env on file://./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+DEBUG audit: zizmor: scheduling superfluous-actions on file://./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+DEBUG audit: zizmor: scheduling github-app on file://./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+DEBUG audit: zizmor: scheduling unpinned-tools on file://./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+DEBUG audit: zizmor: scheduling adhoc-packages on file://./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+DEBUG audit: zizmor: scheduling insecure-url-scheme on file://./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+DEBUG audit: zizmor: scheduling self-repository on file://./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+ INFO audit: zizmor: 🌈 completed ./dev/log/issues/31/pulls/32/templates/python/.pre-commit-config.yaml
+error[unpinned-uses]: unpinned action reference
+  --> ./.github/workflows/github-pages.yml:39:15
+   |
+39 |         uses: actions/checkout@v6
+   |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./.github/workflows/github-pages.yml:55:15
+   |
+55 |         uses: actions/checkout@v6
+   |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./.github/workflows/github-pages.yml:60:15
+   |
+60 |         uses: actions/setup-node@v6
+   |               ^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./.github/workflows/github-pages.yml:91:15
+   |
+91 |         uses: actions/checkout@v6
+   |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./.github/workflows/github-pages.yml:96:15
+   |
+96 |         uses: actions/setup-node@v6
+   |               ^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./.github/workflows/github-pages.yml:123:15
+    |
+123 |         uses: actions/upload-pages-artifact@v5
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./.github/workflows/github-pages.yml:148:15
+    |
+148 |         uses: actions/checkout@v6
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./.github/workflows/github-pages.yml:153:15
+    |
+153 |         uses: actions/setup-node@v6
+    |               ^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./.github/workflows/github-pages.yml:228:15
+    |
+228 |         uses: actions/upload-artifact@v7
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./.github/workflows/github-pages.yml:250:15
+    |
+250 |         uses: actions/deploy-pages@v5
+    |               ^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./.github/workflows/github-pages.yml:254:15
+    |
+254 |         uses: actions/checkout@v6
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml:41:13
+   |
+41 |       uses: docker/login-action@v4
+   |             ^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml:48:13
+   |
+48 |       uses: docker/metadata-action@v6
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml:56:13
+   |
+56 |       uses: docker/build-push-action@v7
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+help[self-repository]: use GitHub's dedicated self-repository syntax
+  --> ./dev/log/issues/31/pulls/32/templates/js/.github/actions/publish-dockerhub/action.yml:38:13
+   |
+37 |     - name: Set up Docker Buildx (resilient)
+   |       -------------------------------------- this step
+38 |       uses: ./.github/actions/setup-buildx-resilient
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ use '$/...' instead of './...'
+   |
+   = note: audit confidence → High
+   = note: this finding has an auto-fix
+   = help: audit documentation → https://docs.zizmor.sh/audits/#self-repository
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/actions/setup-buildx-resilient/action.yml:107:13
+    |
+107 |       uses: docker/setup-buildx-action@v4
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml:52:15
+   |
+52 |       - uses: actions/checkout@v7
+   |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml:57:15
+   |
+57 |         uses: actions/setup-node@v7
+   |               ^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml:74:15
+   |
+74 |         uses: actions/configure-pages@v6
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml:86:15
+   |
+86 |         uses: actions/upload-artifact@v7
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml:94:15
+   |
+94 |         uses: actions/upload-pages-artifact@v5
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml:120:15
+    |
+120 |         uses: actions/deploy-pages@v5
+    |               ^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml:136:15
+    |
+136 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml:141:15
+    |
+141 |         uses: actions/setup-node@v7
+    |               ^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml:169:15
+    |
+169 |         uses: actions/upload-artifact@v7
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml:184:15
+    |
+184 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml:189:15
+    |
+189 |         uses: actions/setup-node@v7
+    |               ^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml:196:15
+    |
+196 |         uses: actions/setup-java@v6
+    |               ^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml:214:15
+    |
+214 |         uses: actions/upload-artifact@v7
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml:231:15
+    |
+231 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml:236:15
+    |
+236 |         uses: actions/setup-node@v7
+    |               ^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml:280:15
+    |
+280 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml:365:15
+    |
+365 |         uses: actions/upload-artifact@v7
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml:419:15
+    |
+419 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/example-app.yml:424:15
+    |
+424 |         uses: actions/setup-node@v7
+    |               ^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml:135:15
+    |
+135 |       - uses: actions/upload-artifact@v7
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+help[self-repository]: use GitHub's dedicated self-repository syntax
+  --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/javascript-first-example.yml:20:11
+   |
+19 |   javascript-first:
+   |   ---------------- this job
+20 |     uses: ./.github/workflows/javascript-first-gate.yml
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ use '$/...' instead of './...'
+   |
+   = note: audit confidence → High
+   = note: this finding has an auto-fix
+   = help: audit documentation → https://docs.zizmor.sh/audits/#self-repository
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml:55:15
+   |
+55 |       - uses: actions/checkout@v7
+   |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml:60:15
+   |
+60 |         uses: actions/cache@v5
+   |               ^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml:68:15
+   |
+68 |         uses: lycheeverse/lychee-action@v2
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml:126:15
+    |
+126 |         uses: actions/upload-artifact@v7
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml:175:15
+    |
+175 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/links.yml:180:15
+    |
+180 |         uses: actions/setup-node@v7
+    |               ^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml:72:15
+   |
+72 |       - uses: actions/checkout@v7
+   |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml:103:15
+    |
+103 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml:124:15
+    |
+124 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml:153:15
+    |
+153 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml:180:15
+    |
+180 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml:186:15
+    |
+186 |         uses: actions/setup-node@v7
+    |               ^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml:231:15
+    |
+231 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml:244:15
+    |
+244 |         uses: actions/setup-node@v7
+    |               ^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml:323:15
+    |
+323 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml:338:15
+    |
+338 |         uses: actions/setup-node@v7
+    |               ^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml:405:15
+    |
+405 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml:424:15
+    |
+424 |         uses: docker/build-push-action@v7
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml:453:15
+    |
+453 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml:487:15
+    |
+487 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml:560:15
+    |
+560 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml:566:15
+    |
+566 |         uses: actions/setup-node@v7
+    |               ^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml:708:15
+    |
+708 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml:714:15
+    |
+714 |         uses: actions/setup-node@v7
+    |               ^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml:807:15
+    |
+807 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml:846:15
+    |
+846 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml:873:15
+    |
+873 |         uses: actions/upload-artifact@v7
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml:893:15
+    |
+893 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml:901:15
+    |
+901 |         uses: docker/login-action@v4
+    |               ^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml:907:15
+    |
+907 |         uses: actions/download-artifact@v8
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml:973:15
+    |
+973 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml:988:15
+    |
+988 |         uses: actions/setup-node@v7
+    |               ^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+    --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml:1064:15
+     |
+1064 |       - uses: actions/checkout@v7
+     |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+     |
+     = note: audit confidence → High
+     = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+    --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml:1069:15
+     |
+1069 |         uses: actions/setup-node@v7
+     |               ^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+     |
+     = note: audit confidence → High
+     = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+help[self-repository]: use GitHub's dedicated self-repository syntax
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml:415:15
+    |
+413 |       - name: Set up Docker Buildx (resilient)
+    |         -------------------------------------- this step
+414 |         if: steps.docker_config.outputs.enabled == 'true'
+415 |         uses: ./.github/actions/setup-buildx-resilient
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ use '$/...' instead of './...'
+    |
+    = note: audit confidence → High
+    = note: this finding has an auto-fix
+    = help: audit documentation → https://docs.zizmor.sh/audits/#self-repository
+
+help[self-repository]: use GitHub's dedicated self-repository syntax
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml:855:15
+    |
+850 |       - name: Build and push platform image by digest
+    |         --------------------------------------------- this step
+...
+855 |         uses: ./.github/actions/publish-dockerhub
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ use '$/...' instead of './...'
+    |
+    = note: audit confidence → High
+    = note: this finding has an auto-fix
+    = help: audit documentation → https://docs.zizmor.sh/audits/#self-repository
+
+help[self-repository]: use GitHub's dedicated self-repository syntax
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/release.yml:898:15
+    |
+897 |       - name: Set up Docker Buildx (resilient)
+    |         -------------------------------------- this step
+898 |         uses: ./.github/actions/setup-buildx-resilient
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ use '$/...' instead of './...'
+    |
+    = note: audit confidence → High
+    = note: this finding has an auto-fix
+    = help: audit documentation → https://docs.zizmor.sh/audits/#self-repository
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml:40:15
+   |
+40 |       - uses: actions/checkout@v7
+   |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml:45:15
+   |
+45 |         uses: github/codeql-action/init@v4
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml:51:15
+   |
+51 |         uses: github/codeql-action/autobuild@v4
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml:54:15
+   |
+54 |         uses: github/codeql-action/analyze@v4
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml:66:15
+   |
+66 |       - uses: actions/checkout@v7
+   |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml:95:15
+   |
+95 |       - uses: actions/checkout@v7
+   |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml:100:15
+    |
+100 |         uses: actions/dependency-review-action@v5
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml:117:15
+    |
+117 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml:121:15
+    |
+121 |       - uses: actions/setup-node@v7
+    |               ^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml:151:15
+    |
+151 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/security.yml:156:15
+    |
+156 |         uses: actions/setup-node@v7
+    |               ^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml:45:15
+   |
+45 |       - uses: actions/checkout@v7
+   |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml:73:15
+   |
+73 |       - uses: actions/checkout@v7
+   |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml:91:15
+   |
+91 |       - uses: actions/checkout@v7
+   |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml:117:15
+    |
+117 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml:131:15
+    |
+131 |       - uses: zizmorcore/zizmor-action@v0.6.4
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml:184:15
+    |
+184 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/js/.github/workflows/workflows.yml:189:15
+    |
+189 |         uses: actions/setup-node@v7
+    |               ^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml:55:15
+   |
+55 |       - uses: actions/checkout@v7
+   |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml:60:15
+   |
+60 |         uses: actions/setup-python@v7
+   |               ^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml:74:15
+   |
+74 |         uses: actions/upload-artifact@v7
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml:86:15
+   |
+86 |         uses: actions/configure-pages@v6
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml:90:15
+   |
+90 |         uses: actions/upload-pages-artifact@v5
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml:111:15
+    |
+111 |         uses: actions/deploy-pages@v5
+    |               ^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/docs.yml:130:15
+    |
+130 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml:46:15
+   |
+46 |       - uses: actions/checkout@v7
+   |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml:51:15
+   |
+51 |         uses: actions/cache@v5
+   |               ^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml:59:15
+   |
+59 |         uses: lycheeverse/lychee-action@v2
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml:126:15
+    |
+126 |         uses: actions/upload-artifact@v7
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/links.yml:144:15
+    |
+144 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml:54:15
+   |
+54 |       - uses: actions/checkout@v7
+   |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml:60:15
+   |
+60 |         uses: actions/setup-python@v7
+   |               ^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml:120:15
+    |
+120 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml:132:15
+    |
+132 |         uses: actions/setup-python@v7
+    |               ^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml:223:15
+    |
+223 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml:251:15
+    |
+251 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml:291:15
+    |
+291 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml:296:15
+    |
+296 |         uses: actions/setup-python@v7
+    |               ^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml:380:15
+    |
+380 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml:385:15
+    |
+385 |         uses: actions/setup-python@v7
+    |               ^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml:431:15
+    |
+431 |         uses: actions/upload-artifact@v7
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml:449:15
+    |
+449 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml:455:15
+    |
+455 |         uses: actions/setup-python@v7
+    |               ^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml:505:15
+    |
+505 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml:521:15
+    |
+521 |         uses: docker/setup-buildx-action@v4
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml:526:15
+    |
+526 |         uses: docker/build-push-action@v7
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml:566:15
+    |
+566 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml:572:15
+    |
+572 |         uses: actions/setup-python@v7
+    |               ^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml:615:15
+    |
+615 |         uses: actions/download-artifact@v8
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml:689:15
+    |
+689 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml:696:15
+    |
+696 |         uses: actions/setup-python@v7
+    |               ^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml:830:15
+    |
+830 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml:872:15
+    |
+872 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml:877:15
+    |
+877 |         uses: docker/setup-buildx-action@v4
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml:880:15
+    |
+880 |         uses: docker/login-action@v4
+    |               ^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml:888:15
+    |
+888 |         uses: docker/build-push-action@v7
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml:904:15
+    |
+904 |         uses: actions/upload-artifact@v7
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml:923:15
+    |
+923 |         uses: docker/setup-buildx-action@v4
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml:926:15
+    |
+926 |         uses: docker/login-action@v4
+    |               ^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml:932:15
+    |
+932 |         uses: actions/download-artifact@v8
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/release.yml:972:15
+    |
+972 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml:27:15
+   |
+27 |       - uses: actions/checkout@v7
+   |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml:32:15
+   |
+32 |         uses: actions/setup-python@v7
+   |               ^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml:54:15
+   |
+54 |       - uses: actions/checkout@v7
+   |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml:59:15
+   |
+59 |         uses: github/codeql-action/init@v4
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml:65:15
+   |
+65 |         uses: github/codeql-action/autobuild@v4
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml:68:15
+   |
+68 |         uses: github/codeql-action/analyze@v4
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml:78:15
+   |
+78 |       - uses: actions/checkout@v7
+   |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml:92:15
+   |
+92 |         uses: actions/dependency-review-action@v5
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/security.yml:111:15
+    |
+111 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml:42:15
+   |
+42 |       - uses: actions/checkout@v7
+   |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml:87:15
+   |
+87 |       - uses: actions/checkout@v7
+   |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+  --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml:96:15
+   |
+96 |         uses: zizmorcore/zizmor-action@v0.6.4
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+   |
+   = note: audit confidence → High
+   = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml:132:15
+    |
+132 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+error[unpinned-uses]: unpinned action reference
+   --> ./dev/log/issues/31/pulls/32/templates/python/.github/workflows/workflows.yml:153:15
+    |
+153 |       - uses: actions/checkout@v7
+    |               ^^^^^^^^^^^^^^^^^^^ action is not pinned to a hash (required by blanket policy)
+    |
+    = note: audit confidence → High
+    = help: audit documentation → https://docs.zizmor.sh/audits/#unpinned-uses
+
+200 findings (1 ignored, 50 suppressed, 5 unsafe fixes): 0 informational, 5 low, 0 medium, 144 high

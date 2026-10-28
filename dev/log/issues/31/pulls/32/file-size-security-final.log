@@ -1,0 +1,5 @@
+
+> konard.github.io@0.1.0 check:file-size
+> bash scripts/check-file-line-limits.sh
+
+Checked 308 files against the 1500-line limit.

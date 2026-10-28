@@ -1,0 +1,30 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793179854506
+
+ ❯ src/artifact-retry.test.js (16 tests | 1 failed) 98ms
+   × the pinned official SDK produces a readable ZIP with the nondeprecated glob override 9ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/artifact-retry.test.js > the pinned official SDK produces a readable ZIP with the nondeprecated glob override
+Error: No "exports" main defined in /tmp/gh-issue-solver-1793179854506/node_modules/@actions/artifact/package.json
+ ❯ src/artifact-retry.test.js:69:59
+     67| test('the pinned official SDK produces a readable ZIP with the nondepr…
+     68|   // Exercise the real archiver path locally without needing runner cr…
+     69|   const sdk = path.dirname(createRequire(import.meta.url).resolve('@ac…
+       |                                                           ^
+     70|   const { getUploadZipSpecification } = await import(
+     71|     pathToFileURL(path.join(sdk, 'internal/upload/upload-zip-specifica…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 4 passed (5)
+      Tests  1 failed | 58 passed (59)
+   Start at  09:50:24
+   Duration  10.79s (environment 55%, tests 20%, setup 12%, import 9%, transform 3%, worker 1%)
+
+Environment  jsdom was created 5 times · 5.29s total, 55% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+

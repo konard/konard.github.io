@@ -1,0 +1,14 @@
+E401 [*] Multiple imports on one line
+ --> experiments/make-entries.py:3:1
+  |
+1 | # Generates <page>/index.html for every page from the root index.html (head/meta
+2 | # copied, title/description/canonical/og adjusted). Run: python3 -I experiments/make-entries.py
+3 | import re, pathlib
+  | ^^^^^^^^^^^^^^^^^^
+4 | root = pathlib.Path(__file__).resolve().parent.parent
+5 | base = (root / 'index.html').read_text()
+  |
+help: Split imports
+
+Found 1 error.
+[*] 1 fixable with the `--fix` option.

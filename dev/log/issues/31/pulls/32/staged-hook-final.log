@@ -1,0 +1,21 @@
+⋯ Backing up original state…
+✔ Done backing up original state (a52d883)!
+⋯ Hiding unstaged changes to partially staged files…
+✔ Done hiding unstaged changes to partially staged files!
+⋯ Running tasks for staged files…
+    *.{js,jsx,cjs,mjs} — 51 files
+      ⋯ eslint --config eslint.config.js --fix --max-warnings=0 --no-warn-ignored
+      ⋯ prettier --write
+    *.{css,md,html,json,yml,yaml} — 62 files
+      ⋯ prettier --write
+
+✔ prettier --write
+✔ eslint --config eslint.config.js --fix --max-warnings=0 --no-warn-ignored
+✔ prettier --write
+
+✔ Done running tasks for staged files!
+⋯ Staging changes from tasks…
+✔ Done staging changes from tasks!
+⋯ Restoring unstaged changes…
+⋯ Cleaning up temporary files…
+✔ Done cleaning up temporary files!

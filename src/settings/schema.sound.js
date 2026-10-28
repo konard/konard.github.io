@@ -4,7 +4,7 @@
 // synthesized by src/sound/engine.js, which is loaded only when sound is on.
 // Every interaction has up to four sounds, played at random, in turn or all
 // together, and its own level. Only scripts read these settings (`css: false`).
-import { option, range, select, toggle } from './fields';
+import { option, range, select, toggle } from './fields.js';
 
 /** The sounds of src/sound/library.js: id, name and character in English and Russian. */
 export const SOUNDS = [

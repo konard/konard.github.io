@@ -1,0 +1,14 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793179854506
+
+::debug::Creating Artifact archive with compressionLevel: 6
+::debug::Zip write high watermark value 8388608
+::debug::Zip read high watermark value 8388608
+::debug::Zip stream for upload has ended.
+::debug::Zip stream for upload has finished.
+
+ Test Files  1 passed (1)
+      Tests  16 passed (16)
+   Start at  09:51:22
+   Duration  3.10s (environment 40%, import 28%, transform 14%, setup 10%, tests 9%, worker 1%)
+

@@ -1,0 +1,106 @@
+# Review before final push
+
+- Read the issue and every issue/PR comment, inline review comment and review.
+  The final refresh still has no additional requirements or required sub-issues.
+  The only PR conversation entry is GitHub's informational Code Scanning setup
+  message, not a requested change.
+- Reviewed `gh pr diff 32`, the workflow and every changed execution script,
+  source/test diff and the lockfile dependency changes. The lockfile adds the
+  official artifact SDK and its dependencies; the scoped glob override is covered
+  by an actual SDK archive round trip and a clean install/audit.
+- Compared the extracted collector networking code to the original functions:
+  behavior, throttles, retry limits and exported functions are preserved. Python
+  helper changes are formatting plus splitting one combined import.
+- All seven browser commands, their original regressions, all three engines,
+  the exact 4,131-card hosted load, compositor captures and all 120 PDF checks
+  remain enabled. No website feature or prior test case was removed.
+- The deployment probe is tested with valid/stale/missing/wrong-content HTTP
+  responses. Source archives can build without Git; hosted builds use GITHUB_SHA.
+  A PR uploads the real Pages artifact but deliberately does not deploy to main.
+- Native imports, the line-count edge cases, upload recovery/permanent rejection,
+  missing evidence and complete terminal status coverage have regression tests.
+- Staging the template snapshots exposed nested lint-staged configuration
+  discovery and ESLint's file-relative configuration discovery. The hook selects
+  the root package.json and both lint commands select eslint.config.js
+  explicitly. A behavioral regression reproduces both failure paths and verifies
+  the corrections; the actual staged snapshot now passes without changing its
+  original hashes.
+- Every one of the 603 template paths has an inventory entry; every workflow and
+  CI/helper script has a disposition in TEMPLATE-COMPARISON.md. All 17 guide
+  principles are mapped in README.md. Package/registry/container release steps
+  have no target in this private static website.
+- The latest fetched default branch is 508cfed490c3946fffca440f8f2d31a8733b8d35
+  and is already an ancestor of this branch. No merge or history rewrite is needed.
+- Local final validation: 53 suites / 799 tests, source checks, native build,
+  Python/Ruff/ShellCheck, workflow/security audits, zero lockfile advisories,
+  six Chromium browser suites and all 120 PDFs. The local gallery probe was
+  stopped by its memory guard; the full case passed on all hosted engines.
+- Hosted implementation run 40668100515 passed every required job and real
+  upload, with no warning/error annotations. Final-head checks are verified
+  again after the evidence commit; the PR description links their run and records
+  readiness. No direct merge or default-branch push is part of this work.
+
+Shared reports: JavaScript template issue 264 and Python template issue 120.
+They are upstream reports, not outstanding website acceptance criteria.
+
+Final raw-log inspection caught the macOS-only npm fsevents review warning that
+was absent from check annotations. Both metadata sources were reviewed, the
+actual npm warning was reproduced before changes, and only fsevents@2.3.3 is
+approved. The regression covers optional packages on all locked platforms and
+requires a new review after any version change. VERIFICATION.md records the
+warning locations, before/after probe and requirement mapping. Final-head CI
+must show clean npm output on macOS in addition to passing statuses.
+
+The expanded evidence also crosses CodeQL's 300-file compare API boundary.
+All language jobs now explicitly perform full analysis, preserving the default
+queries and all maintained source. The official action's feature definition and
+behavioral test confirm the setting, and a workflow regression fails before the
+change and passes after it. Shared reports JS 265 and Python 121 document the
+same default configuration in both templates. Final hosted verification checks
+that all three security scans run without diff-limit warnings.
+
+The exact-head review caught the separate Advanced Security check failing even
+though run 40675994571 succeeded. All ten open PR-merge alerts are now in scope,
+including unchanged lines. SECURITY.md records the reproductions, component
+choices and every fix. Archive text compatibility is checked over all 63 posts;
+only literal NULs are normalized as browsers already do. Existing data and media
+are unchanged. Final review checks the independent CodeQL result and full alert
+list before readiness, retaining full language/query coverage.
+
+The new result gate makes every CodeQL job fail for any SARIF finding instead
+of relying only on the independent check. Twelve tests cover report/CLI behavior,
+and replay of the real ten-finding report fails as intended; real clean Python
+SARIF passes. Local complete validation now passes 833 tests in 55 suites. All
+63 archived post bodies retain their text except two explicitly documented HTML5
+NUL normalizations; existing archive JSON and media are unchanged. Dynamic label
+assertions use RegExp.escape in both page test files. Shared reports JS 266 and
+Python 122 include the actual false-green evidence and pinned template sources.
+
+## Completed full implementation validation
+
+Run [40681082933](https://github.com/konard/konard.github.io/actions/runs/40681082933)
+completed successfully at 67ca6ef0cda668aea13cb1460b4bc7c56ec904e8 on
+2026-10-28. The complete raw log and exact-head job/check metadata are preserved
+as ci-logs/security-completed-40681082933.log, ci-security-completed.json and
+checkruns-security-completed.json. All 15 checks succeed except the documented
+PR deployment skip. The independent CodeQL check succeeds with zero annotations;
+all three analyses report zero findings and the complete open PR-merge alert
+list is empty. No findings were dismissed or queries/source coverage removed.
+
+The raw log records all 55 suites / 833 tests at lines 11515–11516, all 120
+PDFs at 11830, the Pages artifact at 11850 and the Chromium, WebKit and Firefox
+evidence artifacts at 8647, 9359 and 10809 respectively. Every original browser
+suite and full 4,131-card case passed on every engine. Fresh macOS npm output
+contains no warning; each platform install has zero advisories.
+
+The complete log was searched for warning/error annotations and raw warning,
+error and failure messages. There are no real warnings or errors. Remaining
+matches are action options, CodeQL query names, empty browser error arrays and
+explicitly injected retry/history failures in successful regression tests.
+annotations-security-completed.json records exactly three informational notices:
+PR deployment deliberately skipped, documentation summary and macOS runner queue
+capacity. None is a warning or error.
+
+The final evidence-only commit preserves this successful source validation.
+The PR description and GitHub metadata record the checks for that final head
+after push; no further source or evidence changes are required after those pass.

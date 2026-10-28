@@ -1,0 +1,117 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793179854506
+
+ ❯ src/workflow.test.js (0 test)
+stdout | src/ci-policy.test.js > only explicitly allowed skips pass, never failures or missing results
+::notice::deploy skipped by its documented event/change condition.
+
+ ❯ src/ci-policy.test.js (20 tests | 20 failed) 34ms
+   × runs application CI when src/App.jsx changes 7ms
+   × runs application CI when experiments/network-e2e.mjs changes 2ms
+   × runs application CI when experiments/make-entries.py changes 1ms
+   × runs application CI when package-lock.json changes 1ms
+   × runs application CI when .github/workflows/github-pages.yml changes 1ms
+   × runs application CI when scripts/check-pages.mjs changes 1ms
+   × runs application CI when public/icon.png changes 1ms
+   × runs application CI when .prettierignore changes 1ms
+   × does not rerun browsers for evidence/prose only: README.md 1ms
+   × does not rerun browsers for evidence/prose only: docs/case-studies/issue-29/README.md 1ms
+   × does not rerun browsers for evidence/prose only: dev/log/issues/31/pulls/32/log.txt 1ms
+   × docs and manual runs request the right checks 2ms
+   × required result failure fails closed 3ms
+   × required result cancelled fails closed 1ms
+   × required result timed_out fails closed 1ms
+   × required result skipped fails closed 1ms
+   × required result unknown fails closed 1ms
+   × required result undefined fails closed 1ms
+   × only explicitly allowed skips pass, never failures or missing results 4ms
+   × Pages preflight requires a real Actions site 1ms
+ ❯ src/deployment.test.js (6 tests | 6 failed) 987ms
+   × deployment probe validates valid response 222ms
+   × deployment probe validates stale response 113ms
+   × deployment probe validates html-pdf response 227ms
+   × deployment probe validates html-js response 180ms
+   × deployment probe validates missing-pdf response 174ms
+   × deployment probe validates missing-build-info response 68ms
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/workflow.test.js [ src/workflow.test.js ]
+YAMLException: bad indentation of a mapping entry (24:5)
+
+ 21 |     concurrency:
+ 22 |       group: check-${{ github.workf ...
+ 23 |       cancel-in-progress: true
+ 24 |     - cron: '0 6 * * 1'
+----------^
+ 25 | 
+ 26 | # Least-privilege default; only the ...
+ ❯ generateError node_modules/js-yaml/lib/loader.js:197:10
+ ❯ throwError node_modules/js-yaml/lib/loader.js:201:9
+ ❯ readBlockMapping node_modules/js-yaml/lib/loader.js:1232:7
+ ❯ composeNode node_modules/js-yaml/lib/loader.js:1520:53
+ ❯ readBlockMapping node_modules/js-yaml/lib/loader.js:1214:11
+ ❯ composeNode node_modules/js-yaml/lib/loader.js:1520:53
+ ❯ readDocument node_modules/js-yaml/lib/loader.js:1710:3
+ ❯ loadDocuments node_modules/js-yaml/lib/loader.js:1768:5
+ ❯ Object.load2 [as load] node_modules/js-yaml/lib/loader.js:1792:21
+ ❯ src/workflow.test.js:22:22
+     20|   // so a commit to docs/ never reaches the site. Only actions/deploy-…
+     21|   describe('GitHub Pages deployment from Actions', () => {
+     22|     const doc = yaml.load(fs.readFileSync(path.join(workflowsDir, 'git…
+       |                      ^
+     23|     const { deploy, test: testJob } = doc.jobs;
+     24|     const scripts = Object.values(doc.jobs)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/27]⎯
+
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 26 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/ci-policy.test.js > runs application CI when src/App.jsx changes
+ FAIL  src/ci-policy.test.js > runs application CI when experiments/network-e2e.mjs changes
+ FAIL  src/ci-policy.test.js > runs application CI when experiments/make-entries.py changes
+ FAIL  src/ci-policy.test.js > runs application CI when package-lock.json changes
+ FAIL  src/ci-policy.test.js > runs application CI when .github/workflows/github-pages.yml changes
+ FAIL  src/ci-policy.test.js > runs application CI when scripts/check-pages.mjs changes
+ FAIL  src/ci-policy.test.js > runs application CI when public/icon.png changes
+ FAIL  src/ci-policy.test.js > runs application CI when .prettierignore changes
+ FAIL  src/ci-policy.test.js > does not rerun browsers for evidence/prose only: README.md
+ FAIL  src/ci-policy.test.js > does not rerun browsers for evidence/prose only: docs/case-studies/issue-29/README.md
+ FAIL  src/ci-policy.test.js > does not rerun browsers for evidence/prose only: dev/log/issues/31/pulls/32/log.txt
+ FAIL  src/ci-policy.test.js > docs and manual runs request the right checks
+ FAIL  src/ci-policy.test.js > required result failure fails closed
+ FAIL  src/ci-policy.test.js > required result cancelled fails closed
+ FAIL  src/ci-policy.test.js > required result timed_out fails closed
+ FAIL  src/ci-policy.test.js > required result skipped fails closed
+ FAIL  src/ci-policy.test.js > required result unknown fails closed
+ FAIL  src/ci-policy.test.js > required result undefined fails closed
+ FAIL  src/ci-policy.test.js > only explicitly allowed skips pass, never failures or missing results
+ FAIL  src/ci-policy.test.js > Pages preflight requires a real Actions site
+ FAIL  src/deployment.test.js > deployment probe validates valid response
+ FAIL  src/deployment.test.js > deployment probe validates stale response
+ FAIL  src/deployment.test.js > deployment probe validates html-pdf response
+ FAIL  src/deployment.test.js > deployment probe validates html-js response
+ FAIL  src/deployment.test.js > deployment probe validates missing-pdf response
+ FAIL  src/deployment.test.js > deployment probe validates missing-build-info response
+ReferenceError: window is not defined
+ ❯ src/setupTests.js:18:3
+     16|   resetSettings(undefined, { save: false });
+     17|   setSaved([]);
+     18|   window.localStorage.clear();
+       |   ^
+     19| });
+     20|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/27]⎯
+
+
+ Test Files  3 failed | 2 passed (5)
+      Tests  26 failed | 16 passed (42)
+   Start at  09:42:32
+   Duration  8.55s (environment 46%, tests 21%, setup 15%, import 10%, transform 6%, worker 1%)
+
+Environment  jsdom was created 5 times · 3.29s total, 46% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+

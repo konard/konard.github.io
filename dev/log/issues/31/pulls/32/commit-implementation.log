@@ -1,0 +1,52 @@
+⋯ Backing up original state…
+✔ Done backing up original state (ae294ee)!
+⋯ Running tasks for staged files…
+    package.json — 40 files
+      *.{js,jsx,cjs,mjs} — 20 files
+        ⋯ eslint --fix --max-warnings=0 --no-warn-ignored
+        ⋯ prettier --write
+      *.{css,md,html,json,yml,yaml} — 7 files
+        ⋯ prettier --write
+
+✔ prettier --write
+✔ eslint --fix --max-warnings=0 --no-warn-ignored
+✔ prettier --write
+
+✔ Done running tasks for staged files!
+⋯ Staging changes from tasks…
+✔ Done staging changes from tasks!
+⋯ Cleaning up temporary files…
+✔ Done cleaning up temporary files!
+
+> konard.github.io@0.1.0 check:file-size
+> bash scripts/check-file-line-limits.sh
+
+Checked 297 files against the 1500-line limit.
+
+> konard.github.io@0.1.0 check:secrets
+> secretlint "**/*" --secretlintignore .prettierignore
+
+Compiled 6 Python helpers without executing them.
+All checks passed!
+6 files already formatted
+[issue-31-ec772c60ce96 6c1d9b7] Make Pages CI resilient and enforce complete validation gates
+ 40 files changed, 4841 insertions(+), 431 deletions(-)
+ create mode 100644 .github/actions/upload-artifact/action.yml
+ create mode 100644 .github/actions/upload-artifact/index.mjs
+ create mode 100644 .github/codeql/codeql-config.yml
+ create mode 100644 .github/zizmor.yml
+ create mode 100644 .ruff.toml
+ create mode 100644 experiments/issue-31-template-audit.py
+ create mode 100644 experiments/issue-31-workflow-update.py
+ create mode 100644 experiments/registry-network.cjs
+ create mode 100644 lychee.toml
+ create mode 100644 scripts/check-docs.mjs
+ create mode 100644 scripts/check-pages.mjs
+ create mode 100644 scripts/check-pipeline-status.mjs
+ create mode 100644 scripts/check-python.py
+ create mode 100644 scripts/ci-changes.mjs
+ create mode 100644 scripts/upload-artifact.mjs
+ create mode 100644 src/artifact-retry.test.js
+ create mode 100644 src/ci-policy.test.js
+ create mode 100644 src/ci-regressions.test.js
+ create mode 100644 src/deployment.test.js

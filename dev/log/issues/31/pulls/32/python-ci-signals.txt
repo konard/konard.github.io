@@ -1,0 +1,496 @@
+.github/workflows/docs.yml:10: # "true". Without the variable, deployment is skipped with a notice. Without
+.github/workflows/docs.yml:11: # Pages configured, actions/deploy-pages fails with "Get Pages site failed".
+.github/workflows/docs.yml:38:   cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+.github/workflows/docs.yml:49:     timeout-minutes: 10
+.github/workflows/docs.yml:57:           persist-credentials: false
+.github/workflows/docs.yml:78:           if-no-files-found: error
+.github/workflows/docs.yml:80:       - name: Report skipped GitHub Pages deployment
+.github/workflows/docs.yml:82:         run: echo "::notice::Skipping GitHub Pages deployment. To enable publishing, set Settings -> Pages -> Source = GitHub Actions, then add repository variable DEPLOY_GITHUB_PAGES=true."
+.github/workflows/docs.yml:99:     timeout-minutes: 10
+.github/workflows/docs.yml:113:         # Only DEP0040 is suppressed; other warnings remain visible.
+.github/workflows/docs.yml:115:           NODE_OPTIONS: --disable-warning=DEP0040
+.github/workflows/docs.yml:118:   # timeout-minutes as cancelled. Observe every other job so a timeout on main
+.github/workflows/docs.yml:119:   # becomes a visible failure instead of a grey run, while a run that was
+.github/workflows/docs.yml:128:     timeout-minutes: 5
+.github/workflows/docs.yml:132:           persist-credentials: false
+.github/workflows/links.yml:39:     timeout-minutes: 10
+.github/workflows/links.yml:42:       cancel-in-progress: true
+.github/workflows/links.yml:48:           persist-credentials: false
+.github/workflows/links.yml:68:             --timeout 30
+.github/workflows/links.yml:74:           fail: false
+.github/workflows/links.yml:81:         # Retry transport failures and 429/5xx responses with backoff.
+.github/workflows/links.yml:83:         # Other status-coded failures remain final.
+.github/workflows/links.yml:93:         # `!= 'true'`, never `== 'false'`: a skipped re-check leaves the
+.github/workflows/links.yml:94:         # output empty, and only the != form fails safe.
+.github/workflows/links.yml:104:       - name: Fail if broken links were found
+.github/workflows/links.yml:122:           exit 1
+.github/workflows/links.yml:125:         if: failure()
+.github/workflows/links.yml:130:           if-no-files-found: error
+.github/workflows/links.yml:133:   # timeout-minutes as cancelled. Observe every other job so a timeout on main
+.github/workflows/links.yml:134:   # becomes a visible failure instead of a grey run, while a run that was
+.github/workflows/links.yml:142:     timeout-minutes: 5
+.github/workflows/links.yml:146:           persist-credentials: false
+.github/workflows/release.yml:35: # the terminal status gate reliably treat a cancellation there as a timeout or
+.github/workflows/release.yml:45:     timeout-minutes: 5
+.github/workflows/release.yml:48:       cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+.github/workflows/release.yml:56:           persist-credentials: false
+.github/workflows/release.yml:79:             exit 1
+.github/workflows/release.yml:107:     timeout-minutes: 20
+.github/workflows/release.yml:110:       cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+.github/workflows/release.yml:112:     # !cancelled() lets this job evaluate even though detect-changes is skipped
+.github/workflows/release.yml:122:           persist-credentials: false
+.github/workflows/release.yml:151:             exit 1
+.github/workflows/release.yml:167:           bash scripts/run-with-budget-warning.sh \
+.github/workflows/release.yml:169:             bash -euo pipefail -c '
+.github/workflows/release.yml:198:           bash "$PYTHON_ROOT/scripts/run-with-budget-warning.sh" \
+.github/workflows/release.yml:203:   # Principle 12 (issue #72): documentation-only pull requests skip the
+.github/workflows/release.yml:210:     timeout-minutes: 10
+.github/workflows/release.yml:213:       cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+.github/workflows/release.yml:215:     # !cancelled() lets this job evaluate even though detect-changes is skipped
+.github/workflows/release.yml:225:           persist-credentials: false
+.github/workflows/release.yml:233:   # Prove the release credentials can write before any expensive job runs
+.github/workflows/release.yml:237:   # blob-upload session) and refuses to release if a credential is refused.
+.github/workflows/release.yml:242:     name: Release Preflight (credentials)
+.github/workflows/release.yml:244:     timeout-minutes: 5
+.github/workflows/release.yml:253:           persist-credentials: false
+.github/workflows/release.yml:255:       - name: Probe every release credential
+.github/workflows/release.yml:269:         run: bash scripts/preflight-credentials.sh
+.github/workflows/release.yml:276:     timeout-minutes: 30
+.github/workflows/release.yml:279:       cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+.github/workflows/release.yml:283:     # !cancelled() lets this job evaluate even though detect-changes is skipped
+.github/workflows/release.yml:293:           persist-credentials: false
+.github/workflows/release.yml:315:             exit 1
+.github/workflows/release.yml:331:           bash scripts/run-with-budget-warning.sh \
+.github/workflows/release.yml:333:             bash -euo pipefail -c '
+.github/workflows/release.yml:343:           bash scripts/run-with-budget-warning.sh \
+.github/workflows/release.yml:347:       - name: Report skipped Codecov upload
+.github/workflows/release.yml:349:         run: echo "::notice::Skipping Codecov upload because CODECOV_TOKEN is not configured"
+.github/workflows/release.yml:358:           fail_ci_if_error: true
+.github/workflows/release.yml:365:     timeout-minutes: 20
+.github/workflows/release.yml:368:       cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+.github/workflows/release.yml:382:           persist-credentials: false
+.github/workflows/release.yml:404:             exit 1
+.github/workflows/release.yml:435:           if-no-files-found: error
+.github/workflows/release.yml:442:     timeout-minutes: 10
+.github/workflows/release.yml:445:       cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+.github/workflows/release.yml:451:           persist-credentials: false
+.github/workflows/release.yml:474:             exit 1
+.github/workflows/release.yml:493:   # Build without pushing so a broken Dockerfile fails before package publish.
+.github/workflows/release.yml:494:   # Skip cleanly when a generated repository does not include a Dockerfile.
+.github/workflows/release.yml:498:     timeout-minutes: 60
+.github/workflows/release.yml:501:       cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+.github/workflows/release.yml:507:           persist-credentials: false
+.github/workflows/release.yml:516:             echo "::notice::Skipping Docker build because no Dockerfile is present"
+.github/workflows/release.yml:525:         timeout-minutes: 40
+.github/workflows/release.yml:549:       cancel-in-progress: false
+.github/workflows/release.yml:557:       !contains(needs.*.result, 'failure') &&
+.github/workflows/release.yml:561:     timeout-minutes: 30
+.github/workflows/release.yml:568:           persist-credentials: false
+.github/workflows/release.yml:591:             exit 1
+.github/workflows/release.yml:624:           skip-existing: true
+.github/workflows/release.yml:628:         timeout-minutes: 11
+.github/workflows/release.yml:665:       cancel-in-progress: false
+.github/workflows/release.yml:667:     # !cancelled() prevents the skipped detect-changes dependency from propagating
+.github/workflows/release.yml:676:       !contains(needs.*.result, 'failure') &&
+.github/workflows/release.yml:680:     timeout-minutes: 30
+.github/workflows/release.yml:685:       # The only checkout in this repository that keeps credentials in
+.github/workflows/release.yml:688:       # remote. Every other checkout sets persist-credentials: false.
+.github/workflows/release.yml:691:           persist-credentials: true
+.github/workflows/release.yml:715:             exit 1
+.github/workflows/release.yml:772:           skip-existing: true
+.github/workflows/release.yml:776:         timeout-minutes: 11
+.github/workflows/release.yml:817:     timeout-minutes: 5
+.github/workflows/release.yml:832:           persist-credentials: false
+.github/workflows/release.yml:838:             echo "::notice::Skipping Docker publish because no Dockerfile is present"
+.github/workflows/release.yml:841:             echo "::notice::Skipping Docker publish because Docker Hub is not configured"
+.github/workflows/release.yml:859:     timeout-minutes: 60
+.github/workflows/release.yml:861:       fail-fast: false
+.github/workflows/release.yml:874:           persist-credentials: false
+.github/workflows/release.yml:887:         timeout-minutes: 40
+.github/workflows/release.yml:908:           if-no-files-found: error
+.github/workflows/release.yml:918:     timeout-minutes: 15
+.github/workflows/release.yml:961:   # A job killed by timeout-minutes concludes "cancelled", not "failure".
+.github/workflows/release.yml:966:     timeout-minutes: 5
+.github/workflows/release.yml:974:           persist-credentials: false
+.github/workflows/release.yml:976:       - name: Fail the run when a required job was cancelled or failed
+.github/workflows/security.yml:19:   dependency-audit:
+.github/workflows/security.yml:20:     name: Audit Resolved Python Dependencies
+.github/workflows/security.yml:22:     timeout-minutes: 15
+.github/workflows/security.yml:24:       group: check-${{ github.workflow }}-${{ github.ref }}-dependency-audit
+.github/workflows/security.yml:25:       cancel-in-progress: true
+.github/workflows/security.yml:29:           persist-credentials: false
+.github/workflows/security.yml:36:       - name: Audit pyproject.toml and docs/requirements.txt
+.github/workflows/security.yml:37:         run: python scripts/audit_dependencies.py
+.github/workflows/security.yml:42:     timeout-minutes: 30
+.github/workflows/security.yml:45:       cancel-in-progress: true
+.github/workflows/security.yml:50:       fail-fast: false
+.github/workflows/security.yml:56:           persist-credentials: false
+.github/workflows/security.yml:73:     timeout-minutes: 10
+.github/workflows/security.yml:80:           persist-credentials: false
+.github/workflows/security.yml:94:           fail-on-severity: high
+.github/workflows/security.yml:95:           comment-summary-in-pr: on-failure
+.github/workflows/security.yml:98:   # timeout-minutes as cancelled. Observe every other job so a timeout on main
+.github/workflows/security.yml:99:   # becomes a visible failure instead of a grey run, while a run that was
+.github/workflows/security.yml:104:       - dependency-audit
+.github/workflows/security.yml:109:     timeout-minutes: 5
+.github/workflows/security.yml:113:           persist-credentials: false
+.github/workflows/workflows.yml:35:     timeout-minutes: 10
+.github/workflows/workflows.yml:38:       cancel-in-progress: true
+.github/workflows/workflows.yml:44:           persist-credentials: false
+.github/workflows/workflows.yml:48:       # PATH silently skips the shell checks and still exits 0 -- worth knowing
+.github/workflows/workflows.yml:57:       # control is arbitrary code execution in any job that holds credentials
+.github/workflows/workflows.yml:59:       # .github/zizmor.yml; the `unpinned-images` audit that would flag this
+.github/workflows/workflows.yml:70:   # credential persistence, template injection or unpinned actions. zizmor
+.github/workflows/workflows.yml:78:     name: Audit Workflows
+.github/workflows/workflows.yml:80:     timeout-minutes: 10
+.github/workflows/workflows.yml:83:       cancel-in-progress: true
+.github/workflows/workflows.yml:89:           persist-credentials: false
+.github/workflows/workflows.yml:92:       # have code scanning enabled, and the job should fail loudly either way.
+.github/workflows/workflows.yml:95:       - name: Audit workflow files
+.github/workflows/workflows.yml:105:       # pedantic surfaces dozens of stylistic findings. But the audits that
+.github/workflows/workflows.yml:114:       - name: Audit for pedantic-only high-severity findings
+.github/workflows/workflows.yml:115:         timeout-minutes: 5
+.github/workflows/workflows.yml:127:     timeout-minutes: 10
+.github/workflows/workflows.yml:130:       cancel-in-progress: true
+.github/workflows/workflows.yml:134:           persist-credentials: false
+.github/workflows/workflows.yml:140:   # timeout-minutes as cancelled. Observe every other job so a timeout on main
+.github/workflows/workflows.yml:141:   # becomes a visible failure instead of a grey run, while a run that was
+.github/workflows/workflows.yml:151:     timeout-minutes: 5
+.github/workflows/workflows.yml:155:           persist-credentials: false
+.gitignore:182: # Ignore directories containing user credentials, local state, and settings.
+CONTRIBUTING.md:78:    make sure Sphinx still renders without warnings:
+README.md:197: graph warns on PRs and fails pushes to main and scheduled runs with the setting
+README.md:199: Transient API failures are retried and reported as unknown, without claiming the
+README.md:209: including cached failures, with exponential backoff capped at 30 seconds under
+README.md:210: `RECHECK_BUDGET_SECONDS` (240 seconds by default). Other HTTP failures remain
+README.md:214: fallback. Missing content and persistent outages still fail the workflow.
+README.md:219: paths without warning when an extension is absent. Its cache persists between
+README.md:220: runs, and failed runs retain the `lychee-report` artifact.
+README.md:258: Without the variable, the workflow logs a notice and skips deployment without
+README.md:259: failing. Without the Pages source setting, an opted-in deploy fails on
+README.md:260: `actions/deploy-pages` with `Get Pages site failed`. The Pages source setting
+README.md:283:    uploads are skipped when retrying a partial release
+README.md:292: All releases require successful lint, test, build, and credential preflight.
+README.md:293: Failures or cancellations in any required check prevent publishing; checks that
+README.md:294: do not apply to the event may skip. Release writers share a non-cancelling queue
+README.md:298: publisher fails with the owner, repository, workflow, blank environment, and the
+README.md:302: credential problems as advisory because forks may not have publishing secrets.
+README.md:305: version to appear before running the installation smoke test. A timeout explains
+README.md:311: For local propagation diagnostics, enable optional retry tracing:
+README.md:319: The workflow audit uses one pinned zizmor version at low confidence, and the
+README.md:324: still require successful recovery and otherwise fail the existing link gate.
+README.md:359: - Warn on unused ignores
+lychee.toml:1: # Avoid GitHub bursts; 429/5xx responses still require recovery or fail CI.
+pyproject.toml:59:     "W",      # pycodestyle warnings
+pyproject.toml:102: skip-magic-trailing-comma = false
+pyproject.toml:106: warn_return_any = true
+pyproject.toml:107: warn_unused_configs = true
+pyproject.toml:112: warn_redundant_casts = true
+pyproject.toml:113: warn_unused_ignores = true
+pyproject.toml:114: warn_no_return = true
+scripts/audit_dependencies.py:2: """Resolve and audit every Python dependency surface supported by the template.
+scripts/audit_dependencies.py:4: The audit runs pip-audit over the resolved environment, never over pip
+scripts/audit_dependencies.py:6: through the running interpreter's pip (issue #68). Auditing a bundled pip
+scripts/audit_dependencies.py:19: PIP_AUDIT_VERSION = "2.10.1"
+scripts/audit_dependencies.py:24:     """Run a command, streaming output so failures stay visible.
+scripts/audit_dependencies.py:26:     pip-audit prints its advisory table on stdout and then exits non-zero;
+scripts/audit_dependencies.py:60: def audit_dependencies(project_root: Path) -> None:
+scripts/audit_dependencies.py:61:     """Resolve application dependencies in isolation and audit the result."""
+scripts/audit_dependencies.py:71:     with tempfile.TemporaryDirectory(prefix="dependency-audit-") as temporary:
+scripts/audit_dependencies.py:74:         audit_venv = temporary_root / "audit"
+scripts/audit_dependencies.py:75:         # --without-pip keeps pip itself out of the audited environment; the
+scripts/audit_dependencies.py:81:         run([sys.executable, "-m", "venv", str(audit_venv)], cwd=project_root)
+scripts/audit_dependencies.py:84:         audit_python = python_executable(audit_venv)
+scripts/audit_dependencies.py:112:                 str(audit_python),
+scripts/audit_dependencies.py:116:                 f"pip-audit=={PIP_AUDIT_VERSION}",
+scripts/audit_dependencies.py:131:                 str(audit_python),
+scripts/audit_dependencies.py:133:                 "pip_audit",
+scripts/audit_dependencies.py:136:                 "--skip-editable",
+scripts/audit_dependencies.py:143:     audit_dependencies(Path(__file__).resolve().parents[1])
+scripts/bump_version.py:58:             f"Failed to update version from {old_version} to {new_version}"
+scripts/bump_version.py:70:         print(f"Warning: {changelog_path} not found, skipping changelog update")
+scripts/bump_version.py:127:         "--skip-changelog",
+scripts/bump_version.py:156:         if not args.skip_changelog:
+scripts/check-dependency-graph.sh:4: # Only a plain 403 proves disabled: retry rate limits, server/network errors,
+scripts/check-dependency-graph.sh:6: set -euo pipefail
+scripts/check-dependency-graph.sh:11: retry_seconds="${DEPENDENCY_GRAPH_RETRY_SECONDS:-10}"
+scripts/check-dependency-graph.sh:18:     printf '[dependency-graph] attempt %s: exit %s, response: %.500s\n' "$attempt" "$status" "$response"
+scripts/check-dependency-graph.sh:30:     echo "Dependency graph probe returned no definite answer (attempt $attempt/3); retrying."
+scripts/check-dependency-graph.sh:31:     sleep "$retry_seconds"
+scripts/check-dependency-graph.sh:44:   exit 0
+scripts/check-dependency-graph.sh:52:   echo "::warning::$message Skipping dependency review for this pull request."
+scripts/check-dependency-graph.sh:55:   exit 1
+scripts/check-pipeline-status.sh:3: set -euo pipefail
+scripts/check-pipeline-status.sh:7:   exit 2
+scripts/check-pipeline-status.sh:32:     elif selection == "failed" and result not in {"success", "skipped", "cancelled"}:
+scripts/check-pipeline-status.sh:68: failed_jobs="$(select_by_result failed)"
+scripts/check-pipeline-status.sh:71: if [[ -n "$failed_jobs" ]]; then
+scripts/check-pipeline-status.sh:72:   echo "::error title=Pipeline failed::Failed jobs: $(printf '%s\n' "$failed_jobs" | join_names)"
+scripts/check-pipeline-status.sh:92:         "$SCRIPT_DIR/read-job-cancel-in-progress.sh"
+scripts/check-pipeline-status.sh:109:         false) reason="effective cancel-in-progress is false" ;;
+scripts/check-pipeline-status.sh:110:         none) reason="no workflow or job cancel-in-progress policy is configured" ;;
+scripts/check-pipeline-status.sh:112:         unknown) reason="cancel-in-progress is dynamic and cannot be proven true" ;;
+scripts/check-pipeline-status.sh:122:   echo "::warning title=Cancelled jobs in a superseded run::${joined}. This run is no longer the head of ${HEAD_REF} and these jobs cancel in progress."
+scripts/check-pipeline-status.sh:133: if [[ -n "$failed_jobs" || ${#unexpected_jobs[@]} -gt 0 ]]; then
+scripts/check-pipeline-status.sh:134:   exit 1
+scripts/check-required-docs.sh:20: set -euo pipefail
+scripts/check-required-docs.sh:60: # array-based failure list works on Ubuntu and breaks on macOS.
+scripts/check-required-docs.sh:61: FAILURES=''
+scripts/check-required-docs.sh:63: add_failure() {
+scripts/check-required-docs.sh:64:   if [ -n "$FAILURES" ]; then
+scripts/check-required-docs.sh:65:     FAILURES="${FAILURES}
+scripts/check-required-docs.sh:68:     FAILURES="$1"
+scripts/check-required-docs.sh:74:   exit 0
+scripts/check-required-docs.sh:79:   exit 2
+scripts/check-required-docs.sh:84:     add_failure "$path: file is missing"
+scripts/check-required-docs.sh:88:     add_failure "$path: missing required section '## ${section}'"
+scripts/check-required-docs.sh:92: if [ -n "$FAILURES" ]; then
+scripts/check-required-docs.sh:93:   echo "Documentation validation failed:"
+scripts/check-required-docs.sh:94:   while IFS= read -r failure; do
+scripts/check-required-docs.sh:95:     echo "  $failure"
+scripts/check-required-docs.sh:96:     echo "::error title=Documentation validation failed::${failure}"
+scripts/check-required-docs.sh:97:   done <<< "$FAILURES"
+scripts/check-required-docs.sh:98:   exit 1
+scripts/check_file_size.py:15: WARN_LINES = 900
+scripts/check_file_size.py:19: WARN_DOC_LINES = 2250
+scripts/check_file_size.py:21:     ".py": (MAX_LINES, WARN_LINES),
+scripts/check_file_size.py:22:     ".md": (MAX_DOC_LINES, WARN_DOC_LINES),
+scripts/check_file_size.py:42:     WARNING = "warning"
+scripts/check_file_size.py:48:     """A file-size warning or violation."""
+scripts/check_file_size.py:53:     warn_lines: int = WARN_LINES
+scripts/check_file_size.py:58:     """Collected warnings and violations from a file-size check."""
+scripts/check_file_size.py:60:     warnings: list[Finding]
+scripts/check_file_size.py:113:     warn_lines: int = WARN_LINES,
+scripts/check_file_size.py:120:         warn_lines: Warning threshold for the file type
+scripts/check_file_size.py:127:     if line_count > warn_lines:
+scripts/check_file_size.py:128:         return LineStatus.WARNING
+scripts/check_file_size.py:133:     """Check size-tracked files under a directory for warning and hard limits.
+scripts/check_file_size.py:139:         Collected warnings and violations
+scripts/check_file_size.py:142:     warnings = []
+scripts/check_file_size.py:146:         max_lines, warn_lines = LIMITS[file.suffix]
+scripts/check_file_size.py:152:             warn_lines=warn_lines,
+scripts/check_file_size.py:155:             line_count, max_lines=max_lines, warn_lines=warn_lines
+scripts/check_file_size.py:160:         elif status == LineStatus.WARNING:
+scripts/check_file_size.py:161:             warnings.append(finding)
+scripts/check_file_size.py:163:     return CheckResult(warnings=warnings, violations=violations)
+scripts/check_file_size.py:182: def warning_annotation(finding: Finding) -> str:
+scripts/check_file_size.py:183:     """Build a GitHub Actions warning annotation for a near-limit file."""
+scripts/check_file_size.py:186:         f"Consider extracting content to keep at or below {finding.warn_lines} lines "
+scripts/check_file_size.py:191:         f"::warning file={escape_annotation_property(finding.file.as_posix())}::"
+scripts/check_file_size.py:196: def print_warnings(warnings: list[Finding]) -> None:
+scripts/check_file_size.py:197:     """Print non-failing file-size warnings."""
+scripts/check_file_size.py:198:     if not warnings:
+scripts/check_file_size.py:201:     for warning in warnings:
+scripts/check_file_size.py:202:         print(warning_annotation(warning))
+scripts/check_file_size.py:204:             f"WARNING: {warning.file} has {warning.lines} lines "
+scripts/check_file_size.py:205:             f"(approaching limit of {warning.max_lines}, "
+scripts/check_file_size.py:206:             f"warning threshold: {warning.warn_lines})"
+scripts/check_file_size.py:211:     for warning in warnings:
+scripts/check_file_size.py:212:         print(f"  {warning.file}")
+scripts/check_file_size.py:238:         f"(warning above {WARN_LINES}) and {MAX_DOC_LINES} lines for markdown "
+scripts/check_file_size.py:239:         f"(warning above {WARN_DOC_LINES})...\n"
+scripts/check_file_size.py:243:     print_warnings(result.warnings)
+scripts/check_release.py:4: Tags are not publication receipts: retry when either the exact PyPI version or
+scripts/check_release.py:27: REQUEST_TIMEOUT_SECONDS = 10
+scripts/check_release.py:28: WAIT_TIMEOUT_SECONDS = 600
+scripts/check_release.py:46:     url: str, *, token: str | None = None, timeout: float = REQUEST_TIMEOUT_SECONDS
+scripts/check_release.py:54:         with build_opener(NoRedirects()).open(request, timeout=timeout) as response:
+scripts/check_release.py:142:     timeout_seconds: float = WAIT_TIMEOUT_SECONDS,
+scripts/check_release.py:146:     """Poll the version endpoint within a finite budget, retrying transient errors."""
+scripts/check_release.py:149:         for value in (timeout_seconds, interval_seconds)
+scripts/check_release.py:151:         message = "Wait timeout and interval must be positive finite numbers"
+scripts/check_release.py:153:     deadline = time.monotonic() + timeout_seconds
+scripts/check_release.py:155:     print(f"Waiting up to {timeout_seconds:g}s for {package_name}=={version} on PyPI")
+scripts/check_release.py:160:                 url, timeout=min(REQUEST_TIMEOUT_SECONDS, remaining)
+scripts/check_release.py:170:                 message = f"PyPI visibility check failed: {last_error}"
+scripts/check_release.py:181:         f"on PyPI within {timeout_seconds:g}s ({last_error}). Rerun the release; "
+scripts/check_release.py:182:         "existing uploads will be skipped and missing artifacts repaired."
+scripts/check_release.py:197:     wait.add_argument("--timeout-seconds", type=float, default=WAIT_TIMEOUT_SECONDS)
+scripts/check_release.py:200:         "--verbose", action="store_true", help="Print each retry (off by default)"
+scripts/check_release.py:215:                 timeout_seconds=args.timeout_seconds,
+scripts/check_web_archive.py:19: REQUEST_TIMEOUT_SECONDS = 10
+scripts/check_web_archive.py:24:     r"\[(?:4\d\d|5\d\d|ERROR|TIMEOUT|UNKNOWN)\]\s+" r"(https?://[^\s)]+)",
+scripts/check_web_archive.py:57:     A URL that failed lychee but answers the re-check is not a broken
+scripts/check_web_archive.py:59:     Machine and fail the job on it.
+scripts/check_web_archive.py:73:         request, timeout=REQUEST_TIMEOUT_SECONDS
+scripts/check_web_archive.py:101:     except (OSError, TimeoutError, ValueError, json.JSONDecodeError) as error:
+scripts/check_web_archive.py:102:         print(f"  Failed to check Wayback Machine for {url}: {error}")
+scripts/check_web_archive.py:154:         print("No lychee output file found. Skipping web archive check.")
+scripts/check_web_archive.py:165:         print(f"  {url} failed lychee but answers the re-check -- not broken")
+scripts/create_github_release.py:71:             f"Error: Command failed with exit code {result.returncode}",
+scripts/create_github_release.py:82:         print(f"Warning: {changelog_path} not found", file=sys.stderr)
+scripts/create_github_release.py:94:             f"Warning: Version {version} not found in {changelog_path}",
+scripts/create_manual_changeset.py:83:             print(f"Warning: scriv create returned non-zero: {result.stderr}")
+scripts/detect_code_changes.py:107:                 print(f"Git diff failed: {e}", file=sys.stderr)
+scripts/detect_code_changes.py:137:     Documentation-only pull requests skip the changelog-fragment requirement,
+scripts/format_release_notes.py:99:         print("Release notes already formatted, skipping")
+scripts/preflight-credentials.sh:3: # Prove the release credentials can write before any expensive job runs.
+scripts/preflight-credentials.sh:19: #   release -- push to main / manual instant release. A refused credential
+scripts/preflight-credentials.sh:20: #              fails the run here, before the publishing job spends a minute.
+scripts/preflight-credentials.sh:25: #   1. Report every failure, not the first -- no probe aborts the script.
+scripts/preflight-credentials.sh:26: #   2. Report `unknown`, never a guess: a timeout or a 429 has not said the
+scripts/preflight-credentials.sh:27: #      credential is broken. But a release-mode run that verified nothing is
+scripts/preflight-credentials.sh:31: # No set -e on purpose: rule 1 means one failed probe must not hide the rest.
+scripts/preflight-credentials.sh:39: CURL_TIMEOUT="${PREFLIGHT_CURL_TIMEOUT:-15}"
+scripts/preflight-credentials.sh:43: n_fail=0
+scripts/preflight-credentials.sh:45: failures=''
+scripts/preflight-credentials.sh:54:   n_fail=$((n_fail + 1))
+scripts/preflight-credentials.sh:55:   failures="${failures}${failures:+${NEWLINE}}$1"
+scripts/preflight-credentials.sh:56:   printf '  FAIL: %s\n' "$*"
+scripts/preflight-credentials.sh:66: # Prints "body\nstatus"; a network failure yields an empty status, which the
+scripts/preflight-credentials.sh:70:   body=$(curl -sS --max-time "$CURL_TIMEOUT" -o - -w "${NEWLINE}%{http_code}" "$@" 2>/dev/null)
+scripts/preflight-credentials.sh:140: # it for a short-lived upload token. The exchange IS the publish credential
+scripts/preflight-credentials.sh:151:     bad 'no OIDC token available: ACTIONS_ID_TOKEN_REQUEST_URL/TOKEN are unset -- the job needs id-token: write, and pypa/gh-action-pypi-publish would fail to authenticate'
+scripts/preflight-credentials.sh:226:     printf '  SKIP: DOCKERHUB_IMAGE is not set -- Docker publishing is disabled (the release workflow disables it with the same condition)\n'
+scripts/preflight-credentials.sh:231:     bad "DOCKERHUB_IMAGE is set (${image}) but DOCKERHUB_USERNAME or DOCKERHUB_TOKEN is missing -- docker-publish would fail at login"
+scripts/preflight-credentials.sh:248:   headers=$(curl -sS --max-time "$CURL_TIMEOUT" -D - -o /dev/null \
+scripts/preflight-credentials.sh:262:         curl -sS --max-time "$CURL_TIMEOUT" -o /dev/null -X DELETE \
+scripts/preflight-credentials.sh:277:       unknown "Docker Hub answered ${status:-no status} to the write probe (no verdict on the credential)"
+scripts/preflight-credentials.sh:300:     printf '| failed | %d |\n' "$n_fail"
+scripts/preflight-credentials.sh:302:     for list in "$failures" "$unknowns"; do
+scripts/preflight-credentials.sh:314: printf '\nRelease preflight: %d verified, %d failed, %d unknown\n' \
+scripts/preflight-credentials.sh:315:   "$verified" "$n_fail" "$n_unknown"
+scripts/preflight-credentials.sh:317: if [ "$n_fail" -gt 0 ]; then
+scripts/preflight-credentials.sh:319:     emit_annotations error "$failures"
+scripts/preflight-credentials.sh:320:     append_summary failed
+scripts/preflight-credentials.sh:321:     printf '::error::release-preflight: refusing to release with %d refused credential(s)\n' "$n_fail"
+scripts/preflight-credentials.sh:322:     exit 1
+scripts/preflight-credentials.sh:324:   emit_annotations warning "$failures"
+scripts/preflight-credentials.sh:325:   append_summary failed
+scripts/preflight-credentials.sh:326:   printf 'Report mode: the failures above are advisory -- pull requests may come from forks without publishing secrets.\n'
+scripts/preflight-credentials.sh:327:   exit 0
+scripts/preflight-credentials.sh:335:     emit_annotations warning "$unknowns"
+scripts/preflight-credentials.sh:337:     printf '::error::release-preflight: verified nothing (%d unknown) -- refusing to release on an unproven credential set\n' "$n_unknown"
+scripts/preflight-credentials.sh:338:     exit 1
+scripts/preflight-credentials.sh:340:   emit_annotations warning "$unknowns"
+scripts/preflight-credentials.sh:343:   exit 0
+scripts/preflight-credentials.sh:347: exit 0
+scripts/publish_to_pypi.py:37:             f"Error: Command failed with exit code {result.returncode}", file=sys.stderr
+scripts/publish_to_pypi.py:96:         print("\nSkipping actual upload (dry run mode)")
+scripts/publish_to_pypi.py:101:     # Use twine upload with OIDC if in CI, otherwise use credentials
+scripts/publish_to_pypi.py:102:     cmd = [sys.executable, "-m", "twine", "upload", "--skip-existing"]
+scripts/read-job-cancel-in-progress.sh:3: set -euo pipefail
+scripts/read-job-cancel-in-progress.sh:7:   exit 2
+scripts/read-job-cancel-in-progress.sh:31:         # Scalar concurrency is a group name and has no cancel-in-progress key.
+scripts/read-job-cancel-in-progress.sh:43:         match = re.match(r"^\s*cancel-in-progress\s*:\s*(.*)$", candidate)
+scripts/read-job-cancel-in-progress.sh:58:     print(f"read-job-cancel-in-progress: {error}", file=sys.stderr)
+scripts/read_manifest.py:8: document and address the field by its path instead: a missing field fails
+scripts/recheck_broken_links.py:2: """Re-check transport failures and transient HTTP failures from lychee.
+scripts/recheck_broken_links.py:5: backoff capped at 30 seconds. Other status-coded failures remain final.
+scripts/recheck_broken_links.py:17: The all_recovered output is true only when every failure recovers. Consumers
+scripts/recheck_broken_links.py:18: must test != 'true' so a skipped or crashed step fails safe. Exit code 0
+scripts/recheck_broken_links.py:19: preserves the existing workflow's responsibility for the final failure gate.
+scripts/recheck_broken_links.py:37: REQUEST_TIMEOUT_SECONDS = 30
+scripts/recheck_broken_links.py:53: class LycheeFailure:
+scripts/recheck_broken_links.py:54:     """One failure entry from the lychee markdown report."""
+scripts/recheck_broken_links.py:63:     def retryable(self) -> bool:
+scripts/recheck_broken_links.py:79:     """Outcome of retrying transport and transient HTTP failures."""
+scripts/recheck_broken_links.py:85: def parse_lychee_failures(content: str) -> list[LycheeFailure]:
+scripts/recheck_broken_links.py:86:     """Parse status-coded and transport errors, including cached failures."""
+scripts/recheck_broken_links.py:87:     failures: list[LycheeFailure] = []
+scripts/recheck_broken_links.py:105:         failures.append(LycheeFailure(marker, url, detail, answered, status))
+scripts/recheck_broken_links.py:106:     return failures
+scripts/recheck_broken_links.py:175:     """Do not forward an API credential to a redirect target."""
+scripts/recheck_broken_links.py:182:     url: str, user_agent: str, timeout: float = REQUEST_TIMEOUT_SECONDS
+scripts/recheck_broken_links.py:185:     deadline = time.monotonic() + timeout
+scripts/recheck_broken_links.py:191:             request, timeout=timeout
+scripts/recheck_broken_links.py:207:                 api_request, timeout=remaining
+scripts/recheck_broken_links.py:214:             pass  # A failed fallback never proves the original URL healthy.
+scripts/recheck_broken_links.py:227:     """Retry round-robin within a shared budget, backing off between rounds."""
+scripts/recheck_broken_links.py:258:                         url, user_agent, min(REQUEST_TIMEOUT_SECONDS, remaining)
+scripts/recheck_broken_links.py:263:                     print(f"Re-check: {url}: transport failure")
+scripts/recheck_broken_links.py:304:     """Retry every eligible failure in the configured lychee report."""
+scripts/recheck_broken_links.py:310:     failures = parse_lychee_failures(lychee_output.read_text(encoding="utf-8"))
+scripts/recheck_broken_links.py:313:         failure
+scripts/recheck_broken_links.py:314:         for failure in failures
+scripts/recheck_broken_links.py:315:         if not failure.retryable
+scripts/recheck_broken_links.py:316:         or not failure.url.lower().startswith(("http://", "https://"))
+scripts/recheck_broken_links.py:318:     final_urls = {failure.url for failure in final}
+scripts/recheck_broken_links.py:322:                 failure.url
+scripts/recheck_broken_links.py:323:                 for failure in failures
+scripts/recheck_broken_links.py:324:                 if failure.retryable
+scripts/recheck_broken_links.py:325:                 and failure.url not in final_urls
+scripts/recheck_broken_links.py:326:                 and failure.url.lower().startswith(("http://", "https://"))
+scripts/recheck_broken_links.py:331:         f"Re-check: {len(failures)} lychee failure(s), {len(final)} "
+scripts/recheck_broken_links.py:332:         f"final, {len(unanswered)} eligible for retry"
+scripts/recheck_broken_links.py:354:             f"::notice::{url} failed lychee but answers {accept} now "
+scripts/recheck_broken_links.py:377:     # The re-check only ever downgrades failures, so any crash here must not
+scripts/recheck_broken_links.py:378:     # mask itself as a verdict: exit 0 in every case.
+scripts/run-with-budget-warning.sh:3: # Usage: run-with-budget-warning.sh <budget-seconds> <label> <command> [args...]
+scripts/run-with-budget-warning.sh:6: #   BUDGET_WARN_RATIO_PERCENT  warn at this percentage of the budget (70)
+scripts/run-with-budget-warning.sh:7: #   BUDGET_ENFORCE             false warns without terminating (true)
+scripts/run-with-budget-warning.sh:16: set -euo pipefail
+scripts/run-with-budget-warning.sh:20:   exit 2
+scripts/run-with-budget-warning.sh:30:     exit 2
+scripts/run-with-budget-warning.sh:35:   exit 2
+scripts/run-with-budget-warning.sh:38: warn_ratio="${BUDGET_WARN_RATIO_PERCENT:-70}"
+scripts/run-with-budget-warning.sh:47: threshold=$((budget_seconds * warn_ratio / 100))
+scripts/run-with-budget-warning.sh:53:     exit 2
+scripts/run-with-budget-warning.sh:65:   exit 2
+scripts/run-with-budget-warning.sh:175:     trace "survivors after SIG${signal}; retrying as root"
+scripts/run-with-budget-warning.sh:194: # the full budget (or signal grace period) has elapsed. Warnings may be early.
+scripts/run-with-budget-warning.sh:218:   echo "::error title=${label} exceeded its execution budget::Termination was requested after ${SECONDS}s, its full ${budget_seconds}s execution budget. The budget expires before \`timeout-minutes\` so this reports as a failure instead of a cancelled job." >&2
+scripts/run-with-budget-warning.sh:237:   exit 124
+scripts/run-with-budget-warning.sh:241: warned=false
+scripts/run-with-budget-warning.sh:245:   if [ "$warned" = false ] && [ "$SECONDS" -ge "$threshold" ]; then
+scripts/run-with-budget-warning.sh:246:     warned=true
+scripts/run-with-budget-warning.sh:247:     echo "::warning title=${label} is approaching its timeout::The command is still running after ${SECONDS}s (${warn_ratio}% of its ${budget_seconds}s execution budget)." >&2
+scripts/run-with-budget-warning.sh:273: exit "$status"
+scripts/simulate-fresh-merge.sh:8: #   FRESH_MERGE_RETRY_DELAY_SECONDS - base of the linear backoff between fetch
+scripts/simulate-fresh-merge.sh:11: set -euo pipefail
+scripts/simulate-fresh-merge.sh:15:   exit 2
+scripts/simulate-fresh-merge.sh:19: FRESH_MERGE_RETRY_DELAY_SECONDS="${FRESH_MERGE_RETRY_DELAY_SECONDS:-5}"
+scripts/simulate-fresh-merge.sh:24:     exit 2
+scripts/simulate-fresh-merge.sh:27: case "$FRESH_MERGE_RETRY_DELAY_SECONDS" in
+scripts/simulate-fresh-merge.sh:29:     echo "FRESH_MERGE_RETRY_DELAY_SECONDS must be a non-negative integer number of seconds, got: ${FRESH_MERGE_RETRY_DELAY_SECONDS}" >&2
+scripts/simulate-fresh-merge.sh:30:     exit 2
+scripts/simulate-fresh-merge.sh:39: # The script runs under `set -e`, so a single failed fetch used to abort the
+scripts/simulate-fresh-merge.sh:41: # load, and a CI address range sees that more than a laptop does, so retry with
+scripts/simulate-fresh-merge.sh:42: # linear backoff and only fail once the attempts are exhausted -- a base branch
+scripts/simulate-fresh-merge.sh:43: # that truly cannot be fetched must still fail, because silently skipping the
+scripts/simulate-fresh-merge.sh:45: fetch_with_retry() {
+scripts/simulate-fresh-merge.sh:55:       echo "::warning::git fetch of origin/${BASE_REF} failed (attempt ${attempt} of ${FRESH_MERGE_FETCH_ATTEMPTS}); retrying in $(( FRESH_MERGE_RETRY_DELAY_SECONDS * attempt ))s..."
+scripts/simulate-fresh-merge.sh:56:       sleep $(( FRESH_MERGE_RETRY_DELAY_SECONDS * attempt ))
+scripts/simulate-fresh-merge.sh:63: fetch_with_retry
+scripts/simulate-fresh-merge.sh:68:   exit 0
+scripts/simulate-fresh-merge.sh:76:   exit 1
+scripts/smoke_test_published_package.py:30:     """Raised when the published package smoke test fails."""
+scripts/smoke_test_published_package.py:199:     """Install a published package, retrying while the package index catches up."""
+scripts/smoke_test_published_package.py:222:             print(f"Install failed; retrying in {delay_seconds:g} seconds")
+scripts/smoke_test_published_package.py:225:     message = f"failed to install {package_spec} from the package index"
+scripts/smoke_test_published_package.py:277:         print("No console scripts declared; skipping CLI smoke tests")
+scripts/smoke_test_published_package.py:287:             message = f"console script {script_name!r} failed smoke test"
+scripts/smoke_test_published_package.py:318:         "--skip-console-scripts",
+scripts/smoke_test_published_package.py:320:         help="Skip [project.scripts] smoke tests",
+scripts/smoke_test_published_package.py:390:             if not args.skip_console_scripts:
+scripts/smoke_test_published_package.py:401:         print(f"Published package smoke test failed: {error}", file=sys.stderr)
+scripts/validate_changeset.py:16: Use --verbose to print Git commands while investigating a failed comparison.
+scripts/validate_changeset.py:18: Exit codes:
+scripts/validate_changeset.py:20:     1 - Missing/invalid fragment, missing ref, or failed Git comparison
+scripts/validate_changeset.py:73:     """Run Git without shell interpolation, propagating comparison failures."""
+scripts/validate_changeset.py:198:             print(f"  [FAIL] {error}")
+scripts/validate_changeset.py:202:         "Changelog validation passed!" if all_valid else "Changelog validation FAILED!"
+scripts/validate_changeset.py:208:     """Parse local/CI refs and fail closed when validation cannot complete."""
+scripts/validate_changeset.py:222:         print("Skipping: PR opened by dependabot[bot]")
+scripts/version_and_commit.py:53:             f"Error: Command failed with exit code {result.returncode}",
+scripts/version_and_commit.py:76:     read the field by its table path instead; a missing version fails loudly.
+scripts/version_and_commit.py:104: # Not every failed `git push` is a lost race (issue #73). A repository
+scripts/version_and_commit.py:107: # with a misleading "conflict" error, so the failure is classified first.
+scripts/version_and_commit.py:125: class PushFailure(Enum):
+scripts/version_and_commit.py:126:     """Classification of a failed `git push`."""
+scripts/version_and_commit.py:133: def classify_push_failure(raw_output: str) -> PushFailure:
+scripts/version_and_commit.py:134:     """Classify a git push failure so only a genuine race is retried."""
+scripts/version_and_commit.py:138:         return PushFailure.REPOSITORY_RULES
+scripts/version_and_commit.py:140:         return PushFailure.LOST_RACE
+scripts/version_and_commit.py:141:     return PushFailure.OTHER
+scripts/version_and_commit.py:145:     """Run a git command, returning its result without exiting on failure."""
+scripts/version_and_commit.py:150: def push_branch_with_rebase_retry(branch: str, *, max_attempts: int = 3) -> None:
+scripts/version_and_commit.py:151:     """Push to a branch, retrying a lost race with a rebase (issue #73).
+scripts/version_and_commit.py:153:     A repository-ruleset refusal or any other failure is reported as what it
+scripts/version_and_commit.py:163:         failure = classify_push_failure(push_error)
+scripts/version_and_commit.py:165:         if failure is PushFailure.REPOSITORY_RULES:
+scripts/version_and_commit.py:171:                 f"retrying cannot change repository policy: release this change "
+scripts/version_and_commit.py:178:         if failure is PushFailure.OTHER:
+scripts/version_and_commit.py:191:             f"{max_attempts}); the remote branch moved. Rebasing and retrying...",
+scripts/version_and_commit.py:333:             bump_cmd.append("--skip-changelog")
+scripts/version_and_commit.py:364:             push_branch_with_rebase_retry("main")

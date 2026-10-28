@@ -1,0 +1,10 @@
+The Security workflow's terminal gate can succeed when CodeQL finds vulnerabilities: github/codeql-action/analyze completes successfully after uploading results, while GitHub publishes findings through a separate Advanced Security check. The terminal gate currently observes only job outcomes. Requiring the aggregate workflow alone therefore does not enforce a clean CodeQL result.
+
+This is an integration gap rather than a failure of the official analyze action. I observed it in https://github.com/konard/konard.github.io/actions/runs/40675994571 at dfb1f91a842ba3c699699ba94353e7d572e0b65f: all workflow jobs and the terminal gate succeeded, but the separate CodeQL check (122774900583) failed and the complete PR-merge alert API returned ten findings. These are website results, not a claim that the template currently has open vulnerabilities.
+
+The pinned template configuration has the same shape:
+https://github.com/link-foundation/python-ai-driven-development-pipeline-template/blob/317c243a7cc832b0abfe4d30989c5095d17fcd78/.github/workflows/security.yml
+
+A possible correction is to write analyze's SARIF output to an explicit directory and run a dependency-free result gate afterward. Reject missing/invalid reports, unsuccessful tool invocations, and findings in every run/file, while retaining the normal Code Scanning upload and all queries. This makes the CodeQL job and aggregate workflow accurately fail together. Alternatively, require the independent Code Scanning check explicitly and document that the aggregate workflow is insufficient on its own.
+
+The website implementation in https://github.com/konard/konard.github.io/pull/32 tests missing/malformed reports, all severity levels, multiple files/runs and actual CLI exit statuses. It also replays the real downloaded JavaScript SARIF (ten findings, rejected) and a clean Python SARIF (accepted). Its workflow regression fails before the local result gate and passes afterward. GitHub documents analyze's local output directory and sarif-output at https://github.com/github/codeql-action/blob/9b3254085494b55a0f7c4c2b3d2d52cc712ce370/analyze/action.yml.

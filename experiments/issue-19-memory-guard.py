@@ -67,7 +67,16 @@ finally:
         if sig == signal.SIGTERM:
             time.sleep(0.3)
     code = child.wait()
-    print(json.dumps({'guard': reason or 'completed', 'exitCode': code,
-                      'peakRssBytes': peak_rss, 'peakCgroupBytes': peak_cgroup,
-                      'seconds': round(time.monotonic() - start, 2)}), flush=True)
+    print(
+        json.dumps(
+            {
+                'guard': reason or 'completed',
+                'exitCode': code,
+                'peakRssBytes': peak_rss,
+                'peakCgroupBytes': peak_cgroup,
+                'seconds': round(time.monotonic() - start, 2),
+            }
+        ),
+        flush=True,
+    )
 sys.exit(97 if reason else code)
