@@ -180,8 +180,9 @@ jobs:
             os: ubuntu-24.04
           # This container's Linux GTK renderer omits backdrop effects on
           # screen. Test WebKit on macOS, the platform used by the reported bug.
+          # Pin Intel: ARM capacity left a previous job without any runner.
           - engine: webkit
-            os: macos-15
+            os: macos-15-intel
     env:
       ENGINE: ${{ matrix.engine }}
     steps:
