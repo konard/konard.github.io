@@ -1,0 +1,34 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793202346423
+
+ ❯ src/data/data.test.js (25 tests | 1 failed | 24 skipped) 20ms
+   ❯ scripts/build-data.cjs (2)
+     × isNoise only drops generated log repositories 15ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/data/data.test.js > scripts/build-data.cjs > isNoise only drops generated log repositories
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/data/data.test.js:92:78
+     90|     expect(isNoise({ name: 'log-it' })).toBe(false);
+     91|     expect(isNoise({ name: 'links-notation' })).toBe(false);
+     92|     expect(isNoise({ name: 'public-logs', fullName: 'konard/public-log…
+       |                                                                              ^
+     93|     expect(isNoise({ name: 'public-logs', fullName: 'another/public-lo…
+     94|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 24 skipped (25)
+   Start at  17:36:20
+   Duration  3.57s (environment 71%, setup 13%, transform 12%, import 3%, worker 1%, tests 1%)
+

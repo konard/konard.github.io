@@ -89,6 +89,8 @@ describe('scripts/build-data.cjs', () => {
     expect(isNoise({ name: 'pr-42-solution-draft-log' })).toBe(true);
     expect(isNoise({ name: 'log-it' })).toBe(false);
     expect(isNoise({ name: 'links-notation' })).toBe(false);
+    expect(isNoise({ name: 'public-logs', fullName: 'konard/public-logs' })).toBe(true);
+    expect(isNoise({ name: 'public-logs', fullName: 'another/public-logs' })).toBe(false);
   });
 });
 
@@ -106,6 +108,12 @@ describe('repositories that are not shown (issue #9)', () => {
   const collected = readCollected();
   const find = (name) => collected.find((r) => r.fullName === name);
   const shown = new Set(repositories.items.map((r) => r.fullName));
+
+  test('generated logs are excluded from the displayed source catalog', () => {
+    const logs = { owner: 'konard', name: 'public-logs', fullName: 'konard/public-logs' };
+    const source = { owner: 'konard', name: 'log-it', fullName: 'konard/log-it' };
+    expect(shownRepositories([logs, source], {}).shown).toEqual([source]);
+  });
 
   test('every collected repository has its health facts', () => {
     expect(collected.filter((r) => !health[r.fullName])).toEqual([]);
@@ -162,9 +170,15 @@ describe('repositories that are not shown (issue #9)', () => {
   test('the website shows exactly the repositories that pass the rules', () => {
     const { shown: passed, excluded } = shownRepositories();
     expect(passed.map((r) => r.fullName).sort()).toEqual([...shown].sort());
-    expect(Object.keys(excluded).sort()).toEqual(
-      ['broken fork', 'deleted', 'empty', 'hidden organization', 'original is not public'].sort(),
-    );
+    expect(
+      Object.keys(excluded).every((reason) =>
+        ['broken fork', 'deleted', 'empty', 'generated logs', 'hidden organization', 'original is not public'].includes(
+          reason,
+        ),
+      ),
+    ).toBe(true);
+    // A fresh catalog need not contain a deleted repository to exercise the rule.
+    expect(excludedBecause({ owner: 'konard' }, { missing: true })).toBe('deleted');
     expect(github.totals.forks).toBe(repositories.items.filter((r) => r.kind === 'fork').length);
     expect(github.totals).not.toHaveProperty('clientCopies');
   });

@@ -1,0 +1,823 @@
+{
+  "source": "https://api.stackexchange.com/2.3/users/710069?site=stackoverflow",
+  "fetched": "2026-10-28T16:04:31.426Z",
+  "user": {
+    "badge_counts": {
+      "bronze": 28,
+      "silver": 38,
+      "gold": 0
+    },
+    "account_id": 365249,
+    "is_employee": false,
+    "last_modified_date": 1741687224,
+    "last_access_date": 1759920268,
+    "reputation_change_year": 30,
+    "reputation_change_quarter": 20,
+    "reputation_change_month": 0,
+    "reputation_change_week": 0,
+    "reputation_change_day": 0,
+    "reputation": 3134,
+    "creation_date": 1302880311,
+    "user_type": "registered",
+    "user_id": 710069,
+    "location": "Goa, India",
+    "website_url": "https://vk.com/konard",
+    "link": "https://stackoverflow.com/users/710069/konard",
+    "profile_image": "https://www.gravatar.com/avatar/74bbef6437ca6a5a9158601455d7a534?s=256&d=identicon&r=PG",
+    "display_name": "Konard"
+  },
+  "top_tags": [
+    {
+      "user_id": 710069,
+      "answer_count": 17,
+      "answer_score": 75,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "c#"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 2,
+      "answer_score": 44,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "docker"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 44,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "docker-for-windows"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 44,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "docker-desktop"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 5,
+      "answer_score": 43,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "linux"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 2,
+      "answer_score": 36,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "asp.net-core"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 11,
+      "answer_score": 34,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "javascript"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 31,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "bash"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 7,
+      "answer_score": 29,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": ".net-core"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 6,
+      "answer_score": 28,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "postgresql"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 2,
+      "answer_score": 26,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "jquery"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 6,
+      "answer_score": 24,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": ".net"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 22,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "scroll"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 22,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "scrollto"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 22,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "js-scrollintoview"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 3,
+      "answer_score": 20,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "visual-studio"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 3,
+      "answer_score": 17,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "t4"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 4,
+      "answer_score": 16,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "c++"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 2,
+      "answer_score": 16,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "visual-studio-2017"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 2,
+      "answer_score": 15,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "sql"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 15,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "postgresql-9.3"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 4,
+      "answer_score": 13,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "npm"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 7,
+      "answer_score": 11,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "node.js"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 10,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "msbuild"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 10,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "nuget-package"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 2,
+      "answer_score": 10,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "c++11"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 10,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "azure-devops-server"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 2,
+      "answer_score": 8,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "visual-studio-2010"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 3,
+      "answer_score": 7,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "temporary-files"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 6,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "c"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 2,
+      "answer_score": 6,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "lambda"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 6,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "std-function"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 6,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": ".net-core-rc2"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 2,
+      "answer_score": 6,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "links-platform"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 5,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "documentation"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 5,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "command-line"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 2,
+      "answer_score": 5,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "comments"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 5,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "github"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 2,
+      "answer_score": 5,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "typescript"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 2,
+      "answer_score": 5,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "reactjs"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 5,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "github-organizations"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 5,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "docfx"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 4,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "teamcity"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 4,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "svg"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 4,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "image"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 4,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "build"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 4,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "z-index"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 4,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "bitmap"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 4,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "image-processing"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 4,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "coffeescript"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 2,
+      "answer_score": 3,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "parameters"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 2,
+      "answer_score": 3,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "json"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 3,
+      "answer_score": 3,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "telegram"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 3,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "npm-install"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 4,
+      "answer_score": 2,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "python"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 2,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "database"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 2,
+      "answer_score": 2,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "cil"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 2,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "numbers"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 2,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "bots"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 2,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "sum"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 2,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "digits"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 2,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "postgresql-9.4"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 2,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "python-telegram-bot"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 2,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "next.js"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 2,
+      "answer_score": 1,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "regex"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 1,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "unix"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 1,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "windows"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 2,
+      "answer_score": 1,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "asp.net"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 1,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "string"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 1,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "iphone"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 1,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "random"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 1,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "shell"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 1,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "usb"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 2,
+      "answer_score": 1,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "ubuntu"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 1,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "mono"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 2,
+      "answer_score": 1,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "inheritance"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 1,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "static"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 1,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "constructor"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 1,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "delegates"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 1,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "abstract-class"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 1,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "command"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 1,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "base-class"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 1,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "derived-class"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 1,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "ilgenerator"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 1,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "monodevelop"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 1,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "texttemplate"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 3,
+      "answer_score": 1,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "less"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 2,
+      "answer_score": 1,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "fs"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 1,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "elasticsearch"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 1,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "cosine-similarity"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 3,
+      "answer_score": 1,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "dotless"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 1,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "meteor"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 1,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "xamarin"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 1,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "visual-studio-2015"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 1,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "telegram-bot"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 1,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "npm-publish"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 1,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "dotnet-cli"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 1,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": ".net-standard"
+    },
+    {
+      "user_id": 710069,
+      "answer_count": 1,
+      "answer_score": 1,
+      "question_count": 0,
+      "question_score": 0,
+      "tag_name": "py-telegram-bot-api"
+    }
+  ]
+}

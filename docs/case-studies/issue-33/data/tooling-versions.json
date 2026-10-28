@@ -1,0 +1,44 @@
+{
+  "checkedAt": "2026-10-28T19:31:08.502169+00:00",
+  "tools": {
+    "ruff": {
+      "latestStable": "0.17.3",
+      "releaseUrl": "https://github.com/astral-sh/ruff/releases/tag/0.17.3",
+      "publishedAt": "2026-10-27T00:35:07Z"
+    },
+    "zizmor": {
+      "latestStable": "v1.31.1",
+      "releaseUrl": "https://github.com/zizmorcore/zizmor/releases/tag/v1.31.1",
+      "publishedAt": "2026-10-15T23:16:39Z"
+    },
+    "zizmor-action": {
+      "latestStable": "v0.8.0",
+      "releaseUrl": "https://github.com/zizmorcore/zizmor-action/releases/tag/v0.8.0",
+      "publishedAt": "2026-10-23T06:13:19Z"
+    },
+    "actions/cache": {
+      "latestStable": "v6.1.0",
+      "releaseUrl": "https://github.com/actions/cache/releases/tag/v6.1.0",
+      "publishedAt": "2026-06-26T19:17:06Z"
+    },
+    "ShellCheck": {
+      "latestStable": "v0.11.0",
+      "releaseUrl": "https://github.com/koalaman/shellcheck/releases/tag/v0.11.0",
+      "publishedAt": "2025-08-04T00:27:19Z"
+    },
+    "actionlint": {
+      "latestStable": "v1.7.12",
+      "releaseUrl": "https://github.com/rhysd/actionlint/releases/tag/v1.7.12",
+      "publishedAt": "2026-03-30T17:49:21Z"
+    },
+    "shellcheck-py": {
+      "latestStable": "0.11.0.1",
+      "releaseUrl": "https://pypi.org/project/shellcheck-py/0.11.0.1/",
+      "publishedAt": "2025-08-09T17:53:34.573791Z"
+    }
+  },
+  "compatibility": {
+    "actions/cache": "v6 retains the node24 runtime and the existing path/key/restore-keys inputs; release notes identify its ESM migration.",
+    "zizmor-action": "v0.8.0 retains the configured version, annotations, advanced-security, min-confidence, config and inputs options."
+  }
+}

@@ -9,3 +9,5 @@ src/data/repositories.json
 src/data/habr.json
 src/data/posts.json
 src/skins.frames.css
+
+src/data/indicators.json

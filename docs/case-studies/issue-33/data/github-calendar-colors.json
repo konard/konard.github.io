@@ -1,0 +1,7 @@
+{
+  "source": "https://github.com/konard?tab=overview",
+  "collectedAt": "2026-10-28T16:20:52Z",
+  "method": "Playwright getComputedStyle(document.documentElement).getPropertyValue('--contribution-default-bgColor-'+level), in light mode and data-color-mode=dark/data-dark-theme=dark. Verified against current Primer contribution and base color tokens.",
+  "light": ["#eff2f5", "#aceebb", "#4ac26b", "#2da44e", "#116329"],
+  "dark": ["#151b23", "#033a16", "#196c2e", "#2ea043", "#56d364"]
+}

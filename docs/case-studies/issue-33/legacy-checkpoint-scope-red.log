@@ -1,0 +1,22 @@
+test_identical_public_revision_reuses_counts_without_granting_duplicate_credit (__main__.SourceLinesTests.test_identical_public_revision_reuses_counts_without_granting_duplicate_credit) ... 
+  test_identical_public_revision_reuses_counts_without_granting_duplicate_credit (__main__.SourceLinesTests.test_identical_public_revision_reuses_counts_without_granting_duplicate_credit) (legacy=True) ... ERROR
+
+======================================================================
+ERROR: test_identical_public_revision_reuses_counts_without_granting_duplicate_credit (__main__.SourceLinesTests.test_identical_public_revision_reuses_counts_without_granting_duplicate_credit) (legacy=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/gh-issue-solver-1793202346423/experiments/test_source_lines.py", line 173, in test_identical_public_revision_reuses_counts_without_granting_duplicate_credit
+    result = collector.collect(
+        'fixture/mirror',
+    ...<5 lines>...
+        previous=measurement,
+    )
+  File "/tmp/gh-issue-solver-1793202346423/experiments/collect-source-lines.py", line 384, in collect
+    'sourceLinesScope': previous['sourceLinesScope'],
+                        ~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+KeyError: 'sourceLinesScope'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.006s
+
+FAILED (errors=1)

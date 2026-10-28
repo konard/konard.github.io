@@ -55,9 +55,11 @@ for page, (title, desc) in PAGES.items():
     html = html.replace('src="/src/index.jsx"', f'src="/src/pages/{page}.jsx"')
     html = re.sub(
         r'(<noscript>).*?(</noscript>)',
-        lambda m: m.group(1)
-        + f'\n      {desc} Enable JavaScript to see this page, or visit https://github.com/konard.\n    '
-        + m.group(2),
+        lambda m: (
+            m.group(1)
+            + f'\n      {desc} Enable JavaScript to see this page, or visit https://github.com/konard.\n    '
+            + m.group(2)
+        ),
         html,
         flags=re.S,
     )

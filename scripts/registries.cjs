@@ -1,4 +1,4 @@
-// Turns docs/case-studies/issue-7/data/registries.json (written by
+// Turns docs/case-studies/issue-33/data/registries.json (written by
 // experiments/collect-registries.cjs) and registries-other.json (written by
 // experiments/collect-other-registries.cjs) into the compact registry cards of the
 // website. Packages built from forks, mirrors, generated test repositories or
@@ -8,7 +8,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const dir = path.join(__dirname, '..', 'docs', 'case-studies', 'issue-7', 'data');
+const dir = path.join(__dirname, '..', 'docs', 'case-studies', 'issue-33', 'data');
 const file = path.join(dir, 'registries.json');
 const otherFile = path.join(dir, 'registries-other.json');
 

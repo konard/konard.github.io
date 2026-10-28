@@ -1,4 +1,4 @@
-// Classification of every collected repository (docs/case-studies/issue-7/data/repositories.json):
+// Classification of every collected repository (docs/case-studies/issue-33/data/repositories.json):
 // - kind: what the repository is (original work, a fork of a public project, a mirror, test noise);
 // - fields: fields of study or business where the repository can be useful;
 // - excludedBecause: why a repository is not shown at all (see the issue-9 case study).
@@ -7,8 +7,8 @@ const fs = require('fs');
 const path = require('path');
 
 const root = path.join(__dirname, '..');
-const dataDir = path.join(root, 'docs', 'case-studies', 'issue-7', 'data');
-const healthFile = path.join(root, 'docs', 'case-studies', 'issue-9', 'data', 'repository-health.json');
+const dataDir = path.join(root, 'docs', 'case-studies', 'issue-33', 'data');
+const healthFile = path.join(dataDir, 'repository-health.json');
 const outFile = path.join(root, 'src', 'data', 'repositories.json');
 
 // GitHub users/organizations whose projects konard copied into their own account
@@ -49,7 +49,7 @@ const clientPrefix = new RegExp(`^(${CLIENTS.join('|')})-`, 'i');
 const isNoise = (repo) =>
   /^log-tmp-|solution-draft-log|^(test-feedback-lines-|test-hello-world-|hive-solve-|test-comment-fix-)/i.test(
     repo.name,
-  ) || /^(konard\/test)$/i.test(repo.fullName || '');
+  ) || /^konard\/(test|public-logs)$/i.test(repo.fullName || '');
 
 const KINDS = ['own', 'fork', 'mirror', 'noise'];
 
@@ -126,6 +126,7 @@ function isBrokenFork(repo, health) {
  */
 function excludedBecause(repo, health) {
   if (isHiddenOwner(repo.owner)) return 'hidden organization';
+  if (isNoise(repo)) return 'generated logs';
   if (health && health.missing) return 'deleted';
   if (isCopy(repo) && !(health && health.upstream && health.upstream.public)) return 'original is not public';
   if (isBrokenFork(repo, health)) return 'broken fork';
@@ -254,6 +255,7 @@ function shownRepositories(repos = readCollected(), health = readHealth()) {
 
 // Compact, sorted list consumed by the repositories page.
 function buildRepositories({ write = true, repos = shownRepositories().shown } = {}) {
+  const measurements = JSON.parse(fs.readFileSync(path.join(dataDir, 'source-lines.json'), 'utf8')).repositories;
   const items = repos
     .map((r) => ({
       fullName: r.fullName,
@@ -272,13 +274,20 @@ function buildRepositories({ write = true, repos = shownRepositories().shown } =
       pushedAt: r.pushedAt ? r.pushedAt.slice(0, 10) : null,
       topics: r.topics || [],
       ...(r.copyOf ? { copyOf: r.copyOf } : {}),
+      ...(measurements[r.fullName]
+        ? {
+            sourceLines: measurements[r.fullName].sourceLines,
+            sourceSha: measurements[r.fullName].sha,
+            sourceCollectedAt: measurements[r.fullName].collectedAt,
+          }
+        : {}),
     }))
     .sort(
       (a, b) =>
         b.stars - a.stars || (b.pushedAt || '').localeCompare(a.pushedAt || '') || a.fullName.localeCompare(b.fullName),
     );
   const result = {
-    generatedFrom: 'docs/case-studies/issue-7/data/repositories.json',
+    generatedFrom: 'docs/case-studies/issue-33/data/repositories.json',
     kinds: KINDS,
     fields: FIELDS,
     items,

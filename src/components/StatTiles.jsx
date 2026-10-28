@@ -1,3 +1,4 @@
+import { DataMark } from './DataSources';
 import { experience, experienceYears } from '../data/experience';
 import { tr, useLang } from '../i18n/prefs';
 import { formatCompact, formatNumber } from './format';
@@ -125,6 +126,7 @@ export default function StatTiles({ github, codingSince, habr }) {
         <li key={s.id} className="stat">
           <span className="stat__value" title={formatNumber(s.value, lang)}>
             {s.value >= 10000 ? formatCompact(s.value, lang) : formatNumber(s.value, lang)}
+            {!['years', 'experience'].includes(s.id) && <DataMark />}
           </span>
           <span className="stat__label">{s.label}</span>
           <span className="stat__hint">{s.hint}</span>

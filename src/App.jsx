@@ -1,5 +1,9 @@
 import github from './data/github.json';
 import habr from './data/habr.json';
+import { contributions, sourceLines } from './data/indicators.json';
+import ContributionCalendar from './components/ContributionCalendar';
+import SourceLines from './components/SourceLines';
+import { DataMark } from './components/DataSources';
 import {
   achievements,
   education,
@@ -137,7 +141,7 @@ function App() {
                     en: `since ${o.createdAt.slice(0, 4)} · ${o.repositories} repos`,
                     ru: `с ${o.createdAt.slice(0, 4)} · репозиториев: ${o.repositories}`,
                   })}{' '}
-                  · ★ {o.stars}
+                  · ★ {o.stars} <DataMark />
                 </span>
                 {o.description && <p className="org__desc">{o.description}</p>}
               </li>
@@ -153,7 +157,8 @@ function App() {
               })}`,
             })}
           </a>
-          {t({ en: ', grouped by field and by IT profession.', ru: ', сгруппированные по областям и IT-профессиям.' })}
+          {t({ en: ', grouped by field and by IT profession.', ru: ', сгруппированные по областям и IT-профессиям.' })}{' '}
+          <DataMark />
         </p>
       </Section>
 
@@ -162,11 +167,13 @@ function App() {
         kicker={{ en: '05 · Activity', ru: '05 · Активность' }}
         title={{ en: 'Contributions & languages', ru: 'Вклад и языки' }}
       >
+        <ContributionCalendar snapshot={contributions} />
         <div className="split split--wide">
           <ContributionsChart data={github.contributions} />
           <LanguagesChart languages={github.languages} favorites={favoriteLanguages} />
         </div>
         <LanguageCloud languages={github.languages} extra={languageSkills} favorites={favoriteLanguages} />
+        <SourceLines data={sourceLines} />
       </Section>
 
       <Section

@@ -1,4 +1,5 @@
 import Glyph from '../components/Glyph';
+import { DataMark } from '../components/DataSources';
 import Layout from '../components/Layout';
 import RepoList, { RepoItem } from '../components/RepoList';
 import Section from '../components/Section';
@@ -37,7 +38,8 @@ export default function AssociativePage() {
           {t({
             en: `Since 2010: ${all.length} repositories that store, query and reason about data as links (${n(metaTheory.tldr)}). The stack below starts from the links meta-theory and goes up through notation, storage, tools and the Deep platform to the AI and applications: every project of linksplatform, link-foundation and link-assistant in one of its layers.`,
             ru: `С 2010 года: ${all.length} ${plural(all.length, lang, REPOSITORIES)}, которые хранят данные как связи, выполняют по ним запросы и рассуждают о них (${n(metaTheory.tldr)}). Стек ниже начинается с метатеории связей и поднимается через нотацию, хранилища, инструменты и платформу Deep к ИИ и приложениям: каждый проект linksplatform, link-foundation и link-assistant находится в одном из его слоёв.`,
-          })}
+          })}{' '}
+          <DataMark />
         </p>
       </header>
 

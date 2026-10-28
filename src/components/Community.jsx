@@ -1,5 +1,6 @@
 import { useLang } from '../i18n/prefs';
 import { formatNumber } from './format';
+import { DataMark } from './DataSources';
 
 // Stack Overflow reputation, badges and top answer tags plus the list of
 // articles / talks and the education block with spoken languages.
@@ -45,7 +46,9 @@ export function StackOverflowCard({ so }) {
           </li>
         ))}
       </ul>
-      <p className="muted small">{t({ en: 'Answer score per tag', ru: 'Рейтинг ответов по тегам' })}</p>
+      <p className="muted small">
+        {t({ en: 'Answer score per tag', ru: 'Рейтинг ответов по тегам' })} <DataMark />
+      </p>
     </article>
   );
 }

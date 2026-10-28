@@ -1,7 +1,6 @@
 {
   "generatedFrom": [
-    "docs/case-studies/issue-1/data",
-    "docs/case-studies/issue-7/data"
+    "docs/case-studies/issue-33/data"
   ],
   "profile": {
     "login": "konard",
@@ -10,225 +9,225 @@
     "url": "https://github.com/konard",
     "bio": "I ❤️‍🔥 open-source.\r\nI in 🥰 with Rust, JavaScript, C#, C++, Python.",
     "location": "Planet Earth",
-    "email": "drakonard@gmail.com",
+    "email": null,
     "twitter": "drakonard",
     "hireable": true,
-    "followers": 375,
-    "following": 918,
+    "followers": 376,
+    "following": 924,
     "publicRepos": 1461,
-    "publicGists": 23438,
+    "publicGists": 23568,
     "createdAt": "2012-02-13T00:19:39Z"
   },
   "totals": {
-    "ownRepositories": 435,
+    "ownRepositories": 436,
     "personalRepositories": 146,
-    "organizationRepositories": 289,
+    "organizationRepositories": 290,
     "organizations": 8,
     "forks": 3,
     "mirrors": 88,
-    "stars": 982,
-    "contributions": 132002,
-    "languages": 66
+    "stars": 986,
+    "contributions": 136956,
+    "languages": 67
   },
   "contributions": [
     {
+      "year": 2012,
+      "total": 10,
       "commits": 8,
       "issues": 0,
       "pullRequests": 0,
-      "repositories": 1,
       "reviews": 0,
-      "total": 10,
-      "year": 2012
+      "repositories": 1
     },
     {
+      "year": 2013,
+      "total": 0,
       "commits": 0,
       "issues": 0,
       "pullRequests": 0,
-      "repositories": 0,
       "reviews": 0,
-      "total": 0,
-      "year": 2013
+      "repositories": 0
     },
     {
+      "year": 2014,
+      "total": 5,
       "commits": 1,
       "issues": 2,
       "pullRequests": 0,
-      "repositories": 1,
       "reviews": 0,
-      "total": 5,
-      "year": 2014
+      "repositories": 1
     },
     {
+      "year": 2015,
+      "total": 358,
       "commits": 202,
       "issues": 148,
       "pullRequests": 2,
-      "repositories": 4,
       "reviews": 0,
-      "total": 358,
-      "year": 2015
+      "repositories": 4
     },
     {
+      "year": 2016,
+      "total": 391,
       "commits": 232,
       "issues": 147,
       "pullRequests": 5,
-      "repositories": 6,
       "reviews": 0,
-      "total": 391,
-      "year": 2016
+      "repositories": 6
     },
     {
+      "year": 2017,
+      "total": 204,
       "commits": 204,
       "issues": 0,
       "pullRequests": 0,
-      "repositories": 0,
       "reviews": 0,
-      "total": 204,
-      "year": 2017
+      "repositories": 0
     },
     {
+      "year": 2018,
+      "total": 111,
       "commits": 109,
       "issues": 0,
       "pullRequests": 0,
-      "repositories": 2,
       "reviews": 0,
-      "total": 111,
-      "year": 2018
+      "repositories": 2
     },
     {
+      "year": 2019,
+      "total": 4665,
       "commits": 4114,
       "issues": 509,
       "pullRequests": 14,
-      "repositories": 28,
       "reviews": 0,
-      "total": 4665,
-      "year": 2019
+      "repositories": 28
     },
     {
+      "year": 2020,
+      "total": 2447,
       "commits": 2098,
       "issues": 281,
       "pullRequests": 8,
-      "repositories": 36,
       "reviews": 20,
-      "total": 2447,
-      "year": 2020
+      "repositories": 36
     },
     {
+      "year": 2021,
+      "total": 1390,
       "commits": 918,
       "issues": 238,
       "pullRequests": 7,
-      "repositories": 14,
       "reviews": 210,
-      "total": 1390,
-      "year": 2021
+      "repositories": 14
     },
     {
+      "year": 2022,
+      "total": 1100,
       "commits": 766,
       "issues": 83,
       "pullRequests": 3,
-      "repositories": 5,
       "reviews": 241,
-      "total": 1100,
-      "year": 2022
+      "repositories": 5
     },
     {
+      "year": 2023,
+      "total": 3586,
       "commits": 3066,
       "issues": 401,
       "pullRequests": 36,
-      "repositories": 28,
       "reviews": 47,
-      "total": 3586,
-      "year": 2023
+      "repositories": 28
     },
     {
+      "year": 2024,
+      "total": 4779,
       "commits": 2032,
       "issues": 1441,
       "pullRequests": 5,
-      "repositories": 101,
       "reviews": 3,
-      "total": 4779,
-      "year": 2024
+      "repositories": 101
     },
     {
-      "commits": 18746,
+      "year": 2025,
+      "total": 29495,
+      "commits": 18587,
       "issues": 2184,
-      "pullRequests": 5627,
-      "repositories": 101,
+      "pullRequests": 5557,
       "reviews": 4,
-      "total": 29463,
-      "year": 2025
+      "repositories": 101
     },
     {
-      "commits": 63220,
-      "issues": 6260,
-      "pullRequests": 8809,
-      "repositories": 101,
+      "year": 2026,
+      "total": 88415,
+      "commits": 67765,
+      "issues": 6494,
+      "pullRequests": 8991,
       "reviews": 0,
-      "total": 83493,
-      "year": 2026
+      "repositories": 101
     }
   ],
   "languages": [
     {
       "name": "JavaScript",
-      "count": 221,
-      "primary": 127,
-      "bytes": 148205755,
+      "count": 223,
+      "primary": 129,
+      "bytes": 171840227,
       "color": "#f1e05a"
     },
     {
       "name": "Shell",
-      "count": 152,
+      "count": 158,
       "primary": 18,
-      "bytes": 5927839,
+      "bytes": 6355720,
       "color": "#89e051"
     },
     {
       "name": "TypeScript",
       "count": 118,
       "primary": 81,
-      "bytes": 38122004,
+      "bytes": 40384911,
       "color": "#3178c6"
     },
     {
       "name": "Rust",
       "count": 80,
-      "primary": 45,
-      "bytes": 73752446,
+      "primary": 46,
+      "bytes": 77073520,
       "color": "#dea584"
+    },
+    {
+      "name": "Python",
+      "count": 78,
+      "primary": 26,
+      "bytes": 11351771,
+      "color": "#3572A5"
     },
     {
       "name": "C#",
       "count": 77,
       "primary": 57,
-      "bytes": 6747136,
+      "bytes": 6860985,
       "color": "#7355dd"
-    },
-    {
-      "name": "Python",
-      "count": 75,
-      "primary": 27,
-      "bytes": 10680005,
-      "color": "#3572A5"
     },
     {
       "name": "HTML",
       "count": 67,
       "primary": 18,
-      "bytes": 131816944,
+      "bytes": 131834679,
       "color": "#e34c26"
     },
     {
       "name": "Dockerfile",
       "count": 51,
       "primary": 1,
-      "bytes": 153515,
+      "bytes": 155910,
       "color": "#384d54"
     },
     {
       "name": "CSS",
-      "count": 44,
+      "count": 45,
       "primary": 0,
-      "bytes": 616019,
+      "bytes": 1001646,
       "color": "#663399"
     },
     {
@@ -274,18 +273,18 @@
       "color": "#701516"
     },
     {
+      "name": "Swift",
+      "count": 11,
+      "primary": 0,
+      "bytes": 39045,
+      "color": "#F05138"
+    },
+    {
       "name": "Batchfile",
       "count": 11,
       "primary": 1,
       "bytes": 4676,
       "color": "#C1F12E"
-    },
-    {
-      "name": "Swift",
-      "count": 9,
-      "primary": 0,
-      "bytes": 28019,
-      "color": "#F05138"
     },
     {
       "name": "Jinja",
@@ -470,6 +469,13 @@
       "color": "#3A4E3A"
     },
     {
+      "name": "HCL",
+      "count": 1,
+      "primary": 0,
+      "bytes": 37311,
+      "color": "#844FBA"
+    },
+    {
       "name": "Agda",
       "count": 1,
       "primary": 0,
@@ -494,14 +500,14 @@
       "name": "Slim",
       "count": 1,
       "primary": 0,
-      "bytes": 5307,
+      "bytes": 7607,
       "color": "#2b2b2b"
     },
     {
       "name": "Nix",
       "count": 1,
       "primary": 0,
-      "bytes": 4818,
+      "bytes": 4791,
       "color": "#7e7eff"
     },
     {
@@ -512,18 +518,18 @@
       "color": "#199f4b"
     },
     {
+      "name": "Lua",
+      "count": 1,
+      "primary": 0,
+      "bytes": 3180,
+      "color": "#000080"
+    },
+    {
       "name": "WebAssembly",
       "count": 1,
       "primary": 0,
       "bytes": 3121,
       "color": "#04133b"
-    },
-    {
-      "name": "Lua",
-      "count": 1,
-      "primary": 0,
-      "bytes": 2406,
-      "color": "#000080"
     },
     {
       "name": "Euphoria",
@@ -643,7 +649,7 @@
       "languages": [
         {
           "name": "JavaScript",
-          "count": 49
+          "count": 50
         },
         {
           "name": "C#",
@@ -701,7 +707,7 @@
       "url": "https://github.com/link-foundation",
       "createdAt": "2024-07-20T19:06:38Z",
       "repositories": 79,
-      "stars": 45,
+      "stars": 46,
       "languages": [
         {
           "name": "JavaScript",
@@ -740,11 +746,11 @@
         },
         {
           "name": "Rust",
-          "count": 11
+          "count": 12
         },
         {
           "name": "Python",
-          "count": 6
+          "count": 5
         },
         {
           "name": "C",
@@ -762,12 +768,12 @@
       "description": null,
       "url": "https://github.com/link-assistant",
       "createdAt": "2025-11-21T09:35:14Z",
-      "repositories": 28,
-      "stars": 111,
+      "repositories": 29,
+      "stars": 115,
       "languages": [
         {
           "name": "JavaScript",
-          "count": 19
+          "count": 20
         },
         {
           "name": "Rust",
@@ -790,7 +796,7 @@
       "url": "https://github.com/deep-assistant",
       "createdAt": "2025-02-10T05:19:44Z",
       "repositories": 6,
-      "stars": 33,
+      "stars": 32,
       "languages": [
         {
           "name": "JavaScript",
@@ -871,8 +877,8 @@
       "owner": "link-assistant",
       "description": "The AI that controls AIs to do the automation of automation.",
       "language": "JavaScript",
-      "stars": 90,
-      "forks": 17,
+      "stars": 92,
+      "forks": 16,
       "url": "https://github.com/link-assistant/hive-mind",
       "createdYear": 2025,
       "topics": [],
@@ -963,7 +969,7 @@
       "owner": "deep-assistant",
       "description": "VK-mini-apps приложения GPTutor",
       "language": "TypeScript",
-      "stars": 26,
+      "stars": 25,
       "forks": 4,
       "url": "https://github.com/deep-assistant/GPTutor",
       "createdYear": 2023,
@@ -1205,6 +1211,24 @@
         "ai",
         "mlops",
         "productivity"
+      ]
+    },
+    {
+      "name": "formal-ai",
+      "fullName": "link-assistant/formal-ai",
+      "owner": "link-assistant",
+      "description": "Don't know everything, know just enough to get to know anything",
+      "language": "Rust",
+      "stars": 9,
+      "forks": 2,
+      "url": "https://github.com/link-assistant/formal-ai",
+      "createdYear": 2026,
+      "topics": [],
+      "fields": [
+        "associative",
+        "ai",
+        "ml",
+        "research"
       ]
     },
     {
@@ -1531,24 +1555,6 @@
       ]
     },
     {
-      "name": "formal-ai",
-      "fullName": "link-assistant/formal-ai",
-      "owner": "link-assistant",
-      "description": "Don't know everything, know just enough to get to know anything",
-      "language": "Rust",
-      "stars": 7,
-      "forks": 2,
-      "url": "https://github.com/link-assistant/formal-ai",
-      "createdYear": 2026,
-      "topics": [],
-      "fields": [
-        "associative",
-        "ai",
-        "ml",
-        "research"
-      ]
-    },
-    {
       "name": "android-lodash-fix",
       "fullName": "deep-foundation/android-lodash-fix",
       "owner": "deep-foundation",
@@ -1655,38 +1661,38 @@
       "name": "npm",
       "url": "https://www.npmjs.com/~konard",
       "status": "ok",
-      "packages": 220,
-      "downloads": 232026,
+      "packages": 224,
+      "downloads": 316187,
       "downloadsUnit": "downloads / month",
       "top": [
         {
           "name": "links-notation",
-          "downloads": 49757,
+          "downloads": 78703,
           "url": "https://www.npmjs.com/package/links-notation"
         },
         {
           "name": "command-stream",
-          "downloads": 30782,
+          "downloads": 33876,
           "url": "https://www.npmjs.com/package/command-stream"
         },
         {
+          "name": "lino-objects-codec",
+          "downloads": 24094,
+          "url": "https://www.npmjs.com/package/lino-objects-codec"
+        },
+        {
           "name": "test-anywhere",
-          "downloads": 18777,
+          "downloads": 21656,
           "url": "https://www.npmjs.com/package/test-anywhere"
         },
         {
           "name": "lino-arguments",
-          "downloads": 14586,
+          "downloads": 21430,
           "url": "https://www.npmjs.com/package/lino-arguments"
         },
         {
-          "name": "lino-objects-codec",
-          "downloads": 14429,
-          "url": "https://www.npmjs.com/package/lino-objects-codec"
-        },
-        {
           "name": "lino-env",
-          "downloads": 14019,
+          "downloads": 20136,
           "url": "https://www.npmjs.com/package/lino-env"
         }
       ]
@@ -1696,38 +1702,38 @@
       "name": "crates.io",
       "url": "https://crates.io/users/konard",
       "status": "ok",
-      "packages": 35,
-      "downloads": 569608,
+      "packages": 36,
+      "downloads": 637350,
       "downloadsUnit": "downloads total",
       "top": [
         {
           "name": "doublets",
-          "downloads": 74290,
+          "downloads": 78517,
           "url": "https://crates.io/crates/doublets"
         },
         {
           "name": "links-notation",
-          "downloads": 54434,
+          "downloads": 62569,
           "url": "https://crates.io/crates/links-notation"
         },
         {
           "name": "platform-mem",
-          "downloads": 46981,
+          "downloads": 51249,
           "url": "https://crates.io/crates/platform-mem"
         },
         {
           "name": "platform-num",
-          "downloads": 41798,
+          "downloads": 46081,
           "url": "https://crates.io/crates/platform-num"
         },
         {
           "name": "platform-data",
-          "downloads": 40738,
+          "downloads": 45006,
           "url": "https://crates.io/crates/platform-data"
         },
         {
           "name": "lino-arguments",
-          "downloads": 37647,
+          "downloads": 44761,
           "url": "https://crates.io/crates/lino-arguments"
         }
       ]
@@ -1738,37 +1744,37 @@
       "url": "https://www.nuget.org/profiles/konard",
       "status": "ok",
       "packages": 62,
-      "downloads": 1922100,
+      "downloads": 2020822,
       "downloadsUnit": "downloads total",
       "top": [
         {
           "name": "Platform.Exceptions",
-          "downloads": 132994,
+          "downloads": 139038,
           "url": "https://www.nuget.org/packages/Platform.Exceptions"
         },
         {
           "name": "Platform.Interfaces",
-          "downloads": 131795,
+          "downloads": 136650,
           "url": "https://www.nuget.org/packages/Platform.Interfaces"
         },
         {
           "name": "Platform.Ranges",
-          "downloads": 128549,
+          "downloads": 135056,
           "url": "https://www.nuget.org/packages/Platform.Ranges"
         },
         {
           "name": "clink",
-          "downloads": 126911,
+          "downloads": 128819,
           "url": "https://www.nuget.org/packages/clink"
         },
         {
           "name": "Platform.Collections",
-          "downloads": 120080,
+          "downloads": 126724,
           "url": "https://www.nuget.org/packages/Platform.Collections"
         },
         {
           "name": "Platform.Disposables",
-          "downloads": 114622,
+          "downloads": 119294,
           "url": "https://www.nuget.org/packages/Platform.Disposables"
         }
       ]
@@ -1815,38 +1821,38 @@
       "url": "https://hub.docker.com/u/konard",
       "status": "ok",
       "packages": 63,
-      "downloads": 295643,
+      "downloads": 309331,
       "downloadsUnit": "pulls total",
       "top": [
         {
           "name": "konard/hive-mind",
-          "downloads": 53219,
+          "downloads": 56099,
           "url": "https://hub.docker.com/r/konard/hive-mind"
         },
         {
           "name": "konard/hive-mind-dind",
-          "downloads": 36520,
+          "downloads": 39312,
           "url": "https://hub.docker.com/r/konard/hive-mind-dind"
         },
         {
           "name": "konard/link-assistant-router",
-          "downloads": 17117,
+          "downloads": 17155,
           "url": "https://hub.docker.com/r/konard/link-assistant-router"
         },
         {
           "name": "konard/box",
-          "downloads": 8751,
+          "downloads": 8838,
           "url": "https://hub.docker.com/r/konard/box"
         },
         {
           "name": "konard/sandbox",
-          "downloads": 8170,
+          "downloads": 8182,
           "url": "https://hub.docker.com/r/konard/sandbox"
         },
         {
-          "name": "konard/box-js",
-          "downloads": 7268,
-          "url": "https://hub.docker.com/r/konard/box-js"
+          "name": "konard/box-dind",
+          "downloads": 7711,
+          "url": "https://hub.docker.com/r/konard/box-dind"
         }
       ]
     },
@@ -1856,38 +1862,38 @@
       "url": "https://github.com/konard?tab=packages",
       "status": "partial",
       "packages": 82,
-      "downloads": 20506,
+      "downloads": 20865,
       "downloadsUnit": "downloads total (rounded)",
       "top": [
         {
           "name": "link-assistant/router",
-          "downloads": 6370,
+          "downloads": 6540,
           "url": "https://github.com/orgs/link-assistant/packages/container/package/router"
         },
         {
-          "name": "link-assistant/formal-ai",
-          "downloads": 1740,
-          "url": "https://github.com/orgs/link-assistant/packages/container/package/formal-ai"
-        },
-        {
           "name": "link-foundation/box",
-          "downloads": 1370,
+          "downloads": 1460,
           "url": "https://github.com/orgs/link-foundation/packages/container/package/box"
         },
         {
+          "name": "link-assistant/formal-ai",
+          "downloads": 1290,
+          "url": "https://github.com/orgs/link-assistant/packages/container/package/formal-ai"
+        },
+        {
           "name": "link-foundation/box-dind",
-          "downloads": 946,
+          "downloads": 1030,
           "url": "https://github.com/orgs/link-foundation/packages/container/package/box-dind"
         },
         {
           "name": "link-foundation/box-ruby",
-          "downloads": 668,
+          "downloads": 687,
           "url": "https://github.com/orgs/link-foundation/packages/container/package/box-ruby"
         },
         {
-          "name": "link-foundation/box-essentials",
-          "downloads": 552,
-          "url": "https://github.com/orgs/link-foundation/packages/container/package/box-essentials"
+          "name": "link-foundation/box-swift",
+          "downloads": 576,
+          "url": "https://github.com/orgs/link-foundation/packages/container/package/box-swift"
         }
       ]
     },
@@ -1940,7 +1946,7 @@
     }
   ],
   "packageRegistries": {
-    "collectedAt": "2026-10-19T17:13:41.923Z",
+    "collectedAt": "2026-10-28T15:58:41.599Z",
     "checked": 33,
     "empty": [
       "RubyGems",

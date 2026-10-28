@@ -2,6 +2,7 @@ import { useLang } from '../i18n/prefs';
 import { plural } from '../i18n/plural';
 import { formatNumber, SERIES } from './format';
 import { Tooltip, useTooltip } from './Tooltip';
+import { DataMark } from './DataSources';
 
 const LIMIT = 10;
 // "in N repositories": Russian needs the prepositional case after «в».
@@ -50,6 +51,7 @@ export default function LanguagesChart({ languages, favorites }) {
           ru: `Сколько репозиториев использует каждый из ${number(languages.length)} ${plural(languages.length, 'ru', OF_LANGUAGES)}, найденных GitHub в собственных публичных репозиториях (личных и организаций); репозиторий учитывается по разу для каждого своего языка.`,
         })}
         <span className="muted"> {t({ en: '★ = favorite language', ru: '★ — любимый язык' })}</span>
+        <DataMark />
       </p>
       <ul
         className="hbars"

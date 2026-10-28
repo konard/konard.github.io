@@ -1,0 +1,968 @@
+{
+  "collectedAt": "2026-10-28T16:01:44.395Z",
+  "generator": "experiments/collect-other-registries.cjs",
+  "repositories": 737,
+  "truncatedTrees": 2,
+  "treeErrors": [
+    {
+      "repo": "konard/VisageDvachevsky-NvMnd",
+      "error": "gh: Not Found (HTTP 404)"
+    }
+  ],
+  "registries": {
+    "hackage": {
+      "manifests": [],
+      "lookups": 17,
+      "packages": []
+    },
+    "opam": {
+      "manifests": [],
+      "lookups": 0,
+      "packages": []
+    },
+    "cpan": {
+      "manifests": [],
+      "lookups": 17,
+      "packages": []
+    },
+    "clojars": {
+      "manifests": [],
+      "lookups": 17,
+      "packages": []
+    },
+    "luarocks": {
+      "manifests": [],
+      "lookups": 17,
+      "packages": []
+    },
+    "lean": {
+      "manifests": [
+        "deep-foundation/deep-theory/associative_proofs/lean/lakefile.lean",
+        "konard/p-vs-np/lakefile.lean",
+        "konard/physical-unified-theory/lean/lakefile.lean",
+        "konard/subset-sum/lakefile.lean",
+        "link-foundation/deep-theory/associative_proofs/lean/lakefile.lean",
+        "link-foundation/meta-theory/drafts/0.0.3/src/lean/lakefile.lean",
+        "link-foundation/meta-language/experiments/issue-195-projects/lean/lakefile.toml"
+      ],
+      "lookups": 24,
+      "packages": []
+    },
+    "julia": {
+      "manifests": [],
+      "lookups": 0,
+      "packages": []
+    },
+    "cocoapods": {
+      "manifests": [],
+      "lookups": 1,
+      "packages": []
+    },
+    "snap": {
+      "manifests": [
+        "konard/LPN1KoL-groupbuy-bot/snap/snapcraft.yaml",
+        "konard/MixaByk1996-groupbuy-bot/snap/snapcraft.yaml"
+      ],
+      "lookups": 2,
+      "packages": []
+    },
+    "flathub": {
+      "manifests": [],
+      "lookups": 1,
+      "packages": []
+    },
+    "chocolatey": {
+      "manifests": [],
+      "lookups": 17,
+      "packages": []
+    },
+    "winget": {
+      "manifests": [],
+      "lookups": 2,
+      "packages": []
+    },
+    "chrome-web-store": {
+      "manifests": [
+        "deep-foundation/deepmemo-app/extension/manifest.json",
+        "deep-foundation/deep-memo-app/extension/manifest.json",
+        "deep-foundation/browser-extension/extension/manifest.json",
+        "deep-foundation/perception-app/extension/manifest.json",
+        "deep-foundation/sdk/extension/manifest.json",
+        "link-foundation/browser-extension/extension/manifest.json",
+        "link-foundation/browser-commander/js/extension/manifest.json",
+        "link-foundation/browser-commander/python/src/browser_commander/browser/extension_assets/manifest.json",
+        "link-foundation/browser-commander/rust/src/browser/extension_relay/extension_assets/manifest.json",
+        "link-foundation/deep-memo-app/extension/manifest.json",
+        "link-foundation/deepmemo-app/extension/manifest.json",
+        "link-foundation/perception-app/extension/manifest.json",
+        "link-foundation/sdk/extension/manifest.json",
+        "link-foundation/yachts/extension/manifest.json"
+      ],
+      "lookups": 12,
+      "packages": []
+    }
+  },
+  "lookups": [
+    {
+      "registry": "hackage",
+      "query": "konard",
+      "url": "https://hackage.haskell.org/user/konard",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "hackage",
+      "query": "drakonard",
+      "url": "https://hackage.haskell.org/user/drakonard",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "hackage",
+      "query": "correlation-center",
+      "url": "https://hackage.haskell.org/user/correlation-center",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "cpan",
+      "query": "konard",
+      "url": "https://fastapi.metacpan.org/v1/release/_search?q=author:KONARD&size=1",
+      "status": 200,
+      "hit": false
+    },
+    {
+      "registry": "cpan",
+      "query": "drakonard",
+      "url": "https://fastapi.metacpan.org/v1/release/_search?q=author:DRAKONARD&size=1",
+      "status": 200,
+      "hit": false
+    },
+    {
+      "registry": "cpan",
+      "query": "correlation-center",
+      "url": "https://fastapi.metacpan.org/v1/release/_search?q=author:CORRELATIONCENTER&size=1",
+      "status": 200,
+      "hit": false
+    },
+    {
+      "registry": "hackage",
+      "query": "deep-assistant",
+      "url": "https://hackage.haskell.org/user/deep-assistant",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "cpan",
+      "query": "deep-assistant",
+      "url": "https://fastapi.metacpan.org/v1/release/_search?q=author:DEEPASSISTANT&size=1",
+      "status": 200,
+      "hit": false
+    },
+    {
+      "registry": "luarocks",
+      "query": "konard",
+      "url": "https://luarocks.org/modules/konard",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "luarocks",
+      "query": "drakonard",
+      "url": "https://luarocks.org/modules/drakonard",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "luarocks",
+      "query": "correlation-center",
+      "url": "https://luarocks.org/modules/correlation-center",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "clojars",
+      "query": "konard",
+      "url": "https://clojars.org/api/users/konard",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "luarocks",
+      "query": "deep-assistant",
+      "url": "https://luarocks.org/modules/deep-assistant",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "clojars",
+      "query": "correlation-center",
+      "url": "https://clojars.org/api/users/correlation-center",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "clojars",
+      "query": "drakonard",
+      "url": "https://clojars.org/api/users/drakonard",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "clojars",
+      "query": "deep-assistant",
+      "url": "https://clojars.org/api/users/deep-assistant",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "chocolatey",
+      "query": "konard",
+      "url": "https://community.chocolatey.org/profiles/konard",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "chocolatey",
+      "query": "correlation-center",
+      "url": "https://community.chocolatey.org/profiles/correlation-center",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "chocolatey",
+      "query": "drakonard",
+      "url": "https://community.chocolatey.org/profiles/drakonard",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "chocolatey",
+      "query": "deep-assistant",
+      "url": "https://community.chocolatey.org/profiles/deep-assistant",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "lean",
+      "query": "deep-assistant",
+      "url": "https://reservoir.lean-lang.org/@deep-assistant",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "lean",
+      "query": "drakonard",
+      "url": "https://reservoir.lean-lang.org/@drakonard",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "lean",
+      "query": "correlation-center",
+      "url": "https://reservoir.lean-lang.org/@correlation-center",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "lean",
+      "query": "konard",
+      "url": "https://reservoir.lean-lang.org/@konard",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "hackage",
+      "query": "deep-foundation",
+      "url": "https://hackage.haskell.org/user/deep-foundation",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "hackage",
+      "query": "EfficiencyParadigm",
+      "url": "https://hackage.haskell.org/user/EfficiencyParadigm",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "cpan",
+      "query": "deep-foundation",
+      "url": "https://fastapi.metacpan.org/v1/release/_search?q=author:DEEPFOUNDATION&size=1",
+      "status": 200,
+      "hit": false
+    },
+    {
+      "registry": "hackage",
+      "query": "Gls-full",
+      "url": "https://hackage.haskell.org/user/Gls-full",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "hackage",
+      "query": "link-assistant",
+      "url": "https://hackage.haskell.org/user/link-assistant",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "cpan",
+      "query": "EfficiencyParadigm",
+      "url": "https://fastapi.metacpan.org/v1/release/_search?q=author:EFFICIENCYPARADIGM&size=1",
+      "status": 200,
+      "hit": false
+    },
+    {
+      "registry": "luarocks",
+      "query": "deep-foundation",
+      "url": "https://luarocks.org/modules/deep-foundation",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "cpan",
+      "query": "Gls-full",
+      "url": "https://fastapi.metacpan.org/v1/release/_search?q=author:GLSFULL&size=1",
+      "status": 200,
+      "hit": false
+    },
+    {
+      "registry": "cpan",
+      "query": "link-assistant",
+      "url": "https://fastapi.metacpan.org/v1/release/_search?q=author:LINKASSISTANT&size=1",
+      "status": 200,
+      "hit": false
+    },
+    {
+      "registry": "luarocks",
+      "query": "EfficiencyParadigm",
+      "url": "https://luarocks.org/modules/EfficiencyParadigm",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "luarocks",
+      "query": "Gls-full",
+      "url": "https://luarocks.org/modules/Gls-full",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "luarocks",
+      "query": "link-assistant",
+      "url": "https://luarocks.org/modules/link-assistant",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "clojars",
+      "query": "deep-foundation",
+      "url": "https://clojars.org/api/users/deep-foundation",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "clojars",
+      "query": "EfficiencyParadigm",
+      "url": "https://clojars.org/api/users/EfficiencyParadigm",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "clojars",
+      "query": "link-assistant",
+      "url": "https://clojars.org/api/users/link-assistant",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "clojars",
+      "query": "Gls-full",
+      "url": "https://clojars.org/api/users/Gls-full",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "chocolatey",
+      "query": "deep-foundation",
+      "url": "https://community.chocolatey.org/profiles/deep-foundation",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "lean",
+      "query": "deep-foundation",
+      "url": "https://reservoir.lean-lang.org/@deep-foundation",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "chocolatey",
+      "query": "Gls-full",
+      "url": "https://community.chocolatey.org/profiles/Gls-full",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "chocolatey",
+      "query": "EfficiencyParadigm",
+      "url": "https://community.chocolatey.org/profiles/EfficiencyParadigm",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "chocolatey",
+      "query": "link-assistant",
+      "url": "https://community.chocolatey.org/profiles/link-assistant",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "lean",
+      "query": "EfficiencyParadigm",
+      "url": "https://reservoir.lean-lang.org/@EfficiencyParadigm",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "lean",
+      "query": "Gls-full",
+      "url": "https://reservoir.lean-lang.org/@Gls-full",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "lean",
+      "query": "link-assistant",
+      "url": "https://reservoir.lean-lang.org/@link-assistant",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "hackage",
+      "query": "link-foundation",
+      "url": "https://hackage.haskell.org/user/link-foundation",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "hackage",
+      "query": "links-games",
+      "url": "https://hackage.haskell.org/user/links-games",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "hackage",
+      "query": "meteor-shuttler",
+      "url": "https://hackage.haskell.org/user/meteor-shuttler",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "hackage",
+      "query": "linksplatform",
+      "url": "https://hackage.haskell.org/user/linksplatform",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "cpan",
+      "query": "link-foundation",
+      "url": "https://fastapi.metacpan.org/v1/release/_search?q=author:LINKFOUNDATION&size=1",
+      "status": 200,
+      "hit": false
+    },
+    {
+      "registry": "cpan",
+      "query": "links-games",
+      "url": "https://fastapi.metacpan.org/v1/release/_search?q=author:LINKSGAMES&size=1",
+      "status": 200,
+      "hit": false
+    },
+    {
+      "registry": "cpan",
+      "query": "meteor-shuttler",
+      "url": "https://fastapi.metacpan.org/v1/release/_search?q=author:METEORSHUTTLER&size=1",
+      "status": 200,
+      "hit": false
+    },
+    {
+      "registry": "cpan",
+      "query": "linksplatform",
+      "url": "https://fastapi.metacpan.org/v1/release/_search?q=author:LINKSPLATFORM&size=1",
+      "status": 200,
+      "hit": false
+    },
+    {
+      "registry": "luarocks",
+      "query": "links-games",
+      "url": "https://luarocks.org/modules/links-games",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "luarocks",
+      "query": "link-foundation",
+      "url": "https://luarocks.org/modules/link-foundation",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "luarocks",
+      "query": "meteor-shuttler",
+      "url": "https://luarocks.org/modules/meteor-shuttler",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "luarocks",
+      "query": "linksplatform",
+      "url": "https://luarocks.org/modules/linksplatform",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "clojars",
+      "query": "links-games",
+      "url": "https://clojars.org/api/users/links-games",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "clojars",
+      "query": "meteor-shuttler",
+      "url": "https://clojars.org/api/users/meteor-shuttler",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "clojars",
+      "query": "link-foundation",
+      "url": "https://clojars.org/api/users/link-foundation",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "clojars",
+      "query": "linksplatform",
+      "url": "https://clojars.org/api/users/linksplatform",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "chocolatey",
+      "query": "links-games",
+      "url": "https://community.chocolatey.org/profiles/links-games",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "chocolatey",
+      "query": "link-foundation",
+      "url": "https://community.chocolatey.org/profiles/link-foundation",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "chocolatey",
+      "query": "meteor-shuttler",
+      "url": "https://community.chocolatey.org/profiles/meteor-shuttler",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "chocolatey",
+      "query": "linksplatform",
+      "url": "https://community.chocolatey.org/profiles/linksplatform",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "lean",
+      "query": "links-games",
+      "url": "https://reservoir.lean-lang.org/@links-games",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "lean",
+      "query": "meteor-shuttler",
+      "url": "https://reservoir.lean-lang.org/@meteor-shuttler",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "lean",
+      "query": "linksplatform",
+      "url": "https://reservoir.lean-lang.org/@linksplatform",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "lean",
+      "query": "link-foundation",
+      "url": "https://reservoir.lean-lang.org/@link-foundation",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "hackage",
+      "query": "OSWS",
+      "url": "https://hackage.haskell.org/user/OSWS",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "hackage",
+      "query": "Qvinciy",
+      "url": "https://hackage.haskell.org/user/Qvinciy",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "hackage",
+      "query": "styleschool",
+      "url": "https://hackage.haskell.org/user/styleschool",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "cpan",
+      "query": "OSWS",
+      "url": "https://fastapi.metacpan.org/v1/release/_search?q=author:OSWS&size=1",
+      "status": 200,
+      "hit": false
+    },
+    {
+      "registry": "cpan",
+      "query": "Qvinciy",
+      "url": "https://fastapi.metacpan.org/v1/release/_search?q=author:QVINCIY&size=1",
+      "status": 200,
+      "hit": false
+    },
+    {
+      "registry": "cpan",
+      "query": "styleschool",
+      "url": "https://fastapi.metacpan.org/v1/release/_search?q=author:STYLESCHOOL&size=1",
+      "status": 200,
+      "hit": false
+    },
+    {
+      "registry": "hackage",
+      "query": "open-online-tools",
+      "url": "https://hackage.haskell.org/user/open-online-tools",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "luarocks",
+      "query": "OSWS",
+      "url": "https://luarocks.org/modules/OSWS",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "luarocks",
+      "query": "Qvinciy",
+      "url": "https://luarocks.org/modules/Qvinciy",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "luarocks",
+      "query": "styleschool",
+      "url": "https://luarocks.org/modules/styleschool",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "cpan",
+      "query": "open-online-tools",
+      "url": "https://fastapi.metacpan.org/v1/release/_search?q=author:OPENONLINETOOLS&size=1",
+      "status": 200,
+      "hit": false
+    },
+    {
+      "registry": "clojars",
+      "query": "Qvinciy",
+      "url": "https://clojars.org/api/users/Qvinciy",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "clojars",
+      "query": "OSWS",
+      "url": "https://clojars.org/api/users/OSWS",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "clojars",
+      "query": "styleschool",
+      "url": "https://clojars.org/api/users/styleschool",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "luarocks",
+      "query": "open-online-tools",
+      "url": "https://luarocks.org/modules/open-online-tools",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "clojars",
+      "query": "open-online-tools",
+      "url": "https://clojars.org/api/users/open-online-tools",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "chocolatey",
+      "query": "Qvinciy",
+      "url": "https://community.chocolatey.org/profiles/Qvinciy",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "chocolatey",
+      "query": "OSWS",
+      "url": "https://community.chocolatey.org/profiles/OSWS",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "chocolatey",
+      "query": "styleschool",
+      "url": "https://community.chocolatey.org/profiles/styleschool",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "chocolatey",
+      "query": "open-online-tools",
+      "url": "https://community.chocolatey.org/profiles/open-online-tools",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "lean",
+      "query": "Qvinciy",
+      "url": "https://reservoir.lean-lang.org/@Qvinciy",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "lean",
+      "query": "OSWS",
+      "url": "https://reservoir.lean-lang.org/@OSWS",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "lean",
+      "query": "styleschool",
+      "url": "https://reservoir.lean-lang.org/@styleschool",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "lean",
+      "query": "open-online-tools",
+      "url": "https://reservoir.lean-lang.org/@open-online-tools",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "hackage",
+      "query": "Svetozar-Technologies",
+      "url": "https://hackage.haskell.org/user/Svetozar-Technologies",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "cpan",
+      "query": "Svetozar-Technologies",
+      "url": "https://fastapi.metacpan.org/v1/release/_search?q=author:SVETOZARTECHNOLOGIES&size=1",
+      "status": 200,
+      "hit": false
+    },
+    {
+      "registry": "luarocks",
+      "query": "Svetozar-Technologies",
+      "url": "https://luarocks.org/modules/Svetozar-Technologies",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "clojars",
+      "query": "Svetozar-Technologies",
+      "url": "https://clojars.org/api/users/Svetozar-Technologies",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "chocolatey",
+      "query": "Svetozar-Technologies",
+      "url": "https://community.chocolatey.org/profiles/Svetozar-Technologies",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "lean",
+      "query": "Svetozar-Technologies",
+      "url": "https://reservoir.lean-lang.org/@Svetozar-Technologies",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "lean",
+      "query": "demo (link-foundation/meta-language/experiments/issue-195-projects/lean/lakefile.toml)",
+      "url": "https://reservoir.lean-lang.org/@link-foundation/meta-language",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "lean",
+      "query": "physical-unified-theory (konard/physical-unified-theory/lean/lakefile.lean)",
+      "url": "https://reservoir.lean-lang.org/@konard/physical-unified-theory",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "lean",
+      "query": "subset-sum (konard/subset-sum/lakefile.lean)",
+      "url": "https://reservoir.lean-lang.org/@konard/subset-sum",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "lean",
+      "query": "p-vs-np (konard/p-vs-np/lakefile.lean)",
+      "url": "https://reservoir.lean-lang.org/@konard/p-vs-np",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "lean",
+      "query": "meta-theory (link-foundation/meta-theory/drafts/0.0.3/src/lean/lakefile.lean)",
+      "url": "https://reservoir.lean-lang.org/@link-foundation/meta-theory",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "lean",
+      "query": "LinksTheory (deep-foundation/deep-theory/associative_proofs/lean/lakefile.lean)",
+      "url": "https://reservoir.lean-lang.org/@deep-foundation/deep-theory",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "lean",
+      "query": "LinksTheory (link-foundation/deep-theory/associative_proofs/lean/lakefile.lean)",
+      "url": "https://reservoir.lean-lang.org/@link-foundation/deep-theory",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "snap",
+      "query": "groupbuy-bot (konard/LPN1KoL-groupbuy-bot/snap/snapcraft.yaml)",
+      "url": "https://api.snapcraft.io/v2/snaps/info/groupbuy-bot",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "snap",
+      "query": "groupbuy-bot (konard/MixaByk1996-groupbuy-bot/snap/snapcraft.yaml)",
+      "url": "https://api.snapcraft.io/v2/snaps/info/groupbuy-bot",
+      "status": 404,
+      "hit": false
+    },
+    {
+      "registry": "chrome-web-store",
+      "query": "store link in deep-foundation/deepmemo-app README",
+      "hit": false
+    },
+    {
+      "registry": "chrome-web-store",
+      "query": "store link in deep-foundation/deep-memo-app README",
+      "hit": false
+    },
+    {
+      "registry": "chrome-web-store",
+      "query": "store link in deep-foundation/perception-app README",
+      "hit": false
+    },
+    {
+      "registry": "chrome-web-store",
+      "query": "store link in deep-foundation/browser-extension README",
+      "hit": false
+    },
+    {
+      "registry": "chrome-web-store",
+      "query": "store link in link-foundation/browser-commander README",
+      "hit": false
+    },
+    {
+      "registry": "chrome-web-store",
+      "query": "store link in deep-foundation/sdk README",
+      "hit": false
+    },
+    {
+      "registry": "chrome-web-store",
+      "query": "store link in link-foundation/browser-extension README",
+      "hit": false
+    },
+    {
+      "registry": "chrome-web-store",
+      "query": "store link in link-foundation/perception-app README",
+      "hit": false
+    },
+    {
+      "registry": "chrome-web-store",
+      "query": "store link in link-foundation/deepmemo-app README",
+      "hit": false
+    },
+    {
+      "registry": "chrome-web-store",
+      "query": "store link in link-foundation/sdk README",
+      "hit": false
+    },
+    {
+      "registry": "chrome-web-store",
+      "query": "store link in link-foundation/deep-memo-app README",
+      "hit": false
+    },
+    {
+      "registry": "chrome-web-store",
+      "query": "store link in link-foundation/yachts README",
+      "hit": false
+    },
+    {
+      "registry": "winget",
+      "query": "GitHub code search \"konard repo:microsoft/winget-pkgs\"",
+      "hit": false,
+      "count": 0
+    },
+    {
+      "registry": "winget",
+      "query": "GitHub code search \"linksplatform repo:microsoft/winget-pkgs\"",
+      "hit": false,
+      "count": 0
+    },
+    {
+      "registry": "flathub",
+      "query": "GitHub code search \"konard org:flathub\"",
+      "hit": false,
+      "count": 0
+    },
+    {
+      "registry": "cocoapods",
+      "query": "GitHub code search \"konard repo:CocoaPods/Specs\"",
+      "hit": false,
+      "count": 0
+    }
+  ]
+}

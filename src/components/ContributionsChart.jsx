@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { useLang } from '../i18n/prefs';
+import { DataMark } from './DataSources';
 import { plural } from '../i18n/plural';
 import { formatCompact, formatNumber, formatPercent, SERIES } from './format';
 import { Tooltip, useTooltip } from './Tooltip';
@@ -76,8 +77,9 @@ export default function ContributionsChart({ data }) {
     <div className="chart" data-tooltip-root>
       <div className="chart__toolbar">
         <p className="chart__caption">
-          {t({ en: 'Public GitHub contributions per year · peak', ru: 'Публичный вклад на GitHub по годам · пик —' })}{' '}
+          {t({ en: 'GitHub contributions per year · peak', ru: 'Вклад на GitHub по годам · пик —' })}{' '}
           <strong>{number(peak.total)}</strong> {t({ en: `in ${peak.year}`, ru: `в ${peak.year} году` })}
+          <DataMark />
         </p>
         <div className="segmented" role="group" aria-label={t({ en: 'Y axis scale', ru: 'Шкала оси Y' })}>
           {['log', 'linear'].map((s) => (

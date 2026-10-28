@@ -452,15 +452,29 @@ describe('HabrCards', () => {
 
   it('refreshes views, karma and bookmarks from the Habr API', async () => {
     const fetchImpl = (url) => {
-      if (url.includes('/card')) return json({ statistics: { rating: 99.5, subscribersCount: 1234 } });
+      if (url.includes('/card'))
+        return json({
+          statistics: { rating: 99.5, subscribersCount: 1234 },
+          scoreStats: { score: 77, votesCount: 80 },
+          followStats: { followersCount: 100 },
+        });
       return json({
         pagesCount: 1,
-        publicationIds: [first.id],
-        publicationRefs: {
-          [first.id]: {
-            statistics: { readingCount: 987654, score: 77, votesCount: 80, favoritesCount: 4321, commentsCount: 12 },
-          },
-        },
+        publicationIds: habr.articles.map((article) => article.id),
+        publicationRefs: Object.fromEntries(
+          habr.articles.map((article) => [
+            article.id,
+            {
+              statistics: {
+                readingCount: article.id === first.id ? 987654 : article.statistics.views,
+                score: article.statistics.score,
+                votesCount: article.statistics.votes,
+                favoritesCount: article.id === first.id ? 4321 : article.statistics.bookmarks,
+                commentsCount: article.statistics.comments,
+              },
+            },
+          ]),
+        ),
       });
     };
     render(<HabrCards snapshot={habr} fetchImpl={fetchImpl} />);

@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { useLang } from '../i18n/prefs';
 import { useNotation } from '../links/notation';
 import { formatNumber } from './format';
+import { DataMark } from './DataSources';
 
 const ALL = 'All';
 
@@ -64,7 +65,9 @@ export default function Projects({ featured, projects }) {
               <span style={{ width: `${(p.stars / maxStars) * 100}%` }} />
             </div>
             <p className="project__meta">
-              <span>★ {formatNumber(p.stars, lang)}</span>
+              <span>
+                ★ {formatNumber(p.stars, lang)} <DataMark />
+              </span>
               {p.language && <span>{p.language}</span>}
               {p.createdYear && <span>{t({ en: `since ${p.createdYear}`, ru: `с ${p.createdYear}` })}</span>}
             </p>

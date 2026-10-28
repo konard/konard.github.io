@@ -309,7 +309,7 @@ describe('BlogPage', () => {
     const shown = [...posts.children].map((li) => li.querySelector('.post__network').textContent);
     const expected = stories.map((s) => ({ x: 'X', vk: 'VK', telegram: 'Telegram' })[pick(s, 'en').network]);
     expect(shown).toEqual(expected);
-    expect(screen.getAllByRole('button', { name: 'Show embed' }).length).toBeGreaterThan(0);
+    expect(screen.getAllByRole('button', { name: 'Show archived copy' }).length).toBeGreaterThan(0);
   });
 
   it('shows the Russian version from VK for Russian readers and filters by language', () => {
@@ -346,12 +346,14 @@ describe('BlogPage', () => {
     expect(screen.getAllByText('Picture no longer available').length).toBeGreaterThan(0);
   });
 
-  it('embeds the X post on demand', () => {
+  it('embeds X first and offers an archived copy and retry', () => {
     const { container } = render(<BlogPage initialLanguage="en" />);
-    fireEvent.click(screen.getAllByRole('button', { name: 'Show embed' })[0]);
     expect(container.querySelector('iframe.post__embed').getAttribute('src')).toMatch(
       /^https:\/\/platform\.twitter\.com\/embed\/Tweet\.html\?id=\d+/,
     );
+    fireEvent.click(screen.getAllByRole('button', { name: 'Show archived copy' })[0]);
+    fireEvent.click(screen.getByRole('button', { name: 'Show embed' }));
+    expect(container.querySelectorAll('iframe.post__embed').length).toBeGreaterThan(0);
   });
 });
 

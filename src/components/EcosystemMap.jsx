@@ -2,6 +2,7 @@ import { useLang } from '../i18n/prefs';
 import { plural } from '../i18n/plural';
 import { formatNumber, SERIES } from './format';
 import { Tooltip, useTooltip } from './Tooltip';
+import { DataMark } from './DataSources';
 
 const SIZE = 520;
 const C = SIZE / 2;
@@ -100,6 +101,7 @@ export default function EcosystemMap({ owners, avatarUrl }) {
         ))}
       </svg>
       <Tooltip tip={tip} />
+      <DataMark />
     </div>
   );
 }

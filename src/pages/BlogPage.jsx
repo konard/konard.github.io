@@ -3,7 +3,8 @@ import Layout from '../components/Layout';
 import Section from '../components/Section';
 import { formatNumber } from '../components/format';
 import archive from '../data/posts.json';
-import { useLang } from '../i18n/prefs';
+import { useLang, useResolvedTheme } from '../i18n/prefs';
+import { DataMark } from '../components/DataSources';
 import { plural } from '../i18n/plural';
 import { dedupe, pick, visibleFor } from './feed';
 import { useQueryParam } from './query';
@@ -37,18 +38,33 @@ const date = (iso, lang) =>
     day: 'numeric',
   });
 
-// The official X embed as an iframe (no third-party script on the page). VK
-// wall embeds need a per-post hash that is only issued to logged-in users, so
-// VK posts are always shown from the archive.
-function XEmbed({ id }) {
+// Only use provider-issued public embed identifiers. VK needs an export hash;
+// a wall URL alone is not a usable widget. Unsupported posts keep their archive.
+export function embedUrl(embed, theme) {
+  if (embed?.type === 'x' && /^\d+$/.test(embed.id))
+    return `https://platform.twitter.com/embed/Tweet.html?id=${embed.id}&theme=${theme}&dnt=true`;
+  if (embed?.type === 'telegram' && /^[a-zA-Z0-9_]+\/\d+$/.test(embed.id))
+    return `https://t.me/${embed.id}?embed=1&mode=tme${theme === 'dark' ? '&dark=1' : ''}`;
+  if (embed?.type === 'vk' && /^-?\d+_\d+$/.test(embed.id) && /^[a-zA-Z0-9_-]+$/.test(embed.hash || '')) {
+    const [owner, post] = embed.id.split('_');
+    return `https://vk.com/widget_post.php?owner_id=${owner}&post_id=${post}&hash=${embed.hash}&width=auto`;
+  }
+  return null;
+}
+
+function SocialEmbed({ src, network, onError }) {
   const { t } = useLang();
   return (
     <iframe
       className="post__embed"
-      title={t({ en: 'Post on X', ru: 'Запись в X' })}
-      src={`https://platform.twitter.com/embed/Tweet.html?id=${id}&theme=dark&dnt=true`}
+      title={t({ en: `Post on ${NETWORKS[network]}`, ru: `Запись в ${NETWORKS[network]}` })}
+      src={src}
       loading="lazy"
       sandbox="allow-scripts allow-same-origin allow-popups"
+      referrerPolicy="no-referrer"
+      ref={(node) => {
+        if (node) node.onerror = onError;
+      }}
     />
   );
 }
@@ -88,12 +104,23 @@ function Media({ items }) {
   );
 }
 
-/** One story: the version for the reader, links to the other versions and the original embed on demand. */
+/** Prefer the original public message; keep a readable archive even when a provider is blocked. */
 export function Story({ story, lang }) {
   const post = pick(story, lang);
-  const [embedded, setEmbedded] = useState(false);
+  const [embedded, setEmbedded] = useState(true);
+  const [failed, setFailed] = useState(false);
+  const theme = useResolvedTheme();
+  const src = embedUrl(post.embed, theme);
+  const showEmbed = src && embedded && !failed;
   const others = story.posts.filter((p) => p !== post);
   const { t } = useLang();
+  const archived = (
+    <>
+      {/* Collector permits formatting tags and http(s) links only. */}
+      {post.html && <div className="post__body" dangerouslySetInnerHTML={{ __html: post.html }} />}
+      <Media items={post.media} />
+    </>
+  );
   return (
     <li className="post" lang={post.lang}>
       <header className="post__head">
@@ -109,19 +136,43 @@ export function Story({ story, lang }) {
           </a>
         )}
       </header>
-      {embedded && post.embed?.type === 'x' ? (
-        <XEmbed id={post.embed.id} />
+      {showEmbed ? (
+        <>
+          <SocialEmbed src={src} network={post.network} onError={() => setFailed(true)} />
+          <details className="post__fallback">
+            <summary>
+              {t({
+                en: 'Historical copy if the original is unavailable',
+                ru: 'Сохранённая копия, если оригинал недоступен',
+              })}{' '}
+              <DataMark />
+            </summary>
+            {archived}
+          </details>
+        </>
       ) : (
         <>
-          {/* The archived HTML is sanitized by experiments/archive-posts.cjs: only formatting tags and http(s) links. */}
-          {post.html && <div className="post__body" dangerouslySetInnerHTML={{ __html: post.html }} />}
-          <Media items={post.media} />
+          <p className="muted">
+            {t({
+              en: 'Historical copy · original embed unavailable',
+              ru: 'Сохранённая копия · оригинальный виджет недоступен',
+            })}{' '}
+            <DataMark />
+          </p>
+          {archived}
         </>
       )}
       <footer className="post__foot">
-        {post.embed?.type === 'x' && (
-          <button type="button" className="button button--small" onClick={() => setEmbedded(!embedded)}>
-            {embedded
+        {src && (
+          <button
+            type="button"
+            className="button button--small"
+            onClick={() => {
+              setEmbedded(!showEmbed);
+              setFailed(false);
+            }}
+          >
+            {showEmbed
               ? t({ en: 'Show archived copy', ru: 'Показать сохранённую копию' })
               : t({ en: 'Show embed', ru: 'Показать оригинал' })}
           </button>
@@ -180,7 +231,8 @@ export default function BlogPage({ initialLanguage }) {
           {t({
             en: `${number(archive.posts.length)} ${words(archive.posts.length, POSTS)} from ${sources} in ${number(stories.length)} ${words(stories.length, STORIES)}: ${number(merged)} ${words(merged, TRANSLATIONS)} merged, and every story is shown once, from X for English readers and from VK for Russian readers.`,
             ru: `${number(archive.posts.length)} ${words(archive.posts.length, POSTS)} из ${sources} в ${number(stories.length)} ${words(stories.length, IN_STORIES)}: ${number(merged)} ${words(merged, TRANSLATIONS)}, и каждая история показана один раз — из X для англоязычных читателей и из VK для русскоязычных.`,
-          })}
+          })}{' '}
+          <DataMark />
         </p>
       </header>
 
@@ -229,7 +281,7 @@ export default function BlogPage({ initialLanguage }) {
         </div>
         <ol className="posts" aria-label={t({ en: 'Posts', ru: 'Записи' })}>
           {list.map((s) => (
-            <Story key={s.id} story={s} lang={lang} />
+            <Story key={`${s.id}:${lang}`} story={s} lang={lang} />
           ))}
         </ol>
         <p className="muted posts__note">

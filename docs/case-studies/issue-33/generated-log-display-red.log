@@ -1,0 +1,44 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793202346423
+
+ ❯ src/data/data.test.js (26 tests | 1 failed | 25 skipped) 27ms
+   ❯ repositories that are not shown (issue #9) (7)
+     × generated logs are excluded from the displayed source catalog 21ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/data/data.test.js > repositories that are not shown (issue #9) > generated logs are excluded from the displayed source catalog
+AssertionError: expected [ { owner: 'konard', …(2) }, …(1) ] to deeply equal [ { owner: 'konard', …(2) } ]
+
+- Expected
++ Received
+
+  [
+    {
++     "fullName": "konard/public-logs",
++     "name": "public-logs",
++     "owner": "konard",
++   },
++   {
+      "fullName": "konard/log-it",
+      "name": "log-it",
+      "owner": "konard",
+    },
+  ]
+
+ ❯ src/data/data.test.js:115:57
+    113|     const logs = { owner: 'konard', name: 'public-logs', fullName: 'ko…
+    114|     const source = { owner: 'konard', name: 'log-it', fullName: 'konar…
+    115|     expect(shownRepositories([logs, source], {}).shown).toEqual([sourc…
+       |                                                         ^
+    116|   });
+    117|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 25 skipped (26)
+   Start at  17:47:59
+   Duration  4.88s (environment 59%, setup 21%, transform 12%, import 5%, worker 2%, tests 1%)
+

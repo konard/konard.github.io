@@ -1,0 +1,167 @@
+.data-mark {
+  font-size: 0.72em;
+  vertical-align: super;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.snapshot-notice {
+  margin: 1rem 0;
+  color: var(--text-2);
+  font-size: 0.8rem;
+}
+.stat__value .data-mark {
+  font-size: 0.75rem;
+}
+.data-sources {
+  flex-basis: 100%;
+  text-align: left;
+  max-width: 70rem;
+  margin: 1rem auto 0;
+  line-height: 1.6;
+}
+.data-sources summary {
+  cursor: pointer;
+}
+.contribution-calendar {
+  padding: 1.3rem;
+  border: 1px solid var(--line, #30363d);
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  min-width: 0;
+  background: var(--surface);
+  /* Current GitHub/Primer contribution tokens, verified on the public profile. */
+  --contribution-0: #151b23;
+  --contribution-1: #033a16;
+  --contribution-2: #196c2e;
+  --contribution-3: #2ea043;
+  --contribution-4: #56d364;
+}
+[data-theme='light'] .contribution-calendar {
+  --contribution-0: #eff2f5;
+  --contribution-1: #aceebb;
+  --contribution-2: #4ac26b;
+  --contribution-3: #2da44e;
+  --contribution-4: #116329;
+}
+.contribution-calendar__heading,
+.contribution-calendar__legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+.contribution-calendar__heading h3 {
+  margin: 0;
+}
+.contribution-calendar__scroll {
+  overflow-x: auto;
+  max-width: 100%;
+  margin: 1.25rem 0 0.5rem;
+}
+.contribution-calendar__scroll svg {
+  display: block;
+  max-width: none;
+}
+.contribution-calendar__label {
+  fill: var(--text-2, #8b949e);
+  font:
+    10px system-ui,
+    sans-serif;
+}
+.contribution-calendar__day {
+  stroke: #80808022;
+  stroke-width: 1;
+}
+.contribution-calendar [data-level='0'] {
+  fill: var(--contribution-0);
+  background: var(--contribution-0);
+}
+.contribution-calendar [data-level='1'] {
+  fill: var(--contribution-1);
+  background: var(--contribution-1);
+}
+.contribution-calendar [data-level='2'] {
+  fill: var(--contribution-2);
+  background: var(--contribution-2);
+}
+.contribution-calendar [data-level='3'] {
+  fill: var(--contribution-3);
+  background: var(--contribution-3);
+}
+.contribution-calendar [data-level='4'] {
+  fill: var(--contribution-4);
+  background: var(--contribution-4);
+}
+.contribution-calendar__legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+}
+.contribution-calendar__legend i {
+  width: 11px;
+  height: 11px;
+  border-radius: 2px;
+}
+.discipline {
+  border-left: 3px solid #26a641;
+  padding-left: 1rem;
+  margin-top: 1.5rem;
+}
+.source-lines {
+  margin-top: 2.5rem;
+}
+.source-lines__total strong {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-variant-numeric: tabular-nums;
+}
+.source-lines__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.source-lines__table th,
+.source-lines__table td {
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--line, #30363d);
+}
+.source-lines__table th {
+  text-align: left;
+}
+.source-lines__table td {
+  position: relative;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.source-lines__table td > span:last-child {
+  position: relative;
+}
+.source-lines__bar {
+  position: absolute;
+  inset: 15% auto 15% 0;
+  width: var(--line-share);
+  background: #26a64124;
+  border-radius: 3px;
+}
+.repo__lines {
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  overflow-wrap: anywhere;
+}
+.repo__lines summary {
+  cursor: pointer;
+}
+.post__fallback {
+  margin: 0.75rem 0;
+}
+.post__fallback summary {
+  cursor: pointer;
+}
+@media (max-width: 600px) {
+  .contribution-calendar {
+    padding: 0.8rem;
+  }
+  .source-lines__table {
+    font-size: 0.8rem;
+  }
+}
