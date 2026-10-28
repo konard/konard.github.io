@@ -124,6 +124,17 @@ describe('GitHub Actions best practices', () => {
     expect(doc.jobs.deploy.concurrency.group).toBe('main-writer-${{ github.repository }}-main');
   });
 
+  test('CodeQL scans all maintained source when a PR exceeds the diff API limit', () => {
+    const doc = yaml.load(fs.readFileSync(path.join(workflowsDir, 'github-pages.yml'), 'utf8'));
+    const job = doc.jobs.codeql;
+    expect(job.strategy.matrix.language).toEqual(['javascript-typescript', 'python', 'actions']);
+    expect(job.env?.CODEQL_ACTION_DIFF_INFORMED_QUERIES).toBe('false');
+    const config = yaml.load(fs.readFileSync(path.join(workflowsDir, '../codeql/codeql-config.yml'), 'utf8'));
+    expect(config['disable-default-queries']).not.toBe(true);
+    expect(config['paths-ignore']).not.toContain('src');
+    expect(config['paths-ignore']).not.toContain('scripts');
+  });
+
   test('deploy publishes the tested build instead of rebuilding it', () => {
     const doc = yaml.load(fs.readFileSync(path.join(workflowsDir, 'github-pages.yml'), 'utf8'));
     expect(doc.jobs.deploy.needs).toContain('test');

@@ -31,7 +31,7 @@
   have no target in this private static website.
 - The latest fetched default branch is 508cfed490c3946fffca440f8f2d31a8733b8d35
   and is already an ancestor of this branch. No merge or history rewrite is needed.
-- Local final validation: 53 suites / 798 tests, source checks, native build,
+- Local final validation: 53 suites / 799 tests, source checks, native build,
   Python/Ruff/ShellCheck, workflow/security audits, zero lockfile advisories,
   six Chromium browser suites and all 120 PDFs. The local gallery probe was
   stopped by its memory guard; the full case passed on all hosted engines.
@@ -50,3 +50,11 @@ approved. The regression covers optional packages on all locked platforms and
 requires a new review after any version change. VERIFICATION.md records the
 warning locations, before/after probe and requirement mapping. Final-head CI
 must show clean npm output on macOS in addition to passing statuses.
+
+The expanded evidence also crosses CodeQL's 300-file compare API boundary.
+All language jobs now explicitly perform full analysis, preserving the default
+queries and all maintained source. The official action's feature definition and
+behavioral test confirm the setting, and a workflow regression fails before the
+change and passes after it. Shared reports JS 265 and Python 121 document the
+same default configuration in both templates. Final hosted verification checks
+that all three security scans run without diff-limit warnings.

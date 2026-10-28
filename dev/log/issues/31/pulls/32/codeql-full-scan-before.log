@@ -1,0 +1,38 @@
+
+> konard.github.io@0.1.0 test:ci
+> vitest run src/workflow.test.js
+
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793179854506
+
+ ❯ src/workflow.test.js (15 tests | 1 failed) 122ms
+   ❯ GitHub Actions best practices (8)
+     × CodeQL scans all maintained source when a PR exceeds the diff API limit 39ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/workflow.test.js > GitHub Actions best practices > CodeQL scans all maintained source when a PR exceeds the diff API limit
+AssertionError: expected undefined to be 'false' // Object.is equality
+
+- Expected:
+"false"
+
++ Received:
+undefined
+
+ ❯ src/workflow.test.js:131:58
+    129|     const job = doc.jobs.codeql;
+    130|     expect(job.strategy.matrix.language).toEqual(['javascript-typescri…
+    131|     expect(job.env?.CODEQL_ACTION_DIFF_INFORMED_QUERIES).toBe('false');
+       |                                                          ^
+    132|     const config = yaml.load(fs.readFileSync(path.join(workflowsDir, '…
+    133|     expect(config['disable-default-queries']).not.toBe(true);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 14 passed (15)
+   Start at  10:50:04
+   Duration  2.99s (environment 63%, transform 17%, setup 12%, tests 5%, import 2%, worker 1%)
+

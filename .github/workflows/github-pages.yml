@@ -384,6 +384,10 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
 
   codeql:
+    # Evidence-heavy PRs can exceed GitHub's 300-file compare API limit.
+    # Run full analysis for every language instead of requesting a partial diff.
+    env:
+      CODEQL_ACTION_DIFF_INFORMED_QUERIES: 'false'
     concurrency:
       group: check-${{ github.workflow }}-${{ github.ref }}-codeql-${{ matrix.language }}
       cancel-in-progress: true

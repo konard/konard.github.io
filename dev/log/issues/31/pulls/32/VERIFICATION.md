@@ -100,9 +100,34 @@ and emits a sentinel advisory. The reviewed exact-version approval preserves
 existing installation behavior without approving other packages or versions.
 Published/registry manifests and the tar inventory are archived as
 `fsevents-2.3.3-*`; deleting valid registry-derived lock metadata, blanket script
-approval and hiding npm warnings were rejected. The templates do not use this
-dependency; their artifact defect reports remain applicable independently.
+approval and hiding npm warnings were rejected. The JS template's universal-app
+example already records a fsevents review; the website root lacked that policy.
+Their artifact defect reports remain applicable independently.
 Final verification must inspect raw logs as well as check annotations.
+
+Run 40674729926 at b9e68d463783128440e3a410b543cff3ec61a3a6 then exposed
+CodeQL's 300-file compare API boundary: the PR had grown to 314 changed files.
+All three CodeQL jobs succeeded but warned about a truncated diff. Selecting
+full analysis explicitly avoids requesting that diff and preserves all default
+queries. `codeql-full-scan-before.log` reproduces the missing workflow policy;
+`codeql-full-scan-after.log` passes all 15 workflow regressions after correction.
+`codeql-diff-limit-source.log` and `codeql-action-sha.txt` preserve the official
+action's boundary, flag and upstream behavioral test. The final hosted run must
+verify full analysis for JavaScript, Python and Actions without those warnings.
+Both templates inherit the same v4 default: JS issue 265 and Python issue 121
+report that shared limitation, without claiming their own runs were observed
+failing. Source/workflow lint and both security audit modes are preserved in
+the `*-codeql-final.log` files.
+
+The completed macOS browser job in that run passed all seven suites and its
+actual npm 11.19.0 install is now clean: `ci-logs/macos-script-review-122770649627.log`
+lines 245–250 record 534 packages installed and zero advisories, with no npm
+warnings. `ci-logs/codeql-limit-122770237784.log:1066` preserves the separate
+CodeQL warning before the full-scan setting. These completed job logs were
+downloaded directly through GitHub's job-log API while the overall run finished.
+
+`unit-codeql-final.log` records the final complete local run: 53 suites and
+799 tests passed. `check-codeql-final.log` records all source gates passing.
 
 A PR deliberately skips deployment. No live site was overwritten from this
 branch. Deployment verification is exercised through local HTTP server fixtures

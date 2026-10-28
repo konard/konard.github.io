@@ -1,0 +1,84 @@
+diff-informed-analysis-utils.ts:25-55
+ * Get the branches to use for diff-informed analysis.
+ *
+ * @returns If the action should perform diff-informed analysis, return
+ * the base and head branches that should be used to compute the diff ranges.
+ * Otherwise return `undefined`.
+ */
+export async function getDiffInformedAnalysisBranches(
+  codeql: CodeQL,
+  features: FeatureEnablement,
+  logger: Logger,
+): Promise<PullRequestBranches | undefined> {
+  if (!(await features.getValue(Feature.DiffInformedQueries, codeql))) {
+    return undefined;
+  }
+
+  const gitHubVersion = await getGitHubVersion();
+  if (
+    gitHubVersion.type === GitHubVariant.GHES &&
+    satisfiesGHESVersion(gitHubVersion.version, "<3.19", true)
+  ) {
+    return undefined;
+  }
+
+  const branches = actionsUtil.getPullRequestBranches();
+  if (!branches) {
+    logger.info(
+      "Not performing diff-informed analysis " +
+        "because we are not analyzing a pull request.",
+    );
+  }
+  return branches;
+diff-informed-analysis-utils.ts:142-170
+ * @returns An array of tuples, where each tuple contains the relative path of a
+ * file (relative to the repository root, as returned by the GitHub compare API),
+ * the start line and the end line (both 1-based and inclusive) of an
+ * added or modified range in that file. Returns `undefined` if the action was
+ * not triggered by a pull request or if there was an error.
+ */
+export async function getPullRequestEditedDiffRanges(
+  branches: PullRequestBranches,
+  logger: Logger,
+): Promise<DiffThunkRange[] | undefined> {
+  const fileDiffs = await getFileDiffsWithBasehead(branches, logger);
+  if (fileDiffs === undefined) {
+    return undefined;
+  }
+  if (fileDiffs.length >= 300) {
+    // The "compare two commits" API returns a maximum of 300 changed files. If
+    // we see that many changed files, it is possible that there could be more,
+    // with the rest being truncated. In this case, we should not attempt to
+    // compute the diff ranges, as the result would be incomplete.
+    logger.warning(
+      `Cannot retrieve the full diff because there are too many ` +
+        `(${fileDiffs.length}) changed files in the pull request.`,
+    );
+    return undefined;
+  }
+  const results: DiffThunkRange[] = [];
+  for (const filediff of fileDiffs) {
+    const diffRanges = getDiffRanges(filediff, logger);
+    if (diffRanges === undefined) {
+diff-informed-analysis-utils.test.ts:111-122
+);
+
+testShouldPerformDiffInformedAnalysis.serial(
+  "returns false when CODEQL_ACTION_DIFF_INFORMED_QUERIES is set to false",
+  {
+    featureEnabled: true,
+    diffInformedQueriesEnvVar: false,
+  },
+  false,
+);
+
+testShouldPerformDiffInformedAnalysis.serial(
+feature-flags.ts:241-248
+    minimumVersion: undefined,
+  },
+  [Feature.DiffInformedQueries]: {
+    defaultValue: true,
+    envVar: "CODEQL_ACTION_DIFF_INFORMED_QUERIES",
+    minimumVersion: "2.21.0",
+  },
+  [Feature.DisableCsharpBuildless]: {

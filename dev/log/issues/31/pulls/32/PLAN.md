@@ -10,10 +10,11 @@ Objective: implement and verify all issue requirements in this PR; preserve evid
 - [x] Research existing components and official documentation; record alternatives and solution plans per requirement.
 - [x] Add focused reproducing tests before fixing actual defects; bound resource use and preserve experiments.
 - [x] Apply fixes across all affected paths, preserving existing behavior; report shared defects to template repositories when applicable.
-- [x] Run all local tests and CI checks and inspect logs: 798 tests, production build, 120 PDFs, six browser suites locally and the full seven-suite/three-engine hosted matrix.
+- [x] Run all local tests and CI checks and inspect logs: 799 tests, production build, 120 PDFs, six browser suites locally and the full seven-suite/three-engine hosted matrix.
 - [x] Verify the first implementation CI against its exact SHA and archive the complete successful run, with no warning/error annotations.
 - [x] Review the PR diff and requirements/evidence mapping; confirm current main (508cfed) is already an ancestor; update title/body with Fixes #31 and preserve upstream reports.
 - [x] Inspect raw hosted logs in addition to annotations; reproduce and resolve the macOS-only npm script-review advisory with an exact-version approval and an all-platform regression.
+- [x] Resolve the evidence-heavy PR's CodeQL 300-file diff warning by selecting full analysis for every language; report the shared template configuration limitation and verify the workflow regression.
 
 Finalization protocol: commit this evidence and the reviewed source-archive fix,
 push only issue-31-ec772c60ce96, await all checks on that exact final head, inspect
