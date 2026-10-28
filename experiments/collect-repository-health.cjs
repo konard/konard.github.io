@@ -3,7 +3,7 @@
 // visitor (issue 9): empty repositories (only a README and a license, like
 // konard/TheAnime) and broken forks (history started by another account in a
 // repository that no longer exists publicly, like konard/slava).
-// For every repository of docs/case-studies/issue-7/data/repositories.json it
+// For every repository of docs/case-studies/issue-33/data/repositories.json it
 // records the disk usage, the top-level files with their sizes, the number of commits, the root
 // commit (date and GitHub login of its author, never an e-mail) and, for
 // copies of other repositories, whether the original is public.
@@ -17,10 +17,10 @@ const root = path.join(__dirname, '..');
 const args = process.argv.slice(2);
 const verbose = args.includes('--verbose');
 const OUT =
-  args.find((a) => !a.startsWith('--')) || path.join(root, 'docs/case-studies/issue-9/data/repository-health.json');
+  args.find((a) => !a.startsWith('--')) || path.join(root, 'docs/case-studies/issue-33/data/repository-health.json');
 const only = (args.find((a) => a.startsWith('--only=')) || '').slice('--only='.length).split(',').filter(Boolean);
 const repos = JSON.parse(
-  fs.readFileSync(path.join(root, 'docs/case-studies/issue-7/data/repositories.json'), 'utf8'),
+  fs.readFileSync(path.join(root, 'docs/case-studies/issue-33/data/repositories.json'), 'utf8'),
 ).filter((r) => !only.length || only.includes(r.fullName));
 const { CLIENTS } = require('../scripts/repositories.cjs');
 const log = (...a) => verbose && console.error(...a);
