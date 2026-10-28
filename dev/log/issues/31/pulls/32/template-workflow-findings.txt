@@ -1,0 +1,391 @@
+/tmp/issue31-templates/js/.github/workflows/release.yml:12:  workflow_dispatch:
+/tmp/issue31-templates/js/.github/workflows/release.yml:55:    timeout-minutes: 5
+/tmp/issue31-templates/js/.github/workflows/release.yml:63:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/release.yml:66:    if: github.event_name != 'workflow_dispatch'
+/tmp/issue31-templates/js/.github/workflows/release.yml:95:    timeout-minutes: 5
+/tmp/issue31-templates/js/.github/workflows/release.yml:96:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/release.yml:115:    timeout-minutes: 5
+/tmp/issue31-templates/js/.github/workflows/release.yml:116:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/release.yml:147:    timeout-minutes: 5
+/tmp/issue31-templates/js/.github/workflows/release.yml:148:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/release.yml:173:    timeout-minutes: 10
+/tmp/issue31-templates/js/.github/workflows/release.yml:174:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/release.yml:218:    timeout-minutes: 10
+/tmp/issue31-templates/js/.github/workflows/release.yml:219:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/release.yml:226:        github.event_name == 'workflow_dispatch' ||
+/tmp/issue31-templates/js/.github/workflows/release.yml:262:          git status --short
+/tmp/issue31-templates/js/.github/workflows/release.yml:286:    # expire first. A job killed by timeout-minutes reports *cancelled*,
+/tmp/issue31-templates/js/.github/workflows/release.yml:287:    # which hides the failure -- see docs/CI-TIMEOUT-BUDGETS.md.
+/tmp/issue31-templates/js/.github/workflows/release.yml:288:    timeout-minutes: 15
+/tmp/issue31-templates/js/.github/workflows/release.yml:289:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/release.yml:300:    # Use !cancelled() instead of always() so cancellation propagates correctly (hive-mind issue #1278)
+/tmp/issue31-templates/js/.github/workflows/release.yml:309:          github.event_name == 'workflow_dispatch' &&
+/tmp/issue31-templates/js/.github/workflows/release.yml:365:        # --timeout caps an *individual* test at 30s, matching Node's
+/tmp/issue31-templates/js/.github/workflows/release.yml:366:        # --test-timeout budget while leaving headroom for cold runners.
+/tmp/issue31-templates/js/.github/workflows/release.yml:370:        run: bash scripts/run-with-budget-warning.sh 200 "Bun test suite" bun test --timeout 30000
+/tmp/issue31-templates/js/.github/workflows/release.yml:393:    timeout-minutes: 30
+/tmp/issue31-templates/js/.github/workflows/release.yml:394:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/release.yml:420:        # it declares its deadline with a step-level timeout-minutes: an
+/tmp/issue31-templates/js/.github/workflows/release.yml:423:        timeout-minutes: 20
+/tmp/issue31-templates/js/.github/workflows/release.yml:445:    timeout-minutes: 5
+/tmp/issue31-templates/js/.github/workflows/release.yml:446:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/release.yml:478:    timeout-minutes: 5
+/tmp/issue31-templates/js/.github/workflows/release.yml:501:                (github.event_name == 'workflow_dispatch' && github.event.inputs.release_mode == 'instant')
+/tmp/issue31-templates/js/.github/workflows/release.yml:528:    timeout-minutes: 65
+/tmp/issue31-templates/js/.github/workflows/release.yml:529:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/release.yml:533:    # Use !cancelled() instead of always() so cancellation propagates correctly (hive-mind issue #1278)
+/tmp/issue31-templates/js/.github/workflows/release.yml:613:          RELEASE_METADATA_PATHS: ${{ vars.RELEASE_METADATA_PATHS }}
+/tmp/issue31-templates/js/.github/workflows/release.yml:658:  # Manual Instant Release - triggered via workflow_dispatch with instant mode
+/tmp/issue31-templates/js/.github/workflows/release.yml:679:      github.event_name == 'workflow_dispatch' &&
+/tmp/issue31-templates/js/.github/workflows/release.yml:688:    timeout-minutes: 65
+/tmp/issue31-templates/js/.github/workflows/release.yml:689:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/release.yml:736:          RELEASE_METADATA_PATHS: ${{ vars.RELEASE_METADATA_PATHS }}
+/tmp/issue31-templates/js/.github/workflows/release.yml:778:    timeout-minutes: 45
+/tmp/issue31-templates/js/.github/workflows/release.yml:779:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/release.yml:833:    timeout-minutes: 30
+/tmp/issue31-templates/js/.github/workflows/release.yml:852:        # Step-level budget below the job's timeout-minutes backstop; see
+/tmp/issue31-templates/js/.github/workflows/release.yml:853:        # docs/CI-TIMEOUT-BUDGETS.md.
+/tmp/issue31-templates/js/.github/workflows/release.yml:854:        timeout-minutes: 20
+/tmp/issue31-templates/js/.github/workflows/release.yml:873:        uses: actions/upload-artifact@v7
+/tmp/issue31-templates/js/.github/workflows/release.yml:884:    timeout-minutes: 30
+/tmp/issue31-templates/js/.github/workflows/release.yml:885:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/release.yml:958:      github.event_name == 'workflow_dispatch' &&
+/tmp/issue31-templates/js/.github/workflows/release.yml:963:    timeout-minutes: 10
+/tmp/issue31-templates/js/.github/workflows/release.yml:964:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/release.yml:1034:  # GitHub reports jobs killed by timeout-minutes as cancelled rather than
+/tmp/issue31-templates/js/.github/workflows/release.yml:1037:  pipeline-status:
+/tmp/issue31-templates/js/.github/workflows/release.yml:1038:    name: Pipeline Status
+/tmp/issue31-templates/js/.github/workflows/release.yml:1040:    timeout-minutes: 5
+/tmp/issue31-templates/js/.github/workflows/release.yml:1041:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/release.yml:1042:      group: check-${{ github.workflow }}-${{ github.ref }}-pipeline-status
+/tmp/issue31-templates/js/.github/workflows/release.yml:1078:        run: bash scripts/check-pipeline-status.sh
+/tmp/issue31-templates/python/.github/workflows/security.yml:19:  dependency-audit:
+/tmp/issue31-templates/python/.github/workflows/security.yml:20:    name: Audit Resolved Python Dependencies
+/tmp/issue31-templates/python/.github/workflows/security.yml:22:    timeout-minutes: 15
+/tmp/issue31-templates/python/.github/workflows/security.yml:23:    concurrency:
+/tmp/issue31-templates/python/.github/workflows/security.yml:24:      group: check-${{ github.workflow }}-${{ github.ref }}-dependency-audit
+/tmp/issue31-templates/python/.github/workflows/security.yml:36:      - name: Audit pyproject.toml and docs/requirements.txt
+/tmp/issue31-templates/python/.github/workflows/security.yml:37:        run: python scripts/audit_dependencies.py
+/tmp/issue31-templates/python/.github/workflows/security.yml:39:  codeql:
+/tmp/issue31-templates/python/.github/workflows/security.yml:40:    name: CodeQL (${{ matrix.language }})
+/tmp/issue31-templates/python/.github/workflows/security.yml:42:    timeout-minutes: 30
+/tmp/issue31-templates/python/.github/workflows/security.yml:43:    concurrency:
+/tmp/issue31-templates/python/.github/workflows/security.yml:44:      group: check-${{ github.workflow }}-${{ github.ref }}-codeql-${{ matrix.language }}
+/tmp/issue31-templates/python/.github/workflows/security.yml:58:      - name: Initialize CodeQL
+/tmp/issue31-templates/python/.github/workflows/security.yml:59:        uses: github/codeql-action/init@v4
+/tmp/issue31-templates/python/.github/workflows/security.yml:62:          config-file: ./.github/codeql/codeql-config.yml
+/tmp/issue31-templates/python/.github/workflows/security.yml:65:        uses: github/codeql-action/autobuild@v4
+/tmp/issue31-templates/python/.github/workflows/security.yml:68:        uses: github/codeql-action/analyze@v4
+/tmp/issue31-templates/python/.github/workflows/security.yml:73:    timeout-minutes: 10
+/tmp/issue31-templates/python/.github/workflows/security.yml:97:  # Terminal status gate (issue #69): GitHub reports jobs killed by
+/tmp/issue31-templates/python/.github/workflows/security.yml:98:  # timeout-minutes as cancelled. Observe every other job so a timeout on main
+/tmp/issue31-templates/python/.github/workflows/security.yml:101:  pipeline-status:
+/tmp/issue31-templates/python/.github/workflows/security.yml:102:    name: Pipeline Status
+/tmp/issue31-templates/python/.github/workflows/security.yml:104:      - dependency-audit
+/tmp/issue31-templates/python/.github/workflows/security.yml:105:      - codeql
+/tmp/issue31-templates/python/.github/workflows/security.yml:107:    if: always()
+/tmp/issue31-templates/python/.github/workflows/security.yml:109:    timeout-minutes: 5
+/tmp/issue31-templates/python/.github/workflows/security.yml:115:      - name: Check aggregate pipeline status
+/tmp/issue31-templates/python/.github/workflows/security.yml:120:        run: bash scripts/check-pipeline-status.sh
+/tmp/issue31-templates/js/.github/workflows/security.yml:10:  workflow_dispatch:
+/tmp/issue31-templates/js/.github/workflows/security.yml:24:  codeql:
+/tmp/issue31-templates/js/.github/workflows/security.yml:25:    name: CodeQL (${{ matrix.language }})
+/tmp/issue31-templates/js/.github/workflows/security.yml:27:    timeout-minutes: 30
+/tmp/issue31-templates/js/.github/workflows/security.yml:28:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/security.yml:29:      group: check-${{ github.workflow }}-${{ github.ref }}-codeql-${{ matrix.language }}
+/tmp/issue31-templates/js/.github/workflows/security.yml:44:      - name: Initialize CodeQL
+/tmp/issue31-templates/js/.github/workflows/security.yml:45:        uses: github/codeql-action/init@v4
+/tmp/issue31-templates/js/.github/workflows/security.yml:48:          config-file: ./.github/codeql/codeql-config.yml
+/tmp/issue31-templates/js/.github/workflows/security.yml:51:        uses: github/codeql-action/autobuild@v4
+/tmp/issue31-templates/js/.github/workflows/security.yml:54:        uses: github/codeql-action/analyze@v4
+/tmp/issue31-templates/js/.github/workflows/security.yml:59:    timeout-minutes: 5
+/tmp/issue31-templates/js/.github/workflows/security.yml:60:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/security.yml:87:    timeout-minutes: 10
+/tmp/issue31-templates/js/.github/workflows/security.yml:88:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/security.yml:105:  npm-audit:
+/tmp/issue31-templates/js/.github/workflows/security.yml:106:    name: Audit npm lock (${{ matrix.directory }})
+/tmp/issue31-templates/js/.github/workflows/security.yml:108:    timeout-minutes: 10
+/tmp/issue31-templates/js/.github/workflows/security.yml:109:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/security.yml:110:      group: check-${{ github.workflow }}-${{ github.ref }}-npm-audit-${{ matrix.directory }}
+/tmp/issue31-templates/js/.github/workflows/security.yml:125:      - name: Audit current lock
+/tmp/issue31-templates/js/.github/workflows/security.yml:127:        run: npm audit --package-lock-only --audit-level=high
+/tmp/issue31-templates/js/.github/workflows/security.yml:129:  # Terminal status gate: runs even when the jobs above fail or are
+/tmp/issue31-templates/js/.github/workflows/security.yml:130:  # cancelled, and turns a `timeout-minutes` kill (reported as cancelled)
+/tmp/issue31-templates/js/.github/workflows/security.yml:131:  # into a red run. needs is derived and checked by the status-gate-coverage
+/tmp/issue31-templates/js/.github/workflows/security.yml:133:  pipeline-status:
+/tmp/issue31-templates/js/.github/workflows/security.yml:134:    name: Pipeline Status
+/tmp/issue31-templates/js/.github/workflows/security.yml:136:    timeout-minutes: 5
+/tmp/issue31-templates/js/.github/workflows/security.yml:137:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/security.yml:138:      group: check-${{ github.workflow }}-${{ github.ref }}-pipeline-status
+/tmp/issue31-templates/js/.github/workflows/security.yml:140:    # A status function is required: without one the gate inherits the
+/tmp/issue31-templates/js/.github/workflows/security.yml:146:      - codeql
+/tmp/issue31-templates/js/.github/workflows/security.yml:149:      - npm-audit
+/tmp/issue31-templates/js/.github/workflows/security.yml:165:        run: bash scripts/check-pipeline-status.sh
+/tmp/issue31-templates/js/.github/workflows/links.yml:7:    paths:
+/tmp/issue31-templates/js/.github/workflows/links.yml:19:    paths:
+/tmp/issue31-templates/js/.github/workflows/links.yml:29:  workflow_dispatch:
+/tmp/issue31-templates/js/.github/workflows/links.yml:48:    timeout-minutes: 10
+/tmp/issue31-templates/js/.github/workflows/links.yml:49:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/links.yml:84:            --timeout 30
+/tmp/issue31-templates/js/.github/workflows/links.yml:102:        # Retry transport errors, 429, and 5xx within a shared budget.
+/tmp/issue31-templates/js/.github/workflows/links.yml:126:        uses: actions/upload-artifact@v7
+/tmp/issue31-templates/js/.github/workflows/links.yml:156:  # Terminal status gate: runs even when the jobs above fail or are
+/tmp/issue31-templates/js/.github/workflows/links.yml:157:  # cancelled, and turns a `timeout-minutes` kill (reported as cancelled)
+/tmp/issue31-templates/js/.github/workflows/links.yml:158:  # into a red run. needs is derived and checked by the status-gate-coverage
+/tmp/issue31-templates/js/.github/workflows/links.yml:160:  pipeline-status:
+/tmp/issue31-templates/js/.github/workflows/links.yml:161:    name: Pipeline Status
+/tmp/issue31-templates/js/.github/workflows/links.yml:163:    timeout-minutes: 5
+/tmp/issue31-templates/js/.github/workflows/links.yml:164:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/links.yml:165:      group: check-${{ github.workflow }}-${{ github.ref }}-pipeline-status
+/tmp/issue31-templates/js/.github/workflows/links.yml:167:    # A status function is required: without one the gate inherits the
+/tmp/issue31-templates/js/.github/workflows/links.yml:189:        run: bash scripts/check-pipeline-status.sh
+/tmp/issue31-templates/python/.github/workflows/release.yml:9:  workflow_dispatch:
+/tmp/issue31-templates/python/.github/workflows/release.yml:33:# Concurrency is intentionally job-scoped. Superseded read-only jobs cancel
+/tmp/issue31-templates/python/.github/workflows/release.yml:35:# the terminal status gate reliably treat a cancellation there as a timeout or
+/tmp/issue31-templates/python/.github/workflows/release.yml:37:# concurrency group: a write that has started is never interrupted, and GitHub
+/tmp/issue31-templates/python/.github/workflows/release.yml:45:    timeout-minutes: 5
+/tmp/issue31-templates/python/.github/workflows/release.yml:46:    concurrency:
+/tmp/issue31-templates/python/.github/workflows/release.yml:49:    if: github.event_name != 'workflow_dispatch'
+/tmp/issue31-templates/python/.github/workflows/release.yml:107:    timeout-minutes: 20
+/tmp/issue31-templates/python/.github/workflows/release.yml:108:    concurrency:
+/tmp/issue31-templates/python/.github/workflows/release.yml:113:    # for workflow_dispatch while still propagating workflow cancellation.
+/tmp/issue31-templates/python/.github/workflows/release.yml:116:        github.event_name == 'workflow_dispatch' ||
+/tmp/issue31-templates/python/.github/workflows/release.yml:174:      - name: Run Ruff linting
+/tmp/issue31-templates/python/.github/workflows/release.yml:177:          ruff check .
+/tmp/issue31-templates/python/.github/workflows/release.yml:179:      - name: Check Ruff formatting
+/tmp/issue31-templates/python/.github/workflows/release.yml:182:          ruff format --check .
+/tmp/issue31-templates/python/.github/workflows/release.yml:210:    timeout-minutes: 10
+/tmp/issue31-templates/python/.github/workflows/release.yml:211:    concurrency:
+/tmp/issue31-templates/python/.github/workflows/release.yml:216:    # for workflow_dispatch while still propagating workflow cancellation.
+/tmp/issue31-templates/python/.github/workflows/release.yml:219:        github.event_name == 'workflow_dispatch' ||
+/tmp/issue31-templates/python/.github/workflows/release.yml:244:    timeout-minutes: 5
+/tmp/issue31-templates/python/.github/workflows/release.yml:263:                github.event_name == 'workflow_dispatch'
+/tmp/issue31-templates/python/.github/workflows/release.yml:276:    timeout-minutes: 30
+/tmp/issue31-templates/python/.github/workflows/release.yml:277:    concurrency:
+/tmp/issue31-templates/python/.github/workflows/release.yml:284:    # for workflow_dispatch while still propagating workflow cancellation.
+/tmp/issue31-templates/python/.github/workflows/release.yml:287:        github.event_name == 'workflow_dispatch' ||
+/tmp/issue31-templates/python/.github/workflows/release.yml:365:    timeout-minutes: 20
+/tmp/issue31-templates/python/.github/workflows/release.yml:366:    concurrency:
+/tmp/issue31-templates/python/.github/workflows/release.yml:373:        github.event_name == 'workflow_dispatch' ||
+/tmp/issue31-templates/python/.github/workflows/release.yml:431:        uses: actions/upload-artifact@v7
+/tmp/issue31-templates/python/.github/workflows/release.yml:442:    timeout-minutes: 10
+/tmp/issue31-templates/python/.github/workflows/release.yml:443:    concurrency:
+/tmp/issue31-templates/python/.github/workflows/release.yml:498:    timeout-minutes: 60
+/tmp/issue31-templates/python/.github/workflows/release.yml:499:    concurrency:
+/tmp/issue31-templates/python/.github/workflows/release.yml:525:        timeout-minutes: 40
+/tmp/issue31-templates/python/.github/workflows/release.yml:547:    concurrency:
+/tmp/issue31-templates/python/.github/workflows/release.yml:561:    timeout-minutes: 30
+/tmp/issue31-templates/python/.github/workflows/release.yml:628:        timeout-minutes: 11
+/tmp/issue31-templates/python/.github/workflows/release.yml:656:  # Manual release via workflow_dispatch - only after CI passes
+/tmp/issue31-templates/python/.github/workflows/release.yml:663:    concurrency:
+/tmp/issue31-templates/python/.github/workflows/release.yml:672:      github.event_name == 'workflow_dispatch' &&
+/tmp/issue31-templates/python/.github/workflows/release.yml:680:    timeout-minutes: 30
+/tmp/issue31-templates/python/.github/workflows/release.yml:776:        timeout-minutes: 11
+/tmp/issue31-templates/python/.github/workflows/release.yml:817:    timeout-minutes: 5
+/tmp/issue31-templates/python/.github/workflows/release.yml:859:    timeout-minutes: 60
+/tmp/issue31-templates/python/.github/workflows/release.yml:887:        timeout-minutes: 40
+/tmp/issue31-templates/python/.github/workflows/release.yml:904:        uses: actions/upload-artifact@v7
+/tmp/issue31-templates/python/.github/workflows/release.yml:918:    timeout-minutes: 15
+/tmp/issue31-templates/python/.github/workflows/release.yml:946:          # shellcheck disable=SC2046
+/tmp/issue31-templates/python/.github/workflows/release.yml:961:  # A job killed by timeout-minutes concludes "cancelled", not "failure".
+/tmp/issue31-templates/python/.github/workflows/release.yml:963:  pipeline-status:
+/tmp/issue31-templates/python/.github/workflows/release.yml:964:    name: Pipeline Status
+/tmp/issue31-templates/python/.github/workflows/release.yml:966:    timeout-minutes: 5
+/tmp/issue31-templates/python/.github/workflows/release.yml:967:    if: always()
+/tmp/issue31-templates/python/.github/workflows/release.yml:981:        run: bash scripts/check-pipeline-status.sh
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:3:# actionlint validates workflow schema and shellchecks inline run blocks.
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:10:    paths:
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:16:    paths:
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:20:  workflow_dispatch:
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:29:  ZIZMOR_VERSION: '1.30.1'
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:35:    timeout-minutes: 10
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:36:    concurrency:
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:46:      # The Docker image bundles shellcheck and pyflakes, so this lints every
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:47:      # `run:` block too. A native actionlint binary without shellcheck on
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:51:      # 1.7.12 (issue #71) adds the `glob` check for `paths:` filters that can
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:59:      # .github/zizmor.yml; the `unpinned-images` audit that would flag this
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:70:  # credential persistence, template injection or unpinned actions. zizmor
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:74:  # Reproduce locally with ZIZMOR_VERSION set to the env pin above:
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:75:  #   pipx run "zizmor==$ZIZMOR_VERSION" --min-confidence low --persona regular \
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:76:  #     --config .github/zizmor.yml .
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:77:  zizmor:
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:78:    name: Audit Workflows
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:80:    timeout-minutes: 10
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:81:    concurrency:
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:82:      group: check-${{ github.workflow }}-${{ github.ref }}-zizmor
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:95:      - name: Audit workflow files
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:96:        uses: zizmorcore/zizmor-action@v0.6.4
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:100:          config: .github/zizmor.yml
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:102:          version: ${{ env.ZIZMOR_VERSION }}
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:105:      # pedantic surfaces dozens of stylistic findings. But the audits that
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:108:      # .github/zizmor.yml is not enforced against `uses: docker://` or
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:114:      - name: Audit for pedantic-only high-severity findings
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:115:        timeout-minutes: 5
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:119:          pipx run "zizmor==$ZIZMOR_VERSION" --config .github/zizmor.yml \
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:124:  shellcheck:
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:125:    name: ShellCheck
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:127:    timeout-minutes: 10
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:128:    concurrency:
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:129:      group: check-${{ github.workflow }}-${{ github.ref }}-shellcheck
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:136:      - name: Shellcheck every tracked shell script
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:137:        run: git ls-files -z '*.sh' | xargs -0 pipx run --spec shellcheck-py==0.11.0.1 shellcheck
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:139:  # Terminal status gate (issue #69): GitHub reports jobs killed by
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:140:  # timeout-minutes as cancelled. Observe every other job so a timeout on main
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:143:  pipeline-status:
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:144:    name: Pipeline Status
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:147:      - zizmor
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:148:      - shellcheck
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:149:    if: always()
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:151:    timeout-minutes: 5
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:157:      - name: Check aggregate pipeline status
+/tmp/issue31-templates/python/.github/workflows/workflows.yml:162:        run: bash scripts/check-pipeline-status.sh
+/tmp/issue31-templates/python/.github/workflows/links.yml:7:    paths:
+/tmp/issue31-templates/python/.github/workflows/links.yml:17:    paths:
+/tmp/issue31-templates/python/.github/workflows/links.yml:25:  workflow_dispatch:
+/tmp/issue31-templates/python/.github/workflows/links.yml:39:    timeout-minutes: 10
+/tmp/issue31-templates/python/.github/workflows/links.yml:40:    concurrency:
+/tmp/issue31-templates/python/.github/workflows/links.yml:68:            --timeout 30
+/tmp/issue31-templates/python/.github/workflows/links.yml:81:        # Retry transport failures and 429/5xx responses with backoff.
+/tmp/issue31-templates/python/.github/workflows/links.yml:83:        # Other status-coded failures remain final.
+/tmp/issue31-templates/python/.github/workflows/links.yml:106:          always() &&
+/tmp/issue31-templates/python/.github/workflows/links.yml:126:        uses: actions/upload-artifact@v7
+/tmp/issue31-templates/python/.github/workflows/links.yml:132:  # Terminal status gate (issue #69): GitHub reports jobs killed by
+/tmp/issue31-templates/python/.github/workflows/links.yml:133:  # timeout-minutes as cancelled. Observe every other job so a timeout on main
+/tmp/issue31-templates/python/.github/workflows/links.yml:136:  pipeline-status:
+/tmp/issue31-templates/python/.github/workflows/links.yml:137:    name: Pipeline Status
+/tmp/issue31-templates/python/.github/workflows/links.yml:140:    if: always()
+/tmp/issue31-templates/python/.github/workflows/links.yml:142:    timeout-minutes: 5
+/tmp/issue31-templates/python/.github/workflows/links.yml:148:      - name: Check aggregate pipeline status
+/tmp/issue31-templates/python/.github/workflows/links.yml:153:        run: bash scripts/check-pipeline-status.sh
+/tmp/issue31-templates/js/.github/workflows/javascript-first-gate.yml:33:    timeout-minutes: 30
+/tmp/issue31-templates/python/.github/workflows/docs.yml:17:    paths:
+/tmp/issue31-templates/python/.github/workflows/docs.yml:24:    paths:
+/tmp/issue31-templates/python/.github/workflows/docs.yml:29:  workflow_dispatch:
+/tmp/issue31-templates/python/.github/workflows/docs.yml:36:concurrency:
+/tmp/issue31-templates/python/.github/workflows/docs.yml:49:    timeout-minutes: 10
+/tmp/issue31-templates/python/.github/workflows/docs.yml:74:        uses: actions/upload-artifact@v7
+/tmp/issue31-templates/python/.github/workflows/docs.yml:99:    timeout-minutes: 10
+/tmp/issue31-templates/python/.github/workflows/docs.yml:117:  # Terminal status gate (issue #69): GitHub reports jobs killed by
+/tmp/issue31-templates/python/.github/workflows/docs.yml:118:  # timeout-minutes as cancelled. Observe every other job so a timeout on main
+/tmp/issue31-templates/python/.github/workflows/docs.yml:121:  pipeline-status:
+/tmp/issue31-templates/python/.github/workflows/docs.yml:122:    name: Pipeline Status
+/tmp/issue31-templates/python/.github/workflows/docs.yml:126:    if: always()
+/tmp/issue31-templates/python/.github/workflows/docs.yml:128:    timeout-minutes: 5
+/tmp/issue31-templates/python/.github/workflows/docs.yml:134:      - name: Check aggregate pipeline status
+/tmp/issue31-templates/python/.github/workflows/docs.yml:139:        run: bash scripts/check-pipeline-status.sh
+/tmp/issue31-templates/js/.github/workflows/javascript-first-example.yml:5:    paths:
+/tmp/issue31-templates/js/.github/workflows/javascript-first-example.yml:11:    paths:
+/tmp/issue31-templates/js/.github/workflows/javascript-first-example.yml:32:    timeout-minutes: 10
+/tmp/issue31-templates/js/.github/workflows/javascript-first-example.yml:33:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/javascript-first-example.yml:50:    timeout-minutes: 10
+/tmp/issue31-templates/js/.github/workflows/javascript-first-example.yml:51:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/javascript-first-example.yml:68:    timeout-minutes: 10
+/tmp/issue31-templates/js/.github/workflows/javascript-first-example.yml:69:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/javascript-first-example.yml:87:    timeout-minutes: 10
+/tmp/issue31-templates/js/.github/workflows/javascript-first-example.yml:88:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/javascript-first-example.yml:105:    timeout-minutes: 10
+/tmp/issue31-templates/js/.github/workflows/javascript-first-example.yml:106:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/javascript-first-example.yml:123:    timeout-minutes: 10
+/tmp/issue31-templates/js/.github/workflows/javascript-first-example.yml:124:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/javascript-first-example.yml:135:      - uses: actions/upload-artifact@v7
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:7:    paths:
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:12:      - 'scripts/check-status-gate-covers-all-jobs.mjs'
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:13:      - 'scripts/check-pipeline-status.sh'
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:16:    paths:
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:21:      - 'scripts/check-status-gate-covers-all-jobs.mjs'
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:22:      - 'scripts/check-pipeline-status.sh'
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:23:  workflow_dispatch:
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:40:    timeout-minutes: 10
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:41:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:49:      # The Docker image bundles shellcheck and pyflakes, so this also lints
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:50:      # every `run:` block. A native actionlint binary without shellcheck on
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:57:      # .github/zizmor.yml). Re-resolve when bumping:
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:63:          args: -color -ignore "unexpected key .queue. for .concurrency. section"
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:65:  shellcheck:
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:66:    name: ShellCheck
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:68:    timeout-minutes: 10
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:69:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:70:      group: check-${{ github.workflow }}-${{ github.ref }}-shellcheck
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:77:        run: git ls-files -z '*.sh' '.husky/*' | xargs -0 pipx run --spec shellcheck-py==0.11.0.1 shellcheck
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:79:  # The terminal status job of release.yml keys branch protection; its
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:83:  status-gate-coverage:
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:84:    name: Status Gate Coverage
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:86:    timeout-minutes: 10
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:87:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:88:      group: check-${{ github.workflow }}-${{ github.ref }}-status-gate-coverage
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:98:      - name: Check the status gate covers every job
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:99:        # Every workflow here runs a hand-maintained pipeline-status gate;
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:102:          node scripts/check-status-gate-covers-all-jobs.mjs
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:109:  zizmor:
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:110:    name: zizmor
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:112:    timeout-minutes: 10
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:113:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:114:      group: check-${{ github.workflow }}-${{ github.ref }}-zizmor
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:125:      # `latest` entry is its own frozen table (v0.6.4 -> zizmor 1.30.1), not
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:126:      # the latest zizmor. Naming it keeps the next bump a visible line in the
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:129:      #   pipx run zizmor==1.30.1 --config .github/zizmor.yml \
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:131:      - uses: zizmorcore/zizmor-action@v0.6.4
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:135:          config: .github/zizmor.yml
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:136:          # Low, not medium: the artipacked audit reports at Low confidence,
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:145:      # pedantic surfaces dozens of stylistic findings. But the audits that
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:148:      # .github/zizmor.yml is not enforced against `uses: docker://` or
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:153:      - name: Audit for pedantic-only high-severity findings
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:154:        timeout-minutes: 10
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:158:          pipx run zizmor==1.30.1 --config .github/zizmor.yml \
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:162:  # Terminal status gate: runs even when the jobs above fail or are
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:163:  # cancelled, and turns a `timeout-minutes` kill (reported as cancelled)
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:165:  # status-gate-coverage job above.
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:166:  pipeline-status:
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:167:    name: Pipeline Status
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:169:    timeout-minutes: 5
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:170:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:171:      group: check-${{ github.workflow }}-${{ github.ref }}-pipeline-status
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:173:    # A status function is required: without one the gate inherits the
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:180:      - status-gate-coverage
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:181:      - zizmor
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:182:      - shellcheck
+/tmp/issue31-templates/js/.github/workflows/workflows.yml:198:        run: bash scripts/check-pipeline-status.sh
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:6:    paths:
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:17:    paths:
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:25:  workflow_dispatch:
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:41:    timeout-minutes: 10
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:42:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:77:        run: npm ci --prefix examples/universal-app --no-audit --no-fund
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:86:        uses: actions/upload-artifact@v7
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:106:    timeout-minutes: 10
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:107:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:127:    timeout-minutes: 20
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:128:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:148:        run: npm ci --prefix examples/universal-app --no-audit --no-fund
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:169:        uses: actions/upload-artifact@v7
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:177:    if: github.event_name == 'workflow_dispatch' && vars.EXAMPLE_APP_ENABLE_ANDROID_BUILD == 'true'
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:179:    timeout-minutes: 30
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:180:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:205:        run: npm ci --prefix examples/universal-app --no-audit --no-fund
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:214:        uses: actions/upload-artifact@v7
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:224:    if: github.event_name == 'workflow_dispatch' && vars.EXAMPLE_APP_ENABLE_IOS_BUILD == 'true'
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:226:    timeout-minutes: 30
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:227:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:243:        run: npm ci --prefix examples/universal-app --no-audit --no-fund
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:263:    timeout-minutes: 20
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:264:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:270:      github.event_name == 'workflow_dispatch'
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:295:        run: npm ci --prefix examples/universal-app --no-audit --no-fund
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:302:        run: npm install --no-save --package-lock=false --no-audit --no-fund browser-commander@0.8.1 playwright@1.59.1 # zizmor: ignore[adhoc-packages]
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:313:          changes="$(git status --porcelain)"
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:344:            echo "::notice::No tracked preview-image changes to commit (drift was outside expected paths)."
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:345:            git status --porcelain
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:352:            node scripts/push-main-with-rebase-retry.mjs origin main --label preview-images
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:357:          if ! node scripts/push-main-with-rebase-retry.mjs origin main --label preview-images; then
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:365:        uses: actions/upload-artifact@v7
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:375:        if: always()
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:395:  # Terminal status gate: runs even when the jobs above fail or are
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:396:  # cancelled, and turns a `timeout-minutes` kill (reported as cancelled)
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:397:  # into a red run. needs is derived and checked by the status-gate-coverage
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:399:  pipeline-status:
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:400:    name: Pipeline Status
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:402:    timeout-minutes: 5
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:403:    concurrency:
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:404:      group: check-${{ github.workflow }}-${{ github.ref }}-pipeline-status
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:406:    # A status function is required: without one the gate inherits the
+/tmp/issue31-templates/js/.github/workflows/example-app.yml:433:        run: bash scripts/check-pipeline-status.sh

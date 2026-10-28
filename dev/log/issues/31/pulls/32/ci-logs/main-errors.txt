@@ -1,0 +1,33 @@
+411:checks	Lint	2026-10-28T09:10:43.5270085Z > eslint . --max-warnings=0
+439:checks	Check file size limits	2026-10-28T09:10:52.9511921Z ##[warning]experiments/collect-registries.cjs has 1354 lines (warning threshold 1350, limit 1500)
+775:network-browsers (webkit, macos-15)	Build the editor	2026-10-28T09:11:33.9433300Z Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.^[[39m
+901:network-browsers (webkit, macos-15)	Verify existing editor features and image downloads	2026-10-28T09:11:53.0455420Z Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.^[[39m
+940:network-browsers (webkit, macos-15)	Verify history, self loops, layouts, clipboard and mobile editing	2026-10-28T09:12:22.5244700Z Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.^[[39m
+942:network-browsers (webkit, macos-15)	Verify history, self loops, layouts, clipboard and mobile editing	2026-10-28T09:12:31.6874940Z webkit: 120-event drag, repeated releases, history SecurityError and retry
+977:network-browsers (webkit, macos-15)	Verify editor geometry, source colors and shared settings	2026-10-28T09:12:41.6687120Z Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.^[[39m
+1018:network-browsers (webkit, macos-15)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-28T09:12:59.3147000Z Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.^[[39m
+1072:network-browsers (webkit, macos-15)	Verify automatic spacing, sharp balanced arrows and per-link cards	2026-10-28T09:13:48.9297130Z Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.^[[39m
+1107:network-browsers (webkit, macos-15)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-28T09:14:01.0896510Z Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.^[[39m
+1243:network-browsers (webkit, macos-15)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-28T09:14:51.7365560Z Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.^[[39m
+1253:network-browsers (webkit, macos-15)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-28T09:15:03.1605160Z   "errors": [],
+1288:network-browsers (webkit, macos-15)	Preserve browser evidence	2026-10-28T09:15:33.5675870Z ##[error]Failed to CreateArtifact: Unable to make request: ENOTFOUND
+1535:network-browsers (firefox, ubuntu-24.04)	Build the editor	2026-10-28T09:11:35.3031079Z Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.^[[39m
+2035:network-browsers (firefox, ubuntu-24.04)	Verify existing editor features and image downloads	2026-10-28T09:12:39.4644730Z Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.^[[39m
+2074:network-browsers (firefox, ubuntu-24.04)	Verify history, self loops, layouts, clipboard and mobile editing	2026-10-28T09:12:51.7129706Z Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.^[[39m
+2076:network-browsers (firefox, ubuntu-24.04)	Verify history, self loops, layouts, clipboard and mobile editing	2026-10-28T09:12:58.4787398Z firefox: 120-event drag, repeated releases, history SecurityError and retry
+2110:network-browsers (firefox, ubuntu-24.04)	Verify editor geometry, source colors and shared settings	2026-10-28T09:13:04.3988480Z Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.^[[39m
+2151:network-browsers (firefox, ubuntu-24.04)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-28T09:13:13.4745438Z Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.^[[39m
+2205:network-browsers (firefox, ubuntu-24.04)	Verify automatic spacing, sharp balanced arrows and per-link cards	2026-10-28T09:13:39.3805607Z Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.^[[39m
+2240:network-browsers (firefox, ubuntu-24.04)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-28T09:13:47.0550251Z Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.^[[39m
+2376:network-browsers (firefox, ubuntu-24.04)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-28T09:14:14.3525968Z Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.^[[39m
+2386:network-browsers (firefox, ubuntu-24.04)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-28T09:14:20.7847630Z   "errors": [],
+2691:network-browsers (chromium, ubuntu-24.04)	Build the editor	2026-10-28T09:11:32.0420898Z Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.^[[39m
+3042:network-browsers (chromium, ubuntu-24.04)	Verify existing editor features and image downloads	2026-10-28T09:12:13.3875991Z Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.^[[39m
+3081:network-browsers (chromium, ubuntu-24.04)	Verify history, self loops, layouts, clipboard and mobile editing	2026-10-28T09:12:30.1692587Z Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.^[[39m
+3083:network-browsers (chromium, ubuntu-24.04)	Verify history, self loops, layouts, clipboard and mobile editing	2026-10-28T09:12:35.5356462Z chromium: 120-event drag, repeated releases, history SecurityError and retry
+3117:network-browsers (chromium, ubuntu-24.04)	Verify editor geometry, source colors and shared settings	2026-10-28T09:12:45.2294487Z Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.^[[39m
+3158:network-browsers (chromium, ubuntu-24.04)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-28T09:12:57.7330284Z Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.^[[39m
+3212:network-browsers (chromium, ubuntu-24.04)	Verify automatic spacing, sharp balanced arrows and per-link cards	2026-10-28T09:13:24.2041186Z Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.^[[39m
+3247:network-browsers (chromium, ubuntu-24.04)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-28T09:13:34.5048482Z Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.^[[39m
+3383:network-browsers (chromium, ubuntu-24.04)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-28T09:15:28.7624441Z Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.^[[39m
+3393:network-browsers (chromium, ubuntu-24.04)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-28T09:15:36.5565337Z   "errors": [],

@@ -1,0 +1,5 @@
+
+> konard.github.io@0.1.0 build:cv
+> node scripts/build-cv-pdf.mjs
+
+Printed 120 CV PDFs to build/cv/pdf/.

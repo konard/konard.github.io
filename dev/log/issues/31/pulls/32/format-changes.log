@@ -1,0 +1,30 @@
+src/ci-policy.test.js 118ms
+src/ci-regressions.test.js 21ms
+src/artifact-retry.test.js 45ms
+src/deployment.test.js 19ms
+scripts/build-cv-pdf.mjs 64ms (unchanged)
+scripts/build-frames-css.mjs 4ms (unchanged)
+scripts/check-docs.mjs 3ms (unchanged)
+scripts/check-pages.mjs 7ms
+scripts/check-pipeline-status.mjs 11ms
+scripts/ci-changes.mjs 18ms
+scripts/upload-artifact.mjs 22ms
+[error] No parser could be inferred for file "/tmp/gh-issue-solver-1793179854506/scripts/check-file-line-limits.sh".
+vite.config.js 18ms (unchanged)
+src/settings/schema.background.js 28ms (unchanged)
+src/settings/schema.js 15ms (unchanged)
+src/settings/schema.layers.js 38ms (unchanged)
+src/settings/schema.skins.js 48ms (unchanged)
+src/settings/schema.sound.js 22ms (unchanged)
+experiments/registry-network.cjs 17ms
+experiments/collect-registries.cjs 228ms (unchanged)
+[error] .github/workflows/github-pages.yml: SyntaxError: A block sequence may not be used as an implicit map key (24:1)
+[error]   22 |       group: check-${{ github.workflow }}-${{ github.ref }}-schedule
+[error]   23 |       cancel-in-progress: true
+[error] > 24 |     - cron: '0 6 * * 1'
+[error]      | ^
+[error]   25 |
+[error]   26 | # Least-privilege default; only the deploy job may publish to Pages.
+[error]   27 | permissions:
+.github/zizmor.yml 19ms (unchanged)
+.github/codeql/codeql-config.yml 3ms (unchanged)

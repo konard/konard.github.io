@@ -1,0 +1,11 @@
+::debug::[Request] CreateArtifact https://artifact.invalid/twirp/github.actions.results.api.v1.ArtifactService/CreateArtifact
+Reproduced: SDK failed after one request despite maxAttempts=3.
+::debug::[Request] CreateArtifact https://artifact.invalid/twirp/github.actions.results.api.v1.ArtifactService/CreateArtifact
+Transient artifact transport failure (Failed to CreateArtifact: Unable to make request: ENOTFOUND
+If you are using self-hosted runners, please make sure your runner has access to all GitHub endpoints: https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/about-self-hosted-runners#communication-between-self-hosted-runners-and-github); retrying offline-evidence in 5s (1/3).
+::debug::[Request] CreateArtifact https://artifact.invalid/twirp/github.actions.results.api.v1.ArtifactService/CreateArtifact
+::debug::[Response] - 200
+::debug::Headers: {}
+::debug::Body: {%0A  "ok": true,%0A  "signedUploadUrl": "https://artifact.invalid/upload"%0A}
+Uploaded offline-evidence: artifact 7 (attempt 2/3).
+Verified: bounded adapter recovered on request two.

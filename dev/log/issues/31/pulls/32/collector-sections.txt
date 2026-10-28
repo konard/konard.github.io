@@ -1,0 +1,100 @@
+2:// Collects packages published by konard and the organizations konard founded or
+3:// worked in, across as many public package registries as can be queried
+4:// without credentials, and writes docs/case-studies/issue-7/data/registries.json.
+5://
+6:// Two complementary discovery strategies are used:
+7://   1. Account based: list everything owned by a registry account / scope /
+8://      namespace (npm user + org listings, crates.io user, NuGet owner, PyPI
+9://      user, Docker Hub namespace, GitHub Packages pages, ...).
+10://   2. Manifest based: walk the git tree of every repository listed in
+11://      repositories.json, read publishable manifests (package.json, Cargo.toml,
+12://      pyproject.toml, go.mod, *.gemspec, composer.json, pubspec.yaml, ...)
+13://      and look the declared names up in the matching registry. A hit only
+14://      counts when the registry metadata points back to one of the owners, so
+15://      name collisions with unrelated packages are discarded.
+16://
+17:// Usage: node experiments/collect-registries.cjs [output-dir]
+18:// Requires Node 22+ (global fetch) and an authenticated `gh` CLI for git trees.
+20:const { execFile } = require('child_process');
+21:const fs = require('fs');
+22:const path = require('path');
+24:const OUT = process.argv[2] || 'docs/case-studies/issue-7/data';
+25:const REPOS_FILE = path.join(OUT, 'repositories.json');
+26:const UA = 'konard.github.io data collector (https://github.com/konard/konard.github.io)';
+27:const USER = 'konard';
+28:const ORGS = ['linksplatform', 'deep-foundation', 'link-foundation', 'link-assistant', 'deep-assistant'];
+29:const NPM_SCOPES = [
+38:const DOCKER_NAMESPACES = [
+49:const NAMES = [USER, ...ORGS]; // generic account names probed on smaller registries
+51:const log = (...args) => console.error(`[${new Date().toISOString().slice(11, 19)}]`, ...args);
+52:const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+54:// ---------------------------------------------------------------- networking
+55:const hostGap = {
+63:const hostQueue = new Map();
+64:async function throttle(host) {
+78:async function request(url, { method = 'GET', headers = {}, body, as = 'json', tries = 5, timeout = 60000 } = {}) {
+113:async function pool(items, size, fn) {
+127:function gh(args) {
+139:async function ghRetry(args, tries = 3) {
+147:// ------------------------------------------------------------------- helpers
+148:const repos = JSON.parse(fs.readFileSync(REPOS_FILE, 'utf8'));
+149:const OWNERS = [...new Set(repos.map((r) => r.owner))];
+150:const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+151:const OWNER_RE = new RegExp(
+155:const pointsToOwners = (...urls) =>
+160:const repoUrl = (value) => (typeof value === 'string' ? value : value && value.url) || null;
+161:const cleanRepo = (u) =>
+170:const short = (s, n = 200) => (s ? String(s).replace(/\s+/g, ' ').trim().slice(0, n) : null);
+171:const sum = (list, key = 'downloads') => list.reduce((a, p) => a + (Number(p[key]) || 0), 0);
+173:function registry(id, name, url, extra = {}) {
+176:function finish(reg, { downloadsPeriod } = {}) {
+183:async function guarded(id, fn) {
+203:// ------------------------------------------------------ manifest discovery
+204:const MANIFEST_RULES = [
+217:const SKIP_DIR =
+219:const MAX_PER_KIND = 60;
+221:async function discoverManifests() {
+273:const rawCache = new Map();
+274:async function raw(repo, file) {
+287:const tomlSection = (text, section) => {
+291:const tomlString = (block, key) => {
+296:async function manifestNames(list, parse) {
+315:// ======================================================================= npm
+316:async function collectNpm(manifest) {
+442:// ================================================================= crates.io
+443:async function collectCrates(manifest) {
+501:// ===================================================================== NuGet
+502:async function collectNuget(manifest) {
+584:// ====================================================================== PyPI
+585:async function collectPypi(manifest) {
+666:// =========================================================== Docker Hub
+667:async function collectDocker() {
+709:// ============================================ GitHub Packages (ghcr.io etc.)
+710:const parseCount = (s) => {
+718:async function collectGithubPackages() {
+786:// ================================================================= RubyGems
+787:async function collectRubygems(manifest) {
+838:// ================================================================= Packagist
+839:async function collectPackagist(manifest) {
+877:// ======================================================= Go module proxy
+878:const goEscape = (p) => p.replace(/[A-Z]/g, (c) => `!${c.toLowerCase()}`);
+879:async function collectGo(manifest) {
+921:// ===================================================================== JSR
+922:async function collectJsr() {
+948:// ================================================== VS Code Marketplace / Open VSX
+949:async function collectVscode() {
+996:async function collectOpenVsx() {
+1023:// ============================================================ Maven Central
+1024:async function collectMaven(manifest) {
+1070:// ============================================================ pub.dev / Hex
+1071:async function collectPub(manifest) {
+1102:async function collectHex(manifest) {
+1137:// ====================================================== Anaconda / AUR / Nimble
+1138:async function collectAnaconda() {
+1162:async function collectAur() {
+1188:async function collectNimble() {
+1212:// ============================================ Swift Package Index / Homebrew
+1213:async function collectSwift(manifest) {
+1236:async function collectHomebrew(manifest) {
+1262:// ===================================================================== main
+1263:async function main() {

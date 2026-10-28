@@ -1,6 +1,6 @@
 #!/bin/sh
 set -eu
-npx lint-staged
+npx lint-staged --config package.json
 npm run check:file-size
 npm run check:secrets
 python scripts/check-python.py

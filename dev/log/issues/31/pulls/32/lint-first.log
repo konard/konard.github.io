@@ -1,0 +1,11 @@
+
+> konard.github.io@0.1.0 lint
+> eslint . --max-warnings=0
+
+
+/tmp/gh-issue-solver-1793179854506/experiments/collect-registries.cjs
+  321:11  error  'sleep' is not defined  no-undef
+  631:21  error  'gh' is not defined     no-undef
+
+✖ 2 problems (2 errors, 0 warnings)
+

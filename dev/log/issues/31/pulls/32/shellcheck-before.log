@@ -1,0 +1,22 @@
+
+In experiments/test-check-deployed-site.sh line 6:
+cd "$(dirname "$0")/.."
+^---------------------^ SC2164 (warning): Use 'cd ... || exit' or 'cd ... || return' in case cd fails.
+
+Did you mean:
+cd "$(dirname "$0")/.." || exit
+
+
+In experiments/test-check-deployed-site.sh line 15:
+bash scripts/check-deployed-site.sh http://localhost:4801/ 1 0 && echo "PASS: build is accepted" || { echo "FAIL: build was rejected"; status=1; }
+                                                               ^-- SC2015 (info): Note that A && B || C is not if-then-else. C may run when A is true.
+
+
+In .husky/pre-commit line 1:
+npx lint-staged
+^-- SC2148 (error): Tips depend on target shell and yours is unknown. Add a shebang or a 'shell' directive.
+
+For more information:
+  https://www.shellcheck.net/wiki/SC2148 -- Tips depend on target shell and y...
+  https://www.shellcheck.net/wiki/SC2164 -- Use 'cd ... || exit' or 'cd ... |...
+  https://www.shellcheck.net/wiki/SC2015 -- Note that A && B || C is not if-t...

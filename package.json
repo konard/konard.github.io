@@ -19,7 +19,7 @@
     "test:ci": "vitest run",
     "test:network:browser": "node experiments/network-e2e.mjs",
     "test:network:issue19": "node experiments/issue-19-browser.mjs",
-    "lint": "eslint . --max-warnings=0",
+    "lint": "eslint --config eslint.config.js . --max-warnings=0",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "check:file-size": "bash scripts/check-file-line-limits.sh",
@@ -64,7 +64,7 @@
   },
   "lint-staged": {
     "*.{js,jsx,cjs,mjs}": [
-      "eslint --fix --max-warnings=0 --no-warn-ignored",
+      "eslint --config eslint.config.js --fix --max-warnings=0 --no-warn-ignored",
       "prettier --write"
     ],
     "*.{css,md,html,json,yml,yaml}": [

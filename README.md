@@ -28,8 +28,8 @@ All numbers come from data snapshots committed to the repository.
 
 ## Development
 
-Use Node.js 24 or newer. Install the Python and shell linters used by CI before
-committing changes to those files:
+Use Node.js 24 or newer. The commit hook checks all maintained Python and shell
+scripts, so install its linters before committing:
 
 ```bash
 python -m pip install ruff==0.14.2 shellcheck-py==0.11.0.1

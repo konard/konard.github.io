@@ -1,0 +1,18 @@
+Collecting zizmor==1.30.1
+  Downloading zizmor-1.30.1-py3-none-manylinux_2_28_x86_64.whl.metadata (4.6 kB)
+Collecting ruff==0.14.2
+  Downloading ruff-0.14.2-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (25 kB)
+Collecting shellcheck-py==0.11.0.1
+  Downloading shellcheck_py-0.11.0.1-py2.py3-none-manylinux1_x86_64.manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_5_x86_64.whl.metadata (1.7 kB)
+Downloading zizmor-1.30.1-py3-none-manylinux_2_28_x86_64.whl (9.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.5/9.5 MB 29.8 MB/s  0:00:00
+Downloading ruff-0.14.2-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (13.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.3/13.3 MB 33.2 MB/s  0:00:00
+Downloading shellcheck_py-0.11.0.1-py2.py3-none-manylinux1_x86_64.manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_5_x86_64.whl (3.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.8/3.8 MB 25.2 MB/s  0:00:00
+Installing collected packages: zizmor, shellcheck-py, ruff
+
+Successfully installed ruff-0.14.2 shellcheck-py-0.11.0.1 zizmor-1.30.1
+
+[notice] A new release of pip is available: 26.2.1 -> 26.2.2
+[notice] To update, run: /tmp/issue31-tools/venv/bin/python3 -m pip install --upgrade pip

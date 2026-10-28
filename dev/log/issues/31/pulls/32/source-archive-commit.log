@@ -1,0 +1,30 @@
+⋯ Backing up original state…
+✔ Done backing up original state (09b9f73)!
+⋯ Running tasks for staged files…
+    package.json — 2 files
+      *.{js,jsx,cjs,mjs} — 2 files
+        ⋯ eslint --fix --max-warnings=0 --no-warn-ignored
+        ⋯ prettier --write
+
+✔ eslint --fix --max-warnings=0 --no-warn-ignored
+✔ prettier --write
+
+✔ Done running tasks for staged files!
+⋯ Staging changes from tasks…
+✔ Done staging changes from tasks!
+⋯ Cleaning up temporary files…
+✔ Done cleaning up temporary files!
+
+> konard.github.io@0.1.0 check:file-size
+> bash scripts/check-file-line-limits.sh
+
+Checked 297 files against the 1500-line limit.
+
+> konard.github.io@0.1.0 check:secrets
+> secretlint "**/*" --secretlintignore .prettierignore
+
+Compiled 6 Python helpers without executing them.
+All checks passed!
+6 files already formatted
+[issue-31-ec772c60ce96 b510754] Preserve builds from source archives without Git metadata
+ 2 files changed, 39 insertions(+), 1 deletion(-)

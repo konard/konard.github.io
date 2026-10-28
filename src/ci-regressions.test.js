@@ -1,5 +1,5 @@
 import { execFileSync } from 'node:child_process';
-import { mkdtempSync, writeFileSync, rmSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, readFileSync, writeFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 
@@ -81,6 +81,37 @@ test('line limits cover Python, spaces and unterminated final lines', () => {
     expect(
       execFileSync('bash', [path.join(root, 'scripts/check-file-line-limits.sh')], { cwd: dir, encoding: 'utf8' }),
     ).toContain('Checked 1 files');
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test('the commit hook applies repository lint rules to archived package examples', () => {
+  const dir = mkdtempSync(path.join(tmpdir(), 'issue31-hooks-'));
+  try {
+    execFileSync('git', ['init', '-q'], { cwd: dir });
+    mkdirSync(path.join(dir, 'archive'));
+    const eslintCommand = JSON.parse(readFileSync(path.join(root, 'package.json'), 'utf8'))['lint-staged'][
+      '*.{js,jsx,cjs,mjs}'
+    ][0].replace(/^eslint\b/, `node ${path.join(root, 'node_modules/eslint/bin/eslint.js')}`);
+    const config = (command) => JSON.stringify({ type: 'module', 'lint-staged': { '*.js': command } });
+    writeFileSync(path.join(dir, 'package.json'), config(eslintCommand));
+    writeFileSync(path.join(dir, 'eslint.config.js'), 'export default [{ignores:["archive/**"]}];\n');
+    writeFileSync(path.join(dir, 'archive/package.json'), config('node -e "process.exit(17)"'));
+    writeFileSync(path.join(dir, 'archive/eslint.config.js'), 'throw new Error("Archived config executed");\n');
+    writeFileSync(path.join(dir, 'archive/probe.js'), '// historical example\n');
+    execFileSync('git', ['add', '.'], { cwd: dir });
+    const invocation = readFileSync(path.join(root, '.husky/pre-commit'), 'utf8')
+      .split('\n')
+      .find((line) => line.startsWith('npx lint-staged'));
+    expect(invocation).toBeDefined();
+    const args = invocation.slice('npx lint-staged'.length).trim().split(/\s+/).filter(Boolean);
+    expect(() =>
+      execFileSync(process.execPath, [path.join(root, 'node_modules/lint-staged/bin/lint-staged.js'), ...args], {
+        cwd: dir,
+        stdio: 'pipe',
+      }),
+    ).not.toThrow();
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }

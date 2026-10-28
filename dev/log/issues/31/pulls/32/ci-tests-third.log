@@ -1,0 +1,46 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793179854506
+
+ ❯ src/workflow.test.js (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/workflow.test.js [ src/workflow.test.js ]
+YAMLException: bad indentation of a mapping entry (24:5)
+
+ 21 |     concurrency:
+ 22 |       group: check-${{ github.workf ...
+ 23 |       cancel-in-progress: true
+ 24 |     - cron: '0 6 * * 1'
+----------^
+ 25 | 
+ 26 | # Least-privilege default; only the ...
+ ❯ generateError node_modules/js-yaml/lib/loader.js:197:10
+ ❯ throwError node_modules/js-yaml/lib/loader.js:201:9
+ ❯ readBlockMapping node_modules/js-yaml/lib/loader.js:1232:7
+ ❯ composeNode node_modules/js-yaml/lib/loader.js:1520:53
+ ❯ readBlockMapping node_modules/js-yaml/lib/loader.js:1214:11
+ ❯ composeNode node_modules/js-yaml/lib/loader.js:1520:53
+ ❯ readDocument node_modules/js-yaml/lib/loader.js:1710:3
+ ❯ loadDocuments node_modules/js-yaml/lib/loader.js:1768:5
+ ❯ Object.load2 [as load] node_modules/js-yaml/lib/loader.js:1792:21
+ ❯ src/workflow.test.js:22:22
+     20|   // so a commit to docs/ never reaches the site. Only actions/deploy-…
+     21|   describe('GitHub Pages deployment from Actions', () => {
+     22|     const doc = yaml.load(fs.readFileSync(path.join(workflowsDir, 'git…
+       |                      ^
+     23|     const { deploy, test: testJob } = doc.jobs;
+     24|     const scripts = Object.values(doc.jobs)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 4 passed (5)
+      Tests  42 passed (42)
+   Start at  09:43:25
+   Duration  9.42s (environment 58%, tests 16%, setup 13%, import 9%, transform 3%, worker 1%)
+
+Environment  jsdom was created 5 times · 4.84s total, 58% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+

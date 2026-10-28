@@ -1,0 +1,40 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793179854506
+
+ ❯ src/ci-regressions.test.js (5 tests | 1 failed) 1351ms
+   × the commit hook applies repository lint rules to archived package examples 371ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/ci-regressions.test.js > the commit hook applies repository lint rules to archived package examples
+AssertionError: expected [Function] to not throw an error but 'Error: Command failed: /home/box/.nvm…' was thrown
+
+- Expected:
+undefined
+
++ Received:
+"Error: Command failed: /home/box/.nvm/versions/node/v26.12.1/bin/node /tmp/gh-issue-solver-1793179854506/node_modules/lint-staged/bin/lint-staged.js
+⚠ Skipping backup because there’s no initial commit yet. This might result in data loss.
+
+✖ node -e \"process.exit(17)\"
+
+✖ Task failed to spawn: node -e \"process.exit(17)\"
+undefined
+"
+
+ ❯ src/ci-regressions.test.js:109:11
+    107|         stdio: 'pipe',
+    108|       }),
+    109|     ).not.toThrow();
+       |           ^
+    110|   } finally {
+    111|     rmSync(dir, { recursive: true, force: true });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 4 passed (5)
+   Start at  10:13:53
+   Duration  3.14s (tests 47%, environment 40%, setup 8%, transform 5%, worker 1%)
+
