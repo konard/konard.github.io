@@ -374,14 +374,14 @@ def collect(name, cloc, database, identities, whole_repository=True, author_head
         author_head
         and previous
         and author_head['sha'] == previous['sha']
-        and (not whole_repository or previous.get('sourceLinesScope') == 'whole-repository')
+        and (not whole_repository or previous.get('sourceLinesScope', 'whole-repository') == 'whole-repository')
     ):
         # Identical trees/history give identical cloc and blame results. Every
         # original line at this SHA is already in the global deduplication set.
         return {
             'sha': author_head['sha'],
             'sourceLines': previous['sourceLines'],
-            'sourceLinesScope': previous['sourceLinesScope'],
+            'sourceLinesScope': previous.get('sourceLinesScope', 'whole-repository'),
             'authoredLines': {},
             'attributionCheck': 'Identical public revision already measured and globally deduplicated',
             'collectedAt': author_head['checkedAt'],
@@ -392,6 +392,7 @@ def collect(name, cloc, database, identities, whole_repository=True, author_head
             'sha': None,
             'sourceLines': {},
             'authoredLines': {},
+            'sourceLinesScope': 'whole-repository',
             'empty': True,
             'collectedAt': datetime.now(timezone.utc).isoformat(),
         }
@@ -544,6 +545,10 @@ def main():
         result['errors'].pop(name, None)
         database.execute('DELETE FROM measurements WHERE name = ?', (name,))
     discard_non_code(result, database)
+    # Older checkpoints predate candidate-only outside scans and always cover
+    # the whole repository. Persist the explicit scope before saving the cache.
+    for measurement in result['repositories'].values():
+        measurement.setdefault('sourceLinesScope', 'whole-repository')
     # Also upgrades checkpoints created before durable measurements existed.
     database.executemany(
         'INSERT OR REPLACE INTO measurements VALUES (?, ?)',
@@ -555,9 +560,6 @@ def main():
     verified_file = cache / 'verified-account-emails.json'
     if verified_file.exists():
         identities.update(dict.fromkeys(json.loads(verified_file.read_text()), True))
-    for name, measurement in result['repositories'].items():
-        if name in owned:
-            measurement.setdefault('sourceLinesScope', 'whole-repository')
     by_sha = {}
     for measurement in result['repositories'].values():
         sha = measurement['sha']

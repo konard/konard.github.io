@@ -164,11 +164,25 @@ class SourceLinesTests(unittest.TestCase):
             'sourceLinesScope': 'whole-repository',
             'authoredLines': {'Python': 3},
         }
-        with patch.object(collector, 'run', side_effect=AssertionError('Identical history needs no download')):
-            result = collector.collect('fixture/mirror', '', None, {}, author_head=head, previous=previous)
-        self.assertEqual(result['sourceLines'], previous['sourceLines'])
-        self.assertEqual(result['authoredLines'], {})
-        self.assertEqual(result['sha'], head['sha'])
+        for legacy in (False, True):
+            with self.subTest(legacy=legacy):
+                measurement = dict(previous)
+                if legacy:
+                    del measurement['sourceLinesScope']
+                with patch.object(collector, 'run', side_effect=AssertionError('Identical history needs no download')):
+                    result = collector.collect(
+                        'fixture/mirror',
+                        '',
+                        None,
+                        {},
+                        whole_repository=not legacy,
+                        author_head=head,
+                        previous=measurement,
+                    )
+                self.assertEqual(result['sourceLines'], previous['sourceLines'])
+                self.assertEqual(result['sourceLinesScope'], 'whole-repository')
+                self.assertEqual(result['authoredLines'], {})
+                self.assertEqual(result['sha'], head['sha'])
 
     def test_partial_clone_prefetches_only_candidate_history_in_batches(self):
         def git(*args, cwd):
