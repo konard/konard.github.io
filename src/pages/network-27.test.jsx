@@ -31,7 +31,7 @@ it('upgrades an old URL in browser history while preserving its drawing, languag
 });
 it('steps inherited gaps from the displayed global value, with decimal precision', () => {
   open();
-  const input = screen.getByLabelText('Link 1: Gap at the target reference');
+  const input = screen.getByLabelText('Link 1: Gap at the target reference (value)');
   expect(input).toHaveValue(null);
   fireEvent.keyDown(input, { key: 'ArrowUp' });
   expect(input).toHaveValue(0.09);
@@ -42,7 +42,7 @@ it('steps inherited gaps from the displayed global value, with decimal precision
 });
 it('starts native spinner clicks from inheritance without making a plain focus an explicit override', () => {
   open();
-  const input = screen.getByLabelText('Link 1: Gap at the target reference');
+  const input = screen.getByLabelText('Link 1: Gap at the target reference (value)');
   const shared = screen.getByLabelText('Link to this picture');
   const inherited = shared.value;
   fireEvent.pointerDown(input);
@@ -71,7 +71,7 @@ it('supports page steps on every range while preserving modified editing shortcu
 });
 it('allows clearing a turn while typing a replacement and retains text-navigation keys', () => {
   open();
-  const input = screen.getByLabelText('Link 2: turn of the source, °');
+  const input = screen.getByLabelText('Link 2: turn of the source, ° (value)');
   fireEvent.change(input, { target: { value: '' } });
   expect(input).toHaveValue(null);
   fireEvent.change(input, { target: { value: '-25' } });

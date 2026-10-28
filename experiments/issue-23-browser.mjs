@@ -80,7 +80,7 @@ try {
   results.markerChecks = markerChecks;
   pass('both displaced bars agree with native SVG path position and tangent');
   await page.goto('http://localhost:4179/network/?code=221331&solveRange=0');
-  const gap = page.getByLabel('Link 1: Gap at the source reference', { exact: true });
+  const gap = page.getByLabel('Link 1: Gap at the source reference (value)', { exact: true });
   await gap.fill('0.25');
   await page.getByLabel('Link 2: Cut after the middle', { exact: true }).fill('4');
   const shared = await page.getByLabel('Link to this picture', { exact: true }).inputValue();
