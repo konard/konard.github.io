@@ -37,6 +37,7 @@ npm run build      # production build in build/
 npm run test:network:browser # editor and real downloads; ENGINE=firefox|webkit also supported
 npm run test:network:issue19 # history, loops, layouts, clipboard and touch regressions
 npm run test:network:issue25 # automatic spacing, native arrow pixels, per-link cards and mobile layouts
+npm run test:network:issue29 # paired sliders, preserved manual layouts and mirrored reference spacing
 npm run build:cv   # prints every CV of build/ to build/cv/pdf/ (needs `npx playwright install chromium`)
 ```
 
@@ -89,3 +90,5 @@ Nothing is committed to `docs/`; it only holds the case studies.
 - [`issue-17`](docs/case-studies/issue-17/README.md): the network editor, notation parsers, SVG styling, image downloads, share links and experimental overlap reduction, with browser screenshots.
 - [`issue-19`](docs/case-studies/issue-19/README.md): Safari history and clipboard fixes, symmetric loop/marker geometry, middle cuts, scalable arrangements and cross-browser regression evidence.
 - [`issue-25`](docs/case-studies/issue-25/README.md): painted-shape spacing, acute arrow tips, balanced endpoints and per-link configuration cards, with archived reports and browser evidence.
+- [`issue-27`](docs/case-studies/issue-27/README.md): continuous equal closed gaps, numeric editing, historical URL compatibility and keyboard controls.
+- [`issue-29`](docs/case-studies/issue-29/README.md): paired sliders, individual resets, preserved manual layouts and symmetric automatic references, with the inherited requirement audit and cross-browser evidence.

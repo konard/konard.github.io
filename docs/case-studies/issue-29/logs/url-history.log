@@ -1,0 +1,27 @@
+(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - import "./fields" without a file extension (src/settings/schema.js:15:32). Add the file extension
+  - import "./schema.background" without a file extension (src/settings/schema.js:16:37). Add the file extension
+  - import "./schema.layers" without a file extension (src/settings/schema.js:17:32). Add the file extension
+  - import "./schema.skins" without a file extension (src/settings/schema.js:18:31). Add the file extension
+  - import "./schema.sound" without a file extension (src/settings/schema.js:19:31). Add the file extension
+  - import "./schema.skins" without a file extension (src/settings/schema.js:21:33). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.sound.js:7:47). Add the file extension
+  - import "../skins.frames" without a file extension (src/settings/schema.skins.js:3:25). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.layers.js:8:54). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.background.js:3:54). Add the file extension
+  - import "./fields" without a file extension (src/settings/schema.skins.js:4:47). Add the file extension
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.
+8:31:37 AM [vite] (ssr) page reload experiments/out/issue-27-history/a9001c9cb3ce7763a1f2674efa76693236526bf0/src/links/glyph.js
+8:31:37 AM [vite] (ssr) page reload experiments/out/issue-27-history/a9001c9cb3ce7763a1f2674efa76693236526bf0/src/links/style.js
+8:31:37 AM [vite] (ssr) page reload experiments/out/issue-27-history/a9001c9cb3ce7763a1f2674efa76693236526bf0/src/settings/fields.js
+8:31:37 AM [vite] (ssr) page reload experiments/out/issue-27-history/d2bd08a4efe6dfe935a16f5375bfed81b3b27dec/src/links/style.js
+8:31:37 AM [vite] (ssr) page reload experiments/out/issue-27-history/d2bd08a4efe6dfe935a16f5375bfed81b3b27dec/src/settings/fields.js
+8:31:38 AM [vite] (ssr) page reload experiments/out/issue-27-history/30e15178735dbf2f8a1726f4d78f73d9abceed9f/src/links/style.js
+8:31:38 AM [vite] (ssr) page reload experiments/out/issue-27-history/30e15178735dbf2f8a1726f4d78f73d9abceed9f/src/settings/fields.js
+8:31:38 AM [vite] (ssr) page reload experiments/out/issue-27-history/305a85e2c2792f3f66c530b94856f52df80b524d/src/links/style.js
+8:31:38 AM [vite] (ssr) page reload experiments/out/issue-27-history/305a85e2c2792f3f66c530b94856f52df80b524d/src/settings/fields.js
+8:31:38 AM [vite] (ssr) page reload experiments/out/issue-27-history/6d102eed6c3eb41f57b04568ec3a1b800c2ceef6/src/settings/fields.js
+8:31:38 AM [vite] (ssr) page reload experiments/out/issue-27-history/6d102eed6c3eb41f57b04568ec3a1b800c2ceef6/src/links/style.js
+8:31:38 AM [vite] (ssr) page reload experiments/out/issue-27-history/7be35e9dd8025cd1fb36ab6eaf12fcb8a8f90fc5/src/links/style.js
+8:31:38 AM [vite] (ssr) page reload experiments/out/issue-27-history/7be35e9dd8025cd1fb36ab6eaf12fcb8a8f90fc5/src/settings/fields.js
+All 6 historical schemas retain all keys, valid numeric ranges and enum values.

@@ -1,0 +1,22 @@
+⋯ Backing up original state…
+✔ Done backing up original state (2399194)!
+⋯ Running tasks for staged files…
+    *.{js,jsx,cjs,mjs} — 11 files
+      ⋯ eslint --fix --max-warnings=0 --no-warn-ignored
+      ⋯ prettier --write
+    *.{css,md,html,json,yml,yaml} — 1 file
+      ⋯ prettier --write
+
+✔ prettier --write
+✔ eslint --fix --max-warnings=0 --no-warn-ignored
+✔ prettier --write
+
+✔ Done running tasks for staged files!
+⋯ Staging changes from tasks…
+✔ Done staging changes from tasks!
+⋯ Cleaning up temporary files…
+✔ Done cleaning up temporary files!
+[issue-29-2c98572a467a a10e666] Pair per-link geometry sliders with keyboard edits and individual resets
+ 12 files changed, 199 insertions(+), 50 deletions(-)
+ create mode 100644 src/pages/LinkSetting.jsx
+ create mode 100644 src/pages/network-29.test.jsx
