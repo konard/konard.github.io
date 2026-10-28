@@ -19,6 +19,45 @@ spec.loader.exec_module(collector)
 
 class SourceLinesTests(unittest.TestCase):
     @unittest.skipUnless(os.environ.get('CLOC_PATH'), 'Set CLOC_PATH to the pinned cloc 2.10 script')
+    def test_zero_reported_repository_size_does_not_mean_an_empty_tree(self):
+        with tempfile.TemporaryDirectory() as directory:
+            origin = Path(directory) / 'origin'
+            origin.mkdir()
+            for args in [
+                ['init', '-q'],
+                ['config', 'user.name', 'Fixture'],
+                ['config', 'user.email', 'verified@example.invalid'],
+            ]:
+                subprocess.check_call(['git', '-C', str(origin), *args])
+            (origin / 'code.py').write_text('print(1)\n')
+            subprocess.check_call(['git', '-C', str(origin), 'add', '.'])
+            subprocess.check_call(['git', '-C', str(origin), 'commit', '-qm', 'A small public source file'])
+            real_run = collector.run
+
+            def local_run(args, *rest, **kwargs):
+                return real_run(
+                    [origin.as_uri() if value == 'https://github.com/fixture/public.git' else value for value in args],
+                    *rest,
+                    **kwargs,
+                )
+
+            with sqlite3.connect(':memory:') as database:
+                database.execute('CREATE TABLE lines (identity TEXT PRIMARY KEY, language TEXT NOT NULL)')
+                with (
+                    patch.object(collector, 'public_metadata', return_value={'size': 0}),
+                    patch.object(collector, 'run', side_effect=local_run),
+                ):
+                    result = collector.collect(
+                        'fixture/public',
+                        os.environ['CLOC_PATH'],
+                        database,
+                        {'verified@example.invalid': True},
+                    )
+                self.assertEqual(result['authoredLines'], {'Python': 1})
+                self.assertEqual(result['sourceLines']['Python'], {'code': 1, 'comment': 0, 'blank': 0})
+                self.assertTrue(result['sha'])
+
+    @unittest.skipUnless(os.environ.get('CLOC_PATH'), 'Set CLOC_PATH to the pinned cloc 2.10 script')
     def test_interrupted_json_write_recovers_committed_attribution_on_resume(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

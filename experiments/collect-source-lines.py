@@ -387,13 +387,17 @@ def collect(name, cloc, database, identities, whole_repository=True, author_head
             'collectedAt': author_head['checkedAt'],
         }
     metadata = public_metadata(name)
-    if not metadata.get('size'):
+    url = f'https://github.com/{name}.git'
+    # GitHub reports size in KiB; a nonempty small tree can still report zero.
+    # Verify the actual public HEAD instead of treating that rounded size as empty.
+    if not metadata.get('size') and not run(['git', 'ls-remote', url, 'HEAD']).strip():
         return {
             'sha': None,
             'sourceLines': {},
             'authoredLines': {},
             'sourceLinesScope': 'whole-repository',
             'empty': True,
+            'emptyCheck': 'git ls-remote HEAD',
             'collectedAt': datetime.now(timezone.utc).isoformat(),
         }
     with tempfile.TemporaryDirectory(prefix='issue33-source-') as directory:
@@ -411,7 +415,7 @@ def collect(name, cloc, database, identities, whole_repository=True, author_head
                 # are faster as full clones than many tiny lazy blame fetches.
                 *(['--filter=blob:none'] if metadata['size'] > 100000 else []),
                 *([] if whole_repository else ['--no-checkout']),
-                f'https://github.com/{name}.git',
+                url,
                 str(repo),
             ]
         )
@@ -544,6 +548,14 @@ def main():
         del result['repositories'][name]
         result['errors'].pop(name, None)
         database.execute('DELETE FROM measurements WHERE name = ?', (name,))
+    for name, measurement in list(result['repositories'].items()):
+        if measurement.get('empty') and measurement.get('emptyCheck') != 'git ls-remote HEAD':
+            if measurement['authoredLines']:
+                raise ValueError('An empty checkpoint must not contain attributed lines')
+            # Legacy size-only checks granted no line identities. Re-measure
+            # them without disturbing any deduplication credit from other scans.
+            del result['repositories'][name]
+            database.execute('DELETE FROM measurements WHERE name = ?', (name,))
     discard_non_code(result, database)
     # Older checkpoints predate candidate-only outside scans and always cover
     # the whole repository. Persist the explicit scope before saving the cache.

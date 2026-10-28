@@ -1,0 +1,17 @@
+test_zero_reported_repository_size_does_not_mean_an_empty_tree (__main__.SourceLinesTests.test_zero_reported_repository_size_does_not_mean_an_empty_tree) ... FAIL
+
+======================================================================
+FAIL: test_zero_reported_repository_size_does_not_mean_an_empty_tree (__main__.SourceLinesTests.test_zero_reported_repository_size_does_not_mean_an_empty_tree)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/gh-issue-solver-1793202346423/experiments/test_source_lines.py", line 56, in test_zero_reported_repository_size_does_not_mean_an_empty_tree
+    self.assertEqual(result['authoredLines'], {'Python': 1})
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {} != {'Python': 1}
+- {}
++ {'Python': 1}
+
+----------------------------------------------------------------------
+Ran 1 test in 0.054s
+
+FAILED (failures=1)
