@@ -10,10 +10,10 @@ node:internal/modules/run_main:111
 
 locator.hover: Timeout 15000ms exceeded.
 Call log:
-[2m  - waiting for locator('.symbols__card').first()[22m
-[2m    - locator resolved to <a class="symbols__card" href="/network/?code=0000">…</a>[22m
-[2m  - attempting hover action[22m
-[2m    - waiting for element to be visible and stable[22m
+  - waiting for locator('.symbols__card').first()
+    - locator resolved to <a class="symbols__card" href="/network/?code=0000">…</a>
+  - attempting hover action
+    - waiting for element to be visible and stable
 
     at /tmp/gh-issue-solver-1793296500180/experiments/issue-21-browser.mjs:92:16 {
   log: [

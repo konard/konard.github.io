@@ -83,9 +83,9 @@ node:internal/modules/run_main:111
 
 locator.press: Timeout 15000ms exceeded.
 Call log:
-[2m  - waiting for locator('[id="setting-grid-size"]')[22m
-[2m    - locator resolved to <input min="32" step="8" max="128" value="56" type="range" id="setting-grid-size"/>[22m
-[2m  - elementHandle.press("ArrowLeft")[22m
+  - waiting for locator('[id="setting-grid-size"]')
+    - locator resolved to <input min="32" step="8" max="128" value="56" type="range" id="setting-grid-size"/>
+  - elementHandle.press("ArrowLeft")
 
     at audit (/tmp/gh-issue-solver-1793296500180/experiments/issue-27-browser.mjs:208:21)
     at async file:///tmp/gh-issue-solver-1793296500180/experiments/issue-27-browser.mjs:218:27 {
