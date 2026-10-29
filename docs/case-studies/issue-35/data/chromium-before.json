@@ -1,0 +1,13 @@
+{
+  "engine": "chromium",
+  "date": "2026-10-29T17:59:20.600Z",
+  "checks": [],
+  "errors": [],
+  "version": "156.0.8078.4",
+  "moves": [
+    1,
+    2,
+    1
+  ],
+  "failure": "AssertionError [ERR_ASSERTION]: zero-cut links must have one continuous SVG subpath\n+ actual - expected\n\n  [\n    1,\n+   2,\n    1,\n-   1\n  ]\n\n    at file:///tmp/gh-issue-solver-1793296500180/experiments/issue-35-browser.mjs:43:10"
+}

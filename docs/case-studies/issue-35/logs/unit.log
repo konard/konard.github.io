@@ -1,0 +1,1235 @@
+
+> konard.github.io@0.1.0 test:ci
+> vitest run --reporter=verbose
+
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793296500180
+
+ ✓ src/pages/pages.test.jsx > curated repository lists > only name original repositories that exist (professions) 8ms
+ ✓ src/pages/pages.test.jsx > curated repository lists > only name original repositories that exist (highlights) 2ms
+ ✓ src/pages/pages.test.jsx > curated repository lists > only name original repositories that exist (laws) 2ms
+ ✓ src/pages/pages.test.jsx > curated repository lists > only name original repositories that exist (stack) 2ms
+ ✓ src/pages/pages.test.jsx > curated repository lists > only name original repositories that exist (art) 1ms
+ ✓ src/pages/pages.test.jsx > curated repository lists > count only original repositories, without forks or mirrors 2ms
+ ✓ src/pages/pages.test.jsx > curated repository lists > search names, descriptions, topics and languages 2ms
+ ✓ src/pages/pages.test.jsx > RepositoriesPage > summarizes every field and lists the examples of every profession 2512ms
+ ✓ src/pages/pages.test.jsx > RepositoriesPage > filters the catalog by field and search, kept in the query string 1835ms
+ ✓ src/pages/pages.test.jsx > ExperiencePage > shows every position without a role 2047ms
+ ✓ src/pages/pages.test.jsx > ExperiencePage > shows every example repository of every profession without a role 1161ms
+ ✓ src/pages/pages.test.jsx > ExperiencePage > lists the old and the new positions of issue #11 3ms
+ ✓ src/pages/pages.test.jsx > ExperiencePage > shows only the matching experience for ?role=ml 468ms
+ ✓ src/pages/pages.test.jsx > ExperiencePage > shows only the matching experience for ?role=ai-agents 548ms
+ ✓ src/pages/pages.test.jsx > ExperiencePage > shows only the matching experience for ?role=lead 416ms
+ ✓ src/pages/pages.test.jsx > ExperiencePage > shows only the matching experience for ?role=techlead 409ms
+ ✓ src/pages/pages.test.jsx > ExperiencePage > shows only the matching experience for ?role=cto 576ms
+ ✓ src/pages/pages.test.jsx > ExperiencePage > shows only the matching experience for ?role=developer 936ms
+ ✓ src/pages/pages.test.jsx > ExperiencePage > shows only the matching experience for ?role=backend 551ms
+ ✓ src/pages/pages.test.jsx > ExperiencePage > shows only the matching experience for ?role=fullstack 483ms
+ ✓ src/pages/pages.test.jsx > ExperiencePage > shows only the matching experience for ?role=dotnet 389ms
+ ✓ src/pages/pages.test.jsx > ExperiencePage > shows only the matching experience for ?role=rust 425ms
+ ✓ src/pages/pages.test.jsx > ExperiencePage > shows only the matching experience for ?role=trading 274ms
+ ✓ src/pages/pages.test.jsx > ExperiencePage > shows only the matching experience for ?role=data 441ms
+ ✓ src/pages/pages.test.jsx > ExperiencePage > shows only the matching experience for ?role=devops 592ms
+ ✓ src/pages/pages.test.jsx > ExperiencePage > shows only the matching experience for ?role=research 376ms
+ ✓ src/pages/pages.test.jsx > ExperiencePage > names the research role Scientist 1ms
+ ✓ src/pages/pages.test.jsx > ExperiencePage > switches the role without reloading the page 1341ms
+ ✓ src/pages/pages.test.jsx > ExperiencePage > is translated to Russian, with the Russian names of the companies 751ms
+ ✓ src/pages/pages.test.jsx > ResearchPage > shows the meta-theory, the problem solving algorithm, highlights and laws 711ms
+ ✓ src/pages/pages.test.jsx > AssociativePage > starts the stack from the links meta-theory and goes up to the applications (issue #13) 1444ms
+ ✓ src/pages/pages.test.jsx > AssociativePage > places every original repository of linksplatform, link-foundation and link-assistant in one layer 2ms
+ ✓ src/pages/pages.test.jsx > AssociativePage > links every layer from the index with the number of its repositories 1761ms
+ ✓ src/pages/pages.test.jsx > ArtPage > lists art projects and uncategorized repositories 532ms
+ ✓ src/pages/pages.test.jsx > ArtPage > shows the gallery of every network of 1–4 links 303ms
+ ✓ src/pages/pages.test.jsx > NetworkGallery (issue #9) > draws all (N + 1)^(2N) networks of N links page by page, with base subscripts 1387ms
+ ✓ src/pages/pages.test.jsx > NetworkGallery (issue #9) > can show one network per renaming class 553ms
+ ✓ src/pages/pages.test.jsx > NetworkGallery (issue #9) > can show only networks whose links refer to real links, not to 0 (issue #13) 452ms
+ ✓ src/pages/pages.test.jsx > NetworkExample (issue #9) > labels the math and the links notation and shows a random network on click 16ms
+ ✓ src/pages/pages.test.jsx > BlogPage > shows every story once, from X for English readers 490ms
+ ✓ src/pages/pages.test.jsx > BlogPage > shows the Russian version from VK for Russian readers and filters by language 252ms
+ ✓ src/pages/pages.test.jsx > BlogPage > writes dates in the reader language, also on posts that exist in one language only 205ms
+ ✓ src/pages/pages.test.jsx > BlogPage > shows the archived copies of pictures, not the CDN links 145ms
+ ✓ src/pages/pages.test.jsx > BlogPage > replaces a picture the CDN no longer serves with a note, not a broken image 205ms
+ ✓ src/pages/pages.test.jsx > BlogPage > embeds X first and offers an archived copy and retry 299ms
+ ✓ src/pages/pages.test.jsx > page entries > every page has a title, a summary and a symbol of links, in the order CV, Experience, Repositories… 3ms
+ ✓ src/pages/pages.test.jsx > pages in Russian (issue #11) > RepositoriesPage 2787ms
+ ✓ src/pages/pages.test.jsx > pages in Russian (issue #11) > ResearchPage 1355ms
+ ✓ src/pages/pages.test.jsx > pages in Russian (issue #11) > AssociativePage 3377ms
+ ✓ src/pages/pages.test.jsx > pages in Russian (issue #11) > ArtPage 618ms
+ ✓ src/pages/pages.test.jsx > pages in Russian (issue #11) > BlogPage: shows the posts in the site language, without taking over ?lang= 442ms
+ ✓ src/components/visuals.test.jsx > background layers > render the universe, grid and rain layers hidden from assistive technology 53ms
+ ✓ src/components/visuals.test.jsx > background layers > do nothing where WebGL or Canvas 2D are unavailable 2ms
+ ✓ src/components/visuals.test.jsx > rain of link networks (issue #9) > puts exactly two symbol columns into every 64px grid cell, starting at the grid lines 6ms
+ ✓ src/components/visuals.test.jsx > rain of link networks (issue #9) > drifts one grid cell per period and starts over 2ms
+ ✓ src/components/visuals.test.jsx > rain of link networks (issue #9) > draws every symbol on a half-cell of the grid, each link in its own colour 45ms
+ ✓ src/components/visuals.test.jsx > rain of link networks (issue #9) > moves the canvas with the grid and keeps the trails on it when the grid starts over 9ms
+ ✓ src/components/visuals.test.jsx > background canvases follow their CSS size (issue #13) > the rain redraws at the new size of its canvas instead of being stretched 82ms
+ ✓ src/components/visuals.test.jsx > background canvases follow their CSS size (issue #13) > the universe renders at the new size of its canvas instead of being stretched 2ms
+ ✓ src/components/visuals.test.jsx > background follows the settings at once (issue #13) > moves in the automatic mode unless the system asks for reduced motion 2ms
+ ✓ src/components/visuals.test.jsx > background follows the settings at once (issue #13) > turns the default settings (issue #15) into the options of the layers 3ms
+ ✓ src/components/visuals.test.jsx > background follows the settings at once (issue #13) > picks networks with the chosen number of links, real references only if asked 5ms
+ ✓ src/components/visuals.test.jsx > background follows the settings at once (issue #13) > changes the step, glow, line width and fading of the running rain without starting it again 58ms
+ ✓ src/components/visuals.test.jsx > background follows the settings at once (issue #13) > keeps the glow the same size in CSS pixels on high-density screens (issue #15) 5ms
+ ✓ src/components/visuals.test.jsx > background follows the settings at once (issue #13) > keeps the chosen space around every symbol, never more than the cell allows (issue #15) 20ms
+ ✓ src/components/visuals.test.jsx > background follows the settings at once (issue #13) > lays the rain out again on a new grid size 12ms
+stderr | src/components/visuals.test.jsx > background follows the settings at once (issue #13) > hides switched-off layers and keeps the universe off the page
+An update to Cosmos inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ src/components/visuals.test.jsx > background follows the settings at once (issue #13) > sends the look of the universe to the shader 2ms
+ ✓ src/components/visuals.test.jsx > background follows the settings at once (issue #13) > hides switched-off layers and keeps the universe off the page 18ms
+ ✓ src/components/visuals.test.jsx > ProblemSolvingDiagram > draws problem → 2 tasks → 4 subtasks → 4 tests → 8 drafts → 2 selections → solution 219ms
+ ✓ src/components/visuals.test.jsx > ProblemSolvingDiagram > keeps every label inside the drawing and clear of everything else (en) 7ms
+ ✓ src/components/visuals.test.jsx > ProblemSolvingDiagram > keeps every label inside the drawing and clear of everything else (ru) 4ms
+ ✓ src/components/visuals.test.jsx > ProblemSolvingDiagram > centres both rows and spaces every flow arrow evenly (en) 1ms
+ ✓ src/components/visuals.test.jsx > ProblemSolvingDiagram > centres both rows and spaces every flow arrow evenly (ru) 1ms
+ ✓ src/components/visuals.test.jsx > ProblemSolvingDiagram > keeps the English words of the original drawing 1ms
+ ✓ src/components/visuals.test.jsx > ProblemSolvingDiagram > draws the Russian words when the site is in Russian 42ms
+ ✓ src/components/visuals.test.jsx > ProblemSolvingDiagram > only links the original drawing and the original repository in the caption 24ms
+ ✓ src/components/visuals.test.jsx > HabrCards > shows the snapshot when live data is off 201ms
+ ✓ src/components/visuals.test.jsx > HabrCards > refreshes views, karma and bookmarks from the Habr API 173ms
+ ✓ src/components/visuals.test.jsx > HabrCards > keeps the snapshot when the API is unreachable 109ms
+ ✓ src/components/visuals.test.jsx > HabrCards > merges statistics only into known articles 1ms
+ ✓ src/sound/sound.test.jsx > the sounds (issue #15) > has a patch for every sound of the settings and a setting for every patch 8ms
+ ✓ src/sound/sound.test.jsx > the sounds (issue #15) > keeps every patch short, quiet and well formed 22ms
+ ✓ src/sound/sound.test.jsx > the sounds (issue #15) > defaults to a sound for every interaction but typing 6ms
+ ✓ src/sound/sound.test.jsx > the sounds (issue #15) > reads the sounds of an interaction up to the first empty slot 3ms
+ ✓ src/sound/sound.test.jsx > the engine > plays one of the sounds at random but never the same twice in a row, each in turn, or all together 2ms
+ ✓ src/sound/sound.test.jsx > the engine > schedules a patch with envelopes that end in silence, filters, FM and panning 13ms
+ ✓ src/sound/sound.test.jsx > the engine > schedules every patch of the library without errors 18ms
+ ✓ src/sound/sound.test.jsx > the engine > plays the sounds of an interaction at its level, a stack of sounds no louder than one 7ms
+ ✓ src/sound/sound.test.jsx > the engine > sets the volume, the tone and the echo on the bus and rebuilds the room when its size changes 9ms
+ ✓ src/sound/sound.test.jsx > the engine > is silent without Web Audio, at zero volume, before the first gesture, and closes its context 6ms
+ ✓ src/sound/sound.test.jsx > the engine > pans a sound towards the pointer only when stereo is on, by the stereo width 7ms
+ ✓ src/sound/sound.test.jsx > the interactions > knows the sound of a click on each kind of control 50ms
+ ✓ src/sound/sound.test.jsx > the interactions > sounds pointing, clicks, sliders, typing, choices, details and cues, and stops listening when stopped 36ms
+ ✓ src/sound/sound.test.jsx > the settings of the sound > has a section whose settings only scripts read 2ms
+ ✓ src/sound/sound.test.jsx > the settings of the sound > shows the next sound of an interaction once the one before is chosen 1ms
+ ✓ src/sound/sound.test.jsx > the settings of the sound > puts every interaction in exactly one tab 7ms
+ ✓ src/sound/sound.test.jsx > the settings of the sound > shows the tabs of the interactions only when the sound is on 1142ms
+ ✓ src/sound/sound.test.jsx > the settings of the sound > has a ▶ for every chosen sound on the settings page 533ms
+ ✓ src/sound/sound.test.jsx > the settings of the sound > switches the sound on and off from the top bar 20ms
+ ✓ src/data/data.test.js > profile data integrity > experience entries have valid, ordered dates 11ms
+ ✓ src/data/data.test.js > profile data integrity > every featured project exists in the generated GitHub data 2ms
+ ✓ src/data/data.test.js > profile data integrity > favorite languages appear in the skills list 4ms
+ ✓ src/data/data.test.js > profile data integrity > links are absolute https URLs (or mailto) 3ms
+ ✓ src/data/data.test.js > profile data integrity > education and profile basics are present 2ms
+ ✓ src/data/data.test.js > generated github.json > has no auto-generated log repositories 3ms
+ ✓ src/data/data.test.js > generated github.json > contributions are yearly and consistent with the total 2ms
+ ✓ src/data/data.test.js > generated github.json > languages are sorted by repository count 1ms
+ ✓ src/data/data.test.js > scripts/build-data.cjs > committed github.json is up to date with the raw case-study data 137ms
+ ✓ src/data/data.test.js > scripts/build-data.cjs > isNoise only drops generated log repositories 2ms
+ ✓ src/data/data.test.js > repositories that are not shown (issue #9) > generated logs are excluded from the displayed source catalog 2ms
+ ✓ src/data/data.test.js > repositories that are not shown (issue #9) > every collected repository has its health facts 2ms
+ ✓ src/data/data.test.js > repositories that are not shown (issue #9) > organizations of no value to a visitor are hidden everywhere 2ms
+ ✓ src/data/data.test.js > repositories that are not shown (issue #9) > a repository with only a short README and a license is empty (konard/TheAnime) 1ms
+ ✓ src/data/data.test.js > repositories that are not shown (issue #9) > history started by another person before the repository existed is a broken fork (konard/slava) 1ms
+ ✓ src/data/data.test.js > repositories that are not shown (issue #9) > nothing is shown about copies of projects that are not public 2ms
+ ✓ src/data/data.test.js > repositories that are not shown (issue #9) > the website shows exactly the repositories that pass the rules 28ms
+ ✓ src/data/data.test.js > scripts/repositories.cjs (issue #7) > committed repositories.json is up to date with the collected data 90ms
+ ✓ src/data/data.test.js > scripts/repositories.cjs (issue #7) > forks are never collected and copies are classified 1ms
+ ✓ src/data/data.test.js > scripts/repositories.cjs (issue #7) > fields are assigned from keywords, languages and owners 1ms
+ ✓ src/data/data.test.js > scripts/repositories.cjs (issue #7) > own repositories match the original repository total 1ms
+ ✓ src/data/data.test.js > scripts/repositories.cjs (issue #7) > every field has a description and professions point to original repositories 1ms
+ ✓ src/data/data.test.js > scripts/registries.cjs (issue #7) > every registry with packages has a card, the empty ones are listed 1ms
+ ✓ src/data/data.test.js > scripts/registries.cjs (issue #7) > the registries without a public listing are checked too (experiments/collect-other-registries.cjs) 1ms
+ ✓ src/data/data.test.js > scripts/registries.cjs (issue #7) > packages of forks, mirrors and hidden repositories are not counted 1ms
+ ✓ src/data/data.test.js > scripts/registries.cjs (issue #7) > sourceRepository reads the GitHub repository of a package 1ms
+ ✓ src/links/network.test.js > notations of the editor (issue #17) > writes one network in every notation 6ms
+ ✓ src/links/network.test.js > notations of the editor (issue #17) > reads back what it writes, in every notation 7ms
+ ✓ src/links/network.test.js > notations of the editor (issue #17) > explains what is wrong in English and Russian 4ms
+ ✓ src/links/network.test.js > notations of the editor (issue #17) > counts networks of up to 9 links exactly 2ms
+ ✓ src/links/network.test.js > notations of the editor (issue #17) > rejects malformed notation instead of silently discarding part of the network 1ms
+ ✓ src/links/network.test.js > notations of the editor (issue #17) > adds, removes and rewires links keeping the network consistent 2ms
+ ✓ src/links/network.test.js > style of the picture (issue #17) > checks every option, so a shared link cannot break the picture 2ms
+ ✓ src/links/network.test.js > style of the picture (issue #17) > keeps only the options that differ from the defaults in the address 3ms
+ ✓ src/links/network.test.js > style of the picture (issue #17) > gives each link a colour and turns 4ms
+ ✓ src/links/network.test.js > style of the picture (issue #17) > offers both a card and a plain black background, and keeps the hand-made turns 4ms
+ ✓ src/links/network.test.js > picture of a network (issue #17) > is a standalone SVG of the chosen size with the links of the gallery 9ms
+ ✓ src/links/network.test.js > picture of a network (issue #17) > draws a transparent background, no card and a wide image on request 18ms
+ ✓ src/links/network.test.js > picture of a network (issue #17) > escapes the caption, so a shared link cannot put markup into the picture 5ms
+ ✓ src/links/network.test.js > fewer overlaps of lines (experimental, issue #17) > counts the same crossings regardless of link ordering 2ms
+ ✓ src/links/network.test.js > fewer overlaps of lines (experimental, issue #17) > turns the ends of the links so that their lines cross and touch less 1034ms
+ ✓ src/links/network.test.js > fewer overlaps of lines (experimental, issue #17) > never makes a picture worse 639ms
+ ✓ src/links/network.test.js > fewer overlaps of lines (experimental, issue #17) > keeps solved turns editable and preserves the preview when they are applied 850ms
+ ✓ src/links/network.test.js > saving and sharing (issue #17) > names the files by the network and links to the share dialogs 1ms
+ ✓ src/pages/network.test.jsx > gallery cards open the page of their network (issue #17) > links each card to /network/ with one navigation target 390ms
+ ✓ src/pages/network.test.jsx > gallery cards open the page of their network (issue #17) > links the example of the theory to its page 50ms
+ ✓ src/pages/network.test.jsx > the address keeps the network and its picture (issue #17) > reads and writes the code and the changed options 8ms
+ ✓ src/pages/network.test.jsx > the address keeps the network and its picture (issue #17) > steps through the networks and draws random ones of the same size 4ms
+ ✓ src/pages/network.test.jsx > NetworkPage (issue #17) > preserves an explicit page language in the address and shared link after editing 467ms
+ ✓ src/pages/network.test.jsx > NetworkPage (issue #17) > opens the shared theory notation regardless of the receiving browser settings 244ms
+ ✓ src/pages/network.test.jsx > NetworkPage (issue #17) > opens the network of the address and shows it in every notation 467ms
+ ✓ src/pages/network.test.jsx > NetworkPage (issue #17) > changes every notation, the picture and the address when one notation is edited 404ms
+ ✓ src/pages/network.test.jsx > NetworkPage (issue #17) > keeps an invalid text, says what is wrong and leaves the network as it was 265ms
+ ✓ src/pages/network.test.jsx > NetworkPage (issue #17) > edits the links one by one: references, colours, turns, adding and removing 1415ms
+ ✓ src/pages/network.test.jsx > NetworkPage (issue #17) > switches between the card and a plain black background, and every option changes the picture 854ms
+ ✓ src/pages/network.test.jsx > NetworkPage (issue #17) > reduces overlaps of lines on request (experimental) 1418ms
+ ✓ src/pages/network.test.jsx > NetworkPage (issue #17) > downloads, copies and links to the share dialogs with the address of the picture 145ms
+ ✓ src/pages/network.test.jsx > NetworkPage (issue #17) > saves a style in the browser and applies it again 748ms
+ ✓ src/visuals/layers.test.jsx > star layers (issue #15) > gives every layer of the settings all the options of a layer 8ms
+ ✓ src/visuals/layers.test.jsx > star layers (issue #15) > spreads as many stars per area on every screen, at most MAX_STARS 2ms
+ ✓ src/visuals/layers.test.jsx > star layers (issue #15) > keeps the same stars for the same seed 2ms
+ ✓ src/visuals/layers.test.jsx > star layers (issue #15) > turns the hue of a colour 2ms
+ ✓ src/visuals/layers.test.jsx > star layers (issue #15) > draws every shape of the settings 3ms
+ ✓ src/visuals/layers.test.jsx > star layers (issue #15) > draws only the layers that are on, with their blending and glow 4ms
+ ✓ src/visuals/layers.test.jsx > star layers (issue #15) > makes colour variants when the colour varies 3ms
+ ✓ src/visuals/layers.test.jsx > star layers (issue #15) > keeps the stars and the sprites when an option that does not change them changes 7ms
+ ✓ src/visuals/layers.test.jsx > star layers (issue #15) > moves drifting and warping stars from frame to frame 5ms
+ ✓ src/visuals/layers.test.jsx > star layers (issue #15) > does nothing without Canvas 2D 2ms
+ ✓ src/visuals/layers.test.jsx > beams on the grid lines (issue #15) > takes the grid and every beam option from the settings 4ms
+ ✓ src/visuals/layers.test.jsx > beams on the grid lines (issue #15) > runs on grid lines when snapped and anywhere otherwise 5ms
+ ✓ src/visuals/layers.test.jsx > beams on the grid lines (issue #15) > keeps the chosen number of beams going the chosen ways 4ms
+ ✓ src/visuals/layers.test.jsx > beams on the grid lines (issue #15) > starts a beam again after it has left the screen, after a pause 3ms
+ ✓ src/visuals/layers.test.jsx > beams on the grid lines (issue #15) > does nothing without Canvas 2D 1ms
+stderr | src/visuals/layers.test.jsx > the background loads the code of a layer only when it is on (issue #15) > has no star or beam canvas by default and adds them when switched on
+An update to Cosmos inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ src/visuals/layers.test.jsx > the background loads the code of a layer only when it is on (issue #15) > has no star or beam canvas by default and adds them when switched on 56ms
+ ✓ src/visuals/layers.test.jsx > colours, size and zoom of the universe (issue #15) > passes the colours of the gas and of the stars to the shader 2ms
+ ✓ src/pages/settings.test.jsx > settings page (issue #13) > is linked from the footer of every page 368ms
+ ✓ src/pages/settings.test.jsx > settings page (issue #13) > applies a change to the page at once and remembers it in this browser 620ms
+ ✓ src/pages/settings.test.jsx > settings page (issue #13) > shows the options of the chosen skin only 887ms
+ ✓ src/pages/settings.test.jsx > settings page (issue #13) > resets one setting, a section or everything 667ms
+ ✓ src/pages/settings.test.jsx > settings page (issue #13) > shows the changes as JSON and loads pasted settings 671ms
+ ✓ src/pages/settings.test.jsx > settings page (issue #13) > hides everything but one button to look at the background 524ms
+ ✓ src/pages/settings.test.jsx > settings page (issue #13) > formats values as people read them 1ms
+ ✓ src/pages/settings.test.jsx > settings page layout (issue #15) > keeps every section in its own column whatever the skin 532ms
+ ✓ src/pages/settings.test.jsx > settings page layout (issue #15) > puts every row into the same four columns: label, control, value, reset 214ms
+stderr | src/pages/settings.test.jsx > settings page layout (issue #15) > shows a setting only where it applies (issue #15)
+An update to Cosmos inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+An update to LiquidRefraction inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+An update to Sound inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+An update to PrefSwitches inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+An update to Layout inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+An update to SettingsPage inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ src/pages/settings.test.jsx > settings page layout (issue #15) > shows one star layer at a time in tabs, marking the layers that are on (issue #15) 201ms
+ ✓ src/pages/settings.test.jsx > settings page layout (issue #15) > shows a setting only where it applies (issue #15) 328ms
+ ✓ src/links/links.test.js > networks with the zero link (issue #9) > N real links are written in base N + 1, so there are (N + 1)^(2N) networks 7ms
+ ✓ src/links/links.test.js > networks with the zero link (issue #9) > one real link has exactly the four networks of the issue: 00, 10, 01, 11 2ms
+ ✓ src/links/links.test.js > networks with the zero link (issue #9) > two links run from 00₃ 00₃ to 22₃ 22₃, three from 00₄ 00₄ 00₄ to 33₄ 33₄ 33₄ 1ms
+ ✓ src/links/links.test.js > networks with the zero link (issue #9) > codes and positions are inverse to each other and every code is distinct 70ms
+ ✓ src/links/links.test.js > networks with the zero link (issue #9) > renaming keeps 0 fixed and the classes match Burnside counting 4ms
+ ✓ src/links/links.test.js > networks with the zero link (issue #9) > random networks are valid codes of 1–4 links 13ms
+ ✓ src/links/links.test.js > networks with only real references (issue #13) > exclude every network that refers to 0, keeping links that refer to each other or themselves 32ms
+ ✓ src/links/links.test.js > networks with only real references (issue #13) > count their renaming classes with Burnside’s lemma 38ms
+ ✓ src/links/links.test.js > networks with only real references (issue #13) > random networks with only real references never refer to 0 5ms
+ ✓ src/links/links.test.js > networks with only real references (issue #13) > the default still includes references to 0 1ms
+ ✓ src/links/links.test.js > network symbols (issue #9 link visuals) > every network is drawable and stays inside the box 625ms
+ ✓ src/links/links.test.js > network symbols (issue #9 link visuals) > every link is one unbroken line with matching tangents in its middle, in its own colour 2478ms
+ ✓ src/links/links.test.js > network symbols (issue #9 link visuals) > ends touch the middles they refer to, references to 0 stay free 825ms
+ ✓ src/links/links.test.js > network symbols (issue #9 link visuals) > (1: 1 1) is a point-symmetric figure eight around its middle 1ms
+ ✓ src/links/links.test.js > network symbols (issue #9 link visuals) > a double self-reference inside a network stays symmetric too 1ms
+ ✓ src/links/links.test.js > network symbols (issue #9 link visuals) > different networks of the same size are drawn differently 583ms
+ ✓ src/links/links.test.js > network symbols (issue #9 link visuals) > arbitrary finite link counts fit into a symbol 7ms
+ ✓ src/data/experience.test.js > experience: every job is complete (issue #11) > artbridge has a role, dates, summary, bullets and tags 8ms
+ ✓ src/data/experience.test.js > experience: every job is complete (issue #11) > asgardro has a role, dates, summary, bullets and tags 2ms
+ ✓ src/data/experience.test.js > experience: every job is complete (issue #11) > alponline has a role, dates, summary, bullets and tags 3ms
+ ✓ src/data/experience.test.js > experience: every job is complete (issue #11) > pegas has a role, dates, summary, bullets and tags 1ms
+ ✓ src/data/experience.test.js > experience: every job is complete (issue #11) > linksplatform has a role, dates, summary, bullets and tags 7ms
+ ✓ src/data/experience.test.js > experience: every job is complete (issue #11) > termika has a role, dates, summary, bullets and tags 1ms
+ ✓ src/data/experience.test.js > experience: every job is complete (issue #11) > elar has a role, dates, summary, bullets and tags 1ms
+ ✓ src/data/experience.test.js > experience: every job is complete (issue #11) > abracar has a role, dates, summary, bullets and tags 1ms
+ ✓ src/data/experience.test.js > experience: every job is complete (issue #11) > deep-foundation has a role, dates, summary, bullets and tags 4ms
+ ✓ src/data/experience.test.js > experience: every job is complete (issue #11) > deep-gpt has a role, dates, summary, bullets and tags 6ms
+ ✓ src/data/experience.test.js > experience: every job is complete (issue #11) > kaiten has a role, dates, summary, bullets and tags 2ms
+ ✓ src/data/experience.test.js > experience: every job is complete (issue #11) > link-foundation has a role, dates, summary, bullets and tags 1ms
+ ✓ src/data/experience.test.js > experience: every job is complete (issue #11) > link-assistant has a role, dates, summary, bullets and tags 2ms
+ ✓ src/data/experience.test.js > experience: every job is complete (issue #11) > capico has a role, dates, summary, bullets and tags 2ms
+ ✓ src/data/experience.test.js > experience: every job is complete (issue #11) > evirma has a role, dates, summary, bullets and tags 2ms
+ ✓ src/data/experience.test.js > experience: every job is complete (issue #11) > the ids are unique and the timeline is ordered by start date 1ms
+ ✓ src/data/experience.test.js > experience: every job is complete (issue #11) > a job without a role, dates, summary or tags fails the check 1ms
+ ✓ src/data/experience.test.js > experience: every job is complete (issue #11) > the facts from the hh.ru CV are on the site 3ms
+ ✓ src/data/experience.test.js > experience: every job is complete (issue #11) > Russian legal names of companies are used in Russian 1ms
+ ✓ src/data/experience.test.js > experience: every job is complete (issue #11) > the total professional experience is 18 years (October 2026) 1ms
+ ✓ src/data/experience.test.js > positions (issue #11) > the old roles stay and the new positions are added 1ms
+ ✓ src/data/experience.test.js > positions (issue #11) > all has titles, a summary, jobs, skills and CV texts 3ms
+ ✓ src/data/experience.test.js > positions (issue #11) > ml has titles, a summary, jobs, skills and CV texts 1ms
+ ✓ src/data/experience.test.js > positions (issue #11) > ai-agents has titles, a summary, jobs, skills and CV texts 1ms
+ ✓ src/data/experience.test.js > positions (issue #11) > lead has titles, a summary, jobs, skills and CV texts 2ms
+ ✓ src/data/experience.test.js > positions (issue #11) > techlead has titles, a summary, jobs, skills and CV texts 2ms
+ ✓ src/data/experience.test.js > positions (issue #11) > cto has titles, a summary, jobs, skills and CV texts 2ms
+ ✓ src/data/experience.test.js > positions (issue #11) > developer has titles, a summary, jobs, skills and CV texts 2ms
+ ✓ src/data/experience.test.js > positions (issue #11) > backend has titles, a summary, jobs, skills and CV texts 1ms
+ ✓ src/data/experience.test.js > positions (issue #11) > fullstack has titles, a summary, jobs, skills and CV texts 1ms
+ ✓ src/data/experience.test.js > positions (issue #11) > dotnet has titles, a summary, jobs, skills and CV texts 1ms
+ ✓ src/data/experience.test.js > positions (issue #11) > rust has titles, a summary, jobs, skills and CV texts 1ms
+ ✓ src/data/experience.test.js > positions (issue #11) > trading has titles, a summary, jobs, skills and CV texts 1ms
+ ✓ src/data/experience.test.js > positions (issue #11) > data has titles, a summary, jobs, skills and CV texts 1ms
+ ✓ src/data/experience.test.js > positions (issue #11) > devops has titles, a summary, jobs, skills and CV texts 1ms
+ ✓ src/data/experience.test.js > positions (issue #11) > research has titles, a summary, jobs, skills and CV texts 1ms
+ ✓ src/data/experience.test.js > positions (issue #11) > a base position lists exactly the jobs that have its role 1ms
+ ✓ src/data/experience.test.js > positions (issue #11) > products point to collected repositories 5ms
+ ✓ src/data/experience.test.js > every text has English and Russian (issue #11) > untranslated finds missing languages 1ms
+ ✓ src/data/experience.test.js > every text has English and Russian (issue #11) > experience 1ms
+ ✓ src/data/experience.test.js > every text has English and Russian (issue #11) > positions 1ms
+ ✓ src/data/experience.test.js > every text has English and Russian (issue #11) > products 1ms
+ ✓ src/data/experience.test.js > every text has English and Russian (issue #11) > practices 1ms
+ ✓ src/data/experience.test.js > every text has English and Russian (issue #11) > profile 1ms
+ ✓ src/data/experience.test.js > every text has English and Russian (issue #11) > languages 0ms
+ ✓ src/data/experience.test.js > every text has English and Russian (issue #11) > education 1ms
+ ✓ src/data/experience.test.js > every text has English and Russian (issue #11) > achievements 1ms
+ ✓ src/data/experience.test.js > every text has English and Russian (issue #11) > featuredProjects 1ms
+ ✓ src/data/experience.test.js > every text has English and Russian (issue #11) > skillGroups 1ms
+ ✓ src/data/experience.test.js > every text has English and Russian (issue #11) > spoken languages and education of the hh.ru CV 1ms
+ ✓ src/workflow.test.js > GitHub Actions workflows > github-pages.yml is valid YAML with jobs 14ms
+ ✓ src/workflow.test.js > GitHub Actions workflows > GitHub Pages deployment from Actions > the tested build is uploaded as the Pages artifact 2ms
+ ✓ src/workflow.test.js > GitHub Actions workflows > GitHub Pages deployment from Actions > the CV PDFs are printed into the build before it is uploaded 2ms
+ ✓ src/workflow.test.js > GitHub Actions workflows > GitHub Pages deployment from Actions > deploy publishes with actions/deploy-pages to the github-pages environment 3ms
+ ✓ src/workflow.test.js > GitHub Actions workflows > GitHub Pages deployment from Actions > nothing commits the build to the repository any more 3ms
+ ✓ src/workflow.test.js > GitHub Actions workflows > GitHub Pages deployment from Actions > deploy fails unless the deployed URL serves the app 1ms
+ ✓ src/workflow.test.js > GitHub Actions workflows > GitHub Pages deployment from Actions > docs/ holds no stale site build that looks deployed 1ms
+ ✓ src/workflow.test.js > GitHub Actions best practices > github-pages.yml sets a timeout on every job 3ms
+ ✓ src/workflow.test.js > GitHub Actions best practices > github-pages.yml defaults to read-only permissions 1ms
+ ✓ src/workflow.test.js > GitHub Actions best practices > github-pages.yml uses actions that run on Node.js 24 4ms
+ ✓ src/workflow.test.js > GitHub Actions best practices > github-pages.yml only keeps checkout credentials where it pushes 2ms
+ ✓ src/workflow.test.js > GitHub Actions best practices > main deploys are never cancelled by a newer push 5ms
+ ✓ src/workflow.test.js > GitHub Actions best practices > CodeQL scans all maintained source when a PR exceeds the diff API limit 7ms
+ ✓ src/workflow.test.js > GitHub Actions best practices > security findings fail the workflow as well as the separate GitHub check 5ms
+ ✓ src/workflow.test.js > GitHub Actions best practices > deploy publishes the tested build instead of rebuilding it 5ms
+ ✓ src/workflow.test.js > GitHub Actions best practices > github-pages.yml has a terminal gate covering every job and no success overrides 4ms
+ ✓ src/settings/presets.test.js > built-in presets > have unique ids and names in both languages, and the first is the defaults 8ms
+ ✓ src/settings/presets.test.js > built-in presets > use only known settings with valid values that differ from the defaults, and no comfort settings 7ms
+ ✓ src/settings/presets.test.js > built-in presets > are different looks 5ms
+ ✓ src/settings/presets.test.js > built-in presets > "Light and fast" switches the canvas layers off 1ms
+ ✓ src/settings/presets.test.js > applying a look > puts the look on the defaults and keeps the comfort settings 3ms
+ ✓ src/settings/presets.test.js > applying a look > tells whether the current settings are a look, whatever the comfort settings 4ms
+ ✓ src/settings/presets.test.js > applying a look > cleans what it is given 2ms
+ ✓ src/settings/presets.test.js > a random look > is valid, leaves the sounds and the comfort settings alone and is never heavier than the defaults 304ms
+ ✓ src/settings/presets.test.js > a random look > differs from one press to the next 4ms
+ ✓ src/settings/presets.test.js > a link that carries a look > holds the look without the comfort settings and reads back 2ms
+ ✓ src/settings/presets.test.js > a link that carries a look > ignores other hashes and broken links 1ms
+ ✓ src/settings/presets.test.js > a link that carries a look > is applied when a page opens with it, keeps the look it replaced and leaves the address clean 18ms
+ ✓ src/settings/presets.test.js > looks saved in this browser > are added, replaced by name, renamed and deleted 2ms
+ ✓ src/settings/presets.test.js > looks saved in this browser > are imported from JSON copied in another browser 1ms
+ ✓ src/settings/presets.test.js > looks saved in this browser > are remembered in localStorage and read back checked 1ms
+ ✓ src/settings/presets.test.js > looks saved in this browser > follow other tabs 2ms
+ ✓ src/skins.frames.test.jsx > custom frames: geometry (issue #15) > has a shape and a line in the settings for every shape and line it draws 7ms
+ ✓ src/skins.frames.test.jsx > custom frames: geometry (issue #15) > starts every shape on the left edge and ends it on the top edge 4ms
+ ✓ src/skins.frames.test.jsx > custom frames: geometry (issue #15) > keeps a round corner on its circle and a scoop on the circle round the corner 6ms
+ ✓ src/skins.frames.test.jsx > custom frames: geometry (issue #15) > mirrors the points for the other corners in the clockwise order of the polygon 3ms
+ ✓ src/skins.frames.test.jsx > custom frames: stylesheet (issue #15) > is generated from src/skins.frames.js (run npm run build:frames) 7ms
+ ✓ src/skins.frames.test.jsx > custom frames: stylesheet (issue #15) > has a rule for every shape and line of every corner and for every kind of edges 4ms
+ ✓ src/skins.frames.test.jsx > custom frames: stylesheet (issue #15) > clips the panel with the points of the four corners and draws 20 frame layers 3ms
+ ✓ src/skins.frames.test.jsx > custom frames: stylesheet (issue #15) > is part of the futuristic skin, whose panels then have no border of their own 2ms
+ ✓ src/skins.frames.test.jsx > custom frames: corner tiles (issue #15) > shows the corners only for the custom frame of the futuristic skin 1166ms
+ ✓ src/skins.frames.test.jsx > custom frames: corner tiles (issue #15) > has a tile with a preview for every shape and every line of the chosen corner 293ms
+ ✓ src/skins.frames.test.jsx > custom frames: corner tiles (issue #15) > sets the attribute of the corner when a tile is chosen 418ms
+ ✓ src/skins.frames.test.jsx > custom frames: corner tiles (issue #15) > mirrors the preview for the other corners and draws the line on the chosen shape 244ms
+ ✓ src/skins.frames.test.jsx > custom frames: corner tiles (issue #15) > makes every corner like the chosen one 323ms
+ ✓ src/cv/cv.test.jsx > buildCv > there are 15 CV positions in 4 styles and 2 languages 6ms
+ ✓ src/cv/cv.test.jsx > buildCv > all · classic · en renders a complete CV without private data 32ms
+ ✓ src/cv/cv.test.jsx > buildCv > all · classic · ru renders a complete CV without private data 20ms
+ ✓ src/cv/cv.test.jsx > buildCv > all · compact · en renders a complete CV without private data 7ms
+ ✓ src/cv/cv.test.jsx > buildCv > all · compact · ru renders a complete CV without private data 12ms
+ ✓ src/cv/cv.test.jsx > buildCv > all · technical · en renders a complete CV without private data 26ms
+ ✓ src/cv/cv.test.jsx > buildCv > all · technical · ru renders a complete CV without private data 12ms
+ ✓ src/cv/cv.test.jsx > buildCv > all · academic · en renders a complete CV without private data 6ms
+ ✓ src/cv/cv.test.jsx > buildCv > all · academic · ru renders a complete CV without private data 11ms
+ ✓ src/cv/cv.test.jsx > buildCv > ml · classic · en renders a complete CV without private data 7ms
+ ✓ src/cv/cv.test.jsx > buildCv > ml · classic · ru renders a complete CV without private data 5ms
+ ✓ src/cv/cv.test.jsx > buildCv > ml · compact · en renders a complete CV without private data 4ms
+ ✓ src/cv/cv.test.jsx > buildCv > ml · compact · ru renders a complete CV without private data 6ms
+ ✓ src/cv/cv.test.jsx > buildCv > ml · technical · en renders a complete CV without private data 5ms
+ ✓ src/cv/cv.test.jsx > buildCv > ml · technical · ru renders a complete CV without private data 5ms
+ ✓ src/cv/cv.test.jsx > buildCv > ml · academic · en renders a complete CV without private data 5ms
+ ✓ src/cv/cv.test.jsx > buildCv > ml · academic · ru renders a complete CV without private data 5ms
+ ✓ src/cv/cv.test.jsx > buildCv > ai-agents · classic · en renders a complete CV without private data 4ms
+ ✓ src/cv/cv.test.jsx > buildCv > ai-agents · classic · ru renders a complete CV without private data 4ms
+ ✓ src/cv/cv.test.jsx > buildCv > ai-agents · compact · en renders a complete CV without private data 3ms
+ ✓ src/cv/cv.test.jsx > buildCv > ai-agents · compact · ru renders a complete CV without private data 4ms
+ ✓ src/cv/cv.test.jsx > buildCv > ai-agents · technical · en renders a complete CV without private data 10ms
+ ✓ src/cv/cv.test.jsx > buildCv > ai-agents · technical · ru renders a complete CV without private data 5ms
+ ✓ src/cv/cv.test.jsx > buildCv > ai-agents · academic · en renders a complete CV without private data 3ms
+ ✓ src/cv/cv.test.jsx > buildCv > ai-agents · academic · ru renders a complete CV without private data 4ms
+ ✓ src/cv/cv.test.jsx > buildCv > lead · classic · en renders a complete CV without private data 4ms
+ ✓ src/cv/cv.test.jsx > buildCv > lead · classic · ru renders a complete CV without private data 4ms
+ ✓ src/cv/cv.test.jsx > buildCv > lead · compact · en renders a complete CV without private data 4ms
+ ✓ src/cv/cv.test.jsx > buildCv > lead · compact · ru renders a complete CV without private data 5ms
+ ✓ src/cv/cv.test.jsx > buildCv > lead · technical · en renders a complete CV without private data 7ms
+ ✓ src/cv/cv.test.jsx > buildCv > lead · technical · ru renders a complete CV without private data 4ms
+ ✓ src/cv/cv.test.jsx > buildCv > lead · academic · en renders a complete CV without private data 4ms
+ ✓ src/cv/cv.test.jsx > buildCv > lead · academic · ru renders a complete CV without private data 6ms
+ ✓ src/cv/cv.test.jsx > buildCv > techlead · classic · en renders a complete CV without private data 8ms
+ ✓ src/cv/cv.test.jsx > buildCv > techlead · classic · ru renders a complete CV without private data 5ms
+ ✓ src/cv/cv.test.jsx > buildCv > techlead · compact · en renders a complete CV without private data 5ms
+ ✓ src/cv/cv.test.jsx > buildCv > techlead · compact · ru renders a complete CV without private data 4ms
+ ✓ src/cv/cv.test.jsx > buildCv > techlead · technical · en renders a complete CV without private data 6ms
+ ✓ src/cv/cv.test.jsx > buildCv > techlead · technical · ru renders a complete CV without private data 7ms
+ ✓ src/cv/cv.test.jsx > buildCv > techlead · academic · en renders a complete CV without private data 8ms
+ ✓ src/cv/cv.test.jsx > buildCv > techlead · academic · ru renders a complete CV without private data 8ms
+ ✓ src/cv/cv.test.jsx > buildCv > cto · classic · en renders a complete CV without private data 6ms
+ ✓ src/cv/cv.test.jsx > buildCv > cto · classic · ru renders a complete CV without private data 7ms
+ ✓ src/cv/cv.test.jsx > buildCv > cto · compact · en renders a complete CV without private data 3ms
+ ✓ src/cv/cv.test.jsx > buildCv > cto · compact · ru renders a complete CV without private data 4ms
+ ✓ src/cv/cv.test.jsx > buildCv > cto · technical · en renders a complete CV without private data 8ms
+ ✓ src/cv/cv.test.jsx > buildCv > cto · technical · ru renders a complete CV without private data 6ms
+ ✓ src/cv/cv.test.jsx > buildCv > cto · academic · en renders a complete CV without private data 6ms
+ ✓ src/cv/cv.test.jsx > buildCv > cto · academic · ru renders a complete CV without private data 6ms
+ ✓ src/cv/cv.test.jsx > buildCv > developer · classic · en renders a complete CV without private data 6ms
+ ✓ src/cv/cv.test.jsx > buildCv > developer · classic · ru renders a complete CV without private data 6ms
+ ✓ src/cv/cv.test.jsx > buildCv > developer · compact · en renders a complete CV without private data 5ms
+ ✓ src/cv/cv.test.jsx > buildCv > developer · compact · ru renders a complete CV without private data 4ms
+ ✓ src/cv/cv.test.jsx > buildCv > developer · technical · en renders a complete CV without private data 17ms
+ ✓ src/cv/cv.test.jsx > buildCv > developer · technical · ru renders a complete CV without private data 4ms
+ ✓ src/cv/cv.test.jsx > buildCv > developer · academic · en renders a complete CV without private data 4ms
+ ✓ src/cv/cv.test.jsx > buildCv > developer · academic · ru renders a complete CV without private data 5ms
+ ✓ src/cv/cv.test.jsx > buildCv > backend · classic · en renders a complete CV without private data 4ms
+ ✓ src/cv/cv.test.jsx > buildCv > backend · classic · ru renders a complete CV without private data 5ms
+ ✓ src/cv/cv.test.jsx > buildCv > backend · compact · en renders a complete CV without private data 4ms
+ ✓ src/cv/cv.test.jsx > buildCv > backend · compact · ru renders a complete CV without private data 4ms
+ ✓ src/cv/cv.test.jsx > buildCv > backend · technical · en renders a complete CV without private data 4ms
+ ✓ src/cv/cv.test.jsx > buildCv > backend · technical · ru renders a complete CV without private data 4ms
+ ✓ src/cv/cv.test.jsx > buildCv > backend · academic · en renders a complete CV without private data 3ms
+ ✓ src/cv/cv.test.jsx > buildCv > backend · academic · ru renders a complete CV without private data 3ms
+ ✓ src/cv/cv.test.jsx > buildCv > fullstack · classic · en renders a complete CV without private data 3ms
+ ✓ src/cv/cv.test.jsx > buildCv > fullstack · classic · ru renders a complete CV without private data 3ms
+ ✓ src/cv/cv.test.jsx > buildCv > fullstack · compact · en renders a complete CV without private data 2ms
+ ✓ src/cv/cv.test.jsx > buildCv > fullstack · compact · ru renders a complete CV without private data 2ms
+ ✓ src/cv/cv.test.jsx > buildCv > fullstack · technical · en renders a complete CV without private data 4ms
+ ✓ src/cv/cv.test.jsx > buildCv > fullstack · technical · ru renders a complete CV without private data 4ms
+ ✓ src/cv/cv.test.jsx > buildCv > fullstack · academic · en renders a complete CV without private data 3ms
+ ✓ src/cv/cv.test.jsx > buildCv > fullstack · academic · ru renders a complete CV without private data 3ms
+ ✓ src/cv/cv.test.jsx > buildCv > dotnet · classic · en renders a complete CV without private data 3ms
+ ✓ src/cv/cv.test.jsx > buildCv > dotnet · classic · ru renders a complete CV without private data 3ms
+ ✓ src/cv/cv.test.jsx > buildCv > dotnet · compact · en renders a complete CV without private data 2ms
+ ✓ src/cv/cv.test.jsx > buildCv > dotnet · compact · ru renders a complete CV without private data 2ms
+ ✓ src/cv/cv.test.jsx > buildCv > dotnet · technical · en renders a complete CV without private data 3ms
+ ✓ src/cv/cv.test.jsx > buildCv > dotnet · technical · ru renders a complete CV without private data 3ms
+ ✓ src/cv/cv.test.jsx > buildCv > dotnet · academic · en renders a complete CV without private data 2ms
+ ✓ src/cv/cv.test.jsx > buildCv > dotnet · academic · ru renders a complete CV without private data 3ms
+ ✓ src/cv/cv.test.jsx > buildCv > rust · classic · en renders a complete CV without private data 3ms
+ ✓ src/cv/cv.test.jsx > buildCv > rust · classic · ru renders a complete CV without private data 3ms
+ ✓ src/cv/cv.test.jsx > buildCv > rust · compact · en renders a complete CV without private data 2ms
+ ✓ src/cv/cv.test.jsx > buildCv > rust · compact · ru renders a complete CV without private data 2ms
+ ✓ src/cv/cv.test.jsx > buildCv > rust · technical · en renders a complete CV without private data 3ms
+ ✓ src/cv/cv.test.jsx > buildCv > rust · technical · ru renders a complete CV without private data 4ms
+ ✓ src/cv/cv.test.jsx > buildCv > rust · academic · en renders a complete CV without private data 3ms
+ ✓ src/cv/cv.test.jsx > buildCv > rust · academic · ru renders a complete CV without private data 3ms
+ ✓ src/cv/cv.test.jsx > buildCv > trading · classic · en renders a complete CV without private data 2ms
+ ✓ src/cv/cv.test.jsx > buildCv > trading · classic · ru renders a complete CV without private data 2ms
+ ✓ src/cv/cv.test.jsx > buildCv > trading · compact · en renders a complete CV without private data 2ms
+ ✓ src/cv/cv.test.jsx > buildCv > trading · compact · ru renders a complete CV without private data 5ms
+ ✓ src/cv/cv.test.jsx > buildCv > trading · technical · en renders a complete CV without private data 4ms
+ ✓ src/cv/cv.test.jsx > buildCv > trading · technical · ru renders a complete CV without private data 6ms
+ ✓ src/cv/cv.test.jsx > buildCv > trading · academic · en renders a complete CV without private data 3ms
+ ✓ src/cv/cv.test.jsx > buildCv > trading · academic · ru renders a complete CV without private data 3ms
+ ✓ src/cv/cv.test.jsx > buildCv > data · classic · en renders a complete CV without private data 3ms
+ ✓ src/cv/cv.test.jsx > buildCv > data · classic · ru renders a complete CV without private data 9ms
+ ✓ src/cv/cv.test.jsx > buildCv > data · compact · en renders a complete CV without private data 3ms
+ ✓ src/cv/cv.test.jsx > buildCv > data · compact · ru renders a complete CV without private data 2ms
+ ✓ src/cv/cv.test.jsx > buildCv > data · technical · en renders a complete CV without private data 3ms
+ ✓ src/cv/cv.test.jsx > buildCv > data · technical · ru renders a complete CV without private data 4ms
+ ✓ src/cv/cv.test.jsx > buildCv > data · academic · en renders a complete CV without private data 5ms
+ ✓ src/cv/cv.test.jsx > buildCv > data · academic · ru renders a complete CV without private data 4ms
+ ✓ src/cv/cv.test.jsx > buildCv > devops · classic · en renders a complete CV without private data 2ms
+ ✓ src/cv/cv.test.jsx > buildCv > devops · classic · ru renders a complete CV without private data 4ms
+ ✓ src/cv/cv.test.jsx > buildCv > devops · compact · en renders a complete CV without private data 2ms
+ ✓ src/cv/cv.test.jsx > buildCv > devops · compact · ru renders a complete CV without private data 2ms
+ ✓ src/cv/cv.test.jsx > buildCv > devops · technical · en renders a complete CV without private data 3ms
+ ✓ src/cv/cv.test.jsx > buildCv > devops · technical · ru renders a complete CV without private data 3ms
+ ✓ src/cv/cv.test.jsx > buildCv > devops · academic · en renders a complete CV without private data 3ms
+ ✓ src/cv/cv.test.jsx > buildCv > devops · academic · ru renders a complete CV without private data 3ms
+ ✓ src/cv/cv.test.jsx > buildCv > research · classic · en renders a complete CV without private data 2ms
+ ✓ src/cv/cv.test.jsx > buildCv > research · classic · ru renders a complete CV without private data 2ms
+ ✓ src/cv/cv.test.jsx > buildCv > research · compact · en renders a complete CV without private data 2ms
+ ✓ src/cv/cv.test.jsx > buildCv > research · compact · ru renders a complete CV without private data 2ms
+ ✓ src/cv/cv.test.jsx > buildCv > research · technical · en renders a complete CV without private data 3ms
+ ✓ src/cv/cv.test.jsx > buildCv > research · technical · ru renders a complete CV without private data 3ms
+ ✓ src/cv/cv.test.jsx > buildCv > research · academic · en renders a complete CV without private data 3ms
+ ✓ src/cv/cv.test.jsx > buildCv > research · academic · ru renders a complete CV without private data 4ms
+ ✓ src/cv/cv.test.jsx > buildCv > without a position the CV is the full record, with a position only its jobs 7ms
+ ✓ src/cv/cv.test.jsx > buildCv > jobs are most recent first and the current job is Evirma 6ms
+ ✓ src/cv/cv.test.jsx > buildCv > a position with more than 10 jobs lists the jobs before 2015 in one line to fit 2 pages 2ms
+ ✓ src/cv/cv.test.jsx > buildCv > the compact CV keeps 5 jobs with one bullet and lists the rest in one line 2ms
+ ✓ src/cv/cv.test.jsx > buildCv > the technical CV links repositories and packages, the academic one lists publications 3ms
+ ✓ src/cv/cv.test.jsx > buildCv > pickBullets prefers the topics of the position and always keeps one bullet 1ms
+ ✓ src/cv/cv.test.jsx > buildCv > periods, PDF names and page links 1ms
+ ✓ src/cv/cv.test.jsx > CV page > choosing a position and a style updates the CV, the PDF link and the address 738ms
+ ✓ src/cv/cv.test.jsx > CV page > the CV follows the language of the site 203ms
+ ✓ src/settings/settings.test.js > settings schema (issue #13) > has unique keys whose defaults fit their own rules 32ms
+ ✓ src/settings/settings.test.js > settings schema (issue #13) > uses the settings preferred in issue #15 as the defaults 5ms
+ ✓ src/settings/settings.test.js > settings schema (issue #13) > keeps the rest of the look of the site before settings existed by default 2ms
+ ✓ src/settings/settings.test.js > settings schema (issue #13) > labels every section and field in English and Russian 39ms
+ ✓ src/settings/settings.test.js > checking stored settings > clamps numbers, rejects unknown choices and broken colours, ignores unknown keys 3ms
+ ✓ src/settings/settings.test.js > checking stored settings > puts numbers and colours into CSS variables and the rest into attributes 26ms
+ ✓ src/settings/settings.test.js > settings store > applies a change at once and remembers only what differs from the defaults 25ms
+ ✓ src/settings/settings.test.js > settings store > resets some or all settings and forgets them when nothing differs 14ms
+ ✓ src/settings/settings.test.js > settings store > survives broken storage 2ms
+ ✓ src/settings/settings.test.js > settings store > follows changes made in another tab 19ms
+ ✓ src/settings/settings.test.js > settings before the first paint > are applied by the script injected into every page with the same rules 8ms
+ ✓ src/links/mechanics-19.test.js > geometry and control audit (issue #19) > renders all 4,181 networks of 1–3 links with finite editor geometry 3447ms
+ ✓ src/links/mechanics-19.test.js > geometry and control audit (issue #19) > round trips every geometry control and exercises its visible range 1590ms
+ ✓ src/links/mechanics-19.test.js > geometry and control audit (issue #19) > offers every marker at each position, with independent size, offsets and direction 38ms
+ ✓ src/links/mechanics-19.test.js > geometry and control audit (issue #19) > hides ineffective controls but keeps angles and bends for self references 4ms
+ ✓ src/links/mechanics-19.test.js > geometry and control audit (issue #19) > uses the supplied visual defaults with zero rotation and continuous middles 5ms
+ ✓ src/links/mechanics-19.test.js > cuts actual cubic subcurves without moving endpoints or changing their tangents 2ms
+ ✓ src/pages/presets.test.jsx > presets (issue #15) > come first on the settings page and in its section menu 776ms
+stderr | src/pages/presets.test.jsx > presets (issue #15) > save, apply, update, rename and delete looks of this browser
+An update to Cosmos inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+An update to LiquidRefraction inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+An update to Sound inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+An update to PrefSwitches inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+An update to Layout inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+An update to SettingsPage inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ src/pages/presets.test.jsx > presets (issue #15) > apply a look of the site, mark it and keep the comfort settings 625ms
+ ✓ src/pages/presets.test.jsx > presets (issue #15) > save, apply, update, rename and delete looks of this browser 675ms
+ ✓ src/pages/presets.test.jsx > presets (issue #15) > copy the saved looks as JSON that the box of the changes loads in another browser 666ms
+ ✓ src/pages/presets.test.jsx > presets (issue #15) > make a random look and copy a link to the current look 794ms
+ ✓ src/skins.test.jsx > the liquid skin (issues #13 and #15) > has many settings 9ms
+ ✓ src/skins.test.jsx > the liquid skin (issues #13 and #15) > uses the number liquid.blur 3ms
+ ✓ src/skins.test.jsx > the liquid skin (issues #13 and #15) > uses the number liquid.saturation 4ms
+ ✓ src/skins.test.jsx > the liquid skin (issues #13 and #15) > uses the number liquid.brightness 1ms
+ ✓ src/skins.test.jsx > the liquid skin (issues #13 and #15) > uses the number liquid.tintLevel 1ms
+ ✓ src/skins.test.jsx > the liquid skin (issues #13 and #15) > uses the number liquid.radius 4ms
+ ✓ src/skins.test.jsx > the liquid skin (issues #13 and #15) > uses the number liquid.highlight 1ms
+ ✓ src/skins.test.jsx > the liquid skin (issues #13 and #15) > uses the number liquid.edge 1ms
+ ✓ src/skins.test.jsx > the liquid skin (issues #13 and #15) > uses the number liquid.depth 1ms
+ ✓ src/skins.test.jsx > the liquid skin (issues #13 and #15) > uses the number liquid.shadow 1ms
+ ✓ src/skins.test.jsx > the liquid skin (issues #13 and #15) > has a style for every choice of liquid.tint 1ms
+ ✓ src/skins.test.jsx > the liquid skin (issues #13 and #15) > has a style for every choice of liquid.sheen 1ms
+ ✓ src/skins.test.jsx > the liquid skin (issues #13 and #15) > has a style for every choice of liquid.float 1ms
+ ✓ src/skins.test.jsx > the liquid skin (issues #13 and #15) > has a style for every choice of liquid.pills 1ms
+ ✓ src/skins.test.jsx > the liquid skin (issues #13 and #15) > has a style for every choice of liquid.refraction 1ms
+ ✓ src/skins.test.jsx > the future skin (issues #13 and #15) > has many settings 1ms
+ ✓ src/skins.test.jsx > the future skin (issues #13 and #15) > uses the number future.cut 1ms
+ ✓ src/skins.test.jsx > the future skin (issues #13 and #15) > uses the number future.corner 1ms
+ ✓ src/skins.test.jsx > the future skin (issues #13 and #15) > uses the number future.border 1ms
+ ✓ src/skins.test.jsx > the future skin (issues #13 and #15) > uses the number future.opacity 4ms
+ ✓ src/skins.test.jsx > the future skin (issues #13 and #15) > uses the number future.blur 1ms
+ ✓ src/skins.test.jsx > the future skin (issues #13 and #15) > uses the number future.glow 1ms
+ ✓ src/skins.test.jsx > the future skin (issues #13 and #15) > uses the number future.spacing 1ms
+ ✓ src/skins.test.jsx > the future skin (issues #13 and #15) > uses the number future.scanlines 1ms
+ ✓ src/skins.test.jsx > the future skin (issues #13 and #15) > has a style for every choice of future.palette 1ms
+ ✓ src/skins.test.jsx > the future skin (issues #13 and #15) > has a style for every choice of future.frame 1ms
+ ✓ src/skins.test.jsx > the future skin (issues #13 and #15) > has a style for every choice of future.accentBar 1ms
+ ✓ src/skins.test.jsx > the future skin (issues #13 and #15) > has a style for every choice of future.surface 1ms
+ ✓ src/skins.test.jsx > the future skin (issues #13 and #15) > has a style for every choice of future.font 1ms
+ ✓ src/skins.test.jsx > the future skin (issues #13 and #15) > has a style for every choice of future.bodyFont 1ms
+ ✓ src/skins.test.jsx > the future skin (issues #13 and #15) > has a style for every choice of future.case 1ms
+ ✓ src/skins.test.jsx > the future skin (issues #13 and #15) > has a style for every choice of future.title 1ms
+ ✓ src/skins.test.jsx > the future skin (issues #13 and #15) > has a style for every choice of future.hover 1ms
+ ✓ src/skins.test.jsx > the glass skin (issues #13 and #15) > has many settings 1ms
+ ✓ src/skins.test.jsx > the glass skin (issues #13 and #15) > uses the number glass.level 1ms
+ ✓ src/skins.test.jsx > the glass skin (issues #13 and #15) > uses the number glass.blur 0ms
+ ✓ src/skins.test.jsx > the glass skin (issues #13 and #15) > uses the number glass.bar 1ms
+ ✓ src/skins.test.jsx > the glass skin (issues #13 and #15) > uses the number glass.radius 1ms
+ ✓ src/skins.test.jsx > the glass skin (issues #13 and #15) > uses the number glass.saturation 1ms
+ ✓ src/skins.test.jsx > the glass skin (issues #13 and #15) > uses the number glass.edge 1ms
+ ✓ src/skins.test.jsx > the glass skin (issues #13 and #15) > has a style for every choice of glass.shadow 1ms
+ ✓ src/skins.test.jsx > the glass skin (issues #13 and #15) > has a style for every choice of glass.highlight 1ms
+ ✓ src/skins.test.jsx > futuristic palettes (issue #13) > mission has dark and light colours 1ms
+ ✓ src/skins.test.jsx > futuristic palettes (issue #13) > tron has dark and light colours 1ms
+ ✓ src/skins.test.jsx > futuristic palettes (issue #13) > ares has dark and light colours 1ms
+ ✓ src/skins.test.jsx > futuristic palettes (issue #13) > clu has dark and light colours 1ms
+ ✓ src/skins.test.jsx > futuristic palettes (issue #13) > athena has dark and light colours 1ms
+ ✓ src/skins.test.jsx > futuristic palettes (issue #13) > aphrodite has dark and light colours 1ms
+ ✓ src/skins.test.jsx > futuristic palettes (issue #13) > poseidon has dark and light colours 1ms
+ ✓ src/skins.test.jsx > futuristic palettes (issue #13) > soulextract has dark and light colours 1ms
+ ✓ src/skins.test.jsx > futuristic palettes (issue #13) > glitchy has dark and light colours 1ms
+ ✓ src/skins.test.jsx > futuristic palettes (issue #13) > amber has dark and light colours 1ms
+ ✓ src/skins.test.jsx > futuristic palettes (issue #13) > matrix has dark and light colours 1ms
+ ✓ src/skins.test.jsx > futuristic palettes (issue #13) > monochrome has dark and light colours 1ms
+ ✓ src/skins.test.jsx > futuristic palettes (issue #13) > match the generator in experiments/ 1ms
+ ✓ src/skins.test.jsx > liquid refraction (issue #13) > renders the SVG filter with the chosen strength and marks <html> in Chromium 61ms
+ ✓ src/skins.test.jsx > liquid refraction (issue #13) > renders nothing where backdrop filters cannot use SVG (Safari, Firefox) 16ms
+ ✓ src/skins.test.jsx > liquid refraction (issue #13) > renders nothing with another skin 19ms
+ ✓ src/skins.test.jsx > the glass skin (issue #15) > puts the glass on the same panels as the other skins 4ms
+ ✓ src/skins.test.jsx > percent settings (issue #15) > divides glass.saturation by 100 wherever it is used 1ms
+ ✓ src/skins.test.jsx > percent settings (issue #15) > divides liquid.saturation by 100 wherever it is used 1ms
+ ✓ src/skins.test.jsx > percent settings (issue #15) > divides liquid.brightness by 100 wherever it is used 1ms
+ ✓ src/security-regressions.test.js > math parsing bounds malicious backtracking inputs 126ms
+ ✓ src/security-regressions.test.js > html parsing bounds malicious backtracking inputs 137ms
+ ✓ src/security-regressions.test.js > math pairs preserve supported separators " " 9ms
+ ✓ src/security-regressions.test.js > math pairs preserve supported separators ", " 3ms
+ ✓ src/security-regressions.test.js > math pairs preserve supported separators "\t,\n" 7ms
+ ✓ src/security-regressions.test.js > math pairs preserve supported separators "" 3ms
+ ✓ src/security-regressions.test.js > math pairs reject extra punctuation: , (0, 0) 7ms
+ ✓ src/security-regressions.test.js > math pairs reject extra punctuation: (0, 0), 1ms
+ ✓ src/security-regressions.test.js > math pairs reject extra punctuation: (0, 0),, (0, 0) 1ms
+ ✓ src/security-regressions.test.js > math pairs reject extra punctuation: (0, 0) ! (0, 0) 4ms
+ ✓ src/security-regressions.test.js > npm metadata names form exactly one URL component: plain-package 3ms
+ ✓ src/security-regressions.test.js > npm metadata names form exactly one URL component: @scope/package 1ms
+ ✓ src/security-regressions.test.js > npm metadata names form exactly one URL component: @scope/a/b?x=1#fragment 1ms
+ ✓ src/security-regressions.test.js > npm metadata names form exactly one URL component: x%2Fy 5ms
+ ✓ src/security-regressions.test.js > inline JSON preserves data without terminating the containing script 5ms
+ ✓ src/security-regressions.test.js > the delayed stylesheet probe keeps a hostile href as data 6ms
+ ✓ src/security-regressions.test.js > issue example extraction accepts the exact hostname and Markdown boundaries 2ms
+ ✓ src/security-regressions.test.js > archive HTML retains formatting and safe absolute links, dropping active content 16ms
+ ✓ src/security-regressions.test.js > archive text uses HTML parsing, while retaining encoded literal markup as text 5ms
+ ✓ src/security-regressions.test.js > archive element extraction respects quoted angle brackets and real elements 6ms
+ ✓ src/security-regressions.test.js > all archived posts preserve their text through repeated sanitization 78ms
+ ✓ src/ci-regressions.test.js > install-script reviews cover locked dependencies on every supported platform 26ms
+ ✓ src/ci-regressions.test.js > the complete Vite configuration dependency graph loads with native ESM 425ms
+ ✓ src/ci-regressions.test.js > build identity also works from a source archive without Git metadata 453ms
+ ✓ src/ci-regressions.test.js > deployment verification rejects old assets and HTML pretending to be a PDF 93ms
+ ✓ src/ci-regressions.test.js > line limits cover Python, spaces and unterminated final lines 127ms
+ ✓ src/ci-regressions.test.js > the commit hook applies repository lint rules to archived package examples 860ms
+ ✓ src/links/geometry-21.test.js > balanced editor geometry (issue #21) > makes equal self-reference ends point-symmetric for all equal angles and bends 61ms
+ ✓ src/links/geometry-21.test.js > balanced editor geometry (issue #21) > changes curvature without moving free/loop anchors or rotating the whole symbol 17ms
+ ✓ src/links/geometry-21.test.js > balanced editor geometry (issue #21) > starts with a centered cross made by a bar intersecting the line 3ms
+ ✓ src/links/geometry-21.test.js > balanced editor geometry (issue #21) > uses gallery colors until the user explicitly changes them 3ms
+ ✓ src/links/geometry-21.test.js > balanced editor geometry (issue #21) > keeps every explicit supplied setting through query serialization in both directions 13ms
+ ✓ src/links/geometry-21.test.js > balanced editor geometry (issue #21) > preserves the gallery and rain SVG byte for byte 1032ms
+ ✓ src/links/geometry-21.test.js > editor symmetry and compatibility > keeps four free links related by exact quarter turns, including after fitting 7ms
+ ✓ src/links/geometry-21.test.js > editor symmetry and compatibility > makes the source bar exactly centered and perpendicular to its tangent 5ms
+ ✓ src/links/geometry-21.test.js > editor symmetry and compatibility > honors colors stored by links shared when custom was the default 4ms
+ ✓ src/links/geometry-21.test.js > editor symmetry and compatibility > keeps all small editor configurations finite and continuous 978ms
+ ✓ src/links/issue-29.test.js > preserves the reported valid manual 5-degree configuration exactly 44ms
+ ✓ src/links/issue-29.test.js > preserves the reported valid manual 10-degree configuration exactly 33ms
+ ✓ src/links/issue-29.test.js > preserves the reported valid manual 15-degree configuration exactly 15ms
+ ✓ src/links/issue-29.test.js > finds symmetric close references to a closed link in 1111 2722ms
+ ✓ src/links/issue-29.test.js > finds symmetric close references to a closed link in 2222 1623ms
+ ✓ src/links/issue-29.test.js > respects original turn and gap bounds across all joint search stages: {"range":0,"gapRange":0,"middleRange":0} 26ms
+ ✓ src/links/issue-29.test.js > respects original turn and gap bounds across all joint search stages: {"range":4,"gapRange":0.02,"middleRange":0} 122ms
+ ✓ src/links/issue-29.test.js > respects original turn and gap bounds across all joint search stages: {"range":10,"step":5,"gapRange":0.1,"middleRange":0} 178ms
+ ✓ src/links/issue-29.test.js > measures painted boundaries of strokes, crossings, filled markers and broken paths 7ms
+ ✓ src/links/issue-29.test.js > defaults both the editable turn step and solver turn resolution to one degree 1676ms
+stdout | src/artifact-retry.test.js > recovers ENOTFOUND without repeating tests or accepting missing artifacts
+Transient artifact transport failure (ENOTFOUND); retrying test in 5s (1/3).
+
+stdout | src/artifact-retry.test.js > recovers ENOTFOUND without repeating tests or accepting missing artifacts
+Uploaded test: artifact 7 (attempt 2/3).
+
+stdout | src/artifact-retry.test.js > recovers EAI_AGAIN without repeating tests or accepting missing artifacts
+Transient artifact transport failure (EAI_AGAIN); retrying test in 5s (1/3).
+
+stdout | src/artifact-retry.test.js > recovers EAI_AGAIN without repeating tests or accepting missing artifacts
+Uploaded test: artifact 7 (attempt 2/3).
+
+stdout | src/artifact-retry.test.js > recovers ECONNRESET without repeating tests or accepting missing artifacts
+Transient artifact transport failure (ECONNRESET); retrying test in 5s (1/3).
+
+stdout | src/artifact-retry.test.js > recovers ECONNRESET without repeating tests or accepting missing artifacts
+Uploaded test: artifact 7 (attempt 2/3).
+
+stdout | src/artifact-retry.test.js > recovers ETIMEDOUT without repeating tests or accepting missing artifacts
+Transient artifact transport failure (ETIMEDOUT); retrying test in 5s (1/3).
+
+stdout | src/artifact-retry.test.js > recovers ETIMEDOUT without repeating tests or accepting missing artifacts
+Uploaded test: artifact 7 (attempt 2/3).
+
+stdout | src/artifact-retry.test.js > recovers HTTP 429 without repeating tests or accepting missing artifacts
+Transient artifact transport failure (HTTP 429); retrying test in 5s (1/3).
+
+stdout | src/artifact-retry.test.js > recovers HTTP 429 without repeating tests or accepting missing artifacts
+Uploaded test: artifact 7 (attempt 2/3).
+
+stdout | src/artifact-retry.test.js > recovers HTTP 503 without repeating tests or accepting missing artifacts
+Transient artifact transport failure (HTTP 503); retrying test in 5s (1/3).
+
+stdout | src/artifact-retry.test.js > recovers HTTP 503 without repeating tests or accepting missing artifacts
+Uploaded test: artifact 7 (attempt 2/3).
+
+stdout | src/artifact-retry.test.js > exhausted transient failures fail closed after three attempts
+Transient artifact transport failure (ENOTFOUND); retrying test in 5s (1/3).
+
+stdout | src/artifact-retry.test.js > exhausted transient failures fail closed after three attempts
+Transient artifact transport failure (ENOTFOUND); retrying test in 10s (2/3).
+
+stdout | src/artifact-retry.test.js > a retry reconciles missing artifacts but never hides reconciliation or empty-result failures
+Transient artifact transport failure (ECONNRESET); retrying test in 5s (1/3).
+
+stdout | src/artifact-retry.test.js > a retry reconciles missing artifacts but never hides reconciliation or empty-result failures
+Uploaded test: artifact 8 (attempt 2/3).
+
+stdout | src/artifact-retry.test.js > a retry reconciles missing artifacts but never hides reconciliation or empty-result failures
+Transient artifact transport failure (ENOTFOUND); retrying test in 5s (1/3).
+
+::debug::Creating Artifact archive with compressionLevel: 6
+::debug::Zip write high watermark value 8388608
+::debug::Zip read high watermark value 8388608
+ ✓ src/artifact-retry.test.js > recovers ENOTFOUND without repeating tests or accepting missing artifacts 12ms
+ ✓ src/artifact-retry.test.js > recovers EAI_AGAIN without repeating tests or accepting missing artifacts 3ms
+ ✓ src/artifact-retry.test.js > recovers ECONNRESET without repeating tests or accepting missing artifacts 7ms
+ ✓ src/artifact-retry.test.js > recovers ETIMEDOUT without repeating tests or accepting missing artifacts 3ms
+ ✓ src/artifact-retry.test.js > recovers HTTP 429 without repeating tests or accepting missing artifacts 4ms
+ ✓ src/artifact-retry.test.js > recovers HTTP 503 without repeating tests or accepting missing artifacts 7ms
+ ✓ src/artifact-retry.test.js > permanent failures fail on the first attempt: HTTP 403 Forbidden 5ms
+ ✓ src/artifact-retry.test.js > permanent failures fail on the first attempt: HTTP 401 Unauthorized 1ms
+ ✓ src/artifact-retry.test.js > permanent failures fail on the first attempt: HTTP 404 Not Found 2ms
+ ✓ src/artifact-retry.test.js > permanent failures fail on the first attempt: Invalid artifact name 2ms
+ ✓ src/artifact-retry.test.js > permanent failures fail on the first attempt: Resource not accessible by integration 1ms
+ ✓ src/artifact-retry.test.js > exhausted transient failures fail closed after three attempts 2ms
+ ✓ src/artifact-retry.test.js > nested transport errors are classified but explicit refusals never are 1ms
+ ✓ src/artifact-retry.test.js > a retry reconciles missing artifacts but never hides reconciliation or empty-result failures 4ms
+::debug::Zip stream for upload has ended.
+::debug::Zip stream for upload has finished.
+ ✓ src/artifact-retry.test.js > the pinned official SDK produces a readable ZIP with the nondeprecated glob override 75ms
+ ✓ src/artifact-retry.test.js > missing and empty evidence fail; Pages tar includes .nojekyll and strips git metadata 40ms
+ ✓ src/pages/feed.test.js > feed text helpers > split words without links, mentions and punctuation 7ms
+ ✓ src/pages/feed.test.js > isDuplicate > matches a translation published minutes later 2ms
+ ✓ src/pages/feed.test.js > isDuplicate > matches a cross-post with the same text on another network 5ms
+ ✓ src/pages/feed.test.js > isDuplicate > keeps posts far apart in time separate 1ms
+ ✓ src/pages/feed.test.js > isDuplicate > keeps different posts in the same language separate 1ms
+ ✓ src/pages/feed.test.js > isDuplicate > matches versions that share most of their links hours apart 1ms
+ ✓ src/pages/feed.test.js > isDuplicate > never matches posts without text or a post with itself 1ms
+ ✓ src/pages/feed.test.js > dedupe and pick > groups the versions of one post into one story, newest first 1ms
+ ✓ src/pages/feed.test.js > dedupe and pick > shows the X version to English readers and the VK version to Russian readers 1ms
+ ✓ src/pages/feed.test.js > dedupe and pick > falls back to any network in the reader language before other languages 1ms
+ ✓ src/pages/feed.test.js > dedupe and pick > lists a story for a language only when it has a version in it 3ms
+ ✓ src/pages/feed.test.js > dedupe and pick > never puts two posts of the same network and language into one story 28ms
+ ✓ src/pages/feed.test.js > dedupe and pick > merges the translations and cross-posts of the archive 23ms
+ ✓ src/pages/feed.test.js > readerLanguage > detects Russian-speaking readers from the browser languages 1ms
+ ✓ src/pages/feed.test.js > archive > keeps a copy of every picture, so a deleted post keeps its media 10ms
+ ✓ src/data/indicators.test.js > rebuilds the website social fallback from the dated public archive 165ms
+ ✓ src/data/indicators.test.js > public source-line snapshot coverage > has a measured revision and every language for each displayed repository 201ms
+ ✓ src/data/indicators.test.js > public source-line snapshot coverage > includes outside projects and derives totals from the preserved measurements 35ms
+ ✓ src/data/indicators.test.js > public source-line snapshot coverage > covers every non-noise public catalog repository, including forks 106ms
+ ✓ src/data/indicators.test.js > links each reported runtime omission to a repository in the public audit 6ms
+ ✓ src/data/indicators.test.js > rebuilds the same indicator file from dated public evidence 51ms
+stderr | src/App.test.jsx > App > renders the name, headline and every CV section
+An update to HabrCards inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+stderr | src/App.test.jsx > App > every navigation link points to an existing section
+An update to HabrCards inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ src/App.test.jsx > App > renders the name, headline and every CV section 3054ms
+stderr | src/App.test.jsx > App > shows companies on the timeline and social links
+An update to HabrCards inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ src/App.test.jsx > App > every navigation link points to an existing section 1472ms
+stderr | src/App.test.jsx > App > contributions chart toggles between log and linear scale
+An update to HabrCards inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ src/App.test.jsx > App > shows companies on the timeline and social links 2224ms
+stderr | src/App.test.jsx > App > chart bars expose a tooltip on focus
+An update to HabrCards inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ src/App.test.jsx > App > contributions chart toggles between log and linear scale 1219ms
+stderr | src/App.test.jsx > App > project language filter narrows the list
+An update to HabrCards inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ src/App.test.jsx > App > chart bars expose a tooltip on focus 1281ms
+stderr | src/App.test.jsx > App > links the CV and every position from the home page
+An update to HabrCards inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ src/App.test.jsx > App > project language filter narrows the list 1121ms
+stderr | src/App.test.jsx > App > is translated to Russian without untranslated objects
+An update to HabrCards inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ src/App.test.jsx > App > links the CV and every position from the home page 3388ms
+ ✓ src/App.test.jsx > App > is translated to Russian without untranslated objects 4371ms
+ ✓ src/links/solver-23.test.js > reduces overlaps by adjusting individual gaps with angle search disabled 183ms
+ ✓ src/links/solver-23.test.js > bounds manual gap adjustments, preserves the input and never increases the exact score 988ms
+ ✓ src/links/solver-23.test.js > does not count an artificial crossing through a cut in the middle 3ms
+ ✓ src/links/solver-23.test.js > also reduces overlaps by center cuts alone, without reference gap or angle changes 49ms
+ ✓ src/links/solver-23.test.js > bounds gap search cost for a dense 24-link drawing and returns its exact score 1959ms
+ ✓ src/links/solver-23.test.js > keeps automatic cuts within the final fitted half-length after reference gaps change 3209ms
+ ✓ src/components/components.test.js > format > formats numbers 31ms
+ ✓ src/components/components.test.js > format > categorical palette has 8 fixed slots 5ms
+ ✓ src/components/components.test.js > buildStats > derives tiles from github data 7ms
+ ✓ src/components/components.test.js > buildStats > counts only original repositories, never forks (issue #7) 2ms
+ ✓ src/components/components.test.js > topWithOther > folds the tail into Other 3ms
+ ✓ src/components/components.test.js > topWithOther > no Other row when everything fits 1ms
+ ✓ src/components/components.test.js > mergeProjects > keeps featured order and fills defaults for unknown repos 2ms
+ ✓ src/components/components.test.js > timeline helpers > toYear converts YYYY-MM to fractional years 1ms
+ ✓ src/components/components.test.js > timeline helpers > formatPeriod renders open-ended periods 1ms
+ ✓ src/components/components.test.js > contributionScale > linear scale maps max to full height 3ms
+ ✓ src/components/components.test.js > contributionScale > log scale is monotonic and keeps small years visible 2ms
+ ✓ src/data/calendar.test.js > preserves GitHub daily counts and levels, with Sunday-first weeks 28ms
+ ✓ src/data/calendar.test.js > only shows the discipline statement for a fresh, uninterrupted recent habit 5ms
+ ✓ src/data/calendar.test.js > rejects duplicate data rather than replacing the first-party snapshot 5ms
+ ✓ src/data/calendar.test.js > rejects gap data rather than replacing the first-party snapshot 2ms
+ ✓ src/data/calendar.test.js > rejects negative data rather than replacing the first-party snapshot 2ms
+ ✓ src/data/calendar.test.js > rejects bad-level data rather than replacing the first-party snapshot 2ms
+ ✓ src/data/calendar.test.js > rejects future data rather than replacing the first-party snapshot 3ms
+ ✓ src/data/calendar.test.js > rejects stale data rather than replacing the first-party snapshot 4ms
+ ✓ src/data/calendar.test.js > rejects missing data rather than replacing the first-party snapshot 2ms
+ ✓ src/data/calendar.test.js > rejects invalid-date data rather than replacing the first-party snapshot 2ms
+ ✓ src/data/calendar.test.js > handles an unavailable calendar service 2ms
+ ✓ src/data/calendar.test.js > keeps first-party evidence when a valid mirror disagrees on completed days 8ms
+ ✓ src/data/calendar.test.js > rejects decreases today and checks the last snapshot day after it becomes historical 6ms
+ ✓ src/links/geometry-23.test.js > issue 23 geometry regressions > defaults to straight free links with neutral bend and rotation 10ms
+ ✓ src/links/geometry-23.test.js > issue 23 geometry regressions > accepts signed bends and endpoint angles over a full turn 3ms
+ ✓ src/links/geometry-23.test.js > issue 23 geometry regressions > adjusts self/partial loop width independently while leaving free links straight 11ms
+ ✓ src/links/geometry-23.test.js > issue 23 geometry regressions > moves a source bar along its cubic and rotates it with the local tangent 24ms
+ ✓ src/links/geometry-23.test.js > issue 23 geometry regressions > preserves independent per-link gaps through normalization and sharing 11ms
+ ✓ src/settings/applied.test.js > every setting is applied (issue #15) > is used by a stylesheet, a background layer or a component 31ms
+ ✓ src/settings/applied.test.js > every setting is applied (issue #15) > styles every choice of a setting that only stylesheets read 11ms
+ ✓ src/settings/applied.test.js > every setting is applied (issue #15) > puts only the settings stylesheets use on <html> 13ms
+ ✓ src/links/issue-25.test.js > discovers separated reference gaps for 2222 without manual gaps 1439ms
+ ✓ src/links/issue-25.test.js > scores painted markers and user selected spacing, including near reference middles 30ms
+ ✓ src/links/issue-25.test.js > recognizes the supplied perfect manual arrangement and keeps diagnostics opt-in 11ms
+ ✓ src/links/issue-25.test.js > keeps acute arrow tips sharp independent of line corners, with balanced extent by default 22ms
+ ✓ src/links/issue-25.test.js > round trips rounded arrows, legacy lengths and spacing settings 6ms
+ ✓ src/links/issue-25.test.js > keeps zero-gap self loops finite when both endpoints coincide with their middle 2ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > auto places 1 distinct middles deterministically 15ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > auto places 2 distinct middles deterministically 8ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > auto places 3 distinct middles deterministically 7ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > auto places 4 distinct middles deterministically 7ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > auto places 5 distinct middles deterministically 12ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > auto places 6 distinct middles deterministically 16ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > auto places 7 distinct middles deterministically 9ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > auto places 9 distinct middles deterministically 25ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > auto places 10 distinct middles deterministically 14ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > auto places 17 distinct middles deterministically 11ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > auto places 40 distinct middles deterministically 37ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > circle places 1 distinct middles deterministically 2ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > circle places 2 distinct middles deterministically 2ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > circle places 3 distinct middles deterministically 2ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > circle places 4 distinct middles deterministically 2ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > circle places 5 distinct middles deterministically 3ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > circle places 6 distinct middles deterministically 3ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > circle places 7 distinct middles deterministically 5ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > circle places 9 distinct middles deterministically 6ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > circle places 10 distinct middles deterministically 5ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > circle places 17 distinct middles deterministically 6ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > circle places 40 distinct middles deterministically 15ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > square places 1 distinct middles deterministically 2ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > square places 2 distinct middles deterministically 1ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > square places 3 distinct middles deterministically 2ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > square places 4 distinct middles deterministically 2ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > square places 5 distinct middles deterministically 2ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > square places 6 distinct middles deterministically 2ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > square places 7 distinct middles deterministically 6ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > square places 9 distinct middles deterministically 3ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > square places 10 distinct middles deterministically 4ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > square places 17 distinct middles deterministically 6ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > square places 40 distinct middles deterministically 12ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > hex places 1 distinct middles deterministically 2ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > hex places 2 distinct middles deterministically 2ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > hex places 3 distinct middles deterministically 2ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > hex places 4 distinct middles deterministically 2ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > hex places 5 distinct middles deterministically 2ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > hex places 6 distinct middles deterministically 3ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > hex places 7 distinct middles deterministically 3ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > hex places 9 distinct middles deterministically 4ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > hex places 10 distinct middles deterministically 4ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > hex places 17 distinct middles deterministically 20ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > hex places 40 distinct middles deterministically 34ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > dice places 1 distinct middles deterministically 9ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > dice places 2 distinct middles deterministically 2ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > dice places 3 distinct middles deterministically 2ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > dice places 4 distinct middles deterministically 3ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > dice places 5 distinct middles deterministically 5ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > dice places 6 distinct middles deterministically 3ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > dice places 7 distinct middles deterministically 3ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > dice places 9 distinct middles deterministically 4ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > dice places 10 distinct middles deterministically 3ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > dice places 17 distinct middles deterministically 5ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > dice places 40 distinct middles deterministically 16ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > cards places 1 distinct middles deterministically 2ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > cards places 2 distinct middles deterministically 3ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > cards places 3 distinct middles deterministically 2ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > cards places 4 distinct middles deterministically 4ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > cards places 5 distinct middles deterministically 3ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > cards places 6 distinct middles deterministically 3ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > cards places 7 distinct middles deterministically 3ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > cards places 9 distinct middles deterministically 3ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > cards places 10 distinct middles deterministically 3ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > cards places 17 distinct middles deterministically 5ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > cards places 40 distinct middles deterministically 10ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > spiral places 1 distinct middles deterministically 1ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > spiral places 2 distinct middles deterministically 2ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > spiral places 3 distinct middles deterministically 3ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > spiral places 4 distinct middles deterministically 2ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > spiral places 5 distinct middles deterministically 5ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > spiral places 6 distinct middles deterministically 2ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > spiral places 7 distinct middles deterministically 4ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > spiral places 9 distinct middles deterministically 3ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > spiral places 10 distinct middles deterministically 4ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > spiral places 17 distinct middles deterministically 9ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > spiral places 40 distinct middles deterministically 19ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > force places 1 distinct middles deterministically 30ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > force places 2 distinct middles deterministically 41ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > force places 3 distinct middles deterministically 12ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > force places 4 distinct middles deterministically 8ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > force places 5 distinct middles deterministically 7ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > force places 6 distinct middles deterministically 10ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > force places 7 distinct middles deterministically 9ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > force places 9 distinct middles deterministically 12ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > force places 10 distinct middles deterministically 18ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > force places 17 distinct middles deterministically 20ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > force places 40 distinct middles deterministically 64ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > keeps circle automatic for 1–4 and fills the plane after four 3ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > uses actual references as springs and reserves more space for self loops 10ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > round trips more than nine links through every notation and exact decimal index 28ms
+ ✓ src/links/placement-19.test.js > space filling placements (issue #19) > keeps shared configuration helpers valid for multi-digit references 4ms
+stderr | src/i18n/prefs.test.jsx > switches > switch the language everywhere, remember it and put it in the URL
+An update to PrefSwitches inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+An update to Greeting inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ src/i18n/prefs.test.jsx > language detection > prefers ?lang= in the URL, then the remembered choice, then the browser 5ms
+ ✓ src/i18n/prefs.test.jsx > theme > uses the remembered choice, otherwise the system preference 1ms
+ ✓ src/i18n/prefs.test.jsx > theme > is applied before the first paint by the script injected into every page 5ms
+ ✓ src/i18n/prefs.test.jsx > translation > translates { en, ru } objects and keeps plain values 5ms
+ ✓ src/i18n/prefs.test.jsx > switches > switch the language everywhere, remember it and put it in the URL 637ms
+ ✓ src/i18n/prefs.test.jsx > switches > cycle the theme system → light → dark → system and remember it 89ms
+ ✓ src/links/issue-27.test.js > measures exactly equal painted gaps at both ends of the closed 1111 link 17ms
+ ✓ src/links/issue-27.test.js > changes the target gap continuously through 0.07 and 0.08 without moving the source gap 3ms
+ ✓ src/links/issue-27.test.js > preserves closed halves and discovers gaps and turns on the open 1111 link 1727ms
+ ✓ src/links/issue-27.test.js > recognizes the exact reported arrangement with the closed gaps corrected to equality 13ms
+ ✓ src/links/issue-27.test.js > preserves the closed side and its middle cut on a partially self-referencing link 40ms
+ ✓ src/links/issue-27.test.js > accepts old turn/gap rows and serializes skipped defaults compactly 3ms
+ ✓ src/links/notation.test.jsx > notation of the links theory (issue #13) > rewrites only the formula L → L² and L ↦ L² in free text 9ms
+ ✓ src/links/notation.test.jsx > notation of the links theory (issue #13) > picks the formula of the chosen draft and leaves L texts alone 8ms
+ ✓ src/links/notation.test.jsx > notation of the links theory (issue #13) > every formula has both notations; 0.0.3 has no λ (L is a link there, R a reference) 4ms
+ ✓ src/links/notation.test.jsx > notation of the links theory (issue #13) > shows L → L² by default (draft 0.0.2) 154ms
+ ✓ src/links/notation.test.jsx > notation of the links theory (issue #13) > switches the theory to R → R² (draft 0.0.3) from the settings 99ms
+ ✓ src/links/notation.test.jsx > notation of the links theory (issue #13) > switches the motto in the footer 305ms
+ ✓ src/links/notation.test.jsx > notation of the links theory (issue #13) > switches the formula in the lead of the associative stack 2500ms
+ ✓ src/pages/network-history.test.jsx > keeps the preview/share link live but writes history once after a drag and repeated releases 4668ms
+ ✓ src/pages/network-history.test.jsx > defers held keyboard input until keyup and recovers from a history SecurityError 469ms
+ ✓ src/pages/network-history.test.jsx > captures a touch as soon as controls mount, before passive effects run 281ms
+ ✓ src/pages/network-history.test.jsx > does not release a pointer drag on an unrelated keyup or focus change 280ms
+ ✓ src/pages/network-27.test.jsx > upgrades an old URL in browser history while preserving its drawing, language and anchor 461ms
+ ✓ src/pages/network-27.test.jsx > steps inherited gaps from the displayed global value, with decimal precision 578ms
+ ✓ src/pages/network-27.test.jsx > starts native spinner clicks from inheritance without making a plain focus an explicit override 499ms
+ ✓ src/pages/network-27.test.jsx > supports page steps on every range while preserving modified editing shortcuts 340ms
+ ✓ src/pages/network-27.test.jsx > allows clearing a turn while typing a replacement and retains text-navigation keys 187ms
+ ✓ src/pages/network-share.test.jsx > invokes the share sheet within the click with a prepared image (Safari activation) 327ms
+ ✓ src/pages/network-share.test.jsx > keeps link sharing available synchronously while a new image is being prepared 60ms
+ ✓ src/pages/network-share.test.jsx > disables image copying with a useful download alternative when the API is absent 45ms
+ ✓ src/pages/network-share.test.jsx > prepares only the latest drawing after a burst of edits 60ms
+ ✓ src/links/issue-35.test.js > keeps the reported network continuous with default editor options 110ms
+ ✓ src/links/issue-35.test.js > keeps the reported network continuous with default solver options 50ms
+ ✓ src/links/issue-35.test.js > preserves every intentional global/per-link middle cut: {"middleGapStart":3,"middleGapEnd":2} 42ms
+ ✓ src/links/issue-35.test.js > preserves every intentional global/per-link middle cut: {"middleGapStart":3,"middleGapEnd":2,"gaps":"~ ~ 0 0,~ ~ 1 0,~ ~ 0 4"} 26ms
+ ✓ src/links/issue-35.test.js > retains explicit automatic middle-cut opt-in and shares it without changing its meaning 38ms
+ ✓ src/codeql-results.test.js > clean reports pass, including every language and run 8ms
+ ✓ src/codeql-results.test.js > a error finding fails even after successful execution 5ms
+ ✓ src/codeql-results.test.js > a warning finding fails even after successful execution 3ms
+ ✓ src/codeql-results.test.js > a note finding fails even after successful execution 3ms
+ ✓ src/codeql-results.test.js > a finding hidden by an in-source suppression is still a finding 4ms
+ ✓ src/codeql-results.test.js > missing reports cannot silently pass 4ms
+ ✓ src/codeql-results.test.js > incomplete runs fail: undefined 4ms
+ ✓ src/codeql-results.test.js > incomplete runs fail: {} 3ms
+ ✓ src/codeql-results.test.js > incomplete runs fail: {"tool":{"driver":{"name":"CodeQL"}}} 4ms
+ ✓ src/codeql-results.test.js > malformed JSON and unsupported formats fail 4ms
+ ✓ src/codeql-results.test.js > an unsuccessful tool invocation cannot pass with empty results 3ms
+ ✓ src/codeql-results.test.js > the workflow command exits unsuccessfully for findings 168ms
+ ✓ src/components/numericKeys.test.js > steps off-grid typed numbers to the next valid decimal instead of accumulating a step mismatch 18ms
+ ✓ src/components/numericKeys.test.js > supports all eight navigation keys at valid limits for every slider schema, including conditional controls 366ms
+ ✓ src/links/geometry-19.test.js > self references obey geometry controls (issue #19) > applies fixed angles and curvature to 11 9ms
+ ✓ src/links/geometry-19.test.js > self references obey geometry controls (issue #19) > applies fixed angles and curvature to 10 2ms
+ ✓ src/links/geometry-19.test.js > self references obey geometry controls (issue #19) > applies fixed angles and curvature to 01 4ms
+ ✓ src/links/geometry-19.test.js > self references obey geometry controls (issue #19) > applies fixed angles and curvature to 11 22 2ms
+ ✓ src/links/geometry-19.test.js > self references obey geometry controls (issue #19) > applies fixed angles and curvature to 11 22 12 3ms
+ ✓ src/links/geometry-19.test.js > self references obey geometry controls (issue #19) > applies fixed angles and curvature to 00 02 30 44 2ms
+ ✓ src/links/geometry-19.test.js > self references obey geometry controls (issue #19) > sets source/target gaps independently, including self loops 1ms
+ ✓ src/links/geometry-19.test.js > self references obey geometry controls (issue #19) > moves every marker independently of its curve and allows an open ring in the middle 23ms
+ ✓ src/visuals/governor.test.js > governor of a background layer > keeps the quality of the settings while frames are fast 7ms
+ ✓ src/visuals/governor.test.js > governor of a background layer > does not judge the start of the page 1ms
+ ✓ src/visuals/governor.test.js > governor of a background layer > lowers the resolution, then the frames per second, down to a floor, while most frames are slow 4ms
+ ✓ src/visuals/governor.test.js > governor of a background layer > ignores a few slow frames, hidden tabs and the first frame 3ms
+ ✓ src/visuals/governor.test.js > governor of a background layer > only lowers the frames per second of a layer of sharp sprites 1ms
+stdout | src/ci-policy.test.js > only explicitly allowed skips pass, never failures or missing results
+::notice::deploy skipped by its documented event/change condition.
+
+ ✓ src/ci-policy.test.js > runs application CI when src/App.jsx changes 5ms
+ ✓ src/ci-policy.test.js > runs application CI when experiments/network-e2e.mjs changes 1ms
+ ✓ src/ci-policy.test.js > runs application CI when experiments/make-entries.py changes 1ms
+ ✓ src/ci-policy.test.js > runs application CI when package-lock.json changes 1ms
+ ✓ src/ci-policy.test.js > runs application CI when .github/workflows/github-pages.yml changes 1ms
+ ✓ src/ci-policy.test.js > runs application CI when scripts/check-pages.mjs changes 1ms
+ ✓ src/ci-policy.test.js > runs application CI when public/icon.png changes 1ms
+ ✓ src/ci-policy.test.js > runs application CI when .prettierignore changes 1ms
+ ✓ src/ci-policy.test.js > does not rerun browsers for evidence/prose only: README.md 1ms
+ ✓ src/ci-policy.test.js > does not rerun browsers for evidence/prose only: docs/case-studies/issue-29/README.md 1ms
+ ✓ src/ci-policy.test.js > does not rerun browsers for evidence/prose only: dev/log/issues/31/pulls/32/log.txt 1ms
+ ✓ src/ci-policy.test.js > docs and manual runs request the right checks 2ms
+ ✓ src/ci-policy.test.js > required result failure fails closed 3ms
+ ✓ src/ci-policy.test.js > required result cancelled fails closed 1ms
+ ✓ src/ci-policy.test.js > required result timed_out fails closed 1ms
+ ✓ src/ci-policy.test.js > required result skipped fails closed 1ms
+ ✓ src/ci-policy.test.js > required result unknown fails closed 1ms
+ ✓ src/ci-policy.test.js > required result undefined fails closed 1ms
+ ✓ src/ci-policy.test.js > only explicitly allowed skips pass, never failures or missing results 4ms
+ ✓ src/ci-policy.test.js > Pages preflight requires a real Actions site 1ms
+ ✓ src/pages/network-29.test.jsx > pairs one-degree turn sliders below the separator and supports horizontal keyboard edits and resets 1374ms
+ ✓ src/pages/network-29.test.jsx > shows inherited reference gaps as sliders and resets an explicit override to inheritance 623ms
+ ✓ src/links/curve-23.test.js > places endpoint and middle markers on both halves with local tangents, even across the join 31ms
+ ✓ src/links/curve-23.test.js > measures path distance rather than a tangent translation and extends ends safely 9ms
+ ✓ src/components/panelVisibility.test.js > bounds live panels, observes appended lists and cleans up removed panels 40ms
+ ✓ src/components/panelVisibility.test.js > preserves the original presentation if IntersectionObserver is unavailable 3ms
+ ✓ src/links/url-history-27.test.js > retains every URL field and option from published schema a9001c9cb3ce7763a1f2674efa76693236526bf0 150ms
+ ✓ src/links/url-history-27.test.js > retains every URL field and option from published schema d2bd08a4efe6dfe935a16f5375bfed81b3b27dec 89ms
+ ✓ src/links/url-history-27.test.js > retains every URL field and option from published schema 30e15178735dbf2f8a1726f4d78f73d9abceed9f 69ms
+ ✓ src/links/url-history-27.test.js > retains every URL field and option from published schema 305a85e2c2792f3f66c530b94856f52df80b524d 65ms
+ ✓ src/links/url-history-27.test.js > retains every URL field and option from published schema 6d102eed6c3eb41f57b04568ec3a1b800c2ceef6 49ms
+ ✓ src/links/url-history-27.test.js > retains every URL field and option from published schema 7be35e9dd8025cd1fb36ab6eaf12fcb8a8f90fc5 40ms
+ ✓ src/links/url-history-27.test.js > preserves legacy gap aliases, explicit colors and empty rows without moving subsequent link indices 2ms
+ ✓ src/components/Sound.test.jsx > <Sound /> > does not load the sound engine while sound is off, starts it when switched on and stops it when off 117ms
+ ✓ src/components/Sound.test.jsx > <Sound /> > does not play the intro when a page opens with sound already on 82ms
+ ✓ src/components/edges.test.js > edges of a list that scrolls sideways > marks only the edges with more of the list behind them 20ms
+ ✓ src/components/edges.test.js > edges of a list that scrolls sideways > updates the mark when the list scrolls and stops after the cleanup 5ms
+ ✓ src/components/edges.test.js > edges of a list that scrolls sideways > centres the current link of a list that scrolls 21ms
+stderr | src/components/indicators-33.test.jsx > shows a daily contribution calendar and personal open-source code totals
+An update to HabrCards inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ src/components/indicators-33.test.jsx > shows a daily contribution calendar and personal open-source code totals 5161ms
+ ✓ src/components/indicators-33.test.jsx > shows code, comments and blanks for every repository language 10ms
+ ✓ src/components/indicators-33.test.jsx > tries the original social embed by default and keeps an archive fallback 63ms
+ ✓ src/components/calendar-33.test.jsx > shows the conditional slogan immediately after a successful live refresh 1273ms
+stderr | src/cv/pdfChecks.test.js > CV PDF checks > positioned parts of the CV are reported, plain ones are not
+Not implemented: Window's getComputedStyle() method: with pseudo-elements
+Not implemented: Window's getComputedStyle() method: with pseudo-elements
+Not implemented: Window's getComputedStyle() method: with pseudo-elements
+Not implemented: Window's getComputedStyle() method: with pseudo-elements
+Not implemented: Window's getComputedStyle() method: with pseudo-elements
+Not implemented: Window's getComputedStyle() method: with pseudo-elements
+Not implemented: Window's getComputedStyle() method: with pseudo-elements
+Not implemented: Window's getComputedStyle() method: with pseudo-elements
+
+ ✓ src/cv/pdfChecks.test.js > CV PDF checks > page limits: 1 for compact, 2 for a position, none for the full record 5ms
+ ✓ src/cv/pdfChecks.test.js > CV PDF checks > pages are counted from the page objects, not the page tree 2ms
+ ✓ src/cv/pdfChecks.test.js > CV PDF checks > text is extractable when a font maps its glyphs to Unicode, also in a compressed stream 4ms
+ ✓ src/cv/pdfChecks.test.js > CV PDF checks > positioned parts of the CV are reported, plain ones are not 304ms
+ ✓ src/pages/network-23.test.jsx > offers one aligned navigation target per gallery card 345ms
+ ✓ src/pages/network-23.test.jsx > edits independent gaps, resets inheritance and preserves gaps when removing a link 854ms
+ ✓ src/data/profile-privacy.test.js > preserves public profile fields without authenticated account settings 7ms
+ ✓ src/data/profile-privacy.test.js > requests the profile anonymously and drops fields outside the public schema 6ms
+ ✓ src/data/profile-privacy.test.js > rejects authenticated self-profile responses instead of publishing their values 5ms
+ ✓ src/components/habr-dates-33.test.jsx > dates the remaining Habr snapshot when profile refresh is incomplete 132ms
+ ✓ src/components/habr-dates-33.test.jsx > dates the remaining Habr snapshot when articles refresh is incomplete 37ms
+ ✓ src/components/habr-dates-33.test.jsx > dates the remaining Habr snapshot when all refresh is incomplete 31ms
+ ✓ src/deployment.test.js > deployment probe validates valid response 238ms
+ ✓ src/deployment.test.js > deployment probe validates stale response 126ms
+ ✓ src/deployment.test.js > deployment probe validates html-pdf response 179ms
+ ✓ src/deployment.test.js > deployment probe validates html-js response 168ms
+ ✓ src/deployment.test.js > deployment probe validates missing-pdf response 171ms
+ ✓ src/deployment.test.js > deployment probe validates missing-build-info response 68ms
+ ✓ src/components/social-33.test.jsx > opens a readable archive if the provider fails, with an explicit retry 342ms
+ ✓ src/components/social-33.test.jsx > supports Telegram and VK public widget identifiers, requiring VK export hashes 3ms
+ ✓ src/pages/network-35.test.jsx > keeps zero-cut links continuous on the reported URL, after Apply and after sharing 1493ms
+ ✓ src/pages/network-25.test.jsx > keeps every per-link input visible in one card, with no disclosure 947ms
+ ✓ src/history.test.jsx > preserves existing history state and returns failures without throwing 10ms
+ ✓ src/history.test.jsx > keeps language and filtered-page state usable when history rejects writes too 26ms
+ ✓ src/pages/network-21.test.jsx > updates gallery navigation and theory examples when their displayed theme changes 520ms
+ ✓ src/links/clipboard.test.js > starts a PNG clipboard write synchronously with a promised image (Safari activation) 8ms
+
+ Test Files  64 passed (64)
+      Tests  871 passed (871)
+   Start at  18:03:08
+   Duration  258.35s (tests 57%, environment 31%, setup 7%, import 3%, transform 2%, worker 1%)
+
+Environment  jsdom was created 64 times · 74.18s total, 31% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+

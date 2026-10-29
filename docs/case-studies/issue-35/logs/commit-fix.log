@@ -1,0 +1,36 @@
+⋯ Backing up original state…
+✔ Done backing up original state (90282fd)!
+⋯ Running tasks for staged files…
+    *.{js,jsx,cjs,mjs} — 5 files
+      ⋯ eslint --config eslint.config.js --fix --max-warnings=0 --no-warn-ignored
+      ⋯ prettier --write
+    *.{css,md,html,json,yml,yaml} — 3 files
+      ⋯ prettier --write
+
+✔ prettier --write
+✔ eslint --config eslint.config.js --fix --max-warnings=0 --no-warn-ignored
+✔ prettier --write
+
+✔ Done running tasks for staged files!
+⋯ Staging changes from tasks…
+✔ Done staging changes from tasks!
+⋯ Cleaning up temporary files…
+✔ Done cleaning up temporary files!
+
+> konard.github.io@0.1.0 check:file-size
+> bash scripts/check-file-line-limits.sh
+
+Checked 336 files against the 1500-line limit.
+
+> konard.github.io@0.1.0 check:secrets
+> secretlint "**/*" --secretlintignore .prettierignore
+
+Compiled 10 Python helpers without executing them.
+All checks passed!
+12 files already formatted
+[issue-35-0a1c09fbb17e 66cdd52] Preserve configured middle cuts during automatic spacing
+ 9 files changed, 240 insertions(+), 4 deletions(-)
+ delete mode 100644 .gitkeep
+ create mode 100644 experiments/issue-35-browser.mjs
+ create mode 100644 src/links/issue-35.test.js
+ create mode 100644 src/pages/network-35.test.jsx

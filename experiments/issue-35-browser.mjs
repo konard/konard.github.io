@@ -58,15 +58,22 @@ try {
     image.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg.outerHTML)}`;
     await image.decode();
     context.drawImage(image, 0, 0, 1000, 1000);
-    const matrix = svg.getCTM().inverse().multiply(line.getCTM());
-    return Array.from({ length: 12 }, (_, i) => {
+    // Read the exported drawing transform without CSS viewport scaling.
+    // Root getCTM() includes that scaling differently across browser engines.
+    const drawing = line.parentElement.parentElement.cloneNode(false);
+    const matrix = drawing.transform.baseVal.consolidate().matrix;
+    const samples = Array.from({ length: 12 }, (_, i) => {
       const point = first.getPointAtLength(joinLength - (i + 1) * 0.5).matrixTransform(matrix);
       const x = Math.round((point.x / svg.viewBox.baseVal.width) * 1000);
       const y = Math.round((point.y / svg.viewBox.baseVal.height) * 1000);
-      return [...context.getImageData(x, y, 1, 1).data];
+      return { x, y, pixel: [...context.getImageData(x, y, 1, 1).data] };
     });
+    return { joinLength, matrix: [matrix.a, matrix.b, matrix.c, matrix.d, matrix.e, matrix.f], samples };
   });
-  result.raster.forEach(([r, g, b, a]) => assert(r > 100 && b > 150 && b > g && a > 240));
+  result.raster.samples.forEach(({ x, y, pixel: [r, g, b, a] }) => {
+    assert(x >= 0 && x < 1000 && y >= 0 && y < 1000, 'raster sample must be inside the exported image');
+    assert(r > 100 && b > 150 && b > g && a > 240);
+  });
   result.checks.push('reported URL: all three lines continuous, zero cut settings, purple shaft painted to its middle');
 
   const solved = await picture();

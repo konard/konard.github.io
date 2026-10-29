@@ -1,0 +1,122 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793296500180
+
+ ❯ src/links/issue-35.test.js (5 tests | 5 failed) 300ms
+   × keeps the reported network continuous with default editor options 124ms
+   × keeps the reported network continuous with default solver options 33ms
+   × preserves every intentional global/per-link middle cut: {"middleGapStart":3,"middleGapEnd":2} 61ms
+   × preserves every intentional global/per-link middle cut: {"middleGapStart":3,"middleGapEnd":2,"gaps":"~ ~ 0 0,~ ~ 1 0,~ ~ 0 4"} 43ms
+   × retains explicit automatic middle-cut opt-in and shares it without changing its meaning 35ms
+ ❯ src/pages/network-35.test.jsx (1 test | 1 failed) 476ms
+   × keeps zero-cut links continuous on the reported URL, after Apply and after sharing 472ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/links/issue-35.test.js > keeps the reported network continuous with default editor options
+ FAIL  src/links/issue-35.test.js > keeps the reported network continuous with default solver options
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/links/issue-35.test.js:28:98
+     26|   const { result, applied } = solve(style, entry === 'solver' ? { adju…
+     27|   expect(result.after).toBeLessThan(result.before);
+     28|   result.linkGaps.forEach((row) => expect(row.slice(2).every((cut) => …
+       |                                                                                                  ^
+     29|   glyphParts(links, shapeOfStyle(applied, links.length)).forEach(({ li…
+     30|     expect(line.match(/M/g)).toHaveLength(1);
+ ❯ src/links/issue-35.test.js:28:19
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  src/links/issue-35.test.js > preserves every intentional global/per-link middle cut: {"middleGapStart":3,"middleGapEnd":2}
+AssertionError: expected 4 to be 3 // Object.is equality
+
+- Expected
++ Received
+
+- 3
++ 4
+
+ ❯ src/links/issue-35.test.js:49:52
+     47|     for (let k = 2; k < 4; k++) {
+     48|       const key = k === 2 ? 'middleGapStart' : 'middleGapEnd';
+     49|       expect(fitted.linkGaps[i][k] ?? fitted[key]).toBe(shape.linkGaps…
+       |                                                    ^
+     50|     }
+     51|   expect(result.after).toBeLessThanOrEqual(result.before);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ FAIL  src/links/issue-35.test.js > preserves every intentional global/per-link middle cut: {"middleGapStart":3,"middleGapEnd":2,"gaps":"~ ~ 0 0,~ ~ 1 0,~ ~ 0 4"}
+AssertionError: expected 4 to be 1 // Object.is equality
+
+- Expected
++ Received
+
+- 1
++ 4
+
+ ❯ src/links/issue-35.test.js:49:52
+     47|     for (let k = 2; k < 4; k++) {
+     48|       const key = k === 2 ? 'middleGapStart' : 'middleGapEnd';
+     49|       expect(fitted.linkGaps[i][k] ?? fitted[key]).toBe(shape.linkGaps…
+       |                                                    ^
+     50|     }
+     51|   expect(result.after).toBeLessThanOrEqual(result.before);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+ FAIL  src/links/issue-35.test.js > retains explicit automatic middle-cut opt-in and shares it without changing its meaning
+AssertionError: expected null to be '4' // Object.is equality
+
+- Expected:
+"4"
+
++ Received:
+null
+
+ ❯ src/links/issue-35.test.js:59:56
+     57|   expect(result.linkGaps.some((row) => row[2] > 0 || row[3] > 0)).toBe…
+     58|   expect(result.after).toBeLessThan(result.before);
+     59|   expect(styleToParams(style).get('solveMiddleRange')).toBe('4');
+       |                                                        ^
+     60|   expect(styleFromParams(styleToParams(style))).toEqual(style);
+     61|   expect(styleFromParams(styleToParams(applied)).gaps).toBe(applied.ga…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/6]⎯
+
+ FAIL  src/pages/network-35.test.jsx > keeps zero-cut links continuous on the reported URL, after Apply and after sharing
+AssertionError: expected [ 'M', 'M' ] to have a length of 1 but got 2
+
+- Expected
++ Received
+
+- 1
++ 2
+
+ ❯ src/pages/network-35.test.jsx:13:72
+     11|   const lines = () => [...document.querySelectorAll('.network__preview…
+     12|   expect(lines()).toHaveLength(3);
+     13|   lines().forEach((line) => expect(line.getAttribute('d').match(/M/g))…
+       |                                                                        ^
+     14|   expect(screen.getByRole('slider', { name: 'Cut before the middle', e…
+     15|   expect(screen.getByRole('slider', { name: 'Cut after the middle', ex…
+ ❯ src/pages/network-35.test.jsx:13:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/6]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  6 failed (6)
+   Start at  17:59:06
+   Duration  6.73s (environment 48%, transform 27%, tests 12%, setup 9%, import 3%, worker 1%)
+
+Environment  jsdom was created 2 times · 3.01s total, 48% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+
