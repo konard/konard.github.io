@@ -22,6 +22,7 @@ try {
   for (const code of ['2222', '34442132']) {
     await page.goto(`http://localhost:4197/network/?code=${code}&solve=true&lang=en`);
     await page.locator('.network__preview svg').waitFor();
+    await page.waitForFunction(() => !document.querySelector('.network__preview').matches('[aria-busy="true"]'));
     await page
       .locator('.network__preview')
       .screenshot({ path: `docs/case-studies/issue-37/screenshots/${engine}-${phase}-${code}.png` });

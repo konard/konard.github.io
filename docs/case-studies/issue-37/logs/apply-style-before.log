@@ -1,0 +1,31 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793313918910
+
+ ❯ src/pages/network-37.test.jsx (4 tests | 1 failed) 1902ms
+   × preserves colour edits made while a manual Apply worker is running 443ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/pages/network-37.test.jsx > preserves colour edits made while a manual Apply worker is running
+Error: expect(element).toHaveValue(pastel)
+
+Expected the element to have value:
+  pastel
+Received:
+  site
+ ❯ src/pages/network-37.test.jsx:57:19
+     55|     worker.onmessage({ data: { result: { turns: shape.turns, linkGaps:…
+     56|   );
+     57|   expect(colours).toHaveValue('pastel');
+       |                   ^
+     58|   expect(new URL(screen.getByLabelText('Link to this picture').value).…
+     59|   expect(document.querySelector('.network__preview')).toHaveAttribute(…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 3 passed (4)
+   Start at  23:42:36
+   Duration  3.95s (tests 52%, environment 28%, transform 9%, setup 6%, import 4%)
+

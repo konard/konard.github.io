@@ -1,0 +1,27 @@
+
+> konard.github.io@0.1.0 test:network:issue37
+> node experiments/issue-37-browser.mjs
+
+firefox: native click-then-key focus passed in all four control contexts
+firefox: 2222 has zero residual and exact Apply/share output
+firefox: 34442132 has zero residual and exact Apply/share output
+firefox: 01 has zero residual and exact Apply/share output
+firefox: 10 has zero residual and exact Apply/share output
+firefox: 11 has zero residual and exact Apply/share output
+firefox: 00 has zero residual and exact Apply/share output
+firefox: 2111 has zero residual and exact Apply/share output
+firefox: 2012 has zero residual and exact Apply/share output
+firefox: 1222 has zero residual and exact Apply/share output
+firefox: 0100 has zero residual and exact Apply/share output
+firefox: 032113 has zero residual and exact Apply/share output
+firefox: 133111 has zero residual and exact Apply/share output
+firefox: 100321 has zero residual and exact Apply/share output
+firefox: 111300 has zero residual and exact Apply/share output
+firefox: 132001 has zero residual and exact Apply/share output
+firefox: 013302 has zero residual and exact Apply/share output
+firefox: 42414220 has zero residual and exact Apply/share output
+firefox: 43434143 has zero residual and exact Apply/share output
+firefox: 33044224 has zero residual and exact Apply/share output
+firefox: 31324042 has zero residual and exact Apply/share output
+firefox: 04210010 has zero residual and exact Apply/share output
+firefox: 32103141 has zero residual and exact Apply/share output

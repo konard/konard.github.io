@@ -43,6 +43,11 @@ manual controls.
    work, and keyed results cannot replace a newer drawing. Pending status and
    disabled image exports prevent downloading an unfinished preview. Worker
    failure is surfaced, and synchronous non-browser renderers retain a fallback.
+6. Self review caught a manual-Apply race: changing the palette during a worker
+   search could be overwritten by its original style snapshot. A failing test
+   reproduces the palette reverting from `pastel` to `site`; Apply now merges
+   geometry into the current style. Unit and native-browser checks cover edits
+   made while the worker is pending (`logs/apply-style-before.log`).
 
 The baseline failing tests are in `logs/regression-before.log`,
 `logs/random-regressions-before.log` and `logs/focus-regression-before.log`.
@@ -158,6 +163,9 @@ the existing browser suites.
 
 Local verification passed the full 903-test unit suite. After adding the compact
 spread-bound regression, a further focused run passed all 30 solver/worker tests.
+The final concurrent-style fix passed all 21 page/worker tests, including its
+new failing-then-passing regression. All 12 Python attribution tests, 120 CV PDF
+checks and the activity-indicator/mobile browser suite also passed locally.
 Lint, formatting, file limits, secret scanning, dependency audit, documentation
 validation and the production build passed. The complete new browser suite passed
 in Chromium and Firefox, and all eight existing editor suites passed in both

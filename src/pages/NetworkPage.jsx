@@ -117,7 +117,9 @@ export default function NetworkPage() {
       ),
     );
   const applyResult = (found) =>
-    setStyle({ ...withGaps(withTurns(style, found.turns), found.linkGaps), ...found.layout, solve: false });
+    setStyleState((current) =>
+      normalizeStyle({ ...withGaps(withTurns(current, found.turns), found.linkGaps), ...found.layout, solve: false }),
+    );
   const applySolved = async () => {
     if (solved || typeof Worker === 'undefined') {
       applyResult(solved || solveCollisions(links, shape, solverOptions));

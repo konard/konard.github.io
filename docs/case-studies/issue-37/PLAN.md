@@ -20,12 +20,21 @@ one pull request on `issue-37-f17145ac88b1`, without merging.
       build and native-browser suites sequentially within the memory budget.
 - [x] Record requirement-to-evidence map, root causes, alternatives, limitations,
       screenshots, raw measurements and saved logs in this case study.
-- [ ] Commit useful atomic steps after local checks; push only the prepared branch.
-- [ ] Read the complete PR diff; verify main is included, feedback is addressed,
+- [x] Commit useful atomic steps after local checks; push only the prepared branch.
+- [x] Read the complete PR diff; verify main is included, feedback is addressed,
       PR title/body include screenshots and `Fixes #37`, and worktree is clean.
-- [ ] List latest CI runs with timestamps and head SHA; preserve and inspect
-      failed logs in `ci-logs/`, fix failures, and wait for all head checks to pass.
-- [ ] Mark PR 38 ready and report its URL only after all criteria are verified.
+
+## Final integration protocol
+
+The final gate is the current commit's live [PR checks](https://github.com/konard/konard.github.io/pull/38/checks).
+Their final run URL and results belong in the PR description, so recording them
+does not create another repository revision that needs a different CI run.
+
+1. List latest CI runs with timestamps and head SHA; preserve and inspect
+   non-passing logs in `ci-logs/`, fix failures, and wait for all head checks to pass.
+2. Refresh issue comments, PR conversation comments, inline comments and reviews.
+   Verify main is included and there are no uncommitted requirement changes.
+3. Mark PR 38 ready and report its URL only after all criteria are verified.
 
 Experiments live in `experiments/`; lengthy outputs go to case-study logs. Browser
 work uses both Playwright MCP inspection and the existing Playwright test harness.

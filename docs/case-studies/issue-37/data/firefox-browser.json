@@ -1,6 +1,6 @@
 {
   "engine": "firefox",
-  "date": "2026-10-29T23:17:39.454Z",
+  "date": "2026-10-29T23:45:16.631Z",
   "checks": [
     {
       "url": "/network/?code=2222&lang=en",
@@ -59,7 +59,7 @@
       "step": 0.05
     },
     "worker paints while solving; native drag and click-then-key work with and without platform focus",
-    "22 networks: zero residual, continuous, exact Apply/share; SVG download; cancellation, mobile and Russian"
+    "22 networks: zero residual, continuous, exact Apply/share; SVG download; cancellation, concurrent style edits, mobile and Russian"
   ],
   "networks": [
     {
@@ -280,14 +280,15 @@
   "errors": [],
   "version": "157.0",
   "frames": [
-    16.32000000000005,
-    17.319999999999936,
-    16.659999999999968,
-    150,
-    83.34000000000003,
-    16.540000000000077,
-    16.299999999999955,
-    16.420000000000073,
-    17.399999999999864
+    34.04000000000008,
+    15.979999999999905,
+    17.360000000000014,
+    15.860000000000014,
+    17.460000000000036,
+    16.67999999999995,
+    216.5,
+    116.82000000000005,
+    15.920000000000073,
+    17.419999999999845
   ]
 }

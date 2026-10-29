@@ -1,6 +1,6 @@
 {
   "engine": "chromium",
-  "date": "2026-10-29T23:15:32.166Z",
+  "date": "2026-10-29T23:43:57.972Z",
   "checks": [
     {
       "url": "/network/?code=2222&lang=en",
@@ -59,7 +59,7 @@
       "step": 0.05
     },
     "worker paints while solving; native drag and click-then-key work with and without platform focus",
-    "22 networks: zero residual, continuous, exact Apply/share; SVG download; cancellation, mobile and Russian"
+    "22 networks: zero residual, continuous, exact Apply/share; SVG download; cancellation, concurrent style edits, mobile and Russian"
   ],
   "networks": [
     {
@@ -282,13 +282,13 @@
   "frames": [
     16.799999999999955,
     16.600000000000023,
-    16.700000000000045,
+    66.70000000000005,
     16.600000000000023,
-    16.59999999999991,
-    83.40000000000009,
-    16.699999999999932,
+    50.09999999999991,
     16.600000000000023,
-    66.79999999999995,
-    16.600000000000136
+    16.600000000000023,
+    16.799999999999955,
+    99.90000000000009,
+    16.699999999999932
   ]
 }

@@ -1,0 +1,19 @@
+test_blame_counts_only_verified_nonblank_lines_once_across_mirrors (__main__.SourceLinesTests.test_blame_counts_only_verified_nonblank_lines_once_across_mirrors) ... ok
+test_checkpoint_upgrade_discards_patch_credit_without_losing_code_or_repository_counts (__main__.SourceLinesTests.test_checkpoint_upgrade_discards_patch_credit_without_losing_code_or_repository_counts) ... ok
+test_cloc_keeps_large_json_and_code_comment_blank_counts (__main__.SourceLinesTests.test_cloc_keeps_large_json_and_code_comment_blank_counts) ... ok
+test_empty_verified_public_author_history_needs_no_clone (__main__.SourceLinesTests.test_empty_verified_public_author_history_needs_no_clone) ... ok
+test_identical_public_revision_reuses_counts_without_granting_duplicate_credit (__main__.SourceLinesTests.test_identical_public_revision_reuses_counts_without_granting_duplicate_credit) ... ok
+test_interrupted_json_write_recovers_committed_attribution_on_resume (__main__.SourceLinesTests.test_interrupted_json_write_recovers_committed_attribution_on_resume) ... 1/1 fixture/public
+Complete: 1 repositories, 0 errors
+ok
+test_large_git_index_respects_bounded_memory_without_threaded_lstat_failure (__main__.SourceLinesTests.test_large_git_index_respects_bounded_memory_without_threaded_lstat_failure) ... ok
+test_large_json_uses_bounded_physical_line_count_without_dropping_data (__main__.SourceLinesTests.test_large_json_uses_bounded_physical_line_count_without_dropping_data) ... ok
+test_partial_clone_prefetches_only_candidate_history_in_batches (__main__.SourceLinesTests.test_partial_clone_prefetches_only_candidate_history_in_batches) ... ok
+test_private_repository_is_rejected_before_clone (__main__.SourceLinesTests.test_private_repository_is_rejected_before_clone) ... ok
+test_saved_patches_remain_in_repository_counts_but_not_personal_programming_totals (__main__.SourceLinesTests.test_saved_patches_remain_in_repository_counts_but_not_personal_programming_totals) ... ok
+test_zero_reported_repository_size_does_not_mean_an_empty_tree (__main__.SourceLinesTests.test_zero_reported_repository_size_does_not_mean_an_empty_tree) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 3.695s
+
+OK
