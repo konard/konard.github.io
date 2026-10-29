@@ -1,5 +1,6 @@
 // Finite issue fixtures: manual preservation, paired controls and shared output.
 /* global document, innerWidth */
+import { waitForNetwork } from './wait-for-network.mjs';
 import assert from 'node:assert/strict';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
@@ -27,9 +28,12 @@ try {
   });
   const go = async (query = '') => {
     await page.goto(`http://localhost:4189/network/?code=1111&rotation=-90&lang=en&${query}`);
-    await page.locator('.network__preview svg').waitFor();
+    await waitForNetwork(page);
   };
-  const picture = () => page.locator('.network__preview').innerHTML();
+  const picture = async () => {
+    await waitForNetwork(page);
+    return page.locator('.network__preview').innerHTML();
+  };
   const shot = async (name, element = page.locator('.network__preview')) =>
     element.screenshot({ path: join(output, `${engine}-after-${name}.png`) });
   const slider = (name) => page.getByRole('slider', { name, exact: true });
@@ -38,6 +42,7 @@ try {
     await go(query);
     const before = await picture();
     await page.getByLabel('Reduce overlaps automatically', { exact: true }).check();
+    await waitForNetwork(page);
     assert.equal(await picture(), before);
     await page.getByRole('button', { name: 'Apply turns and gaps to links', exact: true }).click();
     assert.equal(await picture(), before);

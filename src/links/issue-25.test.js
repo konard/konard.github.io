@@ -1,6 +1,6 @@
 import { expect, it, vi } from 'vitest';
 import { decode } from './configurations';
-import { solveCollisions, overlapCost } from './collisions';
+import { solveCollisions, overlapCost, turningCost } from './collisions';
 import { glyphParts, glyphCurves } from './glyph';
 import { networkSvg } from './render';
 import { normalizeStyle, shapeOfStyle, styleFromParams, styleToParams, withTurns } from './style';
@@ -30,7 +30,7 @@ it('scores painted markers and user selected spacing, including near reference m
 it('recognizes the supplied perfect manual arrangement and keeps diagnostics opt-in', () => {
   const shape = shapeOfStyle(fixture({ turns: '15 -15', gaps: '0.18 0.18 ~ ~' }), 2);
   // Only the 30 degrees of existing turns contribute; no painted overlap.
-  expect(overlapCost(links, shape)).toBeCloseTo(30 * 0.002, 8);
+  expect(overlapCost(links, shape)).toBeCloseTo(turningCost(shape.turns), 8);
   const debug = vi.spyOn(console, 'debug').mockImplementation(() => {});
   try {
     solveCollisions(links, shape, { passes: 0 });

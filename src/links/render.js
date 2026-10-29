@@ -103,7 +103,7 @@ function backdrop(style, w, h, defs) {
 export function networkSvg(
   links,
   rawStyle = {},
-  { notation = null, extraTurns = null, extraGaps = null, title = '' } = {},
+  { notation = null, extraTurns = null, extraGaps = null, extraLayout = null, title = '' } = {},
 ) {
   const style = normalizeStyle(rawStyle);
   const n = links.length;
@@ -119,7 +119,7 @@ export function networkSvg(
   const [x, y] = [(w - side) / 2, edge + (h - 2 * edge - room - side) / 2];
 
   const colors = linkColors(style, n);
-  const parts = glyphParts(links, shapeOfStyle(style, n, extraTurns, extraGaps));
+  const parts = glyphParts(links, shapeOfStyle({ ...style, ...extraLayout }, n, extraTurns, extraGaps));
   const dash = dashArray(style.dash, style.strokeWidth, style.linecap);
   const lines = parts
     .map(({ line, start, end, middle }, i) => {

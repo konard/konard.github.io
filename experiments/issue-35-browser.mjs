@@ -1,5 +1,6 @@
 // Regression of the exact reported URL and the native SVG/raster drawing.
 /* global document, Image */
+import { waitForNetwork } from './wait-for-network.mjs';
 import assert from 'node:assert/strict';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
@@ -28,9 +29,12 @@ try {
   });
   const go = async (extra = '') => {
     await page.goto(`http://localhost:4195/network/?code=003002&solve=true&lang=en&${extra}`);
-    await page.locator('.network__preview svg').waitFor();
+    await waitForNetwork(page);
   };
-  const picture = () => page.locator('.network__preview').innerHTML();
+  const picture = async () => {
+    await waitForNetwork(page);
+    return page.locator('.network__preview').innerHTML();
+  };
   const moveCounts = () =>
     page
       .locator('.network__preview g[stroke] > path:first-child')

@@ -47,6 +47,7 @@ export const MARKERS = ['bar', 'arrow', 'triangle', 'tail', 'dot', 'circle', 'sq
  */
 export const SHAPE = {
   placement: 'circle',
+  order: '', // circular order of link IDs, empty keeps their natural order
   layoutAspect: 1,
   columns: 0,
   forceDistance: 1,

@@ -1,5 +1,6 @@
 // Regression checks for #23, against the production build, one engine at a time.
 /* global document, window, getComputedStyle, StorageEvent, requestAnimationFrame, innerHeight, Image */
+import { waitForNetwork } from './wait-for-network.mjs';
 import assert from 'node:assert/strict';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
@@ -98,6 +99,7 @@ try {
   await shot(page, 'gaps');
   await page.goto('http://localhost:4179/network/?code=221331&solveRange=0');
   await page.locator('#style-solve').check();
+  await waitForNetwork(page);
   const preview = await page.locator('.network__preview').innerHTML();
   const score = await page.locator('.network__score').innerText();
   await page.getByRole('button', { name: 'Apply turns and gaps to links', exact: true }).click();

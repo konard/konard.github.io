@@ -1,6 +1,6 @@
 import { expect, it } from 'vitest';
 import { glyphCurves, paintedCurve } from './glyph';
-import { overlapCost, solveCollisions } from './collisions';
+import { overlapCost, solveCollisions, turningCost } from './collisions';
 import { normalizeStyle, shapeOfStyle, linkTurns, styleFromParams, styleToParams } from './style';
 import { linkGaps } from './gaps';
 
@@ -46,7 +46,7 @@ it('preserves closed halves and discovers gaps and turns on the open 1111 link',
 });
 it('recognizes the exact reported arrangement with the closed gaps corrected to equality', () => {
   const shape = setup({ gaps: '0.08 0.08 ~ ~,0.18 0.18 ~ ~' });
-  expect(overlapCost(links, shape)).toBeCloseTo(30 * 0.002, 8);
+  expect(overlapCost(links, shape)).toBeCloseTo(turningCost(shape.turns), 8);
   const result = solveCollisions(links, shape, { adjustGaps: true });
   expect(result.turns[0]).toEqual([0, 0]);
   expect(result.linkGaps[0]).toEqual([0.08, 0.08, null, null]);

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import './settings.css';
 import './network.css';
 import Layout from '../components/Layout';
@@ -21,6 +21,8 @@ import { LANGS, useLang } from '../i18n/prefs';
 import { LinksTable, Notations, randomLinks, stepped } from './NetworkEditor';
 import NetworkShare from './NetworkShare';
 import { Looks, StyleSections } from './NetworkStyle';
+import { solverJob } from '../links/solver-job';
+import { useCollisionSolver } from './useCollisionSolver';
 import { useNetworkHistory } from './useNetworkHistory';
 
 /** The network of the theory's example: two points and the link between them. */
@@ -75,30 +77,37 @@ export default function NetworkPage() {
     gapRange: style.solveGapRange,
     middleRange: style.solveMiddleRange,
   };
-  const shapeKey = JSON.stringify([code, shape, solverOptions]);
-  // The experimental solver of overlaps; it runs only when it is switched on or asked for.
-  const solved = useMemo(
-    () => (style.solve ? solveCollisions(links, shape, solverOptions) : null),
-    // shapeKey stands for links, shape and the options of the solver.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [shapeKey, style.solve],
-  );
+  const shapeKey = JSON.stringify([links, shape, solverOptions]);
+  const { result: solved, busy, error } = useCollisionSolver(shapeKey, style.solve);
+  const pendingApply = useRef(null);
+  const [applying, setApplying] = useState(false);
+  const [applyError, setApplyError] = useState(null);
+  useEffect(() => () => pendingApply.current?.cancel(), [shapeKey]);
   const svg = useMemo(
-    () => networkSvg(links, style, { notation, extraTurns: solved?.delta, extraGaps: solved?.linkGaps }),
+    () =>
+      networkSvg(links, style, {
+        notation,
+        extraTurns: solved?.delta,
+        extraGaps: solved?.linkGaps,
+        extraLayout: solved?.layout,
+      }),
     [links, style, notation, solved],
   );
   const colors = linkColors(style, n);
   const turns = linkTurns(style, n);
   const gaps = linkGaps(style, n);
 
-  const changeLinks = (next) => setLinks(next);
+  const changeLinks = (next) => {
+    if (next.length !== n && style.order) setStyle({ ...style, order: '' });
+    setLinks(next);
+  };
   const remove = (k) => {
     const keep = (list) => list.filter((_, i) => i !== k - 1);
     setLinks(removeLink(links, k));
     let next = withTurns(style, keep(linkTurns(style, n)));
     next = withGaps(next, keep(gaps));
     if (style.palette === 'custom') next = { ...next, colors: keep(linkColors(style, n)).join(',') };
-    setStyle(next);
+    setStyle({ ...next, order: '' });
   };
   const turn = (i, end, value) =>
     setStyle(
@@ -107,9 +116,25 @@ export default function NetworkPage() {
         turns.map((pair, k) => (k === i ? pair.map((a, e) => (e === end ? value : a)) : pair)),
       ),
     );
-  const applySolved = () => {
-    const found = solved || solveCollisions(links, shape, solverOptions);
-    setStyle({ ...withGaps(withTurns(style, found.turns), found.linkGaps), solve: false });
+  const applyResult = (found) =>
+    setStyle({ ...withGaps(withTurns(style, found.turns), found.linkGaps), ...found.layout, solve: false });
+  const applySolved = async () => {
+    if (solved || typeof Worker === 'undefined') {
+      applyResult(solved || solveCollisions(links, shape, solverOptions));
+      return;
+    }
+    setApplying(true);
+    setApplyError(null);
+    const job = solverJob([links, shape, solverOptions]);
+    pendingApply.current = job;
+    try {
+      applyResult(await job.promise);
+    } catch (error) {
+      if (error.name !== 'AbortError') setApplyError(error.message);
+    } finally {
+      if (pendingApply.current === job) pendingApply.current = null;
+      setApplying(false);
+    }
   };
 
   const url = `${window.location.origin}/network/${query}`;
@@ -132,6 +157,7 @@ export default function NetworkPage() {
         <div className="network__layout">
           <figure className="network__view">
             <div
+              aria-busy={busy || applying}
               className={`network__preview${style.background === 'transparent' ? ' is-transparent' : ''}`}
               style={{ aspectRatio: `${style.width} / ${style.height}` }}
               // The SVG names itself (role img, aria-label). It is built from normalized
@@ -140,6 +166,18 @@ export default function NetworkPage() {
             />
             <figcaption className="mono">
               {theoryNotation(links, notation)}
+              {(busy || applying) && (
+                <span role="status">
+                  {' · '}
+                  {t({ en: 'Spacing…', ru: 'Подбор зазоров…' })}
+                </span>
+              )}
+              {(error || applyError) && (
+                <span role="alert">
+                  {' · '}
+                  {t({ en: 'Could not calculate spacing', ru: 'Не удалось подобрать зазоры' })}: {error || applyError}
+                </span>
+              )}
               {solved && (
                 <span className="network__score">
                   {' · '}
@@ -189,7 +227,12 @@ export default function NetworkPage() {
               <div className="network__styles">
                 <StyleSections links={links} style={style} onStyle={setStyle}>
                   <div className="network__actions">
-                    <button type="button" className="button button--small" onClick={applySolved}>
+                    <button
+                      type="button"
+                      className="button button--small"
+                      disabled={busy || applying || Boolean(error)}
+                      onClick={applySolved}
+                    >
                       {t({ en: 'Apply turns and gaps to links', ru: 'Применить повороты и зазоры связей' })}
                     </button>
                     <button
@@ -206,7 +249,15 @@ export default function NetworkPage() {
             </section>
             <section id="share" className="network__panel" aria-labelledby="share-title">
               <h2 id="share-title">{t({ en: 'Save and share', ru: 'Сохранить и поделиться' })}</h2>
-              <NetworkShare code={code} links={links} svg={svg} style={style} url={url} text={text} />
+              <NetworkShare
+                code={code}
+                links={links}
+                svg={svg}
+                style={style}
+                url={url}
+                text={text}
+                busy={busy || applying}
+              />
             </section>
           </div>
         </div>

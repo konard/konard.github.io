@@ -310,7 +310,7 @@ export const STYLE_SECTIONS = [
           },
         },
       ),
-      range('solveRange', 60, 0, 180, 1, { en: 'Largest turn', ru: 'Наибольший поворот' }, { unit: '°' }),
+      range('solveRange', 180, 0, 180, 1, { en: 'Largest turn', ru: 'Наибольший поворот' }, { unit: '°' }),
       range('solveStep', 1, 1, 30, 1, { en: 'Turn step', ru: 'Шаг поворота' }, { unit: '°' }),
     ],
   },

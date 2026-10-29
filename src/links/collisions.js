@@ -14,13 +14,14 @@ import { trimCurve } from './curve-tools';
 import { paintedPairCost, selfCost } from './painted-collisions';
 import { adjustCollisionGaps } from './collision-gaps';
 import { symmetricReferences } from './collision-symmetry';
+import { searchCollisionLayouts } from './collision-search';
 
 const SAMPLES = 16; // points per Bézier segment
 const NEAR = 0.09; // lines closer than this overlap (a stroke is about 0.04)
 const MIDDLE = 0.14; // touching around a middle is the drawing, not an overlap
 const CROSSING = 1;
 const CLOSE = 0.25;
-const TURNING = 0.002; // per degree
+const TURNING = 0.000001; // per degree
 
 export const polyline = (curve) =>
   curve.segments.flatMap((seg, k) =>
@@ -81,7 +82,7 @@ export function overlapCost(links, shape = {}) {
  * degrees in steps of `step`. Returns the turns found (`delta`, to add to the
  * starting turns), the turns in total (`turns`) and the cost before and after.
  */
-function solveTurns(links, shape = {}, { range = 60, step = 1, passes = 3 } = {}, origins) {
+export function solveTurns(links, shape = {}, { range = 180, step = 1, passes = 3, localRange = null } = {}, origins) {
   range = Math.min(180, Math.max(0, Number(range) || 0));
   step = Math.max(1, Number(step) || 1);
   passes = Math.min(10, Math.max(0, Number(passes) || 0));
@@ -114,7 +115,7 @@ function solveTurns(links, shape = {}, { range = 60, step = 1, passes = 3 } = {}
         const kept = delta[i][end];
         let best = { angle: kept, cost: costOf(i, lines[i]), line: lines[i] };
         for (const angle of candidates) {
-          if (angle === kept) continue;
+          if (angle === kept || (localRange !== null && Math.abs(angle - kept) > localRange)) continue;
           // Applied turns go back through the editable table's −180…180° range.
           if (Math.abs(start[i][end] + angle) > 180) continue;
           delta[i][end] = angle;
@@ -158,6 +159,8 @@ export function solveCollisions(links, shape = {}, options = {}) {
   // Reference spacing must not open a link's middle unless explicitly requested.
   const { adjustGaps = false, gapRange = 0.2, middleRange = 0, passes = 3, debug = false } = options;
   const base = shapeOf(shape);
+  const grid = Math.max(1, options.step || 1);
+  const coarse = links.length >= 3 && base.clearance != null ? Math.ceil(13 / grid) * grid : grid;
   const turns = links.map((_, i) => [...(base.turns[i] || [0, 0])]);
   const before = overlapCost(links, base);
   let result = { turns, delta: turns.map(() => [0, 0]), linkGaps: base.linkGaps, before, after: before };
@@ -170,12 +173,32 @@ export function solveCollisions(links, shape = {}, options = {}) {
       if (!satisfied(result)) {
         result = adjustCollisionGaps(links, base, result, { gapRange, middleRange, passes });
         if (!satisfied(result)) {
-          const found = solveTurns(links, { ...base, turns: result.turns, linkGaps: result.linkGaps }, options, turns);
+          const found = solveTurns(
+            links,
+            { ...base, turns: result.turns, linkGaps: result.linkGaps },
+            { ...options, step: coarse },
+            turns,
+          );
           result = { ...found, before };
-          if (!satisfied(result)) result = adjustCollisionGaps(links, base, result, { gapRange, middleRange, passes });
+          if (adjustGaps && !satisfied(result))
+            result = adjustCollisionGaps(links, base, result, { gapRange, middleRange, passes });
         }
       }
-    } else result = solveTurns(links, base, options);
+    } else result = solveTurns(links, base, { ...options, step: coarse });
+    if (coarse > grid && !satisfied(result)) {
+      result = {
+        ...solveTurns(
+          links,
+          { ...base, turns: result.turns, linkGaps: result.linkGaps },
+          { ...options, localRange: coarse },
+          turns,
+        ),
+        before,
+      };
+      if (adjustGaps && !satisfied(result))
+        result = adjustCollisionGaps(links, base, result, { gapRange, middleRange, passes });
+    }
+    if (!satisfied(result) && options.search !== false) result = searchCollisionLayouts(links, base, result, options);
   }
   result.delta = result.turns.map((pair, i) => pair.map((a, e) => a - turns[i][e]));
   if (debug)
@@ -250,6 +273,14 @@ function paintedPolyline(raw, o, i, scale) {
       kept ? Array.from({ length: SAMPLES + 1 }, (_, j) => bezier(kept, j / SAMPLES).map((v) => v / scale)) : [],
     );
   });
+  // The two shafts intentionally meet at their own middle. Away from that
+  // small attachment region they must be scored against each other too:
+  // otherwise a folded lens can be misreported as having zero collisions.
+  const middle = curve.middle.at.map((v) => v / scale);
+  const joint = (o.strokeWidth + o.clearance + o.middleSize / 2) / scale;
+  const separated = halves.map((half) =>
+    decorate(half.map((point) => (distance(point, middle) > joint ? point : null))),
+  );
   const all = decorate(
     [...halves[0], null, ...halves[1], ...markerLines.flatMap((line) => [null, ...line])],
     markerLines.flatMap((line) => line.fills),
@@ -259,6 +290,7 @@ function paintedPolyline(raw, o, i, scale) {
     return decorate([endpoint, endpoint, null, ...marker], marker.fills);
   });
   all.self =
+    paintedPairCost(separated[0], separated[1]) +
     paintedPairCost(markerLines[0], markerLines[1]) +
     paintedPairCost(markerLines[0], halves[1]) +
     paintedPairCost(markerLines[1], halves[0]) +

@@ -1,6 +1,7 @@
 // Browser regression checks for issue #17. Uses the built site; starts Vite
 // preview unless BASE is set. ENGINE=chromium|firefox|webkit, CAPTURE_DIR=...
 /* global document, window, getComputedStyle, Image */
+import { waitForNetwork } from './wait-for-network.mjs';
 import assert from 'node:assert/strict';
 import { mkdir, readFile } from 'node:fs/promises';
 import { join } from 'node:path';
@@ -25,7 +26,10 @@ const codeIs = async (page, code) => {
   await page.waitForURL((url) => url.searchParams.get('code') === code);
   assert.equal(codeOf(page), code);
 };
-const svgOf = (page) => page.locator('.network__preview').innerHTML();
+const svgOf = async (page) => {
+  await waitForNetwork(page);
+  return page.locator('.network__preview').innerHTML();
+};
 const noOverflow = async (page) => {
   const excess = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   assert(excess <= 1, `page overflows by ${excess}px at ${JSON.stringify(page.viewportSize())}`);
@@ -119,6 +123,7 @@ try {
   await page.goto(`${base}/network/?code=221331`);
   await shot(page, 'collisions-before', page.locator('.network__preview'));
   await page.getByLabel('Reduce overlaps automatically', { exact: true }).check();
+  await waitForNetwork(page);
   const score = await page.locator('.network__score').textContent();
   const [from, to] = score.match(/[\d.]+/g).map(Number);
   assert(to < from, `solver should improve the tangled example: ${score}`);

@@ -25,7 +25,9 @@ describe('geometry and control audit (issue #19)', () => {
           ? [field.min, field.max]
           : field.type === 'toggle'
             ? [true, false]
-            : field.options.map((o) => o.value);
+            : field.type === 'text'
+              ? ['', '2 1', '1 3 2 4']
+              : field.options.map((o) => o.value);
       for (const code of examples)
         for (const mode of ['fixed', 'mirror']) {
           const links = decode(code);

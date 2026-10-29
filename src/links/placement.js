@@ -153,11 +153,19 @@ export function placeLinks(n, raw = {}, links = null) {
     ...raw,
   };
   const kind = options.placement === 'auto' ? (n <= 4 ? 'circle' : 'hex') : options.placement;
-  if (kind === 'circle')
-    return circle(n, options.spread, options.rotation).map((p) => ({
-      ...p,
-      at: [p.at[0] * options.layoutAspect, p.at[1]],
-    }));
+  if (kind === 'circle') {
+    const points = circle(n, options.spread, options.rotation);
+    const order = String(options.order || '')
+      .trim()
+      .split(/\s+/)
+      .map(Number);
+    const valid =
+      order.length === n && new Set(order).size === n && order.every((v) => Number.isInteger(v) && v >= 1 && v <= n);
+    return points.map((_, i) => {
+      const p = points[valid ? order.indexOf(i + 1) : i];
+      return { ...p, at: [p.at[0] * options.layoutAspect, p.at[1]] };
+    });
+  }
   let points;
   if (kind === 'square') points = square(n, options.columns);
   else if (kind === 'hex') points = hex(n);
