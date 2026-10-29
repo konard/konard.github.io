@@ -155,7 +155,8 @@ function solveTurns(links, shape = {}, { range = 60, step = 1, passes = 3 } = {}
  * Every stage returns an exact refitted score and preserves the user's bounds.
  */
 export function solveCollisions(links, shape = {}, options = {}) {
-  const { adjustGaps = false, gapRange = 0.2, middleRange = 4, passes = 3, debug = false } = options;
+  // Reference spacing must not open a link's middle unless explicitly requested.
+  const { adjustGaps = false, gapRange = 0.2, middleRange = 0, passes = 3, debug = false } = options;
   const base = shapeOf(shape);
   const turns = links.map((_, i) => [...(base.turns[i] || [0, 0])]);
   const before = overlapCost(links, base);
