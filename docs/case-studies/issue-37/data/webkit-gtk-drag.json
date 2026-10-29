@@ -1,0 +1,67 @@
+{
+  "engine": "webkit",
+  "date": "2026-10-29T23:30:45.441Z",
+  "checks": [
+    {
+      "url": "/network/?code=2222&lang=en",
+      "selector": "#style-strokeWidth",
+      "suppressNativeFocus": false,
+      "before": 5.2,
+      "step": 0.1
+    },
+    {
+      "url": "/network/?code=2222&lang=en",
+      "selector": "#style-strokeWidth",
+      "suppressNativeFocus": true,
+      "before": 1.3,
+      "step": 0.1
+    },
+    {
+      "url": "/network/?code=2222&lang=en",
+      "selector": "#link-1-turn-0",
+      "suppressNativeFocus": false,
+      "before": 0,
+      "step": 1
+    },
+    {
+      "url": "/network/?code=2222&lang=en",
+      "selector": "#link-1-turn-0",
+      "suppressNativeFocus": true,
+      "before": 0,
+      "step": 1
+    },
+    {
+      "url": "/network/?code=2222&lang=en",
+      "selector": "#link-1-startGap",
+      "suppressNativeFocus": false,
+      "before": 0.5,
+      "step": 0.01
+    },
+    {
+      "url": "/network/?code=2222&lang=en",
+      "selector": "#link-1-startGap",
+      "suppressNativeFocus": true,
+      "before": 0.08,
+      "step": 0.01
+    },
+    {
+      "url": "/settings/?lang=en",
+      "selector": "input[type=\"range\"]:visible",
+      "suppressNativeFocus": false,
+      "before": 0.5,
+      "step": 0.05
+    },
+    {
+      "url": "/settings/?lang=en",
+      "selector": "input[type=\"range\"]:visible",
+      "suppressNativeFocus": true,
+      "before": 0.5,
+      "step": 0.05
+    }
+  ],
+  "networks": [],
+  "errors": [],
+  "gtkPointer": true,
+  "version": "27.2",
+  "failure": "locator.scrollIntoViewIfNeeded: Timeout 29976.477ms exceeded.\nCall log:\n\u001b[2m  - attempting scroll into view action\u001b[22m\n\u001b[2m    - waiting for element to be stable\u001b[22m\n\n    at /tmp/gh-issue-solver-1793313918910/experiments/issue-37-browser.mjs:77:16"
+}

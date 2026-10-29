@@ -1,0 +1,54 @@
+[
+  {
+    code: '2222',
+    patch: {},
+    result: {
+      delta: [Array],
+      turns: [Array],
+      linkGaps: [Array],
+      before: 7.446869461761939,
+      after: 0.47470499109966735
+    },
+    collisions: 0.41670499109966735,
+    ms: 2635.400689
+  },
+  {
+    code: '1111',
+    patch: {},
+    result: {
+      delta: [Array],
+      turns: [Array],
+      linkGaps: [Array],
+      before: 8.247363169075287,
+      after: 0.17019440270818934
+    },
+    collisions: 0.10819440270818934,
+    ms: 2793.986145
+  },
+  {
+    code: '34442132',
+    patch: {},
+    result: {
+      delta: [Array],
+      turns: [Array],
+      linkGaps: [Array],
+      before: 29.240358251159435,
+      after: 11.444653159147995
+    },
+    collisions: 11.064653159147994,
+    ms: 7762.381749
+  },
+  {
+    code: '34442132',
+    patch: { solveGapRange: 0.05, solveRange: 180, solveStep: 13 },
+    result: {
+      delta: [Array],
+      turns: [Array],
+      linkGaps: [Array],
+      before: 29.240358251159435,
+      after: 11.863578911827105
+    },
+    collisions: 11.109578911827105,
+    ms: 4592.288278
+  }
+]

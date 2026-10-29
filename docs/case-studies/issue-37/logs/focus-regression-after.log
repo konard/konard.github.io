@@ -1,0 +1,9 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793313918910
+
+
+ Test Files  1 passed (1)
+      Tests  3 passed (3)
+   Start at  22:52:00
+   Duration  5.50s (tests 36%, environment 27%, transform 21%, setup 11%, import 4%, worker 1%)
+

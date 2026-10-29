@@ -1,0 +1,1074 @@
+[
+  {
+    "code": "01",
+    "result": {
+      "turns": [
+        [
+          0,
+          0
+        ]
+      ],
+      "delta": [
+        [
+          0,
+          0
+        ]
+      ],
+      "linkGaps": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "before": 0,
+      "after": 0
+    },
+    "collisionCost": 0,
+    "ms": 10.459965000000011
+  },
+  {
+    "code": "10",
+    "result": {
+      "turns": [
+        [
+          0,
+          0
+        ]
+      ],
+      "delta": [
+        [
+          0,
+          0
+        ]
+      ],
+      "linkGaps": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "before": 0,
+      "after": 0
+    },
+    "collisionCost": 0,
+    "ms": 3.8279929999998785
+  },
+  {
+    "code": "11",
+    "result": {
+      "turns": [
+        [
+          0,
+          0
+        ]
+      ],
+      "delta": [
+        [
+          0,
+          0
+        ]
+      ],
+      "linkGaps": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "before": 0,
+      "after": 0
+    },
+    "collisionCost": 0,
+    "ms": 2.4719019999997727
+  },
+  {
+    "code": "00",
+    "result": {
+      "turns": [
+        [
+          0,
+          0
+        ]
+      ],
+      "delta": [
+        [
+          0,
+          0
+        ]
+      ],
+      "linkGaps": [
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "before": 0,
+      "after": 0
+    },
+    "collisionCost": 0,
+    "ms": 1.6765189999996437
+  },
+  {
+    "code": "2111",
+    "result": {
+      "turns": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "delta": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "linkGaps": [
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          0.093,
+          0.13,
+          null,
+          null
+        ]
+      ],
+      "before": 0.23922940009567248,
+      "after": 0
+    },
+    "collisionCost": 0,
+    "ms": 131.91706300000033
+  },
+  {
+    "code": "2012",
+    "result": {
+      "delta": [
+        [
+          0,
+          47
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "turns": [
+        [
+          0,
+          47
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "linkGaps": [
+        [
+          0.23,
+          null,
+          null,
+          null
+        ],
+        [
+          0.118,
+          null,
+          null,
+          null
+        ]
+      ],
+      "before": 0.8813920635152807,
+      "after": 0.000047
+    },
+    "collisionCost": 0,
+    "ms": 2455.1627750000002
+  },
+  {
+    "code": "1222",
+    "result": {
+      "turns": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "delta": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "linkGaps": [
+        [
+          null,
+          0.205,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "before": 6.137557196521215,
+      "after": 0
+    },
+    "collisionCost": 0,
+    "ms": 9.60037099999954
+  },
+  {
+    "code": "0100",
+    "result": {
+      "turns": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "delta": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "linkGaps": [
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "before": 0,
+      "after": 0
+    },
+    "collisionCost": 0,
+    "ms": 1.232640000000174
+  },
+  {
+    "code": "032113",
+    "result": {
+      "turns": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "delta": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "linkGaps": [
+        [
+          null,
+          0.13,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "before": 3.0395731062716482,
+      "after": 0,
+      "layout": {
+        "order": "1 3 2",
+        "spread": 0.55
+      }
+    },
+    "collisionCost": 0,
+    "ms": 368.4285799999998
+  },
+  {
+    "code": "133111",
+    "result": {
+      "turns": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "delta": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "linkGaps": [
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          0.193,
+          null,
+          null,
+          null
+        ],
+        [
+          0.18,
+          0.093,
+          null,
+          null
+        ]
+      ],
+      "before": 4.385328385795216,
+      "after": 0
+    },
+    "collisionCost": 0,
+    "ms": 51.616643999999724
+  },
+  {
+    "code": "100321",
+    "result": {
+      "turns": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "delta": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "linkGaps": [
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          0.18,
+          null,
+          null
+        ],
+        [
+          0.268,
+          0.105,
+          null,
+          null
+        ]
+      ],
+      "before": 2.122564149713404,
+      "after": 0
+    },
+    "collisionCost": 0,
+    "ms": 22.214696000000004
+  },
+  {
+    "code": "111300",
+    "result": {
+      "delta": [
+        [
+          0,
+          0
+        ],
+        [
+          26,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "turns": [
+        [
+          0,
+          0
+        ],
+        [
+          26,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "linkGaps": [
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          0.23,
+          0.118,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "before": 6.410248150496069,
+      "after": 0.000026
+    },
+    "collisionCost": 0,
+    "ms": 386.33872599999995
+  },
+  {
+    "code": "132001",
+    "result": {
+      "turns": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "delta": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "linkGaps": [
+        [
+          null,
+          0.23,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          0.105,
+          null,
+          null
+        ]
+      ],
+      "before": 0.5499551499854642,
+      "after": 0
+    },
+    "collisionCost": 0,
+    "ms": 15.149874999999156
+  },
+  {
+    "code": "013302",
+    "result": {
+      "turns": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "delta": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "linkGaps": [
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          0.167,
+          0.093,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "before": 0.778412146577927,
+      "after": 0
+    },
+    "collisionCost": 0,
+    "ms": 33.73057299999982
+  },
+  {
+    "code": "42414220",
+    "result": {
+      "delta": [
+        [
+          0,
+          39
+        ],
+        [
+          0,
+          13
+        ],
+        [
+          0,
+          -13
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "turns": [
+        [
+          0,
+          39
+        ],
+        [
+          0,
+          13
+        ],
+        [
+          0,
+          -13
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "linkGaps": [
+        [
+          null,
+          0.28,
+          null,
+          null
+        ],
+        [
+          0.13,
+          0.218,
+          null,
+          null
+        ],
+        [
+          null,
+          0.218,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "before": 14.39892650207952,
+      "after": 0.000065
+    },
+    "collisionCost": 0,
+    "ms": 860.9166810000006
+  },
+  {
+    "code": "43434143",
+    "result": {
+      "delta": [
+        [
+          0,
+          39
+        ],
+        [
+          -13,
+          0
+        ],
+        [
+          0,
+          13
+        ],
+        [
+          0,
+          26
+        ]
+      ],
+      "turns": [
+        [
+          0,
+          39
+        ],
+        [
+          -13,
+          0
+        ],
+        [
+          0,
+          13
+        ],
+        [
+          0,
+          26
+        ]
+      ],
+      "linkGaps": [
+        [
+          null,
+          0.205,
+          null,
+          null
+        ],
+        [
+          0.192,
+          0.205,
+          null,
+          null
+        ],
+        [
+          0.105,
+          0.167,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "before": 14.975195366752233,
+      "after": 0.00009099999999999999,
+      "layout": {
+        "order": "1 3 2 4",
+        "spread": 0.85
+      }
+    },
+    "collisionCost": 0,
+    "ms": 29654.006452
+  },
+  {
+    "code": "33044224",
+    "result": {
+      "delta": [
+        [
+          65,
+          39
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "turns": [
+        [
+          65,
+          39
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "linkGaps": [
+        [
+          0.218,
+          0.193,
+          null,
+          null
+        ],
+        [
+          null,
+          0.23,
+          null,
+          null
+        ],
+        [
+          0.068,
+          null,
+          null,
+          null
+        ],
+        [
+          0.105,
+          null,
+          null,
+          null
+        ]
+      ],
+      "before": 15.527946286886648,
+      "after": 0.000104,
+      "layout": {
+        "order": "1 3 2 4",
+        "spread": 0.85
+      }
+    },
+    "collisionCost": 0,
+    "ms": 20137.569484
+  },
+  {
+    "code": "31324042",
+    "result": {
+      "delta": [
+        [
+          -13,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "turns": [
+        [
+          -13,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "linkGaps": [
+        [
+          0.23,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          0.068,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "before": 10.04352441438132,
+      "after": 0.000013,
+      "layout": {
+        "order": "1 4 2 3",
+        "spread": 0.85
+      }
+    },
+    "collisionCost": 0,
+    "ms": 1885.3262259999974
+  },
+  {
+    "code": "04210010",
+    "result": {
+      "turns": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "delta": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "linkGaps": [
+        [
+          null,
+          0.23,
+          null,
+          null
+        ],
+        [
+          null,
+          0.093,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          0.118,
+          null,
+          null,
+          null
+        ]
+      ],
+      "before": 1.213550764717802,
+      "after": 0
+    },
+    "collisionCost": 0,
+    "ms": 84.0174909999987
+  },
+  {
+    "code": "32103141",
+    "result": {
+      "turns": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "delta": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "linkGaps": [
+        [
+          0.205,
+          0.118,
+          null,
+          null
+        ],
+        [
+          0.08,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          0.155,
+          null,
+          null
+        ],
+        [
+          null,
+          0.243,
+          null,
+          null
+        ]
+      ],
+      "before": 7.521946980337425,
+      "after": 0
+    },
+    "collisionCost": 0,
+    "ms": 46.044135000003735
+  }
+]

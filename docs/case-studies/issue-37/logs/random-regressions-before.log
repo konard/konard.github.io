@@ -1,0 +1,91 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793313918910
+
+ ❯ src/links/issue-37.test.js (8 tests | 6 failed) 16205ms
+   × improves the reported four-link drawing beyond the former angle-only local minimum 7508ms
+   × fully spaces discovered random network 2012 353ms
+   × fully spaces discovered random network 032113 549ms
+   × fully spaces discovered random network 43434143 2947ms
+   × fully spaces discovered random network 33044224 2499ms
+   × fully spaces discovered random network 31324042 1555ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/links/issue-37.test.js > improves the reported four-link drawing beyond the former angle-only local minimum
+AssertionError: expected 9.401420393033538 to be less than 5
+ ❯ src/links/issue-37.test.js:44:52
+     42|     adjustGaps: true, range: style.solveRange, step: style.solveStep, …
+     43|   });
+     44|   expect(result.after - turningCost(result.turns)).toBeLessThan(5);
+       |                                                    ^
+     45|   expect(overlapCost(links, { ...shape, turns: result.turns, linkGaps:…
+     46| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  src/links/issue-37.test.js > fully spaces discovered random network 2012
+AssertionError: expected 0.10163804253939693 to be close to +0, received difference is 0.10163804253939693, but expected 5e-9
+ ❯ src/links/issue-37.test.js:52:52
+     50|   const shape = shapeOfStyle(normalizeStyle(), links.length);
+     51|   const result = solveCollisions(links, shape, { adjustGaps: true, res…
+     52|   expect(result.after - turningCost(result.turns)).toBeCloseTo(0, 8);
+       |                                                    ^
+     53| });
+     54|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ FAIL  src/links/issue-37.test.js > fully spaces discovered random network 032113
+AssertionError: expected 0.17762931064515308 to be close to +0, received difference is 0.17762931064515308, but expected 5e-9
+ ❯ src/links/issue-37.test.js:52:52
+     50|   const shape = shapeOfStyle(normalizeStyle(), links.length);
+     51|   const result = solveCollisions(links, shape, { adjustGaps: true, res…
+     52|   expect(result.after - turningCost(result.turns)).toBeCloseTo(0, 8);
+       |                                                    ^
+     53| });
+     54|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+ FAIL  src/links/issue-37.test.js > fully spaces discovered random network 43434143
+AssertionError: expected 3.6958770623120527 to be close to +0, received difference is 3.6958770623120527, but expected 5e-9
+ ❯ src/links/issue-37.test.js:52:52
+     50|   const shape = shapeOfStyle(normalizeStyle(), links.length);
+     51|   const result = solveCollisions(links, shape, { adjustGaps: true, res…
+     52|   expect(result.after - turningCost(result.turns)).toBeCloseTo(0, 8);
+       |                                                    ^
+     53| });
+     54|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/6]⎯
+
+ FAIL  src/links/issue-37.test.js > fully spaces discovered random network 33044224
+AssertionError: expected 7.563707895391536 to be close to +0, received difference is 7.563707895391536, but expected 5e-9
+ ❯ src/links/issue-37.test.js:52:52
+     50|   const shape = shapeOfStyle(normalizeStyle(), links.length);
+     51|   const result = solveCollisions(links, shape, { adjustGaps: true, res…
+     52|   expect(result.after - turningCost(result.turns)).toBeCloseTo(0, 8);
+       |                                                    ^
+     53| });
+     54|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/6]⎯
+
+ FAIL  src/links/issue-37.test.js > fully spaces discovered random network 31324042
+AssertionError: expected 2.2643170324131616 to be close to +0, received difference is 2.2643170324131616, but expected 5e-9
+ ❯ src/links/issue-37.test.js:52:52
+     50|   const shape = shapeOfStyle(normalizeStyle(), links.length);
+     51|   const result = solveCollisions(links, shape, { adjustGaps: true, res…
+     52|   expect(result.after - turningCost(result.turns)).toBeCloseTo(0, 8);
+       |                                                    ^
+     53| });
+     54|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/6]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  6 failed | 2 passed (8)
+   Start at  22:58:45
+   Duration  19.19s (tests 86%, environment 10%, setup 2%, transform 2%)
+

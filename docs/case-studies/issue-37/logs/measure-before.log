@@ -1,0 +1,56 @@
+10:48:05 PM [vite] (client) [optimizer] scanning dependencies...
+10:48:06 PM [vite] (client) [optimizer] bundling dependencies...
+[
+  {
+    code: '2222',
+    patch: {},
+    result: {
+      turns: [Array],
+      delta: [Array],
+      linkGaps: [Array],
+      before: 7.446869461761939,
+      after: 0.188
+    },
+    collisions: 0,
+    ms: 1465.648823
+  },
+  {
+    code: '1111',
+    patch: {},
+    result: {
+      turns: [Array],
+      delta: [Array],
+      linkGaps: [Array],
+      before: 8.247363169075287,
+      after: 0.052000000000000005
+    },
+    collisions: 0,
+    ms: 1173.8204079999996
+  },
+  {
+    code: '34442132',
+    patch: {},
+    result: {
+      delta: [Array],
+      turns: [Array],
+      linkGaps: [Array],
+      before: 29.240358251159435,
+      after: 12.167570188531508
+    },
+    collisions: 12.005570188531507,
+    ms: 1177.6254259999996
+  },
+  {
+    code: '34442132',
+    patch: { solveGapRange: 0.05, solveRange: 180, solveStep: 13 },
+    result: {
+      delta: [Array],
+      turns: [Array],
+      linkGaps: [Array],
+      before: 29.240358251159435,
+      after: 12.24113014772578
+    },
+    collisions: 11.82513014772578,
+    ms: 357.0956180000003
+  }
+]

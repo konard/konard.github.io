@@ -1,0 +1,15 @@
+
+> konard.github.io@0.1.0 test:network:browser
+> node experiments/network-e2e.mjs
+
+chromium: gallery hover, focus and navigation passed
+chromium: notation editing and invalid input passed
+chromium: live preview and SVG styling passed
+chromium: overlap reduction and applied turns/gaps passed
+chromium: shared URL renders the same SVG in a fresh browser
+chromium: verified svg download (1296 bytes)
+chromium: verified png download (56966 bytes)
+chromium: verified jpg download (35907 bytes)
+chromium: verified webp download (23802 bytes)
+chromium: verified lino download (27 bytes)
+chromium: network editor browser checks passed

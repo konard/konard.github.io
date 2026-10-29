@@ -1,0 +1,26 @@
+
+> konard.github.io@0.1.0 test:network:issue37
+> node experiments/issue-37-browser.mjs
+
+node:internal/modules/run_main:111
+    triggerUncaughtException(
+    ^
+
+locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('input[type="range"]:visible').first()[22m
+[2m    - locator resolved to <input min="0" max="1" step="0.05" value="0.5" type="range" id="setting-nebula-level"/>[22m
+[2m  - attempting click action[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+
+    at /tmp/gh-issue-solver-1793313918910/experiments/issue-37-browser.mjs:52:19 {
+  log: [
+    `  - waiting for locator('input[type="range"]:visible').first()`,
+    '    - locator resolved to <input min="0" max="1" step="0.05" value="0.5" type="range" id="setting-nebula-level"/>',
+    '  - attempting click action',
+    '    - waiting for element to be visible, enabled and stable'
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v26.12.1

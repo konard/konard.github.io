@@ -1,0 +1,62 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793313918910
+
+ ❯ src/links/issue-37.test.js (3 tests | 3 failed) 2236ms
+   × scores the self crossing that the old 2222 solution incorrectly reported as collision-free 35ms
+   × solves the reported 2222 network without introducing a crossing between its own references 1199ms
+   × improves the reported four-link drawing beyond the former angle-only local minimum 998ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/links/issue-37.test.js > scores the self crossing that the old 2222 solution incorrectly reported as collision-free
+AssertionError: expected 0 to be greater than 1
+ ❯ src/links/issue-37.test.js:25:64
+     23|   const shape = shapeOfStyle(normalizeStyle({ turns: '47 -47', gaps: '…
+     24|   expect(shaftCrossings(layoutCurves(links, shape)[0])).toBe(1);
+     25|   expect(overlapCost(links, shape) - turningCost(shape.turns)).toBeGre…
+       |                                                                ^
+     26| });
+     27|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  src/links/issue-37.test.js > solves the reported 2222 network without introducing a crossing between its own references
+AssertionError: expected [ 1, +0 ] to deeply equal [ +0, +0 ]
+
+- Expected
++ Received
+
+  [
+-   0,
++   1,
+    0,
+  ]
+
+ ❯ src/links/issue-37.test.js:33:38
+     31|   const result = solveCollisions(links, shape, { adjustGaps: true });
+     32|   const curves = layoutCurves(links, { ...shape, turns: result.turns, …
+     33|   expect(curves.map(shaftCrossings)).toEqual([0, 0]);
+       |                                      ^
+     34|   expect(result.after - turningCost(result.turns)).toBeCloseTo(0, 8);
+     35| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  src/links/issue-37.test.js > improves the reported four-link drawing beyond the former angle-only local minimum
+AssertionError: expected 12.005570188531507 to be less than 5
+ ❯ src/links/issue-37.test.js:44:52
+     42|     adjustGaps: true, range: style.solveRange, step: style.solveStep, …
+     43|   });
+     44|   expect(result.after - turningCost(result.turns)).toBeLessThan(5);
+       |                                                    ^
+     45|   expect(overlapCost(links, { ...shape, turns: result.turns, linkGaps:…
+     46| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed (3)
+   Start at  22:49:11
+   Duration  4.64s (tests 51%, environment 32%, transform 10%, setup 6%, import 1%)
+
