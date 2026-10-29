@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-29T18:30:49.133Z",
+  "url": "http://localhost:4196/network/?code=003002&solve=true",
+  "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+  "moves": [
+    1,
+    1,
+    1
+  ],
+  "cuts": {
+    "middleGapStart": "0",
+    "middleGapEnd": "0",
+    "solveMiddleRange": "0"
+  },
+  "opacity": "1",
+  "reducedMotion": true,
+  "screenshot": "../screenshots/mcp-after-reported.png"
+}

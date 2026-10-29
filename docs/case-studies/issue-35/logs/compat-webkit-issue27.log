@@ -1,0 +1,100 @@
+
+> konard.github.io@0.1.0 test:network:issue27
+> node experiments/issue-27-browser.mjs
+
+Geometry, URL and number editing checks passed. Auditing sliders.
+Keyboard: link-1-turn-0
+Keyboard: link-1-turn-1
+Keyboard: link-1-startGap
+Keyboard: link-1-endGap
+Keyboard: link-2-turn-0
+Keyboard: link-2-turn-1
+Keyboard: link-2-startGap
+Keyboard: link-2-endGap
+Keyboard: style-layoutAspect
+Keyboard: style-sourceAngle
+Keyboard: style-targetAngle
+Keyboard: style-tension
+Keyboard: style-bulge
+Keyboard: style-loopBend
+Keyboard: style-startGap
+Keyboard: style-endGap
+Keyboard: style-loop
+Keyboard: style-spread
+Keyboard: style-rotation
+Keyboard: style-padding
+Keyboard: style-startSize
+Keyboard: style-startOffset
+Keyboard: style-startAcross
+Keyboard: style-startRotation
+Keyboard: style-endSize
+Keyboard: style-endAngle
+Keyboard: style-endOffset
+Keyboard: style-endAcross
+Keyboard: style-endRotation
+Keyboard: style-middleSize
+Keyboard: style-middleOffset
+Keyboard: style-middleAcross
+Keyboard: style-middleGapStart
+Keyboard: style-middleGapEnd
+Keyboard: style-strokeWidth
+Keyboard: style-opacity
+Keyboard: style-glow
+Keyboard: style-width
+Keyboard: style-height
+Keyboard: style-quality
+Keyboard: style-clearance
+Keyboard: style-solveGapRange
+Keyboard: style-solveMiddleRange
+Keyboard: style-solveRange
+Keyboard: style-solveStep
+Keyboard: setting-nebula-level
+Keyboard: setting-nebula-speed
+Keyboard: setting-nebula-gas
+Keyboard: setting-nebula-hue
+Keyboard: setting-nebula-stars
+Keyboard: setting-nebula-starBrightness
+Keyboard: setting-nebula-twinkle
+Keyboard: setting-nebula-vignette
+Keyboard: setting-nebula-zoom
+Keyboard: setting-nebula-starSize
+Keyboard: setting-nebula-resolution
+Keyboard: setting-nebula-fps
+Keyboard: setting-stars-level
+Keyboard: setting-stars-fps
+Keyboard: setting-stars1-count
+Keyboard: setting-stars1-size
+Keyboard: setting-stars1-sizeSpread
+Keyboard: setting-stars1-hueSpread
+Keyboard: setting-stars1-brightness
+Keyboard: setting-stars1-glow
+Keyboard: setting-stars1-twinkle
+Keyboard: setting-stars1-twinkleDepth
+Keyboard: setting-stars1-rotation
+Keyboard: setting-stars1-spin
+Keyboard: setting-stars1-direction
+Keyboard: setting-stars1-speed
+Keyboard: setting-stars1-streak
+Keyboard: setting-grid-level
+Keyboard: setting-grid-size
+node:internal/modules/run_main:111
+    triggerUncaughtException(
+    ^
+
+locator.press: Timeout 15000ms exceeded.
+Call log:
+[2m  - waiting for locator('[id="setting-grid-size"]')[22m
+[2m    - locator resolved to <input min="32" step="8" max="128" value="56" type="range" id="setting-grid-size"/>[22m
+[2m  - elementHandle.press("ArrowLeft")[22m
+
+    at audit (/tmp/gh-issue-solver-1793296500180/experiments/issue-27-browser.mjs:208:21)
+    at async file:///tmp/gh-issue-solver-1793296500180/experiments/issue-27-browser.mjs:218:27 {
+  log: [
+    `  - waiting for locator('[id="setting-grid-size"]')`,
+    '    - locator resolved to <input min="32" step="8" max="128" value="56" type="range" id="setting-grid-size"/>',
+    '  - elementHandle.press("ArrowLeft")'
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v26.12.1

@@ -61,8 +61,8 @@ curve, 0.5–6 SVG units before its middle. It also checks path continuity,
 unchanged zero settings, exact Apply/share/reload equality and an actual SVG
 download. Explicit automatic cuts and manual per-link overrides are checked
 separately. Each run closes its browser and preview server in `finally`; its
-JSON report is saved in `data/`. Playwright MCP tools were unavailable, so the
-existing repository's Node Playwright/Vite framework runs these real-browser checks.
+JSON report is saved in `data/`. The automated native checks use the repository's
+existing Node Playwright/Vite framework.
 
 ## Visual evidence
 
@@ -87,4 +87,41 @@ coordinates and assertions.
 The production build, ESLint, Prettier, file limits, secret scan, Python compilation
 and Ruff, shellcheck and dependency audit pass locally. The package is a private
 website with no package-release workflow, so no release-version change is needed.
-Broader compatibility-browser, CV and final CI results follow after validation.
+All [120 CV PDFs](logs/cv.log) print locally with the existing page-count,
+text-layer and reading-order checks. The complete sequential local compatibility
+exit statuses are saved in [the summary](logs/compat-summary.log).
+
+A final Playwright MCP check opens the exact reported URL in Chromium 155 and
+confirms all three paths have one subpath, all three cut fields are zero, and
+the preview is visible. The [MCP report](data/mcp-after.json) and
+[settled screenshot](screenshots/mcp-after-reported.png) preserve this independent
+check with reduced motion after inspecting the visible SVG. The browser and
+preview server were closed after verification.
+
+The [complete implementation CI run](https://github.com/konard/konard.github.io/actions/runs/40928515827)
+passes for commit `4f1b165e08c49ed817ae6273c301d088c1c426a1`, created
+2026-10-29 at 18:11:54 UTC and completed at 18:24:34 UTC. All three browser
+jobs include the new regression and all existing suites, including native
+compositor checks. Unit/DOM tests, production build, CV PDFs, workflow/tooling
+checks, documentation, dependency/security scans and the final pipeline gate
+pass. Deployment is deliberately skipped for pull requests. The saved
+[CI summary](data/implementation-ci.json) records job outcomes and the new
+regression step in each browser job. Final-head status is recorded on PR 36.
+
+All six existing compatibility suites (`browser`, `issue19`, `issue21`,
+`issue25`, `issue27`, `issue29`) pass locally in Chromium and Firefox. In local
+Linux WebKit, `issue19`, `issue25` and `issue29` pass. Two suites time out
+waiting for a stable gallery hover: `network-e2e.mjs:53` (10 seconds) and
+`issue-21-browser.mjs:92` (15 seconds). The exact failures are preserved in
+[the general suite log](logs/compat-webkit-browser.log) and
+[the issue 21 log](logs/compat-webkit-issue21.log). Both suites pass on macOS CI.
+The [issue 27 log](logs/compat-webkit-issue27.log) also records a 15-second
+`locator.press` timeout at line 208 on the unrelated `setting-grid-size`
+background slider; its geometry, URL and numeric-editing checks pass before
+the keyboard audit stalls. This suite also passes on macOS CI.
+The unchanged gallery renders through `Glyph` and does not call the modified
+solver or editor style code. These Linux-only symptoms are consistent with the
+documented [WebKit r2370 backdrop-filter regression](https://github.com/microsoft/playwright/issues/43426),
+the revision installed by Playwright 1.64.1 here. They are not counted as local
+passes; no assertion, timeout or product behavior was changed to conceal them.
+The issue 35 regression passes in local WebKit and macOS WebKit CI.

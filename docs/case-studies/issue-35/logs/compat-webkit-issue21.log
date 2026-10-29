@@ -1,0 +1,28 @@
+
+> konard.github.io@0.1.0 test:network:issue21
+> node experiments/issue-21-browser.mjs
+
+webkit: both supplied URLs: explicit settings, controls, share and reload
+webkit: five representative default editor configurations
+node:internal/modules/run_main:111
+    triggerUncaughtException(
+    ^
+
+locator.hover: Timeout 15000ms exceeded.
+Call log:
+[2m  - waiting for locator('.symbols__card').first()[22m
+[2m    - locator resolved to <a class="symbols__card" href="/network/?code=0000">…</a>[22m
+[2m  - attempting hover action[22m
+[2m    - waiting for element to be visible and stable[22m
+
+    at /tmp/gh-issue-solver-1793296500180/experiments/issue-21-browser.mjs:92:16 {
+  log: [
+    "  - waiting for locator('.symbols__card').first()",
+    '    - locator resolved to <a class="symbols__card" href="/network/?code=0000">…</a>',
+    '  - attempting hover action',
+    '    - waiting for element to be visible and stable'
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v26.12.1
