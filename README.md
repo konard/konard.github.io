@@ -50,6 +50,7 @@ npm run test:network:issue19 # history, loops, layouts, clipboard and touch regr
 npm run test:network:issue25 # automatic spacing, native arrow pixels, per-link cards and mobile layouts
 npm run test:network:issue29 # paired sliders, preserved manual layouts and mirrored reference spacing
 npm run test:indicators:browser # daily calendar, source lines, social fallback and mobile layouts
+npm run test:network:issue35 # continuous middles, explicit cuts, Apply/share and SVG downloads
 npm run build:cv   # prints every CV of build/ to build/cv/pdf/ (needs `npx playwright install chromium`)
 ```
 
@@ -127,3 +128,4 @@ The generated site is never committed to `docs/`; that directory holds the case 
 - [`issue-27`](docs/case-studies/issue-27/README.md): continuous equal closed gaps, numeric editing, historical URL compatibility and keyboard controls.
 - [`issue-29`](docs/case-studies/issue-29/README.md): paired sliders, individual resets, preserved manual layouts and symmetric automatic references, with the inherited requirement audit and cross-browser evidence.
 - [`issue-33`](docs/case-studies/issue-33/README.md): dated public indicators, repository and personal source lines, the exact GitHub calendar, social embeds and a complete associative ecosystem audit.
+- [`issue-35`](docs/case-studies/issue-35/README.md): continuous link middles during automatic spacing, explicit cut preservation and native browser regressions.

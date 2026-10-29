@@ -296,7 +296,20 @@ export const STYLE_SECTIONS = [
       toggle('solveDebug', false, { en: 'Solver diagnostics in console', ru: 'Диагностика поиска в консоли' }),
       toggle('solveGaps', true, { en: 'Adjust individual gaps', ru: 'Менять отдельные зазоры' }),
       range('solveGapRange', 0.2, 0, 1, 0.05, { en: 'Largest reference gap change', ru: 'Изменение зазора ссылки' }),
-      range('solveMiddleRange', 4, 0, 15, 0.5, { en: 'Largest middle cut change', ru: 'Изменение разрыва середины' }),
+      range(
+        'solveMiddleRange',
+        0,
+        0,
+        15,
+        0.5,
+        { en: 'Largest middle cut change', ru: 'Изменение разрыва середины' },
+        {
+          hint: {
+            en: 'Zero preserves the configured middle cuts. Increase this value to let automatic spacing open or adjust cuts.',
+            ru: 'Ноль сохраняет заданные разрывы середины. Увеличьте значение, чтобы автоматическая настройка могла создавать или менять разрывы.',
+          },
+        },
+      ),
       range('solveRange', 60, 0, 180, 1, { en: 'Largest turn', ru: 'Наибольший поворот' }, { unit: '°' }),
       range('solveStep', 1, 1, 30, 1, { en: 'Turn step', ru: 'Шаг поворота' }, { unit: '°' }),
     ],

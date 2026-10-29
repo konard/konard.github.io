@@ -1,0 +1,26 @@
+
+> konard.github.io@0.1.0 test:network:browser
+> node experiments/network-e2e.mjs
+
+node:internal/modules/run_main:111
+    triggerUncaughtException(
+    ^
+
+locator.hover: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator('.symbols__grid li').first()
+    - locator resolved to <li title="(1: 0 0) (2: 0 0)">…</li>
+  - attempting hover action
+    - waiting for element to be visible and stable
+
+    at /tmp/gh-issue-solver-1793296500180/experiments/network-e2e.mjs:53:14 {
+  log: [
+    "  - waiting for locator('.symbols__grid li').first()",
+    '    - locator resolved to <li title="(1: 0 0) (2: 0 0)">…</li>',
+    '  - attempting hover action',
+    '    - waiting for element to be visible and stable'
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v26.12.1

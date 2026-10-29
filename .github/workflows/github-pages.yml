@@ -276,6 +276,13 @@ jobs:
         env:
           CAPTURE_DIR: browser-results/screenshots/issue33
 
+      - name: Verify continuous middles and explicit cuts after automatic spacing
+        if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
+        run: npm run test:network:issue35
+        env:
+          CAPTURE_DIR: browser-results/screenshots/issue35
+          RESULT_DIR: browser-results/data/issue35
+
       - name: Preserve browser evidence with bounded transport retries
         if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
         uses: ./.github/actions/upload-artifact
