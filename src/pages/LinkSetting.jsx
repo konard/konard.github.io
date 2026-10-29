@@ -1,4 +1,4 @@
-import { numericKey } from '../components/numericKeys';
+import { focusSlider, numericKey } from '../components/numericKeys';
 import NumberInput from '../components/NumberInput';
 import { useLang } from '../i18n/prefs';
 
@@ -35,6 +35,7 @@ export default function LinkSetting({
           max={max}
           step={step}
           value={current}
+          onPointerDown={focusSlider}
           aria-label={name}
           aria-valuetext={`${current}${unit}${value == null ? t({ en: ' (inherited)', ru: ' (общее значение)' }) : ''}`}
           onChange={(event) => onChange(Number(event.target.value))}

@@ -1,6 +1,12 @@
 /** Consistent range keys across engines. Number fields keep text navigation
  * and platform editing shortcuts; blank overrides step from their inheritance.
  */
+export function focusSlider(event) {
+  // Safari's pointer-focus policy depends on platform settings. Establish
+  // focus explicitly without cancelling native thumb dragging or scrolling.
+  event.currentTarget.focus({ preventScroll: true });
+}
+
 export function numericKey(event, change, fallback = 0) {
   if (event.altKey || event.ctrlKey || event.metaKey) return;
   const input = event.currentTarget;
