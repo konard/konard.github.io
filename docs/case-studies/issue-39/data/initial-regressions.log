@@ -1,0 +1,114 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793364722327
+
+ ❯ src/components/issue-39.test.jsx (4 tests | 4 failed) 558ms
+   ❯ issue 39 regressions (4)
+     × groups only languages below 1,000 lines without changing totals or hiding detail 459ms
+     × keeps data sources in the footer without a repeated page-top notice 71ms
+     × uses the exact defaults pictured in the issue 14ms
+     × migrates the old transparent surface to solid with zero opacity 6ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/issue-39.test.jsx > issue 39 regressions > groups only languages below 1,000 lines without changing totals or hiding detail
+AssertionError: expected <th scope="row"></th> to be null
+
+- Expected:
+null
+
++ Received:
+<th
+  scope="row"
+>
+  Python
+</th>
+
+ ❯ src/components/issue-39.test.jsx:19:72
+     17|     render(<SourceLines data={data} />);
+     18|     const table = document.querySelector('.source-lines__table');
+     19|     expect(within(table).queryByRole('rowheader', { name: 'Python' }))…
+       |                                                                        ^
+     20|     expect(within(table).getByRole('rowheader', { name: 'Rust' })).toB…
+     21|     expect(within(table).getByRole('rowheader', { name: 'Other' }).clo…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  src/components/issue-39.test.jsx > issue 39 regressions > keeps data sources in the footer without a repeated page-top notice
+AssertionError: expected <p class="snapshot-notice">…(1)</p> to be null
+
+- Expected:
+null
+
++ Received:
+<p
+  class="snapshot-notice"
+>
+  Numerical indicators: dated public-source data
+   
+  <a
+    aria-label="Data effective dates"
+    class="data-mark"
+    href="#data-sources"
+  >
+    (*)
+  </a>
+</p>
+
+ ❯ src/components/issue-39.test.jsx:28:57
+     26|   it('keeps data sources in the footer without a repeated page-top not…
+     27|     const { container } = render(<Layout page="blog"><p>Content</p></L…
+     28|     expect(container.querySelector('.snapshot-notice')).toBeNull();
+       |                                                         ^
+     29|     expect(container.querySelector('footer #data-sources')).not.toBeNu…
+     30|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  src/components/issue-39.test.jsx > issue 39 regressions > uses the exact defaults pictured in the issue
+AssertionError: expected { 'motion.mode': 'auto', …(250) } to match object { 'nebula.twinkle': 1.9, …(4) }
+(246 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "nebula.starColor": "#00c7fc",
+-   "nebula.starSize": 0.5,
+-   "nebula.twinkle": 1.9,
+-   "nebula.zoom": 0.55,
+-   "sound.on": true,
++   "nebula.starColor": "#ffffff",
++   "nebula.starSize": 1,
++   "nebula.twinkle": 0.3,
++   "nebula.zoom": 1,
++   "sound.on": false,
+  }
+
+ ❯ src/components/issue-39.test.jsx:33:22
+     31|
+     32|   it('uses the exact defaults pictured in the issue', () => {
+     33|     expect(DEFAULTS).toMatchObject({
+       |                      ^
+     34|       'nebula.twinkle': 1.9, 'nebula.zoom': 0.55, 'nebula.starSize': 0…
+     35|       'nebula.starColor': '#00c7fc', 'sound.on': true,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  src/components/issue-39.test.jsx > issue 39 regressions > migrates the old transparent surface to solid with zero opacity
+AssertionError: expected [ Array(9) ] to not include 'transparent'
+ ❯ src/components/issue-39.test.jsx:40:43
+     38|
+     39|   it('migrates the old transparent surface to solid with zero opacity'…
+     40|     expect(RULES['future.surface'].o).not.toContain('transparent');
+       |                                           ^
+     41|     expect(normalize(RULES, { 'future.surface': 'transparent', 'future…
+     42|       'future.surface': 'solid', 'future.opacity': 0,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed (4)
+   Start at  12:56:18
+   Duration  4.47s (environment 41%, transform 31%, tests 14%, setup 10%, import 3%, worker 2%)
+

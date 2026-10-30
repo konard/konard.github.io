@@ -1,0 +1,60 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793364722327
+
+ ❯ src/components/NumberInput.test.jsx (1 test | 1 failed) 275ms
+   × provides owned pointer steps using inherited values, decimal snapping and bounds 267ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/NumberInput.test.jsx > provides owned pointer steps using inherited values, decimal snapping and bounds
+TestingLibraryElementError: Unable to find an accessible element with the role "button" and name "Increase: Gap"
+
+Here are the accessible roles:
+
+  spinbutton:
+
+  Name "Gap":
+  [36m<input[39m
+    [33maria-label[39m=[32m"Gap"[39m
+    [33mmax[39m=[32m"1"[39m
+    [33mmin[39m=[32m"0"[39m
+    [33mstep[39m=[32m"0.01"[39m
+    [33mtype[39m=[32m"number"[39m
+    [33mvalue[39m=[32m""[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<input[39m
+      [33maria-label[39m=[32m"Gap"[39m
+      [33mmax[39m=[32m"1"[39m
+      [33mmin[39m=[32m"0"[39m
+      [33mstep[39m=[32m"0.01"[39m
+      [33mtype[39m=[32m"number"[39m
+      [33mvalue[39m=[32m""[39m
+    [36m/>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/NumberInput.test.jsx:10:26
+      8|     <NumberInput aria-label="Gap" value={null} fallback={0.08} min={0}…
+      9|   );
+     10|   fireEvent.click(screen.getByRole('button', { name: 'Increase: Gap' }…
+       |                          ^
+     11|   expect(onValue).toHaveBeenLastCalledWith(0.09);
+     12|   expect(screen.getByRole('spinbutton')).toHaveFocus();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  13:37:43
+   Duration  2.16s (environment 56%, setup 19%, tests 15%, transform 7%, worker 3%, import 1%)
+

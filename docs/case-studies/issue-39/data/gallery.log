@@ -1,0 +1,24 @@
+
+> konard.github.io@0.1.0 test:network:issue23
+> node experiments/issue-23-browser.mjs
+
+chromium: neutral defaults for free links
+chromium: both displaced bars agree with native SVG path position and tangent
+chromium: individual gaps and gap-only solver survive apply/share/reload
+{"cards":243,"filtered":55,"y":842,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+{"cards":729,"filtered":176,"y":3354,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+{"cards":1215,"filtered":176,"y":7685,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+{"cards":1215,"filtered":165,"y":6355,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+{"cards":1215,"filtered":104,"y":11815,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+{"cards":1215,"filtered":165,"y":3079,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+{"cards":1215,"filtered":104,"y":11815,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+{"cards":1215,"filtered":165,"y":6369,"barFilter":"blur(18px) saturate(1.8) brightness(1.08) contrast(1)","barSurface":"topbar__row","barTop":0}
+{"cards":1215,"filtered":104,"y":11829,"barFilter":"blur(18px) saturate(1.8) brightness(1.08) contrast(1)","barSurface":"topbar__row","barTop":0}
+{"cards":1215,"filtered":165,"y":3093,"barFilter":"blur(18px) saturate(1.8) brightness(1.08) contrast(1)","barSurface":"topbar__row","barTop":0}
+{"cards":1215,"filtered":104,"y":11829,"barFilter":"blur(18px) saturate(1.8) brightness(1.08) contrast(1)","barSurface":"topbar__row","barTop":0}
+{"cards":1215,"filtered":165,"y":6321,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+{"cards":1215,"filtered":104,"y":11781,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+{"cards":1215,"filtered":165,"y":3045,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+{"cards":1215,"filtered":104,"y":11781,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+chromium: bounded blur surfaces and fixed header through 1215 cards, repeated scrolling and all skins
+chromium: individual gap controls fit the Russian mobile editor
