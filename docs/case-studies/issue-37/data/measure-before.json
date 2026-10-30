@@ -1,0 +1,594 @@
+[
+  {
+    "code": "2222",
+    "patch": {},
+    "shape": {
+      "placement": "auto",
+      "layoutAspect": 1,
+      "columns": 0,
+      "forceDistance": 1,
+      "forceCharge": 0.6,
+      "forceCollision": 0.6,
+      "rotation": 0,
+      "spread": 1,
+      "padding": 9,
+      "bendMode": "curve",
+      "tension": 0.4,
+      "bulge": 0,
+      "loopBend": 0,
+      "gap": 0.08,
+      "startGap": 0.08,
+      "endGap": 0.08,
+      "middleGapStart": 0,
+      "middleGapEnd": 0,
+      "free": 1,
+      "loop": 1,
+      "lens": true,
+      "angles": "fixed",
+      "sourceAngle": 30,
+      "targetAngle": 30,
+      "start": "bar",
+      "startSize": 2.5,
+      "startAngle": 70,
+      "end": "arrow",
+      "endSize": 3.5,
+      "endAngle": 45,
+      "middle": "dot",
+      "middleSize": 2,
+      "middleAngle": 30,
+      "startOffset": 2.5,
+      "endOffset": 0,
+      "middleOffset": 0,
+      "startAcross": 0,
+      "endAcross": 0,
+      "middleAcross": 0,
+      "startRotation": 0,
+      "endRotation": 0,
+      "middleRotation": 0,
+      "arrowJoin": "miter",
+      "balanceArrows": true,
+      "clearance": 1,
+      "linecap": "round",
+      "turns": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "linkGaps": [
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "strokeWidth": 1.3
+    },
+    "options": {
+      "adjustGaps": true,
+      "range": 60,
+      "step": 1,
+      "gapRange": 0.2
+    },
+    "result": {
+      "turns": [
+        [
+          47,
+          -47
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "delta": [
+        [
+          47,
+          -47
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "linkGaps": [
+        [
+          0.16,
+          0.16,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "before": 7.446869461761939,
+      "after": 0.188
+    },
+    "collisions": 0,
+    "ms": 1465.648823
+  },
+  {
+    "code": "1111",
+    "patch": {},
+    "shape": {
+      "placement": "auto",
+      "layoutAspect": 1,
+      "columns": 0,
+      "forceDistance": 1,
+      "forceCharge": 0.6,
+      "forceCollision": 0.6,
+      "rotation": 0,
+      "spread": 1,
+      "padding": 9,
+      "bendMode": "curve",
+      "tension": 0.4,
+      "bulge": 0,
+      "loopBend": 0,
+      "gap": 0.08,
+      "startGap": 0.08,
+      "endGap": 0.08,
+      "middleGapStart": 0,
+      "middleGapEnd": 0,
+      "free": 1,
+      "loop": 1,
+      "lens": true,
+      "angles": "fixed",
+      "sourceAngle": 30,
+      "targetAngle": 30,
+      "start": "bar",
+      "startSize": 2.5,
+      "startAngle": 70,
+      "end": "arrow",
+      "endSize": 3.5,
+      "endAngle": 45,
+      "middle": "dot",
+      "middleSize": 2,
+      "middleAngle": 30,
+      "startOffset": 2.5,
+      "endOffset": 0,
+      "middleOffset": 0,
+      "startAcross": 0,
+      "endAcross": 0,
+      "middleAcross": 0,
+      "startRotation": 0,
+      "endRotation": 0,
+      "middleRotation": 0,
+      "arrowJoin": "miter",
+      "balanceArrows": true,
+      "clearance": 1,
+      "linecap": "round",
+      "turns": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "linkGaps": [
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "strokeWidth": 1.3
+    },
+    "options": {
+      "adjustGaps": true,
+      "range": 60,
+      "step": 1,
+      "gapRange": 0.2
+    },
+    "result": {
+      "turns": [
+        [
+          0,
+          0
+        ],
+        [
+          -13,
+          13
+        ]
+      ],
+      "delta": [
+        [
+          0,
+          0
+        ],
+        [
+          -13,
+          13
+        ]
+      ],
+      "linkGaps": [
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          0.16,
+          0.16,
+          null,
+          null
+        ]
+      ],
+      "before": 8.247363169075287,
+      "after": 0.052000000000000005
+    },
+    "collisions": 0,
+    "ms": 1173.8204079999996
+  },
+  {
+    "code": "34442132",
+    "patch": {},
+    "shape": {
+      "placement": "auto",
+      "layoutAspect": 1,
+      "columns": 0,
+      "forceDistance": 1,
+      "forceCharge": 0.6,
+      "forceCollision": 0.6,
+      "rotation": 0,
+      "spread": 1,
+      "padding": 9,
+      "bendMode": "curve",
+      "tension": 0.4,
+      "bulge": 0,
+      "loopBend": 0,
+      "gap": 0.08,
+      "startGap": 0.08,
+      "endGap": 0.08,
+      "middleGapStart": 0,
+      "middleGapEnd": 0,
+      "free": 1,
+      "loop": 1,
+      "lens": true,
+      "angles": "fixed",
+      "sourceAngle": 30,
+      "targetAngle": 30,
+      "start": "bar",
+      "startSize": 2.5,
+      "startAngle": 70,
+      "end": "arrow",
+      "endSize": 3.5,
+      "endAngle": 45,
+      "middle": "dot",
+      "middleSize": 2,
+      "middleAngle": 30,
+      "startOffset": 2.5,
+      "endOffset": 0,
+      "middleOffset": 0,
+      "startAcross": 0,
+      "endAcross": 0,
+      "middleAcross": 0,
+      "startRotation": 0,
+      "endRotation": 0,
+      "middleRotation": 0,
+      "arrowJoin": "miter",
+      "balanceArrows": true,
+      "clearance": 1,
+      "linecap": "round",
+      "turns": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "linkGaps": [
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "strokeWidth": 1.3
+    },
+    "options": {
+      "adjustGaps": true,
+      "range": 60,
+      "step": 1,
+      "gapRange": 0.2
+    },
+    "result": {
+      "delta": [
+        [
+          -15,
+          0
+        ],
+        [
+          0,
+          48
+        ],
+        [
+          -5,
+          -1
+        ],
+        [
+          -11,
+          -1
+        ]
+      ],
+      "turns": [
+        [
+          -15,
+          0
+        ],
+        [
+          0,
+          48
+        ],
+        [
+          -5,
+          -1
+        ],
+        [
+          -11,
+          -1
+        ]
+      ],
+      "linkGaps": [
+        [
+          0.255,
+          0.218,
+          null,
+          null
+        ],
+        [
+          0.13,
+          0.18,
+          null,
+          null
+        ],
+        [
+          0.28,
+          0.155,
+          null,
+          null
+        ],
+        [
+          0.28,
+          0.093,
+          null,
+          null
+        ]
+      ],
+      "before": 29.240358251159435,
+      "after": 12.167570188531508
+    },
+    "collisions": 12.005570188531507,
+    "ms": 1177.6254259999996
+  },
+  {
+    "code": "34442132",
+    "patch": {
+      "solveGapRange": 0.05,
+      "solveRange": 180,
+      "solveStep": 13
+    },
+    "shape": {
+      "placement": "auto",
+      "layoutAspect": 1,
+      "columns": 0,
+      "forceDistance": 1,
+      "forceCharge": 0.6,
+      "forceCollision": 0.6,
+      "rotation": 0,
+      "spread": 1,
+      "padding": 9,
+      "bendMode": "curve",
+      "tension": 0.4,
+      "bulge": 0,
+      "loopBend": 0,
+      "gap": 0.08,
+      "startGap": 0.08,
+      "endGap": 0.08,
+      "middleGapStart": 0,
+      "middleGapEnd": 0,
+      "free": 1,
+      "loop": 1,
+      "lens": true,
+      "angles": "fixed",
+      "sourceAngle": 30,
+      "targetAngle": 30,
+      "start": "bar",
+      "startSize": 2.5,
+      "startAngle": 70,
+      "end": "arrow",
+      "endSize": 3.5,
+      "endAngle": 45,
+      "middle": "dot",
+      "middleSize": 2,
+      "middleAngle": 30,
+      "startOffset": 2.5,
+      "endOffset": 0,
+      "middleOffset": 0,
+      "startAcross": 0,
+      "endAcross": 0,
+      "middleAcross": 0,
+      "startRotation": 0,
+      "endRotation": 0,
+      "middleRotation": 0,
+      "arrowJoin": "miter",
+      "balanceArrows": true,
+      "clearance": 1,
+      "linecap": "round",
+      "turns": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "linkGaps": [
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "strokeWidth": 1.3
+    },
+    "options": {
+      "adjustGaps": true,
+      "range": 180,
+      "step": 13,
+      "gapRange": 0.05
+    },
+    "result": {
+      "delta": [
+        [
+          0,
+          -65
+        ],
+        [
+          -65,
+          13
+        ],
+        [
+          -39,
+          0
+        ],
+        [
+          -26,
+          0
+        ]
+      ],
+      "turns": [
+        [
+          0,
+          -65
+        ],
+        [
+          -65,
+          13
+        ],
+        [
+          -39,
+          0
+        ],
+        [
+          -26,
+          0
+        ]
+      ],
+      "linkGaps": [
+        [
+          0.081,
+          0.084,
+          null,
+          null
+        ],
+        [
+          0.13,
+          0.105,
+          null,
+          null
+        ],
+        [
+          0.118,
+          0.077,
+          null,
+          null
+        ],
+        [
+          0.093,
+          0.077,
+          null,
+          null
+        ]
+      ],
+      "before": 29.240358251159435,
+      "after": 12.24113014772578
+    },
+    "collisions": 11.82513014772578,
+    "ms": 357.0956180000003
+  }
+]

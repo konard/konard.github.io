@@ -1,0 +1,68 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793359462913
+
+ ❯ src/links/issue-37.test.js (27 tests | 4 failed) 3397ms
+   × improves the four-link drawing with small reference adjustments at its original positions 509ms
+   × locally spaces discovered random network 100321 without changing its arrangement 28ms
+   × locally spaces discovered random network 42414220 without changing its arrangement 109ms
+   × locally spaces discovered random network 43434143 without changing its arrangement 405ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/links/issue-37.test.js > improves the four-link drawing with small reference adjustments at its original positions
+AssertionError: expected 13.749459721873128 to be close to 13.285370321779999, received difference is 0.4640894000931297, but expected 5e-9
+ ❯ src/links/issue-37.test.js:56:5
+     54|   expect(
+     55|     overlapCost(links, { ...shape, turns: result.turns, linkGaps: resu…
+     56|   ).toBeCloseTo(result.after, 8);
+       |     ^
+     57| });
+     58|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  src/links/issue-37.test.js > locally spaces discovered random network 100321 without changing its arrangement
+AssertionError: expected 0.0174979633404867 to be close to +0, received difference is 0.0174979633404867, but expected 5e-9
+ ❯ src/links/issue-37.test.js:81:38
+     79|   });
+     80|   const fitted = shapeOfStyle(applied, links.length);
+     81|   expect(overlapCost(links, fitted)).toBeCloseTo(result.after, 8);
+       |                                      ^
+     82|   expect(glyphCurves(links, fitted).map((curve) => shaftCrossings(pain…
+     83|     links.map(() => 0),
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  src/links/issue-37.test.js > locally spaces discovered random network 42414220 without changing its arrangement
+AssertionError: expected 0.06463323392121413 to be close to 0.000039, received difference is 0.06459423392121413, but expected 5e-9
+ ❯ src/links/issue-37.test.js:81:38
+     79|   });
+     80|   const fitted = shapeOfStyle(applied, links.length);
+     81|   expect(overlapCost(links, fitted)).toBeCloseTo(result.after, 8);
+       |                                      ^
+     82|   expect(glyphCurves(links, fitted).map((curve) => shaftCrossings(pain…
+     83|     links.map(() => 0),
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  src/links/issue-37.test.js > locally spaces discovered random network 43434143 without changing its arrangement
+AssertionError: expected 6.71461305029978 to be close to 6.628540546350704, received difference is 0.08607250394907595, but expected 5e-9
+ ❯ src/links/issue-37.test.js:81:38
+     79|   });
+     80|   const fitted = shapeOfStyle(applied, links.length);
+     81|   expect(overlapCost(links, fitted)).toBeCloseTo(result.after, 8);
+       |                                      ^
+     82|   expect(glyphCurves(links, fitted).map((curve) => shaftCrossings(pain…
+     83|     links.map(() => 0),
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  1 failed | 3 passed (4)
+      Tests  4 failed | 68 passed (72)
+   Start at  11:34:21
+   Duration  21.52s (tests 67%, environment 22%, setup 5%, transform 4%, import 2%)
+
+    Isolate  4 workers spawned · ~1.36s startup each (spawn + environment, per file)
+             at least ~4.07s faster with isolate: false — reuses workers across files instead of one per file
+

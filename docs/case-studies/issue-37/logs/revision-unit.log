@@ -1,0 +1,47 @@
+
+> konard.github.io@0.1.0 test:ci
+> vitest run
+
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793359462913
+
+ ❯ src/links/network.test.js (18 tests | 1 failed) 1137ms
+   ❯ fewer overlaps of lines (experimental, issue #17) (4)
+     × turns the ends of the links so that their lines cross and touch less 229ms
+::debug::Creating Artifact archive with compressionLevel: 6
+::debug::Zip write high watermark value 8388608
+::debug::Zip read high watermark value 8388608
+::debug::Zip stream for upload has ended.
+::debug::Zip stream for upload has finished.
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/links/network.test.js > fewer overlaps of lines (experimental, issue #17) > turns the ends of the links so that their lines cross and touch less
+AssertionError: expected 10.435303237770249 to be 10.43530323777011 // Object.is equality
+
+- Expected
++ Received
+
+- 10.43530323777011
++ 10.435303237770249
+
+ ❯ src/links/network.test.js:240:27
+    238|     const tangled = decode('22 13 31');
+    239|     const result = solveCollisions(tangled, shapeOfStyle(STYLE_DEFAULT…
+    240|     expect(result.before).toBe(overlapCost(tangled, shapeOfStyle(STYLE…
+       |                           ^
+    241|     expect(result.after).toBeLessThan(result.before);
+    242|     expect(result.turns).toHaveLength(3);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 67 passed (68)
+      Tests  1 failed | 937 passed (938)
+   Start at  11:37:13
+   Duration  287.12s (tests 56%, environment 31%, setup 7%, import 3%, transform 2%, worker 1%)
+
+Environment  jsdom was created 68 times · 83.96s total, 31% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+

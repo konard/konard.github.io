@@ -3,7 +3,7 @@ import { formatValue } from '../settings/fields';
 import { LOOKS, SIZES, STYLE_DEFAULTS, STYLE_SECTIONS, applyLook, normalizeStyle } from '../links/style';
 import { geometryAvailable } from '../links/style-geometry';
 import { useLang } from '../i18n/prefs';
-import { numericKey } from '../components/numericKeys';
+import { focusSlider, numericKey } from '../components/numericKeys';
 
 const SAVED_KEY = 'network.styles';
 const MAX_SAVED = 12;
@@ -47,6 +47,8 @@ function Control({ field, value, onChange }) {
         max={field.max}
         step={field.step}
         value={value}
+        onPointerDown={focusSlider}
+        onClick={focusSlider}
         onKeyDown={(event) => numericKey(event, onChange)}
         onChange={(event) => onChange(Number(event.target.value))}
       />

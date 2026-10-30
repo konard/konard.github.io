@@ -19,7 +19,7 @@ import { useLang } from '../i18n/prefs';
  * Downloads of the picture in every format, copies, the share sheet of the
  * system and links to the share dialogs of social networks (issue #17).
  */
-export default function NetworkShare({ code, links, svg, style, url, text }) {
+export default function NetworkShare({ code, links, svg, style, url, text, busy = false }) {
   const { t } = useLang();
   const [status, setStatus] = useState('');
   const [copying, setCopying] = useState(false);
@@ -44,7 +44,7 @@ export default function NetworkShare({ code, links, svg, style, url, text }) {
     let cancelled = false;
     let timer;
     prepared.current = null;
-    if (canShare([new File([], 'network.png', { type: 'image/png' })])) {
+    if (!busy && canShare([new File([], 'network.png', { type: 'image/png' })])) {
       // Avoid rasterizing a large canvas for every input event in a drag.
       timer = setTimeout(() => {
         rasterize(svg, { width: style.width, height: style.height, type: 'image/png' })
@@ -58,7 +58,7 @@ export default function NetworkShare({ code, links, svg, style, url, text }) {
       cancelled = true;
       clearTimeout(timer);
     };
-  }, [svg, style.width, style.height]);
+  }, [svg, style.width, style.height, busy]);
 
   const save = (format) =>
     image(format)
@@ -69,7 +69,7 @@ export default function NetworkShare({ code, links, svg, style, url, text }) {
       .catch(failed);
 
   const share = () => {
-    const blob = prepared.current?.svg === svg ? prepared.current.blob : null;
+    const blob = !busy && prepared.current?.svg === svg ? prepared.current.blob : null;
     const files = blob ? [new File([blob], fileName(code, 'png'), { type: 'image/png' })] : null;
     return navigator
       .share(files && canShare(files) ? { files, title: text, text, url } : { title: text, text, url })
@@ -83,6 +83,7 @@ export default function NetworkShare({ code, links, svg, style, url, text }) {
         <button
           type="button"
           className="button"
+          disabled={busy}
           onClick={() => {
             download(svgBlob(svg), fileName(code, 'svg'));
             done({ en: 'SVG saved.', ru: 'SVG сохранён.' });
@@ -91,7 +92,7 @@ export default function NetworkShare({ code, links, svg, style, url, text }) {
           ⤓ SVG
         </button>
         {FORMATS.map((format) => (
-          <button key={format.id} type="button" className="button" onClick={() => save(format)}>
+          <button key={format.id} type="button" className="button" disabled={busy} onClick={() => save(format)}>
             ⤓ {format.label}
           </button>
         ))}
@@ -137,7 +138,7 @@ export default function NetworkShare({ code, links, svg, style, url, text }) {
         <button
           type="button"
           className="button"
-          disabled={!canCopyImage() || copying}
+          disabled={busy || !canCopyImage() || copying}
           title={
             !canCopyImage()
               ? t({
@@ -159,7 +160,7 @@ export default function NetworkShare({ code, links, svg, style, url, text }) {
         <button
           type="button"
           className="button"
-          disabled={!canCopyText()}
+          disabled={busy || !canCopyText()}
           onClick={() =>
             copyText(svg)
               .then(() => done({ en: 'SVG code copied.', ru: 'Код SVG скопирован.' }))

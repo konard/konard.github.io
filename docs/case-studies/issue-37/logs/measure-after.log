@@ -1,0 +1,84 @@
+[
+  {
+    code: '2222',
+    patch: {},
+    result: {
+      turns: [Array],
+      delta: [Array],
+      linkGaps: [Array],
+      before: 7.446869461761939,
+      after: 0.000028
+    },
+    collisions: 0,
+    ms: 783.609907
+  },
+  {
+    code: '1111',
+    patch: {},
+    result: {
+      turns: [Array],
+      delta: [Array],
+      linkGaps: [Array],
+      before: 8.247363169075287,
+      after: 0.000026
+    },
+    collisions: 0,
+    ms: 721.9886259999998
+  },
+  {
+    code: '2222',
+    patch: { solveGapRange: 0.05 },
+    result: {
+      delta: [Array],
+      turns: [Array],
+      linkGaps: [Array],
+      before: 7.446869461761939,
+      after: 0.36875220575943324,
+      layout: [Object]
+    },
+    collisions: 0.36872320575943324,
+    ms: 7819.428424000001
+  },
+  {
+    code: '1111',
+    patch: { solveGapRange: 0.05 },
+    result: {
+      delta: [Array],
+      turns: [Array],
+      linkGaps: [Array],
+      before: 8.247363169075287,
+      after: 0.10355485166217623,
+      layout: [Object]
+    },
+    collisions: 0.10352385166217623,
+    ms: 4211.60773
+  },
+  {
+    code: '34442132',
+    patch: {},
+    result: {
+      delta: [Array],
+      turns: [Array],
+      linkGaps: [Array],
+      before: 29.240358251159435,
+      after: 0.00013,
+      layout: [Object]
+    },
+    collisions: 0,
+    ms: 1160.8882730000005
+  },
+  {
+    code: '34442132',
+    patch: { solveGapRange: 0.05, solveRange: 180, solveStep: 13 },
+    result: {
+      delta: [Array],
+      turns: [Array],
+      linkGaps: [Array],
+      before: 29.240358251159435,
+      after: 0.00018199999999999998,
+      layout: [Object]
+    },
+    collisions: 0,
+    ms: 582.0197709999993
+  }
+]

@@ -1,0 +1,9 @@
+{
+  document: { visibility: 'visible', ready: 'complete' },
+  animationFrame: 'no two frames within one second',
+  box: { x: 369.40625, y: 575.96875, width: 203.640625, height: 20 },
+  before: 0.5,
+  focused: true,
+  clicked: 0.5,
+  after: 0.55
+}

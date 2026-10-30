@@ -1,0 +1,9 @@
+{
+  "engine": "webkit",
+  "date": "2026-10-29T23:53:35.148Z",
+  "checks": [],
+  "networks": [],
+  "errors": [],
+  "version": "27.2",
+  "failure": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(await input.evaluate((el) => document.activeElement === el))\n\n    at file:///Users/runner/work/konard.github.io/konard.github.io/experiments/issue-37-browser.mjs:53:7\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at process.processImmediate (node:internal/timers:502:9)"
+}

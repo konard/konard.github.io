@@ -1,10 +1,9 @@
 import { expect, it } from 'vitest';
 import { solveCollisions } from './collisions';
 import { decode } from './configurations';
-import { withGaps } from './gaps';
 import { glyphParts } from './glyph';
 import { networkSvg } from './render';
-import { normalizeStyle, shapeOfStyle, styleFromParams, styleToParams, withTurns } from './style';
+import { normalizeStyle, shapeOfStyle, withSpacing, styleFromParams, styleToParams } from './style';
 
 const links = decode('00 30 02');
 const optionsOf = (style) => ({
@@ -17,7 +16,7 @@ const optionsOf = (style) => ({
 const solve = (style, options = optionsOf(style)) => {
   const shape = shapeOfStyle(style, links.length);
   const result = solveCollisions(links, shape, options);
-  const applied = withGaps(withTurns(style, result.turns), result.linkGaps);
+  const applied = withSpacing(style, result);
   return { shape, result, applied };
 };
 
@@ -31,7 +30,7 @@ it.each(['editor', 'solver'])('keeps the reported network continuous with defaul
     expect(line.match(/C/g)).toHaveLength(2);
   });
   expect(networkSvg(links, applied)).toBe(
-    networkSvg(links, style, { extraTurns: result.delta, extraGaps: result.linkGaps }),
+    networkSvg(links, style, { extraTurns: result.delta, extraGaps: result.linkGaps, extraFrame: result.frame }),
   );
   expect(styleFromParams(styleToParams(applied))).toEqual(applied);
 });

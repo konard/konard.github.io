@@ -1,0 +1,15 @@
+
+> konard.github.io@0.1.0 test:network:browser
+> node experiments/network-e2e.mjs
+
+firefox: gallery hover, focus and navigation passed
+firefox: notation editing and invalid input passed
+firefox: live preview and SVG styling passed
+firefox: overlap reduction and applied turns/gaps passed
+firefox: shared URL renders the same SVG in a fresh browser
+firefox: verified svg download (1288 bytes)
+firefox: verified png download (42293 bytes)
+firefox: verified jpg download (59228 bytes)
+firefox: verified webp download (22448 bytes)
+firefox: verified lino download (27 bytes)
+firefox: network editor browser checks passed

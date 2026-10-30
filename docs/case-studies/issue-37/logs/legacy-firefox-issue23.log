@@ -1,0 +1,30 @@
+
+> konard.github.io@0.1.0 test:network:issue23
+> node experiments/issue-23-browser.mjs
+
+firefox: neutral defaults for free links
+firefox: both displaced bars agree with native SVG path position and tangent
+firefox: individual gaps and gap-only solver survive apply/share/reload
+{"cards":243,"filtered":66,"y":1000.2833251953125,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+{"cards":729,"filtered":176,"y":3398.283447265625,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+{"cards":1215,"filtered":176,"y":7731.283203125,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+{"cards":1701,"filtered":176,"y":12063.283203125,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+{"cards":2187,"filtered":176,"y":16396.283203125,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+{"cards":2673,"filtered":176,"y":20729.283203125,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+{"cards":3159,"filtered":176,"y":25061.283203125,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+{"cards":3645,"filtered":176,"y":29492.283203125,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+{"cards":4131,"filtered":176,"y":33825.28515625,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+{"cards":4131,"filtered":176,"y":19447.283203125,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+{"cards":4131,"filtered":105,"y":37955.28515625,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+{"cards":4131,"filtered":165,"y":8342.283203125,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+{"cards":4131,"filtered":105,"y":37955.28515625,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+{"cards":4131,"filtered":176,"y":19461.283203125,"barFilter":"blur(18px) saturate(1.8) brightness(1.08)","barSurface":"topbar__row","barTop":0}
+{"cards":4131,"filtered":105,"y":37969.28515625,"barFilter":"blur(18px) saturate(1.8) brightness(1.08)","barSurface":"topbar__row","barTop":0}
+{"cards":4131,"filtered":165,"y":8356.283203125,"barFilter":"blur(18px) saturate(1.8) brightness(1.08)","barSurface":"topbar__row","barTop":0}
+{"cards":4131,"filtered":105,"y":37969.28515625,"barFilter":"blur(18px) saturate(1.8) brightness(1.08)","barSurface":"topbar__row","barTop":0}
+{"cards":4131,"filtered":176,"y":19411.283203125,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+{"cards":4131,"filtered":105,"y":37920.28515625,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+{"cards":4131,"filtered":165,"y":8306.283203125,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+{"cards":4131,"filtered":105,"y":37920.28515625,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+firefox: bounded blur surfaces and fixed header through 4131 cards, repeated scrolling and all skins
+firefox: individual gap controls fit the Russian mobile editor

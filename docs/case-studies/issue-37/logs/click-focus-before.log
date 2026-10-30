@@ -1,0 +1,375 @@
+
+> konard.github.io@0.1.0 test:ci
+> vitest run src/pages/network-37.test.jsx
+
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793313918910
+
+stderr | src/pages/network-37.test.jsx > focuses the global slider on pointer interaction before keyboard editing
+An update to NetworkPage inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+stderr | src/pages/network-37.test.jsx > focuses the per-link slider on pointer interaction before keyboard editing
+An update to NetworkPage inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ❯ src/pages/network-37.test.jsx (4 tests | 3 failed) 1793ms
+   × focuses the global slider on pointer interaction before keyboard editing 811ms
+   × focuses the per-link slider on pointer interaction before keyboard editing 285ms
+   × focuses site settings sliders on pointer interaction as well 345ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/pages/network-37.test.jsx > focuses the global slider on pointer interaction before keyboard editing
+Error: expect(element).toHaveFocus()
+
+Expected element with focus:
+  <input
+  id="style-strokeWidth"
+  max="10"
+  min="0.5"
+  step="0.1"
+  type="range"
+  value="1.3"
+/>
+Received element with focus:
+  <body>
+  <div>
+    <div
+      class="app"
+    >
+      <div
+        aria-hidden="true"
+        class="cosmos"
+      >
+        <canvas
+          class="cosmos__universe"
+        />
+        <div
+          class="cosmos__grid"
+        />
+        <canvas
+          class="cosmos__rain"
+        />
+      </div>
+      <header
+        class="topbar"
+      >
+        <div
+          class="topbar__row"
+        >
+          <a … />
+          <nav … />
+          <div … />
+        </div>
+        <nav
+          aria-label="Sections"
+          class="nav"
+        >
+          <a … />
+          <ul … />
+        </nav>
+      </header>
+      <main>
+        <p
+          class="snapshot-notice"
+        >
+          Numerical indicators: dated public-source data············
+          <a … />
+        </p>
+        <section
+          class="section network"
+          id="top"
+        >
+          <h1 … />
+          <p … />
+          <div … />
+        </section>
+      </main>
+      <footer
+        class="footer"
+      >
+        <span
+          class="mono"
+        >
+          L ↦ L²
+        </span>
+        <span>
+          <a … />············
+          ··
+          Background: links of the············
+          <a … />············
+          in the············
+          <a … />
+           style, raining as in············
+          <a … />············
+          ·············
+          <a … />
+        </span>
+        <details
+          class="data-sources"
+          id="data-sources"
+        >
+          <summary … />
+          <p … />
+          <ul … />
+          <p … />
+          <a … />
+        </details>
+      </footer>
+    </div>
+  </div>
+</body>
+ ❯ src/pages/network-37.test.jsx:26:18
+     24|   fireEvent.mouseUp(slider);
+     25|   fireEvent.click(slider);
+     26|   expect(slider).toHaveFocus();
+       |                  ^
+     27|   const before = Number(slider.value);
+     28|   fireEvent.keyDown(document.activeElement, { key: 'ArrowRight' });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  src/pages/network-37.test.jsx > focuses the per-link slider on pointer interaction before keyboard editing
+Error: expect(element).toHaveFocus()
+
+Expected element with focus:
+  <input
+  aria-label="Link 1: turn of the source, °"
+  aria-valuetext="0°"
+  id="link-1-turn-0"
+  max="180"
+  min="-180"
+  step="1"
+  type="range"
+  value="0"
+/>
+Received element with focus:
+  <body>
+  <div>
+    <div
+      class="app"
+    >
+      <div
+        aria-hidden="true"
+        class="cosmos"
+      >
+        <canvas
+          class="cosmos__universe"
+        />
+        <div
+          class="cosmos__grid"
+        />
+        <canvas
+          class="cosmos__rain"
+        />
+      </div>
+      <header
+        class="topbar"
+      >
+        <div
+          class="topbar__row"
+        >
+          <a … />
+          <nav … />
+          <div … />
+        </div>
+        <nav
+          aria-label="Sections"
+          class="nav"
+        >
+          <a … />
+          <ul … />
+        </nav>
+      </header>
+      <main>
+        <p
+          class="snapshot-notice"
+        >
+          Numerical indicators: dated public-source data············
+          <a … />
+        </p>
+        <section
+          class="section network"
+          id="top"
+        >
+          <h1 … />
+          <p … />
+          <div … />
+        </section>
+      </main>
+      <footer
+        class="footer"
+      >
+        <span
+          class="mono"
+        >
+          L ↦ L²
+        </span>
+        <span>
+          <a … />············
+          ··
+          Background: links of the············
+          <a … />············
+          in the············
+          <a … />
+           style, raining as in············
+          <a … />············
+          ·············
+          <a … />
+        </span>
+        <details
+          class="data-sources"
+          id="data-sources"
+        >
+          <summary … />
+          <p … />
+          <ul … />
+          <p … />
+          <a … />
+        </details>
+      </footer>
+    </div>
+  </div>
+</body>
+ ❯ src/pages/network-37.test.jsx:26:18
+     24|   fireEvent.mouseUp(slider);
+     25|   fireEvent.click(slider);
+     26|   expect(slider).toHaveFocus();
+       |                  ^
+     27|   const before = Number(slider.value);
+     28|   fireEvent.keyDown(document.activeElement, { key: 'ArrowRight' });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  src/pages/network-37.test.jsx > focuses site settings sliders on pointer interaction as well
+Error: expect(element).toHaveFocus()
+
+Expected element with focus:
+  <input
+  id="setting-nebula-level"
+  max="1"
+  min="0"
+  step="0.05"
+  type="range"
+  value="0.5"
+/>
+Received element with focus:
+  <body>
+  <div>
+    <div
+      class="app"
+    >
+      <div
+        aria-hidden="true"
+        class="cosmos"
+      >
+        <canvas
+          class="cosmos__universe"
+        />
+        <div
+          class="cosmos__grid"
+        />
+        <canvas
+          class="cosmos__rain"
+        />
+      </div>
+      <header
+        class="topbar"
+      >
+        <div
+          class="topbar__row"
+        >
+          <a … />
+          <nav … />
+          <div … />
+        </div>
+        <nav
+          aria-label="Sections"
+          class="nav"
+        >
+          <a … />
+          <ul … />
+        </nav>
+      </header>
+      <main>
+        <p
+          class="snapshot-notice"
+        >
+          Numerical indicators: dated public-source data············
+          <a … />
+        </p>
+        <div
+          class="settings"
+        >
+          <header … />
+          <section … />
+          <div … />
+        </div>
+      </main>
+      <footer
+        class="footer"
+      >
+        <span
+          class="mono"
+        >
+          L ↦ L²
+        </span>
+        <span>
+          <a … />············
+          ··
+          Background: links of the············
+          <a … />············
+          in the············
+          <a … />
+           style, raining as in············
+          <a … />············
+          ·············
+          <a … />
+        </span>
+        <details
+          class="data-sources"
+          id="data-sources"
+        >
+          <summary … />
+          <p … />
+          <ul … />
+          <p … />
+          <a … />
+        </details>
+      </footer>
+    </div>
+  </div>
+</body>
+ ❯ src/pages/network-37.test.jsx:40:18
+     38|   slider.blur();
+     39|   fireEvent.click(slider);
+     40|   expect(slider).toHaveFocus();
+       |                  ^
+     41| });
+     42|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed | 1 passed (4)
+   Start at  23:56:03
+   Duration  3.79s (tests 50%, environment 31%, transform 8%, setup 6%, import 4%)
+

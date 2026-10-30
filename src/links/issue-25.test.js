@@ -1,10 +1,9 @@
 import { expect, it, vi } from 'vitest';
 import { decode } from './configurations';
-import { solveCollisions, overlapCost } from './collisions';
+import { solveCollisions, overlapCost, turningCost } from './collisions';
 import { glyphParts, glyphCurves } from './glyph';
 import { networkSvg } from './render';
-import { normalizeStyle, shapeOfStyle, styleFromParams, styleToParams, withTurns } from './style';
-import { withGaps } from './gaps';
+import { normalizeStyle, shapeOfStyle, withSpacing, styleFromParams, styleToParams } from './style';
 
 const links = decode('22 22');
 const fixture = (patch = {}) => normalizeStyle({ rotation: 90, ...patch });
@@ -15,10 +14,10 @@ it('discovers separated reference gaps for 2222 without manual gaps', () => {
   expect(result.linkGaps[0][0]).toBeGreaterThan(0.08);
   expect(result.linkGaps[0][1]).toBeGreaterThan(0.08);
   expect(result.after).toBeLessThan(result.before);
-  const applied = withGaps(withTurns(style, result.turns), result.linkGaps);
-  expect(networkSvg(links, style, { extraTurns: result.delta, extraGaps: result.linkGaps })).toBe(
-    networkSvg(links, applied),
-  );
+  const applied = withSpacing(style, result);
+  expect(
+    networkSvg(links, style, { extraTurns: result.delta, extraGaps: result.linkGaps, extraFrame: result.frame }),
+  ).toBe(networkSvg(links, applied));
   expect(overlapCost(links, shapeOfStyle(applied, 2))).toBeCloseTo(result.after, 8);
 });
 it('scores painted markers and user selected spacing, including near reference middles', () => {
@@ -30,7 +29,7 @@ it('scores painted markers and user selected spacing, including near reference m
 it('recognizes the supplied perfect manual arrangement and keeps diagnostics opt-in', () => {
   const shape = shapeOfStyle(fixture({ turns: '15 -15', gaps: '0.18 0.18 ~ ~' }), 2);
   // Only the 30 degrees of existing turns contribute; no painted overlap.
-  expect(overlapCost(links, shape)).toBeCloseTo(30 * 0.002, 8);
+  expect(overlapCost(links, shape)).toBeCloseTo(turningCost(shape.turns), 8);
   const debug = vi.spyOn(console, 'debug').mockImplementation(() => {});
   try {
     solveCollisions(links, shape, { passes: 0 });

@@ -1,0 +1,27 @@
+
+> konard.github.io@0.1.0 test:network:issue37
+> node experiments/issue-37-browser.mjs
+
+chromium: native click-then-key focus passed in all four control contexts
+chromium: 2222 has zero residual and exact Apply/share output
+chromium: 34442132 has zero residual and exact Apply/share output
+chromium: 01 has zero residual and exact Apply/share output
+chromium: 10 has zero residual and exact Apply/share output
+chromium: 11 has zero residual and exact Apply/share output
+chromium: 00 has zero residual and exact Apply/share output
+chromium: 2111 has zero residual and exact Apply/share output
+chromium: 2012 has zero residual and exact Apply/share output
+chromium: 1222 has zero residual and exact Apply/share output
+chromium: 0100 has zero residual and exact Apply/share output
+chromium: 032113 has zero residual and exact Apply/share output
+chromium: 133111 has zero residual and exact Apply/share output
+chromium: 100321 has zero residual and exact Apply/share output
+chromium: 111300 has zero residual and exact Apply/share output
+chromium: 132001 has zero residual and exact Apply/share output
+chromium: 013302 has zero residual and exact Apply/share output
+chromium: 42414220 has zero residual and exact Apply/share output
+chromium: 43434143 has zero residual and exact Apply/share output
+chromium: 33044224 has zero residual and exact Apply/share output
+chromium: 31324042 has zero residual and exact Apply/share output
+chromium: 04210010 has zero residual and exact Apply/share output
+chromium: 32103141 has zero residual and exact Apply/share output

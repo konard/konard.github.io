@@ -33,7 +33,11 @@ export function adjustCollisionGaps(links, base, result, { gapRange, middleRange
   const penalty = () =>
     rows.reduce(
       (sum, row, i) =>
-        sum + row.reduce((s, v, k) => s + Math.abs((v ?? initial[i][k]) - initial[i][k]) * (k < 2 ? 0.1 : 0.025), 0),
+        sum +
+        row.reduce(
+          (s, v, k) => s + Math.abs((v ?? initial[i][k]) - initial[i][k]) * (k < 2 ? 0.000001 : 0.00000025),
+          0,
+        ),
       0,
     );
   let bestScore = result.after + penalty();

@@ -14,7 +14,7 @@ export function referenceSpaces(line, target, scale) {
   ];
 }
 
-export function symmetricReferences(links, base, result, { range = 60, step = 1, gapRange = 0.2 } = {}) {
+export function symmetricReferences(links, base, result, { range = 30, step = 1, gapRange = 0.2 } = {}) {
   if (base.clearance == null) return result;
   range = Math.min(180, Math.max(0, Number(range) || 0));
   step = Math.max(1, Number(step) || 1);
@@ -53,16 +53,25 @@ export function symmetricReferences(links, base, result, { range = 60, step = 1,
     };
     // Keep the same step grid as individual descent, relative to the user's
     // starting turns. Include unchanged paired turns even with zero ranges.
-    for (let tick = -Math.floor(range / step); tick <= Math.floor(range / step); tick++) {
+    const radius = Math.max(1, Math.ceil(10 / step));
+    const limit = Math.floor(range / step);
+    const evaluateTick = (tick) => {
       const angle = originalTurns[0] + tick * step;
       if (
         Math.abs(angle) > 180 ||
         Math.abs((-angle - originalTurns[1]) / step - Math.round((-angle - originalTurns[1]) / step)) > 1e-9
       )
-        continue;
-      if (Math.abs(angle - originalTurns[0]) > range || Math.abs(-angle - originalTurns[1]) > range) continue;
+        return;
+      if (Math.abs(angle - originalTurns[0]) > range || Math.abs(-angle - originalTurns[1]) > range) return;
       evaluate(angle, Math.max(low, Math.min(high, initial[0])));
       for (let tick = Math.ceil(low * 100); tick <= Math.floor(high * 100); tick++) evaluate(angle, tick / 100);
+    };
+    evaluateTick(0);
+    for (let tick = -limit; tick <= limit; tick += radius) evaluateTick(tick);
+    if (best) {
+      const center = Math.round((best.angle - originalTurns[0]) / step);
+      for (let tick = Math.max(-limit, center - radius); tick <= Math.min(limit, center + radius); tick++)
+        evaluateTick(tick);
     }
     if (best) {
       const coarse = best;

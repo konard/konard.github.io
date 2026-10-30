@@ -1,5 +1,6 @@
 // Real-browser regressions for issue #25; finite fixtures, one engine at a time.
 /* global document, Image, getComputedStyle, innerWidth */
+import { waitForNetwork } from './wait-for-network.mjs';
 import assert from 'node:assert/strict';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
@@ -27,7 +28,7 @@ try {
   page.on('pageerror', (error) => results.errors.push(error.message));
   const go = async (query) => {
     await page.goto(`http://localhost:4185/network/?code=2222&lang=en&rotation=90&${query}`);
-    await page.locator('.network__preview svg').waitFor();
+    await waitForNetwork(page);
   };
   const shot = async (name, element = page.locator('.network__preview')) =>
     element.screenshot({ path: join(output, `${engine}-after-${name}.png`) });

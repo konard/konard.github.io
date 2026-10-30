@@ -1,0 +1,30 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793313918910
+
+ ❯ src/links/issue-37.test.js (3 tests | 1 failed) 2478ms
+   × improves the reported four-link drawing beyond the former angle-only local minimum 1131ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/links/issue-37.test.js > improves the reported four-link drawing beyond the former angle-only local minimum
+AssertionError: expected 12.005570188531507 to be less than 5
+ ❯ src/links/issue-37.test.js:44:52
+     42|     adjustGaps: true, range: style.solveRange, step: style.solveStep, …
+     43|   });
+     44|   expect(result.after - turningCost(result.turns)).toBeLessThan(5);
+       |                                                    ^
+     45|   expect(overlapCost(links, { ...shape, turns: result.turns, linkGaps:…
+     46| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  1 failed | 18 passed (19)
+   Start at  22:49:36
+   Duration  12.93s (tests 63%, environment 27%, setup 5%, transform 3%, import 1%)
+
+Environment  jsdom was created 3 times · 3.31s total, 27% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+

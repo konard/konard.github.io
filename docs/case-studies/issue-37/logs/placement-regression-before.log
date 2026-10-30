@@ -1,0 +1,130 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793359462913
+
+ ❯ src/links/placement-37.test.js (22 tests | 6 failed) 19873ms
+   × automatic spacing cannot move or recolor the links in 34442132 1441ms
+   × automatic spacing cannot move or recolor the links in 2012 522ms
+   × automatic spacing cannot move or recolor the links in 032113 258ms
+   × automatic spacing cannot move or recolor the links in 43434143 4431ms
+   × automatic spacing cannot move or recolor the links in 33044224 10487ms
+   × automatic spacing cannot move or recolor the links in 31324042 590ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/links/placement-37.test.js > automatic spacing cannot move or recolor the links in 34442132
+AssertionError: expected { order: '1 3 2 4', spread: 1 } to be undefined
+
+- Expected:
+undefined
+
++ Received:
+{
+  "order": "1 3 2 4",
+  "spread": 1,
+}
+
+ ❯ src/links/placement-37.test.js:18:27
+     16|     const original = layout(links.length, shape, links);
+     17|     const result = solveCollisions(links, shape, { adjustGaps: true });
+     18|     expect(result.layout).toBeUndefined();
+       |                           ^
+     19|     const applied = withGaps(withTurns(style, result.turns), result.li…
+     20|     expect(layout(links.length, shapeOfStyle(applied, links.length), l…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  src/links/placement-37.test.js > automatic spacing cannot move or recolor the links in 2012
+AssertionError: expected { order: '1 2', spread: 0.55 } to be undefined
+
+- Expected:
+undefined
+
++ Received:
+{
+  "order": "1 2",
+  "spread": 0.55,
+}
+
+ ❯ src/links/placement-37.test.js:18:27
+     16|     const original = layout(links.length, shape, links);
+     17|     const result = solveCollisions(links, shape, { adjustGaps: true });
+     18|     expect(result.layout).toBeUndefined();
+       |                           ^
+     19|     const applied = withGaps(withTurns(style, result.turns), result.li…
+     20|     expect(layout(links.length, shapeOfStyle(applied, links.length), l…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ FAIL  src/links/placement-37.test.js > automatic spacing cannot move or recolor the links in 032113
+AssertionError: expected { order: '1 3 2', spread: 0.55 } to be undefined
+
+- Expected:
+undefined
+
++ Received:
+{
+  "order": "1 3 2",
+  "spread": 0.55,
+}
+
+ ❯ src/links/placement-37.test.js:18:27
+     16|     const original = layout(links.length, shape, links);
+     17|     const result = solveCollisions(links, shape, { adjustGaps: true });
+     18|     expect(result.layout).toBeUndefined();
+       |                           ^
+     19|     const applied = withGaps(withTurns(style, result.turns), result.li…
+     20|     expect(layout(links.length, shapeOfStyle(applied, links.length), l…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+ FAIL  src/links/placement-37.test.js > automatic spacing cannot move or recolor the links in 43434143
+AssertionError: expected { order: '1 3 2 4', spread: 0.85 } to be undefined
+
+- Expected:
+undefined
+
++ Received:
+{
+  "order": "1 3 2 4",
+  "spread": 0.85,
+}
+
+ ❯ src/links/placement-37.test.js:18:27
+     16|     const original = layout(links.length, shape, links);
+     17|     const result = solveCollisions(links, shape, { adjustGaps: true });
+     18|     expect(result.layout).toBeUndefined();
+       |                           ^
+     19|     const applied = withGaps(withTurns(style, result.turns), result.li…
+     20|     expect(layout(links.length, shapeOfStyle(applied, links.length), l…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/6]⎯
+
+ FAIL  src/links/placement-37.test.js > automatic spacing cannot move or recolor the links in 33044224
+ FAIL  src/links/placement-37.test.js > automatic spacing cannot move or recolor the links in 31324042
+AssertionError: expected { order: '1 4 2 3', spread: 0.85 } to be undefined
+
+- Expected:
+undefined
+
++ Received:
+{
+  "order": "1 4 2 3",
+  "spread": 0.85,
+}
+
+ ❯ src/links/placement-37.test.js:18:27
+     16|     const original = layout(links.length, shape, links);
+     17|     const result = solveCollisions(links, shape, { adjustGaps: true });
+     18|     expect(result.layout).toBeUndefined();
+       |                           ^
+     19|     const applied = withGaps(withTurns(style, result.turns), result.li…
+     20|     expect(layout(links.length, shapeOfStyle(applied, links.length), l…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/6]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  6 failed | 16 passed (22)
+   Start at  11:27:41
+   Duration  23.87s (tests 85%, environment 8%, transform 4%, setup 2%)
+

@@ -4,9 +4,7 @@ import { solveCollisions, overlapCost, turningCost, visiblePolyline } from './co
 import { layoutCurves, curveTransform } from './glyph';
 import { referenceSpaces } from './collision-symmetry';
 import { paintedDistance } from './painted-collisions';
-import { normalizeStyle, shapeOfStyle, STYLE_DEFAULTS, styleFromParams, styleToParams } from './style';
-import { withGaps } from './gaps';
-import { withTurns } from './style';
+import { normalizeStyle, shapeOfStyle, withSpacing, STYLE_DEFAULTS, styleFromParams, styleToParams } from './style';
 import { networkSvg } from './render';
 
 it.each([5, 10, 15])('preserves the reported valid manual %s-degree configuration exactly', (angle) => {
@@ -17,9 +15,9 @@ it.each([5, 10, 15])('preserves the reported valid manual %s-degree configuratio
   expect(result.turns).toEqual(shape.turns);
   expect(result.linkGaps).toEqual(shape.linkGaps);
   expect(result.after).toBe(result.before);
-  expect(networkSvg(links, style, { extraTurns: result.delta, extraGaps: result.linkGaps })).toBe(
-    networkSvg(links, style),
-  );
+  expect(
+    networkSvg(links, style, { extraTurns: result.delta, extraGaps: result.linkGaps, extraFrame: result.frame }),
+  ).toBe(networkSvg(links, style));
 });
 it.each(['1111', '2222'])('finds symmetric close references to a closed link in %s', (code) => {
   const links = decode(code.match(/../g).join(' '));
@@ -31,7 +29,7 @@ it.each(['1111', '2222'])('finds symmetric close references to a closed link in 
   expect(result.linkGaps[open][0]).toBeGreaterThan(0.08);
   expect(result.linkGaps[open][0]).toBeLessThan(0.2);
   expect(result.after - turningCost(result.turns)).toBeCloseTo(0, 9);
-  const solved = { ...shape, turns: result.turns, linkGaps: result.linkGaps };
+  const solved = { ...shape, turns: result.turns, linkGaps: result.linkGaps, frame: result.frame };
   const curves = layoutCurves(links, solved);
   const { scale } = curveTransform(curves, solved);
   const lines = curves.map((c, i) => visiblePolyline(c, solved, i, scale));
@@ -45,9 +43,13 @@ it.each(['1111', '2222'])('finds symmetric close references to a closed link in 
   const again = solveCollisions(links, solved, { adjustGaps: true });
   expect(again.turns).toEqual(result.turns);
   expect(again.linkGaps).toEqual(result.linkGaps);
-  const changed = withGaps(withTurns(STYLE_DEFAULTS, result.turns), result.linkGaps);
+  const changed = withSpacing(STYLE_DEFAULTS, result);
   expect(networkSvg(links, changed)).toBe(
-    networkSvg(links, STYLE_DEFAULTS, { extraTurns: result.delta, extraGaps: result.linkGaps }),
+    networkSvg(links, STYLE_DEFAULTS, {
+      extraTurns: result.delta,
+      extraGaps: result.linkGaps,
+      extraFrame: result.frame,
+    }),
   );
   expect(overlapCost(links, shapeOfStyle(changed, 2))).toBeCloseTo(result.after, 8);
   expect(styleFromParams(styleToParams(changed))).toEqual(changed);

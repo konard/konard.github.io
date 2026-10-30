@@ -1,0 +1,68 @@
+
+> konard.github.io@0.1.0 test:ci
+> vitest run
+
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793313918910
+
+ ❯ src/links/mechanics-19.test.js (6 tests | 1 failed) 3370ms
+   ❯ geometry and control audit (issue #19) (5)
+     × round trips every geometry control and exercises its visible range 139ms
+::debug::Creating Artifact archive with compressionLevel: 6
+::debug::Zip write high watermark value 8388608
+::debug::Zip read high watermark value 8388608
+::debug::Zip stream for upload has ended.
+::debug::Zip stream for upload has finished.
+ ❯ src/links/issue-25.test.js (6 tests | 1 failed) 1790ms
+   × recognizes the supplied perfect manual arrangement and keeps diagnostics opt-in 12ms
+ ❯ src/links/issue-27.test.js (6 tests | 1 failed) 850ms
+   × recognizes the exact reported arrangement with the closed gaps corrected to equality 11ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/links/issue-25.test.js > recognizes the supplied perfect manual arrangement and keeps diagnostics opt-in
+AssertionError: expected 0.000029999999999999997 to be close to 0.06, received difference is 0.059969999999999996, but expected 5e-9
+ ❯ src/links/issue-25.test.js:33:37
+     31|   const shape = shapeOfStyle(fixture({ turns: '15 -15', gaps: '0.18 0.…
+     32|   // Only the 30 degrees of existing turns contribute; no painted over…
+     33|   expect(overlapCost(links, shape)).toBeCloseTo(30 * 0.002, 8);
+       |                                     ^
+     34|   const debug = vi.spyOn(console, 'debug').mockImplementation(() => {}…
+     35|   try {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  src/links/issue-27.test.js > recognizes the exact reported arrangement with the closed gaps corrected to equality
+AssertionError: expected 0.000029999999999999997 to be close to 0.06, received difference is 0.059969999999999996, but expected 5e-9
+ ❯ src/links/issue-27.test.js:49:37
+     47| it('recognizes the exact reported arrangement with the closed gaps cor…
+     48|   const shape = setup({ gaps: '0.08 0.08 ~ ~,0.18 0.18 ~ ~' });
+     49|   expect(overlapCost(links, shape)).toBeCloseTo(30 * 0.002, 8);
+       |                                     ^
+     50|   const result = solveCollisions(links, shape, { adjustGaps: true });
+     51|   expect(result.turns[0]).toEqual([0, 0]);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  src/links/mechanics-19.test.js > geometry and control audit (issue #19) > round trips every geometry control and exercises its visible range
+TypeError: Cannot read properties of undefined (reading 'map')
+ ❯ src/links/mechanics-19.test.js:28:29
+     26|           : field.type === 'toggle'
+     27|             ? [true, false]
+     28|             : field.type === 'text'
+       |                             ^
+     29|               ? ['', '2 1', '1 3 2 4']
+     30|               : field.options.map((o) => o.value);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  3 failed | 64 passed (67)
+      Tests  3 failed | 897 passed (900)
+   Start at  23:07:20
+   Duration  272.28s (tests 58%, environment 30%, setup 6%, import 3%, transform 2%, worker 1%)
+
+Environment  jsdom was created 67 times · 75.93s total, 30% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+

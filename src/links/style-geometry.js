@@ -59,6 +59,18 @@ export const GEOMETRY_SECTIONS = [
         ],
         { en: 'Placement', ru: 'Размещение' },
       ),
+      {
+        key: 'order',
+        type: 'text',
+        d: '',
+        max: 2000,
+        label: { en: 'Circular order of links', ru: 'Порядок связей по кругу' },
+        when: (s) => ['auto', 'circle'].includes(s.placement),
+        hint: {
+          en: 'Empty uses link order. Enter all link IDs to choose another order (for example, 1 3 2 4). Automatic spacing always preserves this placement.',
+          ru: 'Пустое поле сохраняет порядок связей. Для другого порядка укажите все номера (например, 1 3 2 4). Автозазоры всегда сохраняют размещение.',
+        },
+      },
       field('layoutAspect', 0.3, 3, 0.05, 'Horizontal layout scale', 'Масштаб размещения по горизонтали'),
       field('columns', 0, 30, 1, 'Grid columns (0 = automatic)', 'Столбцы сетки (0 = авто)', {
         when: (s) => s.placement === 'square',

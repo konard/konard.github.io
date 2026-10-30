@@ -1,0 +1,10 @@
+
+> konard.github.io@0.1.0 test:network:issue21
+> node experiments/issue-21-browser.mjs
+
+chromium: both supplied URLs: explicit settings, controls, share and reload
+chromium: five representative default editor configurations
+chromium: gallery hover and navigation preserve dark/light link colors
+chromium: theory example navigation also preserves light-theme colors
+chromium: exported SVG equals preview
+chromium: mobile preview fits viewport

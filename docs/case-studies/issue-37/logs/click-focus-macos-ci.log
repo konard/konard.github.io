@@ -1,0 +1,38 @@
+Run: https://github.com/konard/konard.github.io/actions/runs/40975473183
+Head: 80318ec7363a3e52ff849ac15e01cd450223601a
+Full log excerpt, original line numbers:
+11080: network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-29T23:53:34.0055220Z ^[[36;1mnpm run test:network:issue37^[[0m
+11081: network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-29T23:53:34.0143140Z shell: /bin/bash -e {0}
+11082: network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-29T23:53:34.0144160Z env:
+11083: network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-29T23:53:34.0144640Z   GIT_CONFIG_COUNT: 1
+11084: network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-29T23:53:34.0145230Z   GIT_CONFIG_KEY_0: init.defaultBranch
+11085: network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-29T23:53:34.0146110Z   GIT_CONFIG_VALUE_0: main
+11086: network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-29T23:53:34.0146710Z   ENGINE: webkit
+11087: network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-29T23:53:34.0147300Z   CAPTURE_DIR: browser-results/screenshots/issue37
+11088: network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-29T23:53:34.0148090Z   RESULT_DIR: browser-results/data/issue37
+11089: network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-29T23:53:34.0148730Z ##[endgroup]
+11090: network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-29T23:53:34.3309110Z 
+11091: network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-29T23:53:34.3310530Z > konard.github.io@0.1.0 test:network:issue37
+11092: network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-29T23:53:34.3311500Z > node experiments/issue-37-browser.mjs
+11093: network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-29T23:53:34.3311930Z 
+11094: network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-29T23:53:37.5866540Z node:internal/modules/run_main:107
+11095: network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-29T23:53:37.6550180Z     triggerUncaughtException(
+11096: network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-29T23:53:37.6601510Z     ^
+11097: network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-29T23:53:37.6648790Z 
+11098: network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-29T23:53:37.6677200Z AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+11099: network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-29T23:53:37.6725030Z 
+11100: network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-29T23:53:37.6737410Z   assert(await input.evaluate((el) => document.activeElement === el))
+11101: network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-29T23:53:37.6759370Z 
+11102: network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-29T23:53:37.6823840Z     at file:///Users/runner/work/konard.github.io/konard.github.io/experiments/issue-37-browser.mjs:53:7
+11103: network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-29T23:53:37.6847810Z     at runNextTicks (node:internal/process/task_queues:65:5)
+11104: network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-29T23:53:37.6885980Z     at process.processImmediate (node:internal/timers:502:9) {
+11105: network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-29T23:53:37.6902210Z   generatedMessage: true,
+11106: network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-29T23:53:37.7008070Z   code: 'ERR_ASSERTION',
+11107: network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-29T23:53:37.7263450Z   actual: false,
+11108: network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-29T23:53:37.7295780Z   expected: true,
+11109: network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-29T23:53:37.7297370Z   operator: '==',
+11110: network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-29T23:53:37.7298940Z   diff: 'simple'
+11111: network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-29T23:53:37.7300720Z }
+11112: network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-29T23:53:37.7302110Z 
+11113: network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-29T23:53:37.7303490Z Node.js v24.19.0
+11114: network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-29T23:53:37.7327590Z ##[error]Process completed with exit code 1.

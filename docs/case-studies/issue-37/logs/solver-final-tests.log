@@ -1,0 +1,12 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793313918910
+
+
+ Test Files  2 passed (2)
+      Tests  30 passed (30)
+   Start at  23:28:27
+   Duration  16.70s (tests 80%, environment 14%, setup 3%, transform 1%, import 1%)
+
+    Isolate  2 workers spawned · ~1.37s startup each (spawn + environment, per file)
+             at least ~1.37s faster with isolate: false — reuses workers across files instead of one per file
+

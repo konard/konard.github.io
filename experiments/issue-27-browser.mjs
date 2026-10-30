@@ -1,5 +1,6 @@
 // Real-browser geometry, keyboard and old bookmark regressions; finite fixtures.
 /* global document, Image */
+import { waitForNetwork } from './wait-for-network.mjs';
 import assert from 'node:assert/strict';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
@@ -26,7 +27,7 @@ try {
   });
   const go = async (query = '') => {
     await page.goto(`http://localhost:4187/network/?code=1111&lang=en&rotation=-90&${query}`);
-    await page.locator('.network__preview svg').waitFor();
+    await waitForNetwork(page);
   };
   const shot = async (name, element = page.locator('.network__preview')) =>
     element.screenshot({ path: join(output, `${engine}-after-${name}.png`) });

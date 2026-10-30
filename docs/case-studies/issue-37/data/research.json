@@ -1,0 +1,43 @@
+{
+  "accessed": "2026-10-29",
+  "sources": [
+    {
+      "url": "https://www.w3.org/WAI/ARIA/apg/patterns/slider/",
+      "fact": "Slider keyboard behavior includes arrow increments and decrements, with Home/End boundaries. Focus must reach the control before these keys are useful.",
+      "decision": "Retain native range inputs and numericKey; focus on pointer down and completed click without cancelling dragging."
+    },
+    {
+      "url": "https://bugs.webkit.org/show_bug.cgi?id=299087",
+      "fact": "Report dated 2025-09-18 describes range clicks lacking focus in Safari 18.6, unlike Chrome and Firefox, and an explicit focus workaround.",
+      "decision": "Do not infer that Linux WebKit reproduces macOS focus policy. Add a browser focus-policy shim regression plus native macOS WebKit CI."
+    },
+    {
+      "url": "https://eclipse.dev/elk/reference/algorithms/org-eclipse-elk-layered.html",
+      "fact": "ELK Layered supports self loops, multi edges and ports, and reorders layered nodes to minimize crossings.",
+      "decision": "The latest owner feedback prohibits automatic ordering changes. Retain existing continuous doublet geometry and fixed positions instead of introducing a layered router."
+    },
+    {
+      "url": "https://www.graphviz.org/docs/attrs/overlap/",
+      "fact": "Graphviz overlap controls removal of overlapping nodes, including Prism-based handling.",
+      "decision": "Moving nodes to remove overlaps violates fixed placement, and does not score own-shaft collisions. Do not use automatically."
+    },
+    {
+      "url": "https://www.graphviz.org/docs/layouts/neato/",
+      "fact": "Neato uses spring-model node placement for undirected graphs.",
+      "decision": "Keep existing d3-force as an explicitly selected placement; never substitute force layout to clear automatic spacing residuals."
+    },
+    {
+      "url": "https://www.graphviz.org/docs/attrs/pin/",
+      "accessed": "2026-10-30",
+      "fact": "Pinned neato/fdp input positions can still be affected by overlap removal and aspect-ratio processing; translation can also be disabled separately.",
+      "decision": "Freeze the renderer fitting transform as well as node arrangement; compare actual image coordinates in regressions."
+    },
+    {
+      "url": "https://docs.yworks.com/yfiles-html/dguide/layout-incremental_layout/",
+      "accessed": "2026-10-30",
+      "fact": "Incremental layout considers input coordinates and fixed elements to preserve the mental map when extending an existing drawing.",
+      "decision": "Treat existing link middles and colors as hard invariants and adjust only local reference geometry."
+    }
+  ],
+  "revisited": "2026-10-30"
+}

@@ -1,0 +1,13 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793313918910
+
+
+ Test Files  3 passed (3)
+      Tests  21 passed (21)
+   Start at  23:43:12
+   Duration  11.86s (tests 61%, environment 26%, setup 6%, transform 4%, import 3%)
+
+Environment  jsdom was created 3 times · 2.92s total, 26% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+

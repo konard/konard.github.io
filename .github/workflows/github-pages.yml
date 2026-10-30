@@ -283,6 +283,13 @@ jobs:
           CAPTURE_DIR: browser-results/screenshots/issue35
           RESULT_DIR: browser-results/data/issue35
 
+      - name: Verify self crossings, 20 random networks, slider focus and worker responsiveness
+        if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
+        run: npm run test:network:issue37
+        env:
+          CAPTURE_DIR: browser-results/screenshots/issue37
+          RESULT_DIR: browser-results/data/issue37
+
       - name: Preserve browser evidence with bounded transport retries
         if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
         uses: ./.github/actions/upload-artifact
