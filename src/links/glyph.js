@@ -255,6 +255,34 @@ export function layoutCurves(links, shape = {}) {
   return links.map((_, i) => linkCurve(links, i, places, o));
 }
 
+/**
+ * Prefer a straight reference when its chord already follows the middle's
+ * tangent. Return ordinary editable turns; leave gaps and placement alone.
+ * Explicit angles/bends and the gallery's legacy geometry remain deliberate.
+ */
+export function defaultTurns(links, shape = {}) {
+  const o = shapeOf(shape);
+  const zero = links.map(() => [0, 0]);
+  if (o.bendMode !== 'curve' || o.angles !== 'fixed' || o.bulge !== 0) return zero;
+  const places = layout(links.length, o, links);
+  return links.map((pair, i) => {
+    const curve = linkCurve(links, i, places, { ...o, turns: zero });
+    return pair.map((ref, end) => {
+      const key = end ? 'targetAngle' : 'sourceAngle';
+      if (!ref || ref === i + 1 || o[key] !== SHAPE[key]) return 0;
+      // Reciprocal references need distinct routes: straightening them puts
+      // two shafts on the same chord and can also fold their free extensions.
+      if (links[ref - 1].includes(i + 1)) return 0;
+      const chord = unit(end ? sub(places[ref - 1].at, places[i].at) : sub(places[i].at, places[ref - 1].at));
+      // Lenses and references approaching from different directions need their
+      // existing curves. A closed half itself is never changed.
+      if (dot(chord, curve.middle.dir) < 1 - 1e-10) return 0;
+      const dir = curve[end ? 'end' : 'start'].dir;
+      return Math.round(Math.atan2(dir[0] * chord[1] - dir[1] * chord[0], dot(dir, chord)) / RAD) || 0;
+    });
+  });
+}
+
 /** Shared fitting transform, also used to score middle cuts in image units. */
 export function curveTransform(curves, shape = {}) {
   const o = shapeOf(shape);

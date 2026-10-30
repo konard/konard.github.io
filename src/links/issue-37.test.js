@@ -67,7 +67,7 @@ const FIXED_RESIDUAL = {
 };
 it.each(randomNetworks())('locally spaces discovered random network %s without changing its arrangement', (code) => {
   const links = decode(code.match(/../g).join(' '));
-  const shape = shapeOfStyle(normalizeStyle(), links.length);
+  const shape = shapeOfStyle(normalizeStyle(), links);
   const snapshot = JSON.stringify(shape);
   const result = solveCollisions(links, shape, { adjustGaps: true });
   expect(result.after - turningCost(result.turns)).toBeLessThanOrEqual(FIXED_RESIDUAL[code] ?? 1e-8);
@@ -76,7 +76,7 @@ it.each(randomNetworks())('locally spaces discovered random network %s without c
   const applied = normalizeStyle({
     ...withSpacing(normalizeStyle(), result),
   });
-  const fitted = shapeOfStyle(applied, links.length);
+  const fitted = shapeOfStyle(applied, links);
   expect(overlapCost(links, fitted)).toBeCloseTo(result.after, 8);
   expect(glyphCurves(links, fitted).map((curve) => shaftCrossings(paintedCurve(curve, fitted)))).toEqual(
     links.map(() => 0),

@@ -121,7 +121,7 @@ export function networkSvg(
   const colors = linkColors(style, n);
   const parts = glyphParts(
     links,
-    shapeOfStyle({ ...style, frame: extraFrame ?? style.frame }, n, extraTurns, extraGaps),
+    shapeOfStyle({ ...style, frame: extraFrame ?? style.frame }, links, extraTurns, extraGaps),
   );
   const dash = dashArray(style.dash, style.strokeWidth, style.linecap);
   const lines = parts
