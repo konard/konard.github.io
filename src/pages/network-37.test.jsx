@@ -16,6 +16,14 @@ it.each([
   const slider = screen.getByRole('slider', { name });
   fireEvent.pointerDown(slider);
   expect(slider).toHaveFocus();
+  // macOS WebKit can clear the explicit pointer focus during its native
+  // mouse action. A completed click must restore it before the next key.
+  slider.blur();
+  fireEvent.mouseDown(slider);
+  fireEvent.pointerUp(slider);
+  fireEvent.mouseUp(slider);
+  fireEvent.click(slider);
+  expect(slider).toHaveFocus();
   const before = Number(slider.value);
   fireEvent.keyDown(document.activeElement, { key: 'ArrowRight' });
   expect(Number(slider.value)).toBeCloseTo(before + Number(slider.step), 8);
@@ -26,6 +34,9 @@ it('focuses site settings sliders on pointer interaction as well', () => {
   render(<SettingsPage />);
   const slider = screen.getAllByRole('slider')[0];
   fireEvent.pointerDown(slider);
+  expect(slider).toHaveFocus();
+  slider.blur();
+  fireEvent.click(slider);
   expect(slider).toHaveFocus();
 });
 

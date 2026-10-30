@@ -48,6 +48,7 @@ function Control({ field, value, onChange }) {
         step={field.step}
         value={value}
         onPointerDown={focusSlider}
+        onClick={focusSlider}
         onKeyDown={(event) => numericKey(event, onChange)}
         onChange={(event) => onChange(Number(event.target.value))}
       />

@@ -45,12 +45,18 @@ try {
       if (suppressNativeFocus)
         await page.evaluate(() =>
           document.addEventListener('mousedown', (event) => {
-            if (event.target.matches('input[type="range"]')) event.preventDefault();
+            if (event.target.matches('input[type="range"]')) {
+              event.preventDefault();
+              event.target.blur();
+            }
           }),
         );
       const input = page.locator(selector).first();
       await input.click();
-      assert(await input.evaluate((el) => document.activeElement === el));
+      assert(
+        await input.evaluate((el) => document.activeElement === el),
+        `${engine}: ${url} ${selector}, suppressNativeFocus=${suppressNativeFocus}: click lost focus`,
+      );
       const before = Number(await input.inputValue());
       const step = Number(await input.getAttribute('step'));
       await page.keyboard.press('ArrowRight');

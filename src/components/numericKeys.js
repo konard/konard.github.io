@@ -3,7 +3,8 @@
  */
 export function focusSlider(event) {
   // Safari's pointer-focus policy depends on platform settings. Establish
-  // focus explicitly without cancelling native thumb dragging or scrolling.
+  // focus on pointer down and again on click: its native mouse action may
+  // clear early focus. Neither handler cancels thumb dragging or scrolling.
   event.currentTarget.focus({ preventScroll: true });
 }
 

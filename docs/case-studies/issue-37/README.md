@@ -37,7 +37,13 @@ manual controls.
    and real-browser tests use mouse click followed by `page.keyboard.press()`.
    Linux WebKit's ordinary click already focused in the baseline probe; that is
    not evidence about macOS Safari. A focus-policy shim suppresses only the
-   native mouse focus default to reproduce the missing app guarantee.
+   native mouse focus default to reproduce the missing app guarantee. Native
+   macOS WebKit CI then exposed a second phase: its mouse action clears focus
+   established on pointer down. Reasserting focus on click fixes that phase
+   without cancelling native dragging. The strengthened shim also blurs between
+   pointer down and click; three unit regressions fail before this correction
+   (`logs/click-focus-before.log`) and pass after it. The actual macOS failure
+   and original log line numbers are in `logs/click-focus-macos-ci.log`.
 5. Wider searching can occupy the main thread. The production editor now runs
    it in a cancellable module worker. Changing geometry terminates obsolete
    work, and keyed results cannot replace a newer drawing. Pending status and
@@ -161,10 +167,10 @@ passing browser suites. Default styling remains in place. The full regression
 uses ordinary actionability-checked clicks and runs WebKit on macOS in CI, as do
 the existing browser suites.
 
-Local verification passed the full 903-test unit suite. After adding the compact
-spread-bound regression, a further focused run passed all 30 solver/worker tests.
-The final concurrent-style fix passed all 21 page/worker tests, including its
-new failing-then-passing regression. All 12 Python attribution tests, 120 CV PDF
+Local verification passed the full 905-test unit suite, including the compact
+spread-bound and concurrent-style regressions. The macOS click correction also
+passed all six focused page/keyboard tests (`logs/click-focus-after.log`).
+All 12 Python attribution tests, 120 CV PDF
 checks and the activity-indicator/mobile browser suite also passed locally.
 Lint, formatting, file limits, secret scanning, dependency audit, documentation
 validation and the production build passed. The complete new browser suite passed

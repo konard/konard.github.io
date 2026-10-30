@@ -1,0 +1,16 @@
+
+> konard.github.io@0.1.0 test:ci
+> vitest run src/pages/network-37.test.jsx src/components/numericKeys.test.js
+
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793313918910
+
+
+ Test Files  2 passed (2)
+      Tests  6 passed (6)
+   Start at  23:56:18
+   Duration  5.58s (tests 46%, environment 36%, setup 8%, transform 6%, import 3%, worker 1%)
+
+    Isolate  2 workers spawned · ~1.11s startup each (spawn + environment, per file)
+             at least ~1.11s faster with isolate: false — reuses workers across files instead of one per file
+

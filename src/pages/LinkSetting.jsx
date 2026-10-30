@@ -36,6 +36,7 @@ export default function LinkSetting({
           step={step}
           value={current}
           onPointerDown={focusSlider}
+          onClick={focusSlider}
           aria-label={name}
           aria-valuetext={`${current}${unit}${value == null ? t({ en: ' (inherited)', ru: ' (общее значение)' }) : ''}`}
           onChange={(event) => onChange(Number(event.target.value))}
