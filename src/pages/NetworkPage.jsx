@@ -60,7 +60,7 @@ export default function NetworkPage() {
   const setStyle = (next) => {
     // Manual geometry edits start a new drawing frame. Color/background edits
     // keep the applied spacing and its pinned positions.
-    const changed = [...Object.keys(shapeOfStyle(style, links.length)), 'gaps'].some(
+    const changed = [...Object.keys(shapeOfStyle(style, links)), 'gaps'].some(
       (key) => !['frame', 'strokeWidth', 'linecap', 'linkGaps'].includes(key) && next[key] !== style[key],
     );
     setStyleState(normalizeStyle(changed ? { ...next, frame: '' } : next));
@@ -76,7 +76,7 @@ export default function NetworkPage() {
     target?.scrollIntoView?.();
   }, []);
 
-  const shape = shapeOfStyle(style, n);
+  const shape = shapeOfStyle(style, links);
   const solverOptions = {
     debug: style.solveDebug,
     range: style.solveRange,
@@ -102,7 +102,7 @@ export default function NetworkPage() {
     [links, style, notation, solved],
   );
   const colors = linkColors(style, n);
-  const turns = linkTurns(style, n);
+  const turns = linkTurns(style, links);
   const gaps = linkGaps(style, n);
 
   const changeLinks = (next) => {
@@ -112,7 +112,7 @@ export default function NetworkPage() {
   const remove = (k) => {
     const keep = (list) => list.filter((_, i) => i !== k - 1);
     setLinks(removeLink(links, k));
-    let next = withTurns(style, keep(linkTurns(style, n)));
+    let next = style.turns ? withTurns(style, keep(turns)) : style;
     next = withGaps(next, keep(gaps));
     if (style.palette === 'custom') next = { ...next, colors: keep(linkColors(style, n)).join(',') };
     setStyle({ ...next, order: '', frame: '' });
@@ -204,6 +204,7 @@ export default function NetworkPage() {
                 links={links}
                 colors={colors}
                 turns={turns}
+                turnDefaults={linkTurns({ ...style, turns: '' }, links)}
                 gaps={gaps}
                 style={style}
                 onGap={(i, k, value) =>

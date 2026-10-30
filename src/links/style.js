@@ -10,7 +10,7 @@
 // values that differ from the defaults in the query string, so a shared link
 // opens exactly the picture that was shared.
 import { color, option, range, select, toggle } from '../settings/fields';
-import { COLORS, SHAPE, normalizeFrame } from './glyph';
+import { COLORS, SHAPE, defaultTurns, normalizeFrame } from './glyph';
 import { GEOMETRY_SECTIONS } from './style-geometry';
 import { linkGaps, normalizeGaps, withGaps } from './gaps';
 
@@ -351,6 +351,7 @@ function normalizeList(key, value) {
   const items = String(value ?? '').split(',');
   if (key === 'colors')
     return items.every((c) => HEX.test(c.trim())) ? items.map((c) => c.trim().toLowerCase()).join(',') : '';
+  if (!String(value ?? '').trim()) return '';
   const turns = items.map((item) =>
     item
       .trim()
@@ -358,8 +359,9 @@ function normalizeList(key, value) {
       .slice(0, 2)
       .map((a) => clamp(Math.round(Number(a)) || 0, -180, 180)),
   );
-  // Links after the last turned one need no entry: they are not turned.
-  while (turns.length && turns[turns.length - 1].every((a) => a === 0)) turns.pop();
+  // A nonempty list overrides automatic defaults for the whole drawing.
+  // Keep one zero row so explicitly unturned links survive sharing and Apply.
+  while (turns.length > 1 && turns[turns.length - 1].every((a) => a === 0)) turns.pop();
   return turns.map((pair) => `${pair[0]} ${pair[1] ?? 0}`).join(',');
 }
 
@@ -401,11 +403,13 @@ export function styleToParams(style) {
   const params = new URLSearchParams();
   STYLE_FIELDS.forEach(({ key }) => {
     let value = String(style[key]);
-    if (key === 'turns')
+    if (key === 'turns') {
       value = normalizeList(key, value)
         .split(',')
         .map((row) => (row === '0 0' ? '' : row))
         .join(',');
+      if (!value && style.turns) value = '0 0';
+    }
     if (key === 'gaps')
       value = normalizeGaps(value)
         .split(',')
@@ -436,8 +440,10 @@ export function linkColors(style, n) {
   });
 }
 
-/** The [source, target] turns of each of `n` links, in degrees. */
-export function linkTurns(style, n) {
+/** Turns in degrees. Pass links for topology-aware defaults; a count retains zero defaults. */
+export function linkTurns(style, linksOrCount) {
+  const n = Array.isArray(linksOrCount) ? linksOrCount.length : linksOrCount;
+  if (!style.turns && Array.isArray(linksOrCount)) return defaultTurns(linksOrCount, style);
   const turns = style.turns ? style.turns.split(',').map((pair) => pair.split(' ').map(Number)) : [];
   return Array.from({ length: n }, (_, i) => turns[i] || [0, 0]);
 }
@@ -462,8 +468,9 @@ export function withColor(style, n, i, value) {
 }
 
 /** The shape options of glyph.js taken from a style. */
-export function shapeOfStyle(style, n, extraTurns = null, extraGaps = null) {
-  const turns = linkTurns(style, n).map((pair, i) =>
+export function shapeOfStyle(style, linksOrCount, extraTurns = null, extraGaps = null) {
+  const n = Array.isArray(linksOrCount) ? linksOrCount.length : linksOrCount;
+  const turns = linkTurns(style, linksOrCount).map((pair, i) =>
     extraTurns ? [pair[0] + extraTurns[i][0], pair[1] + extraTurns[i][1]] : pair,
   );
   return Object.fromEntries([

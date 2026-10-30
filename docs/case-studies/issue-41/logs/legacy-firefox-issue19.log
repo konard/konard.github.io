@@ -1,0 +1,12 @@
+
+> konard.github.io@0.1.0 test:network:issue19
+> node experiments/issue-19-browser.mjs
+
+firefox: self-loop leaving/entering angles, curvature and bend
+firefox: 120-event drag, repeated releases, history SecurityError and retry
+firefox: independent marker offsets and ring cuts survive URL round trip
+firefox: 17 links, seven distinct placements and large-notation reload
+firefox: both complete issue example URLs
+firefox: actual PNG clipboard write completed from a trusted click
+firefox: PNG/JPEG downloads and WebP download or explicit PNG fallback
+firefox: touch gesture debounce, 100-link mobile editor and no horizontal overflow
