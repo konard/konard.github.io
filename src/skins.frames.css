@@ -66,7 +66,7 @@
     right 0 top calc(var(--fx-tr-y) + var(--fx-tr-gap)),
     left calc(var(--fx-bl-x) + var(--fx-bl-gap)) bottom 0,
     left 0 top calc(var(--fx-tl-y) + var(--fx-tl-gap));
-  --fx-bar-pos: left calc(var(--fx-tl-x) + var(--fx-tl-gap) + var(--fx-tl-arm) + 0.4rem) top 0;
+  --fx-bar-start: calc(var(--fx-tl-x) + var(--fx-tl-gap) + var(--fx-tl-arm));
 }
 
 :root {

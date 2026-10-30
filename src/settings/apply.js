@@ -8,6 +8,10 @@
  * the default for everything else.
  */
 export function normalize(rules, stored) {
+  /* Migration also runs before first paint and when importing old shared looks. */
+  if (stored && stored['future.surface'] === 'transparent') {
+    stored = Object.assign({}, stored, { 'future.surface': 'solid', 'future.opacity': 0 });
+  }
   var out = {};
   for (var key in rules) {
     var rule = rules[key];
@@ -40,4 +44,50 @@ export function applySettings(root, rules, settings) {
     if (typeof value === 'number' || rules[key].c) root.style.setProperty('--' + name, value + (rules[key].u || ''));
     else root.setAttribute('data-' + name, String(value));
   }
+  /* Resolve skin inheritance once; changing skins still updates CSS references. */
+  ['panel', 'control'].forEach(function (part) {
+    ['Tl', 'Tr', 'Br', 'Bl'].forEach(function (corner) {
+      var value = settings['ui.' + part + corner];
+      var fallback = part === 'panel' ? 'var(--radius)' : 'var(--ui-skin-control-radius)';
+      root.style.setProperty(
+        '--ui-' + part + '-' + corner.toLowerCase() + '-resolved',
+        value >= 0 ? value + 'px' : fallback,
+      );
+    });
+  });
+  ['accent', 'accent2'].forEach(function (name) {
+    var hex = settings['ui.' + name];
+    if (typeof hex === 'string')
+      root.style.setProperty(
+        '--ui-' + name + '-rgb',
+        [1, 3, 5]
+          .map(function (start) {
+            return parseInt(hex.slice(start, start + 2), 16);
+          })
+          .join(' '),
+      );
+  });
+  /* A small static noise tile, regenerated only on settings changes. The zero
+     path has no image, and every optical layer follows material opacity. */
+  var grain = settings['liquid.noise'] * settings['liquid.opacity'];
+  var noise =
+    '<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="' +
+    grain +
+    '"/></feComponentTransfer></filter><path filter="url(#n)" d="M0 0h128v128H0z"/></svg>';
+  root.style.setProperty(
+    '--liquid-grain-image',
+    grain > 0 ? 'url("data:image/svg+xml,' + encodeURIComponent(noise) + '")' : 'none',
+  );
+  root.setAttribute(
+    'data-surface-invisible',
+    String(
+      settings[
+        settings['skin.name'] === 'glass'
+          ? 'glass.level'
+          : settings['skin.name'] === 'liquid'
+            ? 'liquid.opacity'
+            : 'future.opacity'
+      ] === 0,
+    ),
+  );
 }

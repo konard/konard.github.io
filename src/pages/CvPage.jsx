@@ -1,3 +1,4 @@
+import Select from '../components/Select';
 import { useEffect, useMemo } from 'react';
 import Layout from '../components/Layout';
 import CvDocument from '../cv/CvDocument';
@@ -44,23 +45,23 @@ export default function CvPage() {
         <form className="cv-toolbar" onSubmit={(event) => event.preventDefault()}>
           <label>
             {t(TEXT.position)}
-            <select value={role} onChange={(event) => setRole(event.target.value)}>
+            <Select value={role} onChange={(event) => setRole(event.target.value)}>
               {positions.map((p) => (
                 <option key={p.id} value={p.id}>
                   {t(p.name)}
                 </option>
               ))}
-            </select>
+            </Select>
           </label>
           <label>
             {t(TEXT.style)}
-            <select value={style} onChange={(event) => setStyle(event.target.value)}>
+            <Select value={style} onChange={(event) => setStyle(event.target.value)}>
               {STYLES.map((s) => (
                 <option key={s} value={s}>
                   {t(STYLE_NAMES[s])}
                 </option>
               ))}
-            </select>
+            </Select>
           </label>
           <a className="button button--primary" href={pdfPath({ role, style, lang })} download>
             {t(TEXT.pdf)}

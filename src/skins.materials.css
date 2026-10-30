@@ -1,0 +1,354 @@
+/* Uniform surface opacity, including texture layers. The zero path avoids
+   invisible gradients and compositor/filter work while retaining frame lines. */
+@media screen {
+  :root[data-skin-name='liquid'] .app :is(.network__panel, .link-card, .ui-preview__panel, .preset) {
+    box-shadow: var(--lq-shadow);
+    backdrop-filter: var(--lq-filter);
+  }
+  :root[data-skin-name='futuristic'] .app :is(.network__panel, .link-card, .ui-preview__panel, .preset) {
+    background-image: var(--fx-bar-img), var(--fx-frame-img), var(--fx-surface-img);
+    background-size:
+      var(--fx-bar-size),
+      var(--fx-frame-size),
+      100% 100%,
+      100% 100%;
+    background-position:
+      var(--fx-bar-pos),
+      var(--fx-frame-pos),
+      0 0,
+      0 0;
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    border-color: var(--fx-edge);
+    border-width: var(--fx-border-w, var(--future-border));
+    backdrop-filter: blur(calc(var(--future-blur) * var(--fx-blur-scale)));
+  }
+  :root[data-ui-border-style='solid'] {
+    --ui-border-style: solid;
+  }
+  :root[data-ui-border-style='dashed'] {
+    --ui-border-style: dashed;
+  }
+  :root[data-ui-border-style='dotted'] {
+    --ui-border-style: dotted;
+  }
+  :root[data-ui-border-style='double'] {
+    --ui-border-style: double;
+  }
+  :root[data-skin-name='glass']
+    .app
+    :is(
+      .card,
+      .chart,
+      .registry,
+      .project,
+      .skills__group,
+      .org,
+      .step,
+      .stat,
+      .position,
+      .ps-note,
+      .social,
+      .cloud,
+      .habr-card,
+      .page-card,
+      .psd,
+      .theory__formulas li,
+      .theory__hero,
+      .theory__network,
+      .version,
+      .filters,
+      .page-stats li,
+      .post,
+      .repo,
+      .field-card,
+      .stack__layer,
+      .symbols__grid li,
+      .settings__group,
+      .network__panel,
+      .link-card,
+      .ui-preview__panel,
+      .preset
+    ) {
+    background: rgb(var(--panel-rgb) / var(--glass-level));
+  }
+  :root[data-skin-name='liquid']
+    .app
+    :is(
+      .card,
+      .chart,
+      .registry,
+      .project,
+      .skills__group,
+      .org,
+      .step,
+      .stat,
+      .position,
+      .ps-note,
+      .social,
+      .cloud,
+      .habr-card,
+      .page-card,
+      .psd,
+      .theory__formulas li,
+      .theory__hero,
+      .theory__network,
+      .version,
+      .filters,
+      .page-stats li,
+      .post,
+      .repo,
+      .field-card,
+      .stack__layer,
+      .symbols__grid li,
+      .settings__group,
+      .network__panel,
+      .link-card,
+      .ui-preview__panel,
+      .preset
+    ) {
+    border-width: var(--liquid-border-width);
+    border-color: color-mix(
+      in srgb,
+      rgb(var(--lq-edge-rgb) / var(--liquid-edge)) calc(100% - var(--liquid-border-light) * 100%),
+      rgb(var(--lq-light-rgb) / var(--liquid-edge))
+    );
+  }
+  :root[data-skin-name='liquid'] {
+    --material-grain: var(--liquid-grain-image, none);
+  }
+  :root[data-skin-name='liquid']
+    .app
+    :is(
+      .card,
+      .chart,
+      .registry,
+      .project,
+      .skills__group,
+      .org,
+      .step,
+      .stat,
+      .position,
+      .ps-note,
+      .social,
+      .cloud,
+      .habr-card,
+      .page-card,
+      .psd,
+      .theory__formulas li,
+      .theory__hero,
+      .theory__network,
+      .version,
+      .filters,
+      .page-stats li,
+      .post,
+      .repo,
+      .field-card,
+      .stack__layer,
+      .symbols__grid li,
+      .settings__group,
+      .network__panel,
+      .link-card,
+      .ui-preview__panel,
+      .preset
+    ) {
+    background-image: var(--material-grain), var(--lq-glass);
+    background-size:
+      128px 128px,
+      260% 100%,
+      100% 100%,
+      100% 100%;
+    background-position:
+      0 0,
+      var(--lq-sheen-pos),
+      0 0,
+      0 0;
+    background-repeat: repeat, no-repeat, no-repeat, no-repeat;
+  }
+  :root[data-surface-invisible='true']
+    .app
+    :is(
+      .card,
+      .chart,
+      .registry,
+      .project,
+      .skills__group,
+      .org,
+      .step,
+      .stat,
+      .position,
+      .ps-note,
+      .social,
+      .cloud,
+      .habr-card,
+      .page-card,
+      .psd,
+      .theory__formulas li,
+      .theory__hero,
+      .theory__network,
+      .version,
+      .filters,
+      .page-stats li,
+      .post,
+      .repo,
+      .field-card,
+      .stack__layer,
+      .symbols__grid li,
+      .settings__group,
+      .network__panel,
+      .link-card,
+      .ui-preview__panel,
+      .preset,
+      .topbar,
+      .topbar > *
+    ) {
+    background: none;
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  :root[data-skin-name='futuristic'][data-surface-invisible='true']
+    .app
+    :is(
+      .card,
+      .chart,
+      .registry,
+      .project,
+      .skills__group,
+      .org,
+      .step,
+      .stat,
+      .position,
+      .ps-note,
+      .social,
+      .cloud,
+      .habr-card,
+      .page-card,
+      .psd,
+      .theory__formulas li,
+      .theory__hero,
+      .theory__network,
+      .version,
+      .filters,
+      .page-stats li,
+      .post,
+      .repo,
+      .field-card,
+      .stack__layer,
+      .symbols__grid li,
+      .settings__group,
+      .network__panel,
+      .link-card,
+      .ui-preview__panel,
+      .preset
+    ) {
+    /* The frame is decoration, independent of the absent surface. */
+    background-image: var(--fx-bar-img), var(--fx-frame-img);
+    background-size: var(--fx-bar-size), var(--fx-frame-size);
+    background-position: var(--fx-bar-pos), var(--fx-frame-pos);
+    background-repeat: no-repeat;
+  }
+  :root[data-ui-transparency='reduce']
+    .app
+    :is(
+      .card,
+      .chart,
+      .registry,
+      .project,
+      .skills__group,
+      .org,
+      .step,
+      .stat,
+      .position,
+      .ps-note,
+      .social,
+      .cloud,
+      .habr-card,
+      .page-card,
+      .psd,
+      .theory__formulas li,
+      .theory__hero,
+      .theory__network,
+      .version,
+      .filters,
+      .page-stats li,
+      .post,
+      .repo,
+      .field-card,
+      .stack__layer,
+      .symbols__grid li,
+      .settings__group,
+      .network__panel,
+      .link-card,
+      .ui-preview__panel,
+      .preset,
+      .topbar,
+      .topbar > *
+    ) {
+    background: var(--surface);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  @media (prefers-reduced-transparency: reduce) {
+    :root[data-ui-transparency='auto']
+      .app
+      :is(
+        .card,
+        .chart,
+        .registry,
+        .project,
+        .skills__group,
+        .org,
+        .step,
+        .stat,
+        .position,
+        .ps-note,
+        .social,
+        .cloud,
+        .habr-card,
+        .page-card,
+        .psd,
+        .theory__formulas li,
+        .theory__hero,
+        .theory__network,
+        .version,
+        .filters,
+        .page-stats li,
+        .post,
+        .repo,
+        .field-card,
+        .stack__layer,
+        .symbols__grid li,
+        .settings__group,
+        .network__panel,
+        .link-card,
+        .ui-preview__panel,
+        .preset,
+        .topbar,
+        .topbar > *
+      ) {
+      background: var(--surface);
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+  }
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    :root:not([data-surface-invisible='true'])
+      .app
+      :is(
+        .card,
+        .chart,
+        .registry,
+        .project,
+        .post,
+        .repo,
+        .settings__group,
+        .network__panel,
+        .link-card,
+        .ui-preview__panel,
+        .topbar
+      ) {
+      background: var(--surface);
+    }
+  }
+}

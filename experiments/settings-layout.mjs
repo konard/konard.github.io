@@ -1,3 +1,4 @@
+import { chooseSelect } from './support/select.mjs';
 // Measures the layout of /settings/ (issue #15): where every section starts,
 // whether the two columns start at the same height, and which sections move
 // to another column when the skin changes (the "Skin block glitches" of the
@@ -36,7 +37,7 @@ await page.goto(`${base}/settings/`);
 await page.waitForTimeout(1500);
 const result = {};
 for (const skin of ['glass', 'liquid', 'futuristic']) {
-  await page.selectOption('#setting-skin-name', skin);
+  await chooseSelect(page.locator('#setting-skin-name'), skin);
   await page.waitForTimeout(400);
   result[skin] = await measure();
   if (prefix) await page.screenshot({ path: `${prefix}-${skin}.png`, fullPage: false });

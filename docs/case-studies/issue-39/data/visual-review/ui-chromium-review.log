@@ -1,0 +1,6 @@
+
+> konard.github.io@0.1.0 test:ui:issue39
+> node experiments/issue-39-browser.mjs && node experiments/issue-39-visual-review.mjs
+
+Issue 39: chromium controls, corners, opacity, glass, embeds and mobile layouts passed.
+chromium: transparent iframe corners and continuous default frame passed.

@@ -1,0 +1,46 @@
+{
+  "engine": "chromium",
+  "results": [
+    {
+      "theme": "dark",
+      "scheme": "dark",
+      "cornerPixel": [
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "theme": "light",
+      "scheme": "light",
+      "cornerPixel": [
+        249,
+        251,
+        252,
+        255
+      ]
+    },
+    {
+      "geometry": {
+        "corner": 16,
+        "accentThickness": 3,
+        "backgroundOrigin": "padding-box, padding-box, padding-box, padding-box, padding-box, padding-box, padding-box, padding-box, padding-box, padding-box, padding-box",
+        "positions": "36px 0px, 0px 0px, 0px 0px, 100% 0px, 100% 0px, 0px 100%, 0px 100%, 100% 100%, 100% 100%, 0px 0px, 0px 0px",
+        "sizes": "min(80%, 112px) 3px, 16px 2px, 2px 16px, 16px 2px, 2px 16px, 16px 2px, 2px 16px, 16px 2px, 2px 16px, 100% 100%, 100% 100%",
+        "border": "1px",
+        "edge": "rgba(126, 252, 246, 0.22)"
+      },
+      "accentX": 36,
+      "frameThickness": 2
+    }
+  ],
+  "failures": [
+    "dark: iframe must preserve the provider's transparent canvas",
+    "Dark iframe corner must not paint white",
+    "light: iframe must preserve the provider's transparent canvas",
+    "Default accent must join the corner stroke without a gap",
+    "Default accent and corner stroke must have equal thickness",
+    "Frame layers must share the border coordinates"
+  ]
+}

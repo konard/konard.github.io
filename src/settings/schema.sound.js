@@ -119,7 +119,7 @@ export const SOUND_SECTION = {
   },
   tabs: SOUND_TABS.map(([id, en, ru]) => ({ id: `sound-${id}`, label: { en, ru } })),
   fields: [
-    toggle('sound.on', false, { en: 'Sounds of the interface', ru: 'Звуки интерфейса' }, { css: false }),
+    toggle('sound.on', true, { en: 'Sounds of the interface', ru: 'Звуки интерфейса' }, { css: false }),
     range('sound.volume', 1, 0, 2, 0.05, { en: 'Volume', ru: 'Громкость' }, { ...sound, unit: '%' }),
     select(
       'sound.mode',

@@ -14,7 +14,7 @@ const ISSUE_15 = {
   'nebula.hue': 25,
   'nebula.stars': 1.2,
   'nebula.starBrightness': 0.8,
-  'nebula.twinkle': 0.3,
+  'nebula.twinkle': 1.9,
   'nebula.vignette': 0.3,
   'grid.size': 48,
   'grid.period': 109,
@@ -48,7 +48,7 @@ describe('settings schema (issue #13)', () => {
     );
   });
 
-  it('uses the settings preferred in issue #15 as the defaults', () => {
+  it('keeps issue #15 defaults with the twinkle override requested in issue #39', () => {
     expect(DEFAULTS).toMatchObject(ISSUE_15);
     expect(changesOf(normalize(RULES, ISSUE_15))).toEqual({});
   });

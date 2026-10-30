@@ -21,7 +21,13 @@ import {
 import { DEFAULTS, FIELDS } from './schema';
 import { getSettings, openSharedLook, setSettings } from './store';
 
-const comfort = { 'motion.mode': 'off', 'sound.on': true, 'sound.volume': 0.4, 'theory.notation': 'R' };
+const comfort = {
+  'motion.mode': 'off',
+  'sound.on': true,
+  'sound.volume': 0.4,
+  'theory.notation': 'R',
+  'ui.transparency': 'reduce',
+};
 
 /** A repeatable random sequence (mulberry32). */
 const seeded = (seed) => () => {
@@ -67,7 +73,7 @@ describe('applying a look', () => {
     const current = { ...DEFAULTS, ...comfort, 'rain.step': 300, 'grid.size': 96 };
     const next = applyLook({ 'skin.name': 'liquid', 'motion.mode': 'on', 'sound.on': false }, current);
     expect(next).toEqual({ ...DEFAULTS, ...comfort, 'skin.name': 'liquid' });
-    expect(COMFORT).toEqual(['motion.mode', 'sound.on', 'sound.volume', 'theory.notation']);
+    expect(COMFORT).toEqual(['motion.mode', 'sound.on', 'sound.volume', 'theory.notation', 'ui.transparency']);
   });
 
   it('tells whether the current settings are a look, whatever the comfort settings', () => {
@@ -100,7 +106,8 @@ describe('a random look', () => {
           expect(value).toBeGreaterThanOrEqual(field.min);
           expect(value).toBeLessThanOrEqual(field.max);
         }
-        if (/count|fps|resolution|density/i.test(key)) expect(value, key).toBeLessThanOrEqual(DEFAULTS[key]);
+        if (typeof value === 'number' && /count|fps|resolution|density|refraction|blur|shadow|glow|noise/i.test(key))
+          expect(value, key).toBeLessThanOrEqual(DEFAULTS[key]);
       }
       expect(look['liquid.refraction']).toBeUndefined();
     }

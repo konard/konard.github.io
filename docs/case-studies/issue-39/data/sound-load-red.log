@@ -1,0 +1,155 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793364722327
+
+ ❯ src/components/Sound-load.test.jsx (2 tests | 2 failed) 2120ms
+   × handles a rejected optional sound import without an uncaught page error 1096ms
+   × ignores a late rejected import after navigation unmounts the sound component 1015ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/Sound-load.test.jsx > handles a rejected optional sound import without an uncaught page error
+AssertionError: expected "vi.fn()" to be called 1 times, but got 0 times
+
+Ignored nodes: comments, script, style
+[36m<html[39m
+  [33mdata-beams-on[39m=[32m"false"[39m
+  [33mdata-corner-bl-line[39m=[32m"gap"[39m
+  [33mdata-corner-bl-shape[39m=[32m"square"[39m
+  [33mdata-corner-br-line[39m=[32m"accent"[39m
+  [33mdata-corner-br-shape[39m=[32m"cut"[39m
+  [33mdata-corner-edges[39m=[32m"faint"[39m
+  [33mdata-corner-tl-line[39m=[32m"bracket"[39m
+  [33mdata-corner-tl-shape[39m=[32m"cut"[39m
+  [33mdata-corner-tr-line[39m=[32m"gap"[39m
+  [33mdata-corner-tr-shape[39m=[32m"square"[39m
+  [33mdata-future-accent-bar[39m=[32m"true"[39m
+  [33mdata-future-body-font[39m=[32m"false"[39m
+  [33mdata-future-case[39m=[32m"upper"[39m
+  [33mdata-future-font[39m=[32m"orbitron"[39m
+  [33mdata-future-frame[39m=[32m"corners"[39m
+  [33mdata-future-hover[39m=[32m"glow"[39m
+  [33mdata-future-palette[39m=[32m"mission"[39m
+  [33mdata-future-surface[39m=[32m"gradient"[39m
+  [33mdata-future-title[39m=[32m"bar"[39m
+  [33mdata-glass-highlight[39m=[32m"false"[39m
+  [33mdata-glass-shadow[39m=[32m"none"[39m
+  [33mdata-grid-fade[39m=[32m"true"[39m
+  [33mdata-grid-on[39m=[32m"true"[39m
+  [33mdata-grid-style[39m=[32m"lines"[39m
+  [33mdata-grid-tint[39m=[32m"theme"[39m
+  [33mdata-liquid-float[39m=[32m"true"[39m
+  [33mdata-liquid-pills[39m=[32m"true"[39m
+  [33mdata-liquid-refraction[39m=[32m"false"[39m
+  [33mdata-liquid-sheen[39m=[32m"true"[39m
+  [33mdata-liquid-tint[39m=[32m"theme"[39m
+  [33mdata-motion-mode[39m=[32m"auto"[39m
+  [33mdata-nebula-on[39m=[32m"true"[39m
+  [33mdata-rain-dim[39m=[32m"true"[39m
+  [33mdata-rain-on[39m=[32m"true"[39m
+  [33mdata-rain-real[39m=[32m"false"[39m
+  [33mdata-skin-name[39m=[32m"glass"[39m
+  [33mdata-surface-invisible[39m=[32m"false"[39m
+  [33mdata-theme[39m=[32m"dark"[39m
+  [33mdata-theory-notation[39m=[32m"L"[39m
+  [33mdata-ui-border-style[39m=[32m"solid"[39m
+  [33mdata-ui-custom-accent[39m=[32m"false"[39m
+  [33mdata-ui-table-grid[39m=[32m"false"[39m
+  [33mdata-ui-table-header[39m=[32m"true"[39m
+  [33mdata-ui-transparency[39m=[32m"auto"[39m
+  [33mlang[39m=[32m"en"[39m
+  [33mstyle[39m=[32m"--nebula-level: 0.5; --nebula-speed: 0.5; --nebula-gas: 0.35; --nebula-hue: 25°; --nebula-stars: 1.2; --nebula-star-brightness: 0.8; --nebula-twinkle: 1.9; --nebula-vignette: 0.3; --nebula-resolution: 0.6; --nebula-fps: 24; --stars-level: 1; --grid-level: 1; --grid-size: 48px; --grid-period: 109s; --grid-width: 1px; --grid-mark: 0.3; --grid-color: #7efcf6; --beams-level: 1; --rain-level: 0.75; --rain-step: 105ms; --rain-speeds: 2; --rain-density: 0.5; --rain-restart: 0.05; --rain-fade: 0.075; --rain-line-width: 1; --rain-padding: 0px; --rain-glow: 4px; --rain-glow-color: #00a3d7; --rain-min-links: 1; --rain-max-links: 4; --glass-level: 0.4; --glass-blur: 3px; --glass-bar: 14px; --glass-radius: 10px; --glass-saturation: 100; --glass-edge: 0.14; --liquid-opacity: 0.85; --liquid-contrast: 100; --liquid-noise: 0; --liquid-sheen-strength: 0.16; --liquid-sheen-angle: 110deg; --liquid-light-angle: 180deg; --liquid-border-width: 1px; --liquid-border-light: 0.4; --liquid-depth-blur: 20px; --liquid-shadow-blur: 30px; --liquid-shadow-distance: 12px; --liquid-shadow-spread: 0px; --liquid-blur: 18px; --liquid-saturation: 180; --liquid-brightness: 108; --liquid-tint-level: 0.22; --liquid-radius: 24px; --liquid-highlight: 0.55; --liquid-edge: 0.22; --liquid-depth: 0.35; --liquid-shadow: 0.5; --liquid-refraction-scale: 40; --liquid-refraction-detail: 12; --future-cut: 14px; --future-corner: 16px; --future-border: 1px; --future-opacity: 0.82; --future-blur: 6px; --future-glow: 0.5; --future-frame-opacity: 0.95; --future-accent-length: 112px; --future-accent-offset: 6px; --future-spacing: 0.08em; --future-scanlines: 0; --corner-tl-size: 14px; --corner-tr-size: 14px; --corner-br-size: 14px; --corner-bl-size: 14px; --ui-control-height: 32px; --ui-control-padding: 10px; --ui-control-border: 1px; --ui-control-opacity: 0.85; --ui-focus-width: 2px; --ui-focus-offset: 3px; --ui-motion: 1; --ui-disabled-opacity: 0.5; --ui-slider-size: 14px; --ui-slider-track: 3px; --ui-check-size: 18px; --ui-control-tl: -1px; --ui-control-tr: -1px; --ui-control-br: -1px; --ui-control-bl: -1px; --ui-panel-tl: -1px; --ui-panel-tr: -1px; --ui-panel-br: -1px; --ui-panel-bl: -1px; --ui-panel-border: 1px; --ui-border-opacity: 0.2; --ui-hover-opacity: 0.16; --ui-accent: #67e8f9; --ui-accent2: #a78bfa; --ui-accent-size: 3px; --ui-table-padding: 8px; --ui-table-border: 1px; --ui-table-stripe: 0.03; --ui-table-hover: 0.08; --ui-panel-tl-resolved: var(--radius); --ui-panel-tr-resolved: var(--radius); --ui-panel-br-resolved: var(--radius); --ui-panel-bl-resolved: var(--radius); --ui-control-tl-resolved: var(--ui-skin-control-radius); --ui-control-tr-resolved: var(--ui-skin-control-radius); --ui-control-br-resolved: var(--ui-skin-control-radius); --ui-control-bl-resolved: var(--ui-skin-control-radius); --ui-accent-rgb: 103 232 249; --ui-accent2-rgb: 167 139 250; --liquid-grain-image: none;"[39m
+[36m>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div />[39m
+  [36m</body>[39m
+[36m</html>[39m
+ ❯ src/components/Sound-load.test.jsx:18:36
+     16|   const warning = vi.spyOn(console, 'warn').mockImplementation(() => {…
+     17|   render(<Sound load={load} />);
+     18|   await waitFor(() => expect(load).toHaveBeenCalledTimes(1));
+       |                                    ^
+     19|   await waitFor(() => expect(warning).toHaveBeenCalledWith('Interface …
+     20| });
+ ❯ runWithExpensiveErrorDiagnosticsDisabled node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  src/components/Sound-load.test.jsx > ignores a late rejected import after navigation unmounts the sound component
+AssertionError: expected "vi.fn()" to be called 1 times, but got 0 times
+
+Ignored nodes: comments, script, style
+[36m<html[39m
+  [33mdata-beams-on[39m=[32m"false"[39m
+  [33mdata-corner-bl-line[39m=[32m"gap"[39m
+  [33mdata-corner-bl-shape[39m=[32m"square"[39m
+  [33mdata-corner-br-line[39m=[32m"accent"[39m
+  [33mdata-corner-br-shape[39m=[32m"cut"[39m
+  [33mdata-corner-edges[39m=[32m"faint"[39m
+  [33mdata-corner-tl-line[39m=[32m"bracket"[39m
+  [33mdata-corner-tl-shape[39m=[32m"cut"[39m
+  [33mdata-corner-tr-line[39m=[32m"gap"[39m
+  [33mdata-corner-tr-shape[39m=[32m"square"[39m
+  [33mdata-future-accent-bar[39m=[32m"true"[39m
+  [33mdata-future-body-font[39m=[32m"false"[39m
+  [33mdata-future-case[39m=[32m"upper"[39m
+  [33mdata-future-font[39m=[32m"orbitron"[39m
+  [33mdata-future-frame[39m=[32m"corners"[39m
+  [33mdata-future-hover[39m=[32m"glow"[39m
+  [33mdata-future-palette[39m=[32m"mission"[39m
+  [33mdata-future-surface[39m=[32m"gradient"[39m
+  [33mdata-future-title[39m=[32m"bar"[39m
+  [33mdata-glass-highlight[39m=[32m"false"[39m
+  [33mdata-glass-shadow[39m=[32m"none"[39m
+  [33mdata-grid-fade[39m=[32m"true"[39m
+  [33mdata-grid-on[39m=[32m"true"[39m
+  [33mdata-grid-style[39m=[32m"lines"[39m
+  [33mdata-grid-tint[39m=[32m"theme"[39m
+  [33mdata-liquid-float[39m=[32m"true"[39m
+  [33mdata-liquid-pills[39m=[32m"true"[39m
+  [33mdata-liquid-refraction[39m=[32m"false"[39m
+  [33mdata-liquid-sheen[39m=[32m"true"[39m
+  [33mdata-liquid-tint[39m=[32m"theme"[39m
+  [33mdata-motion-mode[39m=[32m"auto"[39m
+  [33mdata-nebula-on[39m=[32m"true"[39m
+  [33mdata-rain-dim[39m=[32m"true"[39m
+  [33mdata-rain-on[39m=[32m"true"[39m
+  [33mdata-rain-real[39m=[32m"false"[39m
+  [33mdata-skin-name[39m=[32m"glass"[39m
+  [33mdata-surface-invisible[39m=[32m"false"[39m
+  [33mdata-theme[39m=[32m"dark"[39m
+  [33mdata-theory-notation[39m=[32m"L"[39m
+  [33mdata-ui-border-style[39m=[32m"solid"[39m
+  [33mdata-ui-custom-accent[39m=[32m"false"[39m
+  [33mdata-ui-table-grid[39m=[32m"false"[39m
+  [33mdata-ui-table-header[39m=[32m"true"[39m
+  [33mdata-ui-transparency[39m=[32m"auto"[39m
+  [33mlang[39m=[32m"en"[39m
+  [33mstyle[39m=[32m"--nebula-level: 0.5; --nebula-speed: 0.5; --nebula-gas: 0.35; --nebula-hue: 25°; --nebula-stars: 1.2; --nebula-star-brightness: 0.8; --nebula-twinkle: 1.9; --nebula-vignette: 0.3; --nebula-resolution: 0.6; --nebula-fps: 24; --stars-level: 1; --grid-level: 1; --grid-size: 48px; --grid-period: 109s; --grid-width: 1px; --grid-mark: 0.3; --grid-color: #7efcf6; --beams-level: 1; --rain-level: 0.75; --rain-step: 105ms; --rain-speeds: 2; --rain-density: 0.5; --rain-restart: 0.05; --rain-fade: 0.075; --rain-line-width: 1; --rain-padding: 0px; --rain-glow: 4px; --rain-glow-color: #00a3d7; --rain-min-links: 1; --rain-max-links: 4; --glass-level: 0.4; --glass-blur: 3px; --glass-bar: 14px; --glass-radius: 10px; --glass-saturation: 100; --glass-edge: 0.14; --liquid-opacity: 0.85; --liquid-contrast: 100; --liquid-noise: 0; --liquid-sheen-strength: 0.16; --liquid-sheen-angle: 110deg; --liquid-light-angle: 180deg; --liquid-border-width: 1px; --liquid-border-light: 0.4; --liquid-depth-blur: 20px; --liquid-shadow-blur: 30px; --liquid-shadow-distance: 12px; --liquid-shadow-spread: 0px; --liquid-blur: 18px; --liquid-saturation: 180; --liquid-brightness: 108; --liquid-tint-level: 0.22; --liquid-radius: 24px; --liquid-highlight: 0.55; --liquid-edge: 0.22; --liquid-depth: 0.35; --liquid-shadow: 0.5; --liquid-refraction-scale: 40; --liquid-refraction-detail: 12; --future-cut: 14px; --future-corner: 16px; --future-border: 1px; --future-opacity: 0.82; --future-blur: 6px; --future-glow: 0.5; --future-frame-opacity: 0.95; --future-accent-length: 112px; --future-accent-offset: 6px; --future-spacing: 0.08em; --future-scanlines: 0; --corner-tl-size: 14px; --corner-tr-size: 14px; --corner-br-size: 14px; --corner-bl-size: 14px; --ui-control-height: 32px; --ui-control-padding: 10px; --ui-control-border: 1px; --ui-control-opacity: 0.85; --ui-focus-width: 2px; --ui-focus-offset: 3px; --ui-motion: 1; --ui-disabled-opacity: 0.5; --ui-slider-size: 14px; --ui-slider-track: 3px; --ui-check-size: 18px; --ui-control-tl: -1px; --ui-control-tr: -1px; --ui-control-br: -1px; --ui-control-bl: -1px; --ui-panel-tl: -1px; --ui-panel-tr: -1px; --ui-panel-br: -1px; --ui-panel-bl: -1px; --ui-panel-border: 1px; --ui-border-opacity: 0.2; --ui-hover-opacity: 0.16; --ui-accent: #67e8f9; --ui-accent2: #a78bfa; --ui-accent-size: 3px; --ui-table-padding: 8px; --ui-table-border: 1px; --ui-table-stripe: 0.03; --ui-table-hover: 0.08; --ui-panel-tl-resolved: var(--radius); --ui-panel-tr-resolved: var(--radius); --ui-panel-br-resolved: var(--radius); --ui-panel-bl-resolved: var(--radius); --ui-control-tl-resolved: var(--ui-skin-control-radius); --ui-control-tr-resolved: var(--ui-skin-control-radius); --ui-control-br-resolved: var(--ui-skin-control-radius); --ui-control-bl-resolved: var(--ui-skin-control-radius); --ui-accent-rgb: 103 232 249; --ui-accent2-rgb: 167 139 250; --liquid-grain-image: none;"[39m
+[36m>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div />[39m
+  [36m</body>[39m
+[36m</html>[39m
+ ❯ src/components/Sound-load.test.jsx:28:36
+     26|   const warning = vi.spyOn(console, 'warn').mockImplementation(() => {…
+     27|   const view = render(<Sound load={load} />);
+     28|   await waitFor(() => expect(load).toHaveBeenCalledTimes(1));
+       |                                    ^
+     29|   view.unmount();
+     30|   await act(async () => reject(new TypeError('Importing a module scrip…
+ ❯ runWithExpensiveErrorDiagnosticsDisabled node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed (2)
+   Start at  13:56:00
+   Duration  5.62s (tests 41%, environment 36%, setup 15%, transform 6%, worker 2%, import 1%)
+

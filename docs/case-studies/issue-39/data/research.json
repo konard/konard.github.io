@@ -1,0 +1,31 @@
+{
+  "accessed": "2026-10-30",
+  "upstreams": [
+    {
+      "repository": "konard/immortality",
+      "sha": "16a6172c38fc120133485f805c49d980b9850bc4",
+      "inspected": ["app/src/settings.ts", "app/src/components/Select.tsx", "app/src/components/SettingsPanel.tsx", "app/src/components/Frame.tsx", "app/src/components/DataTable.tsx", "app/src/styles.css", "app/package.json"],
+      "decision": "Reuse the centralized settings, owned UI, comfort preservation, semantic data, material/frame separation and bounded effects patterns. Keep this site's domain and architecture."
+    },
+    {
+      "repository": "pingdotgg/t3code",
+      "sha": "6575ce32508bd7908444241f3719aa33aaf77f90",
+      "inspected": ["apps/web/src/index.css", "apps/web/src/components/ui/button.tsx", "apps/web/src/components/ui/select.tsx"],
+      "decision": "Shared radius tokens, focus and disabled styles, touch target sizing and iOS input font sizing. No application dependency transplant."
+    }
+  ],
+  "sources": [
+    {"url": "https://help.x.com/en/using-x/how-to-embed-a-post", "decision": "Use the official publishing/widget flow."},
+    {"url": "https://platform.twitter.com/widgets.js", "decision": "Provider factory owns responsive iframe sizing; use createTweet with maximum width 550, current theme/language and dnt."},
+    {"url": "https://core.telegram.org/widgets/post", "decision": "Embed public channel/group posts, not private personal conversations."},
+    {"url": "https://telegram.org/js/telegram-widget.js?22", "decision": "Use official script and its origin/source-validated resizing protocol. Inspected source checks both event.source and event.origin."},
+    {"url": "https://dev.vk.com/ru/widgets/post", "availability": "Documentation fetch unavailable in this environment", "decision": "Do not infer API details from an unavailable page; inspect the official OpenAPI script instead."},
+    {"url": "https://vk.com/js/api/openapi.js?169", "decision": "Fetched 57,993 bytes; Widgets.Post accepts host, owner, post, hash and options and delegates sizing to its constructor. Keep existing valid-export-hash policy and test these exact arguments."},
+    {"url": "https://developer.apple.com/design/human-interface-guidelines/materials", "decision": "Legibility, hierarchy, restraint and reduced transparency are essential; web optical presets are an adaptation."},
+    {"url": "https://developer.apple.com/videos/play/wwdc2025/219/", "decision": "Use Liquid Glass as visual reference rather than claim native renderer equivalence."},
+    {"url": "https://www.w3.org/WAI/ARIA/apg/patterns/combobox/examples/combobox-select-only/", "decision": "Keep focus on combobox, track active descendant, support cancellation/typeahead and explicitly scroll active options."},
+    {"url": "https://base-ui.com/react/components/select", "decision": "Relevant unstyled accessible primitive; compare against the small owned select-only API."},
+    {"url": "https://www.radix-ui.com/primitives/docs/components/select", "decision": "Relevant portal/keyboard primitive; avoid an additional dependency for this small API."},
+    {"url": "https://github.com/arwes/arwes", "decision": "Current maintenance/React limitations make the existing generated frame system a better fit."}
+  ]
+}

@@ -6,6 +6,11 @@ export default function SourceLines({ data }) {
   const { t, lang } = useLang();
   const number = (v) => formatNumber(v, lang);
   const languages = Object.entries(data.languages).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+  const major = languages.filter(([, count]) => count >= 1000);
+  const minor = languages.filter(([, count]) => count < 1000);
+  const other = minor.reduce((sum, [, count]) => sum + count, 0);
+  const rows = [...major, ...(minor.length ? [[t({ en: 'Other', ru: 'Другие' }), other]] : [])];
+  const largest = Math.max(1, ...rows.map(([, count]) => count));
   const total = languages.reduce((sum, [, count]) => sum + count, 0);
   return (
     <article className="source-lines">
@@ -49,14 +54,11 @@ export default function SourceLines({ data }) {
           </tr>
         </thead>
         <tbody>
-          {languages.map(([language, count]) => (
+          {rows.map(([language, count]) => (
             <tr key={language}>
               <th scope="row">{language}</th>
               <td>
-                <span
-                  className="source-lines__bar"
-                  style={{ '--line-share': `${(count / Math.max(...languages.map(([, n]) => n))) * 100}%` }}
-                />
+                <span className="source-lines__bar" style={{ '--line-share': `${(count / largest) * 100}%` }} />
                 <span>{number(count)}</span>
               </td>
             </tr>
@@ -69,6 +71,20 @@ export default function SourceLines({ data }) {
           </tr>
         </tfoot>
       </table>
+      {minor.length > 0 && (
+        <details className="table-view">
+          <summary>
+            {t({ en: 'Other languages (fewer than 1,000 lines each)', ru: 'Другие языки (менее 1 000 строк каждый)' })}
+          </summary>
+          <ul>
+            {minor.map(([language, count]) => (
+              <li key={language}>
+                {language}: {number(count)}
+              </li>
+            ))}
+          </ul>
+        </details>
+      )}
       <details className="table-view">
         <summary>
           {t({ en: 'Public repositories with attributed lines', ru: 'Публичные репозитории со строками автора' })}

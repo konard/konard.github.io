@@ -1,3 +1,5 @@
+import ColorInput from '../components/ColorInput';
+import Select from '../components/Select';
 import { useState } from 'react';
 import NetworkGaps from './NetworkGaps';
 import { canonical, decode, encode, mathNotation } from '../links/configurations';
@@ -171,7 +173,7 @@ function ReferenceSelect({ id, value, n, self, onChange, label }) {
       />
     );
   return (
-    <select id={id} value={value} onChange={(event) => onChange(Number(event.target.value))} aria-label={label}>
+    <Select id={id} value={value} onChange={(event) => onChange(Number(event.target.value))} aria-label={label}>
       {Array.from({ length: n + 1 }, (_, ref) => (
         <option key={ref} value={ref}>
           {ref}
@@ -182,7 +184,7 @@ function ReferenceSelect({ id, value, n, self, onChange, label }) {
               : ''}
         </option>
       ))}
-    </select>
+    </Select>
   );
 }
 
@@ -260,8 +262,7 @@ export function LinksTable({
                 ))}
                 <label className="link-card__colour">
                   {t({ en: 'Colour', ru: 'Цвет' })}
-                  <input
-                    type="color"
+                  <ColorInput
                     value={colors[i]}
                     aria-label={`${name}: ${t({ en: 'colour', ru: 'цвет' })}`}
                     onChange={(event) => onColor(i, event.target.value)}

@@ -1,3 +1,4 @@
+import { chooseSelect } from './test/select';
 import { fireEvent, render, screen, within } from '@testing-library/react';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -80,9 +81,9 @@ describe('custom frames: corner tiles (issue #15)', () => {
   it('shows the corners only for the custom frame of the futuristic skin', () => {
     render(<SettingsPage />);
     expect(document.getElementById('corners')).toBeNull();
-    fireEvent.change(screen.getByRole('combobox', { name: 'Skin' }), { target: { value: 'futuristic' } });
+    chooseSelect(screen.getByRole('combobox', { name: 'Skin' }), 'futuristic');
     expect(document.getElementById('corners')).toBeNull();
-    fireEvent.change(screen.getByRole('combobox', { name: 'Frame' }), { target: { value: 'custom' } });
+    chooseSelect(screen.getByRole('combobox', { name: 'Frame' }), 'custom');
     expect(document.getElementById('corners')).toBeInTheDocument();
     expect(root.dataset.futureFrame).toBe('custom');
   });

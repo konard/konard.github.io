@@ -1,3 +1,4 @@
+import { chooseSelect } from './support/select.mjs';
 // Browser regression checks for issue #17. Uses the built site; starts Vite
 // preview unless BASE is set. ENGINE=chromium|firefox|webkit, CAPTURE_DIR=...
 /* global document, window, getComputedStyle, Image */
@@ -98,13 +99,13 @@ try {
   assert(box.y >= 0 && box.y + box.height <= 1001, 'preview must stay visible beside style controls');
   await shot(page, 'after-style-preview');
   const before = await svgOf(page);
-  await page.getByLabel('Angles of the ends', { exact: true }).selectOption('fixed');
+  await chooseSelect(page.getByLabel('Angles of the ends', { exact: true }), 'fixed');
   await page.getByLabel('Leaving angle', { exact: true }).focus();
   await page.keyboard.press('ArrowRight');
   assert.notEqual(await svgOf(page), before);
-  await page.getByLabel('Start of a link', { exact: true }).selectOption('circle');
-  await page.getByLabel('End of a link', { exact: true }).selectOption('triangle');
-  await page.getByLabel('Link 1: turn of the target, ° (value)').fill('30');
+  await chooseSelect(page.getByLabel('Start of a link', { exact: true }), 'circle');
+  await chooseSelect(page.getByLabel('End of a link', { exact: true }), 'triangle');
+  await page.getByLabel('Link 1: turn of the target, ° (value)', { exact: true }).fill('30');
   await page.waitForURL((url) => url.searchParams.get('turns')?.includes('30'));
   assert(new URL(page.url()).searchParams.get('turns').includes('30'));
   await page.getByRole('button', { name: 'Plain black', exact: true }).click();
@@ -114,9 +115,9 @@ try {
   assert(!(await svgOf(page)).includes('<rect'));
   await shot(page, 'transparent', page.locator('.network__preview'));
   await page.getByRole('button', { name: 'Card (as in the gallery)', exact: true }).click();
-  await page.getByRole('combobox', { name: 'Border', exact: true }).selectOption('double');
+  await chooseSelect(page.getByRole('combobox', { name: 'Border', exact: true }), 'double');
   assert((await svgOf(page)).includes('stroke-width="0.6"'));
-  await page.getByRole('combobox', { name: 'Background', exact: true }).selectOption('linear');
+  await chooseSelect(page.getByRole('combobox', { name: 'Background', exact: true }), 'linear');
   assert((await svgOf(page)).includes('<linearGradient'));
   console.log(`${engine}: live preview and SVG styling passed`);
 
@@ -134,7 +135,7 @@ try {
   console.log(`${engine}: overlap reduction and applied turns/gaps passed`);
 
   await page.getByRole('button', { name: 'Social card 1200 × 630', exact: true }).click();
-  await page.getByLabel('Theory notation', { exact: true }).selectOption('R');
+  await chooseSelect(page.getByLabel('Theory notation', { exact: true }), 'R');
   const shared = await page.getByLabel('Link to this picture').inputValue();
   const sharedSvg = await svgOf(page);
   const fresh = await browser.newContext({ reducedMotion: 'reduce' });

@@ -91,8 +91,10 @@ try {
       await post.getByText(/^Historical copy · original embed unavailable/).waitFor();
       assert.ok(await post.locator('.post__body').innerText());
       await post.getByRole('button', { name: 'Show embed', exact: true }).click();
-      await post.locator('iframe').waitFor();
-      await post.getByRole('button', { name: 'Show archived copy', exact: true }).click();
+      // A blocked provider can fail before an empty loading host gets a box.
+      // Retry must return to a readable archive, without a visibility race.
+      await post.getByText(/^Historical copy · original embed unavailable/).waitFor();
+      assert.ok(await post.locator('.post__body').innerText());
     }
     await page.screenshot({ path: `${dir}/${before ? 'before' : 'after'}-${name}.png` });
     if (!before && name === 'activity') {
@@ -155,8 +157,8 @@ try {
       await verifyColors(theme);
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
       await page.screenshot({ path: `${dir}/after-mobile-${theme}.png` });
-      await page.locator('.source-lines details').evaluate((element) => {
-        element.open = true;
+      await page.locator('.source-lines details').evaluateAll((elements) => {
+        for (const element of elements) element.open = true;
       });
       assert.equal(
         await page.evaluate(() => document.documentElement.scrollWidth > innerWidth),

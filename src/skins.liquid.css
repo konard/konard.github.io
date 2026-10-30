@@ -15,38 +15,37 @@
   --lq-edge-rgb: 255 255 255;
   --lq-shadow-rgb: 0 0 0;
   --lq-shadow-alpha: 0.6;
-  --lq-sheen: 0.16;
+  --lq-sheen: var(--liquid-sheen-strength, 0.16);
   --lq-filter: blur(var(--liquid-blur, 18px)) saturate(calc(var(--liquid-saturation, 180) / 100))
-    brightness(calc(var(--liquid-brightness, 108) / 100));
+    brightness(calc(var(--liquid-brightness, 108) / 100)) contrast(calc(var(--liquid-contrast, 100) / 100));
   /* The light that sweeps over a panel on hover: the first background layer,
      moved from the right edge to the left one. */
   --lq-sheen-img: linear-gradient(
-    110deg,
+    var(--liquid-sheen-angle, 110deg),
     transparent 35%,
-    rgb(var(--lq-light-rgb) / var(--lq-sheen)) 48%,
-    rgb(var(--lq-light-rgb) / calc(var(--lq-sheen) * 0.4)) 52%,
+    rgb(var(--lq-light-rgb) / calc(var(--lq-sheen) * var(--liquid-opacity, 0.85))) 48%,
+    rgb(var(--lq-light-rgb) / calc(var(--lq-sheen) * 0.4 * var(--liquid-opacity, 0.85))) 52%,
     transparent 65%
   );
   --lq-sheen-pos: 120% 0;
   --lq-glass:
     var(--lq-sheen-img),
     linear-gradient(
-      180deg,
-      rgb(var(--lq-light-rgb) / calc(0.14 * var(--liquid-highlight, 0.55))),
+      var(--liquid-light-angle, 180deg),
+      rgb(var(--lq-light-rgb) / calc(0.14 * var(--liquid-highlight, 0.55) * var(--liquid-opacity, 0.85))),
       transparent 45%,
-      rgb(var(--lq-light-rgb) / calc(0.05 * var(--liquid-highlight, 0.55)))
+      rgb(var(--lq-light-rgb) / calc(0.05 * var(--liquid-highlight, 0.55) * var(--liquid-opacity, 0.85)))
     ),
     linear-gradient(
-      rgb(var(--lq-tint-rgb) / var(--liquid-tint-level, 0.22)),
-      rgb(var(--lq-tint-rgb) / var(--liquid-tint-level, 0.22))
+      rgb(var(--lq-tint-rgb) / calc(var(--liquid-tint-level, 0.22) * var(--liquid-opacity, 0.85))),
+      rgb(var(--lq-tint-rgb) / calc(var(--liquid-tint-level, 0.22) * var(--liquid-opacity, 0.85)))
     );
   --lq-shadow:
     inset 0 1px 0 rgb(var(--lq-light-rgb) / var(--liquid-highlight, 0.55)),
     inset 1px 0 0 rgb(var(--lq-light-rgb) / calc(var(--liquid-highlight, 0.55) * 0.35)),
     inset 0 -1px 0 rgb(var(--lq-light-rgb) / calc(var(--liquid-highlight, 0.55) * 0.25)),
-    inset 0 0 calc(10px + 30px * var(--liquid-depth, 0.35))
-      rgb(var(--lq-light-rgb) / calc(var(--liquid-depth, 0.35) * 0.22)),
-    0 calc(6px + 18px * var(--liquid-shadow, 0.5)) calc(12px + 36px * var(--liquid-shadow, 0.5))
+    inset 0 0 var(--liquid-depth-blur, 20px) rgb(var(--lq-light-rgb) / calc(var(--liquid-depth, 0.35) * 0.22)),
+    0 var(--liquid-shadow-distance, 12px) var(--liquid-shadow-blur, 30px) var(--liquid-shadow-spread, 0px)
       rgb(var(--lq-shadow-rgb) / calc(var(--liquid-shadow, 0.5) * var(--lq-shadow-alpha)));
 }
 
@@ -54,7 +53,7 @@
   --lq-edge-rgb: 15 40 80;
   --lq-shadow-rgb: 15 40 80;
   --lq-shadow-alpha: 0.28;
-  --lq-sheen: 0.5;
+  --lq-sheen: var(--liquid-sheen-strength, 0.16);
 }
 
 :root[data-skin-name='liquid'][data-liquid-tint='clear'] {
@@ -171,7 +170,7 @@
 
 :root[data-skin-name='liquid'] .topbar {
   border-bottom: 1px solid rgb(var(--lq-edge-rgb) / var(--liquid-edge, 0.22));
-  background: rgb(var(--lq-tint-rgb) / var(--liquid-tint-level, 0.22));
+  background: rgb(var(--lq-tint-rgb) / calc(var(--liquid-tint-level, 0.22) * var(--liquid-opacity, 0.85)));
   box-shadow:
     inset 0 -1px 0 rgb(var(--lq-light-rgb) / calc(var(--liquid-highlight, 0.55) * 0.3)),
     0 8px 30px rgb(var(--lq-shadow-rgb) / calc(var(--liquid-shadow, 0.5) * var(--lq-shadow-alpha) * 0.6));
@@ -223,7 +222,7 @@
   background: linear-gradient(
     180deg,
     rgb(var(--lq-light-rgb) / calc(0.16 * var(--liquid-highlight, 0.55))),
-    rgb(var(--lq-tint-rgb) / var(--liquid-tint-level, 0.22))
+    rgb(var(--lq-tint-rgb) / calc(var(--liquid-tint-level, 0.22) * var(--liquid-opacity, 0.85)))
   );
   box-shadow:
     inset 0 1px 0 rgb(var(--lq-light-rgb) / var(--liquid-highlight, 0.55)),
@@ -277,7 +276,8 @@
    data-refracts. */
 :root[data-skin-name='liquid'][data-liquid-refraction='true'][data-refracts] {
   --lq-filter: url(#liquid-refraction) blur(var(--liquid-blur, 18px))
-    saturate(calc(var(--liquid-saturation, 180) / 100)) brightness(calc(var(--liquid-brightness, 108) / 100));
+    saturate(calc(var(--liquid-saturation, 180) / 100)) brightness(calc(var(--liquid-brightness, 108) / 100))
+    contrast(calc(var(--liquid-contrast, 100) / 100));
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,0 +1,34 @@
+node:internal/modules/run_main:111
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
++ [
++   "dark: iframe must preserve the provider's transparent canvas",
++   'Dark iframe corner must not paint white',
++   "light: iframe must preserve the provider's transparent canvas",
++   'Default accent must join the corner stroke without a gap',
++   'Default accent and corner stroke must have equal thickness',
++   'Frame layers must share the border coordinates'
++ ]
+- []
+
+    at file:///tmp/gh-issue-solver-1793385596392/experiments/issue-39-visual-review.mjs:117:10 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: [
+    "dark: iframe must preserve the provider's transparent canvas",
+    'Dark iframe corner must not paint white',
+    "light: iframe must preserve the provider's transparent canvas",
+    'Default accent must join the corner stroke without a gap',
+    'Default accent and corner stroke must have equal thickness',
+    'Frame layers must share the border coordinates'
+  ],
+  expected: [],
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v26.12.1
