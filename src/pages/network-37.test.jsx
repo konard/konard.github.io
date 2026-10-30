@@ -62,8 +62,30 @@ it('preserves colour edits made while a manual Apply worker is running', async (
   fireEvent.change(colours, { target: { value: 'pastel' } });
   expect(colours).toHaveValue('pastel');
   const [, shape] = worker.payload;
-  await act(async () => worker.onmessage({ data: { result: { turns: shape.turns, linkGaps: shape.linkGaps } } }));
+  await act(async () =>
+    worker.onmessage({
+      data: {
+        result: {
+          turns: shape.turns,
+          linkGaps: shape.linkGaps,
+          layout: { order: '2 1', spread: 0.55, palette: 'site' },
+        },
+      },
+    }),
+  );
   expect(colours).toHaveValue('pastel');
   expect(new URL(screen.getByLabelText('Link to this picture').value).searchParams.get('palette')).toBe('pastel');
+  expect(screen.getByLabelText('Circular order of links')).toHaveValue('');
+  expect(screen.getByRole('slider', { name: 'Distance between links' })).toHaveValue('1');
   expect(document.querySelector('.network__preview')).toHaveAttribute('aria-busy', 'false');
+});
+
+it('keeps applied positions during color edits and refits after deliberate geometry edits', () => {
+  window.history.replaceState(null, '', '/network/?code=2222&lang=en&frame=40+50+50');
+  render(<NetworkPage />);
+  const params = () => new URL(screen.getByLabelText('Link to this picture').value).searchParams;
+  fireEvent.change(screen.getByLabelText('Colours of the links'), { target: { value: 'pastel' } });
+  expect(params().get('frame')).toBe('40 50 50');
+  fireEvent.change(screen.getByRole('slider', { name: 'Distance between links' }), { target: { value: '1.1' } });
+  expect(params().has('frame')).toBe(false);
 });

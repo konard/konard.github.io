@@ -14,7 +14,6 @@ import { trimCurve } from './curve-tools';
 import { paintedPairCost, selfCost } from './painted-collisions';
 import { adjustCollisionGaps } from './collision-gaps';
 import { symmetricReferences } from './collision-symmetry';
-import { searchCollisionLayouts } from './collision-search';
 
 const SAMPLES = 16; // points per Bézier segment
 const NEAR = 0.09; // lines closer than this overlap (a stroke is about 0.04)
@@ -82,7 +81,7 @@ export function overlapCost(links, shape = {}) {
  * degrees in steps of `step`. Returns the turns found (`delta`, to add to the
  * starting turns), the turns in total (`turns`) and the cost before and after.
  */
-export function solveTurns(links, shape = {}, { range = 180, step = 1, passes = 3, localRange = null } = {}, origins) {
+export function solveTurns(links, shape = {}, { range = 30, step = 1, passes = 3, localRange = null } = {}, origins) {
   range = Math.min(180, Math.max(0, Number(range) || 0));
   step = Math.max(1, Number(step) || 1);
   passes = Math.min(10, Math.max(0, Number(passes) || 0));
@@ -159,6 +158,12 @@ export function solveCollisions(links, shape = {}, options = {}) {
   // Reference spacing must not open a link's middle unless explicitly requested.
   const { adjustGaps = false, gapRange = 0.2, middleRange = 0, passes = 3, debug = false } = options;
   const base = shapeOf(shape);
+  // Reference edits must not refit and translate every link on screen. Keep
+  // the original frame in scoring, preview, Apply and URL/image round trips.
+  if (base.clearance != null && !base.frame) {
+    const { scale, shift } = curveTransform(layoutCurves(links, base), base);
+    base.frame = [scale, ...shift].join(' ');
+  }
   const grid = Math.max(1, options.step || 1);
   const coarse = links.length >= 3 && base.clearance != null ? Math.ceil(13 / grid) * grid : grid;
   const turns = links.map((_, i) => [...(base.turns[i] || [0, 0])]);
@@ -198,9 +203,9 @@ export function solveCollisions(links, shape = {}, options = {}) {
       if (adjustGaps && !satisfied(result))
         result = adjustCollisionGaps(links, base, result, { gapRange, middleRange, passes });
     }
-    if (!satisfied(result) && options.search !== false) result = searchCollisionLayouts(links, base, result, options);
   }
   result.delta = result.turns.map((pair, i) => pair.map((a, e) => a - turns[i][e]));
+  if (base.frame) result.frame = base.frame;
   if (debug)
     console.debug('[network solver]', {
       links: links.length,

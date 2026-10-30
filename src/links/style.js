@@ -10,9 +10,9 @@
 // values that differ from the defaults in the query string, so a shared link
 // opens exactly the picture that was shared.
 import { color, option, range, select, toggle } from '../settings/fields';
-import { COLORS, SHAPE } from './glyph';
+import { COLORS, SHAPE, normalizeFrame } from './glyph';
 import { GEOMETRY_SECTIONS } from './style-geometry';
-import { linkGaps, normalizeGaps } from './gaps';
+import { linkGaps, normalizeGaps, withGaps } from './gaps';
 
 /** Link colours: the site's, and a few more sets of nine. */
 export const PALETTES = {
@@ -274,8 +274,8 @@ export const STYLE_SECTIONS = [
     id: 'experimental',
     title: { en: 'Experimental: fewer overlaps', ru: 'Эксперимент: меньше наложений' },
     lead: {
-      en: 'Keeps manual drawings that already meet the requested spacing. Otherwise turns open references and optionally adjusts their gaps and middle cuts. References to a closed link prefer mirrored ends and uniform spaces. Self-closed halves keep their angles, gaps and cuts. Apply the result to keep editing it.',
-      ru: 'Сохраняет ручную настройку, если требуемые зазоры уже соблюдены. Иначе поворачивает открытые ссылки и при желании меняет их зазоры и разрывы середины. Ссылки на замкнутую связь предпочитает делать зеркальными, с равномерными промежутками. Замкнутые половины сохраняют углы, зазоры и разрывы. Примените результат, чтобы продолжить редактирование.',
+      en: 'Keeps link placement, order and colors. Makes small adjustments to open references; already well-spaced drawings and self-closed halves stay unchanged. References to a closed link prefer mirrored ends and uniform spaces. Some crossings remain with fixed placement. Apply the result to keep editing it.',
+      ru: 'Сохраняет размещение, порядок и цвета связей. Немного корректирует открытые ссылки; уже настроенные рисунки и замкнутые половины остаются без изменений. Ссылки на замкнутую связь предпочитает делать зеркальными, с равномерными промежутками. При фиксированном размещении некоторые пересечения остаются. Примените результат, чтобы продолжить редактирование.',
     },
     fields: [
       toggle('solve', false, { en: 'Reduce overlaps automatically', ru: 'Уменьшать наложения автоматически' }),
@@ -310,7 +310,21 @@ export const STYLE_SECTIONS = [
           },
         },
       ),
-      range('solveRange', 180, 0, 180, 1, { en: 'Largest turn', ru: 'Наибольший поворот' }, { unit: '°' }),
+      range(
+        'solveRange',
+        30,
+        0,
+        180,
+        1,
+        { en: 'Largest turn', ru: 'Наибольший поворот' },
+        {
+          unit: '°',
+          hint: {
+            en: 'Defaults to small corrections of at most 30°. Larger values allow stronger reference bending, while link placement and colors stay fixed.',
+            ru: 'По умолчанию небольшие поправки до 30°. Большие значения разрешают сильнее изгибать ссылки, сохраняя размещение и цвета связей.',
+          },
+        },
+      ),
       range('solveStep', 1, 1, 30, 1, { en: 'Turn step', ru: 'Шаг поворота' }, { unit: '°' }),
     ],
   },
@@ -322,6 +336,7 @@ const PER_LINK = [
   { key: 'gap', type: 'range', d: 0.08, min: 0, max: 0.4 },
   { key: 'turns', type: 'list', d: '' },
   { key: 'gaps', type: 'list', d: '' },
+  { key: 'frame', type: 'frame', d: '' },
 ];
 
 export const STYLE_FIELDS = [...STYLE_SECTIONS.flatMap((section) => section.fields), ...PER_LINK];
@@ -352,6 +367,8 @@ function normalizeList(key, value) {
 function normalizeValue(field, value) {
   if (value === undefined) return field.d;
   switch (field.type) {
+    case 'frame':
+      return normalizeFrame(value);
     case 'range': {
       const number = typeof value === 'number' ? value : Number(value);
       return Number.isFinite(number) && value !== '' && value !== null ? clamp(number, field.min, field.max) : field.d;
@@ -428,6 +445,14 @@ export function linkTurns(style, n) {
 /** A style with the turns of each link set to `turns` ([[source, target], …]). */
 export const withTurns = (style, turns) =>
   normalizeStyle({ ...style, turns: turns.map((pair) => pair.join(' ')).join(',') });
+
+/** Apply only spacing fields. Placement, colors and concurrent style edits stay owned by the editor. */
+export const withSpacing = (style, result) =>
+  normalizeStyle({
+    ...withGaps(withTurns(style, result.turns), result.linkGaps),
+    frame: result.frame ?? style.frame,
+    solve: false,
+  });
 
 /** A style where link `i` has its own colour `value` (the other links keep the colours they had). */
 export function withColor(style, n, i, value) {

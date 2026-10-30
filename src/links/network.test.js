@@ -32,6 +32,7 @@ import {
   styleToParams,
   withColor,
   withTurns,
+  withSpacing,
 } from './style';
 
 const links = decode('01 20');
@@ -241,7 +242,7 @@ describe('fewer overlaps of lines (experimental, issue #17)', () => {
     expect(result.turns).toHaveLength(3);
     expect(result.delta).toHaveLength(3);
     // The turns found draw the same improved picture.
-    const turned = shapeOfStyle(withTurns(STYLE_DEFAULTS, result.turns), 3);
+    const turned = shapeOfStyle(withSpacing(STYLE_DEFAULTS, result), 3);
     expect(overlapCost(tangled, turned)).toBeCloseTo(result.after, 6);
   });
 
@@ -262,7 +263,7 @@ describe('fewer overlaps of lines (experimental, issue #17)', () => {
         result.turns.flat().every((angle) => Math.abs(angle) <= 180),
         code,
       ).toBe(true);
-      const applied = shapeOfStyle(withTurns(style, result.turns), network.length);
+      const applied = shapeOfStyle(withSpacing(style, result), network.length);
       expect(overlapCost(network, applied), code).toBeCloseTo(result.after, 6);
     }
   });

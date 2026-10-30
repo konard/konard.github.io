@@ -14,7 +14,7 @@ export function referenceSpaces(line, target, scale) {
   ];
 }
 
-export function symmetricReferences(links, base, result, { range = 180, step = 1, gapRange = 0.2 } = {}) {
+export function symmetricReferences(links, base, result, { range = 30, step = 1, gapRange = 0.2 } = {}) {
   if (base.clearance == null) return result;
   range = Math.min(180, Math.max(0, Number(range) || 0));
   step = Math.max(1, Number(step) || 1);

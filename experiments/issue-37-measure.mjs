@@ -2,7 +2,7 @@
 import { createServer } from 'vite';
 import { writeFile } from 'node:fs/promises';
 const server = await createServer({ server: { middlewareMode: true } });
-const phase = process.env.PHASE || 'after';
+const phase = process.env.PHASE || 'preserved';
 try {
   const { solveCollisions, turningCost } = await server.ssrLoadModule('/src/links/collisions.js');
   const { decode } = await server.ssrLoadModule('/src/links/configurations.js');

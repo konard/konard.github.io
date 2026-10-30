@@ -1,7 +1,7 @@
 /* global document */
 import { chromium } from 'playwright';
 import { resolve } from 'node:path';
-const phase = process.env.PHASE || 'after';
+const phase = process.env.PHASE || 'preserved';
 const browser = await chromium.launch();
 try {
   const page = await browser.newPage({ viewport: { width: 1400, height: 1000 }, deviceScaleFactor: 1 });

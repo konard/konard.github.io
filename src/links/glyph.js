@@ -48,6 +48,7 @@ export const MARKERS = ['bar', 'arrow', 'triangle', 'tail', 'dot', 'circle', 'sq
 export const SHAPE = {
   placement: 'circle',
   order: '', // circular order of link IDs, empty keeps their natural order
+  frame: '', // solver-pinned scale and translation; empty uses automatic fitting
   layoutAspect: 1,
   columns: 0,
   forceDistance: 1,
@@ -257,6 +258,11 @@ export function layoutCurves(links, shape = {}) {
 /** Shared fitting transform, also used to score middle cuts in image units. */
 export function curveTransform(curves, shape = {}) {
   const o = shapeOf(shape);
+  const frame = normalizeFrame(o.frame);
+  if (frame) {
+    const [scale, x, y] = frame.split(' ').map(Number);
+    return { scale, shift: [x, y] };
+  }
   const markerRoom = Math.max(
     ...['start', 'end', 'middle'].map((key) =>
       o[key] === 'none' ? 0 : o[`${key}Size`] + Math.hypot(o[`${key}Offset`], o[`${key}Across`]),
@@ -277,6 +283,15 @@ export function curveTransform(curves, shape = {}) {
   const scale = Math.min(SCALE, (SIZE - 2 * pad) / Math.max(maxX - minX, maxY - minY, 1e-9));
   const shift = [SIZE / 2 - ((minX + maxX) / 2) * scale, SIZE / 2 - ((minY + maxY) / 2) * scale];
   return { scale, shift };
+}
+
+/** Persist the original image frame without accepting arbitrary layout data. */
+export function normalizeFrame(value) {
+  if (typeof value !== 'string' || !value.trim()) return '';
+  const parts = value.trim().split(/\s+/).map(Number);
+  if (parts.length !== 3 || parts.some((v) => !Number.isFinite(v) || Math.abs(v) > 1e6)) return '';
+  if (parts[0] < 1e-9 || parts[0] > SCALE) return '';
+  return parts.join(' ');
 }
 
 /** The curves of every link, already scaled into the SIZE box. */

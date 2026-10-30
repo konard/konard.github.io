@@ -42,7 +42,9 @@ it('preserves closed halves and discovers gaps and turns on the open 1111 link',
   expect(result.linkGaps[1][0]).toBeGreaterThan(0.08);
   expect(result.linkGaps[1][1]).toBeGreaterThan(0.08);
   expect(result.after).toBeLessThan(result.before);
-  expect(overlapCost(links, { ...shape, turns: result.turns, linkGaps: result.linkGaps })).toBeCloseTo(result.after, 8);
+  expect(
+    overlapCost(links, { ...shape, turns: result.turns, linkGaps: result.linkGaps, frame: result.frame }),
+  ).toBeCloseTo(result.after, 8);
 });
 it('recognizes the exact reported arrangement with the closed gaps corrected to equality', () => {
   const shape = setup({ gaps: '0.08 0.08 ~ ~,0.18 0.18 ~ ~' });

@@ -16,6 +16,7 @@ import {
   styleToParams,
   withColor,
   withTurns,
+  withSpacing,
 } from '../links/style';
 import { LANGS, useLang } from '../i18n/prefs';
 import { LinksTable, Notations, randomLinks, stepped } from './NetworkEditor';
@@ -56,7 +57,14 @@ export default function NetworkPage() {
   const [links, setLinks] = useState(initial.links);
   const [style, setStyleState] = useState(initial.style);
   const notation = style.notation;
-  const setStyle = (next) => setStyleState(normalizeStyle(next));
+  const setStyle = (next) => {
+    // Manual geometry edits start a new drawing frame. Color/background edits
+    // keep the applied spacing and its pinned positions.
+    const changed = [...Object.keys(shapeOfStyle(style, links.length)), 'gaps'].some(
+      (key) => !['frame', 'strokeWidth', 'linecap', 'linkGaps'].includes(key) && next[key] !== style[key],
+    );
+    setStyleState(normalizeStyle(changed ? { ...next, frame: '' } : next));
+  };
   const n = links.length;
   const code = encode(links);
   const query = networkQuery(links, style, new URLSearchParams(window.location.search).get('lang'));
@@ -89,7 +97,7 @@ export default function NetworkPage() {
         notation,
         extraTurns: solved?.delta,
         extraGaps: solved?.linkGaps,
-        extraLayout: solved?.layout,
+        extraFrame: solved?.frame,
       }),
     [links, style, notation, solved],
   );
@@ -98,7 +106,7 @@ export default function NetworkPage() {
   const gaps = linkGaps(style, n);
 
   const changeLinks = (next) => {
-    if (next.length !== n && style.order) setStyle({ ...style, order: '' });
+    setStyle({ ...style, frame: '', ...(next.length !== n ? { order: '' } : {}) });
     setLinks(next);
   };
   const remove = (k) => {
@@ -107,7 +115,7 @@ export default function NetworkPage() {
     let next = withTurns(style, keep(linkTurns(style, n)));
     next = withGaps(next, keep(gaps));
     if (style.palette === 'custom') next = { ...next, colors: keep(linkColors(style, n)).join(',') };
-    setStyle({ ...next, order: '' });
+    setStyle({ ...next, order: '', frame: '' });
   };
   const turn = (i, end, value) =>
     setStyle(
@@ -116,10 +124,7 @@ export default function NetworkPage() {
         turns.map((pair, k) => (k === i ? pair.map((a, e) => (e === end ? value : a)) : pair)),
       ),
     );
-  const applyResult = (found) =>
-    setStyleState((current) =>
-      normalizeStyle({ ...withGaps(withTurns(current, found.turns), found.linkGaps), ...found.layout, solve: false }),
-    );
+  const applyResult = (found) => setStyleState((current) => withSpacing(current, found));
   const applySolved = async () => {
     if (solved || typeof Worker === 'undefined') {
       applyResult(solved || solveCollisions(links, shape, solverOptions));
@@ -213,8 +218,8 @@ export default function NetworkPage() {
                 onRemove={remove}
                 onColor={(i, value) => setStyle(withColor(style, n, i, value))}
                 onTurn={turn}
-                onStep={(step) => setLinks(stepped(links, step))}
-                onRandom={() => setLinks(randomLinks(n))}
+                onStep={(step) => changeLinks(stepped(links, step))}
+                onRandom={() => changeLinks(randomLinks(n))}
               />
             </section>
             <section className="network__panel" id="style" aria-labelledby="style-title">

@@ -2,7 +2,7 @@ import { createServer } from 'vite';
 import { writeFile } from 'node:fs/promises';
 import { randomNetworks } from './issue-37-networks.mjs';
 const server = await createServer({ root: process.env.BASELINE_ROOT, server: { middlewareMode: true } });
-const phase = process.env.PHASE || 'after';
+const phase = process.env.PHASE || 'preserved';
 try {
   const { solveCollisions, turningCost } = await server.ssrLoadModule('/src/links/collisions.js');
   const { decode } = await server.ssrLoadModule('/src/links/configurations.js');
@@ -30,7 +30,7 @@ try {
     records.push(record);
     console.log(JSON.stringify(record));
     pictures.push(
-      `<article><h2>${code}: ${record.collisionCost.toFixed(3)}</h2><div>${networkSvg(links, style)}${networkSvg(links, style, { extraTurns: result.delta, extraGaps: result.linkGaps, extraLayout: result.layout })}</div></article>`,
+      `<article><h2>${code}: ${record.collisionCost.toFixed(3)}</h2><div>${networkSvg(links, style)}${networkSvg(links, style, { extraTurns: result.delta, extraGaps: result.linkGaps, extraFrame: result.frame })}</div></article>`,
     );
   }
   await writeFile(`docs/case-studies/issue-37/data/random-${phase}.json`, JSON.stringify(records, null, 2) + '\n');

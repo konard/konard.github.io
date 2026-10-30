@@ -102,10 +102,31 @@ try {
     'worker paints while solving; native drag and click-then-key work with and without platform focus',
   );
 
+  const identity = () =>
+    page.locator('.network__preview g[stroke]').evaluateAll((groups) =>
+      groups.map((group) => {
+        const points = group
+          .querySelector('path')
+          .getAttribute('d')
+          .match(/-?\d+(?:\.\d+)?/g)
+          .map(Number);
+        return { color: group.getAttribute('stroke'), middle: points.slice(6, 8) };
+      }),
+    );
   for (const code of ['2222', '34442132', ...randomNetworks()]) {
-    await go(`code=${code}&solve=true`);
+    await go(`code=${code}`);
+    const original = await identity();
+    if (['2222', '34442132'].includes(code))
+      await page.locator('.network__preview').screenshot({ path: join(output, `${engine}-before-${code}.png`) });
+    await page.locator('#style-solve').check();
+    await waitForNetwork(page);
+    assert.deepEqual(await identity(), original, `${code}: moved or recolored a link`);
+    assert(!new URL(page.url()).searchParams.has('order'));
+    assert(!new URL(page.url()).searchParams.has('spread'));
     const score = await page.locator('.network__score').textContent();
-    assert.equal(Number(score.match(/[\d.]+/g).at(-1)), 0, `${code}: ${score}`);
+    const [before, after] = score.match(/[\d.]+/g).map(Number);
+    assert(after <= before, `${code}: worsened score ${score}`);
+    if (code === '2222') assert.equal(after, 0, `${code}: ${score}`);
     const solved = await picture();
     assert(solved.includes('<svg'));
     const counts = await page
@@ -120,12 +141,41 @@ try {
     await page.getByRole('button', { name: 'Apply turns and gaps to links', exact: true }).click();
     assert.equal(await picture(), solved, `${code}: Apply changed picture`);
     const shared = await page.getByLabel('Link to this picture', { exact: true }).inputValue();
+    assert(new URL(shared).searchParams.has('frame'), `${code}: Apply lost the fixed rendering frame`);
     await page.goto(shared);
     assert.equal(await picture(), solved, `${code}: shared URL changed picture`);
-    results.networks.push({ code, score, shared, continuous: counts });
-    console.log(`${engine}: ${code} has zero residual and exact Apply/share output`);
+    const bounds = await page.locator('.network__preview g[stroke]').evaluateAll((groups) =>
+      groups.map((group) => {
+        const { x, y, width, height } = group.getBBox();
+        return { x, y, width, height };
+      }),
+    );
+    assert(
+      bounds.every(({ x, y, width, height }) => x >= 0 && y >= 0 && x + width <= 100 && y + height <= 100),
+      `${code}: local adjustments clipped a path`,
+    );
+    results.networks.push({ code, score, shared, continuous: counts, bounds });
+    console.log(`${engine}: ${code} preserves centers/colors and exact Apply/share output (${score})`);
   }
-  // Download the actual applied four-link image, including the selected order.
+  // Explicit settings also keep the drawing's order, positions and colors.
+  for (const options of [
+    'solveGapRange=0.05&solveRange=180&solveStep=13',
+    'palette=pastel&order=1+3+2+4&spread=0.7&rotation=39&placement=circle',
+  ]) {
+    await go(`code=34442132&${options}`);
+    const original = await identity();
+    await page.locator('#style-solve').check();
+    await waitForNetwork(page);
+    assert.deepEqual(await identity(), original, `${options}: moved or recolored a link`);
+    const solved = await picture();
+    await page.getByRole('button', { name: 'Apply turns and gaps to links', exact: true }).click();
+    assert.equal(await picture(), solved);
+    const shared = await page.getByLabel('Link to this picture', { exact: true }).inputValue();
+    await page.goto(shared);
+    assert.equal(await picture(), solved);
+    results.checks.push({ fixedPlacement: options, shared });
+  }
+  // Download the actual four-link image at its original positions.
   await go('code=34442132&solve=true');
   const solved = await picture();
   const pending = page.waitForEvent('download');
@@ -158,7 +208,7 @@ try {
   assert(await page.getByRole('button', { name: 'Применить повороты и зазоры связей', exact: true }).isEnabled());
   assert.deepEqual(results.errors, []);
   results.checks.push(
-    '22 networks: zero residual, continuous, exact Apply/share; SVG download; cancellation, concurrent style edits, mobile and Russian',
+    '22 networks: fixed centers/colors, continuous, nonincreasing scores, exact Apply/share; SVG download; cancellation, concurrent style edits, mobile and Russian',
   );
 } catch (error) {
   results.failure = error.stack;

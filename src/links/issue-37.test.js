@@ -4,8 +4,7 @@ import { decode } from './configurations';
 import { bezier, glyphCurves, paintedCurve, layoutCurves, layout } from './glyph';
 import { randomNetworks } from '../../experiments/issue-37-networks.mjs';
 import { networkSvg } from './render';
-import { withGaps } from './gaps';
-import { normalizeStyle, shapeOfStyle, withTurns, styleFromParams, styleToParams } from './style';
+import { normalizeStyle, shapeOfStyle, withSpacing, styleFromParams, styleToParams } from './style';
 
 // Independent dense centerline check: the two halves may join at their own
 // middle, but must not intersect elsewhere. Exclude the adjacent join segments.
@@ -32,12 +31,12 @@ it('solves the reported 2222 network without introducing a crossing between its 
   const links = decode('22 22');
   const shape = shapeOfStyle(normalizeStyle(), 2);
   const result = solveCollisions(links, shape, { adjustGaps: true });
-  const curves = layoutCurves(links, { ...shape, ...result.layout, turns: result.turns, linkGaps: result.linkGaps });
+  const curves = layoutCurves(links, { ...shape, turns: result.turns, linkGaps: result.linkGaps, frame: result.frame });
   expect(curves.map(shaftCrossings)).toEqual([0, 0]);
   expect(result.after - turningCost(result.turns)).toBeCloseTo(0, 8);
 });
 
-it('improves the reported four-link drawing beyond the former angle-only local minimum', () => {
+it('improves the four-link drawing with small reference adjustments at its original positions', () => {
   const links = decode('34 44 21 32');
   const style = normalizeStyle();
   const shape = shapeOfStyle(style, 4);
@@ -47,22 +46,35 @@ it('improves the reported four-link drawing beyond the former angle-only local m
     step: style.solveStep,
     gapRange: style.solveGapRange,
   });
-  expect(result.after - turningCost(result.turns)).toBeCloseTo(0, 8);
+  expect(result.after).toBeLessThan(result.before);
+  expect(result.after - turningCost(result.turns)).toBeLessThan(14);
+  expect(result.layout).toBeUndefined();
+  result.delta.flat().forEach((angle) => expect(Math.abs(angle)).toBeLessThanOrEqual(30));
   expect(
-    overlapCost(links, { ...shape, ...result.layout, turns: result.turns, linkGaps: result.linkGaps }),
+    overlapCost(links, { ...shape, turns: result.turns, linkGaps: result.linkGaps, frame: result.frame }),
   ).toBeCloseTo(result.after, 8);
 });
 
-it.each(randomNetworks())('fully spaces discovered random network %s', (code) => {
+// Existing crossings and frozen closed-half marker clearances cannot always
+// vanish under the owner's stronger requirement to preserve the drawing.
+// Keep explicit regression ceilings; never turn those residuals into zero.
+const FIXED_RESIDUAL = {
+  2012: 0.102,
+  '032113': 0.178,
+  43434143: 7,
+  33044224: 8,
+  31324042: 3,
+};
+it.each(randomNetworks())('locally spaces discovered random network %s without changing its arrangement', (code) => {
   const links = decode(code.match(/../g).join(' '));
   const shape = shapeOfStyle(normalizeStyle(), links.length);
   const snapshot = JSON.stringify(shape);
   const result = solveCollisions(links, shape, { adjustGaps: true });
-  expect(result.after - turningCost(result.turns)).toBeCloseTo(0, 8);
+  expect(result.after - turningCost(result.turns)).toBeLessThanOrEqual(FIXED_RESIDUAL[code] ?? 1e-8);
+  expect(result.after).toBeLessThanOrEqual(result.before);
   expect(JSON.stringify(shape)).toBe(snapshot);
   const applied = normalizeStyle({
-    ...withGaps(withTurns(normalizeStyle(), result.turns), result.linkGaps),
-    ...result.layout,
+    ...withSpacing(normalizeStyle(), result),
   });
   const fitted = shapeOfStyle(applied, links.length);
   expect(overlapCost(links, fitted)).toBeCloseTo(result.after, 8);
@@ -73,11 +85,11 @@ it.each(randomNetworks())('fully spaces discovered random network %s', (code) =>
     networkSvg(links, normalizeStyle(), {
       extraTurns: result.delta,
       extraGaps: result.linkGaps,
-      extraLayout: result.layout,
+      extraFrame: result.frame,
     }),
   );
   expect(styleFromParams(styleToParams(applied))).toEqual(applied);
-  result.turns.flat().forEach((angle) => expect(Math.abs(angle)).toBeLessThanOrEqual(180));
+  result.delta.flat().forEach((angle) => expect(Math.abs(angle)).toBeLessThanOrEqual(30));
   result.linkGaps.forEach((row, i) =>
     row.forEach((value, k) => {
       if (k >= 2 || links[i][k] === i + 1 || links[i][k] === 0) expect(value).toBe(shape.linkGaps[i]?.[k] ?? null);
@@ -85,11 +97,12 @@ it.each(randomNetworks())('fully spaces discovered random network %s', (code) =>
   );
 });
 
-it('solves the suggested four-link URL while respecting its step and gap bounds', () => {
+it('reduces overlaps in the suggested URL within its step/gap bounds and original placement', () => {
   const links = decode('34 44 21 32');
   const shape = shapeOfStyle(normalizeStyle(), 4);
   const result = solveCollisions(links, shape, { adjustGaps: true, range: 180, step: 13, gapRange: 0.05 });
-  expect(result.after - turningCost(result.turns)).toBeCloseTo(0, 8);
+  expect(result.after).toBeLessThan(result.before);
+  expect(result.layout).toBeUndefined();
   result.delta.flat().forEach((angle) => expect(angle % 13).toBeCloseTo(0, 8));
   result.linkGaps.forEach((row) =>
     row.slice(0, 2).forEach((gap) => {
@@ -121,12 +134,13 @@ it('preserves explicit layouts and disabled search bounds', () => {
   }
 });
 
-it('keeps compact automatic placement inside the editable spread bounds', () => {
+it('preserves even the smallest configured spread', () => {
   const links = decode('34 44 21 32');
   const style = normalizeStyle({ spread: 0.1 });
   const shape = shapeOfStyle(style, 4);
   const result = solveCollisions(links, shape, { adjustGaps: true, passes: 1 });
-  const applied = normalizeStyle({ ...style, ...result.layout });
-  expect(result.layout?.spread ?? shape.spread).toBeGreaterThanOrEqual(0.1);
-  expect(networkSvg(links, applied)).toBe(networkSvg(links, style, { extraLayout: result.layout }));
+  expect(result.layout).toBeUndefined();
+  const applied = withSpacing(style, result);
+  expect(applied.spread).toBe(0.1);
+  expect(applied.order).toBe(style.order);
 });

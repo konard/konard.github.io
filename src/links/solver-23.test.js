@@ -1,10 +1,9 @@
 import { expect, it } from 'vitest';
 import { decode } from './configurations';
 import { overlapCost, pairCost, solveCollisions } from './collisions';
-import { withGaps } from './gaps';
 import { bezier, glyphCurves } from './glyph';
 import { networkSvg } from './render';
-import { STYLE_DEFAULTS, normalizeStyle, shapeOfStyle, styleFromParams, styleToParams, withTurns } from './style';
+import { STYLE_DEFAULTS, normalizeStyle, shapeOfStyle, withSpacing, styleFromParams, styleToParams } from './style';
 
 it('reduces overlaps by adjusting individual gaps with angle search disabled', () => {
   const links = decode('22 13 31');
@@ -13,12 +12,13 @@ it('reduces overlaps by adjusting individual gaps with angle search disabled', (
   expect(result.delta.flat().every((angle) => angle === 0)).toBe(true);
   expect(result.after).toBeLessThan(result.before);
   expect(result.linkGaps.some((row) => row.some((value) => value !== null))).toBe(true);
-  const applied = withGaps(withTurns(STYLE_DEFAULTS, result.turns), result.linkGaps);
+  const applied = withSpacing(STYLE_DEFAULTS, result);
   expect(overlapCost(links, shapeOfStyle(applied, 3))).toBeCloseTo(result.after, 6);
   expect(networkSvg(links, applied)).toBe(
     networkSvg(links, STYLE_DEFAULTS, {
       extraTurns: result.delta,
       extraGaps: result.linkGaps,
+      extraFrame: result.frame,
     }),
   );
   expect(styleFromParams(styleToParams(applied))).toEqual(normalizeStyle(applied));
@@ -38,7 +38,7 @@ it('bounds manual gap adjustments, preserves the input and never increases the e
       expect(Math.abs((value ?? initial) - initial)).toBeLessThanOrEqual((k < 2 ? 0.1 : 2) + 1e-9);
     }),
   );
-  const applied = withGaps(withTurns(style, result.turns), result.linkGaps);
+  const applied = withSpacing(style, result);
   expect(overlapCost(links, shapeOfStyle(applied, 3))).toBeCloseTo(result.after, 6);
 });
 it('does not count an artificial crossing through a cut in the middle', () => {
@@ -72,7 +72,9 @@ it('bounds gap search cost for a dense 24-link drawing and returns its exact sco
   const result = solveCollisions(links, shape, { range: 0, adjustGaps: true });
   expect(performance.now() - started).toBeLessThan(10000);
   expect(result.after).toBeLessThan(result.before);
-  expect(overlapCost(links, { ...shape, turns: result.turns, linkGaps: result.linkGaps })).toBeCloseTo(result.after, 8);
+  expect(
+    overlapCost(links, { ...shape, turns: result.turns, linkGaps: result.linkGaps, frame: result.frame }),
+  ).toBeCloseTo(result.after, 8);
 }, 15000);
 
 it('keeps automatic cuts within the final fitted half-length after reference gaps change', () => {
@@ -80,7 +82,7 @@ it('keeps automatic cuts within the final fitted half-length after reference gap
   const shape = shapeOfStyle(STYLE_DEFAULTS, links.length);
   const result = solveCollisions(links, shape, { range: 0, adjustGaps: true, gapRange: 1, middleRange: 15 });
   expect(result.after).toBeLessThan(result.before);
-  const fitted = { ...shape, turns: result.turns, linkGaps: result.linkGaps };
+  const fitted = { ...shape, turns: result.turns, linkGaps: result.linkGaps, frame: result.frame };
   glyphCurves(links, fitted).forEach((curve, i) => {
     curve.segments.forEach((segment, k) => {
       let length = 0;
