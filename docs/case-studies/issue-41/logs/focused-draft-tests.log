@@ -1,0 +1,34 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793367536891
+
+ ❯ src/links/issue-41.test.js (27 tests | 1 failed) 68ms
+   ❯ simple default reference turns (issue 41) (27)
+     × 0112 matches the supplied straight arrangement 9ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/links/issue-41.test.js > simple default reference turns (issue 41) > 0112 matches the supplied straight arrangement
+AssertionError: expected 0.04141104721640332 to be less than 1e-10
+ ❯ near src/links/issue-41.test.js:9:69
+      7| const linksOf = (code) => decode(code.match(/../g).join(' '));
+      8| const curves = (links, raw = {}) => layoutCurves(links, shapeOfStyle(n…
+      9| const near = (a, b) => expect(Math.hypot(a[0] - b[0], a[1] - b[1])).to…
+       |                                                                     ^
+     10| const sub = (a, b) => a.map((v, i) => v - b[i]);
+     11| function straight(curve) {
+ ❯ src/links/issue-41.test.js:25:51
+ ❯ src/links/issue-41.test.js:25:29
+ ❯ src/links/issue-41.test.js:24:12
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 10 passed (11)
+      Tests  1 failed | 65 passed (66)
+   Start at  13:46:00
+   Duration  41.26s (tests 51%, environment 31%, setup 8%, transform 6%, import 3%, worker 1%)
+
+Environment  jsdom was created 11 times · 11.95s total, 31% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+

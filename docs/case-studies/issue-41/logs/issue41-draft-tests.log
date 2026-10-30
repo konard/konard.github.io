@@ -1,0 +1,82 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793367536891
+
+ ❯ src/links/issue-41.test.js (36 tests | 8 failed) 2570ms
+   ❯ simple default reference turns (issue 41) (36)
+     × keeps simple references straight under auto placement, rotation, aspect and order 13ms
+     × keeps simple references straight under circle placement, rotation, aspect and order 4ms
+     × keeps simple references straight under square placement, rotation, aspect and order 12ms
+     × keeps simple references straight under hex placement, rotation, aspect and order 5ms
+     × keeps simple references straight under dice placement, rotation, aspect and order 8ms
+     × keeps simple references straight under cards placement, rotation, aspect and order 2ms
+     × keeps simple references straight under spiral placement, rotation, aspect and order 11ms
+     × keeps simple references straight under force placement, rotation, aspect and order 47ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 8 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/links/issue-41.test.js > simple default reference turns (issue 41) > keeps simple references straight under auto placement, rotation, aspect and order
+ FAIL  src/links/issue-41.test.js > simple default reference turns (issue 41) > keeps simple references straight under circle placement, rotation, aspect and order
+ FAIL  src/links/issue-41.test.js > simple default reference turns (issue 41) > keeps simple references straight under square placement, rotation, aspect and order
+ FAIL  src/links/issue-41.test.js > simple default reference turns (issue 41) > keeps simple references straight under dice placement, rotation, aspect and order
+AssertionError: expected 0.30240000000000006 to be less than 1e-10
+ ❯ straight src/links/issue-41.test.js:15:65
+     13|   for (const point of curve.segments.flat()) {
+     14|     const offset = sub(point, curve.start.at);
+     15|     expect(Math.abs(axis[0] * offset[1] - axis[1] * offset[0])).toBeLe…
+       |                                                                 ^
+     16|   }
+     17| }
+ ❯ src/links/issue-41.test.js:80:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/8]⎯
+
+ FAIL  src/links/issue-41.test.js > simple default reference turns (issue 41) > keeps simple references straight under hex placement, rotation, aspect and order
+AssertionError: expected 0.30239999999999995 to be less than 1e-10
+ ❯ straight src/links/issue-41.test.js:15:65
+     13|   for (const point of curve.segments.flat()) {
+     14|     const offset = sub(point, curve.start.at);
+     15|     expect(Math.abs(axis[0] * offset[1] - axis[1] * offset[0])).toBeLe…
+       |                                                                 ^
+     16|   }
+     17| }
+ ❯ src/links/issue-41.test.js:80:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/8]⎯
+
+ FAIL  src/links/issue-41.test.js > simple default reference turns (issue 41) > keeps simple references straight under cards placement, rotation, aspect and order
+ FAIL  src/links/issue-41.test.js > simple default reference turns (issue 41) > keeps simple references straight under spiral placement, rotation, aspect and order
+AssertionError: expected 0.3024 to be less than 1e-10
+ ❯ straight src/links/issue-41.test.js:15:65
+     13|   for (const point of curve.segments.flat()) {
+     14|     const offset = sub(point, curve.start.at);
+     15|     expect(Math.abs(axis[0] * offset[1] - axis[1] * offset[0])).toBeLe…
+       |                                                                 ^
+     16|   }
+     17| }
+ ❯ src/links/issue-41.test.js:80:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/8]⎯
+
+ FAIL  src/links/issue-41.test.js > simple default reference turns (issue 41) > keeps simple references straight under force placement, rotation, aspect and order
+AssertionError: expected 0.3023999999999999 to be less than 1e-10
+ ❯ straight src/links/issue-41.test.js:15:65
+     13|   for (const point of curve.segments.flat()) {
+     14|     const offset = sub(point, curve.start.at);
+     15|     expect(Math.abs(axis[0] * offset[1] - axis[1] * offset[0])).toBeLe…
+       |                                                                 ^
+     16|   }
+     17| }
+ ❯ src/links/issue-41.test.js:80:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/8]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  8 failed | 31 passed (39)
+   Start at  13:48:23
+   Duration  12.62s (tests 54%, environment 31%, setup 6%, transform 6%, import 3%, worker 1%)
+
+Environment  jsdom was created 2 times · 3.70s total, 31% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+

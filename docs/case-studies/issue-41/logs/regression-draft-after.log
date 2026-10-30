@@ -1,0 +1,119 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793367536891
+
+ ❯ src/links/issue-41.test.js (27 tests | 1 failed) 107ms
+   ❯ simple default reference turns (issue 41) (27)
+     × preserves manual angles, bends, legacy geometry and non-straight configurations 39ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/links/issue-41.test.js > simple default reference turns (issue 41) > preserves manual angles, bends, legacy geometry and non-straight configurations
+AssertionError: expected [ { …(5) }, { …(5) } ] to deeply equal [ { …(5) }, { …(5) } ]
+
+- Expected
++ Received
+
+@@ -1,15 +1,15 @@
+  [
+    {
+      "end": {
+        "at": [
+-         0.4307179676972449,
+-         -0.040000000000000105,
++         0.42,
++         -1.0914200361923344e-16,
+        ],
+        "dir": [
+-         0.8660254037844388,
+-         0.4999999999999998,
++         1,
++         -1.6653345369377348e-16,
+        ],
+      },
+      "middle": {
+        "at": [
+          -0.5,
+@@ -47,16 +47,16 @@
+          [
+            -0.09999999999999998,
+            -1.224646799147353e-17,
+          ],
+          [
+-           0.08430780618346934,
+-           -0.24000000000000005,
++           0.019999999999999962,
++           -4.252862214172404e-17,
+          ],
+          [
+-           0.4307179676972449,
+-           -0.040000000000000105,
++           0.42,
++           -1.0914200361923344e-16,
+          ],
+        ],
+      ],
+      "sharedReference": false,
+      "start": {
+@@ -71,16 +71,16 @@
+      },
+    },
+    {
+      "end": {
+        "at": [
+-         -0.4307179676972449,
+-         0.04000000000000004,
++         -0.42,
++         4.790966366186578e-17,
+        ],
+        "dir": [
+-         -0.8660254037844388,
+-         -0.4999999999999998,
++         -1,
++         1.6653345369377348e-16,
+        ],
+      },
+      "middle": {
+        "at": [
+          0.5,
+@@ -118,16 +118,16 @@
+          [
+            0.09999999999999998,
+            -4.898587196589413e-17,
+          ],
+          [
+-           -0.08430780618346934,
+-           0.23999999999999996,
++           -0.019999999999999962,
++           -1.870371781564362e-17,
+          ],
+          [
+-           -0.4307179676972449,
+-           0.04000000000000004,
++           -0.42,
++           4.790966366186578e-17,
+          ],
+        ],
+      ],
+      "sharedReference": false,
+      "start": {
+
+ ❯ src/links/issue-41.test.js:66:29
+     64|     for (const code of ['00', '01', '10', '11', '1111', '2222', '11221…
+     65|       const links = linksOf(code);
+     66|       expect(curves(links)).toEqual(layoutCurves(links, shapeOfStyle(n…
+       |                             ^
+     67|     }
+     68|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 44 passed (45)
+   Start at  13:45:15
+   Duration  6.37s (environment 51%, tests 22%, transform 11%, setup 11%, import 3%, worker 2%)
+
+Environment  jsdom was created 2 times · 2.92s total, 51% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+

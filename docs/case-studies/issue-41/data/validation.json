@@ -1,0 +1,23 @@
+{
+  "recordedAt": "2026-10-30T14:03:05.113393+00:00",
+  "unit": {
+    "files": 70,
+    "passed": 977,
+    "log": "logs/unit-tests.log"
+  },
+  "static": "ESLint, Prettier, file limits and secret scan passed",
+  "tooling": "Python compilation, Ruff and ShellCheck passed",
+  "build": "production Vite build passed",
+  "newBrowserContract": {
+    "chromium": "passed: 24 networks, default/manual equality, edit, sharing, worker, Apply, SVG download, mobile",
+    "firefox": "passed: same contract"
+  },
+  "exhaustive": {
+    "networks": 4181,
+    "previouslyClear": 141,
+    "failures": []
+  },
+  "inheritedBrowserSuites": "running sequentially; see logs/legacy-browser-summary.log",
+  "ci": "initial head passed; implementation and final-head runs pending",
+  "memory": "No cgroup OOM events during local verification"
+}

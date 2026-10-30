@@ -1,0 +1,129 @@
+
+> konard.github.io@0.1.0 test:ci
+> vitest run
+
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793367536891
+
+ ❯ src/links/issue-37.test.js (27 tests | 5 failed) 3240ms
+   × locally spaces discovered random network 1222 without changing its arrangement 47ms
+   × locally spaces discovered random network 032113 without changing its arrangement 102ms
+   × locally spaces discovered random network 31324042 without changing its arrangement 269ms
+   × locally spaces discovered random network 04210010 without changing its arrangement 35ms
+   × locally spaces discovered random network 32103141 without changing its arrangement 84ms
+::debug::Creating Artifact archive with compressionLevel: 6
+::debug::Zip write high watermark value 8388608
+::debug::Zip read high watermark value 8388608
+::debug::Zip stream for upload has ended.
+::debug::Zip stream for upload has finished.
+ ❯ src/links/solver-23.test.js (6 tests | 1 failed) 7751ms
+   × reduces overlaps by adjusting individual gaps with angle search disabled 191ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/links/issue-37.test.js > locally spaces discovered random network 1222 without changing its arrangement
+AssertionError: expected '<svg xmlns="http://www.w3.org/2000/sv…' to be '<svg xmlns="http://www.w3.org/2000/sv…' // Object.is equality
+
+Expected: "<svg xmlns="http://www.w3.org/2000/svg" width="2048" height="2048" viewBox="0 0 100 100" role="img" aria-label="Links network 12₃ 22₃"><title>Links network 12₃ 22₃</title><rect width="100" height="100" fill="#000000"/><g transform="translate(0 0) scale(1)" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="miter" opacity="1"><g stroke="#22d3ee"><path d="M28.58 45.8C28.58 8.02 -15.61 50 28.58 50C49.57 50 49.04 50 70.03 50"/><path d="M31.01 43.16L26.02 43.45"/><path d="M67.56 47.53L70.03 50L67.56 52.47" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M27.58 50a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#22d3ee"/></g><g stroke="#c084fc"><path d="M78.09 47.03C51.38 20.31 112.31 18.75 81.06 50C49.81 81.25 110.94 79.88 84.22 53.16"/><path d="M78.24 43.55L74.51 46.88"/><path d="M84.22 56.66L84.22 53.16L87.72 53.16" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M80.06 50a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#c084fc"/></g></g></svg>"
+Received: "<svg xmlns="http://www.w3.org/2000/svg" width="2048" height="2048" viewBox="0 0 100 100" role="img" aria-label="Links network 12₃ 22₃"><title>Links network 12₃ 22₃</title><rect width="100" height="100" fill="#000000"/><g transform="translate(0 0) scale(1)" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="miter" opacity="1"><g stroke="#22d3ee"><path d="M28.58 45.8C28.58 8.02 -15.61 50 28.58 50C49.57 50 53.33 33.99 71.51 44.49"/><path d="M31.01 43.16L26.02 43.45"/><path d="M70.61 41.11L71.51 44.49L68.13 45.39" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M27.58 50a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#22d3ee"/></g><g stroke="#c084fc"><path d="M78.09 47.03C51.38 20.31 112.31 18.75 81.06 50C49.81 81.25 110.94 79.88 84.22 53.16"/><path d="M78.24 43.55L74.51 46.88"/><path d="M84.22 56.66L84.22 53.16L87.72 53.16" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M80.06 50a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#c084fc"/></g></g></svg>"
+
+ ❯ src/links/issue-37.test.js:84:38
+     82|     links.map(() => 0),
+     83|   );
+     84|   expect(networkSvg(links, applied)).toBe(
+       |                                      ^
+     85|     networkSvg(links, normalizeStyle(), {
+     86|       extraTurns: result.delta,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  src/links/issue-37.test.js > locally spaces discovered random network 032113 without changing its arrangement
+AssertionError: expected '<svg xmlns="http://www.w3.org/2000/sv…' to be '<svg xmlns="http://www.w3.org/2000/sv…' // Object.is equality
+
+Expected: "<svg xmlns="http://www.w3.org/2000/svg" width="2048" height="2048" viewBox="0 0 100 100" role="img" aria-label="Links network 03₄ 21₄ 13₄"><title>Links network 03₄ 21₄ 13₄</title><rect width="100" height="100" fill="#000000"/><g transform="translate(0 0) scale(1)" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="miter" opacity="1"><g stroke="#22d3ee"><path d="M59.2 17.58C56.13 22.89 53.07 28.2 50 33.51C41.24 48.68 47.98 59.96 32.81 68.72"/><path d="M55.78 18.49L60.11 20.99"/><path d="M36.19 69.63L32.81 68.72L33.71 65.34" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M49 33.51a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#22d3ee"/></g><g stroke="#c084fc"><path d="M74.94 69.69C102.25 53.92 90.34 103.38 71.9 71.44C63.14 56.27 64.22 58.13 55.46 42.96"/><path d="M78.23 70.76L76.05 66.26"/><path d="M54.55 46.34L55.46 42.96L58.84 43.86" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M70.9 71.44a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#c084fc"/></g><g stroke="#f472b6"><path d="M45.07 36.35C29.9 45.11 36.86 56.27 28.1 71.44C9.66 103.38 -2.48 53.78 24.83 69.55"/><path d="M41.53 35.63L44.37 39.74"/><path d="M23.93 66.17L24.83 69.55L21.45 70.46" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M27.1 71.44a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#f472b6"/></g></g></svg>"
+Received: "<svg xmlns="http://www.w3.org/2000/svg" width="2048" height="2048" viewBox="0 0 100 100" role="img" aria-label="Links network 03₄ 21₄ 13₄"><title>Links network 03₄ 21₄ 13₄</title><rect width="100" height="100" fill="#000000"/><g transform="translate(0 0) scale(1)" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="miter" opacity="1"><g stroke="#22d3ee"><path d="M59.2 17.58C56.13 22.89 53.07 28.2 50 33.51C41.24 48.68 47.98 59.96 32.81 68.72"/><path d="M55.78 18.49L60.11 20.99"/><path d="M36.19 69.63L32.81 68.72L33.71 65.34" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M49 33.51a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#22d3ee"/></g><g stroke="#c084fc"><path d="M74.94 69.69C102.25 53.92 90.34 103.38 71.9 71.44C63.14 56.27 50 61.94 50 44.42"/><path d="M78.23 70.76L76.05 66.26"/><path d="M47.53 46.89L50 44.42L52.47 46.89" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M70.9 71.44a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#c084fc"/></g><g stroke="#f472b6"><path d="M45.07 36.35C29.9 45.11 36.86 56.27 28.1 71.44C9.66 103.38 -2.48 53.78 24.83 69.55"/><path d="M41.53 35.63L44.37 39.74"/><path d="M23.93 66.17L24.83 69.55L21.45 70.46" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M27.1 71.44a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#f472b6"/></g></g></svg>"
+
+ ❯ src/links/issue-37.test.js:84:38
+     82|     links.map(() => 0),
+     83|   );
+     84|   expect(networkSvg(links, applied)).toBe(
+       |                                      ^
+     85|     networkSvg(links, normalizeStyle(), {
+     86|       extraTurns: result.delta,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ FAIL  src/links/issue-37.test.js > locally spaces discovered random network 31324042 without changing its arrangement
+AssertionError: expected '<svg xmlns="http://www.w3.org/2000/sv…' to be '<svg xmlns="http://www.w3.org/2000/sv…' // Object.is equality
+
+Expected: "<svg xmlns="http://www.w3.org/2000/svg" width="2048" height="2048" viewBox="0 0 100 100" role="img" aria-label="Links network 31₅ 32₅ 40₅ 42₅"><title>Links network 31₅ 32₅ 40₅ 42₅</title><rect width="100" height="100" fill="#000000"/><g transform="translate(0 0) scale(1)" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="miter" opacity="1"><g stroke="#22d3ee"><path d="M61.23 65.84C45.08 47.27 40.26 45.65 22.86 28.25C-3.04 2.35 47.66 3.45 25.51 25.6"/><path d="M61.45 62.31L57.7 65.61"/><path d="M29.01 25.6L25.51 25.6L25.51 22.1" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M21.86 28.25a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#22d3ee"/></g><g stroke="#c084fc"><path d="M66.36 68.27C66.36 50.87 66.36 45.65 66.36 28.25C66.36 -8.38 101.43 28.25 70.11 28.25"/><path d="M68.86 65.77L63.86 65.77"/><path d="M72.59 30.72L70.11 28.25L72.59 25.77" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M65.36 28.25a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#c084fc"/></g><g stroke="#f472b6"><path d="M32.87 71.75C50.27 71.75 48.96 71.75 66.36 71.75C72.45 71.75 78.27 71.75 84.36 71.75"/><path d="M35.37 74.25L35.37 69.25"/><path d="M81.89 69.28L84.36 71.75L81.89 74.23" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M65.36 71.75a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#f472b6"/></g><g stroke="#facc15"><path d="M25.32 74.21C47.47 96.36 -3.04 97.65 22.86 71.75C40.26 54.35 32.29 38.02 55.94 31.24"/><path d="M25.14 77.68L28.92 74.4"/><path d="M52.88 29.54L55.94 31.24L54.25 34.3" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M21.86 71.75a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#facc15"/></g></g></svg>"
+Received: "<svg xmlns="http://www.w3.org/2000/svg" width="2048" height="2048" viewBox="0 0 100 100" role="img" aria-label="Links network 31₅ 32₅ 40₅ 42₅"><title>Links network 31₅ 32₅ 40₅ 42₅</title><rect width="100" height="100" fill="#000000"/><g transform="translate(0 0) scale(1)" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="miter" opacity="1"><g stroke="#22d3ee"><path d="M64.87 64.06C60.17 39.91 40.26 45.65 22.86 28.25C-3.04 2.35 47.66 3.45 25.51 25.6"/><path d="M66.74 61L61.9 62.25"/><path d="M29.01 25.6L25.51 25.6L25.51 22.1" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M21.86 28.25a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#22d3ee"/></g><g stroke="#c084fc"><path d="M68.1 68.74C76.8 53.67 66.36 45.65 66.36 28.25C66.36 -8.38 101.43 28.25 70.11 28.25"/><path d="M71.53 67.6L67.01 65.45"/><path d="M72.59 30.72L70.11 28.25L72.59 25.77" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M65.36 28.25a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#c084fc"/></g><g stroke="#f472b6"><path d="M31.53 76.75C46.6 85.45 48.96 71.75 66.36 71.75C72.45 71.75 78.27 71.75 84.36 71.75"/><path d="M32.68 80.18L34.8 75.65"/><path d="M81.89 69.28L84.36 71.75L81.89 74.23" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M65.36 71.75a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#f472b6"/></g><g stroke="#facc15"><path d="M25.32 74.21C47.47 96.36 -3.04 97.65 22.86 71.75C40.26 54.35 31.97 19.67 55.84 25.63"/><path d="M25.14 77.68L28.92 74.4"/><path d="M54.04 22.63L55.84 25.63L52.84 27.43" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M21.86 71.75a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#facc15"/></g></g></svg>"
+
+ ❯ src/links/issue-37.test.js:84:38
+     82|     links.map(() => 0),
+     83|   );
+     84|   expect(networkSvg(links, applied)).toBe(
+       |                                      ^
+     85|     networkSvg(links, normalizeStyle(), {
+     86|       extraTurns: result.delta,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+ FAIL  src/links/issue-37.test.js > locally spaces discovered random network 04210010 without changing its arrangement
+AssertionError: expected '<svg xmlns="http://www.w3.org/2000/sv…' to be '<svg xmlns="http://www.w3.org/2000/sv…' // Object.is equality
+
+Expected: "<svg xmlns="http://www.w3.org/2000/svg" width="2048" height="2048" viewBox="0 0 100 100" role="img" aria-label="Links network 04₅ 21₅ 00₅ 10₅"><title>Links network 04₅ 21₅ 00₅ 10₅</title><rect width="100" height="100" fill="#000000"/><g transform="translate(0 0) scale(1)" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="miter" opacity="1"><g stroke="#22d3ee"><path d="M22.06 9C22.06 15.24 22.06 21.48 22.06 27.72C22.06 45.54 36.23 47.73 27.32 63.17"/><path d="M19.56 11.5L24.56 11.5"/><path d="M30.7 62.27L27.32 63.17L26.42 59.79" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M21.06 27.72a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#22d3ee"/></g><g stroke="#c084fc"><path d="M66.63 24.15C66.63 -7.93 104.16 27.72 66.63 27.72C48.8 27.72 44.3 27.72 26.48 27.72"/><path d="M69.2 21.83L64.22 21.48"/><path d="M28.95 30.19L26.48 27.72L28.95 25.24" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M65.63 27.72a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#c084fc"/></g><g stroke="#f472b6"><path d="M79.86 59.05C75.45 63.46 71.04 67.87 66.63 72.28C62.22 76.69 57.99 80.92 53.58 85.33"/><path d="M76.33 59.05L79.86 62.58"/><path d="M57.08 85.33L53.58 85.33L53.58 81.83" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M65.63 72.28a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#f472b6"/></g><g stroke="#facc15"><path d="M19.43 32.27C10.52 47.71 22.06 54.46 22.06 72.28C22.06 78.52 22.06 84.49 22.06 90.73"/><path d="M16.01 33.4L20.52 35.56"/><path d="M24.54 88.26L22.06 90.73L19.59 88.26" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M21.06 72.28a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#facc15"/></g></g></svg>"
+Received: "<svg xmlns="http://www.w3.org/2000/svg" width="2048" height="2048" viewBox="0 0 100 100" role="img" aria-label="Links network 04₅ 21₅ 00₅ 10₅"><title>Links network 04₅ 21₅ 00₅ 10₅</title><rect width="100" height="100" fill="#000000"/><g transform="translate(0 0) scale(1)" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="miter" opacity="1"><g stroke="#22d3ee"><path d="M22.06 9C22.06 15.24 22.06 21.48 22.06 27.72C22.06 45.54 36.23 47.73 27.32 63.17"/><path d="M19.56 11.5L24.56 11.5"/><path d="M30.7 62.27L27.32 63.17L26.42 59.79" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M21.06 27.72a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#22d3ee"/></g><g stroke="#c084fc"><path d="M66.63 24.15C66.63 -7.93 104.16 27.72 66.63 27.72C48.8 27.72 41.32 38.84 25.88 29.92"/><path d="M69.2 21.83L64.22 21.48"/><path d="M26.79 33.31L25.88 29.92L29.27 29.02" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M65.63 27.72a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#c084fc"/></g><g stroke="#f472b6"><path d="M79.86 59.05C75.45 63.46 71.04 67.87 66.63 72.28C62.22 76.69 57.99 80.92 53.58 85.33"/><path d="M76.33 59.05L79.86 62.58"/><path d="M57.08 85.33L53.58 85.33L53.58 81.83" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M65.63 72.28a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#f472b6"/></g><g stroke="#facc15"><path d="M19.43 32.27C10.52 47.71 22.06 54.46 22.06 72.28C22.06 78.52 22.06 84.49 22.06 90.73"/><path d="M16.01 33.4L20.52 35.56"/><path d="M24.54 88.26L22.06 90.73L19.59 88.26" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M21.06 72.28a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#facc15"/></g></g></svg>"
+
+ ❯ src/links/issue-37.test.js:84:38
+     82|     links.map(() => 0),
+     83|   );
+     84|   expect(networkSvg(links, applied)).toBe(
+       |                                      ^
+     85|     networkSvg(links, normalizeStyle(), {
+     86|       extraTurns: result.delta,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/6]⎯
+
+ FAIL  src/links/issue-37.test.js > locally spaces discovered random network 32103141 without changing its arrangement
+AssertionError: expected '<svg xmlns="http://www.w3.org/2000/sv…' to be '<svg xmlns="http://www.w3.org/2000/sv…' // Object.is equality
+
+Expected: "<svg xmlns="http://www.w3.org/2000/svg" width="2048" height="2048" viewBox="0 0 100 100" role="img" aria-label="Links network 32₅ 10₅ 31₅ 41₅"><title>Links network 32₅ 10₅ 31₅ 41₅</title><rect width="100" height="100" fill="#000000"/><g transform="translate(0 0) scale(1)" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="miter" opacity="1"><g stroke="#22d3ee"><path d="M62.19 66.98C37.61 60.4 16.38 47.9 26.11 24.39C33 7.76 50.68 12.6 66.27 21.6"/><path d="M60.47 63.91L59.09 68.72"/><path d="M65.36 18.22L66.27 21.6L62.89 22.5" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M25.11 24.39a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#22d3ee"/></g><g stroke="#c084fc"><path d="M29.23 26.19C44.81 35.18 53.1 24.39 71.1 24.39C77.39 24.39 83.42 24.39 89.72 24.39"/><path d="M30.36 29.61L32.52 25.1"/><path d="M87.24 21.91L89.72 24.39L87.24 26.86" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M70.1 24.39a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#c084fc"/></g><g stroke="#f472b6"><path d="M73.64 66.82C96.54 43.92 97.88 96.15 71.1 69.37C53.1 51.38 34.57 55.96 27.99 31.38"/><path d="M77.11 67L73.82 63.23"/><path d="M26.24 34.41L27.99 31.38L31.02 33.13" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M70.1 69.37a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#f472b6"/></g><g stroke="#facc15"><path d="M22.52 69.37C-9.87 69.37 26.11 107.25 26.11 69.37C26.11 51.38 26.11 53.58 26.11 35.59"/><path d="M19.85 66.96L20.19 71.94"/><path d="M23.64 38.06L26.11 35.59L28.59 38.06" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M25.11 69.37a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#facc15"/></g></g></svg>"
+Received: "<svg xmlns="http://www.w3.org/2000/svg" width="2048" height="2048" viewBox="0 0 100 100" role="img" aria-label="Links network 32₅ 10₅ 31₅ 41₅"><title>Links network 32₅ 10₅ 31₅ 41₅</title><rect width="100" height="100" fill="#000000"/><g transform="translate(0 0) scale(1)" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="miter" opacity="1"><g stroke="#22d3ee"><path d="M62.19 66.98C37.61 60.4 16.38 47.9 26.11 24.39C33 7.76 50.68 12.6 66.27 21.6"/><path d="M60.47 63.91L59.09 68.72"/><path d="M65.36 18.22L66.27 21.6L62.89 22.5" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M25.11 24.39a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#22d3ee"/></g><g stroke="#c084fc"><path d="M29.23 26.19C44.81 35.18 53.1 24.39 71.1 24.39C77.39 24.39 83.42 24.39 89.72 24.39"/><path d="M30.36 29.61L32.52 25.1"/><path d="M87.24 21.91L89.72 24.39L87.24 26.86" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M70.1 24.39a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#c084fc"/></g><g stroke="#f472b6"><path d="M73.64 66.82C96.54 43.92 97.88 96.15 71.1 69.37C53.1 51.38 34.57 55.96 27.99 31.38"/><path d="M77.11 67L73.82 63.23"/><path d="M26.24 34.41L27.99 31.38L31.02 33.13" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M70.1 69.37a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#f472b6"/></g><g stroke="#facc15"><path d="M22.52 69.37C-9.87 69.37 26.11 107.25 26.11 69.37C26.11 51.38 11.52 49.67 20.51 34.09"/><path d="M19.85 66.96L20.19 71.94"/><path d="M17.13 34.99L20.51 34.09L21.42 37.47" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M25.11 69.37a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#facc15"/></g></g></svg>"
+
+ ❯ src/links/issue-37.test.js:84:38
+     82|     links.map(() => 0),
+     83|   );
+     84|   expect(networkSvg(links, applied)).toBe(
+       |                                      ^
+     85|     networkSvg(links, normalizeStyle(), {
+     86|       extraTurns: result.delta,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/6]⎯
+
+ FAIL  src/links/solver-23.test.js > reduces overlaps by adjusting individual gaps with angle search disabled
+AssertionError: expected '<svg xmlns="http://www.w3.org/2000/sv…' to be '<svg xmlns="http://www.w3.org/2000/sv…' // Object.is equality
+
+Expected: "<svg xmlns="http://www.w3.org/2000/svg" width="2048" height="2048" viewBox="0 0 100 100" role="img" aria-label="Links network 22₄ 13₄ 31₄"><title>Links network 22₄ 13₄ 31₄</title><rect width="100" height="100" fill="#000000"/><g transform="translate(0 0) scale(1)" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="miter" opacity="1"><g stroke="#22d3ee"><path d="M81.26 64.34C62.35 53.42 41.19 31.52 60.11 20.6C79.02 9.68 87.74 37.23 87.74 59.07"/><path d="M80.43 60.93L77.8 65.19"/><path d="M90.21 56.59L87.74 59.07L85.26 56.59" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M59.11 20.6a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#22d3ee"/></g><g stroke="#c084fc"><path d="M73.35 28.25C92.26 39.17 98.33 48.98 87.41 67.89C76.49 86.8 55.74 81.13 36.82 70.21"/><path d="M74.2 31.66L76.8 27.38"/><path d="M37.73 73.59L36.82 70.21L40.2 69.3" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M86.41 67.89a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#c084fc"/></g><g stroke="#f472b6"><path d="M29.03 65.71C-5.02 46.05 9.82 107.71 32.81 67.89C43.73 48.98 44.14 48.26 55.06 29.35"/><path d="M27.96 62.28L25.7 66.74"/><path d="M51.68 30.25L55.06 29.35L55.97 32.73" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M31.81 67.89a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#f472b6"/></g></g></svg>"
+Received: "<svg xmlns="http://www.w3.org/2000/svg" width="2048" height="2048" viewBox="0 0 100 100" role="img" aria-label="Links network 22₄ 13₄ 31₄"><title>Links network 22₄ 13₄ 31₄</title><rect width="100" height="100" fill="#000000"/><g transform="translate(0 0) scale(1)" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="miter" opacity="1"><g stroke="#22d3ee"><path d="M81.26 64.34C62.35 53.42 41.19 31.52 60.11 20.6C79.02 9.68 87.74 37.23 87.74 59.07"/><path d="M80.43 60.93L77.8 65.19"/><path d="M90.21 56.59L87.74 59.07L85.26 56.59" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M59.11 20.6a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#22d3ee"/></g><g stroke="#c084fc"><path d="M73.35 28.25C92.26 39.17 98.33 48.98 87.41 67.89C76.49 86.8 55.74 81.13 36.82 70.21"/><path d="M74.2 31.66L76.8 27.38"/><path d="M37.73 73.59L36.82 70.21L40.2 69.3" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M86.41 67.89a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#c084fc"/></g><g stroke="#f472b6"><path d="M29.03 65.71C-5.02 46.05 9.82 107.71 32.81 67.89C43.73 48.98 32.45 36.57 51.36 25.65"/><path d="M27.96 62.28L25.7 66.74"/><path d="M47.98 24.75L51.36 25.65L50.46 29.03" stroke-linejoin="miter" stroke-miterlimit="4.01"/><path d="M31.81 67.89a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z" fill="#f472b6"/></g></g></svg>"
+
+ ❯ src/links/solver-23.test.js:17:38
+     15|   const applied = withSpacing(STYLE_DEFAULTS, result);
+     16|   expect(overlapCost(links, shapeOfStyle(applied, 3))).toBeCloseTo(res…
+     17|   expect(networkSvg(links, applied)).toBe(
+       |                                      ^
+     18|     networkSvg(links, STYLE_DEFAULTS, {
+     19|       extraTurns: result.delta,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/6]⎯
+
+
+ Test Files  2 failed | 68 passed (70)
+      Tests  6 failed | 971 passed (977)
+   Start at  13:51:02
+   Duration  261.04s (tests 56%, environment 31%, setup 7%, import 3%, transform 2%, worker 1%)
+
+Environment  jsdom was created 70 times · 77.29s total, 31% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+
