@@ -157,8 +157,8 @@ try {
       await verifyColors(theme);
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
       await page.screenshot({ path: `${dir}/after-mobile-${theme}.png` });
-      await page.locator('.source-lines details').evaluate((element) => {
-        element.open = true;
+      await page.locator('.source-lines details').evaluateAll((elements) => {
+        for (const element of elements) element.open = true;
       });
       assert.equal(
         await page.evaluate(() => document.documentElement.scrollWidth > innerWidth),
