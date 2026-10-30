@@ -1,4 +1,5 @@
 // Bounded availability probe. External refusals are evidence, not a CI failure.
+/* global window */
 import { chromium } from 'playwright';
 import { createServer } from 'vite';
 import { writeFile } from 'node:fs/promises';
@@ -34,6 +35,8 @@ try {
     requests,
     iframe: loaded ? await frame.boundingBox() : null,
   };
+  await post.evaluate((element) => element.scrollIntoView({ block: 'start' }));
+  await page.evaluate(() => window.scrollBy(0, -90));
   await page.screenshot({ path: 'docs/case-studies/issue-39/screenshots/live-blog.png' });
   await writeFile('docs/case-studies/issue-39/data/live-social.json', JSON.stringify(result, null, 2) + '\n');
   console.log(JSON.stringify(result));

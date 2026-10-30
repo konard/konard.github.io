@@ -159,7 +159,13 @@ export default function Select({ children, value, onChange, id, name, disabled, 
         aria-expanded={open}
         aria-controls={open ? listId : undefined}
         aria-activedescendant={open && active >= 0 ? `${listId}-${active}` : undefined}
-        onClick={() => (open ? setOpen(false) : show())}
+        onClick={(event) => {
+          // Safari does not necessarily focus a button after a pointer click.
+          // Keep keyboard navigation on the combobox in every engine.
+          event.currentTarget.focus({ preventScroll: true });
+          if (open) setOpen(false);
+          else show();
+        }}
         onKeyDown={keyDown}
         onBlur={(event) => {
           if (!popup.current?.contains(event.relatedTarget)) setOpen(false);

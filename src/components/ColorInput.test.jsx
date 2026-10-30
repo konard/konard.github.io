@@ -17,3 +17,18 @@ it('keeps incomplete color drafts out of settings and restores the saved value o
   fireEvent.change(field, { target: { value: '#aBcDeF' } });
   expect(onChange).toHaveBeenCalledOnce();
 });
+
+it('keeps pointer color selection in an owned keyboard-accessible chooser', () => {
+  const change = vi.fn();
+  render(<ColorInput aria-label="Accent" value="#112233" onChange={change} />);
+  const trigger = screen.getByRole('button', { name: 'Choose color: Accent' });
+  fireEvent.click(trigger);
+  expect(screen.getByRole('dialog', { name: 'Color chooser' })).toBeInTheDocument();
+  const red = screen.getByRole('slider', { name: 'Red' });
+  expect(red).toHaveFocus();
+  fireEvent.change(red, { target: { value: '255' } });
+  expect(change).toHaveBeenCalledWith(expect.objectContaining({ target: { value: '#ff2233' } }));
+  fireEvent.keyDown(red, { key: 'Escape' });
+  expect(screen.queryByRole('dialog')).toBeNull();
+  expect(trigger).toHaveFocus();
+});

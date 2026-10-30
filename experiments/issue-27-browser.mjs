@@ -178,17 +178,18 @@ try {
   console.log('Geometry, URL and number editing checks passed. Auditing sliders.');
   const audit = async (selector) => {
     const controls = await page.locator(selector).evaluateAll((inputs) =>
-      inputs.map((input) => ({
+      inputs.map((input, index) => ({
+        index,
         id: input.id,
         min: +input.min,
         max: +input.max,
-        step: +input.step,
+        step: Number(input.step) || 1,
         value: +input.value,
       })),
     );
     for (const control of controls) {
       console.log(`Keyboard: ${control.id}`);
-      const input = page.locator(`[id="${control.id}"]`);
+      const input = page.locator(selector).nth(control.index);
       let current = control.value;
       for (const [key, count] of [
         ['ArrowUp', 1],

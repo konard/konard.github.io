@@ -59,7 +59,9 @@ function Control({ field, value, onChange }) {
   } else if (field.type === 'toggle') {
     input = <input id={id} type="checkbox" checked={value} onChange={(event) => onChange(event.target.checked)} />;
   } else if (field.type === 'color') {
-    input = <ColorInput id={id} value={value} onChange={(event) => onChange(event.target.value)} />;
+    input = (
+      <ColorInput label={t(field.label)} id={id} value={value} onChange={(event) => onChange(event.target.value)} />
+    );
     shown = value;
   } else if (field.type === 'text') {
     input = (

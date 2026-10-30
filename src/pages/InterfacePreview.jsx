@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Select from '../components/Select';
+import { focusSlider, numericKey } from '../components/numericKeys';
 import { useLang } from '../i18n/prefs';
 import { MATERIAL_PRESETS } from '../settings/schema.materials';
 import { setSettings } from '../settings/store';
@@ -55,8 +56,12 @@ export default function InterfacePreview() {
             type="range"
             min="0"
             max="100"
+            step="1"
             value={level}
             onChange={(event) => setLevel(event.target.value)}
+            onPointerDown={focusSlider}
+            onClick={focusSlider}
+            onKeyDown={(event) => numericKey(event, setLevel)}
             aria-label={t({ en: 'Preview slider', ru: 'Бегунок предпросмотра' })}
           />
         </div>

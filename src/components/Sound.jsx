@@ -14,7 +14,7 @@ export const previewSound = (id) => session?.preview(id) ?? false;
  * sound is switched on. Issue #39 enables it by default; browser audio starts
  * only after an interaction. Switching it on plays `intro`; off stops it.
  */
-export default function Sound() {
+export default function Sound({ load = loadSound }) {
   const settings = useSettings();
   const on = settings['sound.on'];
   const latest = useRef(settings);
@@ -34,18 +34,24 @@ export default function Sound() {
     let own = null;
     const switchedOn = !wasOn.current;
     wasOn.current = true;
-    loadSound().then((start) => {
-      if (gone) return;
-      own = start(soundOptions(latest.current));
-      session = own;
-      if (switchedOn) own.play('intro');
-    });
+    load()
+      .then((start) => {
+        if (gone) return;
+        own = start(soundOptions(latest.current));
+        session = own;
+        if (switchedOn) own.play('intro');
+      })
+      .catch((error) => {
+        // Navigation may abort an optional module fetch (notably in WebKit).
+        // A failed audio download must never become an uncaught page error.
+        if (!gone) console.warn('Interface sound is unavailable.', error);
+      });
     return () => {
       gone = true;
       own?.stop();
       if (session === own) session = null;
     };
-  }, [on]);
+  }, [on, load]);
 
   return null;
 }

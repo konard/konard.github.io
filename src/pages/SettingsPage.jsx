@@ -55,7 +55,7 @@ function Control({ field, value, settings }) {
   } else if (field.type === 'toggle') {
     input = <input id={id} type="checkbox" checked={value} onChange={(event) => set(event.target.checked)} />;
   } else if (field.type === 'color') {
-    input = <ColorInput id={id} value={value} onChange={(event) => set(event.target.value)} />;
+    input = <ColorInput label={t(field.label)} id={id} value={value} onChange={(event) => set(event.target.value)} />;
     shown = value;
   } else if (field.tiles) {
     input = <CornerTiles field={field} value={value} settings={settings} labelId={`${id}-label`} />;

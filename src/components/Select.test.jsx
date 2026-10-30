@@ -20,6 +20,7 @@ describe('owned select-only combobox', () => {
   it('owns a skinnable listbox with pointer selection and returns a native-shaped event', () => {
     const { button, onChange } = setup();
     fireEvent.click(button);
+    expect(button).toHaveFocus();
     expect(button).toHaveAttribute('aria-expanded', 'true');
     fireEvent.click(screen.getByRole('option', { name: 'Green' }));
     expect(onChange).toHaveBeenCalledWith(

@@ -369,13 +369,27 @@
     gap: 0.4rem;
     min-width: 0;
   }
-  .ui-color__swatch {
-    width: 24px;
-    height: 24px;
+  :root:root .ui-color__swatch {
+    width: var(--ui-control-height);
+    padding: 0;
     border: 1px solid var(--border-strong);
     border-radius: var(--ui-control-corners);
     background: var(--color);
     flex: 0 0 auto;
+  }
+  .ui-color__picker {
+    padding: 12px;
+  }
+  .ui-color__picker label {
+    display: grid;
+    grid-template-columns: 3.5em minmax(0, 1fr) 2.5em;
+    align-items: center;
+    gap: 8px;
+    padding-block: 8px;
+  }
+  .ui-color__picker output {
+    text-align: end;
+    font-variant-numeric: tabular-nums;
   }
   :root:root .ui-color input {
     width: 7.5em;
@@ -397,6 +411,9 @@
     }
     .ui-select__list li {
       min-height: max(44px, var(--ui-control-height));
+    }
+    :root:root .ui-color__swatch {
+      width: 44px;
     }
     .ui-number {
       min-height: 92px;

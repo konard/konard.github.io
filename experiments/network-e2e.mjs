@@ -105,7 +105,7 @@ try {
   assert.notEqual(await svgOf(page), before);
   await chooseSelect(page.getByLabel('Start of a link', { exact: true }), 'circle');
   await chooseSelect(page.getByLabel('End of a link', { exact: true }), 'triangle');
-  await page.getByLabel('Link 1: turn of the target, ° (value)').fill('30');
+  await page.getByLabel('Link 1: turn of the target, ° (value)', { exact: true }).fill('30');
   await page.waitForURL((url) => url.searchParams.get('turns')?.includes('30'));
   assert(new URL(page.url()).searchParams.get('turns').includes('30'));
   await page.getByRole('button', { name: 'Plain black', exact: true }).click();

@@ -19,7 +19,14 @@ try {
   const page = await browser.newPage({ viewport: { width: 1440, height: 1050 }, reducedMotion: 'reduce' });
   page.setDefaultTimeout(15000);
   const errors = [];
-  page.on('pageerror', (error) => errors.push(error.message));
+  page.on('pageerror', (error) => {
+    errors.push(error.message);
+    if (process.env.TRACE_BROWSER === '1') console.error('Application exception:', error.message);
+  });
+  if (process.env.TRACE_BROWSER === '1') {
+    page.on('console', (message) => console.log(`${engine} ${message.type()}: ${message.text()}`));
+    page.on('requestfailed', (request) => console.log('Request failed:', request.url(), request.failure()));
+  }
   await page.addInitScript(() => {
     if (sessionStorage.getItem('issue39-initialized')) return;
     sessionStorage.setItem('issue39-initialized', '1');
@@ -139,6 +146,17 @@ try {
     assert.equal(await page.getByRole('listbox').count(), 0);
     await page.reload();
     assert.equal((await styles('.ui-preview__panel')).borderRadius, '6px 12px 18px 24px');
+    const colorTrigger = page.getByRole('button', { name: 'Choose color: Primary accent', exact: true });
+    await colorTrigger.click();
+    const chooser = page.getByRole('dialog', { name: 'Color chooser' });
+    const blue = chooser.getByRole('slider', { name: 'Blue', exact: true });
+    await blue.press('Home');
+    await blue.press('ArrowUp');
+    assert.equal(await page.locator('#setting-ui-accent').inputValue(), '#ff5501');
+    await screenshot('after-color-chooser');
+    await blue.press('Escape');
+    assert.equal(await chooser.count(), 0);
+    assert.equal(await colorTrigger.evaluate((node) => node === document.activeElement), true);
     await patch({
       'ui.panelTl': -1,
       'ui.panelTr': -1,
@@ -206,6 +224,10 @@ try {
       assert.equal(await skin.getAttribute('data-value'), 'liquid');
       await screenshot(`after-material-${material.toLowerCase()}`);
       results.push({ material, ...(await styles('#liquid')) });
+      await page.evaluate(async () => (await import('/src/i18n/prefs.js')).setTheme('light'));
+      await screenshot(`after-material-${material.toLowerCase()}-light`);
+      results.push({ material, theme: 'light', ...(await styles('#liquid')) });
+      await page.evaluate(async () => (await import('/src/i18n/prefs.js')).setTheme('dark'));
     }
     await patch({ 'ui.transparency': 'reduce' });
     const opaque = await styles('#skin');
@@ -275,7 +297,10 @@ try {
           : path.startsWith('/network')
             ? '.network__panel'
             : '.source-lines';
-      await mobile.locator(target).first().scrollIntoViewIfNeeded();
+      await mobile
+        .locator(target)
+        .first()
+        .evaluate((node) => node.scrollIntoView({ block: 'start' }));
       assert.equal(await mobile.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, path);
       await mobile.screenshot({ path: `${directory}/after-mobile-${path.split('/')[1]?.split('?')[0] || 'home'}.png` });
       if (path.startsWith('/network')) {
@@ -294,6 +319,13 @@ try {
         assert.ok(bounds.x >= 0 && bounds.x + bounds.width <= 391);
         assert.ok(bounds.y >= 0 && bounds.y + bounds.height <= 845);
         assert.ok(parseFloat(await menu.evaluate((node) => getComputedStyle(node).fontSize)) >= 16);
+        await mobile.keyboard.press('Escape');
+        await mobile.getByRole('button', { name: 'Choose color: Primary accent', exact: true }).click();
+        const chooser = mobile.getByRole('dialog', { name: 'Color chooser' });
+        const colorBounds = await chooser.boundingBox();
+        assert.ok(colorBounds.x >= 0 && colorBounds.x + colorBounds.width <= 391);
+        assert.ok(colorBounds.y >= 0 && colorBounds.y + colorBounds.height <= 845);
+        await mobile.screenshot({ path: `${directory}/after-mobile-color-chooser.png` });
         await mobile.keyboard.press('Escape');
       }
     }
