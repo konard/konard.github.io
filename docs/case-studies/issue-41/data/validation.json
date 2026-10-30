@@ -1,0 +1,55 @@
+{
+  "recordedAt": "2026-10-30T14:20:27.061280+00:00",
+  "unit": {
+    "files": 70,
+    "passed": 977,
+    "log": "logs/unit-tests.log"
+  },
+  "static": "ESLint, Prettier, file limits and secret scan passed",
+  "tooling": "Python compilation, Ruff and ShellCheck passed",
+  "build": "production Vite build passed",
+  "newBrowserContract": {
+    "chromium": "passed: 24 networks, default/manual equality, edit, sharing, worker, Apply, SVG download, mobile",
+    "firefox": "passed: same contract",
+    "webkit": "passed in CI on macOS: same 24-network contract",
+    "ciEvidence": "data/ci-browser/{chromium,firefox,webkit}/issue41/"
+  },
+  "exhaustive": {
+    "networks": 4181,
+    "previouslyClear": 141,
+    "failures": []
+  },
+  "inheritedBrowserSuites": {
+    "successfulLocalSubprocesses": 18,
+    "engines": [
+      "chromium",
+      "firefox"
+    ],
+    "suiteResults": "logs/legacy-browser-summary.log",
+    "wrapperExit": 2,
+    "wrapperError": "Runner file edited during execution; final parsing error after all 18 suites exited zero",
+    "correctedRunner": "Bash syntax and ShellCheck passed; logs/runner-validation.log",
+    "ci": "All inherited suites passed independently on Chromium, Firefox and WebKit"
+  },
+  "ci": {
+    "initial": {
+      "id": 41065058961,
+      "conclusion": "success"
+    },
+    "implementation": {
+      "id": 41068595873,
+      "headSha": "39839099c330de3cd47819605dfa2a8bca4ded22",
+      "conclusion": "success",
+      "metadata": "data/ci-implementation.json",
+      "log": "logs/ci-implementation-41068595873.log"
+    },
+    "finalEvidenceHead": "Run and exact head are verified after this archive is committed, then linked in PR 42"
+  },
+  "memory": "No cgroup OOM events during local verification",
+  "mcpReview": {
+    "passed": true,
+    "evidence": "data/mcp-review.json",
+    "pageErrors": []
+  },
+  "indicatorsBrowser": "passed in local Chromium; logs/indicators-chromium.log"
+}

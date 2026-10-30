@@ -1,0 +1,24 @@
+{
+  "accessed": "2026-10-30",
+  "sources": [
+    {
+      "url": "https://eclipse.dev/elk/reference/algorithms/org-eclipse-elk-layered.html",
+      "component": "Eclipse Layout Kernel (ELK Layered)",
+      "facts": "Layered placement supports straight, orthogonal and spline routing and port constraints; its options include edge straightening.",
+      "decision": "Useful precedent for treating straightness as a separate objective. Replacing placement would exceed the requested default-turn scope and change established link identity and curves."
+    },
+    {
+      "url": "https://docs.yworks.com/yfiles/doc/developers-guide/orthogonal_edge_router.html",
+      "component": "yFiles OrthogonalEdgeRouter (archived Java documentation)",
+      "facts": "Routes edges with fixed node positions and few direction changes, with independently configured minimum spacing and port constraints.",
+      "decision": "Supports keeping direction simplification separate from gap reduction. Orthogonal routing does not match the existing continuous doublet geometry; no new dependency is needed."
+    }
+  ],
+  "local_components": [
+    "glyph.linkCurve/approach already calculate the exact endpoint axis, avoiding duplicated angle-sign logic.",
+    "style.linkTurns/shapeOfStyle are shared by the editor, worker payload, preview and all image exports.",
+    "Existing painted-shape gap reduction and solveDebug diagnostics remain available and unchanged.",
+    "The gallery and rain deliberately use legacy mirror/bulge geometry rather than editor fixed-angle defaults; their historical drawing digest remains a regression invariant."
+  ],
+  "external_issue": "The root cause is local default selection. No defect in an external repository was identified, so no unrelated upstream issue is warranted."
+}

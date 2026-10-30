@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-30T14:14:42.979Z",
+  "engine": "Playwright MCP Chromium",
+  "examples": [
+    {
+      "code": "0222",
+      "manualEquality": true
+    },
+    {
+      "code": "0112",
+      "manualEquality": true
+    },
+    {
+      "code": "0001",
+      "manualEquality": true
+    },
+    {
+      "code": "2002",
+      "manualEquality": true
+    }
+  ],
+  "errors": [],
+  "interactions": "native keyboard, topology-aware reset, unchanged gaps, desktop and mobile"
+}

@@ -3,7 +3,7 @@ import { useLang } from '../i18n/prefs';
 import LinkSetting from './LinkSetting';
 
 /** Paired geometry controls stay below one separator in each link's card. */
-export default function NetworkGaps({ i, row, style, onGap, turns, onTurn }) {
+export default function NetworkGaps({ i, row, style, onGap, turns, turnDefaults, onTurn }) {
   const { t } = useLang();
   const name = `${t({ en: 'Link', ru: 'Связь' })} ${i + 1}`;
   return (
@@ -24,7 +24,7 @@ export default function NetworkGaps({ i, row, style, onGap, turns, onTurn }) {
             min={-180}
             max={180}
             step={1}
-            reset={0}
+            reset={turnDefaults[end]}
             value={turns[end]}
             unit="°"
             onChange={(value) => onTurn(i, end, value)}

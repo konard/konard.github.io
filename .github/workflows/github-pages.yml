@@ -296,6 +296,13 @@ jobs:
         env:
           CAPTURE_DIR: browser-results/screenshots/issue39
 
+      - name: Verify simple default turns, reported examples and 20 seeded networks
+        if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
+        run: npm run test:network:issue41
+        env:
+          CAPTURE_DIR: browser-results/screenshots/issue41
+          RESULT_DIR: browser-results/data/issue41
+
       - name: Preserve browser evidence with bounded transport retries
         if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
         uses: ./.github/actions/upload-artifact

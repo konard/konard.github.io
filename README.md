@@ -19,6 +19,8 @@ any finite link count, symmetric start/end/middle markers and cuts, and circle,
 grid, dice, playing-card, spiral and deterministic force placements. Circle is
 automatic for 1–4 links, hexagonal placement after four.
 Each link has a card with its references, color, turns and four gap overrides.
+Aligned references prefer straight default turns; manual turns and reciprocal
+routes remain editable, and individual resets restore the current network's defaults.
 Automatic spacing considers painted lines and markers with a configurable
 clearance. Sharp arrows stay pointed at acute angles and compensate their
 painted tip length by default; rounded corners and legacy lengths are available.
@@ -52,6 +54,7 @@ npm run test:network:issue29 # paired sliders, preserved manual layouts and mirr
 npm run test:indicators:browser # daily calendar, source lines, social fallback and mobile layouts
 npm run test:network:issue35 # continuous middles, explicit cuts, Apply/share and SVG downloads
 npm run test:network:issue37 # own-shaft crossings, 20 seeded networks, pointer focus and worker responsiveness
+npm run test:network:issue41 # simple default turns, 20 seeded networks, Apply/share and SVG downloads
 npm run build:cv   # prints every CV of build/ to build/cv/pdf/ (needs `npx playwright install chromium`)
 ```
 
@@ -131,3 +134,4 @@ The generated site is never committed to `docs/`; that directory holds the case 
 - [`issue-33`](docs/case-studies/issue-33/README.md): dated public indicators, repository and personal source lines, the exact GitHub calendar, social embeds and a complete associative ecosystem audit.
 - [`issue-35`](docs/case-studies/issue-35/README.md): continuous link middles during automatic spacing, explicit cut preservation and native browser regressions.
 - [`issue-37`](docs/case-studies/issue-37/README.md): self-crossing detection, local spacing with fixed link positions, 20 seeded networks, pointer focus and cancellable background spacing.
+- [`issue-41`](docs/case-studies/issue-41/README.md): straight default references, preserved manual turns and reciprocal routes, exhaustive small-network checks and before/after screenshots.

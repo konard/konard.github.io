@@ -7,13 +7,13 @@ import { STYLE_DEFAULTS, normalizeStyle, shapeOfStyle, withSpacing, styleFromPar
 
 it('reduces overlaps by adjusting individual gaps with angle search disabled', () => {
   const links = decode('22 13 31');
-  const shape = shapeOfStyle(STYLE_DEFAULTS, 3);
+  const shape = shapeOfStyle(STYLE_DEFAULTS, links);
   const result = solveCollisions(links, shape, { range: 0, adjustGaps: true });
   expect(result.delta.flat().every((angle) => angle === 0)).toBe(true);
   expect(result.after).toBeLessThan(result.before);
   expect(result.linkGaps.some((row) => row.some((value) => value !== null))).toBe(true);
   const applied = withSpacing(STYLE_DEFAULTS, result);
-  expect(overlapCost(links, shapeOfStyle(applied, 3))).toBeCloseTo(result.after, 6);
+  expect(overlapCost(links, shapeOfStyle(applied, links))).toBeCloseTo(result.after, 6);
   expect(networkSvg(links, applied)).toBe(
     networkSvg(links, STYLE_DEFAULTS, {
       extraTurns: result.delta,
@@ -39,7 +39,7 @@ it('bounds manual gap adjustments, preserves the input and never increases the e
     }),
   );
   const applied = withSpacing(style, result);
-  expect(overlapCost(links, shapeOfStyle(applied, 3))).toBeCloseTo(result.after, 6);
+  expect(overlapCost(links, shapeOfStyle(applied, links))).toBeCloseTo(result.after, 6);
 });
 it('does not count an artificial crossing through a cut in the middle', () => {
   const line = [[-1, 0], [-0.4, 0], null, [0.4, 0], [1, 0]];
@@ -53,7 +53,8 @@ it('does not count an artificial crossing through a cut in the middle', () => {
 
 it('also reduces overlaps by center cuts alone, without reference gap or angle changes', () => {
   const links = decode('22 13 31');
-  const result = solveCollisions(links, shapeOfStyle(STYLE_DEFAULTS, 3), {
+  const shape = shapeOfStyle(STYLE_DEFAULTS, links);
+  const result = solveCollisions(links, shape, {
     range: 0,
     adjustGaps: true,
     gapRange: 0,
@@ -62,7 +63,7 @@ it('also reduces overlaps by center cuts alone, without reference gap or angle c
   expect(result.after).toBeLessThan(result.before);
   expect(result.linkGaps.some((row) => row[2] > 0 || row[3] > 0)).toBe(true);
   expect(result.linkGaps.every((row) => row[0] === null && row[1] === null)).toBe(true);
-  expect(result.turns.flat().every((value) => value === 0)).toBe(true);
+  expect(result.turns).toEqual(shape.turns);
 });
 
 it('bounds gap search cost for a dense 24-link drawing and returns its exact score', () => {

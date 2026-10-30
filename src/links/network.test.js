@@ -164,7 +164,7 @@ describe('style of the picture (issue #17)', () => {
       [0, -45],
       [0, 0],
     ]);
-    expect(withTurns(STYLE_DEFAULTS, [[0, 0]]).turns).toBe('');
+    expect(withTurns(STYLE_DEFAULTS, [[0, 0]]).turns).toBe('0 0');
     expect(
       shapeOfStyle(turned, 2, [
         [5, 5],

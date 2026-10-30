@@ -1,0 +1,1089 @@
+{
+  "engine": "chromium",
+  "phase": "before",
+  "date": "2026-10-30T13:44:48.627Z",
+  "networks": [
+    {
+      "code": "0222",
+      "controls": [
+        {
+          "id": "link-1-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-1-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-1-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-1-endGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-2-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-2-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-endGap",
+          "value": "0.08"
+        }
+      ],
+      "paths": [
+        "M9 50C16.13 50 23.27 50 30.4 50C50.78 50 59.94 37.64 77.59 47.83",
+        "M78.47 47.12C52.53 21.18 111.69 19.66 81.35 50C51.01 80.34 110.36 79.01 84.42 53.07"
+      ],
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"2048\" height=\"2048\" viewBox=\"0 0 100 100\" role=\"img\" aria-label=\"Links network 02₃ 22₃\"><title>Links network 02₃ 22₃</title><rect width=\"100\" height=\"100\" fill=\"#000000\"></rect><g transform=\"translate(0 0) scale(1)\" fill=\"none\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" opacity=\"1\"><g stroke=\"#22d3ee\"><path d=\"M9 50C16.13 50 23.27 50 30.4 50C50.78 50 59.94 37.64 77.59 47.83\"></path><path d=\"M11.5 52.5L11.5 47.5\"></path><path d=\"M76.68 44.45L77.59 47.83L74.21 48.73\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M29.4 50a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#22d3ee\"></path></g><g stroke=\"#c084fc\"><path d=\"M78.47 47.12C52.53 21.18 111.69 19.66 81.35 50C51.01 80.34 110.36 79.01 84.42 53.07\"></path><path d=\"M78.62 43.64L74.88 46.96\"></path><path d=\"M84.42 56.57L84.42 53.07L87.92 53.07\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M80.35 50a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#c084fc\"></path></g></g></svg>",
+      "manual": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"2048\" height=\"2048\" viewBox=\"0 0 100 100\" role=\"img\" aria-label=\"Links network 02₃ 22₃\"><title>Links network 02₃ 22₃</title><rect width=\"100\" height=\"100\" fill=\"#000000\"></rect><g transform=\"translate(0 0) scale(1)\" fill=\"none\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" opacity=\"1\"><g stroke=\"#22d3ee\"><path d=\"M9 50C16.13 50 23.27 50 30.4 50C50.78 50 56.63 50 77.01 50\"></path><path d=\"M11.5 52.5L11.5 47.5\"></path><path d=\"M74.53 47.53L77.01 50L74.53 52.47\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M29.4 50a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#22d3ee\"></path></g><g stroke=\"#c084fc\"><path d=\"M78.47 47.12C52.53 21.18 111.69 19.66 81.35 50C51.01 80.34 110.36 79.01 84.42 53.07\"></path><path d=\"M78.62 43.64L74.88 46.96\"></path><path d=\"M84.42 56.57L84.42 53.07L87.92 53.07\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M80.35 50a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#c084fc\"></path></g></g></svg>"
+    },
+    {
+      "code": "0112",
+      "controls": [
+        {
+          "id": "link-1-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-1-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-1-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-1-endGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-2-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-2-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-endGap",
+          "value": "0.08"
+        }
+      ],
+      "paths": [
+        "M26.79 68.54C26.79 62 26.79 55.45 26.79 48.9C26.79 9.53 -10.89 48.9 22.78 48.9",
+        "M30.03 50.78C46.23 60.13 54.85 48.9 73.55 48.9C112.93 48.9 73.55 86.58 73.55 52.91"
+      ],
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"2048\" height=\"2048\" viewBox=\"0 0 100 100\" role=\"img\" aria-label=\"Links network 01₃ 12₃\"><title>Links network 01₃ 12₃</title><rect width=\"100\" height=\"100\" fill=\"#000000\"></rect><g transform=\"translate(0 0) scale(1)\" fill=\"none\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" opacity=\"1\"><g stroke=\"#22d3ee\"><path d=\"M26.79 68.54C26.79 62 26.79 55.45 26.79 48.9C26.79 9.53 -10.89 48.9 22.78 48.9\"></path><path d=\"M29.29 66.04L24.29 66.04\"></path><path d=\"M20.31 46.43L22.78 48.9L20.31 51.38\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M25.79 48.9a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#22d3ee\"></path></g><g stroke=\"#c084fc\"><path d=\"M30.03 50.78C46.23 60.13 54.85 48.9 73.55 48.9C112.93 48.9 73.55 86.58 73.55 52.91\"></path><path d=\"M31.15 54.2L33.33 49.7\"></path><path d=\"M71.08 55.39L73.55 52.91L76.03 55.39\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M72.55 48.9a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#c084fc\"></path></g></g></svg>",
+      "manual": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"2048\" height=\"2048\" viewBox=\"0 0 100 100\" role=\"img\" aria-label=\"Links network 01₃ 12₃\"><title>Links network 01₃ 12₃</title><rect width=\"100\" height=\"100\" fill=\"#000000\"></rect><g transform=\"translate(0 0) scale(1)\" fill=\"none\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" opacity=\"1\"><g stroke=\"#22d3ee\"><path d=\"M26.79 68.54C26.79 62 26.79 55.45 26.79 48.9C26.79 9.53 -10.89 48.9 22.78 48.9\"></path><path d=\"M29.29 66.04L24.29 66.04\"></path><path d=\"M20.31 46.43L22.78 48.9L20.31 51.38\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M25.79 48.9a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#22d3ee\"></path></g><g stroke=\"#c084fc\"><path d=\"M30.53 48.9C49.24 48.9 54.85 48.9 73.55 48.9C112.93 48.9 73.55 86.58 73.55 52.91\"></path><path d=\"M33.03 51.4L33.03 46.4\"></path><path d=\"M71.08 55.39L73.55 52.91L76.03 55.39\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M72.55 48.9a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#c084fc\"></path></g></g></svg>"
+    },
+    {
+      "code": "0001",
+      "controls": [
+        {
+          "id": "link-1-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-1-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-1-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-1-endGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-2-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-2-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-endGap",
+          "value": "0.08"
+        }
+      ],
+      "paths": [
+        "M9 74.25C9 66.17 9 58.08 9 50C9 41.92 9 34.1 9 26.02",
+        "M91 50C82.92 50 74.83 50 66.75 50C43.65 50 33.24 63.99 13.23 52.44"
+      ],
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"2048\" height=\"2048\" viewBox=\"0 0 100 100\" role=\"img\" aria-label=\"Links network 00₃ 01₃\"><title>Links network 00₃ 01₃</title><rect width=\"100\" height=\"100\" fill=\"#000000\"></rect><g transform=\"translate(0 0) scale(1)\" fill=\"none\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" opacity=\"1\"><g stroke=\"#22d3ee\"><path d=\"M9 74.25C9 66.17 9 58.08 9 50C9 41.92 9 34.1 9 26.02\"></path><path d=\"M11.5 71.75L6.5 71.75\"></path><path d=\"M6.53 28.49L9 26.02L11.47 28.49\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M8 50a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#22d3ee\"></path></g><g stroke=\"#c084fc\"><path d=\"M91 50C82.92 50 74.83 50 66.75 50C43.65 50 33.24 63.99 13.23 52.44\"></path><path d=\"M88.5 47.5L88.5 52.5\"></path><path d=\"M14.14 55.83L13.23 52.44L16.61 51.54\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M65.75 50a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#c084fc\"></path></g></g></svg>",
+      "manual": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"2048\" height=\"2048\" viewBox=\"0 0 100 100\" role=\"img\" aria-label=\"Links network 00₃ 01₃\"><title>Links network 00₃ 01₃</title><rect width=\"100\" height=\"100\" fill=\"#000000\"></rect><g transform=\"translate(0 0) scale(1)\" fill=\"none\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" opacity=\"1\"><g stroke=\"#22d3ee\"><path d=\"M9 74.25C9 66.17 9 58.08 9 50C9 41.92 9 34.1 9 26.02\"></path><path d=\"M11.5 71.75L6.5 71.75\"></path><path d=\"M6.53 28.49L9 26.02L11.47 28.49\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M8 50a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#22d3ee\"></path></g><g stroke=\"#c084fc\"><path d=\"M91 50C82.92 50 74.83 50 66.75 50C43.65 50 36.99 50 13.89 50\"></path><path d=\"M88.5 47.5L88.5 52.5\"></path><path d=\"M16.36 52.47L13.89 50L16.36 47.53\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M65.75 50a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#c084fc\"></path></g></g></svg>"
+    },
+    {
+      "code": "2002",
+      "controls": [
+        {
+          "id": "link-1-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-1-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-1-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-1-endGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-2-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-2-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-endGap",
+          "value": "0.08"
+        }
+      ],
+      "paths": [
+        "M70.52 49.25C54.74 40.14 46.35 51.07 28.13 51.07C21.75 51.07 15.65 51.07 9.27 51.07",
+        "M73.67 31.94C73.67 38.31 73.67 44.69 73.67 51.07C73.67 89.42 110.38 51.07 77.58 51.07"
+      ],
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"2048\" height=\"2048\" viewBox=\"0 0 100 100\" role=\"img\" aria-label=\"Links network 20₃ 02₃\"><title>Links network 20₃ 02₃</title><rect width=\"100\" height=\"100\" fill=\"#000000\"></rect><g transform=\"translate(0 0) scale(1)\" fill=\"none\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" opacity=\"1\"><g stroke=\"#22d3ee\"><path d=\"M70.52 49.25C54.74 40.14 46.35 51.07 28.13 51.07C21.75 51.07 15.65 51.07 9.27 51.07\"></path><path d=\"M69.39 45.82L67.22 50.33\"></path><path d=\"M11.74 53.54L9.27 51.07L11.74 48.59\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M27.13 51.07a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#22d3ee\"></path></g><g stroke=\"#c084fc\"><path d=\"M73.67 31.94C73.67 38.31 73.67 44.69 73.67 51.07C73.67 89.42 110.38 51.07 77.58 51.07\"></path><path d=\"M71.17 34.44L76.17 34.44\"></path><path d=\"M80.06 53.54L77.58 51.07L80.06 48.59\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M72.67 51.07a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#c084fc\"></path></g></g></svg>",
+      "manual": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"2048\" height=\"2048\" viewBox=\"0 0 100 100\" role=\"img\" aria-label=\"Links network 20₃ 02₃\"><title>Links network 20₃ 02₃</title><rect width=\"100\" height=\"100\" fill=\"#000000\"></rect><g transform=\"translate(0 0) scale(1)\" fill=\"none\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" opacity=\"1\"><g stroke=\"#22d3ee\"><path d=\"M70.03 51.07C51.81 51.07 46.35 51.07 28.13 51.07C21.75 51.07 15.65 51.07 9.27 51.07\"></path><path d=\"M67.53 48.57L67.53 53.57\"></path><path d=\"M11.74 53.54L9.27 51.07L11.74 48.59\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M27.13 51.07a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#22d3ee\"></path></g><g stroke=\"#c084fc\"><path d=\"M73.67 31.94C73.67 38.31 73.67 44.69 73.67 51.07C73.67 89.42 110.38 51.07 77.58 51.07\"></path><path d=\"M71.17 34.44L76.17 34.44\"></path><path d=\"M80.06 53.54L77.58 51.07L80.06 48.59\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M72.67 51.07a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#c084fc\"></path></g></g></svg>"
+    },
+    {
+      "code": "00",
+      "controls": [
+        {
+          "id": "link-1-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-1-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-1-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-1-endGap",
+          "value": "0.08"
+        }
+      ],
+      "paths": [
+        "M9 50C22.67 50 36.33 50 50 50C63.67 50 77.06 50 90.73 50"
+      ],
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"2048\" height=\"2048\" viewBox=\"0 0 100 100\" role=\"img\" aria-label=\"Links network 00₂\"><title>Links network 00₂</title><rect width=\"100\" height=\"100\" fill=\"#000000\"></rect><g transform=\"translate(0 0) scale(1)\" fill=\"none\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" opacity=\"1\"><g stroke=\"#22d3ee\"><path d=\"M9 50C22.67 50 36.33 50 50 50C63.67 50 77.06 50 90.73 50\"></path><path d=\"M11.5 52.5L11.5 47.5\"></path><path d=\"M88.26 47.53L90.73 50L88.26 52.47\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M49 50a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#22d3ee\"></path></g></g></svg>"
+    },
+    {
+      "code": "01",
+      "controls": [
+        {
+          "id": "link-1-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-1-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-1-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-1-endGap",
+          "value": "0.08"
+        }
+      ],
+      "paths": [
+        "M9 66.03C25.59 66.03 42.17 66.03 58.76 66.03C131.51 66.03 58.76 -3.35 58.76 61.34"
+      ],
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"2048\" height=\"2048\" viewBox=\"0 0 100 100\" role=\"img\" aria-label=\"Links network 01₂\"><title>Links network 01₂</title><rect width=\"100\" height=\"100\" fill=\"#000000\"></rect><g transform=\"translate(0 0) scale(1)\" fill=\"none\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" opacity=\"1\"><g stroke=\"#22d3ee\"><path d=\"M9 66.03C25.59 66.03 42.17 66.03 58.76 66.03C131.51 66.03 58.76 -3.35 58.76 61.34\"></path><path d=\"M11.5 68.53L11.5 63.53\"></path><path d=\"M61.24 58.86L58.76 61.34L56.29 58.86\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M57.76 66.03a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#22d3ee\"></path></g></g></svg>"
+    },
+    {
+      "code": "10",
+      "controls": [
+        {
+          "id": "link-1-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-1-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-1-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-1-endGap",
+          "value": "0.08"
+        }
+      ],
+      "paths": [
+        "M41.24 61.61C41.24 -3.08 -31.51 66.03 41.24 66.03C57.83 66.03 74.14 66.03 90.73 66.03"
+      ],
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"2048\" height=\"2048\" viewBox=\"0 0 100 100\" role=\"img\" aria-label=\"Links network 10₂\"><title>Links network 10₂</title><rect width=\"100\" height=\"100\" fill=\"#000000\"></rect><g transform=\"translate(0 0) scale(1)\" fill=\"none\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" opacity=\"1\"><g stroke=\"#22d3ee\"><path d=\"M41.24 61.61C41.24 -3.08 -31.51 66.03 41.24 66.03C57.83 66.03 74.14 66.03 90.73 66.03\"></path><path d=\"M43.7 59.03L38.7 59.18\"></path><path d=\"M88.26 63.56L90.73 66.03L88.26 68.51\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M40.24 66.03a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#22d3ee\"></path></g></g></svg>"
+    },
+    {
+      "code": "11",
+      "controls": [
+        {
+          "id": "link-1-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-1-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-1-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-1-endGap",
+          "value": "0.08"
+        }
+      ],
+      "paths": [
+        "M46.63 53.37C-2.72 102.72 -5.49 -5.49 50 50C105.49 105.49 102.91 -2.91 53.56 46.44"
+      ],
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"2048\" height=\"2048\" viewBox=\"0 0 100 100\" role=\"img\" aria-label=\"Links network 11₂\"><title>Links network 11₂</title><rect width=\"100\" height=\"100\" fill=\"#000000\"></rect><g transform=\"translate(0 0) scale(1)\" fill=\"none\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" opacity=\"1\"><g stroke=\"#22d3ee\"><path d=\"M46.63 53.37C-2.72 102.72 -5.49 -5.49 50 50C105.49 105.49 102.91 -2.91 53.56 46.44\"></path><path d=\"M43.12 53.3L46.55 56.93\"></path><path d=\"M57.06 46.44L53.56 46.44L53.56 42.94\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M49 50a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#22d3ee\"></path></g></g></svg>"
+    },
+    {
+      "code": "2211",
+      "controls": [
+        {
+          "id": "link-1-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-1-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-1-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-1-endGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-2-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-2-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-endGap",
+          "value": "0.08"
+        }
+      ],
+      "paths": [
+        "M75.84 52.4C55.06 64.4 20 74 20 50C20 26 54.91 35.14 75.7 47.14",
+        "M24.16 52.4C44.94 64.4 80 74 80 50C80 26 45.09 35.14 24.3 47.14"
+      ],
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"2048\" height=\"2048\" viewBox=\"0 0 100 100\" role=\"img\" aria-label=\"Links network 22₃ 11₃\"><title>Links network 22₃ 11₃</title><rect width=\"100\" height=\"100\" fill=\"#000000\"></rect><g transform=\"translate(0 0) scale(1)\" fill=\"none\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" opacity=\"1\"><g stroke=\"#22d3ee\"><path d=\"M75.84 52.4C55.06 64.4 20 74 20 50C20 26 54.91 35.14 75.7 47.14\"></path><path d=\"M72.47 51.43L74.86 55.82\"></path><path d=\"M74.79 43.76L75.7 47.14L72.32 48.05\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M19 50a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#22d3ee\"></path></g><g stroke=\"#c084fc\"><path d=\"M24.16 52.4C44.94 64.4 80 74 80 50C80 26 45.09 35.14 24.3 47.14\"></path><path d=\"M25.14 55.82L27.53 51.43\"></path><path d=\"M27.68 48.05L24.3 47.14L25.21 43.76\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M79 50a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#c084fc\"></path></g></g></svg>"
+    },
+    {
+      "code": "0111",
+      "controls": [
+        {
+          "id": "link-1-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-1-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-1-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-1-endGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-2-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-2-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-endGap",
+          "value": "0.08"
+        }
+      ],
+      "paths": [
+        "M31.6 73.56C31.6 65.24 31.6 56.92 31.6 48.61C31.6 -1.41 -16.19 48.61 26.58 48.61",
+        "M35.72 50.98C56.29 62.86 91 72.37 91 48.61C91 24.85 56.44 33.89 35.86 45.77"
+      ],
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"2048\" height=\"2048\" viewBox=\"0 0 100 100\" role=\"img\" aria-label=\"Links network 01₃ 11₃\"><title>Links network 01₃ 11₃</title><rect width=\"100\" height=\"100\" fill=\"#000000\"></rect><g transform=\"translate(0 0) scale(1)\" fill=\"none\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" opacity=\"1\"><g stroke=\"#22d3ee\"><path d=\"M31.6 73.56C31.6 65.24 31.6 56.92 31.6 48.61C31.6 -1.41 -16.19 48.61 26.58 48.61\"></path><path d=\"M34.1 71.06L29.1 71.06\"></path><path d=\"M24.1 46.13L26.58 48.61L24.1 51.08\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M30.6 48.61a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#22d3ee\"></path></g><g stroke=\"#c084fc\"><path d=\"M35.72 50.98C56.29 62.86 91 72.37 91 48.61C91 24.85 56.44 33.89 35.86 45.77\"></path><path d=\"M36.7 54.4L39.09 50.01\"></path><path d=\"M39.24 46.68L35.86 45.77L36.77 42.39\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M90 48.61a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#c084fc\"></path></g></g></svg>"
+    },
+    {
+      "code": "2202",
+      "controls": [
+        {
+          "id": "link-1-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-1-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-1-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-1-endGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-2-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-2-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-endGap",
+          "value": "0.08"
+        }
+      ],
+      "paths": [
+        "M64.28 53.77C43.71 65.65 9 75.15 9 51.39C9 27.63 43.56 36.68 64.14 48.56",
+        "M68.4 26.44C68.4 34.76 68.4 43.08 68.4 51.39C68.4 101.41 116.19 51.39 73.42 51.39"
+      ],
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"2048\" height=\"2048\" viewBox=\"0 0 100 100\" role=\"img\" aria-label=\"Links network 22₃ 02₃\"><title>Links network 22₃ 02₃</title><rect width=\"100\" height=\"100\" fill=\"#000000\"></rect><g transform=\"translate(0 0) scale(1)\" fill=\"none\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" opacity=\"1\"><g stroke=\"#22d3ee\"><path d=\"M64.28 53.77C43.71 65.65 9 75.15 9 51.39C9 27.63 43.56 36.68 64.14 48.56\"></path><path d=\"M60.91 52.79L63.3 57.19\"></path><path d=\"M63.23 45.18L64.14 48.56L60.76 49.46\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M8 51.39a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#22d3ee\"></path></g><g stroke=\"#c084fc\"><path d=\"M68.4 26.44C68.4 34.76 68.4 43.08 68.4 51.39C68.4 101.41 116.19 51.39 73.42 51.39\"></path><path d=\"M65.9 28.94L70.9 28.94\"></path><path d=\"M75.9 53.87L73.42 51.39L75.9 48.92\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M67.4 51.39a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#c084fc\"></path></g></g></svg>"
+    },
+    {
+      "code": "1120",
+      "controls": [
+        {
+          "id": "link-1-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-1-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-1-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-1-endGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-2-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-2-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-endGap",
+          "value": "0.08"
+        }
+      ],
+      "paths": [
+        "M21.85 52.95C48.44 79.55 -12.21 81.1 18.89 50C49.99 18.9 -10.85 20.26 15.75 46.85",
+        "M75.3 50C112.91 50 71.13 6.01 71.13 50C71.13 57.31 71.13 64.36 71.13 71.67"
+      ],
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"2048\" height=\"2048\" viewBox=\"0 0 100 100\" role=\"img\" aria-label=\"Links network 11₃ 20₃\"><title>Links network 11₃ 20₃</title><rect width=\"100\" height=\"100\" fill=\"#000000\"></rect><g transform=\"translate(0 0) scale(1)\" fill=\"none\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" opacity=\"1\"><g stroke=\"#22d3ee\"><path d=\"M21.85 52.95C48.44 79.55 -12.21 81.1 18.89 50C49.99 18.9 -10.85 20.26 15.75 46.85\"></path><path d=\"M21.7 56.43L25.43 53.11\"></path><path d=\"M15.75 43.35L15.75 46.85L12.25 46.85\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M17.89 50a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#22d3ee\"></path></g><g stroke=\"#c084fc\"><path d=\"M75.3 50C112.91 50 71.13 6.01 71.13 50C71.13 57.31 71.13 64.36 71.13 71.67\"></path><path d=\"M77.95 52.43L77.66 47.43\"></path><path d=\"M73.6 69.19L71.13 71.67L68.65 69.19\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M70.13 50a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#c084fc\"></path></g></g></svg>"
+    },
+    {
+      "code": "2012",
+      "controls": [
+        {
+          "id": "link-1-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-1-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-1-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-1-endGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-2-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-2-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-endGap",
+          "value": "0.08"
+        }
+      ],
+      "paths": [
+        "M70.77 42.2C54.93 33.05 46.5 44.03 28.21 44.03C21.8 44.03 15.67 44.03 9.27 44.03",
+        "M31.37 45.86C47.22 55 55.64 44.03 73.94 44.03C112.45 44.03 73.94 80.88 73.94 47.96"
+      ],
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"2048\" height=\"2048\" viewBox=\"0 0 100 100\" role=\"img\" aria-label=\"Links network 20₃ 12₃\"><title>Links network 20₃ 12₃</title><rect width=\"100\" height=\"100\" fill=\"#000000\"></rect><g transform=\"translate(0 0) scale(1)\" fill=\"none\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" opacity=\"1\"><g stroke=\"#22d3ee\"><path d=\"M70.77 42.2C54.93 33.05 46.5 44.03 28.21 44.03C21.8 44.03 15.67 44.03 9.27 44.03\"></path><path d=\"M69.64 38.78L67.47 43.28\"></path><path d=\"M11.74 46.5L9.27 44.03L11.74 41.55\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M27.21 44.03a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#22d3ee\"></path></g><g stroke=\"#c084fc\"><path d=\"M31.37 45.86C47.22 55 55.64 44.03 73.94 44.03C112.45 44.03 73.94 80.88 73.94 47.96\"></path><path d=\"M32.5 49.28L34.67 44.78\"></path><path d=\"M71.46 50.43L73.94 47.96L76.41 50.43\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M72.94 44.03a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#c084fc\"></path></g></g></svg>"
+    },
+    {
+      "code": "0010",
+      "controls": [
+        {
+          "id": "link-1-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-1-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-1-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-1-endGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-2-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-2-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-endGap",
+          "value": "0.08"
+        }
+      ],
+      "paths": [
+        "M9 74.25C9 66.17 9 58.08 9 50C9 41.92 9 34.1 9 26.02",
+        "M13 52.31C33 63.86 43.65 50 66.75 50C74.83 50 82.65 50 90.73 50"
+      ],
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"2048\" height=\"2048\" viewBox=\"0 0 100 100\" role=\"img\" aria-label=\"Links network 00₃ 10₃\"><title>Links network 00₃ 10₃</title><rect width=\"100\" height=\"100\" fill=\"#000000\"></rect><g transform=\"translate(0 0) scale(1)\" fill=\"none\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" opacity=\"1\"><g stroke=\"#22d3ee\"><path d=\"M9 74.25C9 66.17 9 58.08 9 50C9 41.92 9 34.1 9 26.02\"></path><path d=\"M11.5 71.75L6.5 71.75\"></path><path d=\"M6.53 28.49L9 26.02L11.47 28.49\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M8 50a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#22d3ee\"></path></g><g stroke=\"#c084fc\"><path d=\"M13 52.31C33 63.86 43.65 50 66.75 50C74.83 50 82.65 50 90.73 50\"></path><path d=\"M14.08 55.73L16.32 51.26\"></path><path d=\"M88.26 47.53L90.73 50L88.26 52.47\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M65.75 50a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#c084fc\"></path></g></g></svg>"
+    },
+    {
+      "code": "1212",
+      "controls": [
+        {
+          "id": "link-1-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-1-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-1-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-1-endGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-2-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-2-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-endGap",
+          "value": "0.08"
+        }
+      ],
+      "paths": [
+        "M26.52 46.24C26.52 12.43 -13.02 50 26.52 50C45.3 50 53.73 38.6 69.99 47.99",
+        "M29.78 51.88C46.04 61.27 54.7 50 73.48 50C113.02 50 73.48 87.83 73.48 54.03"
+      ],
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"2048\" height=\"2048\" viewBox=\"0 0 100 100\" role=\"img\" aria-label=\"Links network 12₃ 12₃\"><title>Links network 12₃ 12₃</title><rect width=\"100\" height=\"100\" fill=\"#000000\"></rect><g transform=\"translate(0 0) scale(1)\" fill=\"none\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" opacity=\"1\"><g stroke=\"#22d3ee\"><path d=\"M26.52 46.24C26.52 12.43 -13.02 50 26.52 50C45.3 50 53.73 38.6 69.99 47.99\"></path><path d=\"M28.94 43.58L23.95 43.91\"></path><path d=\"M69.09 44.61L69.99 47.99L66.61 48.89\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M25.52 50a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#22d3ee\"></path></g><g stroke=\"#c084fc\"><path d=\"M29.78 51.88C46.04 61.27 54.7 50 73.48 50C113.02 50 73.48 87.83 73.48 54.03\"></path><path d=\"M30.89 55.3L33.07 50.8\"></path><path d=\"M71 56.5L73.48 54.03L75.95 56.5\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M72.48 50a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#c084fc\"></path></g></g></svg>"
+    },
+    {
+      "code": "1002",
+      "controls": [
+        {
+          "id": "link-1-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-1-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-1-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-1-endGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-2-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-2-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-endGap",
+          "value": "0.08"
+        }
+      ],
+      "paths": [
+        "M22.99 51.09C-10.53 51.09 26.72 90.3 26.72 51.09C26.72 44.57 26.72 38.32 26.72 31.8",
+        "M73.28 31.53C73.28 38.05 73.28 44.57 73.28 51.09C73.28 90.3 110.8 51.09 77.28 51.09"
+      ],
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"2048\" height=\"2048\" viewBox=\"0 0 100 100\" role=\"img\" aria-label=\"Links network 10₃ 02₃\"><title>Links network 10₃ 02₃</title><rect width=\"100\" height=\"100\" fill=\"#000000\"></rect><g transform=\"translate(0 0) scale(1)\" fill=\"none\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" opacity=\"1\"><g stroke=\"#22d3ee\"><path d=\"M22.99 51.09C-10.53 51.09 26.72 90.3 26.72 51.09C26.72 44.57 26.72 38.32 26.72 31.8\"></path><path d=\"M20.33 48.68L20.66 53.66\"></path><path d=\"M24.24 34.28L26.72 31.8L29.19 34.28\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M25.72 51.09a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#22d3ee\"></path></g><g stroke=\"#c084fc\"><path d=\"M73.28 31.53C73.28 38.05 73.28 44.57 73.28 51.09C73.28 90.3 110.8 51.09 77.28 51.09\"></path><path d=\"M70.78 34.03L75.78 34.03\"></path><path d=\"M79.75 53.57L77.28 51.09L79.75 48.62\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M72.28 51.09a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#c084fc\"></path></g></g></svg>"
+    },
+    {
+      "code": "020313",
+      "controls": [
+        {
+          "id": "link-1-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-1-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-1-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-1-endGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-2-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-2-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-endGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-3-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-3-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-3-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-3-endGap",
+          "value": "0.08"
+        }
+      ],
+      "paths": [
+        "M41.08 17.29C44.17 22.65 47.26 28.01 50.35 33.36C59.19 48.67 72.44 50.15 72.44 67.82",
+        "M91 71.63C84.81 71.63 78.63 71.63 72.44 71.63C54.77 71.63 46.86 82.36 31.56 73.53",
+        "M47.29 35.13C31.99 43.97 37.1 56.32 28.26 71.63C9.66 103.85 -2.58 53.82 24.97 69.72"
+      ],
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"2048\" height=\"2048\" viewBox=\"0 0 100 100\" role=\"img\" aria-label=\"Links network 02₄ 03₄ 13₄\"><title>Links network 02₄ 03₄ 13₄</title><rect width=\"100\" height=\"100\" fill=\"#000000\"></rect><g transform=\"translate(0 0) scale(1)\" fill=\"none\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" opacity=\"1\"><g stroke=\"#22d3ee\"><path d=\"M41.08 17.29C44.17 22.65 47.26 28.01 50.35 33.36C59.19 48.67 72.44 50.15 72.44 67.82\"></path><path d=\"M40.16 20.71L44.49 18.21\"></path><path d=\"M74.92 65.35L72.44 67.82L69.97 65.35\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M49.35 33.36a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#22d3ee\"></path></g><g stroke=\"#c084fc\"><path d=\"M91 71.63C84.81 71.63 78.63 71.63 72.44 71.63C54.77 71.63 46.86 82.36 31.56 73.53\"></path><path d=\"M88.5 69.13L88.5 74.13\"></path><path d=\"M32.46 76.91L31.56 73.53L34.94 72.62\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M71.44 71.63a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#c084fc\"></path></g><g stroke=\"#f472b6\"><path d=\"M47.29 35.13C31.99 43.97 37.1 56.32 28.26 71.63C9.66 103.85 -2.58 53.82 24.97 69.72\"></path><path d=\"M43.76 34.4L46.59 38.52\"></path><path d=\"M24.06 66.34L24.97 69.72L21.59 70.63\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M27.26 71.63a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#f472b6\"></path></g></g></svg>"
+    },
+    {
+      "code": "122101",
+      "controls": [
+        {
+          "id": "link-1-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-1-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-1-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-1-endGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-2-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-2-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-endGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-3-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-3-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-3-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-3-endGap",
+          "value": "0.08"
+        }
+      ],
+      "paths": [
+        "M47.85 28.47C78.55 10.74 23.7 -5.47 44.43 30.44C54.28 47.5 69.06 49.18 69.06 68.88",
+        "M72.47 71.12C103.17 53.39 89.79 109 69.06 73.09C59.21 56.03 44.43 54.35 44.43 34.65",
+        "M9.47 91C12.92 85.03 16.36 79.06 19.81 73.09C29.66 56.03 23.73 42.39 40.79 32.55"
+      ],
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"2048\" height=\"2048\" viewBox=\"0 0 100 100\" role=\"img\" aria-label=\"Links network 12₄ 21₄ 01₄\"><title>Links network 12₄ 21₄ 01₄</title><rect width=\"100\" height=\"100\" fill=\"#000000\"></rect><g transform=\"translate(0 0) scale(1)\" fill=\"none\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" opacity=\"1\"><g stroke=\"#22d3ee\"><path d=\"M47.85 28.47C78.55 10.74 23.7 -5.47 44.43 30.44C54.28 47.5 69.06 49.18 69.06 68.88\"></path><path d=\"M51.36 29.24L48.59 25.07\"></path><path d=\"M71.53 66.4L69.06 68.88L66.58 66.4\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M43.43 30.44a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#22d3ee\"></path></g><g stroke=\"#c084fc\"><path d=\"M72.47 71.12C103.17 53.39 89.79 109 69.06 73.09C59.21 56.03 44.43 54.35 44.43 34.65\"></path><path d=\"M75.78 72.17L73.56 67.69\"></path><path d=\"M41.96 37.13L44.43 34.65L46.91 37.13\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M68.06 73.09a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#c084fc\"></path></g><g stroke=\"#f472b6\"><path d=\"M9.47 91C12.92 85.03 16.36 79.06 19.81 73.09C29.66 56.03 23.73 42.39 40.79 32.55\"></path><path d=\"M12.89 90.08L8.56 87.58\"></path><path d=\"M37.41 31.64L40.79 32.55L39.88 35.93\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M18.81 73.09a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#f472b6\"></path></g></g></svg>"
+    },
+    {
+      "code": "121310",
+      "controls": [
+        {
+          "id": "link-1-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-1-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-1-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-1-endGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-2-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-2-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-endGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-3-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-3-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-3-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-3-endGap",
+          "value": "0.08"
+        }
+      ],
+      "paths": [
+        "M56.96 28.47C87.67 10.74 32.82 -5.47 53.55 30.44C63.4 47.5 78.17 49.18 78.17 68.88",
+        "M56.96 32.41C74.02 42.26 88.02 56.03 78.17 73.09C68.32 90.15 49.63 85.04 32.57 75.19",
+        "M50.14 32.41C33.08 42.26 38.78 56.03 28.93 73.09C25.48 79.06 22.17 84.8 18.72 90.77"
+      ],
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"2048\" height=\"2048\" viewBox=\"0 0 100 100\" role=\"img\" aria-label=\"Links network 12₄ 13₄ 10₄\"><title>Links network 12₄ 13₄ 10₄</title><rect width=\"100\" height=\"100\" fill=\"#000000\"></rect><g transform=\"translate(0 0) scale(1)\" fill=\"none\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" opacity=\"1\"><g stroke=\"#22d3ee\"><path d=\"M56.96 28.47C87.67 10.74 32.82 -5.47 53.55 30.44C63.4 47.5 78.17 49.18 78.17 68.88\"></path><path d=\"M60.47 29.24L57.71 25.07\"></path><path d=\"M80.65 66.4L78.17 68.88L75.7 66.4\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M52.55 30.44a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#22d3ee\"></path></g><g stroke=\"#c084fc\"><path d=\"M56.96 32.41C74.02 42.26 88.02 56.03 78.17 73.09C68.32 90.15 49.63 85.04 32.57 75.19\"></path><path d=\"M57.82 35.82L60.41 31.55\"></path><path d=\"M33.48 78.57L32.57 75.19L35.95 74.29\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M77.17 73.09a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#c084fc\"></path></g><g stroke=\"#f472b6\"><path d=\"M50.14 32.41C33.08 42.26 38.78 56.03 28.93 73.09C25.48 79.06 22.17 84.8 18.72 90.77\"></path><path d=\"M46.62 31.66L49.41 35.81\"></path><path d=\"M22.1 89.86L18.72 90.77L17.82 87.39\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M27.93 73.09a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#f472b6\"></path></g></g></svg>"
+    },
+    {
+      "code": "313322",
+      "controls": [
+        {
+          "id": "link-1-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-1-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-1-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-1-endGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-2-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-2-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-endGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-3-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-3-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-3-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-3-endGap",
+          "value": "0.08"
+        }
+      ],
+      "paths": [
+        "M27.19 75.8C45.54 65.21 39.41 50.4 50 32.06C72.3 -6.56 13.08 10.74 46.1 29.81",
+        "M27.19 75.8C45.54 65.21 76.48 56.74 76.48 77.92C76.48 99.1 45.68 91.09 27.34 80.5",
+        "M72.81 75.8C54.46 65.21 23.52 56.74 23.52 77.92C23.52 99.1 54.32 91.09 72.66 80.5"
+      ],
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"2048\" height=\"2048\" viewBox=\"0 0 100 100\" role=\"img\" aria-label=\"Links network 31₄ 33₄ 22₄\"><title>Links network 31₄ 33₄ 22₄</title><rect width=\"100\" height=\"100\" fill=\"#000000\"></rect><g transform=\"translate(0 0) scale(1)\" fill=\"none\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" opacity=\"1\"><g stroke=\"#22d3ee\"><path d=\"M27.19 75.8C45.54 65.21 39.41 50.4 50 32.06C72.3 -6.56 13.08 10.74 46.1 29.81\"></path><path d=\"M30.7 76.57L27.93 72.4\"></path><path d=\"M45.19 26.42L46.1 29.81L42.72 30.71\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M49 32.06a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#22d3ee\"></path></g><g stroke=\"#c084fc\"><path d=\"M27.19 75.8C45.54 65.21 76.48 56.74 76.48 77.92C76.48 99.1 45.68 91.09 27.34 80.5\"></path><path d=\"M30.56 76.78L28.19 72.38\"></path><path d=\"M28.24 83.88L27.34 80.5L30.72 79.59\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M75.48 77.92a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#c084fc\"></path></g><g stroke=\"#f472b6\"><path d=\"M72.81 75.8C54.46 65.21 23.52 56.74 23.52 77.92C23.52 99.1 54.32 91.09 72.66 80.5\"></path><path d=\"M71.81 72.38L69.44 76.78\"></path><path d=\"M69.28 79.59L72.66 80.5L71.76 83.88\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M22.52 77.92a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#f472b6\"></path></g></g></svg>"
+    },
+    {
+      "code": "011111",
+      "controls": [
+        {
+          "id": "link-1-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-1-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-1-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-1-endGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-2-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-2-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-endGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-3-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-3-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-3-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-3-endGap",
+          "value": "0.08"
+        }
+      ],
+      "paths": [
+        "M24.8 34.23C33.2 34.23 41.6 34.23 50 34.23C100.53 34.23 50 -14.04 50 29.16",
+        "M50 39.03C50 63.03 59.22 98.19 80 86.19C100.78 74.19 75.41 48.53 54.63 36.53",
+        "M50 39.03C50 63.03 40.78 98.19 20 86.19C-0.78 74.19 24.59 48.53 45.37 36.53"
+      ],
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"2048\" height=\"2048\" viewBox=\"0 0 100 100\" role=\"img\" aria-label=\"Links network 01₄ 11₄ 11₄\"><title>Links network 01₄ 11₄ 11₄</title><rect width=\"100\" height=\"100\" fill=\"#000000\"></rect><g transform=\"translate(0 0) scale(1)\" fill=\"none\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" opacity=\"1\"><g stroke=\"#22d3ee\"><path d=\"M24.8 34.23C33.2 34.23 41.6 34.23 50 34.23C100.53 34.23 50 -14.04 50 29.16\"></path><path d=\"M27.3 36.73L27.3 31.73\"></path><path d=\"M52.47 26.69L50 29.16L47.53 26.69\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M49 34.23a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#22d3ee\"></path></g><g stroke=\"#c084fc\"><path d=\"M50 39.03C50 63.03 59.22 98.19 80 86.19C100.78 74.19 75.41 48.53 54.63 36.53\"></path><path d=\"M47.53 41.6L52.53 41.47\"></path><path d=\"M55.53 39.91L54.63 36.53L58.01 35.62\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M79 86.19a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#c084fc\"></path></g><g stroke=\"#f472b6\"><path d=\"M50 39.03C50 63.03 40.78 98.19 20 86.19C-0.78 74.19 24.59 48.53 45.37 36.53\"></path><path d=\"M47.47 41.47L52.47 41.6\"></path><path d=\"M41.99 35.62L45.37 36.53L44.47 39.91\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M19 86.19a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#f472b6\"></path></g></g></svg>"
+    },
+    {
+      "code": "033310",
+      "controls": [
+        {
+          "id": "link-1-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-1-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-1-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-1-endGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-2-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-2-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-endGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-3-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-3-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-3-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-3-endGap",
+          "value": "0.08"
+        }
+      ],
+      "paths": [
+        "M66.21 9C62.61 15.24 59.01 21.48 55.4 27.72C45.11 45.54 51.3 59.8 33.47 70.09",
+        "M33.24 70.22C51.06 59.93 81.13 51.7 81.13 72.28C81.13 92.87 51.21 85.09 33.38 74.8",
+        "M51.84 29.78C34.01 40.07 39.97 54.46 29.67 72.28C26.07 78.52 22.6 84.53 19 90.77"
+      ],
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"2048\" height=\"2048\" viewBox=\"0 0 100 100\" role=\"img\" aria-label=\"Links network 03₄ 33₄ 10₄\"><title>Links network 03₄ 33₄ 10₄</title><rect width=\"100\" height=\"100\" fill=\"#000000\"></rect><g transform=\"translate(0 0) scale(1)\" fill=\"none\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" opacity=\"1\"><g stroke=\"#22d3ee\"><path d=\"M66.21 9C62.61 15.24 59.01 21.48 55.4 27.72C45.11 45.54 51.3 59.8 33.47 70.09\"></path><path d=\"M62.79 9.92L67.12 12.42\"></path><path d=\"M36.85 71L33.47 70.09L34.38 66.71\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M54.4 27.72a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#22d3ee\"></path></g><g stroke=\"#c084fc\"><path d=\"M33.24 70.22C51.06 59.93 81.13 51.7 81.13 72.28C81.13 92.87 51.21 85.09 33.38 74.8\"></path><path d=\"M36.61 71.21L34.24 66.81\"></path><path d=\"M34.29 78.18L33.38 74.8L36.77 73.89\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M80.13 72.28a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#c084fc\"></path></g><g stroke=\"#f472b6\"><path d=\"M51.84 29.78C34.01 40.07 39.97 54.46 29.67 72.28C26.07 78.52 22.6 84.53 19 90.77\"></path><path d=\"M48.32 29.02L51.1 33.17\"></path><path d=\"M22.38 89.86L19 90.77L18.1 87.39\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M28.67 72.28a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#f472b6\"></path></g></g></svg>"
+    },
+    {
+      "code": "202221",
+      "controls": [
+        {
+          "id": "link-1-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-1-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-1-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-1-endGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-2-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-2-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-endGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-3-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-3-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-3-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-3-endGap",
+          "value": "0.08"
+        }
+      ],
+      "paths": [
+        "M68.63 66.29C68.63 46.36 53.68 44.38 43.71 27.12C40.23 21.08 36.87 15.27 33.38 9.23",
+        "M67.6 66.43C58.31 31.77 109.16 59.42 68.63 70.28C28.1 81.14 79.01 109.04 69.73 74.39",
+        "M65.18 72.27C47.91 82.23 28.77 87.54 18.8 70.28C8.83 53.02 22.77 39.22 40.03 29.25"
+      ],
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"2048\" height=\"2048\" viewBox=\"0 0 100 100\" role=\"img\" aria-label=\"Links network 20₄ 22₄ 21₄\"><title>Links network 20₄ 22₄ 21₄</title><rect width=\"100\" height=\"100\" fill=\"#000000\"></rect><g transform=\"translate(0 0) scale(1)\" fill=\"none\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" opacity=\"1\"><g stroke=\"#22d3ee\"><path d=\"M68.63 66.29C68.63 46.36 53.68 44.38 43.71 27.12C40.23 21.08 36.87 15.27 33.38 9.23\"></path><path d=\"M71.04 63.62L66.05 63.96\"></path><path d=\"M32.48 12.61L33.38 9.23L36.77 10.14\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M42.71 27.12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#22d3ee\"></path></g><g stroke=\"#c084fc\"><path d=\"M67.6 66.43C58.31 31.77 109.16 59.42 68.63 70.28C28.1 81.14 79.01 109.04 69.73 74.39\"></path><path d=\"M69.47 63.49L64.57 64.49\"></path><path d=\"M67.98 77.42L69.73 74.39L72.76 76.14\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M67.63 70.28a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#c084fc\"></path></g><g stroke=\"#f472b6\"><path d=\"M65.18 72.27C47.91 82.23 28.77 87.54 18.8 70.28C8.83 53.02 22.77 39.22 40.03 29.25\"></path><path d=\"M61.8 71.3L64.2 75.69\"></path><path d=\"M36.65 28.35L40.03 29.25L39.12 32.63\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M17.8 70.28a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#f472b6\"></path></g></g></svg>"
+    },
+    {
+      "code": "021023",
+      "controls": [
+        {
+          "id": "link-1-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-1-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-1-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-1-endGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-2-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-2-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-2-endGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-3-turn-0",
+          "value": "0"
+        },
+        {
+          "id": "link-3-turn-1",
+          "value": "0"
+        },
+        {
+          "id": "link-3-startGap",
+          "value": "0.08"
+        },
+        {
+          "id": "link-3-endGap",
+          "value": "0.08"
+        }
+      ],
+      "paths": [
+        "M43.46 9C47.02 15.17 50.59 21.35 54.15 27.52C64.34 45.16 79.62 46.91 79.62 67.28",
+        "M54.15 31.6C54.15 51.97 69.43 53.98 79.62 71.62C83.18 77.8 86.61 83.74 90.18 89.91",
+        "M76.09 69.59C58.45 59.4 49.06 71.62 28.69 71.62C-14.19 71.62 28.69 112.63 28.69 75.97"
+      ],
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"2048\" height=\"2048\" viewBox=\"0 0 100 100\" role=\"img\" aria-label=\"Links network 02₄ 10₄ 23₄\"><title>Links network 02₄ 10₄ 23₄</title><rect width=\"100\" height=\"100\" fill=\"#000000\"></rect><g transform=\"translate(0 0) scale(1)\" fill=\"none\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"miter\" opacity=\"1\"><g stroke=\"#22d3ee\"><path d=\"M43.46 9C47.02 15.17 50.59 21.35 54.15 27.52C64.34 45.16 79.62 46.91 79.62 67.28\"></path><path d=\"M42.55 12.42L46.88 9.92\"></path><path d=\"M82.09 64.81L79.62 67.28L77.14 64.81\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M53.15 27.52a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#22d3ee\"></path></g><g stroke=\"#c084fc\"><path d=\"M54.15 31.6C54.15 51.97 69.43 53.98 79.62 71.62C83.18 77.8 86.61 83.74 90.18 89.91\"></path><path d=\"M51.74 34.26L56.73 33.93\"></path><path d=\"M91.08 86.53L90.18 89.91L86.79 89.01\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M78.62 71.62a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#c084fc\"></path></g><g stroke=\"#f472b6\"><path d=\"M76.09 69.59C58.45 59.4 49.06 71.62 28.69 71.62C-14.19 71.62 28.69 112.63 28.69 75.97\"></path><path d=\"M74.99 66.16L72.78 70.65\"></path><path d=\"M26.22 78.44L28.69 75.97L31.17 78.44\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4.01\"></path><path d=\"M27.69 71.62a1 1 0 1 0 2 0a1 1 0 1 0 -2 0Z\" fill=\"#f472b6\"></path></g></g></svg>"
+    }
+  ],
+  "errors": [],
+  "version": "156.0.8078.4"
+}

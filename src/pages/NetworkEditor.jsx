@@ -196,6 +196,7 @@ export function LinksTable({
   links,
   colors,
   turns,
+  turnDefaults,
   gaps,
   style,
   onGap,
@@ -268,7 +269,15 @@ export function LinksTable({
                   />
                 </label>
               </div>
-              <NetworkGaps i={i} row={gaps[i]} style={style} onGap={onGap} turns={turns[i]} onTurn={onTurn} />
+              <NetworkGaps
+                i={i}
+                row={gaps[i]}
+                style={style}
+                onGap={onGap}
+                turns={turns[i]}
+                turnDefaults={turnDefaults[i]}
+                onTurn={onTurn}
+              />
             </li>
           );
         })}

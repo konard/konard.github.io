@@ -55,7 +55,7 @@ export default function LinkSetting({
           aria-label={range ? `${name} (${t({ en: 'value', ru: 'значение' })})` : name}
           onValue={(next) => {
             // A blank turn is an editing draft, not an instruction to reset it.
-            if (next !== null || reset !== 0) onChange(next);
+            if (next !== null || reset === null) onChange(next);
           }}
         />
         <button
