@@ -18,8 +18,9 @@
       0 0,
       0 0;
     background-repeat: no-repeat;
+    background-origin: border-box;
     border-color: var(--fx-edge);
-    border-width: var(--future-border);
+    border-width: var(--fx-border-w, var(--future-border));
     backdrop-filter: blur(calc(var(--future-blur) * var(--fx-blur-scale)));
   }
   :root[data-ui-border-style='solid'] {

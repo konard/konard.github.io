@@ -237,6 +237,7 @@ try {
     assert.equal(await page.locator('#liquid-refraction').count(), 0);
     await patch({ 'ui.transparency': 'auto', 'skin.name': 'glass', 'glass.level': 0.4 });
     await chooseSelect(skin, 'futuristic');
+    await patch({ 'future.frame': 'corners', 'future.surface': 'gradient', 'future.opacity': 0.82 });
     // Providers are deterministic fixtures here; the separate live probe records external availability.
     await page.unroute('https://platform.twitter.com/**');
     await page.route('https://platform.twitter.com/widgets.js', (route) =>
@@ -245,7 +246,7 @@ try {
         body: `window.twttr={widgets:{createTweet:async(id,host,options)=>{
         const frame=document.createElement('iframe'); frame.title='X post'; frame.height='230';
         frame.style.cssText='display:block;width:100%;height:230px;border:0';
-        frame.srcdoc='<body style="background:#15202b;color:#e7e9ea;font:16px system-ui;padding:20px;margin:0"><b>Konstantin Diachenko · @konard</b><p>Responsive social post fixture</p><p>Content-sized embed · '+options.theme+'</p></body>';
+        frame.srcdoc='<html style="color-scheme:light"><body style="margin:0;background:transparent"><article style="box-sizing:border-box;height:230px;border-radius:14px;padding:20px;background:'+(options.theme==='dark'?'#15202b':'#fff')+';color:'+(options.theme==='dark'?'#e7e9ea':'#15202b')+';font:16px system-ui"><b>Konstantin Diachenko · @konard</b><p>Responsive social post fixture</p><p>Content-sized embed · '+options.theme+'</p></article></body></html>';
         host.append(frame);return frame;}}};`,
       }),
     );

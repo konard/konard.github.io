@@ -1,0 +1,43 @@
+
+> konard.github.io@0.1.0 test:ci
+> vitest run --maxWorkers=1
+
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793385596392
+
+::debug::Creating Artifact archive with compressionLevel: 6
+::debug::Zip write high watermark value 8388608
+::debug::Zip read high watermark value 8388608
+::debug::Zip stream for upload has ended.
+::debug::Zip stream for upload has finished.
+ ❯ src/pages/network-41.test.jsx (3 tests | 1 failed) 2186ms
+   × recomputes automatic turns after reference edits and removal, preserving explicit ones 256ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/pages/network-41.test.jsx > recomputes automatic turns after reference edits and removal, preserving explicit ones
+Error: expect(element).toHaveValue(-30)
+
+Expected the element to have value:
+  -30
+Received:
+  0
+ ❯ src/pages/network-41.test.jsx:46:20
+     44|   open('code=000022');
+     45|   fireEvent.change(screen.getByLabelText('Link 1: target'), { target: …
+     46|   expect(target()).toHaveValue('-30');
+       |                    ^
+     47|   fireEvent.click(screen.getByRole('button', { name: 'Remove: Link 2' …
+     48|   expect(target()).toHaveValue('0');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 75 passed (76)
+      Tests  1 failed | 1013 passed (1014)
+   Start at  18:42:36
+   Duration  278.55s (tests 56%, environment 31%, setup 7%, import 3%, transform 2%)
+
+Environment  jsdom was created 76 times · 82.44s total, 31% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments

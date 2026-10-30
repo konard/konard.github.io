@@ -1,0 +1,70 @@
+
+> konard.github.io@0.1.0 build
+> vite build
+
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 213 modules transformed.
+rendering chunks...
+computing gzip size...
+build/build-info.json                                           0.05 kB │ gzip:   0.07 kB
+build/assets/orbitron-latin-700-normal-4jsRXGGJ.woff2           6.52 kB
+build/assets/orbitron-latin-500-normal-DQ2gt4P1.woff2           6.59 kB
+build/assets/orbitron-latin-700-normal-DmYOh-W9.woff            8.96 kB
+build/assets/orbitron-latin-500-normal-BCCupJ8c.woff            9.03 kB
+build/assets/chakra-petch-latin-400-normal-SafcrIr2.woff2       9.75 kB
+build/assets/chakra-petch-latin-600-normal-DVQm9bgb.woff2       9.96 kB
+build/assets/share-tech-mono-latin-400-normal-15MgdvEM.woff    10.23 kB
+build/assets/electrolize-latin-400-normal-DH2aMH81.woff        11.78 kB
+build/blog/index.html                                          12.77 kB │ gzip:   3.92 kB
+build/cv/index.html                                            12.77 kB │ gzip:   3.95 kB
+build/art/index.html                                           13.03 kB │ gzip:   3.99 kB
+build/repositories/index.html                                  13.03 kB │ gzip:   3.97 kB
+build/settings/index.html                                      13.07 kB │ gzip:   3.97 kB
+build/associative/index.html                                   13.10 kB │ gzip:   3.99 kB
+build/experience/index.html                                    13.15 kB │ gzip:   3.99 kB
+build/network/index.html                                       13.15 kB │ gzip:   4.04 kB
+build/assets/chakra-petch-latin-400-normal-D7EtbySE.woff       13.16 kB
+build/index.html                                               13.24 kB │ gzip:   4.09 kB
+build/research/index.html                                      13.29 kB │ gzip:   4.04 kB
+build/assets/chakra-petch-latin-600-normal-DQKfcdKo.woff       13.43 kB
+build/assets/share-tech-mono-latin-400-normal-CCqdbj5z.woff2   13.50 kB
+build/assets/electrolize-latin-400-normal-RRVgdOY_.woff2       16.68 kB
+build/assets/collision-worker-CbxoMPJT.js                      36.03 kB
+build/assets/cv-B3XAbQb8.css                                    2.58 kB │ gzip:   1.07 kB
+build/assets/settings-5hXznQm5.css                              2.99 kB │ gzip:   1.09 kB
+build/assets/network-1D9RLs_v.css                               5.19 kB │ gzip:   1.51 kB
+build/assets/settings-DItcxARG.css                              5.43 kB │ gzip:   1.53 kB
+build/assets/Layout-Cwr45XzW.css                              116.41 kB │ gzip:  21.49 kB
+build/assets/plural-BPrnZ9qL.js                                 0.30 kB │ gzip:   0.25 kB │ map:     1.50 kB
+build/assets/format-CujfuUOf.js                                 0.45 kB │ gzip:   0.35 kB │ map:     1.75 kB
+build/assets/query-2YtLv2L3.js                                  0.49 kB │ gzip:   0.34 kB │ map:     1.80 kB
+build/assets/Section-d3Lt5jyF.js                                0.50 kB │ gzip:   0.30 kB │ map:     1.30 kB
+build/assets/Glyph-BVeeNx_q.js                                  0.53 kB │ gzip:   0.37 kB │ map:     1.68 kB
+build/assets/beams-C5LcFBJP.js                                  3.05 kB │ gzip:   1.54 kB │ map:    12.30 kB
+build/assets/settings-C0VtBD0Y.js                               3.50 kB │ gzip:   1.73 kB │ map:    12.01 kB
+build/assets/experience-CJ1-6ntg.js                             3.88 kB │ gzip:   1.69 kB │ map:    10.84 kB
+build/assets/Select-B9mIgu3_.js                                 4.24 kB │ gzip:   1.94 kB │ map:    14.88 kB
+build/assets/Skills-DkzptZBl.js                                 4.33 kB │ gzip:   1.82 kB │ map:    13.66 kB
+build/assets/repositories-Deql7bkF.js                           4.88 kB │ gzip:   1.98 kB │ map:    12.04 kB
+build/assets/art-xi_RFIs1.js                                    5.31 kB │ gzip:   2.37 kB │ map:    10.73 kB
+build/assets/theory-DLnm5Z1a.js                                 5.74 kB │ gzip:   2.52 kB │ map:     9.41 kB
+build/assets/NetworkGallery-Dp90XZuy.js                         6.14 kB │ gzip:   2.64 kB │ map:    15.17 kB
+build/assets/stars-Bkk_9mS-.js                                  6.23 kB │ gzip:   2.81 kB │ map:    26.41 kB
+build/assets/presets-C25BNFBZ.js                                7.66 kB │ gzip:   3.59 kB │ map:    20.13 kB
+build/assets/schema.sound-DAmUU18B.js                           8.24 kB │ gzip:   3.91 kB │ map:    17.90 kB
+build/assets/interactions-BuWeJ2SR.js                           9.64 kB │ gzip:   3.79 kB │ map:    35.28 kB
+build/assets/cv-D0SqFyq-.js                                    11.44 kB │ gzip:   4.25 kB │ map:    33.31 kB
+build/assets/research-C8X-XUH6.js                              13.13 kB │ gzip:   5.15 kB │ map:    23.23 kB
+build/assets/MetaTheory-Dmce-1ns.js                            18.08 kB │ gzip:   6.93 kB │ map:    39.77 kB
+build/assets/settings-EqrAmI1o.js                              22.83 kB │ gzip:   7.43 kB │ map:    64.41 kB
+build/assets/paths-BaO2WMiH.js                                 29.25 kB │ gzip:   7.41 kB │ map:    57.15 kB
+build/assets/associative-uBwizVmX.js                           40.87 kB │ gzip:  13.01 kB │ map:    67.65 kB
+build/assets/index-C2BjZMAX.js                                 68.43 kB │ gzip:  21.51 kB │ map:   161.34 kB
+build/assets/profile-5pWDuaGz.js                               74.68 kB │ gzip:  21.59 kB │ map:   118.72 kB
+build/assets/network-kiWrtMpI.js                               76.70 kB │ gzip:  28.13 kB │ map:   248.93 kB
+build/assets/blog-Th20zoWU.js                                  87.78 kB │ gzip:  20.66 kB │ map:   137.49 kB
+build/assets/RepoList-CHJcsE0z.js                             425.92 kB │ gzip:  86.99 kB │ map:   567.98 kB
+build/assets/Layout-CwDFlp-k.js                               440.99 kB │ gzip: 143.80 kB │ map: 1,365.82 kB
+
+✓ built in 1.10s

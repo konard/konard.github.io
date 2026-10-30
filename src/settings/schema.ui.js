@@ -162,7 +162,7 @@ export const UI_SECTIONS = [
       color('ui.accent2', '#a78bfa', { en: 'Secondary accent', ru: 'Второй акцент' }),
       range(
         'ui.accentSize',
-        3,
+        2,
         0,
         16,
         0.5,

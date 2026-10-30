@@ -8,6 +8,8 @@ The complete [issue snapshot](data/issue.json), [initial PR snapshot](data/pr-in
 
 The image in the issue shows settings values, rather than a screenshot of the broken blog. It specifies twinkle **1.9**, zoom **0.55**, star size **0.5**, star color **#00c7fc** and sound **on**. Those five defaults are applied exactly. Existing visitor overrides remain authoritative. Futuristic scanlines now default to zero for readability; visitors can still enable them.
 
+The [subsequent review and screenshot audit](VISUAL-REVIEW.md) covers the owner's theme/frame feedback: merge current main, remove the white iframe canvas, connect default corner strokes and highlight gradients, and retain manual frame customization. It includes a separate failing baseline, final render measurements and refreshed screenshots. The merge retains issue 41's straight-turn implementation and its automated browser suite.
+
 ## Complete requirement and solution inventory
 
 | Requirement | Root cause / alternatives considered | Chosen solution and verification |

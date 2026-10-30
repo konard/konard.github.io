@@ -46,7 +46,9 @@
     ) {
     border-radius: var(--ui-control-corners);
   }
-  :root:root :is(button, .button, textarea, input:not([type='range']):not([type='checkbox'])) {
+  /* Input exclusions must not make control rules outrank panel frames on
+     buttons such as presets. Their panel border is set below. */
+  :root:root :is(button, .button, textarea, input:where(:not([type='range']):not([type='checkbox']))) {
     border-width: var(--ui-control-border);
     border-style: var(--ui-border-style, solid);
     border-color: var(--ui-control-edge);
@@ -113,12 +115,13 @@
       .ui-preview__panel
     ) {
     border-radius: var(--ui-panel-corners);
-    border-width: var(--ui-panel-border);
+    border-width: var(--ui-panel-width, var(--ui-panel-border));
     border-style: var(--ui-border-style, solid);
-    border-color: var(--ui-control-edge);
+    border-color: var(--ui-panel-edge, var(--ui-control-edge));
   }
-  :root[data-skin-name='futuristic'] :is(.card, .chart, .registry, .project, .settings__group, .post, .repo) {
-    border-width: var(--fx-border-w, var(--future-border));
+  :root[data-skin-name='futuristic'] {
+    --ui-panel-width: var(--fx-border-w, var(--future-border));
+    --ui-panel-edge: var(--fx-edge);
   }
   /* Remove inherited rounded decorations in the angular skin, including media,
      code blocks, color swatches, progress tracks and both range implementations. */

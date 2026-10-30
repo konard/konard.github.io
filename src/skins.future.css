@@ -75,10 +75,12 @@
     var(--fx-k) var(--fx-b), var(--fx-b) var(--fx-k), var(--fx-k) var(--fx-b), var(--fx-b) var(--fx-k);
   --fx-frame-pos: 0 0, 0 0, 100% 0, 100% 0, 0 100%, 0 100%, 100% 100%, 100% 100%;
 
-  /* Accent bar near the top left corner. */
+  /* Accent continues the frame in the same border-box coordinates. Frame
+     variants override its start; the visitor's offset is added afterwards. */
+  --fx-bar-start: var(--fx-k);
   --fx-bar-img: linear-gradient(90deg, var(--fx-line), rgb(var(--accent-rgb) / 0));
-  --fx-bar-size: min(80%, var(--future-accent-length, 112px)) var(--ui-accent-size, 3px);
-  --fx-bar-pos: left calc(var(--fx-k) + var(--fx-c) + var(--future-accent-offset, 6px)) top 0;
+  --fx-bar-size: min(80%, var(--future-accent-length, 112px)) var(--ui-accent-size, 2px);
+  --fx-bar-pos: left calc(var(--fx-bar-start) + var(--future-accent-offset, 0px)) top 0;
 
   /* Light sweep on hover (only with "Panels on hover: light sweep"). */
   --fx-sweep-img: none;
@@ -103,6 +105,7 @@
 /* ---------- Frames ---------- */
 
 :root[data-skin-name='futuristic'][data-future-frame='chamfer'] {
+  --fx-bar-start: var(--fx-c);
   --fx-clip: polygon(
     var(--fx-c) 0,
     100% 0,
@@ -118,6 +121,7 @@
 }
 
 :root[data-skin-name='futuristic'][data-future-frame='octagon'] {
+  --fx-bar-start: var(--fx-c);
   --fx-clip: polygon(
     var(--fx-c) 0,
     calc(100% - var(--fx-c)) 0,
@@ -136,6 +140,7 @@
 /* Kranox: a double cut at two corners and a thick stroke on each side. */
 :root[data-skin-name='futuristic'][data-future-frame='kranox'] {
   --fx-kc: calc(var(--fx-c) * 2);
+  --fx-bar-start: var(--fx-kc);
   --fx-clip: polygon(
     var(--fx-kc) 0,
     100% 0,
@@ -163,6 +168,7 @@
 }
 
 :root[data-skin-name='futuristic'][data-future-frame='lines'] {
+  --fx-bar-start: 0px;
   --fx-edge: transparent;
   --fx-frame-img: var(--fx-l), var(--fx-l);
   --fx-frame-size: 100% var(--fx-b), 100% var(--fx-b);
@@ -170,6 +176,7 @@
 }
 
 :root[data-skin-name='futuristic'][data-future-frame='underline'] {
+  --fx-bar-start: 0px;
   --fx-edge: transparent;
   --fx-frame-img: var(--fx-lf), var(--fx-l);
   --fx-frame-size: 100% var(--fx-b), min(35%, 160px) var(--fx-b);
@@ -177,6 +184,7 @@
 }
 
 :root[data-skin-name='futuristic'][data-future-frame='plain'] {
+  --fx-bar-start: 0px;
   --fx-edge: rgb(var(--accent-rgb) / 0.55);
   --fx-frame-img: none;
   --fx-frame-size: auto;
@@ -312,6 +320,7 @@
     0 0,
     0 0;
   background-repeat: no-repeat;
+  background-origin: border-box;
   box-shadow:
     0 0 calc(22px * var(--fx-glow)) rgb(var(--accent-rgb) / calc(0.18 * var(--fx-glow))),
     inset 0 0 calc(26px * var(--fx-glow)) rgb(var(--accent-rgb) / calc(0.08 * var(--fx-glow)));

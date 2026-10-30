@@ -1,0 +1,180 @@
+{
+  "engine": "firefox",
+  "results": [
+    {
+      "theme": "dark",
+      "scheme": "normal",
+      "cornerPixel": [
+        9,
+        13,
+        25,
+        255
+      ]
+    },
+    {
+      "theme": "light",
+      "scheme": "normal",
+      "cornerPixel": [
+        249,
+        250,
+        252,
+        255
+      ]
+    },
+    {
+      "geometry": {
+        "corner": 16,
+        "accentThickness": 2,
+        "backgroundOrigin": "border-box",
+        "positions": "16px 0px, 0px 0px, 0px 0px, 100% 0px, 100% 0px, 0px 100%, 0px 100%, 100% 100%, 100% 100%, 0px 0px, 0px 0px",
+        "sizes": "min(80%, 112px) 2px, 16px 2px, 2px 16px, 16px 2px, 2px 16px, 16px 2px, 2px 16px, 16px 2px, 2px 16px, 100% 100%, 100% 100%",
+        "border": "1px",
+        "edge": "rgba(126, 252, 246, 0.22)"
+      },
+      "accentX": 16,
+      "frameThickness": 2
+    },
+    {
+      "theme": "light",
+      "edges": [
+        {
+          "edge": "rgba(51, 129, 124, 0.22)",
+          "width": "1px",
+          "origin": "border-box"
+        },
+        {
+          "edge": "rgba(51, 129, 124, 0.22)",
+          "width": "1px",
+          "origin": "border-box"
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "edges": [
+        {
+          "edge": "rgba(126, 252, 246, 0.22)",
+          "width": "1px",
+          "origin": "border-box"
+        },
+        {
+          "edge": "rgba(126, 252, 246, 0.22)",
+          "width": "1px",
+          "origin": "border-box"
+        }
+      ]
+    },
+    {
+      "frame": "corners",
+      "x": 39,
+      "positions": "39px 0px, 0px 0px, 0px 0px, 100% 0px, 100% 0px, 0px 100%, 0px 100%, 100% 100%, 100% 100%, 0px 0px, 0px 0px",
+      "sizes": "min(80%, 112px) 5px, 32px 2px, 2px 32px, 32px 2px, 2px 32px, 32px 2px, 2px 32px, 32px 2px, 2px 32px, 100% 100%, 100% 100%",
+      "width": "1px"
+    },
+    {
+      "frame": "bracket",
+      "x": 39,
+      "positions": "39px 0px, 0px 0px, 0px 0px, 0px 100%, 100% 0px, 100% 0px, 100% 100%, 0px 0px, 0px 100%, 0px 0px, 0px 0px",
+      "sizes": "min(80%, 112px) 5px, 2px 100%, 32px 2px, 32px 2px, 2px 100%, 32px 2px, 32px 2px, 100% 1px, 100% 1px, 100% 100%, 100% 100%",
+      "width": "1px"
+    },
+    {
+      "frame": "chamfer",
+      "x": 27,
+      "positions": "27px 0px, 0px 0px, 20px 0px, 100% 100%, calc(100% - 20px) 100%, 0px 0px, 0px 0px",
+      "sizes": "min(80%, 112px) 5px, 20px 20px, min(30%, 220px) 2px, 20px 20px, min(30%, 220px) 2px, 100% 100%, 100% 100%",
+      "width": "1px"
+    },
+    {
+      "frame": "octagon",
+      "x": 27,
+      "positions": "27px 0px, 0px 0px, 100% 0px, 0px 100%, 100% 100%, 0px 0px, 0px 0px",
+      "sizes": "min(80%, 112px) 5px, 20px 20px, 20px 20px, 20px 20px, 20px 20px, 100% 100%, 100% 100%",
+      "width": "1px"
+    },
+    {
+      "frame": "kranox",
+      "x": 47,
+      "positions": "47px 0px, 0px 0px, 100% 100%, 0px 46px, 100% calc(100% - 46px), 0px 0px, 0px 0px",
+      "sizes": "min(80%, 112px) 5px, 40px 40px, 40px 40px, 3px min(30%, 60px), 3px min(30%, 60px), 100% 100%, 100% 100%",
+      "width": "1px"
+    },
+    {
+      "frame": "lines",
+      "x": 7,
+      "positions": "7px 0px, 0px 0px, 0px 100%, 0px 0px, 0px 0px",
+      "sizes": "min(80%, 112px) 5px, 100% 2px, 100% 2px, 100% 100%, 100% 100%",
+      "width": "1px"
+    },
+    {
+      "frame": "underline",
+      "x": 7,
+      "positions": "7px 0px, 0px 100%, 0px 100%, 0px 0px, 0px 0px",
+      "sizes": "min(80%, 112px) 5px, 100% 2px, min(35%, 160px) 2px, 100% 100%, 100% 100%",
+      "width": "1px"
+    },
+    {
+      "frame": "plain",
+      "x": 7,
+      "positions": "7px 0px, 0px 0px, 0px 0px, 0px 0px",
+      "sizes": "min(80%, 112px) 5px, auto, 100% 100%, 100% 100%",
+      "width": "1px"
+    },
+    {
+      "customWidths": [
+        {
+          "name": "preset",
+          "width": "0px"
+        },
+        {
+          "name": "preset",
+          "width": "0px"
+        },
+        {
+          "name": "preset",
+          "width": "0px"
+        },
+        {
+          "name": "preset",
+          "width": "0px"
+        },
+        {
+          "name": "preset",
+          "width": "0px"
+        },
+        {
+          "name": "preset",
+          "width": "0px"
+        },
+        {
+          "name": "preset",
+          "width": "0px"
+        },
+        {
+          "name": "preset",
+          "width": "0px"
+        },
+        {
+          "name": "preset",
+          "width": "0px"
+        },
+        {
+          "name": "settings__group",
+          "width": "0px"
+        },
+        {
+          "name": "ui-preview__panel",
+          "width": "0px"
+        }
+      ]
+    },
+    {
+      "frame": "custom",
+      "x": 53,
+      "positions": "53px 0px, 0px 0px, 0px 0px, 14px 0px, 0px 14px, 100% 0px, 100% 0px, 100% 0px, 100% 0px, 100% 100%, 0px 0px, calc(100% - 14px) 100%, 100% calc(100% - 14px), 0px 100%, 0px 100%, 0px 100%, 0px 100%, 14px 0px, 100% 32px, 32px 100%, 0px 14px, 0px 0px, 0px 0px",
+      "sizes": "min(80%, 112px) 5px, 14px 14px, 0px 0px, 32px 2px, 2px 32px, 0px 1px, 1px 0px, 0px 1px, 1px 0px, 14px 14px, 0px 0px, 0px 2px, 2px 0px, 0px 1px, 1px 0px, 0px 1px, 1px 0px, max(0px, 100% - 46px) 1px, 1px max(0px, 100% - 46px), max(0px, 100% - 46px) 1px, 1px max(0px, 100% - 46px), 100% 100%, 100% 100%",
+      "width": "0px"
+    }
+  ],
+  "failures": []
+}

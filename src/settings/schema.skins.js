@@ -248,7 +248,7 @@ export const SKIN_SECTIONS = [
       range('future.glow', 0.5, 0, 4, 0.05, { en: 'Glow', ru: 'Свечение' }, { unit: '×' }),
       range('future.frameOpacity', 0.95, 0, 1, 0.01, { en: 'Frame intensity', ru: 'Яркость рамки' }, { unit: '%' }),
       range('future.accentLength', 112, 0, 480, 4, { en: 'Accent length', ru: 'Длина акцента' }, { unit: 'px' }),
-      range('future.accentOffset', 6, 0, 128, 1, { en: 'Accent offset', ru: 'Отступ акцента' }, { unit: 'px' }),
+      range('future.accentOffset', 0, 0, 128, 1, { en: 'Accent offset', ru: 'Отступ акцента' }, { unit: 'px' }),
       select(
         'future.font',
         'orbitron',

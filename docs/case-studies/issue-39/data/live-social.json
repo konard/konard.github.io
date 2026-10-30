@@ -1,6 +1,29 @@
 {
-  "accessed": "2026-10-30T14:18:43.370Z",
-  "loaded": true,
+  "accessed": "2026-10-30T18:56:07.022Z",
+  "themes": [
+    {
+      "theme": "dark",
+      "loaded": true,
+      "iframe": {
+        "x": 445,
+        "y": 701.6875,
+        "width": 550,
+        "height": 552
+      },
+      "scheme": "normal"
+    },
+    {
+      "theme": "light",
+      "loaded": true,
+      "iframe": {
+        "x": 445,
+        "y": 298.6875,
+        "width": 550,
+        "height": 552
+      },
+      "scheme": "normal"
+    }
+  ],
   "requests": [
     {
       "url": "https://platform.twitter.com/widgets.js",
@@ -11,7 +34,7 @@
       "status": 200
     },
     {
-      "url": "https://syndication.twitter.com/settings?session_id=50329151192d0d69c7dc5666daec6ced5eb13874",
+      "url": "https://syndication.twitter.com/settings?session_id=2d80e1b45a3e21c3e52bb6528ce96b3daae4f5f4",
       "status": 200
     },
     {
@@ -19,15 +42,15 @@
       "status": 200
     },
     {
-      "url": "https://platform.twitter.com/embed/Tweet.html?dnt=true&embedId=twitter-widget-0&features=eyJ0ZndfdGltZWxpbmVfbGlzdCI6eyJidWNrZXQiOltdLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X2ZvbGxvd2VyX2NvdW50X3N1bnNldCI6eyJidWNrZXQiOnRydWUsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9iYWNrZW5kIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19yZWZzcmNfc2Vzc2lvbiI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfZm9zbnJfc29mdF9pbnRlcnZlbnRpb25zX2VuYWJsZWQiOnsiYnVja2V0Ijoib24iLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X21peGVkX21lZGlhXzE1ODk3Ijp7ImJ1Y2tldCI6InRyZWF0bWVudCIsInZlcnNpb24iOm51bGx9LCJ0ZndfZXhwZXJpbWVudHNfY29va2llX2V4cGlyYXRpb24iOnsiYnVja2V0IjoxMjA5NjAwLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3Nob3dfYmlyZHdhdGNoX3Bpdm90c19lbmFibGVkIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19kdXBsaWNhdGVfc2NyaWJlc190b19zZXR0aW5ncyI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdXNlX3Byb2ZpbGVfaW1hZ2Vfc2hhcGVfZW5hYmxlZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdmlkZW9faGxzX2R5bmFtaWNfbWFuaWZlc3RzXzE1MDgyIjp7ImJ1Y2tldCI6InRydWVfYml0cmF0ZSIsInZlcnNpb24iOm51bGx9LCJ0ZndfbGVnYWN5X3RpbWVsaW5lX3N1bnNldCI6eyJidWNrZXQiOnRydWUsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9mcm9udGVuZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9fQ%3D%3D&frame=false&hideCard=false&hideThread=false&id=1297535286906433538&lang=en&origin=https%3A%2F%2Fkonard.github.io%2Fblog%2F&sessionId=50329151192d0d69c7dc5666daec6ced5eb13874&siteScreenName=drakonard&theme=dark&widgetsVersion=6a3ad42b224df%3A1778106238597&width=550px",
+      "url": "https://platform.twitter.com/embed/Tweet.html?dnt=true&embedId=twitter-widget-0&features=eyJ0ZndfdGltZWxpbmVfbGlzdCI6eyJidWNrZXQiOltdLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X2ZvbGxvd2VyX2NvdW50X3N1bnNldCI6eyJidWNrZXQiOnRydWUsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9iYWNrZW5kIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19yZWZzcmNfc2Vzc2lvbiI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfZm9zbnJfc29mdF9pbnRlcnZlbnRpb25zX2VuYWJsZWQiOnsiYnVja2V0Ijoib24iLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X21peGVkX21lZGlhXzE1ODk3Ijp7ImJ1Y2tldCI6InRyZWF0bWVudCIsInZlcnNpb24iOm51bGx9LCJ0ZndfZXhwZXJpbWVudHNfY29va2llX2V4cGlyYXRpb24iOnsiYnVja2V0IjoxMjA5NjAwLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3Nob3dfYmlyZHdhdGNoX3Bpdm90c19lbmFibGVkIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19kdXBsaWNhdGVfc2NyaWJlc190b19zZXR0aW5ncyI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdXNlX3Byb2ZpbGVfaW1hZ2Vfc2hhcGVfZW5hYmxlZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdmlkZW9faGxzX2R5bmFtaWNfbWFuaWZlc3RzXzE1MDgyIjp7ImJ1Y2tldCI6InRydWVfYml0cmF0ZSIsInZlcnNpb24iOm51bGx9LCJ0ZndfbGVnYWN5X3RpbWVsaW5lX3N1bnNldCI6eyJidWNrZXQiOnRydWUsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9mcm9udGVuZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9fQ%3D%3D&frame=false&hideCard=false&hideThread=false&id=1297535286906433538&lang=en&origin=https%3A%2F%2Fkonard.github.io%2Fblog%2F&sessionId=2d80e1b45a3e21c3e52bb6528ce96b3daae4f5f4&siteScreenName=drakonard&theme=dark&widgetsVersion=6a3ad42b224df%3A1778106238597&width=550px",
       "status": 200
     },
     {
-      "url": "https://platform.twitter.com/embed/Tweet.html?dnt=true&embedId=twitter-widget-1&features=eyJ0ZndfdGltZWxpbmVfbGlzdCI6eyJidWNrZXQiOltdLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X2ZvbGxvd2VyX2NvdW50X3N1bnNldCI6eyJidWNrZXQiOnRydWUsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9iYWNrZW5kIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19yZWZzcmNfc2Vzc2lvbiI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfZm9zbnJfc29mdF9pbnRlcnZlbnRpb25zX2VuYWJsZWQiOnsiYnVja2V0Ijoib24iLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X21peGVkX21lZGlhXzE1ODk3Ijp7ImJ1Y2tldCI6InRyZWF0bWVudCIsInZlcnNpb24iOm51bGx9LCJ0ZndfZXhwZXJpbWVudHNfY29va2llX2V4cGlyYXRpb24iOnsiYnVja2V0IjoxMjA5NjAwLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3Nob3dfYmlyZHdhdGNoX3Bpdm90c19lbmFibGVkIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19kdXBsaWNhdGVfc2NyaWJlc190b19zZXR0aW5ncyI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdXNlX3Byb2ZpbGVfaW1hZ2Vfc2hhcGVfZW5hYmxlZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdmlkZW9faGxzX2R5bmFtaWNfbWFuaWZlc3RzXzE1MDgyIjp7ImJ1Y2tldCI6InRydWVfYml0cmF0ZSIsInZlcnNpb24iOm51bGx9LCJ0ZndfbGVnYWN5X3RpbWVsaW5lX3N1bnNldCI6eyJidWNrZXQiOnRydWUsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9mcm9udGVuZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9fQ%3D%3D&frame=false&hideCard=false&hideThread=false&id=1990323098562994545&lang=en&origin=https%3A%2F%2Fkonard.github.io%2Fblog%2F&sessionId=50329151192d0d69c7dc5666daec6ced5eb13874&siteScreenName=drakonard&theme=dark&widgetsVersion=6a3ad42b224df%3A1778106238597&width=550px",
+      "url": "https://platform.twitter.com/embed/Tweet.html?dnt=true&embedId=twitter-widget-1&features=eyJ0ZndfdGltZWxpbmVfbGlzdCI6eyJidWNrZXQiOltdLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X2ZvbGxvd2VyX2NvdW50X3N1bnNldCI6eyJidWNrZXQiOnRydWUsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9iYWNrZW5kIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19yZWZzcmNfc2Vzc2lvbiI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfZm9zbnJfc29mdF9pbnRlcnZlbnRpb25zX2VuYWJsZWQiOnsiYnVja2V0Ijoib24iLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X21peGVkX21lZGlhXzE1ODk3Ijp7ImJ1Y2tldCI6InRyZWF0bWVudCIsInZlcnNpb24iOm51bGx9LCJ0ZndfZXhwZXJpbWVudHNfY29va2llX2V4cGlyYXRpb24iOnsiYnVja2V0IjoxMjA5NjAwLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3Nob3dfYmlyZHdhdGNoX3Bpdm90c19lbmFibGVkIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19kdXBsaWNhdGVfc2NyaWJlc190b19zZXR0aW5ncyI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdXNlX3Byb2ZpbGVfaW1hZ2Vfc2hhcGVfZW5hYmxlZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdmlkZW9faGxzX2R5bmFtaWNfbWFuaWZlc3RzXzE1MDgyIjp7ImJ1Y2tldCI6InRydWVfYml0cmF0ZSIsInZlcnNpb24iOm51bGx9LCJ0ZndfbGVnYWN5X3RpbWVsaW5lX3N1bnNldCI6eyJidWNrZXQiOnRydWUsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9mcm9udGVuZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9fQ%3D%3D&frame=false&hideCard=false&hideThread=false&id=1990323098562994545&lang=en&origin=https%3A%2F%2Fkonard.github.io%2Fblog%2F&sessionId=2d80e1b45a3e21c3e52bb6528ce96b3daae4f5f4&siteScreenName=drakonard&theme=dark&widgetsVersion=6a3ad42b224df%3A1778106238597&width=550px",
       "status": 200
     },
     {
-      "url": "https://platform.twitter.com/embed/Tweet.html?dnt=true&embedId=twitter-widget-2&features=eyJ0ZndfdGltZWxpbmVfbGlzdCI6eyJidWNrZXQiOltdLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X2ZvbGxvd2VyX2NvdW50X3N1bnNldCI6eyJidWNrZXQiOnRydWUsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9iYWNrZW5kIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19yZWZzcmNfc2Vzc2lvbiI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfZm9zbnJfc29mdF9pbnRlcnZlbnRpb25zX2VuYWJsZWQiOnsiYnVja2V0Ijoib24iLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X21peGVkX21lZGlhXzE1ODk3Ijp7ImJ1Y2tldCI6InRyZWF0bWVudCIsInZlcnNpb24iOm51bGx9LCJ0ZndfZXhwZXJpbWVudHNfY29va2llX2V4cGlyYXRpb24iOnsiYnVja2V0IjoxMjA5NjAwLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3Nob3dfYmlyZHdhdGNoX3Bpdm90c19lbmFibGVkIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19kdXBsaWNhdGVfc2NyaWJlc190b19zZXR0aW5ncyI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdXNlX3Byb2ZpbGVfaW1hZ2Vfc2hhcGVfZW5hYmxlZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdmlkZW9faGxzX2R5bmFtaWNfbWFuaWZlc3RzXzE1MDgyIjp7ImJ1Y2tldCI6InRydWVfYml0cmF0ZSIsInZlcnNpb24iOm51bGx9LCJ0ZndfbGVnYWN5X3RpbWVsaW5lX3N1bnNldCI6eyJidWNrZXQiOnRydWUsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9mcm9udGVuZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9fQ%3D%3D&frame=false&hideCard=false&hideThread=false&id=1437792709566255106&lang=en&origin=https%3A%2F%2Fkonard.github.io%2Fblog%2F&sessionId=50329151192d0d69c7dc5666daec6ced5eb13874&siteScreenName=drakonard&theme=dark&widgetsVersion=6a3ad42b224df%3A1778106238597&width=550px",
+      "url": "https://platform.twitter.com/embed/Tweet.html?dnt=true&embedId=twitter-widget-2&features=eyJ0ZndfdGltZWxpbmVfbGlzdCI6eyJidWNrZXQiOltdLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X2ZvbGxvd2VyX2NvdW50X3N1bnNldCI6eyJidWNrZXQiOnRydWUsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9iYWNrZW5kIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19yZWZzcmNfc2Vzc2lvbiI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfZm9zbnJfc29mdF9pbnRlcnZlbnRpb25zX2VuYWJsZWQiOnsiYnVja2V0Ijoib24iLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X21peGVkX21lZGlhXzE1ODk3Ijp7ImJ1Y2tldCI6InRyZWF0bWVudCIsInZlcnNpb24iOm51bGx9LCJ0ZndfZXhwZXJpbWVudHNfY29va2llX2V4cGlyYXRpb24iOnsiYnVja2V0IjoxMjA5NjAwLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3Nob3dfYmlyZHdhdGNoX3Bpdm90c19lbmFibGVkIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19kdXBsaWNhdGVfc2NyaWJlc190b19zZXR0aW5ncyI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdXNlX3Byb2ZpbGVfaW1hZ2Vfc2hhcGVfZW5hYmxlZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdmlkZW9faGxzX2R5bmFtaWNfbWFuaWZlc3RzXzE1MDgyIjp7ImJ1Y2tldCI6InRydWVfYml0cmF0ZSIsInZlcnNpb24iOm51bGx9LCJ0ZndfbGVnYWN5X3RpbWVsaW5lX3N1bnNldCI6eyJidWNrZXQiOnRydWUsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9mcm9udGVuZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9fQ%3D%3D&frame=false&hideCard=false&hideThread=false&id=1437792709566255106&lang=en&origin=https%3A%2F%2Fkonard.github.io%2Fblog%2F&sessionId=2d80e1b45a3e21c3e52bb6528ce96b3daae4f5f4&siteScreenName=drakonard&theme=dark&widgetsVersion=6a3ad42b224df%3A1778106238597&width=550px",
       "status": 200
     },
     {
@@ -47,6 +70,10 @@
       "status": 200
     },
     {
+      "url": "https://platform.twitter.com/embed/embed.9449.78398904051446294e3d.js",
+      "status": 200
+    },
+    {
       "url": "https://platform.twitter.com/embed/embed.Tweet.70198ef24afe05adbecf.js",
       "status": 200
     },
@@ -63,7 +90,7 @@
       "status": 200
     },
     {
-      "url": "https://platform.twitter.com/embed/embed.9449.78398904051446294e3d.js",
+      "url": "https://platform.twitter.com/embed/embed.ondemand.horizon-web.i18n.en-js.d681a6dcae4601184824.js",
       "status": 200
     },
     {
@@ -72,6 +99,158 @@
     },
     {
       "url": "https://platform.twitter.com/embed/embed.749.467388cca0b3fe9c3291.js",
+      "status": 200
+    },
+    {
+      "url": "https://platform.twitter.com/embed/embed.749.467388cca0b3fe9c3291.js",
+      "status": 200
+    },
+    {
+      "url": "https://platform.twitter.com/embed/embed.ondemand.i18n.en-js.19a28d85d7fc7916b4b1.js",
+      "status": 200
+    },
+    {
+      "url": "https://platform.twitter.com/embed/embed.ondemand.horizon-web.i18n.en-js.d681a6dcae4601184824.js",
+      "status": 200
+    },
+    {
+      "url": "https://platform.twitter.com/embed/embed.749.467388cca0b3fe9c3291.js",
+      "status": 200
+    },
+    {
+      "url": "https://platform.twitter.com/embed/embed.ondemand.i18n.en-js.19a28d85d7fc7916b4b1.js",
+      "status": 200
+    },
+    {
+      "url": "https://platform.twitter.com/embed/embed.ondemand.horizon-web.i18n.en-js.d681a6dcae4601184824.js",
+      "status": 200
+    },
+    {
+      "url": "https://platform.twitter.com/embed/embed.ondemand.Tweet.81f6f5a50fbfe5bd028c.js",
+      "status": 200
+    },
+    {
+      "url": "https://platform.twitter.com/embed/embed.9203.1b3edf1dee6d205547e0.js",
+      "status": 200
+    },
+    {
+      "url": "https://platform.twitter.com/embed/embed.ondemand.Tweet.81f6f5a50fbfe5bd028c.js",
+      "status": 200
+    },
+    {
+      "url": "https://platform.twitter.com/embed/embed.ondemand.Tweet.81f6f5a50fbfe5bd028c.js",
+      "status": 200
+    },
+    {
+      "url": "https://platform.twitter.com/embed/embed.9203.1b3edf1dee6d205547e0.js",
+      "status": 200
+    },
+    {
+      "url": "https://platform.twitter.com/embed/embed.9203.1b3edf1dee6d205547e0.js",
+      "status": 200
+    },
+    {
+      "url": "https://syndication.x.com/i/jot/embeds?l=%7B%22_category_%22%3A%22tfw_client_event%22%2C%22triggered_on%22%3A1793386564325%2C%22event_namespace%22%3A%7B%22client%22%3A%22tfw%22%2C%22page%22%3A%22tweet%22%2C%22action%22%3A%22results%22%2C%22section%22%3A%22main%22%7D%2C%22context%22%3A%22horizon%22%2C%22client_version%22%3A%226a3ad42b224df%3A1778106238597%22%2C%22dnt%22%3Atrue%2C%22widget_id%22%3A%22twitter-widget-2%22%2C%22widget_origin%22%3A%22https%3A%2F%2Fkonard.github.io%2Fblog%2F%22%2C%22widget_frame%22%3A%22false%22%2C%22widget_partner%22%3A%22%22%2C%22widget_site_screen_name%22%3A%22drakonard%22%2C%22widget_site_user_id%22%3A%22%22%2C%22widget_creator_screen_name%22%3A%22%22%2C%22widget_creator_user_id%22%3A%22%22%2C%22widget_iframe_version%22%3A%223f8c13b4620b8%3A1779816981886%22%2C%22item_ids%22%3A%5B%221437792709566255106%22%5D%2C%22item_details%22%3A%7B%221437792709566255106%22%3A%7B%22item_type%22%3A0%7D%7D%7D&dnt=1",
+      "status": 200
+    },
+    {
+      "url": "https://syndication.x.com/i/jot/embeds?l=%7B%22_category_%22%3A%22tfw_client_event%22%2C%22triggered_on%22%3A1793386564414%2C%22event_namespace%22%3A%7B%22client%22%3A%22tfw%22%2C%22page%22%3A%22tweet%22%2C%22action%22%3A%22results%22%2C%22section%22%3A%22main%22%7D%2C%22context%22%3A%22horizon%22%2C%22client_version%22%3A%226a3ad42b224df%3A1778106238597%22%2C%22dnt%22%3Atrue%2C%22widget_id%22%3A%22twitter-widget-1%22%2C%22widget_origin%22%3A%22https%3A%2F%2Fkonard.github.io%2Fblog%2F%22%2C%22widget_frame%22%3A%22false%22%2C%22widget_partner%22%3A%22%22%2C%22widget_site_screen_name%22%3A%22drakonard%22%2C%22widget_site_user_id%22%3A%22%22%2C%22widget_creator_screen_name%22%3A%22%22%2C%22widget_creator_user_id%22%3A%22%22%2C%22widget_iframe_version%22%3A%223f8c13b4620b8%3A1779816981886%22%2C%22item_ids%22%3A%5B%221990323098562994545%22%5D%2C%22item_details%22%3A%7B%221990323098562994545%22%3A%7B%22item_type%22%3A0%7D%7D%7D&dnt=1",
+      "status": 200
+    },
+    {
+      "url": "https://syndication.x.com/i/jot/embeds?l=%7B%22_category_%22%3A%22tfw_client_event%22%2C%22triggered_on%22%3A1793386564456%2C%22event_namespace%22%3A%7B%22client%22%3A%22tfw%22%2C%22page%22%3A%22tweet%22%2C%22action%22%3A%22results%22%2C%22section%22%3A%22main%22%7D%2C%22context%22%3A%22horizon%22%2C%22client_version%22%3A%226a3ad42b224df%3A1778106238597%22%2C%22dnt%22%3Atrue%2C%22widget_id%22%3A%22twitter-widget-0%22%2C%22widget_origin%22%3A%22https%3A%2F%2Fkonard.github.io%2Fblog%2F%22%2C%22widget_frame%22%3A%22false%22%2C%22widget_partner%22%3A%22%22%2C%22widget_site_screen_name%22%3A%22drakonard%22%2C%22widget_site_user_id%22%3A%22%22%2C%22widget_creator_screen_name%22%3A%22%22%2C%22widget_creator_user_id%22%3A%22%22%2C%22widget_iframe_version%22%3A%223f8c13b4620b8%3A1779816981886%22%2C%22item_ids%22%3A%5B%221297535286906433538%22%5D%2C%22item_details%22%3A%7B%221297535286906433538%22%3A%7B%22item_type%22%3A0%7D%7D%7D&dnt=1",
+      "status": 200
+    },
+    {
+      "url": "https://syndication.x.com/i/jot/embeds?l=%7B%22_category_%22%3A%22tfw_client_event%22%2C%22triggered_on%22%3A1793386564679%2C%22event_namespace%22%3A%7B%22client%22%3A%22tfw%22%2C%22page%22%3A%22tweet%22%2C%22action%22%3A%22impression%22%2C%22section%22%3A%22main%22%7D%2C%22context%22%3A%22horizon%22%2C%22client_version%22%3A%226a3ad42b224df%3A1778106238597%22%2C%22dnt%22%3Atrue%2C%22widget_id%22%3A%22twitter-widget-2%22%2C%22widget_origin%22%3A%22https%3A%2F%2Fkonard.github.io%2Fblog%2F%22%2C%22widget_frame%22%3A%22false%22%2C%22widget_partner%22%3A%22%22%2C%22widget_site_screen_name%22%3A%22drakonard%22%2C%22widget_site_user_id%22%3A%22%22%2C%22widget_creator_screen_name%22%3A%22%22%2C%22widget_creator_user_id%22%3A%22%22%2C%22widget_iframe_version%22%3A%223f8c13b4620b8%3A1779816981886%22%2C%22item_ids%22%3A%5B%221437792709566255106%22%5D%2C%22item_details%22%3A%7B%221437792709566255106%22%3A%7B%22item_type%22%3A0%7D%7D%7D&dnt=1",
+      "status": 200
+    },
+    {
+      "url": "https://syndication.x.com/i/jot/embeds?l=%7B%22_category_%22%3A%22tfw_client_event%22%2C%22triggered_on%22%3A1793386564689%2C%22event_namespace%22%3A%7B%22client%22%3A%22tfw%22%2C%22page%22%3A%22tweet%22%2C%22action%22%3A%22seen%22%2C%22section%22%3A%22main%22%2C%22component%22%3A%22privacy-notice%22%7D%2C%22context%22%3A%22horizon%22%2C%22client_version%22%3A%226a3ad42b224df%3A1778106238597%22%2C%22dnt%22%3Atrue%2C%22widget_id%22%3A%22twitter-widget-2%22%2C%22widget_origin%22%3A%22https%3A%2F%2Fkonard.github.io%2Fblog%2F%22%2C%22widget_frame%22%3A%22false%22%2C%22widget_partner%22%3A%22%22%2C%22widget_site_screen_name%22%3A%22drakonard%22%2C%22widget_site_user_id%22%3A%22%22%2C%22widget_creator_screen_name%22%3A%22%22%2C%22widget_creator_user_id%22%3A%22%22%2C%22widget_iframe_version%22%3A%223f8c13b4620b8%3A1779816981886%22%2C%22item_ids%22%3A%5B%221437792709566255106%22%5D%2C%22item_details%22%3A%7B%221437792709566255106%22%3A%7B%22item_type%22%3A0%7D%7D%7D&dnt=1",
+      "status": 200
+    },
+    {
+      "url": "https://syndication.x.com/i/jot/embeds?l=%7B%22_category_%22%3A%22tfw_client_event%22%2C%22triggered_on%22%3A1793386564770%2C%22event_namespace%22%3A%7B%22client%22%3A%22tfw%22%2C%22page%22%3A%22tweet%22%2C%22action%22%3A%22impression%22%2C%22section%22%3A%22main%22%7D%2C%22context%22%3A%22horizon%22%2C%22client_version%22%3A%226a3ad42b224df%3A1778106238597%22%2C%22dnt%22%3Atrue%2C%22widget_id%22%3A%22twitter-widget-1%22%2C%22widget_origin%22%3A%22https%3A%2F%2Fkonard.github.io%2Fblog%2F%22%2C%22widget_frame%22%3A%22false%22%2C%22widget_partner%22%3A%22%22%2C%22widget_site_screen_name%22%3A%22drakonard%22%2C%22widget_site_user_id%22%3A%22%22%2C%22widget_creator_screen_name%22%3A%22%22%2C%22widget_creator_user_id%22%3A%22%22%2C%22widget_iframe_version%22%3A%223f8c13b4620b8%3A1779816981886%22%2C%22item_ids%22%3A%5B%221990323098562994545%22%5D%2C%22item_details%22%3A%7B%221990323098562994545%22%3A%7B%22item_type%22%3A0%7D%7D%7D&dnt=1",
+      "status": 200
+    },
+    {
+      "url": "https://syndication.x.com/i/jot/embeds?l=%7B%22_category_%22%3A%22tfw_client_event%22%2C%22triggered_on%22%3A1793386564782%2C%22event_namespace%22%3A%7B%22client%22%3A%22tfw%22%2C%22page%22%3A%22tweet%22%2C%22action%22%3A%22FCP%22%2C%22component%22%3A%22performance%22%2C%22section%22%3A%22main%22%7D%2C%22context%22%3A%22horizon%22%2C%22client_version%22%3A%226a3ad42b224df%3A1778106238597%22%2C%22dnt%22%3Atrue%2C%22widget_id%22%3A%22twitter-widget-2%22%2C%22widget_origin%22%3A%22https%3A%2F%2Fkonard.github.io%2Fblog%2F%22%2C%22widget_frame%22%3A%22false%22%2C%22widget_partner%22%3A%22%22%2C%22widget_site_screen_name%22%3A%22drakonard%22%2C%22widget_site_user_id%22%3A%22%22%2C%22widget_creator_screen_name%22%3A%22%22%2C%22widget_creator_user_id%22%3A%22%22%2C%22widget_iframe_version%22%3A%223f8c13b4620b8%3A1779816981886%22%2C%22item_ids%22%3A%5B%221437792709566255106%22%5D%2C%22item_details%22%3A%7B%221437792709566255106%22%3A%7B%22item_type%22%3A0%7D%7D%2C%22duration_ms%22%3A1344%7D&dnt=1",
+      "status": 200
+    },
+    {
+      "url": "https://syndication.x.com/i/jot/embeds?l=%7B%22_category_%22%3A%22tfw_client_event%22%2C%22triggered_on%22%3A1793386564996%2C%22event_namespace%22%3A%7B%22client%22%3A%22tfw%22%2C%22page%22%3A%22tweet%22%2C%22action%22%3A%22FCP%22%2C%22component%22%3A%22performance%22%2C%22section%22%3A%22main%22%7D%2C%22context%22%3A%22horizon%22%2C%22client_version%22%3A%226a3ad42b224df%3A1778106238597%22%2C%22dnt%22%3Atrue%2C%22widget_id%22%3A%22twitter-widget-0%22%2C%22widget_origin%22%3A%22https%3A%2F%2Fkonard.github.io%2Fblog%2F%22%2C%22widget_frame%22%3A%22false%22%2C%22widget_partner%22%3A%22%22%2C%22widget_site_screen_name%22%3A%22drakonard%22%2C%22widget_site_user_id%22%3A%22%22%2C%22widget_creator_screen_name%22%3A%22%22%2C%22widget_creator_user_id%22%3A%22%22%2C%22widget_iframe_version%22%3A%223f8c13b4620b8%3A1779816981886%22%2C%22item_ids%22%3A%5B%221297535286906433538%22%5D%2C%22item_details%22%3A%7B%221297535286906433538%22%3A%7B%22item_type%22%3A0%7D%7D%2C%22duration_ms%22%3A1568%7D&dnt=1",
+      "status": 200
+    },
+    {
+      "url": "https://syndication.x.com/i/jot/embeds?l=%7B%22_category_%22%3A%22tfw_client_event%22%2C%22triggered_on%22%3A1793386564998%2C%22event_namespace%22%3A%7B%22client%22%3A%22tfw%22%2C%22page%22%3A%22tweet%22%2C%22action%22%3A%22FCP%22%2C%22component%22%3A%22performance%22%2C%22section%22%3A%22main%22%7D%2C%22context%22%3A%22horizon%22%2C%22client_version%22%3A%226a3ad42b224df%3A1778106238597%22%2C%22dnt%22%3Atrue%2C%22widget_id%22%3A%22twitter-widget-1%22%2C%22widget_origin%22%3A%22https%3A%2F%2Fkonard.github.io%2Fblog%2F%22%2C%22widget_frame%22%3A%22false%22%2C%22widget_partner%22%3A%22%22%2C%22widget_site_screen_name%22%3A%22drakonard%22%2C%22widget_site_user_id%22%3A%22%22%2C%22widget_creator_screen_name%22%3A%22%22%2C%22widget_creator_user_id%22%3A%22%22%2C%22widget_iframe_version%22%3A%223f8c13b4620b8%3A1779816981886%22%2C%22item_ids%22%3A%5B%221990323098562994545%22%5D%2C%22item_details%22%3A%7B%221990323098562994545%22%3A%7B%22item_type%22%3A0%7D%7D%2C%22duration_ms%22%3A1568%7D&dnt=1",
+      "status": 200
+    },
+    {
+      "url": "https://syndication.x.com/i/jot/embeds?l=%7B%22_category_%22%3A%22tfw_client_event%22%2C%22triggered_on%22%3A1793386565141%2C%22event_namespace%22%3A%7B%22client%22%3A%22tfw%22%2C%22page%22%3A%22tweet%22%2C%22action%22%3A%22seen%22%2C%22section%22%3A%22main%22%2C%22component%22%3A%22privacy-notice%22%7D%2C%22context%22%3A%22horizon%22%2C%22client_version%22%3A%226a3ad42b224df%3A1778106238597%22%2C%22dnt%22%3Atrue%2C%22widget_id%22%3A%22twitter-widget-1%22%2C%22widget_origin%22%3A%22https%3A%2F%2Fkonard.github.io%2Fblog%2F%22%2C%22widget_frame%22%3A%22false%22%2C%22widget_partner%22%3A%22%22%2C%22widget_site_screen_name%22%3A%22drakonard%22%2C%22widget_site_user_id%22%3A%22%22%2C%22widget_creator_screen_name%22%3A%22%22%2C%22widget_creator_user_id%22%3A%22%22%2C%22widget_iframe_version%22%3A%223f8c13b4620b8%3A1779816981886%22%2C%22item_ids%22%3A%5B%221990323098562994545%22%5D%2C%22item_details%22%3A%7B%221990323098562994545%22%3A%7B%22item_type%22%3A0%7D%7D%7D&dnt=1",
+      "status": 200
+    },
+    {
+      "url": "https://syndication.x.com/i/jot/embeds?l=%7B%22_category_%22%3A%22tfw_client_event%22%2C%22triggered_on%22%3A1793386565582%2C%22event_namespace%22%3A%7B%22client%22%3A%22tfw%22%2C%22page%22%3A%22tweet%22%2C%22action%22%3A%22LCP%22%2C%22component%22%3A%22performance%22%2C%22section%22%3A%22main%22%7D%2C%22context%22%3A%22horizon%22%2C%22client_version%22%3A%226a3ad42b224df%3A1778106238597%22%2C%22dnt%22%3Atrue%2C%22widget_id%22%3A%22twitter-widget-1%22%2C%22widget_origin%22%3A%22https%3A%2F%2Fkonard.github.io%2Fblog%2F%22%2C%22widget_frame%22%3A%22false%22%2C%22widget_partner%22%3A%22%22%2C%22widget_site_screen_name%22%3A%22drakonard%22%2C%22widget_site_user_id%22%3A%22%22%2C%22widget_creator_screen_name%22%3A%22%22%2C%22widget_creator_user_id%22%3A%22%22%2C%22widget_iframe_version%22%3A%223f8c13b4620b8%3A1779816981886%22%2C%22item_ids%22%3A%5B%221990323098562994545%22%5D%2C%22item_details%22%3A%7B%221990323098562994545%22%3A%7B%22item_type%22%3A0%7D%7D%2C%22duration_ms%22%3A1568%7D&dnt=1",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://syndication.x.com/i/jot/embeds?l=%7B%22_category_%22%3A%22tfw_client_event%22%2C%22triggered_on%22%3A1793386565589%2C%22event_namespace%22%3A%7B%22client%22%3A%22tfw%22%2C%22page%22%3A%22tweet%22%2C%22action%22%3A%22LCP%22%2C%22component%22%3A%22performance%22%2C%22section%22%3A%22main%22%7D%2C%22context%22%3A%22horizon%22%2C%22client_version%22%3A%226a3ad42b224df%3A1778106238597%22%2C%22dnt%22%3Atrue%2C%22widget_id%22%3A%22twitter-widget-2%22%2C%22widget_origin%22%3A%22https%3A%2F%2Fkonard.github.io%2Fblog%2F%22%2C%22widget_frame%22%3A%22false%22%2C%22widget_partner%22%3A%22%22%2C%22widget_site_screen_name%22%3A%22drakonard%22%2C%22widget_site_user_id%22%3A%22%22%2C%22widget_creator_screen_name%22%3A%22%22%2C%22widget_creator_user_id%22%3A%22%22%2C%22widget_iframe_version%22%3A%223f8c13b4620b8%3A1779816981886%22%2C%22item_ids%22%3A%5B%221437792709566255106%22%5D%2C%22item_details%22%3A%7B%221437792709566255106%22%3A%7B%22item_type%22%3A0%7D%7D%2C%22duration_ms%22%3A1344%7D&dnt=1",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://platform.twitter.com/embed/Tweet.html?dnt=true&embedId=twitter-widget-3&features=eyJ0ZndfdGltZWxpbmVfbGlzdCI6eyJidWNrZXQiOltdLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X2ZvbGxvd2VyX2NvdW50X3N1bnNldCI6eyJidWNrZXQiOnRydWUsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9iYWNrZW5kIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19yZWZzcmNfc2Vzc2lvbiI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfZm9zbnJfc29mdF9pbnRlcnZlbnRpb25zX2VuYWJsZWQiOnsiYnVja2V0Ijoib24iLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X21peGVkX21lZGlhXzE1ODk3Ijp7ImJ1Y2tldCI6InRyZWF0bWVudCIsInZlcnNpb24iOm51bGx9LCJ0ZndfZXhwZXJpbWVudHNfY29va2llX2V4cGlyYXRpb24iOnsiYnVja2V0IjoxMjA5NjAwLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3Nob3dfYmlyZHdhdGNoX3Bpdm90c19lbmFibGVkIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19kdXBsaWNhdGVfc2NyaWJlc190b19zZXR0aW5ncyI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdXNlX3Byb2ZpbGVfaW1hZ2Vfc2hhcGVfZW5hYmxlZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdmlkZW9faGxzX2R5bmFtaWNfbWFuaWZlc3RzXzE1MDgyIjp7ImJ1Y2tldCI6InRydWVfYml0cmF0ZSIsInZlcnNpb24iOm51bGx9LCJ0ZndfbGVnYWN5X3RpbWVsaW5lX3N1bnNldCI6eyJidWNrZXQiOnRydWUsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9mcm9udGVuZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9fQ%3D%3D&frame=false&hideCard=false&hideThread=false&id=1437792709566255106&lang=en&origin=https%3A%2F%2Fkonard.github.io%2Fblog%2F&sessionId=2d80e1b45a3e21c3e52bb6528ce96b3daae4f5f4&siteScreenName=drakonard&theme=light&widgetsVersion=6a3ad42b224df%3A1778106238597&width=550px",
+      "status": 200
+    },
+    {
+      "url": "https://platform.twitter.com/embed/Tweet.html?dnt=true&embedId=twitter-widget-4&features=eyJ0ZndfdGltZWxpbmVfbGlzdCI6eyJidWNrZXQiOltdLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X2ZvbGxvd2VyX2NvdW50X3N1bnNldCI6eyJidWNrZXQiOnRydWUsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9iYWNrZW5kIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19yZWZzcmNfc2Vzc2lvbiI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfZm9zbnJfc29mdF9pbnRlcnZlbnRpb25zX2VuYWJsZWQiOnsiYnVja2V0Ijoib24iLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X21peGVkX21lZGlhXzE1ODk3Ijp7ImJ1Y2tldCI6InRyZWF0bWVudCIsInZlcnNpb24iOm51bGx9LCJ0ZndfZXhwZXJpbWVudHNfY29va2llX2V4cGlyYXRpb24iOnsiYnVja2V0IjoxMjA5NjAwLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3Nob3dfYmlyZHdhdGNoX3Bpdm90c19lbmFibGVkIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19kdXBsaWNhdGVfc2NyaWJlc190b19zZXR0aW5ncyI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdXNlX3Byb2ZpbGVfaW1hZ2Vfc2hhcGVfZW5hYmxlZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdmlkZW9faGxzX2R5bmFtaWNfbWFuaWZlc3RzXzE1MDgyIjp7ImJ1Y2tldCI6InRydWVfYml0cmF0ZSIsInZlcnNpb24iOm51bGx9LCJ0ZndfbGVnYWN5X3RpbWVsaW5lX3N1bnNldCI6eyJidWNrZXQiOnRydWUsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9mcm9udGVuZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9fQ%3D%3D&frame=false&hideCard=false&hideThread=false&id=1990323098562994545&lang=en&origin=https%3A%2F%2Fkonard.github.io%2Fblog%2F&sessionId=2d80e1b45a3e21c3e52bb6528ce96b3daae4f5f4&siteScreenName=drakonard&theme=light&widgetsVersion=6a3ad42b224df%3A1778106238597&width=550px",
+      "status": 200
+    },
+    {
+      "url": "https://platform.twitter.com/embed/Tweet.html?dnt=true&embedId=twitter-widget-5&features=eyJ0ZndfdGltZWxpbmVfbGlzdCI6eyJidWNrZXQiOltdLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X2ZvbGxvd2VyX2NvdW50X3N1bnNldCI6eyJidWNrZXQiOnRydWUsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9iYWNrZW5kIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19yZWZzcmNfc2Vzc2lvbiI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfZm9zbnJfc29mdF9pbnRlcnZlbnRpb25zX2VuYWJsZWQiOnsiYnVja2V0Ijoib24iLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X21peGVkX21lZGlhXzE1ODk3Ijp7ImJ1Y2tldCI6InRyZWF0bWVudCIsInZlcnNpb24iOm51bGx9LCJ0ZndfZXhwZXJpbWVudHNfY29va2llX2V4cGlyYXRpb24iOnsiYnVja2V0IjoxMjA5NjAwLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3Nob3dfYmlyZHdhdGNoX3Bpdm90c19lbmFibGVkIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19kdXBsaWNhdGVfc2NyaWJlc190b19zZXR0aW5ncyI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdXNlX3Byb2ZpbGVfaW1hZ2Vfc2hhcGVfZW5hYmxlZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdmlkZW9faGxzX2R5bmFtaWNfbWFuaWZlc3RzXzE1MDgyIjp7ImJ1Y2tldCI6InRydWVfYml0cmF0ZSIsInZlcnNpb24iOm51bGx9LCJ0ZndfbGVnYWN5X3RpbWVsaW5lX3N1bnNldCI6eyJidWNrZXQiOnRydWUsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9mcm9udGVuZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9fQ%3D%3D&frame=false&hideCard=false&hideThread=false&id=1297535286906433538&lang=en&origin=https%3A%2F%2Fkonard.github.io%2Fblog%2F&sessionId=2d80e1b45a3e21c3e52bb6528ce96b3daae4f5f4&siteScreenName=drakonard&theme=light&widgetsVersion=6a3ad42b224df%3A1778106238597&width=550px",
+      "status": 200
+    },
+    {
+      "url": "https://platform.twitter.com/embed/embed.runtime.3b19346e5d08b0b587c7.js",
+      "status": 200
+    },
+    {
+      "url": "https://platform.twitter.com/embed/embed.9449.78398904051446294e3d.js",
+      "status": 200
+    },
+    {
+      "url": "https://platform.twitter.com/embed/embed.Tweet.70198ef24afe05adbecf.js",
+      "status": 200
+    },
+    {
+      "url": "https://platform.twitter.com/embed/embed.runtime.3b19346e5d08b0b587c7.js",
+      "status": 200
+    },
+    {
+      "url": "https://platform.twitter.com/embed/embed.9449.78398904051446294e3d.js",
+      "status": 200
+    },
+    {
+      "url": "https://platform.twitter.com/embed/embed.Tweet.70198ef24afe05adbecf.js",
+      "status": 200
+    },
+    {
+      "url": "https://platform.twitter.com/embed/embed.runtime.3b19346e5d08b0b587c7.js",
+      "status": 200
+    },
+    {
+      "url": "https://platform.twitter.com/embed/embed.9449.78398904051446294e3d.js",
+      "status": 200
+    },
+    {
+      "url": "https://platform.twitter.com/embed/embed.Tweet.70198ef24afe05adbecf.js",
+      "status": 200
+    },
+    {
+      "url": "https://platform.twitter.com/embed/embed.749.467388cca0b3fe9c3291.js",
+      "status": 200
+    },
+    {
+      "url": "https://platform.twitter.com/embed/embed.ondemand.i18n.en-js.19a28d85d7fc7916b4b1.js",
       "status": 200
     },
     {
@@ -95,19 +274,11 @@
       "status": 200
     },
     {
-      "url": "https://platform.twitter.com/embed/embed.ondemand.horizon-web.i18n.en-js.d681a6dcae4601184824.js",
-      "status": 200
-    },
-    {
       "url": "https://platform.twitter.com/embed/embed.ondemand.i18n.en-js.19a28d85d7fc7916b4b1.js",
       "status": 200
     },
     {
-      "url": "https://platform.twitter.com/embed/embed.ondemand.Tweet.81f6f5a50fbfe5bd028c.js",
-      "status": 200
-    },
-    {
-      "url": "https://platform.twitter.com/embed/embed.ondemand.Tweet.81f6f5a50fbfe5bd028c.js",
+      "url": "https://platform.twitter.com/embed/embed.ondemand.horizon-web.i18n.en-js.d681a6dcae4601184824.js",
       "status": 200
     },
     {
@@ -123,54 +294,52 @@
       "status": 200
     },
     {
+      "url": "https://platform.twitter.com/embed/embed.ondemand.Tweet.81f6f5a50fbfe5bd028c.js",
+      "status": 200
+    },
+    {
       "url": "https://platform.twitter.com/embed/embed.9203.1b3edf1dee6d205547e0.js",
       "status": 200
     },
     {
-      "url": "https://syndication.x.com/i/jot/embeds?l=%7B%22_category_%22%3A%22tfw_client_event%22%2C%22triggered_on%22%3A1793369922708%2C%22event_namespace%22%3A%7B%22client%22%3A%22tfw%22%2C%22page%22%3A%22tweet%22%2C%22action%22%3A%22results%22%2C%22section%22%3A%22main%22%7D%2C%22context%22%3A%22horizon%22%2C%22client_version%22%3A%226a3ad42b224df%3A1778106238597%22%2C%22dnt%22%3Atrue%2C%22widget_id%22%3A%22twitter-widget-0%22%2C%22widget_origin%22%3A%22https%3A%2F%2Fkonard.github.io%2Fblog%2F%22%2C%22widget_frame%22%3A%22false%22%2C%22widget_partner%22%3A%22%22%2C%22widget_site_screen_name%22%3A%22drakonard%22%2C%22widget_site_user_id%22%3A%22%22%2C%22widget_creator_screen_name%22%3A%22%22%2C%22widget_creator_user_id%22%3A%22%22%2C%22widget_iframe_version%22%3A%223f8c13b4620b8%3A1779816981886%22%2C%22item_ids%22%3A%5B%221297535286906433538%22%5D%2C%22item_details%22%3A%7B%221297535286906433538%22%3A%7B%22item_type%22%3A0%7D%7D%7D&dnt=1",
+      "url": "https://platform.twitter.com/embed/embed.ondemand.Tweet.81f6f5a50fbfe5bd028c.js",
       "status": 200
     },
     {
-      "url": "https://syndication.x.com/i/jot/embeds?l=%7B%22_category_%22%3A%22tfw_client_event%22%2C%22triggered_on%22%3A1793369922792%2C%22event_namespace%22%3A%7B%22client%22%3A%22tfw%22%2C%22page%22%3A%22tweet%22%2C%22action%22%3A%22results%22%2C%22section%22%3A%22main%22%7D%2C%22context%22%3A%22horizon%22%2C%22client_version%22%3A%226a3ad42b224df%3A1778106238597%22%2C%22dnt%22%3Atrue%2C%22widget_id%22%3A%22twitter-widget-1%22%2C%22widget_origin%22%3A%22https%3A%2F%2Fkonard.github.io%2Fblog%2F%22%2C%22widget_frame%22%3A%22false%22%2C%22widget_partner%22%3A%22%22%2C%22widget_site_screen_name%22%3A%22drakonard%22%2C%22widget_site_user_id%22%3A%22%22%2C%22widget_creator_screen_name%22%3A%22%22%2C%22widget_creator_user_id%22%3A%22%22%2C%22widget_iframe_version%22%3A%223f8c13b4620b8%3A1779816981886%22%2C%22item_ids%22%3A%5B%221990323098562994545%22%5D%2C%22item_details%22%3A%7B%221990323098562994545%22%3A%7B%22item_type%22%3A0%7D%7D%7D&dnt=1",
+      "url": "https://syndication.x.com/i/jot/embeds?l=%7B%22_category_%22%3A%22tfw_client_event%22%2C%22triggered_on%22%3A1793386565991%2C%22event_namespace%22%3A%7B%22client%22%3A%22tfw%22%2C%22page%22%3A%22tweet%22%2C%22action%22%3A%22results%22%2C%22section%22%3A%22main%22%7D%2C%22context%22%3A%22horizon%22%2C%22client_version%22%3A%226a3ad42b224df%3A1778106238597%22%2C%22dnt%22%3Atrue%2C%22widget_id%22%3A%22twitter-widget-3%22%2C%22widget_origin%22%3A%22https%3A%2F%2Fkonard.github.io%2Fblog%2F%22%2C%22widget_frame%22%3A%22false%22%2C%22widget_partner%22%3A%22%22%2C%22widget_site_screen_name%22%3A%22drakonard%22%2C%22widget_site_user_id%22%3A%22%22%2C%22widget_creator_screen_name%22%3A%22%22%2C%22widget_creator_user_id%22%3A%22%22%2C%22widget_iframe_version%22%3A%223f8c13b4620b8%3A1779816981886%22%2C%22item_ids%22%3A%5B%221437792709566255106%22%5D%2C%22item_details%22%3A%7B%221437792709566255106%22%3A%7B%22item_type%22%3A0%7D%7D%7D&dnt=1",
       "status": 200
     },
     {
-      "url": "https://syndication.x.com/i/jot/embeds?l=%7B%22_category_%22%3A%22tfw_client_event%22%2C%22triggered_on%22%3A1793369922837%2C%22event_namespace%22%3A%7B%22client%22%3A%22tfw%22%2C%22page%22%3A%22tweet%22%2C%22action%22%3A%22results%22%2C%22section%22%3A%22main%22%7D%2C%22context%22%3A%22horizon%22%2C%22client_version%22%3A%226a3ad42b224df%3A1778106238597%22%2C%22dnt%22%3Atrue%2C%22widget_id%22%3A%22twitter-widget-2%22%2C%22widget_origin%22%3A%22https%3A%2F%2Fkonard.github.io%2Fblog%2F%22%2C%22widget_frame%22%3A%22false%22%2C%22widget_partner%22%3A%22%22%2C%22widget_site_screen_name%22%3A%22drakonard%22%2C%22widget_site_user_id%22%3A%22%22%2C%22widget_creator_screen_name%22%3A%22%22%2C%22widget_creator_user_id%22%3A%22%22%2C%22widget_iframe_version%22%3A%223f8c13b4620b8%3A1779816981886%22%2C%22item_ids%22%3A%5B%221437792709566255106%22%5D%2C%22item_details%22%3A%7B%221437792709566255106%22%3A%7B%22item_type%22%3A0%7D%7D%7D&dnt=1",
+      "url": "https://syndication.x.com/i/jot/embeds?l=%7B%22_category_%22%3A%22tfw_client_event%22%2C%22triggered_on%22%3A1793386566031%2C%22event_namespace%22%3A%7B%22client%22%3A%22tfw%22%2C%22page%22%3A%22tweet%22%2C%22action%22%3A%22results%22%2C%22section%22%3A%22main%22%7D%2C%22context%22%3A%22horizon%22%2C%22client_version%22%3A%226a3ad42b224df%3A1778106238597%22%2C%22dnt%22%3Atrue%2C%22widget_id%22%3A%22twitter-widget-4%22%2C%22widget_origin%22%3A%22https%3A%2F%2Fkonard.github.io%2Fblog%2F%22%2C%22widget_frame%22%3A%22false%22%2C%22widget_partner%22%3A%22%22%2C%22widget_site_screen_name%22%3A%22drakonard%22%2C%22widget_site_user_id%22%3A%22%22%2C%22widget_creator_screen_name%22%3A%22%22%2C%22widget_creator_user_id%22%3A%22%22%2C%22widget_iframe_version%22%3A%223f8c13b4620b8%3A1779816981886%22%2C%22item_ids%22%3A%5B%221990323098562994545%22%5D%2C%22item_details%22%3A%7B%221990323098562994545%22%3A%7B%22item_type%22%3A0%7D%7D%7D&dnt=1",
       "status": 200
     },
     {
-      "url": "https://syndication.x.com/i/jot/embeds?l=%7B%22_category_%22%3A%22tfw_client_event%22%2C%22triggered_on%22%3A1793369923070%2C%22event_namespace%22%3A%7B%22client%22%3A%22tfw%22%2C%22page%22%3A%22tweet%22%2C%22action%22%3A%22impression%22%2C%22section%22%3A%22main%22%7D%2C%22context%22%3A%22horizon%22%2C%22client_version%22%3A%226a3ad42b224df%3A1778106238597%22%2C%22dnt%22%3Atrue%2C%22widget_id%22%3A%22twitter-widget-1%22%2C%22widget_origin%22%3A%22https%3A%2F%2Fkonard.github.io%2Fblog%2F%22%2C%22widget_frame%22%3A%22false%22%2C%22widget_partner%22%3A%22%22%2C%22widget_site_screen_name%22%3A%22drakonard%22%2C%22widget_site_user_id%22%3A%22%22%2C%22widget_creator_screen_name%22%3A%22%22%2C%22widget_creator_user_id%22%3A%22%22%2C%22widget_iframe_version%22%3A%223f8c13b4620b8%3A1779816981886%22%2C%22item_ids%22%3A%5B%221990323098562994545%22%5D%2C%22item_details%22%3A%7B%221990323098562994545%22%3A%7B%22item_type%22%3A0%7D%7D%7D&dnt=1",
+      "url": "https://syndication.x.com/i/jot/embeds?l=%7B%22_category_%22%3A%22tfw_client_event%22%2C%22triggered_on%22%3A1793386566063%2C%22event_namespace%22%3A%7B%22client%22%3A%22tfw%22%2C%22page%22%3A%22tweet%22%2C%22action%22%3A%22results%22%2C%22section%22%3A%22main%22%7D%2C%22context%22%3A%22horizon%22%2C%22client_version%22%3A%226a3ad42b224df%3A1778106238597%22%2C%22dnt%22%3Atrue%2C%22widget_id%22%3A%22twitter-widget-5%22%2C%22widget_origin%22%3A%22https%3A%2F%2Fkonard.github.io%2Fblog%2F%22%2C%22widget_frame%22%3A%22false%22%2C%22widget_partner%22%3A%22%22%2C%22widget_site_screen_name%22%3A%22drakonard%22%2C%22widget_site_user_id%22%3A%22%22%2C%22widget_creator_screen_name%22%3A%22%22%2C%22widget_creator_user_id%22%3A%22%22%2C%22widget_iframe_version%22%3A%223f8c13b4620b8%3A1779816981886%22%2C%22item_ids%22%3A%5B%221297535286906433538%22%5D%2C%22item_details%22%3A%7B%221297535286906433538%22%3A%7B%22item_type%22%3A0%7D%7D%7D&dnt=1",
       "status": 200
     },
     {
-      "url": "https://syndication.x.com/i/jot/embeds?l=%7B%22_category_%22%3A%22tfw_client_event%22%2C%22triggered_on%22%3A1793369923153%2C%22event_namespace%22%3A%7B%22client%22%3A%22tfw%22%2C%22page%22%3A%22tweet%22%2C%22action%22%3A%22FCP%22%2C%22component%22%3A%22performance%22%2C%22section%22%3A%22main%22%7D%2C%22context%22%3A%22horizon%22%2C%22client_version%22%3A%226a3ad42b224df%3A1778106238597%22%2C%22dnt%22%3Atrue%2C%22widget_id%22%3A%22twitter-widget-0%22%2C%22widget_origin%22%3A%22https%3A%2F%2Fkonard.github.io%2Fblog%2F%22%2C%22widget_frame%22%3A%22false%22%2C%22widget_partner%22%3A%22%22%2C%22widget_site_screen_name%22%3A%22drakonard%22%2C%22widget_site_user_id%22%3A%22%22%2C%22widget_creator_screen_name%22%3A%22%22%2C%22widget_creator_user_id%22%3A%22%22%2C%22widget_iframe_version%22%3A%223f8c13b4620b8%3A1779816981886%22%2C%22item_ids%22%3A%5B%221297535286906433538%22%5D%2C%22item_details%22%3A%7B%221297535286906433538%22%3A%7B%22item_type%22%3A0%7D%7D%2C%22duration_ms%22%3A1240%7D&dnt=1",
+      "url": "https://syndication.x.com/i/jot/embeds?l=%7B%22_category_%22%3A%22tfw_client_event%22%2C%22triggered_on%22%3A1793386566328%2C%22event_namespace%22%3A%7B%22client%22%3A%22tfw%22%2C%22page%22%3A%22tweet%22%2C%22action%22%3A%22impression%22%2C%22section%22%3A%22main%22%7D%2C%22context%22%3A%22horizon%22%2C%22client_version%22%3A%226a3ad42b224df%3A1778106238597%22%2C%22dnt%22%3Atrue%2C%22widget_id%22%3A%22twitter-widget-4%22%2C%22widget_origin%22%3A%22https%3A%2F%2Fkonard.github.io%2Fblog%2F%22%2C%22widget_frame%22%3A%22false%22%2C%22widget_partner%22%3A%22%22%2C%22widget_site_screen_name%22%3A%22drakonard%22%2C%22widget_site_user_id%22%3A%22%22%2C%22widget_creator_screen_name%22%3A%22%22%2C%22widget_creator_user_id%22%3A%22%22%2C%22widget_iframe_version%22%3A%223f8c13b4620b8%3A1779816981886%22%2C%22item_ids%22%3A%5B%221990323098562994545%22%5D%2C%22item_details%22%3A%7B%221990323098562994545%22%3A%7B%22item_type%22%3A0%7D%7D%7D&dnt=1",
       "status": 200
     },
     {
-      "url": "https://syndication.x.com/i/jot/embeds?l=%7B%22_category_%22%3A%22tfw_client_event%22%2C%22triggered_on%22%3A1793369923210%2C%22event_namespace%22%3A%7B%22client%22%3A%22tfw%22%2C%22page%22%3A%22tweet%22%2C%22action%22%3A%22FCP%22%2C%22component%22%3A%22performance%22%2C%22section%22%3A%22main%22%7D%2C%22context%22%3A%22horizon%22%2C%22client_version%22%3A%226a3ad42b224df%3A1778106238597%22%2C%22dnt%22%3Atrue%2C%22widget_id%22%3A%22twitter-widget-1%22%2C%22widget_origin%22%3A%22https%3A%2F%2Fkonard.github.io%2Fblog%2F%22%2C%22widget_frame%22%3A%22false%22%2C%22widget_partner%22%3A%22%22%2C%22widget_site_screen_name%22%3A%22drakonard%22%2C%22widget_site_user_id%22%3A%22%22%2C%22widget_creator_screen_name%22%3A%22%22%2C%22widget_creator_user_id%22%3A%22%22%2C%22widget_iframe_version%22%3A%223f8c13b4620b8%3A1779816981886%22%2C%22item_ids%22%3A%5B%221990323098562994545%22%5D%2C%22item_details%22%3A%7B%221990323098562994545%22%3A%7B%22item_type%22%3A0%7D%7D%2C%22duration_ms%22%3A1316%7D&dnt=1",
+      "url": "https://syndication.x.com/i/jot/embeds?l=%7B%22_category_%22%3A%22tfw_client_event%22%2C%22triggered_on%22%3A1793386566336%2C%22event_namespace%22%3A%7B%22client%22%3A%22tfw%22%2C%22page%22%3A%22tweet%22%2C%22action%22%3A%22seen%22%2C%22section%22%3A%22main%22%2C%22component%22%3A%22privacy-notice%22%7D%2C%22context%22%3A%22horizon%22%2C%22client_version%22%3A%226a3ad42b224df%3A1778106238597%22%2C%22dnt%22%3Atrue%2C%22widget_id%22%3A%22twitter-widget-4%22%2C%22widget_origin%22%3A%22https%3A%2F%2Fkonard.github.io%2Fblog%2F%22%2C%22widget_frame%22%3A%22false%22%2C%22widget_partner%22%3A%22%22%2C%22widget_site_screen_name%22%3A%22drakonard%22%2C%22widget_site_user_id%22%3A%22%22%2C%22widget_creator_screen_name%22%3A%22%22%2C%22widget_creator_user_id%22%3A%22%22%2C%22widget_iframe_version%22%3A%223f8c13b4620b8%3A1779816981886%22%2C%22item_ids%22%3A%5B%221990323098562994545%22%5D%2C%22item_details%22%3A%7B%221990323098562994545%22%3A%7B%22item_type%22%3A0%7D%7D%7D&dnt=1",
       "status": 200
     },
     {
-      "url": "https://syndication.x.com/i/jot/embeds?l=%7B%22_category_%22%3A%22tfw_client_event%22%2C%22triggered_on%22%3A1793369923212%2C%22event_namespace%22%3A%7B%22client%22%3A%22tfw%22%2C%22page%22%3A%22tweet%22%2C%22action%22%3A%22FCP%22%2C%22component%22%3A%22performance%22%2C%22section%22%3A%22main%22%7D%2C%22context%22%3A%22horizon%22%2C%22client_version%22%3A%226a3ad42b224df%3A1778106238597%22%2C%22dnt%22%3Atrue%2C%22widget_id%22%3A%22twitter-widget-2%22%2C%22widget_origin%22%3A%22https%3A%2F%2Fkonard.github.io%2Fblog%2F%22%2C%22widget_frame%22%3A%22false%22%2C%22widget_partner%22%3A%22%22%2C%22widget_site_screen_name%22%3A%22drakonard%22%2C%22widget_site_user_id%22%3A%22%22%2C%22widget_creator_screen_name%22%3A%22%22%2C%22widget_creator_user_id%22%3A%22%22%2C%22widget_iframe_version%22%3A%223f8c13b4620b8%3A1779816981886%22%2C%22item_ids%22%3A%5B%221437792709566255106%22%5D%2C%22item_details%22%3A%7B%221437792709566255106%22%3A%7B%22item_type%22%3A0%7D%7D%2C%22duration_ms%22%3A1316%7D&dnt=1",
+      "url": "https://syndication.x.com/i/jot/embeds?l=%7B%22_category_%22%3A%22tfw_client_event%22%2C%22triggered_on%22%3A1793386566524%2C%22event_namespace%22%3A%7B%22client%22%3A%22tfw%22%2C%22page%22%3A%22tweet%22%2C%22action%22%3A%22impression%22%2C%22section%22%3A%22main%22%7D%2C%22context%22%3A%22horizon%22%2C%22client_version%22%3A%226a3ad42b224df%3A1778106238597%22%2C%22dnt%22%3Atrue%2C%22widget_id%22%3A%22twitter-widget-3%22%2C%22widget_origin%22%3A%22https%3A%2F%2Fkonard.github.io%2Fblog%2F%22%2C%22widget_frame%22%3A%22false%22%2C%22widget_partner%22%3A%22%22%2C%22widget_site_screen_name%22%3A%22drakonard%22%2C%22widget_site_user_id%22%3A%22%22%2C%22widget_creator_screen_name%22%3A%22%22%2C%22widget_creator_user_id%22%3A%22%22%2C%22widget_iframe_version%22%3A%223f8c13b4620b8%3A1779816981886%22%2C%22item_ids%22%3A%5B%221437792709566255106%22%5D%2C%22item_details%22%3A%7B%221437792709566255106%22%3A%7B%22item_type%22%3A0%7D%7D%7D&dnt=1",
       "status": 200
     },
     {
-      "url": "https://syndication.x.com/i/jot/embeds?l=%7B%22_category_%22%3A%22tfw_client_event%22%2C%22triggered_on%22%3A1793369923412%2C%22event_namespace%22%3A%7B%22client%22%3A%22tfw%22%2C%22page%22%3A%22tweet%22%2C%22action%22%3A%22seen%22%2C%22section%22%3A%22main%22%2C%22component%22%3A%22privacy-notice%22%7D%2C%22context%22%3A%22horizon%22%2C%22client_version%22%3A%226a3ad42b224df%3A1778106238597%22%2C%22dnt%22%3Atrue%2C%22widget_id%22%3A%22twitter-widget-1%22%2C%22widget_origin%22%3A%22https%3A%2F%2Fkonard.github.io%2Fblog%2F%22%2C%22widget_frame%22%3A%22false%22%2C%22widget_partner%22%3A%22%22%2C%22widget_site_screen_name%22%3A%22drakonard%22%2C%22widget_site_user_id%22%3A%22%22%2C%22widget_creator_screen_name%22%3A%22%22%2C%22widget_creator_user_id%22%3A%22%22%2C%22widget_iframe_version%22%3A%223f8c13b4620b8%3A1779816981886%22%2C%22item_ids%22%3A%5B%221990323098562994545%22%5D%2C%22item_details%22%3A%7B%221990323098562994545%22%3A%7B%22item_type%22%3A0%7D%7D%7D&dnt=1",
+      "url": "https://syndication.x.com/i/jot/embeds?l=%7B%22_category_%22%3A%22tfw_client_event%22%2C%22triggered_on%22%3A1793386566541%2C%22event_namespace%22%3A%7B%22client%22%3A%22tfw%22%2C%22page%22%3A%22tweet%22%2C%22action%22%3A%22FCP%22%2C%22component%22%3A%22performance%22%2C%22section%22%3A%22main%22%7D%2C%22context%22%3A%22horizon%22%2C%22client_version%22%3A%226a3ad42b224df%3A1778106238597%22%2C%22dnt%22%3Atrue%2C%22widget_id%22%3A%22twitter-widget-4%22%2C%22widget_origin%22%3A%22https%3A%2F%2Fkonard.github.io%2Fblog%2F%22%2C%22widget_frame%22%3A%22false%22%2C%22widget_partner%22%3A%22%22%2C%22widget_site_screen_name%22%3A%22drakonard%22%2C%22widget_site_user_id%22%3A%22%22%2C%22widget_creator_screen_name%22%3A%22%22%2C%22widget_creator_user_id%22%3A%22%22%2C%22widget_iframe_version%22%3A%223f8c13b4620b8%3A1779816981886%22%2C%22item_ids%22%3A%5B%221990323098562994545%22%5D%2C%22item_details%22%3A%7B%221990323098562994545%22%3A%7B%22item_type%22%3A0%7D%7D%2C%22duration_ms%22%3A848%7D&dnt=1",
       "status": 200
     },
     {
-      "url": "https://syndication.x.com/i/jot/embeds?l=%7B%22_category_%22%3A%22tfw_client_event%22%2C%22triggered_on%22%3A1793369923440%2C%22event_namespace%22%3A%7B%22client%22%3A%22tfw%22%2C%22page%22%3A%22tweet%22%2C%22action%22%3A%22seen%22%2C%22section%22%3A%22main%22%2C%22component%22%3A%22privacy-notice%22%7D%2C%22context%22%3A%22horizon%22%2C%22client_version%22%3A%226a3ad42b224df%3A1778106238597%22%2C%22dnt%22%3Atrue%2C%22widget_id%22%3A%22twitter-widget-2%22%2C%22widget_origin%22%3A%22https%3A%2F%2Fkonard.github.io%2Fblog%2F%22%2C%22widget_frame%22%3A%22false%22%2C%22widget_partner%22%3A%22%22%2C%22widget_site_screen_name%22%3A%22drakonard%22%2C%22widget_site_user_id%22%3A%22%22%2C%22widget_creator_screen_name%22%3A%22%22%2C%22widget_creator_user_id%22%3A%22%22%2C%22widget_iframe_version%22%3A%223f8c13b4620b8%3A1779816981886%22%2C%22item_ids%22%3A%5B%221437792709566255106%22%5D%2C%22item_details%22%3A%7B%221437792709566255106%22%3A%7B%22item_type%22%3A0%7D%7D%7D&dnt=1",
+      "url": "https://syndication.x.com/i/jot/embeds?l=%7B%22_category_%22%3A%22tfw_client_event%22%2C%22triggered_on%22%3A1793386566541%2C%22event_namespace%22%3A%7B%22client%22%3A%22tfw%22%2C%22page%22%3A%22tweet%22%2C%22action%22%3A%22FCP%22%2C%22component%22%3A%22performance%22%2C%22section%22%3A%22main%22%7D%2C%22context%22%3A%22horizon%22%2C%22client_version%22%3A%226a3ad42b224df%3A1778106238597%22%2C%22dnt%22%3Atrue%2C%22widget_id%22%3A%22twitter-widget-3%22%2C%22widget_origin%22%3A%22https%3A%2F%2Fkonard.github.io%2Fblog%2F%22%2C%22widget_frame%22%3A%22false%22%2C%22widget_partner%22%3A%22%22%2C%22widget_site_screen_name%22%3A%22drakonard%22%2C%22widget_site_user_id%22%3A%22%22%2C%22widget_creator_screen_name%22%3A%22%22%2C%22widget_creator_user_id%22%3A%22%22%2C%22widget_iframe_version%22%3A%223f8c13b4620b8%3A1779816981886%22%2C%22item_ids%22%3A%5B%221437792709566255106%22%5D%2C%22item_details%22%3A%7B%221437792709566255106%22%3A%7B%22item_type%22%3A0%7D%7D%2C%22duration_ms%22%3A852%7D&dnt=1",
       "status": 200
     },
     {
-      "url": "https://syndication.x.com/i/jot/embeds?l=%7B%22_category_%22%3A%22tfw_client_event%22%2C%22triggered_on%22%3A1793369923429%2C%22event_namespace%22%3A%7B%22client%22%3A%22tfw%22%2C%22page%22%3A%22tweet%22%2C%22action%22%3A%22impression%22%2C%22section%22%3A%22main%22%7D%2C%22context%22%3A%22horizon%22%2C%22client_version%22%3A%226a3ad42b224df%3A1778106238597%22%2C%22dnt%22%3Atrue%2C%22widget_id%22%3A%22twitter-widget-2%22%2C%22widget_origin%22%3A%22https%3A%2F%2Fkonard.github.io%2Fblog%2F%22%2C%22widget_frame%22%3A%22false%22%2C%22widget_partner%22%3A%22%22%2C%22widget_site_screen_name%22%3A%22drakonard%22%2C%22widget_site_user_id%22%3A%22%22%2C%22widget_creator_screen_name%22%3A%22%22%2C%22widget_creator_user_id%22%3A%22%22%2C%22widget_iframe_version%22%3A%223f8c13b4620b8%3A1779816981886%22%2C%22item_ids%22%3A%5B%221437792709566255106%22%5D%2C%22item_details%22%3A%7B%221437792709566255106%22%3A%7B%22item_type%22%3A0%7D%7D%7D&dnt=1",
+      "url": "https://syndication.x.com/i/jot/embeds?l=%7B%22_category_%22%3A%22tfw_client_event%22%2C%22triggered_on%22%3A1793386566664%2C%22event_namespace%22%3A%7B%22client%22%3A%22tfw%22%2C%22page%22%3A%22tweet%22%2C%22action%22%3A%22FCP%22%2C%22component%22%3A%22performance%22%2C%22section%22%3A%22main%22%7D%2C%22context%22%3A%22horizon%22%2C%22client_version%22%3A%226a3ad42b224df%3A1778106238597%22%2C%22dnt%22%3Atrue%2C%22widget_id%22%3A%22twitter-widget-5%22%2C%22widget_origin%22%3A%22https%3A%2F%2Fkonard.github.io%2Fblog%2F%22%2C%22widget_frame%22%3A%22false%22%2C%22widget_partner%22%3A%22%22%2C%22widget_site_screen_name%22%3A%22drakonard%22%2C%22widget_site_user_id%22%3A%22%22%2C%22widget_creator_screen_name%22%3A%22%22%2C%22widget_creator_user_id%22%3A%22%22%2C%22widget_iframe_version%22%3A%223f8c13b4620b8%3A1779816981886%22%2C%22item_ids%22%3A%5B%221297535286906433538%22%5D%2C%22item_details%22%3A%7B%221297535286906433538%22%3A%7B%22item_type%22%3A0%7D%7D%2C%22duration_ms%22%3A1020%7D&dnt=1",
       "status": 200
     }
-  ],
-  "iframe": {
-    "x": 445,
-    "y": 701.6875,
-    "width": 550,
-    "height": 552
-  }
+  ]
 }

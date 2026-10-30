@@ -1,5 +1,24 @@
 # Verification evidence
 
+## Current review follow-up
+
+The 2026-10-30 review follow-up merges main at `c0f0889` (issue 41) in `ee8aa4a`. The original verification below is retained as historical evidence. The [review audit](VISUAL-REVIEW.md) maps every subsequent requirement to implementation, reproducing failures, measured geometry and before/after images.
+
+| Check | Current local result / evidence |
+| --- | --- |
+| Full Vitest suite after merging main | **76 files, 1,014 tests passed**. The one initial issue-41 native-menu test mismatch was corrected using the existing owned-menu helper. [Final log](data/visual-review/review-tests.log), [initial merged-suite failure](data/visual-review/merge-tests.log). |
+| New render regression | **Six failures reproduced** at `ee8aa4a`; the fixed Chromium/Firefox renders pass. Dark corner pixel changes from white to the page canvas; default strokes/highlight meet at 16px and are both 2px thick. Both theme edges, nine frame variants, explicit offsets/thickness and custom zero-width CSS borders are checked. [Baseline log](data/visual-review/visual-red.log), [Chromium measurements](data/visual-review/chromium-after.json), [Firefox measurements](data/visual-review/firefox-after.json). |
+| Complete issue-39 browser suite | Chromium and Firefox pass owned controls, all corners, every surface at 0/.5/1, all six glass material/theme combinations, widget/fallback and mobile bounds. The render regression is now part of the same three-engine CI command. [Chromium](data/visual-review/ui-chromium-review.log), [Firefox](data/visual-review/ui-firefox-review.log). |
+| Main's issue-41 browser suite | Reported examples, 20 seeded networks, default/shared/supplied turns, exports, manual overrides, and mobile checks pass in Chromium. [Log](data/visual-review/issue41-review.log). |
+| Production build | Passed. [Log](data/visual-review/review-build.log). |
+| CV print regression | All **120 PDFs** pass page-count, readable-text and layout checks. [Log](data/visual-review/review-cv-pdfs.log). |
+| Local checks | Lint, format, file limits and secrets pass. Commit hooks also run Python compilation, Ruff lint/format and ShellCheck. [Log](data/visual-review/review-check.log). |
+| Real provider and MCP inspection | Official X loader renders 550×552px in both themes with transparent corner canvas. Playwright MCP independently checks the frame in the real browser, captures it and closes it. [Live requests](data/live-social.json), [MCP log](data/visual-review/mcp-review.log). |
+
+Final-head CI provenance is recorded on [PR #40](https://github.com/konard/konard.github.io/pull/40/checks), with the verified SHA/run link in its description. Completion requires the current revision's unit/build/PDF, three browser engines, documentation, tooling, workflow and CodeQL checks to pass. The PR remains unmerged.
+
+## Original implementation
+
 Baseline: `a08a1ea012d2c12efbc974a22971e714e2ca3738` on branch `issue-39-3ca842ebe6d7`.
 
 - Four behavioral regressions failed before implementation: [initial log](data/initial-regressions.log).

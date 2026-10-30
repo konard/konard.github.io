@@ -566,6 +566,10 @@
   max-width: 100%;
   border: 0;
   margin-inline: auto;
+  /* Providers paint their own theme inside a light/default document. Inheriting
+     our dark scheme forces an opaque white iframe canvas at transparent edges. */
+  color-scheme: normal;
+  background: transparent;
 }
 .post__widget .twitter-tweet {
   margin-inline: auto !important;
