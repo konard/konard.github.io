@@ -3,6 +3,39 @@
 Objective: implement and verify all issue 37 requirements and PR 38 feedback in
 one pull request on `issue-37-f17145ac88b1`, without merging.
 
+## Revision for the October 30 placement feedback
+
+The latest owner feedback overrides the earlier assumption that Automatic
+placement permits reordering or compacting the drawing. Colors and link
+positions must be invariant; automatic changes must remain local to references.
+
+- [x] Read the complete issue and all PR conversation/inline/review feedback;
+      verify the prepared branch and that current main is already included.
+- [x] Archive the new feedback and reread inherited geometry requirements.
+- [x] Capture the rejected four-link result and add failing preservation tests
+      before changing the solver, including all 20 original seeded examples.
+- [x] Trace and remove automatic layout mutation from solving, preview, Apply
+      and export; preserve explicitly chosen arrangements and colors.
+- [x] Investigate small, deterministic endpoint adjustments at fixed positions;
+      prefer the nearest solution, preserve closed halves and continuity, and
+      prohibit new own-reference crossings. Keep measured residuals honest when
+      existing crossings cannot be removed under these stronger constraints.
+- [x] Research constrained/incremental layout alternatives from primary sources
+      and record the decision, revised requirements and evidence.
+- [x] Inspect every unchanged seeded example plus both reported networks in a
+      real browser, save revised contact sheets and before/after screenshots,
+      and regress each observed defect within the latest preservation rule.
+- [x] Rerun unit, browser, lint, format, source-tooling, documentation and build
+      checks sequentially within the container memory limit; preserve logs.
+- [x] Review source changes and inherited compatibility evidence; preserve the
+      implementation as an atomic commit. Publishing, current-head CI and final
+      review follow the integration protocol below and are recorded in PR 38.
+
+The checklist below records the prior implementation, which the owner rejected
+for automatic placement changes. Its evidence is historical, not acceptance of
+the revised solution. No Playwright MCP tool is available in this continuation;
+use the repository's existing Playwright harness and installed native browsers.
+
 - [x] Read the complete issue and all issue/PR comment types; check required
       sub-issues (none listed), branch, repository guidance and recent related PRs.
 - [x] Archive supplied images and relevant historical requirements; research
@@ -37,6 +70,6 @@ does not create another repository revision that needs a different CI run.
 3. Mark PR 38 ready and report its URL only after all criteria are verified.
 
 Experiments live in `experiments/`; lengthy outputs go to case-study logs. Browser
-work uses both Playwright MCP inspection and the existing Playwright test harness.
+work uses the existing Playwright test harness when MCP tools are unavailable.
 No delegated agents are requested or needed. No release/version automation exists
 for this private website package.

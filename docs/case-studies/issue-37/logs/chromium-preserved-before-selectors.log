@@ -1,0 +1,21 @@
+
+> konard.github.io@0.1.0 test:network:issue37
+> node experiments/issue-37-browser.mjs
+
+chromium: native click-then-key focus passed in all four control contexts
+chromium: 2222 preserves centers/colors and exact Apply/share output ( · overlaps 7.4 → 0.0)
+chromium: 34442132 preserves centers/colors and exact Apply/share output ( · overlaps 29.2 → 13.3)
+node:internal/modules/run_main:111
+    triggerUncaughtException(
+    ^
+
+locator.inputValue: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('#style-spread')[22m
+
+    at /tmp/gh-issue-solver-1793359462913/experiments/issue-37-browser.mjs:125:54 {
+  log: [ "  - waiting for locator('#style-spread')" ],
+  name: 'TimeoutError'
+}
+
+Node.js v26.12.1

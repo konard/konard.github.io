@@ -1,0 +1,20 @@
+Checked 2026-10-30 before the preservation revision was pushed.
+Latest branch head: 09c0b8e439f9d64a4c630aa82094bafa1096967c.
+
+40976879626 / 2026-10-30T00:00:28Z / 09c0b8e / success.
+40975473183 / 2026-10-29T23:47:16Z / 80318ec / failure.
+40974706765 / 2026-10-29T23:40:16Z / 8daa6fd / cancelled.
+40968298737 / 2026-10-29T22:45:46Z / 7e0b1c7 / success.
+
+Downloaded both non-passing logs to ci-logs/ and read the failing excerpts.
+github-pages-40975473183.log:11098-11114: macOS WebKit AssertionError:
+  assert(await input.evaluate((el) => document.activeElement === el))
+  experiments/issue-37-browser.mjs:53; process exited 1.
+The completed-click focus restoration is already in 09c0b8e and passed its
+subsequent complete CI run. This revision retains that code and regression.
+github-pages-40974706765.log:9687: The operation was canceled.
+github-pages-40974706765.log:11090: test skipped; network-browsers cancelled.
+The cancellation coincided with replacement by the newer branch commit.
+
+These historical runs do not verify the current preservation revision.
+The final current-head run and SHA are recorded in PR 38 after pushing.

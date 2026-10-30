@@ -1,36 +1,42 @@
 # Complete requirement inventory
 
 Sources: [issue 37](https://github.com/konard/konard.github.io/issues/37),
-[archived full report](data/issue.json), both downloaded report images, all issue
+[archived full report](data/issue.json), downloaded report PNGs, all issue
 comments and all three PR comment APIs (conversation, inline, reviews).
-No required sub-issues or additional feedback were listed at investigation time.
-Issue 29 is a regression reference, not an unfinished sub-issue; its accepted
-requirements are preserved and its tests are rerun. Issue 35 continuity remains
-part of the compatibility audit.
+The [October 30 feedback](https://github.com/konard/konard.github.io/pull/38#issuecomment-6521354738)
+overrides earlier assumptions permitting automatic layout changes. Its full
+conversation is archived in `data/pr-conversation-revision.json`.
+There are no required open sub-issues. Issues 17, 19, 21, 23, 25, 27, 29 and 35
+supply inherited requirements; their full bodies/comments are archived in
+`data/inherited-issue-*.json` and were reread for this revision.
 
-| ID | Requirement, including prose | Implementation and verification |
+| ID | Requirement, including prose and latest feedback | Implementation and verification |
 | --- | --- | --- |
-| R1 | Investigate the suggested `34442132` URL with gap range .05, turn range 180 and step 13; improve automatic defaults | `issue-37-measure.mjs` compares old/default/suggested options; default turn range 180, internal coarse exploration and original-grid refinement; retain .20 gap bounds and one-degree editable resolution based on 1111/2222 evidence |
-| R2 | Do not introduce crossings between a link's own references, especially `2222` | Score the two painted halves outside their intentional middle join; failing old-score test plus independent 128-segment intersection check; before/after screenshots |
-| R3 | Carefully improve automatic spacing toward the previous visual requirements | Bounded circular-order and compact-spacing search for small Automatic layouts; exact refitted acceptance, tiny movement preferences, paired-reference symmetry; preserve explicit layouts and satisfied drawings |
-| R4 | Inspect 10–20 random networks with 1–4 links; fix and test every observed imperfection | Seed `0x37c0de`, exactly 20 cases with no resampling based on results; archive original and solved SVG contact sheets, raw measurements and individual native-browser checks; regress every discovered defect |
-| R5 | Left/right arrows must work after clicking sliders, maintaining focus | Explicit `focus({preventScroll:true})` on pointer down and click in global, per-link and site settings sliders; unit tests cover lost focus during native mouse handling; actual mouse click followed by page keyboard, without `locator.press()` focusing implicitly |
-| R6 | Check other UI/UX issues | Native dragging, number-field text navigation, pending status, worker cancellation and errors, preserving style edits made during manual Apply, downloads waiting for a finished image, Apply/share/export equality, mobile overflow, English/Russian; existing editor/browser suites retained |
-| R7 | Collect issue-related data in `docs/case-studies/issue-37` | Full source issue, PR/comment snapshots, report PNGs, baseline/result measurements, focused failing/passing logs and screenshots |
-| R8 | Deep case study, including online facts, existing libraries and plans for each requirement | README analysis, this inventory, PLAN checklist, primary-source research data and alternatives table |
-| R9 | Execute the whole solution in the existing single PR, no deferred required work | PR 38 on the prepared branch; unit checks, production build, native browser CI, self review, updated PR description and ready status; no default-branch merge |
+| R1 | Investigate proposed `.05 / 180 / 13` settings; improve defaults | Compare bounded ranges; choose local 30-degree default, retain .20 gaps and 1-degree refinement; unit/browser-check explicit suggested URL without widening its bounds |
+| R2 | Never introduce the reported own-reference crossing in `2222` | Score painted halves outside their intentional middle join; exact old-result reproduction, independent 128-segment intersection checks, rendered before/after evidence |
+| R3 | Improve overlaps with only small automatic local adjustments | Endpoint turns/gaps only; immutable placement and pinned original fitting frame; no permutation/compaction; retain measured residuals where fixed crossings/closed halves constrain the result |
+| R4 | Inspect 10–20 random networks with 1–4 links and fix observed defects within the latest constraints | Same 20 seeded cases, measured residual ceilings, every actual middle/closed-half position checked, dense own-crossing checks, per-case browser round trips and visual contact sheets |
+| R5 | Clicking sliders then pressing Left/Right maintains focus and changes value | Pointer-down and click focus in global, per-link and site settings sliders; actual click followed by page keyboard in native browsers, plus native-focus suppression/blur regression |
+| R6 | Check other UI/UX | Native dragging/number editing, worker responsiveness/cancellation/errors, pending export gating, concurrent palette edit preservation, exact Apply/share/export, mobile overflow and English/Russian |
+| R7 | Preserve all issue data in this case study | Full issue/feedback/inherited snapshots, valid report PNGs, failing/passing logs, raw solver data, original/rejected/fixed screenshots |
+| R8 | Deep analysis, online research, available components and plans | README root causes, primary-source research, constrained/incremental layout alternatives and requirement-by-requirement solution plan |
+| R9 | Complete and verify within existing PR 38 | Atomic forward commits on prepared branch, all local checks and complete native-browser CI, current description/screenshots, final feedback/diff/main review and ready status; no merge |
+| R10 | It must be impossible for automatic spacing to change colors or link placement in `34442132` or any other network | Solver has no layout mutation path; renderer accepts no layout override; Apply whitelists turns/gaps/frame; test all eight placements, custom palettes/manual order, all 22 rendered center sets, closed-half control points and frame serialization |
 
-## Compatibility inherited from issues 19, 23, 25, 27, 29 and 35
+## Inherited compatibility
 
-- Keep the gallery/rain's legacy geometry and explicit historical URL semantics.
-- One continuous colored curve passes through each own middle. Do not create
-  automatic middle cuts by default; honor explicit cuts and their zero overrides.
+- Preserve gallery/rain geometry; default circle for 1–4, hexagonal after;
+  alternative placements and circular order remain deliberate manual controls.
+- Preserve one continuous colored curve through each own middle. No automatic
+  middle cuts by default; retain all explicit cuts and zero overrides.
 - Already well-spaced manual drawings remain byte-for-byte identical.
-- Self-closed halves retain their turns and gaps; paired references to a closed
-  link remain symmetric with equal radii/gaps and measured painted clearance.
-- Source/target turn and gap sliders, exact fields and independent resets remain
-  available. Per-link source/target turns keep one-degree resolution and ±180°.
-- Preserve user bounds relative to original turns/gaps, custom colors, notation,
-  backgrounds, marker settings, history, SVG/raster downloads and sharing.
-- Automatic spacing stays experimental and switched off by default. Explicit
-  placement and explicit circular order do not acquire automatic layout changes.
+- Closed halves retain turns, gaps and actual image-space control points.
+  Paired references to a closed link retain symmetry, equal radii/gaps and
+  measured painted clearance without drastic default bends.
+- Per-link source/target turn/gap sliders, exact fields and independent resets
+  remain available. Manual turns retain ±180 degrees and one-degree resolution.
+- Keep original bounds, custom colors, notation, backgrounds, marker controls,
+  history, SVG/raster downloads, sharing and historical URL semantics.
+- Automatic spacing remains experimental and off by default. Deliberate manual
+  geometry/topology edits refit the drawing; cosmetic edits preserve applied
+  spacing and its fixed frame.

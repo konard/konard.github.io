@@ -8,17 +8,23 @@ firefox: individual gaps and gap-only solver survive apply/share/reload
 {"cards":243,"filtered":66,"y":1000.2833251953125,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
 {"cards":729,"filtered":176,"y":3398.283447265625,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
 {"cards":1215,"filtered":176,"y":7731.283203125,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
-{"cards":1215,"filtered":165,"y":6400.283203125,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
-{"cards":1215,"filtered":104,"y":11862.283203125,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
-{"cards":1215,"filtered":165,"y":3123.283447265625,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
-{"cards":1215,"filtered":104,"y":11862.283203125,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
-{"cards":1215,"filtered":165,"y":6414.283203125,"barFilter":"blur(18px) saturate(1.8) brightness(1.08)","barSurface":"topbar__row","barTop":0}
-{"cards":1215,"filtered":104,"y":11876.283203125,"barFilter":"blur(18px) saturate(1.8) brightness(1.08)","barSurface":"topbar__row","barTop":0}
-{"cards":1215,"filtered":165,"y":3137.283447265625,"barFilter":"blur(18px) saturate(1.8) brightness(1.08)","barSurface":"topbar__row","barTop":0}
-{"cards":1215,"filtered":104,"y":11876.283203125,"barFilter":"blur(18px) saturate(1.8) brightness(1.08)","barSurface":"topbar__row","barTop":0}
-{"cards":1215,"filtered":165,"y":6364.283203125,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
-{"cards":1215,"filtered":104,"y":11826.283203125,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
-{"cards":1215,"filtered":165,"y":3087.283447265625,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
-{"cards":1215,"filtered":104,"y":11826.283203125,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
-firefox: bounded blur surfaces and fixed header through 1215 cards, repeated scrolling and all skins
+{"cards":1701,"filtered":176,"y":12063.283203125,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+{"cards":2187,"filtered":176,"y":16396.283203125,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+{"cards":2673,"filtered":176,"y":20729.283203125,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+{"cards":3159,"filtered":176,"y":25061.283203125,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+{"cards":3645,"filtered":176,"y":29492.283203125,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+{"cards":4131,"filtered":176,"y":33825.28515625,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+{"cards":4131,"filtered":176,"y":19447.283203125,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+{"cards":4131,"filtered":105,"y":37955.28515625,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+{"cards":4131,"filtered":165,"y":8342.283203125,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+{"cards":4131,"filtered":105,"y":37955.28515625,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+{"cards":4131,"filtered":176,"y":19461.283203125,"barFilter":"blur(18px) saturate(1.8) brightness(1.08)","barSurface":"topbar__row","barTop":0}
+{"cards":4131,"filtered":105,"y":37969.28515625,"barFilter":"blur(18px) saturate(1.8) brightness(1.08)","barSurface":"topbar__row","barTop":0}
+{"cards":4131,"filtered":165,"y":8356.283203125,"barFilter":"blur(18px) saturate(1.8) brightness(1.08)","barSurface":"topbar__row","barTop":0}
+{"cards":4131,"filtered":105,"y":37969.28515625,"barFilter":"blur(18px) saturate(1.8) brightness(1.08)","barSurface":"topbar__row","barTop":0}
+{"cards":4131,"filtered":176,"y":19411.283203125,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+{"cards":4131,"filtered":105,"y":37920.28515625,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+{"cards":4131,"filtered":165,"y":8306.283203125,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+{"cards":4131,"filtered":105,"y":37920.28515625,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+firefox: bounded blur surfaces and fixed header through 4131 cards, repeated scrolling and all skins
 firefox: individual gap controls fit the Russian mobile editor

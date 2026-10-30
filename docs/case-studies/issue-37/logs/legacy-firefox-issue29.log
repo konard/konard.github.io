@@ -4,7 +4,7 @@
 
 {
   "engine": "firefox",
-  "date": "2026-10-29T23:38:31.257Z",
+  "date": "2026-10-30T12:05:41.226Z",
   "checks": [
     "all four reported manual URLs are unchanged by automatic spacing, Apply and shared-link reload",
     "source/target sliders share a row below the separator; one-degree keys, bounds, independent resets and inherited gaps work",

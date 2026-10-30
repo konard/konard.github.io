@@ -130,4 +130,4 @@ The generated site is never committed to `docs/`; that directory holds the case 
 - [`issue-29`](docs/case-studies/issue-29/README.md): paired sliders, individual resets, preserved manual layouts and symmetric automatic references, with the inherited requirement audit and cross-browser evidence.
 - [`issue-33`](docs/case-studies/issue-33/README.md): dated public indicators, repository and personal source lines, the exact GitHub calendar, social embeds and a complete associative ecosystem audit.
 - [`issue-35`](docs/case-studies/issue-35/README.md): continuous link middles during automatic spacing, explicit cut preservation and native browser regressions.
-- [`issue-37`](docs/case-studies/issue-37/README.md): self-crossing detection, bounded layout search, 20 seeded networks, pointer focus and cancellable background spacing.
+- [`issue-37`](docs/case-studies/issue-37/README.md): self-crossing detection, local spacing with fixed link positions, 20 seeded networks, pointer focus and cancellable background spacing.

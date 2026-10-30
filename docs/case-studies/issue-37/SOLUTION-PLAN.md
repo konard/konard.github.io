@@ -1,21 +1,26 @@
 # Solutions and execution plan by requirement
 
-The IDs refer to [the full requirement inventory](REQUIREMENTS.md). These are
-the options considered and the steps used to implement and verify each choice.
-Measured results and rejected experiments remain in the case-study data/logs.
+IDs refer to [the inventory](REQUIREMENTS.md). The latest owner feedback is a
+hard constraint, overriding the prior rejected automatic layout-search plan.
 
-| Requirement | Options considered | Selected solution and verification steps |
+| Requirement | Options considered | Selected implementation and verification |
 | --- | --- | --- |
-| R1: proposed defaults | Copy all three suggested values; retain old defaults; use coarse exploration with fine refinement | Measure the reported URL and paired references under both settings; adopt 180° range, preserve .20 gap range and 1° resolution, explore coarse candidates internally; test the explicit 13°/.05 URL without widening its bounds |
-| R2: crossed references | Penalize large angles; forbid angle signs; score actual self collisions | Reproduce the old zero-score crossing with an independent dense intersection check; score the two painted halves outside the intentional middle joint; retain paired symmetry; verify no self intersection and show before/after images |
-| R3: spacing quality | More angle descent; exact refitting of every trial; force layout; ELK/Graphviz replacement; bounded order/spacing search | Trace fitted marker geometry and fixed-order minima; measure existing force placement and exact-fit cost; enumerate at most 24 small Automatic layouts, probe then refine, accept exact fitted improvements; preserve manual placement, closed halves, cuts, user bounds and satisfied drawings |
-| R4: random sample | Hand-picked examples; seeded sample with no replacement | Generate 20 networks with 1–4 links before tuning; archive baseline sheets; identify all six additional defective cases; add failing per-case checks, solve them, inspect every final drawing, then verify each in real browsers and Apply/share round trips |
-| R5: slider arrows | Add key handlers again; rely on browser focus policy; explicitly focus on pointer down and click | Demonstrate missing pointer-focus guarantee with failing tests and a native-focus suppression/blur shim; restore focus after native mouse handling without cancelling dragging; use actual click then page keyboard in global, turn, gap and settings controls; keep native number-field editing checks |
-| R6: other UI/UX | Synchronous wider search; deferred main-thread search; cancellable worker | Measure search duration and visible responsiveness; move work to a module worker, key results and terminate stale jobs; show pending/errors, gate image exports, test cancellation/startup failure, native dragging, mobile width, languages and legacy editor contracts |
-| R7: collect data | External-only investigation notes; repository case study | Archive complete issue/comment snapshots, valid report PNGs, raw before/after geometry, primary-source facts, failed/passing logs and renders here; keep reusable probes in experiments; reference committed screenshots in the PR |
-| R8: deep analysis/research | Add a general graph dependency immediately; assess existing components against the doublet grammar | Check W3C/WebKit focus evidence, ELK ordering, Graphviz overlap/neato and existing d3-force; document why bounded search fits this geometry, why alternatives did not fix every constraint, and map every requirement to evidence |
-| R9: complete one PR | Defer random defects or Safari validation; finish within PR 38 | Preserve atomic commits on the prepared branch; run local checks and browser regressions within the memory limit; add the new cross-engine check to CI; review the diff and latest comments, update the PR with evidence and closing reference, verify current-head CI, mark ready without merging |
+| R1: defaults | Copy 180/.05/13; 15/30/60/180 local ranges | Measure all ranges on both reported and all seeded networks; default to 30 degrees, .20 gaps, 1-degree refinement; keep suggested explicit settings and test bounds |
+| R2: self crossing | Penalize angle signs; score actual painted halves | Reproduce old zero-cost folded lens; add painted-half self scoring and independent dense intersection checks; verify symmetric close 2222 references |
+| R3/R10: preserve drawing | Global permutation/compaction; pinned nodes alone; fixed nodes and original image transform | Remove rejected search and renderer override; whitelist Apply spacing; serialize fixed frame through preview/Apply/share/export; compare actual coordinates/colors and closed-half geometry in tests |
+| R4: sampled imperfections | Resample easy networks; move nodes until scores vanish; inspect unchanged sample under fixed geometry | Retain all 20 original seeded cases, bounded endpoint corrections and explicit honest residual ceilings; manually inspect all contact-sheet pairs and test every round trip in browsers |
+| R5: keyboard focus | Duplicate key handlers; rely on native focus; pointer-down and completed-click focus | Reproduce focus loss between mouse phases; restore without cancelling dragging; native click plus page keyboard in four contexts and a focus-policy shim; macOS WebKit CI |
+| R6: UI/UX | Synchronous search; main-thread deferral; cancellable worker | Worker keyed to current geometry; pending/error status, gated exports, stale-result cancellation; merge Apply into current style; retain responsive/mobile/language and existing editor regressions |
+| R7: evidence | Replace old results; preserve separate phases | Keep original/rejected/preserved measurements and images with explicit labels, failing/passing logs and complete source snapshots; reusable probes in experiments |
+| R8: research | Add graph-layout dependency; assess constraints first | Review W3C, WebKit, yFiles incremental layout, Graphviz pin/overlap/neato, ELK and existing d3-force; reject position-moving alternatives, reuse current curve renderer |
+| R9: finish one PR | Defer sample/Safari tests; finish full matrix | Sequential local checks within memory budget; commit/push only prepared branch; update PR with fixed-placement screenshots, review full diff/feedback, verify main and clean state, wait current-head CI, mark ready without merging |
 
-The Linux WebKitGTK rendering stall is a local validation limitation, not an
-accepted substitute for Safari coverage. The isolated native-input probe is
-retained; full WebKit verification belongs to the existing macOS CI matrix.
+Pinned positions alone do not guarantee a fixed rendered picture: Graphviz's
+pin documentation explicitly describes later transformations that can move them.
+Our own position probe demonstrated the equivalent renderer-refitting defect.
+The fixed-frame regression addresses that second cause independently of removing
+permutation and compaction.
+
+Linux WebKitGTK stalls remain a local validation limitation. Full Safari engine
+coverage uses the existing native macOS CI matrix with ordinary pointer actions;
+local incomplete runs are not counted as passing validation.
