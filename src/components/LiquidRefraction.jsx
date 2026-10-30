@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useSyncExternalStore } from 'react';
 import { useSettings } from '../settings/store';
 
 /**
@@ -8,10 +8,24 @@ import { useSettings } from '../settings/store';
  * and <html> marked with data-refracts for skins.liquid.css, there only.
  */
 export const supportsRefraction = () => typeof navigator !== 'undefined' && 'userAgentData' in navigator;
+const reduced = () => window.matchMedia?.('(prefers-reduced-transparency: reduce)');
+const subscribe = (listener) => {
+  const media = reduced();
+  media?.addEventListener?.('change', listener);
+  return () => media?.removeEventListener?.('change', listener);
+};
+const snapshot = () => reduced()?.matches || false;
 
 export default function LiquidRefraction() {
   const settings = useSettings();
-  const on = settings['skin.name'] === 'liquid' && settings['liquid.refraction'] && supportsRefraction();
+  const reduce = useSyncExternalStore(subscribe, snapshot, () => false);
+  const on =
+    settings['skin.name'] === 'liquid' &&
+    settings['liquid.refraction'] &&
+    settings['liquid.opacity'] > 0 &&
+    settings['ui.transparency'] !== 'reduce' &&
+    !(settings['ui.transparency'] === 'auto' && reduce) &&
+    supportsRefraction();
 
   useEffect(() => {
     if (!on) return undefined;
@@ -27,11 +41,11 @@ export default function LiquidRefraction() {
         <feTurbulence
           type="fractalNoise"
           baseFrequency={settings['liquid.refractionDetail'] / 1000}
-          numOctaves="2"
-          seed="13"
+          numOctaves={settings['liquid.refractionOctaves']}
+          seed={settings['liquid.refractionSeed']}
           result="noise"
         />
-        <feGaussianBlur in="noise" stdDeviation="2" result="soft" />
+        <feGaussianBlur in="noise" stdDeviation={settings['liquid.refractionSmoothing']} result="soft" />
         <feDisplacementMap
           in="SourceGraphic"
           in2="soft"

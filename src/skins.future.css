@@ -43,7 +43,7 @@
   --fx-b: calc(var(--future-border, 1px) * 2);
   --fx-c: var(--future-cut, 14px);
   --fx-k: var(--future-corner, 16px);
-  --fx-line: rgb(var(--accent-rgb) / 0.95);
+  --fx-line: rgb(var(--accent-rgb) / var(--future-frame-opacity, 0.95));
   --fx-l: linear-gradient(var(--fx-line), var(--fx-line));
   --fx-lf: linear-gradient(rgb(var(--accent-rgb) / 0.3), rgb(var(--accent-rgb) / 0.3));
   --fx-edge: rgb(var(--accent-rgb) / 0.22);
@@ -77,8 +77,8 @@
 
   /* Accent bar near the top left corner. */
   --fx-bar-img: linear-gradient(90deg, var(--fx-line), rgb(var(--accent-rgb) / 0));
-  --fx-bar-size: min(32%, 7rem) 3px;
-  --fx-bar-pos: left calc(var(--fx-k) + var(--fx-c) + 0.4rem) top 0;
+  --fx-bar-size: min(80%, var(--future-accent-length, 112px)) var(--ui-accent-size, 3px);
+  --fx-bar-pos: left calc(var(--fx-k) + var(--fx-c) + var(--future-accent-offset, 6px)) top 0;
 
   /* Light sweep on hover (only with "Panels on hover: light sweep"). */
   --fx-sweep-img: none;
@@ -192,7 +192,7 @@
 :root[data-skin-name='futuristic'][data-future-surface='glass'] {
   --fx-blur-scale: 1.6;
   --fx-surface-img:
-    linear-gradient(180deg, rgb(255 255 255 / 0.07), transparent 40%),
+    linear-gradient(180deg, rgb(255 255 255 / calc(0.07 * var(--fx-op))), transparent 40%),
     linear-gradient(
       rgb(var(--panel-rgb) / calc(var(--fx-op) * 0.45)),
       rgb(var(--panel-rgb) / calc(var(--fx-op) * 0.45))
@@ -202,7 +202,11 @@
 :root[data-skin-name='futuristic'][data-future-surface='frosted'] {
   --fx-blur-scale: 2.5;
   --fx-surface-img:
-    repeating-radial-gradient(circle at 30% 20%, rgb(255 255 255 / 0.025) 0 1px, transparent 1px 3px),
+    repeating-radial-gradient(
+      circle at 30% 20%,
+      rgb(255 255 255 / calc(0.025 * var(--fx-op))) 0 1px,
+      transparent 1px 3px
+    ),
     linear-gradient(
       rgb(var(--panel-2-rgb) / calc(var(--fx-op) * 0.6)),
       rgb(var(--panel-2-rgb) / calc(var(--fx-op) * 0.6))
@@ -211,17 +215,12 @@
 
 :root[data-skin-name='futuristic'][data-future-surface='solid'] {
   --fx-blur-scale: 0;
-  --fx-surface-img: none, linear-gradient(rgb(var(--panel-rgb)), rgb(var(--panel-rgb)));
-}
-
-:root[data-skin-name='futuristic'][data-future-surface='transparent'] {
-  --fx-blur-scale: 0;
-  --fx-surface-img: none, none;
+  --fx-surface-img: none, linear-gradient(rgb(var(--panel-rgb) / var(--fx-op)), rgb(var(--panel-rgb) / var(--fx-op)));
 }
 
 :root[data-skin-name='futuristic'][data-future-surface='steel'] {
   --fx-surface-img:
-    repeating-linear-gradient(90deg, rgb(255 255 255 / 0.035) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgb(255 255 255 / calc(0.035 * var(--fx-op))) 0 1px, transparent 1px 3px),
     linear-gradient(
       180deg,
       rgb(var(--panel-2-rgb) / var(--fx-op)),
@@ -232,7 +231,7 @@
 
 :root[data-skin-name='futuristic'][data-future-surface='carbon'] {
   --fx-surface-img:
-    repeating-linear-gradient(45deg, rgb(var(--accent-rgb) / 0.05) 0 2px, transparent 2px 4px),
+    repeating-linear-gradient(45deg, rgb(var(--accent-rgb) / calc(0.05 * var(--fx-op))) 0 2px, transparent 2px 4px),
     repeating-linear-gradient(
       -45deg,
       rgb(var(--panel-2-rgb) / var(--fx-op)) 0 2px,
@@ -244,18 +243,22 @@
   --fx-surface-img:
     linear-gradient(
       120deg,
-      rgb(var(--accent-rgb) / 0.13),
-      rgb(var(--accent-2-rgb) / 0.1) 35%,
-      rgb(236 72 153 / 0.08) 65%,
-      rgb(var(--accent-rgb) / 0.13)
+      rgb(var(--accent-rgb) / calc(0.13 * var(--fx-op))),
+      rgb(var(--accent-2-rgb) / calc(0.1 * var(--fx-op))) 35%,
+      rgb(236 72 153 / calc(0.08 * var(--fx-op))) 65%,
+      rgb(var(--accent-rgb) / calc(0.13 * var(--fx-op)))
     ),
     linear-gradient(rgb(var(--panel-rgb) / var(--fx-op)), rgb(var(--panel-rgb) / var(--fx-op)));
 }
 
 :root[data-skin-name='futuristic'][data-future-surface='blueprint'] {
   --fx-surface-img:
-    repeating-linear-gradient(0deg, rgb(var(--accent-rgb) / 0.09) 0 1px, transparent 1px 16px),
-    repeating-linear-gradient(90deg, rgb(var(--accent-rgb) / 0.09) 0 1px, rgb(var(--panel-rgb) / var(--fx-op)) 1px 16px);
+    repeating-linear-gradient(0deg, rgb(var(--accent-rgb) / calc(0.09 * var(--fx-op))) 0 1px, transparent 1px 16px),
+    repeating-linear-gradient(
+      90deg,
+      rgb(var(--accent-rgb) / calc(0.09 * var(--fx-op))) 0 1px,
+      rgb(var(--panel-rgb) / var(--fx-op)) 1px 16px
+    );
 }
 
 /* ---------- Panels ---------- */

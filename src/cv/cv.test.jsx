@@ -1,7 +1,8 @@
+import { chooseSelect } from '../test/select';
 // Acceptance tests of issue #11 for the CV: every position × style × language
 // renders, holds no private data and only the jobs of its position.
 import { renderToStaticMarkup } from 'react-dom/server';
-import { act, fireEvent, render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import { experience } from '../data/experience';
 import { positions } from '../data/positions';
 import { setLang } from '../i18n/prefs';
@@ -122,8 +123,8 @@ describe('CV page', () => {
       'href',
       '/cv/pdf/konstantin-diachenko-backend-classic-en.pdf',
     );
-    fireEvent.change(screen.getByLabelText('Style'), { target: { value: 'compact' } });
-    fireEvent.change(screen.getByLabelText('Position'), { target: { value: 'rust' } });
+    chooseSelect(screen.getByLabelText('Style'), 'compact');
+    chooseSelect(screen.getByLabelText('Position'), 'rust');
     expect(window.location.search).toBe('?role=rust&style=compact');
     expect(document.querySelector('.cv').dataset.cvStyle).toBe('compact');
     expect(screen.getByRole('heading', { level: 1, name: 'KONSTANTIN DIACHENKO' })).toBeInTheDocument();

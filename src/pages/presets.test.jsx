@@ -109,7 +109,7 @@ describe('presets (issue #15)', () => {
     render(<SettingsPage />);
     fireEvent.click(screen.getByRole('button', { name: 'Random look' }));
     expect(getSettings()).not.toEqual(DEFAULTS);
-    expect(getSettings()['sound.on']).toBe(false);
+    expect(getSettings()['sound.on']).toBe(DEFAULTS['sound.on']);
 
     await act(async () => {
       fireEvent.click(screen.getByRole('button', { name: 'Copy link' }));

@@ -1,3 +1,4 @@
+import { chooseSelect } from './support/select.mjs';
 // Focused real-browser regressions for #19. ENGINE selects one browser at a time.
 /* global window, document, HTMLInputElement */
 import assert from 'node:assert/strict';
@@ -100,7 +101,7 @@ try {
   await page.waitForURL((url) => url.searchParams.get('targetAngle') === '68');
   passed('120-event drag, repeated releases, history SecurityError and retry');
 
-  await page.getByLabel('Middle of a link', { exact: true }).selectOption('circle');
+  await chooseSelect(page.getByLabel('Middle of a link', { exact: true }), 'circle');
   await change(page, 'middleSize', 10);
   await change(page, 'middleGapStart', 5);
   await change(page, 'middleGapEnd', 5);
@@ -122,7 +123,7 @@ try {
   await page.waitForURL((url) => url.searchParams.get('code')?.includes(';'));
   const layouts = {};
   for (const placement of ['circle', 'square', 'hex', 'dice', 'cards', 'spiral', 'force']) {
-    await page.getByLabel('Placement', { exact: true }).selectOption(placement);
+    await chooseSelect(page.getByLabel('Placement', { exact: true }), placement);
     const svg = await svgOf(page);
     assert(!/NaN|Infinity|undefined/.test(svg));
     layouts[placement] = svg;
@@ -191,7 +192,7 @@ try {
   await touch
     .getByLabel('Links notation', { exact: true })
     .fill(Array.from({ length: 100 }, (_, i) => `(${i + 1}: ${i + 1} ${((i + 1) % 100) + 1})`).join(' '));
-  await touch.getByLabel('Placement', { exact: true }).selectOption('hex');
+  await chooseSelect(touch.getByLabel('Placement', { exact: true }), 'hex');
   const overflow = await touch.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   assert(overflow <= 1, `mobile overflows by ${overflow}px`);
   const clipped = await touch

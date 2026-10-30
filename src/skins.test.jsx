@@ -6,15 +6,22 @@ import { FIELDS, PALETTES } from './settings/schema';
 import { setSettings } from './settings/store';
 
 const css = (file) => readFileSync(new URL(file, import.meta.url), 'utf8');
-const liquid = css('./skins.liquid.css');
+const liquid = css('./skins.liquid.css') + css('./skins.materials.css');
 const glass = css('./skins.glass.css') + css('./index.css') + css('./App.css') + css('./Layout.css');
 const future = css('./skins.future.css') + css('./skins.palettes.css') + css('./skins.frames.css');
 const name = (key) => key.replace(/\./g, '-').replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`);
 
 // Choices that mean "no extra style", so no rule is needed for them.
 const NOTHING = { 'future.hover': ['none'], 'future.title': ['plain'], 'glass.shadow': ['none'] };
-// Numbers used by the SVG filter (LiquidRefraction), not by a stylesheet.
-const IN_JSX = ['liquid.refractionScale', 'liquid.refractionDetail'];
+// Numbers used by the SVG filter or generated static grain, not a stylesheet.
+const IN_JSX = [
+  'liquid.noise',
+  'liquid.refractionScale',
+  'liquid.refractionDetail',
+  'liquid.refractionOctaves',
+  'liquid.refractionSmoothing',
+  'liquid.refractionSeed',
+];
 
 describe.each([
   ['liquid', liquid, 15],
@@ -126,7 +133,14 @@ describe('percent settings (issue #15)', () => {
   // A range in percents above 2 (`glass.saturation` = 100) is written to CSS as
   // a bare number, so it must be divided by 100: `saturate(100)` is 10 000 %
   // and painted every glass panel blue.
-  const sheets = ['./index.css', './App.css', './Layout.css', './skins.glass.css', './skins.liquid.css']
+  const sheets = [
+    './index.css',
+    './App.css',
+    './Layout.css',
+    './skins.glass.css',
+    './skins.liquid.css',
+    './skins.future.css',
+  ]
     .map(css)
     .join('\n');
   const percents = FIELDS.filter((f) => f.type === 'range' && f.unit === '%' && f.max > 2);

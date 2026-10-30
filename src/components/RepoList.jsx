@@ -1,3 +1,4 @@
+import Select from './Select';
 import { useMemo, useState } from 'react';
 import { fields } from '../data/fields';
 import { githubUrl, KINDS, matches, SORTS } from '../pages/repos';
@@ -137,37 +138,37 @@ export default function RepoList({
         </label>
         <label>
           <span>{t({ en: 'Field', ru: 'Область' })}</span>
-          <select value={field} onChange={(e) => setField(e.target.value)}>
+          <Select value={field} onChange={(e) => setField(e.target.value)}>
             <option value="">{t({ en: 'All fields', ru: 'Все области' })}</option>
             {fieldOptions.map((f) => (
               <option key={f.id} value={f.id}>
                 {t(f.name)}
               </option>
             ))}
-          </select>
+          </Select>
         </label>
         {showKinds && (
           <label>
             <span>{t({ en: 'Kind', ru: 'Вид' })}</span>
-            <select value={kind} onChange={(e) => setKind(e.target.value)}>
+            <Select value={kind} onChange={(e) => setKind(e.target.value)}>
               {Object.entries(KINDS).map(([id, k]) => (
                 <option key={id} value={id}>
                   {t(k.label)}
                 </option>
               ))}
               <option value="all">{t({ en: 'All kinds', ru: 'Все виды' })}</option>
-            </select>
+            </Select>
           </label>
         )}
         <label>
           <span>{t({ en: 'Sort', ru: 'Сортировка' })}</span>
-          <select value={sort} onChange={(e) => setSort(e.target.value)}>
+          <Select value={sort} onChange={(e) => setSort(e.target.value)}>
             {Object.entries(SORTS).map(([id, s]) => (
               <option key={id} value={id}>
                 {t(s.label)}
               </option>
             ))}
-          </select>
+          </Select>
         </label>
         <output className="filters__count mono" aria-live="polite">
           {formatNumber(list.length, lang)} {plural(list.length, lang, REPOSITORIES)}

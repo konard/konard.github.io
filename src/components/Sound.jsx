@@ -11,8 +11,8 @@ export const previewSound = (id) => session?.preview(id) ?? false;
 
 /**
  * The sounds of the interface (issue #15). Their code is loaded only when
- * sound is switched on, so the default page does not download it; switching
- * it on plays the `intro` sound, switching it off stops everything.
+ * sound is switched on. Issue #39 enables it by default; browser audio starts
+ * only after an interaction. Switching it on plays `intro`; off stops it.
  */
 export default function Sound() {
   const settings = useSettings();

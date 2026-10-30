@@ -1,3 +1,4 @@
+import { chooseSelect } from '../test/select';
 import { act, fireEvent, render, screen, within } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import NetworkGallery, { networkHref } from '../components/NetworkGallery';
@@ -126,7 +127,7 @@ describe('NetworkPage (issue #17)', () => {
   it('edits the links one by one: references, colours, turns, adding and removing', () => {
     go('/network/?code=0120');
     render(<NetworkPage />);
-    fireEvent.change(screen.getByLabelText('Link 2: target'), { target: { value: '2' } });
+    chooseSelect(screen.getByLabelText('Link 2: target'), '2');
     expect(field('Pairs with the base')).toHaveValue('01₃ 22₃');
     fireEvent.click(screen.getByRole('button', { name: /Add a link/ }));
     expect(field('Pairs with the base')).toHaveValue('01₄ 22₄ 00₄');
@@ -155,9 +156,9 @@ describe('NetworkPage (issue #17)', () => {
     expect(new URLSearchParams(search()).get('card')).toBe('true');
     expect(preview().innerHTML).toContain(STYLE_DEFAULTS.cardColor);
 
-    fireEvent.change(screen.getByLabelText('End of a link'), { target: { value: 'dot' } });
+    chooseSelect(screen.getByLabelText('End of a link'), 'dot');
     expect(search()).toContain('end=dot');
-    fireEvent.change(screen.getByRole('combobox', { name: 'Background' }), { target: { value: 'transparent' } });
+    chooseSelect(screen.getByRole('combobox', { name: 'Background' }), 'transparent');
     expect(preview().className).toContain('is-transparent');
   });
 

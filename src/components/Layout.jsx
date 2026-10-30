@@ -14,6 +14,8 @@ import '../skins.liquid.css';
 import '../skins.future.css';
 // Responsive and print overrides must come last.
 import '../App.media.css';
+import '../ui.css';
+import '../skins.materials.css';
 import '../panels.css';
 import { useEffect, useRef } from 'react';
 import { motto } from '../data/motto';
@@ -22,7 +24,7 @@ import { PAGES } from '../pages/pages';
 import { useLang } from '../i18n/prefs';
 import { useNotation } from '../links/notation';
 import Cosmos from './Cosmos';
-import DataSources, { DataMark } from './DataSources';
+import DataSources from './DataSources';
 import LiquidRefraction from './LiquidRefraction';
 import PrefSwitches from './PrefSwitches';
 import Sound from './Sound';
@@ -86,16 +88,7 @@ export default function Layout({ page, sections = null, children, footer = null 
         )}
       </header>
 
-      <main ref={content}>
-        <p className="snapshot-notice">
-          {t({
-            en: 'Numerical indicators: dated public-source data',
-            ru: 'Числовые показатели: датированные публичные данные',
-          })}{' '}
-          <DataMark />
-        </p>
-        {children}
-      </main>
+      <main ref={content}>{children}</main>
 
       <footer className="footer">
         <span className="mono">{n(motto)}</span>

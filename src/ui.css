@@ -1,0 +1,435 @@
+/* Owned UI tokens. Print retains the CV's established typography and geometry. */
+@media screen {
+  :root {
+    --ui-skin-control-radius: calc(var(--radius) * 0.6);
+    --ui-control-corners: var(--ui-control-tl-resolved) var(--ui-control-tr-resolved) var(--ui-control-br-resolved)
+      var(--ui-control-bl-resolved);
+    --ui-panel-corners: var(--ui-panel-tl-resolved) var(--ui-panel-tr-resolved) var(--ui-panel-br-resolved)
+      var(--ui-panel-bl-resolved);
+    --ui-control-fill: color-mix(in srgb, var(--surface) calc(var(--ui-control-opacity) * 100%), transparent);
+    --ui-control-edge: color-mix(in srgb, var(--text) calc(var(--ui-border-opacity) * 100%), transparent);
+    --ui-hover: color-mix(in srgb, var(--accent) calc(var(--ui-hover-opacity) * 100%), transparent);
+  }
+  :root[data-skin-name='liquid'][data-liquid-pills='true'] {
+    --ui-skin-control-radius: 999px;
+  }
+  :root[data-ui-custom-accent='true'] {
+    --accent: var(--ui-accent);
+    --accent-2: var(--ui-accent2);
+    --accent-rgb: var(--ui-accent-rgb);
+    --accent-2-rgb: var(--ui-accent2-rgb);
+  }
+  :root[data-skin-name='futuristic'] .app :where(*) {
+    border-radius: var(--ui-control-corners);
+  }
+  :root[data-skin-name='futuristic'] .settings__tab::after,
+  :root[data-skin-name='futuristic'] .setting.is-changed label::before {
+    border-radius: 0;
+  }
+  :root:root
+    :is(
+      button,
+      .button,
+      .pages a,
+      .role-tabs a,
+      .segmented,
+      .prefs__langs,
+      .topbar > *,
+      .chip,
+      .tags li,
+      .repo__fields li,
+      .post__network,
+      .post__video span,
+      summary,
+      textarea,
+      input:not([type='range']):not([type='checkbox'])
+    ) {
+    border-radius: var(--ui-control-corners);
+  }
+  :root:root :is(button, .button, textarea, input:not([type='range']):not([type='checkbox'])) {
+    border-width: var(--ui-control-border);
+    border-style: var(--ui-border-style, solid);
+    border-color: var(--ui-control-edge);
+    min-height: var(--ui-control-height);
+    padding-inline: var(--ui-control-padding);
+    background: var(--ui-control-fill);
+    color: var(--text);
+    font-family: inherit;
+    transition:
+      background-color calc(150ms * var(--ui-motion)),
+      border-color calc(150ms * var(--ui-motion));
+  }
+  :root:root :is(button, .button):not(:disabled):hover {
+    background: var(--ui-hover);
+    border-color: var(--accent);
+  }
+  :root:root :is(button, .button)[aria-pressed='true'],
+  :root:root :is(.button--primary, .segmented .is-active, .settings__tab[aria-selected='true']) {
+    background: color-mix(in srgb, var(--accent) 20%, var(--ui-control-fill));
+    border-color: var(--accent);
+    color: var(--text);
+  }
+  :root:root :is(button, input, textarea):disabled {
+    opacity: var(--ui-disabled-opacity);
+    cursor: not-allowed;
+  }
+  :root:root :focus-visible {
+    outline: var(--ui-focus-width) solid var(--accent);
+    outline-offset: var(--ui-focus-offset);
+  }
+  :root:root
+    :is(
+      .card,
+      .chart,
+      .registry,
+      .project,
+      .skills__group,
+      .org,
+      .step,
+      .stat,
+      .position,
+      .ps-note,
+      .social,
+      .cloud,
+      .habr-card,
+      .page-card,
+      .psd,
+      .theory__formulas li,
+      .theory__hero,
+      .theory__network,
+      .version,
+      .filters,
+      .page-stats li,
+      .post,
+      .repo,
+      .field-card,
+      .stack__layer,
+      .symbols__grid li,
+      .settings__group,
+      .network__panel,
+      .network__preview,
+      .link-card,
+      .preset,
+      .ui-preview__panel
+    ) {
+    border-radius: var(--ui-panel-corners);
+    border-width: var(--ui-panel-border);
+    border-style: var(--ui-border-style, solid);
+    border-color: var(--ui-control-edge);
+  }
+  :root[data-skin-name='futuristic'] :is(.card, .chart, .registry, .project, .settings__group, .post, .repo) {
+    border-width: var(--fx-border-w, var(--future-border));
+  }
+  /* Remove inherited rounded decorations in the angular skin, including media,
+     code blocks, color swatches, progress tracks and both range implementations. */
+  :root[data-skin-name='futuristic']
+    .app
+    :is(
+      img,
+      pre,
+      code,
+      details,
+      table,
+      th,
+      td,
+      .network__canvas,
+      .palettes__chip,
+      .corner-tile,
+      .calendar__day,
+      .repo__lang-bar,
+      .bar__track,
+      .bar__fill,
+      .repo__language,
+      .links-table__swatch,
+      .setting__value
+    ) {
+    border-radius: var(--ui-control-corners);
+  }
+  :root:root
+    :is(
+      .network__preview,
+      .tooltip,
+      .post__media,
+      .post__missing,
+      .post__video,
+      .source-lines__bar,
+      .mix__segment,
+      .bar,
+      .bar__track,
+      .bar__fill,
+      .calendar__day,
+      .calendar__legend i,
+      .color-key i,
+      .notation,
+      .network__share,
+      .settings__code,
+      .settings__paste,
+      .corner-tile,
+      .palettes__chip
+    ) {
+    border-radius: var(--ui-control-corners);
+  }
+  :root:root .link-card .ui-select {
+    width: 100%;
+    min-width: 0;
+  }
+  :root[data-ui-table-header='false'] thead {
+    background: transparent;
+  }
+  :root:root .stat::before {
+    width: var(--ui-accent-size);
+  }
+  :root:root input[type='range'] {
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+    min-width: 0;
+    height: max(24px, var(--ui-slider-size));
+    cursor: pointer;
+    accent-color: var(--accent);
+  }
+  :root:root input[type='range']::-webkit-slider-runnable-track {
+    height: var(--ui-slider-track);
+    background: var(--border-strong);
+    border-radius: var(--ui-control-corners);
+  }
+  :root:root input[type='range']::-moz-range-track {
+    height: var(--ui-slider-track);
+    background: var(--border-strong);
+    border-radius: var(--ui-control-corners);
+  }
+  :root:root input[type='range']::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+    width: var(--ui-slider-size);
+    height: var(--ui-slider-size);
+    margin-top: calc((var(--ui-slider-track) - var(--ui-slider-size)) / 2);
+    border: var(--ui-control-border) solid var(--accent);
+    border-radius: var(--ui-control-corners);
+    background: var(--accent);
+  }
+  :root:root input[type='range']::-moz-range-thumb {
+    width: var(--ui-slider-size);
+    height: var(--ui-slider-size);
+    border: var(--ui-control-border) solid var(--accent);
+    border-radius: var(--ui-control-corners);
+    background: var(--accent);
+  }
+  :root:root input[type='checkbox'] {
+    appearance: none;
+    -webkit-appearance: none;
+    flex: 0 0 auto;
+    width: var(--ui-check-size);
+    height: var(--ui-check-size);
+    margin: 0;
+    border: var(--ui-control-border) solid var(--ui-control-edge);
+    border-radius: var(--ui-control-corners);
+    background: var(--ui-control-fill);
+    display: inline-grid;
+    place-content: center;
+    cursor: pointer;
+  }
+  :root:root input[type='checkbox']:checked {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  :root:root input[type='checkbox']:checked::before {
+    content: '';
+    width: calc(var(--ui-check-size) * 0.5);
+    height: calc(var(--ui-check-size) * 0.25);
+    border: solid var(--bg);
+    border-width: 0 0 2px 2px;
+    transform: translateY(-1px) rotate(-45deg);
+  }
+  .ui-number {
+    display: inline-flex;
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    max-width: 100%;
+  }
+  :root:root .ui-number input {
+    width: 100%;
+    padding-inline-end: calc(var(--ui-control-padding) + 22px);
+  }
+  .ui-number__steps {
+    position: absolute;
+    inset: 2px 2px 2px auto;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    width: 22px;
+  }
+  :root:root .ui-number__steps button {
+    min-height: 0;
+    padding: 0;
+    font-size: 12px;
+    line-height: 1;
+  }
+  :root:root input[type='number'] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+  }
+  :root:root input::-webkit-inner-spin-button,
+  :root:root input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  :root:root table {
+    border-collapse: separate;
+    border-spacing: 0;
+    max-width: 100%;
+  }
+  :root:root :is(th, td) {
+    padding: var(--ui-table-padding);
+    border-bottom: var(--ui-table-border) var(--ui-border-style, solid) var(--border);
+  }
+  :root[data-ui-table-grid='true'] :is(th, td) {
+    border-inline-end: var(--ui-table-border) var(--ui-border-style, solid) var(--border);
+  }
+  :root[data-ui-table-header='true'] thead {
+    background: color-mix(in srgb, var(--accent) 8%, transparent);
+  }
+  :root:root tbody tr:nth-child(even) {
+    background: color-mix(in srgb, var(--accent) calc(var(--ui-table-stripe) * 100%), transparent);
+  }
+  :root:root tbody tr:hover {
+    background: color-mix(in srgb, var(--accent) calc(var(--ui-table-hover) * 100%), transparent);
+  }
+  .ui-select {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.6rem;
+    max-width: 100%;
+    min-width: 0;
+    text-align: start;
+    cursor: pointer;
+  }
+  .ui-select > span:first-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .setting__input .ui-select {
+    width: 100%;
+    font-size: 0.78rem;
+  }
+  .ui-select__list {
+    z-index: 1000;
+    box-sizing: border-box;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    list-style: none;
+    margin: 0;
+    padding: 4px;
+    border: var(--ui-control-border) var(--ui-border-style, solid) var(--ui-control-edge);
+    border-radius: var(--ui-control-corners);
+    background: var(--surface);
+    box-shadow: 0 8px 32px rgb(0 0 0 / 0.3);
+    color: var(--text);
+    font-size: 0.85rem;
+  }
+  .ui-select__list li {
+    padding: 0.5rem var(--ui-control-padding);
+    min-height: var(--ui-control-height);
+    border-radius: var(--ui-control-corners);
+    cursor: pointer;
+    overflow-wrap: anywhere;
+  }
+  .ui-select__list [aria-selected='true'] {
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .ui-select__list [data-active='true'] {
+    background: var(--ui-hover);
+    outline: 1px solid var(--accent);
+    outline-offset: -1px;
+  }
+  .ui-select__list [aria-disabled='true'] {
+    opacity: var(--ui-disabled-opacity);
+    cursor: not-allowed;
+  }
+  .ui-preview {
+    display: grid;
+    gap: 0.75rem;
+    margin-block: 1rem;
+  }
+  .ui-preview__panel {
+    padding: 1rem;
+    border: var(--ui-panel-border) solid var(--border);
+    background: rgb(var(--panel-rgb) / 0.5);
+  }
+  .ui-preview table {
+    width: 100%;
+    margin-top: 0.75rem;
+  }
+  .ui-color {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-width: 0;
+  }
+  .ui-color__swatch {
+    width: 24px;
+    height: 24px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--ui-control-corners);
+    background: var(--color);
+    flex: 0 0 auto;
+  }
+  :root:root .ui-color input {
+    width: 7.5em;
+    min-width: 0;
+    font: 0.75rem var(--mono);
+  }
+  :root:root .setting--color .setting__input {
+    grid-column: 2 / 4;
+  }
+  .setting--color .setting__value {
+    display: none;
+  }
+  @media (pointer: coarse) {
+    :root:root :is(button, .button, input:not([type='range']):not([type='checkbox'])) {
+      min-height: max(44px, var(--ui-control-height));
+    }
+    :root:root :is(input, textarea, .ui-select, .ui-color input) {
+      font-size: max(16px, 1rem);
+    }
+    .ui-select__list li {
+      min-height: max(44px, var(--ui-control-height));
+    }
+    .ui-number {
+      min-height: 92px;
+    }
+    .ui-number__steps {
+      width: 44px;
+    }
+    :root:root .ui-number input {
+      padding-inline-end: calc(var(--ui-control-padding) + 44px);
+    }
+    :root:root .ui-number__steps button {
+      min-height: 44px;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    :root:root * {
+      animation-duration: 0s !important;
+      transition-duration: 0s !important;
+    }
+  }
+  @media (forced-colors: active) {
+    :root:root :is(button, input, textarea, .ui-select__list) {
+      border-color: ButtonText;
+    }
+    :root:root input[type='checkbox']:checked {
+      background: Highlight;
+      forced-color-adjust: none;
+    }
+    :root:root input[type='checkbox']:checked::before {
+      border-color: HighlightText;
+    }
+    .ui-select__list [data-active='true'] {
+      outline-color: Highlight;
+    }
+  }
+}

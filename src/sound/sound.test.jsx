@@ -369,7 +369,7 @@ describe('the settings of the sound', () => {
   it('has a section whose settings only scripts read', () => {
     expect(soundFields().length).toBeGreaterThan(40);
     expect(soundFields().every((field) => field.css === false)).toBe(true);
-    expect(FIELDS.find((field) => field.key === 'sound.on').d).toBe(false);
+    expect(FIELDS.find((field) => field.key === 'sound.on').d).toBe(true);
   });
 
   it('shows the next sound of an interaction once the one before is chosen', () => {
@@ -377,7 +377,7 @@ describe('the settings of the sound', () => {
       soundFields()
         .filter((field) => field.key.startsWith('sound.hover') && (!field.when || field.when(settings)))
         .map((field) => field.key);
-    expect(shown({ ...DEFAULTS })).toEqual([]);
+    expect(shown({ ...DEFAULTS, 'sound.on': false })).toEqual([]);
     const on = { ...DEFAULTS, 'sound.on': true };
     expect(shown(on)).toEqual(['sound.hover1', 'sound.hover2', 'sound.hoverLevel']);
     expect(shown({ ...on, 'sound.hover2': 'ion' })).toEqual([
@@ -395,6 +395,7 @@ describe('the settings of the sound', () => {
   });
 
   it('shows the tabs of the interactions only when the sound is on', () => {
+    setSettings({ 'sound.on': false });
     render(<SettingsPage />);
     const section = () => document.getElementById('sound');
     expect(section().querySelector('[role="tablist"]')).toBe(null);
@@ -403,7 +404,10 @@ describe('the settings of the sound', () => {
     expect(tabs).toEqual(['Pointing', 'Pressing', 'Panels and text', 'Messages']);
     expect(screen.queryByRole('combobox', { name: 'Pressing a button or a link' })).toBe(null);
     fireEvent.click(screen.getByRole('tab', { name: 'Pressing' }));
-    expect(screen.getByRole('combobox', { name: 'Pressing a button or a link' }).value).toBe('cobalt');
+    expect(screen.getByRole('combobox', { name: 'Pressing a button or a link' })).toHaveAttribute(
+      'data-value',
+      'cobalt',
+    );
     expect(screen.queryByRole('combobox', { name: 'Pointing at a link or a button' })).toBe(null);
     // The options of all the interactions stay on every tab.
     expect(screen.getByRole('slider', { name: 'Volume' })).toBeTruthy();
@@ -419,6 +423,7 @@ describe('the settings of the sound', () => {
   });
 
   it('switches the sound on and off from the top bar', () => {
+    setSettings({ 'sound.on': false });
     render(<PrefSwitches />);
     const button = screen.getByRole('button', { name: 'Sounds of the interface' });
     expect(button.getAttribute('aria-pressed')).toBe('false');

@@ -14,6 +14,7 @@ vi.mock('../sound/interactions', () => ({ startSound }));
 
 describe('<Sound />', () => {
   it('does not load the sound engine while sound is off, starts it when switched on and stops it when off', async () => {
+    setSettings({ 'sound.on': false });
     render(<Sound />);
     await act(async () => {});
     expect(startSound).not.toHaveBeenCalled();

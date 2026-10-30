@@ -10,7 +10,7 @@ import { normalize } from './apply';
 import { DEFAULTS, FIELDS, RULES } from './schema';
 
 /** Settings that a preset, a link or the randomizer never change. */
-export const COMFORT = ['motion.mode', 'sound.on', 'sound.volume', 'theory.notation'];
+export const COMFORT = ['motion.mode', 'sound.on', 'sound.volume', 'theory.notation', 'ui.transparency'];
 
 /** The difference of `settings` from the defaults. */
 const changes = (settings) =>
@@ -48,8 +48,8 @@ export const PRESETS = [
     'default',
     'Default',
     'По умолчанию',
-    'The look of issue #15: the universe, a fading grid, the rain of links and glass panels.',
-    'Вид из задачи #15: вселенная, затухающая сетка, дождь связей и стеклянные панели.',
+    'The look of issue #39: the universe, a fading grid, the rain of links and glass panels.',
+    'Вид из задачи #39: вселенная, затухающая сетка, дождь связей и стеклянные панели.',
     {},
   ),
   preset(
@@ -82,7 +82,8 @@ export const PRESETS = [
       'future.palette': 'matrix',
       'future.font': 'terminal',
       'future.frame': 'bracket',
-      'future.surface': 'transparent',
+      'future.surface': 'solid',
+      'future.opacity': 0,
       'future.scanlines': 0.3,
       'future.title': 'slash',
       'nebula.on': false,
@@ -211,7 +212,6 @@ export const PRESETS = [
       'future.frame': 'lines',
       'future.font': 'mono',
       'future.case': 'normal',
-      'future.scanlines': 0,
       'nebula.on': false,
       'rain.on': false,
       'grid.level': 2,
@@ -242,7 +242,7 @@ export function randomLook(random = Math.random) {
   for (const field of FIELDS) {
     if (COMFORT.includes(field.key) || field.key.startsWith('sound.')) continue;
     // The number of things drawn and the frame rate stay at most at the default.
-    const heavy = /count|fps|resolution|density|refraction/i.test(field.key);
+    const heavy = /count|fps|resolution|density|refraction|blur|shadow|glow|noise/i.test(field.key);
     if (field.type === 'select') look[field.key] = pick(field.options).value;
     else if (field.type === 'toggle') look[field.key] = heavy ? false : random() < 0.5;
     else if (field.type === 'color')

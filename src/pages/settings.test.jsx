@@ -1,3 +1,4 @@
+import { chooseSelect } from '../test/select';
 import { fireEvent, render, screen, within } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import Layout from '../components/Layout';
@@ -37,14 +38,14 @@ describe('settings page (issue #13)', () => {
     render(<SettingsPage />);
     expect(document.getElementById('glass')).toBeInTheDocument();
     expect(document.getElementById('liquid')).toBeNull();
-    fireEvent.change(screen.getByRole('combobox', { name: 'Skin' }), { target: { value: 'futuristic' } });
+    chooseSelect(screen.getByRole('combobox', { name: 'Skin' }), 'futuristic');
     expect(root.dataset.skinName).toBe('futuristic');
     expect(document.getElementById('glass')).toBeNull();
     expect(document.getElementById('futuristic')).toBeInTheDocument();
     fireEvent.click(screen.getByRole('button', { name: 'Ares' }));
     expect(root.dataset.futurePalette).toBe('ares');
     expect(screen.getByRole('button', { name: 'Ares' })).toHaveAttribute('aria-pressed', 'true');
-    fireEvent.change(screen.getByRole('combobox', { name: 'Skin' }), { target: { value: 'liquid' } });
+    chooseSelect(screen.getByRole('combobox', { name: 'Skin' }), 'liquid');
     expect(document.getElementById('liquid')).toBeInTheDocument();
   });
 
@@ -106,14 +107,24 @@ describe('settings page layout (issue #15)', () => {
     render(<SettingsPage />);
     // The background layers bottom up, then the skin: the beams and the rain start the second column; the sound ends the first.
     const left = ['motion', 'nebula', 'stars', 'grid', 'sound'];
-    const right = (options) => ['beams', 'rain', 'skin', options, 'theory'];
+    const right = (options) => [
+      'beams',
+      'rain',
+      'skin',
+      options,
+      'interface',
+      'borders',
+      'tables',
+      'accessibility',
+      'theory',
+    ];
     expect(columns()).toEqual([left, right('glass')]);
     for (const [skin, options] of [
       ['liquid', 'liquid'],
       ['futuristic', 'futuristic'],
       ['glass', 'glass'],
     ]) {
-      fireEvent.change(screen.getByRole('combobox', { name: 'Skin' }), { target: { value: skin } });
+      chooseSelect(screen.getByRole('combobox', { name: 'Skin' }), skin);
       expect(columns()).toEqual([left, right(options)]);
     }
   });
@@ -159,13 +170,13 @@ describe('settings page layout (issue #15)', () => {
     const stars = document.getElementById('stars');
     // Layer 1 drifts, so it has a direction; a still layer has neither a direction nor a speed.
     expect(within(stars).getByLabelText('Direction')).toBeInTheDocument();
-    fireEvent.change(within(stars).getByRole('combobox', { name: 'Motion' }), { target: { value: 'still' } });
+    chooseSelect(within(stars).getByRole('combobox', { name: 'Motion' }), 'still');
     expect(within(stars).queryByLabelText('Direction')).toBeNull();
     expect(within(stars).queryByLabelText('Speed')).toBeNull();
 
     const grid = document.getElementById('grid');
     expect(within(grid).queryByLabelText('My colour')).toBeNull();
-    fireEvent.change(within(grid).getByRole('combobox', { name: 'Colour' }), { target: { value: 'custom' } });
+    chooseSelect(within(grid).getByRole('combobox', { name: 'Colour' }), 'custom');
     expect(within(grid).getByLabelText('My colour')).toBeInTheDocument();
     expect(root.style.getPropertyValue('--grid-color')).toBe('#7efcf6');
     setSettings(DEFAULTS, { save: false });
