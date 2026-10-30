@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-30T19:38:35.172Z",
+  "engine": "Playwright MCP Chromium",
+  "examples": [
+    {
+      "code": "0211",
+      "zeroDefaults": true,
+      "explicitZeroEquality": true
+    },
+    {
+      "code": "2011",
+      "zeroDefaults": true,
+      "explicitZeroEquality": true
+    },
+    {
+      "code": "2210",
+      "zeroDefaults": true,
+      "explicitZeroEquality": true
+    },
+    {
+      "code": "2221",
+      "zeroDefaults": true,
+      "explicitZeroEquality": true
+    },
+    {
+      "code": "0222",
+      "zeroDefaults": true,
+      "explicitZeroEquality": true
+    },
+    {
+      "code": "0112",
+      "zeroDefaults": true,
+      "explicitZeroEquality": true
+    },
+    {
+      "code": "0001",
+      "zeroDefaults": true,
+      "explicitZeroEquality": true
+    },
+    {
+      "code": "2002",
+      "zeroDefaults": true,
+      "explicitZeroEquality": true
+    }
+  ],
+  "errors": [],
+  "interactions": "neutral geometry, size boundaries, random real, keyboard/reset, unchanged gaps, mobile"
+}

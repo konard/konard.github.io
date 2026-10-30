@@ -10,7 +10,7 @@
 // values that differ from the defaults in the query string, so a shared link
 // opens exactly the picture that was shared.
 import { color, option, range, select, toggle } from '../settings/fields';
-import { COLORS, SHAPE, defaultTurns, normalizeFrame } from './glyph';
+import { COLORS, SHAPE, normalizeFrame } from './glyph';
 import { GEOMETRY_SECTIONS } from './style-geometry';
 import { linkGaps, normalizeGaps, withGaps } from './gaps';
 
@@ -359,7 +359,6 @@ function normalizeList(key, value) {
       .slice(0, 2)
       .map((a) => clamp(Math.round(Number(a)) || 0, -180, 180)),
   );
-  // A nonempty list overrides automatic defaults for the whole drawing.
   // Keep one zero row so explicitly unturned links survive sharing and Apply.
   while (turns.length > 1 && turns[turns.length - 1].every((a) => a === 0)) turns.pop();
   return turns.map((pair) => `${pair[0]} ${pair[1] ?? 0}`).join(',');
@@ -440,10 +439,9 @@ export function linkColors(style, n) {
   });
 }
 
-/** Turns in degrees. Pass links for topology-aware defaults; a count retains zero defaults. */
+/** Editable deviations from neutral geometry in degrees; unspecified turns are zero. */
 export function linkTurns(style, linksOrCount) {
   const n = Array.isArray(linksOrCount) ? linksOrCount.length : linksOrCount;
-  if (!style.turns && Array.isArray(linksOrCount)) return defaultTurns(linksOrCount, style);
   const turns = style.turns ? style.turns.split(',').map((pair) => pair.split(' ').map(Number)) : [];
   return Array.from({ length: n }, (_, i) => turns[i] || [0, 0]);
 }

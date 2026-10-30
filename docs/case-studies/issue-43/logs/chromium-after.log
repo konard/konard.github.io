@@ -1,0 +1,32 @@
+
+> konard.github.io@0.1.0 test:network:issue43
+> node experiments/issue-43-browser.mjs
+
+chromium after: 0211, zero controls=true
+chromium after: 2011, zero controls=true
+chromium after: 2210, zero controls=true
+chromium after: 2221, zero controls=true
+chromium after: 0222, zero controls=true
+chromium after: 0112, zero controls=true
+chromium after: 0001, zero controls=true
+chromium after: 2002, zero controls=true
+chromium after: 00, zero controls=true
+chromium after: 01, zero controls=true
+chromium after: 10, zero controls=true
+chromium after: 11, zero controls=true
+chromium after: 2211, zero controls=true
+chromium after: 0111, zero controls=true
+chromium after: 2202, zero controls=true
+chromium after: 1120, zero controls=true
+chromium after: 2012, zero controls=true
+chromium after: 0010, zero controls=true
+chromium after: 1212, zero controls=true
+chromium after: 1002, zero controls=true
+chromium after: 020313, zero controls=true
+chromium after: 122101, zero controls=true
+chromium after: 121310, zero controls=true
+chromium after: 313322, zero controls=true
+chromium after: 011111, zero controls=true
+chromium after: 033310, zero controls=true
+chromium after: 202221, zero controls=true
+chromium after: 021023, zero controls=true

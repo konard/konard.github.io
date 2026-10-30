@@ -8,8 +8,7 @@ const linksOf = (code) => decode(code.match(/../g).join(' '));
 const curves = (links, raw = {}) => layoutCurves(links, shapeOfStyle(normalizeStyle(raw), links));
 const near = (a, b) => expect(Math.hypot(a[0] - b[0], a[1] - b[1])).toBeLessThan(1e-10);
 const sub = (a, b) => a.map((v, i) => v - b[i]);
-const simpleOpen = (links, i) =>
-  links[i].includes(0) && links[i].some((ref) => ref && ref !== i + 1 && !links[ref - 1].includes(i + 1));
+const simpleOpen = (links, i) => links[i].includes(0) && links[i].some((ref) => ref && ref !== i + 1);
 function straight(curve) {
   const axis = sub(curve.end.at, curve.start.at);
   for (const point of curve.segments.flat()) {
@@ -19,15 +18,16 @@ function straight(curve) {
 }
 
 describe('simple default reference turns (issue 41)', () => {
-  it.each(reported)('$code matches the supplied straight arrangement', ({ code, turns }) => {
+  // Issue 43 makes the straight arrangement neutral, with zero editable turns.
+  it.each(reported)('$code keeps the supplied straight arrangement at zero turns', ({ code }) => {
     const links = linksOf(code);
     const actual = curves(links);
-    const expected = curves(links, { turns });
+    const expected = curves(links, { turns: '0 0' });
     actual.forEach((curve, i) => {
       curve.segments.flat().forEach((point, k) => near(point, expected[i].segments.flat()[k]));
       if (simpleOpen(links, i)) straight(curve);
     });
-    expect(linkTurns(normalizeStyle(), links)).toEqual(linkTurns(normalizeStyle({ turns }), links));
+    expect(linkTurns(normalizeStyle(), links)).toEqual(links.map(() => [0, 0]));
   });
 
   it.each(randomNetworks())('%s keeps every free-to-other link straight', (code) => {
@@ -71,7 +71,7 @@ describe('simple default reference turns (issue 41)', () => {
       }
     }
     expect(networks).toBe(4181);
-    expect(adjusted).toBeGreaterThan(0);
+    expect(adjusted).toBe(0);
   });
 
   it.each(['auto', 'circle', 'square', 'hex', 'dice', 'cards', 'spiral', 'force'])(
@@ -83,7 +83,7 @@ describe('simple default reference turns (issue 41)', () => {
     },
   );
 
-  it('keeps explicit zero turns distinct from automatic defaults, including after sharing', () => {
+  it('keeps explicit zero turns neutral, including after sharing', () => {
     const links = linksOf('0222');
     const manual = withTurns(normalizeStyle(), [
       [0, 0],
@@ -95,7 +95,7 @@ describe('simple default reference turns (issue 41)', () => {
       [0, 0],
     ]);
     expect(styleFromParams(styleToParams(manual))).toEqual(manual);
-    expect(curves(links, manual)).not.toEqual(curves(links));
+    expect(curves(links, manual)).toEqual(curves(links));
   });
 
   it('preserves manual angles, bends, legacy geometry and non-straight configurations', () => {

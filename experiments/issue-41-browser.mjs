@@ -50,7 +50,7 @@ try {
     await waitForNetwork(page);
     assert.equal(await picture(), original, `${code}: default share changed the picture`);
     if (turns) {
-      await go(code, `turns=${encodeURIComponent(turns)}`);
+      await go(code, `turns=${encodeURIComponent(phase === 'before' ? turns : '0 0')}`);
       const manual = await picture();
       sample.manual = manual;
       if (phase !== 'before') assert.equal(original, manual, `${code}: default differs from supplied arrangement`);
@@ -58,13 +58,13 @@ try {
     console.log(`${engine} ${phase}: ${code} default/share${turns ? '/supplied turns' : ''}`);
   }
   if (phase !== 'before') {
-    // Native keyboard editing starts from the resolved default and survives sharing.
+    // Issue 43: the corrected geometry is neutral, and editing starts at zero.
     await go('0222');
-    assert.equal(await page.locator('#link-1-turn-1').inputValue(), '-30');
+    assert.equal(await page.locator('#link-1-turn-1').inputValue(), '0');
     const numeric = page.locator('#link-1-turn-1-value');
-    await numeric.fill('-29');
+    await numeric.fill('1');
     await numeric.press('Tab');
-    assert.equal(await page.locator('#link-1-turn-1').inputValue(), '-29');
+    assert.equal(await page.locator('#link-1-turn-1').inputValue(), '1');
     const edited = await picture();
     await page.goto(await page.getByLabel('Link to this picture', { exact: true }).inputValue());
     await waitForNetwork(page);

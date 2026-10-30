@@ -221,6 +221,7 @@ export default function NetworkPage() {
                 onTurn={turn}
                 onStep={(step) => changeLinks(stepped(links, step))}
                 onRandom={() => changeLinks(randomLinks(n))}
+                onRandomReal={() => changeLinks(randomLinks(n, Math.random, { real: true }))}
               />
             </section>
             <section className="network__panel" id="style" aria-labelledby="style-title">

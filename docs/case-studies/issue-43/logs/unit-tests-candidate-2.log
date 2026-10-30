@@ -1,0 +1,60 @@
+
+> konard.github.io@0.1.0 test:ci
+> vitest run
+
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793387907238
+
+ ❯ src/pages/network.test.jsx (14 tests | 1 failed) 5307ms
+   ❯ the address keeps the network and its picture (issue #17) (2)
+     × steps across link counts and draws random networks of the current size 16ms
+::debug::Creating Artifact archive with compressionLevel: 6
+::debug::Zip write high watermark value 8388608
+::debug::Zip read high watermark value 8388608
+::debug::Zip stream for upload has ended.
+::debug::Zip stream for upload has finished.
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/pages/network.test.jsx > the address keeps the network and its picture (issue #17) > steps across link counts and draws random networks of the current size
+AssertionError: expected [ [ 3, 3 ], [ 3, 1 ], [ 1, 3 ] ] to deeply equal [ [ 3, 3 ], [ 3, 3 ], [ 3, 3 ] ]
+
+- Expected
++ Received
+
+@@ -3,12 +3,12 @@
+      3,
+      3,
+    ],
+    [
+      3,
+-     3,
++     1,
+    ],
+    [
+-     3,
++     1,
+      3,
+    ],
+  ]
+
+ ❯ src/pages/network.test.jsx:61:40
+     59|     expect(stepped(decode('00 00'), -1)).toEqual(decode('11'));
+     60|     expect(stepped(decode('01 20'), 1)).toEqual(decode('01 21'));
+     61|     expect(randomLinks(3, () => 0.99)).toEqual(decode('33 33 33'));
+       |                                        ^
+     62|   });
+     63| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 71 passed (72)
+      Tests  1 failed | 1005 passed (1006)
+   Start at  19:34:00
+   Duration  257.52s (tests 57%, environment 31%, setup 7%, import 3%, transform 1%, worker 1%)
+
+Environment  jsdom was created 72 times · 75.98s total, 31% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+

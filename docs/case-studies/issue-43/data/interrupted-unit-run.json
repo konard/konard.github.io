@@ -1,0 +1,9 @@
+{
+  "observedAt": "2026-10-30T19:41:20Z",
+  "exitCode": 143,
+  "reportedTestFailures": 0,
+  "summaryProduced": false,
+  "oomKillsObserved": 0,
+  "interpretation": "The command was terminated by SIGTERM before its summary. Its cause was not established and it is not counted as verification.",
+  "followUp": "Rerun sequentially in a detached process with NODE_OPTIONS=--max-old-space-size=512, a full log and an explicit exit-status file."
+}
