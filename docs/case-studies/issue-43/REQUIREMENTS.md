@@ -1,8 +1,9 @@
 # Requirement inventory
 
 Source: complete issue 43 body, complete preceding issue 41 and PR 42, and all
-three feedback endpoints of PR 44. Issue 43 has no comments or required
-sub-issues in the archived initial snapshot. Refresh these before completion.
+three feedback endpoints of PR 44. The initial and final archived responses
+confirm no issue comments, required sub-issues, PR conversation comments,
+inline comments or reviews. Final snapshots use the `*-final.json` suffix.
 
 | ID | Requirement | Implementation | Verification |
 | --- | --- | --- | --- |

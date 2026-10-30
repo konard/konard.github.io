@@ -17,18 +17,22 @@ unmerged and report any genuinely blocked acceptance criterion as unfinished.
   real network with references exclusively in 1..N.
 - [x] Verify unit/integration cases, exhaustive bounded small networks,
   additional seeded larger networks, real-browser screenshots and exports.
-- [ ] Run complete local unit/static/tooling/build checks sequentially within
+- [x] Run complete local unit/static/tooling/build checks sequentially within
   the container memory budget; preserve command logs and experiment scripts.
-- [ ] Commit independently useful changes after checks and push only the
+- [x] Commit independently useful changes after checks and push only the
   prepared branch; preserve history and incorporate origin/main if needed.
-- [ ] Complete case study with timeline, requirement-to-evidence inventory,
+- [x] Complete case study with timeline, requirement-to-evidence inventory,
   root causes, alternatives, decisions and before/after visual evidence.
-- [ ] Inspect PR diff for regressions and scope; refresh all feedback endpoints.
-- [ ] Update PR title/body with positive closing reference and screenshots.
-- [ ] Inspect latest five CI runs with timestamps/head SHAs; download full logs,
+- [x] Inspect PR diff for regressions and scope; refresh all feedback endpoints.
+- [x] Update PR title/body with positive closing reference and screenshots.
+- [x] Inspect latest five CI runs with timestamps/head SHAs; download full logs,
   analyze any failures by line number, fix and verify against the latest head.
-- [ ] Ensure all CI checks pass, default branch is included and worktree is
-  clean; mark PR 44 ready and complete goal only after all criteria are met.
+
+Final publication gate after the evidence commit: ensure current-head CI
+passes, default branch is included and worktree is clean; mark PR 44 ready and
+complete the goal only after all criteria are met. The current-head CI run and
+ready status are recorded directly in PR 44, avoiding an endless sequence of
+commits that archive the CI run of their own archival commit.
 
 Experiments stay in `experiments/`; investigation data and logs stay here.
 No stress probe may exhaust memory/stack; use finite inputs and one heavy job

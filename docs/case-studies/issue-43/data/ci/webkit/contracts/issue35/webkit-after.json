@@ -1,0 +1,150 @@
+{
+  "engine": "webkit",
+  "date": "2026-10-30T19:54:10.909Z",
+  "checks": [
+    "reported URL: all three lines continuous, zero cut settings, purple shaft painted to its middle",
+    "Apply, share/reload and actual SVG download preserve the same continuous drawing",
+    "explicit automatic-cut opt-in remains effective and survives sharing",
+    "intentional global cuts, per-link cuts and zero overrides survive automatic spacing and Apply"
+  ],
+  "errors": [],
+  "version": "27.2",
+  "moves": [
+    1,
+    1,
+    1
+  ],
+  "raster": {
+    "joinLength": 32.994632720947266,
+    "matrix": [
+      1,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "samples": [
+      {
+        "x": 718,
+        "y": 693,
+        "pixel": [
+          192,
+          132,
+          252,
+          255
+        ]
+      },
+      {
+        "x": 713,
+        "y": 693,
+        "pixel": [
+          192,
+          132,
+          252,
+          255
+        ]
+      },
+      {
+        "x": 708,
+        "y": 693,
+        "pixel": [
+          192,
+          132,
+          252,
+          255
+        ]
+      },
+      {
+        "x": 703,
+        "y": 693,
+        "pixel": [
+          192,
+          132,
+          252,
+          255
+        ]
+      },
+      {
+        "x": 698,
+        "y": 693,
+        "pixel": [
+          192,
+          132,
+          252,
+          255
+        ]
+      },
+      {
+        "x": 693,
+        "y": 694,
+        "pixel": [
+          192,
+          132,
+          252,
+          255
+        ]
+      },
+      {
+        "x": 688,
+        "y": 694,
+        "pixel": [
+          192,
+          132,
+          252,
+          255
+        ]
+      },
+      {
+        "x": 683,
+        "y": 694,
+        "pixel": [
+          192,
+          132,
+          252,
+          255
+        ]
+      },
+      {
+        "x": 678,
+        "y": 695,
+        "pixel": [
+          192,
+          132,
+          252,
+          255
+        ]
+      },
+      {
+        "x": 673,
+        "y": 695,
+        "pixel": [
+          192,
+          132,
+          252,
+          255
+        ]
+      },
+      {
+        "x": 668,
+        "y": 696,
+        "pixel": [
+          192,
+          132,
+          252,
+          255
+        ]
+      },
+      {
+        "x": 663,
+        "y": 696,
+        "pixel": [
+          192,
+          132,
+          252,
+          255
+        ]
+      }
+    ]
+  }
+}

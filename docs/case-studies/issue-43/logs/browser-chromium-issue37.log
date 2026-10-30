@@ -1,0 +1,27 @@
+
+> konard.github.io@0.1.0 test:network:issue37
+> node experiments/issue-37-browser.mjs
+
+chromium: native click-then-key focus passed in all four control contexts
+chromium: 2222 preserves centers/colors and exact Apply/share output ( · overlaps 7.4 → 0.0)
+chromium: 34442132 preserves centers/colors and exact Apply/share output ( · overlaps 29.2 → 13.3)
+chromium: 01 preserves centers/colors and exact Apply/share output ( · overlaps 0.0 → 0.0)
+chromium: 10 preserves centers/colors and exact Apply/share output ( · overlaps 0.0 → 0.0)
+chromium: 11 preserves centers/colors and exact Apply/share output ( · overlaps 0.0 → 0.0)
+chromium: 00 preserves centers/colors and exact Apply/share output ( · overlaps 0.0 → 0.0)
+chromium: 2111 preserves centers/colors and exact Apply/share output ( · overlaps 0.2 → 0.0)
+chromium: 2012 preserves centers/colors and exact Apply/share output ( · overlaps 38.0 → 0.1)
+chromium: 1222 preserves centers/colors and exact Apply/share output ( · overlaps 0.4 → 0.0)
+chromium: 0100 preserves centers/colors and exact Apply/share output ( · overlaps 0.0 → 0.0)
+chromium: 032113 preserves centers/colors and exact Apply/share output ( · overlaps 42.5 → 0.2)
+chromium: 133111 preserves centers/colors and exact Apply/share output ( · overlaps 4.0 → 0.0)
+chromium: 100321 preserves centers/colors and exact Apply/share output ( · overlaps 0.4 → 0.0)
+chromium: 111300 preserves centers/colors and exact Apply/share output ( · overlaps 6.4 → 0.0)
+chromium: 132001 preserves centers/colors and exact Apply/share output ( · overlaps 43.3 → 0.0)
+chromium: 013302 preserves centers/colors and exact Apply/share output ( · overlaps 0.4 → 0.0)
+chromium: 42414220 preserves centers/colors and exact Apply/share output ( · overlaps 14.1 → 0.0)
+chromium: 43434143 preserves centers/colors and exact Apply/share output ( · overlaps 14.9 → 6.6)
+chromium: 33044224 preserves centers/colors and exact Apply/share output ( · overlaps 59.8 → 5.9)
+chromium: 31324042 preserves centers/colors and exact Apply/share output ( · overlaps 5.2 → 2.6)
+chromium: 04210010 preserves centers/colors and exact Apply/share output ( · overlaps 40.0 → 0.0)
+chromium: 32103141 preserves centers/colors and exact Apply/share output ( · overlaps 10.5 → 0.0)

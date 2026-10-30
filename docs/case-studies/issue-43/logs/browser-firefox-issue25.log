@@ -1,0 +1,11 @@
+
+> konard.github.io@0.1.0 test:network:issue25
+> node experiments/issue-25-browser.mjs
+
+[
+  "auto: apply/share/reload preserves exact drawing and discovered gaps",
+  "auto-gaps: apply/share/reload preserves exact drawing and discovered gaps",
+  "native SVG rasterization: sharp acute tips and aligned painted boundaries at 5°, 15°, 45°",
+  "visible card fields, editing, inheritance, sharing and removal/renumbering",
+  "English/Russian mobile card controls fit without horizontal scrolling"
+]
