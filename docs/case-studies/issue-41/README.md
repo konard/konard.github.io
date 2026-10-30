@@ -25,6 +25,8 @@ All times are UTC on 30 October 2026 unless stated otherwise.
 | Investigation | Archived the issue, every issue/PR comment endpoint, reviews, sub-issues and recent related PRs. Initial feedback and sub-issue arrays were empty. Reproduced all four examples with failing tests and Chromium screenshots before implementing the correction. |
 | Implementation | Compared unrestricted straightening with reciprocal-route preservation; retained existing reciprocal curves after the measured overlap regressions below. Added shared default inference, explicit-zero preservation and topology-aware control resets. |
 | Verification | Captured default/manual equality, twenty unchanged seeded samples, mobile editing, Apply/share and real SVG downloads. Local and current-head CI results are recorded below and in the final validation metadata. |
+| 14:14:42 | Final Playwright MCP review passed all four manual comparisons, native editing, default reset, unchanged gaps and mobile layout. |
+| 14:17:29 | [Implementation CI run 41068595873](https://github.com/konard/konard.github.io/actions/runs/41068595873) completed successfully on head `3983909`, including all three browser engines, 977 unit tests, build and PDF generation. Complete logs, job metadata and browser data are archived here. |
 
 The API responses are in [data/](data/), including the complete issue body and
 the three distinct PR feedback endpoints. Local commands and CI output are in
@@ -123,9 +125,22 @@ also committed in [screenshots/](screenshots/).
 
 Raw SVG, path data, controls, browser versions and page errors are preserved in
 `data/chromium-before.json`, `data/chromium-after.json` and
-`data/firefox-after.json`. Exact SVG equality verifies all four requested manual
+`data/firefox-after.json`. The CI browser results, including WebKit/macOS, are in
+`data/ci-browser/`; its WebKit screenshots are also committed. `run.json` in each
+CI artifact records GitHub's tested PR merge SHA, while
+`data/ci-implementation.json` records the corresponding branch head SHA.
+Exact SVG equality verifies all four requested manual
 arrangements, default sharing, Apply, applied sharing and the actual downloaded
 SVG. Mobile screenshots verify a 390px viewport without horizontal overflow.
+
+A final Playwright MCP review also checks all four default/manual comparisons,
+native keyboard editing, the topology-aware reset and unchanged explicit gap
+settings. Its callback is `experiments/issue-41-mcp-review.mjs`: pass the function
+source without `export default` to MCP's run-code tool, with a preview server on
+port 4155. Results are in `data/mcp-review.json`, with `mcp-desktop.png` and
+`mcp-mobile.png` in the screenshot directory. The browser and preview server were
+closed afterward. Chromium emitted four GPU screenshot readback warnings; there
+were no page errors.
 
 ## Alternatives and external research
 
@@ -160,6 +175,16 @@ default drawings among all 4,181 topologies. Every one remains clear after
 straightening, excluding the scorer's turn regularizer. See
 `data/perfect-audit.json` and `logs/perfect-audit.log`.
 
+All nine inherited network suites passed individually in both local Chromium
+and Firefox (18 successful subprocess results). The local gallery probe used
+1,215 cards; CI uses the complete 4,131-card load. The outer local runner reported
+a final parsing error because its file was edited during execution to remove
+Linux WebKit from its default engine list. The original log is retained in
+`logs/legacy-browser-summary.log`; `logs/runner-validation.log` verifies the
+corrected file with Bash syntax checking and ShellCheck, and the individual
+suite logs and JSON results retain every successful result. This runner error
+did not occur in CI's independently checked-out browser jobs.
+
 ```sh
 npm ci
 npx vitest run src/links/issue-41.test.js src/pages/network-41.test.jsx
@@ -187,5 +212,17 @@ WebKit/macOS alongside all inherited editor suites, including the full
 checks remain enabled. This private site's package has no automatic versioned
 release workflow, so no release version change is needed.
 
+| Validation | Result and evidence |
+| --- | --- |
+| Complete unit suite | 977 tests in 70 files passed locally and in CI; `logs/unit-tests.log` and the implementation CI log |
+| Static checks, production build and helper tooling | Passed locally and in CI; `logs/check.log`, `logs/build.log`, `logs/tooling.log` |
+| Issue 41 browser contract | All 24 networks, editing, worker, Apply, sharing, SVG export and mobile passed on Chromium, Firefox and WebKit; `data/ci-browser/` |
+| Existing browser contracts | All 18 local Chromium/Firefox subprocesses passed; all inherited suites passed in each CI browser job |
+| Exhaustive geometry and painted collisions | 4,181 topology invariants and all 141 previously clear drawings preserved; geometry tests and `data/perfect-audit.json` |
+| Final human-oriented browser review | Playwright MCP checks passed with no page errors; `data/mcp-review.json` and desktop/mobile screenshots |
+| Complete implementation pipeline | All required jobs passed; `data/ci-implementation.json` and `logs/ci-implementation-41068595873.log` |
+
 Final validation status is recorded in `data/validation.json` and linked CI
-metadata/logs. PR 42 remains unmerged for review.
+metadata/logs. The final evidence commit receives another complete CI run before
+PR 42 is marked ready; that exact-head run is linked in its description. PR 42
+remains unmerged for review.

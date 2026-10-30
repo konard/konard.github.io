@@ -1,0 +1,6 @@
+Bash syntax validation
+bash -n exit 0
+ShellCheck validation
+shellcheck exit 0
+Verified 18 individual browser-suite exit statuses: all zero.
+The historical wrapper parsing error remains in the original summary log.

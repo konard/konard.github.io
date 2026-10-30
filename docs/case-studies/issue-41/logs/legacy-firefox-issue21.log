@@ -1,0 +1,10 @@
+
+> konard.github.io@0.1.0 test:network:issue21
+> node experiments/issue-21-browser.mjs
+
+firefox: both supplied URLs: explicit settings, controls, share and reload
+firefox: five representative default editor configurations
+firefox: gallery hover and navigation preserve dark/light link colors
+firefox: theory example navigation also preserves light-theme colors
+firefox: exported SVG equals preview
+firefox: mobile preview fits viewport

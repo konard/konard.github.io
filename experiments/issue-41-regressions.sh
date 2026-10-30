@@ -2,7 +2,7 @@
 # Run existing browser contracts sequentially; keep evidence outside old case studies.
 set -u
 engines=("$@")
-if (( ${#engines[@]} == 0 )); then engines=(chromium firefox webkit); fi
+if (( ${#engines[@]} == 0 )); then engines=(chromium firefox); fi
 log_dir=docs/case-studies/issue-41/logs
 mkdir -p "$log_dir"
 failed=0

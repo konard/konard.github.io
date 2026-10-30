@@ -3,7 +3,7 @@
 Source: the full [issue 41](https://github.com/konard/konard.github.io/issues/41)
 and archived issue/PR API responses in `data/`. There are no required sub-issues,
 issue comments, PR conversation comments, inline comments or reviews at the
-initial read. The final feedback refresh is part of the completion checklist.
+initial read and at the final feedback refresh; see the `*-latest.json` responses.
 
 | Requirement | Implementation | Verification |
 | --- | --- | --- |
