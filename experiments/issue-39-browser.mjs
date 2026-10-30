@@ -320,6 +320,17 @@ try {
         assert.ok(bounds.y >= 0 && bounds.y + bounds.height <= 845);
         assert.ok(parseFloat(await menu.evaluate((node) => getComputedStyle(node).fontSize)) >= 16);
         await mobile.keyboard.press('Escape');
+        assert.ok(
+          await mobile.locator('#setting-ui-accent').evaluate((input) => {
+            const style = getComputedStyle(input);
+            const context = document.createElement('canvas').getContext('2d');
+            context.font = style.font;
+            const required =
+              context.measureText(input.value).width + parseFloat(style.paddingLeft) + parseFloat(style.paddingRight);
+            return input.clientWidth >= required;
+          }),
+          'The complete color value fits the mobile field',
+        );
         await mobile.getByRole('button', { name: 'Choose color: Primary accent', exact: true }).click();
         const chooser = mobile.getByRole('dialog', { name: 'Color chooser' });
         const colorBounds = await chooser.boundingBox();
