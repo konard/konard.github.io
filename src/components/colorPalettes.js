@@ -1,42 +1,42 @@
 // Ready colours for every colour setting (issue #45: "for color settings we
 // should have palettes of the best neon and pastel colors, not only sliders").
-// The colour chooser of ColorInput shows them above its red, green and blue
-// sliders. Sources of the values are in docs/case-studies/issue-45/README.md:
-// the neon colours are the usual sRGB values of the named neon colours, the
-// pastels are the named pastel colours of the same lists, and the matrix group
-// holds the greens of the default look (the colours of issue #45) and of the
-// "digital rain".
+// The colour chooser of ColorInput shows them under its red, green and blue
+// sliders. Every value is a named colour of a public list, see "Colour
+// palettes" in docs/case-studies/issue-45/README.md: W is Wikipedia's "List of
+// colors", H is htmlcolorcodes.com and C is the CSS named colour. The matrix
+// group holds the greens of the default look (issue #45) and the usual greens
+// of the "digital rain" of design palettes.
 export const COLOR_PALETTES = [
   {
     id: 'neon',
     name: { en: 'Neon', ru: 'Неон' },
     colors: [
-      ['#39ff14', { en: 'Neon green', ru: 'Неоновый зелёный' }],
-      ['#ccff00', { en: 'Electric lime', ru: 'Электрический лайм' }],
-      ['#ffff33', { en: 'Neon yellow', ru: 'Неоновый жёлтый' }],
-      ['#ff9933', { en: 'Neon orange', ru: 'Неоновый оранжевый' }],
-      ['#ff073a', { en: 'Neon red', ru: 'Неоновый красный' }],
-      ['#ff10f0', { en: 'Neon pink', ru: 'Неоновый розовый' }],
-      ['#bc13fe', { en: 'Neon purple', ru: 'Неоновый фиолетовый' }],
-      ['#1f51ff', { en: 'Neon blue', ru: 'Неоновый синий' }],
-      ['#00ffff', { en: 'Electric cyan', ru: 'Электрический циан' }],
-      ['#00ffcc', { en: 'Neon aqua', ru: 'Неоновая морская волна' }],
+      ['#39ff14', { en: 'Neon green', ru: 'Неоновый зелёный' }], // W
+      ['#ccff00', { en: 'Electric lime', ru: 'Электрический лайм' }], // W
+      ['#ffea00', { en: 'Bright yellow', ru: 'Ярко-жёлтый' }], // H
+      ['#ff5f1f', { en: 'Neon orange', ru: 'Неоновый оранжевый' }], // H
+      ['#ff3131', { en: 'Neon red', ru: 'Неоновый красный' }], // H
+      ['#ff10f0', { en: 'Neon pink', ru: 'Неоновый розовый' }], // H
+      ['#bf00ff', { en: 'Electric purple', ru: 'Электрический фиолетовый' }], // W
+      ['#1f51ff', { en: 'Neon blue', ru: 'Неоновый синий' }], // H
+      ['#7df9ff', { en: 'Electric blue', ru: 'Электрический синий' }], // H
+      ['#00ffff', { en: 'Cyan', ru: 'Циан' }], // C, H
     ],
   },
   {
     id: 'pastel',
     name: { en: 'Pastel', ru: 'Пастель' },
     colors: [
-      ['#77dd77', { en: 'Pastel green', ru: 'Пастельный зелёный' }],
-      ['#aaf0d1', { en: 'Mint', ru: 'Мятный' }],
-      ['#fdfd96', { en: 'Pastel yellow', ru: 'Пастельный жёлтый' }],
-      ['#ffb347', { en: 'Pastel orange', ru: 'Пастельный оранжевый' }],
-      ['#ff6961', { en: 'Pastel red', ru: 'Пастельный красный' }],
-      ['#ffd1dc', { en: 'Pastel pink', ru: 'Пастельный розовый' }],
-      ['#c3b1e1', { en: 'Pastel purple', ru: 'Пастельный фиолетовый' }],
-      ['#ccccff', { en: 'Periwinkle', ru: 'Барвинок' }],
-      ['#a7c7e7', { en: 'Pastel blue', ru: 'Пастельный синий' }],
-      ['#99e6e6', { en: 'Pastel cyan', ru: 'Пастельный циан' }],
+      ['#c1e1c1', { en: 'Pastel green', ru: 'Пастельный зелёный' }], // H
+      ['#98fb98', { en: 'Mint green', ru: 'Мятный' }], // H, C palegreen
+      ['#fffaa0', { en: 'Pastel yellow', ru: 'Пастельный жёлтый' }], // H
+      ['#fac898', { en: 'Pastel orange', ru: 'Пастельный оранжевый' }], // H
+      ['#faa0a0', { en: 'Pastel red', ru: 'Пастельный красный' }], // H
+      ['#f8c8dc', { en: 'Pastel pink', ru: 'Пастельный розовый' }], // H
+      ['#c3b1e1', { en: 'Pastel purple', ru: 'Пастельный фиолетовый' }], // H
+      ['#ccccff', { en: 'Periwinkle', ru: 'Барвинок' }], // W, H
+      ['#a7c7e7', { en: 'Pastel blue', ru: 'Пастельный синий' }], // H
+      ['#b2ffff', { en: 'Celeste', ru: 'Селадоново-голубой' }], // W
     ],
   },
   {

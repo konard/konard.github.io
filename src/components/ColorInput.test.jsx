@@ -44,8 +44,8 @@ it('offers palettes of neon, pastel and matrix colours besides the sliders (issu
     expect(within(group).getAllByRole('button')).toHaveLength(palette.colors.length);
   }
   expect(within(dialog).getByRole('button', { name: 'Neon green #39ff14' })).toHaveAttribute('aria-pressed', 'true');
-  fireEvent.click(within(dialog).getByRole('button', { name: 'Pastel pink #ffd1dc' }));
-  expect(change).toHaveBeenCalledWith(expect.objectContaining({ target: { value: '#ffd1dc' } }));
+  fireEvent.click(within(dialog).getByRole('button', { name: 'Pastel pink #f8c8dc' }));
+  expect(change).toHaveBeenCalledWith(expect.objectContaining({ target: { value: '#f8c8dc' } }));
   // The sliders still come first and get the focus.
   expect(screen.getByRole('slider', { name: 'Red' })).toHaveFocus();
 });
