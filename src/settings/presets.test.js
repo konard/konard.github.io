@@ -18,7 +18,7 @@ import {
   withSaved,
   withoutSaved,
 } from './presets';
-import { DEFAULTS, FIELDS } from './schema';
+import { DEFAULTS, FIELDS, PREVIOUS_DEFAULTS } from './schema';
 import { getSettings, openSharedLook, setSettings } from './store';
 
 const comfort = {
@@ -54,6 +54,15 @@ describe('built-in presets', () => {
     }
   });
 
+  it('keeps the defaults before issue #45 as the Glass universe and every older preset as it was', () => {
+    const glass = PRESETS.find((preset) => preset.id === 'glass-universe');
+    expect(applyLook(glass.look, DEFAULTS)).toEqual({ ...DEFAULTS, ...PREVIOUS_DEFAULTS });
+    expect(applyLook(glass.look, DEFAULTS)['skin.name']).toBe('glass');
+    const calm = applyLook(PRESETS.find((preset) => preset.id === 'calm').look, DEFAULTS);
+    expect(calm['skin.name']).toBe('glass');
+    expect(calm['nebula.starColor']).toBe('#00c7fc');
+  });
+
   it('are different looks', () => {
     const looks = PRESETS.map((preset) => JSON.stringify(applyLook(preset.look, DEFAULTS)));
     expect(new Set(looks).size).toBe(PRESETS.length);
@@ -87,7 +96,7 @@ describe('applying a look', () => {
     expect(cleanLook(null)).toEqual({});
     expect(cleanLook([1])).toEqual({});
     expect(
-      cleanLook({ 'nope.key': 1, 'grid.size': 9999, 'rain.on': 'yes', 'sound.on': true, 'skin.name': 'glass' }),
+      cleanLook({ 'nope.key': 1, 'grid.size': 9999, 'rain.on': 'yes', 'sound.on': true, 'skin.name': 'futuristic' }),
     ).toEqual({ 'grid.size': 128 });
   });
 });
@@ -121,10 +130,10 @@ describe('a random look', () => {
 
 describe('a link that carries a look', () => {
   it('holds the look without the comfort settings and reads back', () => {
-    const settings = { ...DEFAULTS, ...comfort, 'skin.name': 'futuristic', 'future.palette': 'ares' };
+    const settings = { ...DEFAULTS, ...comfort, 'skin.name': 'liquid', 'future.palette': 'ares' };
     const link = shareLink(settings, 'https://konard.github.io/settings/#rain');
     expect(link.startsWith('https://konard.github.io/settings/#settings=')).toBe(true);
-    expect(lookOfHash(new URL(link).hash)).toEqual({ 'skin.name': 'futuristic', 'future.palette': 'ares' });
+    expect(lookOfHash(new URL(link).hash)).toEqual({ 'skin.name': 'liquid', 'future.palette': 'ares' });
   });
 
   it('ignores other hashes and broken links', () => {

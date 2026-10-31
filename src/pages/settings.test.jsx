@@ -35,6 +35,7 @@ describe('settings page (issue #13)', () => {
   });
 
   it('shows the options of the chosen skin only', () => {
+    setSettings({ 'skin.name': 'glass' });
     render(<SettingsPage />);
     expect(document.getElementById('glass')).toBeInTheDocument();
     expect(document.getElementById('liquid')).toBeNull();
@@ -104,6 +105,7 @@ describe('settings page layout (issue #15)', () => {
     );
 
   it('keeps every section in its own column whatever the skin', () => {
+    setSettings({ 'skin.name': 'glass', 'future.frame': 'corners' });
     render(<SettingsPage />);
     // The background layers bottom up, then the skin: the beams and the rain start the second column; the sound ends the first.
     const left = ['motion', 'nebula', 'stars', 'grid', 'sound'];

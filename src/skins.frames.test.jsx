@@ -79,6 +79,7 @@ describe('custom frames: corner tiles (issue #15)', () => {
   };
 
   it('shows the corners only for the custom frame of the futuristic skin', () => {
+    setSettings({ 'skin.name': 'glass', 'future.frame': 'corners' });
     render(<SettingsPage />);
     expect(document.getElementById('corners')).toBeNull();
     chooseSelect(screen.getByRole('combobox', { name: 'Skin' }), 'futuristic');

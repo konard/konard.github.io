@@ -131,8 +131,10 @@ describe('the sounds (issue #15)', () => {
   });
 
   it('defaults to a sound for every interaction but typing', () => {
+    // Issue #45 chose its own sounds for pointing, pressing and messages.
+    const issue45 = { hover: ['byte'], activate: ['mica'], notify: ['cinder'] };
     for (const [event, , , sounds] of SOUND_EVENTS) {
-      expect(OPTIONS.effects[event], event).toEqual(sounds);
+      expect(OPTIONS.effects[event], event).toEqual(issue45[event] ?? sounds);
       for (const id of sounds) expect(SOUND_IDS).toContain(id);
     }
     expect(OPTIONS.effects.type).toEqual([]);
@@ -217,7 +219,13 @@ describe('the engine', () => {
 
   it('plays the sounds of an interaction at its level, a stack of sounds no louder than one', () => {
     const player = createPlayer(
-      { ...OPTIONS, mode: 'layer', pitch: 0, levels: { ...OPTIONS.levels, activate: 0.5 } },
+      {
+        ...OPTIONS,
+        mode: 'layer',
+        pitch: 0,
+        levels: { ...OPTIONS.levels, activate: 0.5 },
+        effects: { ...OPTIONS.effects, activate: ['cobalt', 'relay'] },
+      },
       { Audio: FakeAudio, random: () => 0.5 },
     );
     expect(player.trigger('activate')).toEqual(['cobalt', 'relay']);
@@ -262,7 +270,7 @@ describe('the engine', () => {
       else delete navigator.userActivation;
     }
     const player = createPlayer(OPTIONS, { Audio: FakeAudio });
-    expect(player.trigger('hover')).toEqual(['quartz']);
+    expect(player.trigger('hover')).toEqual(['byte']);
     player.suspend();
     expect(FakeAudio.made[0].state).toBe('suspended');
     player.trigger('hover');
@@ -404,10 +412,7 @@ describe('the settings of the sound', () => {
     expect(tabs).toEqual(['Pointing', 'Pressing', 'Panels and text', 'Messages']);
     expect(screen.queryByRole('combobox', { name: 'Pressing a button or a link' })).toBe(null);
     fireEvent.click(screen.getByRole('tab', { name: 'Pressing' }));
-    expect(screen.getByRole('combobox', { name: 'Pressing a button or a link' })).toHaveAttribute(
-      'data-value',
-      'cobalt',
-    );
+    expect(screen.getByRole('combobox', { name: 'Pressing a button or a link' })).toHaveAttribute('data-value', 'mica');
     expect(screen.queryByRole('combobox', { name: 'Pointing at a link or a button' })).toBe(null);
     // The options of all the interactions stay on every tab.
     expect(screen.getByRole('slider', { name: 'Volume' })).toBeTruthy();
