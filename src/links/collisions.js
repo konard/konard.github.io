@@ -160,9 +160,9 @@ export const SMALL_TURN = 30;
  * 1. mirrored references to a closed link (small turns);
  * 2. turns only, first within ±30°, then within the user's largest turn;
  * 3. gap-first search (gaps, turns, gaps) at the same growing ranges.
- * The first stage reaching zero collisions wins. Otherwise the lowest score
- * wins, earlier (smaller) stages on ties. Every stage returns an exact
- * refitted score and preserves the user's bounds.
+ * Turn-only stages stop at the first clean drawing. Otherwise the fewest
+ * collisions win, then the smallest gap change, then the earlier stage.
+ * Every stage returns an exact refitted score and preserves the user's bounds.
  */
 export function solveCollisions(links, shape = {}, options = {}) {
   // Reference spacing must not open a link's middle unless explicitly requested.
