@@ -179,8 +179,62 @@
   :root[data-ui-table-header='false'] thead {
     background: transparent;
   }
+  /* The strip runs along the top of a stat, so its size is its height (issue #45). */
   :root:root .stat::before {
-    width: var(--ui-accent-size);
+    height: var(--ui-accent-size);
+  }
+  /* Selected text in the accent instead of the system blue (issue #45). */
+  :root:not([data-ui-selection='system']) {
+    --ui-selection-color: var(--accent);
+  }
+  :root[data-ui-selection='accent2'] {
+    --ui-selection-color: var(--accent-2);
+  }
+  :root:not([data-ui-selection='system']) ::selection {
+    background-color: color-mix(
+      in srgb,
+      var(--ui-selection-color) calc(var(--ui-selection-opacity, 0.35) * 100%),
+      transparent
+    );
+    color: var(--text);
+  }
+  /* Content that does not fit a panel is cut at its edges (issue #45). No
+     specificity: panels that scroll or overflow on purpose keep their overflow. */
+  :where(:root:not([data-ui-overflow='visible']))
+    :where(
+      .card,
+      .registry,
+      .project,
+      .skills__group,
+      .org,
+      .step,
+      .stat,
+      .position,
+      .ps-note,
+      .social,
+      .cloud,
+      .habr-card,
+      .page-card,
+      .psd,
+      .theory__formulas li,
+      .theory__hero,
+      .theory__network,
+      .version,
+      .filters,
+      .page-stats li,
+      .post,
+      .repo,
+      .field-card,
+      .stack__layer,
+      .symbols__grid li,
+      .settings__group,
+      .network__panel,
+      .network__preview,
+      .link-card,
+      .preset,
+      .ui-preview__panel
+    ):not(:has([data-tooltip-root])) {
+    overflow: clip;
   }
   :root:root input[type='range'] {
     appearance: none;

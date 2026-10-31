@@ -228,7 +228,9 @@
   height: 1.7rem;
   border: 1px solid var(--border-strong);
   border-radius: 4px;
-  background: linear-gradient(135deg, var(--chip) 55%, #05080d 55%);
+  /* A variable, so the control frame of the custom corners (issue #45) keeps the swatch under its frame. */
+  --fx-control-img: linear-gradient(135deg, var(--chip) 55%, #05080d 55%);
+  background: var(--fx-control-img);
   cursor: pointer;
 }
 

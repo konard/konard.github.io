@@ -6,7 +6,7 @@
     backdrop-filter: var(--lq-filter);
   }
   :root[data-skin-name='futuristic'] .app :is(.network__panel, .link-card, .ui-preview__panel, .preset) {
-    background-image: var(--fx-bar-img), var(--fx-frame-img), var(--fx-surface-img);
+    background-image: var(--fx-bar-img), var(--fx-frame-under, var(--fx-frame-img)), var(--fx-surface-img);
     background-size:
       var(--fx-bar-size),
       var(--fx-frame-size),
@@ -243,7 +243,7 @@
       .preset
     ) {
     /* The frame is decoration, independent of the absent surface. */
-    background-image: var(--fx-bar-img), var(--fx-frame-img);
+    background-image: var(--fx-bar-img), var(--fx-frame-under, var(--fx-frame-img));
     background-size: var(--fx-bar-size), var(--fx-frame-size);
     background-position: var(--fx-bar-pos), var(--fx-frame-pos);
     background-repeat: no-repeat;

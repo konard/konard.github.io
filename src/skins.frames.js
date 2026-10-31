@@ -4,6 +4,16 @@
 // the preview tiles on the settings page and generate src/skins.frames.css
 // (`npm run build:frames`; a test checks that the stylesheet is up to date).
 // It imports nothing, so a plain Node script can run it.
+//
+// Issue #45: outer panels, inner blocks, buttons and fields share the frame.
+// Custom properties are resolved on the element that declares them, so every
+// rule that depends on the size of a corner is declared both on the root and
+// on every framed element (`:where(...)` adds no specificity); a framed element
+// scales the corner sizes, brackets and gaps by its own `--fx-scale` (1 for an
+// outer panel, the block scale for a panel inside a panel, the control scale for
+// buttons and fields). Corners and edges have their own widths, the edges a
+// style (solid, dashed, dotted, double), and the corner layer is drawn above
+// the content of a panel (over the colour bar of a position) or below it.
 
 export const CORNERS = ['tl', 'tr', 'br', 'bl'];
 
@@ -149,23 +159,102 @@ function strokes(corner, shape) {
   }
 }
 
+/** Outer panels of the site; a panel inside a panel is an inner block. */
+export const PANELS = [
+  '.card',
+  '.chart',
+  '.registry',
+  '.project',
+  '.skills__group',
+  '.org',
+  '.step',
+  '.stat',
+  '.position',
+  '.ps-note',
+  '.social',
+  '.cloud',
+  '.habr-card',
+  '.page-card',
+  '.psd',
+  '.theory__formulas li',
+  '.theory__hero',
+  '.theory__network',
+  '.version',
+  '.filters',
+  '.page-stats li',
+  '.post',
+  '.repo',
+  '.field-card',
+  '.stack__layer',
+  '.symbols__grid li',
+  '.settings__group',
+  '.network__panel',
+  '.network__preview',
+  '.link-card',
+  '.preset',
+  '.ui-preview__panel',
+];
+
+/** Small items of lists: blocks even when they are not inside a panel. */
+export const BLOCKS = ['.theory__formulas li', '.page-stats li', '.symbols__grid li'];
+
+/** Buttons, fields, chips, tabs and menus: the frame in the control scale. */
+export const CONTROLS = [
+  'button:not(.segmented button, .prefs__langs button, .preset, .preset button)',
+  '.button',
+  'textarea',
+  "input:not([type='range'], [type='checkbox'], [type='radio'], [type='color'], [type='file'], [type='hidden'])",
+  '.chip',
+  '.tags li',
+  '.pages a',
+  '.role-tabs a',
+  '.segmented',
+  '.prefs__langs',
+  '.repo__fields li',
+  '.ui-select__list',
+];
+
+const list = (selectors) => selectors.join(', ');
+const FRAMED = list([...PANELS, ...CONTROLS]);
+/** A rule on the root and on every framed element, so the element resolves it with its own scale. */
+const everywhere = (selector, elements = FRAMED) => `${selector},\n${selector} :where(${elements})`;
+
 /** What a corner line sets: colour, width, the tick of a square corner, arms and the gap of the edges. */
+const THIN = 'var(--future-border, 1px)';
+const BOLD = 'var(--fx-b)';
+const ARM = 'calc(var(--fx-k) * var(--fx-scale, 1))';
 const LOOK = {
-  none: { col: 'transparent', w: 'var(--future-border, 1px)', tick: '0px', arm: '0px', gap: '0px' },
-  gap: { col: 'transparent', w: 'var(--future-border, 1px)', tick: '0px', arm: '0px', gap: 'var(--fx-k)' },
-  line: { col: 'var(--fx-ce-col)', w: 'var(--future-border, 1px)', tick: '0px', arm: '0px', gap: '0px' },
-  accent: { col: 'var(--fx-line)', w: 'var(--fx-b)', tick: 'S', arm: '0px', gap: '0px' },
-  bracket: { col: 'var(--fx-line)', w: 'var(--fx-b)', tick: '0px', arm: 'var(--fx-k)', gap: '0px' },
+  none: { col: 'transparent', w: THIN, tick: '0px', arm: '0px', gap: '0px' },
+  gap: { col: 'transparent', w: THIN, tick: '0px', arm: '0px', gap: ARM },
+  line: { col: 'var(--fx-ce-col)', w: THIN, tick: '0px', arm: '0px', gap: '0px' },
+  accent: { col: 'var(--fx-line)', w: BOLD, tick: 'S', arm: '0px', gap: '0px' },
+  bracket: { col: 'var(--fx-line)', w: BOLD, tick: '0px', arm: ARM, gap: '0px' },
 };
 
+/** The colour of the edges and of the `line` corners. */
 const EDGE_LOOK = {
-  none: { img: 'none', col: 'rgb(var(--accent-rgb) / 0.3)' },
-  faint: {
-    img: 'linear-gradient(rgb(var(--accent-rgb) / 0.3), rgb(var(--accent-rgb) / 0.3))',
-    col: 'rgb(var(--accent-rgb) / 0.3)',
-  },
-  line: { img: 'var(--fx-l)', col: 'var(--fx-line)' },
+  none: { ec: 'transparent', col: 'rgb(var(--accent-rgb) / 0.3)' },
+  faint: { ec: 'rgb(var(--accent-rgb) / 0.3)', col: 'rgb(var(--accent-rgb) / 0.3)' },
+  line: { ec: 'var(--fx-line)', col: 'var(--fx-line)' },
 };
+
+/** Images of a horizontal and a vertical edge in each style (the colour is `--fx-ec`). */
+export const EDGE_STYLES = ['solid', 'dashed', 'dotted', 'double'];
+const DOT = 'max(1px, var(--fx-ew))';
+const edgeImages = (style) => {
+  const c = 'var(--fx-ec)';
+  const along = (deg) =>
+    ({
+      solid: `linear-gradient(${c}, ${c})`,
+      dashed: `repeating-linear-gradient(${deg}, ${c} 0 6px, transparent 6px 10px)`,
+      dotted: `repeating-linear-gradient(${deg}, ${c} 0 ${DOT}, transparent ${DOT} calc(${DOT} * 3))`,
+      // Two thin lines across the edge, like `border-style: double`.
+      double: `linear-gradient(${deg === '90deg' ? '180deg' : '90deg'}, ${c} 0 34%, transparent 34% 66%, ${c} 66%)`,
+    })[style];
+  return { '--fx-ce-h': along('90deg'), '--fx-ce-v': along('180deg') };
+};
+
+const SIDES = ['top', 'right', 'bottom', 'left'];
 
 const rule = (selector, declarations) =>
   `${selector} {\n${Object.entries(declarations)
@@ -186,47 +275,66 @@ function cornerLayers(corner) {
   ];
 }
 
-/** The four edges between the corners, shortened by the shapes and the gaps. */
+/** The four edges between the corners, shortened by the shapes and the gaps; each side has its width. */
 function edgeLayers() {
   const reach = (corner, axis) => `${v(corner, axis)} + ${v(corner, 'gap')}`;
   const span = (a, b, axis) => `max(0px, calc(100% - (${reach(a, axis)}) - (${reach(b, axis)})))`;
-  const img = 'var(--fx-ce-img)';
-  const w = 'var(--fx-ew)';
+  const w = (side) => `var(--fx-ew-${side})`;
+  // Solid edges until the style of the edges is known.
+  const H = 'var(--fx-ce-h, linear-gradient(var(--fx-ec), var(--fx-ec)))';
+  const V = 'var(--fx-ce-v, linear-gradient(var(--fx-ec), var(--fx-ec)))';
   return [
-    [img, `${span('tl', 'tr', 'x')} ${w}`, `left calc(${reach('tl', 'x')}) top 0`],
-    [img, `${w} ${span('tr', 'br', 'y')}`, `right 0 top calc(${reach('tr', 'y')})`],
-    [img, `${span('bl', 'br', 'x')} ${w}`, `left calc(${reach('bl', 'x')}) bottom 0`],
-    [img, `${w} ${span('tl', 'bl', 'y')}`, `left 0 top calc(${reach('tl', 'y')})`],
+    [H, `${span('tl', 'tr', 'x')} ${w('top')}`, `left calc(${reach('tl', 'x')}) top 0`],
+    [V, `${w('right')} ${span('tr', 'br', 'y')}`, `right 0 top calc(${reach('tr', 'y')})`],
+    [H, `${span('bl', 'br', 'x')} ${w('bottom')}`, `left calc(${reach('bl', 'x')}) bottom 0`],
+    [V, `${w('left')} ${span('tl', 'bl', 'y')}`, `left 0 top calc(${reach('tl', 'y')})`],
   ];
 }
 
-const FRAME = ":root[data-skin-name='futuristic'][data-future-frame='custom']";
+const FUTURE = ":root[data-skin-name='futuristic']";
+const FRAME = `${FUTURE}[data-future-frame='custom']`;
+const LAYERS = [...CORNERS.flatMap(cornerLayers), ...edgeLayers()];
 
 /** The whole stylesheet of the custom frames. */
 export function framesCss() {
   const out = [
     '/* Generated by src/skins.frames.js (npm run build:frames); do not edit.\n' +
       '   The custom frame of the futuristic skin (issue #15): every corner has its own\n' +
-      '   shape (clip-path points), size and line (background layers). */\n',
+      '   shape (clip-path points), size, width and line (background layers). Outer\n' +
+      '   panels, inner blocks and controls share it in their own scale (issue #45). */\n',
   ];
-  const layers = [...CORNERS.flatMap(cornerLayers), ...edgeLayers()];
+  out.push(rule(FRAME, { '--fx-border-w': '0px', '--fx-ew': 'var(--future-border, 1px)' }));
+  // The scale of the corners: outer panels 1, inner blocks and small items the
+  // block scale, controls the control scale. No specificity, so nothing else changes.
+  out.push(rule(`:where(${list(CONTROLS)})`, { '--fx-scale': 'var(--corner-control-scale, 0.35)' }));
+  out.push(rule(`:where(${list(PANELS)})`, { '--fx-scale': '1' }));
   out.push(
-    rule(FRAME, {
-      '--fx-border-w': '0px',
-      '--fx-ew': 'var(--future-border, 1px)',
+    rule(`:where(${list(PANELS)}) :where(${list(PANELS)}),\n:where(${list(BLOCKS)})`, {
+      '--fx-scale': 'var(--corner-block-scale, 0.6)',
+    }),
+  );
+  // Controls draw their edges as wide as their border.
+  out.push(rule(`${FUTURE} :where(${list(CONTROLS)})`, { '--fx-ew': 'var(--ui-control-border, 1px)' }));
+  out.push(
+    rule(everywhere(FRAME), {
+      ...Object.fromEntries(SIDES.map((side) => [`--fx-ew-${side}`, `var(--corner-${side}-width, var(--fx-ew))`])),
       '--fx-clip': `polygon(${CORNERS.map((corner) => v(corner, 'p')).join(', ')})`,
-      '--fx-frame-img': layers.map((layer) => layer[0]).join(',\n    '),
-      '--fx-frame-size': layers.map((layer) => layer[1]).join(',\n    '),
-      '--fx-frame-pos': layers.map((layer) => layer[2]).join(',\n    '),
+      '--fx-frame-img': LAYERS.map((layer) => layer[0]).join(',\n    '),
+      '--fx-frame-size': LAYERS.map((layer) => layer[1]).join(',\n    '),
+      '--fx-frame-pos': LAYERS.map((layer) => layer[2]).join(',\n    '),
       '--fx-bar-start': `calc(${v('tl', 'x')} + ${v('tl', 'gap')} + ${v('tl', 'arm')})`,
     }),
   );
   CORNERS.forEach((corner) => {
-    out.push(rule(':root', { [`--fx-${corner}-s`]: `var(--corner-${corner}-size, 14px)` }));
+    out.push(
+      rule(everywhere(':root'), {
+        [`--fx-${corner}-s`]: `calc(var(--corner-${corner}-size, 14px) * var(--fx-scale, 1))`,
+      }),
+    );
     Object.keys(SHAPES).forEach((shape) => {
       const [a, b] = strokes(corner, shape);
       out.push(
-        rule(`:root[data-corner-${corner}-shape='${shape}']`, {
+        rule(everywhere(`:root[data-corner-${corner}-shape='${shape}']`), {
           [`--fx-${corner}-p`]: cornerPoints(corner, shape).join(', '),
           [`--fx-${corner}-x`]: size(corner, SHAPES[shape].x),
           [`--fx-${corner}-y`]: size(corner, SHAPES[shape].y),
@@ -243,11 +351,12 @@ export function framesCss() {
       const look = LOOK[line];
       out.push(
         rule(
-          `:root[data-corner-${corner}-line='${line}']`,
+          everywhere(`:root[data-corner-${corner}-line='${line}']`),
           Object.fromEntries(
             Object.entries(look).map(([name, value]) => [
               `--fx-${corner}-${name}`,
-              value === 'S' ? v(corner, 's') : value,
+              // The width of a corner: its own setting (apply.js) or the one of its line.
+              name === 'w' ? `var(--corner-${corner}-width, ${value})` : value === 'S' ? v(corner, 's') : value,
             ]),
           ),
         ),
@@ -257,10 +366,101 @@ export function framesCss() {
   EDGES.forEach((edge) =>
     out.push(
       rule(`:root[data-corner-edges='${edge}']`, {
-        '--fx-ce-img': EDGE_LOOK[edge].img,
+        '--fx-ec': EDGE_LOOK[edge].ec,
         '--fx-ce-col': EDGE_LOOK[edge].col,
       }),
     ),
   );
+  // The style of the edges: panels follow the corner settings, controls the border style of the controls.
+  EDGE_STYLES.forEach((style) => {
+    if (style !== 'double')
+      out.push(rule(everywhere(`:root[data-corner-edge-style='${style}']`, list(PANELS)), edgeImages(style)));
+  });
+  EDGE_STYLES.forEach((style) =>
+    out.push(rule(`:root[data-ui-border-style='${style}'] :where(${list(CONTROLS)})`, edgeImages(style))),
+  );
+  out.push(...blockRules(), ...controlRules(), ...layerRules());
   return out.join('\n');
+}
+
+/** Inner blocks drawn with a plain line instead of the frame. */
+function blockRules() {
+  const line = `${FRAME}[data-corner-blocks='line']`;
+  return [
+    rule(`${line} :is(${list(PANELS)}) :is(${list(PANELS)}),\n${line} :is(${list(BLOCKS)})`, {
+      '--fx-frame-img': 'none',
+      '--fx-frame-under': 'none',
+      '--fx-frame-size': 'auto',
+      '--fx-frame-pos': '0 0',
+      '--fx-bar-img': 'none',
+      '--fx-clip': 'none',
+      '--fx-border-w': 'var(--future-border, 1px)',
+      '--ui-panel-width': 'var(--future-border, 1px)',
+      'border-color': 'rgb(var(--accent-rgb) / 0.2)',
+      'box-shadow': 'none',
+    }),
+  ];
+}
+
+/** Buttons, fields and the like draw the frame over their fill and are cut by its shape. */
+function controlRules() {
+  const controls = `${FRAME}:not([data-corner-controls='border']) :is(${list(CONTROLS)})`;
+  // (0,6,0) and more: above the control rules of ui.css, including hover and pressed states.
+  const strong = `:root:root${controls.slice(':root'.length)}`;
+  return [
+    rule(strong, {
+      // A control may keep an image of its own (a palette chip) under the frame.
+      'background-image': 'var(--fx-frame-img), var(--fx-control-img, none)',
+      'background-size': 'var(--fx-frame-size), 100% 100%',
+      'background-position': 'var(--fx-frame-pos), 0 0',
+      'background-repeat': 'no-repeat',
+      'background-origin': 'border-box',
+      'border-color': 'transparent',
+      'border-radius': '0',
+      'clip-path': 'var(--fx-clip)',
+    }),
+    // Hover, pressed, current and focused controls light their edges up instead of the border.
+    rule(
+      [
+        ':hover:not(:disabled)',
+        "[aria-pressed='true']",
+        "[aria-current='page']",
+        "[aria-selected='true']",
+        '.is-active',
+        '.button--primary',
+        ':focus-visible',
+        ':focus',
+      ]
+        .map((state) => `${strong}${state}`)
+        .join(',\n'),
+      { '--fx-ec': 'var(--accent)' },
+    ),
+    // The primary button keeps a fill of the accent (its gradient was a background image).
+    rule(`${strong}.button--primary`, {
+      'background-color': 'color-mix(in srgb, var(--accent) 20%, var(--ui-control-fill, transparent))',
+    }),
+    // The outline of the focus would be cut by the shape, so it is drawn inside.
+    rule(`${strong}:focus-visible`, { 'outline-offset': 'calc(-1 * var(--ui-focus-width, 2px))' }),
+  ];
+}
+
+/** The corner layer above the content: an overlay of the frame on every panel. */
+function layerRules() {
+  const top = `${FRAME}:not([data-corner-layer='below'])`;
+  return [
+    rule(top, { '--fx-frame-under': LAYERS.map(() => 'none').join(', ') }),
+    // No specificity: a panel that is positioned already keeps its position.
+    rule(`:where(${top}) :where(${list(PANELS)})`, { position: 'relative' }),
+    rule(`${top} :is(${list(PANELS)})::after`, {
+      content: "''",
+      position: 'absolute',
+      inset: '0',
+      'z-index': '1',
+      'pointer-events': 'none',
+      'background-image': 'var(--fx-frame-img)',
+      'background-size': 'var(--fx-frame-size)',
+      'background-position': 'var(--fx-frame-pos)',
+      'background-repeat': 'no-repeat',
+    }),
+  ];
 }
