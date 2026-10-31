@@ -154,6 +154,16 @@ for blocks and controls too.
     (`experiments/issue-45-webkit-load.mjs`).
 
   CI runs WebKit on macOS.
+- The browser checks of issue #39 failed in CI after the defaults changed.
+  - `experiments/issue-39-browser.mjs:95` expected the skin `glass` and got `futuristic`
+    (log: `gh run view 41222362161 --log-failed`).
+  - Run locally, `experiments/issue-39-visual-review.mjs` reported 14 defects. Examples: "Default accent must join the
+    corner stroke without a gap", "panels must share the default border width", "manual accent thickness must remain
+    effective".
+  - The root cause is that both checks were written for the old defaults. They now start from that look, the "Glass
+    universe" preset: `PREVIOUS_DEFAULTS` saved as its difference from `DEFAULTS`.
+  - Both then pass unchanged, so none of the 14 defects was a regression of the frames. The new default look is checked
+    by `npm run test:ui:issue45`.
 - Screenshots:
   - before: [`screenshots/before`](screenshots/before);
   - after: [`screenshots/after`](screenshots/after), with samples for the custom, lines, plain, below, border-controls,

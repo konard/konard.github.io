@@ -3,13 +3,18 @@ import assert from 'node:assert/strict';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { chromium, firefox, webkit } from 'playwright';
 import { createServer } from 'vite';
-import { SECTIONS } from '../src/settings/schema.js';
+import { DEFAULTS, PREVIOUS_DEFAULTS, SECTIONS } from '../src/settings/schema.js';
 import { chooseSelect } from './support/select.mjs';
 
 const before = process.argv.includes('--before');
 const engine = process.env.ENGINE || 'chromium';
 const directory = process.env.CAPTURE_DIR || 'docs/case-studies/issue-39/screenshots';
 const results = [];
+// This check was written for the look of issue #39, the defaults before issue #45 made the Matrix universe the
+// default; it starts from that look, the "Glass universe" preset, saved as its difference from the defaults.
+const GLASS_UNIVERSE = Object.fromEntries(
+  Object.entries(PREVIOUS_DEFAULTS).filter(([key, value]) => value !== DEFAULTS[key]),
+);
 await mkdir(directory, { recursive: true });
 const server = await createServer({ server: { port: 4199, strictPort: true } });
 await server.listen();
@@ -27,13 +32,13 @@ try {
     page.on('console', (message) => console.log(`${engine} ${message.type()}: ${message.text()}`));
     page.on('requestfailed', (request) => console.log('Request failed:', request.url(), request.failure()));
   }
-  await page.addInitScript(() => {
+  await page.addInitScript((look) => {
     if (sessionStorage.getItem('issue39-initialized')) return;
     sessionStorage.setItem('issue39-initialized', '1');
     localStorage.setItem('lang', 'en');
     localStorage.setItem('theme', 'dark');
-    localStorage.setItem('settings', JSON.stringify({ 'motion.mode': 'off', 'sound.on': false }));
-  });
+    localStorage.setItem('settings', JSON.stringify({ ...look, 'motion.mode': 'off', 'sound.on': false }));
+  }, GLASS_UNIVERSE);
   await page.route('https://github-contributions-api.jogruber.de/**', (route) => route.abort());
   await page.route('https://platform.twitter.com/**', (route) => route.abort());
   const go = async (path) => {
