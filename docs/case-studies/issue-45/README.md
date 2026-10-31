@@ -358,6 +358,20 @@ section 4 come from the restyles timed before the page closed. Chromium served a
    default: on `main` the same look restyles in 272 ms against 107 ms for the Glass look. The rest comes from the
    frame on blocks and controls and from the 236 extra elements on the page.
 
-   So the 15 minutes no longer fit. The WebKit job now takes its limit from the matrix: 25 minutes for WebKit on
-   macOS, 15 minutes as before for Chromium and Firefox. `src/workflow.test.js` checks that every matrix entry has a
-   limit. The Chromium job took 11 min 7 s and the Firefox job 7 min 13 s in the same run.
+   So the 15 minutes no longer fit. The browser job now takes its limit from the matrix, and
+   `src/workflow.test.js` checks that every matrix entry has a limit.
+
+   The next run (41246513747, 7fc2f62) had a busy runner: every step took 1.3 to 1.5 times as long, even the checkout
+   (39 s against 20 s). With a first limit of 25 minutes for WebKit and 15 for the others, the Chromium job stopped
+   at 15 minutes ("The job has exceeded the maximum execution time of 15m0s",
+   `ci-logs/chromium-timeout-124671178787.log`), and WebKit finished in 23 min 51 s.
+
+   In Chromium each settings slider costs what it costs on `main` (median 2.12 s against 2.06 s for its eight keys),
+   so the frame does not slow Chromium down. Its job is longer only because of the 18 extra sliders and the new step.
+   The limits now leave room for such a runner:
+
+   | Engine | `main` | branch | branch, busy runner | limit |
+   | --- | --- | --- | --- | --- |
+   | Chromium (Ubuntu) | 9 min 2 s | 11 min 7 s | over 15 min (stopped) | 20 min |
+   | Firefox (Ubuntu) | 5 min 48 s | 7 min 13 s | 8 min 29 s | 15 min |
+   | WebKit (macOS Intel) | 11 min 55 s | 16 min 45 s | 23 min 51 s | 30 min |
