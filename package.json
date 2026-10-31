@@ -82,6 +82,7 @@
     ]
   },
   "overrides": {
+    "minimatch": "^11.0.3",
     "archiver-utils": {
       "glob": "^14.0.3"
     }
