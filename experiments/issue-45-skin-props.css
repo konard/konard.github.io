@@ -1,0 +1,98 @@
+/* Issue #45 probe, not loaded by the site: the most used root values of the futuristic skin as
+   typed @property values. Try it with EXTRA_CSS="$(cat experiments/issue-45-skin-props.css)" and
+   experiments/issue-45-restyle-once.mjs. In WebKit it made no gain beyond the noise. */
+@property --fx-glow {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0;
+}
+@property --fx-op {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 1;
+}
+@property --fx-b {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 0px;
+}
+@property --fx-c {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 0px;
+}
+@property --fx-k {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 0px;
+}
+@property --fx-bar-w {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 0px;
+}
+@property --fx-line {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: transparent;
+}
+@property --fx-edge {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: transparent;
+}
+@property --fx-l {
+  syntax: '<image> | none';
+  inherits: true;
+  initial-value: none;
+}
+@property --fx-lf {
+  syntax: '<image> | none';
+  inherits: true;
+  initial-value: none;
+}
+@property --fx-d-tl {
+  syntax: '<image> | none';
+  inherits: true;
+  initial-value: none;
+}
+@property --fx-d-tr {
+  syntax: '<image> | none';
+  inherits: true;
+  initial-value: none;
+}
+@property --fx-d-bl {
+  syntax: '<image> | none';
+  inherits: true;
+  initial-value: none;
+}
+@property --fx-d-br {
+  syntax: '<image> | none';
+  inherits: true;
+  initial-value: none;
+}
+@property --fx-frame-img {
+  syntax: '<image># | none';
+  inherits: true;
+  initial-value: none;
+}
+@property --text-2 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: black;
+}
+@property --muted {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: black;
+}
+@property --border {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: transparent;
+}
+@property --border-strong {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: transparent;
+}

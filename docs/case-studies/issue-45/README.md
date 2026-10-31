@@ -179,11 +179,17 @@ Each one has a test that failed before the fix.
    - A rejected variant: one set of unitless numbers on the root, multiplied by the scale on each element, inherits a
      third of the lengths but was slower (390 ms against 340 ms in the same A/B run): each element then works out
      its own lengths.
-   - Two more probes changed nothing beyond the noise:
+   - Three more probes changed nothing beyond the noise:
      - Dropping `--fx-scale`, which only tells the checks the scale of an element: 269 ms with it, 298 ms without
        (`experiments/issue-45-ab-sheets.mjs`, 3 pairs).
      - `content-visibility: auto` on the settings groups and the samples: 254–330 ms with it, 268–321 ms without
        (`EXTRA_CSS` of `experiments/issue-45-restyle-once.mjs`). WebKit still restyles the sections off screen.
+     - Typing the root values of the futuristic skin. `experiments/issue-45-root-tokens.mjs` finds 63 root custom
+       properties that are not registered and keep `var()` (3051 characters) out of 785. Freezing them to their computed
+       tokens took one WebKit restyle from 258 to 203 ms and from 266 to 216 ms (Chromium: no gain). Registering the 19
+       of them that the skin uses most (`experiments/issue-45-skin-props.css`: `--fx-glow`, `--fx-b`, `--fx-line`, `--border`
+       and others) as typed `@property` values through `EXTRA_CSS` gave 5 interleaved pairs of 262/263, 273/374, 386/337,
+       366/280 and 310/271 ms (plain/typed), within the noise, so the sources stay as they are.
 
      The rest of the cost belongs to the Matrix look and to the larger page, so the WebKit job got a longer limit
      (section 7, item 6).
