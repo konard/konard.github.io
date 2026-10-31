@@ -165,17 +165,8 @@ Each one has a test that failed before the fix.
      | both fixes, without the registrations             | ~1770 ms  |
      | no custom frame at all                            | ~173 ms   |
 
-     The same diagnostic on macOS in CI (run 41241859169, one restyle of `/settings/` and the mean of 12 slider key
-     presses, motion off):
-
-     | Look                                      | Elements | Restyle | Key press |
-     | ----------------------------------------- | -------- | ------- | --------- |
-     | branch, Matrix (default), before the fix  | 1794     | 1680 ms | 2323 ms   |
-     | branch, Matrix (default), after the fix   | 1794     | 378 ms  | 443 ms    |
-     | branch, corner brackets (no custom frame) | 1606     | 206 ms  | 419 ms    |
-     | branch, Glass                             | 1487     | 191 ms  | 444 ms    |
-     | `main`, default look                      | 1353     | 107 ms  | 403 ms    |
-     | `main`, Matrix look                       | 1558     | 272 ms  | 403 ms    |
+     On macOS in CI the restyle went from 1680 ms to 378 ms (section 7, item 4). The page has 1794 elements on the
+     branch, against 1353 on `main` with its default look and 1558 with the Matrix look.
 
    - What is left: the custom frame still adds about 100 ms to a restyle in local WebKit and about 170 ms on macOS.
      `experiments/issue-45-ab-sheets.mjs` times sets of the generated sheets in turns (A, B, A, B…), so a busy machine
@@ -188,6 +179,14 @@ Each one has a test that failed before the fix.
    - A rejected variant: one set of unitless numbers on the root, multiplied by the scale on each element, inherits a
      third of the lengths but was slower (390 ms against 340 ms in the same A/B run): each element then works out
      its own lengths.
+   - Two more probes changed nothing beyond the noise:
+     - Dropping `--fx-scale`, which only tells the checks the scale of an element: 269 ms with it, 298 ms without
+       (`experiments/issue-45-ab-sheets.mjs`, 3 pairs).
+     - `content-visibility: auto` on the settings groups and the samples: 254–330 ms with it, 268–321 ms without
+       (`EXTRA_CSS` of `experiments/issue-45-restyle-once.mjs`). WebKit still restyles the sections off screen.
+
+     The rest of the cost belongs to the Matrix look and to the larger page, so the WebKit job got a longer limit
+     (section 7, item 6).
    - `experiments/issue-45-frame-pixels.mjs` shot the element samples in 17 looks (every shape and line, widths,
      dashed and dotted edges, the corner layer below, line-only blocks) before and after. The shots are the same
      except about 19 anti-aliased pixels in the round and scoop shots.
@@ -278,8 +277,9 @@ After the Matrix universe look became the default, the `network-browsers (webkit
 navigation keys on every slider of the settings page. Every key press changes `<html>`, so every element of the page
 computes its style again.
 
-Local WebKitGTK closes the page of `/settings/` with the futuristic skin ("Target page, context or browser has been
-closed"), so every WebKit number below comes from the macOS runner of CI. Chromium served as a local proxy.
+Local WebKitGTK often closes the page of `/settings/` with the futuristic skin ("Target page, context or browser has been
+closed"), so every WebKit number below comes from the macOS runner of CI. The local WebKit numbers of glitch 8 in
+section 4 come from the restyles timed before the page closed. Chromium served as a local proxy.
 
 1. **Selector lists.** Every chosen corner shape and line had a rule `:root[attribute] :where(<44 framed selectors>)`. A
    browser cannot file a list inside one `:where()` under a class or a tag, so it tries that rule on every element. Fix
