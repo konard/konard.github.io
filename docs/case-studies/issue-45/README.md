@@ -165,7 +165,29 @@ Each one has a test that failed before the fix.
      | both fixes, without the registrations             | ~1770 ms  |
      | no custom frame at all                            | ~173 ms   |
 
-     MACOS_RESULTS
+     The same diagnostic on macOS in CI (run 41241859169, one restyle of `/settings/` and the mean of 12 slider key
+     presses, motion off):
+
+     | Look                                      | Elements | Restyle | Key press |
+     | ----------------------------------------- | -------- | ------- | --------- |
+     | branch, Matrix (default), before the fix  | 1794     | 1680 ms | 2323 ms   |
+     | branch, Matrix (default), after the fix   | 1794     | 378 ms  | 443 ms    |
+     | branch, corner brackets (no custom frame) | 1606     | 206 ms  | 419 ms    |
+     | branch, Glass                             | 1487     | 191 ms  | 444 ms    |
+     | `main`, default look                      | 1353     | 107 ms  | 403 ms    |
+     | `main`, Matrix look                       | 1558     | 272 ms  | 403 ms    |
+
+   - What is left: the custom frame still adds about 100 ms to a restyle in local WebKit and about 170 ms on macOS.
+     `experiments/issue-45-ab-sheets.mjs` times sets of the generated sheets in turns (A, B, A, B…), so a busy machine
+     slows them alike; the noise is about ±20 ms. Without the frame a restyle took 177–204 ms, with it 277–340 ms.
+     Leaving out the rules of the controls saved about 25 ms; making the 388 lengths not inherited (which breaks the
+     drawing, a probe only) about 50 ms; leaving out the outline and layers of the elements, or the corner layer,
+     nothing measurable. `experiments/issue-45-inherited-count-micro.mjs` shows the floor: 500 plain inherited
+     `<length>` values on the root cost about 26 ms on 1800 elements, whether or not an element declares a property of
+     its own. Every length is read by the framed elements, so they stay inherited.
+   - A rejected variant: one set of unitless numbers on the root, multiplied by the scale on each element, inherits a
+     third of the lengths but was slower (390 ms against 340 ms in the same A/B run): each element then works out
+     its own lengths.
    - `experiments/issue-45-frame-pixels.mjs` shot the element samples in 17 looks (every shape and line, widths,
      dashed and dotted edges, the corner layer below, line-only blocks) before and after. The shots are the same
      except about 19 anti-aliased pixels in the round and scoop shots.
