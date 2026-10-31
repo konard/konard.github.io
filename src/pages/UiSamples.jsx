@@ -41,7 +41,8 @@ export default function UiSamples() {
           ru: 'Все элементы с рамками в малом размере: меняйте рамку, углы и границы и ищите здесь огрехи.',
         })}
       </p>
-      <div className="ui-samples__grid">
+      {/* The samples count as outer panels though the settings panel holds them (issue #45). */}
+      <div className="ui-samples__grid" data-frame-root>
         <Sample name="panel">
           <article className="card ui-samples__panel">
             <h3>{t({ en: 'Outer panel', ru: 'Внешняя панель' })}</h3>

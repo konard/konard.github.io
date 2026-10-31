@@ -10,7 +10,8 @@ import SettingsPage from './pages/SettingsPage';
 import { applySettings } from './settings/apply';
 import { CSS_RULES, DEFAULTS, FIELDS } from './settings/schema';
 import { getSettings, setSettings } from './settings/store';
-import { BLOCKS, CONTROLS, CORNERS, EDGE_STYLES, framesCss, PANELS } from './skins.frames';
+import UiSamples from './pages/UiSamples';
+import { BLOCKS, CONTROLS, CORNERS, EDGE_STYLES, framesCss, INNER, PANELS } from './skins.frames';
 
 const read = (name) => readFileSync(join(__dirname, name), 'utf8');
 const FRAMES = framesCss();
@@ -50,6 +51,23 @@ describe('the same frame on every bordered element (issue #45)', () => {
     // A colour swatch is a child of its button, so neither the frame nor the fill paints over it.
     expect(read('pages/settings.css')).toContain('.palettes__chip .swatch {');
     expect(UI).toContain(':is(button, .button):has(> .swatch) {');
+  });
+
+  it('keeps the samples of the outer panels outer though they sit in a settings panel', () => {
+    // The samples are inside the .settings__group panel; before, that made every sample an inner block.
+    document.body.innerHTML = `
+      <section class="settings__group"><div data-frame-root>
+        <article class="card"><ul><li class="repo"></li></ul></article><ul><li class="stat"></li></ul>
+      </div><article class="preset"></article></section>
+      <article class="card"><ul><li class="repo"></li></ul></article>`;
+    const inner = (selector) => [...document.querySelectorAll(selector)].map((element) => element.matches(INNER));
+    expect(inner('.settings__group, .card, .stat, .preset')).toEqual([false, false, false, true, false]);
+    expect(inner('.repo')).toEqual([true, true]);
+    for (const part of [INNER.replace(':is(', ':where('), `[data-corner-blocks='line'] ${INNER}`])
+      expect(FRAMES).toContain(part);
+    document.body.innerHTML = '';
+    render(<UiSamples />);
+    expect(document.querySelector('.ui-samples [data-frame-root] .card')).not.toBeNull();
   });
 
   it('can draw inner blocks with a plain line instead', () => {

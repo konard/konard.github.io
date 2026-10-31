@@ -195,6 +195,15 @@ export const PANELS = [
   '.ui-preview__panel',
 ];
 
+/**
+ * Panels inside another panel: inner blocks in the block scale. Inside a
+ * `[data-frame-root]` element only the panels inside that element count, so the
+ * samples of the settings page show outer panels as outer though a settings
+ * panel holds them.
+ */
+const PANEL = `:is(${PANELS.join(', ')})`;
+export const INNER = `:is(${PANEL} ${PANEL}:not([data-frame-root] *), [data-frame-root] ${PANEL} ${PANEL})`;
+
 /** Small items of lists: blocks even when they are not inside a panel. */
 export const BLOCKS = ['.theory__formulas li', '.page-stats li', '.symbols__grid li'];
 
@@ -309,7 +318,7 @@ export function framesCss() {
   out.push(rule(`:where(${list(CONTROLS)})`, { '--fx-scale': 'var(--corner-control-scale, 0.35)' }));
   out.push(rule(`:where(${list(PANELS)})`, { '--fx-scale': '1' }));
   out.push(
-    rule(`:where(${list(PANELS)}) :where(${list(PANELS)}),\n:where(${list(BLOCKS)})`, {
+    rule(`${INNER.replace(':is(', ':where(')},\n:where(${list(BLOCKS)})`, {
       '--fx-scale': 'var(--corner-block-scale, 0.6)',
     }),
   );
@@ -387,7 +396,7 @@ export function framesCss() {
 function blockRules() {
   const line = `${FRAME}[data-corner-blocks='line']`;
   return [
-    rule(`${line} :is(${list(PANELS)}) :is(${list(PANELS)}),\n${line} :is(${list(BLOCKS)})`, {
+    rule(`${line} ${INNER},\n${line} :is(${list(BLOCKS)})`, {
       '--fx-frame-img': 'none',
       '--fx-frame-under': 'none',
       '--fx-frame-size': 'auto',
