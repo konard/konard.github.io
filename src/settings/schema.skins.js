@@ -55,6 +55,22 @@ const CORNER_LOOKS = {
   bl: ['square', 'gap', 14],
 };
 
+/** A width where −1 keeps the width of the line (applied by apply.js only when it is 0 or more). */
+const AUTO_WIDTH = {
+  unit: 'px',
+  hint: {
+    en: '−1 keeps the line width of the skin (bright lines twice as wide).',
+    ru: '−1 — толщина линий оформления (яркие линии вдвое толще).',
+  },
+};
+
+const SIDE_NAMES = [
+  ['top', 'Top edge', 'Верхний край'],
+  ['right', 'Right edge', 'Правый край'],
+  ['bottom', 'Bottom edge', 'Нижний край'],
+  ['left', 'Left edge', 'Левый край'],
+];
+
 /** Shape, line and size of one corner of the custom frame: `corner.tlShape` and so on. */
 const corner = (c) => {
   const [shape, line, size] = CORNER_LOOKS[c];
@@ -62,6 +78,7 @@ const corner = (c) => {
     select(`corner.${c}Shape`, shape, CORNER_SHAPES, { en: 'Shape', ru: 'Форма' }, { tab: c, tiles: 'shape' }),
     select(`corner.${c}Line`, line, CORNER_LINES, { en: 'Line', ru: 'Линия' }, { tab: c, tiles: 'line', corner: c }),
     range(`corner.${c}Size`, size, 0, 128, 1, { en: 'Size', ru: 'Размер' }, { tab: c, unit: 'px' }),
+    range(`corner.${c}Width`, -1, -1, 12, 0.5, { en: 'Line width', ru: 'Толщина линии' }, { tab: c, ...AUTO_WIDTH }),
   ];
 };
 
@@ -249,6 +266,41 @@ export const SKIN_SECTIONS = [
       range('future.frameOpacity', 0.95, 0, 1, 0.01, { en: 'Frame intensity', ru: 'Яркость рамки' }, { unit: '%' }),
       range('future.accentLength', 112, 0, 480, 4, { en: 'Accent length', ru: 'Длина акцента' }, { unit: 'px' }),
       range('future.accentOffset', 0, 0, 128, 1, { en: 'Accent offset', ru: 'Отступ акцента' }, { unit: 'px' }),
+      range(
+        'future.accentWidth',
+        -1,
+        -1,
+        12,
+        0.5,
+        { en: 'Accent width (thickness)', ru: 'Толщина акцента' },
+        {
+          unit: 'px',
+          hint: {
+            en: '−1 follows the accent strip width of the borders section.',
+            ru: '−1 — как толщина акцентной полосы в разделе рамок.',
+          },
+        },
+      ),
+      range(
+        'future.accentMax',
+        0.8,
+        0.05,
+        1,
+        0.05,
+        { en: 'Longest accent (share of the panel)', ru: 'Наибольшая длина акцента (доля панели)' },
+        { unit: '%' },
+      ),
+      select(
+        'future.accentStyle',
+        'fade',
+        [
+          option('fade', 'Fades out', 'Угасает'),
+          option('solid', 'Solid', 'Сплошной'),
+          option('center', 'Bright in the middle', 'Яркий в середине'),
+          option('glow', 'Glowing', 'Светящийся'),
+        ],
+        { en: 'Accent style', ru: 'Вид акцента' },
+      ),
       select(
         'future.font',
         'orbitron',
@@ -329,6 +381,74 @@ export const SKIN_SECTIONS = [
           option('line', 'Bright line', 'Яркая линия'),
         ],
         { en: 'Edges between the corners', ru: 'Края между углами' },
+      ),
+      select(
+        'corner.edgeStyle',
+        'solid',
+        [
+          option('solid', 'Solid', 'Сплошные'),
+          option('dashed', 'Dashed', 'Штриховые'),
+          option('dotted', 'Dotted', 'Пунктирные'),
+        ],
+        { en: 'Style of the edges', ru: 'Стиль краёв' },
+        {
+          hint: {
+            en: 'Buttons and fields follow the border style of the controls.',
+            ru: 'Кнопки и поля следуют стилю рамки элементов.',
+          },
+        },
+      ),
+      ...SIDE_NAMES.map(([side, en, ru]) =>
+        range(`corner.${side}Width`, -1, -1, 12, 0.5, { en: `${en}: width`, ru: `${ru}: толщина` }, AUTO_WIDTH),
+      ),
+      select(
+        'corner.layer',
+        'top',
+        [
+          option(
+            'top',
+            'Above the content (covers the bars of positions)',
+            'Над содержимым (закрывает полосы должностей)',
+          ),
+          option('below', 'Below the content', 'Под содержимым'),
+        ],
+        { en: 'Corners and edges', ru: 'Углы и края' },
+      ),
+      select(
+        'corner.blocks',
+        'frame',
+        [
+          option('frame', 'The same frame, smaller', 'Та же рамка, меньше'),
+          option('line', 'A plain line', 'Простая линия'),
+        ],
+        { en: 'Inner blocks', ru: 'Внутренние блоки' },
+      ),
+      range(
+        'corner.blockScale',
+        0.6,
+        0.1,
+        1,
+        0.05,
+        { en: 'Corners of inner blocks', ru: 'Углы внутренних блоков' },
+        { unit: '×', when: (s) => s['corner.blocks'] === 'frame' },
+      ),
+      select(
+        'corner.controls',
+        'frame',
+        [
+          option('frame', 'The same frame, smaller', 'Та же рамка, меньше'),
+          option('border', 'Their own border', 'Своя рамка'),
+        ],
+        { en: 'Buttons and fields', ru: 'Кнопки и поля' },
+      ),
+      range(
+        'corner.controlScale',
+        0.35,
+        0.1,
+        1,
+        0.05,
+        { en: 'Corners of buttons and fields', ru: 'Углы кнопок и полей' },
+        { unit: '×', when: (s) => s['corner.controls'] === 'frame' },
       ),
       ...CORNERS.flatMap(corner),
     ],

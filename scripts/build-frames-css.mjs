@@ -1,7 +1,13 @@
-// Writes src/skins.frames.css from src/skins.frames.js (issue #15).
+// Writes src/skins.frames.css and src/skins.frames.corners.css from
+// src/skins.frames.js (issues #15 and #45).
 import { writeFileSync } from 'node:fs';
-import { framesCss } from '../src/skins.frames.js';
+import { cornersCss, framesCss } from '../src/skins.frames.js';
 
-const out = new URL('../src/skins.frames.css', import.meta.url);
-writeFileSync(out, framesCss());
-console.log(`Wrote ${out.pathname}`);
+for (const [name, css] of [
+  ['skins.frames.css', framesCss()],
+  ['skins.frames.corners.css', cornersCss()],
+]) {
+  const out = new URL(`../src/${name}`, import.meta.url);
+  writeFileSync(out, css);
+  console.log(`Wrote ${out.pathname}`);
+}

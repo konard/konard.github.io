@@ -1,10 +1,12 @@
 import { useEffect, useId, useLayoutEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useLang } from '../i18n/prefs';
+import { COLOR_PALETTES } from './colorPalettes';
 import { focusSlider, numericKey } from './numericKeys';
 
-/** Owned hex field and pointer RGB chooser. Incomplete drafts never enter the
- * store. Only an open chooser subscribes to outside/focus/viewport events.
+/** Owned hex field and pointer RGB chooser with palettes of ready colours
+ * (issue #45). Incomplete drafts never enter the store. Only an open chooser
+ * subscribes to outside/focus/viewport events.
  */
 export default function ColorInput({ value, onChange, label = '', ...props }) {
   const [draft, setDraft] = useState(null);
@@ -23,7 +25,8 @@ export default function ColorInput({ value, onChange, label = '', ...props }) {
         position: 'fixed',
         width,
         left: Math.max(8, Math.min(rect.left, window.innerWidth - width - 8)),
-        top: Math.max(8, Math.min(rect.bottom + 4, window.innerHeight - 250)),
+        // The palettes make the chooser taller, so it is kept on the screen by its own height.
+        top: Math.max(8, Math.min(rect.bottom + 4, window.innerHeight - (popup.current?.offsetHeight || 250) - 8)),
         maxHeight: Math.max(80, window.innerHeight - 16),
       });
     };
@@ -58,11 +61,13 @@ export default function ColorInput({ value, onChange, label = '', ...props }) {
     };
   }, [open]);
   const channels = [1, 3, 5].map((start) => parseInt(value.slice(start, start + 2), 16));
-  const update = (index, channel) => {
-    const next = channels.map((current, i) => (i === index ? channel : current));
-    const hex = '#' + next.map((current) => current.toString(16).padStart(2, '0')).join('');
+  const choose = (hex) => {
     setDraft(null);
     onChange({ target: { value: hex }, currentTarget: { value: hex } });
+  };
+  const update = (index, channel) => {
+    const next = channels.map((current, i) => (i === index ? channel : current));
+    choose('#' + next.map((current) => current.toString(16).padStart(2, '0')).join(''));
   };
   return (
     <span className="ui-color">
@@ -130,6 +135,25 @@ export default function ColorInput({ value, onChange, label = '', ...props }) {
                 />
                 <output>{channels[index]}</output>
               </label>
+            ))}
+            {COLOR_PALETTES.map((palette) => (
+              <div key={palette.id} className="ui-color__palette" role="group" aria-label={t(palette.name)}>
+                <span className="ui-color__palette-name">{t(palette.name)}</span>
+                {palette.colors.map(([hex, name]) => (
+                  <button
+                    key={hex}
+                    type="button"
+                    className="ui-color__chip"
+                    style={{ '--chip': hex }}
+                    title={`${t(name)} ${hex}`}
+                    aria-label={`${t(name)} ${hex}`}
+                    aria-pressed={value.toLowerCase() === hex}
+                    onClick={() => choose(hex)}
+                  >
+                    <i className="swatch" aria-hidden="true" />
+                  </button>
+                ))}
+              </div>
             ))}
           </div>,
           document.body,

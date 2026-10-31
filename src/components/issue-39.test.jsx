@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import SourceLines from './SourceLines';
 import Layout from './Layout';
 import { applySettings, normalize } from '../settings/apply';
-import { DEFAULTS, RULES } from '../settings/schema';
+import { DEFAULTS, PREVIOUS_DEFAULTS, RULES } from '../settings/schema';
 import { MATERIAL_PRESETS } from '../settings/schema.materials';
 import { applyLook } from '../settings/presets';
 
@@ -35,8 +35,8 @@ describe('issue 39 regressions', () => {
     expect(container.querySelector('footer #data-sources')).not.toBeNull();
   });
 
-  it('uses the exact defaults pictured in the issue', () => {
-    expect(DEFAULTS).toMatchObject({
+  it('uses the exact defaults pictured in the issue (kept by the Glass universe preset since issue #45)', () => {
+    expect({ ...DEFAULTS, ...PREVIOUS_DEFAULTS }).toMatchObject({
       'nebula.twinkle': 1.9,
       'nebula.zoom': 0.55,
       'nebula.starSize': 0.5,

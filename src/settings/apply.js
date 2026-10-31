@@ -55,6 +55,11 @@ export function applySettings(root, rules, settings) {
       );
     });
   });
+  /* Widths where −1 follows the skin (issue #45): without the variable the stylesheets fall back to it. */
+  ['tl', 'tr', 'br', 'bl', 'top', 'right', 'bottom', 'left'].forEach(function (part) {
+    if (!(settings['corner.' + part + 'Width'] >= 0)) root.style.removeProperty('--corner-' + part + '-width');
+  });
+  if (!(settings['future.accentWidth'] >= 0)) root.style.removeProperty('--future-accent-width');
   ['accent', 'accent2'].forEach(function (name) {
     var hex = settings['ui.' + name];
     if (typeof hex === 'string')

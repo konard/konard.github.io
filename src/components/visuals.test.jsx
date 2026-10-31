@@ -8,7 +8,7 @@ import { isReal } from '../links/configurations';
 import { resetSettings, setSettings } from '../settings/store';
 import { columnsFor, driftAt, paddingFor, pickerFor, startRain } from '../visuals/rain';
 import Cosmos, { moves, nebulaOptions, rainOptions } from './Cosmos';
-import { DEFAULTS } from '../settings/schema';
+import { DEFAULTS, PREVIOUS_DEFAULTS } from '../settings/schema';
 import HabrCards from './HabrCards';
 import ProblemSolvingDiagram, {
   BOTTOM,
@@ -201,8 +201,9 @@ describe('background follows the settings at once (issue #13)', () => {
     expect(moves('off', false)).toBe(false);
   });
 
-  it('turns the default settings (issue #15) into the options of the layers', () => {
-    expect(rainOptions(DEFAULTS, true)).toMatchObject({
+  it('turns the issue #15 settings (the Glass universe preset since issue #45) into the options of the layers', () => {
+    const BEFORE_45 = { ...DEFAULTS, ...PREVIOUS_DEFAULTS };
+    expect(rainOptions(BEFORE_45, true)).toMatchObject({
       grid: 48,
       period: 109000,
       step: 105,
@@ -216,8 +217,8 @@ describe('background follows the settings at once (issue #13)', () => {
       restart: 0.05,
       visible: true,
     });
-    expect(rainOptions(DEFAULTS, false).period).toBe(0);
-    expect(nebulaOptions(DEFAULTS)).toEqual({
+    expect(rainOptions(BEFORE_45, false).period).toBe(0);
+    expect(nebulaOptions(BEFORE_45)).toEqual({
       scale: 0.6,
       fps: 24,
       speed: 0.5,
@@ -235,6 +236,21 @@ describe('background follows the settings at once (issue #13)', () => {
       color2: '#086b85',
       color3: '#a63380',
       color4: '#e6d9ff',
+    });
+  });
+
+  it('turns the default settings (issue #45) into the options of the layers', () => {
+    expect(rainOptions(DEFAULTS, true)).toMatchObject({ glow: 10, glowColor: '#00ff66', density: 0.8 });
+    expect(nebulaOptions(DEFAULTS)).toMatchObject({
+      scale: 1,
+      gas: 0.5,
+      hue: -100,
+      stars: 3.2,
+      starBrightness: 1.15,
+      twinkle: 1.7,
+      vignette: 0.25,
+      zoom: 0.5,
+      starColor: '#17de1d',
     });
   });
 

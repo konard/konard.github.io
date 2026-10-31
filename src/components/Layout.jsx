@@ -17,6 +17,7 @@ import '../App.media.css';
 import '../ui.css';
 import '../skins.materials.css';
 import '../panels.css';
+import '../ui.samples.css';
 import { useEffect, useRef } from 'react';
 import { motto } from '../data/motto';
 import { centreCurrent, watchEdges } from './edges';

@@ -8,12 +8,14 @@
    A panel is painted with four groups of background layers, top to bottom:
    the light sweep on hover, the accent bar, the frame (brackets, diagonals,
    lines) and the surface (two layers). Clip-path cuts the corners of the
-   chamfered frames. No ::before / ::after is used, so the decorations the
-   panels already have (the accent strip of a stat, the colour bar of a
-   position) keep working. */
+   chamfered frames. No ::before is used, so the decorations the panels
+   already have (the accent strip of a stat, the colour bar of a position)
+   keep working; only the corner layer of the custom frame (issue #45) uses
+   ::after, to draw the frame over those decorations. */
 
 @import './skins.palettes.css';
 @import './skins.frames.css';
+@import './skins.frames.corners.css';
 
 :root[data-skin-name='futuristic'] {
   /* The palette (skins.palettes.css) becomes the colours of the whole site. */
@@ -79,7 +81,9 @@
      variants override its start; the visitor's offset is added afterwards. */
   --fx-bar-start: var(--fx-k);
   --fx-bar-img: linear-gradient(90deg, var(--fx-line), rgb(var(--accent-rgb) / 0));
-  --fx-bar-size: min(80%, var(--future-accent-length, 112px)) var(--ui-accent-size, 2px);
+  /* Thickness: its own setting (apply.js, issue #45) or the accent strip width. */
+  --fx-bar-w: var(--future-accent-width, var(--ui-accent-size, 2px));
+  --fx-bar-size: min(calc(var(--future-accent-max, 0.8) * 100%), var(--future-accent-length, 112px)) var(--fx-bar-w);
   --fx-bar-pos: left calc(var(--fx-bar-start) + var(--future-accent-offset, 0px)) top 0;
 
   /* Light sweep on hover (only with "Panels on hover: light sweep"). */
@@ -189,6 +193,25 @@
   --fx-frame-img: none;
   --fx-frame-size: auto;
   --fx-frame-pos: 0 0;
+}
+
+:root[data-skin-name='futuristic'][data-future-accent-style='solid'] {
+  --fx-bar-img: var(--fx-l);
+}
+
+:root[data-skin-name='futuristic'][data-future-accent-style='center'] {
+  --fx-bar-img: linear-gradient(90deg, rgb(var(--accent-rgb) / 0), var(--fx-line), rgb(var(--accent-rgb) / 0));
+}
+
+/* A bright line with a halo under it, three times as tall. */
+:root[data-skin-name='futuristic'][data-future-accent-style='glow'] {
+  --fx-bar-img: linear-gradient(
+    var(--fx-line) 0 33.4%,
+    rgb(var(--accent-rgb) / 0.35) 33.4%,
+    rgb(var(--accent-rgb) / 0) 100%
+  );
+  --fx-bar-size: min(calc(var(--future-accent-max, 0.8) * 100%), var(--future-accent-length, 112px))
+    calc(var(--fx-bar-w) * 3);
 }
 
 :root[data-skin-name='futuristic'][data-future-accent-bar='false'] {
@@ -306,7 +329,9 @@
   border: var(--fx-border-w, var(--future-border, 1px)) solid var(--fx-edge);
   border-radius: 0;
   background-color: transparent;
-  background-image: var(--fx-sweep-img), var(--fx-bar-img), var(--fx-frame-img), var(--fx-surface-img);
+  /* With the corner layer on top (issue #45) the frame is drawn by ::after instead. */
+  background-image:
+    var(--fx-sweep-img), var(--fx-bar-img), var(--fx-frame-under, var(--fx-frame-img)), var(--fx-surface-img);
   background-size:
     300% 100%,
     var(--fx-bar-size),
@@ -356,7 +381,16 @@
     .repo,
     .field-card,
     .stack__layer,
-    .settings__group
+    .settings__group,
+    .psd,
+    .version,
+    .theory__formulas li,
+    .symbols__grid li,
+    .network__panel,
+    .network__preview,
+    .link-card,
+    .preset,
+    .ui-preview__panel
   ):not(:has([data-tooltip-root])) {
   clip-path: var(--fx-clip);
 }
@@ -365,9 +399,14 @@
   border-left: 3px solid var(--accent-2);
 }
 
-/* Small items inside a panel get a plain line, not a second frame. */
-:root[data-skin-name='futuristic'] :is(.stack__layer, .page-card, .theory__hero) .repo,
-:root[data-skin-name='futuristic'] :is(.symbols__grid li, .theory__formulas li, .page-stats li) {
+/* Small items inside a panel get a plain line, not a second frame. The custom
+   frame draws them with the same corners in the block scale unless the inner
+   blocks are set to a line (issue #45, skins.frames.css). */
+:root[data-skin-name='futuristic']:not([data-future-frame='custom'])
+  :is(.stack__layer, .page-card, .theory__hero)
+  .repo,
+:root[data-skin-name='futuristic']:not([data-future-frame='custom'])
+  :is(.symbols__grid li, .theory__formulas li, .page-stats li) {
   --fx-frame-img: none;
   --fx-frame-size: auto;
   --fx-frame-pos: 0 0;
