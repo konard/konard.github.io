@@ -1,0 +1,125 @@
+network-browsers (firefox, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	﻿2026-10-31T17:07:13.2685109Z ##[group]Run npm run test:ui:issue39
+network-browsers (firefox, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:07:13.2685485Z ^[[36;1mnpm run test:ui:issue39^[[0m
+network-browsers (firefox, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:07:13.2706075Z shell: /usr/bin/bash -e {0}
+network-browsers (firefox, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:07:13.2706346Z env:
+network-browsers (firefox, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:07:13.2706607Z   GIT_CONFIG_COUNT: 1
+network-browsers (firefox, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:07:13.2706860Z   GIT_CONFIG_KEY_0: init.defaultBranch
+network-browsers (firefox, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:07:13.2707159Z   GIT_CONFIG_VALUE_0: main
+network-browsers (firefox, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:07:13.2707404Z   ENGINE: firefox
+network-browsers (firefox, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:07:13.2707689Z   CAPTURE_DIR: browser-results/screenshots/issue39
+network-browsers (firefox, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:07:13.2708016Z ##[endgroup]
+network-browsers (firefox, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:07:13.3776843Z 
+network-browsers (firefox, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:07:13.3777419Z > konard.github.io@0.1.0 test:ui:issue39
+network-browsers (firefox, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:07:13.3778682Z > node experiments/issue-39-browser.mjs && node experiments/issue-39-visual-review.mjs
+network-browsers (firefox, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:07:13.3779660Z 
+network-browsers (firefox, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:07:22.2276647Z node:internal/modules/run_main:107
+network-browsers (firefox, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:07:22.2277315Z     triggerUncaughtException(
+network-browsers (firefox, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:07:22.2277763Z     ^
+network-browsers (firefox, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:07:22.2277949Z 
+network-browsers (firefox, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:07:22.2278401Z AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+network-browsers (firefox, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:07:22.2280944Z + actual - expected
+network-browsers (firefox, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:07:22.2281171Z 
+network-browsers (firefox, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:07:22.2281313Z + 'futuristic'
+network-browsers (firefox, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:07:22.2281646Z - 'glass'
+network-browsers (firefox, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:07:22.2281839Z 
+network-browsers (firefox, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:07:22.2282773Z     at file:///home/runner/work/konard.github.io/konard.github.io/experiments/issue-39-browser.mjs:95:12 {
+network-browsers (firefox, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:07:22.2283700Z   generatedMessage: true,
+network-browsers (firefox, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:07:22.2284679Z   code: 'ERR_ASSERTION',
+network-browsers (firefox, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:07:22.2285099Z   actual: 'futuristic',
+network-browsers (firefox, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:07:22.2285487Z   expected: 'glass',
+network-browsers (firefox, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:07:22.2285918Z   operator: 'strictEqual',
+network-browsers (firefox, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:07:22.2286302Z   diff: 'simple'
+network-browsers (firefox, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:07:22.2286652Z }
+network-browsers (firefox, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:07:22.2286825Z 
+network-browsers (firefox, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:07:22.2287027Z Node.js v24.22.1
+network-browsers (firefox, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:07:22.2712005Z ##[error]Process completed with exit code 1.
+network-browsers (chromium, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	﻿2026-10-31T17:11:45.0889452Z ##[group]Run npm run test:ui:issue39
+network-browsers (chromium, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:11:45.0889829Z ^[[36;1mnpm run test:ui:issue39^[[0m
+network-browsers (chromium, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:11:45.0910327Z shell: /usr/bin/bash -e {0}
+network-browsers (chromium, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:11:45.0910597Z env:
+network-browsers (chromium, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:11:45.0910796Z   GIT_CONFIG_COUNT: 1
+network-browsers (chromium, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:11:45.0911044Z   GIT_CONFIG_KEY_0: init.defaultBranch
+network-browsers (chromium, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:11:45.0911329Z   GIT_CONFIG_VALUE_0: main
+network-browsers (chromium, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:11:45.0911571Z   ENGINE: chromium
+network-browsers (chromium, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:11:45.0911825Z   CAPTURE_DIR: browser-results/screenshots/issue39
+network-browsers (chromium, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:11:45.0912135Z ##[endgroup]
+network-browsers (chromium, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:11:45.1917228Z 
+network-browsers (chromium, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:11:45.1917926Z > konard.github.io@0.1.0 test:ui:issue39
+network-browsers (chromium, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:11:45.1919311Z > node experiments/issue-39-browser.mjs && node experiments/issue-39-visual-review.mjs
+network-browsers (chromium, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:11:45.1920025Z 
+network-browsers (chromium, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:11:53.1500410Z node:internal/modules/run_main:107
+network-browsers (chromium, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:11:53.1501148Z     triggerUncaughtException(
+network-browsers (chromium, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:11:53.1501644Z     ^
+network-browsers (chromium, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:11:53.1501826Z 
+network-browsers (chromium, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:11:53.1502376Z AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+network-browsers (chromium, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:11:53.1503194Z + actual - expected
+network-browsers (chromium, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:11:53.1503438Z 
+network-browsers (chromium, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:11:53.1503602Z + 'futuristic'
+network-browsers (chromium, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:11:53.1503969Z - 'glass'
+network-browsers (chromium, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:11:53.1504161Z 
+network-browsers (chromium, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:11:53.1504853Z     at file:///home/runner/work/konard.github.io/konard.github.io/experiments/issue-39-browser.mjs:95:12 {
+network-browsers (chromium, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:11:53.1505764Z   generatedMessage: true,
+network-browsers (chromium, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:11:53.1506197Z   code: 'ERR_ASSERTION',
+network-browsers (chromium, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:11:53.1506611Z   actual: 'futuristic',
+network-browsers (chromium, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:11:53.1507008Z   expected: 'glass',
+network-browsers (chromium, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:11:53.1507410Z   operator: 'strictEqual',
+network-browsers (chromium, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:11:53.1507822Z   diff: 'simple'
+network-browsers (chromium, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:11:53.1508430Z }
+network-browsers (chromium, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:11:53.1508627Z 
+network-browsers (chromium, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:11:53.1508790Z Node.js v24.22.1
+network-browsers (chromium, ubuntu-24.04)	Verify configurable controls, corners, materials, opacity and social embeds	2026-10-31T17:11:53.1950360Z ##[error]Process completed with exit code 1.
+pipeline-status	Verify every required outcome	﻿2026-10-31T17:17:02.8766396Z ##[group]Run node scripts/check-pipeline-status.mjs
+pipeline-status	Verify every required outcome	2026-10-31T17:17:02.8766876Z ^[[36;1mnode scripts/check-pipeline-status.mjs^[[0m
+pipeline-status	Verify every required outcome	2026-10-31T17:17:02.8789443Z shell: /usr/bin/bash -e {0}
+pipeline-status	Verify every required outcome	2026-10-31T17:17:02.8789740Z env:
+pipeline-status	Verify every required outcome	2026-10-31T17:17:02.8789951Z   GIT_CONFIG_COUNT: 1
+pipeline-status	Verify every required outcome	2026-10-31T17:17:02.8790202Z   GIT_CONFIG_KEY_0: init.defaultBranch
+pipeline-status	Verify every required outcome	2026-10-31T17:17:02.8790490Z   GIT_CONFIG_VALUE_0: main
+pipeline-status	Verify every required outcome	2026-10-31T17:17:02.8792182Z   NEEDS_JSON: {
+pipeline-status	Verify every required outcome	  "prepare": {
+pipeline-status	Verify every required outcome	    "result": "success",
+pipeline-status	Verify every required outcome	    "outputs": {
+pipeline-status	Verify every required outcome	      "code": "true",
+pipeline-status	Verify every required outcome	      "docs": "true"
+pipeline-status	Verify every required outcome	    }
+pipeline-status	Verify every required outcome	  },
+pipeline-status	Verify every required outcome	  "lint-workflows": {
+pipeline-status	Verify every required outcome	    "result": "success",
+pipeline-status	Verify every required outcome	    "outputs": {}
+pipeline-status	Verify every required outcome	  },
+pipeline-status	Verify every required outcome	  "checks": {
+pipeline-status	Verify every required outcome	    "result": "success",
+pipeline-status	Verify every required outcome	    "outputs": {}
+pipeline-status	Verify every required outcome	  },
+pipeline-status	Verify every required outcome	  "tooling": {
+pipeline-status	Verify every required outcome	    "result": "success",
+pipeline-status	Verify every required outcome	    "outputs": {}
+pipeline-status	Verify every required outcome	  },
+pipeline-status	Verify every required outcome	  "docs": {
+pipeline-status	Verify every required outcome	    "result": "success",
+pipeline-status	Verify every required outcome	    "outputs": {}
+pipeline-status	Verify every required outcome	  },
+pipeline-status	Verify every required outcome	  "codeql": {
+pipeline-status	Verify every required outcome	    "result": "success",
+pipeline-status	Verify every required outcome	    "outputs": {}
+pipeline-status	Verify every required outcome	  },
+pipeline-status	Verify every required outcome	  "network-browsers": {
+pipeline-status	Verify every required outcome	    "result": "failure",
+pipeline-status	Verify every required outcome	    "outputs": {}
+pipeline-status	Verify every required outcome	  },
+pipeline-status	Verify every required outcome	  "test": {
+pipeline-status	Verify every required outcome	    "result": "skipped",
+pipeline-status	Verify every required outcome	    "outputs": {}
+pipeline-status	Verify every required outcome	  },
+pipeline-status	Verify every required outcome	  "deploy": {
+pipeline-status	Verify every required outcome	    "result": "skipped",
+pipeline-status	Verify every required outcome	    "outputs": {}
+pipeline-status	Verify every required outcome	  }
+pipeline-status	Verify every required outcome	}
+pipeline-status	Verify every required outcome	2026-10-31T17:17:02.8793969Z   CODE_CHANGED: true
+pipeline-status	Verify every required outcome	2026-10-31T17:17:02.8794199Z   DOCS_CHANGED: true
+pipeline-status	Verify every required outcome	2026-10-31T17:17:02.8794418Z   SHOULD_DEPLOY: false
+pipeline-status	Verify every required outcome	2026-10-31T17:17:02.8794817Z ##[endgroup]
+pipeline-status	Verify every required outcome	2026-10-31T17:17:02.9338681Z ##[notice]deploy skipped by its documented event/change condition.
+pipeline-status	Verify every required outcome	2026-10-31T17:17:02.9350279Z Pipeline failed: test: skipped; network-browsers: failure
+pipeline-status	Verify every required outcome	2026-10-31T17:17:02.9390504Z ##[error]Process completed with exit code 1.

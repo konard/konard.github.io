@@ -1,0 +1,845 @@
+﻿2026-10-31T17:46:25.1101160Z Current runner version: '2.338.2'
+2026-10-31T17:46:25.1131240Z ##[group]Runner Image Provisioner
+2026-10-31T17:46:25.1132480Z Hosted Compute Agent
+2026-10-31T17:46:25.1133320Z Version: 20260819.586
+2026-10-31T17:46:25.1134260Z Commit: 3cc4a88dfa507ef76119ad1bb3eccc6378bb2b76
+2026-10-31T17:46:25.1135340Z Build Date: 2026-08-18T23:20:18Z
+2026-10-31T17:46:25.1136340Z Worker ID: {60cf533a-b52f-498d-8d53-607f7f0152b7}
+2026-10-31T17:46:25.1137380Z Azure Region: westus
+2026-10-31T17:46:25.1138190Z ##[endgroup]
+2026-10-31T17:46:25.1140810Z ##[group]Operating System
+2026-10-31T17:46:25.1141850Z macOS
+2026-10-31T17:46:25.1142630Z 15.7.9
+2026-10-31T17:46:25.1143340Z 24G830
+2026-10-31T17:46:25.1144120Z ##[endgroup]
+2026-10-31T17:46:25.1144930Z ##[group]Runner Image
+2026-10-31T17:46:25.1145800Z Image: macos-15
+2026-10-31T17:46:25.1146610Z Version: 20260824.0482.1
+2026-10-31T17:46:25.1148860Z Included Software: https://github.com/actions/runner-images/blob/macos-15/20260824.0482/images/macos/macos-15-Readme.md
+2026-10-31T17:46:25.1151610Z Image Release: https://github.com/actions/runner-images/releases/tag/macos-15%2F20260824.0482
+2026-10-31T17:46:25.1153140Z ##[endgroup]
+2026-10-31T17:46:25.1155250Z ##[group]GITHUB_TOKEN Permissions
+2026-10-31T17:46:25.1158170Z Contents: read
+2026-10-31T17:46:25.1159020Z Metadata: read
+2026-10-31T17:46:25.1159820Z ##[endgroup]
+2026-10-31T17:46:25.1162910Z Secret source: Actions
+2026-10-31T17:46:25.1164290Z Cache mode: write
+2026-10-31T17:46:25.1165540Z Prepare workflow directory
+2026-10-31T17:46:25.1903300Z Prepare all required actions
+2026-10-31T17:46:25.1965920Z Getting action download info
+2026-10-31T17:46:25.6445890Z Download action repository 'actions/checkout@v7' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+2026-10-31T17:46:25.8372890Z Download action repository 'actions/setup-node@v7' (SHA:949feb2413d6458794dcd2491c4babbbce0c15c1)
+2026-10-31T17:46:26.6337390Z Complete job name: network-browsers (webkit, macos-15-intel)
+2026-10-31T17:46:26.7586460Z ##[group]Run actions/checkout@v7
+2026-10-31T17:46:26.7588150Z with:
+2026-10-31T17:46:26.7588910Z   persist-credentials: false
+2026-10-31T17:46:26.7589810Z   repository: konard/konard.github.io
+2026-10-31T17:46:26.7597290Z   token: ***
+2026-10-31T17:46:26.7598060Z   ssh-strict: true
+2026-10-31T17:46:26.7599000Z   ssh-user: git
+2026-10-31T17:46:26.7600070Z   clean: true
+2026-10-31T17:46:26.7601140Z   sparse-checkout-cone-mode: true
+2026-10-31T17:46:26.7602250Z   fetch-depth: 1
+2026-10-31T17:46:26.7603070Z   fetch-tags: false
+2026-10-31T17:46:26.7603850Z   show-progress: true
+2026-10-31T17:46:26.7604640Z   lfs: false
+2026-10-31T17:46:26.7605410Z   submodules: false
+2026-10-31T17:46:26.7606240Z   set-safe-directory: true
+2026-10-31T17:46:26.7607110Z   allow-unsafe-pr-checkout: false
+2026-10-31T17:46:26.7609030Z env:
+2026-10-31T17:46:26.7609740Z   GIT_CONFIG_COUNT: 1
+2026-10-31T17:46:26.7610650Z   GIT_CONFIG_KEY_0: init.defaultBranch
+2026-10-31T17:46:26.7612270Z   GIT_CONFIG_VALUE_0: main
+2026-10-31T17:46:26.7613330Z   ENGINE: webkit
+2026-10-31T17:46:26.7614200Z ##[endgroup]
+2026-10-31T17:46:27.9195110Z Syncing repository: konard/konard.github.io
+2026-10-31T17:46:27.9199730Z ##[group]Getting Git version info
+2026-10-31T17:46:27.9201830Z Working directory is '/Users/runner/work/konard.github.io/konard.github.io'
+2026-10-31T17:46:27.9203920Z [command]/usr/local/bin/git version
+2026-10-31T17:46:27.9205090Z git version 2.55.0
+2026-10-31T17:46:27.9208350Z ##[endgroup]
+2026-10-31T17:46:27.9215300Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/22e25d8d-49dc-4e7f-9a2e-ceba86bb934e/.gitconfig'
+2026-10-31T17:46:27.9218820Z Temporarily overriding HOME='/Users/runner/work/_temp/22e25d8d-49dc-4e7f-9a2e-ceba86bb934e' before making global git config changes
+2026-10-31T17:46:27.9222260Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-31T17:46:27.9225540Z [command]/usr/local/bin/git config --global --add safe.directory /Users/runner/work/konard.github.io/konard.github.io
+2026-10-31T17:46:27.9229950Z Deleting the contents of '/Users/runner/work/konard.github.io/konard.github.io'
+2026-10-31T17:46:27.9233330Z ##[group]Determining repository object format
+2026-10-31T17:46:27.9235220Z ##[endgroup]
+2026-10-31T17:46:27.9236680Z ##[group]Initializing the repository
+2026-10-31T17:46:27.9238610Z [command]/usr/local/bin/git init /Users/runner/work/konard.github.io/konard.github.io
+2026-10-31T17:46:27.9241320Z Initialized empty Git repository in /Users/runner/work/konard.github.io/konard.github.io/.git/
+2026-10-31T17:46:27.9245440Z [command]/usr/local/bin/git remote add origin https://github.com/konard/konard.github.io
+2026-10-31T17:46:27.9249240Z ##[endgroup]
+2026-10-31T17:46:27.9250800Z ##[group]Disabling automatic garbage collection
+2026-10-31T17:46:27.9252170Z [command]/usr/local/bin/git config --local gc.auto 0
+2026-10-31T17:46:27.9254990Z ##[endgroup]
+2026-10-31T17:46:27.9256240Z ##[group]Setting up auth
+2026-10-31T17:46:27.9257210Z Removing SSH command configuration
+2026-10-31T17:46:27.9258760Z [command]/usr/local/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-31T17:46:28.0573200Z [command]/usr/local/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-31T17:46:28.1721110Z Removing HTTP extra header
+2026-10-31T17:46:28.1749470Z [command]/usr/local/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-31T17:46:28.1851070Z [command]/usr/local/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-31T17:46:28.3611760Z Removing includeIf entries pointing to credentials config files
+2026-10-31T17:46:28.3624750Z [command]/usr/local/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-31T17:46:28.3743170Z [command]/usr/local/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-31T17:46:28.5219300Z [command]/usr/local/bin/git config --file /Users/runner/work/_temp/git-credentials-893948ff-c9aa-4724-9865-a1a95fb2ce48.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-31T17:46:28.5330750Z [command]/usr/local/bin/git config --local includeIf.gitdir:/Users/runner/work/konard.github.io/konard.github.io/.git.path /Users/runner/work/_temp/git-credentials-893948ff-c9aa-4724-9865-a1a95fb2ce48.config
+2026-10-31T17:46:28.5435680Z [command]/usr/local/bin/git config --local includeIf.gitdir:/Users/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path /Users/runner/work/_temp/git-credentials-893948ff-c9aa-4724-9865-a1a95fb2ce48.config
+2026-10-31T17:46:28.5585100Z [command]/usr/local/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-893948ff-c9aa-4724-9865-a1a95fb2ce48.config
+2026-10-31T17:46:28.5666270Z [command]/usr/local/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-893948ff-c9aa-4724-9865-a1a95fb2ce48.config
+2026-10-31T17:46:28.5765970Z ##[endgroup]
+2026-10-31T17:46:28.5769970Z ##[group]Fetching the repository
+2026-10-31T17:46:28.5775880Z [command]/usr/local/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +717159ca713775aa22204e7e82d18290769e5b31:refs/remotes/pull/46/merge
+2026-10-31T17:46:36.6615430Z From https://github.com/konard/konard.github.io
+2026-10-31T17:46:36.6926960Z  * [new ref]         717159ca713775aa22204e7e82d18290769e5b31 -> pull/46/merge
+2026-10-31T17:46:36.7029180Z ##[endgroup]
+2026-10-31T17:46:36.7061510Z ##[group]Determining the checkout info
+2026-10-31T17:46:36.7302210Z ##[endgroup]
+2026-10-31T17:46:36.7784700Z [command]/usr/local/bin/git sparse-checkout disable
+2026-10-31T17:46:36.7905940Z [command]/usr/local/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-31T17:46:36.8117790Z ##[group]Checking out the ref
+2026-10-31T17:46:36.8205270Z [command]/usr/local/bin/git checkout --progress --force refs/remotes/pull/46/merge
+2026-10-31T17:46:37.7928430Z Updating files:  15% (620/4121)
+2026-10-31T17:46:37.8111400Z Updating files:  16% (660/4121)
+2026-10-31T17:46:37.8238960Z Updating files:  17% (701/4121)
+2026-10-31T17:46:37.8689380Z Updating files:  18% (742/4121)
+2026-10-31T17:46:38.0216500Z Updating files:  19% (783/4121)
+2026-10-31T17:46:38.0219440Z Updating files:  20% (825/4121)
+2026-10-31T17:46:38.0247940Z Updating files:  21% (866/4121)
+2026-10-31T17:46:38.0251320Z Updating files:  22% (907/4121)
+2026-10-31T17:46:38.0251890Z Updating files:  23% (948/4121)
+2026-10-31T17:46:38.5161830Z Updating files:  24% (990/4121)
+2026-10-31T17:46:38.5629810Z Updating files:  25% (1031/4121)
+2026-10-31T17:46:38.6020480Z Updating files:  26% (1072/4121)
+2026-10-31T17:46:38.6349440Z Updating files:  27% (1113/4121)
+2026-10-31T17:46:38.6761890Z Updating files:  28% (1154/4121)
+2026-10-31T17:46:38.6857440Z Updating files:  29% (1196/4121)
+2026-10-31T17:46:38.7305990Z Updating files:  29% (1206/4121)
+2026-10-31T17:46:38.7840920Z Updating files:  30% (1237/4121)
+2026-10-31T17:46:38.8295260Z Updating files:  31% (1278/4121)
+2026-10-31T17:46:38.8848880Z Updating files:  32% (1319/4121)
+2026-10-31T17:46:38.9394900Z Updating files:  33% (1360/4121)
+2026-10-31T17:46:39.1739530Z Updating files:  34% (1402/4121)
+2026-10-31T17:46:39.2739950Z Updating files:  35% (1443/4121)
+2026-10-31T17:46:39.3774710Z Updating files:  36% (1484/4121)
+2026-10-31T17:46:39.4093040Z Updating files:  37% (1525/4121)
+2026-10-31T17:46:39.4557560Z Updating files:  38% (1566/4121)
+2026-10-31T17:46:39.5649100Z Updating files:  39% (1608/4121)
+2026-10-31T17:46:39.6191490Z Updating files:  40% (1649/4121)
+2026-10-31T17:46:39.6650140Z Updating files:  41% (1690/4121)
+2026-10-31T17:46:39.6874630Z Updating files:  42% (1731/4121)
+2026-10-31T17:46:39.7053500Z Updating files:  42% (1761/4121)
+2026-10-31T17:46:39.7641060Z Updating files:  43% (1773/4121)
+2026-10-31T17:46:39.8147700Z Updating files:  44% (1814/4121)
+2026-10-31T17:46:40.0431740Z Updating files:  45% (1855/4121)
+2026-10-31T17:46:40.0450490Z Updating files:  46% (1896/4121)
+2026-10-31T17:46:40.0713480Z Updating files:  47% (1937/4121)
+2026-10-31T17:46:40.2618090Z Updating files:  48% (1979/4121)
+2026-10-31T17:46:40.3394800Z Updating files:  49% (2020/4121)
+2026-10-31T17:46:40.5119310Z Updating files:  50% (2061/4121)
+2026-10-31T17:46:40.5505780Z Updating files:  51% (2102/4121)
+2026-10-31T17:46:40.7517740Z Updating files:  52% (2143/4121)
+2026-10-31T17:46:40.9923470Z Updating files:  53% (2185/4121)
+2026-10-31T17:46:41.0969720Z Updating files:  54% (2226/4121)
+2026-10-31T17:46:41.5820470Z Updating files:  55% (2267/4121)
+2026-10-31T17:46:41.6140970Z Updating files:  56% (2308/4121)
+2026-10-31T17:46:41.7116140Z Updating files:  57% (2349/4121)
+2026-10-31T17:46:41.7118080Z Updating files:  58% (2391/4121)
+2026-10-31T17:46:41.7123540Z Updating files:  58% (2429/4121)
+2026-10-31T17:46:41.8910700Z Updating files:  59% (2432/4121)
+2026-10-31T17:46:42.1059530Z Updating files:  60% (2473/4121)
+2026-10-31T17:46:42.3151500Z Updating files:  61% (2514/4121)
+2026-10-31T17:46:42.5375140Z Updating files:  62% (2556/4121)
+2026-10-31T17:46:42.5582570Z Updating files:  63% (2597/4121)
+2026-10-31T17:46:42.5871850Z Updating files:  64% (2638/4121)
+2026-10-31T17:46:42.5952980Z Updating files:  65% (2679/4121)
+2026-10-31T17:46:42.6044590Z Updating files:  66% (2720/4121)
+2026-10-31T17:46:42.6156940Z Updating files:  67% (2762/4121)
+2026-10-31T17:46:42.6248950Z Updating files:  68% (2803/4121)
+2026-10-31T17:46:42.6899530Z Updating files:  69% (2844/4121)
+2026-10-31T17:46:42.7296600Z Updating files:  70% (2885/4121)
+2026-10-31T17:46:42.7297660Z Updating files:  70% (2886/4121)
+2026-10-31T17:46:42.8294850Z Updating files:  71% (2926/4121)
+2026-10-31T17:46:42.8370190Z Updating files:  72% (2968/4121)
+2026-10-31T17:46:42.8370780Z Updating files:  73% (3009/4121)
+2026-10-31T17:46:42.8399750Z Updating files:  74% (3050/4121)
+2026-10-31T17:46:42.8451560Z Updating files:  75% (3091/4121)
+2026-10-31T17:46:42.8514310Z Updating files:  76% (3132/4121)
+2026-10-31T17:46:42.8745730Z Updating files:  77% (3174/4121)
+2026-10-31T17:46:42.8905490Z Updating files:  78% (3215/4121)
+2026-10-31T17:46:42.9931440Z Updating files:  79% (3256/4121)
+2026-10-31T17:46:43.0149890Z Updating files:  80% (3297/4121)
+2026-10-31T17:46:43.0164550Z Updating files:  81% (3339/4121)
+2026-10-31T17:46:43.0167960Z Updating files:  82% (3380/4121)
+2026-10-31T17:46:43.0170270Z Updating files:  83% (3421/4121)
+2026-10-31T17:46:43.0171700Z Updating files:  84% (3462/4121)
+2026-10-31T17:46:43.0839970Z Updating files:  85% (3503/4121)
+2026-10-31T17:46:43.0840650Z Updating files:  86% (3545/4121)
+2026-10-31T17:46:43.1564340Z Updating files:  87% (3586/4121)
+2026-10-31T17:46:43.7135050Z Updating files:  88% (3627/4121)
+2026-10-31T17:46:43.8091300Z Updating files:  88% (3657/4121)
+2026-10-31T17:46:43.8718250Z Updating files:  89% (3668/4121)
+2026-10-31T17:46:43.9339360Z Updating files:  90% (3709/4121)
+2026-10-31T17:46:43.9615280Z Updating files:  91% (3751/4121)
+2026-10-31T17:46:43.9775070Z Updating files:  92% (3792/4121)
+2026-10-31T17:46:44.2402650Z Updating files:  93% (3833/4121)
+2026-10-31T17:46:44.2938110Z Updating files:  94% (3874/4121)
+2026-10-31T17:46:44.3206500Z Updating files:  95% (3915/4121)
+2026-10-31T17:46:44.3924000Z Updating files:  96% (3957/4121)
+2026-10-31T17:46:44.4624530Z Updating files:  97% (3998/4121)
+2026-10-31T17:46:44.5015710Z Updating files:  98% (4039/4121)
+2026-10-31T17:46:44.5017560Z Updating files:  99% (4080/4121)
+2026-10-31T17:46:44.5019590Z Updating files: 100% (4121/4121)
+2026-10-31T17:46:44.5021500Z Updating files: 100% (4121/4121), done.
+2026-10-31T17:46:44.5023750Z HEAD is now at 717159c Merge 9e1aa8f9954a71b6897b11b987c0880e2752e67b into eeb905aafd3e03af1428be69adaf27849864f315
+2026-10-31T17:46:44.5043570Z ##[endgroup]
+2026-10-31T17:46:44.5407910Z [command]/usr/local/bin/git log -1 --format=%H
+2026-10-31T17:46:44.5465830Z 717159ca713775aa22204e7e82d18290769e5b31
+2026-10-31T17:46:44.5594980Z ##[group]Removing auth
+2026-10-31T17:46:44.5641810Z Removing SSH command configuration
+2026-10-31T17:46:44.5649440Z [command]/usr/local/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-31T17:46:44.5718650Z [command]/usr/local/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-31T17:46:44.7982540Z Removing HTTP extra header
+2026-10-31T17:46:44.7995630Z [command]/usr/local/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-31T17:46:44.8085780Z [command]/usr/local/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-31T17:46:45.0283050Z Removing includeIf entries pointing to credentials config files
+2026-10-31T17:46:45.0299730Z [command]/usr/local/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-31T17:46:45.0332970Z includeif.gitdir:/Users/runner/work/konard.github.io/konard.github.io/.git.path
+2026-10-31T17:46:45.0362530Z includeif.gitdir:/Users/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path
+2026-10-31T17:46:45.0363530Z includeif.gitdir:/github/workspace/.git.path
+2026-10-31T17:46:45.0392630Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-31T17:46:45.0447490Z [command]/usr/local/bin/git config --local --get-all includeif.gitdir:/Users/runner/work/konard.github.io/konard.github.io/.git.path
+2026-10-31T17:46:45.0503120Z /Users/runner/work/_temp/git-credentials-893948ff-c9aa-4724-9865-a1a95fb2ce48.config
+2026-10-31T17:46:45.0618070Z [command]/usr/local/bin/git config --local --unset includeif.gitdir:/Users/runner/work/konard.github.io/konard.github.io/.git.path \/Users\/runner\/work\/_temp\/git\-credentials\-893948ff\-c9aa\-4724\-9865\-a1a95fb2ce48\.config
+2026-10-31T17:46:45.0718990Z [command]/usr/local/bin/git config --local --get-all includeif.gitdir:/Users/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path
+2026-10-31T17:46:45.0741830Z /Users/runner/work/_temp/git-credentials-893948ff-c9aa-4724-9865-a1a95fb2ce48.config
+2026-10-31T17:46:45.0869930Z [command]/usr/local/bin/git config --local --unset includeif.gitdir:/Users/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path \/Users\/runner\/work\/_temp\/git\-credentials\-893948ff\-c9aa\-4724\-9865\-a1a95fb2ce48\.config
+2026-10-31T17:46:45.0930910Z [command]/usr/local/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-10-31T17:46:45.0954240Z /github/runner_temp/git-credentials-893948ff-c9aa-4724-9865-a1a95fb2ce48.config
+2026-10-31T17:46:45.1016120Z [command]/usr/local/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-893948ff\-c9aa\-4724\-9865\-a1a95fb2ce48\.config
+2026-10-31T17:46:45.1105470Z [command]/usr/local/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-10-31T17:46:45.1131760Z /github/runner_temp/git-credentials-893948ff-c9aa-4724-9865-a1a95fb2ce48.config
+2026-10-31T17:46:45.1292720Z [command]/usr/local/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-893948ff\-c9aa\-4724\-9865\-a1a95fb2ce48\.config
+2026-10-31T17:46:45.1357710Z [command]/usr/local/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-31T17:46:45.2977150Z Removing credentials config '/Users/runner/work/_temp/git-credentials-893948ff-c9aa-4724-9865-a1a95fb2ce48.config'
+2026-10-31T17:46:45.3008530Z ##[endgroup]
+2026-10-31T17:46:45.3343010Z ##[group]Run actions/setup-node@v7
+2026-10-31T17:46:45.3343500Z with:
+2026-10-31T17:46:45.3343820Z   node-version: 24.x
+2026-10-31T17:46:45.3344190Z   cache: npm
+2026-10-31T17:46:45.3344650Z   check-latest: false
+2026-10-31T17:46:45.3349570Z   token: ***
+2026-10-31T17:46:45.3349940Z   package-manager-cache: true
+2026-10-31T17:46:45.3350340Z env:
+2026-10-31T17:46:45.3350640Z   GIT_CONFIG_COUNT: 1
+2026-10-31T17:46:45.3351030Z   GIT_CONFIG_KEY_0: init.defaultBranch
+2026-10-31T17:46:45.3351490Z   GIT_CONFIG_VALUE_0: main
+2026-10-31T17:46:45.3351870Z   ENGINE: webkit
+2026-10-31T17:46:45.3352200Z ##[endgroup]
+2026-10-31T17:46:45.6877500Z Found in cache @ /Users/runner/hostedtoolcache/node/24.19.0/x64
+2026-10-31T17:46:45.8754650Z ##[group]Environment details
+2026-10-31T17:46:48.2672080Z node: v24.19.0
+2026-10-31T17:46:48.3253520Z npm: 11.17.0
+2026-10-31T17:46:48.3256260Z yarn: 1.22.22
+2026-10-31T17:46:48.3257270Z ##[endgroup]
+2026-10-31T17:46:48.3258310Z [command]/Users/runner/hostedtoolcache/node/24.19.0/x64/bin/npm config get cache
+2026-10-31T17:46:48.5368120Z /Users/runner/.npm
+2026-10-31T17:46:49.0634880Z Cache hit for: node-cache-macOS-x64-npm-d8cfaa222f5e7792d4d4805649c03196a307098f636c68b91559a659e7a42be3
+2026-10-31T17:46:50.8388490Z Received 0 of 49126057 (0.0%), 0.0 MBs/sec
+2026-10-31T17:46:51.8982400Z Received 20971520 of 49126057 (42.7%), 9.3 MBs/sec
+2026-10-31T17:46:52.5984520Z Received 49126057 of 49126057 (100.0%), 16.3 MBs/sec
+2026-10-31T17:46:52.6264090Z Cache Size: ~47 MB (49126057 B)
+2026-10-31T17:46:52.6775020Z [command]/usr/local/bin/gtar -xf /Users/runner/work/_temp/3d28866f-55b9-48df-9166-34fab55f2379/cache.tzst -P -C /Users/runner/work/konard.github.io/konard.github.io --delay-directory-restore --use-compress-program unzstd
+2026-10-31T17:46:54.0793460Z Cache restored successfully
+2026-10-31T17:46:54.0835760Z Cache restored from key: node-cache-macOS-x64-npm-d8cfaa222f5e7792d4d4805649c03196a307098f636c68b91559a659e7a42be3
+2026-10-31T17:46:54.1217340Z ##[group]Run npm ci
+2026-10-31T17:46:54.1217950Z [36;1mnpm ci[0m
+2026-10-31T17:46:54.1340280Z shell: /bin/bash -e {0}
+2026-10-31T17:46:54.1340910Z env:
+2026-10-31T17:46:54.1341420Z   GIT_CONFIG_COUNT: 1
+2026-10-31T17:46:54.1342860Z   GIT_CONFIG_KEY_0: init.defaultBranch
+2026-10-31T17:46:54.1343600Z   GIT_CONFIG_VALUE_0: main
+2026-10-31T17:46:54.1344490Z   ENGINE: webkit
+2026-10-31T17:46:54.1344890Z ##[endgroup]
+2026-10-31T17:47:12.9757560Z 
+2026-10-31T17:47:12.9794890Z > konard.github.io@0.1.0 prepare
+2026-10-31T17:47:12.9803070Z > husky
+2026-10-31T17:47:12.9929190Z 
+2026-10-31T17:47:13.3911890Z 
+2026-10-31T17:47:13.3946240Z added 530 packages, and audited 531 packages in 19s
+2026-10-31T17:47:13.3982800Z 
+2026-10-31T17:47:13.4013650Z 169 packages are looking for funding
+2026-10-31T17:47:13.4047150Z   run `npm fund` for details
+2026-10-31T17:47:13.4073470Z 
+2026-10-31T17:47:13.4130970Z found 0 vulnerabilities
+2026-10-31T17:47:13.6155610Z ##[group]Run npm run build
+2026-10-31T17:47:13.6156220Z [36;1mnpm run build[0m
+2026-10-31T17:47:13.6219170Z shell: /bin/bash -e {0}
+2026-10-31T17:47:13.6219670Z env:
+2026-10-31T17:47:13.6220080Z   GIT_CONFIG_COUNT: 1
+2026-10-31T17:47:13.6220570Z   GIT_CONFIG_KEY_0: init.defaultBranch
+2026-10-31T17:47:13.6221200Z   GIT_CONFIG_VALUE_0: main
+2026-10-31T17:47:13.6221680Z   ENGINE: webkit
+2026-10-31T17:47:13.6222530Z ##[endgroup]
+2026-10-31T17:47:13.8988350Z 
+2026-10-31T17:47:13.9031900Z > konard.github.io@0.1.0 build
+2026-10-31T17:47:13.9078950Z > vite build
+2026-10-31T17:47:13.9110510Z 
+2026-10-31T17:47:14.3319030Z [36mvite v8.3.5 [32mbuilding client environment for production...[36m[39m
+2026-10-31T17:47:14.3544100Z transforming...
+2026-10-31T17:47:14.6900290Z ✓ 217 modules transformed.
+2026-10-31T17:47:14.8831210Z rendering chunks...
+2026-10-31T17:47:15.3765380Z computing gzip size...
+2026-10-31T17:47:15.4175740Z build/build-info.json                                           0.05 kB │ gzip:   0.07 kB
+2026-10-31T17:47:15.5124580Z build/assets/orbitron-latin-700-normal-4jsRXGGJ.woff2           6.52 kB
+2026-10-31T17:47:15.5131240Z build/assets/orbitron-latin-500-normal-DQ2gt4P1.woff2           6.59 kB
+2026-10-31T17:47:15.5182900Z build/assets/orbitron-latin-700-normal-DmYOh-W9.woff            8.96 kB
+2026-10-31T17:47:15.5213830Z build/assets/orbitron-latin-500-normal-BCCupJ8c.woff            9.03 kB
+2026-10-31T17:47:15.5249040Z build/assets/chakra-petch-latin-400-normal-SafcrIr2.woff2       9.75 kB
+2026-10-31T17:47:15.5295370Z build/assets/chakra-petch-latin-600-normal-DVQm9bgb.woff2       9.96 kB
+2026-10-31T17:47:15.5445070Z build/assets/share-tech-mono-latin-400-normal-15MgdvEM.woff    10.23 kB
+2026-10-31T17:47:15.5487930Z build/assets/electrolize-latin-400-normal-DH2aMH81.woff        11.78 kB
+2026-10-31T17:47:15.5521220Z build/assets/chakra-petch-latin-400-normal-D7EtbySE.woff       13.16 kB
+2026-10-31T17:47:15.5562410Z build/assets/chakra-petch-latin-600-normal-DQKfcdKo.woff       13.43 kB
+2026-10-31T17:47:15.5586830Z build/assets/share-tech-mono-latin-400-normal-CCqdbj5z.woff2   13.50 kB
+2026-10-31T17:47:15.5591830Z build/blog/index.html                                          14.17 kB │ gzip:   4.20 kB
+2026-10-31T17:47:15.5601680Z build/cv/index.html                                            14.17 kB │ gzip:   4.23 kB
+2026-10-31T17:47:15.5673640Z build/art/index.html                                           14.43 kB │ gzip:   4.26 kB
+2026-10-31T17:47:15.5708860Z build/repositories/index.html                                  14.43 kB │ gzip:   4.25 kB
+2026-10-31T17:47:15.5870170Z build/settings/index.html                                      14.48 kB │ gzip:   4.24 kB
+2026-10-31T17:47:15.5924980Z build/associative/index.html                                   14.50 kB │ gzip:   4.27 kB
+2026-10-31T17:47:15.5934430Z build/experience/index.html                                    14.55 kB │ gzip:   4.27 kB
+2026-10-31T17:47:15.5962560Z build/network/index.html                                       14.55 kB │ gzip:   4.32 kB
+2026-10-31T17:47:15.6026960Z build/index.html                                               14.65 kB │ gzip:   4.37 kB
+2026-10-31T17:47:15.6277890Z build/research/index.html                                      14.70 kB │ gzip:   4.32 kB
+2026-10-31T17:47:15.6326250Z build/assets/electrolize-latin-400-normal-RRVgdOY_.woff2       16.68 kB
+2026-10-31T17:47:15.6329230Z build/assets/collision-worker-CstqQVzu.js                      36.83 kB
+2026-10-31T17:47:15.6332160Z build/assets/cv-B3XAbQb8.css                                    2.58 kB │ gzip:   1.07 kB
+2026-10-31T17:47:15.6334760Z build/assets/settings-5hXznQm5.css                              2.99 kB │ gzip:   1.09 kB
+2026-10-31T17:47:15.6339040Z build/assets/network-1D9RLs_v.css                               5.19 kB │ gzip:   1.51 kB
+2026-10-31T17:47:15.6344060Z build/assets/settings-BJ70-Jzm.css                              5.46 kB │ gzip:   1.54 kB
+2026-10-31T17:47:15.6354700Z build/assets/Layout-Cdc5cCFO.css                              171.43 kB │ gzip:  23.59 kB
+2026-10-31T17:47:15.6396580Z build/assets/plural-BPrnZ9qL.js                                 0.30 kB │ gzip:   0.25 kB │ map:     1.50 kB
+2026-10-31T17:47:15.6401160Z build/assets/format-CujfuUOf.js                                 0.45 kB │ gzip:   0.35 kB │ map:     1.75 kB
+2026-10-31T17:47:15.6410840Z build/assets/query-Bu3JBLNm.js                                  0.49 kB │ gzip:   0.34 kB │ map:     1.80 kB
+2026-10-31T17:47:15.6599050Z build/assets/Section-Bo7DTS0K.js                                0.50 kB │ gzip:   0.30 kB │ map:     1.30 kB
+2026-10-31T17:47:15.6818670Z build/assets/Glyph-WhgIrbDv.js                                  0.53 kB │ gzip:   0.37 kB │ map:     1.68 kB
+2026-10-31T17:47:15.6822100Z build/assets/beams-CINoQIqG.js                                  3.05 kB │ gzip:   1.54 kB │ map:    12.30 kB
+2026-10-31T17:47:15.6824990Z build/assets/experience-DI1AxsYY.js                             3.88 kB │ gzip:   1.69 kB │ map:    10.84 kB
+2026-10-31T17:47:15.6876130Z build/assets/Select-DzqTHR1P.js                                 4.25 kB │ gzip:   1.95 kB │ map:    14.89 kB
+2026-10-31T17:47:15.6881400Z build/assets/Skills-Be57ub-c.js                                 4.33 kB │ gzip:   1.82 kB │ map:    13.66 kB
+2026-10-31T17:47:15.6885800Z build/assets/repositories-NGxDLhXe.js                           4.88 kB │ gzip:   1.99 kB │ map:    12.04 kB
+2026-10-31T17:47:15.6890190Z build/assets/art-VoguFrLZ.js                                    5.31 kB │ gzip:   2.37 kB │ map:    10.73 kB
+2026-10-31T17:47:15.6895020Z build/assets/theory-DLnm5Z1a.js                                 5.74 kB │ gzip:   2.52 kB │ map:     9.41 kB
+2026-10-31T17:47:15.6900030Z build/assets/settings-DZkdIVuS.js                               6.02 kB │ gzip:   2.61 kB │ map:    18.74 kB
+2026-10-31T17:47:15.6910780Z build/assets/NetworkGallery-_aN_CM9m.js                         6.15 kB │ gzip:   2.64 kB │ map:    15.17 kB
+2026-10-31T17:47:15.6914160Z build/assets/stars-BPua1n9e.js                                  6.23 kB │ gzip:   2.81 kB │ map:    26.41 kB
+2026-10-31T17:47:15.6921020Z build/assets/presets-siKR9ln_.js                                8.13 kB │ gzip:   3.74 kB │ map:    21.25 kB
+2026-10-31T17:47:15.6926210Z build/assets/schema.sound-DAmUU18B.js                           8.24 kB │ gzip:   3.91 kB │ map:    17.90 kB
+2026-10-31T17:47:15.6929240Z build/assets/interactions-DhsM1WCW.js                           9.64 kB │ gzip:   3.79 kB │ map:    35.28 kB
+2026-10-31T17:47:15.6932240Z build/assets/cv-BDH3_8f3.js                                    11.44 kB │ gzip:   4.26 kB │ map:    33.31 kB
+2026-10-31T17:47:15.6935010Z build/assets/research-CsAeS_KX.js                              13.13 kB │ gzip:   5.16 kB │ map:    23.23 kB
+2026-10-31T17:47:15.6937910Z build/assets/MetaTheory-Zg1AF1AZ.js                            18.08 kB │ gzip:   6.93 kB │ map:    39.77 kB
+2026-10-31T17:47:15.6940990Z build/assets/paths-CT1osQFZ.js                                 29.25 kB │ gzip:   7.41 kB │ map:    57.15 kB
+2026-10-31T17:47:15.6943970Z build/assets/settings-BXrpUUco.js                              29.83 kB │ gzip:   9.12 kB │ map:    81.98 kB
+2026-10-31T17:47:15.6946800Z build/assets/associative-Bptd8QYf.js                           40.87 kB │ gzip:  13.02 kB │ map:    67.65 kB
+2026-10-31T17:47:15.6950320Z build/assets/index-DI9YW7JR.js                                 68.43 kB │ gzip:  21.51 kB │ map:   161.34 kB
+2026-10-31T17:47:15.6953270Z build/assets/profile-DxsZPkqr.js                               74.68 kB │ gzip:  21.60 kB │ map:   118.72 kB
+2026-10-31T17:47:15.6956330Z build/assets/network-BTtNyFL7.js                               78.78 kB │ gzip:  28.84 kB │ map:   254.95 kB
+2026-10-31T17:47:15.6958980Z build/assets/blog-DnqpYwQj.js                                  87.78 kB │ gzip:  20.66 kB │ map:   137.49 kB
+2026-10-31T17:47:15.6961600Z build/assets/RepoList-6aEdgO36.js                             425.92 kB │ gzip:  86.99 kB │ map:   567.98 kB
+2026-10-31T17:47:15.6964200Z build/assets/Layout-D0fKLgk3.js                               447.14 kB │ gzip: 145.76 kB │ map: 1,386.18 kB
+2026-10-31T17:47:15.6965010Z 
+2026-10-31T17:47:15.6966000Z [32m✓ built in 1.05s[39m
+2026-10-31T17:47:15.7030800Z ##[group]Run npx playwright install --with-deps "$ENGINE"
+2026-10-31T17:47:15.7032030Z [36;1mnpx playwright install --with-deps "$ENGINE"[0m
+2026-10-31T17:47:15.7094770Z shell: /bin/bash -e {0}
+2026-10-31T17:47:15.7095500Z env:
+2026-10-31T17:47:15.7096080Z   GIT_CONFIG_COUNT: 1
+2026-10-31T17:47:15.7096570Z   GIT_CONFIG_KEY_0: init.defaultBranch
+2026-10-31T17:47:15.7097290Z   GIT_CONFIG_VALUE_0: main
+2026-10-31T17:47:15.7097780Z   ENGINE: webkit
+2026-10-31T17:47:15.7098230Z ##[endgroup]
+2026-10-31T17:47:17.0078800Z Downloading WebKit 27.2 (playwright webkit v2370) from https://cdn.playwright.dev/dbazure/download/playwright/builds/webkit/2370/webkit-mac-15.zip
+2026-10-31T17:47:17.7925890Z |                                                                                |   0% of 84.5 MiB
+2026-10-31T17:47:17.9263780Z |■■■■■■■■                                                                        |  10% of 84.5 MiB
+2026-10-31T17:47:18.1748390Z |■■■■■■■■■■■■■■■■                                                                |  20% of 84.5 MiB
+2026-10-31T17:47:18.2422010Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 84.5 MiB
+2026-10-31T17:47:18.4270540Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 84.5 MiB
+2026-10-31T17:47:18.5226930Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 84.5 MiB
+2026-10-31T17:47:18.6084220Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 84.5 MiB
+2026-10-31T17:47:18.7209450Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 84.5 MiB
+2026-10-31T17:47:18.7796690Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 84.5 MiB
+2026-10-31T17:47:19.0569450Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 84.5 MiB
+2026-10-31T17:47:19.1819350Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 84.5 MiB
+2026-10-31T17:47:34.9332530Z WebKit 27.2 (playwright webkit v2370) downloaded to /Users/runner/Library/Caches/ms-playwright/webkit-2370
+2026-10-31T17:47:34.9354010Z Downloading FFmpeg (playwright ffmpeg v1013) from https://cdn.playwright.dev/dbazure/download/playwright/builds/ffmpeg/1013/ffmpeg-mac.zip
+2026-10-31T17:47:35.4596830Z |                                                                                |   0% of 1.5 MiB
+2026-10-31T17:47:35.4706350Z |■■■■■■■■                                                                        |  10% of 1.5 MiB
+2026-10-31T17:47:35.4746600Z |■■■■■■■■■■■■■■■■                                                                |  20% of 1.5 MiB
+2026-10-31T17:47:35.4749960Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 1.5 MiB
+2026-10-31T17:47:35.4751980Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  41% of 1.5 MiB
+2026-10-31T17:47:35.4756470Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 1.5 MiB
+2026-10-31T17:47:35.4766050Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 1.5 MiB
+2026-10-31T17:47:35.4781510Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 1.5 MiB
+2026-10-31T17:47:35.4849710Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 1.5 MiB
+2026-10-31T17:47:35.4852300Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 1.5 MiB
+2026-10-31T17:47:35.4856050Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 1.5 MiB
+2026-10-31T17:47:35.5461990Z FFmpeg (playwright ffmpeg v1013) downloaded to /Users/runner/Library/Caches/ms-playwright/ffmpeg-1013
+2026-10-31T17:47:35.5881150Z ##[group]Run mkdir -p browser-results
+2026-10-31T17:47:35.5881820Z [36;1mmkdir -p browser-results[0m
+2026-10-31T17:47:35.5883060Z [36;1mnode -e 'require("node:fs").writeFileSync("browser-results/run.json", JSON.stringify({sha: process.env.GITHUB_SHA, engine: process.env.ENGINE}))'[0m
+2026-10-31T17:47:35.5940890Z shell: /bin/bash -e {0}
+2026-10-31T17:47:35.5941330Z env:
+2026-10-31T17:47:35.5941720Z   GIT_CONFIG_COUNT: 1
+2026-10-31T17:47:35.5942180Z   GIT_CONFIG_KEY_0: init.defaultBranch
+2026-10-31T17:47:35.5942750Z   GIT_CONFIG_VALUE_0: main
+2026-10-31T17:47:35.5943190Z   ENGINE: webkit
+2026-10-31T17:47:35.5943580Z ##[endgroup]
+2026-10-31T17:47:35.6899240Z ##[group]Run npm run test:network:browser
+2026-10-31T17:47:35.6899940Z [36;1mnpm run test:network:browser[0m
+2026-10-31T17:47:35.6954300Z shell: /bin/bash -e {0}
+2026-10-31T17:47:35.6954740Z env:
+2026-10-31T17:47:35.6955100Z   GIT_CONFIG_COUNT: 1
+2026-10-31T17:47:35.6955590Z   GIT_CONFIG_KEY_0: init.defaultBranch
+2026-10-31T17:47:35.6956120Z   GIT_CONFIG_VALUE_0: main
+2026-10-31T17:47:35.6956570Z   ENGINE: webkit
+2026-10-31T17:47:35.6957040Z   CAPTURE_DIR: browser-results/screenshots/editor
+2026-10-31T17:47:35.6957640Z ##[endgroup]
+2026-10-31T17:47:35.9257890Z 
+2026-10-31T17:47:35.9258740Z > konard.github.io@0.1.0 test:network:browser
+2026-10-31T17:47:35.9259560Z > node experiments/network-e2e.mjs
+2026-10-31T17:47:35.9259890Z 
+2026-10-31T17:47:48.2826020Z webkit: gallery hover, focus and navigation passed
+2026-10-31T17:47:50.4545400Z webkit: notation editing and invalid input passed
+2026-10-31T17:47:56.1130170Z webkit: live preview and SVG styling passed
+2026-10-31T17:47:58.7813600Z webkit: overlap reduction and applied turns/gaps passed
+2026-10-31T17:48:00.8326880Z webkit: shared URL renders the same SVG in a fresh browser
+2026-10-31T17:48:01.8026230Z webkit: verified svg download (1297 bytes)
+2026-10-31T17:48:02.0128600Z webkit: verified png download (53943 bytes)
+2026-10-31T17:48:02.2249730Z webkit: verified jpg download (50484 bytes)
+2026-10-31T17:48:02.3775110Z webkit: unsupported WebP encoder exposes PNG fallback
+2026-10-31T17:48:02.5004610Z webkit: verified lino download (27 bytes)
+2026-10-31T17:48:16.3144320Z webkit: network editor browser checks passed
+2026-10-31T17:48:16.4628480Z ##[group]Run npm run test:network:issue19
+2026-10-31T17:48:16.4629250Z [36;1mnpm run test:network:issue19[0m
+2026-10-31T17:48:16.4710250Z shell: /bin/bash -e {0}
+2026-10-31T17:48:16.4710730Z env:
+2026-10-31T17:48:16.4711130Z   GIT_CONFIG_COUNT: 1
+2026-10-31T17:48:16.4711630Z   GIT_CONFIG_KEY_0: init.defaultBranch
+2026-10-31T17:48:16.4712170Z   GIT_CONFIG_VALUE_0: main
+2026-10-31T17:48:16.4712810Z   ENGINE: webkit
+2026-10-31T17:48:16.4713840Z   CAPTURE_DIR: browser-results/screenshots/issue19
+2026-10-31T17:48:16.4714680Z   RESULT_DIR: browser-results/data/issue19
+2026-10-31T17:48:16.4715280Z ##[endgroup]
+2026-10-31T17:48:16.7552830Z 
+2026-10-31T17:48:16.7569850Z > konard.github.io@0.1.0 test:network:issue19
+2026-10-31T17:48:16.7594850Z > node experiments/issue-19-browser.mjs
+2026-10-31T17:48:16.7598890Z 
+2026-10-31T17:48:20.1399230Z webkit: self-loop leaving/entering angles, curvature and bend
+2026-10-31T17:48:25.4757310Z webkit: 120-event drag, repeated releases, history SecurityError and retry
+2026-10-31T17:48:28.1361010Z webkit: independent marker offsets and ring cuts survive URL round trip
+2026-10-31T17:48:37.5854920Z webkit: 17 links, seven distinct placements and large-notation reload
+2026-10-31T17:48:39.8209070Z webkit: both complete issue example URLs
+2026-10-31T17:48:40.6602740Z webkit: actual PNG clipboard write completed from a trusted click
+2026-10-31T17:48:40.9580110Z webkit: unsupported WebP encoder exposes PNG fallback
+2026-10-31T17:48:40.9587250Z webkit: PNG/JPEG downloads and WebP download or explicit PNG fallback
+2026-10-31T17:48:49.3099380Z webkit: touch gesture debounce, 100-link mobile editor and no horizontal overflow
+2026-10-31T17:48:49.4264870Z ##[group]Run npm run test:network:issue21
+2026-10-31T17:48:49.4266540Z [36;1mnpm run test:network:issue21[0m
+2026-10-31T17:48:49.4381340Z shell: /bin/bash -e {0}
+2026-10-31T17:48:49.4381870Z env:
+2026-10-31T17:48:49.4382250Z   GIT_CONFIG_COUNT: 1
+2026-10-31T17:48:49.4382730Z   GIT_CONFIG_KEY_0: init.defaultBranch
+2026-10-31T17:48:49.4383300Z   GIT_CONFIG_VALUE_0: main
+2026-10-31T17:48:49.4383760Z   ENGINE: webkit
+2026-10-31T17:48:49.4384310Z   CAPTURE_DIR: browser-results/screenshots/issue21
+2026-10-31T17:48:49.4384980Z   RESULT_DIR: browser-results/data/issue21
+2026-10-31T17:48:49.4385580Z ##[endgroup]
+2026-10-31T17:48:49.7270160Z 
+2026-10-31T17:48:49.7276220Z > konard.github.io@0.1.0 test:network:issue21
+2026-10-31T17:48:49.7277980Z > node experiments/issue-21-browser.mjs
+2026-10-31T17:48:49.7280810Z 
+2026-10-31T17:48:59.1576210Z webkit: both supplied URLs: explicit settings, controls, share and reload
+2026-10-31T17:49:04.4044020Z webkit: five representative default editor configurations
+2026-10-31T17:49:10.1635780Z webkit: gallery hover and navigation preserve dark/light link colors
+2026-10-31T17:49:13.4451020Z webkit: theory example navigation also preserves light-theme colors
+2026-10-31T17:49:14.1350280Z webkit: exported SVG equals preview
+2026-10-31T17:49:15.3914320Z webkit: mobile preview fits viewport
+2026-10-31T17:49:15.5207790Z ##[group]Run if [[ "$RUNNER_OS" == "macOS" ]]; then
+2026-10-31T17:49:15.5209810Z [36;1mif [[ "$RUNNER_OS" == "macOS" ]]; then[0m
+2026-10-31T17:49:15.5210880Z [36;1m  DISPLAY_CAPTURE=1 npm run test:network:issue23[0m
+2026-10-31T17:49:15.5211850Z [36;1melse[0m
+2026-10-31T17:49:15.5213110Z [36;1m  mkdir -p "$(dirname "$XWD_FILE")"[0m
+2026-10-31T17:49:15.5215070Z [36;1m  xvfb-run -a -s "-screen 0 1600x1200x24 -fbdir $(dirname "$XWD_FILE")" npm run test:network:issue23[0m
+2026-10-31T17:49:15.5216190Z [36;1mfi[0m
+2026-10-31T17:49:15.5312000Z shell: /bin/bash -e {0}
+2026-10-31T17:49:15.5312500Z env:
+2026-10-31T17:49:15.5313910Z   GIT_CONFIG_COUNT: 1
+2026-10-31T17:49:15.5314470Z   GIT_CONFIG_KEY_0: init.defaultBranch
+2026-10-31T17:49:15.5315040Z   GIT_CONFIG_VALUE_0: main
+2026-10-31T17:49:15.5315530Z   ENGINE: webkit
+2026-10-31T17:49:15.5316120Z   CARD_BATCHES: 8
+2026-10-31T17:49:15.5317090Z   XWD_FILE: /Users/runner/work/_temp/issue23-display/Xvfb_screen0
+2026-10-31T17:49:15.5318610Z   CAPTURE_DIR: browser-results/screenshots/issue23
+2026-10-31T17:49:15.5320610Z   RESULT_DIR: browser-results/data/issue23
+2026-10-31T17:49:15.5321290Z ##[endgroup]
+2026-10-31T17:49:15.8768720Z 
+2026-10-31T17:49:15.8803440Z > konard.github.io@0.1.0 test:network:issue23
+2026-10-31T17:49:15.8808410Z > node experiments/issue-23-browser.mjs
+2026-10-31T17:49:15.8813170Z 
+2026-10-31T17:49:18.9556480Z webkit: neutral defaults for free links
+2026-10-31T17:49:20.4250500Z webkit: both displaced bars agree with native SVG path position and tangent
+2026-10-31T17:49:23.7504160Z webkit: individual gaps and gap-only solver survive apply/share/reload
+2026-10-31T17:49:26.9277140Z {"cards":243,"filtered":55,"y":845,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+2026-10-31T17:49:28.1020580Z {"cards":729,"filtered":176,"y":3309,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+2026-10-31T17:49:30.1999700Z {"cards":1215,"filtered":176,"y":7552,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+2026-10-31T17:49:32.0563250Z {"cards":1701,"filtered":176,"y":11795,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+2026-10-31T17:49:33.6580020Z {"cards":2187,"filtered":176,"y":16038,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+2026-10-31T17:49:36.5898020Z {"cards":2673,"filtered":176,"y":20282,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+2026-10-31T17:49:39.5430570Z {"cards":3159,"filtered":176,"y":24525,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+2026-10-31T17:49:42.1457460Z {"cards":3645,"filtered":176,"y":28865,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+2026-10-31T17:49:45.3753020Z {"cards":4131,"filtered":176,"y":33108,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+2026-10-31T17:49:50.1216450Z {"cards":4131,"filtered":176,"y":19441,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+2026-10-31T17:49:50.6849290Z {"cards":4131,"filtered":105,"y":37944,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+2026-10-31T17:49:51.4691470Z {"cards":4131,"filtered":165,"y":8339,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+2026-10-31T17:49:52.0337000Z {"cards":4131,"filtered":105,"y":37944,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+2026-10-31T17:50:05.5346000Z {"cards":4131,"filtered":176,"y":19455,"barFilter":"blur(18px) saturate(1.8) brightness(1.08) contrast(1)","barSurface":"topbar__row","barTop":0}
+2026-10-31T17:50:06.4140780Z {"cards":4131,"filtered":105,"y":37958,"barFilter":"blur(18px) saturate(1.8) brightness(1.08) contrast(1)","barSurface":"topbar__row","barTop":0}
+2026-10-31T17:50:07.2910550Z {"cards":4131,"filtered":165,"y":8353,"barFilter":"blur(18px) saturate(1.8) brightness(1.08) contrast(1)","barSurface":"topbar__row","barTop":0}
+2026-10-31T17:50:08.0284010Z {"cards":4131,"filtered":105,"y":37958,"barFilter":"blur(18px) saturate(1.8) brightness(1.08) contrast(1)","barSurface":"topbar__row","barTop":0}
+2026-10-31T17:50:19.7806750Z {"cards":4131,"filtered":176,"y":19023,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+2026-10-31T17:50:20.5557500Z {"cards":4131,"filtered":105,"y":37150,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+2026-10-31T17:50:21.4235660Z {"cards":4131,"filtered":176,"y":8147,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+2026-10-31T17:50:22.2261810Z {"cards":4131,"filtered":105,"y":37150,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+2026-10-31T17:50:29.2075600Z webkit: bounded blur surfaces and fixed header through 4131 cards, repeated scrolling and all skins
+2026-10-31T17:50:31.3240490Z webkit: individual gap controls fit the Russian mobile editor
+2026-10-31T17:50:31.5488330Z ##[group]Run npm run test:network:issue25
+2026-10-31T17:50:31.5489100Z [36;1mnpm run test:network:issue25[0m
+2026-10-31T17:50:31.5590300Z shell: /bin/bash -e {0}
+2026-10-31T17:50:31.5591270Z env:
+2026-10-31T17:50:31.5592270Z   GIT_CONFIG_COUNT: 1
+2026-10-31T17:50:31.5593360Z   GIT_CONFIG_KEY_0: init.defaultBranch
+2026-10-31T17:50:31.5594270Z   GIT_CONFIG_VALUE_0: main
+2026-10-31T17:50:31.5595620Z   ENGINE: webkit
+2026-10-31T17:50:31.5596690Z   CAPTURE_DIR: browser-results/screenshots/issue25
+2026-10-31T17:50:31.5597450Z   RESULT_DIR: browser-results/data/issue25
+2026-10-31T17:50:31.5598040Z ##[endgroup]
+2026-10-31T17:50:31.8576920Z 
+2026-10-31T17:50:31.8597040Z > konard.github.io@0.1.0 test:network:issue25
+2026-10-31T17:50:31.8606120Z > node experiments/issue-25-browser.mjs
+2026-10-31T17:50:31.8606630Z 
+2026-10-31T17:50:49.8218790Z [
+2026-10-31T17:50:49.9251790Z   "auto: apply/share/reload preserves exact drawing and discovered gaps",
+2026-10-31T17:50:50.0256910Z   "auto-gaps: apply/share/reload preserves exact drawing and discovered gaps",
+2026-10-31T17:50:50.0509170Z   "native SVG rasterization: sharp acute tips and aligned painted boundaries at 5°, 15°, 45°",
+2026-10-31T17:50:50.0562520Z   "visible card fields, editing, inheritance, sharing and removal/renumbering",
+2026-10-31T17:50:50.0610510Z   "English/Russian mobile card controls fit without horizontal scrolling"
+2026-10-31T17:50:50.0613120Z ]
+2026-10-31T17:50:50.0706420Z ##[group]Run npm run test:network:issue27
+2026-10-31T17:50:50.0707170Z [36;1mnpm run test:network:issue27[0m
+2026-10-31T17:50:50.0783150Z shell: /bin/bash -e {0}
+2026-10-31T17:50:50.0783650Z env:
+2026-10-31T17:50:50.0784170Z   GIT_CONFIG_COUNT: 1
+2026-10-31T17:50:50.0784690Z   GIT_CONFIG_KEY_0: init.defaultBranch
+2026-10-31T17:50:50.0785250Z   GIT_CONFIG_VALUE_0: main
+2026-10-31T17:50:50.0785750Z   ENGINE: webkit
+2026-10-31T17:50:50.0786290Z   CAPTURE_DIR: browser-results/screenshots/issue27
+2026-10-31T17:50:50.0786980Z   RESULT_DIR: browser-results/data/issue27
+2026-10-31T17:50:50.0787730Z ##[endgroup]
+2026-10-31T17:50:50.4214810Z 
+2026-10-31T17:50:50.4338950Z > konard.github.io@0.1.0 test:network:issue27
+2026-10-31T17:50:50.5333480Z > node experiments/issue-27-browser.mjs
+2026-10-31T17:50:50.5518120Z 
+2026-10-31T17:51:01.9434150Z Geometry, URL and number editing checks passed. Auditing sliders.
+2026-10-31T17:51:02.7946380Z Keyboard: link-1-turn-0
+2026-10-31T17:51:04.3532490Z Keyboard: link-1-turn-1
+2026-10-31T17:51:05.3343630Z Keyboard: link-1-startGap
+2026-10-31T17:51:06.7671150Z Keyboard: link-1-endGap
+2026-10-31T17:51:07.6134550Z Keyboard: link-2-turn-0
+2026-10-31T17:51:09.3413110Z Keyboard: link-2-turn-1
+2026-10-31T17:51:10.0952060Z Keyboard: link-2-startGap
+2026-10-31T17:51:11.0712210Z Keyboard: link-2-endGap
+2026-10-31T17:51:11.4528180Z Keyboard: style-layoutAspect
+2026-10-31T17:51:12.4985700Z Keyboard: style-sourceAngle
+2026-10-31T17:51:13.2892060Z Keyboard: style-targetAngle
+2026-10-31T17:51:14.2669850Z Keyboard: style-tension
+2026-10-31T17:51:14.7328120Z Keyboard: style-bulge
+2026-10-31T17:51:15.5713430Z Keyboard: style-loopBend
+2026-10-31T17:51:16.3145830Z Keyboard: style-startGap
+2026-10-31T17:51:17.1828420Z Keyboard: style-endGap
+2026-10-31T17:51:18.0237890Z Keyboard: style-loop
+2026-10-31T17:51:18.6043960Z Keyboard: style-spread
+2026-10-31T17:51:19.8578510Z Keyboard: style-rotation
+2026-10-31T17:51:20.3144840Z Keyboard: style-padding
+2026-10-31T17:51:21.1365540Z Keyboard: style-startSize
+2026-10-31T17:51:21.5885720Z Keyboard: style-startOffset
+2026-10-31T17:51:22.2524810Z Keyboard: style-startAcross
+2026-10-31T17:51:22.4609530Z Keyboard: style-startRotation
+2026-10-31T17:51:22.7924380Z Keyboard: style-endSize
+2026-10-31T17:51:23.1521420Z Keyboard: style-endAngle
+2026-10-31T17:51:24.2557550Z Keyboard: style-endOffset
+2026-10-31T17:51:24.4892860Z Keyboard: style-endAcross
+2026-10-31T17:51:25.3770530Z Keyboard: style-endRotation
+2026-10-31T17:51:26.1976070Z Keyboard: style-middleSize
+2026-10-31T17:51:26.6968900Z Keyboard: style-middleOffset
+2026-10-31T17:51:28.0332730Z Keyboard: style-middleAcross
+2026-10-31T17:51:29.7989220Z Keyboard: style-middleGapStart
+2026-10-31T17:51:30.3602290Z Keyboard: style-middleGapEnd
+2026-10-31T17:51:31.1989270Z Keyboard: style-strokeWidth
+2026-10-31T17:51:31.7838510Z Keyboard: style-opacity
+2026-10-31T17:51:32.0849900Z Keyboard: style-glow
+2026-10-31T17:51:33.0904520Z Keyboard: style-width
+2026-10-31T17:51:33.4800670Z Keyboard: style-height
+2026-10-31T17:51:33.7106300Z Keyboard: style-quality
+2026-10-31T17:51:35.5467380Z Keyboard: style-clearance
+2026-10-31T17:51:35.9254740Z Keyboard: style-solveGapRange
+2026-10-31T17:51:37.0156360Z Keyboard: style-solveMiddleRange
+2026-10-31T17:51:37.6168030Z Keyboard: style-solveRange
+2026-10-31T17:51:38.4050140Z Keyboard: style-solveStep
+2026-10-31T17:51:39.6510270Z Keyboard: setting-nebula-level
+2026-10-31T17:51:45.2213550Z Keyboard: setting-nebula-speed
+2026-10-31T17:51:51.0689040Z Keyboard: setting-nebula-gas
+2026-10-31T17:51:56.1844890Z Keyboard: setting-nebula-hue
+2026-10-31T17:52:00.5884270Z Keyboard: setting-nebula-stars
+2026-10-31T17:52:07.2736060Z Keyboard: setting-nebula-starBrightness
+2026-10-31T17:52:13.5680770Z Keyboard: setting-nebula-twinkle
+2026-10-31T17:52:18.0865550Z Keyboard: setting-nebula-vignette
+2026-10-31T17:52:23.0405460Z Keyboard: setting-nebula-zoom
+2026-10-31T17:52:24.3542190Z Keyboard: setting-nebula-starSize
+2026-10-31T17:52:25.4083410Z Keyboard: setting-nebula-resolution
+2026-10-31T17:52:31.1822760Z Keyboard: setting-nebula-fps
+2026-10-31T17:52:37.2973350Z Keyboard: setting-stars-level
+2026-10-31T17:52:42.9741340Z Keyboard: setting-stars-fps
+2026-10-31T17:52:43.8019580Z Keyboard: setting-stars1-count
+2026-10-31T17:52:45.3005040Z Keyboard: setting-stars1-size
+2026-10-31T17:52:46.7625230Z Keyboard: setting-stars1-sizeSpread
+2026-10-31T17:52:47.9549070Z Keyboard: setting-stars1-hueSpread
+2026-10-31T17:52:49.0321860Z Keyboard: setting-stars1-brightness
+2026-10-31T17:52:50.5607740Z Keyboard: setting-stars1-glow
+2026-10-31T17:52:52.0317740Z Keyboard: setting-stars1-twinkle
+2026-10-31T17:52:53.5866660Z Keyboard: setting-stars1-twinkleDepth
+2026-10-31T17:52:54.9688660Z Keyboard: setting-stars1-rotation
+2026-10-31T17:52:56.0142330Z Keyboard: setting-stars1-spin
+2026-10-31T17:52:57.1962890Z Keyboard: setting-stars1-direction
+2026-10-31T17:52:58.5966140Z Keyboard: setting-stars1-speed
+2026-10-31T17:52:59.8420400Z Keyboard: setting-stars1-streak
+2026-10-31T17:53:01.1794140Z Keyboard: setting-grid-level
+2026-10-31T17:53:06.8201250Z Keyboard: setting-grid-size
+2026-10-31T17:53:09.9378490Z Keyboard: setting-grid-period
+2026-10-31T17:53:14.0234240Z Keyboard: setting-grid-width
+2026-10-31T17:53:20.2432320Z Keyboard: setting-grid-mark
+2026-10-31T17:53:26.8660040Z Keyboard: setting-sound-volume
+2026-10-31T17:53:28.0555880Z Keyboard: setting-sound-reverb
+2026-10-31T17:53:28.7546890Z Keyboard: setting-sound-room
+2026-10-31T17:53:29.9573630Z Keyboard: setting-sound-pitch
+2026-10-31T17:53:30.7902110Z Keyboard: setting-sound-width
+2026-10-31T17:53:31.4535110Z Keyboard: setting-sound-gap
+2026-10-31T17:53:32.5694440Z Keyboard: setting-sound-hoverLevel
+2026-10-31T17:53:33.5901540Z Keyboard: setting-sound-scanLevel
+2026-10-31T17:53:34.4392620Z Keyboard: setting-beams-level
+2026-10-31T17:53:41.0882790Z Keyboard: setting-beams-count
+2026-10-31T17:53:41.4862930Z Keyboard: setting-beams-speed
+2026-10-31T17:53:41.8915550Z Keyboard: setting-beams-length
+2026-10-31T17:53:42.5150500Z Keyboard: setting-beams-width
+2026-10-31T17:53:43.2901330Z Keyboard: setting-beams-glow
+2026-10-31T17:53:44.3421340Z Keyboard: setting-beams-pause
+2026-10-31T17:53:45.0645930Z Keyboard: setting-rain-level
+2026-10-31T17:53:51.9067600Z Keyboard: setting-rain-step
+2026-10-31T17:53:57.6721470Z Keyboard: setting-rain-speeds
+2026-10-31T17:54:02.9654940Z Keyboard: setting-rain-density
+2026-10-31T17:54:09.8275910Z Keyboard: setting-rain-restart
+2026-10-31T17:54:16.2273420Z Keyboard: setting-rain-fade
+2026-10-31T17:54:21.4570720Z Keyboard: setting-rain-lineWidth
+2026-10-31T17:54:27.5888550Z Keyboard: setting-rain-padding
+2026-10-31T17:54:32.4784500Z Keyboard: setting-rain-glow
+2026-10-31T17:54:38.4127540Z Keyboard: setting-rain-minLinks
+2026-10-31T17:54:44.1897740Z Keyboard: setting-rain-maxLinks
+2026-10-31T17:54:48.7317370Z Keyboard: setting-future-cut
+2026-10-31T17:54:54.6102670Z Keyboard: setting-future-corner
+2026-10-31T17:54:58.7306110Z Keyboard: setting-future-border
+2026-10-31T17:55:03.1772620Z Keyboard: setting-future-opacity
+2026-10-31T17:55:08.5861130Z Keyboard: setting-future-blur
+2026-10-31T17:55:14.0999350Z Keyboard: setting-future-glow
+2026-10-31T17:55:20.9367070Z Keyboard: setting-future-frameOpacity
+2026-10-31T17:55:24.9046350Z Keyboard: setting-future-accentLength
+2026-10-31T17:55:29.8639080Z Keyboard: setting-future-accentOffset
+2026-10-31T17:55:34.1106870Z Keyboard: setting-future-accentWidth
+2026-10-31T17:55:36.5812170Z Keyboard: setting-future-accentMax
+2026-10-31T17:55:43.2794670Z Keyboard: setting-future-spacing
+2026-10-31T17:55:50.3281130Z Keyboard: setting-future-scanlines
+2026-10-31T17:55:55.8010780Z Keyboard: setting-corner-topWidth
+2026-10-31T17:55:58.3203380Z Keyboard: setting-corner-rightWidth
+2026-10-31T17:56:00.7152450Z Keyboard: setting-corner-bottomWidth
+2026-10-31T17:56:02.9257230Z Keyboard: setting-corner-leftWidth
+2026-10-31T17:56:04.9565480Z Keyboard: setting-corner-blockScale
+2026-10-31T17:56:10.6560460Z Keyboard: setting-corner-controlScale
+2026-10-31T17:56:17.0121730Z Keyboard: setting-corner-tlSize
+2026-10-31T17:56:21.8681240Z Keyboard: setting-corner-tlWidth
+2026-10-31T17:56:23.9164600Z Keyboard: 
+2026-10-31T17:56:24.1175500Z Keyboard: 
+2026-10-31T17:56:25.0162710Z Keyboard: setting-ui-controlHeight
+2026-10-31T17:56:31.3536420Z Keyboard: setting-ui-controlPadding
+2026-10-31T17:56:36.7786070Z Keyboard: setting-ui-controlBorder
+2026-10-31T17:56:41.3707050Z Keyboard: setting-ui-controlOpacity
+2026-10-31T17:56:46.1863980Z Keyboard: setting-ui-menuHeight
+2026-10-31T17:56:47.2986640Z Keyboard: setting-ui-menuWidth
+2026-10-31T17:56:48.1453210Z Keyboard: setting-ui-focusWidth
+2026-10-31T17:56:53.3109870Z Keyboard: setting-ui-focusOffset
+2026-10-31T17:56:57.4439820Z Keyboard: setting-ui-motion
+2026-10-31T17:57:01.1399460Z Keyboard: setting-ui-disabledOpacity
+2026-10-31T17:57:06.3092930Z Keyboard: setting-ui-sliderSize
+2026-10-31T17:57:13.3004420Z Keyboard: setting-ui-sliderTrack
+2026-10-31T17:57:17.3646430Z Keyboard: setting-ui-checkSize
+2026-10-31T17:57:22.7684430Z Keyboard: setting-ui-controlTl
+2026-10-31T17:57:27.4996830Z Keyboard: setting-ui-controlTr
+2026-10-31T17:57:31.5030280Z Keyboard: setting-ui-controlBr
+2026-10-31T17:57:36.0028260Z Keyboard: setting-ui-controlBl
+2026-10-31T17:57:40.2294120Z Keyboard: setting-ui-panelTl
+2026-10-31T17:57:45.7551000Z Keyboard: setting-ui-panelTr
+2026-10-31T17:57:51.0017340Z Keyboard: setting-ui-panelBr
+2026-10-31T17:57:56.1018260Z Keyboard: setting-ui-panelBl
+2026-10-31T17:57:59.9558470Z Keyboard: setting-ui-panelBorder
+2026-10-31T17:58:04.9609960Z Keyboard: setting-ui-borderOpacity
+2026-10-31T17:58:09.7036730Z Keyboard: setting-ui-hoverOpacity
+2026-10-31T17:58:14.5369810Z Keyboard: setting-ui-accentSize
+2026-10-31T17:58:19.0170740Z Keyboard: setting-ui-selectionOpacity
+2026-10-31T17:58:23.5066700Z Keyboard: setting-ui-tablePadding
+2026-10-31T17:58:28.5678130Z Keyboard: setting-ui-tableBorder
+2026-10-31T17:58:33.2647160Z Keyboard: setting-ui-tableStripe
+2026-10-31T17:58:39.4318890Z Keyboard: setting-ui-tableHover
+2026-10-31T17:58:43.2036820Z [
+2026-10-31T17:58:43.2037920Z   "historical URL upgrades through history, compacts default rows, and reloads the exact SVG",
+2026-10-31T17:58:43.2039770Z   "native rasterized closed gaps agree within 0.12 image units at 5°, 15°, 45°, 85°",
+2026-10-31T17:58:43.2041110Z   "automatic spacing preserves the closed link, changes open references, and applies/shares/reloads exactly",
+2026-10-31T17:58:43.2043200Z   "0.07↔0.08 arrows/native stepping, inherited native/keyboard steps, negative typing, select-all, delete, Home and Tab",
+2026-10-31T17:58:43.2044700Z   "all 45 rendered network and 111 settings sliders support all eight navigation keys"
+2026-10-31T17:58:43.2045670Z ]
+2026-10-31T17:58:43.3679180Z ##[group]Run npm run test:network:issue29
+2026-10-31T17:58:43.3679990Z [36;1mnpm run test:network:issue29[0m
+2026-10-31T17:58:43.3775560Z shell: /bin/bash -e {0}
+2026-10-31T17:58:43.3776460Z env:
+2026-10-31T17:58:43.3777100Z   GIT_CONFIG_COUNT: 1
+2026-10-31T17:58:43.3777780Z   GIT_CONFIG_KEY_0: init.defaultBranch
+2026-10-31T17:58:43.3779180Z   GIT_CONFIG_VALUE_0: main
+2026-10-31T17:58:43.3779760Z   ENGINE: webkit
+2026-10-31T17:58:43.3780170Z   CAPTURE_DIR: browser-results/screenshots/issue29
+2026-10-31T17:58:43.3780910Z   RESULT_DIR: browser-results/data/issue29
+2026-10-31T17:58:43.3781650Z ##[endgroup]
+2026-10-31T17:58:43.6205370Z 
+2026-10-31T17:58:43.6206190Z > konard.github.io@0.1.0 test:network:issue29
+2026-10-31T17:58:43.6207010Z > node experiments/issue-29-browser.mjs
+2026-10-31T17:58:43.6207390Z 
+2026-10-31T17:59:03.2880750Z {
+2026-10-31T17:59:03.2889640Z   "engine": "webkit",
+2026-10-31T17:59:03.2899590Z   "date": "2026-10-31T17:58:44.369Z",
+2026-10-31T17:59:03.2906120Z   "checks": [
+2026-10-31T17:59:03.2910450Z     "all four reported manual URLs are unchanged by automatic spacing, Apply and shared-link reload",
+2026-10-31T17:59:03.2915210Z     "source/target sliders share a row below the separator; one-degree keys, bounds, independent resets and inherited gaps work",
+2026-10-31T17:59:03.2924530Z     "default auto solution mirrors ends, uses equal close reference gaps, aligns painted tips within 0.03 SVG units, and applies/shares exactly",
+2026-10-31T17:59:03.2928320Z     "Russian controls work at 390px without horizontal overflow"
+2026-10-31T17:59:03.2929760Z   ],
+2026-10-31T17:59:03.2930550Z   "errors": [],
+2026-10-31T17:59:03.2935050Z   "version": "27.2",
+2026-10-31T17:59:03.2936410Z   "alignment": {
+2026-10-31T17:59:03.2937360Z     "sourceY": 65.79,
+2026-10-31T17:59:03.2938350Z     "targetY": 65.78938924564738
+2026-10-31T17:59:03.2939640Z   },
+2026-10-31T17:59:03.2940520Z   "solution": {
+2026-10-31T17:59:03.2942680Z     "turns": [
+2026-10-31T17:59:03.2943690Z       -13,
+2026-10-31T17:59:03.2946530Z       13
+2026-10-31T17:59:03.2947370Z     ],
+2026-10-31T17:59:03.2948240Z     "gaps": [
+2026-10-31T17:59:03.2949090Z       0.16,
+2026-10-31T17:59:03.2950040Z       0.16
+2026-10-31T17:59:03.2950840Z     ]
+2026-10-31T17:59:03.2952570Z   }
+2026-10-31T17:59:03.2953180Z }
+2026-10-31T17:59:03.4771090Z ##[group]Run npm run test:network:issue35
+2026-10-31T17:59:03.4772050Z [36;1mnpm run test:network:issue35[0m
+2026-10-31T17:59:03.4903430Z shell: /bin/bash -e {0}
+2026-10-31T17:59:03.4905020Z env:
+2026-10-31T17:59:03.4907650Z   GIT_CONFIG_COUNT: 1
+2026-10-31T17:59:03.4908170Z   GIT_CONFIG_KEY_0: init.defaultBranch
+2026-10-31T17:59:03.4908730Z   GIT_CONFIG_VALUE_0: main
+2026-10-31T17:59:03.4909240Z   ENGINE: webkit
+2026-10-31T17:59:03.4909740Z   CAPTURE_DIR: browser-results/screenshots/issue35
+2026-10-31T17:59:03.4910430Z   RESULT_DIR: browser-results/data/issue35
+2026-10-31T17:59:03.4911760Z ##[endgroup]
+2026-10-31T17:59:03.7727830Z 
+2026-10-31T17:59:03.7728530Z > konard.github.io@0.1.0 test:network:issue35
+2026-10-31T17:59:03.7729390Z > node experiments/issue-35-browser.mjs
+2026-10-31T17:59:03.7729800Z 
+2026-10-31T17:59:13.9733400Z ##[group]Run npm run test:network:issue37
+2026-10-31T17:59:13.9736290Z [36;1mnpm run test:network:issue37[0m
+2026-10-31T17:59:13.9817960Z shell: /bin/bash -e {0}
+2026-10-31T17:59:13.9818500Z env:
+2026-10-31T17:59:13.9819150Z   GIT_CONFIG_COUNT: 1
+2026-10-31T17:59:13.9819710Z   GIT_CONFIG_KEY_0: init.defaultBranch
+2026-10-31T17:59:13.9820660Z   GIT_CONFIG_VALUE_0: main
+2026-10-31T17:59:13.9821360Z   ENGINE: webkit
+2026-10-31T17:59:13.9821930Z   CAPTURE_DIR: browser-results/screenshots/issue37
+2026-10-31T17:59:13.9822630Z   RESULT_DIR: browser-results/data/issue37
+2026-10-31T17:59:13.9823210Z ##[endgroup]
+2026-10-31T17:59:14.2377090Z 
+2026-10-31T17:59:14.2378030Z > konard.github.io@0.1.0 test:network:issue37
+2026-10-31T17:59:14.2379120Z > node experiments/issue-37-browser.mjs
+2026-10-31T17:59:14.2379610Z 
+2026-10-31T17:59:25.4211930Z webkit: native click-then-key focus passed in all four control contexts
+2026-10-31T17:59:32.9790160Z webkit: 2222 preserves centers/colors and exact Apply/share output ( · overlaps 7.4 → 0.0)
+2026-10-31T17:59:38.2140520Z webkit: 34442132 preserves centers/colors and exact Apply/share output ( · overlaps 29.2 → 9.2)
+2026-10-31T17:59:39.8485000Z webkit: 01 preserves centers/colors and exact Apply/share output ( · overlaps 0.0 → 0.0)
+2026-10-31T17:59:42.0935410Z webkit: 10 preserves centers/colors and exact Apply/share output ( · overlaps 0.0 → 0.0)
+2026-10-31T17:59:44.1034510Z webkit: 11 preserves centers/colors and exact Apply/share output ( · overlaps 0.0 → 0.0)
+2026-10-31T17:59:45.8807330Z webkit: 00 preserves centers/colors and exact Apply/share output ( · overlaps 0.0 → 0.0)
+2026-10-31T17:59:48.5312610Z webkit: 2111 preserves centers/colors and exact Apply/share output ( · overlaps 0.2 → 0.0)
+2026-10-31T17:59:51.2180940Z webkit: 2012 preserves centers/colors and exact Apply/share output ( · overlaps 38.0 → 0.1)
+2026-10-31T17:59:53.4819110Z webkit: 1222 preserves centers/colors and exact Apply/share output ( · overlaps 0.4 → 0.0)
+2026-10-31T17:59:55.8406430Z webkit: 0100 preserves centers/colors and exact Apply/share output ( · overlaps 0.0 → 0.0)
+2026-10-31T17:59:58.8886030Z webkit: 032113 preserves centers/colors and exact Apply/share output ( · overlaps 42.5 → 0.2)
+2026-10-31T18:00:02.1408920Z webkit: 133111 preserves centers/colors and exact Apply/share output ( · overlaps 4.0 → 0.0)
+2026-10-31T18:00:04.5091190Z webkit: 100321 preserves centers/colors and exact Apply/share output ( · overlaps 0.4 → 0.0)
+2026-10-31T18:00:07.5637810Z webkit: 111300 preserves centers/colors and exact Apply/share output ( · overlaps 6.4 → 0.0)
+2026-10-31T18:00:09.8356280Z webkit: 132001 preserves centers/colors and exact Apply/share output ( · overlaps 43.3 → 0.0)
+2026-10-31T18:00:12.2300810Z webkit: 013302 preserves centers/colors and exact Apply/share output ( · overlaps 0.4 → 0.0)
+2026-10-31T18:00:15.5022940Z webkit: 42414220 preserves centers/colors and exact Apply/share output ( · overlaps 14.1 → 0.0)
+2026-10-31T18:00:19.3847260Z webkit: 43434143 preserves centers/colors and exact Apply/share output ( · overlaps 14.9 → 3.6)
+2026-10-31T18:00:23.7135050Z webkit: 33044224 preserves centers/colors and exact Apply/share output ( · overlaps 59.8 → 5.8)
+2026-10-31T18:00:27.6471180Z webkit: 31324042 preserves centers/colors and exact Apply/share output ( · overlaps 5.2 → 2.4)
+2026-10-31T18:00:31.4889140Z webkit: 04210010 preserves centers/colors and exact Apply/share output ( · overlaps 40.0 → 0.0)
+2026-10-31T18:00:34.8114650Z webkit: 32103141 preserves centers/colors and exact Apply/share output ( · overlaps 10.5 → 0.0)
+2026-10-31T18:00:53.8260380Z ##[group]Run npm run test:ui:issue39
+2026-10-31T18:00:53.8261480Z [36;1mnpm run test:ui:issue39[0m
+2026-10-31T18:00:53.8392910Z shell: /bin/bash -e {0}
+2026-10-31T18:00:53.8393650Z env:
+2026-10-31T18:00:53.8394310Z   GIT_CONFIG_COUNT: 1
+2026-10-31T18:00:53.8396040Z   GIT_CONFIG_KEY_0: init.defaultBranch
+2026-10-31T18:00:53.8396930Z   GIT_CONFIG_VALUE_0: main
+2026-10-31T18:00:53.8397790Z   ENGINE: webkit
+2026-10-31T18:00:53.8399160Z   CAPTURE_DIR: browser-results/screenshots/issue39
+2026-10-31T18:00:53.8400670Z ##[endgroup]
+2026-10-31T18:00:54.2368050Z 
+2026-10-31T18:00:54.2368980Z > konard.github.io@0.1.0 test:ui:issue39
+2026-10-31T18:00:54.2370430Z > node experiments/issue-39-browser.mjs && node experiments/issue-39-visual-review.mjs
+2026-10-31T18:00:54.2371490Z 
+2026-10-31T18:01:37.0303580Z ##[error]The operation was canceled.
+2026-10-31T18:01:37.0896900Z Post job cleanup.
+2026-10-31T18:01:38.5110150Z [command]/usr/local/bin/git version
+2026-10-31T18:01:38.5124640Z git version 2.55.0
+2026-10-31T18:01:38.5528930Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/d9594904-a46c-4a09-abcd-8aa7de05e99b/.gitconfig'
+2026-10-31T18:01:38.5540670Z Temporarily overriding HOME='/Users/runner/work/_temp/d9594904-a46c-4a09-abcd-8aa7de05e99b' before making global git config changes
+2026-10-31T18:01:38.5572360Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-31T18:01:38.5577550Z [command]/usr/local/bin/git config --global --add safe.directory /Users/runner/work/konard.github.io/konard.github.io
+2026-10-31T18:01:38.5582270Z Removing SSH command configuration
+2026-10-31T18:01:38.5584390Z [command]/usr/local/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-31T18:01:38.5593300Z [command]/usr/local/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-31T18:01:38.6518250Z Removing HTTP extra header
+2026-10-31T18:01:38.6520970Z [command]/usr/local/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-31T18:01:38.6723720Z [command]/usr/local/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-31T18:01:38.9633050Z Removing includeIf entries pointing to credentials config files
+2026-10-31T18:01:38.9642250Z [command]/usr/local/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-31T18:01:38.9804910Z [command]/usr/local/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-31T18:01:39.3683050Z Cleaning up orphan processes
+2026-10-31T18:01:39.8827590Z Terminate orphan process: pid (15532) (Playwright)
