@@ -3,7 +3,8 @@
 Source: complete issue 43 body, complete preceding issue 41 and PR 42, and all
 three feedback endpoints of PR 44. The initial and final archived responses
 confirm no issue comments, required sub-issues, PR conversation comments,
-inline comments or reviews. Final snapshots use the `*-final.json` suffix.
+inline comments or reviews. Final snapshots use the `*-final.json` suffix. The second review round
+(PR 44 comment of 30 October 20:51 UTC) is archived as `data/pr44-comments-review2.json` and adds R12–R13.
 
 | ID | Requirement | Implementation | Verification |
 | --- | --- | --- | --- |
@@ -18,3 +19,5 @@ inline comments or reviews. Final snapshots use the `*-final.json` suffix.
 | R9 | Report reproducible upstream issues when an external project is responsible, with examples/workarounds/code suggestions. | External assessment found local defects; no upstream report is warranted. Existing Playwright platform issue is already referenced in CI. | Research assessment and inherited cross-browser CI distinguish local defects from the known platform limitation. |
 | R10 | Preserve earlier correct behavior: straight simpler routes, deliberate turns/angles, gaps, placement, loops, gallery, and twenty extra 1–3-link cases. | Only neutral external reference direction changes. Manual turns remain deviations; gaps/placement/solver ownership stays separate. | Parent-geometry comparison for all free/self halves and middles; prior four manual arrangements; 365 previously clear drawings; twenty seeded cases; all existing tests. |
 | R11 | Execute and verify everything in this single PR with no requested work deferred. | PR 44 on the prepared branch, regular forward commits, updated description and committed visual evidence. | Local checks, current-head CI, refreshed feedback, clean worktree, main ancestry and ready status. |
+| R12 | Automatic spacing (`solve=true`) of `2211` and similar networks must not detach references by widening gaps when turning one reference inside and one outside (e.g. `turns=-90+90`) is collision-free. | Staged `solveCollisions`: small turns, then wide turns up to the default 180° `solveRange`, and gap changes only when turns alone leave overlaps. | `src/links/solver-43.test.js` (3 of 4 tests fail before the fix); census of 125 networks plus 4–10-link samples with no network worse; before/after Chromium captures; 2211 assertion in the CI browser contract. |
+| R13 | Double-check that all issue 43 requirements are fully delivered and general for any number of links. | No code lookups in geometry, navigation, sampling or solver. | Re-verified R1–R5 at 1–25 links and the solver at 1–10 links; see the "Review round" section of the README. |

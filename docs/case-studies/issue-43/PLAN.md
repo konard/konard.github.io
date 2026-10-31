@@ -28,6 +28,14 @@ unmerged and report any genuinely blocked acceptance criterion as unfinished.
 - [x] Inspect latest five CI runs with timestamps/head SHAs; download full logs,
   analyze any failures by line number, fix and verify against the latest head.
 
+Review round 2 (PR 44 comment, 30 October 20:51 UTC):
+
+- [x] Resolve merge conflicts with `origin/main`.
+- [x] Reproduce the `2211` solve=true gap widening with failing tests and a turn-grid experiment.
+- [x] Search turns before gaps, widen the default largest turn to 180°, and keep explicit limits.
+- [x] Census old vs new solver (1–3 links, then 4–10 links); before/after browser captures.
+- [x] Re-check the generality of all issue 43 requirements; update the case study, PR description and CI.
+
 Final publication gate after the evidence commit: ensure current-head CI
 passes, default branch is included and worktree is clean; mark PR 44 ready and
 complete the goal only after all criteria are met. The current-head CI run and

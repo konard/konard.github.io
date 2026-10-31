@@ -1,0 +1,66 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793434269361
+
+ ❯ src/links/solver-43.test.js (4 tests | 3 failed) 1093ms
+   × clears 2211 by default with turns alone, leaving every gap unchanged 373ms
+   × tries small turns before wide ones and wide turns before gap changes 706ms
+   × uses the full ±180° table range as the default largest turn 3ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/links/solver-43.test.js > clears 2211 by default with turns alone, leaving every gap unchanged
+AssertionError: expected 4 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 4
+
+ ❯ src/links/solver-43.test.js:28:40
+     26|   expect(result.before - turningCost(shape.turns)).toBeGreaterThan(1);
+     27|   expect(collisions).toBeCloseTo(0, 9);
+     28|   expect(changedGaps(result.linkGaps)).toBe(0);
+       |                                        ^
+     29|   // Like the reported -90/90 arrangement, one reference goes inside a…
+     30|   const [source, target] = result.turns[0];
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  src/links/solver-43.test.js > tries small turns before wide ones and wide turns before gap changes
+AssertionError: expected 5.38960366321259 to be close to +0, received difference is 5.38960366321259, but expected 5e-10
+ ❯ src/links/solver-43.test.js:59:59
+     57|   expect(changedGaps(limited.result.linkGaps)).toBeGreaterThan(0);
+     58|   // Without gap adjustment the wide turn search alone still clears 22…
+     59|   expect(solve('22 11', { solveGaps: false }).collisions).toBeCloseTo(…
+       |                                                           ^
+     60| });
+     61|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  src/links/solver-43.test.js > uses the full ±180° table range as the default largest turn
+AssertionError: expected 30 to be 180 // Object.is equality
+
+- Expected
++ Received
+
+- 180
++ 30
+
+ ❯ src/links/solver-43.test.js:63:39
+     61|
+     62| it('uses the full ±180° table range as the default largest turn', () =…
+     63|   expect(normalizeStyle().solveRange).toBe(180);
+       |                                       ^
+     64| });
+     65|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed | 1 passed (4)
+   Start at  08:22:53
+   Duration  2.77s (tests 43%, environment 40%, setup 9%, transform 5%, import 2%, worker 1%)
+

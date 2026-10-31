@@ -38,6 +38,97 @@ Raw API responses, full initial CI logs and preceding execution logs are
 committed here. Logs with `before`, `draft` or `candidate` describe intermediate
 states and are retained as evidence, including unsuccessful tests.
 
+## Review round: automatic spacing of `2211`
+
+On 30 October 2026 at 20:51:10 UTC the owner reported on PR 44
+([archived](data/pr44-comments-review2.json)) that
+`/network/?code=2211&solve=true` "solved" the drawing by pulling both
+references far away from their targets. Turning one reference inside and one
+outside, for example `turns=-90+90`, is already collision-free. They also asked
+for a second check that every issue 43 requirement is general for any number of
+links. The three review images are archived as
+[review-2211-1.png](screenshots/review-2211-1.png),
+[review-2211-2.png](screenshots/review-2211-2.png) and
+[review-2211-3.png](screenshots/review-2211-3.png).
+
+| Time (31 October, UTC) | Event |
+| --- | --- |
+| 08:11 | Second working session started. The merge with `origin/main` (PR 40) was resolved first in `package.json` and `src/pages/network-41.test.jsx`, and checked with the full suite. |
+| Reproduction | Four minimal tests in `src/links/solver-43.test.js` were written before the fix. Three fail on the parent solver; see [log](logs/solver-regression-before.log). `experiments/issue-43-solver-grid.mjs 2211 0` maps collisions over both end turns of link 1. Only turns around (−90°, +90°) are free of collisions, and that region is far outside the solver's default ±30° range. |
+| Fix | A staged search was added to `solveCollisions`, and the default largest turn became 180°. |
+| Census | The old and new solvers were compared on 125 networks, then on 15 seeded real networks with 4–10 links. |
+| Browser | Chromium before/after captures of `solve=true` and Apply were made for eight networks. The 2211 assertion was added to `npm run test:network:issue43`, which runs in all three CI engines. |
+
+**Root cause.** The automatic spacing used a fixed default turn range of ±30°.
+Its pipeline was: mirrored ends, then gap-first coordinate descent, then turns.
+For `2211`, every arrangement within ±30° still overlaps. The gap stage
+therefore widened both reference gaps to 0.23–0.28 until nothing touched.
+The scoring counts this as a perfect result, but visually the arrows stop far
+from their targets. Wider turns were never tried, because the range limited
+both the editor's "largest turn" and the solver.
+
+**Fix.** `solveCollisions` (`src/links/collisions.js`) now tries cheaper
+corrections first and keeps the first collision-free stage:
+
+1. mirrored ends (small turns);
+2. turns only within ±30° (`SMALL_TURN`), then up to the configured largest turn;
+3. gap changes combined with turns, again at growing ranges.
+
+If no stage is collision-free, it keeps the stage with the fewest collisions,
+then the smallest gap change. Wide ranges first use a coarse grid of at most
+61 angles per end, then a local refinement, so the search stays bounded.
+
+The default `solveRange` is now 180°. An explicit smaller value is still
+respected (`solveRange=30` reproduces the old limit), and so is
+`solveGaps=false`. Drawings that are already well spaced are returned
+unchanged; the manual `turns=-90+90` case is covered by a test.
+
+For `2211` the default solve now yields turns −90°/78° with zero collisions
+and no gap change: one reference inside, one outside, as the owner suggested.
+
+**Census** ([data](data/solver-census.json), [log](logs/solver-census.log)):
+all 1- and 2-link networks plus 40 seeded 3-link networks, 125 in total.
+
+| Solver | Collision-free | …without gap changes | Total collisions | Total gap change | Max / total time |
+| --- | --- | --- | --- | --- | --- |
+| Parent (±30°, gaps first) | 88 | 35 | 22.69 | 14.61 | 286 ms / 7.0 s |
+| Staged (±180°, turns first) | **96** | **59** | **3.07** | **8.58** | 818 ms / 28.7 s |
+
+No network got worse. The remaining residuals (≤ 0.35 each) are equal for both
+solvers and come from self-references whose closed halves stay fixed.
+
+For 4, 5, 6, 8 and 10 links
+([log](logs/solver-sizes.log), `experiments/issue-43-solver-sizes.mjs`),
+the staged solver reduced collisions in all 15 seeded real networks. For
+example, a 6-link network went from 13.5 to 2.9, and a 10-link one from 78.4
+to 55.3. The trade-off is time: about 4× longer, up to 6 s for 10 links. The
+search runs in a cancellable Web Worker (`src/links/solver-job.js`), so the
+page stays responsive and outdated searches are terminated. `solveRange=30`
+restores the old speed.
+
+![Before/after automatic spacing](screenshots/solver-comparison.png)
+
+Browser evidence: [before](data/solver-chromium-before.json) and
+[after](data/solver-chromium-after.json) JSON, plus
+[logs](logs/solver-browser-after.log) and `screenshots/solver-*.png`. All eight
+networks reach 0.0 overlaps in both builds. After the fix:
+
+- `2211` applies `turns=-90+78` with no `gaps` parameter, instead of four widened gaps;
+- `2010` and `2011` are cleared with turns alone;
+- `111212` keeps its default gaps on the middle link.
+
+Networks that turns alone cannot clear (`1221`, `1210`, `0210`, `2001`) keep
+the parent result.
+
+**Generality re-check.** Every issue 43 requirement was re-verified for
+arbitrary link counts:
+
+- neutral zero turns: 3/5/10/25 links and eight placements;
+- Next/Previous across sizes: exact BigInt carry, tested up to 25 links;
+- Random real network: tested at 1/2/3/10/25 links;
+- the staged solver: no code-specific branches, its stages depend only on
+  angles and gaps, and it was measured up to 10 links above.
+
 ## Reproduction and root causes
 
 Open `/network/?code=0211`, `2011`, `2210` or `2221` on the parent revision.
@@ -167,7 +258,9 @@ There are no external blockers or deferred issue requirements.
 
 ```sh
 npm ci
-npx vitest run src/links/issue-43.test.js src/pages/network-43.test.jsx
+npx vitest run src/links/issue-43.test.js src/links/solver-43.test.js src/pages/network-43.test.jsx
+node experiments/issue-43-solver-census.mjs /tmp/solver-census.json
+node experiments/issue-43-solver-sizes.mjs 4,5,6,8,10 3
 node experiments/issue-43-audit.mjs
 npm run test:ci
 npm run check
