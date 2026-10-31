@@ -113,8 +113,10 @@ Each one has a test that failed before the fix.
 Widths of −1 follow the skin: `applySettings` (`src/settings/apply.js`) removes the CSS variable, so the stylesheet
 fallback applies.
 
-Size: `src/skins.frames.css` grew from 24.9 KB to 81.6 KB (4.7 KB gzipped), because the frame variables are now declared
-for blocks and controls too.
+Size: the generated frame CSS is now three files: `src/skins.frames.css` (84.3 KB, 7.5 KB gzipped),
+`src/skins.frames.corners.css` (27.3 KB, 2.5 KB gzipped) and `src/skins.frames.properties.css` (42.8 KB, 2.1 KB
+gzipped). Before, it was one file of 24.9 KB. The frame now covers blocks and controls in their own scales, and section
+7 explains the split.
 
 ## 6. Validation
 
@@ -170,3 +172,77 @@ for blocks and controls too.
     transparent, glass and default looks, and the light theme.
 
 ![After: samples of every element, custom frame](screenshots/after/samples/dark/custom.png)
+
+## 7. The WebKit job of CI ran out of time
+
+After the Matrix universe look became the default, the `network-browsers (webkit, macos-15-intel)` job hit its
+15-minute limit. On `main` it already took about 12 minutes. The slow step was the issue #27 audit, which presses eight
+navigation keys on every slider of the settings page. Every key press changes `<html>`, so every element of the page
+computes its style again.
+
+Local WebKitGTK closes the page of `/settings/` with the futuristic skin ("Target page, context or browser has been
+closed"), so every WebKit number below comes from the macOS runner of CI. Chromium served as a local proxy.
+
+1. **Selector lists.** Every chosen corner shape and line had a rule `:root[attribute] :where(<44 framed selectors>)`. A
+   browser cannot file a list inside one `:where()` under a class or a tag, so it tries that rule on every element. Fix
+   (bac60db): the shapes and lines declare numbers on the root only, and every framed selector is its own `:where()`.
+   CI was still too slow after this.
+2. **Measuring it.** `experiments/issue-45-webkit-diagnose.mjs` opens `/settings/` with one variant of the look at a
+   time. `restyleMs` is the median time to set a variable on `<html>` and read a box (style and layout). `keyMs` is the
+   median time of one slider key press, as the audit presses it. A temporary step ran it in the WebKit job, on the
+   branch and on `main` (run 41240352259, 1794 elements on the page):
+
+   | Checkout and look | restyleMs | keyMs |
+   | --- | --- | --- |
+   | branch, Matrix (default, custom frame) | 1680 | 2323 |
+   | branch, Matrix with corner brackets instead of the custom frame | 409 | 448 |
+   | branch, Glass universe | 234 | 560 |
+   | branch, Matrix without rain, nebula, grid lines, scanlines or with a gradient surface | 2024–2661 | — |
+   | `main`, defaults (Glass) | 135 | 330 |
+   | `main`, Matrix look | 337 | 580 |
+
+   So the custom frame alone cost about 1.3 s per restyle. Turning the rain, the nebula and the scanlines off did not
+   help. In local Chromium the same page took about 190 ms per restyle, against 33 ms on `main`. The problem was there
+   too, but much smaller.
+3. **Root cause.** Every framed element declared 49 custom properties of its own:
+   `calc()` of `var()`, a polygon of 36 points, and the sizes and positions of 20 background layers. That way each element
+   could use its own scale. `experiments/issue-45-custom-props-micro.mjs` and
+   `experiments/issue-45-typed-props-micro.mjs` show the mechanism. WebKit compares every inherited custom property of
+   every element when the root restyles. An unregistered value that contains `var()` costs as much as its tokens. A
+   registered typed value, or one that is not inherited, costs one computed value.
+4. **Fix** (5efe065):
+   - The root computes the lengths of each scale once, as lengths registered with `@property`:
+     - outer panels: `--fxp-*`;
+     - inner blocks: `--fxb-*`;
+     - controls: `--fxc-*`.
+   - Colours are registered as `<color>`, and the line images as `<image> | none`.
+   - The numbers of the shapes and lines are registered as not inherited.
+   - A framed element draws its outline and layers from the lengths of its scale, in properties that do not inherit
+     (`--fx-el-*`). The `::after` corner layer copies them with `inherit`.
+   - The registrations are generated into `src/skins.frames.properties.css`.
+   - `src/skins.frames.restyle.test.js` fails on the previous commit.
+
+   A simpler version, which only moved the lengths of the three scales to the root unregistered, cut the Chromium
+   restyle from about 190 ms to about 165 ms. The registered version cut it further, so it was kept. With the
+   diagnostic script in local Chromium it now takes 106 ms (75 ms with the Glass look, 33 ms on `main`).
+
+   Results on the branch in CI WebKit (run 41241859169):
+
+   | Look | restyleMs before | restyleMs after | keyMs after |
+   | --- | --- | --- | --- |
+   | Matrix (default, custom frame) | 1680 | 378 | 443 |
+   | Matrix with corner brackets | 409 | 206 | 419 |
+   | Glass universe | 234 | 191 | 444 |
+   | `main` Matrix look, for comparison | 337 | 272 | 403 |
+
+   A key press on the settings page now costs about as much as on `main`. The page still has 109 settings sliders
+   instead of 92, and the issue #45 browser check is a new step.
+5. `experiments/issue-45-sheet-cost.mjs` times a restyle in Chromium with each stylesheet switched off, then with each
+   rule switched off. Its numbers did not point at one sheet: switching off any sheet, even a font sheet with one
+   rule, saved about 20 ms out of 140 ms. Deleting a single rule through CSSOM made the restyle slower. So the cost was
+   not in one rule. The per-element custom properties of item 3 were found with the variants of the diagnostic script
+   and with the micro tests instead.
+6. **The time limit.** Before this branch, the WebKit job on `main` took about 12 of its 15 minutes. The issue #27
+   step took 1 min 53 s of that, 84 s of it for the audit of the 92 settings sliders. On this branch the settings page
+   has 109 sliders, and the issue #45 browser check is a new step. See the PR for the measured length of the job and
+   the limit chosen.
