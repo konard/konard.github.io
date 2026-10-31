@@ -235,14 +235,31 @@ closed"), so every WebKit number below comes from the macOS runner of CI. Chromi
    | Glass universe | 234 | 191 | 444 |
    | `main` Matrix look, for comparison | 337 | 272 | 403 |
 
-   A key press on the settings page now costs about as much as on `main`. The page still has 109 settings sliders
-   instead of 92, and the issue #45 browser check is a new step.
+   The custom frame no longer dominates: a restyle with it costs about 100 ms more than the Matrix look on `main`,
+   which has 236 fewer elements on the page. The `keyMs` column did not match the audit, though (see item 6). It times
+   three sliders only, and its numbers are the same on the branch and on `main`.
 5. `experiments/issue-45-sheet-cost.mjs` times a restyle in Chromium with each stylesheet switched off, then with each
    rule switched off. Its numbers did not point at one sheet: switching off any sheet, even a font sheet with one
    rule, saved about 20 ms out of 140 ms. Deleting a single rule through CSSOM made the restyle slower. So the cost was
    not in one rule. The per-element custom properties of item 3 were found with the variants of the diagnostic script
    and with the micro tests instead.
-6. **The time limit.** Before this branch, the WebKit job on `main` took about 12 of its 15 minutes. The issue #27
-   step took 1 min 53 s of that, 84 s of it for the audit of the 92 settings sliders. On this branch the settings page
-   has 109 sliders, and the issue #45 browser check is a new step. See the PR for the measured length of the job and
-   the limit chosen.
+6. **The time limit.** The CI run of cb025c1 had a temporary limit of 45 minutes and measured the whole job
+   (run 41243894083):
+
+   | WebKit job | `main` (run 41189168209, eeb905a) | branch after the fix |
+   | --- | --- | --- |
+   | whole job | 11 min 55 s | 16 min 45 s |
+   | issue #27 step | 1 min 53 s | 5 min 0 s |
+   | settings sliders audited | 93 | 111 |
+   | audit of the settings sliders | 102 s | 288 s |
+   | median time per settings slider (8 keys) | 1.02 s | 2.54 s |
+   | issue #45 step (new) | — | 16 s |
+
+   Each settings slider costs about 2.5 times as much as on `main`, close to the ratio of the restyle times of the
+   default looks (378 ms against 107 ms). Most of that is the Matrix look itself, which the issue asks for as the
+   default: on `main` the same look restyles in 272 ms against 107 ms for the Glass look. The rest comes from the
+   frame on blocks and controls and from the 236 extra elements on the page.
+
+   So the 15 minutes no longer fit. The WebKit job now takes its limit from the matrix: 25 minutes for WebKit on
+   macOS, 15 minutes as before for Chromium and Firefox. `src/workflow.test.js` checks that every matrix entry has a
+   limit. The Chromium job took 11 min 7 s and the Firefox job 7 min 13 s in the same run.
