@@ -7,10 +7,10 @@ export default async function review(page) {
     if (a !== b) throw new Error(`Expected ${b}; got ${a}`);
   };
   const reported = [
-    { code: '0222', turns: '0 -30' },
-    { code: '0112', turns: '0 0,-30 0' },
-    { code: '0001', turns: '0 0,0 -30' },
-    { code: '2002', turns: '-30 0' },
+    { code: '0222', turns: '0 0' },
+    { code: '0112', turns: '0 0' },
+    { code: '0001', turns: '0 0' },
+    { code: '2002', turns: '0 0' },
   ];
   const result = { date: new Date().toISOString(), engine: 'Playwright MCP Chromium', examples: [], errors: [] };
   page.on('pageerror', (error) => result.errors.push(error.message));
@@ -38,9 +38,9 @@ export default async function review(page) {
   const target = page.locator('#link-1-turn-1');
   await target.focus();
   await target.press('ArrowRight');
-  equal(await target.inputValue(), '-29');
+  equal(await target.inputValue(), '1');
   await page.getByRole('button', { name: 'Back to the default: Link 1: turn of the target, °', exact: true }).click();
-  equal(await target.inputValue(), '-30');
+  equal(await target.inputValue(), '0');
   equal(await picture(), original);
   const shared = new URL(await page.getByLabel('Link to this picture', { exact: true }).inputValue());
   equal(shared.searchParams.get('gaps'), '0.1 0.2 3 4');
@@ -50,6 +50,6 @@ export default async function review(page) {
   equal(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1), true);
   await page.screenshot({ path: `${root}/screenshots/mcp-mobile.png` });
   equal(result.errors.length, 0);
-  result.interactions = 'native keyboard, topology-aware reset, unchanged gaps, desktop and mobile';
+  result.interactions = 'native keyboard, neutral zero reset, unchanged gaps, desktop and mobile';
   return result;
 }

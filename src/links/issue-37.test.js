@@ -36,20 +36,25 @@ it('solves the reported 2222 network without introducing a crossing between its 
   expect(result.after - turningCost(result.turns)).toBeCloseTo(0, 8);
 });
 
-it('improves the four-link drawing with small reference adjustments at its original positions', () => {
+it('improves the four-link drawing at its original positions, widening turns only beyond small ones', () => {
   const links = decode('34 44 21 32');
   const style = normalizeStyle();
   const shape = shapeOfStyle(style, 4);
-  const result = solveCollisions(links, shape, {
-    adjustGaps: true,
-    range: style.solveRange,
-    step: style.solveStep,
-    gapRange: style.solveGapRange,
-  });
+  const solve = (range) =>
+    solveCollisions(links, shape, { adjustGaps: true, range, step: style.solveStep, gapRange: style.solveGapRange });
+  // Issue 43: the default largest turn is the full ±180° table range. Small
+  // corrections remain available with an explicit 30° limit, and widening
+  // must never be worse than them.
+  const small = solve(30);
+  small.delta.flat().forEach((angle) => expect(Math.abs(angle)).toBeLessThanOrEqual(30));
+  expect(small.after - turningCost(small.turns)).toBeLessThan(14);
+  const result = solve(style.solveRange);
+  expect(style.solveRange).toBe(180);
   expect(result.after).toBeLessThan(result.before);
-  expect(result.after - turningCost(result.turns)).toBeLessThan(14);
+  expect(result.after - turningCost(result.turns)).toBeLessThanOrEqual(small.after - turningCost(small.turns));
+  expect(result.after - turningCost(result.turns)).toBeLessThan(10);
   expect(result.layout).toBeUndefined();
-  result.delta.flat().forEach((angle) => expect(Math.abs(angle)).toBeLessThanOrEqual(30));
+  result.delta.flat().forEach((angle) => expect(Math.abs(angle)).toBeLessThanOrEqual(180));
   expect(
     overlapCost(links, { ...shape, turns: result.turns, linkGaps: result.linkGaps, frame: result.frame }),
   ).toBeCloseTo(result.after, 8);

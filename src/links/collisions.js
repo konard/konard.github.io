@@ -14,6 +14,7 @@ import { trimCurve } from './curve-tools';
 import { paintedPairCost, selfCost } from './painted-collisions';
 import { adjustCollisionGaps } from './collision-gaps';
 import { symmetricReferences } from './collision-symmetry';
+import { GAP_FIELDS } from './gaps';
 
 const SAMPLES = 16; // points per Bézier segment
 const NEAR = 0.09; // lines closer than this overlap (a stroke is about 0.04)
@@ -150,8 +151,17 @@ export function solveTurns(links, shape = {}, { range = 30, step = 1, passes = 3
   return result;
 }
 
-/** Gap-first search avoids the angle-only local minimum at collapsed
- * reference ends. Turn the separated drawing, then refine the gaps again.
+// Turns may stay small when that is enough. Wider turns are searched only
+// after every small arrangement fails, and gaps change only when no turn
+// within the user's largest turn clears the drawing (issue 43: 2211).
+export const SMALL_TURN = 30;
+
+/** Staged search, from the least to the most visible change:
+ * 1. mirrored references to a closed link (small turns);
+ * 2. turns only, first within ±30°, then within the user's largest turn;
+ * 3. gap-first search (gaps, turns, gaps) at the same growing ranges.
+ * Turn-only stages stop at the first clean drawing. Otherwise the fewest
+ * collisions win, then the smallest gap change, then the earlier stage.
  * Every stage returns an exact refitted score and preserves the user's bounds.
  */
 export function solveCollisions(links, shape = {}, options = {}) {
@@ -166,44 +176,89 @@ export function solveCollisions(links, shape = {}, options = {}) {
   }
   const grid = Math.max(1, options.step || 1);
   const coarse = links.length >= 3 && base.clearance != null ? Math.ceil(13 / grid) * grid : grid;
+  const range = Math.min(180, Math.max(0, Number(options.range ?? 30) || 0));
+  const ranges = [...new Set([Math.min(SMALL_TURN, range), range])];
   const turns = links.map((_, i) => [...(base.turns[i] || [0, 0])]);
   const before = overlapCost(links, base);
   let result = { turns, delta: turns.map(() => [0, 0]), linkGaps: base.linkGaps, before, after: before };
   // Existing angles are intentional. A turn penalty is only a search tie-break,
   // never a reason to move a drawing already satisfying painted clearance.
-  const satisfied = (value) => value.after - turningCost(value.turns) <= 1e-9;
-  if (!satisfied(result) && passes > 0) {
-    if (adjustGaps) {
-      result = symmetricReferences(links, base, result, options);
-      if (!satisfied(result)) {
-        result = adjustCollisionGaps(links, base, result, { gapRange, middleRange, passes });
-        if (!satisfied(result)) {
-          const found = solveTurns(
-            links,
-            { ...base, turns: result.turns, linkGaps: result.linkGaps },
-            { ...options, step: coarse },
-            turns,
-          );
-          result = { ...found, before };
-          if (adjustGaps && !satisfied(result))
-            result = adjustCollisionGaps(links, base, result, { gapRange, middleRange, passes });
-        }
-      }
-    } else result = solveTurns(links, base, { ...options, step: coarse });
-    if (coarse > grid && !satisfied(result)) {
-      result = {
+  const collisions = (value) => value.after - turningCost(value.turns);
+  const satisfied = (value) => collisions(value) <= 1e-9;
+  const stages = [];
+  const gapStage = (from) => adjustCollisionGaps(links, base, from, { gapRange, middleRange, passes });
+  // Turn search from `from`, coarse first, then refined around its result.
+  // Wide ranges start on a coarser grid (at most 61 angles per end), then
+  // refine around the result on the user's grid.
+  const turnStage = (from, r, gaps) => {
+    const opts = { ...options, range: r };
+    const step = Math.max(coarse, Math.ceil(Math.ceil(r / 30) / grid) * grid);
+    let found = {
+      ...solveTurns(links, { ...base, turns: from.turns, linkGaps: from.linkGaps }, { ...opts, step }, turns),
+      before,
+    };
+    if (gaps && !satisfied(found)) found = gapStage(found);
+    if (step > grid && !satisfied(found)) {
+      found = {
         ...solveTurns(
           links,
-          { ...base, turns: result.turns, linkGaps: result.linkGaps },
-          { ...options, localRange: coarse },
+          { ...base, turns: found.turns, linkGaps: found.linkGaps },
+          { ...opts, localRange: step },
           turns,
         ),
         before,
       };
-      if (adjustGaps && !satisfied(result))
-        result = adjustCollisionGaps(links, base, result, { gapRange, middleRange, passes });
+      if (gaps && !satisfied(found)) found = gapStage(found);
+    }
+    return found;
+  };
+  // Turn-only stages stop at the first clean drawing. Both gap stages run, so
+  // a wider turn can replace a larger gap opening (references stay attached).
+  const attempt = (name, run, always = false) => {
+    if (!always && stages.some((stage) => satisfied(stage.result))) return;
+    stages.push({ name, result: run() });
+  };
+  const gapChange = (value) =>
+    links.reduce(
+      (sum, _, i) =>
+        sum +
+        GAP_FIELDS.reduce((s, field, k) => {
+          const initial = base.linkGaps[i]?.[k] ?? base[field.key] ?? base.gap;
+          return s + Math.abs((value.linkGaps[i]?.[k] ?? initial) - initial);
+        }, 0),
+      0,
+    );
+  if (!satisfied(result) && passes > 0) {
+    const mirrored = {};
+    for (const r of ranges) {
+      if (adjustGaps)
+        attempt(
+          `mirrored ±${r}°`,
+          () => (mirrored[r] = symmetricReferences(links, base, result, { ...options, range: r })),
+        );
+      attempt(`turns ±${r}°`, () => turnStage(result, r, false));
+    }
+    const turned = stages.some((stage) => satisfied(stage.result));
+    if (adjustGaps && !turned)
+      for (const r of ranges)
+        attempt(
+          `gaps and turns ±${r}°`,
+          () => {
+            const from = mirrored[r] || result;
+            const spaced = satisfied(from) ? from : gapStage(from);
+            return satisfied(spaced) ? spaced : turnStage(spaced, r, true);
+          },
+          true,
+        );
+    // Fewest collisions first, then the smallest gap change; on ties keep the
+    // earlier stage, which is the smaller change.
+    for (const stage of stages) {
+      const difference = collisions(stage.result) - collisions(result);
+      if (difference < -1e-9 || (difference <= 1e-9 && gapChange(stage.result) < gapChange(result) - 1e-9))
+        result = stage.result;
     }
   }
+  result = { ...result, before };
   result.delta = result.turns.map((pair, i) => pair.map((a, e) => a - turns[i][e]));
   if (base.frame) result.frame = base.frame;
   if (debug)
@@ -212,8 +267,9 @@ export function solveCollisions(links, shape = {}, options = {}) {
       options,
       clearance: base.clearance,
       ...result,
-      collisionCost: result.after - turningCost(result.turns),
+      collisionCost: collisions(result),
       preservedSatisfied: satisfied({ after: before, turns }),
+      stages: stages.map(({ name, result: r }) => ({ name, collisions: collisions(r), turns: r.turns })),
     });
   return result;
 }

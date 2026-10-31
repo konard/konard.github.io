@@ -1,0 +1,32 @@
+
+> konard.github.io@0.1.0 test:network:issue43
+> node experiments/issue-43-browser.mjs
+
+firefox after: 0211, zero controls=true
+firefox after: 2011, zero controls=true
+firefox after: 2210, zero controls=true
+firefox after: 2221, zero controls=true
+firefox after: 0222, zero controls=true
+firefox after: 0112, zero controls=true
+firefox after: 0001, zero controls=true
+firefox after: 2002, zero controls=true
+firefox after: 00, zero controls=true
+firefox after: 01, zero controls=true
+firefox after: 10, zero controls=true
+firefox after: 11, zero controls=true
+firefox after: 2211, zero controls=true
+firefox after: 0111, zero controls=true
+firefox after: 2202, zero controls=true
+firefox after: 1120, zero controls=true
+firefox after: 2012, zero controls=true
+firefox after: 0010, zero controls=true
+firefox after: 1212, zero controls=true
+firefox after: 1002, zero controls=true
+firefox after: 020313, zero controls=true
+firefox after: 122101, zero controls=true
+firefox after: 121310, zero controls=true
+firefox after: 313322, zero controls=true
+firefox after: 011111, zero controls=true
+firefox after: 033310, zero controls=true
+firefox after: 202221, zero controls=true
+firefox after: 021023, zero controls=true

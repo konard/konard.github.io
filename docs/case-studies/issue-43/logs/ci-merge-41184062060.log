@@ -1,0 +1,107 @@
+checks	Audit dependencies	﻿2026-10-31T08:19:19.6865755Z ##[group]Run npm audit --package-lock-only --audit-level=moderate
+checks	Audit dependencies	2026-10-31T08:19:19.6866423Z ^[[36;1mnpm audit --package-lock-only --audit-level=moderate^[[0m
+checks	Audit dependencies	2026-10-31T08:19:19.6880941Z shell: /usr/bin/bash -e {0}
+checks	Audit dependencies	2026-10-31T08:19:19.6881324Z env:
+checks	Audit dependencies	2026-10-31T08:19:19.6881661Z   GIT_CONFIG_COUNT: 1
+checks	Audit dependencies	2026-10-31T08:19:19.6882057Z   GIT_CONFIG_KEY_0: init.defaultBranch
+checks	Audit dependencies	2026-10-31T08:19:19.6882462Z   GIT_CONFIG_VALUE_0: main
+checks	Audit dependencies	2026-10-31T08:19:19.6882801Z ##[endgroup]
+checks	Audit dependencies	2026-10-31T08:19:20.3222082Z # npm audit report
+checks	Audit dependencies	2026-10-31T08:19:20.3222447Z 
+checks	Audit dependencies	2026-10-31T08:19:20.3222837Z minimatch  <11.0.1
+checks	Audit dependencies	2026-10-31T08:19:20.3223209Z Severity: moderate
+checks	Audit dependencies	2026-10-31T08:19:20.3224026Z minimatch has potential denial of service via globparts amplification - https://github.com/advisories/GHSA-g3hv-75wg-m249
+checks	Audit dependencies	2026-10-31T08:19:20.3224825Z fix available via `npm audit fix --force`
+checks	Audit dependencies	2026-10-31T08:19:20.3225356Z Will install @actions/artifact@1.1.3, which is a breaking change
+checks	Audit dependencies	2026-10-31T08:19:20.3225900Z node_modules/minimatch
+checks	Audit dependencies	2026-10-31T08:19:20.3226494Z node_modules/readdir-glob/node_modules/minimatch
+checks	Audit dependencies	2026-10-31T08:19:20.3226937Z   @eslint/config-array  *
+checks	Audit dependencies	2026-10-31T08:19:20.3227542Z   Depends on vulnerable versions of minimatch
+checks	Audit dependencies	2026-10-31T08:19:20.3228108Z   node_modules/@eslint/config-array
+checks	Audit dependencies	2026-10-31T08:19:20.3228538Z     eslint  0.7.1 - 2.0.0-rc.1 || >=4.1.0
+checks	Audit dependencies	2026-10-31T08:19:20.3229046Z     Depends on vulnerable versions of @eslint-community/eslint-utils
+checks	Audit dependencies	2026-10-31T08:19:20.3229763Z     Depends on vulnerable versions of @eslint/config-array
+checks	Audit dependencies	2026-10-31T08:19:20.3230571Z     Depends on vulnerable versions of minimatch
+checks	Audit dependencies	2026-10-31T08:19:20.3230979Z     node_modules/eslint
+checks	Audit dependencies	2026-10-31T08:19:20.3231420Z       @eslint-community/eslint-utils  *
+checks	Audit dependencies	2026-10-31T08:19:20.3231832Z       Depends on vulnerable versions of eslint
+checks	Audit dependencies	2026-10-31T08:19:20.3232402Z       node_modules/@eslint-community/eslint-utils
+checks	Audit dependencies	2026-10-31T08:19:20.3232862Z       @eslint/js  >=10.0.1
+checks	Audit dependencies	2026-10-31T08:19:20.3233285Z       Depends on vulnerable versions of eslint
+checks	Audit dependencies	2026-10-31T08:19:20.3233678Z       node_modules/@eslint/js
+checks	Audit dependencies	2026-10-31T08:19:20.3234099Z       eslint-plugin-react-refresh  *
+checks	Audit dependencies	2026-10-31T08:19:20.3234560Z       Depends on vulnerable versions of eslint
+checks	Audit dependencies	2026-10-31T08:19:20.3235039Z       node_modules/eslint-plugin-react-refresh
+checks	Audit dependencies	2026-10-31T08:19:20.3235491Z   readdir-glob  *
+checks	Audit dependencies	2026-10-31T08:19:20.3235878Z   Depends on vulnerable versions of minimatch
+checks	Audit dependencies	2026-10-31T08:19:20.3236288Z   node_modules/readdir-glob
+checks	Audit dependencies	2026-10-31T08:19:20.3236730Z     archiver  >=5.0.0
+checks	Audit dependencies	2026-10-31T08:19:20.3237120Z     Depends on vulnerable versions of readdir-glob
+checks	Audit dependencies	2026-10-31T08:19:20.3237882Z     node_modules/archiver
+checks	Audit dependencies	2026-10-31T08:19:20.3238461Z       @actions/artifact  >=2.0.0
+checks	Audit dependencies	2026-10-31T08:19:20.3239113Z       Depends on vulnerable versions of archiver
+checks	Audit dependencies	2026-10-31T08:19:20.3240130Z       node_modules/@actions/artifact
+checks	Audit dependencies	2026-10-31T08:19:20.3240602Z 
+checks	Audit dependencies	2026-10-31T08:19:20.3240964Z 9 moderate severity vulnerabilities
+checks	Audit dependencies	2026-10-31T08:19:20.3241324Z 
+checks	Audit dependencies	2026-10-31T08:19:20.3241667Z To address all issues possible (including breaking changes), run:
+checks	Audit dependencies	2026-10-31T08:19:20.3242197Z   npm audit fix --force
+checks	Audit dependencies	2026-10-31T08:19:20.3242436Z 
+checks	Audit dependencies	2026-10-31T08:19:20.3242720Z Some issues need review, and may require choosing
+checks	Audit dependencies	2026-10-31T08:19:20.3243126Z a different dependency.
+checks	Audit dependencies	2026-10-31T08:19:20.3346227Z ##[error]Process completed with exit code 1.
+pipeline-status	Verify every required outcome	﻿2026-10-31T08:20:23.1188401Z ##[group]Run node scripts/check-pipeline-status.mjs
+pipeline-status	Verify every required outcome	2026-10-31T08:20:23.1188856Z ^[[36;1mnode scripts/check-pipeline-status.mjs^[[0m
+pipeline-status	Verify every required outcome	2026-10-31T08:20:23.1209871Z shell: /usr/bin/bash -e {0}
+pipeline-status	Verify every required outcome	2026-10-31T08:20:23.1210143Z env:
+pipeline-status	Verify every required outcome	2026-10-31T08:20:23.1210341Z   GIT_CONFIG_COUNT: 1
+pipeline-status	Verify every required outcome	2026-10-31T08:20:23.1210852Z   GIT_CONFIG_KEY_0: init.defaultBranch
+pipeline-status	Verify every required outcome	2026-10-31T08:20:23.1211163Z   GIT_CONFIG_VALUE_0: main
+pipeline-status	Verify every required outcome	2026-10-31T08:20:23.1212853Z   NEEDS_JSON: {
+pipeline-status	Verify every required outcome	  "prepare": {
+pipeline-status	Verify every required outcome	    "result": "success",
+pipeline-status	Verify every required outcome	    "outputs": {
+pipeline-status	Verify every required outcome	      "code": "true",
+pipeline-status	Verify every required outcome	      "docs": "true"
+pipeline-status	Verify every required outcome	    }
+pipeline-status	Verify every required outcome	  },
+pipeline-status	Verify every required outcome	  "lint-workflows": {
+pipeline-status	Verify every required outcome	    "result": "success",
+pipeline-status	Verify every required outcome	    "outputs": {}
+pipeline-status	Verify every required outcome	  },
+pipeline-status	Verify every required outcome	  "checks": {
+pipeline-status	Verify every required outcome	    "result": "failure",
+pipeline-status	Verify every required outcome	    "outputs": {}
+pipeline-status	Verify every required outcome	  },
+pipeline-status	Verify every required outcome	  "tooling": {
+pipeline-status	Verify every required outcome	    "result": "success",
+pipeline-status	Verify every required outcome	    "outputs": {}
+pipeline-status	Verify every required outcome	  },
+pipeline-status	Verify every required outcome	  "docs": {
+pipeline-status	Verify every required outcome	    "result": "skipped",
+pipeline-status	Verify every required outcome	    "outputs": {}
+pipeline-status	Verify every required outcome	  },
+pipeline-status	Verify every required outcome	  "codeql": {
+pipeline-status	Verify every required outcome	    "result": "success",
+pipeline-status	Verify every required outcome	    "outputs": {}
+pipeline-status	Verify every required outcome	  },
+pipeline-status	Verify every required outcome	  "network-browsers": {
+pipeline-status	Verify every required outcome	    "result": "skipped",
+pipeline-status	Verify every required outcome	    "outputs": {}
+pipeline-status	Verify every required outcome	  },
+pipeline-status	Verify every required outcome	  "test": {
+pipeline-status	Verify every required outcome	    "result": "skipped",
+pipeline-status	Verify every required outcome	    "outputs": {}
+pipeline-status	Verify every required outcome	  },
+pipeline-status	Verify every required outcome	  "deploy": {
+pipeline-status	Verify every required outcome	    "result": "skipped",
+pipeline-status	Verify every required outcome	    "outputs": {}
+pipeline-status	Verify every required outcome	  }
+pipeline-status	Verify every required outcome	}
+pipeline-status	Verify every required outcome	2026-10-31T08:20:23.1214812Z   CODE_CHANGED: true
+pipeline-status	Verify every required outcome	2026-10-31T08:20:23.1215040Z   DOCS_CHANGED: true
+pipeline-status	Verify every required outcome	2026-10-31T08:20:23.1215273Z   SHOULD_DEPLOY: false
+pipeline-status	Verify every required outcome	2026-10-31T08:20:23.1215493Z ##[endgroup]
+pipeline-status	Verify every required outcome	2026-10-31T08:20:23.1762291Z Pipeline failed: checks: failure; test: skipped; network-browsers: skipped; docs: skipped
+pipeline-status	Verify every required outcome	2026-10-31T08:20:23.1789424Z ##[notice]deploy skipped by its documented event/change condition.
+pipeline-status	Verify every required outcome	2026-10-31T08:20:23.1822080Z ##[error]Process completed with exit code 1.

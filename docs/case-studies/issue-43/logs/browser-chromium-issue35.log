@@ -1,0 +1,4 @@
+
+> konard.github.io@0.1.0 test:network:issue35
+> node experiments/issue-35-browser.mjs
+

@@ -1,0 +1,27 @@
+
+> konard.github.io@0.1.0 test:network:issue37
+> node experiments/issue-37-browser.mjs
+
+firefox: native click-then-key focus passed in all four control contexts
+firefox: 2222 preserves centers/colors and exact Apply/share output ( · overlaps 7.4 → 0.0)
+firefox: 34442132 preserves centers/colors and exact Apply/share output ( · overlaps 29.2 → 13.3)
+firefox: 01 preserves centers/colors and exact Apply/share output ( · overlaps 0.0 → 0.0)
+firefox: 10 preserves centers/colors and exact Apply/share output ( · overlaps 0.0 → 0.0)
+firefox: 11 preserves centers/colors and exact Apply/share output ( · overlaps 0.0 → 0.0)
+firefox: 00 preserves centers/colors and exact Apply/share output ( · overlaps 0.0 → 0.0)
+firefox: 2111 preserves centers/colors and exact Apply/share output ( · overlaps 0.2 → 0.0)
+firefox: 2012 preserves centers/colors and exact Apply/share output ( · overlaps 38.0 → 0.1)
+firefox: 1222 preserves centers/colors and exact Apply/share output ( · overlaps 0.4 → 0.0)
+firefox: 0100 preserves centers/colors and exact Apply/share output ( · overlaps 0.0 → 0.0)
+firefox: 032113 preserves centers/colors and exact Apply/share output ( · overlaps 42.5 → 0.2)
+firefox: 133111 preserves centers/colors and exact Apply/share output ( · overlaps 4.0 → 0.0)
+firefox: 100321 preserves centers/colors and exact Apply/share output ( · overlaps 0.4 → 0.0)
+firefox: 111300 preserves centers/colors and exact Apply/share output ( · overlaps 6.4 → 0.0)
+firefox: 132001 preserves centers/colors and exact Apply/share output ( · overlaps 43.3 → 0.0)
+firefox: 013302 preserves centers/colors and exact Apply/share output ( · overlaps 0.4 → 0.0)
+firefox: 42414220 preserves centers/colors and exact Apply/share output ( · overlaps 14.1 → 0.0)
+firefox: 43434143 preserves centers/colors and exact Apply/share output ( · overlaps 14.9 → 6.6)
+firefox: 33044224 preserves centers/colors and exact Apply/share output ( · overlaps 59.8 → 5.9)
+firefox: 31324042 preserves centers/colors and exact Apply/share output ( · overlaps 5.2 → 2.6)
+firefox: 04210010 preserves centers/colors and exact Apply/share output ( · overlaps 40.0 → 0.0)
+firefox: 32103141 preserves centers/colors and exact Apply/share output ( · overlaps 10.5 → 0.0)

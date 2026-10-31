@@ -2,7 +2,7 @@ import ColorInput from '../components/ColorInput';
 import Select from '../components/Select';
 import { useState } from 'react';
 import NetworkGaps from './NetworkGaps';
-import { canonical, decode, encode, mathNotation } from '../links/configurations';
+import { canonical, decode, encode, mathNotation, randomCode } from '../links/configurations';
 import {
   addLink,
   countOf,
@@ -206,6 +206,7 @@ export function LinksTable({
   onTurn,
   onStep,
   onRandom,
+  onRandomReal,
 }) {
   const { t } = useLang();
   const n = links.length;
@@ -295,6 +296,9 @@ export function LinksTable({
         <button type="button" className="button" onClick={onRandom}>
           {t({ en: 'Random network', ru: 'Случайная сеть' })}
         </button>
+        <button type="button" className="button" onClick={onRandomReal}>
+          {t({ en: 'Random real network', ru: 'Случайная настоящая сеть' })}
+        </button>
         <button
           type="button"
           className="button"
@@ -312,15 +316,18 @@ export function LinksTable({
   );
 }
 
-/** The network `step` positions after `links` among the networks of the same size (wrapping around). */
+/** Step in counting order across all sizes, starting with the one-link network 00. */
 export function stepped(links, step) {
-  const n = links.length;
-  const count = countOf(n);
-  const index = (((BigInt(decimalOf(links)) + BigInt(step)) % count) + count) % count;
+  let n = links.length;
+  let index = BigInt(decimalOf(links)) + BigInt(step);
+  while (index >= countOf(n)) index -= countOf(n++);
+  while (index < 0n && n > 1) index += countOf(--n);
+  if (index < 0n) index = 0n;
   return parseIndex(index.toString(), n).links;
 }
 
-/** A random network of `n` links. */
-export function randomLinks(n, random = Math.random) {
+/** A random network of `n` links, optionally excluding every reference to zero. */
+export function randomLinks(n, random = Math.random, options = {}) {
+  if (options.real) return decode(randomCode(random, n, options));
   return Array.from({ length: n }, () => [Math.floor(random() * (n + 1)), Math.floor(random() * (n + 1))]);
 }

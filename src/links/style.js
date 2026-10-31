@@ -10,7 +10,7 @@
 // values that differ from the defaults in the query string, so a shared link
 // opens exactly the picture that was shared.
 import { color, option, range, select, toggle } from '../settings/fields';
-import { COLORS, SHAPE, defaultTurns, normalizeFrame } from './glyph';
+import { COLORS, SHAPE, normalizeFrame } from './glyph';
 import { GEOMETRY_SECTIONS } from './style-geometry';
 import { linkGaps, normalizeGaps, withGaps } from './gaps';
 
@@ -274,8 +274,8 @@ export const STYLE_SECTIONS = [
     id: 'experimental',
     title: { en: 'Experimental: fewer overlaps', ru: 'Эксперимент: меньше наложений' },
     lead: {
-      en: 'Keeps link placement, order and colors. Makes small adjustments to open references; already well-spaced drawings and self-closed halves stay unchanged. References to a closed link prefer mirrored ends and uniform spaces. Some crossings remain with fixed placement. Apply the result to keep editing it.',
-      ru: 'Сохраняет размещение, порядок и цвета связей. Немного корректирует открытые ссылки; уже настроенные рисунки и замкнутые половины остаются без изменений. Ссылки на замкнутую связь предпочитает делать зеркальными, с равномерными промежутками. При фиксированном размещении некоторые пересечения остаются. Примените результат, чтобы продолжить редактирование.',
+      en: 'Keeps link placement, order and colors. Turns open references, first by at most 30°, then up to the largest turn, and changes gaps only when turns alone cannot clear the drawing; already well-spaced drawings and self-closed halves stay unchanged. References to a closed link prefer mirrored ends and uniform spaces. Some crossings remain with fixed placement. Apply the result to keep editing it.',
+      ru: 'Сохраняет размещение, порядок и цвета связей. Поворачивает открытые ссылки — сначала не более чем на 30°, затем до наибольшего поворота — и меняет зазоры, только если одних поворотов недостаточно; уже настроенные рисунки и замкнутые половины остаются без изменений. Ссылки на замкнутую связь предпочитает делать зеркальными, с равномерными промежутками. При фиксированном размещении некоторые пересечения остаются. Примените результат, чтобы продолжить редактирование.',
     },
     fields: [
       toggle('solve', false, { en: 'Reduce overlaps automatically', ru: 'Уменьшать наложения автоматически' }),
@@ -312,7 +312,7 @@ export const STYLE_SECTIONS = [
       ),
       range(
         'solveRange',
-        30,
+        180,
         0,
         180,
         1,
@@ -320,8 +320,8 @@ export const STYLE_SECTIONS = [
         {
           unit: '°',
           hint: {
-            en: 'Defaults to small corrections of at most 30°. Larger values allow stronger reference bending, while link placement and colors stay fixed.',
-            ru: 'По умолчанию небольшие поправки до 30°. Большие значения разрешают сильнее изгибать ссылки, сохраняя размещение и цвета связей.',
+            en: 'Small corrections of at most 30° are tried first; larger turns up to this value are used only when small ones leave overlaps. Link placement and colors stay fixed.',
+            ru: 'Сначала пробуются небольшие поправки до 30°; большие повороты до этого значения используются, только если небольших недостаточно. Размещение и цвета связей сохраняются.',
           },
         },
       ),
@@ -359,7 +359,6 @@ function normalizeList(key, value) {
       .slice(0, 2)
       .map((a) => clamp(Math.round(Number(a)) || 0, -180, 180)),
   );
-  // A nonempty list overrides automatic defaults for the whole drawing.
   // Keep one zero row so explicitly unturned links survive sharing and Apply.
   while (turns.length > 1 && turns[turns.length - 1].every((a) => a === 0)) turns.pop();
   return turns.map((pair) => `${pair[0]} ${pair[1] ?? 0}`).join(',');
@@ -440,10 +439,9 @@ export function linkColors(style, n) {
   });
 }
 
-/** Turns in degrees. Pass links for topology-aware defaults; a count retains zero defaults. */
+/** Editable deviations from neutral geometry in degrees; unspecified turns are zero. */
 export function linkTurns(style, linksOrCount) {
   const n = Array.isArray(linksOrCount) ? linksOrCount.length : linksOrCount;
-  if (!style.turns && Array.isArray(linksOrCount)) return defaultTurns(linksOrCount, style);
   const turns = style.turns ? style.turns.split(',').map((pair) => pair.split(' ').map(Number)) : [];
   return Array.from({ length: n }, (_, i) => turns[i] || [0, 0]);
 }

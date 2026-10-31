@@ -1,0 +1,44 @@
+
+> konard.github.io@0.1.0 test:ci
+> vitest run
+
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793387907238
+
+ ❯ src/pages/pages.test.jsx (51 tests | 1 failed) 37143ms
+   ❯ NetworkExample (issue #9) (1)
+     × labels the math and the links notation and shows a random network on click 32ms
+::debug::Creating Artifact archive with compressionLevel: 6
+::debug::Zip write high watermark value 8388608
+::debug::Zip read high watermark value 8388608
+::debug::Zip stream for upload has ended.
+::debug::Zip stream for upload has finished.
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/pages/pages.test.jsx > NetworkExample (issue #9) > labels the math and the links notation and shows a random network on click
+AssertionError: expected '22₄ 22₄ 22₄' to be '21₄ 21₄ 21₄' // Object.is equality
+
+Expected: "21₄ 21₄ 21₄"
+Received: "22₄ 22₄ 22₄"
+
+ ❯ src/pages/pages.test.jsx:297:20
+    295|     fireEvent.click(screen.getByRole('button', { name: /Network of 3 l…
+    296|     // random() = 0.6 picks 3 links and the network at 0.6 × 4⁶.
+    297|     expect(math()).toBe('21₄ 21₄ 21₄');
+       |                    ^
+    298|     expect(links()).toBe('(1: 2 1)(2: 2 1)(3: 2 1)');
+    299|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 71 passed (72)
+      Tests  1 failed | 1002 passed (1003)
+   Start at  19:25:06
+   Duration  276.86s (tests 58%, environment 30%, setup 7%, import 3%, transform 2%, worker 1%)
+
+Environment  jsdom was created 72 times · 78.64s total, 30% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+

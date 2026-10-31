@@ -1,0 +1,68 @@
+{
+  "recordedAt": "2026-10-30T20:04:59.921711+00:00",
+  "implementationSha": "43b93fb45a1df6cdd532c54711620caba93233a0",
+  "ciRun": "https://github.com/konard/konard.github.io/actions/runs/41118124455",
+  "ciConclusion": "success",
+  "local": {
+    "unitTests": 1006,
+    "testFiles": 72,
+    "staticChecks": "passed",
+    "toolingChecks": "passed",
+    "productionBuild": "passed",
+    "cvPdfVariants": 120,
+    "dependencyVulnerabilities": 0,
+    "browserContracts": [
+      "chromium browser: exit 0",
+      "chromium issue19: exit 0",
+      "chromium issue21: exit 0",
+      "chromium issue23: exit 0",
+      "chromium issue25: exit 0",
+      "chromium issue27: exit 0",
+      "chromium issue29: exit 0",
+      "chromium issue35: exit 0",
+      "chromium issue37: exit 0",
+      "chromium issue41: exit 0",
+      "chromium issue43: exit 0",
+      "chromium indicators: exit 0",
+      "firefox browser: exit 0",
+      "firefox issue19: exit 0",
+      "firefox issue21: exit 0",
+      "firefox issue23: exit 0",
+      "firefox issue25: exit 0",
+      "firefox issue27: exit 0",
+      "firefox issue29: exit 0",
+      "firefox issue35: exit 0",
+      "firefox issue37: exit 0",
+      "firefox issue41: exit 0",
+      "firefox issue43: exit 0"
+    ],
+    "browserExit": 0,
+    "galleryCardsPerEngine": 1215
+  },
+  "ci": {
+    "browserEngines": [
+      "chromium",
+      "firefox",
+      "webkit"
+    ],
+    "issue43DrawingsPerEngine": 28,
+    "galleryCardsPerEngine": 4131,
+    "requiredJobs": "all passed; deployment skipped for pull request"
+  },
+  "audit": {
+    "topologies": 4181,
+    "preservedClearDrawings": 365,
+    "unchangedFreeOrSelfHalves": 12512,
+    "unchangedMiddles": 12454
+  },
+  "feedback": {
+    "issueComments": 0,
+    "requiredSubIssues": 0,
+    "prConversationComments": 0,
+    "prInlineComments": 0,
+    "prReviews": 0
+  },
+  "blockers": [],
+  "deferredRequirements": [],
+  "publicationGate": "Evidence-only follow-up commit must pass current-head CI; final run is linked in PR 44 before ready status."
+}

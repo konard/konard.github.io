@@ -109,10 +109,18 @@ export const GEOMETRY_SECTIONS = [
       field('sourceAngle', -180, 180, 1, 'Leaving angle', 'Угол выхода', {
         ...degrees,
         when: (s) => s.angles === 'fixed',
+        hint: {
+          en: 'Preferred approach angle for curved references. On an aligned reference, 30° is neutral and changes bend away from the straight route.',
+          ru: 'Угол подхода для изогнутых ссылок. У выровненной ссылки 30° — нейтральное значение; изменения отклоняют её от прямой.',
+        },
       }),
       field('targetAngle', -180, 180, 1, 'Entering angle', 'Угол входа', {
         ...degrees,
         when: (s) => s.angles === 'fixed',
+        hint: {
+          en: 'Preferred approach angle for curved references. On an aligned reference, 30° is neutral and changes bend away from the straight route.',
+          ru: 'Угол подхода для изогнутых ссылок. У выровненной ссылки 30° — нейтральное значение; изменения отклоняют её от прямой.',
+        },
       }),
       toggle('lens', SHAPE.lens, {
         en: 'Two references to one link make a lens',

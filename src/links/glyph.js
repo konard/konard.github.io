@@ -136,11 +136,17 @@ function side(d, away, out) {
  * of the middle direction, or with fixed angles the chord turned by `angle`
  * to the same side as the mirror.
  */
-function approach(d, chord, twice, angle, o) {
+function approach(d, chord, twice, angle, neutralAngle, o) {
   const mirror = lens(reflect(d, chord), chord, twice && o.lens);
   if (o.angles !== 'fixed') return mirror;
   const side = chord[0] * mirror[1] - chord[1] * mirror[0] < 0 ? -1 : 1;
-  return rotate(chord, side * angle * RAD);
+  // A chord already following the middle tangent needs no bend. This is the
+  // reference's neutral geometry, before any editable turn is applied. Global
+  // angle changes remain offsets from that neutral direction. Lenses and
+  // noncollinear routes retain their fixed approach angles; legacy gallery
+  // geometry retains its original construction.
+  const neutral = o.bendMode === 'curve' && dot(d, chord) > 1 - 1e-10;
+  return rotate(chord, side * (angle - (neutral ? neutralAngle : 0)) * RAD);
 }
 
 /** The cubic segments of link `i` (0-based) and its two ends, in layout units. */
@@ -199,7 +205,7 @@ export function linkCurve(links, i, places, o) {
   } else {
     const p = places[s - 1].at;
     const chord = unit(sub(m, p));
-    const dir = rotate(approach(d, chord, s === t, o.sourceAngle, o), turnIn);
+    const dir = rotate(approach(d, chord, s === t, o.sourceAngle, SHAPE.sourceAngle, o), turnIn);
     const k = o.tension * length(sub(m, p));
     const from = add(p, mul(dir, startGap));
     first = [from, add(from, mul(dir, k)), sub(m, mul(d, k)), m];
@@ -228,7 +234,7 @@ export function linkCurve(links, i, places, o) {
   } else {
     const q = places[t - 1].at;
     const chord = unit(sub(q, m));
-    const dir = rotate(approach(d, chord, s === t, o.targetAngle, o), turnOut);
+    const dir = rotate(approach(d, chord, s === t, o.targetAngle, SHAPE.targetAngle, o), turnOut);
     const k = o.tension * length(sub(q, m));
     const to = sub(q, mul(dir, endGap));
     second = [m, add(m, mul(d, k)), sub(to, mul(dir, k)), to];
@@ -253,34 +259,6 @@ export function layoutCurves(links, shape = {}) {
   const o = shapeOf(shape);
   const places = layout(n, o, links);
   return links.map((_, i) => linkCurve(links, i, places, o));
-}
-
-/**
- * Prefer a straight reference when its chord already follows the middle's
- * tangent. Return ordinary editable turns; leave gaps and placement alone.
- * Explicit angles/bends and the gallery's legacy geometry remain deliberate.
- */
-export function defaultTurns(links, shape = {}) {
-  const o = shapeOf(shape);
-  const zero = links.map(() => [0, 0]);
-  if (o.bendMode !== 'curve' || o.angles !== 'fixed' || o.bulge !== 0) return zero;
-  const places = layout(links.length, o, links);
-  return links.map((pair, i) => {
-    const curve = linkCurve(links, i, places, { ...o, turns: zero });
-    return pair.map((ref, end) => {
-      const key = end ? 'targetAngle' : 'sourceAngle';
-      if (!ref || ref === i + 1 || o[key] !== SHAPE[key]) return 0;
-      // Reciprocal references need distinct routes: straightening them puts
-      // two shafts on the same chord and can also fold their free extensions.
-      if (links[ref - 1].includes(i + 1)) return 0;
-      const chord = unit(end ? sub(places[ref - 1].at, places[i].at) : sub(places[i].at, places[ref - 1].at));
-      // Lenses and references approaching from different directions need their
-      // existing curves. A closed half itself is never changed.
-      if (dot(chord, curve.middle.dir) < 1 - 1e-10) return 0;
-      const dir = curve[end ? 'end' : 'start'].dir;
-      return Math.round(Math.atan2(dir[0] * chord[1] - dir[1] * chord[0], dot(dir, chord)) / RAD) || 0;
-    });
-  });
 }
 
 /** Shared fitting transform, also used to score middle cuts in image units. */

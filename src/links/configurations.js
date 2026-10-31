@@ -85,7 +85,7 @@ export function indexOf(code, { real = false } = {}) {
 /** A random network of `n` links, or of 1–4 links when `n` is not given. */
 export function randomCode(random = Math.random, n = 1 + Math.floor(random() * 4), { real = false } = {}) {
   // Sampling the astronomical total through Number would overflow or lose digits.
-  if (n > 9)
+  if (!Number.isSafeInteger(networkCount(n, { real })))
     return pairs(Array.from({ length: 2 * n }, () => Math.floor(random() * (real ? n : n + 1)) + (real ? 1 : 0)));
   return codeAt(n, Math.floor(random() * networkCount(n, { real })), { real });
 }

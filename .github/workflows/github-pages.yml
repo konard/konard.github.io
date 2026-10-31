@@ -303,6 +303,13 @@ jobs:
           CAPTURE_DIR: browser-results/screenshots/issue41
           RESULT_DIR: browser-results/data/issue41
 
+      - name: Verify neutral geometry, network size transitions and random real networks
+        if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
+        run: npm run test:network:issue43
+        env:
+          CAPTURE_DIR: browser-results/screenshots/issue43
+          RESULT_DIR: browser-results/data/issue43
+
       - name: Preserve browser evidence with bounded transport retries
         if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
         uses: ./.github/actions/upload-artifact

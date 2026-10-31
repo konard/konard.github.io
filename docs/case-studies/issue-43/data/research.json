@@ -1,0 +1,30 @@
+{
+  "consultedAt": "2026-10-30",
+  "sources": [
+    {
+      "url": "https://www.w3.org/TR/SVG/paths.html",
+      "title": "SVG 2: Paths",
+      "finding": "A cubic Bezier segment has two endpoints and two control points. Collinear ordered controls give a straight route; endpoint tangents come from their adjacent controls.",
+      "application": "Use a chord-aligned endpoint direction in the existing cubic geometry before applying the user's turn, instead of encoding compensating turns into editor state."
+    },
+    {
+      "url": "https://eclipse.dev/elk/reference/options/org-eclipse-elk-edgeRouting.html",
+      "title": "ELK Edge Routing",
+      "finding": "ELK offers polyline, orthogonal and spline routes; spline bend points represent piecewise cubic control points.",
+      "application": "Considered a routing engine, but replacing the custom doublet renderer would alter established placements, loops and marker behavior. Reuse the existing geometry."
+    },
+    {
+      "url": "https://eclipse.dev/elk/blog/posts/2025/25-08-21-layered.html",
+      "title": "ELK Layered overview",
+      "finding": "Node placement and edge routing are separate layout phases; linear-segment placement and network-simplex placement can pursue straighter edges.",
+      "application": "Fix the reference direction independently of established middle positions and of the optional gap reducer."
+    },
+    {
+      "url": "https://d3js.org/d3-random",
+      "title": "D3 random distributions",
+      "finding": "Uniform integer generation uses an inclusive minimum and exclusive maximum and supports a supplied random source.",
+      "application": "Reuse the repository's randomCode sampler with the real option. Endpoint sampling avoids precision loss beyond the safe integer total. Keep injectable randomness for deterministic tests. No new dependency is needed."
+    }
+  ],
+  "externalDefectAssessment": "The failures originate in this repository's geometry defaults, navigation arithmetic and missing editor action. No upstream defect was reproduced, so no speculative issue was filed elsewhere. The preexisting Linux WebKit limitation remains tracked by microsoft/playwright#43426 and the existing macOS CI runner."
+}

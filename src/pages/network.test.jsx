@@ -55,9 +55,9 @@ describe('the address keeps the network and its picture (issue #17)', () => {
     expect(networkQuery(links, STYLE_DEFAULTS)).toBe('?code=0120');
   });
 
-  it('steps through the networks and draws random ones of the same size', () => {
-    expect(stepped(decode('22 22'), 1)).toEqual(decode('00 00'));
-    expect(stepped(decode('00 00'), -1)).toEqual(decode('22 22'));
+  it('steps across link counts and draws random networks of the current size', () => {
+    expect(stepped(decode('22 22'), 1)).toEqual(decode('00 00 00'));
+    expect(stepped(decode('00 00'), -1)).toEqual(decode('11'));
     expect(stepped(decode('01 20'), 1)).toEqual(decode('01 21'));
     expect(randomLinks(3, () => 0.99)).toEqual(decode('33 33 33'));
   });
