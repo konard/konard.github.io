@@ -79,14 +79,17 @@ export function CornerTiles({ field, value, settings, labelId }) {
   );
 }
 
-/** Copies the shape, line and size of one corner to the other three. */
+/** Copies the shape, line, size and line width of one corner to the other three. */
 export function SameCorners({ corner, settings }) {
   const { t } = useLang();
   const copy = () =>
     setSettings(
       Object.fromEntries(
         CORNERS.flatMap((other) =>
-          ['Shape', 'Line', 'Size'].map((name) => [`corner.${other}${name}`, settings[`corner.${corner}${name}`]]),
+          ['Shape', 'Line', 'Size', 'Width'].map((name) => [
+            `corner.${other}${name}`,
+            settings[`corner.${corner}${name}`],
+          ]),
         ),
       ),
     );

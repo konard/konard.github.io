@@ -7,7 +7,7 @@
 // and the comfort rule follow konard/immortality (src/settings.ts), which has
 // no saved looks.
 import { normalize } from './apply';
-import { DEFAULTS, FIELDS, RULES } from './schema';
+import { DEFAULTS, FIELDS, PREVIOUS_DEFAULTS, RULES } from './schema';
 
 /** Settings that a preset, a link or the randomizer never change. */
 export const COMFORT = ['motion.mode', 'sound.on', 'sound.volume', 'theory.notation', 'ui.transparency'];
@@ -39,6 +39,14 @@ export function isLook(look, current) {
 /** A built-in preset. */
 const preset = (id, en, ru, enText, ruText, look) => ({ id, name: { en, ru }, text: { en: enText, ru: ruText }, look });
 
+/**
+ * A preset made before issue #45 changed the defaults: its look over the old
+ * defaults (the glass universe of issue #39), so it stays as it was. Values
+ * that are the new defaults are left out, as a saved look would leave them.
+ */
+const before45 = (id, en, ru, enText, ruText, look) =>
+  preset(id, en, ru, enText, ruText, changes({ ...PREVIOUS_DEFAULTS, ...look }));
+
 /** Turns star layer `n` on with `options` (`{ count: 300 }` → `stars2.count`). */
 const layer = (n, options) =>
   Object.fromEntries([['on', true], ...Object.entries(options)].map(([key, value]) => [`stars${n}.${key}`, value]));
@@ -46,13 +54,21 @@ const layer = (n, options) =>
 export const PRESETS = [
   preset(
     'default',
-    'Default',
-    'По умолчанию',
+    'Matrix universe',
+    'Вселенная матрицы',
+    'The default look of issue #45: a green universe, a dashed grid, bright rain and HUD frames with corners of their own.',
+    'Вид по умолчанию из задачи #45: зелёная вселенная, пунктирная сетка, яркий дождь и рамки HUD со своими углами.',
+    {},
+  ),
+  before45(
+    'glass-universe',
+    'Glass universe',
+    'Стеклянная вселенная',
     'The look of issue #39: the universe, a fading grid, the rain of links and glass panels.',
     'Вид из задачи #39: вселенная, затухающая сетка, дождь связей и стеклянные панели.',
     {},
   ),
-  preset(
+  before45(
     'calm',
     'Calm',
     'Спокойствие',
@@ -71,7 +87,7 @@ export const PRESETS = [
       'sound.activate2': 'none',
     },
   ),
-  preset(
+  before45(
     'matrix',
     'Matrix',
     'Матрица',
@@ -99,7 +115,7 @@ export const PRESETS = [
       'sound.notify1': 'cinder',
     },
   ),
-  preset(
+  before45(
     'deep-space',
     'Deep space',
     'Глубокий космос',
@@ -139,7 +155,7 @@ export const PRESETS = [
       'sound.open1': 'vesper',
     },
   ),
-  preset(
+  before45(
     'warp',
     'Warp',
     'Варп',
@@ -157,7 +173,7 @@ export const PRESETS = [
       'sound.intro1': 'warp',
     },
   ),
-  preset(
+  before45(
     'neon',
     'Neon HUD',
     'Неоновый HUD',
@@ -180,7 +196,7 @@ export const PRESETS = [
       'sound.activate2': 'none',
     },
   ),
-  preset(
+  before45(
     'liquid',
     'Liquid',
     'Жидкое стекло',
@@ -199,7 +215,7 @@ export const PRESETS = [
       'sound.activate2': 'none',
     },
   ),
-  preset(
+  before45(
     'blueprint',
     'Blueprint',
     'Чертёж',
@@ -218,7 +234,7 @@ export const PRESETS = [
       'grid.mark': 0.6,
     },
   ),
-  preset(
+  before45(
     'fast',
     'Light and fast',
     'Лёгкий и быстрый',

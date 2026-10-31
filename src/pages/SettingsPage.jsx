@@ -1,4 +1,5 @@
 import InterfacePreview, { MaterialPresets } from './InterfacePreview';
+import UiSamples from './UiSamples';
 import ColorInput from '../components/ColorInput';
 import Select from '../components/Select';
 import { useState } from 'react';
@@ -131,7 +132,9 @@ function Palettes({ value }) {
           title={t({ en, ru })}
           aria-label={t({ en, ru })}
           onClick={() => setSettings({ 'future.palette': id })}
-        />
+        >
+          <i className="swatch" aria-hidden="true" />
+        </button>
       ))}
     </div>
   );
@@ -189,6 +192,7 @@ function Group({ section, settings }) {
       </header>
       {section.lead && <p className="settings__lead">{t(section.lead)}</p>}
       {section.id === 'interface' && <InterfacePreview />}
+      {section.id === 'interface' && <UiSamples />}
       {['glass', 'liquid'].includes(section.id) && <MaterialPresets />}
       {section.id === 'futuristic' && <Palettes value={settings['future.palette']} />}
       {tabbed ? (

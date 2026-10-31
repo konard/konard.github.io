@@ -18,6 +18,7 @@ import { LAYER_SECTIONS } from './schema.layers.js';
 import { SKIN_SECTIONS } from './schema.skins.js';
 import { UI_SECTIONS } from './schema.ui.js';
 import { SOUND_SECTION } from './schema.sound.js';
+import { DEFAULT_LOOK } from './schema.defaults.js';
 
 export { PALETTES, SKINS } from './schema.skins.js';
 
@@ -28,7 +29,7 @@ export { PALETTES, SKINS } from './schema.skins.js';
 const [motion, nebula, grid, rain] = BACKGROUND_SECTIONS;
 const [stars, beams] = LAYER_SECTIONS;
 
-export const SECTIONS = [
+const SECTION_LIST = [
   // The background sections in the order of the layers, bottom to top.
   motion,
   nebula,
@@ -61,7 +62,23 @@ export const SECTIONS = [
   },
 ];
 
+/**
+ * The sections with the default look of issue #45 (./schema.defaults.js) put
+ * over the defaults of the fields.
+ */
+export const SECTIONS = SECTION_LIST.map((section) => ({
+  ...section,
+  fields: section.fields.map((field) => (field.key in DEFAULT_LOOK ? { ...field, d: DEFAULT_LOOK[field.key] } : field)),
+}));
+
 export const FIELDS = SECTIONS.flatMap((section) => section.fields);
+
+/** What the settings of the default look were before issue #45: the look of issue #39. */
+export const PREVIOUS_DEFAULTS = Object.fromEntries(
+  SECTION_LIST.flatMap((section) => section.fields)
+    .filter((field) => field.key in DEFAULT_LOOK)
+    .map((field) => [field.key, field.d]),
+);
 
 /**
  * Settings that only scripts read (`css: false`, issue #15) are not put on

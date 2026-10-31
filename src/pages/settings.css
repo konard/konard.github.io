@@ -228,8 +228,13 @@
   height: 1.7rem;
   border: 1px solid var(--border-strong);
   border-radius: 4px;
-  background: linear-gradient(135deg, var(--chip) 55%, #05080d 55%);
   cursor: pointer;
+}
+
+/* The colour is a child (issue #45): the fill and hover of every control, and
+   the frame of the custom corners, then never paint over it. */
+.palettes__chip .swatch {
+  background: linear-gradient(135deg, var(--chip) 55%, #05080d 55%);
 }
 
 .palettes__chip[aria-pressed='true'] {

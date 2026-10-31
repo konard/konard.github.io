@@ -5,6 +5,7 @@ import assert from 'node:assert/strict';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { chromium, firefox, webkit } from 'playwright';
 import { createServer } from 'vite';
+import { DEFAULTS, PREVIOUS_DEFAULTS } from '../src/settings/schema.js';
 
 const engine = process.env.ENGINE || 'chromium';
 const before = process.argv.includes('--before');
@@ -15,6 +16,11 @@ await server.listen();
 let browser;
 const results = [];
 const failures = [];
+// Written for the defaults of issue #39, before issue #45 made the Matrix universe the default: the check starts
+// from that look, the "Glass universe" preset, saved as its difference from the defaults.
+const GLASS_UNIVERSE = Object.fromEntries(
+  Object.entries(PREVIOUS_DEFAULTS).filter(([key, value]) => value !== DEFAULTS[key]),
+);
 const check = (condition, message) => {
   if (!condition) failures.push(message);
 };
@@ -22,11 +28,11 @@ try {
   browser = await { chromium, firefox, webkit }[engine].launch();
   const page = await browser.newPage({ viewport: { width: 1440, height: 1050 }, reducedMotion: 'reduce' });
   page.setDefaultTimeout(15000);
-  await page.addInitScript(() => {
+  await page.addInitScript((look) => {
     localStorage.setItem('lang', 'en');
     localStorage.setItem('theme', 'dark');
-    localStorage.setItem('settings', JSON.stringify({ 'motion.mode': 'off', 'sound.on': false }));
-  });
+    localStorage.setItem('settings', JSON.stringify({ ...look, 'motion.mode': 'off', 'sound.on': false }));
+  }, GLASS_UNIVERSE);
   await page.route('https://platform.twitter.com/widgets.js', (route) =>
     route.fulfill({
       contentType: 'application/javascript',

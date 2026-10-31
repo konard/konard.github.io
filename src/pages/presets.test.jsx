@@ -7,9 +7,11 @@ import { getSettings, setSettings } from '../settings/store';
 import SettingsPage from './SettingsPage';
 
 const presets = () => document.getElementById('presets');
+// The Matrix preset, not the Matrix universe of the defaults (issue #45).
+const MATRIX = /^Matrix(?! universe)/;
 const builtIn = (name) =>
   within(within(presets()).getByRole('list', { name: 'Presets of the site' })).getByRole('button', {
-    name: new RegExp(`^${RegExp.escape(name)}`),
+    name: name instanceof RegExp ? name : new RegExp(`^${RegExp.escape(name)}`),
   });
 
 describe('presets (issue #15)', () => {
@@ -26,8 +28,8 @@ describe('presets (issue #15)', () => {
   it('apply a look of the site, mark it and keep the comfort settings', () => {
     setSettings({ 'motion.mode': 'off', 'theory.notation': 'R', 'rain.step': 300 });
     render(<SettingsPage />);
-    expect(builtIn('Default')).toHaveAttribute('aria-pressed', 'false');
-    fireEvent.click(builtIn('Matrix'));
+    expect(builtIn('Matrix universe')).toHaveAttribute('aria-pressed', 'false');
+    fireEvent.click(builtIn(MATRIX));
     const now = getSettings();
     expect(now['skin.name']).toBe('futuristic');
     expect(now['future.palette']).toBe('matrix');
@@ -35,14 +37,14 @@ describe('presets (issue #15)', () => {
     expect(now['motion.mode']).toBe('off');
     expect(now['theory.notation']).toBe('R');
     expect(document.documentElement.dataset.futurePalette).toBe('matrix');
-    expect(builtIn('Matrix')).toHaveAttribute('aria-pressed', 'true');
+    expect(builtIn(MATRIX)).toHaveAttribute('aria-pressed', 'true');
     expect(within(presets()).getAllByRole('button', { pressed: true })).toHaveLength(1);
     // Every card shows a miniature of its look.
     expect(
       within(presets()).getByRole('list', { name: 'Presets of the site' }).querySelectorAll('.preset__mini'),
-    ).toHaveLength(9);
+    ).toHaveLength(10);
 
-    fireEvent.click(builtIn('Default'));
+    fireEvent.click(builtIn('Matrix universe'));
     expect(getSettings()).toEqual({ ...DEFAULTS, 'motion.mode': 'off', 'theory.notation': 'R' });
   });
 

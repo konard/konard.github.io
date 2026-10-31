@@ -12,7 +12,15 @@ const future = css('./skins.future.css') + css('./skins.palettes.css') + css('./
 const name = (key) => key.replace(/\./g, '-').replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`);
 
 // Choices that mean "no extra style", so no rule is needed for them.
-const NOTHING = { 'future.hover': ['none'], 'future.title': ['plain'], 'glass.shadow': ['none'] };
+// Choices that are the plain skin. Corner marks and a gradient surface were the
+// defaults before issue #45 and still need no rule of their own.
+const NOTHING = {
+  'future.hover': ['none'],
+  'future.title': ['plain'],
+  'glass.shadow': ['none'],
+  'future.frame': ['corners'],
+  'future.surface': ['gradient'],
+};
 // Numbers used by the SVG filter or generated static grain, not a stylesheet.
 const IN_JSX = [
   'liquid.noise',

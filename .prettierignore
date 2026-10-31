@@ -9,5 +9,7 @@ src/data/repositories.json
 src/data/habr.json
 src/data/posts.json
 src/skins.frames.css
+src/skins.frames.corners.css
+src/skins.frames.properties.css
 
 src/data/indicators.json

@@ -169,6 +169,34 @@ export const UI_SECTIONS = [
         { en: 'Accent strip width', ru: 'Толщина акцентной полосы' },
         { unit: 'px' },
       ),
+      select(
+        'ui.selection',
+        'accent',
+        [
+          option('accent', 'Primary accent', 'Основной акцент'),
+          option('accent2', 'Secondary accent', 'Второй акцент'),
+          option('system', 'As in the system', 'Как в системе'),
+        ],
+        { en: 'Selected text', ru: 'Выделенный текст' },
+      ),
+      range(
+        'ui.selectionOpacity',
+        0.35,
+        0.1,
+        1,
+        0.05,
+        { en: 'Selection strength', ru: 'Яркость выделения' },
+        { unit: '%', when: (s) => s['ui.selection'] !== 'system' },
+      ),
+      select(
+        'ui.overflow',
+        'clip',
+        [
+          option('clip', 'Cut at the frame', 'Обрезать по рамке'),
+          option('visible', 'Show past the frame', 'Показывать за рамкой'),
+        ],
+        { en: 'Content that does not fit a panel', ru: 'Содержимое, которое не помещается в панель' },
+      ),
     ],
   },
   {

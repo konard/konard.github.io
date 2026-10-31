@@ -6,15 +6,16 @@
     backdrop-filter: var(--lq-filter);
   }
   :root[data-skin-name='futuristic'] .app :is(.network__panel, .link-card, .ui-preview__panel, .preset) {
-    background-image: var(--fx-bar-img), var(--fx-frame-img), var(--fx-surface-img);
+    background-image:
+      var(--fx-bar-img), var(--fx-frame-under, var(--fx-el-img, var(--fx-frame-img))), var(--fx-surface-img);
     background-size:
       var(--fx-bar-size),
-      var(--fx-frame-size),
+      var(--fx-el-size, var(--fx-frame-size)),
       100% 100%,
       100% 100%;
     background-position:
       var(--fx-bar-pos),
-      var(--fx-frame-pos),
+      var(--fx-el-pos, var(--fx-frame-pos)),
       0 0,
       0 0;
     background-repeat: no-repeat;
@@ -243,9 +244,9 @@
       .preset
     ) {
     /* The frame is decoration, independent of the absent surface. */
-    background-image: var(--fx-bar-img), var(--fx-frame-img);
-    background-size: var(--fx-bar-size), var(--fx-frame-size);
-    background-position: var(--fx-bar-pos), var(--fx-frame-pos);
+    background-image: var(--fx-bar-img), var(--fx-frame-under, var(--fx-el-img, var(--fx-frame-img)));
+    background-size: var(--fx-bar-size), var(--fx-el-size, var(--fx-frame-size));
+    background-position: var(--fx-bar-pos), var(--fx-el-pos, var(--fx-frame-pos));
     background-repeat: no-repeat;
   }
   :root[data-ui-transparency='reduce']

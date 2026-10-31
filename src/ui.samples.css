@@ -1,0 +1,93 @@
+/* Samples of every bordered element on the settings page (issue #45),
+   src/pages/UiSamples.jsx. Only the layout of the grid is set here; the
+   elements keep the styles of the pages. */
+@media screen {
+  .ui-samples {
+    margin-block: 1rem;
+  }
+  .ui-samples > summary {
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .ui-samples__lead {
+    margin-block: 0.5rem 0.75rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  .ui-samples__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+    gap: 1rem;
+    align-items: start;
+  }
+  .ui-samples__item {
+    display: grid;
+    gap: 0.35rem;
+    min-width: 0;
+    margin: 0;
+  }
+  .ui-samples__item--wide {
+    grid-column: 1 / -1;
+  }
+  .ui-samples__name {
+    color: var(--muted);
+    font-size: 0.7rem;
+  }
+  .ui-samples__panel,
+  .ui-samples__overflow {
+    padding: 0.9rem 1rem;
+  }
+  .ui-samples__panel h3 {
+    margin: 0 0 0.4rem;
+    font-size: 1rem;
+  }
+  .ui-samples__repos {
+    margin: 0.6rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .ui-samples__repos .repo {
+    display: grid;
+    gap: 0.2rem;
+    padding: 0.6rem 0.75rem;
+  }
+  .ui-samples__positions,
+  .ui-samples__stats {
+    grid-template-columns: 1fr;
+    margin: 0;
+    padding: 0;
+  }
+  .ui-samples__overflow {
+    max-height: 8rem;
+    overflow: auto;
+  }
+  .ui-samples__overflow p {
+    margin: 0 0 0.5rem;
+  }
+  .ui-samples__overflow pre {
+    margin: 0;
+  }
+  .ui-samples__row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    align-items: center;
+  }
+  .ui-samples__row .tags,
+  .ui-samples__row .role-tabs {
+    margin: 0;
+  }
+  .ui-samples__check {
+    display: inline-flex;
+    gap: 0.4rem;
+    align-items: center;
+  }
+  .ui-samples__textarea {
+    width: 100%;
+    min-height: 5rem;
+    resize: vertical;
+  }
+  .ui-samples__table {
+    width: 100%;
+  }
+}

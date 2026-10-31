@@ -1,12 +1,60 @@
 import { describe, expect, it } from 'vitest';
 import { SETTINGS_SCRIPT } from '../../vite.config';
 import { applySettings, normalize } from './apply';
-import { DEFAULTS, FIELDS, RULES, SECTIONS } from './schema';
+import { DEFAULTS, FIELDS, PREVIOUS_DEFAULTS, RULES, SECTIONS } from './schema';
+import { DEFAULT_LOOK } from './schema.defaults';
 import { changesOf, getSettings, loadSettings, resetSettings, setSettings, STORAGE_KEY } from './store';
 
 const root = document.documentElement;
 
-/** The changes the author of issue #15 copied from the settings page; they became the defaults. */
+/** The defaults before issue #45, kept by the "Glass universe" preset. */
+const BEFORE_45 = { ...DEFAULTS, ...PREVIOUS_DEFAULTS };
+
+/** The look the author of issue #45 copied from the settings page: "That is defaults." */
+const ISSUE_45 = {
+  'nebula.gas': 0.5,
+  'nebula.hue': -100,
+  'nebula.stars': 3.2,
+  'nebula.starBrightness': 1.15,
+  'nebula.twinkle': 1.7,
+  'nebula.vignette': 0.25,
+  'nebula.zoom': 0.5,
+  'nebula.starColor': '#17de1d',
+  'nebula.resolution': 1,
+  'grid.level': 1.3,
+  'grid.style': 'dashed',
+  'grid.tint': 'accent',
+  'rain.level': 1.3,
+  'rain.density': 0.8,
+  'rain.glow': 10,
+  'rain.glowColor': '#00ff66',
+  'sound.hover1': 'byte',
+  'sound.activate1': 'mica',
+  'sound.activate2': 'none',
+  'sound.notify1': 'cinder',
+  'skin.name': 'futuristic',
+  'future.palette': 'matrix',
+  'future.frame': 'custom',
+  'future.cut': 0,
+  'future.border': 0.5,
+  'future.accentBar': false,
+  'future.surface': 'glass',
+  'future.opacity': 0.5,
+  'future.frameOpacity': 0.85,
+  'future.accentLength': 428,
+  'future.title': 'slash',
+  'future.scanlines': 0.06,
+  'corner.tlSize': 24,
+  'corner.trLine': 'accent',
+  'corner.trSize': 40,
+  'corner.blLine': 'bracket',
+  'ui.controlPadding': 6,
+  'ui.sliderSize': 12,
+  'ui.sliderTrack': 12,
+  'ui.borderStyle': 'dashed',
+};
+
+/** The changes the author of issue #15 copied from the settings page; they became the defaults until issue #45. */
 const ISSUE_15 = {
   'nebula.level': 0.5,
   'nebula.speed': 0.5,
@@ -48,13 +96,25 @@ describe('settings schema (issue #13)', () => {
     );
   });
 
-  it('keeps issue #15 defaults with the twinkle override requested in issue #39', () => {
-    expect(DEFAULTS).toMatchObject(ISSUE_15);
-    expect(changesOf(normalize(RULES, ISSUE_15))).toEqual({});
+  it('uses the look of issue #45 as the defaults, so that look saves as no changes', () => {
+    expect(DEFAULT_LOOK).toEqual(ISSUE_45);
+    expect(DEFAULTS).toMatchObject(ISSUE_45);
+    expect(changesOf(normalize(RULES, ISSUE_45))).toEqual({});
   });
 
-  it('keeps the rest of the look of the site before settings existed by default', () => {
-    expect(DEFAULTS).toMatchObject({
+  it('keeps the previous defaults of the changed settings for the Glass universe preset', () => {
+    expect(Object.keys(PREVIOUS_DEFAULTS).sort()).toEqual(Object.keys(ISSUE_45).sort());
+    expect(Object.entries(PREVIOUS_DEFAULTS).filter(([key, value]) => ISSUE_45[key] === value)).toEqual([]);
+  });
+
+  it('keeps issue #15 defaults with the twinkle override requested in issue #39 before issue #45', () => {
+    expect(BEFORE_45).toMatchObject(ISSUE_15);
+    const unchanged = Object.keys(ISSUE_15).filter((key) => !(key in ISSUE_45));
+    unchanged.forEach((key) => expect(DEFAULTS[key], key).toBe(ISSUE_15[key]));
+  });
+
+  it('keeps the rest of the look of the site before settings existed until issue #45', () => {
+    expect(BEFORE_45).toMatchObject({
       'motion.mode': 'auto',
       'rain.padding': 0,
       'rain.minLinks': 1,
@@ -95,8 +155,8 @@ describe('checking stored settings', () => {
     expect(settings['rain.step']).toBe(20);
     expect(settings['grid.size']).toBe(128);
     expect(settings['nebula.fps']).toBe(24);
-    expect(settings['skin.name']).toBe('glass');
-    expect(settings['rain.glowColor']).toBe('#00a3d7');
+    expect(settings['skin.name']).toBe('futuristic');
+    expect(settings['rain.glowColor']).toBe('#00ff66');
     expect(settings['grid.on']).toBe(true);
     expect(settings['future.palette']).toBe('ares');
     expect(settings['liquid.tint']).toBe('accent');
@@ -113,19 +173,19 @@ describe('checking stored settings', () => {
     expect(element.style.getPropertyValue('--liquid-blur')).toBe('30px');
     expect(element.style.getPropertyValue('--grid-size')).toBe('48px');
     expect(element.style.getPropertyValue('--liquid-saturation')).toBe('180');
-    expect(element.style.getPropertyValue('--rain-glow-color')).toBe('#00a3d7');
+    expect(element.style.getPropertyValue('--rain-glow-color')).toBe('#00ff66');
     expect(element.style.getPropertyValue('--future-spacing')).toBe('0.08em');
   });
 });
 
 describe('settings store', () => {
   it('applies a change at once and remembers only what differs from the defaults', () => {
-    setSettings({ 'skin.name': 'futuristic', 'rain.step': 120, 'grid.size': 48 });
-    expect(getSettings()['skin.name']).toBe('futuristic');
-    expect(root.dataset.skinName).toBe('futuristic');
+    setSettings({ 'skin.name': 'glass', 'rain.step': 120, 'grid.size': 48 });
+    expect(getSettings()['skin.name']).toBe('glass');
+    expect(root.dataset.skinName).toBe('glass');
     expect(root.style.getPropertyValue('--rain-step')).toBe('120ms');
     expect(JSON.parse(window.localStorage.getItem(STORAGE_KEY))).toEqual({
-      'skin.name': 'futuristic',
+      'skin.name': 'glass',
       'rain.step': 120,
     });
     expect(loadSettings()).toEqual(getSettings());
@@ -138,7 +198,7 @@ describe('settings store', () => {
     resetSettings();
     expect(getSettings()).toEqual(DEFAULTS);
     expect(window.localStorage.getItem(STORAGE_KEY)).toBeNull();
-    expect(root.dataset.skinName).toBe('glass');
+    expect(root.dataset.skinName).toBe('futuristic');
   });
 
   it('survives broken storage', () => {

@@ -179,8 +179,62 @@
   :root[data-ui-table-header='false'] thead {
     background: transparent;
   }
+  /* The strip runs along the top of a stat, so its size is its height (issue #45). */
   :root:root .stat::before {
-    width: var(--ui-accent-size);
+    height: var(--ui-accent-size);
+  }
+  /* Selected text in the accent instead of the system blue (issue #45). */
+  :root:not([data-ui-selection='system']) {
+    --ui-selection-color: var(--accent);
+  }
+  :root[data-ui-selection='accent2'] {
+    --ui-selection-color: var(--accent-2);
+  }
+  :root:not([data-ui-selection='system']) ::selection {
+    background-color: color-mix(
+      in srgb,
+      var(--ui-selection-color) calc(var(--ui-selection-opacity, 0.35) * 100%),
+      transparent
+    );
+    color: var(--text);
+  }
+  /* Content that does not fit a panel is cut at its edges (issue #45). No
+     specificity: panels that scroll or overflow on purpose keep their overflow. */
+  :where(:root:not([data-ui-overflow='visible']))
+    :where(
+      .card,
+      .registry,
+      .project,
+      .skills__group,
+      .org,
+      .step,
+      .stat,
+      .position,
+      .ps-note,
+      .social,
+      .cloud,
+      .habr-card,
+      .page-card,
+      .psd,
+      .theory__formulas li,
+      .theory__hero,
+      .theory__network,
+      .version,
+      .filters,
+      .page-stats li,
+      .post,
+      .repo,
+      .field-card,
+      .stack__layer,
+      .symbols__grid li,
+      .settings__group,
+      .network__panel,
+      .network__preview,
+      .link-card,
+      .preset,
+      .ui-preview__panel
+    ):not(:has([data-tooltip-root])) {
+    overflow: clip;
   }
   :root:root input[type='range'] {
     appearance: none;
@@ -393,6 +447,42 @@
   .ui-color__picker output {
     text-align: end;
     font-variant-numeric: tabular-nums;
+  }
+  /* Palettes of ready colours (issue #45). */
+  .ui-color__palette {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 3px;
+    padding-top: 8px;
+  }
+  .ui-color__palette-name {
+    flex: 0 0 100%;
+    color: var(--muted);
+    font-size: 0.75rem;
+  }
+  :root:root .ui-color__chip {
+    width: 21px;
+    min-height: 21px;
+    height: 21px;
+    padding: 0;
+  }
+  .ui-color__chip .swatch {
+    background: var(--chip);
+  }
+  :root:root .ui-color__chip[aria-pressed='true'] {
+    outline: 2px solid var(--chip);
+    outline-offset: 1px;
+  }
+  /* A colour drawn by a child, so the fill, the hover and the frame of the
+     control never paint over it (palettes, issue #45). */
+  :is(button, .button):has(> .swatch) {
+    position: relative;
+  }
+  .swatch {
+    position: absolute;
+    inset: 3px;
+    pointer-events: none;
   }
   :root:root .ui-color input {
     width: 7.5em;

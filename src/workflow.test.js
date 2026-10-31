@@ -81,7 +81,12 @@ describe('GitHub Actions best practices', () => {
   const steps = (doc) => Object.values(doc.jobs).flatMap((job) => job.steps);
 
   test.each(docs)('%s sets a timeout on every job', (_file, doc) => {
-    Object.values(doc.jobs).forEach((job) => expect(job['timeout-minutes']).toBeGreaterThan(0));
+    Object.values(doc.jobs).forEach((job) => {
+      // A matrix job may take its timeout from the matrix; then every entry needs one.
+      const key = /^\$\{\{ matrix\.([\w-]+) \}\}$/.exec(job['timeout-minutes'])?.[1];
+      const timeouts = key ? job.strategy.matrix.include.map((entry) => entry[key]) : [job['timeout-minutes']];
+      timeouts.forEach((timeout) => expect(timeout).toBeGreaterThan(0));
+    });
   });
 
   test.each(docs)('%s defaults to read-only permissions', (_file, doc) => {
