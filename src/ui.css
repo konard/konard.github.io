@@ -448,6 +448,42 @@
     text-align: end;
     font-variant-numeric: tabular-nums;
   }
+  /* Palettes of ready colours (issue #45). */
+  .ui-color__palette {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 3px;
+    padding-top: 8px;
+  }
+  .ui-color__palette-name {
+    flex: 0 0 100%;
+    color: var(--muted);
+    font-size: 0.75rem;
+  }
+  :root:root .ui-color__chip {
+    width: 21px;
+    min-height: 21px;
+    height: 21px;
+    padding: 0;
+  }
+  .ui-color__chip .swatch {
+    background: var(--chip);
+  }
+  :root:root .ui-color__chip[aria-pressed='true'] {
+    outline: 2px solid var(--chip);
+    outline-offset: 1px;
+  }
+  /* A colour drawn by a child, so the fill, the hover and the frame of the
+     control never paint over it (palettes, issue #45). */
+  :is(button, .button):has(> .swatch) {
+    position: relative;
+  }
+  .swatch {
+    position: absolute;
+    inset: 3px;
+    pointer-events: none;
+  }
   :root:root .ui-color input {
     width: 7.5em;
     min-width: 0;

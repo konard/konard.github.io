@@ -132,7 +132,9 @@ function Palettes({ value }) {
           title={t({ en, ru })}
           aria-label={t({ en, ru })}
           onClick={() => setSettings({ 'future.palette': id })}
-        />
+        >
+          <i className="swatch" aria-hidden="true" />
+        </button>
       ))}
     </div>
   );

@@ -47,7 +47,9 @@ describe('the same frame on every bordered element (issue #45)', () => {
     expect(FRAMES).toContain(":not([data-corner-controls='border']) :is(");
     expect(FRAMES).toContain('clip-path: var(--fx-clip);');
     expect(FRAMES).toContain('background-image: var(--fx-frame-img), var(--fx-control-img, none);');
-    expect(read('pages/settings.css')).toContain('--fx-control-img: linear-gradient(');
+    // A colour swatch is a child of its button, so neither the frame nor the fill paints over it.
+    expect(read('pages/settings.css')).toContain('.palettes__chip .swatch {');
+    expect(UI).toContain(':is(button, .button):has(> .swatch) {');
   });
 
   it('can draw inner blocks with a plain line instead', () => {
