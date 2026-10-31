@@ -1,3 +1,5 @@
+import ColorInput from '../components/ColorInput';
+import Select from '../components/Select';
 import { useState } from 'react';
 import { formatValue } from '../settings/fields';
 import { LOOKS, SIZES, STYLE_DEFAULTS, STYLE_SECTIONS, applyLook, normalizeStyle } from '../links/style';
@@ -57,7 +59,9 @@ function Control({ field, value, onChange }) {
   } else if (field.type === 'toggle') {
     input = <input id={id} type="checkbox" checked={value} onChange={(event) => onChange(event.target.checked)} />;
   } else if (field.type === 'color') {
-    input = <input id={id} type="color" value={value} onChange={(event) => onChange(event.target.value)} />;
+    input = (
+      <ColorInput label={t(field.label)} id={id} value={value} onChange={(event) => onChange(event.target.value)} />
+    );
     shown = value;
   } else if (field.type === 'text') {
     input = (
@@ -71,13 +75,13 @@ function Control({ field, value, onChange }) {
     );
   } else {
     input = (
-      <select id={id} value={value} onChange={(event) => onChange(event.target.value)}>
+      <Select id={id} value={value} onChange={(event) => onChange(event.target.value)}>
         {field.options.map((option) => (
           <option key={option.value} value={option.value}>
             {t(option.label)}
           </option>
         ))}
-      </select>
+      </Select>
     );
   }
   return (
@@ -141,7 +145,7 @@ export function Looks({ style, onStyle }) {
       </div>
       <label className="looks__size">
         {t({ en: 'Image size', ru: 'Размер изображения' })}{' '}
-        <select
+        <Select
           value={size}
           onChange={(event) => {
             const chosen = SIZES[Number(event.target.value)];
@@ -156,7 +160,7 @@ export function Looks({ style, onStyle }) {
               {s.label}
             </option>
           ))}
-        </select>
+        </Select>
       </label>
       <div className="looks__saved">
         <input

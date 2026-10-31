@@ -1,4 +1,8 @@
-import { useMemo, useState } from 'react';
+import SocialEmbed from '../components/SocialEmbed';
+import { embedUrl } from '../components/socialWidgets';
+export { embedUrl } from '../components/socialWidgets';
+import Select from '../components/Select';
+import { useCallback, useMemo, useState } from 'react';
 import Layout from '../components/Layout';
 import Section from '../components/Section';
 import { formatNumber } from '../components/format';
@@ -37,37 +41,6 @@ const date = (iso, lang) =>
     month: 'long',
     day: 'numeric',
   });
-
-// Only use provider-issued public embed identifiers. VK needs an export hash;
-// a wall URL alone is not a usable widget. Unsupported posts keep their archive.
-export function embedUrl(embed, theme) {
-  if (embed?.type === 'x' && /^\d+$/.test(embed.id))
-    return `https://platform.twitter.com/embed/Tweet.html?id=${embed.id}&theme=${theme}&dnt=true`;
-  if (embed?.type === 'telegram' && /^[a-zA-Z0-9_]+\/\d+$/.test(embed.id))
-    return `https://t.me/${embed.id}?embed=1&mode=tme${theme === 'dark' ? '&dark=1' : ''}`;
-  if (embed?.type === 'vk' && /^-?\d+_\d+$/.test(embed.id) && /^[a-zA-Z0-9_-]+$/.test(embed.hash || '')) {
-    const [owner, post] = embed.id.split('_');
-    return `https://vk.com/widget_post.php?owner_id=${owner}&post_id=${post}&hash=${embed.hash}&width=auto`;
-  }
-  return null;
-}
-
-function SocialEmbed({ src, network, onError }) {
-  const { t } = useLang();
-  return (
-    <iframe
-      className="post__embed"
-      title={t({ en: `Post on ${NETWORKS[network]}`, ru: `Запись в ${NETWORKS[network]}` })}
-      src={src}
-      loading="lazy"
-      sandbox="allow-scripts allow-same-origin allow-popups"
-      referrerPolicy="no-referrer"
-      ref={(node) => {
-        if (node) node.onerror = onError;
-      }}
-    />
-  );
-}
 
 // A picture that is not archived and no longer served by the CDN becomes a note instead of a broken image.
 function Picture({ src, alt = '' }) {
@@ -109,6 +82,7 @@ export function Story({ story, lang }) {
   const post = pick(story, lang);
   const [embedded, setEmbedded] = useState(true);
   const [failed, setFailed] = useState(false);
+  const fail = useCallback(() => setFailed(true), []);
   const theme = useResolvedTheme();
   const src = embedUrl(post.embed, theme);
   const showEmbed = src && embedded && !failed;
@@ -138,7 +112,7 @@ export function Story({ story, lang }) {
       </header>
       {showEmbed ? (
         <>
-          <SocialEmbed src={src} network={post.network} onError={() => setFailed(true)} />
+          <SocialEmbed key={`${post.id}:${theme}`} embed={post.embed} theme={theme} onError={fail} />
           <details className="post__fallback">
             <summary>
               {t({
@@ -247,7 +221,7 @@ export default function BlogPage({ initialLanguage }) {
         <div className="filters" role="search">
           <label>
             <span>{t({ en: 'Language', ru: 'Язык' })}</span>
-            <select value={langParam} onChange={(e) => setLangParam(e.target.value)}>
+            <Select value={langParam} onChange={(e) => setLangParam(e.target.value)}>
               <option value="">
                 {t({ en: 'Auto', ru: 'Авто' })} ({LANGUAGES[auto]})
               </option>
@@ -256,18 +230,18 @@ export default function BlogPage({ initialLanguage }) {
                   {name}
                 </option>
               ))}
-            </select>
+            </Select>
           </label>
           <label>
             <span>{t({ en: 'Network', ru: 'Сеть' })}</span>
-            <select value={network} onChange={(e) => setNetwork(e.target.value)}>
+            <Select value={network} onChange={(e) => setNetwork(e.target.value)}>
               <option value="">{t({ en: 'All networks', ru: 'Все сети' })}</option>
               {Object.keys(archive.counts).map((id) => (
                 <option key={id} value={id}>
                   {NETWORKS[id]}
                 </option>
               ))}
-            </select>
+            </Select>
           </label>
           <label className="filters__check">
             <input type="checkbox" checked={onlyLang} onChange={(e) => setOnlyLang(e.target.checked)} />

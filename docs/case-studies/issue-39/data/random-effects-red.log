@@ -1,0 +1,27 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793364722327
+
+ ❯ src/settings/presets.test.js (16 tests | 1 failed) 146ms
+   ❯ a random look (2)
+     × is valid, leaves the sounds and the comfort settings alone and is never heavier than the defaults 21ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/settings/presets.test.js > a random look > is valid, leaves the sounds and the comfort settings alone and is never heavier than the defaults
+AssertionError: stars1.glow: expected 26 to be less than or equal to 0
+ ❯ src/settings/presets.test.js:110:30
+    108|         }
+    109|         if (typeof value === 'number' && /count|fps|resolution|density…
+    110|           expect(value, key).toBeLessThanOrEqual(DEFAULTS[key]);
+       |                              ^
+    111|       }
+    112|       expect(look['liquid.refraction']).toBeUndefined();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 15 passed (16)
+   Start at  13:27:37
+   Duration  2.27s (environment 68%, setup 14%, transform 9%, tests 7%, worker 1%)
+

@@ -1,3 +1,4 @@
+import { chooseSelect } from '../test/select';
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import { afterEach, expect, it, vi } from 'vitest';
 import NetworkPage from './NetworkPage';
@@ -59,8 +60,8 @@ it('preserves colour edits made while a manual Apply worker is running', async (
   fireEvent.click(screen.getByRole('button', { name: 'Apply turns and gaps to links' }));
   expect(document.querySelector('.network__preview')).toHaveAttribute('aria-busy', 'true');
   const colours = screen.getByLabelText('Colours of the links');
-  fireEvent.change(colours, { target: { value: 'pastel' } });
-  expect(colours).toHaveValue('pastel');
+  chooseSelect(colours, 'pastel');
+  expect(colours).toHaveAttribute('data-value', 'pastel');
   const [, shape] = worker.payload;
   await act(async () =>
     worker.onmessage({
@@ -73,7 +74,7 @@ it('preserves colour edits made while a manual Apply worker is running', async (
       },
     }),
   );
-  expect(colours).toHaveValue('pastel');
+  expect(colours).toHaveAttribute('data-value', 'pastel');
   expect(new URL(screen.getByLabelText('Link to this picture').value).searchParams.get('palette')).toBe('pastel');
   expect(screen.getByLabelText('Circular order of links')).toHaveValue('');
   expect(screen.getByRole('slider', { name: 'Distance between links' })).toHaveValue('1');
@@ -84,7 +85,7 @@ it('keeps applied positions during color edits and refits after deliberate geome
   window.history.replaceState(null, '', '/network/?code=2222&lang=en&frame=40+50+50');
   render(<NetworkPage />);
   const params = () => new URL(screen.getByLabelText('Link to this picture').value).searchParams;
-  fireEvent.change(screen.getByLabelText('Colours of the links'), { target: { value: 'pastel' } });
+  chooseSelect(screen.getByLabelText('Colours of the links'), 'pastel');
   expect(params().get('frame')).toBe('40 50 50');
   fireEvent.change(screen.getByRole('slider', { name: 'Distance between links' }), { target: { value: '1.1' } });
   expect(params().has('frame')).toBe(false);

@@ -1,3 +1,4 @@
+import { chooseSelect } from '../test/select';
 import { act, fireEvent, render, screen, within } from '@testing-library/react';
 import { afterEach, describe, expect, it } from 'vitest';
 import archive from '../data/posts.json';
@@ -348,12 +349,10 @@ describe('BlogPage', () => {
 
   it('embeds X first and offers an archived copy and retry', () => {
     const { container } = render(<BlogPage initialLanguage="en" />);
-    expect(container.querySelector('iframe.post__embed').getAttribute('src')).toMatch(
-      /^https:\/\/platform\.twitter\.com\/embed\/Tweet\.html\?id=\d+/,
-    );
+    expect(container.querySelector('[data-social-embed="x"]')).toBeInTheDocument();
     fireEvent.click(screen.getAllByRole('button', { name: 'Show archived copy' })[0]);
     fireEvent.click(screen.getByRole('button', { name: 'Show embed' }));
-    expect(container.querySelectorAll('iframe.post__embed').length).toBeGreaterThan(0);
+    expect(container.querySelectorAll('[data-social-embed="x"]').length).toBeGreaterThan(0);
   });
 });
 
@@ -441,9 +440,9 @@ describe('pages in Russian (issue #11)', () => {
     const posts = screen.getByRole('list', { name: 'Записи' });
     const langs = [...posts.children].map((li) => li.getAttribute('lang'));
     expect(langs.filter((l) => l === 'ru').length).toBeGreaterThan(langs.length / 2);
-    expect(screen.getByRole('combobox', { name: 'Язык' })).toHaveDisplayValue('Авто (Русский)');
+    expect(screen.getByRole('combobox', { name: 'Язык' })).toHaveTextContent('Авто (Русский)');
     expect(screen.getByText(/^\d+ (история|истории|историй)$/)).toBeInTheDocument();
-    fireEvent.change(screen.getByRole('combobox', { name: 'Язык' }), { target: { value: 'en' } });
+    chooseSelect(screen.getByRole('combobox', { name: 'Язык' }), 'en');
     expect(window.location.search).toBe('?posts=en');
     expect(screen.getByText('Только записи на английском')).toBeInTheDocument();
     noObjects();

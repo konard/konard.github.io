@@ -2,6 +2,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { afterEach, expect, it } from 'vitest';
 import NetworkPage, { readNetwork, networkQuery } from './NetworkPage';
 import { networkSvg } from '../links/render';
+import { chooseSelect } from '../test/select';
 
 afterEach(() => window.history.replaceState(null, '', '/'));
 const open = (query = 'code=0222') => {
@@ -42,7 +43,7 @@ it('preserves neutral explicit zero turns through the URL and clear', () => {
 
 it('keeps turns neutral after reference edits and removal', () => {
   open('code=000022');
-  fireEvent.change(screen.getByLabelText('Link 1: target'), { target: { value: '2' } });
+  chooseSelect(screen.getByLabelText('Link 1: target'), '2');
   expect(target()).toHaveValue('0');
   fireEvent.click(screen.getByRole('button', { name: 'Remove: Link 2' }));
   expect(target()).toHaveValue('0');

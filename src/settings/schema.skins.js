@@ -1,5 +1,6 @@
 // Sections of the skins (issues #13 and #15): the choice of a skin and the
 // options of glass, liquid glass and the futuristic HUD; see schema.js.
+import { MATERIAL_FIELDS } from './schema.materials.js';
 import { CORNERS } from '../skins.frames.js';
 import { option, range, select, toggle } from './fields.js';
 
@@ -60,7 +61,7 @@ const corner = (c) => {
   return [
     select(`corner.${c}Shape`, shape, CORNER_SHAPES, { en: 'Shape', ru: 'Форма' }, { tab: c, tiles: 'shape' }),
     select(`corner.${c}Line`, line, CORNER_LINES, { en: 'Line', ru: 'Линия' }, { tab: c, tiles: 'line', corner: c }),
-    range(`corner.${c}Size`, size, 2, 64, 1, { en: 'Size', ru: 'Размер' }, { tab: c, unit: 'px' }),
+    range(`corner.${c}Size`, size, 0, 128, 1, { en: 'Size', ru: 'Размер' }, { tab: c, unit: 'px' }),
   ];
 };
 
@@ -140,6 +141,7 @@ export const SKIN_SECTIONS = [
     },
     when: (s) => s['skin.name'] === 'liquid',
     fields: [
+      ...MATERIAL_FIELDS,
       range('liquid.blur', 18, 0, 48, 1, { en: 'Blur', ru: 'Размытие' }, { unit: 'px' }),
       range('liquid.saturation', 180, 100, 300, 5, { en: 'Saturation', ru: 'Насыщенность' }, { unit: '%' }),
       range('liquid.brightness', 108, 70, 150, 1, { en: 'Brightness', ru: 'Яркость' }, { unit: '%' }),
@@ -154,7 +156,7 @@ export const SKIN_SECTIONS = [
         ],
         { en: 'Tint', ru: 'Оттенок' },
       ),
-      range('liquid.tintLevel', 0.22, 0, 0.9, 0.01, { en: 'Tint strength', ru: 'Сила оттенка' }, { unit: '%' }),
+      range('liquid.tintLevel', 0.22, 0, 1, 0.01, { en: 'Tint strength', ru: 'Сила оттенка' }, { unit: '%' }),
       range('liquid.radius', 24, 0, 48, 1, { en: 'Corner radius', ru: 'Скругление углов' }, { unit: 'px' }),
       range('liquid.highlight', 0.55, 0, 1, 0.05, { en: 'Edge highlight', ru: 'Блик на кромке' }, { unit: '%' }),
       range('liquid.edge', 0.22, 0, 1, 0.02, { en: 'Border', ru: 'Рамка' }, { unit: '%' }),
@@ -214,9 +216,9 @@ export const SKIN_SECTIONS = [
         ],
         { en: 'Frame', ru: 'Рамка' },
       ),
-      range('future.cut', 14, 0, 40, 1, { en: 'Cut of the corners', ru: 'Срез углов' }, { unit: 'px' }),
-      range('future.corner', 16, 4, 48, 1, { en: 'Length of brackets', ru: 'Длина уголков' }, { unit: 'px' }),
-      range('future.border', 1, 0, 4, 0.5, { en: 'Line width', ru: 'Толщина линий' }, { unit: 'px' }),
+      range('future.cut', 14, 0, 128, 1, { en: 'Cut of the corners', ru: 'Срез углов' }, { unit: 'px' }),
+      range('future.corner', 16, 0, 128, 1, { en: 'Length of brackets', ru: 'Длина уголков' }, { unit: 'px' }),
+      range('future.border', 1, 0, 12, 0.5, { en: 'Line width', ru: 'Толщина линий' }, { unit: 'px' }),
       toggle('future.accentBar', true, { en: 'Accent bar on panels', ru: 'Акцентная планка на панелях' }),
       select(
         'future.surface',
@@ -226,7 +228,6 @@ export const SKIN_SECTIONS = [
           option('glass', 'Glass', 'Стекло'),
           option('frosted', 'Frosted', 'Матовое стекло'),
           option('solid', 'Solid', 'Сплошная'),
-          option('transparent', 'Transparent', 'Прозрачная'),
           option('steel', 'Brushed steel', 'Шлифованная сталь'),
           option('carbon', 'Carbon fibre', 'Карбон'),
           option('holographic', 'Holographic', 'Голографическая'),
@@ -244,7 +245,10 @@ export const SKIN_SECTIONS = [
         { unit: '%' },
       ),
       range('future.blur', 6, 0, 24, 1, { en: 'Blur behind panels', ru: 'Размытие за панелями' }, { unit: 'px' }),
-      range('future.glow', 0.5, 0, 1.5, 0.05, { en: 'Glow', ru: 'Свечение' }, { unit: '%' }),
+      range('future.glow', 0.5, 0, 4, 0.05, { en: 'Glow', ru: 'Свечение' }, { unit: '×' }),
+      range('future.frameOpacity', 0.95, 0, 1, 0.01, { en: 'Frame intensity', ru: 'Яркость рамки' }, { unit: '%' }),
+      range('future.accentLength', 112, 0, 480, 4, { en: 'Accent length', ru: 'Длина акцента' }, { unit: 'px' }),
+      range('future.accentOffset', 0, 0, 128, 1, { en: 'Accent offset', ru: 'Отступ акцента' }, { unit: 'px' }),
       select(
         'future.font',
         'orbitron',
@@ -302,7 +306,7 @@ export const SKIN_SECTIONS = [
         ],
         { en: 'Panels on hover', ru: 'Панели при наведении' },
       ),
-      range('future.scanlines', 0.12, 0, 0.6, 0.02, { en: 'Scanlines', ru: 'Линии развёртки' }, { unit: '%' }),
+      range('future.scanlines', 0, 0, 0.6, 0.02, { en: 'Scanlines', ru: 'Линии развёртки' }, { unit: '%' }),
     ],
   },
   {

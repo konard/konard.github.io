@@ -1,3 +1,6 @@
+import InterfacePreview, { MaterialPresets } from './InterfacePreview';
+import ColorInput from '../components/ColorInput';
+import Select from '../components/Select';
 import { useState } from 'react';
 import './settings.css';
 import Layout from '../components/Layout';
@@ -52,19 +55,19 @@ function Control({ field, value, settings }) {
   } else if (field.type === 'toggle') {
     input = <input id={id} type="checkbox" checked={value} onChange={(event) => set(event.target.checked)} />;
   } else if (field.type === 'color') {
-    input = <input id={id} type="color" value={value} onChange={(event) => set(event.target.value)} />;
+    input = <ColorInput label={t(field.label)} id={id} value={value} onChange={(event) => set(event.target.value)} />;
     shown = value;
   } else if (field.tiles) {
     input = <CornerTiles field={field} value={value} settings={settings} labelId={`${id}-label`} />;
   } else {
     input = (
-      <select id={id} value={value} onChange={(event) => set(event.target.value)}>
+      <Select id={id} value={value} onChange={(event) => set(event.target.value)}>
         {field.options.map((option) => (
           <option key={option.value} value={option.value}>
             {t(option.label)}
           </option>
         ))}
-      </select>
+      </Select>
     );
     if (field.preview === 'sound') {
       // ▶ plays the chosen sound, so a sound can be heard before it is kept.
@@ -185,6 +188,8 @@ function Group({ section, settings }) {
         </button>
       </header>
       {section.lead && <p className="settings__lead">{t(section.lead)}</p>}
+      {section.id === 'interface' && <InterfacePreview />}
+      {['glass', 'liquid'].includes(section.id) && <MaterialPresets />}
       {section.id === 'futuristic' && <Palettes value={settings['future.palette']} />}
       {tabbed ? (
         <>

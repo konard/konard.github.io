@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { embedUrl, Story } from '../pages/BlogPage';
 
 const post = {
@@ -12,13 +12,14 @@ const post = {
   media: [],
 };
 
-it('opens a readable archive if the provider fails, with an explicit retry', () => {
+it('opens a readable archive if the provider script fails, with an explicit retry', async () => {
   const { container } = render(<Story story={{ posts: [post] }} lang="en" />);
-  fireEvent.error(container.querySelector('iframe'));
-  expect(container.querySelector('iframe')).toBeNull();
-  expect(screen.getByText('Archived evidence')).toBeVisible();
+  const script = document.querySelector('script[src="https://platform.twitter.com/widgets.js"]');
+  fireEvent.error(script);
+  await waitFor(() => expect(screen.getByText('Archived evidence')).toBeVisible());
+  expect(container.querySelector('[data-social-embed]')).toBeNull();
   fireEvent.click(screen.getByRole('button', { name: 'Show embed' }));
-  expect(container.querySelector('iframe')).not.toBeNull();
+  expect(container.querySelector('[data-social-embed]')).not.toBeNull();
 });
 
 it('supports Telegram and VK public widget identifiers, requiring VK export hashes', () => {

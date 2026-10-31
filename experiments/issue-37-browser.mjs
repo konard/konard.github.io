@@ -1,3 +1,4 @@
+import { chooseSelect } from './support/select.mjs';
 // Native clicks, worker responsiveness, exact preview/Apply/export equivalence.
 /* global document, window, requestAnimationFrame */
 import assert from 'node:assert/strict';
@@ -192,10 +193,10 @@ try {
   await page.locator('#style-solve').check();
   await page.locator('#style-solve').uncheck();
   await page.getByRole('button', { name: 'Apply turns and gaps to links', exact: true }).click();
-  await page.locator('#style-palette').selectOption('pastel');
+  await chooseSelect(page.locator('#style-palette'), 'pastel');
   await waitForNetwork(page);
   assert(!new URL(page.url()).searchParams.has('solve'));
-  assert.equal(await page.locator('#style-palette').inputValue(), 'pastel');
+  assert.equal(await page.locator('#style-palette').getAttribute('data-value'), 'pastel');
   const applied = new URL(await page.getByLabel('Link to this picture', { exact: true }).inputValue());
   assert.equal(applied.searchParams.get('palette'), 'pastel');
   // Small screen and both translations remain usable.

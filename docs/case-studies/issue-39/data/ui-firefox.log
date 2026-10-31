@@ -1,0 +1,5 @@
+
+> konard.github.io@0.1.0 test:ui:issue39
+> node experiments/issue-39-browser.mjs
+
+Issue 39: firefox controls, corners, opacity, glass, embeds and mobile layouts passed.

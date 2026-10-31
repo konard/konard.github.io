@@ -1,0 +1,112 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793364722327
+
+ ❯ src/components/Select.test.jsx (6 tests | 1 failed) 562ms
+   ❯ owned select-only combobox (6)
+     × owns a skinnable listbox with pointer selection and returns a native-shaped event 325ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/Select.test.jsx > owned select-only combobox > owns a skinnable listbox with pointer selection and returns a native-shaped event
+Error: expect(element).toHaveFocus()
+
+Expected element with focus:
+  <button
+  aria-activedescendant="select-_r_0_-list-0"
+  aria-controls="select-_r_0_-list"
+  aria-expanded="true"
+  aria-haspopup="listbox"
+  class="ui-select "
+  data-value="blue"
+  id="select-_r_0_"
+  role="combobox"
+  type="button"
+>
+  <span>
+    Blue
+  </span>
+  <span
+    aria-hidden="true"
+  >
+    ⌄
+  </span>
+</button>
+Received element with focus:
+  <body>
+  <div>
+    <label>
+      Palette
+      <button
+        aria-activedescendant="select-_r_0_-list-0"
+        aria-controls="select-_r_0_-list"
+        aria-expanded="true"
+        aria-haspopup="listbox"
+        class="ui-select "
+        data-value="blue"
+        id="select-_r_0_"
+        role="combobox"
+        type="button"
+      >
+        <span>
+          Blue
+        </span>
+        <span
+          aria-hidden="true"
+        >
+          ⌄
+        </span>
+      </button>
+    </label>
+  </div>
+  <ul
+    aria-labelledby="select-_r_0_"
+    class="ui-select__list"
+    id="select-_r_0_-list"
+    role="listbox"
+    style="position: fixed; width: 200px; left: 8px; max-height: 320px; top: 8px;"
+  >
+    <li
+      aria-selected="true"
+      data-active="true"
+      data-value="blue"
+      id="select-_r_0_-list-0"
+      role="option"
+    >
+      Blue
+    </li>
+    <li
+      aria-selected="false"
+      data-active="false"
+      data-value="green"
+      id="select-_r_0_-list-1"
+      role="option"
+    >
+      Green
+    </li>
+    <li
+      aria-selected="false"
+      data-active="false"
+      data-value="red"
+      id="select-_r_0_-list-2"
+      role="option"
+    >
+      Red
+    </li>
+  </ul>
+</body>
+ ❯ src/components/Select.test.jsx:23:20
+     21|     const { button, onChange } = setup();
+     22|     fireEvent.click(button);
+     23|     expect(button).toHaveFocus();
+       |                    ^
+     24|     expect(button).toHaveAttribute('aria-expanded', 'true');
+     25|     fireEvent.click(screen.getByRole('option', { name: 'Green' }));
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 5 passed (6)
+   Start at  13:57:17
+   Duration  2.95s (environment 57%, tests 21%, setup 13%, transform 6%, worker 2%, import 1%)
+

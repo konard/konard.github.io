@@ -16,6 +16,7 @@ import { option, select } from './fields.js';
 import { BACKGROUND_SECTIONS } from './schema.background.js';
 import { LAYER_SECTIONS } from './schema.layers.js';
 import { SKIN_SECTIONS } from './schema.skins.js';
+import { UI_SECTIONS } from './schema.ui.js';
 import { SOUND_SECTION } from './schema.sound.js';
 
 export { PALETTES, SKINS } from './schema.skins.js';
@@ -37,6 +38,7 @@ export const SECTIONS = [
   rain,
   SOUND_SECTION,
   ...SKIN_SECTIONS,
+  ...UI_SECTIONS,
   {
     id: 'theory',
     column: 2,

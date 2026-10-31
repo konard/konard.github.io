@@ -218,7 +218,7 @@ export function framesCss() {
       '--fx-frame-img': layers.map((layer) => layer[0]).join(',\n    '),
       '--fx-frame-size': layers.map((layer) => layer[1]).join(',\n    '),
       '--fx-frame-pos': layers.map((layer) => layer[2]).join(',\n    '),
-      '--fx-bar-pos': `left calc(${v('tl', 'x')} + ${v('tl', 'gap')} + ${v('tl', 'arm')} + 0.4rem) top 0`,
+      '--fx-bar-start': `calc(${v('tl', 'x')} + ${v('tl', 'gap')} + ${v('tl', 'arm')})`,
     }),
   );
   CORNERS.forEach((corner) => {

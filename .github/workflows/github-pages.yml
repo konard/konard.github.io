@@ -290,6 +290,12 @@ jobs:
           CAPTURE_DIR: browser-results/screenshots/issue37
           RESULT_DIR: browser-results/data/issue37
 
+      - name: Verify configurable controls, corners, materials, opacity and social embeds
+        if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
+        run: npm run test:ui:issue39
+        env:
+          CAPTURE_DIR: browser-results/screenshots/issue39
+
       - name: Verify simple default turns, reported examples and 20 seeded networks
         if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
         run: npm run test:network:issue41
