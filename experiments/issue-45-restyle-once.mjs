@@ -2,7 +2,7 @@
 // written on <html> and a box is read, so every element computes its style.
 // Prints the time of the first restyles one by one (no animation frames needed,
 // so it also runs in headless WebKit on Linux).
-//   [ENGINE=webkit] [PAGE=/settings/] [LOOK='{"key":value}'] [ROUNDS=5] [PORT=4257] node experiments/issue-45-restyle-once.mjs
+//   [ENGINE=webkit] [EXTRA_CSS='…'] [PAGE=/settings/] [LOOK='{"key":value}'] [ROUNDS=5] [PORT=4257] node experiments/issue-45-restyle-once.mjs
 /* global document */
 import { chromium, firefox, webkit } from 'playwright';
 import { createServer } from 'vite';
@@ -30,6 +30,8 @@ try {
     timeout: 120000,
   });
   log('rendered');
+  // EXTRA_CSS adds a style sheet to try a change without editing the sources.
+  if (process.env.EXTRA_CSS) await page.addStyleTag({ content: process.env.EXTRA_CSS });
   for (let round = 0; round < Number(process.env.ROUNDS || 5); round += 1) {
     const ms = await page.evaluate((i) => {
       const start = performance.now();
