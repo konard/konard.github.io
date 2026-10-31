@@ -169,20 +169,28 @@ jobs:
     needs: [prepare, lint-workflows, checks, tooling]
     if: needs.prepare.outputs.code == 'true'
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 45
+    timeout-minutes: ${{ matrix.timeout }}
     strategy:
       fail-fast: false
       matrix:
         include:
           - engine: chromium
             os: ubuntu-24.04
+            timeout: 15
           - engine: firefox
             os: ubuntu-24.04
+            timeout: 15
           # This container's Linux GTK renderer omits backdrop effects on
           # screen. Test WebKit on macOS, the platform used by the reported bug.
           # Pin Intel: ARM capacity left a previous job without any runner.
+          # WebKit on this runner is the slowest: before issue #45 it already
+          # took about 12 of 15 minutes. With the Matrix universe look as the
+          # default (issue #45), a restyle of the settings page takes about
+          # 380 ms instead of about 110 ms, so the issue #27 audit of its 111
+          # sliders takes about 290 s instead of 100 s. The job took 16 min 45 s.
           - engine: webkit
             os: macos-15-intel
+            timeout: 25
     env:
       ENGINE: ${{ matrix.engine }}
     steps:
