@@ -101,6 +101,82 @@ Each one has a test that failed before the fix.
    first attempt with `:not(:has([data-frame-root]))` was wrong: it also dropped panels that are siblings of the marker,
    and the jsdom test caught that.
 7. **Long content spilled over the frame** (the "overflow" sample). Fix: R3.
+8. **A frame setting restyled the page slowly, and the WebKit job of CI ran out of its 15 minutes** (run 41226028436,
+   the slider step of `npm run test:network:issue27`: 113 s on `main`, 324–473 s on this branch before the fix).
+   A setting writes an attribute or a variable on `<html>`, so every element computes its style again. There were two
+   causes, found one after the other.
+
+   **First cause: selectors that could not be filed.**
+   - `experiments/issue-45-style-cost.mjs` times that restyle with one sheet or one rule off at a time. The frame
+     rules were most of the extra cost.
+   - `experiments/issue-45-selector-stats.mjs` reads the selector statistics of a Chromium trace
+     (`disabled-by-default-blink.debug`).
+   - Every chosen shape and line had a rule `:root[attribute] :where(<44 framed selectors>)`. A list inside one
+     `:where()` cannot be filed under a class or a tag, so the browser tried each of these rules on every element.
+     When the attribute was not set, it also walked every ancestor up to the root.
+   - Fix: the shape and line rules set unitless numbers on the root only (the generated
+     `src/skins.frames.corners.css`), and every other frame rule names one element per selector.
+   - Measured on `/settings/` in Chromium, over three restyles:
+
+     | Selectors                         | Before        | After       |
+     | --------------------------------- | ------------- | ----------- |
+     | Frame selectors, time in matching | 420–479 ms    | 34–36 ms    |
+     | All selectors, time in matching   | 755–870 ms    | 234–246 ms  |
+
+   **Second cause: long inherited custom properties (WebKit only).** Chromium and Firefox became fast, but WebKit did
+   not: the temporary diagnostic step of CI (`experiments/issue-45-webkit-diagnose.mjs`, run 41240352259 on macOS) timed
+   one restyle of `/settings/` at 1680 ms with the Matrix look on the branch, against 337 ms for the same look on
+   `main`. Turning the rain, the nebula or the scanlines off changed nothing; the Glass look (no custom frame) took
+   234 ms.
+   - WebKit compares the inherited custom properties of each element whose style it recomputes. An unregistered value
+     that uses `var()` is kept as its tokens, so the comparison costs as much as the tokens. The root held the lengths of
+     three scales as formulas, and all ~1800 elements of the page paid for them.
+   - `experiments/issue-45-custom-props-micro.mjs` shows it on 1000 plain `div`s in WebKit (one restyle):
+
+     | Inherited custom properties of the root       | Restyle  |
+     | --------------------------------------------- | -------- |
+     | none, or 300 plain values                     | 6–10 ms  |
+     | 20 plain values of 200 tokens                 | 5–8 ms   |
+     | 20 values of 20 tokens with `var()`           | ~48 ms   |
+     | 20 values of 200 tokens with `var()`          | ~370 ms  |
+     | 300 values `calc(var(--n) * 1px)`             | ~34 ms   |
+     | the same, registered as `<length>`            | ~13 ms   |
+     | 300 values of 20 tokens, `inherits: false`    | ~12 ms   |
+
+     `experiments/issue-45-typed-props-micro.mjs` adds that typed `<color>` and `<image>` values are as cheap, and that
+     a polygon of each framed element is cheap when it does not inherit to its children.
+     `experiments/issue-45-image-none-syntax.mjs` checks that Chromium, Firefox and WebKit accept `<image> | none` and
+     that `inherit` on `::after` copies a property that does not inherit.
+   - Fix (in `src/skins.frames.js`, registrations in the generated `src/skins.frames.properties.css`):
+     - the numbers of the shapes and lines, and the size of each scale, stay on the root (`syntax: '*'`,
+       `inherits: false`);
+     - the lengths of each scale are `<length>`, the line colour is `<color>` and the line images are
+       `<image> | none`, so the root computes each once to a single value;
+     - each framed element computes its own outline and layers (`--fx-el-clip`, `--fx-el-img`, `--fx-el-size`,
+       `--fx-el-pos`, not inherited); the corner layer copies them to its `::after` with `inherit`.
+   - `experiments/issue-45-css-variants.mjs` times the restyle with parts of the generated sheets left out. Local
+     headless WebKit on Linux, median of 5 restyles of `/settings/`:
+
+     | Sheets                                            | Restyle   |
+     | ------------------------------------------------- | --------- |
+     | `main`                                            | ~85 ms    |
+     | first fix only (inherited formulas)               | ~900 ms   |
+     | both fixes                                        | 285–310 ms |
+     | both fixes, without the registrations             | ~1770 ms  |
+     | no custom frame at all                            | ~173 ms   |
+
+     MACOS_RESULTS
+   - `experiments/issue-45-frame-pixels.mjs` shot the element samples in 17 looks (every shape and line, widths,
+     dashed and dotted edges, the corner layer below, line-only blocks) before and after. The shots are the same
+     except about 19 anti-aliased pixels in the round and scoop shots.
+   - Test: `src/skins.frames.restyle.test.js`. It checks that:
+     - the shape and line rules are on the root only;
+     - every framed element is named in its own `:where()` or selector;
+     - the points and layer sizes of every shape at every corner compute to the old geometry;
+     - every root value of the frame that uses `var()` is typed or does not inherit, except two short ones, and
+       what a framed element draws does not inherit.
+
+     The first two checks failed before the first fix; the last three failed before the second.
 
 ## 5. Settings added
 
