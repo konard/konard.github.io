@@ -214,16 +214,6 @@ jobs:
           mkdir -p browser-results
           node -e 'require("node:fs").writeFileSync("browser-results/run.json", JSON.stringify({sha: process.env.GITHUB_SHA, engine: process.env.ENGINE}))'
 
-      - name: Time the settings look in WebKit (temporary diagnostic, issue 45)
-        if: ${{ matrix.engine == 'webkit' }}
-        run: |
-          BUDGET_MS=900000 VARIANTS=defaults,glass,noRainGlow,noRain,noNebula,gridLines,noScanlines,solidSurface,cornerBrackets,controlBorders,layerBelow,quiet node experiments/issue-45-webkit-diagnose.mjs
-          git fetch --depth=1 https://github.com/konard/konard.github.io.git main
-          git worktree add /tmp/main FETCH_HEAD
-          cp experiments/issue-45-webkit-diagnose.mjs /tmp/main/experiments/
-          cd /tmp/main && npm ci --no-audit --no-fund
-          BUDGET_MS=300000 VARIANTS=defaults,matrix,noRain,quiet DEFAULTS_FROM="$GITHUB_WORKSPACE/src/settings/schema.defaults.js" node experiments/issue-45-webkit-diagnose.mjs
-
       - name: Verify existing editor features and image downloads
         run: npm run test:network:browser
         env:
