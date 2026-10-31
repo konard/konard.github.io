@@ -11,10 +11,11 @@ import { applySettings } from './settings/apply';
 import { CSS_RULES, DEFAULTS, FIELDS } from './settings/schema';
 import { getSettings, setSettings } from './settings/store';
 import UiSamples from './pages/UiSamples';
-import { BLOCKS, CONTROLS, CORNERS, EDGE_STYLES, framesCss, INNER, PANELS } from './skins.frames';
+import { BLOCKS, CONTROLS, CORNERS, cornersCss, EDGE_STYLES, framesCss, INNER, PANELS } from './skins.frames';
 
 const read = (name) => readFileSync(join(__dirname, name), 'utf8');
 const FRAMES = framesCss();
+const NUMBERS = cornersCss();
 const FUTURE = read('skins.future.css');
 const MATERIALS = read('skins.materials.css');
 const UI = read('ui.css');
@@ -40,12 +41,13 @@ describe('the same frame on every bordered element (issue #45)', () => {
     }
     expect(FRAMES).toContain('--fx-scale: var(--corner-block-scale, 0.6);');
     expect(FRAMES).toContain('--fx-scale: var(--corner-control-scale, 0.35);');
-    // The variables are declared again on every framed element, so each one resolves its own scale.
-    expect(FRAMES).toMatch(/:root\[data-corner-tl-shape='cut'\] :where\([^)]*\.repo/);
+    // The lengths are declared again on every framed element, so each one resolves its own scale.
+    expect(FRAMES).toContain(":root[data-skin-name='futuristic'][data-future-frame='custom'] :where(.repo),");
+    expect(NUMBERS).toContain(":root[data-corner-tl-shape='cut'] {");
   });
 
   it('cuts the controls by the frame and draws the frame over their fill', () => {
-    expect(FRAMES).toContain(":not([data-corner-controls='border']) :is(");
+    expect(FRAMES).toContain(":not([data-corner-controls='border']) .button,");
     expect(FRAMES).toContain('clip-path: var(--fx-clip);');
     expect(FRAMES).toContain('background-image: var(--fx-frame-img), var(--fx-control-img, none);');
     // A colour swatch is a child of its button, so neither the frame nor the fill paints over it.
@@ -83,7 +85,7 @@ describe('widths of the sides, the corners and the accent strip (issue #45)', ()
       expect(DEFAULTS[key], key).toBe(-1);
     }
     for (const side of SIDES) expect(FRAMES).toContain(`--fx-ew-${side}: var(--corner-${side}-width, var(--fx-ew));`);
-    for (const corner of CORNERS) expect(FRAMES).toContain(`var(--corner-${corner}-width, `);
+    for (const corner of CORNERS) expect(NUMBERS).toContain(`var(--corner-${corner}-width, `);
   });
 
   it('puts a chosen width on <html> and takes it away for the automatic one', () => {
@@ -118,7 +120,7 @@ describe('widths of the sides, the corners and the accent strip (issue #45)', ()
 describe('the corner layer (issue #45)', () => {
   it('draws the frame above the content by default, over the colour bar of a position', () => {
     expect(DEFAULTS['corner.layer']).toBe('top');
-    expect(FRAMES).toContain(":not([data-corner-layer='below']) :is(");
+    expect(FRAMES).toContain(":not([data-corner-layer='below']) .position::after");
     const overlay = FRAMES.slice(FRAMES.indexOf('::after'));
     expect(overlay).toContain('pointer-events: none;');
     expect(overlay).toContain('background-image: var(--fx-frame-img);');

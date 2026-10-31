@@ -7,13 +7,24 @@
 //
 // Issue #45: outer panels, inner blocks, buttons and fields share the frame.
 // Custom properties are resolved on the element that declares them, so every
-// rule that depends on the size of a corner is declared both on the root and
-// on every framed element (`:where(...)` adds no specificity); a framed element
-// scales the corner sizes, brackets and gaps by its own `--fx-scale` (1 for an
-// outer panel, the block scale for a panel inside a panel, the control scale for
+// length that depends on the size of a corner is declared on every framed
+// element (`:where(...)` adds no specificity); a framed element scales the
+// corner sizes, brackets and gaps by its own `--fx-scale` (1 for an outer
+// panel, the block scale for a panel inside a panel, the control scale for
 // buttons and fields). Corners and edges have their own widths, the edges a
 // style (solid, dashed, dotted, double), and the corner layer is drawn above
 // the content of a panel (over the colour bar of a position) or below it.
+//
+// A setting changes a variable or an attribute of <html>, and then every
+// element of the page computes its style again; with sliders that happens on
+// every step. So the rules of the chosen shapes and lines are declared on the
+// root only, as numbers (how many corner sizes a point or a layer is away from
+// the corner) and as images that do not depend on the corner size. Only one
+// rule, with no attribute of its own, reaches every framed element and turns
+// those numbers into lengths in the scale of the element. Every selector of a
+// framed element is its own `:where()`, so a browser tries the rule only on
+// the elements of that class or tag (a list in one `:where()` is tried on
+// every element of the page).
 
 export const CORNERS = ['tl', 'tr', 'br', 'bl'];
 
@@ -78,25 +89,30 @@ const v = (corner, name) => `var(--fx-${corner}-${name})`;
 const right = (corner) => corner === 'tr' || corner === 'br';
 const bottom = (corner) => corner === 'br' || corner === 'bl';
 
-/** `coefficient` × the corner size as a CSS length. */
-const size = (corner, coefficient) => {
-  if (coefficient === 0) return '0px';
-  if (coefficient === 1) return v(corner, 's');
-  return `calc(${v(corner, 's')} * ${coefficient})`;
-};
+/** The most points of a shape: every corner has this many points in the polygon. */
+export const POINTS = Math.max(...Object.values(SHAPES).map((shape) => shape.points.length));
 
-/** A point of the top left shape moved to `corner`, as a polygon point. */
-const point = (corner, [x, y]) => {
-  const along = (flip, value) => (flip ? (value === '0px' ? '100%' : `calc(100% - ${value})`) : value);
-  return `${along(right(corner), size(corner, x))} ${along(bottom(corner), size(corner, y))}`;
-};
-
-/** The outline of `shape` at `corner` in the clockwise order of the polygon. */
-export const cornerPoints = (corner, shape) => {
-  const points = SHAPES[shape].points.map((p) => point(corner, p));
+/**
+ * The points of `shape` at `corner` in the clockwise order of the polygon, in
+ * corner sizes from the corner, repeated at the end up to POINTS points.
+ */
+export const cornerSteps = (corner, shape) => {
+  const points = [...SHAPES[shape].points];
   // Top right and bottom left go from the horizontal edge to the vertical one.
-  return corner === 'tr' || corner === 'bl' ? points.reverse() : points;
+  if (corner === 'tr' || corner === 'bl') points.reverse();
+  while (points.length < POINTS) points.push(points[points.length - 1]);
+  return points;
 };
+
+/** `s × k` from the side of the corner, or from the far side for a right or bottom corner. */
+const along = (flip, length) => (flip ? `calc(100% - ${length})` : `calc(${length})`);
+
+/** Point `i` of the polygon at `corner`, from the numbers of the chosen shape. */
+const point = (corner, i) =>
+  `${along(right(corner), `${v(corner, 's')} * ${v(corner, `k${i}x`)}`)} ${along(bottom(corner), `${v(corner, 's')} * ${v(corner, `k${i}y`)}`)}`;
+
+/** The outline of the chosen shape at `corner`: POINTS points of the polygon. */
+export const cornerPoints = (corner) => Array.from({ length: POINTS }, (_, i) => point(corner, i));
 
 /** A background position `x` from the side and `y` from the top or bottom of the corner. */
 const at = (corner, x, y) => `${right(corner) ? 'right' : 'left'} ${x} ${bottom(corner) ? 'bottom' : 'top'} ${y}`;
@@ -105,57 +121,45 @@ const DIAGONAL = { tl: 'to bottom right', tr: 'to bottom left', br: 'to top left
 const OUTSIDE = { tl: '100% 100%', tr: '0 100%', br: '0 0', bl: '100% 0' };
 const INSIDE = { tl: '0 0', tr: '100% 0', br: '100% 100%', bl: '0 100%' };
 
-/** The two line layers of a shape at a corner: [image, size, position]. */
-function strokes(corner, shape) {
+/**
+ * The two line layers of a shape at a corner. The image does not depend on the
+ * corner size, so the root holds it; the size of a layer is `s × sx + wx` by
+ * `s × sy + wy` and its position `s × px` and `s × py` from the corner, where
+ * `s` is the corner size of the framed element.
+ */
+export function strokes(corner, shape) {
   const col = v(corner, 'col');
   const w = v(corner, 'w');
-  const s = v(corner, 's');
+  const tick = v(corner, 'tickk');
   const solid = `linear-gradient(${col}, ${col})`;
-  const none = ['none', '0px 0px', '0 0'];
+  const layer = (img, [sx, wx], [sy, wy], [px, py] = [0, 0]) => ({ img, sx, wx, sy, wy, px, py });
+  const none = layer('none', [0, '0px'], [0, '0px']);
+  // A ring as wide as the line on the inside of the layer box: the radius is the box.
+  const ring = (center) =>
+    `radial-gradient(circle farthest-side at ${center}, transparent calc(100% - ${w}), ${col} calc(100% - ${w}) 100%, transparent 100%)`;
   const { x, y } = SHAPES[shape];
   switch (shape) {
-    case 'square': {
-      const tick = v(corner, 'tick');
-      return [
-        [solid, `${tick} ${w}`, at(corner, 0, 0)],
-        [solid, `${w} ${tick}`, at(corner, 0, 0)],
-      ];
-    }
+    case 'square':
+      // A bright line draws a tick as long as the corner size along both edges.
+      return [layer(solid, [tick, '0px'], [0, w]), layer(solid, [0, w], [tick, '0px'])];
     case 'cut':
     case 'tall':
     case 'wide':
       return [
-        [
+        layer(
           `linear-gradient(${DIAGONAL[corner]}, transparent 50%, ${col} 50% calc(50% + ${w}), transparent 0)`,
-          `${size(corner, x)} ${size(corner, y)}`,
-          at(corner, 0, 0),
-        ],
+          [x, '0px'],
+          [y, '0px'],
+        ),
         none,
       ];
     case 'round':
-      return [
-        [
-          `radial-gradient(circle at ${OUTSIDE[corner]}, transparent calc(${s} - ${w}), ${col} calc(${s} - ${w}) ${s}, transparent ${s})`,
-          `${s} ${s}`,
-          at(corner, 0, 0),
-        ],
-        none,
-      ];
+      return [layer(ring(OUTSIDE[corner]), [1, '0px'], [1, '0px']), none];
     case 'scoop':
-      return [
-        [
-          `radial-gradient(circle at ${INSIDE[corner]}, transparent ${s}, ${col} ${s} calc(${s} + ${w}), transparent calc(${s} + ${w}))`,
-          `calc(${s} + ${w}) calc(${s} + ${w})`,
-          at(corner, 0, 0),
-        ],
-        none,
-      ];
+      return [layer(ring(INSIDE[corner]), [1, w], [1, w]), none];
     default:
       // notch: a step into the panel, two lines.
-      return [
-        [solid, `${s} ${w}`, at(corner, 0, s)],
-        [solid, `${w} ${s}`, at(corner, s, 0)],
-      ];
+      return [layer(solid, [1, '0px'], [0, w], [0, 1]), layer(solid, [0, w], [1, '0px'], [1, 0])];
   }
 }
 
@@ -224,21 +228,27 @@ export const CONTROLS = [
 ];
 
 const list = (selectors) => selectors.join(', ');
-const FRAMED = list([...PANELS, ...CONTROLS]);
+const FRAMED = [...PANELS, ...CONTROLS];
+/** `prefix :where(element)` for every element: one selector each, so a browser files it under its class or tag. */
+const each = (prefix, elements) => elements.map((element) => `${prefix}:where(${element})`).join(',\n');
 /** A rule on the root and on every framed element, so the element resolves it with its own scale. */
-const everywhere = (selector, elements = FRAMED) => `${selector},\n${selector} :where(${elements})`;
+const everywhere = (selector, elements = FRAMED) => `${selector},\n${each(`${selector} `, elements)}`;
 
-/** What a corner line sets: colour, width, the tick of a square corner, arms and the gap of the edges. */
+/**
+ * What a corner line sets: colour, width, the tick of a square corner (in
+ * corner sizes), and whether it has arms and a gap of the edges (in brackets).
+ */
 const THIN = 'var(--future-border, 1px)';
 const BOLD = 'var(--fx-b)';
-const ARM = 'calc(var(--fx-k) * var(--fx-scale, 1))';
 const LOOK = {
-  none: { col: 'transparent', w: THIN, tick: '0px', arm: '0px', gap: '0px' },
-  gap: { col: 'transparent', w: THIN, tick: '0px', arm: '0px', gap: ARM },
-  line: { col: 'var(--fx-ce-col)', w: THIN, tick: '0px', arm: '0px', gap: '0px' },
-  accent: { col: 'var(--fx-line)', w: BOLD, tick: 'S', arm: '0px', gap: '0px' },
-  bracket: { col: 'var(--fx-line)', w: BOLD, tick: '0px', arm: ARM, gap: '0px' },
+  none: { col: 'transparent', w: THIN, tickk: 0, armk: 0, gapk: 0 },
+  gap: { col: 'transparent', w: THIN, tickk: 0, armk: 0, gapk: 1 },
+  line: { col: 'var(--fx-ce-col)', w: THIN, tickk: 0, armk: 0, gapk: 0 },
+  accent: { col: 'var(--fx-line)', w: BOLD, tickk: 1, armk: 0, gapk: 0 },
+  bracket: { col: 'var(--fx-line)', w: BOLD, tickk: 0, armk: 1, gapk: 0 },
 };
+/** The bracket of a framed element in its own scale. */
+const ARM = 'var(--fx-k) * var(--fx-scale, 1)';
 
 /** The colour of the edges and of the `line` corners. */
 const EDGE_LOOK = {
@@ -304,29 +314,74 @@ const FUTURE = ":root[data-skin-name='futuristic']";
 const FRAME = `${FUTURE}[data-future-frame='custom']`;
 const LAYERS = [...CORNERS.flatMap(cornerLayers), ...edgeLayers()];
 
+/** The numbers of a shape at a corner, declared on the root only. */
+function shapeNumbers(corner, shape) {
+  const layers = strokes(corner, shape);
+  return {
+    ...Object.fromEntries(
+      cornerSteps(corner, shape).flatMap(([x, y], i) => [
+        [`--fx-${corner}-k${i}x`, x],
+        [`--fx-${corner}-k${i}y`, y],
+      ]),
+    ),
+    [`--fx-${corner}-kx`]: SHAPES[shape].x,
+    [`--fx-${corner}-ky`]: SHAPES[shape].y,
+    ...Object.fromEntries(
+      ['a', 'b'].flatMap((name, i) =>
+        Object.entries(layers[i]).map(([key, value]) => [`--fx-${corner}-${name}-${key}`, value]),
+      ),
+    ),
+  };
+}
+
+/** The lengths of a corner in the scale of a framed element, from the numbers of the root. */
+function cornerLengths(corner) {
+  const s = v(corner, 's');
+  const times = (name) => `calc(${s} * ${v(corner, name)})`;
+  const layer = (name) => ({
+    [`--fx-${corner}-${name}-size`]:
+      `calc(${s} * ${v(corner, `${name}-sx`)} + ${v(corner, `${name}-wx`)}) ` +
+      `calc(${s} * ${v(corner, `${name}-sy`)} + ${v(corner, `${name}-wy`)})`,
+    [`--fx-${corner}-${name}-pos`]: at(corner, times(`${name}-px`), times(`${name}-py`)),
+  });
+  return {
+    [`--fx-${corner}-s`]: `calc(var(--corner-${corner}-size, 14px) * var(--fx-scale, 1))`,
+    [`--fx-${corner}-x`]: times('kx'),
+    [`--fx-${corner}-y`]: times('ky'),
+    [`--fx-${corner}-arm`]: `calc(${ARM} * ${v(corner, 'armk')})`,
+    [`--fx-${corner}-gap`]: `calc(${ARM} * ${v(corner, 'gapk')})`,
+    [`--fx-${corner}-p`]: cornerPoints(corner).join(', '),
+    ...layer('a'),
+    ...layer('b'),
+  };
+}
+
 /** The whole stylesheet of the custom frames. */
 export function framesCss() {
   const out = [
     '/* Generated by src/skins.frames.js (npm run build:frames); do not edit.\n' +
       '   The custom frame of the futuristic skin (issue #15): every corner has its own\n' +
       '   shape (clip-path points), size, width and line (background layers). Outer\n' +
-      '   panels, inner blocks and controls share it in their own scale (issue #45). */\n',
+      '   panels, inner blocks and controls share it in their own scale (issue #45):\n' +
+      '   the chosen shapes and lines put numbers on the root, and one rule turns them\n' +
+      '   into lengths on every framed element. */\n',
   ];
   out.push(rule(FRAME, { '--fx-border-w': '0px', '--fx-ew': 'var(--future-border, 1px)' }));
   // The scale of the corners: outer panels 1, inner blocks and small items the
   // block scale, controls the control scale. No specificity, so nothing else changes.
-  out.push(rule(`:where(${list(CONTROLS)})`, { '--fx-scale': 'var(--corner-control-scale, 0.35)' }));
-  out.push(rule(`:where(${list(PANELS)})`, { '--fx-scale': '1' }));
+  out.push(rule(each('', CONTROLS), { '--fx-scale': 'var(--corner-control-scale, 0.35)' }));
+  out.push(rule(each('', PANELS), { '--fx-scale': '1' }));
   out.push(
-    rule(`${INNER.replace(':is(', ':where(')},\n:where(${list(BLOCKS)})`, {
+    rule(`${INNER.replace(':is(', ':where(')},\n${each('', BLOCKS)}`, {
       '--fx-scale': 'var(--corner-block-scale, 0.6)',
     }),
   );
   // Controls draw their edges as wide as their border.
-  out.push(rule(`${FUTURE} :where(${list(CONTROLS)})`, { '--fx-ew': 'var(--ui-control-border, 1px)' }));
+  out.push(rule(each(`${FUTURE} `, CONTROLS), { '--fx-ew': 'var(--ui-control-border, 1px)' }));
   out.push(
     rule(everywhere(FRAME), {
       ...Object.fromEntries(SIDES.map((side) => [`--fx-ew-${side}`, `var(--corner-${side}-width, var(--fx-ew))`])),
+      ...Object.assign({}, ...CORNERS.map(cornerLengths)),
       '--fx-clip': `polygon(${CORNERS.map((corner) => v(corner, 'p')).join(', ')})`,
       '--fx-frame-img': LAYERS.map((layer) => layer[0]).join(',\n    '),
       '--fx-frame-size': LAYERS.map((layer) => layer[1]).join(',\n    '),
@@ -334,44 +389,6 @@ export function framesCss() {
       '--fx-bar-start': `calc(${v('tl', 'x')} + ${v('tl', 'gap')} + ${v('tl', 'arm')})`,
     }),
   );
-  CORNERS.forEach((corner) => {
-    out.push(
-      rule(everywhere(':root'), {
-        [`--fx-${corner}-s`]: `calc(var(--corner-${corner}-size, 14px) * var(--fx-scale, 1))`,
-      }),
-    );
-    Object.keys(SHAPES).forEach((shape) => {
-      const [a, b] = strokes(corner, shape);
-      out.push(
-        rule(everywhere(`:root[data-corner-${corner}-shape='${shape}']`), {
-          [`--fx-${corner}-p`]: cornerPoints(corner, shape).join(', '),
-          [`--fx-${corner}-x`]: size(corner, SHAPES[shape].x),
-          [`--fx-${corner}-y`]: size(corner, SHAPES[shape].y),
-          [`--fx-${corner}-a-img`]: a[0],
-          [`--fx-${corner}-a-size`]: a[1],
-          [`--fx-${corner}-a-pos`]: a[2],
-          [`--fx-${corner}-b-img`]: b[0],
-          [`--fx-${corner}-b-size`]: b[1],
-          [`--fx-${corner}-b-pos`]: b[2],
-        }),
-      );
-    });
-    LINES.forEach((line) => {
-      const look = LOOK[line];
-      out.push(
-        rule(
-          everywhere(`:root[data-corner-${corner}-line='${line}']`),
-          Object.fromEntries(
-            Object.entries(look).map(([name, value]) => [
-              `--fx-${corner}-${name}`,
-              // The width of a corner: its own setting (apply.js) or the one of its line.
-              name === 'w' ? `var(--corner-${corner}-width, ${value})` : value === 'S' ? v(corner, 's') : value,
-            ]),
-          ),
-        ),
-      );
-    });
-  });
   EDGES.forEach((edge) =>
     out.push(
       rule(`:root[data-corner-edges='${edge}']`, {
@@ -380,15 +397,50 @@ export function framesCss() {
       }),
     ),
   );
-  // The style of the edges: panels follow the corner settings, controls the border style of the controls.
+  // The style of the edges: panels follow the corner settings (only controls
+  // change the colour of their edges, so the panels take the images of the
+  // root), controls the border style of the controls.
   EDGE_STYLES.forEach((style) => {
-    if (style !== 'double')
-      out.push(rule(everywhere(`:root[data-corner-edge-style='${style}']`, list(PANELS)), edgeImages(style)));
+    if (style !== 'double') out.push(rule(`:root[data-corner-edge-style='${style}']`, edgeImages(style)));
   });
   EDGE_STYLES.forEach((style) =>
-    out.push(rule(`:root[data-ui-border-style='${style}'] :where(${list(CONTROLS)})`, edgeImages(style))),
+    out.push(rule(each(`:root[data-ui-border-style='${style}'] `, CONTROLS), edgeImages(style))),
   );
   out.push(...blockRules(), ...controlRules(), ...layerRules());
+  return out.join('\n');
+}
+
+/**
+ * The numbers of the chosen shape and line of every corner, on the root only
+ * (src/skins.frames.corners.css): an attribute of <html> then never makes the
+ * browser look at the elements of the page.
+ */
+export function cornersCss() {
+  const out = [
+    '/* Generated by src/skins.frames.js (npm run build:frames); do not edit.\n' +
+      '   The shape and the line of every corner of the custom frame (issues #15 and\n' +
+      '   #45) as numbers in corner sizes and images, on the root only; the frame rule\n' +
+      '   of skins.frames.css turns them into lengths on every framed element. */\n',
+  ];
+  CORNERS.forEach((corner) => {
+    Object.keys(SHAPES).forEach((shape) =>
+      out.push(rule(`:root[data-corner-${corner}-shape='${shape}']`, shapeNumbers(corner, shape))),
+    );
+    LINES.forEach((line) =>
+      out.push(
+        rule(
+          `:root[data-corner-${corner}-line='${line}']`,
+          Object.fromEntries(
+            Object.entries(LOOK[line]).map(([name, value]) => [
+              `--fx-${corner}-${name}`,
+              // The width of a corner: its own setting (apply.js) or the one of its line.
+              name === 'w' ? `var(--corner-${corner}-width, ${value})` : value,
+            ]),
+          ),
+        ),
+      ),
+    );
+  });
   return out.join('\n');
 }
 
@@ -413,11 +465,13 @@ function blockRules() {
 
 /** Buttons, fields and the like draw the frame over their fill and are cut by its shape. */
 function controlRules() {
-  const controls = `${FRAME}:not([data-corner-controls='border']) :is(${list(CONTROLS)})`;
-  // (0,6,0) and more: above the control rules of ui.css, including hover and pressed states.
-  const strong = `:root:root${controls.slice(':root'.length)}`;
+  // (0,7,1) and more: above the control rules of ui.css, including hover and
+  // pressed states. One selector for every control (no `:is()` list), so a
+  // browser tries each one only on the elements of its class or tag.
+  const strong = `:root:root:root${FRAME.slice(':root'.length)}:not([data-corner-controls='border'])`;
+  const controls = (state = '') => CONTROLS.map((control) => `${strong} ${control}${state}`).join(',\n');
   return [
-    rule(strong, {
+    rule(controls(), {
       // A control may keep an image of its own (a palette chip) under the frame.
       'background-image': 'var(--fx-frame-img), var(--fx-control-img, none)',
       'background-size': 'var(--fx-frame-size), 100% 100%',
@@ -440,16 +494,16 @@ function controlRules() {
         ':focus-visible',
         ':focus',
       ]
-        .map((state) => `${strong}${state}`)
+        .map((state) => controls(state))
         .join(',\n'),
       { '--fx-ec': 'var(--accent)' },
     ),
     // The primary button keeps a fill of the accent (its gradient was a background image).
-    rule(`${strong}.button--primary`, {
+    rule(controls('.button--primary'), {
       'background-color': 'color-mix(in srgb, var(--accent) 20%, var(--ui-control-fill, transparent))',
     }),
     // The outline of the focus would be cut by the shape, so it is drawn inside.
-    rule(`${strong}:focus-visible`, { 'outline-offset': 'calc(-1 * var(--ui-focus-width, 2px))' }),
+    rule(controls(':focus-visible'), { 'outline-offset': 'calc(-1 * var(--ui-focus-width, 2px))' }),
   ];
 }
 
@@ -459,8 +513,9 @@ function layerRules() {
   return [
     rule(top, { '--fx-frame-under': LAYERS.map(() => 'none').join(', ') }),
     // No specificity: a panel that is positioned already keeps its position.
-    rule(`:where(${top}) :where(${list(PANELS)})`, { position: 'relative' }),
-    rule(`${top} :is(${list(PANELS)})::after`, {
+    rule(each(`:where(${top}) `, PANELS), { position: 'relative' }),
+    // One selector for every panel, so a browser tries each one only on the elements of its class.
+    rule(PANELS.map((panel) => `${top} ${panel}::after`).join(',\n'), {
       content: "''",
       position: 'absolute',
       inset: '0',

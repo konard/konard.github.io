@@ -15,6 +15,7 @@
 
 @import './skins.palettes.css';
 @import './skins.frames.css';
+@import './skins.frames.corners.css';
 
 :root[data-skin-name='futuristic'] {
   /* The palette (skins.palettes.css) becomes the colours of the whole site. */
