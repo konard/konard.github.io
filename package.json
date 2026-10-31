@@ -39,7 +39,7 @@
     "test:network:issue37": "node experiments/issue-37-browser.mjs",
     "test:ui:issue39": "node experiments/issue-39-browser.mjs && node experiments/issue-39-visual-review.mjs",
     "test:network:issue41": "node experiments/issue-41-browser.mjs",
-    "test:network:issue43": "node experiments/issue-43-browser.mjs"
+    "test:network:issue43": "node experiments/issue-43-browser.mjs && node experiments/issue-43-solver-browser.mjs"
   },
   "homepage": "https://konard.github.io",
   "devDependencies": {
