@@ -310,6 +310,12 @@ jobs:
           CAPTURE_DIR: browser-results/screenshots/issue43
           RESULT_DIR: browser-results/data/issue43
 
+      - name: Verify the frame on every bordered element, the corner layer and the colour palettes
+        if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
+        run: npm run test:ui:issue45
+        env:
+          CAPTURE_DIR: browser-results/screenshots/issue45
+
       - name: Preserve browser evidence with bounded transport retries
         if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
         uses: ./.github/actions/upload-artifact

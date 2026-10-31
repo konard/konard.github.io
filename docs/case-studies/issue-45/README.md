@@ -130,6 +130,30 @@ for blocks and controls too.
     sets the value;
   - `experiments/issue-45-positions.mjs` checks that the corner layer moves nothing;
   - `experiments/issue-45-computed.mjs` prints computed styles.
+- Browser check in CI: `npm run test:ui:issue45` (`experiments/issue-45-browser.mjs`) runs in Chromium, Firefox and
+  WebKit (the `ENGINE` of the browser matrix). It starts its own Vite server and makes 16 checks:
+  - the corner scale is 1 for an outer panel, 0.6 for an inner block and 0.35 for a control;
+  - a panel, an inner block, a button and a text field are each cut by the frame;
+  - a panel clips content that does not fit;
+  - the colour chooser stays in view, shows the neon, pastel and matrix palettes, and sets the value from a palette
+    colour;
+  - with `corner.blocks: line` and `corner.controls: border`, the outer panels keep the frame and the inner blocks
+    and controls lose it;
+  - with the corner layer on top, the frame is drawn over a position;
+  - switching the corner layer moves no positioned element;
+  - no page error occurs.
+
+  It saves screenshots and a `<engine>-verification.json` in `CAPTURE_DIR`. All three engines pass locally.
+- Local headless WebKit on Linux runs no animation frames on the site; `main` behaves the same.
+  `experiments/issue-45-frame-rate.mjs` counts 0 frames in 5 s there, against 301 in Chromium.
+  `experiments/issue-45-webkit-raf.mjs` shows that frames do run on a blank page.
+  Playwright waits for an animation frame to judge whether an element is stable. The check therefore:
+  - takes clipped page screenshots instead of element screenshots;
+  - makes forced clicks;
+  - opens a fresh browser for every page, because one WebKit browser stalled on its third page
+    (`experiments/issue-45-webkit-load.mjs`).
+
+  CI runs WebKit on macOS.
 - Screenshots:
   - before: [`screenshots/before`](screenshots/before);
   - after: [`screenshots/after`](screenshots/after), with samples for the custom, lines, plain, below, border-controls,
