@@ -1,6 +1,6 @@
 /* global document */
 // Issue 43 / PR 44 review: automatic spacing of 2211 and similar networks in a
-// real browser. PHASE=before|after, DIST=<built site>. Records the solver's
+// real browser. PHASE=before|after, DIST=<built site> (default: Vite's outDir). Records the solver's
 // reported overlaps, the applied turns and gaps, and the drawing.
 import assert from 'node:assert/strict';
 import { mkdir, writeFile } from 'node:fs/promises';
@@ -11,14 +11,15 @@ import { waitForNetwork } from './wait-for-network.mjs';
 
 const engine = process.env.ENGINE || 'chromium';
 const phase = process.env.PHASE || 'after';
-const dist = process.env.DIST || 'dist';
+// Without DIST, preview serves Vite's configured outDir (`build/`), as CI builds it.
+const dist = process.env.DIST;
 const output = process.env.CAPTURE_DIR || 'docs/case-studies/issue-43/screenshots';
 const data = process.env.RESULT_DIR || 'docs/case-studies/issue-43/data';
 export const SOLVER_CODES = ['2211', '1221', '1210', '2010', '2011', '0210', '2001', '111212'];
 await mkdir(output, { recursive: true });
 await mkdir(data, { recursive: true });
 const result = { engine, phase, date: new Date().toISOString(), networks: [], errors: [] };
-const server = await preview({ build: { outDir: dist }, preview: { port: 4144, strictPort: true } });
+const server = await preview({ ...(dist && { build: { outDir: dist } }), preview: { port: 4144, strictPort: true } });
 let browser;
 try {
   browser = await { chromium, firefox, webkit }[engine].launch();
@@ -32,8 +33,10 @@ try {
     localStorage.setItem('settings', JSON.stringify({ 'motion.mode': 'off' }));
   });
   for (const code of SOLVER_CODES) {
+    const started = Date.now();
     await page.goto(`http://localhost:4144/network/?code=${code}&lang=en&solve=true`);
     await waitForNetwork(page);
+    const solvedMs = Date.now() - started;
     const overlaps = await page
       .locator('.network__view')
       .getByText(/overlaps/)
@@ -49,6 +52,7 @@ try {
       turns: applied.get('turns'),
       gaps: applied.get('gaps'),
       svgBytes: (await page.locator('.network__preview').innerHTML()).length,
+      solvedMs,
     };
     result.networks.push(entry);
     console.log(JSON.stringify(entry));
