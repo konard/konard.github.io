@@ -7,11 +7,22 @@ import SettingsPage from './pages/SettingsPage';
 import { CORNER_LINES, CORNER_SHAPES } from './settings/schema.skins';
 import { DEFAULTS } from './settings/schema';
 import { getSettings, setSettings } from './settings/store';
-import { CORNERS, cornerPoints, cornersCss, cornerSteps, EDGES, framesCss, LINES, SHAPES } from './skins.frames';
+import {
+  CORNERS,
+  cornerPoints,
+  cornersCss,
+  cornerSteps,
+  EDGES,
+  framesCss,
+  LINES,
+  propertiesCss,
+  SHAPES,
+} from './skins.frames';
 
 const root = document.documentElement;
 const CSS = readFileSync(join(__dirname, 'skins.frames.css'), 'utf8');
 const NUMBERS = readFileSync(join(__dirname, 'skins.frames.corners.css'), 'utf8');
+const PROPERTIES = readFileSync(join(__dirname, 'skins.frames.properties.css'), 'utf8');
 
 describe('custom frames: geometry (issue #15)', () => {
   it('has a shape and a line in the settings for every shape and line it draws', () => {
@@ -44,12 +55,8 @@ describe('custom frames: geometry (issue #15)', () => {
     expect(cornerSteps('br', 'tall')[0]).toEqual([0, 2]);
     expect(cornerSteps('tr', 'square')[0]).toEqual([0, 0]);
     // A right or bottom corner counts from the far side of the panel.
-    expect(cornerPoints('tl')[0]).toBe(
-      'calc(var(--fx-tl-s) * var(--fx-tl-k0x)) calc(var(--fx-tl-s) * var(--fx-tl-k0y))',
-    );
-    expect(cornerPoints('br')[0]).toBe(
-      'calc(100% - var(--fx-br-s) * var(--fx-br-k0x)) calc(100% - var(--fx-br-s) * var(--fx-br-k0y))',
-    );
+    expect(cornerPoints('tl')[0]).toBe('var(--fxp-tl-0x) var(--fxp-tl-0y)');
+    expect(cornerPoints('br', 'c')[0]).toBe('calc(100% - var(--fxc-br-0x)) calc(100% - var(--fxc-br-0y))');
   });
 });
 
@@ -57,6 +64,7 @@ describe('custom frames: stylesheet (issue #15)', () => {
   it('is generated from src/skins.frames.js (run npm run build:frames)', () => {
     expect(CSS).toBe(framesCss());
     expect(NUMBERS).toBe(cornersCss());
+    expect(PROPERTIES).toBe(propertiesCss());
   });
 
   it('has a rule for every shape and line of every corner and for every kind of edges', () => {
@@ -69,16 +77,18 @@ describe('custom frames: stylesheet (issue #15)', () => {
   });
 
   it('clips the panel with the points of the four corners and draws 20 frame layers', () => {
-    expect(CSS).toContain('--fx-clip: polygon(var(--fx-tl-p), var(--fx-tr-p), var(--fx-br-p), var(--fx-bl-p));');
-    const frame = CSS.slice(CSS.indexOf('--fx-frame-img:'), CSS.indexOf('--fx-frame-size:'));
+    const clip = CSS.slice(CSS.indexOf('--fx-el-clip: polygon('), CSS.indexOf('--fx-el-img:'));
+    for (const corner of CORNERS) expect(clip).toContain(cornerPoints(corner).join(', '));
+    const frame = CSS.slice(CSS.indexOf('--fx-el-img:'), CSS.indexOf('--fx-el-size:'));
     expect(frame.split(',\n').length).toBe(20);
-    // An edge never gets a negative length (that would break every layer of the panel).
-    expect(CSS.match(/max\(0px, calc\(100% - /g)).toHaveLength(4);
+    // An edge never gets a negative length (that would break every layer of the panel):
+    // four edges of the outer panels, the inner blocks and the controls.
+    expect(CSS.match(/max\(0px, calc\(100% - /g)).toHaveLength(12);
   });
 
   it('is part of the futuristic skin, whose panels then have no border of their own', () => {
     const future = readFileSync(join(__dirname, 'skins.future.css'), 'utf8');
-    expect(future).toContain("@import './skins.frames.css';");
+    expect(future).toContain("@import './skins.frames.properties.css';\n@import './skins.frames.css';");
     expect(future).toContain('border: var(--fx-border-w, var(--future-border, 1px)) solid var(--fx-edge);');
     expect(CSS).toContain('--fx-border-w: 0px;');
   });

@@ -14,6 +14,7 @@
    ::after, to draw the frame over those decorations. */
 
 @import './skins.palettes.css';
+@import './skins.frames.properties.css';
 @import './skins.frames.css';
 @import './skins.frames.corners.css';
 
@@ -331,17 +332,18 @@
   background-color: transparent;
   /* With the corner layer on top (issue #45) the frame is drawn by ::after instead. */
   background-image:
-    var(--fx-sweep-img), var(--fx-bar-img), var(--fx-frame-under, var(--fx-frame-img)), var(--fx-surface-img);
+    var(--fx-sweep-img), var(--fx-bar-img), var(--fx-frame-under, var(--fx-el-img, var(--fx-frame-img))),
+    var(--fx-surface-img);
   background-size:
     300% 100%,
     var(--fx-bar-size),
-    var(--fx-frame-size),
+    var(--fx-el-size, var(--fx-frame-size)),
     100% 100%,
     100% 100%;
   background-position:
     var(--fx-sweep-pos),
     var(--fx-bar-pos),
-    var(--fx-frame-pos),
+    var(--fx-el-pos, var(--fx-frame-pos)),
     0 0,
     0 0;
   background-repeat: no-repeat;
@@ -392,7 +394,7 @@
     .preset,
     .ui-preview__panel
   ):not(:has([data-tooltip-root])) {
-  clip-path: var(--fx-clip);
+  clip-path: var(--fx-el-clip, var(--fx-clip));
 }
 
 :root[data-skin-name='futuristic'] .version {

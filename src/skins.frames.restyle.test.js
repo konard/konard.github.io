@@ -18,6 +18,7 @@ import {
   LINES,
   PANELS,
   POINTS,
+  propertiesCss,
   SHAPES,
 } from './skins.frames';
 
@@ -98,8 +99,26 @@ const lists = (css) => {
   return found;
 };
 
-/** The rule that turns the numbers of the root into lengths on every framed element. */
-const frameRule = () => rules(FRAMES).find(([, declarations]) => declarations['--fx-tl-p'])[1];
+const FRAME = ":root[data-skin-name='futuristic'][data-future-frame='custom']";
+/** The rule of the root that turns the numbers of the chosen shapes into the lengths of every scale. */
+const rootRule = () => rules(FRAMES).find(([selector]) => selector === FRAME)[1];
+/** The rule with which the outer panels draw their outline and layers. */
+const panelRule = () => rules(FRAMES).find(([selector]) => selector.includes(`${FRAME} :where(.card)`))[1];
+/** The registered custom properties: name → { syntax, inherits }. */
+const registrations = () =>
+  Object.fromEntries(
+    [...propertiesCss().matchAll(/^@property (--[\w-]+) \{ syntax: '([^']+)'; inherits: (true|false);/gm)].map(
+      ([, name, syntax, inherits]) => [name, { syntax, inherits: inherits === 'true' }],
+    ),
+  );
+/** The values of the root for a shape and a line at every corner, with corners of S px. */
+const resolved = (shape, line, S, extra = {}) => ({
+  ...rootRule(),
+  ...rootValues(shape, line),
+  ...Object.fromEntries(CORNERS.map((c) => [`--corner-${c}-size`, `${S}px`])),
+  '--fx-k': '16px',
+  ...extra,
+});
 
 describe('a setting of the frame restyles the page quickly (issue #45)', () => {
   it('declares the chosen shapes and lines on the root only', () => {
@@ -118,26 +137,26 @@ describe('a setting of the frame restyles the page quickly (issue #45)', () => {
     const long = lists(rest).filter((items) => items.length > 1 && items.some((item) => framed.includes(item)));
     // Small items of lists are blocks: the rule of the line of inner blocks lists them too.
     expect(long.filter((items) => items.join(', ') !== BLOCKS.join(', '))).toEqual([]);
-    for (const element of ['.card', '.repo', '.chip', 'textarea']) {
-      expect(FRAMES).toContain(`:root[data-skin-name='futuristic'][data-future-frame='custom'] :where(${element}),`);
-    }
+    for (const element of ['.card', '.repo']) expect(FRAMES).toContain(`${FRAME} :where(${element}),`);
+    // Controls draw their frame with their own rules.
+    for (const element of ['.chip', 'textarea'])
+      expect(FRAMES).toContain(`:root:root${FRAME}:not([data-corner-controls='border']) ${element},`);
   });
 
   it('turns the numbers of the root into the points of every shape at every corner', () => {
-    const frame = frameRule();
+    const clip = panelRule()['--fx-el-clip'];
+    expect(clip.startsWith('polygon(')).toBe(true);
+    const all = clip.slice('polygon('.length, -1).split(', ');
+    expect(all).toHaveLength(CORNERS.length * POINTS);
     const [W, H, S] = [300, 200, 10];
     for (const shape of Object.keys(SHAPES)) {
-      const values = {
-        ...rootValues(shape, 'line'),
-        ...Object.fromEntries(CORNERS.map((c) => [`--fx-${c}-s`, `${S}px`])),
-      };
-      for (const corner of CORNERS) {
-        const points = frame[`--fx-${corner}-p`]
-          .split(/, (?=calc)/)
+      const values = resolved(shape, 'line', S);
+      CORNERS.forEach((corner, c) => {
+        const points = all
+          .slice(c * POINTS, (c + 1) * POINTS)
           .map((point) =>
             pair(point).map((part, axis) => evaluate(part.replace('100%', String(axis ? H : W)), values)),
           );
-        expect(points).toHaveLength(POINTS);
         const flip = (k, size, far) => Math.round((far ? size - k * S : k * S) * 1000) / 1000;
         const expected = cornerSteps(corner, shape).map(([x, y]) => [
           flip(x, W, corner === 'tr' || corner === 'br'),
@@ -148,7 +167,7 @@ describe('a setting of the frame restyles the page quickly (issue #45)', () => {
           corner,
           expected,
         ]);
-      }
+      });
     }
   });
 
@@ -161,7 +180,7 @@ describe('a setting of the frame restyles the page quickly (issue #45)', () => {
   });
 
   it('sizes and places the lines of every shape as before, in the scale of the element', () => {
-    const frame = frameRule();
+    const panel = panelRule();
     const [S, Wd] = [10, 2];
     // [layer a size, layer a position, layer b size, layer b position] of the top left corner, in px.
     const before = {
@@ -210,16 +229,43 @@ describe('a setting of the frame restyles the page quickly (issue #45)', () => {
     };
     for (const [shape, expected] of Object.entries(before)) {
       // A bright line draws the tick of a square corner.
-      const values = { ...rootValues(shape, 'accent'), '--fx-tl-s': `${S}px`, '--fx-b': `${Wd}px` };
+      const values = resolved(shape, 'accent', S, { '--fx-b': `${Wd}px` });
       // `left X top Y`: the offsets from the sides of the corner.
       const position = (text) => text.match(/^(?:left|right) (.+) (?:top|bottom) (.+)$/).slice(1);
-      const actual = ['a-size', 'a-pos', 'b-size', 'b-pos'].map((name) => {
-        const text = frame[`--fx-tl-${name}`];
-        return (name.endsWith('pos') ? position(text) : pair(text)).map((part) => evaluate(part, values));
-      });
+      // The first two layers of the panel are the lines of the shape at the top left corner.
+      const [sizes, positions] = ['--fx-el-size', '--fx-el-pos'].map((name) => panel[name].split(/,\s*\n\s*/));
+      const actual = [pair(sizes[0]), position(positions[0]), pair(sizes[1]), position(positions[1])].map((parts) =>
+        parts.map((part) => evaluate(part.trim(), values)),
+      );
       expect([shape, actual]).toEqual([shape, expected]);
       // The images do not depend on the corner size, so the root can hold them.
       expect(rootValues(shape, 'accent')['--fx-tl-a-img']).not.toContain('--fx-tl-s');
     }
+  });
+
+  it('inherits no long formula of the frame: the root computes typed lengths and an element draws its own', () => {
+    // WebKit compares every inherited custom property of every element when the
+    // root restyles, and a value with var() costs as much as its tokens: with
+    // the lengths of three scales as formulas on the root, a slider step took
+    // about a second on the settings page.
+    const registered = registrations();
+    const declared = [...Object.entries(rootRule()), ...Object.entries(rootValues('round', 'bracket'))].filter(
+      ([name]) => name.startsWith('--fx'),
+    );
+    expect(declared.length).toBeGreaterThan(400);
+    const references = (value) => (value.match(/var\(/g) || []).length;
+    // Plain (unregistered) inherited values with var(): only a few short ones.
+    const plain = declared.filter(([name, value]) => !registered[name] && references(value) > 0);
+    expect(plain.map(([name]) => name).sort()).toEqual(['--fx-bar-start', '--fx-ew']);
+    expect(plain.every(([, value]) => references(value) <= 2)).toBe(true);
+    // Everything else with var() is typed (one computed value) or stays on the root.
+    for (const [name] of declared.filter(([n, v]) => registered[n] && references(v) > 0)) {
+      const { syntax, inherits } = registered[name];
+      expect([name, syntax !== '*' || !inherits]).toEqual([name, true]);
+    }
+    // What a framed element draws is its own: it does not inherit to every descendant.
+    for (const name of ['--fx-el-clip', '--fx-el-img', '--fx-el-size', '--fx-el-pos'])
+      expect([name, registered[name]]).toEqual([name, { syntax: '*', inherits: false }]);
+    expect(Object.keys(panelRule())).toEqual(['--fx-el-clip', '--fx-el-img', '--fx-el-size', '--fx-el-pos']);
   });
 });

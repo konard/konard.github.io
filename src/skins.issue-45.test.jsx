@@ -37,19 +37,27 @@ describe('the same frame on every bordered element (issue #45)', () => {
 
   it('scales the corners down for inner blocks and controls', () => {
     for (const corner of CORNERS) {
-      expect(FRAMES).toContain(`--fx-${corner}-s: calc(var(--corner-${corner}-size, 14px) * var(--fx-scale, 1));`);
+      expect(FRAMES).toContain(`--fxp-${corner}-s: calc(var(--corner-${corner}-size, 14px) * 1);`);
+      expect(FRAMES).toContain(
+        `--fxb-${corner}-s: calc(var(--corner-${corner}-size, 14px) * var(--corner-block-scale, 0.6));`,
+      );
+      expect(FRAMES).toContain(
+        `--fxc-${corner}-s: calc(var(--corner-${corner}-size, 14px) * var(--corner-control-scale, 0.35));`,
+      );
     }
     expect(FRAMES).toContain('--fx-scale: var(--corner-block-scale, 0.6);');
     expect(FRAMES).toContain('--fx-scale: var(--corner-control-scale, 0.35);');
-    // The lengths are declared again on every framed element, so each one resolves its own scale.
+    // Every framed element draws with the lengths of its scale.
     expect(FRAMES).toContain(":root[data-skin-name='futuristic'][data-future-frame='custom'] :where(.repo),");
+    expect(FRAMES).toContain('--fx-el-clip: polygon(var(--fxp-tl-0x) var(--fxp-tl-0y), ');
+    expect(FRAMES).toContain('--fx-el-clip: polygon(var(--fxb-tl-0x) var(--fxb-tl-0y), ');
     expect(NUMBERS).toContain(":root[data-corner-tl-shape='cut'] {");
   });
 
   it('cuts the controls by the frame and draws the frame over their fill', () => {
     expect(FRAMES).toContain(":not([data-corner-controls='border']) .button,");
-    expect(FRAMES).toContain('clip-path: var(--fx-clip);');
-    expect(FRAMES).toContain('background-image: var(--fx-frame-img), var(--fx-control-img, none);');
+    expect(FRAMES).toContain('clip-path: polygon(var(--fxc-tl-0x) var(--fxc-tl-0y), ');
+    expect(FRAMES).toMatch(/background-image:\s+var\(--fx-tl-a-img\),[^;]+,\s+var\(--fx-control-img, none\);/);
     // A colour swatch is a child of its button, so neither the frame nor the fill paints over it.
     expect(read('pages/settings.css')).toContain('.palettes__chip .swatch {');
     expect(UI).toContain(':is(button, .button):has(> .swatch) {');
@@ -84,7 +92,10 @@ describe('widths of the sides, the corners and the accent strip (issue #45)', ()
       expect(field(key), key).toBeDefined();
       expect(DEFAULTS[key], key).toBe(-1);
     }
-    for (const side of SIDES) expect(FRAMES).toContain(`--fx-ew-${side}: var(--corner-${side}-width, var(--fx-ew));`);
+    for (const side of SIDES) {
+      expect(FRAMES).toContain(`--fxp-ew-${side}: var(--corner-${side}-width, var(--fx-ew));`);
+      expect(FRAMES).toContain(`--fxc-ew-${side}: var(--corner-${side}-width, var(--ui-control-border, 1px));`);
+    }
     for (const corner of CORNERS) expect(NUMBERS).toContain(`var(--corner-${corner}-width, `);
   });
 
@@ -123,10 +134,11 @@ describe('the corner layer (issue #45)', () => {
     expect(FRAMES).toContain(":not([data-corner-layer='below']) .position::after");
     const overlay = FRAMES.slice(FRAMES.indexOf('::after'));
     expect(overlay).toContain('pointer-events: none;');
-    expect(overlay).toContain('background-image: var(--fx-frame-img);');
+    expect(overlay).toContain('--fx-el-img: inherit;');
+    expect(overlay).toContain('background-image: var(--fx-el-img);');
     // The panel then leaves the frame out of its own background.
-    expect(FUTURE).toContain('var(--fx-frame-under, var(--fx-frame-img))');
-    expect(MATERIALS).toContain('var(--fx-frame-under, var(--fx-frame-img))');
+    expect(FUTURE).toContain('var(--fx-frame-under, var(--fx-el-img, var(--fx-frame-img)))');
+    expect(MATERIALS).toContain('var(--fx-frame-under, var(--fx-el-img, var(--fx-frame-img)))');
   });
 });
 
