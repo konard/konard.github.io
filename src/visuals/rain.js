@@ -15,6 +15,54 @@ import { pixelRatio, watchSize } from './size';
 
 const GLOW = '#f0fffb';
 const CACHE_LIMIT = 4000;
+/** The frame time assumed until the first frames are measured: 60 Hz. */
+const FRAME_MS = 1000 / 60;
+/** The id of the SVG filter that lowers every alpha of the rain by a few levels. */
+export const FLOOR_ID = 'rain-alpha-floor';
+/** How much alpha the cleanup takes away: 9 of 255 levels, more than the 6 the fading can never remove. */
+export const FLOOR = 0.035;
+
+/**
+ * How many display frames make one step: `step` ms rounded to whole frames
+ * (issue #47). A timer of its own lands steps 6 or 7 frames apart at 60 Hz
+ * (105 ms is 6.3 frames) and, when the page is busy, two steps in one frame;
+ * the rain then falls unevenly and flickers.
+ */
+export const framesPerStep = (step, frameMs = FRAME_MS) => Math.max(1, Math.round(step / frameMs));
+
+/** The median of the measured frame gaps: one slow frame does not change the cadence. */
+const median = (values) => [...values].sort((a, b) => a - b)[values.length >> 1];
+
+/**
+ * The SVG filter (added to the page once) that lowers every alpha by `FLOOR`.
+ * The fading draws transparent black with destination-out at alpha f; in 8-bit
+ * alpha round(a·(1 − f)) = a for every a < 0.5 / f, so for f = 0.075 the last
+ * 6 levels of every symbol never fade and faint ghosts of old symbols pile up
+ * (issue #47). Returns null where the canvas cannot use filters.
+ */
+function floorFilter(ctx) {
+  if (!('filter' in ctx) || typeof document === 'undefined' || !document.body) return null;
+  if (!document.getElementById(FLOOR_ID)) {
+    const ns = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(ns, 'svg');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('width', '0');
+    svg.setAttribute('height', '0');
+    svg.style.position = 'absolute';
+    svg.innerHTML = `<filter id="${FLOOR_ID}" color-interpolation-filters="sRGB"><feComponentTransfer><feFuncA type="linear" slope="1" intercept="-${FLOOR}"/></feComponentTransfer></filter>`;
+    document.body.append(svg);
+  }
+  return `url(#${FLOOR_ID})`;
+}
+
+/** Opt-in trace of the cadence: `localStorage.setItem('rain.debug', '1')`. */
+const tracing = () => {
+  try {
+    return localStorage.getItem('rain.debug') === '1';
+  } catch {
+    return false;
+  }
+};
 
 /** The left edges of the symbol columns: two per grid cell, starting at the first grid line. */
 export function columnsFor(width, grid = 64) {
@@ -165,8 +213,45 @@ export function startRain(canvas, options = {}) {
     o.onDrift(drift);
   };
 
+  // Once a second of steps the whole picture loses a few alpha levels, so the ghosts the fading cannot remove go.
+  // Canvases without filters (WebKit) clear the faint pixels by hand instead, one band of rows per step.
+  const floor = floorFilter(ctx);
+  const faint = Math.round(FLOOR * 255);
+  let sinceFloor = 0;
+  const clean = () => {
+    const every = Math.max(1, Math.round(1000 / o.step));
+    if (floor) {
+      if (++sinceFloor < every) return;
+      sinceFloor = 0;
+      ctx.save();
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.globalCompositeOperation = 'copy';
+      ctx.filter = floor;
+      ctx.drawImage(canvas, 0, 0);
+      ctx.restore();
+      return;
+    }
+    if (typeof ctx.getImageData !== 'function' || !canvas.width || !canvas.height) return;
+    const band = Math.ceil(canvas.height / every);
+    const top = (sinceFloor++ % every) * band;
+    const rows = Math.min(band, canvas.height - top);
+    if (rows <= 0) return;
+    const image = ctx.getImageData(0, top, canvas.width, rows);
+    const data = image?.data;
+    if (!data) return;
+    let changed = false;
+    for (let i = 3; i < data.length; i += 4) {
+      if (data[i] && data[i] <= faint) {
+        data[i] = 0;
+        changed = true;
+      }
+    }
+    if (changed) ctx.putImageData(image, 0, top);
+  };
+
   const frame = () => {
     move();
+    clean();
     ctx.globalCompositeOperation = 'destination-out';
     ctx.fillStyle = `rgba(0, 0, 0, ${o.visible ? o.fade : 1})`;
     ctx.fillRect(0, 0, width, height);
@@ -186,16 +271,48 @@ export function startRain(canvas, options = {}) {
     });
   };
 
+  // Steps are counted in display frames, so they are always the same number of frames apart and never
+  // two in one frame (issue #47). Hidden tabs get no frames, so the rain rests there by itself.
+  let raf = 0;
+  let last = 0;
+  let frames = 0;
+  let frameMs = FRAME_MS;
+  const gaps = [];
+  const trace = tracing() ? { since: 0, steps: 0, frames: 0 } : null;
+  const loop = (now) => {
+    raf = requestAnimationFrame(loop);
+    const gap = last ? now - last : 0;
+    last = now;
+    // Gaps over 100 ms are a busy or hidden page, not the refresh rate of the screen.
+    if (gap > 0 && gap < 100 && gaps.push(gap) >= 30) frameMs = median(gaps.splice(0));
+    if (trace) trace.frames++;
+    if (++frames < framesPerStep(o.step, frameMs)) return;
+    frames = 0;
+    frame();
+    if (!trace) return;
+    trace.steps++;
+    if (now - trace.since < 1000) return;
+    console.debug('[rain]', { frameMs: +frameMs.toFixed(2), framesPerStep: framesPerStep(o.step, frameMs), ...trace });
+    Object.assign(trace, { since: now, steps: 0, frames: 0 });
+  };
   let timer = null;
-  const run = () => {
+  const halt = () => {
+    if (raf) cancelAnimationFrame(raf);
     clearInterval(timer);
-    timer = o.animate ? setInterval(() => document.hidden || frame(), o.step) : null;
+    raf = 0;
+    timer = null;
+  };
+  const run = () => {
+    halt();
+    if (!o.animate) return;
+    if (typeof requestAnimationFrame === 'function') raf = requestAnimationFrame(loop);
+    else timer = setInterval(() => document.hidden || frame(), o.step);
   };
   resize();
   const unwatch = watchSize(canvas, resize);
   run();
   const stop = () => {
-    clearInterval(timer);
+    halt();
     unwatch();
   };
   stop.update = (next) => {
@@ -206,7 +323,7 @@ export function startRain(canvas, options = {}) {
       width = 0;
       resize();
     } else if (o.speeds !== before.speeds || o.density !== before.density) columns.forEach(pace);
-    if (o.step !== before.step) run();
+    // The cadence follows o.step on the next frame by itself.
   };
   return stop;
 }

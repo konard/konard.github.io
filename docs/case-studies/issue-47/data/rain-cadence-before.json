@@ -1,0 +1,26 @@
+{
+ "base": "http://localhost:4173",
+ "seconds": 6,
+ "load": 0,
+ "frameMs": 150,
+ "steps": 48,
+ "frames": 34,
+ "stepMs": {
+  "mean": 127.6,
+  "sd": 62.5,
+  "min": 18.7,
+  "max": 326.6
+ },
+ "framesBetweenSteps": {
+  "0": 14,
+  "1": 31,
+  "2": 1
+ },
+ "unevenShare": 0.326,
+ "doubleStepFrames": 14,
+ "residue": {
+  "lit": 294744,
+  "faint": 254966,
+  "pixels": 1085440
+ }
+}
