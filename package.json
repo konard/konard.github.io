@@ -10,8 +10,10 @@
     "d3-force": "^3.0.0",
     "links-notation": "^0.27.1",
     "lino-objects-codec": "^0.9.4",
+    "lucide-react": "^1.66.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "simple-icons": "^16.36.0"
   },
   "scripts": {
     "start": "vite",

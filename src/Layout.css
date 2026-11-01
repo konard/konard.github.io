@@ -788,8 +788,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .habr-card,
-  .psd__edges line {
+  :root:not([data-motion-mode='on']) :is(.habr-card, .psd__edges line) {
     animation: none;
   }
 }
@@ -831,7 +830,8 @@
 }
 
 .prefs__theme,
-.prefs__sound {
+.prefs__sound,
+.prefs__motion {
   width: 2rem;
   height: 2rem;
   padding: 0;
@@ -840,19 +840,11 @@
   font-size: 0.95rem;
 }
 
-.prefs__sound svg {
+.prefs__button .icon {
   display: block;
   width: 1rem;
   height: 1rem;
   margin: auto;
-  fill: currentColor;
-}
-
-.prefs__sound .prefs__waves {
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.4;
-  stroke-linecap: round;
 }
 
 /* ---------- Link symbol colours (issue #11) ---------- */

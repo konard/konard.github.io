@@ -528,7 +528,7 @@
     }
   }
   @media (prefers-reduced-motion: reduce) {
-    :root:root * {
+    :root:root:not([data-motion-mode='on']) * {
       animation-duration: 0s !important;
       transition-duration: 0s !important;
     }

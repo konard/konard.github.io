@@ -1,21 +1,28 @@
+import { Moon, Orbit, Pause, Sun, SunMoon, Volume2, VolumeX } from 'lucide-react';
 import { LANGS, THEMES, useLang, useTheme } from '../i18n/prefs';
 import { setSettings, useSettings } from '../settings/store';
+import { moves } from './Cosmos';
+import { iconProps } from './icons';
 
 const THEME_LABELS = {
-  auto: { en: 'Theme: system', ru: 'Тема: системная', icon: '◐' },
-  light: { en: 'Theme: light', ru: 'Тема: светлая', icon: '☀' },
-  dark: { en: 'Theme: dark', ru: 'Тема: тёмная', icon: '☾' },
+  auto: { en: 'Theme: system', ru: 'Тема: системная', Icon: SunMoon },
+  light: { en: 'Theme: light', ru: 'Тема: светлая', Icon: Sun },
+  dark: { en: 'Theme: dark', ru: 'Тема: тёмная', Icon: Moon },
 };
 
 /**
- * Language (EN / RU), sound (issue #15) and theme (system → light → dark)
- * switches of the top bar; all choices are remembered.
+ * Language (EN / RU), sound (issue #15), animations (issue #47) and theme
+ * (system → light → dark) switches of the top bar; all choices are remembered.
  */
 export default function PrefSwitches() {
   const { lang, setLang, t } = useLang();
   const { theme, setTheme } = useTheme();
   const next = THEMES[(THEMES.indexOf(theme) + 1) % THEMES.length];
-  const sound = useSettings()['sound.on'];
+  const settings = useSettings();
+  const sound = settings['sound.on'];
+  // On while anything moves: the system preference decides only until the button is pressed.
+  const motion = moves(settings['motion.mode']);
+  const ThemeIcon = THEME_LABELS[theme].Icon;
   return (
     <div className="prefs">
       <div className="prefs__langs" role="group" aria-label={t({ en: 'Language', ru: 'Язык' })}>
@@ -40,14 +47,21 @@ export default function PrefSwitches() {
         title={t(sound ? { en: 'Sound: on', ru: 'Звук: включён' } : { en: 'Sound: off', ru: 'Звук: выключен' })}
         onClick={() => setSettings({ 'sound.on': !sound })}
       >
-        <svg viewBox="0 0 16 16" aria-hidden="true">
-          <path d="M2 6h3l4-3v10l-4-3H2z" />
-          {sound ? (
-            <path className="prefs__waves" d="M11 5.5q1.5 2.5 0 5M12.8 3.8q3 4.2 0 8.4" />
-          ) : (
-            <path className="prefs__waves" d="M11 6l4 4M15 6l-4 4" />
-          )}
-        </svg>
+        {sound ? <Volume2 {...iconProps} /> : <VolumeX {...iconProps} />}
+      </button>
+      <button
+        type="button"
+        className="prefs__button prefs__motion"
+        aria-pressed={motion}
+        aria-label={t({ en: 'Animations', ru: 'Анимации' })}
+        title={t(
+          motion
+            ? { en: 'Animations: on', ru: 'Анимации: включены' }
+            : { en: 'Animations: off', ru: 'Анимации: выключены' },
+        )}
+        onClick={() => setSettings({ 'motion.mode': motion ? 'off' : 'on' })}
+      >
+        {motion ? <Orbit {...iconProps} /> : <Pause {...iconProps} />}
       </button>
       <button
         type="button"
@@ -57,7 +71,7 @@ export default function PrefSwitches() {
         data-theme-choice={theme}
         onClick={() => setTheme(next)}
       >
-        <span aria-hidden="true">{THEME_LABELS[theme].icon}</span>
+        <ThemeIcon {...iconProps} />
       </button>
     </div>
   );

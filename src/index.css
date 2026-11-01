@@ -170,14 +170,37 @@ ol {
   font-size: 0.8rem;
 }
 
+/* SVG icons (src/components/icons.jsx, issue #47): the size and colour of the text around them. */
+.icon {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+}
+
+/* Animations off (the button of the top bar, or "Motion: never" in the settings, issue #47):
+   the interface stands still as well as the background. */
+:root[data-motion-mode='off'] {
+  scroll-behavior: auto;
+}
+
+:root[data-motion-mode='off'] *,
+:root[data-motion-mode='off'] *::before,
+:root[data-motion-mode='off'] *::after {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* The system asks for less motion: everything stands still unless the visitor turned animations on. */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
 
-  *,
-  *::before,
-  *::after {
+  :root:not([data-motion-mode='on']) *,
+  :root:not([data-motion-mode='on']) *::before,
+  :root:not([data-motion-mode='on']) *::after {
     animation: none !important;
     transition: none !important;
   }
