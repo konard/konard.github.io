@@ -3,6 +3,7 @@ import { plural } from '../i18n/plural';
 import { formatNumber, SERIES } from './format';
 import { Tooltip, useTooltip } from './Tooltip';
 import { DataMark } from './DataSources';
+import { StarMark } from './icons';
 
 const LIMIT = 10;
 // "in N repositories": Russian needs the prepositional case after «в».
@@ -29,7 +30,12 @@ export default function LanguagesChart({ languages, favorites }) {
     <>
       <strong>
         {name(l)}
-        {favorites.includes(l.name) ? ' ★' : ''}
+        {favorites.includes(l.name) && (
+          <>
+            {' '}
+            <StarMark />
+          </>
+        )}
       </strong>
       <span className="tooltip__value">
         {t({ en: 'used in', ru: 'используется в' })} {number(l.count)} {plural(l.count, lang, IN_REPOSITORIES)}
@@ -50,7 +56,10 @@ export default function LanguagesChart({ languages, favorites }) {
           en: `Repositories that use each of the ${number(languages.length)} ${plural(languages.length, 'en', OF_LANGUAGES)} GitHub detected in original public repositories (personal + organizations); a repository counts once for every language in it.`,
           ru: `Сколько репозиториев использует каждый из ${number(languages.length)} ${plural(languages.length, 'ru', OF_LANGUAGES)}, найденных GitHub в собственных публичных репозиториях (личных и организаций); репозиторий учитывается по разу для каждого своего языка.`,
         })}
-        <span className="muted"> {t({ en: '★ = favorite language', ru: '★ — любимый язык' })}</span>
+        <span className="muted">
+          {' '}
+          <StarMark /> {t({ en: '= favorite language', ru: '— любимый язык' })}
+        </span>
         <DataMark />
       </p>
       <ul
@@ -72,7 +81,7 @@ export default function LanguagesChart({ languages, favorites }) {
               {favorites.includes(l.name) && (
                 <span className="hbars__fav" aria-label={t({ en: 'favorite', ru: 'любимый' })}>
                   {' '}
-                  ★
+                  <StarMark />
                 </span>
               )}
             </span>

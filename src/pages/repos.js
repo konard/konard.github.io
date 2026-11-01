@@ -1,5 +1,5 @@
 // Helpers shared by the pages that list repositories.
-import repositories from '../data/repositories.json';
+import repositories from '../data/repositories.lino';
 
 export const allRepositories = repositories.items;
 export const ownRepositories = allRepositories.filter((r) => r.kind === 'own');

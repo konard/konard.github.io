@@ -4,6 +4,13 @@ const path = require('node:path');
 const root = path.join(__dirname, '..');
 const dir = path.join(root, 'docs/case-studies/issue-33/data');
 const read = (name) => JSON.parse(fs.readFileSync(path.join(dir, name + '.json'), 'utf8'));
+// Repositories whose attributed lines are mostly third-party code committed in bulk. The list is
+// kept as indented Links Notation (issue #47) and every entry pins the measured revision and count.
+function readExclusions() {
+  const { parseIndented } = require('lino-objects-codec');
+  const text = fs.readFileSync(path.join(root, 'src/data/source-lines-exclusions.lino'), 'utf8');
+  return parseIndented({ text }).obj;
+}
 function buildIndicators({ write = true } = {}) {
   const source = read('source-lines');
   const contributions = read('contributions');
@@ -19,7 +26,19 @@ function buildIndicators({ write = true } = {}) {
   }
   const languages = {};
   const authoredRepositories = [];
+  const excludedRepositories = [];
+  const exclusions = readExclusions();
   for (const [fullName, repo] of Object.entries(source.repositories)) {
+    const excluded = exclusions[fullName];
+    if (excluded) {
+      const lines = Object.values(repo.authoredLines).reduce((sum, n) => sum + n, 0);
+      if (excluded.sha !== repo.sha || excluded.lines !== lines)
+        throw new Error(
+          `Exclusion of ${fullName} pins ${excluded.sha} / ${excluded.lines}, measured ${repo.sha} / ${lines}`,
+        );
+      excludedRepositories.push({ fullName, sha: repo.sha, lines, reason: excluded.reason });
+      continue;
+    }
     let lines = 0;
     for (const [language, count] of Object.entries(repo.authoredLines)) {
       languages[language] = (languages[language] || 0) + count;
@@ -40,6 +59,7 @@ function buildIndicators({ write = true } = {}) {
       authoredRepositories: authoredRepositories.sort(
         (a, b) => b.lines - a.lines || a.fullName.localeCompare(b.fullName),
       ),
+      excludedRepositories,
     },
     sources: {
       github: record(
@@ -88,7 +108,7 @@ function buildIndicators({ write = true } = {}) {
       social: record('Social archive fallback', 'Архив социальных сетей', read('posts').generatedAt, '/blog/'),
     },
   };
-  if (write) fs.writeFileSync(path.join(root, 'src/data/indicators.json'), JSON.stringify(result) + '\n');
+  if (write) require('./lino-data.cjs').writeLino(path.join(root, 'src/data/indicators.lino'), result);
   return result;
 }
 module.exports = { buildIndicators };

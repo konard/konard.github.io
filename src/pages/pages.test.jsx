@@ -1,7 +1,7 @@
 import { chooseSelect } from '../test/select';
 import { act, fireEvent, render, screen, within } from '@testing-library/react';
 import { afterEach, describe, expect, it } from 'vitest';
-import archive from '../data/posts.json';
+import archive from '../data/posts.lino';
 import { fields, professions } from '../data/fields';
 import { experience, positions } from '../data/profile';
 import NetworkGallery from '../components/NetworkGallery';

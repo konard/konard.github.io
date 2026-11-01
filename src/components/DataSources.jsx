@@ -1,5 +1,5 @@
 import { useLang } from '../i18n/prefs';
-import { sources } from '../data/indicators.json';
+import { sources } from '../data/indicators.lino';
 import '../indicators.css';
 
 export function DataMark() {

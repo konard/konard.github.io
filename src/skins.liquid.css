@@ -249,6 +249,7 @@
     .segmented,
     .prefs__theme,
     .prefs__sound,
+    .prefs__motion,
     .prefs__langs,
     .role-tabs a,
     .setting__input select,
@@ -281,9 +282,13 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :root[data-skin-name='liquid'] {
+  :root[data-skin-name='liquid']:not([data-motion-mode='on']) {
     --lq-sheen-img: none;
   }
+}
+
+:root[data-skin-name='liquid'][data-motion-mode='off'] {
+  --lq-sheen-img: none;
 }
 
 /* The filter itself takes no space. */

@@ -17,6 +17,14 @@
 @import './skins.frames.properties.css';
 @import './skins.frames.css';
 @import './skins.frames.corners.css';
+@import './skins.frames.level-block.css';
+@import './skins.frames.level-button.css';
+@import './skins.frames.level-field.css';
+@import './skins.frames.level-tab.css';
+@import './skins.frames.level-chip.css';
+@import './skins.frames.level-menu.css';
+@import './skins.frames.level-table.css';
+@import './skins.frames.fit.css';
 
 :root[data-skin-name='futuristic'] {
   /* The palette (skins.palettes.css) becomes the colours of the whole site. */
@@ -359,10 +367,11 @@
     transform 0.25s;
 }
 
-/* Cut corners; charts are left uncut, so their tooltips are never clipped. */
+/* Cut corners. Charts are cut too: their tooltips are drawn outside them (issue #47). */
 :root[data-skin-name='futuristic']
   :is(
     .card,
+    .chart,
     .registry,
     .project,
     .skills__group,
@@ -393,7 +402,7 @@
     .link-card,
     .preset,
     .ui-preview__panel
-  ):not(:has([data-tooltip-root])) {
+  ) {
   clip-path: var(--fx-el-clip, var(--fx-clip));
 }
 
@@ -533,6 +542,7 @@
     .segmented,
     .prefs__theme,
     .prefs__sound,
+    .prefs__motion,
     .prefs__langs,
     .role-tabs a,
     .repo__fields li,

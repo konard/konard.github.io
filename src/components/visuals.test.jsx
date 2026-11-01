@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import habr from '../data/habr.json';
+import habr from '../data/habr.lino';
 import { mergeHabr } from '../data/habrLive';
 import { setLang } from '../i18n/prefs';
 import { startNebula } from '../visuals/nebula';
@@ -96,11 +96,12 @@ describe('rain of link networks (issue #9)', () => {
     vi.stubGlobal('Path2D', class {});
     const canvas = { getContext: () => ctx, clientWidth: 320, clientHeight: 400, style: {} };
     const drifts = [];
+    // Steps follow the display frames (issue #47): 75 ms are 5 frames of the fake 16 ms clock, whose first frame comes after 16–32 ms.
     const stop = startRain(canvas, { onDrift: (d) => drifts.push(d) });
-    vi.advanceTimersByTime(75);
+    vi.advanceTimersByTime(98);
     expect(drifts.at(-1)).toBeGreaterThan(63);
     expect(canvas.style.transform).toMatch(/^translateY\(63\.\d\dpx\)$/);
-    vi.advanceTimersByTime(75);
+    vi.advanceTimersByTime(80);
     expect(drifts.at(-1)).toBeLessThan(1);
     // The grid jumped back by one cell, so the picture moves down by one cell.
     expect(copies).toEqual([[0, 64]]);

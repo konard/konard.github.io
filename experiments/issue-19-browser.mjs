@@ -163,7 +163,7 @@ try {
       continue;
     }
     const pending = page.waitForEvent('download');
-    await page.getByRole('button', { name: `⤓ ${format}`, exact: true }).click();
+    await page.getByRole('button', { name: format, exact: true }).click();
     const downloaded = await pending;
     assert.equal(await downloaded.failure(), null);
   }

@@ -28,6 +28,8 @@
   .hero__avatar {
     width: 140px;
     height: 140px;
+    --hero-ring-gap: 7px;
+    --hero-ring-scale: 0.7;
   }
 
   .hero__avatar img {

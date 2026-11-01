@@ -6,6 +6,7 @@ import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { beamsOptions, nebulaOptions, rainOptions, starsOptions } from '../components/Cosmos';
+import { limitsOf } from '../frameFit';
 import { soundOptions } from '../sound/options';
 import { CSS_RULES, DEFAULTS, FIELDS, RULES } from './schema';
 
@@ -35,6 +36,14 @@ const readByLayers = () => {
     Object.keys(DEFAULTS).map((key) => [key, /^sound\.\w+\d$/.test(key) ? 'quartz' : DEFAULTS[key]]),
   );
   soundOptions(new Proxy(full, { get: (target, key) => (keys.add(key), target[key]) }));
+  // The frame fit (issue #47) reads the limits of every level that draws corners and has some.
+  const limited = Object.fromEntries(
+    Object.keys(DEFAULTS).map((key) => [
+      key,
+      /^corner\.\w*Fit(Min|Max)\w+$/.test(key) ? 1 : /^corner\.\w+Corners$/.test(key) ? 'own' : DEFAULTS[key],
+    ]),
+  );
+  limitsOf(new Proxy(limited, { get: (target, key) => (keys.add(key), target[key]) }));
   return keys;
 };
 
@@ -49,6 +58,12 @@ const usedBy = (field, layers) => {
 
 /** Choices that switch a decoration off, so no rule is needed for them. */
 const NOTHING = ['none', 'plain'];
+
+/**
+ * The corners of a type of control (issue #47): `border` keeps the border of
+ * the skin, because the frame is drawn only for `same` and `own`.
+ */
+const PLAIN_CONTROLS = /^corner\.(button|field|tab|chip|menu|table)Corners$/;
 
 describe('every setting is applied (issue #15)', () => {
   it('is used by a stylesheet, a background layer or a component', () => {
@@ -70,7 +85,10 @@ describe('every setting is applied (issue #15)', () => {
         .map((o) => o.value)
         .filter(
           (value) =>
-            value !== field.d && !NOTHING.includes(value) && !CSS.includes(`[data-${cssName(field.key)}='${value}']`),
+            value !== field.d &&
+            !NOTHING.includes(value) &&
+            !(PLAIN_CONTROLS.test(field.key) && value === 'border') &&
+            !CSS.includes(`[data-${cssName(field.key)}='${value}']`),
         )
         .map((value) => `${field.key}=${value}`),
     );

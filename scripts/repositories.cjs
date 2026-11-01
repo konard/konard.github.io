@@ -9,7 +9,7 @@ const path = require('path');
 const root = path.join(__dirname, '..');
 const dataDir = path.join(root, 'docs', 'case-studies', 'issue-33', 'data');
 const healthFile = path.join(dataDir, 'repository-health.json');
-const outFile = path.join(root, 'src', 'data', 'repositories.json');
+const outFile = path.join(root, 'src', 'data', 'repositories.lino');
 
 // GitHub users/organizations whose projects konard copied into their own account
 // as `<owner>-<name>` to work on them for (or with) the owner. Reviewed by hand
@@ -292,7 +292,7 @@ function buildRepositories({ write = true, repos = shownRepositories().shown } =
     fields: FIELDS,
     items,
   };
-  if (write) fs.writeFileSync(outFile, JSON.stringify(result) + '\n');
+  if (write) require('./lino-data.cjs').writeLino(outFile, result);
   return result;
 }
 

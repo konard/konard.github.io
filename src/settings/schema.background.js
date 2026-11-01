@@ -22,8 +22,8 @@ export const BACKGROUND_SECTIONS = [
         { en: 'Motion', ru: 'Движение' },
         {
           hint: {
-            en: 'By default the background stands still when the system asks for reduced motion.',
-            ru: 'По умолчанию фон не двигается, если система просит уменьшить движение.',
+            en: 'Of the background and of the interface (the ring around the photo, the cursor, floating cards); also the animations button of the top bar. By default everything stands still when the system asks for reduced motion.',
+            ru: 'Фона и интерфейса (кольцо вокруг фото, курсор, плавающие карточки); также кнопка анимаций в верхней панели. По умолчанию всё стоит на месте, если система просит уменьшить движение.',
           },
         },
       ),

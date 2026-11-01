@@ -4,6 +4,8 @@ import { focusSlider, numericKey } from '../components/numericKeys';
 import { useLang } from '../i18n/prefs';
 import { MATERIAL_PRESETS } from '../settings/schema.materials';
 import { setSettings } from '../settings/store';
+import { ArrowDownLeft, ArrowDownRight, ArrowUpLeft, ArrowUpRight } from 'lucide-react';
+import { iconProps } from '../components/icons';
 
 export function MaterialPresets() {
   const { t } = useLang();
@@ -53,6 +55,7 @@ export default function InterfacePreview() {
             {t({ en: 'Sample checkbox', ru: 'Пример флажка' })}
           </label>
           <input
+            id="ui-preview-slider"
             type="range"
             min="0"
             max="100"
@@ -75,7 +78,10 @@ export default function InterfacePreview() {
           <tbody>
             <tr>
               <td>{t({ en: 'Corners', ru: 'Углы' })}</td>
-              <td>↖ ↗ ↘ ↙</td>
+              <td>
+                <ArrowUpLeft {...iconProps} /> <ArrowUpRight {...iconProps} /> <ArrowDownRight {...iconProps} />{' '}
+                <ArrowDownLeft {...iconProps} />
+              </td>
             </tr>
             <tr>
               <td>{t({ en: 'Table rows', ru: 'Строки таблицы' })}</td>

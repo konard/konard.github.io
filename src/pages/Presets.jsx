@@ -8,6 +8,7 @@ import {
   cleanLook,
   getSaved,
   isLook,
+  presetsText,
   randomLook,
   renamed,
   setSaved,
@@ -18,6 +19,8 @@ import {
 } from '../settings/presets';
 import { changesOf, setSettings } from '../settings/store';
 import { cue } from '../sound/options';
+import { Pencil, Save, X } from 'lucide-react';
+import { iconProps } from '../components/icons';
 
 const NEON = Object.fromEntries(PALETTES.map(([id, , , neon]) => [id, neon]));
 
@@ -304,7 +307,7 @@ export default function Presets({ settings }) {
                       say(t({ en: `“${item.name}” is updated.`, ru: `«${item.name}» обновлён.` }));
                     }}
                   >
-                    ⤓
+                    <Save {...iconProps} />
                   </button>
                   <button
                     type="button"
@@ -316,7 +319,7 @@ export default function Presets({ settings }) {
                       setNewName(item.name);
                     }}
                   >
-                    ✎
+                    <Pencil {...iconProps} />
                   </button>
                   <button
                     type="button"
@@ -328,7 +331,7 @@ export default function Presets({ settings }) {
                       say(t({ en: `“${item.name}” is deleted.`, ru: `«${item.name}» удалён.` }));
                     }}
                   >
-                    ✕
+                    <X {...iconProps} />
                   </button>
                 </span>
               )}
@@ -350,7 +353,7 @@ export default function Presets({ settings }) {
             className="button button--small"
             onClick={() =>
               copy(
-                JSON.stringify({ presets: saved }, null, 2),
+                presetsText(saved),
                 t({
                   en: 'Copied. Paste it into “Your changes” in another browser.',
                   ru: 'Скопировано. Вставьте это в «Ваши изменения» в другом браузере.',
@@ -358,7 +361,10 @@ export default function Presets({ settings }) {
               )
             }
           >
-            {t({ en: 'Copy the saved looks as JSON', ru: 'Скопировать сохранённые виды как JSON' })}
+            {t({
+              en: 'Copy the saved looks in Links Notation',
+              ru: 'Скопировать сохранённые виды в Links Notation',
+            })}
           </button>
         )}
         <span role="status" className="settings__status">

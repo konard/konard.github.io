@@ -41,7 +41,11 @@ export function applySettings(root, rules, settings) {
       return '-' + letter.toLowerCase();
     });
     var value = settings[key];
-    if (typeof value === 'number' || rules[key].c) root.style.setProperty('--' + name, value + (rules[key].u || ''));
+    /* Widths and sizes of the frame where −1 follows the skin or the outer panels (issues #45 and #47):
+       without the variable the stylesheets fall back to it. */
+    if (/^corner\..*(Width|Size)$/.test(key) && !(value >= 0)) root.style.removeProperty('--' + name);
+    else if (typeof value === 'number' || rules[key].c)
+      root.style.setProperty('--' + name, value + (rules[key].u || ''));
     else root.setAttribute('data-' + name, String(value));
   }
   /* Resolve skin inheritance once; changing skins still updates CSS references. */
@@ -54,10 +58,6 @@ export function applySettings(root, rules, settings) {
         value >= 0 ? value + 'px' : fallback,
       );
     });
-  });
-  /* Widths where −1 follows the skin (issue #45): without the variable the stylesheets fall back to it. */
-  ['tl', 'tr', 'br', 'bl', 'top', 'right', 'bottom', 'left'].forEach(function (part) {
-    if (!(settings['corner.' + part + 'Width'] >= 0)) root.style.removeProperty('--corner-' + part + '-width');
   });
   if (!(settings['future.accentWidth'] >= 0)) root.style.removeProperty('--future-accent-width');
   ['accent', 'accent2'].forEach(function (name) {

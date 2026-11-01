@@ -2,12 +2,13 @@ import { chooseSelect } from '../test/select';
 import { fireEvent, render, screen, within } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import Layout from '../components/Layout';
+import { readStored } from '../settings/notation';
 import { DEFAULTS, FIELDS } from '../settings/schema';
 import { getSettings, setSettings, STORAGE_KEY } from '../settings/store';
 import SettingsPage, { formatValue } from './SettingsPage';
 
 const root = document.documentElement;
-const stored = () => JSON.parse(window.localStorage.getItem(STORAGE_KEY) || '{}');
+const stored = () => readStored(window.localStorage.getItem(STORAGE_KEY));
 const field = (key) => FIELDS.find((f) => f.key === key);
 
 describe('settings page (issue #13)', () => {
@@ -64,22 +65,31 @@ describe('settings page (issue #13)', () => {
     expect(screen.getByRole('button', { name: 'Reset everything' })).toBeDisabled();
   });
 
-  it('shows the changes as JSON and loads pasted settings', () => {
+  it('shows the changes in Links Notation and loads pasted settings (issue #47)', () => {
     setSettings({ 'skin.name': 'liquid' });
     render(<SettingsPage />);
-    expect(JSON.parse(screen.getByLabelText('Changed settings').textContent)).toEqual({ 'skin.name': 'liquid' });
+    expect(screen.getByLabelText('Changed settings').textContent).toBe('settings:\n  skin.name liquid');
 
     const paste = screen.getByLabelText('Paste settings or saved looks to load them');
-    fireEvent.change(paste, { target: { value: '{"grid.size": 96, "nebula.fps": 1000}' } });
+    fireEvent.change(paste, { target: { value: 'settings:\n  grid.size 96\n  nebula.fps 1000' } });
     fireEvent.click(screen.getByRole('button', { name: 'Load' }));
-    // Loading replaces the settings: what is not in the JSON goes back to the default.
+    // Loading replaces the settings: what is not pasted goes back to the default.
     expect(stored()).toEqual({ 'grid.size': 96, 'nebula.fps': 60 });
     expect(document.querySelector('#share .settings__status')).toHaveTextContent('Settings loaded.');
 
-    fireEvent.change(paste, { target: { value: '[1, 2]' } });
+    // Settings copied as JSON before still load.
+    fireEvent.change(paste, { target: { value: '{"grid.size": 64}' } });
     fireEvent.click(screen.getByRole('button', { name: 'Load' }));
-    expect(document.querySelector('#share .settings__status')).toHaveTextContent('This is not JSON of settings.');
-    expect(stored()).toEqual({ 'grid.size': 96, 'nebula.fps': 60 });
+    expect(stored()).toEqual({ 'grid.size': 64 });
+
+    for (const value of ['[1, 2]', 'colors:\n  red 1', '(\n  1\n  2\n)', '{broken']) {
+      fireEvent.change(paste, { target: { value } });
+      fireEvent.click(screen.getByRole('button', { name: 'Load' }));
+      expect(document.querySelector('#share .settings__status')).toHaveTextContent(
+        'These are not settings in Links Notation or JSON.',
+      );
+      expect(stored()).toEqual({ 'grid.size': 64 });
+    }
   });
 
   it('hides everything but one button to look at the background', () => {
@@ -118,6 +128,7 @@ describe('settings page layout (issue #15)', () => {
       'borders',
       'tables',
       'accessibility',
+      'avatar',
       'theory',
     ];
     expect(columns()).toEqual([left, right('glass')]);

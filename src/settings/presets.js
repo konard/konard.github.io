@@ -7,6 +7,7 @@
 // and the comfort rule follow konard/immortality (src/settings.ts), which has
 // no saved looks.
 import { normalize } from './apply';
+import { isObject, readNotation, toIndented, toNested } from '../lino';
 import { DEFAULTS, FIELDS, PREVIOUS_DEFAULTS, RULES } from './schema';
 
 /** Settings that a preset, a link or the randomizer never change. */
@@ -285,10 +286,14 @@ const storage = () => {
   }
 };
 
-/** The looks saved in this browser, as stored: `[{ name, look }]`. */
+/**
+ * The looks saved in this browser, as stored: `[{ name, look }]`, kept as
+ * nested Links Notation (issue #47; a list saved as JSON before still loads).
+ */
 export function loadSaved() {
   try {
-    const list = JSON.parse(storage()?.getItem(SAVED_KEY) || '[]');
+    const text = storage()?.getItem(SAVED_KEY);
+    const list = text ? readNotation(text).value : [];
     return Array.isArray(list)
       ? list
           .filter((item) => item && typeof item.name === 'string' && item.name.trim())
@@ -328,7 +333,7 @@ export function setSaved(list) {
   try {
     const store = storage();
     if (!store) return false;
-    if (list.length) store.setItem(SAVED_KEY, JSON.stringify(list));
+    if (list.length) store.setItem(SAVED_KEY, toNested(list));
     else store.removeItem(SAVED_KEY);
     return true;
   } catch {
@@ -349,6 +354,22 @@ export function withSaved(list, name, look) {
 /** `list` without the look called `name`. */
 export const withoutSaved = (list, name) => list.filter((item) => item.name !== name);
 
+/** The saved looks as copied to another browser: nested Links Notation of `{ presets: [{ name, look }] }` (issue #47). */
+export const presetsText = (list) => toNested({ presets: list });
+
+/**
+ * What the box of the changes holds (issue #47): `{ presets }`, looks copied
+ * from another browser, or `{ settings }`, settings changes. Reads Links
+ * Notation (`settings:` indented, or nested) and JSON copied before; throws
+ * on anything else.
+ */
+export function readPasted(text) {
+  const { id, value, format } = readNotation(text);
+  if (format === 'indented' && id !== 'settings') throw new Error(`unknown root ${id}`);
+  if (!isObject(value)) throw new Error('not an object');
+  return Array.isArray(value.presets) ? { presets: value.presets } : { settings: value };
+}
+
 /** `list` with the looks of an exported `{ presets: [{ name, look }] }`, same names replaced. */
 export function withImported(list, presets) {
   return (Array.isArray(presets) ? presets : []).reduce(
@@ -368,18 +389,18 @@ export function renamed(list, from, to) {
 
 export const SHARE_PREFIX = '#settings=';
 
-/** A link to `url` that carries the look of `settings`. */
+/** A link to `url` that carries the look of `settings`, as indented Links Notation (issue #47). */
 export function shareLink(settings, url) {
   const base = url.split('#')[0];
-  return `${base}${SHARE_PREFIX}${encodeURIComponent(JSON.stringify(cleanLook(changes(settings))))}`;
+  return `${base}${SHARE_PREFIX}${encodeURIComponent(toIndented('settings', cleanLook(changes(settings))))}`;
 }
 
-/** The look a `#settings=` hash carries, or null. */
+/** The look a `#settings=` hash carries, or null; links shared as JSON before issue #47 still open. */
 export function lookOfHash(hash) {
   if (!hash?.startsWith(SHARE_PREFIX)) return null;
   try {
-    const look = JSON.parse(decodeURIComponent(hash.slice(SHARE_PREFIX.length)));
-    return look && typeof look === 'object' && !Array.isArray(look) ? cleanLook(look) : null;
+    const look = readNotation(decodeURIComponent(hash.slice(SHARE_PREFIX.length))).value;
+    return isObject(look) ? cleanLook(look) : null;
   } catch {
     return null;
   }

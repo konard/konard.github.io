@@ -4,8 +4,8 @@ import { mergeProjects } from './Projects';
 import { formatPeriod, toYear } from './Timeline';
 import { contributionScale } from './ContributionsChart';
 import { formatCompact, formatNumber, formatPercent, SERIES } from './format';
-import github from '../data/github.json';
-import habr from '../data/habr.json';
+import github from '../data/github.lino';
+import habr from '../data/habr.lino';
 
 describe('format', () => {
   test('formats numbers', () => {

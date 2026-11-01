@@ -83,6 +83,8 @@ export const LINES = ['none', 'gap', 'line', 'accent', 'bracket'];
 export const EDGES = ['none', 'faint', 'line'];
 
 const v = (corner, name) => `var(--fx-${corner}-${name})`;
+/** The name of a corner in the numbers of the root: `tl` for outer panels, `button-tl` for a level (issue #47). */
+const id = (src, corner) => (src ? `${src}-${corner}` : corner);
 /**
  * The three scales of the frame: outer panels, inner blocks and controls. The
  * root computes the lengths of every corner once in each scale (`--fxp-*`,
@@ -94,7 +96,7 @@ export const SCALES = {
   // Controls draw their edges as wide as their border.
   c: { scale: 'var(--corner-control-scale, 0.35)', ew: 'var(--ui-control-border, 1px)' },
 };
-/** A length of `corner` in scale `k` (a key of SCALES). */
+/** A length of `corner` in scale `k` (a key of SCALES or of LEVELS). */
 const len = (k, corner, name) => `var(--fx${k}-${corner}-${name})`;
 const right = (corner) => corner === 'tr' || corner === 'br';
 const bottom = (corner) => corner === 'br' || corner === 'bl';
@@ -137,10 +139,10 @@ const INSIDE = { tl: '0 0', tr: '100% 0', br: '100% 100%', bl: '0 100%' };
  * `s × sy + wy` and its position `s × px` and `s × py` from the corner, where
  * `s` is the corner size of the framed element.
  */
-export function strokes(corner, shape) {
-  const col = v(corner, 'col');
-  const w = v(corner, 'w');
-  const tick = v(corner, 'tickk');
+export function strokes(corner, shape, src = '') {
+  const col = v(id(src, corner), 'col');
+  const w = v(id(src, corner), 'w');
+  const tick = v(id(src, corner), 'tickk');
   const solid = `linear-gradient(${col}, ${col})`;
   const layer = (img, [sx, wx], [sy, wy], [px, py] = [0, 0]) => ({ img, sx, wx, sy, wy, px, py });
   const none = layer('none', [0, '0px'], [0, '0px']);
@@ -221,25 +223,45 @@ export const INNER = `:is(${PANEL} ${PANEL}:not([data-frame-root] *), [data-fram
 /** Small items of lists: blocks even when they are not inside a panel. */
 export const BLOCKS = ['.theory__formulas li', '.page-stats li', '.symbols__grid li'];
 
-/** Buttons, fields, chips, tabs and menus: the frame in the control scale. */
-export const CONTROLS = [
-  'button:not(.segmented button, .prefs__langs button, .preset, .preset button)',
-  '.button',
-  'textarea',
-  "input:not([type='range'], [type='checkbox'], [type='radio'], [type='color'], [type='file'], [type='hidden'])",
-  '.chip',
-  '.tags li',
-  '.pages a',
-  '.role-tabs a',
-  '.segmented',
-  '.prefs__langs',
-  '.repo__fields li',
-  '.ui-select__list',
-];
+/**
+ * The types of controls (issue #47: "each type of INTERFACE CONTROLS must have
+ * separate CORNERS OF THE FRAME"). A type draws the frame of all controls in the
+ * control scale, its own corners or its own border; tables keep their border
+ * unless they are given a frame.
+ */
+export const CONTROL_TYPES = {
+  button: ['button:not(.segmented button, .prefs__langs button, .preset, .preset button, .ui-select)', '.button'],
+  field: [
+    'textarea',
+    "input:not([type='range'], [type='checkbox'], [type='radio'], [type='color'], [type='file'], [type='hidden'])",
+  ],
+  tab: ['.pages a', '.role-tabs a', '.segmented', '.prefs__langs'],
+  chip: ['.chip', '.tags li', '.repo__fields li'],
+  menu: ['.ui-select', '.ui-select__list'],
+  table: ['table'],
+};
 
-const list = (selectors) => selectors.join(', ');
+/** Buttons, fields, chips, tabs, menus and tables: the frame in the control scale. */
+export const CONTROLS = Object.values(CONTROL_TYPES).flat();
+
+/**
+ * Levels with corners of their own (issue #47): inner blocks and every type of
+ * control, with the scale whose corners they draw until they have their own.
+ */
+export const LEVELS = { block: 'b', ...Object.fromEntries(Object.keys(CONTROL_TYPES).map((type) => [type, 'c'])) };
+
+/** The attribute of <html> that gives a level its own corners. */
+export const ownCorners = (level) =>
+  level === 'block' ? "[data-corner-blocks='own']" : `[data-corner-${level}-corners='own']`;
+
+/** The scale of `k`: a scale, or the scale of a level. */
+const scaleOf = (k) => SCALES[k] ?? SCALES[LEVELS[k]];
+/** The name of the numbers of the root that scale `k` draws: those of a level, or of the outer panels. */
+const sourceOf = (k) => (k in LEVELS ? k : '');
+
+export const list = (selectors) => selectors.join(', ');
 /** `prefix :where(element)` for every element: one selector each, so a browser files it under its class or tag. */
-const each = (prefix, elements) => elements.map((element) => `${prefix}:where(${element})`).join(',\n');
+export const each = (prefix, elements) => elements.map((element) => `${prefix}:where(${element})`).join(',\n');
 
 /**
  * What a corner line sets: colour, width, the tick of a square corner (in
@@ -255,10 +277,10 @@ const LOOK = {
   bracket: { col: 'var(--fx-line)', w: BOLD, tickk: 0, armk: 1, gapk: 0 },
 };
 /** The bracket of a framed element in its own scale. */
-const ARM = (k) => `var(--fx-k) * ${SCALES[k].scale}`;
+const ARM = (k) => `var(--fx-k) * ${scaleOf(k).scale}`;
 
 /** The colour of the edges and of the `line` corners. */
-const EDGE_LOOK = {
+export const EDGE_LOOK = {
   none: { ec: 'transparent', col: 'rgb(var(--accent-rgb) / 0.3)' },
   faint: { ec: 'rgb(var(--accent-rgb) / 0.3)', col: 'rgb(var(--accent-rgb) / 0.3)' },
   line: { ec: 'var(--fx-line)', col: 'var(--fx-line)' },
@@ -267,8 +289,7 @@ const EDGE_LOOK = {
 /** Images of a horizontal and a vertical edge in each style (the colour is `--fx-ec`). */
 export const EDGE_STYLES = ['solid', 'dashed', 'dotted', 'double'];
 const DOT = 'max(1px, var(--fx-ew))';
-const edgeImages = (style) => {
-  const c = 'var(--fx-ec)';
+export const edgeImages = (style, c = 'var(--fx-ec)') => {
   const along = (deg) =>
     ({
       solid: `linear-gradient(${c}, ${c})`,
@@ -285,19 +306,20 @@ const SIDES = ['top', 'right', 'bottom', 'left'];
 const H = 'var(--fx-ce-h, linear-gradient(var(--fx-ec), var(--fx-ec)))';
 const V = 'var(--fx-ce-v, linear-gradient(var(--fx-ec), var(--fx-ec)))';
 
-const rule = (selector, declarations) =>
+export const rule = (selector, declarations) =>
   `${selector} {\n${Object.entries(declarations)
     .map(([name, value]) => `  ${name}: ${value};`)
     .join('\n')}\n}\n`;
 
 /** The layers of one corner: two lines of the shape and two arms. */
 function cornerLayers(corner, k) {
-  const col = v(corner, 'col');
-  const w = v(corner, 'w');
+  const n = id(sourceOf(k), corner);
+  const col = v(n, 'col');
+  const w = v(n, 'w');
   const arm = len(k, corner, 'arm');
   const solid = `linear-gradient(${col}, ${col})`;
   const shape = (name) => [
-    v(corner, `${name}-img`),
+    v(n, `${name}-img`),
     `${len(k, corner, `${name}-w`)} ${len(k, corner, `${name}-h`)}`,
     at(corner, len(k, corner, `${name}-px`), len(k, corner, `${name}-py`)),
   ];
@@ -322,35 +344,46 @@ function edgeLayers(k) {
   ];
 }
 
-const FUTURE = ":root[data-skin-name='futuristic']";
-const FRAME = `${FUTURE}[data-future-frame='custom']`;
+export const FUTURE = ":root[data-skin-name='futuristic']";
+export const FRAME = `${FUTURE}[data-future-frame='custom']`;
+/** (0,5,0) on the root: above the control rules of ui.css, including hover and pressed states. */
+export const STRONG = `:root:root:root${FRAME.slice(':root'.length)}`;
+/** The root of a page where controls of `type` draw the corners of the outer panels in the control scale. */
+export const sameCorners = (type) => `[data-corner-${type}-corners='same']:not([data-corner-controls='border'])`;
+/** Every control of `type` under `root`, one selector each. */
+export const controlsOf = (type, root, state = '') =>
+  CONTROL_TYPES[type].map((control) => `${root} ${control}${state}`).join(',\n');
 /** The background layers of the frame in scale `k`: 16 of the corners, then 4 edges. */
-const layers = (k) => [...CORNERS.flatMap((corner) => cornerLayers(corner, k)), ...edgeLayers(k)];
+export const layers = (k) => [...CORNERS.flatMap((corner) => cornerLayers(corner, k)), ...edgeLayers(k)];
 const LAYERS = layers('p');
-const column = (list, i) => list.map((layer) => layer[i]).join(',\n    ');
+export const column = (list, i) => list.map((layer) => layer[i]).join(',\n    ');
 /** The outline of the frame in scale `k`. */
-const clip = (k) => `polygon(${CORNERS.flatMap((corner) => cornerPoints(corner, k)).join(', ')})`;
+export const clip = (k) => `polygon(${CORNERS.flatMap((corner) => cornerPoints(corner, k)).join(', ')})`;
 
 /** The lengths of a corner in scale `k`, from the numbers of the root. */
 function cornerLengths(corner, k) {
   const name = (key) => `--fx${k}-${corner}-${key}`;
+  const src = sourceOf(k);
+  const n = id(src, corner);
   const s = `var(${name('s')})`;
-  const times = (key) => `calc(${s} * ${v(corner, key)})`;
+  const times = (key) => `calc(${s} * ${v(n, key)})`;
   const layer = (layerName) => ({
-    [name(`${layerName}-w`)]: `calc(${s} * ${v(corner, `${layerName}-sx`)} + ${v(corner, `${layerName}-wx`)})`,
-    [name(`${layerName}-h`)]: `calc(${s} * ${v(corner, `${layerName}-sy`)} + ${v(corner, `${layerName}-wy`)})`,
+    [name(`${layerName}-w`)]: `calc(${s} * ${v(n, `${layerName}-sx`)} + ${v(n, `${layerName}-wx`)})`,
+    [name(`${layerName}-h`)]: `calc(${s} * ${v(n, `${layerName}-sy`)} + ${v(n, `${layerName}-wy`)})`,
     [name(`${layerName}-px`)]: times(`${layerName}-px`),
     [name(`${layerName}-py`)]: times(`${layerName}-py`),
   });
+  const scaled = `calc(var(--corner-${corner}-size, 14px) * ${scaleOf(k).scale})`;
   return {
-    [name('s')]: `calc(var(--corner-${corner}-size, 14px) * ${SCALES[k].scale})`,
-    [name('gap')]: `calc(${ARM(k)} * ${v(corner, 'gapk')})`,
+    // A level has its own size; without it (−1), the size of the outer panels in its scale.
+    [name('s')]: src ? `var(--corner-${n}-size, ${scaled})` : scaled,
+    [name('gap')]: `calc(${ARM(k)} * ${v(n, 'gapk')})`,
     [name('x')]: times('kx'),
     [name('y')]: times('ky'),
     // Where an edge starts: past the shape and the gap of a bracket.
-    [name('rx')]: `calc(${s} * ${v(corner, 'kx')} + var(${name('gap')}))`,
-    [name('ry')]: `calc(${s} * ${v(corner, 'ky')} + var(${name('gap')}))`,
-    [name('arm')]: `calc(${ARM(k)} * ${v(corner, 'armk')})`,
+    [name('rx')]: `calc(${s} * ${v(n, 'kx')} + var(${name('gap')}))`,
+    [name('ry')]: `calc(${s} * ${v(n, 'ky')} + var(${name('gap')}))`,
+    [name('arm')]: `calc(${ARM(k)} * ${v(n, 'armk')})`,
     ...Object.fromEntries(
       Array.from({ length: POINTS }, (_, i) => [
         [name(`${i}x`), times(`k${i}x`)],
@@ -363,13 +396,19 @@ function cornerLengths(corner, k) {
 }
 
 /** The lengths of the frame in scale `k`, on the root: the widths of the sides and every corner. */
-const scaleLengths = (k) => ({
-  ...Object.fromEntries(SIDES.map((side) => [`--fx${k}-ew-${side}`, `var(--corner-${side}-width, ${SCALES[k].ew})`])),
+export const scaleLengths = (k) => ({
+  ...Object.fromEntries(
+    SIDES.map((side) => {
+      const width = `var(--corner-${side}-width, ${scaleOf(k).ew})`;
+      // A level has its own widths; without them (−1), the widths of the outer panels.
+      return [`--fx${k}-ew-${side}`, sourceOf(k) ? `var(--corner-${k}-${side}-width, ${width})` : width];
+    }),
+  ),
   ...Object.assign({}, ...CORNERS.map((corner) => cornerLengths(corner, k))),
 });
 
 /** What a framed element in scale `k` draws: its outline and background layers, from the lengths of the root. */
-const element = (k) => ({
+export const element = (k) => ({
   '--fx-el-clip': clip(k),
   '--fx-el-img': column(layers(k), 0),
   '--fx-el-size': column(layers(k), 1),
@@ -377,24 +416,42 @@ const element = (k) => ({
 });
 
 /** The numbers of a shape at a corner, declared on the root only, and the images of its lines. */
-function shapeNumbers(corner, shape) {
-  const layers = strokes(corner, shape);
+export function shapeNumbers(corner, shape, src = '') {
+  const layers = strokes(corner, shape, src);
+  const n = id(src, corner);
   return {
     ...Object.fromEntries(
       cornerSteps(corner, shape).flatMap(([x, y], i) => [
-        [`--fx-${corner}-k${i}x`, x],
-        [`--fx-${corner}-k${i}y`, y],
+        [`--fx-${n}-k${i}x`, x],
+        [`--fx-${n}-k${i}y`, y],
       ]),
     ),
-    [`--fx-${corner}-kx`]: SHAPES[shape].x,
-    [`--fx-${corner}-ky`]: SHAPES[shape].y,
+    [`--fx-${n}-kx`]: SHAPES[shape].x,
+    [`--fx-${n}-ky`]: SHAPES[shape].y,
     ...Object.fromEntries(
       ['a', 'b'].flatMap((name, i) =>
-        Object.entries(layers[i]).map(([key, value]) => [`--fx-${corner}-${name}-${key}`, value]),
+        Object.entries(layers[i]).map(([key, value]) => [`--fx-${n}-${name}-${key}`, value]),
       ),
     ),
   };
 }
+
+/**
+ * What the line of a corner sets on the root: colour, width (its own setting,
+ * see apply.js, or the one of the line), tick, arms and gap. The `line` colour
+ * of a level follows the edges of that level.
+ */
+export const lineLook = (corner, line, src = '') =>
+  Object.fromEntries(
+    Object.entries(LOOK[line]).map(([name, value]) => [
+      `--fx-${id(src, corner)}-${name}`,
+      name === 'w'
+        ? `var(--corner-${id(src, corner)}-width, ${value})`
+        : src && value === 'var(--fx-ce-col)'
+          ? `var(--fx-${src}-ce-col)`
+          : value,
+    ]),
+  );
 
 /**
  * The registered custom properties of the frame (issue #45). WebKit compares
@@ -407,25 +464,27 @@ function shapeNumbers(corner, shape) {
  * - what a framed element draws is its own and does not inherit either.
  * A browser without `@property` inherits them all as plain values (slower).
  */
-export function registered() {
-  const scales = Object.keys(SCALES);
+export function registered(level = '') {
+  const scales = level ? [level] : Object.keys(SCALES);
   const own = ['s', 'gap'];
+  const n = (corner) => id(level, corner);
   const numbers = CORNERS.flatMap((corner) =>
-    Object.keys(shapeNumbers(corner, 'square')).filter((name) => !name.endsWith('-img')),
+    Object.keys(shapeNumbers(corner, 'square', level)).filter((name) => !name.endsWith('-img')),
   );
-  const looks = CORNERS.flatMap((corner) => ['tickk', 'armk', 'gapk'].map((name) => `--fx-${corner}-${name}`));
+  const looks = CORNERS.flatMap((corner) => ['tickk', 'armk', 'gapk'].map((name) => `--fx-${n(corner)}-${name}`));
   const lengths = scales.flatMap((k) => Object.keys(scaleLengths(k)));
   const rootOnly = lengths.filter((name) => own.some((key) => name.endsWith(`-${key}`)));
   return {
-    rootOnly: [...numbers, ...looks, ...rootOnly],
-    lengths: [...lengths.filter((name) => !rootOnly.includes(name)), ...CORNERS.map((corner) => `--fx-${corner}-w`)],
-    colors: CORNERS.map((corner) => `--fx-${corner}-col`),
-    images: CORNERS.flatMap((corner) => [`--fx-${corner}-a-img`, `--fx-${corner}-b-img`]),
-    element: Object.keys(element('p')),
+    // A level also has the colour of its `line` corners (from its edges) on the root only.
+    rootOnly: [...numbers, ...looks, ...rootOnly, ...(level ? [`--fx-${level}-ce-col`] : [])],
+    lengths: [...lengths.filter((name) => !rootOnly.includes(name)), ...CORNERS.map((corner) => `--fx-${n(corner)}-w`)],
+    colors: CORNERS.map((corner) => `--fx-${n(corner)}-col`),
+    images: CORNERS.flatMap((corner) => [`--fx-${n(corner)}-a-img`, `--fx-${n(corner)}-b-img`]),
+    element: level ? [] : Object.keys(element('p')),
   };
 }
 /** One registration per line: there are several hundred. */
-const property = (name, syntax, inherits, initial) =>
+export const property = (name, syntax, inherits, initial) =>
   `@property ${name} { syntax: '${syntax}'; inherits: ${inherits};${initial ? ` initial-value: ${initial};` : ''} }\n`;
 
 /** The stylesheet that registers the custom properties of the frame (src/skins.frames.properties.css). */
@@ -517,20 +576,7 @@ export function cornersCss() {
     Object.keys(SHAPES).forEach((shape) =>
       out.push(rule(`:root[data-corner-${corner}-shape='${shape}']`, shapeNumbers(corner, shape))),
     );
-    LINES.forEach((line) =>
-      out.push(
-        rule(
-          `:root[data-corner-${corner}-line='${line}']`,
-          Object.fromEntries(
-            Object.entries(LOOK[line]).map(([name, value]) => [
-              `--fx-${corner}-${name}`,
-              // The width of a corner: its own setting (apply.js) or the one of its line.
-              name === 'w' ? `var(--corner-${corner}-width, ${value})` : value,
-            ]),
-          ),
-        ),
-      ),
-    );
+    LINES.forEach((line) => out.push(rule(`:root[data-corner-${corner}-line='${line}']`, lineLook(corner, line))));
   });
   return out.join('\n');
 }
@@ -558,15 +604,25 @@ function blockRules() {
   ];
 }
 
-/** Buttons, fields and the like draw the frame over their fill and are cut by its shape. */
+/**
+ * Buttons, fields and the like draw the frame over their fill and are cut by
+ * its shape. Each type of control (issue #47) draws the corners of the outer
+ * panels in the control scale (`same`, here), its own corners (`own`, in its
+ * file of src/skins.frames.levels.js) or its own border.
+ */
 function controlRules() {
-  // (0,7,1) and more: above the control rules of ui.css, including hover and
-  // pressed states. One selector for every control (no `:is()` list), so a
-  // browser tries each one only on the elements of its class or tag.
-  const strong = `:root:root:root${FRAME.slice(':root'.length)}:not([data-corner-controls='border'])`;
-  const controls = (state = '') => CONTROLS.map((control) => `${strong} ${control}${state}`).join(',\n');
+  const types = Object.keys(CONTROL_TYPES);
+  // One selector for every control (no `:is()` list), so a browser tries each
+  // one only on the elements of its class or tag.
+  const same = (state = '') =>
+    types.map((type) => controlsOf(type, `${STRONG}${sameCorners(type)}`, state)).join(',\n');
+  const framed = (state = '') =>
+    types.map((type) => controlsOf(type, `${STRONG}:is(${sameCorners(type)}, ${ownCorners(type)})`, state)).join(',\n');
   return [
-    rule(controls(), {
+    // The colour of the edges of each type (no specificity: a lit control wins):
+    // its own (src/skins.frames.levels.js), or the one of the panels.
+    ...types.map((type) => rule(each(`:where(${FRAME}) `, CONTROL_TYPES[type]), { '--fx-ec': `var(--fx-${type}-ec)` })),
+    rule(same(), {
       // A control may keep an image of its own (a palette chip) under the frame.
       // The corners of the root, the edges in the colour and style of this control.
       // Straight from the lengths of the root: no custom property of its own.
@@ -591,16 +647,16 @@ function controlRules() {
         ':focus-visible',
         ':focus',
       ]
-        .map((state) => controls(state))
+        .map((state) => framed(state))
         .join(',\n'),
       { '--fx-ec': 'var(--accent)' },
     ),
     // The primary button keeps a fill of the accent (its gradient was a background image).
-    rule(controls('.button--primary'), {
+    rule(framed('.button--primary'), {
       'background-color': 'color-mix(in srgb, var(--accent) 20%, var(--ui-control-fill, transparent))',
     }),
     // The outline of the focus would be cut by the shape, so it is drawn inside.
-    rule(controls(':focus-visible'), { 'outline-offset': 'calc(-1 * var(--ui-focus-width, 2px))' }),
+    rule(framed(':focus-visible'), { 'outline-offset': 'calc(-1 * var(--ui-focus-width, 2px))' }),
   ];
 }
 

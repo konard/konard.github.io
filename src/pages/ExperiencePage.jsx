@@ -4,7 +4,7 @@ import Section from '../components/Section';
 import Skills from '../components/Skills';
 import Timeline from '../components/Timeline';
 import { cvPagePath, pdfPath } from '../cv/paths';
-import github from '../data/github.json';
+import github from '../data/github.lino';
 import { professions } from '../data/fields';
 import { experience, favoriteLanguages, positions, skillGroups } from '../data/profile';
 import { useLang } from '../i18n/prefs';
@@ -12,6 +12,8 @@ import { useNotation } from '../links/notation';
 import { plural } from '../i18n/plural';
 import { useQueryParam } from './query';
 import { repo } from './repos';
+import { ArrowRight } from 'lucide-react';
+import { iconProps } from '../components/icons';
 
 const endYear = github.contributions[github.contributions.length - 1].year;
 
@@ -32,7 +34,7 @@ const TEXT = {
   companies: { en: 'Companies & ventures', ru: 'Компании и проекты' },
   openSource: { en: 'Open source', ru: 'Open source' },
   repositories: { en: 'Example repositories', ru: 'Примеры репозиториев' },
-  allExamples: { en: 'All examples →', ru: 'Все примеры →' },
+  allExamples: { en: 'All examples', ru: 'Все примеры' },
   stack: { en: 'Stack', ru: 'Стек' },
   technologies: { en: 'Technologies', ru: 'Технологии' },
 };
@@ -118,7 +120,9 @@ export default function ExperiencePage() {
                       <RepoItem key={r.fullName} repo={r} note={why} />
                     ))}
                 </ul>
-                <a href={`/repositories/#profession-${p.id}`}>{t(TEXT.allExamples)}</a>
+                <a href={`/repositories/#profession-${p.id}`}>
+                  {t(TEXT.allExamples)} <ArrowRight {...iconProps} />
+                </a>
               </article>
             ))}
           </div>

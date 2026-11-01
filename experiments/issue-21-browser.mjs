@@ -125,7 +125,7 @@ try {
     await page.goto(`${base}/network/?code=1122`);
     const svg = await drawing(page);
     const download = page.waitForEvent('download');
-    await page.getByRole('button', { name: '⤓ SVG', exact: true }).click();
+    await page.getByRole('button', { name: 'SVG', exact: true }).click();
     const file = await download;
     assert.equal(await file.failure(), null);
     const exported = await readFile(await file.path(), 'utf8');

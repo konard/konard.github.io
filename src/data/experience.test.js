@@ -4,7 +4,7 @@ import { TOPICS, experience, experienceMonths, experienceYears, missingFields, y
 import { positions, practices, products } from './positions';
 import { achievements, education, featuredProjects, languages, profile, skillGroups } from './profile';
 import { professions } from './fields';
-import repositories from './repositories.json';
+import repositories from './repositories.lino';
 
 const YM = /^\d{4}-(0[1-9]|1[0-2])$/;
 const BASE_ROLES = ['ml', 'devops', 'lead', 'developer', 'research'];

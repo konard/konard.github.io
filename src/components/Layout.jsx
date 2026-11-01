@@ -30,6 +30,8 @@ import LiquidRefraction from './LiquidRefraction';
 import PrefSwitches from './PrefSwitches';
 import Sound from './Sound';
 import { watchPanelVisibility } from './panelVisibility';
+import { ArrowUp } from 'lucide-react';
+import { iconProps } from './icons';
 
 /**
  * Shared frame of every page: the cosmic background, the page navigation
@@ -76,7 +78,7 @@ export default function Layout({ page, sections = null, children, footer = null 
         {sections && (
           <nav className="nav" aria-label="Sections">
             <a className="nav__top mono" href="#top" aria-label={t({ en: 'Back to top', ru: 'Наверх' })}>
-              ↑
+              <ArrowUp {...iconProps} />
             </a>
             <ul ref={sectionList}>
               {sections.map(([id, label]) => (

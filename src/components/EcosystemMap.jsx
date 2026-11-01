@@ -3,6 +3,7 @@ import { plural } from '../i18n/plural';
 import { formatNumber, SERIES } from './format';
 import { Tooltip, useTooltip } from './Tooltip';
 import { DataMark } from './DataSources';
+import { StarMark } from './icons';
 
 const SIZE = 520;
 const C = SIZE / 2;
@@ -37,7 +38,7 @@ export default function EcosystemMap({ owners, avatarUrl }) {
       <strong>{o.name}</strong>
       <span className="tooltip__value">{count(o.repositories, ORIGINAL)}</span>
       <span className="tooltip__row">
-        ★ {count(o.stars, STARS)} ·{' '}
+        <StarMark /> {count(o.stars, STARS)} ·{' '}
         {t({ en: `since ${o.createdAt.slice(0, 4)}`, ru: `с ${o.createdAt.slice(0, 4)} года` })}
       </span>
       <span className="tooltip__row">

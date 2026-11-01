@@ -1,0 +1,3 @@
+{"browser":"chromium","filterSupported":true,"without":{"lit":74897,"maxAlpha":6},"withFloor":{"lit":0,"maxAlpha":0},"withBands":{"lit":0,"maxAlpha":0}}
+{"browser":"firefox","filterSupported":true,"without":{"lit":74715,"maxAlpha":6},"withFloor":{"lit":0,"maxAlpha":0},"withBands":{"lit":0,"maxAlpha":0}}
+{"browser":"webkit","filterSupported":false,"without":{"lit":85052,"maxAlpha":6},"withFloor":{"lit":85052,"maxAlpha":6},"withBands":{"lit":0,"maxAlpha":0}}

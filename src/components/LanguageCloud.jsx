@@ -7,16 +7,31 @@ const REPOSITORIES = { en: ['repository', 'repositories'], ru: ['репозит�
 // «в N репозиториях»: the prepositional case after «в».
 const IN_REPOSITORIES = { en: ['repository', 'repositories'], ru: ['репозитории', 'репозиториях', 'репозиториях'] };
 
+// Skills-list names of languages GitHub detects under its linguist names
+// (issue #47): without them a language is counted and drawn twice.
+export const LINGUIST_NAMES = {
+  'Shell / Bash': ['Shell'],
+  'Coq / Rocq': ['Coq', 'Rocq Prover'],
+  Batch: ['Batchfile'],
+  CUDA: ['Cuda'],
+  'PL/pgSQL': ['PLpgSQL'],
+};
+
+/** Languages of the skills list that GitHub did not detect under any of their names. */
+export function undetectedLanguages(languages, extra) {
+  const detected = new Set(languages.map((l) => l.name));
+  return extra.filter((name) => ![name, ...(LINGUIST_NAMES[name] || [])].some((n) => detected.has(n)));
+}
+
 /**
  * Every language GitHub detected in original repositories, sized by the
  * number of repositories using it, plus languages known from other sources
  * (CodersRank, Habr Career, gists) that GitHub does not detect.
  */
 export default function LanguageCloud({ languages, extra = [], favorites = [] }) {
-  const detected = new Set(languages.map((l) => l.name));
   const max = Math.log(Math.max(...languages.map((l) => l.count)) + 1);
   const sorted = [...languages].sort((a, b) => a.name.localeCompare(b.name));
-  const others = extra.filter((name) => !detected.has(name));
+  const others = undetectedLanguages(languages, extra);
   const { lang, t } = useLang();
   const number = (v) => formatNumber(v, lang);
   const total = number(languages.length);

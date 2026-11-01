@@ -1,6 +1,6 @@
-import github from './data/github.json';
-import habr from './data/habr.json';
-import { contributions, sourceLines } from './data/indicators.json';
+import github from './data/github.lino';
+import habr from './data/habr.lino';
+import { contributions, sourceLines } from './data/indicators.lino';
 import ContributionCalendar from './components/ContributionCalendar';
 import SourceLines from './components/SourceLines';
 import { DataMark } from './components/DataSources';
@@ -40,6 +40,7 @@ import PageCards from './components/PageCards';
 import Contacts from './components/Contacts';
 import { plural } from './i18n/plural';
 import { useLang } from './i18n/prefs';
+import { StarMark } from './components/icons';
 
 const NAV = [
   ['experience', { en: 'Experience', ru: 'Опыт' }],
@@ -141,7 +142,7 @@ function App() {
                     en: `since ${o.createdAt.slice(0, 4)} · ${o.repositories} repos`,
                     ru: `с ${o.createdAt.slice(0, 4)} · репозиториев: ${o.repositories}`,
                   })}{' '}
-                  · ★ {o.stars} <DataMark />
+                  · <StarMark /> {o.stars} <DataMark />
                 </span>
                 {o.description && <p className="org__desc">{o.description}</p>}
               </li>

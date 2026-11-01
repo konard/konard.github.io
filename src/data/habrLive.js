@@ -1,6 +1,6 @@
 // Live statistics of Habr articles. Habr's public API answers with
 // `Access-Control-Allow-Origin: *`, so the browser refreshes the committed
-// snapshot (src/data/habr.json, made by experiments/collect-habr.cjs) in place.
+// snapshot (src/data/habr.lino, made by experiments/collect-habr.cjs) in place.
 export const HABR_API = 'https://habr.com/kek/v2';
 const FILTERS = ['company=deepfoundation', 'user=Konard'];
 

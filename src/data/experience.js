@@ -15,6 +15,10 @@
 // Sources: the hh.ru CV and LinkedIn as quoted in issue #11, Habr Career
 // (career.habr.com/drakonard), CodersRank, t.me/drakonard and GitHub
 // organization metadata (docs/case-studies/issue-1/data/web-research.md).
+import { npmMonthly } from './figures';
+
+// Package figures come from src/data/github.lino (issue #47).
+const LINKS_NOTATION_NPM = npmMonthly('links-notation');
 
 /** Topics of the bullets; positions choose bullets by them. */
 export const TOPICS = [
@@ -197,8 +201,8 @@ export const experience = [
         topics: ['data', 'architecture', 'rust', 'dotnet', 'research'],
       },
       {
-        en: 'Created Links Notation, a way to describe data with references and links (≈50K npm downloads per month).',
-        ru: 'Создал Links Notation — нотацию для описания данных ссылками и связями (около 50 тыс. загрузок из npm в месяц).',
+        en: `Created Links Notation, a way to describe data with references and links (${LINKS_NOTATION_NPM.en}).`,
+        ru: `Создал Links Notation — нотацию для описания данных ссылками и связями (${LINKS_NOTATION_NPM.ru}).`,
         topics: ['research', 'data'],
       },
       {

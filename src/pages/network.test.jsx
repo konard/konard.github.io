@@ -6,6 +6,7 @@ import { NetworkExample } from '../components/MetaTheory';
 import { decode } from '../links/configurations';
 import { STYLE_DEFAULTS, normalizeStyle } from '../links/style';
 import { setSettings } from '../settings/store';
+import { readNotation } from '../lino';
 import NetworkPage, { DEFAULT_CODE, networkQuery, readNetwork } from './NetworkPage';
 import { randomLinks, stepped } from './NetworkEditor';
 
@@ -178,7 +179,7 @@ describe('NetworkPage (issue #17)', () => {
     go('/network/?code=0120&end=dot');
     render(<NetworkPage />);
     const share = document.getElementById('share');
-    ['⤓ SVG', '⤓ PNG', '⤓ JPEG', '⤓ WebP', '⤓ .lino'].forEach((name) =>
+    ['SVG', 'PNG', 'JPEG', 'WebP', '.lino'].forEach((name) =>
       expect(within(share).getByRole('button', { name })).toBeInTheDocument(),
     );
     expect(within(share).getByRole('button', { name: 'Copy the link' })).toBeInTheDocument();
@@ -195,7 +196,7 @@ describe('NetworkPage (issue #17)', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Plain black' }));
     fireEvent.change(screen.getByLabelText('Name of the style'), { target: { value: 'Mine' } });
     fireEvent.click(screen.getByRole('button', { name: 'Save the style' }));
-    expect(JSON.parse(localStorage.getItem('network.styles'))[0].name).toBe('Mine');
+    expect(readNotation(localStorage.getItem('network.styles')).value[0].name).toBe('Mine');
     fireEvent.click(screen.getByRole('button', { name: 'Card (as in the gallery)' }));
     fireEvent.click(screen.getByRole('button', { name: 'Mine' }));
     expect(new URLSearchParams(search()).get('card')).toBeNull();

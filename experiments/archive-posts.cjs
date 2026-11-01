@@ -8,7 +8,7 @@
 //
 // Options (all optional):
 //   --out=<file>            output JSON (default docs/case-studies/issue-7/data/posts.json; the
-//                           same file is also copied to src/data/posts.json for the blog page)
+//                           same file is also written to src/data/posts.lino, Links Notation, for the blog page)
 //   --urls=<file>           extra post URLs, one per line (default .../data/post-urls.txt)
 //   --vk=<a,b>              VK walls to crawl by screen name (default konard)
 //   --vk-limit=<n>          newest own posts to archive per VK wall (default 40)
@@ -50,7 +50,7 @@ const args = Object.fromEntries(
 );
 const OUT = args.out || path.join(DATA, 'posts.json');
 // The blog page (src/pages/BlogPage.jsx) renders this copy.
-const SITE_COPY = args.out ? null : 'src/data/posts.json';
+const SITE_COPY = args.out ? null : 'src/data/posts.lino';
 const URLS = args.urls || path.join(DATA, 'post-urls.txt');
 const list = (v, d) =>
   v === undefined
@@ -570,7 +570,8 @@ async function main() {
   };
   fs.mkdirSync(path.dirname(OUT), { recursive: true });
   fs.writeFileSync(OUT, `${JSON.stringify(output, null, 2)}\n`);
-  if (SITE_COPY) fs.copyFileSync(OUT, SITE_COPY);
+  // The site keeps its copy as Links Notation (issue #47).
+  if (SITE_COPY) require('../scripts/lino-data.cjs').writeLino(SITE_COPY, output);
   log(JSON.stringify({ out: OUT, changed, counts: output.counts, report }, null, 2));
 }
 

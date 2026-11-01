@@ -6,10 +6,11 @@
 // it; a CV for a position is at most 2 pages, the compact one is 1 page; no
 // phone, birth date, salary or email, contacts are GitHub, Telegram and the
 // website.
-import github from '../data/github.json';
+import github from '../data/github.lino';
 import { experience, yearsText } from '../data/experience';
 import { positionById, positions, practices, products } from '../data/positions';
 import { achievements, education, languages, profile, publications } from '../data/profile';
+import { plural } from '../i18n/plural';
 import { tr } from '../i18n/prefs';
 import { PRESENT, formatPeriod } from './paths';
 
@@ -120,7 +121,9 @@ function product(p, lang) {
   };
 }
 
-/** Registries with their package counts for the technical CV. */
+const PACKAGES = { en: ['package', 'packages'], ru: ['пакет', 'пакета', 'пакетов'] };
+
+/** Registries with their package counts for the technical CV, worded as in the registries section. */
 function registries(lang) {
   const fmt = new Intl.NumberFormat(lang === 'ru' ? 'ru-RU' : 'en-US');
   return github.registries
@@ -130,8 +133,8 @@ function registries(lang) {
       url: r.url,
       text:
         lang === 'ru'
-          ? `${r.packages} пакетов, ${fmt.format(r.downloads)} ${r.downloadsUnit.startsWith('pulls') ? 'скачиваний образов' : 'загрузок'}${r.downloadsUnit.includes('month') ? ' в месяц' : ''}`
-          : `${r.packages} packages, ${fmt.format(r.downloads)} ${r.downloadsUnit.replace(' (rounded)', '')}`,
+          ? `${r.packages} ${plural(r.packages, 'ru', PACKAGES)}, ${fmt.format(r.downloads)} ${r.downloadsUnit.startsWith('pulls') ? 'скачиваний образов' : 'загрузок'}${r.downloadsUnit.includes('month') ? ' в месяц' : ''}${r.downloadsUnit.includes('(rounded)') ? ' (округлённо)' : ''}`
+          : `${r.packages} ${plural(r.packages, 'en', PACKAGES)}, ${fmt.format(r.downloads)} ${r.downloadsUnit}`,
     }));
 }
 

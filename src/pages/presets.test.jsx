@@ -1,6 +1,7 @@
 // The presets of the settings page (issue #15).
 import { act, fireEvent, render, screen, within } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
+import { readNotation } from '../lino';
 import { DEFAULTS } from '../settings/schema';
 import { getSaved, setSaved, SAVED_KEY } from '../settings/presets';
 import { getSettings, setSettings } from '../settings/store';
@@ -59,7 +60,7 @@ describe('presets (issue #15)', () => {
     });
     fireEvent.click(within(section).getByRole('button', { name: 'Save the current look' }));
     expect(getSaved()).toEqual([{ name: 'Big grid', look: { 'grid.size': 96 } }]);
-    expect(JSON.parse(window.localStorage.getItem(SAVED_KEY))).toEqual(getSaved());
+    expect(readNotation(window.localStorage.getItem(SAVED_KEY)).value).toEqual(getSaved());
     expect(within(section).getByRole('status')).toHaveTextContent('Saved as “Big grid”.');
 
     // Without a name the look gets a number.
@@ -86,16 +87,20 @@ describe('presets (issue #15)', () => {
     expect(getSaved().map((item) => item.name)).toEqual(['Huge grid']);
   });
 
-  it('copy the saved looks as JSON that the box of the changes loads in another browser', async () => {
+  it('copy the saved looks in Links Notation that the box of the changes loads in another browser', async () => {
     const writeText = vi.fn(() => Promise.resolve());
     Object.defineProperty(navigator, 'clipboard', { value: { writeText }, configurable: true });
     setSaved([{ name: 'Mine', look: { 'grid.size': 96 } }]);
     render(<SettingsPage />);
     await act(async () => {
-      fireEvent.click(screen.getByRole('button', { name: 'Copy the saved looks as JSON' }));
+      fireEvent.click(screen.getByRole('button', { name: 'Copy the saved looks in Links Notation' }));
     });
     const json = writeText.mock.calls[0][0];
-    expect(JSON.parse(json)).toEqual({ presets: [{ name: 'Mine', look: { 'grid.size': 96 } }] });
+    expect(readNotation(json)).toEqual({
+      id: null,
+      value: { presets: [{ name: 'Mine', look: { 'grid.size': 96 } }] },
+      format: 'nested',
+    });
 
     act(() => setSaved([]));
     fireEvent.change(screen.getByLabelText('Paste settings or saved looks to load them'), { target: { value: json } });

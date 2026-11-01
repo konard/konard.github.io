@@ -1,11 +1,12 @@
 /* global document, getComputedStyle, innerWidth, window */
 import assert from 'node:assert/strict';
+import { createRequire } from 'node:module';
 import { mkdir, readFile } from 'node:fs/promises';
 import { chromium } from 'playwright';
 import { createServer } from 'vite';
 
 const before = process.argv.includes('--before');
-const indicators = JSON.parse(await readFile('src/data/indicators.json', 'utf8'));
+const indicators = createRequire(import.meta.url)('../scripts/lino-data.cjs').readLino('src/data/indicators.lino');
 const colors = JSON.parse(await readFile('docs/case-studies/issue-33/data/github-calendar-colors.json', 'utf8'));
 const snapshot = indicators.contributions;
 const days = snapshot.calendar.weeks.flatMap((w) => w.contributionDays);

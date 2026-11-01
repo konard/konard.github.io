@@ -1,0 +1,2044 @@
+(
+  generatedFrom (
+    "docs/case-studies/issue-33/data"
+  )
+  profile (
+    login "konard"
+    name "Konstantin Diachenko"
+    avatarUrl "https://avatars.githubusercontent.com/u/1431904?v=4"
+    url "https://github.com/konard"
+    bio (escaped "I ❤️‍🔥 open-source.%0D
+I in 🥰 with Rust, JavaScript, C#, C++, Python.")
+    location "Planet Earth"
+    email null
+    twitter "drakonard"
+    hireable true
+    followers 376
+    following 924
+    publicRepos 1461
+    publicGists 23568
+    createdAt "2012-02-13T00:19:39Z"
+  )
+  totals (
+    ownRepositories 436
+    personalRepositories 146
+    organizationRepositories 290
+    organizations 8
+    forks 3
+    mirrors 88
+    stars 986
+    contributions 136956
+    languages 67
+  )
+  contributions (
+    (
+      year 2012
+      total 10
+      commits 8
+      issues 0
+      pullRequests 0
+      reviews 0
+      repositories 1
+    )
+    (
+      year 2013
+      total 0
+      commits 0
+      issues 0
+      pullRequests 0
+      reviews 0
+      repositories 0
+    )
+    (
+      year 2014
+      total 5
+      commits 1
+      issues 2
+      pullRequests 0
+      reviews 0
+      repositories 1
+    )
+    (
+      year 2015
+      total 358
+      commits 202
+      issues 148
+      pullRequests 2
+      reviews 0
+      repositories 4
+    )
+    (
+      year 2016
+      total 391
+      commits 232
+      issues 147
+      pullRequests 5
+      reviews 0
+      repositories 6
+    )
+    (
+      year 2017
+      total 204
+      commits 204
+      issues 0
+      pullRequests 0
+      reviews 0
+      repositories 0
+    )
+    (
+      year 2018
+      total 111
+      commits 109
+      issues 0
+      pullRequests 0
+      reviews 0
+      repositories 2
+    )
+    (
+      year 2019
+      total 4665
+      commits 4114
+      issues 509
+      pullRequests 14
+      reviews 0
+      repositories 28
+    )
+    (
+      year 2020
+      total 2447
+      commits 2098
+      issues 281
+      pullRequests 8
+      reviews 20
+      repositories 36
+    )
+    (
+      year 2021
+      total 1390
+      commits 918
+      issues 238
+      pullRequests 7
+      reviews 210
+      repositories 14
+    )
+    (
+      year 2022
+      total 1100
+      commits 766
+      issues 83
+      pullRequests 3
+      reviews 241
+      repositories 5
+    )
+    (
+      year 2023
+      total 3586
+      commits 3066
+      issues 401
+      pullRequests 36
+      reviews 47
+      repositories 28
+    )
+    (
+      year 2024
+      total 4779
+      commits 2032
+      issues 1441
+      pullRequests 5
+      reviews 3
+      repositories 101
+    )
+    (
+      year 2025
+      total 29495
+      commits 18587
+      issues 2184
+      pullRequests 5557
+      reviews 4
+      repositories 101
+    )
+    (
+      year 2026
+      total 88415
+      commits 67765
+      issues 6494
+      pullRequests 8991
+      reviews 0
+      repositories 101
+    )
+  )
+  languages (
+    (
+      name "JavaScript"
+      count 223
+      primary 129
+      bytes 171840227
+      color "#f1e05a"
+    )
+    (
+      name "Shell"
+      count 158
+      primary 18
+      bytes 6355720
+      color "#89e051"
+    )
+    (
+      name "TypeScript"
+      count 118
+      primary 81
+      bytes 40384911
+      color "#3178c6"
+    )
+    (
+      name "Rust"
+      count 80
+      primary 46
+      bytes 77073520
+      color "#dea584"
+    )
+    (
+      name "Python"
+      count 78
+      primary 26
+      bytes 11351771
+      color "#3572A5"
+    )
+    (
+      name "C#"
+      count 77
+      primary 57
+      bytes 6860985
+      color "#7355dd"
+    )
+    (
+      name "HTML"
+      count 67
+      primary 18
+      bytes 131834679
+      color "#e34c26"
+    )
+    (
+      name "Dockerfile"
+      count 51
+      primary 1
+      bytes 155910
+      color "#384d54"
+    )
+    (
+      name "CSS"
+      count 45
+      primary 0
+      bytes 1001646
+      color "#663399"
+    )
+    (
+      name "C++"
+      count 34
+      primary 7
+      bytes 6139686
+      color "#f34b7d"
+    )
+    (
+      name "C"
+      count 28
+      primary 6
+      bytes 126215733
+      color "#555555"
+    )
+    (
+      name "CMake"
+      count 21
+      primary 0
+      bytes 57336
+      color "#DA3434"
+    )
+    (
+      name "Java"
+      count 13
+      primary 0
+      bytes 394210
+      color "#b07219"
+    )
+    (
+      name "PHP"
+      count 12
+      primary 5
+      bytes 3291174
+      color "#4F5D95"
+    )
+    (
+      name "Ruby"
+      count 11
+      primary 0
+      bytes 93274
+      color "#701516"
+    )
+    (
+      name "Swift"
+      count 11
+      primary 0
+      bytes 39045
+      color "#F05138"
+    )
+    (
+      name "Batchfile"
+      count 11
+      primary 1
+      bytes 4676
+      color "#C1F12E"
+    )
+    (
+      name "Jinja"
+      count 8
+      primary 0
+      bytes 22340
+      color "#a52a22"
+    )
+    (
+      name "Lean"
+      count 6
+      primary 0
+      bytes 2543427
+      color null
+    )
+    (
+      name "Rocq Prover"
+      count 5
+      primary 1
+      bytes 2613404
+      color "#d0b68c"
+    )
+    (
+      name "Go"
+      count 5
+      primary 1
+      bytes 660307
+      color "#00ADD8"
+    )
+    (
+      name "Makefile"
+      count 5
+      primary 0
+      bytes 29985
+      color "#427819"
+    )
+    (
+      name "PEG.js"
+      count 4
+      primary 0
+      bytes 18198
+      color "#234d6b"
+    )
+    (
+      name "PowerShell"
+      count 4
+      primary 1
+      bytes 17278
+      color "#012456"
+    )
+    (
+      name "Nim"
+      count 4
+      primary 0
+      bytes 16973
+      color "#ffc200"
+    )
+    (
+      name "Mustache"
+      count 4
+      primary 0
+      bytes 7200
+      color "#724b3b"
+    )
+    (
+      name "Lex"
+      count 3
+      primary 0
+      bytes 173932
+      color "#DBCA00"
+    )
+    (
+      name "Awk"
+      count 3
+      primary 0
+      bytes 6570
+      color "#c30e9b"
+    )
+    (
+      name "M4"
+      count 2
+      primary 0
+      bytes 429210
+      color null
+    )
+    (
+      name "Yacc"
+      count 2
+      primary 0
+      bytes 138390
+      color "#4B6C4B"
+    )
+    (
+      name "TeX"
+      count 2
+      primary 1
+      bytes 129753
+      color "#3D6117"
+    )
+    (
+      name "GAP"
+      count 2
+      primary 0
+      bytes 47568
+      color "#0000cc"
+    )
+    (
+      name "Roff"
+      count 2
+      primary 0
+      bytes 21620
+      color "#ecdebe"
+    )
+    (
+      name "Perl"
+      count 2
+      primary 0
+      bytes 21208
+      color "#0298c3"
+    )
+    (
+      name "DTrace"
+      count 2
+      primary 0
+      bytes 9028
+      color null
+    )
+    (
+      name "Go Template"
+      count 2
+      primary 0
+      bytes 3864
+      color "#00ADD8"
+    )
+    (
+      name "Elixir"
+      count 2
+      primary 0
+      bytes 307
+      color "#6e4a7e"
+    )
+    (
+      name "Isabelle"
+      count 1
+      primary 0
+      bytes 963634
+      color "#FEFE00"
+    )
+    (
+      name "SCSS"
+      count 1
+      primary 0
+      bytes 164136
+      color "#c6538c"
+    )
+    (
+      name "Coq"
+      count 1
+      primary 1
+      bytes 134709
+      color "#d0b68c"
+    )
+    (
+      name "Gherkin"
+      count 1
+      primary 0
+      bytes 54525
+      color "#5B2063"
+    )
+    (
+      name "ANTLR"
+      count 1
+      primary 0
+      bytes 53576
+      color "#9DC3FF"
+    )
+    (
+      name "Cuda"
+      count 1
+      primary 0
+      bytes 38934
+      color "#3A4E3A"
+    )
+    (
+      name "HCL"
+      count 1
+      primary 0
+      bytes 37311
+      color "#844FBA"
+    )
+    (
+      name "Agda"
+      count 1
+      primary 0
+      bytes 31208
+      color "#315665"
+    )
+    (
+      name "Metal"
+      count 1
+      primary 0
+      bytes 22235
+      color "#8f14e9"
+    )
+    (
+      name "PLpgSQL"
+      count 1
+      primary 0
+      bytes 9198
+      color "#336790"
+    )
+    (
+      name "Slim"
+      count 1
+      primary 0
+      bytes 7607
+      color "#2b2b2b"
+    )
+    (
+      name "Nix"
+      count 1
+      primary 0
+      bytes 4791
+      color "#7e7eff"
+    )
+    (
+      name "Vim Snippet"
+      count 1
+      primary 0
+      bytes 3722
+      color "#199f4b"
+    )
+    (
+      name "Lua"
+      count 1
+      primary 0
+      bytes 3180
+      color "#000080"
+    )
+    (
+      name "WebAssembly"
+      count 1
+      primary 0
+      bytes 3121
+      color "#04133b"
+    )
+    (
+      name "Euphoria"
+      count 1
+      primary 0
+      bytes 2362
+      color "#FF790B"
+    )
+    (
+      name "Pascal"
+      count 1
+      primary 0
+      bytes 2353
+      color "#E3F171"
+    )
+    (
+      name "MDX"
+      count 1
+      primary 0
+      bytes 895
+      color "#fcb32c"
+    )
+    (
+      name "Erlang"
+      count 1
+      primary 0
+      bytes 77
+      color "#B83998"
+    )
+    (
+      name "Procfile"
+      count 1
+      primary 0
+      bytes 65
+      color "#3B2F63"
+    )
+    (
+      name "Scala"
+      count 1
+      primary 0
+      bytes 51
+      color "#c22d40"
+    )
+    (
+      name "Haskell"
+      count 1
+      primary 0
+      bytes 46
+      color "#5e5086"
+    )
+    (
+      name "sed"
+      count 1
+      primary 0
+      bytes 46
+      color "#64b970"
+    )
+    (
+      name "Kotlin"
+      count 1
+      primary 0
+      bytes 44
+      color "#A97BFF"
+    )
+    (
+      name "OCaml"
+      count 1
+      primary 0
+      bytes 30
+      color "#ef7a08"
+    )
+    (
+      name "Clojure"
+      count 1
+      primary 0
+      bytes 26
+      color "#db5855"
+    )
+    (
+      name "Julia"
+      count 1
+      primary 0
+      bytes 25
+      color "#a270ba"
+    )
+    (
+      name "F#"
+      count 1
+      primary 0
+      bytes 24
+      color "#b845fc"
+    )
+    (
+      name "R"
+      count 1
+      primary 0
+      bytes 24
+      color "#198CE7"
+    )
+    (
+      name "RenderScript"
+      count 1
+      primary 0
+      bytes 1
+      color null
+    )
+  )
+  owners (
+    (
+      login "konard"
+      name "@konard"
+      description null
+      url "https://github.com/konard"
+      createdAt "2012-02-13T00:19:39Z"
+      repositories 146
+      stars 218
+      languages (
+        (
+          name "JavaScript"
+          count 50
+        )
+        (
+          name "C#"
+          count 20
+        )
+        (
+          name "Shell"
+          count 14
+        )
+        (
+          name "HTML"
+          count 13
+        )
+        (
+          name "Rust"
+          count 11
+        )
+      )
+    )
+    (
+      login "deep-foundation"
+      name "Deep.Foundation"
+      description "Deep.Foundation - associative technology development bay."
+      url "https://github.com/deep-foundation"
+      createdAt "2020-03-29T15:17:26Z"
+      repositories 90
+      stars 412
+      languages (
+        (
+          name "TypeScript"
+          count 54
+        )
+        (
+          name "JavaScript"
+          count 9
+        )
+        (
+          name "Python"
+          count 7
+        )
+        (
+          name "C"
+          count 2
+        )
+        (
+          name "HTML"
+          count 2
+        )
+      )
+    )
+    (
+      login "link-foundation"
+      name "Link.Foundation"
+      description "The foundation of foundations. Our mission is linkness."
+      url "https://github.com/link-foundation"
+      createdAt "2024-07-20T19:06:38Z"
+      repositories 79
+      stars 46
+      languages (
+        (
+          name "JavaScript"
+          count 42
+        )
+        (
+          name "Rust"
+          count 18
+        )
+        (
+          name "TypeScript"
+          count 11
+        )
+        (
+          name "Python"
+          count 3
+        )
+        (
+          name "Go"
+          count 1
+        )
+      )
+    )
+    (
+      login "linksplatform"
+      name "LinksPlatform"
+      description "A cross-platform modular framework for automation of automation. Кроссплатформенный модульный фреймворк для автоматизации автоматизации."
+      url "https://github.com/linksplatform"
+      createdAt "2015-10-14T01:12:20Z"
+      repositories 76
+      stars 154
+      languages (
+        (
+          name "C#"
+          count 37
+        )
+        (
+          name "Rust"
+          count 12
+        )
+        (
+          name "Python"
+          count 5
+        )
+        (
+          name "C"
+          count 4
+        )
+        (
+          name "C++"
+          count 4
+        )
+      )
+    )
+    (
+      login "link-assistant"
+      name "link-assistant"
+      description null
+      url "https://github.com/link-assistant"
+      createdAt "2025-11-21T09:35:14Z"
+      repositories 29
+      stars 115
+      languages (
+        (
+          name "JavaScript"
+          count 20
+        )
+        (
+          name "Rust"
+          count 4
+        )
+        (
+          name "TypeScript"
+          count 2
+        )
+        (
+          name "HTML"
+          count 1
+        )
+      )
+    )
+    (
+      login "deep-assistant"
+      name "deep-assistant"
+      description null
+      url "https://github.com/deep-assistant"
+      createdAt "2025-02-10T05:19:44Z"
+      repositories 6
+      stars 32
+      languages (
+        (
+          name "JavaScript"
+          count 1
+        )
+        (
+          name "Python"
+          count 1
+        )
+        (
+          name "Shell"
+          count 1
+        )
+        (
+          name "TypeScript"
+          count 1
+        )
+      )
+    )
+    (
+      login "styleschool"
+      name "Высшая Школа Стилистики Дизайна и Технологий"
+      description null
+      url "https://github.com/styleschool"
+      createdAt "2018-05-29T20:15:59Z"
+      repositories 6
+      stars 4
+      languages (
+        (
+          name "TypeScript"
+          count 3
+        )
+        (
+          name "JavaScript"
+          count 2
+        )
+        (
+          name "PHP"
+          count 1
+        )
+      )
+    )
+    (
+      login "correlation-center"
+      name "Correlation Center"
+      description null
+      url "https://github.com/correlation-center"
+      createdAt "2025-08-23T07:13:01Z"
+      repositories 2
+      stars 2
+      languages (
+        (
+          name "JavaScript"
+          count 2
+        )
+      )
+    )
+    (
+      login "OSWS"
+      name "OSWS"
+      description "Open Source Web Standards"
+      url "https://github.com/OSWS"
+      createdAt "2014-11-17T09:22:21Z"
+      repositories 2
+      stars 3
+      languages (
+        (
+          name "JavaScript"
+          count 2
+        )
+      )
+    )
+  )
+  projects (
+    (
+      name "hive-mind"
+      fullName "link-assistant/hive-mind"
+      owner "link-assistant"
+      description "The AI that controls AIs to do the automation of automation."
+      language "JavaScript"
+      stars 92
+      forks 16
+      url "https://github.com/link-assistant/hive-mind"
+      createdYear 2025
+      topics ()
+      fields (
+        "associative"
+        "ai"
+        "mlops"
+        "devops"
+      )
+    )
+    (
+      name "twittermatrix"
+      fullName "konard/twittermatrix"
+      owner "konard"
+      description """Twitter real-time data visualized as Matrix's "digital rain"/"green rain"/"green screen""""
+      language "JavaScript"
+      stars 81
+      forks 42
+      url "https://github.com/konard/twittermatrix"
+      createdYear 2016
+      topics ()
+      fields (
+        "data"
+        "art"
+      )
+    )
+    (
+      name "LinksPlatform"
+      fullName "konard/LinksPlatform"
+      owner "konard"
+      description "Holistic system for storage and transformation of information based on associative model of data. Целостная система для хранения и обработки информации, основанная на ассоциативной модели данных."
+      language "C#"
+      stars 62
+      forks 9
+      url "https://github.com/konard/LinksPlatform"
+      createdYear 2012
+      topics (
+        "associative-data-model"
+        "associative-model"
+        "c-sharp"
+        "storage"
+        "transformations"
+        "links"
+        "doublets"
+        "triplets"
+        "doublet"
+        "triplet"
+        "link"
+        "associative-memory"
+        "memory"
+        "automation-of-automation"
+        "database"
+        "associative-model-of-data"
+      )
+      fields (
+        "associative"
+        "data"
+        "devops"
+        "systems"
+        "productivity"
+      )
+    )
+    (
+      name "Bot"
+      fullName "linksplatform/Bot"
+      owner "linksplatform"
+      description "VK bot, GitHub bot, Discord bot, Trader bot"
+      language "C#"
+      stars 29
+      forks 28
+      url "https://github.com/linksplatform/Bot"
+      createdYear 2020
+      topics (
+        "bot"
+        "vk"
+        "python"
+        "csharp"
+      )
+      fields (
+        "associative"
+        "bots"
+        "finance"
+      )
+    )
+    (
+      name "GPTutor"
+      fullName "deep-assistant/GPTutor"
+      owner "deep-assistant"
+      description "VK-mini-apps приложения GPTutor"
+      language "TypeScript"
+      stars 25
+      forks 4
+      url "https://github.com/deep-assistant/GPTutor"
+      createdYear 2023
+      topics (
+        "vk"
+        "chatgpt"
+        "gpt"
+        "vk-mini-apps"
+        "react"
+        "signals"
+        "dignals"
+        "vk-bridge"
+        "nude"
+        "nude-detection"
+        "sd"
+        "stable-diffusion"
+      )
+      fields (
+        "ai"
+        "web"
+        "backend"
+        "bots"
+        "education"
+      )
+    )
+    (
+      name "ASP.NET-Core-WebSocket-Example"
+      fullName "konard/ASP.NET-Core-WebSocket-Example"
+      owner "konard"
+      description "ASP.NET Core WebSocket example as echo server (C#) and client (JS)"
+      language "C#"
+      stars 24
+      forks 8
+      url "https://github.com/konard/ASP.NET-Core-WebSocket-Example"
+      createdYear 2015
+      topics (
+        "dotnet-core"
+        "asp-net-core"
+        "websocket"
+        "asp"
+        "demo"
+        "example"
+        "echo-server"
+        "mit-license"
+        "html"
+        "html5"
+        "javascript"
+        "css"
+        "csharp"
+      )
+      fields (
+        "devops"
+        "web"
+        "backend"
+        "education"
+      )
+    )
+    (
+      name "dev"
+      fullName "deep-foundation/dev"
+      owner "deep-foundation"
+      description "Monorepository with gitmodules for easy development of the entire project in one place."
+      language "TypeScript"
+      stars 20
+      forks 18
+      url "https://github.com/deep-foundation/dev"
+      createdYear 2021
+      topics ()
+      fields (
+        "associative"
+      )
+    )
+    (
+      name "use-m"
+      fullName "link-foundation/use-m"
+      owner "link-foundation"
+      description "use-m: dynamically download & import any JavaScript module"
+      language "JavaScript"
+      stars 14
+      forks 1
+      url "https://github.com/link-foundation/use-m"
+      createdYear 2024
+      topics ()
+      fields (
+        "associative"
+        "data"
+        "devops"
+        "productivity"
+      )
+    )
+    (
+      name "Data.Doublets"
+      fullName "linksplatform/Data.Doublets"
+      owner "linksplatform"
+      description "LinksPlatform's Platform.Data.Doublets Class Library"
+      language "C#"
+      stars 14
+      forks 6
+      url "https://github.com/linksplatform/Data.Doublets"
+      createdYear 2019
+      topics (
+        "linksplatform"
+        "associative-model"
+      )
+      fields (
+        "associative"
+        "data"
+      )
+    )
+    (
+      name "deeplinks"
+      fullName "deep-foundation/deeplinks"
+      owner "deep-foundation"
+      description null
+      language "TypeScript"
+      stars 13
+      forks 8
+      url "https://github.com/deep-foundation/deeplinks"
+      createdYear 2021
+      topics ()
+      fields (
+        "associative"
+        "backend"
+      )
+    )
+    (
+      name "hasura"
+      fullName "deep-foundation/hasura"
+      owner "deep-foundation"
+      description null
+      language "TypeScript"
+      stars 11
+      forks 4
+      url "https://github.com/deep-foundation/hasura"
+      createdYear 2021
+      topics ()
+      fields (
+        "associative"
+        "data"
+        "backend"
+      )
+    )
+    (
+      name "sdk"
+      fullName "deep-foundation/sdk"
+      owner "deep-foundation"
+      description null
+      language "JavaScript"
+      stars 11
+      forks 10
+      url "https://github.com/deep-foundation/sdk"
+      createdYear 2023
+      topics ()
+      fields (
+        "associative"
+        "backend"
+      )
+    )
+    (
+      name "deep-memo-app"
+      fullName "deep-foundation/deep-memo-app"
+      owner "deep-foundation"
+      description null
+      language "TypeScript"
+      stars 10
+      forks 7
+      url "https://github.com/deep-foundation/deep-memo-app"
+      createdYear 2022
+      topics ()
+      fields (
+        "associative"
+        "web"
+        "productivity"
+      )
+    )
+    (
+      name "deepcase-app"
+      fullName "deep-foundation/deepcase-app"
+      owner "deep-foundation"
+      description null
+      language "TypeScript"
+      stars 10
+      forks 6
+      url "https://github.com/deep-foundation/deepcase-app"
+      createdYear 2021
+      topics ()
+      fields (
+        "associative"
+        "web"
+      )
+    )
+    (
+      name "RegularExpressions.Transformer.CSharpToCpp"
+      fullName "linksplatform/RegularExpressions.Transformer.CSharpToCpp"
+      owner "linksplatform"
+      description "LinksPlatform's Platform.RegularExpressions.Transformer.CSharpToCpp Class Library"
+      language "Python"
+      stars 10
+      forks 1
+      url "https://github.com/linksplatform/RegularExpressions.Transformer.CSharpToCpp"
+      createdYear 2019
+      topics ()
+      fields (
+        "associative"
+        "languages"
+        "systems"
+      )
+    )
+    (
+      name "documentation"
+      fullName "deep-foundation/documentation"
+      owner "deep-foundation"
+      description "https://github.com/deep-foundation/Documentation/wiki"
+      language "TeX"
+      stars 9
+      forks 2
+      url "https://github.com/deep-foundation/documentation"
+      createdYear 2023
+      topics ()
+      fields (
+        "associative"
+        "research"
+        "education"
+      )
+    )
+    (
+      name "agent"
+      fullName "link-assistant/agent"
+      owner "link-assistant"
+      description "Thin agent based on OpenCode CLI (without TUI)"
+      language "TypeScript"
+      stars 9
+      forks 0
+      url "https://github.com/link-assistant/agent"
+      createdYear 2025
+      topics ()
+      fields (
+        "associative"
+        "ai"
+        "mlops"
+        "productivity"
+      )
+    )
+    (
+      name "formal-ai"
+      fullName "link-assistant/formal-ai"
+      owner "link-assistant"
+      description "Don't know everything, know just enough to get to know anything"
+      language "Rust"
+      stars 9
+      forks 2
+      url "https://github.com/link-assistant/formal-ai"
+      createdYear 2026
+      topics ()
+      fields (
+        "associative"
+        "ai"
+        "ml"
+        "research"
+      )
+    )
+    (
+      name "Data.Doublets.Gql"
+      fullName "linksplatform/Data.Doublets.Gql"
+      owner "linksplatform"
+      description null
+      language "Rust"
+      stars 9
+      forks 4
+      url "https://github.com/linksplatform/Data.Doublets.Gql"
+      createdYear 2021
+      topics ()
+      fields (
+        "associative"
+        "data"
+      )
+    )
+    (
+      name "boilerplate"
+      fullName "deep-foundation/boilerplate"
+      owner "deep-foundation"
+      description null
+      language "TypeScript"
+      stars 8
+      forks 1
+      url "https://github.com/deep-foundation/boilerplate"
+      createdYear 2020
+      topics ()
+      fields (
+        "associative"
+      )
+    )
+    (
+      name "chatgpt"
+      fullName "deep-foundation/chatgpt"
+      owner "deep-foundation"
+      description null
+      language null
+      stars 8
+      forks 1
+      url "https://github.com/deep-foundation/chatgpt"
+      createdYear 2023
+      topics ()
+      fields (
+        "associative"
+        "ai"
+        "bots"
+      )
+    )
+    (
+      name "materialized-path"
+      fullName "deep-foundation/materialized-path"
+      owner "deep-foundation"
+      description null
+      language "TypeScript"
+      stars 8
+      forks 2
+      url "https://github.com/deep-foundation/materialized-path"
+      createdYear 2021
+      topics ()
+      fields (
+        "associative"
+        "data"
+      )
+    )
+    (
+      name "npm-automation"
+      fullName "deep-foundation/npm-automation"
+      owner "deep-foundation"
+      description null
+      language "TypeScript"
+      stars 8
+      forks 1
+      url "https://github.com/deep-foundation/npm-automation"
+      createdYear 2023
+      topics ()
+      fields (
+        "associative"
+        "devops"
+      )
+    )
+    (
+      name "npm-packager"
+      fullName "deep-foundation/npm-packager"
+      owner "deep-foundation"
+      description "NPM packager package for Deep. It handles installation and publication of deep packages."
+      language "TypeScript"
+      stars 8
+      forks 1
+      url "https://github.com/deep-foundation/npm-packager"
+      createdYear 2023
+      topics (
+        "deep-package"
+      )
+      fields (
+        "associative"
+        "devops"
+      )
+    )
+    (
+      name "link-cli"
+      fullName "link-foundation/link-cli"
+      owner "link-foundation"
+      description "A CLI tool to manipulate links."
+      language "Rust"
+      stars 8
+      forks 2
+      url "https://github.com/link-foundation/link-cli"
+      createdYear 2024
+      topics ()
+      fields (
+        "associative"
+        "productivity"
+      )
+    )
+    (
+      name "telegram-bot"
+      fullName "deep-assistant/telegram-bot"
+      owner "deep-assistant"
+      description null
+      language "Python"
+      stars 7
+      forks 4
+      url "https://github.com/deep-assistant/telegram-bot"
+      createdYear 2024
+      topics ()
+      fields (
+        "ai"
+        "bots"
+      )
+    )
+    (
+      name "capacitor-network"
+      fullName "deep-foundation/capacitor-network"
+      owner "deep-foundation"
+      description null
+      language "TypeScript"
+      stars 7
+      forks 1
+      url "https://github.com/deep-foundation/capacitor-network"
+      createdYear 2023
+      topics ()
+      fields (
+        "associative"
+        "web"
+      )
+    )
+    (
+      name "capacitor-voice-recorder"
+      fullName "deep-foundation/capacitor-voice-recorder"
+      owner "deep-foundation"
+      description "capacitor-voice-recorder package integration"
+      language "TypeScript"
+      stars 7
+      forks 1
+      url "https://github.com/deep-foundation/capacitor-voice-recorder"
+      createdYear 2023
+      topics ()
+      fields (
+        "associative"
+        "web"
+        "art"
+      )
+    )
+    (
+      name "deepcase"
+      fullName "deep-foundation/deepcase"
+      owner "deep-foundation"
+      description null
+      language "TypeScript"
+      stars 7
+      forks 6
+      url "https://github.com/deep-foundation/deepcase"
+      createdYear 2023
+      topics ()
+      fields (
+        "associative"
+        "web"
+      )
+    )
+    (
+      name "firebase-push-notification"
+      fullName "deep-foundation/firebase-push-notification"
+      owner "deep-foundation"
+      description "Provides links for working with @firebase/messaging and typescript library to simplify integration with this deep package"
+      language "TypeScript"
+      stars 7
+      forks 2
+      url "https://github.com/deep-foundation/firebase-push-notification"
+      createdYear 2023
+      topics (
+        "cloud-messaging"
+        "deep"
+        "deep-package"
+        "firebase"
+        "firebase-cloud-messaging"
+        "firebase-push-notification"
+        "firebase-push-notifications"
+        "notification"
+        "push-notification"
+      )
+      fields (
+        "associative"
+        "devops"
+        "web"
+      )
+    )
+    (
+      name "payments-tinkoff-c2b-test-integration"
+      fullName "deep-foundation/payments-tinkoff-c2b-test-integration"
+      owner "deep-foundation"
+      description null
+      language "TypeScript"
+      stars 7
+      forks 1
+      url "https://github.com/deep-foundation/payments-tinkoff-c2b-test-integration"
+      createdYear 2023
+      topics ()
+      fields (
+        "associative"
+        "backend"
+        "finance"
+      )
+    )
+    (
+      name "python-docker-isolation-provider"
+      fullName "deep-foundation/python-docker-isolation-provider"
+      owner "deep-foundation"
+      description null
+      language "Python"
+      stars 7
+      forks 4
+      url "https://github.com/deep-foundation/python-docker-isolation-provider"
+      createdYear 2022
+      topics ()
+      fields (
+        "associative"
+        "devops"
+      )
+    )
+    (
+      name "react-hasura"
+      fullName "deep-foundation/react-hasura"
+      owner "deep-foundation"
+      description null
+      language "TypeScript"
+      stars 7
+      forks 2
+      url "https://github.com/deep-foundation/react-hasura"
+      createdYear 2021
+      topics ()
+      fields (
+        "associative"
+        "data"
+        "web"
+        "backend"
+      )
+    )
+    (
+      name "react-use-are-packages-installed"
+      fullName "deep-foundation/react-use-are-packages-installed"
+      owner "deep-foundation"
+      description null
+      language "TypeScript"
+      stars 7
+      forks 1
+      url "https://github.com/deep-foundation/react-use-are-packages-installed"
+      createdYear 2023
+      topics ()
+      fields (
+        "associative"
+        "devops"
+        "web"
+      )
+    )
+    (
+      name "rust-docker-isolation-provider"
+      fullName "deep-foundation/rust-docker-isolation-provider"
+      owner "deep-foundation"
+      description null
+      language "Rust"
+      stars 7
+      forks 3
+      url "https://github.com/deep-foundation/rust-docker-isolation-provider"
+      createdYear 2023
+      topics ()
+      fields (
+        "associative"
+        "devops"
+      )
+    )
+    (
+      name "store"
+      fullName "deep-foundation/store"
+      owner "deep-foundation"
+      description "useState style data layers"
+      language "TypeScript"
+      stars 7
+      forks 3
+      url "https://github.com/deep-foundation/store"
+      createdYear 2021
+      topics ()
+      fields (
+        "associative"
+        "data"
+        "web"
+      )
+    )
+    (
+      name "workflows"
+      fullName "deep-foundation/workflows"
+      owner "deep-foundation"
+      description null
+      language null
+      stars 7
+      forks 1
+      url "https://github.com/deep-foundation/workflows"
+      createdYear 2022
+      topics ()
+      fields (
+        "associative"
+        "devops"
+      )
+    )
+    (
+      name "android-lodash-fix"
+      fullName "deep-foundation/android-lodash-fix"
+      owner "deep-foundation"
+      description "fix _ symbol file and directory names for android support"
+      language "JavaScript"
+      stars 6
+      forks 1
+      url "https://github.com/deep-foundation/android-lodash-fix"
+      createdYear 2021
+      topics ()
+      fields (
+        "associative"
+        "web"
+      )
+    )
+    (
+      name "bot"
+      fullName "deep-foundation/bot"
+      owner "deep-foundation"
+      description null
+      language null
+      stars 6
+      forks 1
+      url "https://github.com/deep-foundation/bot"
+      createdYear 2021
+      topics ()
+      fields (
+        "associative"
+        "bots"
+      )
+    )
+    (
+      name "browser-extension"
+      fullName "deep-foundation/browser-extension"
+      owner "deep-foundation"
+      description null
+      language "JavaScript"
+      stars 6
+      forks 1
+      url "https://github.com/deep-foundation/browser-extension"
+      createdYear 2023
+      topics ()
+      fields (
+        "associative"
+        "web"
+      )
+    )
+    (
+      name "problem-solving"
+      fullName "konard/problem-solving"
+      owner "konard"
+      description null
+      language "JavaScript"
+      stars 6
+      forks 0
+      url "https://github.com/konard/problem-solving"
+      createdYear 2023
+      topics (
+        "automation-of-automation"
+        "problem-solving"
+      )
+      fields (
+        "devops"
+        "research"
+      )
+    )
+    (
+      name "links-notation"
+      fullName "link-foundation/links-notation"
+      owner "link-foundation"
+      description "A way to describe data using references and links."
+      language "JavaScript"
+      stars 5
+      forks 2
+      url "https://github.com/link-foundation/links-notation"
+      createdYear 2019
+      topics ()
+      fields (
+        "associative"
+        "data"
+        "languages"
+      )
+    )
+    (
+      name "meta-theory"
+      fullName "link-foundation/meta-theory"
+      owner "link-foundation"
+      description "The links meta-theory"
+      language "JavaScript"
+      stars 0
+      forks 0
+      url "https://github.com/link-foundation/meta-theory"
+      createdYear 2025
+      topics ()
+      fields (
+        "associative"
+        "research"
+      )
+    )
+  )
+  registries (
+    (
+      id "npm"
+      name "npm"
+      url "https://www.npmjs.com/~konard"
+      status "ok"
+      packages 224
+      downloads 316187
+      downloadsUnit "downloads / month"
+      top (
+        (
+          name "links-notation"
+          downloads 78703
+          url "https://www.npmjs.com/package/links-notation"
+        )
+        (
+          name "command-stream"
+          downloads 33876
+          url "https://www.npmjs.com/package/command-stream"
+        )
+        (
+          name "lino-objects-codec"
+          downloads 24094
+          url "https://www.npmjs.com/package/lino-objects-codec"
+        )
+        (
+          name "test-anywhere"
+          downloads 21656
+          url "https://www.npmjs.com/package/test-anywhere"
+        )
+        (
+          name "lino-arguments"
+          downloads 21430
+          url "https://www.npmjs.com/package/lino-arguments"
+        )
+        (
+          name "lino-env"
+          downloads 20136
+          url "https://www.npmjs.com/package/lino-env"
+        )
+      )
+    )
+    (
+      id "crates"
+      name "crates.io"
+      url "https://crates.io/users/konard"
+      status "ok"
+      packages 36
+      downloads 637350
+      downloadsUnit "downloads total"
+      top (
+        (
+          name "doublets"
+          downloads 78517
+          url "https://crates.io/crates/doublets"
+        )
+        (
+          name "links-notation"
+          downloads 62569
+          url "https://crates.io/crates/links-notation"
+        )
+        (
+          name "platform-mem"
+          downloads 51249
+          url "https://crates.io/crates/platform-mem"
+        )
+        (
+          name "platform-num"
+          downloads 46081
+          url "https://crates.io/crates/platform-num"
+        )
+        (
+          name "platform-data"
+          downloads 45006
+          url "https://crates.io/crates/platform-data"
+        )
+        (
+          name "lino-arguments"
+          downloads 44761
+          url "https://crates.io/crates/lino-arguments"
+        )
+      )
+    )
+    (
+      id "nuget"
+      name "NuGet"
+      url "https://www.nuget.org/profiles/konard"
+      status "ok"
+      packages 62
+      downloads 2020822
+      downloadsUnit "downloads total"
+      top (
+        (
+          name "Platform.Exceptions"
+          downloads 139038
+          url "https://www.nuget.org/packages/Platform.Exceptions"
+        )
+        (
+          name "Platform.Interfaces"
+          downloads 136650
+          url "https://www.nuget.org/packages/Platform.Interfaces"
+        )
+        (
+          name "Platform.Ranges"
+          downloads 135056
+          url "https://www.nuget.org/packages/Platform.Ranges"
+        )
+        (
+          name "clink"
+          downloads 128819
+          url "https://www.nuget.org/packages/clink"
+        )
+        (
+          name "Platform.Collections"
+          downloads 126724
+          url "https://www.nuget.org/packages/Platform.Collections"
+        )
+        (
+          name "Platform.Disposables"
+          downloads 119294
+          url "https://www.nuget.org/packages/Platform.Disposables"
+        )
+      )
+    )
+    (
+      id "pypi"
+      name "PyPI"
+      url "https://pypi.org/user/konard/"
+      status "ok"
+      packages 5
+      downloads 1046
+      downloadsUnit "downloads / month"
+      top (
+        (
+          name "links-notation"
+          downloads 944
+          url "https://pypi.org/project/links-notation/"
+        )
+        (
+          name "retranslator"
+          downloads 38
+          url "https://pypi.org/project/retranslator/"
+        )
+        (
+          name "cs2cpp"
+          downloads 26
+          url "https://pypi.org/project/cs2cpp/"
+        )
+        (
+          name "deepclient"
+          downloads 25
+          url "https://pypi.org/project/deepclient/"
+        )
+        (
+          name "py2nim"
+          downloads 13
+          url "https://pypi.org/project/py2nim/"
+        )
+      )
+    )
+    (
+      id "dockerhub"
+      name "Docker Hub"
+      url "https://hub.docker.com/u/konard"
+      status "ok"
+      packages 63
+      downloads 309331
+      downloadsUnit "pulls total"
+      top (
+        (
+          name "konard/hive-mind"
+          downloads 56099
+          url "https://hub.docker.com/r/konard/hive-mind"
+        )
+        (
+          name "konard/hive-mind-dind"
+          downloads 39312
+          url "https://hub.docker.com/r/konard/hive-mind-dind"
+        )
+        (
+          name "konard/link-assistant-router"
+          downloads 17155
+          url "https://hub.docker.com/r/konard/link-assistant-router"
+        )
+        (
+          name "konard/box"
+          downloads 8838
+          url "https://hub.docker.com/r/konard/box"
+        )
+        (
+          name "konard/sandbox"
+          downloads 8182
+          url "https://hub.docker.com/r/konard/sandbox"
+        )
+        (
+          name "konard/box-dind"
+          downloads 7711
+          url "https://hub.docker.com/r/konard/box-dind"
+        )
+      )
+    )
+    (
+      id "github-packages"
+      name "GitHub Packages"
+      url "https://github.com/konard?tab=packages"
+      status "partial"
+      packages 82
+      downloads 20865
+      downloadsUnit "downloads total (rounded)"
+      top (
+        (
+          name "link-assistant/router"
+          downloads 6540
+          url "https://github.com/orgs/link-assistant/packages/container/package/router"
+        )
+        (
+          name "link-foundation/box"
+          downloads 1460
+          url "https://github.com/orgs/link-foundation/packages/container/package/box"
+        )
+        (
+          name "link-assistant/formal-ai"
+          downloads 1290
+          url "https://github.com/orgs/link-assistant/packages/container/package/formal-ai"
+        )
+        (
+          name "link-foundation/box-dind"
+          downloads 1030
+          url "https://github.com/orgs/link-foundation/packages/container/package/box-dind"
+        )
+        (
+          name "link-foundation/box-ruby"
+          downloads 687
+          url "https://github.com/orgs/link-foundation/packages/container/package/box-ruby"
+        )
+        (
+          name "link-foundation/box-swift"
+          downloads 576
+          url "https://github.com/orgs/link-foundation/packages/container/package/box-swift"
+        )
+      )
+    )
+    (
+      id "go"
+      name "Go modules"
+      url "https://pkg.go.dev/"
+      status "ok"
+      packages 3
+      downloads null
+      downloadsUnit null
+      top (
+        (
+          name "github.com/deep-foundation/deep-chain"
+          downloads null
+          url "https://pkg.go.dev/github.com/deep-foundation/deep-chain"
+        )
+        (
+          name "github.com/link-foundation/go-ai-driven-development-pipeline-template"
+          downloads null
+          url "https://pkg.go.dev/github.com/link-foundation/go-ai-driven-development-pipeline-template"
+        )
+        (
+          name "github.com/link-foundation/links-notation/go"
+          downloads null
+          url "https://pkg.go.dev/github.com/link-foundation/links-notation/go"
+        )
+      )
+    )
+    (
+      id "nimble"
+      name "Nimble"
+      url "https://nimble.directory/"
+      status "ok"
+      packages 2
+      downloads null
+      downloadsUnit null
+      top (
+        (
+          name "retranslator"
+          downloads null
+          url "https://nimble.directory/pkg/retranslator"
+        )
+        (
+          name "triplets"
+          downloads null
+          url "https://nimble.directory/pkg/triplets"
+        )
+      )
+    )
+  )
+  packageRegistries (
+    collectedAt "2026-10-28T15:58:41.599Z"
+    checked 33
+    empty (
+      "RubyGems"
+      "Packagist (PHP)"
+      "JSR"
+      "Visual Studio Marketplace"
+      "Open VSX"
+      "Maven Central"
+      "pub.dev (Dart/Flutter)"
+      "Hex (Elixir/Erlang)"
+      "Anaconda.org (conda)"
+      "Arch User Repository"
+      "Swift Package Index"
+      "Hackage"
+      "opam"
+      "CPAN"
+      "Clojars"
+      "LuaRocks"
+      "Lean Reservoir"
+      "Julia General"
+      "CocoaPods"
+      "Snap Store"
+      "Flathub"
+      "Chocolatey"
+      "winget"
+      "Chrome Web Store"
+    )
+    onlyOthers (
+      "Homebrew taps"
+    )
+    notChecked ()
+    blocked (
+      (
+        id "github-packages"
+        name "GitHub Packages"
+        blocker "gh token lacks read:packages scope; exact download counts and versions need `gh auth refresh -s read:packages`."
+        note "download counts are rounded by github.com and cover public packages only"
+      )
+    )
+    droppedPackages 24
+  )
+  stackOverflow (
+    url "https://stackoverflow.com/users/710069/konard"
+    reputation 3134
+    badges (
+      bronze 28
+      silver 38
+      gold 0
+    )
+    memberSince 2011
+    topTags (
+      (
+        name "c#"
+        score 75
+        answers 17
+      )
+      (
+        name "docker"
+        score 44
+        answers 2
+      )
+      (
+        name "linux"
+        score 43
+        answers 5
+      )
+      (
+        name "asp.net-core"
+        score 36
+        answers 2
+      )
+      (
+        name "javascript"
+        score 34
+        answers 11
+      )
+      (
+        name "bash"
+        score 31
+        answers 1
+      )
+      (
+        name ".net-core"
+        score 29
+        answers 7
+      )
+      (
+        name "postgresql"
+        score 28
+        answers 6
+      )
+    )
+  )
+)

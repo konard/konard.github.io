@@ -53,6 +53,8 @@ function Bars({ registry }) {
 // and Homebrew publish no counts), so each card has its own scale.
 export default function Registries({ registries, summary }) {
   const { lang, t } = useLang();
+  // Registries where only packages of other repositories are published (issue #47).
+  const onlyOthers = summary?.onlyOthers ?? [];
   return (
     <>
       <ul className="registries">
@@ -95,8 +97,8 @@ export default function Registries({ registries, summary }) {
       {summary && (
         <p className="registries__note muted">
           {t({
-            en: `${summary.checked} ${plural(summary.checked, 'en', REGISTRIES)} checked on ${summary.collectedAt.slice(0, 10)}, by account and by the manifests of every original repository; packages of forks and mirrors are not counted. Nothing published on ${summary.empty.join(', ')}.`,
-            ru: `${summary.collectedAt.slice(0, 10)} проверено ${summary.checked} ${plural(summary.checked, 'ru', REGISTRIES)} — по аккаунту и по манифестам всех собственных репозиториев; пакеты форков и зеркал не учитываются. Ничего не опубликовано в: ${summary.empty.join(', ')}.`,
+            en: `${summary.checked} ${plural(summary.checked, 'en', REGISTRIES)} checked on ${summary.collectedAt.slice(0, 10)}, by account and by the manifests of every original repository; packages of forks and mirrors are not counted. Nothing published on ${summary.empty.join(', ')}.${onlyOthers.length ? ` ${onlyOthers.join(', ')}: only packages from repositories that are not original, not counted.` : ''}`,
+            ru: `${summary.collectedAt.slice(0, 10)} проверено ${summary.checked} ${plural(summary.checked, 'ru', REGISTRIES)} — по аккаунту и по манифестам всех собственных репозиториев; пакеты форков и зеркал не учитываются. Ничего не опубликовано в: ${summary.empty.join(', ')}.${onlyOthers.length ? ` ${onlyOthers.join(', ')}: только пакеты из несобственных репозиториев, они не учитываются.` : ''}`,
           })}
           {summary.blocked.map((b) => ` ${b.name}: ${local(NOTES, b.note, lang)}.`)}
         </p>

@@ -2,6 +2,8 @@ import { Children, useEffect, useId, useLayoutEffect, useRef, useState } from 'r
 import { useSettings } from '../settings/store';
 import { createPortal } from 'react-dom';
 import { cue } from '../sound/options';
+import { ChevronDown } from 'lucide-react';
+import { iconProps } from './icons';
 
 /** Owned select-only combobox. Native-shaped onChange keeps callers simple.
  * The popup lives outside clipped glass panels; only an open menu has listeners.
@@ -172,7 +174,7 @@ export default function Select({ children, value, onChange, id, name, disabled, 
         }}
       >
         <span>{options[selected]?.label || '—'}</span>
-        <span aria-hidden="true">⌄</span>
+        <ChevronDown {...iconProps} />
       </button>
       {open &&
         createPortal(

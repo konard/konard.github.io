@@ -21,6 +21,8 @@ import { useLang } from '../i18n/prefs';
 import { plural } from '../i18n/plural';
 import { formatNumber } from '../components/format';
 import NumberInput from '../components/NumberInput';
+import { ArrowLeft, ArrowRight, Plus, X } from 'lucide-react';
+import { iconProps } from '../components/icons';
 
 const LINKS = { en: ['link', 'links'], ru: ['связь', 'связи', 'связей'] };
 // "of N links", "one of N networks": Russian needs the genitive after «из».
@@ -241,7 +243,7 @@ export function LinksTable({
                     ru: 'Ссылки на эту связь станут ссылками на 0',
                   })}
                 >
-                  ✕
+                  <X {...iconProps} />
                 </button>
               </div>
               <div className="link-card__fields">
@@ -285,13 +287,13 @@ export function LinksTable({
       </ul>
       <div className="network__actions">
         <button type="button" className="button" onClick={() => onLinks(addLink(links))}>
-          + {t({ en: 'Add a link', ru: 'Добавить связь' })}
+          <Plus {...iconProps} /> {t({ en: 'Add a link', ru: 'Добавить связь' })}
         </button>
         <button type="button" className="button" onClick={() => onStep(-1)}>
-          ← {t({ en: 'Previous network', ru: 'Предыдущая сеть' })}
+          <ArrowLeft {...iconProps} /> {t({ en: 'Previous network', ru: 'Предыдущая сеть' })}
         </button>
         <button type="button" className="button" onClick={() => onStep(1)}>
-          {t({ en: 'Next network', ru: 'Следующая сеть' })} →
+          {t({ en: 'Next network', ru: 'Следующая сеть' })} <ArrowRight {...iconProps} />
         </button>
         <button type="button" className="button" onClick={onRandom}>
           {t({ en: 'Random network', ru: 'Случайная сеть' })}

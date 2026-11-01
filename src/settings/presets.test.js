@@ -141,6 +141,13 @@ describe('a link that carries a look', () => {
     expect(lookOfHash('')).toBeNull();
     expect(lookOfHash('#settings=%7Bnot json')).toBeNull();
     expect(lookOfHash('#settings=%5B1%5D')).toBeNull();
+    expect(lookOfHash(`#settings=${encodeURIComponent('(\n  1\n  2\n)')}`)).toBeNull();
+  });
+
+  it('is written in Links Notation and still opens links shared as JSON (issue #47)', () => {
+    const link = shareLink({ ...DEFAULTS, 'skin.name': 'liquid' }, 'https://konard.github.io/settings/');
+    expect(decodeURIComponent(new URL(link).hash)).toBe('#settings=settings:\n  skin.name liquid');
+    expect(lookOfHash(`#settings=${encodeURIComponent('{"skin.name":"liquid"}')}`)).toEqual({ 'skin.name': 'liquid' });
   });
 
   it('is applied when a page opens with it, keeps the look it replaced and leaves the address clean', async () => {
@@ -176,7 +183,7 @@ describe('looks saved in this browser', () => {
     expect(withoutSaved(list, 'Mine').map((item) => item.name)).toEqual(['Other']);
   });
 
-  it('are imported from JSON copied in another browser', () => {
+  it('are imported from the looks copied in another browser', () => {
     const list = withImported(
       [{ name: 'A', look: {} }],
       [{ name: 'A', look: { 'grid.size': 96 } }, { name: 'B', look: { nope: 1 } }, { look: {} }, null],
@@ -190,7 +197,9 @@ describe('looks saved in this browser', () => {
 
   it('are remembered in localStorage and read back checked', () => {
     expect(setSaved([{ name: 'Mine', look: { 'grid.size': 96 } }])).toBe(true);
-    expect(JSON.parse(window.localStorage.getItem(SAVED_KEY))).toEqual([{ name: 'Mine', look: { 'grid.size': 96 } }]);
+    // Kept as nested Links Notation (issue #47); a list saved as JSON before still loads.
+    expect(window.localStorage.getItem(SAVED_KEY).startsWith('(')).toBe(true);
+    expect(loadSaved()).toEqual([{ name: 'Mine', look: { 'grid.size': 96 } }]);
     window.localStorage.setItem(SAVED_KEY, JSON.stringify([{ name: 'X', look: { 'grid.size': -5 } }, { name: '' }, 3]));
     expect(loadSaved()).toEqual([{ name: 'X', look: { 'grid.size': 32 } }]);
     window.localStorage.setItem(SAVED_KEY, '{broken');

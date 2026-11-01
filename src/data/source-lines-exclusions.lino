@@ -1,0 +1,12 @@
+excluded:
+  PavelChurkin/digital_twin_Earth digital_twin_Earth
+
+digital_twin_Earth:
+  sha 9ccd8b5bc18567fe7dbd442a81cdfd88d531fde5
+  lines 2235588
+  reason digital_twin_Earth_reason
+  requestedIn 'https://github.com/konard/konard.github.io/issues/47#issuecomment-6557458340'
+
+digital_twin_Earth_reason:
+  en 'a vendored copy of the CesiumJS library (libs/), which git attributes to the commit that added it'
+  ru 'вложенная копия библиотеки CesiumJS (libs/), которую git относит к добавившему её коммиту'

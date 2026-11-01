@@ -1,6 +1,6 @@
 import { act, fireEvent, render, screen, within } from '@testing-library/react';
 import App from './App';
-import github from './data/github.json';
+import github from './data/github.lino';
 import { setLang } from './i18n/prefs';
 
 describe('App', () => {

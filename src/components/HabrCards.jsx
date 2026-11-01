@@ -4,12 +4,15 @@ import { useLang } from '../i18n/prefs';
 import { plural } from '../i18n/plural';
 import { formatCompact, formatNumber } from './format';
 import { DataMark } from './DataSources';
+import { HABR_NOTE_ID, habrAuthorship } from '../data/habrAuthorship';
+import { ArrowBigUp, Bookmark, Eye, MessageSquare } from 'lucide-react';
+import { iconProps } from './icons';
 
 const STATS = [
-  ['views', { en: 'views', ru: 'просмотры' }, '👁'],
-  ['score', { en: 'karma', ru: 'карма' }, '▲'],
-  ['bookmarks', { en: 'bookmarks', ru: 'закладки' }, '🔖'],
-  ['comments', { en: 'comments', ru: 'комментарии' }, '💬'],
+  ['views', { en: 'views', ru: 'просмотры' }, Eye],
+  ['score', { en: 'karma', ru: 'карма' }, ArrowBigUp],
+  ['bookmarks', { en: 'bookmarks', ru: 'закладки' }, Bookmark],
+  ['comments', { en: 'comments', ru: 'комментарии' }, MessageSquare],
 ];
 const SUBSCRIBERS = { en: ['subscriber', 'subscribers'], ru: ['подписчик', 'подписчика', 'подписчиков'] };
 const ARTICLES = { en: ['article', 'articles'], ru: ['статья', 'статьи', 'статей'] };
@@ -47,6 +50,7 @@ export default function HabrCards({ snapshot, live = true, fetchImpl }) {
     };
   }, [snapshot, doFetch]);
 
+  const authors = habrAuthorship(habr);
   const totals = Object.fromEntries(
     STATS.map(([key]) => [key, habr.articles.reduce((sum, a) => sum + a.statistics[key], 0)]),
   );
@@ -68,7 +72,15 @@ export default function HabrCards({ snapshot, live = true, fetchImpl }) {
           {t({ en: 'karma', ru: 'карма' })} <strong>{formatNumber(habr.user.karma, lang)}</strong>
         </span>
         <span>
-          {count(habr.articles.length, ARTICLES)} · {count(totals.views, VIEWS)} · {count(totals.bookmarks, BOOKMARKS)}
+          {count(habr.articles.length, ARTICLES)}{' '}
+          {t({
+            en: `(${formatNumber(authors.mine, lang)} by me, ${formatNumber(authors.team, lang)} by the team)`,
+            ru: `(${formatNumber(authors.mine, lang)} моих, ${formatNumber(authors.team, lang)} команды)`,
+          })}{' '}
+          <a className="data-mark" href={`#${HABR_NOTE_ID}`}>
+            (**)
+          </a>{' '}
+          · {count(totals.views, VIEWS)} · {count(totals.bookmarks, BOOKMARKS)}
         </span>
         <span className={`habr__status habr__status--${status}`} aria-live="polite">
           {status === 'live' && t({ en: 'live numbers from the Habr API', ru: 'актуальные данные из API Хабра' })}
@@ -86,40 +98,55 @@ export default function HabrCards({ snapshot, live = true, fetchImpl }) {
           <DataMark />
         </span>
       </div>
+      <p className="habr__note muted" id={HABR_NOTE_ID}>
+        {t({
+          en: `(**) ${formatNumber(authors.mine, lang)} of the ${count(habr.articles.length, ARTICLES)} are written by me. The other ${formatNumber(authors.team, lang)} are written by members of the Deep.Foundation team; most of them were crafted with my direct participation, in consultation with me or under my direction. Views, bookmarks and other figures here count all ${formatNumber(habr.articles.length, lang)}.`,
+          ru: `(**) Мной написано: ${count(authors.mine, ARTICLES)} из ${formatNumber(habr.articles.length, lang)}. Остальные ${formatNumber(authors.team, lang)} написаны участниками команды Deep.Foundation; большинство из них подготовлено при моём непосредственном участии, в консультации со мной или под моим руководством. Просмотры, закладки и другие показатели здесь учитывают все ${formatNumber(habr.articles.length, lang)}.`,
+        })}
+      </p>
       <ul className="habr__cards">
         {habr.articles.map((a, i) => (
+          // The card floats in a plain wrapper: an animated element is restyled on every frame, and
+          // restyling the framed card (its outline, corners and surface) took most of the frame (issue #47).
           <li
             key={a.id}
-            className="habr-card"
+            className="habr__float"
             style={{ '--float-delay': `${-(i % 5) * 1.3}s`, '--float-time': `${7 + (i % 4)}s` }}
           >
-            <a href={a.url} target="_blank" rel="noopener noreferrer" className="habr-card__link" lang={a.lang}>
-              {a.image && <img src={a.image} alt="" loading="lazy" className="habr-card__image" />}
-              <span className="habr-card__meta">
-                {date(a.publishedAt, lang)} · {a.lang.toUpperCase()}
-                {a.company ? ' · Deep.Foundation' : ''}
-              </span>
-              <h3 className="habr-card__title">{a.title}</h3>
-              <span className="habr-card__hubs">{a.hubs.slice(0, 3).join(' · ')}</span>
-            </a>
-            <dl className="habr-card__stats">
-              {STATS.map(([key, label, icon]) => (
-                <div
-                  key={key}
-                  title={t({
-                    en: `${formatNumber(a.statistics[key], lang)} ${label.en}`,
-                    ru: `${label.ru}: ${formatNumber(a.statistics[key], lang)}`,
-                  })}
-                >
-                  <dt>
-                    <span aria-hidden="true">{icon}</span> {t(label)}
-                  </dt>
-                  <dd>
-                    {formatCompact(a.statistics[key], lang)} <DataMark />
-                  </dd>
-                </div>
-              ))}
-            </dl>
+            <div className="habr-card">
+              <a href={a.url} target="_blank" rel="noopener noreferrer" className="habr-card__link" lang={a.lang}>
+                {a.image && <img src={a.image} alt="" loading="lazy" className="habr-card__image" />}
+                <span className="habr-card__meta">
+                  {date(a.publishedAt, lang)} · {a.lang.toUpperCase()}
+                  {a.company ? ' · Deep.Foundation' : ''}
+                </span>
+                <span className="habr-card__author">
+                  {authors.own(a)
+                    ? t({ en: 'by me', ru: 'автор — я' })
+                    : `${t({ en: 'by', ru: 'автор —' })} @${a.author?.alias ?? '?'}`}
+                </span>
+                <h3 className="habr-card__title">{a.title}</h3>
+                <span className="habr-card__hubs">{a.hubs.slice(0, 3).join(' · ')}</span>
+              </a>
+              <dl className="habr-card__stats">
+                {STATS.map(([key, label, Icon]) => (
+                  <div
+                    key={key}
+                    title={t({
+                      en: `${formatNumber(a.statistics[key], lang)} ${label.en}`,
+                      ru: `${label.ru}: ${formatNumber(a.statistics[key], lang)}`,
+                    })}
+                  >
+                    <dt>
+                      <Icon {...iconProps} /> {t(label)}
+                    </dt>
+                    <dd>
+                      {formatCompact(a.statistics[key], lang)} <DataMark />
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
           </li>
         ))}
       </ul>

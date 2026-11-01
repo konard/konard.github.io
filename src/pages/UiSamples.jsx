@@ -136,6 +136,7 @@ export default function UiSamples() {
               {t({ en: 'Checkbox', ru: 'Флажок' })}
             </label>
             <input
+              id="ui-samples-slider"
               type="range"
               min="0"
               max="100"

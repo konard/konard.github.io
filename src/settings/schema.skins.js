@@ -1,7 +1,7 @@
 // Sections of the skins (issues #13 and #15): the choice of a skin and the
 // options of glass, liquid glass and the futuristic HUD; see schema.js.
 import { MATERIAL_FIELDS } from './schema.materials.js';
-import { CORNERS } from '../skins.frames.js';
+import { CONTROL_TYPES, CORNERS } from '../skins.frames.js';
 import { option, range, select, toggle } from './fields.js';
 
 /** Futuristic palettes of konard/immortality: [id, English name, Russian name, neon colour]. */
@@ -71,16 +71,222 @@ const SIDE_NAMES = [
   ['left', 'Left edge', 'Левый край'],
 ];
 
-/** Shape, line and size of one corner of the custom frame: `corner.tlShape` and so on. */
-const corner = (c) => {
-  const [shape, line, size] = CORNER_LOOKS[c];
+/**
+ * The levels of the frame (issue #47: "each type of INTERFACE CONTROLS must
+ * have separate CORNERS OF THE FRAME, so on each level I should be able to
+ * configure it fully"): outer panels, inner blocks and every type of control
+ * (src/skins.frames.js). Each one is a tab of the corners section.
+ */
+export const LEVEL_NAMES = {
+  panel: { en: 'Outer panels', ru: 'Внешние панели' },
+  block: { en: 'Inner blocks', ru: 'Внутренние блоки' },
+  button: { en: 'Buttons', ru: 'Кнопки' },
+  field: { en: 'Fields', ru: 'Поля' },
+  tab: { en: 'Tabs', ru: 'Вкладки' },
+  chip: { en: 'Chips and tags', ru: 'Метки и теги' },
+  menu: { en: 'Menus', ru: 'Меню' },
+  table: { en: 'Tables', ru: 'Таблицы' },
+};
+export const LEVEL_IDS = ['panel', 'block', ...Object.keys(CONTROL_TYPES)];
+export const CONTROL_LEVELS = Object.keys(CONTROL_TYPES);
+
+/** The key of a setting of a corner: `corner.tlShape` for outer panels, `corner.buttonTlShape` for a level. */
+export const cornerKey = (level, c, name) =>
+  level === 'panel' ? `corner.${c}${name}` : `corner.${level}${c[0].toUpperCase()}${c[1]}${name}`;
+
+/** The key of a setting of a whole level: `corner.edges` for outer panels, `corner.buttonEdges` for a level. */
+export const levelKey = (level, name) =>
+  level === 'panel' ? `corner.${name[0].toLowerCase()}${name.slice(1)}` : `corner.${level}${name}`;
+
+/** Whether a level draws corners of its own (outer panels always do). */
+export const ownsCorners = (level, s) =>
+  level === 'panel' || (level === 'block' ? s['corner.blocks'] === 'own' : s[levelKey(level, 'Corners')] === 'own');
+
+/**
+ * The look of the outer panels by default (the corners of DEFAULT_LOOK): a level
+ * given its own corners starts from it.
+ */
+const LEVEL_LOOKS = {
+  tl: ['cut', 'bracket'],
+  tr: ['square', 'accent'],
+  br: ['cut', 'accent'],
+  bl: ['square', 'bracket'],
+};
+
+/** A size where −1 is the size of the outer panels in the scale of the level. */
+const AUTO_SIZE = {
+  unit: 'px',
+  hint: {
+    en: '−1 is the size of the outer panels in the scale of this level.',
+    ru: '−1 — размер внешних панелей в масштабе этого уровня.',
+  },
+};
+
+/** Shape, line, size and width of one corner of a level: `corner.tlShape`, `corner.buttonTlShape` and so on. */
+const corner = (level) => (c) => {
+  const [shape, line, size] = level === 'panel' ? CORNER_LOOKS[c] : [...LEVEL_LOOKS[c], -1];
+  const at = { tab: c, level, corner: c, when: (s) => ownsCorners(level, s) };
   return [
-    select(`corner.${c}Shape`, shape, CORNER_SHAPES, { en: 'Shape', ru: 'Форма' }, { tab: c, tiles: 'shape' }),
-    select(`corner.${c}Line`, line, CORNER_LINES, { en: 'Line', ru: 'Линия' }, { tab: c, tiles: 'line', corner: c }),
-    range(`corner.${c}Size`, size, 0, 128, 1, { en: 'Size', ru: 'Размер' }, { tab: c, unit: 'px' }),
-    range(`corner.${c}Width`, -1, -1, 12, 0.5, { en: 'Line width', ru: 'Толщина линии' }, { tab: c, ...AUTO_WIDTH }),
+    select(cornerKey(level, c, 'Shape'), shape, CORNER_SHAPES, { en: 'Shape', ru: 'Форма' }, { ...at, tiles: 'shape' }),
+    select(cornerKey(level, c, 'Line'), line, CORNER_LINES, { en: 'Line', ru: 'Линия' }, { ...at, tiles: 'line' }),
+    level === 'panel'
+      ? range(cornerKey(level, c, 'Size'), size, 0, 128, 1, { en: 'Size', ru: 'Размер' }, { ...at, unit: 'px' })
+      : range(cornerKey(level, c, 'Size'), size, -1, 128, 1, { en: 'Size', ru: 'Размер' }, { ...at, ...AUTO_SIZE }),
+    range(
+      cornerKey(level, c, 'Width'),
+      -1,
+      -1,
+      12,
+      0.5,
+      { en: 'Line width', ru: 'Толщина линии' },
+      { ...at, ...AUTO_WIDTH },
+    ),
   ];
 };
+
+const SAME = (en, ru) => option('same', en, ru);
+
+/**
+ * The edges of a level with corners of its own: their colour, style and the
+ * width of every side, each of them the one of the outer panels until it is set.
+ */
+const levelEdges = (level) => {
+  const at = { level, when: (s) => ownsCorners(level, s) };
+  const follow =
+    level === 'block'
+      ? SAME('As outer panels', 'Как у внешних панелей')
+      : SAME('The border style of the controls', 'Стиль рамки элементов');
+  return [
+    select(
+      levelKey(level, 'Edges'),
+      'same',
+      [
+        SAME('As outer panels', 'Как у внешних панелей'),
+        option('none', 'None', 'Нет'),
+        option('faint', 'Faint line', 'Тонкая линия'),
+        option('line', 'Bright line', 'Яркая линия'),
+      ],
+      { en: 'Edges between the corners', ru: 'Края между углами' },
+      at,
+    ),
+    select(
+      levelKey(level, 'EdgeStyle'),
+      'same',
+      [
+        follow,
+        option('solid', 'Solid', 'Сплошные'),
+        option('dashed', 'Dashed', 'Штриховые'),
+        option('dotted', 'Dotted', 'Пунктирные'),
+        option('double', 'Double', 'Двойные'),
+      ],
+      { en: 'Style of the edges', ru: 'Стиль краёв' },
+      at,
+    ),
+    ...SIDE_NAMES.map(([side, en, ru]) =>
+      range(
+        levelKey(level, `${side[0].toUpperCase()}${side.slice(1)}Width`),
+        -1,
+        -1,
+        12,
+        0.5,
+        { en: `${en}: width`, ru: `${ru}: толщина` },
+        {
+          ...at,
+          unit: 'px',
+          hint: { en: '−1 is the width of the outer panels.', ru: '−1 — толщина внешних панелей.' },
+        },
+      ),
+    ),
+  ];
+};
+
+/**
+ * Whether the elements of a level draw the custom frame: outer panels always,
+ * inner blocks unless they are a plain line, controls unless they have a border.
+ */
+export const drawsFrame = (level, s) =>
+  level === 'panel' ||
+  (level === 'block'
+    ? s['corner.blocks'] !== 'line'
+    : s[levelKey(level, 'Corners')] === 'own' ||
+      (s[levelKey(level, 'Corners')] === 'same' && s['corner.controls'] === 'frame'));
+
+/** The limits of the size of an element of a level: [key name, English, Russian]. */
+export const FIT_LIMITS = [
+  ['FitMinWidth', 'Minimum width', 'Минимальная ширина'],
+  ['FitMaxWidth', 'Maximum width', 'Максимальная ширина'],
+  ['FitMinHeight', 'Minimum height', 'Минимальная высота'],
+  ['FitMaxHeight', 'Maximum height', 'Максимальная высота'],
+];
+
+/** Whether a level has a limit of the size of its elements. */
+export const hasFitLimits = (level, s) => FIT_LIMITS.some(([name]) => s[levelKey(level, name)] > 0);
+
+/**
+ * Corners by the size of the element (issue #47: "configure CORNERS OF THE
+ * FRAME based on conditions like minimum/maximum height/width of the UI
+ * element"): the limits of a level, and the size of the corners of its elements
+ * outside them. The limits are read by src/frameFit.js only, so they are not
+ * put on <html>; the scale is a variable of src/skins.frames.fit.css.
+ */
+const fitFields = (level) => {
+  const at = { level, when: (s) => drawsFrame(level, s) };
+  return [
+    ...FIT_LIMITS.map(([name, en, ru], i) =>
+      range(
+        levelKey(level, name),
+        0,
+        0,
+        1600,
+        1,
+        { en: `Full corners: ${en.toLowerCase()}`, ru: `Полные углы: ${ru.toLowerCase()}` },
+        {
+          ...at,
+          css: false,
+          unit: 'px',
+          ...(i === 0 && {
+            hint: {
+              en: 'An element of this level smaller than a minimum or larger than a maximum draws the corners below; 0 is no limit.',
+              ru: 'Элемент этого уровня меньше минимума или больше максимума рисует углы, заданные ниже; 0 — без ограничения.',
+            },
+          }),
+        },
+      ),
+    ),
+    range(
+      levelKey(level, 'FitScale'),
+      0.5,
+      0,
+      1,
+      0.05,
+      { en: 'Corners outside the limits', ru: 'Углы вне ограничений' },
+      {
+        level,
+        unit: '×',
+        when: (s) => drawsFrame(level, s) && hasFitLimits(level, s),
+        hint: {
+          en: 'The size of the corners of an element outside the limits; 0 draws no corners, a plain rectangle.',
+          ru: 'Размер углов элемента вне ограничений; 0 — без углов, простой прямоугольник.',
+        },
+      },
+    ),
+  ];
+};
+
+/** How a type of control is drawn: like all controls, with its own corners, or with its own border. */
+const controlMode = (level) =>
+  select(
+    levelKey(level, 'Corners'),
+    // Tables kept their border before issue #47.
+    level === 'table' ? 'border' : 'same',
+    [
+      SAME('As all controls', 'Как у всех элементов'),
+      option('own', 'Corners of their own', 'Свои углы'),
+      option('border', 'Their own border', 'Своя рамка'),
+    ],
+    { en: `${LEVEL_NAMES[level].en}: frame`, ru: `${LEVEL_NAMES[level].ru}: рамка` },
+    { level },
+  );
 
 export const SKIN_SECTIONS = [
   {
@@ -366,10 +572,12 @@ export const SKIN_SECTIONS = [
     column: 2,
     title: { en: 'Corners of the frame', ru: 'Углы рамки' },
     lead: {
-      en: 'Every corner of the panels has its own shape, size and line; the tiles show how the corner will look. The bracket length and the line width are the ones of the futuristic skin.',
-      ru: 'У каждого угла панелей свои форма, размер и линия; плитки показывают, как будет выглядеть угол. Длина уголков и толщина линий берутся из футуристичного оформления.',
+      en: 'Every corner of the panels has its own shape, size and line; the tiles show how the corner will look. The bracket length and the line width are the ones of the futuristic skin. Inner blocks and every type of control draw the corners of the outer panels in their scale, or corners of their own.',
+      ru: 'У каждого угла панелей свои форма, размер и линия; плитки показывают, как будет выглядеть угол. Длина уголков и толщина линий берутся из футуристичного оформления. Внутренние блоки и каждый тип элементов рисуют углы внешних панелей в своём масштабе или свои углы.',
     },
     when: (s) => s['skin.name'] === 'futuristic' && s['future.frame'] === 'custom',
+    // Levels (issue #47), and the corners of the chosen level.
+    levels: LEVEL_IDS.map((id) => ({ id, label: LEVEL_NAMES[id] })),
     tabs: CORNERS.map((c) => ({ id: c, label: CORNER_NAMES[c] })),
     fields: [
       select(
@@ -381,6 +589,7 @@ export const SKIN_SECTIONS = [
           option('line', 'Bright line', 'Яркая линия'),
         ],
         { en: 'Edges between the corners', ru: 'Края между углами' },
+        { level: 'panel' },
       ),
       select(
         'corner.edgeStyle',
@@ -392,14 +601,26 @@ export const SKIN_SECTIONS = [
         ],
         { en: 'Style of the edges', ru: 'Стиль краёв' },
         {
+          level: 'panel',
           hint: {
-            en: 'Buttons and fields follow the border style of the controls.',
-            ru: 'Кнопки и поля следуют стилю рамки элементов.',
+            en: 'Controls follow the border style of the controls, or the style of their own corners.',
+            ru: 'Элементы следуют стилю рамки элементов или стилю своих углов.',
           },
         },
       ),
       ...SIDE_NAMES.map(([side, en, ru]) =>
-        range(`corner.${side}Width`, -1, -1, 12, 0.5, { en: `${en}: width`, ru: `${ru}: толщина` }, AUTO_WIDTH),
+        range(
+          `corner.${side}Width`,
+          -1,
+          -1,
+          12,
+          0.5,
+          { en: `${en}: width`, ru: `${ru}: толщина` },
+          {
+            level: 'panel',
+            ...AUTO_WIDTH,
+          },
+        ),
       ),
       select(
         'corner.layer',
@@ -413,15 +634,19 @@ export const SKIN_SECTIONS = [
           option('below', 'Below the content', 'Под содержимым'),
         ],
         { en: 'Corners and edges', ru: 'Углы и края' },
+        { level: 'panel' },
       ),
+      ...CORNERS.flatMap(corner('panel')),
       select(
         'corner.blocks',
         'frame',
         [
-          option('frame', 'The same frame, smaller', 'Та же рамка, меньше'),
+          option('frame', 'The corners of the outer panels, smaller', 'Углы внешних панелей, меньше'),
+          option('own', 'Corners of their own', 'Свои углы'),
           option('line', 'A plain line', 'Простая линия'),
         ],
         { en: 'Inner blocks', ru: 'Внутренние блоки' },
+        { level: 'block' },
       ),
       range(
         'corner.blockScale',
@@ -430,16 +655,28 @@ export const SKIN_SECTIONS = [
         1,
         0.05,
         { en: 'Corners of inner blocks', ru: 'Углы внутренних блоков' },
-        { unit: '×', when: (s) => s['corner.blocks'] === 'frame' },
+        {
+          level: 'block',
+          unit: '×',
+          when: (s) => s['corner.blocks'] !== 'line',
+          hint: {
+            en: 'The size of the corners of the outer panels in inner blocks.',
+            ru: 'Размер углов внешних панелей во внутренних блоках.',
+          },
+        },
       ),
+      ...levelEdges('block'),
+      ...CORNERS.flatMap(corner('block')),
+      ...CONTROL_LEVELS.map(controlMode),
       select(
         'corner.controls',
         'frame',
         [
-          option('frame', 'The same frame, smaller', 'Та же рамка, меньше'),
+          option('frame', 'The corners of the outer panels, smaller', 'Углы внешних панелей, меньше'),
           option('border', 'Their own border', 'Своя рамка'),
         ],
-        { en: 'Buttons and fields', ru: 'Кнопки и поля' },
+        { en: 'All controls', ru: 'Все элементы' },
+        { level: CONTROL_LEVELS, when: (s, level) => s[levelKey(level, 'Corners')] === 'same' },
       ),
       range(
         'corner.controlScale',
@@ -447,10 +684,21 @@ export const SKIN_SECTIONS = [
         0.1,
         1,
         0.05,
-        { en: 'Corners of buttons and fields', ru: 'Углы кнопок и полей' },
-        { unit: '×', when: (s) => s['corner.controls'] === 'frame' },
+        { en: 'Corners of controls', ru: 'Углы элементов' },
+        {
+          level: CONTROL_LEVELS,
+          unit: '×',
+          when: (s, level) =>
+            s[levelKey(level, 'Corners')] === 'own' ||
+            (s[levelKey(level, 'Corners')] === 'same' && s['corner.controls'] === 'frame'),
+          hint: {
+            en: 'The size of the corners of the outer panels in every control.',
+            ru: 'Размер углов внешних панелей во всех элементах.',
+          },
+        },
       ),
-      ...CORNERS.flatMap(corner),
+      ...CONTROL_LEVELS.flatMap((level) => [...levelEdges(level), ...CORNERS.flatMap(corner(level))]),
+      ...LEVEL_IDS.flatMap(fitFields),
     ],
   },
 ];

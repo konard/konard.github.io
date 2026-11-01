@@ -89,7 +89,7 @@ try {
   assert.deepEqual(await moveCounts(), [1, 1, 1]);
   // Exercise the real SVG download rather than just inspecting the preview.
   const downloaded = page.waitForEvent('download');
-  await page.getByRole('button', { name: '⤓ SVG', exact: true }).click();
+  await page.getByRole('button', { name: 'SVG', exact: true }).click();
   const download = await downloaded;
   const path = await download.path();
   const exported = await readFile(path, 'utf8');

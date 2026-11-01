@@ -1,6 +1,7 @@
 import { useLang } from '../i18n/prefs';
 import { formatNumber } from './format';
 import { DataMark } from './DataSources';
+import { Dot } from './icons';
 
 // Stack Overflow reputation, badges and top answer tags plus the list of
 // articles / talks and the education block with spoken languages.
@@ -23,13 +24,13 @@ export function StackOverflowCard({ so }) {
           className="badge badge--silver"
           aria-label={t({ en: `${so.badges.silver} silver badges`, ru: `серебряных значков: ${so.badges.silver}` })}
         >
-          ● {so.badges.silver}
+          <Dot /> {so.badges.silver}
         </span>
         <span
           className="badge badge--bronze"
           aria-label={t({ en: `${so.badges.bronze} bronze badges`, ru: `бронзовых значков: ${so.badges.bronze}` })}
         >
-          ● {so.badges.bronze}
+          <Dot /> {so.badges.bronze}
         </span>
       </div>
       <ul

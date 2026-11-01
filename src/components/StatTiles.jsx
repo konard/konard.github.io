@@ -2,6 +2,10 @@ import { DataMark } from './DataSources';
 import { experience, experienceYears } from '../data/experience';
 import { tr, useLang } from '../i18n/prefs';
 import { formatCompact, formatNumber } from './format';
+import { plural } from '../i18n/plural';
+import { HABR_NOTE_ID, habrAuthorship } from '../data/habrAuthorship';
+
+const ARTICLES = { en: ['article', 'articles'], ru: ['статья', 'статьи', 'статей'] };
 
 // Repository counts only include original work of konard and of the related
 // organizations: forks, mirrors, empty and generated test repositories are
@@ -12,6 +16,8 @@ export function buildStats(github, codingSince, now = new Date(), habr = null, l
   const packages = github.registries.reduce((sum, r) => sum + r.packages, 0);
   const lifetime = github.registries.filter((r) => r.downloadsUnit === 'downloads total');
   const habrViews = habr ? habr.articles.reduce((sum, a) => sum + a.statistics.views, 0) : 0;
+  const authors = habr && habrAuthorship(habr);
+  const articles = (count, language) => `${formatNumber(count, language)} ${plural(count, language, ARTICLES)}`;
   const first = github.contributions[0].year;
   const last = github.contributions[github.contributions.length - 1].year;
   const since = experience.reduce((min, e) => (e.start < min ? e.start : min), '9999').slice(0, 4);
@@ -49,8 +55,10 @@ export function buildStats(github, codingSince, now = new Date(), habr = null, l
     {
       id: 'languages',
       value: totals.languages,
-      label: { en: 'Programming languages', ru: 'Языков программирования' },
-      hint: { en: 'detected by GitHub in original repositories', ru: 'по данным GitHub в собственных репозиториях' },
+      // GitHub linguist also counts markup and configuration languages (HTML,
+      // CSS, Dockerfile, Makefile, TeX…), so the label does not say "programming" (issue #47).
+      label: { en: 'Languages detected by GitHub', ru: 'Языков по данным GitHub' },
+      hint: { en: 'in original repositories, including markup', ru: 'в собственных репозиториях, включая разметку' },
     },
     {
       id: 'gists',
@@ -99,11 +107,17 @@ export function buildStats(github, codingSince, now = new Date(), habr = null, l
           {
             id: 'habr',
             value: habrViews,
-            label: { en: 'Habr article views', ru: 'Просмотров статей на Хабре' },
-            hint: {
-              en: `${habr.articles.length} articles on links theory & Deep`,
-              ru: `${habr.articles.length} статей о теории связей и Deep`,
+            label: {
+              en: 'Views of Habr articles on links theory & Deep',
+              ru: 'Просмотров статей о теории связей и Deep на Хабре',
             },
+            // The tile shows the committed snapshot while the Habr section refreshes
+            // from the Habr API, so the tile names its date (issue #47).
+            hint: {
+              en: `${articles(authors.mine, 'en')} by me, ${articles(authors.team, 'en')} by the Deep.Foundation team · snapshot of ${habr.collectedAt.slice(0, 10)}`,
+              ru: `${articles(authors.mine, 'ru')} мои, ${articles(authors.team, 'ru')} команды Deep.Foundation · снимок от ${habr.collectedAt.slice(0, 10)}`,
+            },
+            note: HABR_NOTE_ID,
           },
         ]
       : []),
@@ -129,7 +143,21 @@ export default function StatTiles({ github, codingSince, habr }) {
             {!['years', 'experience'].includes(s.id) && <DataMark />}
           </span>
           <span className="stat__label">{s.label}</span>
-          <span className="stat__hint">{s.hint}</span>
+          <span className="stat__hint">
+            {s.hint}
+            {s.note && (
+              <>
+                {' '}
+                <a
+                  className="data-mark"
+                  href={`#${s.note}`}
+                  aria-label={t({ en: 'Who wrote these articles', ru: 'Кто написал эти статьи' })}
+                >
+                  (**)
+                </a>
+              </>
+            )}
+          </span>
         </li>
       ))}
     </ul>

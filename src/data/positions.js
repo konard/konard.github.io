@@ -3,13 +3,17 @@
 // /experience/?role=<id> shows one of them and /cv/?role=<id> prints its CV;
 // without a role both show all experience (the `all` entry below).
 import { experience, yearsText } from './experience';
+import { crateCount, crateDownloads, npmMonthly } from './figures';
 
 // Professional experience at build time: 18 years in October 2026.
 const YEARS = yearsText();
+// Package figures come from src/data/github.lino (issue #47).
+const LINKS_NOTATION_NPM = npmMonthly('links-notation');
+const COMMAND_STREAM_NPM = npmMonthly('command-stream');
 
 const jobsWithRole = (role) => experience.filter((job) => job.roles.includes(role)).map((job) => job.id);
 
-/** Products a CV can list under “Selected products”; `repo` is a repository of src/data/repositories.json. */
+/** Products a CV can list under “Selected products”; `repo` is a repository of src/data/repositories.lino. */
 export const products = [
   {
     id: 'hive-mind',
@@ -60,8 +64,8 @@ export const products = [
       ['crates.io', 'https://crates.io/crates/links-notation'],
     ],
     summary: {
-      en: 'A way to describe data with references and links; ≈50K npm downloads per month.',
-      ru: 'Нотация для описания данных ссылками и связями; около 50 тыс. загрузок из npm в месяц.',
+      en: `A way to describe data with references and links; ${LINKS_NOTATION_NPM.en}.`,
+      ru: `Нотация для описания данных ссылками и связями; ${LINKS_NOTATION_NPM.ru}.`,
     },
   },
   {
@@ -107,8 +111,8 @@ export const products = [
     repo: 'link-foundation/command-stream',
     packages: [['npm', 'https://www.npmjs.com/package/command-stream']],
     summary: {
-      en: 'Shell commands as streams in JavaScript; ≈31K npm downloads per month.',
-      ru: 'Команды оболочки как потоки в JavaScript; около 31 тыс. загрузок из npm в месяц.',
+      en: `Shell commands as streams in JavaScript; ${COMMAND_STREAM_NPM.en}.`,
+      ru: `Команды оболочки как потоки в JavaScript; ${COMMAND_STREAM_NPM.ru}.`,
     },
   },
   {
@@ -277,7 +281,7 @@ const DOTNET = strength('.NET', '.NET', [
 ]);
 const RUST = strength('Rust', 'Rust', [
   'Rust',
-  'crates.io (35 crates)',
+  `crates.io (${crateCount.en})`,
   'async services',
   'memory-mapped storage',
   'C/C++',
@@ -560,8 +564,8 @@ export const positions = [
       ru: 'Сервисы и библиотеки на Rust: система сеточной торговли, движки баз данных и CLI-инструменты.',
     },
     profile: {
-      en: `Rust developer: a grid trading system for ByBit and BitGet at Capico, the Doublets associative database engine and 35 crates on crates.io (570K+ downloads), link-cli and AI agent tooling. ${YEARS.en} of professional experience in C#, C++ and other systems languages before.`,
-      ru: `Rust-разработчик: система сеточной торговли для ByBit и BitGet в Capico, движок ассоциативной базы данных Doublets и 35 крейтов на crates.io (более 570 тыс. загрузок), link-cli и инструменты ИИ-агентов. До этого — ${YEARS.ru} профессионального опыта на C#, C++ и других системных языках.`,
+      en: `Rust developer: a grid trading system for ByBit and BitGet at Capico, the Doublets associative database engine and ${crateCount.en} on crates.io (${crateDownloads.en}), link-cli and AI agent tooling. ${YEARS.en} of professional experience in C#, C++ and other systems languages before.`,
+      ru: `Rust-разработчик: система сеточной торговли для ByBit и BitGet в Capico, движок ассоциативной базы данных Doublets и ${crateCount.ru} на crates.io (${crateDownloads.ru}), link-cli и инструменты ИИ-агентов. До этого — ${YEARS.ru} профессионального опыта на C#, C++ и других системных языках.`,
     },
     jobs: ['linksplatform', 'deep-foundation', 'link-foundation', 'link-assistant', 'capico'],
     topics: ['rust', 'backend', 'data', 'trading'],

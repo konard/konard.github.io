@@ -1,12 +1,14 @@
 // The visitor's settings (issue #13), a small store like the language and the
 // theme in src/i18n/prefs.js. Only the values that differ from the defaults are
-// remembered, in localStorage under `settings`, so better defaults chosen later
+// remembered, in localStorage under `settings` as indented Links Notation
+// (issue #47; JSON saved before still loads), so better defaults chosen later
 // still reach everybody who did not change that particular setting. Other open
 // tabs of the site follow along through the `storage` event.
 import { useSyncExternalStore } from 'react';
 import { replaceAddress } from '../history';
 import { applySettings, normalize } from './apply';
 import { getLang } from '../i18n/prefs';
+import { readStored, writeStored } from './notation';
 import { CSS_RULES, DEFAULTS, RULES } from './schema';
 
 export const STORAGE_KEY = 'settings';
@@ -24,8 +26,8 @@ const storage = () => {
 /** Settings remembered in localStorage, checked against the rules. */
 export function loadSettings() {
   try {
-    const stored = JSON.parse(storage()?.getItem(STORAGE_KEY) || '{}');
-    return normalize(RULES, stored && typeof stored === 'object' ? stored : {});
+    const stored = readStored(storage()?.getItem(STORAGE_KEY));
+    return normalize(RULES, stored && typeof stored === 'object' && !Array.isArray(stored) ? stored : {});
   } catch {
     return DEFAULTS;
   }
@@ -34,6 +36,9 @@ export function loadSettings() {
 /** The settings that differ from the defaults, as `{ key: value }`. */
 export const changesOf = (settings) =>
   Object.fromEntries(Object.entries(settings).filter(([key, value]) => value !== DEFAULTS[key]));
+
+/** Settings changes as the indented Links Notation that is saved, shown and copied (issue #47). */
+export const settingsText = writeStored;
 
 let current = loadSettings();
 const listeners = new Set();
@@ -45,7 +50,7 @@ const apply = () => {
 const save = () => {
   const changes = changesOf(current);
   try {
-    if (Object.keys(changes).length) storage()?.setItem(STORAGE_KEY, JSON.stringify(changes));
+    if (Object.keys(changes).length) storage()?.setItem(STORAGE_KEY, settingsText(changes));
     else storage()?.removeItem(STORAGE_KEY);
   } catch {
     // Private mode or disabled storage: the settings last until the page closes.
@@ -81,7 +86,8 @@ export function resetSettings(keys = Object.keys(DEFAULTS), options) {
   setSettings(Object.fromEntries(keys.map((key) => [key, DEFAULTS[key]])), options);
 }
 
-const subscribe = (listener) => {
+/** Calls `listener` whenever the settings change; returns a function that stops it. */
+export const subscribe = (listener) => {
   listeners.add(listener);
   return () => listeners.delete(listener);
 };

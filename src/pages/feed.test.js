@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import archive from '../data/posts.json';
+import archive from '../data/posts.lino';
 import { dedupe, isDuplicate, links, pick, readerLanguage, similarity, visibleFor, words } from './feed';
 
 const post = (id, network, lang, publishedAt, text) => ({ id, network, lang, publishedAt, text });

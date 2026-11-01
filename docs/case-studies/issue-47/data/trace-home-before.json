@@ -1,0 +1,134 @@
+{
+  "path": "/",
+  "seconds": 3,
+  "summary": [
+    [
+      "CrRendererMain RunTask",
+      1794
+    ],
+    [
+      "CrRendererMain ProxyMain::BeginMainFrame",
+      1695
+    ],
+    [
+      "CrRendererMain Commit",
+      1581
+    ],
+    [
+      "CrRendererMain LayerTreeHost::DoUpdateLayers",
+      1574
+    ],
+    [
+      "CrRendererMain GLES2::ReadPixels",
+      1519
+    ],
+    [
+      "CrRendererMain ImplementationBase::WaitForCmd",
+      1491
+    ],
+    [
+      "CrRendererMain CommandBufferHelper::Finish",
+      1491
+    ],
+    [
+      "CrRendererMain CommandBufferProxyImpl::WaitForGetOffset",
+      1489
+    ],
+    [
+      "CrRendererMain WebFrameWidgetImpl::UpdateLifecycle",
+      139
+    ],
+    [
+      "CrRendererMain LocalFrameView::RunStyleAndLayoutLifecyclePhases",
+      97
+    ],
+    [
+      "CrRendererMain LocalFrameView::UpdateStyleAndLayout",
+      97
+    ],
+    [
+      "CrRendererMain Blink.Style.UpdateTime",
+      94
+    ],
+    [
+      "CrRendererMain UpdateLayoutTree",
+      94
+    ],
+    [
+      "CrRendererMain Document::updateStyle",
+      87
+    ],
+    [
+      "CrRendererMain Document::recalcStyle",
+      83
+    ],
+    [
+      "CrRendererMain AsyncTask Run",
+      56
+    ],
+    [
+      "CrRendererMain FunctionCall",
+      42
+    ],
+    [
+      "CrRendererMain MessagePort::Accept",
+      34
+    ],
+    [
+      "CrRendererMain LocalFrameView::RunPaintLifecyclePhase",
+      31
+    ],
+    [
+      "CrRendererMain Canvas2DResourceProvider::ProduceCanvasResource",
+      29
+    ],
+    [
+      "CrRendererMain WebFrameWidgetImpl::BeginMainFrame",
+      24
+    ],
+    [
+      "CrRendererMain Blink.Animate.UpdateTime",
+      24
+    ],
+    [
+      "CrRendererMain PageAnimator::serviceScriptedAnimations",
+      24
+    ],
+    [
+      "CrRendererMain MinorGC",
+      19
+    ],
+    [
+      "CrRendererMain V8.GC_SCAVENGER",
+      19
+    ],
+    [
+      "CrRendererMain V8.GC_SCAVENGER_SCAVENGE",
+      19
+    ],
+    [
+      "CrRendererMain Paint",
+      19
+    ],
+    [
+      "CrRendererMain Blink.Paint.UpdateTime",
+      18
+    ],
+    [
+      "CrRendererMain V8.GC_SCAVENGER_SCAVENGE_PARALLEL_PHASE",
+      17
+    ],
+    [
+      "CrRendererMain v8.evaluateModule",
+      16
+    ],
+    [
+      "styles",
+      {
+        "recalcs": 4,
+        "elements": 614,
+        "frames": 0
+      }
+    ]
+  ]
+}

@@ -1,9 +1,11 @@
 // Lists pairs of posts in different languages published within 6 hours that the
 // blog does NOT group, to tune the dedup rules in src/pages/feed.js.
-import fs from 'node:fs';
+import { createRequire } from 'node:module';
 import { dedupe, links, similarity } from '../src/pages/feed.js';
 
-const { posts } = JSON.parse(fs.readFileSync(process.argv[2] || 'src/data/posts.json', 'utf8'));
+const { posts } = createRequire(import.meta.url)('../scripts/lino-data.cjs').readLino(
+  process.argv[2] || 'src/data/posts.lino',
+);
 const story = new Map();
 dedupe(posts).forEach((s, i) => s.posts.forEach((p) => story.set(p.id, i)));
 const sorted = [...posts].sort((a, b) => a.publishedAt.localeCompare(b.publishedAt));

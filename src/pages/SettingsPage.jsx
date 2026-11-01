@@ -10,12 +10,15 @@ import { CornerTiles, SameCorners } from './CornerTiles';
 import Presets from './Presets';
 import { useLang } from '../i18n/prefs';
 import { plural } from '../i18n/plural';
-import { getSaved, setSaved, withImported } from '../settings/presets';
+import { getSaved, readPasted, setSaved, withImported } from '../settings/presets';
 import { formatValue } from '../settings/fields';
 import { DEFAULTS, FIELDS, PALETTES, SECTIONS } from '../settings/schema';
-import { changesOf, resetSettings, setSettings, useSettings } from '../settings/store';
+import { ownsCorners } from '../settings/schema.skins';
+import { changesOf, resetSettings, setSettings, settingsText, useSettings } from '../settings/store';
 import { cue } from '../sound/options';
 import { focusSlider, numericKey } from '../components/numericKeys';
+import { Play, RotateCcw } from 'lucide-react';
+import { iconProps } from '../components/icons';
 
 const SETTINGS = { en: ['setting', 'settings'], ru: ['настройка', 'настройки', 'настроек'] };
 const CHANGED = { en: ['differs', 'differ'], ru: ['отличается', 'отличаются', 'отличаются'] };
@@ -83,7 +86,7 @@ function Control({ field, value, settings }) {
             title={t({ en: 'Play', ru: 'Проиграть' })}
             aria-label={`${t({ en: 'Play', ru: 'Проиграть' })}: ${t(field.label)}`}
           >
-            ▶
+            <Play {...iconProps} />
           </button>
         </>
       );
@@ -110,7 +113,7 @@ function Control({ field, value, settings }) {
         title={t({ en: 'Back to the default', ru: 'Вернуть по умолчанию' })}
         aria-label={`${t({ en: 'Back to the default', ru: 'Вернуть по умолчанию' })}: ${t(field.label)}`}
       >
-        ↺
+        <RotateCcw {...iconProps} />
       </button>
       {field.hint && <small className="setting__hint">{t(field.hint)}</small>}
     </li>
@@ -140,20 +143,24 @@ function Palettes({ value }) {
   );
 }
 
-/** Tabs of a section with layers (the star layers, corners and sounds of issue #15); a dot marks a layer that is on. */
-function Tabs({ section, settings, tab, onChange }) {
+/**
+ * Tabs of a section with layers (the star layers, corners and sounds of issue
+ * #15) or with levels (the corners of issue #47); a dot marks a layer that is
+ * on or a level with corners of its own.
+ */
+function Tabs({ section, settings, tab, onChange, items = section.tabs, prefix = 'tab', controls, label, isOn }) {
   const { t } = useLang();
   return (
-    <div className="settings__tabs" role="tablist" aria-label={t(section.title)}>
-      {section.tabs.map((item) => (
+    <div className="settings__tabs" role="tablist" aria-label={label ?? t(section.title)}>
+      {items.map((item) => (
         <button
           key={item.id}
           type="button"
           role="tab"
-          id={`tab-${item.id}`}
+          id={`${prefix}-${item.id}`}
           aria-selected={tab === item.id}
-          aria-controls={`${section.id}-fields`}
-          className={`settings__tab${settings[item.on] ? ' is-on' : ''}`}
+          aria-controls={controls ?? `${section.id}-fields`}
+          className={`settings__tab${(isOn ? isOn(item.id) : settings[item.on]) ? ' is-on' : ''}`}
           onClick={() => onChange(item.id)}
         >
           {t(item.label)}
@@ -166,10 +173,13 @@ function Tabs({ section, settings, tab, onChange }) {
 function Group({ section, settings }) {
   const { t } = useLang();
   const [tab, setTab] = useState(section.tabs?.[0].id);
+  const [level, setLevel] = useState(section.levels?.[0].id);
   const keys = section.fields.map((field) => field.key);
   const changed = keys.filter((key) => settings[key] !== DEFAULTS[key]).length;
-  // A field may belong to a tab and may apply only to some values of other fields.
-  const shown = (field) => !field.when || field.when(settings);
+  // A field may belong to a level (one or several) and a tab, and may apply
+  // only to some values of other fields.
+  const inLevel = (field) => !section.levels || [].concat(field.level ?? section.levels[0].id).includes(level);
+  const shown = (field) => inLevel(field) && (!field.when || field.when(settings, level));
   // The fields of every tab come first, then the tabs and the fields of the chosen tab;
   // tabs with nothing in them are not shown (the sound tabs while the sound is off).
   const shared = section.fields.filter((field) => !field.tab && shown(field));
@@ -195,16 +205,33 @@ function Group({ section, settings }) {
       {section.id === 'interface' && <UiSamples />}
       {['glass', 'liquid'].includes(section.id) && <MaterialPresets />}
       {section.id === 'futuristic' && <Palettes value={settings['future.palette']} />}
-      {tabbed ? (
-        <>
-          {shared.length > 0 && list(shared)}
-          <Tabs section={section} settings={settings} tab={tab} onChange={setTab} />
-          {list(inTab, { id: `${section.id}-fields`, role: 'tabpanel', 'aria-labelledby': `tab-${tab}` })}
-        </>
-      ) : (
-        list(shared, { id: `${section.id}-fields` })
+      {section.levels && (
+        <Tabs
+          section={section}
+          settings={settings}
+          tab={level}
+          onChange={setLevel}
+          items={section.levels}
+          prefix="level"
+          controls={`${section.id}-level`}
+          label={t({ en: 'Levels', ru: 'Уровни' })}
+          isOn={(id) => id !== section.levels[0].id && ownsCorners(id, settings)}
+        />
       )}
-      {section.id === 'corners' && <SameCorners corner={tab} settings={settings} />}
+      <div
+        {...(section.levels && { id: `${section.id}-level`, role: 'tabpanel', 'aria-labelledby': `level-${level}` })}
+      >
+        {tabbed ? (
+          <>
+            {shared.length > 0 && list(shared)}
+            <Tabs section={section} settings={settings} tab={tab} onChange={setTab} />
+            {list(inTab, { id: `${section.id}-fields`, role: 'tabpanel', 'aria-labelledby': `tab-${tab}` })}
+          </>
+        ) : (
+          list(shared, { id: `${section.id}-fields` })
+        )}
+        {section.id === 'corners' && <SameCorners level={level} corner={tab} settings={settings} />}
+      </div>
     </section>
   );
 }
@@ -228,11 +255,12 @@ export default function SettingsPage() {
   const sections = visibleSections(settings);
   const changes = changesOf(settings);
   const changed = Object.keys(changes).length;
-  const json = JSON.stringify(changes, null, 2);
+  // Links Notation instead of JSON (issue #47): `settings:` and one `key value` per line.
+  const text = settingsText(changes);
 
   const copy = async () => {
     try {
-      await navigator.clipboard.writeText(json);
+      await navigator.clipboard.writeText(text);
       setStatus(t({ en: 'Copied.', ru: 'Скопировано.' }));
     } catch {
       setStatus(
@@ -245,19 +273,23 @@ export default function SettingsPage() {
   };
   const load = () => {
     try {
-      const parsed = JSON.parse(draft);
-      if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) throw new Error('not an object');
-      if (Array.isArray(parsed.presets)) {
+      const pasted = readPasted(draft);
+      if (pasted.presets) {
         // Looks copied from "Presets" in another browser.
-        setSaved(withImported(getSaved(), parsed.presets));
+        setSaved(withImported(getSaved(), pasted.presets));
         setStatus(t({ en: 'The looks are added to the presets.', ru: 'Виды добавлены к пресетам.' }));
       } else {
-        setSettings({ ...DEFAULTS, ...parsed });
+        setSettings({ ...DEFAULTS, ...pasted.settings });
         setStatus(t({ en: 'Settings loaded.', ru: 'Настройки загружены.' }));
       }
       setDraft('');
     } catch {
-      setStatus(t({ en: 'This is not JSON of settings.', ru: 'Это не JSON с настройками.' }));
+      setStatus(
+        t({
+          en: 'These are not settings in Links Notation or JSON.',
+          ru: 'Это не настройки в Links Notation или JSON.',
+        }),
+      );
     }
   };
 
@@ -318,12 +350,12 @@ export default function SettingsPage() {
             </header>
             <p className="settings__lead">
               {t({
-                en: 'Only what differs from the defaults, as JSON: copy it to move the settings to another browser or to suggest better defaults.',
-                ru: 'Только то, что отличается от значений по умолчанию, в виде JSON: скопируйте, чтобы перенести настройки в другой браузер или предложить лучшие значения по умолчанию.',
+                en: 'Only what differs from the defaults, in Links Notation: copy it to move the settings to another browser or to suggest better defaults. JSON copied before still loads.',
+                ru: 'Только то, что отличается от значений по умолчанию, в Links Notation: скопируйте, чтобы перенести настройки в другой браузер или предложить лучшие значения по умолчанию. Скопированный раньше JSON тоже загружается.',
               })}
             </p>
             <pre className="settings__json mono" aria-label={t({ en: 'Changed settings', ru: 'Изменённые настройки' })}>
-              {json}
+              {text}
             </pre>
             <div className="page-hero__actions">
               <button type="button" className="button" onClick={copy} disabled={!changed}>
