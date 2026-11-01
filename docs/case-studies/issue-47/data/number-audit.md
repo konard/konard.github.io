@@ -2,6 +2,12 @@
 
 Request: "double check that every number on the site matches its actual source".
 
+> Note: this audit was written before f11168a, which moved the generated data from `src/data/*.json` to
+> `src/data/*.lino` (Links Notation, issue #47 comment). The values are the same; read `habr.json` as `habr.lino`
+> and so on. All ten mismatches listed at the end are fixed in this pull request: 1–4 in 33566b8, 5, 6 and 8 in
+> 75e41b6, 7 in a4f890c (the tile names its snapshot date), 9 and 10 in e0638fe; `src/components/numbers-47.test.jsx`
+> (5–9), `src/data/figures.test.js` (1–4) and `src/cv/cv.test.jsx` (10) keep them fixed.
+
 - Audit date: 2026-11-01. Branch: `issue-47-71b15aba521c`.
 - Snapshots: `docs/case-studies/issue-33/data/*.json`, mostly collected on 2026-10-28.
 - Method:
