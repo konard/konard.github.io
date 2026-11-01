@@ -602,6 +602,12 @@
 
 /* ---------- Habr articles: floating cards ---------- */
 
+.habr__note {
+  max-width: 72ch;
+  margin: 0 0 1rem;
+  font-size: 0.85rem;
+}
+
 .habr__summary {
   display: flex;
   flex-wrap: wrap;
@@ -694,6 +700,7 @@
 }
 
 .habr-card__meta,
+.habr-card__author,
 .habr-card__hubs {
   color: var(--muted);
   font-size: 0.78rem;
