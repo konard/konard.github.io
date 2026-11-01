@@ -4,7 +4,9 @@
 // clip-path of a control); its corners are transparent only when the element
 // (or a layer of its surface) is clipped to that outline. The script lists
 // every framed element on a page whose surface is not clipped, and saves a
-// close look of the corners of the first chart.
+// close look of the corners of the first chart. It then points at the last
+// item of every chart, at the right edge where the tooltip flips, and reports
+// where the tooltip is drawn: next to the pointer, and not cut by the chart.
 //   node experiments/issue-47-corners.mjs [out-dir] [engine] [paths…]
 // Needs `npm run build` and `npx vite preview --port 4173` (BASE overrides the URL).
 import { mkdirSync } from 'node:fs';
@@ -16,7 +18,11 @@ mkdirSync(dir, { recursive: true });
 const browser = await pw[engine].launch();
 const report = {};
 for (const path of PATHS) {
-  const page = await browser.newPage({ viewport: { width: 1280, height: 900 }, deviceScaleFactor: 2 });
+  const page = await browser.newPage({
+    viewport: { width: 1280, height: 900 },
+    deviceScaleFactor: 2,
+    colorScheme: 'dark',
+  });
   page.on('pageerror', (e) => console.log('pageerror', e.message));
   await page.goto(`${process.env.BASE || 'http://localhost:4173'}${path}`, { waitUntil: 'load' });
   await page.waitForTimeout(1200);
@@ -57,6 +63,50 @@ for (const path of PATHS) {
       path: `${dir}/${engine}-${name}-chart-br.png`,
       clip: { x: b.x + b.width - 112, y: b.y + b.height - 62, width: 120, height: 70 },
     });
+  }
+  for (const [i, chart] of (await page.locator('[data-tooltip-root]').all()).entries()) {
+    const items = chart.locator('[tabindex]');
+    if (!(await items.count())) continue;
+    const item = items.last();
+    await item.scrollIntoViewIfNeeded();
+    const b = await item.boundingBox();
+    if (!b) continue;
+    const pointer = { x: b.x + b.width / 2, y: b.y + b.height / 2 };
+    await page.mouse.move(pointer.x, pointer.y);
+    await page.waitForTimeout(150);
+    const tip = await page.evaluate(() => {
+      const el = document.querySelector('.tooltip');
+      if (!el) return null;
+      const r = el.getBoundingClientRect();
+      // The middle of the tooltip is the topmost element there: nothing cuts or hides it.
+      // (A tooltip ignores the pointer; it takes it for this check only.)
+      el.style.pointerEvents = 'auto';
+      const top = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2);
+      el.style.pointerEvents = '';
+      return {
+        insideChart: Boolean(el.closest('[data-tooltip-root]')),
+        box: [r.left, r.top, r.width, r.height].map(Math.round),
+        visible: Boolean(top && (top === el || el.contains(top))),
+      };
+    });
+    const ok =
+      tip &&
+      !tip.insideChart &&
+      tip.visible &&
+      Math.abs(tip.box[1] + tip.box[3] / 2 - pointer.y) < 2 &&
+      (Math.abs(tip.box[0] - 14 - pointer.x) < 2 || Math.abs(tip.box[0] + tip.box[2] + 14 - pointer.x) < 2);
+    console.log(
+      path,
+      'chart',
+      i,
+      'pointer',
+      [pointer.x, pointer.y].map(Math.round),
+      'tooltip',
+      JSON.stringify(tip),
+      ok ? 'ok' : 'WRONG',
+    );
+    if (!ok) report[path].push({ tooltip: tip });
+    await page.mouse.move(0, 0);
   }
   await page.close();
 }

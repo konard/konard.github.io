@@ -203,6 +203,7 @@
   :where(:root:not([data-ui-overflow='visible']))
     :where(
       .card,
+      .chart,
       .registry,
       .project,
       .skills__group,
@@ -233,7 +234,7 @@
       .link-card,
       .preset,
       .ui-preview__panel
-    ):not(:has([data-tooltip-root])) {
+    ) {
     overflow: clip;
   }
   :root:root input[type='range'] {
