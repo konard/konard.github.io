@@ -14,7 +14,7 @@ import { applySettings } from './settings/apply';
 import { CSS_RULES, DEFAULTS, FIELDS, SECTIONS } from './settings/schema';
 import { cornerKey, LEVEL_IDS, levelKey } from './settings/schema.skins';
 import { getSettings, setSettings } from './settings/store';
-import { CONTROL_TYPES, CORNERS, LINES, SHAPES } from './skins.frames';
+import { CONTROL_TYPES, CORNERS, INNER, LINES, SHAPES } from './skins.frames';
 import { LEVEL_FILES, levelCss } from './skins.frames.levels';
 
 const read = (name) => readFileSync(join(__dirname, name), 'utf8');
@@ -73,13 +73,18 @@ describe('the stylesheets of the levels (issue #47)', () => {
     }
   });
 
-  it('puts the numbers of every shape and line of every corner of a level on the root only', () => {
+  it('puts the numbers of every shape and line of every corner of a level on the root only, while it has its own', () => {
     for (const level of LEVELS) {
       const css = levelCss(level);
+      const own = level === 'block' ? "[data-corner-blocks='own']" : `[data-corner-${level}-corners='own']`;
+      // A level that follows the panels declares nothing on the root.
+      expect(css).not.toMatch(new RegExp(`^:root\\[data-corner-${level}-(tl|tr|br|bl)-`, 'm'));
       for (const corner of CORNERS) {
         for (const shape of Object.keys(SHAPES))
-          expect(css).toContain(`:root[data-corner-${level}-${corner}-shape='${shape}'] { --fx-${level}-${corner}-`);
-        for (const line of LINES) expect(css).toContain(`:root[data-corner-${level}-${corner}-line='${line}'] {`);
+          expect(css).toContain(
+            `:root${own}[data-corner-${level}-${corner}-shape='${shape}'] { --fx-${level}-${corner}-`,
+          );
+        for (const line of LINES) expect(css).toContain(`:root${own}[data-corner-${level}-${corner}-line='${line}'] {`);
       }
     }
   });
@@ -105,7 +110,11 @@ describe('the stylesheets of the levels (issue #47)', () => {
     expect(css).toContain("[data-corner-blocks='own'] {\n  --fxblock-");
     expect(css).toContain("[data-corner-blocks='own'][data-corner-block-edges='faint']");
     expect(css).toContain('--fx-ec: var(--fx-block-ec);');
-    expect(css).toContain("[data-corner-blocks='own'][data-corner-block-edge-style='dotted']");
+    expect(css).toContain("[data-corner-blocks='own'][data-corner-block-edge-style='dotted'] { --fx-block-ce-h:");
+    // Panels in panels are checked on every element of the page: one rule for them,
+    // and the images of their edges are made once on the root.
+    expect(css.split(INNER.replace(':is(', ':where(')).length - 1).toBe(1);
+    expect(css).not.toContain(INNER);
   });
 });
 
