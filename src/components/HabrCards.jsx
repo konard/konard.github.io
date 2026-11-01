@@ -106,43 +106,47 @@ export default function HabrCards({ snapshot, live = true, fetchImpl }) {
       </p>
       <ul className="habr__cards">
         {habr.articles.map((a, i) => (
+          // The card floats in a plain wrapper: an animated element is restyled on every frame, and
+          // restyling the framed card (its outline, corners and surface) took most of the frame (issue #47).
           <li
             key={a.id}
-            className="habr-card"
+            className="habr__float"
             style={{ '--float-delay': `${-(i % 5) * 1.3}s`, '--float-time': `${7 + (i % 4)}s` }}
           >
-            <a href={a.url} target="_blank" rel="noopener noreferrer" className="habr-card__link" lang={a.lang}>
-              {a.image && <img src={a.image} alt="" loading="lazy" className="habr-card__image" />}
-              <span className="habr-card__meta">
-                {date(a.publishedAt, lang)} · {a.lang.toUpperCase()}
-                {a.company ? ' · Deep.Foundation' : ''}
-              </span>
-              <span className="habr-card__author">
-                {authors.own(a)
-                  ? t({ en: 'by me', ru: 'автор — я' })
-                  : `${t({ en: 'by', ru: 'автор —' })} @${a.author?.alias ?? '?'}`}
-              </span>
-              <h3 className="habr-card__title">{a.title}</h3>
-              <span className="habr-card__hubs">{a.hubs.slice(0, 3).join(' · ')}</span>
-            </a>
-            <dl className="habr-card__stats">
-              {STATS.map(([key, label, Icon]) => (
-                <div
-                  key={key}
-                  title={t({
-                    en: `${formatNumber(a.statistics[key], lang)} ${label.en}`,
-                    ru: `${label.ru}: ${formatNumber(a.statistics[key], lang)}`,
-                  })}
-                >
-                  <dt>
-                    <Icon {...iconProps} /> {t(label)}
-                  </dt>
-                  <dd>
-                    {formatCompact(a.statistics[key], lang)} <DataMark />
-                  </dd>
-                </div>
-              ))}
-            </dl>
+            <div className="habr-card">
+              <a href={a.url} target="_blank" rel="noopener noreferrer" className="habr-card__link" lang={a.lang}>
+                {a.image && <img src={a.image} alt="" loading="lazy" className="habr-card__image" />}
+                <span className="habr-card__meta">
+                  {date(a.publishedAt, lang)} · {a.lang.toUpperCase()}
+                  {a.company ? ' · Deep.Foundation' : ''}
+                </span>
+                <span className="habr-card__author">
+                  {authors.own(a)
+                    ? t({ en: 'by me', ru: 'автор — я' })
+                    : `${t({ en: 'by', ru: 'автор —' })} @${a.author?.alias ?? '?'}`}
+                </span>
+                <h3 className="habr-card__title">{a.title}</h3>
+                <span className="habr-card__hubs">{a.hubs.slice(0, 3).join(' · ')}</span>
+              </a>
+              <dl className="habr-card__stats">
+                {STATS.map(([key, label, Icon]) => (
+                  <div
+                    key={key}
+                    title={t({
+                      en: `${formatNumber(a.statistics[key], lang)} ${label.en}`,
+                      ru: `${label.ru}: ${formatNumber(a.statistics[key], lang)}`,
+                    })}
+                  >
+                    <dt>
+                      <Icon {...iconProps} /> {t(label)}
+                    </dt>
+                    <dd>
+                      {formatCompact(a.statistics[key], lang)} <DataMark />
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
           </li>
         ))}
       </ul>

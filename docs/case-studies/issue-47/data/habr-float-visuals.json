@@ -1,0 +1,13 @@
+{
+  "note": "Issue #47 (C5): the Habr cards before (float on the framed card) and after (float on a plain wrapper), Chromium 1440x900, every animation paused at 2.5 s, background hidden. experiments/issue-47-habr-float-shot.mjs and experiments/issue-47-png-diff.mjs.",
+  "cards": { "width": 1180, "height": 1546, "differingPixels": 2, "maxChannelDiff": 1 },
+  "hoveredCard": { "identicalFile": true },
+  "boxes": {
+    "before": { "box": { "x": 128.88, "y": -271.31, "width": 282.24, "height": 388.07 }, "hoverBox": { "x": 128.88, "y": 71.69, "width": 282.24, "height": 388.07 } },
+    "after": { "box": { "x": 128.88, "y": -271.31, "width": 282.24, "height": 388.07 }, "hoverBox": { "x": 128.88, "y": 71.69, "width": 282.24, "height": 388.07 } }
+  },
+  "styleRecalcHomeMainThread3s": {
+    "before": { "recalcs": 4, "elements": 614, "UpdateLayoutTreeMs": 94, "msPerRecalc": 23.5 },
+    "after": { "recalcs": 7, "elements": 440, "UpdateLayoutTreeMs": 29, "msPerRecalc": 4.1 }
+  }
+}

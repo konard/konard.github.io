@@ -1,0 +1,134 @@
+{
+  "path": "/",
+  "seconds": 3,
+  "summary": [
+    [
+      "CrRendererMain RunTask",
+      2505
+    ],
+    [
+      "CrRendererMain ProxyMain::BeginMainFrame",
+      2433
+    ],
+    [
+      "CrRendererMain Commit",
+      2329
+    ],
+    [
+      "CrRendererMain LayerTreeHost::DoUpdateLayers",
+      2304
+    ],
+    [
+      "CrRendererMain GLES2::ReadPixels",
+      2244
+    ],
+    [
+      "CrRendererMain ImplementationBase::WaitForCmd",
+      2218
+    ],
+    [
+      "CrRendererMain CommandBufferHelper::Finish",
+      2218
+    ],
+    [
+      "CrRendererMain CommandBufferProxyImpl::WaitForGetOffset",
+      2216
+    ],
+    [
+      "CrRendererMain FunctionCall",
+      73
+    ],
+    [
+      "CrRendererMain WebFrameWidgetImpl::UpdateLifecycle",
+      68
+    ],
+    [
+      "CrRendererMain MessagePort::Accept",
+      47
+    ],
+    [
+      "CrRendererMain WebFrameWidgetImpl::BeginMainFrame",
+      35
+    ],
+    [
+      "CrRendererMain Blink.Animate.UpdateTime",
+      34
+    ],
+    [
+      "CrRendererMain PageAnimator::serviceScriptedAnimations",
+      34
+    ],
+    [
+      "CrRendererMain AsyncTask Run",
+      33
+    ],
+    [
+      "CrRendererMain LocalFrameView::UpdateStyleAndLayout",
+      32
+    ],
+    [
+      "CrRendererMain Blink.Style.UpdateTime",
+      29
+    ],
+    [
+      "CrRendererMain UpdateLayoutTree",
+      29
+    ],
+    [
+      "CrRendererMain Document::updateStyle",
+      28
+    ],
+    [
+      "CrRendererMain FrameRequestCallbackCollection::ExecuteFrameCallbacks",
+      28
+    ],
+    [
+      "CrRendererMain FireAnimationFrame",
+      28
+    ],
+    [
+      "CrRendererMain Document::recalcStyle",
+      26
+    ],
+    [
+      "CrRendererMain PrePaint",
+      25
+    ],
+    [
+      "CrRendererMain LocalFrameView::RunStyleAndLayoutLifecyclePhases",
+      24
+    ],
+    [
+      "CrRendererMain Canvas2DResourceProvider::ProduceCanvasResource",
+      22
+    ],
+    [
+      "CrRendererMain LocalFrameView::RunPaintLifecyclePhase",
+      18
+    ],
+    [
+      "CrRendererMain LocalFrameView::RunCompositingInputsLifecyclePhase",
+      15
+    ],
+    [
+      "CrRendererMain MinorGC",
+      12
+    ],
+    [
+      "CrRendererMain Blink.CompositingInputs.UpdateTime",
+      12
+    ],
+    [
+      "CrRendererMain V8.GC_SCAVENGER",
+      12
+    ],
+    [
+      "styles",
+      {
+        "recalcs": 7,
+        "elements": 440,
+        "frames": 0
+      }
+    ]
+  ]
+}

@@ -653,16 +653,35 @@
   );
   box-shadow: var(--shadow-card);
   overflow: hidden;
-  animation: float var(--float-time, 8s) ease-in-out var(--float-delay, 0s) infinite;
   transition:
     border-color 0.2s,
     box-shadow 0.2s;
 }
 
+/*
+ * The card floats in a plain wrapper (issue #47). An animated element is
+ * restyled on every frame the page draws, and the background draws one on every
+ * display frame; restyling the framed card (outline, corners, surface, and the
+ * elements in it) took about 10 ms a frame, the wrapper about 1 ms. The card
+ * keeps no transform of its own, as when the float overrode the lift of a
+ * hovered panel.
+ */
+.habr__float {
+  display: grid;
+  animation: float var(--float-time, 8s) ease-in-out var(--float-delay, 0s) infinite;
+}
+
+.habr__float > .habr-card {
+  transform: none !important;
+}
+
+.habr__float:hover {
+  animation-play-state: paused;
+}
+
 .habr-card:hover {
   border-color: var(--accent);
   box-shadow: 0 16px 40px rgb(var(--accent-rgb) / 0.18);
-  animation-play-state: paused;
 }
 
 @keyframes float {
@@ -788,7 +807,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :root:not([data-motion-mode='on']) :is(.habr-card, .psd__edges line) {
+  :root:not([data-motion-mode='on']) :is(.habr__float, .psd__edges line) {
     animation: none;
   }
 }
