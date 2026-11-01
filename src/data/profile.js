@@ -7,8 +7,10 @@
 
 import { motto } from './motto';
 import { yearsText } from './experience';
+import { npmMonthly, ownRepositoriesText } from './figures';
 
 const YEARS = yearsText();
+const LINKS_NOTATION_NPM = npmMonthly('links-notation');
 
 export const profile = {
   name: { en: 'Konstantin Diachenko', ru: 'Константин Дьяченко' },
@@ -342,10 +344,7 @@ export const achievements = [
     en: 'Co-author of the Links Theory (versions 0.0.1 – 0.0.3) and the links meta-theory',
     ru: 'Соавтор теории связей (версии 0.0.1 – 0.0.3) и метатеории связей',
   },
-  {
-    en: '525 original open-source repositories in 15 organizations, without forks',
-    ru: '525 собственных open-source-репозиториев в 15 организациях, без форков',
-  },
+  ownRepositoriesText,
   {
     en: 'Built a tour search engine answering in < 0.1 s over hundreds of millions of offers',
     ru: 'Создал поисковую систему туров с ответом < 0,1 с по сотням миллионов предложений',
@@ -426,8 +425,8 @@ export const featuredProjects = [
   {
     fullName: 'link-foundation/links-notation',
     tagline: {
-      en: 'A way to describe data using references and links (≈50K npm downloads / month).',
-      ru: 'Способ описывать данные ссылками и связями (около 50 тыс. загрузок из npm в месяц).',
+      en: `A way to describe data using references and links (${LINKS_NOTATION_NPM.en}).`,
+      ru: `Способ описывать данные ссылками и связями (${LINKS_NOTATION_NPM.ru}).`,
     },
   },
   {
