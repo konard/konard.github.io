@@ -20,7 +20,9 @@ describe('Habr authorship (issue #47)', () => {
 
   it('names both groups on the stat tile and points to the footnote', () => {
     const tile = buildStats(github, 2000, new Date('2026-10-16'), habr).find((s) => s.id === 'habr');
-    expect(tile.hint).toBe(`${mine} articles by me, ${team} articles by the Deep.Foundation team`);
+    expect(tile.hint).toBe(
+      `${mine} articles by me, ${team} articles by the Deep.Foundation team · snapshot of ${habr.collectedAt.slice(0, 10)}`,
+    );
     expect(tile.hint).not.toMatch(/^\d+ articles on/);
     render(<StatTiles github={github} codingSince={2000} habr={habr} />);
     expect(screen.getByRole('link', { name: 'Who wrote these articles' })).toHaveAttribute('href', '#habr-authorship');

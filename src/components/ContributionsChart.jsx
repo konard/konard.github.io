@@ -15,6 +15,14 @@ const MIX = [
   { key: 'issues', label: { en: 'Issues', ru: 'Issues' } },
   { key: 'reviews', label: { en: 'Reviews', ru: 'Ревью' } },
 ];
+// The yearly totals also count created repositories and private contributions
+// (experiments/collect-contributions.sh), which have no kind of their own here;
+// "Other" is the remainder, so the parts add up to the totals (issue #47).
+const PARTS = [
+  ...MIX,
+  { key: 'other', label: { en: 'Other (new repositories, private)', ru: 'Прочее (новые репозитории, приватные)' } },
+];
+export const withOther = (d) => ({ ...d, other: d.total - MIX.reduce((sum, m) => sum + (d[m.key] || 0), 0) });
 const CONTRIBUTIONS = { en: ['contribution', 'contributions'], ru: ['вклад', 'вклада', 'вкладов'] };
 const TICK_ADVANCE = 6.6; // 11px monospace tick labels
 
@@ -38,7 +46,8 @@ export function contributionScale(scale, max, height) {
   return (v) => (v / max) * height;
 }
 
-export default function ContributionsChart({ data }) {
+export default function ContributionsChart({ data: years }) {
+  const data = useMemo(() => years.map(withOther), [years]);
   const [scale, setScale] = useState('log');
   const { tip, show, hide } = useTooltip();
   const { lang, t } = useLang();
@@ -56,7 +65,7 @@ export default function ContributionsChart({ data }) {
   const y = contributionScale(scale, max, innerH);
 
   const mix = useMemo(() => {
-    const totals = MIX.map((m) => ({ ...m, value: data.reduce((s, d) => s + (d[m.key] || 0), 0) }));
+    const totals = PARTS.map((m) => ({ ...m, value: data.reduce((s, d) => s + (d[m.key] || 0), 0) }));
     const sum = totals.reduce((s, m) => s + m.value, 0);
     return totals.map((m) => ({ ...m, share: m.value / sum }));
   }, [data]);
@@ -65,7 +74,7 @@ export default function ContributionsChart({ data }) {
     <>
       <strong>{d.year}</strong>
       <span className="tooltip__value">{contributions(d.total)}</span>
-      {MIX.map((m) => (
+      {PARTS.map((m) => (
         <span key={m.key} className="tooltip__row">
           {t(m.label)}: {number(d[m.key])}
         </span>
@@ -186,7 +195,7 @@ export default function ContributionsChart({ data }) {
             <tr>
               <th>{t({ en: 'Year', ru: 'Год' })}</th>
               <th>{t({ en: 'Total', ru: 'Всего' })}</th>
-              {MIX.map((m) => (
+              {PARTS.map((m) => (
                 <th key={m.key}>{t(m.label)}</th>
               ))}
             </tr>
@@ -196,7 +205,7 @@ export default function ContributionsChart({ data }) {
               <tr key={d.year}>
                 <td>{d.year}</td>
                 <td>{number(d.total)}</td>
-                {MIX.map((m) => (
+                {PARTS.map((m) => (
                   <td key={m.key}>{number(d[m.key])}</td>
                 ))}
               </tr>

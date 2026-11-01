@@ -55,8 +55,10 @@ export function buildStats(github, codingSince, now = new Date(), habr = null, l
     {
       id: 'languages',
       value: totals.languages,
-      label: { en: 'Programming languages', ru: 'Языков программирования' },
-      hint: { en: 'detected by GitHub in original repositories', ru: 'по данным GitHub в собственных репозиториях' },
+      // GitHub linguist also counts markup and configuration languages (HTML,
+      // CSS, Dockerfile, Makefile, TeX…), so the label does not say "programming" (issue #47).
+      label: { en: 'Languages detected by GitHub', ru: 'Языков по данным GitHub' },
+      hint: { en: 'in original repositories, including markup', ru: 'в собственных репозиториях, включая разметку' },
     },
     {
       id: 'gists',
@@ -109,9 +111,11 @@ export function buildStats(github, codingSince, now = new Date(), habr = null, l
               en: 'Views of Habr articles on links theory & Deep',
               ru: 'Просмотров статей о теории связей и Deep на Хабре',
             },
+            // The tile shows the committed snapshot while the Habr section refreshes
+            // from the Habr API, so the tile names its date (issue #47).
             hint: {
-              en: `${articles(authors.mine, 'en')} by me, ${articles(authors.team, 'en')} by the Deep.Foundation team`,
-              ru: `${articles(authors.mine, 'ru')} мои, ${articles(authors.team, 'ru')} команды Deep.Foundation`,
+              en: `${articles(authors.mine, 'en')} by me, ${articles(authors.team, 'en')} by the Deep.Foundation team · snapshot of ${habr.collectedAt.slice(0, 10)}`,
+              ru: `${articles(authors.mine, 'ru')} мои, ${articles(authors.team, 'ru')} команды Deep.Foundation · снимок от ${habr.collectedAt.slice(0, 10)}`,
             },
             note: HABR_NOTE_ID,
           },
