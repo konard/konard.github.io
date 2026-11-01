@@ -239,7 +239,7 @@ describe('scripts/registries.cjs (issue #7)', () => {
       if (r.downloadsUnit) expect(r.downloads).toBe(Math.max(r.downloads, ...r.top.map((p) => p.downloads)));
     });
     const summary = github.packageRegistries;
-    expect(summary.checked).toBe(github.registries.length + summary.empty.length);
+    expect(summary.checked).toBe(github.registries.length + summary.empty.length + summary.onlyOthers.length);
     expect(summary.blocked.map((b) => b.id)).toEqual(['github-packages']);
   });
 
@@ -257,6 +257,13 @@ describe('scripts/registries.cjs (issue #7)', () => {
     const ghcr = github.registries.find((r) => r.id === 'github-packages');
     ghcr.top.forEach((p) => expect(kinds.get(sourceRepository('github-packages', p)) ?? 'own').toBe('own'));
     expect(github.packageRegistries.droppedPackages).toBeGreaterThan(0);
+  });
+
+  test('a registry with packages of other repositories only is not listed as empty (issue #47)', () => {
+    const { empty, onlyOthers } = github.packageRegistries;
+    expect(onlyOthers).toContain('Homebrew taps');
+    expect(empty).not.toContain('Homebrew taps');
+    expect(onlyOthers.filter((name) => empty.includes(name))).toEqual([]);
   });
 
   test('sourceRepository reads the GitHub repository of a package', () => {

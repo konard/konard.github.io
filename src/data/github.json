@@ -1960,7 +1960,6 @@
       "Anaconda.org (conda)",
       "Arch User Repository",
       "Swift Package Index",
-      "Homebrew taps",
       "Hackage",
       "opam",
       "CPAN",
@@ -1974,6 +1973,9 @@
       "Chocolatey",
       "winget",
       "Chrome Web Store"
+    ],
+    "onlyOthers": [
+      "Homebrew taps"
     ],
     "notChecked": [],
     "blocked": [

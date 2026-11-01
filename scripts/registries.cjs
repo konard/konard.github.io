@@ -61,6 +61,10 @@ function buildRegistries(kindOf, { limit = 6 } = {}) {
   const data = JSON.parse(fs.readFileSync(file, 'utf8'));
   const registries = [];
   const empty = [];
+  // Registries with packages, none of them from an original repository (a tap
+  // of another account on Homebrew): something is published there, so they are
+  // not listed as empty (issue #47).
+  const onlyOthers = [];
   const blocked = [];
   let dropped = 0;
   for (const r of data.registries) {
@@ -76,7 +80,7 @@ function buildRegistries(kindOf, { limit = 6 } = {}) {
       return keep;
     });
     if (!packages.length) {
-      empty.push(r.name);
+      (r.packages.length ? onlyOthers : empty).push(r.name);
       continue;
     }
     const [name, downloadsUnit] = DISPLAY[r.id] || [r.name, null];
@@ -109,6 +113,7 @@ function buildRegistries(kindOf, { limit = 6 } = {}) {
       collectedAt: data.collectedAt,
       checked: data.registries.length + otherChecked.length,
       empty,
+      onlyOthers,
       notChecked: data.notChecked.filter((name) => !checkedNames.has(name)),
       blocked,
       droppedPackages: dropped,

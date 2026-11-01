@@ -6,6 +6,7 @@ import { skillGroups } from '../data/profile';
 import { setLang } from '../i18n/prefs';
 import ContributionsChart, { withOther } from './ContributionsChart';
 import LanguageCloud, { LINGUIST_NAMES, undetectedLanguages } from './LanguageCloud';
+import Registries from './Registries';
 import { buildStats } from './StatTiles';
 
 // Issue #47: every number on the page must match its source and the others.
@@ -61,5 +62,19 @@ describe('numbers that agree with each other (issue #47)', () => {
     const date = habr.collectedAt.slice(0, 10);
     expect(en.find((s) => s.id === 'habr').hint).toMatch(new RegExp(`snapshot of ${date}$`));
     expect(ru.find((s) => s.id === 'habr').hint).toMatch(new RegExp(`снимок от ${date}$`));
+  });
+
+  it('does not say nothing is published where only packages of other repositories are', () => {
+    const { container } = render(<Registries registries={github.registries} summary={github.packageRegistries} />);
+    const note = container.querySelector('.registries__note').textContent;
+    const { empty } = github.packageRegistries;
+    expect(empty).not.toContain('Homebrew taps');
+    expect(note).toContain(`Nothing published on ${empty.join(', ')}.`);
+    expect(note).toContain('Homebrew taps: only packages from repositories that are not original, not counted.');
+    setLang('ru');
+    const ru = render(<Registries registries={github.registries} summary={github.packageRegistries} />);
+    expect(ru.container.querySelector('.registries__note').textContent).toContain(
+      'Homebrew taps: только пакеты из несобственных репозиториев, они не учитываются.',
+    );
   });
 });

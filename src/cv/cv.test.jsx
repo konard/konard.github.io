@@ -3,7 +3,9 @@ import { chooseSelect } from '../test/select';
 // renders, holds no private data and only the jobs of its position.
 import { renderToStaticMarkup } from 'react-dom/server';
 import { act, render, screen } from '@testing-library/react';
+import github from '../data/github.json';
 import { experience } from '../data/experience';
+import { plural } from '../i18n/plural';
 import { positions } from '../data/positions';
 import { setLang } from '../i18n/prefs';
 import CvPage from '../pages/CvPage';
@@ -87,6 +89,19 @@ describe('buildCv', () => {
     const academic = buildCv({ role: 'research', style: 'academic' });
     expect(academic.publications.length).toBeGreaterThan(0);
     expect(academic.highlights.length).toBeGreaterThan(0);
+  });
+
+  test('the registries line uses Russian plural forms and keeps the rounding note (issue #47)', () => {
+    const PACKAGES = { en: ['package', 'packages'], ru: ['пакет', 'пакета', 'пакетов'] };
+    expect([62, 224, 36].map((n) => plural(n, 'ru', PACKAGES))).toEqual(['пакета', 'пакета', 'пакетов']);
+    const lines = (lang) => buildCv({ role: 'rust', style: 'technical', lang }).registries;
+    const counted = github.registries.filter((r) => r.downloads);
+    expect(lines('ru').map((r) => r.text.split(',')[0])).toEqual(
+      counted.map((r) => `${r.packages} ${plural(r.packages, 'ru', PACKAGES)}`),
+    );
+    const rounded = counted.find((r) => r.downloadsUnit.includes('(rounded)')).name;
+    expect(lines('ru').find((r) => r.name === rounded).text).toMatch(/загрузок \(округлённо\)$/);
+    expect(lines('en').find((r) => r.name === rounded).text).toMatch(/downloads total \(rounded\)$/);
   });
 
   test('pickBullets prefers the topics of the position and always keeps one bullet', () => {
