@@ -1,6 +1,7 @@
 import { useLang } from '../i18n/prefs';
 import { CORNERS, SHAPES } from '../skins.frames';
 import { setSettings } from '../settings/store';
+import { cornerKey, levelKey, ownsCorners } from '../settings/schema.skins';
 
 // Tiles with a preview of every corner (issue #15: "each corner must be
 // configurable with selection tiles which do have a preview of such
@@ -54,7 +55,8 @@ export function CornerPreview({ shape, line, corner }) {
 /** A row of tiles instead of a list for the shape or the line of a corner. */
 export function CornerTiles({ field, value, settings, labelId }) {
   const { t } = useLang();
-  const corner = field.key.slice('corner.'.length, 'corner.'.length + 2);
+  // The corner and the level of the field (issue #47: every level has its own corners).
+  const { corner, level = 'panel' } = field;
   return (
     <div className="corner-tiles" role="radiogroup" aria-labelledby={labelId}>
       {field.options.map((option) => (
@@ -71,7 +73,7 @@ export function CornerTiles({ field, value, settings, labelId }) {
           {field.tiles === 'shape' ? (
             <CornerPreview shape={option.value} line="accent" corner={corner} />
           ) : (
-            <CornerPreview shape={settings[`corner.${corner}Shape`]} line={option.value} corner={corner} />
+            <CornerPreview shape={settings[cornerKey(level, corner, 'Shape')]} line={option.value} corner={corner} />
           )}
         </button>
       ))}
@@ -79,23 +81,52 @@ export function CornerTiles({ field, value, settings, labelId }) {
   );
 }
 
-/** Copies the shape, line, size and line width of one corner to the other three. */
-export function SameCorners({ corner, settings }) {
+const NAMES = ['Shape', 'Line', 'Size', 'Width'];
+const SIDES = ['Top', 'Right', 'Bottom', 'Left'];
+
+/**
+ * Copies the shape, line, size and line width of one corner of a level to its
+ * other three; a level with corners of its own (issue #47) can also start from
+ * the corners of the outer panels.
+ */
+export function SameCorners({ level = 'panel', corner, settings }) {
   const { t } = useLang();
   const copy = () =>
     setSettings(
       Object.fromEntries(
         CORNERS.flatMap((other) =>
-          ['Shape', 'Line', 'Size', 'Width'].map((name) => [
-            `corner.${other}${name}`,
-            settings[`corner.${corner}${name}`],
-          ]),
+          NAMES.map((name) => [cornerKey(level, other, name), settings[cornerKey(level, corner, name)]]),
         ),
       ),
     );
+  // The shapes, lines and widths of the panels; the sizes, the edges and the
+  // widths of the sides follow the panels (in the scale of the level).
+  const fromPanels = () =>
+    setSettings({
+      ...Object.fromEntries(
+        CORNERS.flatMap((other) => [
+          ...['Shape', 'Line', 'Width'].map((name) => [
+            cornerKey(level, other, name),
+            settings[cornerKey('panel', other, name)],
+          ]),
+          [cornerKey(level, other, 'Size'), -1],
+        ]),
+      ),
+      [levelKey(level, 'Edges')]: 'same',
+      [levelKey(level, 'EdgeStyle')]: 'same',
+      ...Object.fromEntries(SIDES.map((side) => [levelKey(level, `${side}Width`), -1])),
+    });
+  if (!CORNERS.includes(corner) || (level !== 'panel' && !ownsCorners(level, settings))) return null;
   return (
-    <button type="button" className="button button--small corner-tiles__same" onClick={copy}>
-      {t({ en: 'Make all corners like this one', ru: 'Сделать все углы такими же' })}
-    </button>
+    <div className="corner-tiles__actions">
+      <button type="button" className="button button--small corner-tiles__same" onClick={copy}>
+        {t({ en: 'Make all corners like this one', ru: 'Сделать все углы такими же' })}
+      </button>
+      {level !== 'panel' && (
+        <button type="button" className="button button--small corner-tiles__panels" onClick={fromPanels}>
+          {t({ en: 'Start from the corners of the outer panels', ru: 'Взять углы внешних панелей' })}
+        </button>
+      )}
+    </div>
   );
 }

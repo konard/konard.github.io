@@ -17,6 +17,13 @@
 @import './skins.frames.properties.css';
 @import './skins.frames.css';
 @import './skins.frames.corners.css';
+@import './skins.frames.level-block.css';
+@import './skins.frames.level-button.css';
+@import './skins.frames.level-field.css';
+@import './skins.frames.level-tab.css';
+@import './skins.frames.level-chip.css';
+@import './skins.frames.level-menu.css';
+@import './skins.frames.level-table.css';
 
 :root[data-skin-name='futuristic'] {
   /* The palette (skins.palettes.css) becomes the colours of the whole site. */

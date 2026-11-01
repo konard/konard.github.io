@@ -82,7 +82,7 @@ describe('the same frame on every bordered element (issue #45)', () => {
 
   it('can draw inner blocks with a plain line instead', () => {
     expect(FRAMES).toContain("[data-corner-blocks='line'] :is(");
-    expect(field('corner.blocks').options.map((o) => o.value)).toEqual(['frame', 'line']);
+    expect(field('corner.blocks').options.map((o) => o.value)).toEqual(['frame', 'own', 'line']);
   });
 });
 

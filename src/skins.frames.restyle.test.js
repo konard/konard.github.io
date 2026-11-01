@@ -139,8 +139,14 @@ describe('a setting of the frame restyles the page quickly (issue #45)', () => {
     expect(long.filter((items) => items.join(', ') !== BLOCKS.join(', '))).toEqual([]);
     for (const element of ['.card', '.repo']) expect(FRAMES).toContain(`${FRAME} :where(${element}),`);
     // Controls draw their frame with their own rules.
-    for (const element of ['.chip', 'textarea'])
-      expect(FRAMES).toContain(`:root:root${FRAME}:not([data-corner-controls='border']) ${element},`);
+    // Every type of control has its own (issue #47).
+    for (const [type, element] of [
+      ['chip', '.chip'],
+      ['field', 'textarea'],
+    ])
+      expect(FRAMES).toContain(
+        `:root:root:root${FRAME.slice(5)}[data-corner-${type}-corners='same']:not([data-corner-controls='border']) ${element},`,
+      );
   });
 
   it('turns the numbers of the root into the points of every shape at every corner', () => {

@@ -11,5 +11,6 @@ src/data/posts.json
 src/skins.frames.css
 src/skins.frames.corners.css
 src/skins.frames.properties.css
+src/skins.frames.level-*.css
 
 src/data/indicators.json

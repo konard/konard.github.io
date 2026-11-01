@@ -299,7 +299,10 @@
   stroke-width: 2.4;
 }
 
-.corner-tiles__same {
+.corner-tiles__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
   margin-top: 0.7rem;
 }
 

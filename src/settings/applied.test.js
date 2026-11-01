@@ -50,6 +50,12 @@ const usedBy = (field, layers) => {
 /** Choices that switch a decoration off, so no rule is needed for them. */
 const NOTHING = ['none', 'plain'];
 
+/**
+ * The corners of a type of control (issue #47): `border` keeps the border of
+ * the skin, because the frame is drawn only for `same` and `own`.
+ */
+const PLAIN_CONTROLS = /^corner\.(button|field|tab|chip|menu|table)Corners$/;
+
 describe('every setting is applied (issue #15)', () => {
   it('is used by a stylesheet, a background layer or a component', () => {
     const layers = readByLayers();
@@ -70,7 +76,10 @@ describe('every setting is applied (issue #15)', () => {
         .map((o) => o.value)
         .filter(
           (value) =>
-            value !== field.d && !NOTHING.includes(value) && !CSS.includes(`[data-${cssName(field.key)}='${value}']`),
+            value !== field.d &&
+            !NOTHING.includes(value) &&
+            !(PLAIN_CONTROLS.test(field.key) && value === 'border') &&
+            !CSS.includes(`[data-${cssName(field.key)}='${value}']`),
         )
         .map((value) => `${field.key}=${value}`),
     );
