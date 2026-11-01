@@ -46,7 +46,9 @@ describe('public source-line snapshot coverage', () => {
       true,
     );
     const languages = {};
-    for (const r of Object.values(source.repositories)) {
+    const excluded = new Set(indicators.sourceLines.excludedRepositories.map((r) => r.fullName));
+    for (const [name, r] of Object.entries(source.repositories)) {
+      if (excluded.has(name)) continue;
       for (const [language, n] of Object.entries(r.authoredLines)) languages[language] = (languages[language] || 0) + n;
     }
     expect(indicators.sourceLines.languages).toEqual(languages);
@@ -72,6 +74,20 @@ describe('public source-line snapshot coverage', () => {
     const audit = read('associative-audit');
     expect(audit.inventory.map((r) => r.fullName).sort()).toEqual(inventory.repositories.map((r) => r.fullName).sort());
   });
+});
+
+it('keeps vendored third-party code out of the attributed totals (issue #47)', () => {
+  const source = read('source-lines');
+  const twin = 'PavelChurkin/digital_twin_Earth';
+  const [entry] = indicators.sourceLines.excludedRepositories;
+  expect(entry).toMatchObject({ fullName: twin, sha: source.repositories[twin].sha, lines: 2235588 });
+  expect(entry.reason.en).toMatch(/CesiumJS/);
+  expect(entry.reason.ru).toMatch(/CesiumJS/);
+  expect(indicators.sourceLines.authoredRepositories.map((r) => r.fullName)).not.toContain(twin);
+  const withTwin = Object.values(source.repositories).reduce((sum, r) => sum + (r.authoredLines.JavaScript || 0), 0);
+  expect(indicators.sourceLines.languages.JavaScript).toBe(
+    withTwin - source.repositories[twin].authoredLines.JavaScript,
+  );
 });
 
 it('links each reported runtime omission to a repository in the public audit', () => {

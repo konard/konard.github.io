@@ -85,6 +85,15 @@ export default function SourceLines({ data }) {
           </ul>
         </details>
       )}
+      {data.excludedRepositories?.map((r) => (
+        <p className="muted source-lines__excluded" key={r.fullName}>
+          {t({ en: 'Excluded by hand:', ru: 'Исключён вручную:' })}{' '}
+          <a href={`https://github.com/${r.fullName}/tree/${r.sha}`} target="_blank" rel="noopener noreferrer">
+            {r.fullName}
+          </a>{' '}
+          ({number(r.lines)} <DataMark />) — {t(r.reason)}.
+        </p>
+      ))}
       <details className="table-view">
         <summary>
           {t({ en: 'Public repositories with attributed lines', ru: 'Публичные репозитории со строками автора' })}
