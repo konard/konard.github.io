@@ -1,0 +1,936 @@
+network-browsers (webkit, macos-15-intel)	Set up job	﻿2026-10-31T21:05:32.6467020Z Current runner version: '2.338.2'
+network-browsers (webkit, macos-15-intel)	Set up job	2026-10-31T21:05:32.6525770Z ##[group]Runner Image Provisioner
+network-browsers (webkit, macos-15-intel)	Set up job	2026-10-31T21:05:32.6527680Z Hosted Compute Agent
+network-browsers (webkit, macos-15-intel)	Set up job	2026-10-31T21:05:32.6528880Z Version: 20260819.586
+network-browsers (webkit, macos-15-intel)	Set up job	2026-10-31T21:05:32.6530130Z Commit: 3cc4a88dfa507ef76119ad1bb3eccc6378bb2b76
+network-browsers (webkit, macos-15-intel)	Set up job	2026-10-31T21:05:32.6531970Z Build Date: 2026-08-18T23:20:18Z
+network-browsers (webkit, macos-15-intel)	Set up job	2026-10-31T21:05:32.6533800Z Worker ID: {fb118d49-e609-4947-85ee-778756dc8702}
+network-browsers (webkit, macos-15-intel)	Set up job	2026-10-31T21:05:32.6535420Z Azure Region: westus
+network-browsers (webkit, macos-15-intel)	Set up job	2026-10-31T21:05:32.6536570Z ##[endgroup]
+network-browsers (webkit, macos-15-intel)	Set up job	2026-10-31T21:05:32.6539730Z ##[group]Operating System
+network-browsers (webkit, macos-15-intel)	Set up job	2026-10-31T21:05:32.6541340Z macOS
+network-browsers (webkit, macos-15-intel)	Set up job	2026-10-31T21:05:32.6542960Z 15.7.9
+network-browsers (webkit, macos-15-intel)	Set up job	2026-10-31T21:05:32.6543980Z 24G830
+network-browsers (webkit, macos-15-intel)	Set up job	2026-10-31T21:05:32.6544890Z ##[endgroup]
+network-browsers (webkit, macos-15-intel)	Set up job	2026-10-31T21:05:32.6545830Z ##[group]Runner Image
+network-browsers (webkit, macos-15-intel)	Set up job	2026-10-31T21:05:32.6546860Z Image: macos-15
+network-browsers (webkit, macos-15-intel)	Set up job	2026-10-31T21:05:32.6547800Z Version: 20260824.0482.1
+network-browsers (webkit, macos-15-intel)	Set up job	2026-10-31T21:05:32.6549760Z Included Software: https://github.com/actions/runner-images/blob/macos-15/20260824.0482/images/macos/macos-15-Readme.md
+network-browsers (webkit, macos-15-intel)	Set up job	2026-10-31T21:05:32.6553500Z Image Release: https://github.com/actions/runner-images/releases/tag/macos-15%2F20260824.0482
+network-browsers (webkit, macos-15-intel)	Set up job	2026-10-31T21:05:32.6555360Z ##[endgroup]
+network-browsers (webkit, macos-15-intel)	Set up job	2026-10-31T21:05:32.6557370Z ##[group]GITHUB_TOKEN Permissions
+network-browsers (webkit, macos-15-intel)	Set up job	2026-10-31T21:05:32.6560910Z Contents: read
+network-browsers (webkit, macos-15-intel)	Set up job	2026-10-31T21:05:32.6561960Z Metadata: read
+network-browsers (webkit, macos-15-intel)	Set up job	2026-10-31T21:05:32.6563520Z ##[endgroup]
+network-browsers (webkit, macos-15-intel)	Set up job	2026-10-31T21:05:32.6570530Z Secret source: Actions
+network-browsers (webkit, macos-15-intel)	Set up job	2026-10-31T21:05:32.6573000Z Cache mode: write
+network-browsers (webkit, macos-15-intel)	Set up job	2026-10-31T21:05:32.6575220Z Prepare workflow directory
+network-browsers (webkit, macos-15-intel)	Set up job	2026-10-31T21:05:32.7922430Z Prepare all required actions
+network-browsers (webkit, macos-15-intel)	Set up job	2026-10-31T21:05:32.8054870Z Getting action download info
+network-browsers (webkit, macos-15-intel)	Set up job	2026-10-31T21:05:33.4683160Z Download action repository 'actions/checkout@v7' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+network-browsers (webkit, macos-15-intel)	Set up job	2026-10-31T21:05:33.7930070Z Download action repository 'actions/setup-node@v7' (SHA:949feb2413d6458794dcd2491c4babbbce0c15c1)
+network-browsers (webkit, macos-15-intel)	Set up job	2026-10-31T21:05:34.6293910Z Complete job name: network-browsers (webkit, macos-15-intel)
+network-browsers (webkit, macos-15-intel)	Checkout source	﻿2026-10-31T21:05:34.8325110Z ##[group]Run actions/checkout@v7
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:34.8328110Z with:
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:34.8329520Z   persist-credentials: false
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:34.8331190Z   repository: konard/konard.github.io
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:34.8343250Z   token: ***
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:34.8344590Z   ssh-strict: true
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:34.8345810Z   ssh-user: git
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:34.8346920Z   clean: true
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:34.8348150Z   sparse-checkout-cone-mode: true
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:34.8349980Z   fetch-depth: 1
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:34.8351410Z   fetch-tags: false
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:34.8352600Z   show-progress: true
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:34.8353870Z   lfs: false
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:34.8354930Z   submodules: false
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:34.8356050Z   set-safe-directory: true
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:34.8357520Z   allow-unsafe-pr-checkout: false
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:34.8360110Z env:
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:34.8360920Z   GIT_CONFIG_COUNT: 1
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:34.8361890Z   GIT_CONFIG_KEY_0: init.defaultBranch
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:34.8363270Z   GIT_CONFIG_VALUE_0: main
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:34.8364520Z   ENGINE: webkit
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:34.8365610Z ##[endgroup]
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:35.4033510Z Syncing repository: konard/konard.github.io
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:35.4037210Z ##[group]Getting Git version info
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:35.4038840Z Working directory is '/Users/runner/work/konard.github.io/konard.github.io'
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:35.4042750Z [command]/usr/local/bin/git version
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:35.4259190Z git version 2.55.0
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:35.4355600Z ##[endgroup]
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:35.4414290Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/1b1c749f-d56b-4e2a-822e-fbe17fe0c40c/.gitconfig'
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:35.4449080Z Temporarily overriding HOME='/Users/runner/work/_temp/1b1c749f-d56b-4e2a-822e-fbe17fe0c40c' before making global git config changes
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:35.4452350Z Adding repository directory to the temporary git global config as a safe directory
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:35.4481750Z [command]/usr/local/bin/git config --global --add safe.directory /Users/runner/work/konard.github.io/konard.github.io
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:35.4546270Z Deleting the contents of '/Users/runner/work/konard.github.io/konard.github.io'
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:35.4574000Z ##[group]Determining repository object format
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:35.4590530Z ##[endgroup]
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:35.4611650Z ##[group]Initializing the repository
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:35.5035590Z [command]/usr/local/bin/git init /Users/runner/work/konard.github.io/konard.github.io
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:35.5307950Z Initialized empty Git repository in /Users/runner/work/konard.github.io/konard.github.io/.git/
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:35.5901900Z [command]/usr/local/bin/git remote add origin https://github.com/konard/konard.github.io
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:35.5945030Z ##[endgroup]
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:35.5970400Z ##[group]Disabling automatic garbage collection
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:35.5996060Z [command]/usr/local/bin/git config --local gc.auto 0
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:35.6049750Z ##[endgroup]
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:35.6052120Z ##[group]Setting up auth
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:35.6078480Z Removing SSH command configuration
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:35.6135050Z [command]/usr/local/bin/git config --local --name-only --get-regexp core\.sshCommand
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:35.6265630Z [command]/usr/local/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:35.8729090Z Removing HTTP extra header
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:35.8763070Z [command]/usr/local/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:35.8831280Z [command]/usr/local/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:36.3447820Z Removing includeIf entries pointing to credentials config files
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:36.3934760Z [command]/usr/local/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:36.4069190Z [command]/usr/local/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:36.4347420Z [command]/usr/local/bin/git config --file /Users/runner/work/_temp/git-credentials-a2746e6a-f31d-4740-aa36-4f5d88429703.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:36.4423850Z [command]/usr/local/bin/git config --local includeIf.gitdir:/Users/runner/work/konard.github.io/konard.github.io/.git.path /Users/runner/work/_temp/git-credentials-a2746e6a-f31d-4740-aa36-4f5d88429703.config
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:36.6587170Z [command]/usr/local/bin/git config --local includeIf.gitdir:/Users/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path /Users/runner/work/_temp/git-credentials-a2746e6a-f31d-4740-aa36-4f5d88429703.config
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:36.6887710Z [command]/usr/local/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-a2746e6a-f31d-4740-aa36-4f5d88429703.config
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:36.6999740Z [command]/usr/local/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-a2746e6a-f31d-4740-aa36-4f5d88429703.config
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:36.7148930Z ##[endgroup]
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:36.8164770Z ##[group]Fetching the repository
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:36.8633720Z [command]/usr/local/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +e780c48043e18fc77ac337055b0fe85f69eac4f6:refs/remotes/pull/46/merge
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:48.4665380Z From https://github.com/konard/konard.github.io
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:48.4699380Z  * [new ref]         e780c48043e18fc77ac337055b0fe85f69eac4f6 -> pull/46/merge
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:48.4825540Z ##[endgroup]
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:48.4859530Z ##[group]Determining the checkout info
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:48.4893470Z ##[endgroup]
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:48.4928580Z [command]/usr/local/bin/git sparse-checkout disable
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:48.5055160Z [command]/usr/local/bin/git config --local --unset-all extensions.worktreeConfig
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:48.7207550Z ##[group]Checking out the ref
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:48.7238750Z [command]/usr/local/bin/git checkout --progress --force refs/remotes/pull/46/merge
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:49.7308210Z Updating files:  11% (463/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:50.0956180Z Updating files:  12% (497/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:50.2399580Z Updating files:  13% (538/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:50.3404500Z Updating files:  14% (580/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:50.8660790Z Updating files:  15% (621/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:50.8743110Z Updating files:  15% (658/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:50.9055510Z Updating files:  16% (663/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:50.9307220Z Updating files:  17% (704/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:50.9667210Z Updating files:  18% (745/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:51.1223020Z Updating files:  19% (787/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:51.1533330Z Updating files:  20% (828/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:51.1636740Z Updating files:  21% (869/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:51.2001990Z Updating files:  22% (911/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:51.2019170Z Updating files:  23% (952/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:51.2197720Z Updating files:  24% (994/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:51.3520010Z Updating files:  25% (1035/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:51.3592050Z Updating files:  26% (1076/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:51.4235120Z Updating files:  27% (1118/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:51.4799370Z Updating files:  28% (1159/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:51.6262950Z Updating files:  29% (1201/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:51.6545690Z Updating files:  29% (1234/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:51.7171230Z Updating files:  30% (1242/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:51.7841260Z Updating files:  31% (1283/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:51.8507940Z Updating files:  32% (1325/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:51.9996140Z Updating files:  33% (1366/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:52.0654390Z Updating files:  34% (1407/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:52.0822960Z Updating files:  35% (1449/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:52.1024170Z Updating files:  36% (1490/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:52.1505580Z Updating files:  37% (1532/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:52.2510810Z Updating files:  38% (1573/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:52.2929820Z Updating files:  39% (1614/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:52.3003510Z Updating files:  40% (1656/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:52.4840270Z Updating files:  41% (1697/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:52.5025260Z Updating files:  42% (1738/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:52.5059080Z Updating files:  43% (1780/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:52.5274160Z Updating files:  44% (1821/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:52.5701470Z Updating files:  45% (1863/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:52.6135880Z Updating files:  45% (1880/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:52.6534720Z Updating files:  46% (1904/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:52.6858360Z Updating files:  47% (1945/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:52.7429270Z Updating files:  48% (1987/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:52.7670510Z Updating files:  49% (2028/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:52.8189960Z Updating files:  50% (2069/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:52.8867910Z Updating files:  51% (2111/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:53.0026060Z Updating files:  52% (2152/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:53.0300800Z Updating files:  53% (2194/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:53.0919550Z Updating files:  54% (2235/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:53.3349140Z Updating files:  55% (2276/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:53.8398540Z Updating files:  56% (2318/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:53.8428130Z Updating files:  56% (2358/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:53.8715470Z Updating files:  57% (2359/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:53.9024170Z Updating files:  58% (2401/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:54.0150160Z Updating files:  59% (2442/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:54.1552720Z Updating files:  60% (2483/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:54.1867360Z Updating files:  61% (2525/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:54.2162270Z Updating files:  62% (2566/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:54.3815430Z Updating files:  63% (2607/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:54.4838990Z Updating files:  64% (2649/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:54.5843570Z Updating files:  65% (2690/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:54.6838950Z Updating files:  66% (2732/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:54.6891760Z Updating files:  67% (2773/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:54.6906830Z Updating files:  68% (2814/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:54.6923890Z Updating files:  69% (2856/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:54.6947940Z Updating files:  69% (2862/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:54.7266290Z Updating files:  70% (2897/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:55.0914640Z Updating files:  71% (2938/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:55.1035090Z Updating files:  72% (2980/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:55.1038510Z Updating files:  73% (3021/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:55.1045140Z Updating files:  74% (3063/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:55.2132840Z Updating files:  75% (3104/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:55.2377250Z Updating files:  76% (3145/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:55.2439920Z Updating files:  77% (3187/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:55.2462300Z Updating files:  78% (3228/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:55.2530360Z Updating files:  79% (3270/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:55.2531470Z Updating files:  80% (3311/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:55.4278440Z Updating files:  81% (3352/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:55.4848710Z Updating files:  82% (3394/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:55.4873320Z Updating files:  83% (3435/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:55.5293380Z Updating files:  84% (3476/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:55.5521570Z Updating files:  85% (3518/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:55.5541380Z Updating files:  86% (3559/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:55.6819820Z Updating files:  86% (3560/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:55.7678210Z Updating files:  87% (3601/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:55.9023610Z Updating files:  88% (3642/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:56.0115560Z Updating files:  89% (3683/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:56.0647960Z Updating files:  90% (3725/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:56.0696440Z Updating files:  91% (3766/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:56.0732400Z Updating files:  92% (3807/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:56.0766640Z Updating files:  93% (3849/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:56.0795590Z Updating files:  94% (3890/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:56.0797590Z Updating files:  95% (3932/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:56.0926900Z Updating files:  96% (3973/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:56.1151830Z Updating files:  97% (4014/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:56.3461540Z Updating files:  98% (4056/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:56.4234150Z Updating files:  99% (4097/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:56.4237370Z Updating files: 100% (4138/4138)
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:56.4250680Z Updating files: 100% (4138/4138), done.
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:56.4284120Z HEAD is now at e780c48 Merge 5efe065742b8b0efddecd3889b8e2e61e133e494 into eeb905aafd3e03af1428be69adaf27849864f315
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:56.4347350Z ##[endgroup]
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:56.4531970Z [command]/usr/local/bin/git log -1 --format=%H
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:56.4759330Z e780c48043e18fc77ac337055b0fe85f69eac4f6
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:56.4818750Z ##[group]Removing auth
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:56.4849360Z Removing SSH command configuration
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:56.4898500Z [command]/usr/local/bin/git config --local --name-only --get-regexp core\.sshCommand
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:56.5013790Z [command]/usr/local/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:56.8216350Z Removing HTTP extra header
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:56.8281360Z [command]/usr/local/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:56.8368030Z [command]/usr/local/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:57.0857680Z Removing includeIf entries pointing to credentials config files
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:57.0908450Z [command]/usr/local/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:57.0973720Z includeif.gitdir:/Users/runner/work/konard.github.io/konard.github.io/.git.path
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:57.1012610Z includeif.gitdir:/Users/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:57.1043650Z includeif.gitdir:/github/workspace/.git.path
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:57.1081050Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:57.1421790Z [command]/usr/local/bin/git config --local --get-all includeif.gitdir:/Users/runner/work/konard.github.io/konard.github.io/.git.path
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:57.1470770Z /Users/runner/work/_temp/git-credentials-a2746e6a-f31d-4740-aa36-4f5d88429703.config
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:57.1474860Z [command]/usr/local/bin/git config --local --unset includeif.gitdir:/Users/runner/work/konard.github.io/konard.github.io/.git.path \/Users\/runner\/work\/_temp\/git\-credentials\-a2746e6a\-f31d\-4740\-aa36\-4f5d88429703\.config
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:57.1576990Z [command]/usr/local/bin/git config --local --get-all includeif.gitdir:/Users/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:57.1616820Z /Users/runner/work/_temp/git-credentials-a2746e6a-f31d-4740-aa36-4f5d88429703.config
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:57.1904770Z [command]/usr/local/bin/git config --local --unset includeif.gitdir:/Users/runner/work/konard.github.io/konard.github.io/.git/worktrees/*.path \/Users\/runner\/work\/_temp\/git\-credentials\-a2746e6a\-f31d\-4740\-aa36\-4f5d88429703\.config
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:57.2038540Z [command]/usr/local/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:57.2056330Z /github/runner_temp/git-credentials-a2746e6a-f31d-4740-aa36-4f5d88429703.config
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:57.2122810Z [command]/usr/local/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-a2746e6a\-f31d\-4740\-aa36\-4f5d88429703\.config
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:57.2189300Z [command]/usr/local/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:57.2214020Z /github/runner_temp/git-credentials-a2746e6a-f31d-4740-aa36-4f5d88429703.config
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:57.2262540Z [command]/usr/local/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-a2746e6a\-f31d\-4740\-aa36\-4f5d88429703\.config
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:57.2476810Z [command]/usr/local/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:57.4893180Z Removing credentials config '/Users/runner/work/_temp/git-credentials-a2746e6a-f31d-4740-aa36-4f5d88429703.config'
+network-browsers (webkit, macos-15-intel)	Checkout source	2026-10-31T21:05:57.4929170Z ##[endgroup]
+network-browsers (webkit, macos-15-intel)	Setup Node.js	﻿2026-10-31T21:05:57.5624080Z ##[group]Run actions/setup-node@v7
+network-browsers (webkit, macos-15-intel)	Setup Node.js	2026-10-31T21:05:57.5625030Z with:
+network-browsers (webkit, macos-15-intel)	Setup Node.js	2026-10-31T21:05:57.5625640Z   node-version: 24.x
+network-browsers (webkit, macos-15-intel)	Setup Node.js	2026-10-31T21:05:57.5626320Z   cache: npm
+network-browsers (webkit, macos-15-intel)	Setup Node.js	2026-10-31T21:05:57.5626950Z   check-latest: false
+network-browsers (webkit, macos-15-intel)	Setup Node.js	2026-10-31T21:05:57.5637010Z   token: ***
+network-browsers (webkit, macos-15-intel)	Setup Node.js	2026-10-31T21:05:57.5637520Z   package-manager-cache: true
+network-browsers (webkit, macos-15-intel)	Setup Node.js	2026-10-31T21:05:57.5638110Z env:
+network-browsers (webkit, macos-15-intel)	Setup Node.js	2026-10-31T21:05:57.5638520Z   GIT_CONFIG_COUNT: 1
+network-browsers (webkit, macos-15-intel)	Setup Node.js	2026-10-31T21:05:57.5639190Z   GIT_CONFIG_KEY_0: init.defaultBranch
+network-browsers (webkit, macos-15-intel)	Setup Node.js	2026-10-31T21:05:57.5640110Z   GIT_CONFIG_VALUE_0: main
+network-browsers (webkit, macos-15-intel)	Setup Node.js	2026-10-31T21:05:57.5640840Z   ENGINE: webkit
+network-browsers (webkit, macos-15-intel)	Setup Node.js	2026-10-31T21:05:57.5641490Z ##[endgroup]
+network-browsers (webkit, macos-15-intel)	Setup Node.js	2026-10-31T21:05:57.8842290Z Found in cache @ /Users/runner/hostedtoolcache/node/24.19.0/x64
+network-browsers (webkit, macos-15-intel)	Setup Node.js	2026-10-31T21:05:58.1967880Z ##[group]Environment details
+network-browsers (webkit, macos-15-intel)	Setup Node.js	2026-10-31T21:06:00.4097600Z node: v24.19.0
+network-browsers (webkit, macos-15-intel)	Setup Node.js	2026-10-31T21:06:00.4098620Z npm: 11.17.0
+network-browsers (webkit, macos-15-intel)	Setup Node.js	2026-10-31T21:06:00.4100040Z yarn: 1.22.22
+network-browsers (webkit, macos-15-intel)	Setup Node.js	2026-10-31T21:06:00.4101700Z ##[endgroup]
+network-browsers (webkit, macos-15-intel)	Setup Node.js	2026-10-31T21:06:00.4163100Z [command]/Users/runner/hostedtoolcache/node/24.19.0/x64/bin/npm config get cache
+network-browsers (webkit, macos-15-intel)	Setup Node.js	2026-10-31T21:06:00.9231830Z /Users/runner/.npm
+network-browsers (webkit, macos-15-intel)	Setup Node.js	2026-10-31T21:06:01.2812460Z Cache hit for: node-cache-macOS-x64-npm-d8cfaa222f5e7792d4d4805649c03196a307098f636c68b91559a659e7a42be3
+network-browsers (webkit, macos-15-intel)	Setup Node.js	2026-10-31T21:06:02.6027950Z Received 0 of 49126057 (0.0%), 0.0 MBs/sec
+network-browsers (webkit, macos-15-intel)	Setup Node.js	2026-10-31T21:06:03.6039290Z Received 37748736 of 49126057 (76.8%), 17.9 MBs/sec
+network-browsers (webkit, macos-15-intel)	Setup Node.js	2026-10-31T21:06:03.8515400Z Received 49126057 of 49126057 (100.0%), 20.8 MBs/sec
+network-browsers (webkit, macos-15-intel)	Setup Node.js	2026-10-31T21:06:03.8551740Z Cache Size: ~47 MB (49126057 B)
+network-browsers (webkit, macos-15-intel)	Setup Node.js	2026-10-31T21:06:03.8639690Z [command]/usr/local/bin/gtar -xf /Users/runner/work/_temp/a7f4342b-5fce-4891-9224-7ee205ff4f18/cache.tzst -P -C /Users/runner/work/konard.github.io/konard.github.io --delay-directory-restore --use-compress-program unzstd
+network-browsers (webkit, macos-15-intel)	Setup Node.js	2026-10-31T21:06:05.3904340Z Cache restored successfully
+network-browsers (webkit, macos-15-intel)	Setup Node.js	2026-10-31T21:06:05.3993970Z Cache restored from key: node-cache-macOS-x64-npm-d8cfaa222f5e7792d4d4805649c03196a307098f636c68b91559a659e7a42be3
+network-browsers (webkit, macos-15-intel)	Install dependencies	﻿2026-10-31T21:06:05.4982150Z ##[group]Run npm ci
+network-browsers (webkit, macos-15-intel)	Install dependencies	2026-10-31T21:06:05.4983080Z ^[[36;1mnpm ci^[[0m
+network-browsers (webkit, macos-15-intel)	Install dependencies	2026-10-31T21:06:05.5091710Z shell: /bin/bash -e {0}
+network-browsers (webkit, macos-15-intel)	Install dependencies	2026-10-31T21:06:05.5092410Z env:
+network-browsers (webkit, macos-15-intel)	Install dependencies	2026-10-31T21:06:05.5092940Z   GIT_CONFIG_COUNT: 1
+network-browsers (webkit, macos-15-intel)	Install dependencies	2026-10-31T21:06:05.5093540Z   GIT_CONFIG_KEY_0: init.defaultBranch
+network-browsers (webkit, macos-15-intel)	Install dependencies	2026-10-31T21:06:05.5094270Z   GIT_CONFIG_VALUE_0: main
+network-browsers (webkit, macos-15-intel)	Install dependencies	2026-10-31T21:06:05.5094820Z   ENGINE: webkit
+network-browsers (webkit, macos-15-intel)	Install dependencies	2026-10-31T21:06:05.5095330Z ##[endgroup]
+network-browsers (webkit, macos-15-intel)	Install dependencies	2026-10-31T21:06:34.2255390Z 
+network-browsers (webkit, macos-15-intel)	Install dependencies	2026-10-31T21:06:34.2304420Z > konard.github.io@0.1.0 prepare
+network-browsers (webkit, macos-15-intel)	Install dependencies	2026-10-31T21:06:34.2320050Z > husky
+network-browsers (webkit, macos-15-intel)	Install dependencies	2026-10-31T21:06:34.2333870Z 
+network-browsers (webkit, macos-15-intel)	Install dependencies	2026-10-31T21:06:35.4009310Z 
+network-browsers (webkit, macos-15-intel)	Install dependencies	2026-10-31T21:06:35.4054110Z added 530 packages, and audited 531 packages in 30s
+network-browsers (webkit, macos-15-intel)	Install dependencies	2026-10-31T21:06:35.4111420Z 
+network-browsers (webkit, macos-15-intel)	Install dependencies	2026-10-31T21:06:35.4153750Z 169 packages are looking for funding
+network-browsers (webkit, macos-15-intel)	Install dependencies	2026-10-31T21:06:35.4241940Z   run `npm fund` for details
+network-browsers (webkit, macos-15-intel)	Install dependencies	2026-10-31T21:06:35.4276000Z 
+network-browsers (webkit, macos-15-intel)	Install dependencies	2026-10-31T21:06:35.4389730Z found 0 vulnerabilities
+network-browsers (webkit, macos-15-intel)	Build the editor	﻿2026-10-31T21:06:35.7423310Z ##[group]Run npm run build
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:35.7424390Z ^[[36;1mnpm run build^[[0m
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:35.7548000Z shell: /bin/bash -e {0}
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:35.7548860Z env:
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:35.7549480Z   GIT_CONFIG_COUNT: 1
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:35.7550330Z   GIT_CONFIG_KEY_0: init.defaultBranch
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:35.7551310Z   GIT_CONFIG_VALUE_0: main
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:35.7552270Z   ENGINE: webkit
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:35.7552980Z ##[endgroup]
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:36.1909260Z 
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:36.1966180Z > konard.github.io@0.1.0 build
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:36.2026520Z > vite build
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:36.2027730Z 
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:36.8590890Z ^[[36mvite v8.3.5 ^[[32mbuilding client environment for production...^[[36m^[[39m
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:36.8858560Z transforming...
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:37.4810210Z ✓ 217 modules transformed.
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:37.7644150Z rendering chunks...
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.3879480Z computing gzip size...
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.3998130Z build/build-info.json                                           0.05 kB │ gzip:   0.07 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.4047290Z build/assets/orbitron-latin-700-normal-4jsRXGGJ.woff2           6.52 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.4099880Z build/assets/orbitron-latin-500-normal-DQ2gt4P1.woff2           6.59 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.4152390Z build/assets/orbitron-latin-700-normal-DmYOh-W9.woff            8.96 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.4230130Z build/assets/orbitron-latin-500-normal-BCCupJ8c.woff            9.03 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.4292020Z build/assets/chakra-petch-latin-400-normal-SafcrIr2.woff2       9.75 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.4294760Z build/assets/chakra-petch-latin-600-normal-DVQm9bgb.woff2       9.96 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.4333490Z build/assets/share-tech-mono-latin-400-normal-15MgdvEM.woff    10.23 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.4407390Z build/assets/electrolize-latin-400-normal-DH2aMH81.woff        11.78 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.4440690Z build/assets/chakra-petch-latin-400-normal-D7EtbySE.woff       13.16 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.4471630Z build/assets/chakra-petch-latin-600-normal-DQKfcdKo.woff       13.43 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.4503400Z build/assets/share-tech-mono-latin-400-normal-CCqdbj5z.woff2   13.50 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.4525570Z build/blog/index.html                                          14.17 kB │ gzip:   4.20 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.4560200Z build/cv/index.html                                            14.17 kB │ gzip:   4.23 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.4562880Z build/art/index.html                                           14.43 kB │ gzip:   4.26 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.4597820Z build/repositories/index.html                                  14.43 kB │ gzip:   4.24 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.4637320Z build/settings/index.html                                      14.48 kB │ gzip:   4.24 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.4709000Z build/associative/index.html                                   14.50 kB │ gzip:   4.27 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.4760050Z build/experience/index.html                                    14.55 kB │ gzip:   4.27 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.4795700Z build/network/index.html                                       14.55 kB │ gzip:   4.31 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.4812270Z build/index.html                                               14.65 kB │ gzip:   4.37 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.4831780Z build/research/index.html                                      14.70 kB │ gzip:   4.32 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.4861360Z build/assets/electrolize-latin-400-normal-RRVgdOY_.woff2       16.68 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.4897340Z build/assets/collision-worker-CstqQVzu.js                      36.83 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.4923850Z build/assets/cv-B3XAbQb8.css                                    2.58 kB │ gzip:   1.07 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.4951710Z build/assets/settings-5hXznQm5.css                              2.99 kB │ gzip:   1.09 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.4984960Z build/assets/network-1D9RLs_v.css                               5.19 kB │ gzip:   1.51 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.5026060Z build/assets/settings-BJ70-Jzm.css                              5.46 kB │ gzip:   1.54 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.5073440Z build/assets/Layout-ldxGH4rn.css                              234.55 kB │ gzip:  31.58 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.5131820Z build/assets/plural-BPrnZ9qL.js                                 0.30 kB │ gzip:   0.25 kB │ map:     1.50 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.5169490Z build/assets/format-CujfuUOf.js                                 0.45 kB │ gzip:   0.35 kB │ map:     1.75 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.5201770Z build/assets/query-C8jBGeOd.js                                  0.49 kB │ gzip:   0.34 kB │ map:     1.80 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.5234320Z build/assets/Section-BEPrC9VU.js                                0.50 kB │ gzip:   0.30 kB │ map:     1.30 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.5266860Z build/assets/Glyph-D0UT4Nxw.js                                  0.53 kB │ gzip:   0.37 kB │ map:     1.68 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.5292900Z build/assets/beams-Ddl60BLZ.js                                  3.05 kB │ gzip:   1.54 kB │ map:    12.30 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.5313190Z build/assets/experience-DXYaons_.js                             3.88 kB │ gzip:   1.68 kB │ map:    10.84 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.5326540Z build/assets/Select-MnfVk9Mx.js                                 4.25 kB │ gzip:   1.94 kB │ map:    14.89 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.5349530Z build/assets/Skills-BnODJwI1.js                                 4.33 kB │ gzip:   1.82 kB │ map:    13.66 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.5381920Z build/assets/repositories-Sipa6Dck.js                           4.88 kB │ gzip:   1.99 kB │ map:    12.04 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.5399540Z build/assets/art-Crwpm87k.js                                    5.31 kB │ gzip:   2.37 kB │ map:    10.73 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.5407370Z build/assets/theory-DLnm5Z1a.js                                 5.74 kB │ gzip:   2.52 kB │ map:     9.41 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.5414520Z build/assets/settings-BJ3PqIxh.js                               6.02 kB │ gzip:   2.61 kB │ map:    18.74 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.5443390Z build/assets/NetworkGallery-HxiO7dHj.js                         6.15 kB │ gzip:   2.64 kB │ map:    15.17 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.5455150Z build/assets/stars-Dv2ohr2R.js                                  6.23 kB │ gzip:   2.81 kB │ map:    26.41 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.5462660Z build/assets/presets-Dbrbp7Le.js                                8.13 kB │ gzip:   3.74 kB │ map:    21.25 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.5478650Z build/assets/schema.sound-DAmUU18B.js                           8.24 kB │ gzip:   3.91 kB │ map:    17.90 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.5493690Z build/assets/interactions-BaK-hnH8.js                           9.64 kB │ gzip:   3.79 kB │ map:    35.28 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.5539320Z build/assets/cv-C1Y9q1s7.js                                    11.44 kB │ gzip:   4.25 kB │ map:    33.31 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.6559730Z build/assets/research-ZTx5V0Xq.js                              13.13 kB │ gzip:   5.16 kB │ map:    23.23 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.6581980Z build/assets/MetaTheory-DOHlQBH5.js                            18.08 kB │ gzip:   6.93 kB │ map:    39.77 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.6843510Z build/assets/paths-Xsa5uC4D.js                                 29.25 kB │ gzip:   7.41 kB │ map:    57.15 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.6864010Z build/assets/settings-COCJk5Hl.js                              29.83 kB │ gzip:   9.12 kB │ map:    81.98 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.6895660Z build/assets/associative-DCu_voGu.js                           40.87 kB │ gzip:  13.01 kB │ map:    67.65 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.6935200Z build/assets/index-woTtJhiR.js                                 68.43 kB │ gzip:  21.51 kB │ map:   161.34 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.6967000Z build/assets/profile-CaLHDdHp.js                               74.68 kB │ gzip:  21.59 kB │ map:   118.72 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.6993770Z build/assets/network-CQCVVRPW.js                               78.78 kB │ gzip:  28.84 kB │ map:   254.95 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.7007070Z build/assets/blog-CV62HLIR.js                                  87.78 kB │ gzip:  20.66 kB │ map:   137.49 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.7020960Z build/assets/RepoList-EXnqjRv3.js                             425.92 kB │ gzip:  86.99 kB │ map:   567.98 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.7026140Z build/assets/Layout-CCibcdFl.js                               446.90 kB │ gzip: 145.62 kB │ map: 1,394.91 kB
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.7028680Z 
+network-browsers (webkit, macos-15-intel)	Build the editor	2026-10-31T21:06:38.7030180Z ^[[32m✓ built in 1.54s^[[39m
+network-browsers (webkit, macos-15-intel)	Install the browser	﻿2026-10-31T21:06:38.7174320Z ##[group]Run npx playwright install --with-deps "$ENGINE"
+network-browsers (webkit, macos-15-intel)	Install the browser	2026-10-31T21:06:38.7176130Z ^[[36;1mnpx playwright install --with-deps "$ENGINE"^[[0m
+network-browsers (webkit, macos-15-intel)	Install the browser	2026-10-31T21:06:38.7317730Z shell: /bin/bash -e {0}
+network-browsers (webkit, macos-15-intel)	Install the browser	2026-10-31T21:06:38.7319470Z env:
+network-browsers (webkit, macos-15-intel)	Install the browser	2026-10-31T21:06:38.7320340Z   GIT_CONFIG_COUNT: 1
+network-browsers (webkit, macos-15-intel)	Install the browser	2026-10-31T21:06:38.7321270Z   GIT_CONFIG_KEY_0: init.defaultBranch
+network-browsers (webkit, macos-15-intel)	Install the browser	2026-10-31T21:06:38.7322250Z   GIT_CONFIG_VALUE_0: main
+network-browsers (webkit, macos-15-intel)	Install the browser	2026-10-31T21:06:38.7323080Z   ENGINE: webkit
+network-browsers (webkit, macos-15-intel)	Install the browser	2026-10-31T21:06:38.7323890Z ##[endgroup]
+network-browsers (webkit, macos-15-intel)	Install the browser	2026-10-31T21:06:41.8110570Z Downloading WebKit 27.2 (playwright webkit v2370) from https://cdn.playwright.dev/dbazure/download/playwright/builds/webkit/2370/webkit-mac-15.zip
+network-browsers (webkit, macos-15-intel)	Install the browser	2026-10-31T21:06:42.6057260Z |                                                                                |   0% of 84.5 MiB
+network-browsers (webkit, macos-15-intel)	Install the browser	2026-10-31T21:06:42.7377360Z |■■■■■■■■                                                                        |  10% of 84.5 MiB
+network-browsers (webkit, macos-15-intel)	Install the browser	2026-10-31T21:06:42.8656510Z |■■■■■■■■■■■■■■■■                                                                |  20% of 84.5 MiB
+network-browsers (webkit, macos-15-intel)	Install the browser	2026-10-31T21:06:42.9681850Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 84.5 MiB
+network-browsers (webkit, macos-15-intel)	Install the browser	2026-10-31T21:06:43.0695160Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 84.5 MiB
+network-browsers (webkit, macos-15-intel)	Install the browser	2026-10-31T21:06:43.1880230Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 84.5 MiB
+network-browsers (webkit, macos-15-intel)	Install the browser	2026-10-31T21:06:43.3888410Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 84.5 MiB
+network-browsers (webkit, macos-15-intel)	Install the browser	2026-10-31T21:06:43.6956610Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 84.5 MiB
+network-browsers (webkit, macos-15-intel)	Install the browser	2026-10-31T21:06:43.9322800Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 84.5 MiB
+network-browsers (webkit, macos-15-intel)	Install the browser	2026-10-31T21:06:44.0490510Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 84.5 MiB
+network-browsers (webkit, macos-15-intel)	Install the browser	2026-10-31T21:06:44.2292050Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 84.5 MiB
+network-browsers (webkit, macos-15-intel)	Install the browser	2026-10-31T21:07:15.6220570Z WebKit 27.2 (playwright webkit v2370) downloaded to /Users/runner/Library/Caches/ms-playwright/webkit-2370
+network-browsers (webkit, macos-15-intel)	Install the browser	2026-10-31T21:07:15.6238550Z Downloading FFmpeg (playwright ffmpeg v1013) from https://cdn.playwright.dev/dbazure/download/playwright/builds/ffmpeg/1013/ffmpeg-mac.zip
+network-browsers (webkit, macos-15-intel)	Install the browser	2026-10-31T21:07:16.4090630Z |                                                                                |   1% of 1.5 MiB
+network-browsers (webkit, macos-15-intel)	Install the browser	2026-10-31T21:07:16.4264910Z |■■■■■■■■                                                                        |  10% of 1.5 MiB
+network-browsers (webkit, macos-15-intel)	Install the browser	2026-10-31T21:07:16.4269630Z |■■■■■■■■■■■■■■■■                                                                |  20% of 1.5 MiB
+network-browsers (webkit, macos-15-intel)	Install the browser	2026-10-31T21:07:16.4276580Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 1.5 MiB
+network-browsers (webkit, macos-15-intel)	Install the browser	2026-10-31T21:07:16.4284950Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 1.5 MiB
+network-browsers (webkit, macos-15-intel)	Install the browser	2026-10-31T21:07:16.4295850Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 1.5 MiB
+network-browsers (webkit, macos-15-intel)	Install the browser	2026-10-31T21:07:16.4321080Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 1.5 MiB
+network-browsers (webkit, macos-15-intel)	Install the browser	2026-10-31T21:07:16.4702000Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 1.5 MiB
+network-browsers (webkit, macos-15-intel)	Install the browser	2026-10-31T21:07:16.4731450Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 1.5 MiB
+network-browsers (webkit, macos-15-intel)	Install the browser	2026-10-31T21:07:16.5100790Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 1.5 MiB
+network-browsers (webkit, macos-15-intel)	Install the browser	2026-10-31T21:07:16.5337260Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 1.5 MiB
+network-browsers (webkit, macos-15-intel)	Install the browser	2026-10-31T21:07:16.5449170Z FFmpeg (playwright ffmpeg v1013) downloaded to /Users/runner/Library/Caches/ms-playwright/ffmpeg-1013
+network-browsers (webkit, macos-15-intel)	Initialize browser evidence	﻿2026-10-31T21:07:16.6168910Z ##[group]Run mkdir -p browser-results
+network-browsers (webkit, macos-15-intel)	Initialize browser evidence	2026-10-31T21:07:16.6170730Z ^[[36;1mmkdir -p browser-results^[[0m
+network-browsers (webkit, macos-15-intel)	Initialize browser evidence	2026-10-31T21:07:16.6173230Z ^[[36;1mnode -e 'require("node:fs").writeFileSync("browser-results/run.json", JSON.stringify({sha: process.env.GITHUB_SHA, engine: process.env.ENGINE}))'^[[0m
+network-browsers (webkit, macos-15-intel)	Initialize browser evidence	2026-10-31T21:07:16.6293050Z shell: /bin/bash -e {0}
+network-browsers (webkit, macos-15-intel)	Initialize browser evidence	2026-10-31T21:07:16.6293680Z env:
+network-browsers (webkit, macos-15-intel)	Initialize browser evidence	2026-10-31T21:07:16.6294150Z   GIT_CONFIG_COUNT: 1
+network-browsers (webkit, macos-15-intel)	Initialize browser evidence	2026-10-31T21:07:16.6294730Z   GIT_CONFIG_KEY_0: init.defaultBranch
+network-browsers (webkit, macos-15-intel)	Initialize browser evidence	2026-10-31T21:07:16.6295630Z   GIT_CONFIG_VALUE_0: main
+network-browsers (webkit, macos-15-intel)	Initialize browser evidence	2026-10-31T21:07:16.6296500Z   ENGINE: webkit
+network-browsers (webkit, macos-15-intel)	Initialize browser evidence	2026-10-31T21:07:16.6297000Z ##[endgroup]
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	﻿2026-10-31T21:07:16.7724220Z ##[group]Run BUDGET_MS=900000 VARIANTS=defaults,glass,noRainGlow,noRain,noNebula,gridLines,noScanlines,solidSurface,cornerBrackets,controlBorders,layerBelow,quiet node experiments/issue-45-webkit-diagnose.mjs
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:07:16.7728830Z ^[[36;1mBUDGET_MS=900000 VARIANTS=defaults,glass,noRainGlow,noRain,noNebula,gridLines,noScanlines,solidSurface,cornerBrackets,controlBorders,layerBelow,quiet node experiments/issue-45-webkit-diagnose.mjs^[[0m
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:07:16.7732240Z ^[[36;1mgit fetch --depth=1 https://github.com/konard/konard.github.io.git main^[[0m
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:07:16.7733380Z ^[[36;1mgit worktree add /tmp/main FETCH_HEAD^[[0m
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:07:16.7734580Z ^[[36;1mcp experiments/issue-45-webkit-diagnose.mjs /tmp/main/experiments/^[[0m
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:07:16.7735730Z ^[[36;1mcd /tmp/main && npm ci --no-audit --no-fund^[[0m
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:07:16.7737750Z ^[[36;1mBUDGET_MS=300000 VARIANTS=defaults,matrix,noRain,quiet DEFAULTS_FROM="$GITHUB_WORKSPACE/src/settings/schema.defaults.js" node experiments/issue-45-webkit-diagnose.mjs^[[0m
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:07:16.7830780Z shell: /bin/bash -e {0}
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:07:16.7831690Z env:
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:07:16.7832620Z   GIT_CONFIG_COUNT: 1
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:07:16.7833790Z   GIT_CONFIG_KEY_0: init.defaultBranch
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:07:16.7834810Z   GIT_CONFIG_VALUE_0: main
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:07:16.7836730Z   ENGINE: webkit
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:07:16.7837870Z ##[endgroup]
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:07:37.7296590Z {"engine":"webkit","name":"defaults","elements":1794,"restyleMs":378,"frameMs":391,"keyMs":443,"keyMaxMs":746,"presses":12}
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:07:46.9780020Z {"engine":"webkit","name":"glass","elements":1487,"restyleMs":191,"frameMs":231,"keyMs":444,"keyMaxMs":567,"presses":12}
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:07:57.6450920Z {"engine":"webkit","name":"noRainGlow","elements":1794,"restyleMs":351,"frameMs":385,"keyMs":385,"keyMaxMs":577,"presses":12}
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:08:08.6610570Z {"engine":"webkit","name":"noRain","elements":1794,"restyleMs":300,"frameMs":335,"keyMs":327,"keyMaxMs":936,"presses":12}
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:08:19.3150620Z {"engine":"webkit","name":"noNebula","elements":1793,"restyleMs":319,"frameMs":316,"keyMs":392,"keyMaxMs":618,"presses":12}
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:08:29.0368380Z {"engine":"webkit","name":"gridLines","elements":1788,"restyleMs":288,"frameMs":282,"keyMs":367,"keyMaxMs":560,"presses":12}
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:08:40.1857300Z {"engine":"webkit","name":"noScanlines","elements":1794,"restyleMs":384,"frameMs":374,"keyMs":421,"keyMaxMs":597,"presses":12}
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:08:50.5401410Z {"engine":"webkit","name":"solidSurface","elements":1794,"restyleMs":318,"frameMs":341,"keyMs":409,"keyMaxMs":622,"presses":12}
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:00.9749390Z {"engine":"webkit","name":"cornerBrackets","elements":1606,"restyleMs":206,"frameMs":224,"keyMs":419,"keyMaxMs":788,"presses":12}
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:10.9403140Z {"engine":"webkit","name":"controlBorders","elements":1788,"restyleMs":318,"frameMs":334,"keyMs":313,"keyMaxMs":572,"presses":12}
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:22.4727440Z {"engine":"webkit","name":"layerBelow","elements":1794,"restyleMs":334,"frameMs":371,"keyMs":409,"keyMaxMs":1341,"presses":12}
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:33.1904890Z {"engine":"webkit","name":"quiet","elements":1793,"restyleMs":391,"frameMs":466,"keyMs":443,"keyMaxMs":719,"presses":12}
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:33.9925080Z From https://github.com/konard/konard.github.io
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:33.9926600Z  * branch            main       -> FETCH_HEAD
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:34.0087510Z Preparing worktree (detached HEAD eeb905a)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:35.3126810Z Updating files:  24% (1000/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:35.3821590Z Updating files:  25% (1014/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:35.4289160Z Updating files:  26% (1055/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:35.5082430Z Updating files:  27% (1095/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:35.5829160Z Updating files:  28% (1136/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:35.6395290Z Updating files:  29% (1176/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:35.6764990Z Updating files:  30% (1217/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:35.7497740Z Updating files:  31% (1257/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:35.8189440Z Updating files:  32% (1298/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:35.8848760Z Updating files:  33% (1338/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:35.9221510Z Updating files:  34% (1379/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:36.0442940Z Updating files:  35% (1419/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:36.1445290Z Updating files:  35% (1448/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:36.2450500Z Updating files:  36% (1460/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:36.3461300Z Updating files:  37% (1500/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:36.4547740Z Updating files:  38% (1541/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:36.4561200Z Updating files:  39% (1582/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:36.4566250Z Updating files:  40% (1622/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:36.5520670Z Updating files:  41% (1663/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:36.6232850Z Updating files:  42% (1703/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:36.6263870Z Updating files:  43% (1744/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:36.6703810Z Updating files:  44% (1784/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:36.7855200Z Updating files:  45% (1825/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:37.0309210Z Updating files:  46% (1865/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:37.0843670Z Updating files:  47% (1906/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:37.1214890Z Updating files:  48% (1946/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:37.2219170Z Updating files:  48% (1947/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:37.3221520Z Updating files:  49% (1987/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:37.4224910Z Updating files:  50% (2027/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:37.5226560Z Updating files:  51% (2068/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:37.6190100Z Updating files:  52% (2109/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:37.6221730Z Updating files:  53% (2149/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:37.6252730Z Updating files:  54% (2190/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:37.6469380Z Updating files:  55% (2230/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:37.7094720Z Updating files:  56% (2271/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:37.7316520Z Updating files:  57% (2311/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:37.7624620Z Updating files:  58% (2352/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:37.7964100Z Updating files:  59% (2392/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:37.8298020Z Updating files:  60% (2433/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:37.9072710Z Updating files:  61% (2473/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:37.9420620Z Updating files:  62% (2514/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:37.9642910Z Updating files:  63% (2555/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:38.3092870Z Updating files:  64% (2595/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:38.3655320Z Updating files:  64% (2631/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:38.3687140Z Updating files:  65% (2636/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:38.3712460Z Updating files:  66% (2676/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:38.3725860Z Updating files:  67% (2717/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:38.3927950Z Updating files:  68% (2757/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:38.3951900Z Updating files:  69% (2798/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:38.4368800Z Updating files:  70% (2838/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:38.6266740Z Updating files:  71% (2879/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:38.6527630Z Updating files:  72% (2919/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:38.6603900Z Updating files:  73% (2960/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:38.7064790Z Updating files:  74% (3000/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:38.7232320Z Updating files:  75% (3041/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:38.7253820Z Updating files:  76% (3082/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:38.7276580Z Updating files:  77% (3122/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:38.7524120Z Updating files:  78% (3163/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:38.7765890Z Updating files:  79% (3203/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:38.7973250Z Updating files:  80% (3244/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:38.8091820Z Updating files:  81% (3284/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:38.8342240Z Updating files:  82% (3325/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:38.8538330Z Updating files:  83% (3365/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:38.9314250Z Updating files:  84% (3406/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:38.9372160Z Updating files:  85% (3446/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:38.9425210Z Updating files:  86% (3487/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:38.9688220Z Updating files:  87% (3527/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:39.0576480Z Updating files:  88% (3568/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:39.1013220Z Updating files:  88% (3599/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:39.1415680Z Updating files:  89% (3609/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:39.1546410Z Updating files:  90% (3649/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:39.1689260Z Updating files:  91% (3690/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:39.1915650Z Updating files:  92% (3730/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:39.2313120Z Updating files:  93% (3771/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:39.2700000Z Updating files:  94% (3811/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:39.3101220Z Updating files:  95% (3852/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:39.3680800Z Updating files:  96% (3892/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:39.3863210Z Updating files:  97% (3933/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:39.5476980Z Updating files:  98% (3973/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:39.5634290Z Updating files:  99% (4014/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:39.5659770Z Updating files: 100% (4054/4054)
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:39.5672790Z Updating files: 100% (4054/4054), done.
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:09:39.5759640Z HEAD is now at eeb905a Merge pull request #44 from konard/issue-43-45505e2da5bd
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:10:02.0839820Z 
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:10:02.0960400Z > konard.github.io@0.1.0 prepare
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:10:02.1033410Z > husky
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:10:02.1068030Z 
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:10:03.0143550Z 
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:10:03.0251540Z added 530 packages in 23s
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:10:15.4292050Z {"engine":"webkit","name":"defaults","elements":1353,"restyleMs":107,"frameMs":151,"keyMs":403,"keyMaxMs":685,"presses":12}
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:10:25.4357470Z {"engine":"webkit","name":"matrix","elements":1558,"restyleMs":272,"frameMs":303,"keyMs":403,"keyMaxMs":793,"presses":12}
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:10:34.1590410Z {"engine":"webkit","name":"noRain","elements":1558,"restyleMs":254,"frameMs":276,"keyMs":304,"keyMaxMs":529,"presses":12}
+network-browsers (webkit, macos-15-intel)	Time the settings look in WebKit (temporary diagnostic, issue 45)	2026-10-31T21:10:41.9880980Z {"engine":"webkit","name":"quiet","elements":1557,"restyleMs":216,"frameMs":245,"keyMs":265,"keyMaxMs":432,"presses":12}
+network-browsers (webkit, macos-15-intel)	Verify existing editor features and image downloads	﻿2026-10-31T21:10:42.0669920Z ##[group]Run npm run test:network:browser
+network-browsers (webkit, macos-15-intel)	Verify existing editor features and image downloads	2026-10-31T21:10:42.0671890Z ^[[36;1mnpm run test:network:browser^[[0m
+network-browsers (webkit, macos-15-intel)	Verify existing editor features and image downloads	2026-10-31T21:10:42.0857750Z shell: /bin/bash -e {0}
+network-browsers (webkit, macos-15-intel)	Verify existing editor features and image downloads	2026-10-31T21:10:42.0859800Z env:
+network-browsers (webkit, macos-15-intel)	Verify existing editor features and image downloads	2026-10-31T21:10:42.0861930Z   GIT_CONFIG_COUNT: 1
+network-browsers (webkit, macos-15-intel)	Verify existing editor features and image downloads	2026-10-31T21:10:42.0862690Z   GIT_CONFIG_KEY_0: init.defaultBranch
+network-browsers (webkit, macos-15-intel)	Verify existing editor features and image downloads	2026-10-31T21:10:42.0863700Z   GIT_CONFIG_VALUE_0: main
+network-browsers (webkit, macos-15-intel)	Verify existing editor features and image downloads	2026-10-31T21:10:42.0864480Z   ENGINE: webkit
+network-browsers (webkit, macos-15-intel)	Verify existing editor features and image downloads	2026-10-31T21:10:42.0865400Z   CAPTURE_DIR: browser-results/screenshots/editor
+network-browsers (webkit, macos-15-intel)	Verify existing editor features and image downloads	2026-10-31T21:10:42.0866340Z ##[endgroup]
+network-browsers (webkit, macos-15-intel)	Verify existing editor features and image downloads	2026-10-31T21:10:42.5055060Z 
+network-browsers (webkit, macos-15-intel)	Verify existing editor features and image downloads	2026-10-31T21:10:42.5125770Z > konard.github.io@0.1.0 test:network:browser
+network-browsers (webkit, macos-15-intel)	Verify existing editor features and image downloads	2026-10-31T21:10:42.5231820Z > node experiments/network-e2e.mjs
+network-browsers (webkit, macos-15-intel)	Verify existing editor features and image downloads	2026-10-31T21:10:42.5289740Z 
+network-browsers (webkit, macos-15-intel)	Verify existing editor features and image downloads	2026-10-31T21:10:51.2597260Z webkit: gallery hover, focus and navigation passed
+network-browsers (webkit, macos-15-intel)	Verify existing editor features and image downloads	2026-10-31T21:10:54.0548680Z webkit: notation editing and invalid input passed
+network-browsers (webkit, macos-15-intel)	Verify existing editor features and image downloads	2026-10-31T21:11:01.1355090Z webkit: live preview and SVG styling passed
+network-browsers (webkit, macos-15-intel)	Verify existing editor features and image downloads	2026-10-31T21:11:03.7430060Z webkit: overlap reduction and applied turns/gaps passed
+network-browsers (webkit, macos-15-intel)	Verify existing editor features and image downloads	2026-10-31T21:11:05.8377680Z webkit: shared URL renders the same SVG in a fresh browser
+network-browsers (webkit, macos-15-intel)	Verify existing editor features and image downloads	2026-10-31T21:11:07.0132770Z webkit: verified svg download (1297 bytes)
+network-browsers (webkit, macos-15-intel)	Verify existing editor features and image downloads	2026-10-31T21:11:07.2012160Z webkit: verified png download (53943 bytes)
+network-browsers (webkit, macos-15-intel)	Verify existing editor features and image downloads	2026-10-31T21:11:07.3853600Z webkit: verified jpg download (50484 bytes)
+network-browsers (webkit, macos-15-intel)	Verify existing editor features and image downloads	2026-10-31T21:11:07.5190100Z webkit: unsupported WebP encoder exposes PNG fallback
+network-browsers (webkit, macos-15-intel)	Verify existing editor features and image downloads	2026-10-31T21:11:07.7638250Z webkit: verified lino download (27 bytes)
+network-browsers (webkit, macos-15-intel)	Verify existing editor features and image downloads	2026-10-31T21:11:20.6337590Z webkit: network editor browser checks passed
+network-browsers (webkit, macos-15-intel)	Verify history, self loops, layouts, clipboard and mobile editing	﻿2026-10-31T21:11:20.8262720Z ##[group]Run npm run test:network:issue19
+network-browsers (webkit, macos-15-intel)	Verify history, self loops, layouts, clipboard and mobile editing	2026-10-31T21:11:20.8263840Z ^[[36;1mnpm run test:network:issue19^[[0m
+network-browsers (webkit, macos-15-intel)	Verify history, self loops, layouts, clipboard and mobile editing	2026-10-31T21:11:20.8408610Z shell: /bin/bash -e {0}
+network-browsers (webkit, macos-15-intel)	Verify history, self loops, layouts, clipboard and mobile editing	2026-10-31T21:11:20.8409220Z env:
+network-browsers (webkit, macos-15-intel)	Verify history, self loops, layouts, clipboard and mobile editing	2026-10-31T21:11:20.8409720Z   GIT_CONFIG_COUNT: 1
+network-browsers (webkit, macos-15-intel)	Verify history, self loops, layouts, clipboard and mobile editing	2026-10-31T21:11:20.8410610Z   GIT_CONFIG_KEY_0: init.defaultBranch
+network-browsers (webkit, macos-15-intel)	Verify history, self loops, layouts, clipboard and mobile editing	2026-10-31T21:11:20.8411310Z   GIT_CONFIG_VALUE_0: main
+network-browsers (webkit, macos-15-intel)	Verify history, self loops, layouts, clipboard and mobile editing	2026-10-31T21:11:20.8411880Z   ENGINE: webkit
+network-browsers (webkit, macos-15-intel)	Verify history, self loops, layouts, clipboard and mobile editing	2026-10-31T21:11:20.8412510Z   CAPTURE_DIR: browser-results/screenshots/issue19
+network-browsers (webkit, macos-15-intel)	Verify history, self loops, layouts, clipboard and mobile editing	2026-10-31T21:11:20.8414590Z   RESULT_DIR: browser-results/data/issue19
+network-browsers (webkit, macos-15-intel)	Verify history, self loops, layouts, clipboard and mobile editing	2026-10-31T21:11:20.8415320Z ##[endgroup]
+network-browsers (webkit, macos-15-intel)	Verify history, self loops, layouts, clipboard and mobile editing	2026-10-31T21:11:21.2937230Z 
+network-browsers (webkit, macos-15-intel)	Verify history, self loops, layouts, clipboard and mobile editing	2026-10-31T21:11:21.2968860Z > konard.github.io@0.1.0 test:network:issue19
+network-browsers (webkit, macos-15-intel)	Verify history, self loops, layouts, clipboard and mobile editing	2026-10-31T21:11:21.2986350Z > node experiments/issue-19-browser.mjs
+network-browsers (webkit, macos-15-intel)	Verify history, self loops, layouts, clipboard and mobile editing	2026-10-31T21:11:21.2991840Z 
+network-browsers (webkit, macos-15-intel)	Verify history, self loops, layouts, clipboard and mobile editing	2026-10-31T21:11:25.0108540Z webkit: self-loop leaving/entering angles, curvature and bend
+network-browsers (webkit, macos-15-intel)	Verify history, self loops, layouts, clipboard and mobile editing	2026-10-31T21:11:31.4486300Z webkit: 120-event drag, repeated releases, history SecurityError and retry
+network-browsers (webkit, macos-15-intel)	Verify history, self loops, layouts, clipboard and mobile editing	2026-10-31T21:11:33.0259250Z webkit: independent marker offsets and ring cuts survive URL round trip
+network-browsers (webkit, macos-15-intel)	Verify history, self loops, layouts, clipboard and mobile editing	2026-10-31T21:11:43.2900940Z webkit: 17 links, seven distinct placements and large-notation reload
+network-browsers (webkit, macos-15-intel)	Verify history, self loops, layouts, clipboard and mobile editing	2026-10-31T21:11:45.5231720Z webkit: both complete issue example URLs
+network-browsers (webkit, macos-15-intel)	Verify history, self loops, layouts, clipboard and mobile editing	2026-10-31T21:11:46.1129260Z webkit: actual PNG clipboard write completed from a trusted click
+network-browsers (webkit, macos-15-intel)	Verify history, self loops, layouts, clipboard and mobile editing	2026-10-31T21:11:46.7414320Z webkit: unsupported WebP encoder exposes PNG fallback
+network-browsers (webkit, macos-15-intel)	Verify history, self loops, layouts, clipboard and mobile editing	2026-10-31T21:11:46.8327310Z webkit: PNG/JPEG downloads and WebP download or explicit PNG fallback
+network-browsers (webkit, macos-15-intel)	Verify history, self loops, layouts, clipboard and mobile editing	2026-10-31T21:11:55.2589780Z webkit: touch gesture debounce, 100-link mobile editor and no horizontal overflow
+network-browsers (webkit, macos-15-intel)	Verify editor geometry, source colors and shared settings	﻿2026-10-31T21:11:55.3783770Z ##[group]Run npm run test:network:issue21
+network-browsers (webkit, macos-15-intel)	Verify editor geometry, source colors and shared settings	2026-10-31T21:11:55.3785130Z ^[[36;1mnpm run test:network:issue21^[[0m
+network-browsers (webkit, macos-15-intel)	Verify editor geometry, source colors and shared settings	2026-10-31T21:11:55.3924500Z shell: /bin/bash -e {0}
+network-browsers (webkit, macos-15-intel)	Verify editor geometry, source colors and shared settings	2026-10-31T21:11:55.3927900Z env:
+network-browsers (webkit, macos-15-intel)	Verify editor geometry, source colors and shared settings	2026-10-31T21:11:55.3929300Z   GIT_CONFIG_COUNT: 1
+network-browsers (webkit, macos-15-intel)	Verify editor geometry, source colors and shared settings	2026-10-31T21:11:55.3930310Z   GIT_CONFIG_KEY_0: init.defaultBranch
+network-browsers (webkit, macos-15-intel)	Verify editor geometry, source colors and shared settings	2026-10-31T21:11:55.3931680Z   GIT_CONFIG_VALUE_0: main
+network-browsers (webkit, macos-15-intel)	Verify editor geometry, source colors and shared settings	2026-10-31T21:11:55.3964480Z   ENGINE: webkit
+network-browsers (webkit, macos-15-intel)	Verify editor geometry, source colors and shared settings	2026-10-31T21:11:55.3965680Z   CAPTURE_DIR: browser-results/screenshots/issue21
+network-browsers (webkit, macos-15-intel)	Verify editor geometry, source colors and shared settings	2026-10-31T21:11:55.3966810Z   RESULT_DIR: browser-results/data/issue21
+network-browsers (webkit, macos-15-intel)	Verify editor geometry, source colors and shared settings	2026-10-31T21:11:55.3967530Z ##[endgroup]
+network-browsers (webkit, macos-15-intel)	Verify editor geometry, source colors and shared settings	2026-10-31T21:11:55.7040330Z 
+network-browsers (webkit, macos-15-intel)	Verify editor geometry, source colors and shared settings	2026-10-31T21:11:55.7071950Z > konard.github.io@0.1.0 test:network:issue21
+network-browsers (webkit, macos-15-intel)	Verify editor geometry, source colors and shared settings	2026-10-31T21:11:55.7077830Z > node experiments/issue-21-browser.mjs
+network-browsers (webkit, macos-15-intel)	Verify editor geometry, source colors and shared settings	2026-10-31T21:11:55.7081810Z 
+network-browsers (webkit, macos-15-intel)	Verify editor geometry, source colors and shared settings	2026-10-31T21:12:03.8648340Z webkit: both supplied URLs: explicit settings, controls, share and reload
+network-browsers (webkit, macos-15-intel)	Verify editor geometry, source colors and shared settings	2026-10-31T21:12:09.1264880Z webkit: five representative default editor configurations
+network-browsers (webkit, macos-15-intel)	Verify editor geometry, source colors and shared settings	2026-10-31T21:12:16.9961690Z webkit: gallery hover and navigation preserve dark/light link colors
+network-browsers (webkit, macos-15-intel)	Verify editor geometry, source colors and shared settings	2026-10-31T21:12:22.1327420Z webkit: theory example navigation also preserves light-theme colors
+network-browsers (webkit, macos-15-intel)	Verify editor geometry, source colors and shared settings	2026-10-31T21:12:23.2922500Z webkit: exported SVG equals preview
+network-browsers (webkit, macos-15-intel)	Verify editor geometry, source colors and shared settings	2026-10-31T21:12:24.7883720Z webkit: mobile preview fits viewport
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	﻿2026-10-31T21:12:25.1756560Z ##[group]Run if [[ "$RUNNER_OS" == "macOS" ]]; then
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:12:25.1757730Z ^[[36;1mif [[ "$RUNNER_OS" == "macOS" ]]; then^[[0m
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:12:25.1758610Z ^[[36;1m  DISPLAY_CAPTURE=1 npm run test:network:issue23^[[0m
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:12:25.1761340Z ^[[36;1melse^[[0m
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:12:25.1762110Z ^[[36;1m  mkdir -p "$(dirname "$XWD_FILE")"^[[0m
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:12:25.1763850Z ^[[36;1m  xvfb-run -a -s "-screen 0 1600x1200x24 -fbdir $(dirname "$XWD_FILE")" npm run test:network:issue23^[[0m
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:12:25.1766680Z ^[[36;1mfi^[[0m
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:12:25.1877540Z shell: /bin/bash -e {0}
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:12:25.1878310Z env:
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:12:25.1878790Z   GIT_CONFIG_COUNT: 1
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:12:25.1879580Z   GIT_CONFIG_KEY_0: init.defaultBranch
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:12:25.1880540Z   GIT_CONFIG_VALUE_0: main
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:12:25.1881260Z   ENGINE: webkit
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:12:25.1881870Z   CARD_BATCHES: 8
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:12:25.1882860Z   XWD_FILE: /Users/runner/work/_temp/issue23-display/Xvfb_screen0
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:12:25.1883990Z   CAPTURE_DIR: browser-results/screenshots/issue23
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:12:25.1885230Z   RESULT_DIR: browser-results/data/issue23
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:12:25.1886030Z ##[endgroup]
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:12:25.7131060Z 
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:12:25.8143060Z > konard.github.io@0.1.0 test:network:issue23
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:12:25.8720590Z > node experiments/issue-23-browser.mjs
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:12:25.8862820Z 
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:12:30.8028400Z webkit: neutral defaults for free links
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:12:32.8549300Z webkit: both displaced bars agree with native SVG path position and tangent
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:12:37.9867560Z webkit: individual gaps and gap-only solver survive apply/share/reload
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:12:41.5297040Z {"cards":243,"filtered":55,"y":845,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:12:43.1203190Z {"cards":729,"filtered":176,"y":3309,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:12:44.7219680Z {"cards":1215,"filtered":176,"y":7552,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:12:46.7759670Z {"cards":1701,"filtered":176,"y":11795,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:12:49.1132080Z {"cards":2187,"filtered":176,"y":16038,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:12:52.2296910Z {"cards":2673,"filtered":176,"y":20282,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:12:55.4258230Z {"cards":3159,"filtered":176,"y":24525,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:12:58.5270910Z {"cards":3645,"filtered":176,"y":28865,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:13:02.2321700Z {"cards":4131,"filtered":176,"y":33108,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:13:06.6413920Z {"cards":4131,"filtered":176,"y":19441,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:13:07.5943310Z {"cards":4131,"filtered":105,"y":37944,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:13:08.7822820Z {"cards":4131,"filtered":165,"y":8339,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:13:09.5426690Z {"cards":4131,"filtered":105,"y":37944,"barFilter":"blur(14px)","barSurface":"topbar","barTop":0}
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:13:20.7600150Z {"cards":4131,"filtered":176,"y":19455,"barFilter":"blur(18px) saturate(1.8) brightness(1.08) contrast(1)","barSurface":"topbar__row","barTop":0}
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:13:21.8604200Z {"cards":4131,"filtered":105,"y":37958,"barFilter":"blur(18px) saturate(1.8) brightness(1.08) contrast(1)","barSurface":"topbar__row","barTop":0}
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:13:23.0601030Z {"cards":4131,"filtered":165,"y":8353,"barFilter":"blur(18px) saturate(1.8) brightness(1.08) contrast(1)","barSurface":"topbar__row","barTop":0}
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:13:24.0351390Z {"cards":4131,"filtered":105,"y":37958,"barFilter":"blur(18px) saturate(1.8) brightness(1.08) contrast(1)","barSurface":"topbar__row","barTop":0}
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:13:35.7834070Z {"cards":4131,"filtered":176,"y":19023,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:13:36.8920580Z {"cards":4131,"filtered":105,"y":37150,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:13:38.1550360Z {"cards":4131,"filtered":176,"y":8147,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:13:39.2705390Z {"cards":4131,"filtered":105,"y":37150,"barFilter":"blur(12px)","barSurface":"topbar","barTop":0}
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:13:46.2478030Z webkit: bounded blur surfaces and fixed header through 4131 cards, repeated scrolling and all skins
+network-browsers (webkit, macos-15-intel)	Verify curved markers, per-link gaps and bounded gallery blur surfaces	2026-10-31T21:13:49.0938470Z webkit: individual gap controls fit the Russian mobile editor
+network-browsers (webkit, macos-15-intel)	Verify automatic spacing, sharp balanced arrows and per-link cards	﻿2026-10-31T21:13:49.3650970Z ##[group]Run npm run test:network:issue25
+network-browsers (webkit, macos-15-intel)	Verify automatic spacing, sharp balanced arrows and per-link cards	2026-10-31T21:13:49.3651930Z ^[[36;1mnpm run test:network:issue25^[[0m
+network-browsers (webkit, macos-15-intel)	Verify automatic spacing, sharp balanced arrows and per-link cards	2026-10-31T21:13:49.3935850Z shell: /bin/bash -e {0}
+network-browsers (webkit, macos-15-intel)	Verify automatic spacing, sharp balanced arrows and per-link cards	2026-10-31T21:13:49.3936690Z env:
+network-browsers (webkit, macos-15-intel)	Verify automatic spacing, sharp balanced arrows and per-link cards	2026-10-31T21:13:49.3937190Z   GIT_CONFIG_COUNT: 1
+network-browsers (webkit, macos-15-intel)	Verify automatic spacing, sharp balanced arrows and per-link cards	2026-10-31T21:13:49.3939150Z   GIT_CONFIG_KEY_0: init.defaultBranch
+network-browsers (webkit, macos-15-intel)	Verify automatic spacing, sharp balanced arrows and per-link cards	2026-10-31T21:13:49.3945110Z   GIT_CONFIG_VALUE_0: main
+network-browsers (webkit, macos-15-intel)	Verify automatic spacing, sharp balanced arrows and per-link cards	2026-10-31T21:13:49.3948340Z   ENGINE: webkit
+network-browsers (webkit, macos-15-intel)	Verify automatic spacing, sharp balanced arrows and per-link cards	2026-10-31T21:13:49.3951080Z   CAPTURE_DIR: browser-results/screenshots/issue25
+network-browsers (webkit, macos-15-intel)	Verify automatic spacing, sharp balanced arrows and per-link cards	2026-10-31T21:13:49.3954690Z   RESULT_DIR: browser-results/data/issue25
+network-browsers (webkit, macos-15-intel)	Verify automatic spacing, sharp balanced arrows and per-link cards	2026-10-31T21:13:49.3957560Z ##[endgroup]
+network-browsers (webkit, macos-15-intel)	Verify automatic spacing, sharp balanced arrows and per-link cards	2026-10-31T21:13:49.8220690Z 
+network-browsers (webkit, macos-15-intel)	Verify automatic spacing, sharp balanced arrows and per-link cards	2026-10-31T21:13:49.8241020Z > konard.github.io@0.1.0 test:network:issue25
+network-browsers (webkit, macos-15-intel)	Verify automatic spacing, sharp balanced arrows and per-link cards	2026-10-31T21:13:49.8247240Z > node experiments/issue-25-browser.mjs
+network-browsers (webkit, macos-15-intel)	Verify automatic spacing, sharp balanced arrows and per-link cards	2026-10-31T21:13:49.8254230Z 
+network-browsers (webkit, macos-15-intel)	Verify automatic spacing, sharp balanced arrows and per-link cards	2026-10-31T21:14:14.7551720Z [
+network-browsers (webkit, macos-15-intel)	Verify automatic spacing, sharp balanced arrows and per-link cards	2026-10-31T21:14:14.7560340Z   "auto: apply/share/reload preserves exact drawing and discovered gaps",
+network-browsers (webkit, macos-15-intel)	Verify automatic spacing, sharp balanced arrows and per-link cards	2026-10-31T21:14:14.7564310Z   "auto-gaps: apply/share/reload preserves exact drawing and discovered gaps",
+network-browsers (webkit, macos-15-intel)	Verify automatic spacing, sharp balanced arrows and per-link cards	2026-10-31T21:14:14.7576250Z   "native SVG rasterization: sharp acute tips and aligned painted boundaries at 5°, 15°, 45°",
+network-browsers (webkit, macos-15-intel)	Verify automatic spacing, sharp balanced arrows and per-link cards	2026-10-31T21:14:14.7583770Z   "visible card fields, editing, inheritance, sharing and removal/renumbering",
+network-browsers (webkit, macos-15-intel)	Verify automatic spacing, sharp balanced arrows and per-link cards	2026-10-31T21:14:14.7586940Z   "English/Russian mobile card controls fit without horizontal scrolling"
+network-browsers (webkit, macos-15-intel)	Verify automatic spacing, sharp balanced arrows and per-link cards	2026-10-31T21:14:14.7588290Z ]
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	﻿2026-10-31T21:14:14.9072760Z ##[group]Run npm run test:network:issue27
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:14.9073870Z ^[[36;1mnpm run test:network:issue27^[[0m
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:14.9243650Z shell: /bin/bash -e {0}
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:14.9244590Z env:
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:14.9245330Z   GIT_CONFIG_COUNT: 1
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:14.9246140Z   GIT_CONFIG_KEY_0: init.defaultBranch
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:14.9247100Z   GIT_CONFIG_VALUE_0: main
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:14.9248590Z   ENGINE: webkit
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:14.9250610Z   CAPTURE_DIR: browser-results/screenshots/issue27
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:14.9252270Z   RESULT_DIR: browser-results/data/issue27
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:14.9253050Z ##[endgroup]
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:15.4200270Z 
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:15.4734910Z > konard.github.io@0.1.0 test:network:issue27
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:15.4763710Z > node experiments/issue-27-browser.mjs
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:15.4841430Z 
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:30.4420450Z Geometry, URL and number editing checks passed. Auditing sliders.
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:31.2654660Z Keyboard: link-1-turn-0
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:31.9133450Z Keyboard: link-1-turn-1
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:32.6467100Z Keyboard: link-1-startGap
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:33.1873450Z Keyboard: link-1-endGap
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:33.7007760Z Keyboard: link-2-turn-0
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:34.2033250Z Keyboard: link-2-turn-1
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:34.5294900Z Keyboard: link-2-startGap
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:35.0750910Z Keyboard: link-2-endGap
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:35.5772320Z Keyboard: style-layoutAspect
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:36.1803410Z Keyboard: style-sourceAngle
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:36.7279390Z Keyboard: style-targetAngle
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:37.1292680Z Keyboard: style-tension
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:37.5305390Z Keyboard: style-bulge
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:38.1801130Z Keyboard: style-loopBend
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:38.5766310Z Keyboard: style-startGap
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:39.1259600Z Keyboard: style-endGap
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:39.5350560Z Keyboard: style-loop
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:40.0170340Z Keyboard: style-spread
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:40.5057210Z Keyboard: style-rotation
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:40.9517900Z Keyboard: style-padding
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:41.4459720Z Keyboard: style-startSize
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:41.7466300Z Keyboard: style-startOffset
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:42.0314480Z Keyboard: style-startAcross
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:42.4145390Z Keyboard: style-startRotation
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:42.8034660Z Keyboard: style-endSize
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:43.1492580Z Keyboard: style-endAngle
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:43.4911540Z Keyboard: style-endOffset
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:43.8034830Z Keyboard: style-endAcross
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:44.1910740Z Keyboard: style-endRotation
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:44.5888180Z Keyboard: style-middleSize
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:45.0124370Z Keyboard: style-middleOffset
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:45.4282080Z Keyboard: style-middleAcross
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:45.8306970Z Keyboard: style-middleGapStart
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:46.1810070Z Keyboard: style-middleGapEnd
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:46.5336900Z Keyboard: style-strokeWidth
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:47.0301890Z Keyboard: style-opacity
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:47.3320370Z Keyboard: style-glow
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:47.7843590Z Keyboard: style-width
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:48.1862250Z Keyboard: style-height
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:48.4799960Z Keyboard: style-quality
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:50.7989220Z Keyboard: style-clearance
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:51.1537450Z Keyboard: style-solveGapRange
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:51.5857740Z Keyboard: style-solveMiddleRange
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:51.9828810Z Keyboard: style-solveRange
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:52.5899580Z Keyboard: style-solveStep
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:53.6868160Z Keyboard: setting-nebula-level
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:14:57.6527110Z Keyboard: setting-nebula-speed
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:15:01.8027710Z Keyboard: setting-nebula-gas
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:15:05.7364790Z Keyboard: setting-nebula-hue
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:15:08.2350860Z Keyboard: setting-nebula-stars
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:15:13.4985520Z Keyboard: setting-nebula-starBrightness
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:15:18.8672970Z Keyboard: setting-nebula-twinkle
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:15:21.4769940Z Keyboard: setting-nebula-vignette
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:15:25.6010340Z Keyboard: setting-nebula-zoom
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:15:26.6331760Z Keyboard: setting-nebula-starSize
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:15:27.5271550Z Keyboard: setting-nebula-resolution
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:15:31.8208130Z Keyboard: setting-nebula-fps
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:15:37.6016220Z Keyboard: setting-stars-level
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:15:41.5328110Z Keyboard: setting-stars-fps
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:15:42.2695790Z Keyboard: setting-stars1-count
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:15:43.3844060Z Keyboard: setting-stars1-size
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:15:44.4738630Z Keyboard: setting-stars1-sizeSpread
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:15:45.5139100Z Keyboard: setting-stars1-hueSpread
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:15:46.3018210Z Keyboard: setting-stars1-brightness
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:15:47.2262300Z Keyboard: setting-stars1-glow
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:15:48.0886060Z Keyboard: setting-stars1-twinkle
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:15:49.0393090Z Keyboard: setting-stars1-twinkleDepth
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:15:50.0113030Z Keyboard: setting-stars1-rotation
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:15:50.7433850Z Keyboard: setting-stars1-spin
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:15:51.6635270Z Keyboard: setting-stars1-direction
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:15:52.5969500Z Keyboard: setting-stars1-speed
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:15:53.5933310Z Keyboard: setting-stars1-streak
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:15:54.6447200Z Keyboard: setting-grid-level
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:15:57.8258900Z Keyboard: setting-grid-size
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:15:59.9699620Z Keyboard: setting-grid-period
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:16:01.8519190Z Keyboard: setting-grid-width
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:16:05.3730560Z Keyboard: setting-grid-mark
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:16:09.4374270Z Keyboard: setting-sound-volume
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:16:10.0832830Z Keyboard: setting-sound-reverb
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:16:10.7285050Z Keyboard: setting-sound-room
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:16:11.3516930Z Keyboard: setting-sound-pitch
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:16:11.8542860Z Keyboard: setting-sound-width
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:16:12.5848800Z Keyboard: setting-sound-gap
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:16:13.1879580Z Keyboard: setting-sound-hoverLevel
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:16:13.7263340Z Keyboard: setting-sound-scanLevel
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:16:14.3542720Z Keyboard: setting-beams-level
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:16:18.5633270Z Keyboard: setting-beams-count
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:16:18.9900950Z Keyboard: setting-beams-speed
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:16:19.5193600Z Keyboard: setting-beams-length
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:16:19.9285940Z Keyboard: setting-beams-width
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:16:20.3975260Z Keyboard: setting-beams-glow
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:16:20.8982150Z Keyboard: setting-beams-pause
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:16:21.3807220Z Keyboard: setting-rain-level
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:16:25.5144320Z Keyboard: setting-rain-step
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:16:28.5211460Z Keyboard: setting-rain-speeds
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:16:31.1619500Z Keyboard: setting-rain-density
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:16:34.8501770Z Keyboard: setting-rain-restart
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:16:38.3320550Z Keyboard: setting-rain-fade
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:16:41.3752300Z Keyboard: setting-rain-lineWidth
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:16:44.0937810Z Keyboard: setting-rain-padding
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:16:46.7986190Z Keyboard: setting-rain-glow
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:16:50.2075580Z Keyboard: setting-rain-minLinks
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:16:53.4611990Z Keyboard: setting-rain-maxLinks
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:16:56.1165500Z Keyboard: setting-future-cut
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:16:59.3702810Z Keyboard: setting-future-corner
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:17:01.7368250Z Keyboard: setting-future-border
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:17:04.1155880Z Keyboard: setting-future-opacity
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:17:07.0818330Z Keyboard: setting-future-blur
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:17:09.8362090Z Keyboard: setting-future-glow
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:17:14.8970660Z Keyboard: setting-future-frameOpacity
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:17:17.7449890Z Keyboard: setting-future-accentLength
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:17:22.3628450Z Keyboard: setting-future-accentOffset
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:17:24.7063910Z Keyboard: setting-future-accentWidth
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:17:26.0140350Z Keyboard: setting-future-accentMax
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:17:28.5590490Z Keyboard: setting-future-spacing
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:17:33.5972460Z Keyboard: setting-future-scanlines
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:17:37.3631350Z Keyboard: setting-corner-topWidth
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:17:38.9477460Z Keyboard: setting-corner-rightWidth
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:17:40.3164770Z Keyboard: setting-corner-bottomWidth
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:17:42.3618910Z Keyboard: setting-corner-leftWidth
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:17:43.8148470Z Keyboard: setting-corner-blockScale
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:17:46.4576540Z Keyboard: setting-corner-controlScale
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:17:50.2400860Z Keyboard: setting-corner-tlSize
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:17:52.6165730Z Keyboard: setting-corner-tlWidth
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:17:53.7301610Z Keyboard: 
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:17:54.0240370Z Keyboard: 
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:17:54.3861010Z Keyboard: setting-ui-controlHeight
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:17:58.0137560Z Keyboard: setting-ui-controlPadding
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:18:01.3086860Z Keyboard: setting-ui-controlBorder
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:18:03.6454730Z Keyboard: setting-ui-controlOpacity
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:18:05.6608200Z Keyboard: setting-ui-menuHeight
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:18:06.2917850Z Keyboard: setting-ui-menuWidth
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:18:06.9967440Z Keyboard: setting-ui-focusWidth
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:18:10.4226210Z Keyboard: setting-ui-focusOffset
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:18:13.1699300Z Keyboard: setting-ui-motion
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:18:15.2260470Z Keyboard: setting-ui-disabledOpacity
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:18:18.5862750Z Keyboard: setting-ui-sliderSize
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:18:22.7000320Z Keyboard: setting-ui-sliderTrack
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:18:24.6412850Z Keyboard: setting-ui-checkSize
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:18:27.1771220Z Keyboard: setting-ui-controlTl
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:18:29.5941350Z Keyboard: setting-ui-controlTr
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:18:31.5337490Z Keyboard: setting-ui-controlBr
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:18:34.0608520Z Keyboard: setting-ui-controlBl
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:18:35.9282730Z Keyboard: setting-ui-panelTl
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:18:38.5535290Z Keyboard: setting-ui-panelTr
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:18:40.8652000Z Keyboard: setting-ui-panelBr
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:18:43.9890500Z Keyboard: setting-ui-panelBl
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:18:46.9804990Z Keyboard: setting-ui-panelBorder
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:18:49.8783370Z Keyboard: setting-ui-borderOpacity
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:18:53.1563980Z Keyboard: setting-ui-hoverOpacity
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:18:55.8081500Z Keyboard: setting-ui-accentSize
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:18:59.0882840Z Keyboard: setting-ui-selectionOpacity
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:19:02.3496640Z Keyboard: setting-ui-tablePadding
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:19:08.7992950Z Keyboard: setting-ui-tableBorder
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:19:11.8073470Z Keyboard: setting-ui-tableStripe
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:19:15.6124780Z Keyboard: setting-ui-tableHover
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:19:17.3660910Z [
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:19:17.3671860Z   "historical URL upgrades through history, compacts default rows, and reloads the exact SVG",
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:19:17.3676770Z   "native rasterized closed gaps agree within 0.12 image units at 5°, 15°, 45°, 85°",
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:19:17.3679390Z   "automatic spacing preserves the closed link, changes open references, and applies/shares/reloads exactly",
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:19:17.3687520Z   "0.07↔0.08 arrows/native stepping, inherited native/keyboard steps, negative typing, select-all, delete, Home and Tab",
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:19:17.3691060Z   "all 45 rendered network and 111 settings sliders support all eight navigation keys"
+network-browsers (webkit, macos-15-intel)	Verify equal closed gaps, historical URLs and numeric keyboard controls	2026-10-31T21:19:17.3693910Z ]
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	﻿2026-10-31T21:19:17.5577660Z ##[group]Run npm run test:network:issue29
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:17.5578370Z ^[[36;1mnpm run test:network:issue29^[[0m
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:17.5666770Z shell: /bin/bash -e {0}
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:17.5667260Z env:
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:17.5667610Z   GIT_CONFIG_COUNT: 1
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:17.5668440Z   GIT_CONFIG_KEY_0: init.defaultBranch
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:17.5669020Z   GIT_CONFIG_VALUE_0: main
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:17.5669880Z   ENGINE: webkit
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:17.5670710Z   CAPTURE_DIR: browser-results/screenshots/issue29
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:17.5671690Z   RESULT_DIR: browser-results/data/issue29
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:17.5672530Z ##[endgroup]
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:17.8466690Z 
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:17.8467670Z > konard.github.io@0.1.0 test:network:issue29
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:17.8468660Z > node experiments/issue-29-browser.mjs
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:17.8469070Z 
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:35.8330040Z {
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:35.8333910Z   "engine": "webkit",
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:35.8338390Z   "date": "2026-10-31T21:19:18.549Z",
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:35.8340050Z   "checks": [
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:35.8353320Z     "all four reported manual URLs are unchanged by automatic spacing, Apply and shared-link reload",
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:35.8357170Z     "source/target sliders share a row below the separator; one-degree keys, bounds, independent resets and inherited gaps work",
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:35.8363100Z     "default auto solution mirrors ends, uses equal close reference gaps, aligns painted tips within 0.03 SVG units, and applies/shares exactly",
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:35.8368480Z     "Russian controls work at 390px without horizontal overflow"
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:35.8370180Z   ],
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:35.8371260Z   "errors": [],
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:35.8372030Z   "version": "27.2",
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:35.8372870Z   "alignment": {
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:35.8375770Z     "sourceY": 65.79,
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:35.8378860Z     "targetY": 65.78938924564738
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:35.8379890Z   },
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:35.8380630Z   "solution": {
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:35.8381680Z     "turns": [
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:35.8382830Z       -13,
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:35.8383980Z       13
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:35.8384750Z     ],
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:35.8385420Z     "gaps": [
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:35.8386150Z       0.16,
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:35.8386860Z       0.16
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:35.8387480Z     ]
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:35.8388130Z   }
+network-browsers (webkit, macos-15-intel)	Verify paired sliders, preserved manual layouts and symmetric automatic references	2026-10-31T21:19:35.8388770Z }
+network-browsers (webkit, macos-15-intel)	Verify continuous middles and explicit cuts after automatic spacing	﻿2026-10-31T21:19:36.0117650Z ##[group]Run npm run test:network:issue35
+network-browsers (webkit, macos-15-intel)	Verify continuous middles and explicit cuts after automatic spacing	2026-10-31T21:19:36.0119960Z ^[[36;1mnpm run test:network:issue35^[[0m
+network-browsers (webkit, macos-15-intel)	Verify continuous middles and explicit cuts after automatic spacing	2026-10-31T21:19:36.0993410Z shell: /bin/bash -e {0}
+network-browsers (webkit, macos-15-intel)	Verify continuous middles and explicit cuts after automatic spacing	2026-10-31T21:19:36.0995210Z env:
+network-browsers (webkit, macos-15-intel)	Verify continuous middles and explicit cuts after automatic spacing	2026-10-31T21:19:36.0995740Z   GIT_CONFIG_COUNT: 1
+network-browsers (webkit, macos-15-intel)	Verify continuous middles and explicit cuts after automatic spacing	2026-10-31T21:19:36.0996310Z   GIT_CONFIG_KEY_0: init.defaultBranch
+network-browsers (webkit, macos-15-intel)	Verify continuous middles and explicit cuts after automatic spacing	2026-10-31T21:19:36.0996960Z   GIT_CONFIG_VALUE_0: main
+network-browsers (webkit, macos-15-intel)	Verify continuous middles and explicit cuts after automatic spacing	2026-10-31T21:19:36.0997510Z   ENGINE: webkit
+network-browsers (webkit, macos-15-intel)	Verify continuous middles and explicit cuts after automatic spacing	2026-10-31T21:19:36.1004650Z   CAPTURE_DIR: browser-results/screenshots/issue35
+network-browsers (webkit, macos-15-intel)	Verify continuous middles and explicit cuts after automatic spacing	2026-10-31T21:19:36.1005790Z   RESULT_DIR: browser-results/data/issue35
+network-browsers (webkit, macos-15-intel)	Verify continuous middles and explicit cuts after automatic spacing	2026-10-31T21:19:36.1006580Z ##[endgroup]
+network-browsers (webkit, macos-15-intel)	Verify continuous middles and explicit cuts after automatic spacing	2026-10-31T21:19:36.5372470Z 
+network-browsers (webkit, macos-15-intel)	Verify continuous middles and explicit cuts after automatic spacing	2026-10-31T21:19:36.5373680Z > konard.github.io@0.1.0 test:network:issue35
+network-browsers (webkit, macos-15-intel)	Verify continuous middles and explicit cuts after automatic spacing	2026-10-31T21:19:36.5374670Z > node experiments/issue-35-browser.mjs
+network-browsers (webkit, macos-15-intel)	Verify continuous middles and explicit cuts after automatic spacing	2026-10-31T21:19:36.5375170Z 
+network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	﻿2026-10-31T21:19:46.0616540Z ##[group]Run npm run test:network:issue37
+network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-31T21:19:46.0617910Z ^[[36;1mnpm run test:network:issue37^[[0m
+network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-31T21:19:46.0734920Z shell: /bin/bash -e {0}
+network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-31T21:19:46.0738120Z env:
+network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-31T21:19:46.0738660Z   GIT_CONFIG_COUNT: 1
+network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-31T21:19:46.0739190Z   GIT_CONFIG_KEY_0: init.defaultBranch
+network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-31T21:19:46.0739880Z   GIT_CONFIG_VALUE_0: main
+network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-31T21:19:46.0740480Z   ENGINE: webkit
+network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-31T21:19:46.0741070Z   CAPTURE_DIR: browser-results/screenshots/issue37
+network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-31T21:19:46.0742420Z   RESULT_DIR: browser-results/data/issue37
+network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-31T21:19:46.0743490Z ##[endgroup]
+network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-31T21:19:46.4243070Z 
+network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-31T21:19:46.4243930Z > konard.github.io@0.1.0 test:network:issue37
+network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-31T21:19:46.4244880Z > node experiments/issue-37-browser.mjs
+network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-31T21:19:46.4245360Z 
+network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-31T21:20:00.9448800Z webkit: native click-then-key focus passed in all four control contexts
+network-browsers (webkit, macos-15-intel)	Verify self crossings, 20 random networks, slider focus and worker responsiveness	2026-10-31T21:20:05.4765300Z ##[error]The operation was canceled.
+network-browsers (webkit, macos-15-intel)	Post Checkout source	﻿2026-10-31T21:20:05.5718910Z Post job cleanup.
+network-browsers (webkit, macos-15-intel)	Post Checkout source	2026-10-31T21:20:05.8881260Z [command]/usr/local/bin/git version
+network-browsers (webkit, macos-15-intel)	Post Checkout source	2026-10-31T21:20:05.9110440Z git version 2.55.0
+network-browsers (webkit, macos-15-intel)	Post Checkout source	2026-10-31T21:20:05.9212620Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/4717f621-3423-4f25-ba84-e40d77f7582d/.gitconfig'
+network-browsers (webkit, macos-15-intel)	Post Checkout source	2026-10-31T21:20:05.9223820Z Temporarily overriding HOME='/Users/runner/work/_temp/4717f621-3423-4f25-ba84-e40d77f7582d' before making global git config changes
+network-browsers (webkit, macos-15-intel)	Post Checkout source	2026-10-31T21:20:05.9257540Z Adding repository directory to the temporary git global config as a safe directory
+network-browsers (webkit, macos-15-intel)	Post Checkout source	2026-10-31T21:20:05.9267110Z [command]/usr/local/bin/git config --global --add safe.directory /Users/runner/work/konard.github.io/konard.github.io
+network-browsers (webkit, macos-15-intel)	Post Checkout source	2026-10-31T21:20:05.9616890Z Removing SSH command configuration
+network-browsers (webkit, macos-15-intel)	Post Checkout source	2026-10-31T21:20:05.9665860Z [command]/usr/local/bin/git config --local --name-only --get-regexp core\.sshCommand
+network-browsers (webkit, macos-15-intel)	Post Checkout source	2026-10-31T21:20:05.9703540Z [command]/usr/local/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+network-browsers (webkit, macos-15-intel)	Post Checkout source	2026-10-31T21:20:06.2493710Z Removing HTTP extra header
+network-browsers (webkit, macos-15-intel)	Post Checkout source	2026-10-31T21:20:06.2498180Z [command]/usr/local/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+network-browsers (webkit, macos-15-intel)	Post Checkout source	2026-10-31T21:20:06.2700860Z [command]/usr/local/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+network-browsers (webkit, macos-15-intel)	Post Checkout source	2026-10-31T21:20:06.8361980Z Removing includeIf entries pointing to credentials config files
+network-browsers (webkit, macos-15-intel)	Post Checkout source	2026-10-31T21:20:06.9366960Z [command]/usr/local/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+network-browsers (webkit, macos-15-intel)	Post Checkout source	2026-10-31T21:20:06.9624130Z [command]/usr/local/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+network-browsers (webkit, macos-15-intel)	Complete job	﻿2026-10-31T21:20:07.1808380Z Cleaning up orphan processes
+network-browsers (webkit, macos-15-intel)	Complete job	2026-10-31T21:20:07.7208340Z Terminate orphan process: pid (18631) (Playwright)
