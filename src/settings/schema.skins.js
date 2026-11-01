@@ -200,6 +200,79 @@ const levelEdges = (level) => {
   ];
 };
 
+/**
+ * Whether the elements of a level draw the custom frame: outer panels always,
+ * inner blocks unless they are a plain line, controls unless they have a border.
+ */
+export const drawsFrame = (level, s) =>
+  level === 'panel' ||
+  (level === 'block'
+    ? s['corner.blocks'] !== 'line'
+    : s[levelKey(level, 'Corners')] === 'own' ||
+      (s[levelKey(level, 'Corners')] === 'same' && s['corner.controls'] === 'frame'));
+
+/** The limits of the size of an element of a level: [key name, English, Russian]. */
+export const FIT_LIMITS = [
+  ['FitMinWidth', 'Minimum width', 'Минимальная ширина'],
+  ['FitMaxWidth', 'Maximum width', 'Максимальная ширина'],
+  ['FitMinHeight', 'Minimum height', 'Минимальная высота'],
+  ['FitMaxHeight', 'Maximum height', 'Максимальная высота'],
+];
+
+/** Whether a level has a limit of the size of its elements. */
+export const hasFitLimits = (level, s) => FIT_LIMITS.some(([name]) => s[levelKey(level, name)] > 0);
+
+/**
+ * Corners by the size of the element (issue #47: "configure CORNERS OF THE
+ * FRAME based on conditions like minimum/maximum height/width of the UI
+ * element"): the limits of a level, and the size of the corners of its elements
+ * outside them. The limits are read by src/frameFit.js only, so they are not
+ * put on <html>; the scale is a variable of src/skins.frames.fit.css.
+ */
+const fitFields = (level) => {
+  const at = { level, when: (s) => drawsFrame(level, s) };
+  return [
+    ...FIT_LIMITS.map(([name, en, ru], i) =>
+      range(
+        levelKey(level, name),
+        0,
+        0,
+        1600,
+        1,
+        { en: `Full corners: ${en.toLowerCase()}`, ru: `Полные углы: ${ru.toLowerCase()}` },
+        {
+          ...at,
+          css: false,
+          unit: 'px',
+          ...(i === 0 && {
+            hint: {
+              en: 'An element of this level smaller than a minimum or larger than a maximum draws the corners below; 0 is no limit.',
+              ru: 'Элемент этого уровня меньше минимума или больше максимума рисует углы, заданные ниже; 0 — без ограничения.',
+            },
+          }),
+        },
+      ),
+    ),
+    range(
+      levelKey(level, 'FitScale'),
+      0.5,
+      0,
+      1,
+      0.05,
+      { en: 'Corners outside the limits', ru: 'Углы вне ограничений' },
+      {
+        level,
+        unit: '×',
+        when: (s) => drawsFrame(level, s) && hasFitLimits(level, s),
+        hint: {
+          en: 'The size of the corners of an element outside the limits; 0 draws no corners, a plain rectangle.',
+          ru: 'Размер углов элемента вне ограничений; 0 — без углов, простой прямоугольник.',
+        },
+      },
+    ),
+  ];
+};
+
 /** How a type of control is drawn: like all controls, with its own corners, or with its own border. */
 const controlMode = (level) =>
   select(
@@ -625,6 +698,7 @@ export const SKIN_SECTIONS = [
         },
       ),
       ...CONTROL_LEVELS.flatMap((level) => [...levelEdges(level), ...CORNERS.flatMap(corner(level))]),
+      ...LEVEL_IDS.flatMap(fitFields),
     ],
   },
 ];

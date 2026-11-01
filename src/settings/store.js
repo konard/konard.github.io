@@ -81,7 +81,8 @@ export function resetSettings(keys = Object.keys(DEFAULTS), options) {
   setSettings(Object.fromEntries(keys.map((key) => [key, DEFAULTS[key]])), options);
 }
 
-const subscribe = (listener) => {
+/** Calls `listener` whenever the settings change; returns a function that stops it. */
+export const subscribe = (listener) => {
   listeners.add(listener);
   return () => listeners.delete(listener);
 };

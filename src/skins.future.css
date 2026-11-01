@@ -24,6 +24,7 @@
 @import './skins.frames.level-chip.css';
 @import './skins.frames.level-menu.css';
 @import './skins.frames.level-table.css';
+@import './skins.frames.fit.css';
 
 :root[data-skin-name='futuristic'] {
   /* The palette (skins.palettes.css) becomes the colours of the whole site. */
