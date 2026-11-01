@@ -8,14 +8,19 @@ import { useLang } from '../i18n/prefs';
 import { focusSlider, numericKey } from '../components/numericKeys';
 import { RotateCcw, X } from 'lucide-react';
 import { iconProps } from '../components/icons';
+import { readNotation, toNested } from '../lino';
 
 const SAVED_KEY = 'network.styles';
 const MAX_SAVED = 12;
 
-/** The styles saved in this browser: [{ name, style }]. */
+/**
+ * The styles saved in this browser: [{ name, style }], kept as nested Links
+ * Notation (issue #47; a list saved as JSON before still loads).
+ */
 export function readSaved() {
   try {
-    const list = JSON.parse(localStorage.getItem(SAVED_KEY) || '[]');
+    const text = localStorage.getItem(SAVED_KEY);
+    const list = text ? readNotation(text).value : [];
     return Array.isArray(list)
       ? list
           .filter((item) => item && typeof item.name === 'string')
@@ -29,7 +34,7 @@ export function readSaved() {
 
 function writeSaved(list) {
   try {
-    localStorage.setItem(SAVED_KEY, JSON.stringify(list));
+    localStorage.setItem(SAVED_KEY, toNested(list));
   } catch {
     // Private mode or a full storage: the list lives until the page is closed.
   }

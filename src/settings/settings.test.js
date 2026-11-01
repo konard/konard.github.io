@@ -184,10 +184,8 @@ describe('settings store', () => {
     expect(getSettings()['skin.name']).toBe('glass');
     expect(root.dataset.skinName).toBe('glass');
     expect(root.style.getPropertyValue('--rain-step')).toBe('120ms');
-    expect(JSON.parse(window.localStorage.getItem(STORAGE_KEY))).toEqual({
-      'skin.name': 'glass',
-      'rain.step': 120,
-    });
+    // Kept as indented Links Notation (issue #47).
+    expect(window.localStorage.getItem(STORAGE_KEY)).toBe('settings:\n  rain.step 120\n  skin.name glass');
     expect(loadSettings()).toEqual(getSettings());
   });
 
@@ -209,7 +207,7 @@ describe('settings store', () => {
   });
 
   it('follows changes made in another tab', () => {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify({ 'skin.name': 'liquid' }));
+    window.localStorage.setItem(STORAGE_KEY, 'settings:\n  skin.name liquid');
     window.dispatchEvent(new StorageEvent('storage', { key: STORAGE_KEY }));
     expect(getSettings()['skin.name']).toBe('liquid');
     expect(root.dataset.skinName).toBe('liquid');
@@ -218,12 +216,17 @@ describe('settings store', () => {
 
 describe('settings before the first paint', () => {
   it('are applied by the script injected into every page with the same rules', () => {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify({ 'skin.name': 'futuristic', 'glass.blur': 99 }));
+    window.localStorage.setItem(STORAGE_KEY, 'settings:\n  skin.name liquid\n  glass.blur 99');
     delete root.dataset.skinName;
     root.style.removeProperty('--glass-blur');
     new Function(SETTINGS_SCRIPT)();
-    expect(root.dataset.skinName).toBe('futuristic');
+    expect(root.dataset.skinName).toBe('liquid');
     expect(root.style.getPropertyValue('--glass-blur')).toBe('30px');
+
+    // Settings stored as JSON before issue #47 still apply.
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify({ 'skin.name': 'futuristic' }));
+    new Function(SETTINGS_SCRIPT)();
+    expect(root.dataset.skinName).toBe('futuristic');
 
     window.localStorage.setItem(STORAGE_KEY, 'broken');
     expect(() => new Function(SETTINGS_SCRIPT)()).not.toThrow();

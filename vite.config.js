@@ -3,6 +3,7 @@ import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { applySettings, normalize } from './src/settings/apply.js';
+import { readStored } from './src/settings/notation.js';
 import { CSS_RULES } from './src/settings/schema.js';
 import { inlineJSON } from './scripts/inline-json.mjs';
 
@@ -23,7 +24,7 @@ export const THEME_SCRIPT = `(function(){try{var t=localStorage.getItem('theme')
 // before the first paint with the same rules as src/settings/store.js, so a
 // visitor with the futuristic skin never sees the glass one first.
 const inline = (fn) => String(fn).replace(/\s*\n\s*/g, ' ');
-export const SETTINGS_SCRIPT = `(function(){try{${inline(normalize)};${inline(applySettings)};var r=${inlineJSON(CSS_RULES)};applySettings(document.documentElement,r,normalize(r,JSON.parse(localStorage.getItem('settings')||'{}')))}catch(e){}})();`;
+export const SETTINGS_SCRIPT = `(function(){try{${inline(readStored)};${inline(normalize)};${inline(applySettings)};var r=${inlineJSON(CSS_RULES)};applySettings(document.documentElement,r,normalize(r,readStored(localStorage.getItem('settings'))))}catch(e){}})();`;
 
 const buildIdentity = () => ({
   name: 'build-identity',
