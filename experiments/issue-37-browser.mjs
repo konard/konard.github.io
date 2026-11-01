@@ -180,7 +180,7 @@ try {
   await go('code=34442132&solve=true');
   const solved = await picture();
   const pending = page.waitForEvent('download');
-  await page.getByRole('button', { name: '⤓ SVG', exact: true }).click();
+  await page.getByRole('button', { name: 'SVG', exact: true }).click();
   const exported = await readFile(await (await pending).path(), 'utf8');
   const serialized = await page.evaluate((source) => {
     const wrapper = document.createElement('div');

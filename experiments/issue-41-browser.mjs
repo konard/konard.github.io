@@ -78,7 +78,7 @@ try {
     await waitForNetwork(page);
     assert.equal(await picture(), solved, 'applied share changed the drawing');
     const pending = page.waitForEvent('download');
-    await page.getByRole('button', { name: '⤓ SVG', exact: true }).click();
+    await page.getByRole('button', { name: 'SVG', exact: true }).click();
     const exported = await readFile(await (await pending).path(), 'utf8');
     assert.equal(
       await page.evaluate((svg) => {

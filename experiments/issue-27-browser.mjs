@@ -176,43 +176,61 @@ try {
   );
 
   console.log('Geometry, URL and number editing checks passed. Auditing sliders.');
+  // Sliders are found by id, not by position: a slider can reveal others (the
+  // fit limits of a frame level show the corners outside them, issue #47), which
+  // shifts the positions; the sliders it reveals are audited in the next round.
   const audit = async (selector) => {
-    const controls = await page.locator(selector).evaluateAll((inputs) =>
-      inputs.map((input, index) => ({
-        index,
-        id: input.id,
-        min: +input.min,
-        max: +input.max,
-        step: Number(input.step) || 1,
-        value: +input.value,
-      })),
-    );
-    for (const control of controls) {
-      console.log(`Keyboard: ${control.id}`);
-      const input = page.locator(selector).nth(control.index);
-      let current = control.value;
-      for (const [key, count] of [
-        ['ArrowUp', 1],
-        ['ArrowDown', -1],
-        ['ArrowRight', 1],
-        ['ArrowLeft', -1],
-        ['PageUp', 10],
-        ['PageDown', -10],
-        ['Home', 0],
-        ['End', 0],
-      ]) {
-        const expected =
-          key === 'Home'
-            ? control.min
-            : key === 'End'
-              ? control.max
-              : Math.min(control.max, Math.max(control.min, current + count * control.step));
-        await input.press(key);
-        current = Number(await input.inputValue());
-        assert(Math.abs(current - expected) < 1e-8, JSON.stringify({ control, key, current, expected }));
-      }
+    const audited = [];
+    const scan = () =>
+      page.locator(selector).evaluateAll((inputs) =>
+        inputs.map((input) => ({
+          id: input.id,
+          min: +input.min,
+          max: +input.max,
+          step: Number(input.step) || 1,
+          value: +input.value,
+        })),
+      );
+    for (let round = 0, controls = await scan(); controls.length; round++) {
+      assert(round < 10, 'sliders keep appearing');
+      for (const control of controls) await auditOne(control);
+      audited.push(...controls);
+      controls = (await scan()).filter((control) => !audited.some((done) => done.id === control.id));
     }
-    return controls.map((control) => control.id);
+    return audited.map((control) => control.id);
+  };
+  const auditOne = async ({ id }) => {
+    assert(id, 'every slider has an id');
+    console.log(`Keyboard: ${id}`);
+    const input = page.locator(`[id="${id}"]`);
+    const control = await input.evaluate((el) => ({
+      id: el.id,
+      min: +el.min,
+      max: +el.max,
+      step: Number(el.step) || 1,
+      value: +el.value,
+    }));
+    let current = control.value;
+    for (const [key, count] of [
+      ['ArrowUp', 1],
+      ['ArrowDown', -1],
+      ['ArrowRight', 1],
+      ['ArrowLeft', -1],
+      ['PageUp', 10],
+      ['PageDown', -10],
+      ['Home', 0],
+      ['End', 0],
+    ]) {
+      const expected =
+        key === 'Home'
+          ? control.min
+          : key === 'End'
+            ? control.max
+            : Math.min(control.max, Math.max(control.min, current + count * control.step));
+      await input.press(key);
+      current = Number(await input.inputValue());
+      assert(Math.abs(current - expected) < 1e-8, JSON.stringify({ control, key, current, expected }));
+    }
   };
   await go('');
   result.networkRanges = await audit('input[type="range"]');

@@ -161,7 +161,7 @@ try {
       continue;
     }
     const waiting = page.waitForEvent('download');
-    await page.getByRole('button', { name: `⤓ ${label}`, exact: true }).click();
+    await page.getByRole('button', { name: label, exact: true }).click();
     const download = await waiting;
     assert.equal(await download.failure(), null);
     assert.equal(download.suggestedFilename(), `links-network-22-13-31.${ext}`);

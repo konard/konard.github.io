@@ -9,7 +9,7 @@ export async function verifyWebpFallback(page) {
       ),
   );
   if (supported) return false;
-  await page.getByRole('button', { name: '⤓ WebP', exact: true }).click();
+  await page.getByRole('button', { name: 'WebP', exact: true }).click();
   await page.waitForFunction(() =>
     document
       .querySelector('.network-share__status')
