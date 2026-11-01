@@ -18,6 +18,7 @@ import { LAYER_SECTIONS } from './schema.layers.js';
 import { SKIN_SECTIONS } from './schema.skins.js';
 import { UI_SECTIONS } from './schema.ui.js';
 import { SOUND_SECTION } from './schema.sound.js';
+import { AVATAR_SECTION } from './schema.avatar.js';
 import { DEFAULT_LOOK } from './schema.defaults.js';
 
 export { PALETTES, SKINS } from './schema.skins.js';
@@ -40,6 +41,7 @@ const SECTION_LIST = [
   SOUND_SECTION,
   ...SKIN_SECTIONS,
   ...UI_SECTIONS,
+  AVATAR_SECTION,
   {
     id: 'theory',
     column: 2,

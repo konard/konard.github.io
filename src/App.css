@@ -88,11 +88,43 @@ main {
 
 .hero__ring {
   position: absolute;
-  inset: 0;
+  /* The ring reaches avatar.ringWidth beyond the photo (issue #47); 10px is the gap between them. */
+  inset: calc(var(--hero-ring-gap, 10px) - var(--avatar-ring-width, 10px) * var(--hero-ring-scale, 1));
   border-radius: 50%;
   background: conic-gradient(from 0deg, var(--accent), var(--accent-2), var(--accent-3), var(--accent));
-  animation: spin 8s linear infinite;
-  filter: drop-shadow(0 0 24px rgb(var(--accent-rgb) / 0.45));
+  /* `rotate` adds to the `transform` of the spin, so the angle holds when the ring stands still. */
+  rotate: var(--avatar-angle, 0deg);
+  animation: spin var(--avatar-period, 8s) linear infinite;
+  filter: drop-shadow(0 0 var(--avatar-glow, 24px) rgb(var(--accent-rgb) / 0.45));
+}
+
+/* Settings of the photo and the ring (issue #47, src/settings/schema.avatar.js). */
+:root[data-avatar-ring='false'] .hero__ring {
+  display: none;
+}
+
+:root[data-avatar-spin='counter'] .hero__ring {
+  animation-direction: reverse;
+}
+
+:root[data-avatar-spin='still'] .hero__ring {
+  animation: none;
+}
+
+/* Beats the squared corners of the futuristic skin (:root[data-skin-name] .app :where(*)). */
+:root[data-avatar-ring-shape='circle'] .app .hero__ring,
+:root[data-avatar-photo-shape='circle'] .app .hero__avatar img {
+  border-radius: 50%;
+}
+
+:root[data-avatar-ring-shape='rounded'] .app .hero__ring,
+:root[data-avatar-photo-shape='rounded'] .app .hero__avatar img {
+  border-radius: 22%;
+}
+
+:root[data-avatar-ring-shape='square'] .app .hero__ring,
+:root[data-avatar-photo-shape='square'] .app .hero__avatar img {
+  border-radius: 0;
 }
 
 @keyframes spin {
