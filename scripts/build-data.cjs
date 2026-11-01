@@ -6,13 +6,15 @@
 const fs = require('fs');
 const path = require('path');
 
+const { writeLino } = require('./lino-data.cjs');
 const { buildRegistries } = require('./registries.cjs');
 const { buildRepositories, isHiddenOwner, isNoise, readCollected, shownRepositories } = require('./repositories.cjs');
 
 const root = path.join(__dirname, '..');
 const dataDir = path.join(root, 'docs', 'case-studies', 'issue-33', 'data');
-const outFile = path.join(root, 'src', 'data', 'github.json');
-const habrFile = path.join(root, 'src', 'data', 'habr.json');
+const outFile = path.join(root, 'src', 'data', 'github.lino');
+const habrFile = path.join(root, 'src', 'data', 'habr.lino');
+const postsFile = path.join(root, 'src', 'data', 'posts.lino');
 
 const read = (name, dir = dataDir) => JSON.parse(fs.readFileSync(path.join(dir, name), 'utf8'));
 
@@ -175,10 +177,10 @@ function build({ write = true } = {}) {
   };
 
   if (write) {
-    fs.mkdirSync(path.dirname(outFile), { recursive: true });
-    fs.writeFileSync(outFile, JSON.stringify(result, null, 2) + '\n');
-    fs.writeFileSync(habrFile, JSON.stringify(buildHabr(), null, 2) + '\n');
-    fs.writeFileSync(path.join(root, 'src/data/posts.json'), fs.readFileSync(path.join(dataDir, 'posts.json'), 'utf8'));
+    // Links Notation, not JSON (issue #47): scripts/lino-data.cjs.
+    writeLino(outFile, result);
+    writeLino(habrFile, buildHabr());
+    writeLino(postsFile, read('posts.json'));
     require('./build-indicators.cjs').buildIndicators();
   }
   return result;

@@ -7,13 +7,13 @@ import { crateCount, crateDownloads, npmMonthly } from './figures';
 
 // Professional experience at build time: 18 years in October 2026.
 const YEARS = yearsText();
-// Package figures come from src/data/github.json (issue #47).
+// Package figures come from src/data/github.lino (issue #47).
 const LINKS_NOTATION_NPM = npmMonthly('links-notation');
 const COMMAND_STREAM_NPM = npmMonthly('command-stream');
 
 const jobsWithRole = (role) => experience.filter((job) => job.roles.includes(role)).map((job) => job.id);
 
-/** Products a CV can list under “Selected products”; `repo` is a repository of src/data/repositories.json. */
+/** Products a CV can list under “Selected products”; `repo` is a repository of src/data/repositories.lino. */
 export const products = [
   {
     id: 'hive-mind',

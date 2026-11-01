@@ -9,7 +9,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import LanguagesChart from './components/LanguagesChart';
-import github from './data/github.json';
+import github from './data/github.lino';
 import { PANELS } from './skins.frames';
 
 const read = (name) => readFileSync(join(__dirname, name), 'utf8');

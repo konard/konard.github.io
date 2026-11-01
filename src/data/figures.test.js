@@ -1,4 +1,4 @@
-import github from './github.json';
+import github from './github.lino';
 import { experience } from './experience';
 import { about, atLeast, crateCount, crateDownloads, floorTwoDigits, npmMonthly, ownRepositoriesText } from './figures';
 import { products, positions } from './positions';
@@ -20,7 +20,7 @@ describe('figures quoted in texts (issue #47)', () => {
     expect(atLeast(637350).ru).toMatch(/^более 630\sтыс\.$/);
   });
 
-  it('reads the npm, crates and repository figures from github.json', () => {
+  it('reads the npm, crates and repository figures from github.lino', () => {
     expect(npmMonthly('links-notation').en).toBe(`${about(npm('links-notation')).en} npm downloads per month`);
     expect(npmMonthly('command-stream').ru).toBe(`${about(npm('command-stream')).ru} загрузок из npm в месяц`);
     expect(() => npmMonthly('no-such-package')).toThrow();

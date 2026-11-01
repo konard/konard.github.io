@@ -1,7 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import indicators from './indicators.json';
-import repositories from './repositories.json';
+import { decode } from 'lino-objects-codec';
+import indicators from './indicators.lino';
+import repositories from './repositories.lino';
 const dir = 'docs/case-studies/issue-33/data/';
 const read = (file) => JSON.parse(fs.readFileSync(dir + file + '.json', 'utf8'));
 
@@ -10,10 +11,10 @@ it('rebuilds the website social fallback from the dated public archive', () => {
   const writer = vi.spyOn(fs, 'writeFileSync').mockImplementation((file, value) => writes.set(file, value));
   try {
     require('../../scripts/build-data.cjs').build();
-    const archive = writes.get(path.resolve('src/data/posts.json'));
+    const archive = writes.get(path.resolve('src/data/posts.lino'));
     expect(archive).toBeTypeOf('string');
-    expect(JSON.parse(archive)).toEqual(read('posts'));
-    expect(fs.readFileSync('src/data/posts.json', 'utf8')).toBe(archive);
+    expect(decode({ notation: archive })).toEqual(read('posts'));
+    expect(fs.readFileSync('src/data/posts.lino', 'utf8')).toBe(archive);
   } finally {
     writer.mockRestore();
   }

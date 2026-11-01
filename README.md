@@ -76,14 +76,17 @@ fresh review when a dependency with install scripts changes version.
 
 ## Updating the data
 
-| What                                                          | Where                                    |
-| ------------------------------------------------------------- | ---------------------------------------- |
-| Jobs (EN/RU texts, dates, bullets for the CV, tags and roles) | `src/data/experience.js`                 |
-| Positions: their jobs, skills, products and CV strengths      | `src/data/positions.js`                  |
-| Education, skills, publications, contacts, featured projects  | `src/data/profile.js` (hand-curated)     |
-| GitHub, npm, crates.io, NuGet and Stack Overflow numbers      | `src/data/github.json` (generated)       |
-| Daily calendar and personal public source attribution         | `src/data/indicators.json` (generated)   |
-| Per-language repository source lines                          | `src/data/repositories.json` (generated) |
+| What                                                          | Where                                                   |
+| ------------------------------------------------------------- | ------------------------------------------------------- |
+| Jobs (EN/RU texts, dates, bullets for the CV, tags and roles) | `src/data/experience.js`                                |
+| Positions: their jobs, skills, products and CV strengths      | `src/data/positions.js`                                 |
+| Education, skills, publications, contacts, featured projects  | `src/data/profile.js` (hand-curated)                    |
+| GitHub, npm, crates.io, NuGet and Stack Overflow numbers      | `src/data/github.lino` (generated)                      |
+| Daily calendar and personal public source attribution         | `src/data/indicators.lino` (generated)                  |
+| Per-language repository source lines                          | `src/data/repositories.lino` (generated)                |
+| Habr articles and the blog archive                            | `src/data/habr.lino`, `src/data/posts.lino` (generated) |
+
+The generated files are nested [Links Notation](https://github.com/link-foundation/links-notation) written by [lino-objects-codec](https://github.com/link-foundation/lino-objects-codec) (issue #47); `scripts/lino-data.cjs` reads and writes them, and the `lino-data` plugin of `vite.config.js` turns them into plain objects when the site is built.
 
 To refresh the generated data:
 

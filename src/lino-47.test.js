@@ -76,3 +76,43 @@ describe('Links Notation instead of JSON (issue #47)', () => {
     expect(() => readStored("settings:\n  a 'x\ny'")).toThrow();
   });
 });
+
+describe('the data of the site in Links Notation (issue #47)', () => {
+  const fs = require('node:fs');
+  const { readLino, toLino } = require('../scripts/lino-data.cjs');
+  const FILES = ['github', 'habr', 'indicators', 'posts', 'repositories'];
+
+  it('keeps no generated data as JSON in src/data', () => {
+    expect(fs.readdirSync('src/data').filter((file) => file.endsWith('.json'))).toEqual([]);
+    FILES.forEach((name) => expect(fs.existsSync(`src/data/${name}.lino`)).toBe(true));
+  });
+
+  it.each(FILES)('src/data/%s.lino is nested Links Notation exactly as the codec writes it', (name) => {
+    const text = fs.readFileSync(`src/data/${name}.lino`, 'utf8');
+    expect(text.startsWith('(')).toBe(true);
+    expect(toLino(readLino(`src/data/${name}.lino`))).toBe(text);
+  });
+
+  it('imports a .lino file as the object it holds, with names as named exports', async () => {
+    const { linoData } = await import('../vite.config.js');
+    const notation = toNested({ sources: [1, 'two'], 'not-a-name': true, default: 3, items: { a: null } });
+    const { code } = linoData().transform(notation, '/x/data.lino');
+    const exports = {};
+    new Function(
+      'exports',
+      code
+        .replace(/^export default data;$/m, 'exports.default = data;')
+        .replace(/^export const (\w+) = (.*);$/gm, 'exports.$1 = $2;'),
+    )(exports);
+    expect(exports.default).toEqual({ sources: [1, 'two'], 'not-a-name': true, default: 3, items: { a: null } });
+    expect(Object.keys(exports).sort()).toEqual(['default', 'items', 'sources']);
+    expect(linoData().transform('{}', '/x/data.json')).toBeNull();
+  });
+
+  it('gives the pages the same objects as the files hold', async () => {
+    const github = (await import('./data/github.lino')).default;
+    const { sources } = await import('./data/indicators.lino');
+    expect(github).toEqual(readLino('src/data/github.lino'));
+    expect(sources).toEqual(readLino('src/data/indicators.lino').sources);
+  });
+});

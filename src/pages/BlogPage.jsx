@@ -6,7 +6,7 @@ import { useCallback, useMemo, useState } from 'react';
 import Layout from '../components/Layout';
 import Section from '../components/Section';
 import { formatNumber } from '../components/format';
-import archive from '../data/posts.json';
+import archive from '../data/posts.lino';
 import { useLang, useResolvedTheme } from '../i18n/prefs';
 import { DataMark } from '../components/DataSources';
 import { plural } from '../i18n/plural';

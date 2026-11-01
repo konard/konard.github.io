@@ -4,6 +4,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { applySettings, normalize } from './src/settings/apply.js';
 import { readStored } from './src/settings/notation.js';
+import { isObject, readNotation } from './src/lino.js';
 import { CSS_RULES } from './src/settings/schema.js';
 import { inlineJSON } from './scripts/inline-json.mjs';
 
@@ -43,6 +44,37 @@ const buildIdentity = () => ({
   },
 });
 
+// The data of the site is kept as Links Notation instead of JSON (issue #47,
+// scripts/lino-data.cjs): `import github from './data/github.lino'` gets the
+// object it holds, parsed here when the site is built, so a page neither loads
+// the codec nor parses the notation. Keys that are names are also named
+// exports, as with JSON (`import { sources } from './data/indicators.lino'`).
+const NAME = /^[A-Za-z_$][\w$]*$/;
+const isName = (key) => {
+  try {
+    return NAME.test(key) && Boolean(new Function(`let ${key}; return 1`)());
+  } catch {
+    return false;
+  }
+};
+export const linoData = () => ({
+  name: 'lino-data',
+  transform(code, id) {
+    if (!/\.lino(?:$|\?)/.test(id)) return null;
+    const { value } = readNotation(code);
+    const names = isObject(value) ? Object.keys(value).filter(isName) : [];
+    return {
+      code: [
+        // JSON.parse of a string is faster to start than an object literal of the same data.
+        `const data = JSON.parse(${JSON.stringify(JSON.stringify(value))});`,
+        'export default data;',
+        ...names.map((key) => `export const ${key} = data.${key};`),
+      ].join('\n'),
+      map: { mappings: '' },
+    };
+  },
+});
+
 const themeBeforePaint = () => ({
   name: 'theme-before-paint',
   transformIndexHtml: () => [{ tag: 'script', children: THEME_SCRIPT + SETTINGS_SCRIPT, injectTo: 'head-prepend' }],
@@ -51,7 +83,7 @@ const themeBeforePaint = () => ({
 // The site is served from the root of https://konard.github.io, and the
 // deploy job publishes build/ with actions/deploy-pages (see .github/workflows/github-pages.yml).
 export default defineConfig({
-  plugins: [react(), themeBeforePaint(), buildIdentity()],
+  plugins: [react(), linoData(), themeBeforePaint(), buildIdentity()],
   build: {
     outDir: 'build',
     sourcemap: true,

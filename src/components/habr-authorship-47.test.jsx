@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { afterEach, describe, expect, it } from 'vitest';
-import habr from '../data/habr.json';
-import github from '../data/github.json';
+import habr from '../data/habr.lino';
+import github from '../data/github.lino';
 import { habrAuthorship } from '../data/habrAuthorship';
 import { setLang } from '../i18n/prefs';
 import HabrCards from './HabrCards';

@@ -1,7 +1,7 @@
 import { render, screen, within } from '@testing-library/react';
 import { afterEach, describe, expect, it } from 'vitest';
-import github from '../data/github.json';
-import habr from '../data/habr.json';
+import github from '../data/github.lino';
+import habr from '../data/habr.lino';
 import { skillGroups } from '../data/profile';
 import { setLang } from '../i18n/prefs';
 import ContributionsChart, { withOther } from './ContributionsChart';

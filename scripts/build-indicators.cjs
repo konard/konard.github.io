@@ -108,7 +108,7 @@ function buildIndicators({ write = true } = {}) {
       social: record('Social archive fallback', 'Архив социальных сетей', read('posts').generatedAt, '/blog/'),
     },
   };
-  if (write) fs.writeFileSync(path.join(root, 'src/data/indicators.json'), JSON.stringify(result) + '\n');
+  if (write) require('./lino-data.cjs').writeLino(path.join(root, 'src/data/indicators.lino'), result);
   return result;
 }
 module.exports = { buildIndicators };

@@ -17,7 +17,7 @@
 // organization metadata (docs/case-studies/issue-1/data/web-research.md).
 import { npmMonthly } from './figures';
 
-// Package figures come from src/data/github.json (issue #47).
+// Package figures come from src/data/github.lino (issue #47).
 const LINKS_NOTATION_NPM = npmMonthly('links-notation');
 
 /** Topics of the bullets; positions choose bullets by them. */

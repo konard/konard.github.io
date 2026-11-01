@@ -3,7 +3,7 @@ import { chooseSelect } from '../test/select';
 // renders, holds no private data and only the jobs of its position.
 import { renderToStaticMarkup } from 'react-dom/server';
 import { act, render, screen } from '@testing-library/react';
-import github from '../data/github.json';
+import github from '../data/github.lino';
 import { experience } from '../data/experience';
 import { plural } from '../i18n/plural';
 import { positions } from '../data/positions';

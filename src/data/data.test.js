@@ -1,5 +1,5 @@
-import github from './github.json';
-import repositories from './repositories.json';
+import github from './github.lino';
+import repositories from './repositories.lino';
 import { fields, professions } from './fields';
 import {
   education,
@@ -60,7 +60,7 @@ describe('profile data integrity', () => {
   });
 });
 
-describe('generated github.json', () => {
+describe('generated github.lino', () => {
   test('has no auto-generated log repositories', () => {
     github.projects.forEach((p) => expect(p.name).not.toMatch(/^log-tmp-|solution-draft-log/i));
   });
@@ -80,7 +80,7 @@ describe('generated github.json', () => {
 describe('scripts/build-data.cjs', () => {
   const { build, isNoise } = require('../../scripts/build-data.cjs');
 
-  test('committed github.json is up to date with the raw case-study data', () => {
+  test('committed github.lino is up to date with the raw case-study data', () => {
     expect(build({ write: false })).toEqual(github);
   });
 
@@ -187,7 +187,7 @@ describe('repositories that are not shown (issue #9)', () => {
 describe('scripts/repositories.cjs (issue #7)', () => {
   const { buildRepositories, kindOf, fieldsOf } = require('../../scripts/repositories.cjs');
 
-  test('committed repositories.json is up to date with the collected data', () => {
+  test('committed repositories.lino is up to date with the collected data', () => {
     expect(buildRepositories({ write: false })).toEqual(repositories);
   });
 

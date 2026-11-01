@@ -1,6 +1,5 @@
 import { spawnSync } from 'node:child_process';
 import { createRequire } from 'node:module';
-import { readFileSync } from 'node:fs';
 import { parseFragment } from 'parse5';
 import { inlineJSON } from '../scripts/inline-json.mjs';
 import { delayedStylesheets } from '../experiments/delayed-stylesheets.mjs';
@@ -8,6 +7,7 @@ import { networkExampleUrls } from '../experiments/network-example-urls.mjs';
 import { parseMath } from './links/edit.js';
 
 const require = createRequire(import.meta.url);
+const { readLino } = require('../scripts/lino-data.cjs');
 const { npmMetadataUrl } = require('../experiments/registry-network.cjs');
 const { sanitize, htmlToText, findElements, innerOf, attr } = require('../experiments/archive-posts.cjs');
 const scripts = (html) => parseFragment(html).childNodes.filter((node) => node.tagName === 'script');
@@ -113,7 +113,7 @@ test('archive element extraction respects quoted angle brackets and real element
 });
 
 test('all archived posts preserve their text through repeated sanitization', () => {
-  const { posts } = JSON.parse(readFileSync('src/data/posts.json', 'utf8'));
+  const { posts } = readLino('src/data/posts.lino');
   expect(posts.length).toBeGreaterThan(0);
   for (const post of posts) {
     const html = post.html || '';

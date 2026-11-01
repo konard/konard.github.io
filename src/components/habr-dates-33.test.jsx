@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import HabrCards from './HabrCards';
-import habr from '../data/habr.json';
+import habr from '../data/habr.lino';
 
 it.each(['profile', 'articles', 'all'])(
   'dates the remaining Habr snapshot when %s refresh is incomplete',

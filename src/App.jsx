@@ -1,6 +1,6 @@
-import github from './data/github.json';
-import habr from './data/habr.json';
-import { contributions, sourceLines } from './data/indicators.json';
+import github from './data/github.lino';
+import habr from './data/habr.lino';
+import { contributions, sourceLines } from './data/indicators.lino';
 import ContributionCalendar from './components/ContributionCalendar';
 import SourceLines from './components/SourceLines';
 import { DataMark } from './components/DataSources';

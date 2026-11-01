@@ -4,7 +4,7 @@ import Section from '../components/Section';
 import Skills from '../components/Skills';
 import Timeline from '../components/Timeline';
 import { cvPagePath, pdfPath } from '../cv/paths';
-import github from '../data/github.json';
+import github from '../data/github.lino';
 import { professions } from '../data/fields';
 import { experience, favoriteLanguages, positions, skillGroups } from '../data/profile';
 import { useLang } from '../i18n/prefs';

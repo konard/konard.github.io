@@ -6,7 +6,7 @@
 // it; a CV for a position is at most 2 pages, the compact one is 1 page; no
 // phone, birth date, salary or email, contacts are GitHub, Telegram and the
 // website.
-import github from '../data/github.json';
+import github from '../data/github.lino';
 import { experience, yearsText } from '../data/experience';
 import { positionById, positions, practices, products } from '../data/positions';
 import { achievements, education, languages, profile, publications } from '../data/profile';

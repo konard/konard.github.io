@@ -1,7 +1,7 @@
 // Figures quoted inside hand-written texts (issue #47): repository counts and
-// package downloads are read from src/data/github.json, the same data the stat
+// package downloads are read from src/data/github.lino, the same data the stat
 // tiles and the registries section show, so the texts cannot go stale.
-import github from './github.json';
+import github from './github.lino';
 import { plural } from '../i18n/plural';
 
 const LOCALES = { en: 'en-US', ru: 'ru-RU' };
@@ -31,7 +31,7 @@ export const registry = (id) => github.registries.find((r) => r.id === id);
 /** Monthly npm downloads of a package, as the registries section shows them. */
 export function npmMonthly(name) {
   const pkg = registry('npm').top.find((p) => p.name === name);
-  if (!pkg) throw new Error(`${name} is not among the top npm packages in src/data/github.json`);
+  if (!pkg) throw new Error(`${name} is not among the top npm packages in src/data/github.lino`);
   const value = about(pkg.downloads);
   return { en: `${value.en} npm downloads per month`, ru: `${value.ru} загрузок из npm в месяц` };
 }

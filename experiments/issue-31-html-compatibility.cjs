@@ -2,7 +2,6 @@
 // Run with Node --max-old-space-size=128; no network requests are made.
 'use strict';
 const { execFileSync } = require('node:child_process');
-const fs = require('node:fs');
 const vm = require('node:vm');
 const assert = require('node:assert/strict');
 const current = require('./post-html.cjs');
@@ -19,7 +18,7 @@ const helpers = source.slice(
 const context = { module: { exports: {} } };
 vm.runInNewContext(`${helpers}\nmodule.exports={sanitize,htmlToText};`, context);
 const before = context.module.exports;
-const { posts } = JSON.parse(fs.readFileSync('src/data/posts.json', 'utf8'));
+const { posts } = require('../scripts/lino-data.cjs').readLino('src/data/posts.lino');
 const changes = [];
 const nullNormalizations = [];
 for (const post of posts) {

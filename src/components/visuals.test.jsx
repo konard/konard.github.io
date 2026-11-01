@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import habr from '../data/habr.json';
+import habr from '../data/habr.lino';
 import { mergeHabr } from '../data/habrLive';
 import { setLang } from '../i18n/prefs';
 import { startNebula } from '../visuals/nebula';
