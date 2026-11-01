@@ -122,6 +122,7 @@ export default function ColorInput({ value, onChange, label = '', ...props }) {
               <label key={name.en}>
                 <span>{t(name)}</span>
                 <input
+                  id={`${id}-${name.en.toLowerCase()}`}
                   type="range"
                   aria-label={t(name)}
                   min="0"

@@ -55,6 +55,7 @@ export default function InterfacePreview() {
             {t({ en: 'Sample checkbox', ru: 'Пример флажка' })}
           </label>
           <input
+            id="ui-preview-slider"
             type="range"
             min="0"
             max="100"
