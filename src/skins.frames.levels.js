@@ -75,13 +75,20 @@ function properties(level) {
   ];
 }
 
-/** The numbers of the chosen shape and line of every corner of a level, on the root only. */
+/**
+ * The numbers of the chosen shape and line of every corner of a level, on the
+ * root only, and only while the level has its own corners: a level that
+ * follows the panels adds nothing to a restyle of the page.
+ */
 function corners(level) {
+  const own = ownCorners(level);
   return CORNERS.flatMap((corner) => [
     ...Object.keys(SHAPES).map((shape) =>
-      line(`:root[data-corner-${level}-${corner}-shape='${shape}']`, shapeNumbers(corner, shape, level)),
+      line(`:root${own}[data-corner-${level}-${corner}-shape='${shape}']`, shapeNumbers(corner, shape, level)),
     ),
-    ...LINES.map((name) => line(`:root[data-corner-${level}-${corner}-line='${name}']`, lineLook(corner, name, level))),
+    ...LINES.map((name) =>
+      line(`:root${own}[data-corner-${level}-${corner}-line='${name}']`, lineLook(corner, name, level)),
+    ),
   ]);
 }
 
@@ -107,13 +114,28 @@ function elements(level) {
   const own = `${FRAME}${ownCorners(level)}`;
   const out = [block(own, scaleLengths(level))];
   if (level === 'block') {
-    out.push(block(elementsOf(level, `${own} `), { ...element(level), '--fx-ec': `var(--fx-${level}-ec)` }));
-    // The images of the edges in the colour of the block (those of the root have the colour of the panels).
+    // The images of the edges in the colour of the blocks, made once on the
+    // root (those of the root have the colour of the panels). Inner blocks are
+    // a list of panels in panels that a browser checks on every element, so
+    // they have one rule only: a rule for each edge style made every restyle
+    // of the page about a quarter slower in Chromium.
     const styled = `:root${ownCorners(level)}[data-corner-${level}-edge-style=`;
+    const images = (style) => {
+      const { '--fx-ce-h': h, '--fx-ce-v': v } = edgeImages(style, `var(--fx-${level}-ec)`);
+      return { [`--fx-${level}-ce-h`]: h, [`--fx-${level}-ce-v`]: v };
+    };
     PANEL_STYLES.forEach((style) =>
-      out.push(block(elementsOf(level, `${styled}'same'][data-corner-edge-style='${style}'] `), edgeImages(style))),
+      out.push(line(`${styled}'same'][data-corner-edge-style='${style}']`, images(style))),
     );
-    EDGE_STYLES.forEach((style) => out.push(block(elementsOf(level, `${styled}'${style}'] `), edgeImages(style))));
+    EDGE_STYLES.forEach((style) => out.push(line(`${styled}'${style}']`, images(style))));
+    out.push(
+      block(elementsOf(level, `${own} `), {
+        ...element(level),
+        '--fx-ec': `var(--fx-${level}-ec)`,
+        '--fx-ce-h': `var(--fx-${level}-ce-h)`,
+        '--fx-ce-v': `var(--fx-${level}-ce-v)`,
+      }),
+    );
     return out;
   }
   // The frame of a control, as for `same` in `controlRules` with the layers of the level.
