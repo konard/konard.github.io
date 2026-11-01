@@ -114,8 +114,8 @@ export const SOUND_SECTION = {
   id: 'sound',
   title: { en: 'Sound', ru: 'Звук' },
   lead: {
-    en: 'Sounds of the interface, synthesized in the browser (no files are loaded), as in konard/immortality. Every interaction (in the tabs below) can play up to four sounds; ▶ plays one. The sound starts only after you press something on the page.',
-    ru: 'Звуки интерфейса, синтезируемые в браузере (без загрузки файлов), как в konard/immortality. Каждое действие (во вкладках ниже) может играть до четырёх звуков; ▶ проигрывает звук. Звук начинается только после нажатия на что-нибудь на странице.',
+    en: 'Sounds of the interface, synthesized in the browser (no files are loaded), as in konard/immortality. Every interaction (in the tabs below) can play up to four sounds; the play button plays one. The sound starts only after you press something on the page.',
+    ru: 'Звуки интерфейса, синтезируемые в браузере (без загрузки файлов), как в konard/immortality. Каждое действие (во вкладках ниже) может играть до четырёх звуков; кнопка воспроизведения проигрывает звук. Звук начинается только после нажатия на что-нибудь на странице.',
   },
   tabs: SOUND_TABS.map(([id, en, ru]) => ({ id: `sound-${id}`, label: { en, ru } })),
   fields: [

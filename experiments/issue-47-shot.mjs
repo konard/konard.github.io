@@ -14,6 +14,8 @@ await page.goto(`${process.env.BASE || 'http://localhost:4173'}${path}`, { waitU
 await page.waitForTimeout(1500);
 if (selector) {
   const el = page.locator(selector).first();
+  // Sticky bars would be drawn over a tall element that the screenshot scrolls through.
+  await page.addStyleTag({ content: 'header, nav, .topbar, .subnav { position: static !important; }' });
   await el.scrollIntoViewIfNeeded();
   await page.waitForTimeout(400);
   await el.screenshot({ path: out });

@@ -8,6 +8,7 @@ import { useNotation } from '../links/notation';
 import { plural } from '../i18n/plural';
 import { formatNumber } from './format';
 import { DataMark } from './DataSources';
+import { StarMark } from './icons';
 
 const FIELD_NAMES = Object.fromEntries(fields.map((f) => [f.id, f.name]));
 const STARS = { en: ['star', 'stars'], ru: ['звезда', 'звезды', 'звёзд'] };
@@ -32,7 +33,7 @@ export function RepoItem({ repo, note = null }) {
           {repo.language && <span>{repo.language}</span>}
           {repo.stars > 0 && (
             <span aria-label={`${formatNumber(repo.stars, lang)} ${plural(repo.stars, lang, STARS)}`}>
-              ★ {formatNumber(repo.stars, lang)}
+              <StarMark /> {formatNumber(repo.stars, lang)}
               <DataMark />
             </span>
           )}

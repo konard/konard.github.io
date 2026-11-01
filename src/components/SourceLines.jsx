@@ -1,6 +1,8 @@
 import { useLang } from '../i18n/prefs';
 import { formatNumber } from './format';
 import { DataMark } from './DataSources';
+import { ArrowRight } from 'lucide-react';
+import { iconProps } from './icons';
 
 export default function SourceLines({ data }) {
   const { t, lang } = useLang();
@@ -35,7 +37,9 @@ export default function SourceLines({ data }) {
           en: 'Closed-source experience is much broader; see the positions in my CV.',
           ru: 'Опыт закрытой разработки значительно шире — см. должности в моём резюме.',
         })}{' '}
-        <a href={`/cv/?lang=${lang}`}>{t({ en: 'View CV', ru: 'Открыть резюме' })} →</a>
+        <a href={`/cv/?lang=${lang}`}>
+          {t({ en: 'View CV', ru: 'Открыть резюме' })} <ArrowRight {...iconProps} />
+        </a>
       </p>
       <p className="muted">
         {t({

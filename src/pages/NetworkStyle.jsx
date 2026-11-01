@@ -6,6 +6,8 @@ import { LOOKS, SIZES, STYLE_DEFAULTS, STYLE_SECTIONS, applyLook, normalizeStyle
 import { geometryAvailable } from '../links/style-geometry';
 import { useLang } from '../i18n/prefs';
 import { focusSlider, numericKey } from '../components/numericKeys';
+import { RotateCcw, X } from 'lucide-react';
+import { iconProps } from '../components/icons';
 
 const SAVED_KEY = 'network.styles';
 const MAX_SAVED = 12;
@@ -101,7 +103,7 @@ function Control({ field, value, onChange }) {
         title={t({ en: 'Back to the default', ru: 'Вернуть по умолчанию' })}
         aria-label={`${t({ en: 'Back to the default', ru: 'Вернуть по умолчанию' })}: ${t(field.label)}`}
       >
-        ↺
+        <RotateCcw {...iconProps} />
       </button>
       {field.hint && <small className="setting__hint">{t(field.hint)}</small>}
     </li>
@@ -192,7 +194,7 @@ export function Looks({ style, onStyle }) {
                 onClick={() => remove(item.name)}
                 aria-label={`${t({ en: 'Delete', ru: 'Удалить' })}: ${item.name}`}
               >
-                ✕
+                <X {...iconProps} />
               </button>
             </li>
           ))}

@@ -18,6 +18,8 @@ import {
 } from '../settings/presets';
 import { changesOf, setSettings } from '../settings/store';
 import { cue } from '../sound/options';
+import { Pencil, Save, X } from 'lucide-react';
+import { iconProps } from '../components/icons';
 
 const NEON = Object.fromEntries(PALETTES.map(([id, , , neon]) => [id, neon]));
 
@@ -304,7 +306,7 @@ export default function Presets({ settings }) {
                       say(t({ en: `“${item.name}” is updated.`, ru: `«${item.name}» обновлён.` }));
                     }}
                   >
-                    ⤓
+                    <Save {...iconProps} />
                   </button>
                   <button
                     type="button"
@@ -316,7 +318,7 @@ export default function Presets({ settings }) {
                       setNewName(item.name);
                     }}
                   >
-                    ✎
+                    <Pencil {...iconProps} />
                   </button>
                   <button
                     type="button"
@@ -328,7 +330,7 @@ export default function Presets({ settings }) {
                       say(t({ en: `“${item.name}” is deleted.`, ru: `«${item.name}» удалён.` }));
                     }}
                   >
-                    ✕
+                    <X {...iconProps} />
                   </button>
                 </span>
               )}

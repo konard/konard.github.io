@@ -118,6 +118,7 @@ describe('settings page layout (issue #15)', () => {
       'borders',
       'tables',
       'accessibility',
+      'avatar',
       'theory',
     ];
     expect(columns()).toEqual([left, right('glass')]);

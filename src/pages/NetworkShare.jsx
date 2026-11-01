@@ -14,6 +14,8 @@ import {
 } from '../links/export';
 import { linksText } from '../links/edit';
 import { useLang } from '../i18n/prefs';
+import { Download } from 'lucide-react';
+import { iconProps } from '../components/icons';
 
 /**
  * Downloads of the picture in every format, copies, the share sheet of the
@@ -89,11 +91,11 @@ export default function NetworkShare({ code, links, svg, style, url, text, busy 
             done({ en: 'SVG saved.', ru: 'SVG сохранён.' });
           }}
         >
-          ⤓ SVG
+          <Download {...iconProps} /> SVG
         </button>
         {FORMATS.map((format) => (
           <button key={format.id} type="button" className="button" disabled={busy} onClick={() => save(format)}>
-            ⤓ {format.label}
+            <Download {...iconProps} /> {format.label}
           </button>
         ))}
         <button
@@ -108,7 +110,7 @@ export default function NetworkShare({ code, links, svg, style, url, text, busy 
           }}
           title={t({ en: 'The network as a links notation file', ru: 'Сеть в файле нотации связей' })}
         >
-          ⤓ .lino
+          <Download {...iconProps} /> .lino
         </button>
       </div>
       <p className="muted">

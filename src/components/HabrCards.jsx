@@ -5,12 +5,14 @@ import { plural } from '../i18n/plural';
 import { formatCompact, formatNumber } from './format';
 import { DataMark } from './DataSources';
 import { HABR_NOTE_ID, habrAuthorship } from '../data/habrAuthorship';
+import { ArrowBigUp, Bookmark, Eye, MessageSquare } from 'lucide-react';
+import { iconProps } from './icons';
 
 const STATS = [
-  ['views', { en: 'views', ru: 'просмотры' }, '👁'],
-  ['score', { en: 'karma', ru: 'карма' }, '▲'],
-  ['bookmarks', { en: 'bookmarks', ru: 'закладки' }, '🔖'],
-  ['comments', { en: 'comments', ru: 'комментарии' }, '💬'],
+  ['views', { en: 'views', ru: 'просмотры' }, Eye],
+  ['score', { en: 'karma', ru: 'карма' }, ArrowBigUp],
+  ['bookmarks', { en: 'bookmarks', ru: 'закладки' }, Bookmark],
+  ['comments', { en: 'comments', ru: 'комментарии' }, MessageSquare],
 ];
 const SUBSCRIBERS = { en: ['subscriber', 'subscribers'], ru: ['подписчик', 'подписчика', 'подписчиков'] };
 const ARTICLES = { en: ['article', 'articles'], ru: ['статья', 'статьи', 'статей'] };
@@ -124,7 +126,7 @@ export default function HabrCards({ snapshot, live = true, fetchImpl }) {
               <span className="habr-card__hubs">{a.hubs.slice(0, 3).join(' · ')}</span>
             </a>
             <dl className="habr-card__stats">
-              {STATS.map(([key, label, icon]) => (
+              {STATS.map(([key, label, Icon]) => (
                 <div
                   key={key}
                   title={t({
@@ -133,7 +135,7 @@ export default function HabrCards({ snapshot, live = true, fetchImpl }) {
                   })}
                 >
                   <dt>
-                    <span aria-hidden="true">{icon}</span> {t(label)}
+                    <Icon {...iconProps} /> {t(label)}
                   </dt>
                   <dd>
                     {formatCompact(a.statistics[key], lang)} <DataMark />

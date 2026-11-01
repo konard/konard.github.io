@@ -1,6 +1,8 @@
 import { cvPagePath } from '../cv/paths';
 import { useLang } from '../i18n/prefs';
 import { useNotation } from '../links/notation';
+import { MapPin } from 'lucide-react';
+import { BioText, iconProps } from './icons';
 
 const TEXT = {
   open: { en: 'Open to collaboration & hire', ru: 'Открыт к сотрудничеству и найму' },
@@ -37,11 +39,13 @@ export default function Hero({ profile, github }) {
         <p className="hero__headline">{t(profile.headline)}</p>
         {profile.bio.map((line) => (
           <p key={line.en} className="hero__bio">
-            {t(line)}
+            <BioText text={t(line)} lang={lang} />
           </p>
         ))}
         <p className="hero__meta">
-          <span>📍 {t(profile.location)}</span>
+          <span>
+            <MapPin {...iconProps} /> {t(profile.location)}
+          </span>
           <span className="mono hero__motto">{n(profile.motto)}</span>
         </p>
         <div className="hero__actions">

@@ -21,10 +21,11 @@ export const profile = {
     ru: 'Архитектор ПО · Фулстек-разработчик · Ассоциативные данные и теория связей · Автоматизация автоматизации',
   },
   motto,
+  // {passion} and {love} are drawn as SVG icons (issue #47; they were the ❤️‍🔥 and 🥰 emojis), see BioText.
   bio: [
     {
-      en: 'I ❤️‍🔥 open-source. I am in 🥰 with Rust, JavaScript, C#, C++ and Python.',
-      ru: 'Я ❤️‍🔥 open-source. Я 🥰 Rust, JavaScript, C#, C++ и Python.',
+      en: 'I {passion} open-source. I am in {love} with Rust, JavaScript, C#, C++ and Python.',
+      ru: 'Я {passion} open-source. Я {love} Rust, JavaScript, C#, C++ и Python.',
     },
     {
       en: `Writing code since 2000, professionally since 2006 (${YEARS.en} of professional experience). Tech Lead at Evirma. Founder of LinksPlatform, Link.Foundation and Link.Assistant; co-founder and former CTO of Deep.Foundation; co-author of the Links Theory.`,
@@ -51,7 +52,7 @@ export const skillGroups = [
   {
     id: 'languages',
     title: { en: 'Languages', ru: 'Языки' },
-    icon: '⌨',
+    icon: 'keyboard',
     items: [
       'C#',
       'JavaScript',
@@ -92,7 +93,7 @@ export const skillGroups = [
   {
     id: 'markup',
     title: { en: 'Markup & data formats', ru: 'Разметка и форматы данных' },
-    icon: '◇',
+    icon: 'code-xml',
     items: [
       'HTML',
       'CSS',
@@ -111,7 +112,7 @@ export const skillGroups = [
   {
     id: 'data',
     title: { en: 'Databases & messaging', ru: 'Базы данных и очереди' },
-    icon: '⛁',
+    icon: 'database',
     items: [
       'Doublets (LinksPlatform)',
       'PostgreSQL',
@@ -129,7 +130,7 @@ export const skillGroups = [
   {
     id: 'web',
     title: { en: 'Web & app frameworks', ru: 'Веб- и прикладные фреймворки' },
-    icon: '⚛',
+    icon: 'atom',
     items: [
       'React',
       'Redux',
@@ -148,7 +149,7 @@ export const skillGroups = [
   {
     id: 'dotnet',
     title: { en: '.NET', ru: '.NET' },
-    icon: '◈',
+    icon: 'diamond',
     items: [
       '.NET / .NET Core',
       'ASP.NET Core',
@@ -169,7 +170,7 @@ export const skillGroups = [
   {
     id: 'devops',
     title: { en: 'DevOps & infrastructure', ru: 'DevOps и инфраструктура' },
-    icon: '⚙',
+    icon: 'cog',
     items: [
       'Docker',
       'Kubernetes',
@@ -192,7 +193,7 @@ export const skillGroups = [
   {
     id: 'tools',
     title: { en: 'Tools & ecosystems', ru: 'Инструменты и экосистемы' },
-    icon: '⬢',
+    icon: 'hexagon',
     items: [
       'Git',
       'npm',
@@ -211,7 +212,7 @@ export const skillGroups = [
   {
     id: 'ai',
     title: { en: 'AI, ML & LLM tooling', ru: 'ИИ, ML и инструменты LLM' },
-    icon: '✺',
+    icon: 'sparkles',
     items: [
       'OpenAI API',
       'Claude Code',
@@ -228,13 +229,13 @@ export const skillGroups = [
   {
     id: 'parsing',
     title: { en: 'Parsing & code generation', ru: 'Парсинг и генерация кода' },
-    icon: '⟿',
+    icon: 'spline',
     items: ['ANTLR', 'Pegasus PEG', 'PEG.js', 'Lex / Yacc', 'Roslyn', 'T4 templates', 'Regex transformers'],
   },
   {
     id: 'domains',
     title: { en: 'Domains', ru: 'Предметные области' },
-    icon: '✦',
+    icon: 'sparkle',
     items: [
       'Associative data model',
       'Database engines',

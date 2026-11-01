@@ -1,6 +1,8 @@
 import { focusSlider, numericKey } from '../components/numericKeys';
 import NumberInput from '../components/NumberInput';
 import { useLang } from '../i18n/prefs';
+import { RotateCcw } from 'lucide-react';
+import { iconProps } from '../components/icons';
 
 /** A per-link value: a range for quick edits, exact text and an independent reset.
  * Null gaps keep inheriting; moving their range creates an explicit override.
@@ -70,7 +72,7 @@ export default function LinkSetting({
           }
           onClick={() => onChange(reset)}
         >
-          ↺
+          <RotateCcw {...iconProps} />
         </button>
       </div>
     </div>

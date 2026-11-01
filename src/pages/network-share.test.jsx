@@ -59,7 +59,7 @@ it('disables image copying with a useful download alternative when the API is ab
   render(<NetworkShare {...props} />);
   expect(screen.getByRole('button', { name: 'Copy the image' })).toBeDisabled();
   expect(screen.getByRole('button', { name: 'Copy the image' }).title).toContain('PNG');
-  expect(screen.getByRole('button', { name: '⤓ PNG' })).toBeEnabled();
+  expect(screen.getByRole('button', { name: 'PNG' })).toBeEnabled();
 });
 
 it('prepares only the latest drawing after a burst of edits', async () => {

@@ -242,6 +242,15 @@ main {
   color: var(--text-2);
 }
 
+/* The {passion} and {love} words of the bio as SVG (issue #47), as warm as the emojis they replaced. */
+.hero__bio .icon--passion {
+  color: #ff7a3d;
+}
+
+.hero__bio .icon--love {
+  color: #ff5c93;
+}
+
 .hero__meta {
   display: flex;
   flex-wrap: wrap;

@@ -7,6 +7,8 @@ import { fields, professions } from '../data/fields';
 import { useLang } from '../i18n/prefs';
 import { plural } from '../i18n/plural';
 import { allRepositories, byStars, inField, KINDS, ownRepositories, repo } from './repos';
+import { ArrowRight } from 'lucide-react';
+import { iconProps } from '../components/icons';
 
 const SECTIONS = [
   ['professions', { en: 'By profession', ru: 'По профессиям' }],
@@ -124,7 +126,7 @@ export default function RepositoriesPage() {
                   ))}
                 </p>
                 <a className="field-card__all" href={`?field=${f.id}#all`}>
-                  {t({ en: 'All', ru: 'Все' })} {list.length} →
+                  {t({ en: 'All', ru: 'Все' })} {list.length} <ArrowRight {...iconProps} />
                 </a>
               </li>
             );

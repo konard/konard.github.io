@@ -12,6 +12,8 @@ import { DataMark } from '../components/DataSources';
 import { plural } from '../i18n/plural';
 import { dedupe, pick, visibleFor } from './feed';
 import { useQueryParam } from './query';
+import { Play } from 'lucide-react';
+import { iconProps } from '../components/icons';
 
 const NETWORKS = { x: 'X', vk: 'VK', telegram: 'Telegram' };
 const LANGUAGES = { en: 'English', ru: 'Русский' };
@@ -68,7 +70,9 @@ function Media({ items }) {
           ) : (
             <a href={m.url} target="_blank" rel="noopener noreferrer" className="post__video">
               {m.poster && <Picture src={m.posterFile || m.poster} />}
-              <span>▶ {t({ en: 'video', ru: 'видео' })}</span>
+              <span>
+                <Play {...iconProps} /> {t({ en: 'video', ru: 'видео' })}
+              </span>
             </a>
           )}
         </li>

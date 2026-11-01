@@ -17,6 +17,8 @@ import { ownsCorners } from '../settings/schema.skins';
 import { changesOf, resetSettings, setSettings, useSettings } from '../settings/store';
 import { cue } from '../sound/options';
 import { focusSlider, numericKey } from '../components/numericKeys';
+import { Play, RotateCcw } from 'lucide-react';
+import { iconProps } from '../components/icons';
 
 const SETTINGS = { en: ['setting', 'settings'], ru: ['настройка', 'настройки', 'настроек'] };
 const CHANGED = { en: ['differs', 'differ'], ru: ['отличается', 'отличаются', 'отличаются'] };
@@ -84,7 +86,7 @@ function Control({ field, value, settings }) {
             title={t({ en: 'Play', ru: 'Проиграть' })}
             aria-label={`${t({ en: 'Play', ru: 'Проиграть' })}: ${t(field.label)}`}
           >
-            ▶
+            <Play {...iconProps} />
           </button>
         </>
       );
@@ -111,7 +113,7 @@ function Control({ field, value, settings }) {
         title={t({ en: 'Back to the default', ru: 'Вернуть по умолчанию' })}
         aria-label={`${t({ en: 'Back to the default', ru: 'Вернуть по умолчанию' })}: ${t(field.label)}`}
       >
-        ↺
+        <RotateCcw {...iconProps} />
       </button>
       {field.hint && <small className="setting__hint">{t(field.hint)}</small>}
     </li>

@@ -178,7 +178,7 @@ describe('NetworkPage (issue #17)', () => {
     go('/network/?code=0120&end=dot');
     render(<NetworkPage />);
     const share = document.getElementById('share');
-    ['⤓ SVG', '⤓ PNG', '⤓ JPEG', '⤓ WebP', '⤓ .lino'].forEach((name) =>
+    ['SVG', 'PNG', 'JPEG', 'WebP', '.lino'].forEach((name) =>
       expect(within(share).getByRole('button', { name })).toBeInTheDocument(),
     );
     expect(within(share).getByRole('button', { name: 'Copy the link' })).toBeInTheDocument();

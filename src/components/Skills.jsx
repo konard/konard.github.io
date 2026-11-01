@@ -1,4 +1,5 @@
 import { useLang } from '../i18n/prefs';
+import { SkillIcon, StarMark } from './icons';
 
 export default function Skills({ groups, favorites }) {
   const { t } = useLang();
@@ -7,13 +8,18 @@ export default function Skills({ groups, favorites }) {
       {groups.map((g) => (
         <li key={g.id} className="skills__group">
           <h3 className="skills__title">
-            <span aria-hidden="true">{g.icon}</span> {t(g.title)}
+            <SkillIcon name={g.icon} /> {t(g.title)}
           </h3>
           <ul className="tags tags--large">
             {g.items.map((item) => (
               <li key={item} className={favorites.includes(item) ? 'is-favorite' : ''}>
                 {item}
-                {favorites.includes(item) && <span aria-label={t({ en: 'favorite', ru: 'любимый' })}> ★</span>}
+                {favorites.includes(item) && (
+                  <span role="img" aria-label={t({ en: 'favorite', ru: 'любимый' })}>
+                    {' '}
+                    <StarMark />
+                  </span>
+                )}
               </li>
             ))}
           </ul>
