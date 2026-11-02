@@ -111,7 +111,8 @@ repository measurements and authenticated private profile settings.
 It also checks Python and shell helpers, documentation links, workflow security
 with zizmor, and JavaScript, Python and Actions with CodeQL. A weekly run audits
 the committed lockfile and rechecks the documentation links, which rot without commits. Documentation-only changes skip browser/PDF builds;
-`pipeline-status` rejects failures and unexpected skips in every required job.
+`pipeline-status` rejects failures and unexpected skips in every required job;
+only in a run that a newer push superseded do the jobs it cancelled warn instead.
 A browser matrix checks the network editor, clipboard, touch editing and actual image downloads in Chromium, Firefox and WebKit.
 The `test` job prints the CV PDFs with `npm run build:cv`, then uploads the tested build as the GitHub Pages artifact.
 On `main`, the `deploy` job publishes exactly that artifact through the Pages deployment API with `.github/actions/deploy-pages`, which retries transient failures to create the deployment (one HTTP 500 failed `actions/deploy-pages@v5` in issue #51), then `scripts/check-deployed-site.sh` fails the run unless https://konard.github.io serves the app.
