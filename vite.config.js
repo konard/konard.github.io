@@ -81,13 +81,23 @@ const themeBeforePaint = () => ({
 });
 
 // The site is served from the root of https://konard.github.io, and the
-// deploy job publishes build/ with actions/deploy-pages (see .github/workflows/github-pages.yml).
+// deploy job publishes build/ with the Pages deployment API (see .github/workflows/github-pages.yml).
 export default defineConfig({
   plugins: [react(), linoData(), themeBeforePaint(), buildIdentity()],
   build: {
     outDir: 'build',
     sourcemap: true,
-    rollupOptions: { input },
+    rolldownOptions: {
+      input,
+      // React is shared by every page and changes far less often than the site,
+      // so it gets its own cacheable chunk. Without it the shared chunk of the
+      // layout passed Vite's 500 kB warning limit (507 kB; issue #51).
+      output: {
+        codeSplitting: {
+          groups: [{ name: 'react', test: /[\\/]node_modules[\\/](?:react|react-dom|scheduler)[\\/]/ }],
+        },
+      },
+    },
   },
   server: {
     port: 3000,
