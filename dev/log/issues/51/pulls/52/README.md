@@ -96,7 +96,7 @@ Commits:
 | `58263da` | Day-scoped lychee cache (finding 6) |
 | `0468e61` | Dependency review, `.gitattributes` (findings 10, 11) |
 | `1e735d8` | `act()` and jsdom warnings, console guard (finding 9) |
-| (this commit) | Superseded runs warn instead of failing (finding 12) |
+| `5649974` | Superseded runs warn instead of failing (finding 12) |
 
 ## 5. Existing components considered
 
