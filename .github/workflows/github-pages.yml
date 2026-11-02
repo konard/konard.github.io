@@ -112,6 +112,16 @@ jobs:
       - name: Audit dependencies
         run: npm audit --package-lock-only --audit-level=moderate
 
+      # npm audit sees only the lockfile; the dependency graph also covers the
+      # actions a pull request adds, as the pipeline templates do (issue #51).
+      - name: Review dependency changes
+        if: github.event_name == 'pull_request'
+        uses: actions/dependency-review-action@v5
+        with:
+          fail-on-severity: moderate
+          comment-summary-in-pr: never
+          retry-on-snapshot-warnings: true
+
   test:
     concurrency:
       group: check-${{ github.workflow }}-${{ github.ref }}-test

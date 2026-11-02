@@ -162,6 +162,17 @@ describe('GitHub Actions best practices', () => {
     expect(steps[analyze].with.output).toBe(steps[gate].env.SARIF_DIR);
   });
 
+  // Issue #51: practices of the pipeline templates.
+  test('pull requests review dependency changes and hooks keep LF endings', () => {
+    const doc = yaml.load(fs.readFileSync(path.join(workflowsDir, 'github-pages.yml'), 'utf8'));
+    const review = doc.jobs.checks.steps.find((step) => step.uses === 'actions/dependency-review-action@v5');
+    expect(review.if).toBe("github.event_name == 'pull_request'");
+    expect(review.with['fail-on-severity']).toBe('moderate');
+    const attributes = fs.readFileSync(path.join(workflowsDir, '../../.gitattributes'), 'utf8');
+    expect(attributes).toMatch(/^\*\.sh text eol=lf$/m);
+    expect(attributes).toMatch(/^\.husky\/\*\* text eol=lf$/m);
+  });
+
   // Issue #51: a cache older than max_cache_age is discarded with a warning.
   test('the link check only restores a cache saved the same day', () => {
     const doc = yaml.load(fs.readFileSync(path.join(workflowsDir, 'github-pages.yml'), 'utf8'));
