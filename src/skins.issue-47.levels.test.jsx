@@ -25,7 +25,8 @@ const LEVELS = ['block', ...Object.keys(CONTROL_TYPES)];
 
 describe('separate corners of the frame for every level (issue #47)', () => {
   it('has a level for inner blocks and for every type of control', () => {
-    expect(LEVEL_IDS).toEqual(['panel', 'block', 'button', 'field', 'tab', 'chip', 'menu', 'table']);
+    // Issue #49 added the top-level and the second-level menu.
+    expect(LEVEL_IDS).toEqual(['panel', 'block', 'button', 'field', 'tab', 'chip', 'menu', 'nav', 'subnav', 'table']);
     const corners = SECTIONS.find((section) => section.id === 'corners');
     expect(corners.levels.map((level) => level.id)).toEqual(LEVEL_IDS);
   });
@@ -157,7 +158,18 @@ describe('the settings of the levels on the page (issue #47)', () => {
       within(levels)
         .getAllByRole('tab')
         .map((tab) => tab.textContent),
-    ).toEqual(['Outer panels', 'Inner blocks', 'Buttons', 'Fields', 'Tabs', 'Chips and tags', 'Menus', 'Tables']);
+    ).toEqual([
+      'Outer panels',
+      'Inner blocks',
+      'Buttons',
+      'Fields',
+      'Tabs',
+      'Chips and tags',
+      'Drop-down lists',
+      'Top-level menu',
+      'Second-level menu',
+      'Tables',
+    ]);
     fireEvent.click(within(levels).getByRole('tab', { name: 'Buttons' }));
     const panel = document.getElementById('corners-level');
     // The buttons follow all controls: no corners of their own yet.

@@ -428,7 +428,6 @@
 :where(.button),
 :where(textarea),
 :where(input:not([type='range'], [type='checkbox'], [type='radio'], [type='color'], [type='file'], [type='hidden'])),
-:where(.pages a),
 :where(.role-tabs a),
 :where(.segmented),
 :where(.prefs__langs),
@@ -437,6 +436,9 @@
 :where(.repo__fields li),
 :where(.ui-select),
 :where(.ui-select__list),
+:where(.pages a),
+:where(.nav ul a),
+:where(.nav__top),
 :where(table) {
   --fx-scale: var(--corner-control-scale, 0.35);
 }
@@ -487,7 +489,6 @@
 :root[data-skin-name='futuristic'] :where(.button),
 :root[data-skin-name='futuristic'] :where(textarea),
 :root[data-skin-name='futuristic'] :where(input:not([type='range'], [type='checkbox'], [type='radio'], [type='color'], [type='file'], [type='hidden'])),
-:root[data-skin-name='futuristic'] :where(.pages a),
 :root[data-skin-name='futuristic'] :where(.role-tabs a),
 :root[data-skin-name='futuristic'] :where(.segmented),
 :root[data-skin-name='futuristic'] :where(.prefs__langs),
@@ -496,6 +497,9 @@
 :root[data-skin-name='futuristic'] :where(.repo__fields li),
 :root[data-skin-name='futuristic'] :where(.ui-select),
 :root[data-skin-name='futuristic'] :where(.ui-select__list),
+:root[data-skin-name='futuristic'] :where(.pages a),
+:root[data-skin-name='futuristic'] :where(.nav ul a),
+:root[data-skin-name='futuristic'] :where(.nav__top),
 :root[data-skin-name='futuristic'] :where(table) {
   --fx-ew: var(--ui-control-border, 1px);
 }
@@ -696,7 +700,6 @@
 :root[data-ui-border-style='solid'] :where(.button),
 :root[data-ui-border-style='solid'] :where(textarea),
 :root[data-ui-border-style='solid'] :where(input:not([type='range'], [type='checkbox'], [type='radio'], [type='color'], [type='file'], [type='hidden'])),
-:root[data-ui-border-style='solid'] :where(.pages a),
 :root[data-ui-border-style='solid'] :where(.role-tabs a),
 :root[data-ui-border-style='solid'] :where(.segmented),
 :root[data-ui-border-style='solid'] :where(.prefs__langs),
@@ -705,6 +708,9 @@
 :root[data-ui-border-style='solid'] :where(.repo__fields li),
 :root[data-ui-border-style='solid'] :where(.ui-select),
 :root[data-ui-border-style='solid'] :where(.ui-select__list),
+:root[data-ui-border-style='solid'] :where(.pages a),
+:root[data-ui-border-style='solid'] :where(.nav ul a),
+:root[data-ui-border-style='solid'] :where(.nav__top),
 :root[data-ui-border-style='solid'] :where(table) {
   --fx-ce-h: linear-gradient(var(--fx-ec), var(--fx-ec));
   --fx-ce-v: linear-gradient(var(--fx-ec), var(--fx-ec));
@@ -714,7 +720,6 @@
 :root[data-ui-border-style='dashed'] :where(.button),
 :root[data-ui-border-style='dashed'] :where(textarea),
 :root[data-ui-border-style='dashed'] :where(input:not([type='range'], [type='checkbox'], [type='radio'], [type='color'], [type='file'], [type='hidden'])),
-:root[data-ui-border-style='dashed'] :where(.pages a),
 :root[data-ui-border-style='dashed'] :where(.role-tabs a),
 :root[data-ui-border-style='dashed'] :where(.segmented),
 :root[data-ui-border-style='dashed'] :where(.prefs__langs),
@@ -723,6 +728,9 @@
 :root[data-ui-border-style='dashed'] :where(.repo__fields li),
 :root[data-ui-border-style='dashed'] :where(.ui-select),
 :root[data-ui-border-style='dashed'] :where(.ui-select__list),
+:root[data-ui-border-style='dashed'] :where(.pages a),
+:root[data-ui-border-style='dashed'] :where(.nav ul a),
+:root[data-ui-border-style='dashed'] :where(.nav__top),
 :root[data-ui-border-style='dashed'] :where(table) {
   --fx-ce-h: repeating-linear-gradient(90deg, var(--fx-ec) 0 6px, transparent 6px 10px);
   --fx-ce-v: repeating-linear-gradient(180deg, var(--fx-ec) 0 6px, transparent 6px 10px);
@@ -732,7 +740,6 @@
 :root[data-ui-border-style='dotted'] :where(.button),
 :root[data-ui-border-style='dotted'] :where(textarea),
 :root[data-ui-border-style='dotted'] :where(input:not([type='range'], [type='checkbox'], [type='radio'], [type='color'], [type='file'], [type='hidden'])),
-:root[data-ui-border-style='dotted'] :where(.pages a),
 :root[data-ui-border-style='dotted'] :where(.role-tabs a),
 :root[data-ui-border-style='dotted'] :where(.segmented),
 :root[data-ui-border-style='dotted'] :where(.prefs__langs),
@@ -741,6 +748,9 @@
 :root[data-ui-border-style='dotted'] :where(.repo__fields li),
 :root[data-ui-border-style='dotted'] :where(.ui-select),
 :root[data-ui-border-style='dotted'] :where(.ui-select__list),
+:root[data-ui-border-style='dotted'] :where(.pages a),
+:root[data-ui-border-style='dotted'] :where(.nav ul a),
+:root[data-ui-border-style='dotted'] :where(.nav__top),
 :root[data-ui-border-style='dotted'] :where(table) {
   --fx-ce-h: repeating-linear-gradient(90deg, var(--fx-ec) 0 max(1px, var(--fx-ew)), transparent max(1px, var(--fx-ew)) calc(max(1px, var(--fx-ew)) * 3));
   --fx-ce-v: repeating-linear-gradient(180deg, var(--fx-ec) 0 max(1px, var(--fx-ew)), transparent max(1px, var(--fx-ew)) calc(max(1px, var(--fx-ew)) * 3));
@@ -750,7 +760,6 @@
 :root[data-ui-border-style='double'] :where(.button),
 :root[data-ui-border-style='double'] :where(textarea),
 :root[data-ui-border-style='double'] :where(input:not([type='range'], [type='checkbox'], [type='radio'], [type='color'], [type='file'], [type='hidden'])),
-:root[data-ui-border-style='double'] :where(.pages a),
 :root[data-ui-border-style='double'] :where(.role-tabs a),
 :root[data-ui-border-style='double'] :where(.segmented),
 :root[data-ui-border-style='double'] :where(.prefs__langs),
@@ -759,6 +768,9 @@
 :root[data-ui-border-style='double'] :where(.repo__fields li),
 :root[data-ui-border-style='double'] :where(.ui-select),
 :root[data-ui-border-style='double'] :where(.ui-select__list),
+:root[data-ui-border-style='double'] :where(.pages a),
+:root[data-ui-border-style='double'] :where(.nav ul a),
+:root[data-ui-border-style='double'] :where(.nav__top),
 :root[data-ui-border-style='double'] :where(table) {
   --fx-ce-h: linear-gradient(180deg, var(--fx-ec) 0 34%, transparent 34% 66%, var(--fx-ec) 66%);
   --fx-ce-v: linear-gradient(90deg, var(--fx-ec) 0 34%, transparent 34% 66%, var(--fx-ec) 66%);
@@ -792,7 +804,6 @@
   --fx-ec: var(--fx-field-ec);
 }
 
-:where(:root[data-skin-name='futuristic'][data-future-frame='custom']) :where(.pages a),
 :where(:root[data-skin-name='futuristic'][data-future-frame='custom']) :where(.role-tabs a),
 :where(:root[data-skin-name='futuristic'][data-future-frame='custom']) :where(.segmented),
 :where(:root[data-skin-name='futuristic'][data-future-frame='custom']) :where(.prefs__langs) {
@@ -810,6 +821,15 @@
   --fx-ec: var(--fx-menu-ec);
 }
 
+:where(:root[data-skin-name='futuristic'][data-future-frame='custom']) :where(.pages a) {
+  --fx-ec: var(--fx-nav-ec);
+}
+
+:where(:root[data-skin-name='futuristic'][data-future-frame='custom']) :where(.nav ul a),
+:where(:root[data-skin-name='futuristic'][data-future-frame='custom']) :where(.nav__top) {
+  --fx-ec: var(--fx-subnav-ec);
+}
+
 :where(:root[data-skin-name='futuristic'][data-future-frame='custom']) :where(table) {
   --fx-ec: var(--fx-table-ec);
 }
@@ -818,7 +838,6 @@
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom'][data-corner-button-corners='same']:not([data-corner-controls='border']) .button,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom'][data-corner-field-corners='same']:not([data-corner-controls='border']) textarea,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom'][data-corner-field-corners='same']:not([data-corner-controls='border']) input:not([type='range'], [type='checkbox'], [type='radio'], [type='color'], [type='file'], [type='hidden']),
-:root:root:root[data-skin-name='futuristic'][data-future-frame='custom'][data-corner-tab-corners='same']:not([data-corner-controls='border']) .pages a,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom'][data-corner-tab-corners='same']:not([data-corner-controls='border']) .role-tabs a,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom'][data-corner-tab-corners='same']:not([data-corner-controls='border']) .segmented,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom'][data-corner-tab-corners='same']:not([data-corner-controls='border']) .prefs__langs,
@@ -827,6 +846,9 @@
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom'][data-corner-chip-corners='same']:not([data-corner-controls='border']) .repo__fields li,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom'][data-corner-menu-corners='same']:not([data-corner-controls='border']) .ui-select,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom'][data-corner-menu-corners='same']:not([data-corner-controls='border']) .ui-select__list,
+:root:root:root[data-skin-name='futuristic'][data-future-frame='custom'][data-corner-nav-corners='same']:not([data-corner-controls='border']) .pages a,
+:root:root:root[data-skin-name='futuristic'][data-future-frame='custom'][data-corner-subnav-corners='same']:not([data-corner-controls='border']) .nav ul a,
+:root:root:root[data-skin-name='futuristic'][data-future-frame='custom'][data-corner-subnav-corners='same']:not([data-corner-controls='border']) .nav__top,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom'][data-corner-table-corners='same']:not([data-corner-controls='border']) table {
   background-image: var(--fx-tl-a-img),
     var(--fx-tl-b-img),
@@ -902,7 +924,6 @@
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-button-corners='same']:not([data-corner-controls='border']), [data-corner-button-corners='own']) .button:hover:not(:disabled),
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-field-corners='same']:not([data-corner-controls='border']), [data-corner-field-corners='own']) textarea:hover:not(:disabled),
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-field-corners='same']:not([data-corner-controls='border']), [data-corner-field-corners='own']) input:not([type='range'], [type='checkbox'], [type='radio'], [type='color'], [type='file'], [type='hidden']):hover:not(:disabled),
-:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .pages a:hover:not(:disabled),
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .role-tabs a:hover:not(:disabled),
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .segmented:hover:not(:disabled),
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .prefs__langs:hover:not(:disabled),
@@ -911,12 +932,14 @@
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-chip-corners='same']:not([data-corner-controls='border']), [data-corner-chip-corners='own']) .repo__fields li:hover:not(:disabled),
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-menu-corners='same']:not([data-corner-controls='border']), [data-corner-menu-corners='own']) .ui-select:hover:not(:disabled),
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-menu-corners='same']:not([data-corner-controls='border']), [data-corner-menu-corners='own']) .ui-select__list:hover:not(:disabled),
+:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-nav-corners='same']:not([data-corner-controls='border']), [data-corner-nav-corners='own']) .pages a:hover:not(:disabled),
+:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-subnav-corners='same']:not([data-corner-controls='border']), [data-corner-subnav-corners='own']) .nav ul a:hover:not(:disabled),
+:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-subnav-corners='same']:not([data-corner-controls='border']), [data-corner-subnav-corners='own']) .nav__top:hover:not(:disabled),
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-table-corners='same']:not([data-corner-controls='border']), [data-corner-table-corners='own']) table:hover:not(:disabled),
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-button-corners='same']:not([data-corner-controls='border']), [data-corner-button-corners='own']) button:not(.segmented button, .prefs__langs button, .preset, .preset button, .ui-select)[aria-pressed='true'],
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-button-corners='same']:not([data-corner-controls='border']), [data-corner-button-corners='own']) .button[aria-pressed='true'],
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-field-corners='same']:not([data-corner-controls='border']), [data-corner-field-corners='own']) textarea[aria-pressed='true'],
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-field-corners='same']:not([data-corner-controls='border']), [data-corner-field-corners='own']) input:not([type='range'], [type='checkbox'], [type='radio'], [type='color'], [type='file'], [type='hidden'])[aria-pressed='true'],
-:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .pages a[aria-pressed='true'],
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .role-tabs a[aria-pressed='true'],
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .segmented[aria-pressed='true'],
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .prefs__langs[aria-pressed='true'],
@@ -925,12 +948,14 @@
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-chip-corners='same']:not([data-corner-controls='border']), [data-corner-chip-corners='own']) .repo__fields li[aria-pressed='true'],
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-menu-corners='same']:not([data-corner-controls='border']), [data-corner-menu-corners='own']) .ui-select[aria-pressed='true'],
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-menu-corners='same']:not([data-corner-controls='border']), [data-corner-menu-corners='own']) .ui-select__list[aria-pressed='true'],
+:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-nav-corners='same']:not([data-corner-controls='border']), [data-corner-nav-corners='own']) .pages a[aria-pressed='true'],
+:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-subnav-corners='same']:not([data-corner-controls='border']), [data-corner-subnav-corners='own']) .nav ul a[aria-pressed='true'],
+:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-subnav-corners='same']:not([data-corner-controls='border']), [data-corner-subnav-corners='own']) .nav__top[aria-pressed='true'],
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-table-corners='same']:not([data-corner-controls='border']), [data-corner-table-corners='own']) table[aria-pressed='true'],
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-button-corners='same']:not([data-corner-controls='border']), [data-corner-button-corners='own']) button:not(.segmented button, .prefs__langs button, .preset, .preset button, .ui-select)[aria-current='page'],
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-button-corners='same']:not([data-corner-controls='border']), [data-corner-button-corners='own']) .button[aria-current='page'],
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-field-corners='same']:not([data-corner-controls='border']), [data-corner-field-corners='own']) textarea[aria-current='page'],
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-field-corners='same']:not([data-corner-controls='border']), [data-corner-field-corners='own']) input:not([type='range'], [type='checkbox'], [type='radio'], [type='color'], [type='file'], [type='hidden'])[aria-current='page'],
-:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .pages a[aria-current='page'],
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .role-tabs a[aria-current='page'],
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .segmented[aria-current='page'],
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .prefs__langs[aria-current='page'],
@@ -939,12 +964,14 @@
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-chip-corners='same']:not([data-corner-controls='border']), [data-corner-chip-corners='own']) .repo__fields li[aria-current='page'],
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-menu-corners='same']:not([data-corner-controls='border']), [data-corner-menu-corners='own']) .ui-select[aria-current='page'],
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-menu-corners='same']:not([data-corner-controls='border']), [data-corner-menu-corners='own']) .ui-select__list[aria-current='page'],
+:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-nav-corners='same']:not([data-corner-controls='border']), [data-corner-nav-corners='own']) .pages a[aria-current='page'],
+:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-subnav-corners='same']:not([data-corner-controls='border']), [data-corner-subnav-corners='own']) .nav ul a[aria-current='page'],
+:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-subnav-corners='same']:not([data-corner-controls='border']), [data-corner-subnav-corners='own']) .nav__top[aria-current='page'],
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-table-corners='same']:not([data-corner-controls='border']), [data-corner-table-corners='own']) table[aria-current='page'],
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-button-corners='same']:not([data-corner-controls='border']), [data-corner-button-corners='own']) button:not(.segmented button, .prefs__langs button, .preset, .preset button, .ui-select)[aria-selected='true'],
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-button-corners='same']:not([data-corner-controls='border']), [data-corner-button-corners='own']) .button[aria-selected='true'],
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-field-corners='same']:not([data-corner-controls='border']), [data-corner-field-corners='own']) textarea[aria-selected='true'],
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-field-corners='same']:not([data-corner-controls='border']), [data-corner-field-corners='own']) input:not([type='range'], [type='checkbox'], [type='radio'], [type='color'], [type='file'], [type='hidden'])[aria-selected='true'],
-:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .pages a[aria-selected='true'],
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .role-tabs a[aria-selected='true'],
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .segmented[aria-selected='true'],
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .prefs__langs[aria-selected='true'],
@@ -953,12 +980,14 @@
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-chip-corners='same']:not([data-corner-controls='border']), [data-corner-chip-corners='own']) .repo__fields li[aria-selected='true'],
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-menu-corners='same']:not([data-corner-controls='border']), [data-corner-menu-corners='own']) .ui-select[aria-selected='true'],
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-menu-corners='same']:not([data-corner-controls='border']), [data-corner-menu-corners='own']) .ui-select__list[aria-selected='true'],
+:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-nav-corners='same']:not([data-corner-controls='border']), [data-corner-nav-corners='own']) .pages a[aria-selected='true'],
+:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-subnav-corners='same']:not([data-corner-controls='border']), [data-corner-subnav-corners='own']) .nav ul a[aria-selected='true'],
+:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-subnav-corners='same']:not([data-corner-controls='border']), [data-corner-subnav-corners='own']) .nav__top[aria-selected='true'],
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-table-corners='same']:not([data-corner-controls='border']), [data-corner-table-corners='own']) table[aria-selected='true'],
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-button-corners='same']:not([data-corner-controls='border']), [data-corner-button-corners='own']) button:not(.segmented button, .prefs__langs button, .preset, .preset button, .ui-select).is-active,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-button-corners='same']:not([data-corner-controls='border']), [data-corner-button-corners='own']) .button.is-active,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-field-corners='same']:not([data-corner-controls='border']), [data-corner-field-corners='own']) textarea.is-active,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-field-corners='same']:not([data-corner-controls='border']), [data-corner-field-corners='own']) input:not([type='range'], [type='checkbox'], [type='radio'], [type='color'], [type='file'], [type='hidden']).is-active,
-:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .pages a.is-active,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .role-tabs a.is-active,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .segmented.is-active,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .prefs__langs.is-active,
@@ -967,12 +996,14 @@
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-chip-corners='same']:not([data-corner-controls='border']), [data-corner-chip-corners='own']) .repo__fields li.is-active,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-menu-corners='same']:not([data-corner-controls='border']), [data-corner-menu-corners='own']) .ui-select.is-active,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-menu-corners='same']:not([data-corner-controls='border']), [data-corner-menu-corners='own']) .ui-select__list.is-active,
+:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-nav-corners='same']:not([data-corner-controls='border']), [data-corner-nav-corners='own']) .pages a.is-active,
+:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-subnav-corners='same']:not([data-corner-controls='border']), [data-corner-subnav-corners='own']) .nav ul a.is-active,
+:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-subnav-corners='same']:not([data-corner-controls='border']), [data-corner-subnav-corners='own']) .nav__top.is-active,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-table-corners='same']:not([data-corner-controls='border']), [data-corner-table-corners='own']) table.is-active,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-button-corners='same']:not([data-corner-controls='border']), [data-corner-button-corners='own']) button:not(.segmented button, .prefs__langs button, .preset, .preset button, .ui-select).button--primary,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-button-corners='same']:not([data-corner-controls='border']), [data-corner-button-corners='own']) .button.button--primary,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-field-corners='same']:not([data-corner-controls='border']), [data-corner-field-corners='own']) textarea.button--primary,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-field-corners='same']:not([data-corner-controls='border']), [data-corner-field-corners='own']) input:not([type='range'], [type='checkbox'], [type='radio'], [type='color'], [type='file'], [type='hidden']).button--primary,
-:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .pages a.button--primary,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .role-tabs a.button--primary,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .segmented.button--primary,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .prefs__langs.button--primary,
@@ -981,12 +1012,14 @@
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-chip-corners='same']:not([data-corner-controls='border']), [data-corner-chip-corners='own']) .repo__fields li.button--primary,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-menu-corners='same']:not([data-corner-controls='border']), [data-corner-menu-corners='own']) .ui-select.button--primary,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-menu-corners='same']:not([data-corner-controls='border']), [data-corner-menu-corners='own']) .ui-select__list.button--primary,
+:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-nav-corners='same']:not([data-corner-controls='border']), [data-corner-nav-corners='own']) .pages a.button--primary,
+:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-subnav-corners='same']:not([data-corner-controls='border']), [data-corner-subnav-corners='own']) .nav ul a.button--primary,
+:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-subnav-corners='same']:not([data-corner-controls='border']), [data-corner-subnav-corners='own']) .nav__top.button--primary,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-table-corners='same']:not([data-corner-controls='border']), [data-corner-table-corners='own']) table.button--primary,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-button-corners='same']:not([data-corner-controls='border']), [data-corner-button-corners='own']) button:not(.segmented button, .prefs__langs button, .preset, .preset button, .ui-select):focus-visible,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-button-corners='same']:not([data-corner-controls='border']), [data-corner-button-corners='own']) .button:focus-visible,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-field-corners='same']:not([data-corner-controls='border']), [data-corner-field-corners='own']) textarea:focus-visible,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-field-corners='same']:not([data-corner-controls='border']), [data-corner-field-corners='own']) input:not([type='range'], [type='checkbox'], [type='radio'], [type='color'], [type='file'], [type='hidden']):focus-visible,
-:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .pages a:focus-visible,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .role-tabs a:focus-visible,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .segmented:focus-visible,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .prefs__langs:focus-visible,
@@ -995,12 +1028,14 @@
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-chip-corners='same']:not([data-corner-controls='border']), [data-corner-chip-corners='own']) .repo__fields li:focus-visible,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-menu-corners='same']:not([data-corner-controls='border']), [data-corner-menu-corners='own']) .ui-select:focus-visible,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-menu-corners='same']:not([data-corner-controls='border']), [data-corner-menu-corners='own']) .ui-select__list:focus-visible,
+:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-nav-corners='same']:not([data-corner-controls='border']), [data-corner-nav-corners='own']) .pages a:focus-visible,
+:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-subnav-corners='same']:not([data-corner-controls='border']), [data-corner-subnav-corners='own']) .nav ul a:focus-visible,
+:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-subnav-corners='same']:not([data-corner-controls='border']), [data-corner-subnav-corners='own']) .nav__top:focus-visible,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-table-corners='same']:not([data-corner-controls='border']), [data-corner-table-corners='own']) table:focus-visible,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-button-corners='same']:not([data-corner-controls='border']), [data-corner-button-corners='own']) button:not(.segmented button, .prefs__langs button, .preset, .preset button, .ui-select):focus,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-button-corners='same']:not([data-corner-controls='border']), [data-corner-button-corners='own']) .button:focus,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-field-corners='same']:not([data-corner-controls='border']), [data-corner-field-corners='own']) textarea:focus,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-field-corners='same']:not([data-corner-controls='border']), [data-corner-field-corners='own']) input:not([type='range'], [type='checkbox'], [type='radio'], [type='color'], [type='file'], [type='hidden']):focus,
-:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .pages a:focus,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .role-tabs a:focus,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .segmented:focus,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .prefs__langs:focus,
@@ -1009,6 +1044,9 @@
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-chip-corners='same']:not([data-corner-controls='border']), [data-corner-chip-corners='own']) .repo__fields li:focus,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-menu-corners='same']:not([data-corner-controls='border']), [data-corner-menu-corners='own']) .ui-select:focus,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-menu-corners='same']:not([data-corner-controls='border']), [data-corner-menu-corners='own']) .ui-select__list:focus,
+:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-nav-corners='same']:not([data-corner-controls='border']), [data-corner-nav-corners='own']) .pages a:focus,
+:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-subnav-corners='same']:not([data-corner-controls='border']), [data-corner-subnav-corners='own']) .nav ul a:focus,
+:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-subnav-corners='same']:not([data-corner-controls='border']), [data-corner-subnav-corners='own']) .nav__top:focus,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-table-corners='same']:not([data-corner-controls='border']), [data-corner-table-corners='own']) table:focus {
   --fx-ec: var(--accent);
 }
@@ -1017,7 +1055,6 @@
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-button-corners='same']:not([data-corner-controls='border']), [data-corner-button-corners='own']) .button.button--primary,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-field-corners='same']:not([data-corner-controls='border']), [data-corner-field-corners='own']) textarea.button--primary,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-field-corners='same']:not([data-corner-controls='border']), [data-corner-field-corners='own']) input:not([type='range'], [type='checkbox'], [type='radio'], [type='color'], [type='file'], [type='hidden']).button--primary,
-:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .pages a.button--primary,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .role-tabs a.button--primary,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .segmented.button--primary,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .prefs__langs.button--primary,
@@ -1026,6 +1063,9 @@
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-chip-corners='same']:not([data-corner-controls='border']), [data-corner-chip-corners='own']) .repo__fields li.button--primary,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-menu-corners='same']:not([data-corner-controls='border']), [data-corner-menu-corners='own']) .ui-select.button--primary,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-menu-corners='same']:not([data-corner-controls='border']), [data-corner-menu-corners='own']) .ui-select__list.button--primary,
+:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-nav-corners='same']:not([data-corner-controls='border']), [data-corner-nav-corners='own']) .pages a.button--primary,
+:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-subnav-corners='same']:not([data-corner-controls='border']), [data-corner-subnav-corners='own']) .nav ul a.button--primary,
+:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-subnav-corners='same']:not([data-corner-controls='border']), [data-corner-subnav-corners='own']) .nav__top.button--primary,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-table-corners='same']:not([data-corner-controls='border']), [data-corner-table-corners='own']) table.button--primary {
   background-color: color-mix(in srgb, var(--accent) 20%, var(--ui-control-fill, transparent));
 }
@@ -1034,7 +1074,6 @@
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-button-corners='same']:not([data-corner-controls='border']), [data-corner-button-corners='own']) .button:focus-visible,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-field-corners='same']:not([data-corner-controls='border']), [data-corner-field-corners='own']) textarea:focus-visible,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-field-corners='same']:not([data-corner-controls='border']), [data-corner-field-corners='own']) input:not([type='range'], [type='checkbox'], [type='radio'], [type='color'], [type='file'], [type='hidden']):focus-visible,
-:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .pages a:focus-visible,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .role-tabs a:focus-visible,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .segmented:focus-visible,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-tab-corners='same']:not([data-corner-controls='border']), [data-corner-tab-corners='own']) .prefs__langs:focus-visible,
@@ -1043,6 +1082,9 @@
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-chip-corners='same']:not([data-corner-controls='border']), [data-corner-chip-corners='own']) .repo__fields li:focus-visible,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-menu-corners='same']:not([data-corner-controls='border']), [data-corner-menu-corners='own']) .ui-select:focus-visible,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-menu-corners='same']:not([data-corner-controls='border']), [data-corner-menu-corners='own']) .ui-select__list:focus-visible,
+:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-nav-corners='same']:not([data-corner-controls='border']), [data-corner-nav-corners='own']) .pages a:focus-visible,
+:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-subnav-corners='same']:not([data-corner-controls='border']), [data-corner-subnav-corners='own']) .nav ul a:focus-visible,
+:root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-subnav-corners='same']:not([data-corner-controls='border']), [data-corner-subnav-corners='own']) .nav__top:focus-visible,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom']:is([data-corner-table-corners='same']:not([data-corner-controls='border']), [data-corner-table-corners='own']) table:focus-visible {
   outline-offset: calc(-1 * var(--ui-focus-width, 2px));
 }

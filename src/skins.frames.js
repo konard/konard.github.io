@@ -235,13 +235,17 @@ export const CONTROL_TYPES = {
     'textarea',
     "input:not([type='range'], [type='checkbox'], [type='radio'], [type='color'], [type='file'], [type='hidden'])",
   ],
-  tab: ['.pages a', '.role-tabs a', '.segmented', '.prefs__langs'],
+  tab: ['.role-tabs a', '.segmented', '.prefs__langs'],
   chip: ['.chip', '.tags li', '.repo__fields li'],
+  // Issue #49: "rename Menus level to drop down list, and add configuration for
+  // top level menu, second level menu and so on".
   menu: ['.ui-select', '.ui-select__list'],
+  nav: ['.pages a'],
+  subnav: ['.nav ul a', '.nav__top'],
   table: ['table'],
 };
 
-/** Buttons, fields, chips, tabs, menus and tables: the frame in the control scale. */
+/** Buttons, fields, tabs, chips, drop-down lists, menus and tables: the frame in the control scale. */
 export const CONTROLS = Object.values(CONTROL_TYPES).flat();
 
 /**

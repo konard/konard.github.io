@@ -84,7 +84,9 @@ export const LEVEL_NAMES = {
   field: { en: 'Fields', ru: 'Поля' },
   tab: { en: 'Tabs', ru: 'Вкладки' },
   chip: { en: 'Chips and tags', ru: 'Метки и теги' },
-  menu: { en: 'Menus', ru: 'Меню' },
+  menu: { en: 'Drop-down lists', ru: 'Выпадающие списки' },
+  nav: { en: 'Top-level menu', ru: 'Меню верхнего уровня' },
+  subnav: { en: 'Second-level menu', ru: 'Меню второго уровня' },
   table: { en: 'Tables', ru: 'Таблицы' },
 };
 export const LEVEL_IDS = ['panel', 'block', ...Object.keys(CONTROL_TYPES)];
@@ -277,8 +279,9 @@ const fitFields = (level) => {
 const controlMode = (level) =>
   select(
     levelKey(level, 'Corners'),
-    // Tables kept their border before issue #47.
-    level === 'table' ? 'border' : 'same',
+    // Tables kept their border before issue #47, the second-level menu its plain
+    // links before issue #49.
+    level === 'table' || level === 'subnav' ? 'border' : 'same',
     [
       SAME('As all controls', 'Как у всех элементов'),
       option('own', 'Corners of their own', 'Свои углы'),

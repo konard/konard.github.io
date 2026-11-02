@@ -484,7 +484,6 @@
   --fxtab-bl-b-px: calc(var(--fxtab-bl-s) * var(--fx-tab-bl-b-px));
   --fxtab-bl-b-py: calc(var(--fxtab-bl-s) * var(--fx-tab-bl-b-py));
 }
-:root:root:root[data-skin-name='futuristic'][data-future-frame='custom'][data-corner-tab-corners='own'] .pages a,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom'][data-corner-tab-corners='own'] .role-tabs a,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom'][data-corner-tab-corners='own'] .segmented,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom'][data-corner-tab-corners='own'] .prefs__langs {
@@ -557,28 +556,24 @@
   border-radius: 0;
   clip-path: polygon(var(--fxtab-tl-0x) var(--fxtab-tl-0y), var(--fxtab-tl-1x) var(--fxtab-tl-1y), var(--fxtab-tl-2x) var(--fxtab-tl-2y), var(--fxtab-tl-3x) var(--fxtab-tl-3y), var(--fxtab-tl-4x) var(--fxtab-tl-4y), var(--fxtab-tl-5x) var(--fxtab-tl-5y), var(--fxtab-tl-6x) var(--fxtab-tl-6y), var(--fxtab-tl-7x) var(--fxtab-tl-7y), var(--fxtab-tl-8x) var(--fxtab-tl-8y), calc(100% - var(--fxtab-tr-0x)) var(--fxtab-tr-0y), calc(100% - var(--fxtab-tr-1x)) var(--fxtab-tr-1y), calc(100% - var(--fxtab-tr-2x)) var(--fxtab-tr-2y), calc(100% - var(--fxtab-tr-3x)) var(--fxtab-tr-3y), calc(100% - var(--fxtab-tr-4x)) var(--fxtab-tr-4y), calc(100% - var(--fxtab-tr-5x)) var(--fxtab-tr-5y), calc(100% - var(--fxtab-tr-6x)) var(--fxtab-tr-6y), calc(100% - var(--fxtab-tr-7x)) var(--fxtab-tr-7y), calc(100% - var(--fxtab-tr-8x)) var(--fxtab-tr-8y), calc(100% - var(--fxtab-br-0x)) calc(100% - var(--fxtab-br-0y)), calc(100% - var(--fxtab-br-1x)) calc(100% - var(--fxtab-br-1y)), calc(100% - var(--fxtab-br-2x)) calc(100% - var(--fxtab-br-2y)), calc(100% - var(--fxtab-br-3x)) calc(100% - var(--fxtab-br-3y)), calc(100% - var(--fxtab-br-4x)) calc(100% - var(--fxtab-br-4y)), calc(100% - var(--fxtab-br-5x)) calc(100% - var(--fxtab-br-5y)), calc(100% - var(--fxtab-br-6x)) calc(100% - var(--fxtab-br-6y)), calc(100% - var(--fxtab-br-7x)) calc(100% - var(--fxtab-br-7y)), calc(100% - var(--fxtab-br-8x)) calc(100% - var(--fxtab-br-8y)), var(--fxtab-bl-0x) calc(100% - var(--fxtab-bl-0y)), var(--fxtab-bl-1x) calc(100% - var(--fxtab-bl-1y)), var(--fxtab-bl-2x) calc(100% - var(--fxtab-bl-2y)), var(--fxtab-bl-3x) calc(100% - var(--fxtab-bl-3y)), var(--fxtab-bl-4x) calc(100% - var(--fxtab-bl-4y)), var(--fxtab-bl-5x) calc(100% - var(--fxtab-bl-5y)), var(--fxtab-bl-6x) calc(100% - var(--fxtab-bl-6y)), var(--fxtab-bl-7x) calc(100% - var(--fxtab-bl-7y)), var(--fxtab-bl-8x) calc(100% - var(--fxtab-bl-8y)));
 }
-:root[data-corner-tab-corners='own'][data-corner-tab-edge-style='solid'] :where(.pages a),
 :root[data-corner-tab-corners='own'][data-corner-tab-edge-style='solid'] :where(.role-tabs a),
 :root[data-corner-tab-corners='own'][data-corner-tab-edge-style='solid'] :where(.segmented),
 :root[data-corner-tab-corners='own'][data-corner-tab-edge-style='solid'] :where(.prefs__langs) {
   --fx-ce-h: linear-gradient(var(--fx-ec), var(--fx-ec));
   --fx-ce-v: linear-gradient(var(--fx-ec), var(--fx-ec));
 }
-:root[data-corner-tab-corners='own'][data-corner-tab-edge-style='dashed'] :where(.pages a),
 :root[data-corner-tab-corners='own'][data-corner-tab-edge-style='dashed'] :where(.role-tabs a),
 :root[data-corner-tab-corners='own'][data-corner-tab-edge-style='dashed'] :where(.segmented),
 :root[data-corner-tab-corners='own'][data-corner-tab-edge-style='dashed'] :where(.prefs__langs) {
   --fx-ce-h: repeating-linear-gradient(90deg, var(--fx-ec) 0 6px, transparent 6px 10px);
   --fx-ce-v: repeating-linear-gradient(180deg, var(--fx-ec) 0 6px, transparent 6px 10px);
 }
-:root[data-corner-tab-corners='own'][data-corner-tab-edge-style='dotted'] :where(.pages a),
 :root[data-corner-tab-corners='own'][data-corner-tab-edge-style='dotted'] :where(.role-tabs a),
 :root[data-corner-tab-corners='own'][data-corner-tab-edge-style='dotted'] :where(.segmented),
 :root[data-corner-tab-corners='own'][data-corner-tab-edge-style='dotted'] :where(.prefs__langs) {
   --fx-ce-h: repeating-linear-gradient(90deg, var(--fx-ec) 0 max(1px, var(--fx-ew)), transparent max(1px, var(--fx-ew)) calc(max(1px, var(--fx-ew)) * 3));
   --fx-ce-v: repeating-linear-gradient(180deg, var(--fx-ec) 0 max(1px, var(--fx-ew)), transparent max(1px, var(--fx-ew)) calc(max(1px, var(--fx-ew)) * 3));
 }
-:root[data-corner-tab-corners='own'][data-corner-tab-edge-style='double'] :where(.pages a),
 :root[data-corner-tab-corners='own'][data-corner-tab-edge-style='double'] :where(.role-tabs a),
 :root[data-corner-tab-corners='own'][data-corner-tab-edge-style='double'] :where(.segmented),
 :root[data-corner-tab-corners='own'][data-corner-tab-edge-style='double'] :where(.prefs__langs) {
