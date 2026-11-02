@@ -110,7 +110,7 @@ repository measurements and authenticated private profile settings.
 `.github/workflows/github-pages.yml` lints the workflows (actionlint), runs `npm run check` and `npm audit`, then the tests and the build, for pull requests and for pushes to `main`.
 It also checks Python and shell helpers, documentation links, workflow security
 with zizmor, and JavaScript, Python and Actions with CodeQL. A weekly run audits
-the committed lockfile. Documentation-only changes skip browser/PDF builds;
+the committed lockfile and rechecks the documentation links, which rot without commits. Documentation-only changes skip browser/PDF builds;
 `pipeline-status` rejects failures and unexpected skips in every required job.
 A browser matrix checks the network editor, clipboard, touch editing and actual image downloads in Chromium, Firefox and WebKit.
 The `test` job prints the CV PDFs with `npm run build:cv`, then uploads the tested build as the GitHub Pages artifact.
