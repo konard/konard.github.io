@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
 import * as yaml from 'js-yaml';
 
-export function pipelineFailures(needs, allowedSkips, expectedJobs) {
+export function pipelineFailures(needs, allowedSkips, expectedJobs, log = console.log) {
   if (!needs || typeof needs !== 'object' || Array.isArray(needs)) throw new Error('Missing job results');
   const allowed = new Set(allowedSkips);
   const failures = [];
@@ -10,7 +10,7 @@ export function pipelineFailures(needs, allowedSkips, expectedJobs) {
     const result = needs[name]?.result;
     if (result === 'success') continue;
     if (result === 'skipped' && allowed.has(name)) {
-      console.log(`::notice::${name} skipped by its documented event/change condition.`);
+      log(`::notice::${name} skipped by its documented event/change condition.`);
       continue;
     }
     failures.push(`${name}: ${result || 'missing result'}`);
@@ -35,7 +35,7 @@ if (import.meta.url === pathToFileURL(process.argv[1] || '').href) {
   try {
     main();
   } catch (error) {
-    console.error(error.message);
+    console.log(`::error::${error.message.replace(/%/g, '%25').replace(/\r/g, '%0D').replace(/\n/g, '%0A')}`);
     process.exitCode = 1;
   }
 }
