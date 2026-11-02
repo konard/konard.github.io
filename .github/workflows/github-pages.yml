@@ -120,6 +120,8 @@ jobs:
     if: needs.prepare.outputs.code == 'true'
     runs-on: ubuntu-24.04
     timeout-minutes: 20
+    outputs:
+      pages-artifact-id: ${{ steps.pages-artifact.outputs.artifact-id }}
 
     steps:
       # On pull requests this is the merge result with main, not the branch head.
@@ -156,6 +158,7 @@ jobs:
       # published from this artifact, not from a branch or the docs/ folder.
       # Pull requests upload it too, so a broken artifact fails before merge.
       - name: Upload the build as the Pages artifact with bounded transport retries
+        id: pages-artifact
         uses: ./.github/actions/upload-artifact
         with:
           name: github-pages
@@ -357,17 +360,24 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v5
-
-      # A green deploy must mean the site is really there (issue #5).
-      - name: Checkout source
+      - name: Checkout the deploy action and the site check
         uses: actions/checkout@v7
         with:
           persist-credentials: false
-          sparse-checkout: scripts
+          sparse-checkout: |
+            .github/actions
+            scripts
 
+      # The protocol of actions/deploy-pages@v5, which fails on the first HTTP
+      # 500 from the Pages API (run 41480863205, issue #51); this retries only
+      # transient failures to create the deployment and adopts a lost one.
+      - name: Deploy to GitHub Pages with bounded retries
+        id: deployment
+        uses: ./.github/actions/deploy-pages
+        with:
+          artifact_id: ${{ needs.test.outputs.pages-artifact-id }}
+
+      # A green deploy must mean the site is really there (issue #5).
       - name: Verify the deployed site
         run: bash scripts/check-deployed-site.sh "$PAGE_URL"
         env:

@@ -114,7 +114,7 @@ the committed lockfile. Documentation-only changes skip browser/PDF builds;
 `pipeline-status` rejects failures and unexpected skips in every required job.
 A browser matrix checks the network editor, clipboard, touch editing and actual image downloads in Chromium, Firefox and WebKit.
 The `test` job prints the CV PDFs with `npm run build:cv`, then uploads the tested build as the GitHub Pages artifact.
-On `main`, the `deploy` job publishes that artifact with `actions/deploy-pages`, then `scripts/check-deployed-site.sh` fails the run unless https://konard.github.io serves the app.
+On `main`, the `deploy` job publishes exactly that artifact through the Pages deployment API with `.github/actions/deploy-pages`, which retries transient failures to create the deployment (one HTTP 500 failed `actions/deploy-pages@v5` in issue #51), then `scripts/check-deployed-site.sh` fails the run unless https://konard.github.io serves the app.
 The probe checks the built commit, JavaScript asset and PDF signature, with a
 finite retry budget for CDN propagation. Artifact uploads retry transient network
 failures up to three times and fail on authorization errors or missing evidence.
