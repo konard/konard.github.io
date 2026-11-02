@@ -299,6 +299,11 @@ corners of their own (`corner.buttonCorners own`), and a level with its own corn
 `corner.buttonCorners: same` (the button follows the controls), which is the case it means to test. It passes
 locally on chromium (16 checks).
 
+Once the browser checks passed (run 41460885921), the unit test job ran for the first time on this branch. One test
+failed: the issue #47 check `src/components/icons-47.test.jsx` found the `↑` glyph in the sample second-level menu of
+R5 (`pages/LevelPreview.jsx:125`). The sample now draws the same Lucide `ArrowUp` SVG as the real menu in
+`Layout.jsx`. The log is in `ci-logs/deploy-41460885921.log`.
+
 ## 5. Research and existing solutions
 
 - **Contrast of borders and states.** WCAG 2.2 SC 1.4.11 (AA) asks for 3:1 against adjacent colours for the visual

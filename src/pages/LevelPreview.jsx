@@ -1,3 +1,5 @@
+import { ArrowUp } from 'lucide-react';
+import { iconProps } from '../components/icons';
 import Select from '../components/Select';
 import { useLang } from '../i18n/prefs';
 import { LEVEL_NAMES } from '../settings/schema.skins';
@@ -121,8 +123,8 @@ const SAMPLES = {
       className="nav level-preview__menu"
       aria-label={t({ en: 'Sample second-level menu', ru: 'Пример меню второго уровня' })}
     >
-      <a className="nav__top" href={HREF} aria-label={t({ en: 'To the top', ru: 'Наверх' })}>
-        ↑
+      <a className="nav__top mono" href={HREF} aria-label={t({ en: 'To the top', ru: 'Наверх' })}>
+        <ArrowUp {...iconProps} />
       </a>
       <ul>
         <li>
