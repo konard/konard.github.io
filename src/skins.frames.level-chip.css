@@ -486,7 +486,9 @@
 }
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom'][data-corner-chip-corners='own'] .chip,
 :root:root:root[data-skin-name='futuristic'][data-future-frame='custom'][data-corner-chip-corners='own'] .tags li,
-:root:root:root[data-skin-name='futuristic'][data-future-frame='custom'][data-corner-chip-corners='own'] .repo__fields li {
+:root:root:root[data-skin-name='futuristic'][data-future-frame='custom'][data-corner-chip-corners='own'] .repo__fields li,
+:root:root:root[data-skin-name='futuristic'][data-future-frame='custom'][data-corner-chip-corners='own'] .hero__kicker,
+:root:root:root[data-skin-name='futuristic'][data-future-frame='custom'][data-corner-chip-corners='own'] .habr__status {
   background-image: var(--fx-chip-tl-a-img),
     var(--fx-chip-tl-b-img),
     linear-gradient(var(--fx-chip-tl-col), var(--fx-chip-tl-col)),
@@ -558,25 +560,33 @@
 }
 :root[data-corner-chip-corners='own'][data-corner-chip-edge-style='solid'] :where(.chip),
 :root[data-corner-chip-corners='own'][data-corner-chip-edge-style='solid'] :where(.tags li),
-:root[data-corner-chip-corners='own'][data-corner-chip-edge-style='solid'] :where(.repo__fields li) {
+:root[data-corner-chip-corners='own'][data-corner-chip-edge-style='solid'] :where(.repo__fields li),
+:root[data-corner-chip-corners='own'][data-corner-chip-edge-style='solid'] :where(.hero__kicker),
+:root[data-corner-chip-corners='own'][data-corner-chip-edge-style='solid'] :where(.habr__status) {
   --fx-ce-h: linear-gradient(var(--fx-ec), var(--fx-ec));
   --fx-ce-v: linear-gradient(var(--fx-ec), var(--fx-ec));
 }
 :root[data-corner-chip-corners='own'][data-corner-chip-edge-style='dashed'] :where(.chip),
 :root[data-corner-chip-corners='own'][data-corner-chip-edge-style='dashed'] :where(.tags li),
-:root[data-corner-chip-corners='own'][data-corner-chip-edge-style='dashed'] :where(.repo__fields li) {
+:root[data-corner-chip-corners='own'][data-corner-chip-edge-style='dashed'] :where(.repo__fields li),
+:root[data-corner-chip-corners='own'][data-corner-chip-edge-style='dashed'] :where(.hero__kicker),
+:root[data-corner-chip-corners='own'][data-corner-chip-edge-style='dashed'] :where(.habr__status) {
   --fx-ce-h: repeating-linear-gradient(90deg, var(--fx-ec) 0 6px, transparent 6px 10px);
   --fx-ce-v: repeating-linear-gradient(180deg, var(--fx-ec) 0 6px, transparent 6px 10px);
 }
 :root[data-corner-chip-corners='own'][data-corner-chip-edge-style='dotted'] :where(.chip),
 :root[data-corner-chip-corners='own'][data-corner-chip-edge-style='dotted'] :where(.tags li),
-:root[data-corner-chip-corners='own'][data-corner-chip-edge-style='dotted'] :where(.repo__fields li) {
+:root[data-corner-chip-corners='own'][data-corner-chip-edge-style='dotted'] :where(.repo__fields li),
+:root[data-corner-chip-corners='own'][data-corner-chip-edge-style='dotted'] :where(.hero__kicker),
+:root[data-corner-chip-corners='own'][data-corner-chip-edge-style='dotted'] :where(.habr__status) {
   --fx-ce-h: repeating-linear-gradient(90deg, var(--fx-ec) 0 max(1px, var(--fx-ew)), transparent max(1px, var(--fx-ew)) calc(max(1px, var(--fx-ew)) * 3));
   --fx-ce-v: repeating-linear-gradient(180deg, var(--fx-ec) 0 max(1px, var(--fx-ew)), transparent max(1px, var(--fx-ew)) calc(max(1px, var(--fx-ew)) * 3));
 }
 :root[data-corner-chip-corners='own'][data-corner-chip-edge-style='double'] :where(.chip),
 :root[data-corner-chip-corners='own'][data-corner-chip-edge-style='double'] :where(.tags li),
-:root[data-corner-chip-corners='own'][data-corner-chip-edge-style='double'] :where(.repo__fields li) {
+:root[data-corner-chip-corners='own'][data-corner-chip-edge-style='double'] :where(.repo__fields li),
+:root[data-corner-chip-corners='own'][data-corner-chip-edge-style='double'] :where(.hero__kicker),
+:root[data-corner-chip-corners='own'][data-corner-chip-edge-style='double'] :where(.habr__status) {
   --fx-ce-h: linear-gradient(180deg, var(--fx-ec) 0 34%, transparent 34% 66%, var(--fx-ec) 66%);
   --fx-ce-v: linear-gradient(90deg, var(--fx-ec) 0 34%, transparent 34% 66%, var(--fx-ec) 66%);
 }

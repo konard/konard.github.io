@@ -13,5 +13,6 @@ src/skins.frames.corners.css
 src/skins.frames.properties.css
 src/skins.frames.level-*.css
 src/skins.frames.fit.css
+src/ui.borders.css
 
 src/data/indicators.json

@@ -238,7 +238,8 @@
 }
 
 .palettes__chip[aria-pressed='true'] {
-  outline: 2px solid var(--chip);
+  /* The ring of the chosen colour (issue #49). */
+  outline: var(--ui-chosen-width, 2px) solid var(--chip);
   outline-offset: 2px;
 }
 

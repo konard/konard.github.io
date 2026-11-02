@@ -209,6 +209,9 @@ export const PANELS = [
   '.link-card',
   '.preset',
   '.ui-preview__panel',
+  // Issue #49: cards and boxes with a border that no setting changed.
+  '.profession',
+  '.contribution-calendar',
 ];
 
 /**
@@ -236,7 +239,8 @@ export const CONTROL_TYPES = {
     "input:not([type='range'], [type='checkbox'], [type='radio'], [type='color'], [type='file'], [type='hidden'])",
   ],
   tab: ['.role-tabs a', '.segmented', '.prefs__langs'],
-  chip: ['.chip', '.tags li', '.repo__fields li'],
+  // Issue #49: the badges of the home page are chips too.
+  chip: ['.chip', '.tags li', '.repo__fields li', '.hero__kicker', '.habr__status'],
   // Issue #49: "rename Menus level to drop down list, and add configuration for
   // top level menu, second level menu and so on".
   menu: ['.ui-select', '.ui-select__list'],
@@ -639,22 +643,20 @@ function controlRules() {
       'border-radius': '0',
       'clip-path': clip('c'),
     }),
-    // Hover, pressed, current and focused controls light their edges up instead of the border.
+    // Hover, pressed, current and focused controls light their edges up instead
+    // of the border, in the colours of the states (issue #49, src/ui.borders.js).
+    // Every state is as specific as the hover (`:not(:disabled)`), so the later
+    // one wins: a chosen control under the pointer shows that it is chosen.
+    rule(framed(':hover:not(:disabled)'), { '--fx-ec': 'var(--ui-hover-edge, var(--accent))' }),
     rule(
-      [
-        ':hover:not(:disabled)',
-        "[aria-pressed='true']",
-        "[aria-current='page']",
-        "[aria-selected='true']",
-        '.is-active',
-        '.button--primary',
-        ':focus-visible',
-        ':focus',
-      ]
-        .map((state) => framed(state))
+      ["[aria-pressed='true']", "[aria-current='page']", "[aria-selected='true']", '.is-active', '.button--primary']
+        .map((state) => framed(`${state}:not(:disabled)`))
         .join(',\n'),
-      { '--fx-ec': 'var(--accent)' },
+      { '--fx-ec': 'var(--ui-active-edge, var(--accent))' },
     ),
+    rule([':focus-visible', ':focus'].map((state) => framed(`${state}:not(:disabled)`)).join(',\n'), {
+      '--fx-ec': 'var(--ui-focus-color, var(--accent))',
+    }),
     // The primary button keeps a fill of the accent (its gradient was a background image).
     rule(framed('.button--primary'), {
       'background-color': 'color-mix(in srgb, var(--accent) 20%, var(--ui-control-fill, transparent))',

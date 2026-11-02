@@ -23,6 +23,24 @@ const cornerFields = (part, en, ru) =>
     ),
   );
 
+const STYLES = [
+  option('solid', 'Solid', 'Сплошная'),
+  option('dashed', 'Dashed', 'Штриховая'),
+  option('dotted', 'Dotted', 'Пунктирная'),
+  option('double', 'Double', 'Двойная'),
+];
+const SAME_STYLES = [option('same', 'As the border', 'Как у рамки'), ...STYLES];
+const COLORS = [
+  option('accent', 'Primary accent', 'Основной акцент'),
+  option('accent2', 'Secondary accent', 'Второй акцент'),
+  option('text', 'Text color', 'Цвет текста'),
+];
+const EDGE_COLORS = [
+  option('skin', 'As in the skin', 'Как в оформлении'),
+  ...COLORS,
+  option('strong', 'A stronger line', 'Более заметная линия'),
+];
+
 export const UI_SECTIONS = [
   {
     id: 'interface',
@@ -86,8 +104,6 @@ export const UI_SECTIONS = [
         { en: 'Minimum menu width', ru: 'Минимальная ширина меню' },
         { unit: 'px', css: false },
       ),
-      range('ui.focusWidth', 2, 1, 6, 0.5, { en: 'Focus ring width', ru: 'Толщина обводки фокуса' }, { unit: 'px' }),
-      range('ui.focusOffset', 3, 0, 8, 1, { en: 'Focus ring offset', ru: 'Отступ обводки фокуса' }, { unit: 'px' }),
       range(
         'ui.motion',
         1,
@@ -126,17 +142,7 @@ export const UI_SECTIONS = [
     title: { en: 'Borders and accents', ru: 'Рамки и акценты' },
     fields: [
       range('ui.panelBorder', 1, 0, 8, 0.5, { en: 'Panel border width', ru: 'Толщина рамки панелей' }, { unit: 'px' }),
-      select(
-        'ui.borderStyle',
-        'solid',
-        [
-          option('solid', 'Solid', 'Сплошная'),
-          option('dashed', 'Dashed', 'Штриховая'),
-          option('dotted', 'Dotted', 'Пунктирная'),
-          option('double', 'Double', 'Двойная'),
-        ],
-        { en: 'Border style', ru: 'Стиль рамки' },
-      ),
+      select('ui.borderStyle', 'solid', STYLES, { en: 'Border style', ru: 'Стиль рамки' }),
       range(
         'ui.borderOpacity',
         0.2,
@@ -186,6 +192,54 @@ export const UI_SECTIONS = [
         { en: 'Selection strength', ru: 'Яркость выделения' },
         { unit: '%', when: (s) => s['ui.selection'] !== 'system' },
       ),
+      // Issue #49: "We need to make sure all UI elements with borders are
+      // configurable": the lines between the parts of a page (the top bar, the
+      // menu, the footer, the rows of the timeline and of the settings) had a
+      // border of their own that no setting changed.
+      select(
+        'ui.lines',
+        'skin',
+        [option('skin', 'As in the skin', 'Как в оформлении'), option('own', 'Own lines', 'Свои линии')],
+        { en: 'Lines between parts', ru: 'Линии между частями' },
+        {
+          hint: {
+            en: 'Under the top bar, above the menu and the footer, between rows of the timeline and of the settings, under headings.',
+            ru: 'Под верхней панелью, над меню и подвалом, между строками хронологии и настроек, под заголовками.',
+          },
+        },
+      ),
+      range(
+        'ui.lineWidth',
+        1,
+        0,
+        8,
+        0.5,
+        { en: 'Line width', ru: 'Толщина линий' },
+        { unit: 'px', when: (s) => s['ui.lines'] === 'own' },
+      ),
+      select(
+        'ui.lineStyle',
+        'solid',
+        STYLES,
+        { en: 'Line style', ru: 'Стиль линий' },
+        { when: (s) => s['ui.lines'] === 'own' },
+      ),
+      select(
+        'ui.lineColor',
+        'skin',
+        [option('skin', 'As in the skin', 'Как в оформлении'), ...COLORS],
+        { en: 'Line color', ru: 'Цвет линий' },
+        { when: (s) => s['ui.lines'] === 'own' },
+      ),
+      range(
+        'ui.lineOpacity',
+        0.2,
+        0,
+        1,
+        0.01,
+        { en: 'Line opacity', ru: 'Непрозрачность линий' },
+        { unit: '%', when: (s) => s['ui.lines'] === 'own' && s['ui.lineColor'] !== 'skin' },
+      ),
       select(
         'ui.overflow',
         'clip',
@@ -195,6 +249,41 @@ export const UI_SECTIONS = [
         ],
         { en: 'Content that does not fit a panel', ru: 'Содержимое, которое не помещается в панель' },
       ),
+    ],
+  },
+  {
+    // Issue #49: "We also need to add configuration of borders on hover, focus,
+    // outline and so on". "As in the skin" keeps the colour each element had.
+    id: 'states',
+    title: { en: 'Hover, focus and selection', ru: 'Наведение, фокус и выбор' },
+    lead: {
+      en: 'The borders of buttons, tabs, chips, menus and panels under the pointer, when chosen or pressed, and the ring of the keyboard focus.',
+      ru: 'Рамки кнопок, вкладок, меток, меню и панелей под указателем, выбранных или нажатых, и обводка фокуса клавиатуры.',
+    },
+    fields: [
+      select('ui.hoverEdge', 'skin', EDGE_COLORS, { en: 'Border color on hover', ru: 'Цвет рамки при наведении' }),
+      select('ui.hoverStyle', 'same', SAME_STYLES, { en: 'Border style on hover', ru: 'Стиль рамки при наведении' }),
+      select('ui.activeEdge', 'skin', EDGE_COLORS, {
+        en: 'Border color of the chosen and pressed',
+        ru: 'Цвет рамки выбранных и нажатых',
+      }),
+      select('ui.activeStyle', 'same', SAME_STYLES, {
+        en: 'Border style of the chosen and pressed',
+        ru: 'Стиль рамки выбранных и нажатых',
+      }),
+      range(
+        'ui.chosenWidth',
+        2,
+        0,
+        6,
+        0.5,
+        { en: 'Ring of the chosen color', ru: 'Обводка выбранного цвета' },
+        { unit: 'px', hint: { en: 'Palettes and color chips.', ru: 'Палитры и образцы цветов.' } },
+      ),
+      select('ui.focusColor', 'accent', COLORS, { en: 'Focus ring color', ru: 'Цвет обводки фокуса' }),
+      select('ui.focusStyle', 'solid', STYLES, { en: 'Focus ring style', ru: 'Стиль обводки фокуса' }),
+      range('ui.focusWidth', 2, 1, 6, 0.5, { en: 'Focus ring width', ru: 'Толщина обводки фокуса' }, { unit: 'px' }),
+      range('ui.focusOffset', 3, 0, 8, 1, { en: 'Focus ring offset', ru: 'Отступ обводки фокуса' }, { unit: 'px' }),
     ],
   },
   {

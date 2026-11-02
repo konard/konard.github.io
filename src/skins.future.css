@@ -403,7 +403,9 @@
     .network__preview,
     .link-card,
     .preset,
-    .ui-preview__panel
+    .ui-preview__panel,
+    .profession,
+    .contribution-calendar
   ) {
   clip-path: var(--fx-el-clip, var(--fx-clip));
 }

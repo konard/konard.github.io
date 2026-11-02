@@ -1,0 +1,30 @@
+91 kinds of bordered elements with the glass skin, 29 that no setting changes:
+  header.topbar [Bottom]  in app  on / /cv/ /experience/ /repositories/ /research/ /blog/ /art/ /network/ /associative/ /settings/
+  a [Top Right Bottom Left]  in LI  on / /experience/ /repositories/ /research/ /blog/ /art/ /associative/ /settings/
+  div.prefs__langs [Top Right Bottom Left]  in prefs  on / /cv/ /experience/ /repositories/ /research/ /blog/ /art/ /network/ /associative/ /settings/
+  nav.nav [Top]  in topbar  on / /experience/ /repositories/ /research/ /blog/ /art/ /network/ /associative/ /settings/
+  img [Top Right Bottom Left]  in hero__avatar  on /
+  p.hero__kicker [Top Right Bottom Left]  in hero__text  on /
+  li.timeline__row [Top]  in timeline__rows  on / /experience/
+  li [Top Right Bottom Left]  in tags  on / /experience/ /repositories/ /research/ /art/ /associative/ /settings/
+  div.contribution-calendar [Top Right Bottom Left]  in section   on /
+  div.segmented [Top Right Bottom Left]  in chart__toolbar  on / /settings/
+  span.habr__status.habr__status--loading [Top Right Bottom Left]  in habr__summary  on /
+  dl.habr-card__stats [Top]  in habr-card  on /
+  footer.footer [Top]  in app  on / /cv/ /experience/ /repositories/ /research/ /blog/ /art/ /network/ /associative/ /settings/
+  div.cv-paper [Top Right Bottom Left]  in MAIN  on /cv/
+  h2.cv__heading [Bottom]  in cv__section cv__section--profile  on /cv/
+  article.profession [Top Right Bottom Left]  in profession-grid  on /experience/ /repositories/ /research/
+  header.post__head [Bottom]  in post  on /blog/
+  details.post__fallback [Top]  in post  on /blog/
+  button.ui-color__swatch [Top Right Bottom Left]  in ui-color  on /network/ /settings/
+  div.link-gaps.link-card__geometry.link-card__fields [Top]  in link-card  on /network/
+  li.setting.setting--select [Top]  in settings__fields  on /network/ /settings/
+  li.setting.setting--range [Top]  in settings__fields  on /network/ /settings/
+  li.setting.setting--toggle [Top]  in settings__fields  on /network/ /settings/
+  li.setting.setting--color [Top]  in settings__fields  on /network/ /settings/
+  a.chip [Top Right Bottom Left]  in chips stack__index  on /associative/ /settings/
+  span.preset__panel.preset__panel--futuristic [Top Right Bottom Left]  in preset__mini  on /settings/
+  span.preset__panel.preset__panel--glass [Top Right Bottom Left]  in preset__mini  on /settings/
+  span.preset__panel.preset__panel--liquid [Top Right Bottom Left]  in preset__mini  on /settings/
+  pre.settings__json.mono [Top Right Bottom Left]  in settings__group settings__share  on /settings/
