@@ -25,7 +25,7 @@ export { PALETTES, SKINS } from './schema.skins.js';
 
 /**
  * Sections of the settings page; `when(settings)` hides a section that does not
- * apply, and `column` (1 by default) is the column of the page it is shown in.
+ * apply; the settings page puts each section into the shorter column (issue #49).
  */
 const [motion, nebula, grid, rain] = BACKGROUND_SECTIONS;
 const [stars, beams] = LAYER_SECTIONS;

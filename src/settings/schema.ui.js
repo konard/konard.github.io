@@ -198,6 +198,88 @@ export const UI_SECTIONS = [
     ],
   },
   {
+    // Issue #49: the stripe on the left of the experience cards lay on the border
+    // of the card, and the summary took all the free height of a card, leaving a
+    // gap in the middle of the text.
+    id: 'cards',
+    title: { en: 'Experience cards', ru: 'Карточки опыта' },
+    lead: {
+      en: 'The cards of the experience page: a stripe on the left tells the work for a company from open source.',
+      ru: 'Карточки страницы опыта: полоса слева отличает работу в компании от открытого кода.',
+    },
+    fields: [
+      select(
+        'cards.layout',
+        'top',
+        [
+          option('top', 'Text at the top, tags at the bottom', 'Текст сверху, метки снизу'),
+          option('content', 'Each card as high as its text', 'Высота карточки по тексту'),
+          option('gap', 'Gap after the summary (as before)', 'Промежуток после описания (как раньше)'),
+        ],
+        { en: 'Text in the cards', ru: 'Текст в карточках' },
+        {
+          hint: {
+            en: 'The cards of a row are as high as the highest one, unless each card is as high as its text.',
+            ru: 'Карточки в ряду одной высоты с самой высокой, если высота карточки не по тексту.',
+          },
+        },
+      ),
+      select(
+        'cards.stripe',
+        'inset',
+        [
+          option('inset', 'Inside the border', 'Внутри рамки'),
+          option('edge', 'On the border (as before)', 'На рамке (как раньше)'),
+          option('none', 'No stripe', 'Без полосы'),
+        ],
+        { en: 'Stripe on the left', ru: 'Полоса слева' },
+      ),
+      range(
+        'cards.stripeWidth',
+        3,
+        1,
+        12,
+        0.5,
+        { en: 'Stripe width', ru: 'Толщина полосы' },
+        { unit: 'px', when: (s) => s['cards.stripe'] !== 'none' },
+      ),
+      range(
+        'cards.stripeOpacity',
+        0.7,
+        0.1,
+        1,
+        0.05,
+        { en: 'Stripe opacity', ru: 'Непрозрачность полосы' },
+        { unit: '%', when: (s) => s['cards.stripe'] !== 'none' },
+      ),
+      range(
+        'cards.stripeInset',
+        2,
+        0,
+        16,
+        1,
+        { en: 'Stripe gap from the border', ru: 'Отступ полосы от рамки' },
+        { unit: 'px', when: (s) => s['cards.stripe'] === 'inset' },
+      ),
+      range(
+        'cards.stripeEnds',
+        6,
+        0,
+        64,
+        1,
+        { en: 'Stripe gap from the corners', ru: 'Отступ полосы от углов' },
+        {
+          unit: 'px',
+          when: (s) => s['cards.stripe'] === 'inset',
+          hint: {
+            en: 'At the top and at the bottom, past the corners of the frame.',
+            ru: 'Сверху и снизу, после углов рамки.',
+          },
+        },
+      ),
+    ],
+  },
+  {
     id: 'tables',
     title: { en: 'Tables', ru: 'Таблицы' },
     fields: [
