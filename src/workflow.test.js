@@ -162,6 +162,16 @@ describe('GitHub Actions best practices', () => {
     expect(steps[analyze].with.output).toBe(steps[gate].env.SARIF_DIR);
   });
 
+  // Issue #51: a cache older than max_cache_age is discarded with a warning.
+  test('the link check only restores a cache saved the same day', () => {
+    const doc = yaml.load(fs.readFileSync(path.join(workflowsDir, 'github-pages.yml'), 'utf8'));
+    const cache = doc.jobs.docs.steps.find((step) => step.with?.path === '.lycheecache');
+    const day = '${{ steps.link-cache.outputs.day }}';
+    expect(cache.with.key).toContain(day);
+    expect([cache.with['restore-keys']].flat().every((key) => key.includes(day))).toBe(true);
+    expect(fs.readFileSync(path.join(workflowsDir, '../../lychee.toml'), 'utf8')).toMatch(/^max_cache_age = "1d"$/m);
+  });
+
   test('deploy publishes the tested build instead of rebuilding it', () => {
     const doc = yaml.load(fs.readFileSync(path.join(workflowsDir, 'github-pages.yml'), 'utf8'));
     expect(doc.jobs.deploy.needs).toContain('test');

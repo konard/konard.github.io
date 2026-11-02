@@ -446,12 +446,17 @@ jobs:
           persist-credentials: false
       - name: Check required documentation
         run: node scripts/check-docs.mjs
+      # lychee.toml keeps results for one day (max_cache_age) and warns when it
+      # discards an older cache, so only a cache saved today is restored (issue #51).
+      - name: Name today's link cache
+        id: link-cache
+        run: echo "day=$(date -u +%F)" >> "$GITHUB_OUTPUT"
       - name: Restore link cache
         uses: actions/cache@v6
         with:
           path: .lycheecache
-          key: lychee-${{ runner.os }}-${{ github.sha }}
-          restore-keys: lychee-${{ runner.os }}-
+          key: lychee-${{ runner.os }}-${{ steps.link-cache.outputs.day }}-${{ github.sha }}
+          restore-keys: lychee-${{ runner.os }}-${{ steps.link-cache.outputs.day }}-
       - name: Check maintained documentation links
         uses: lycheeverse/lychee-action@v2
         with:
