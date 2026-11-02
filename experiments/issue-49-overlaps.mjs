@@ -1,4 +1,4 @@
-// Issue #49: every network of 1–3 links (4 + 81 + 4,096) and 25 seeded larger
+// Issue #49: every network of 1–3 links (4 + 81 + 4,096) and 15 seeded larger
 // ones, drawn with the editor defaults (zero turns). For each pair of links it
 // measures how much of one curve runs on top of the other (closer than 0.004
 // layout units, sampled every ~0.005), so fully overlapping straight
