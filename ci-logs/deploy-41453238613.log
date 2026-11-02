@@ -1,0 +1,117 @@
+network-browsers (chromium, ubuntu-24.04, 20)	Verify the frame on every bordered element, the corner layer and the colour palettes	﻿2026-11-02T13:37:51.8710136Z ##[group]Run npm run test:ui:issue45
+network-browsers (chromium, ubuntu-24.04, 20)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:51.8710400Z ^[[36;1mnpm run test:ui:issue45^[[0m
+network-browsers (chromium, ubuntu-24.04, 20)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:51.8720901Z shell: /usr/bin/bash -e {0}
+network-browsers (chromium, ubuntu-24.04, 20)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:51.8721111Z env:
+network-browsers (chromium, ubuntu-24.04, 20)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:51.8721266Z   GIT_CONFIG_COUNT: 1
+network-browsers (chromium, ubuntu-24.04, 20)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:51.8721452Z   GIT_CONFIG_KEY_0: init.defaultBranch
+network-browsers (chromium, ubuntu-24.04, 20)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:51.8721659Z   GIT_CONFIG_VALUE_0: main
+network-browsers (chromium, ubuntu-24.04, 20)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:51.8721845Z   ENGINE: chromium
+network-browsers (chromium, ubuntu-24.04, 20)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:51.8722043Z   CAPTURE_DIR: browser-results/screenshots/issue45
+network-browsers (chromium, ubuntu-24.04, 20)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:51.8722295Z ##[endgroup]
+network-browsers (chromium, ubuntu-24.04, 20)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:51.9419109Z 
+network-browsers (chromium, ubuntu-24.04, 20)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:51.9419709Z > konard.github.io@0.1.0 test:ui:issue45
+network-browsers (chromium, ubuntu-24.04, 20)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:51.9420122Z > node experiments/issue-45-browser.mjs
+network-browsers (chromium, ubuntu-24.04, 20)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:51.9420287Z 
+network-browsers (chromium, ubuntu-24.04, 20)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:58.1064205Z node:internal/modules/run_main:107
+network-browsers (chromium, ubuntu-24.04, 20)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:58.1065035Z     triggerUncaughtException(
+network-browsers (chromium, ubuntu-24.04, 20)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:58.1065664Z     ^
+network-browsers (chromium, ubuntu-24.04, 20)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:58.1066042Z 
+network-browsers (chromium, ubuntu-24.04, 20)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:58.1072490Z AssertionError [ERR_ASSERTION]: line blocks and border controls, framed outer panels: {"outer":"polygon(0px 24px, 24px 0px, 24px 0px, 24px 0px, 24px 0px, 24px 0px, 24px 0px, 24px 0px, 24px 0px, 100% 0px, 100% 0px, 100% 0px, 100% 0px, 100% 0px, 100% 0px, 100% 0px, 100% 0px, 100% 0px, 100% calc(100% - 14px), calc(100% - 14px) 100%, calc(100% - 14px) 100%, calc(100% - 14px) 100%, calc(100% - 14px) 100%, calc(100% - 14px) 100%, calc(100% - 14px) 100%, calc(100% - 14px) 100%, calc(100% - 14px) 100%, 0px 100%, 0px 100%, 0px 100%, 0px 100%, 0px 100%, 0px 100%, 0px 100%, 0px 100%, 0px 100%)","inner":"none","button":{"clip-path":"polygon(0px 6px, 6px 0px, 6px 0px, 6px 0px, 6px 0px, 6px 0px, 6px 0px, 6px 0px, 6px 0px, 100% 0px, 100% 0px, 100% 0px, 100% 0px, 100% 0px, 100% 0px, 100% 0px, 100% 0px, 100% 0px, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 0px 100%, 0px 100%, 0px 100%, 0px 100%, 0px 100%, 0px 100%, 0px 100%, 0px 100%, 0px 100%)","background-image":"linear-gradient(to right bottom, rgba(0, 0, 0, 0) 50%, rgba(61, 255, 122, 0.85) 50%, rgba(61, 255, 122, 0.85) calc(50% + 1px), rgba(0, 0, 0, 0) 0px), none, linear-gradient(rgba(61, 255, 122, 0.85), rgba(61, 255, 122, 0.85)), linear-gradient(rgba(61, 255, 122, 0.85), rgba(61, 255, 122, 0.85)), linear-gradient(rgba(61, 255, 122, 0.85), rgba(61, 255, 122, 0.85)), linear-gradient(rgba(61, 255, 122, 0.85), rgba(61, 255, 122, 0.85)), linear-gradient(rgba(61, 255, 122, 0.85), rgba(61, 255, 122, 0.85)), linear-gradient(rgba(61, 255, 122, 0.85), rgba(61, 255, 122, 0.85)), linear-gradient(rgba(61, 255, 122, 0.85), rgba(61, 255, 122, 0.85)), linear-gradient(rgba(61, 255, 122, 0.85), rgba(61, 255, 122, 0.85)), linear-gradient(rgba(61, 255, 122, 0.85), rgba(61, 255, 122, 0.85)), linear-gradient(rgba(61, 255, 122, 0.85), rgba(61, 255, 122, 0.85)), linear-gradient(rgba(61, 255, 122, 0.85), rgba(61, 255, 122, 0.85)), linear-gradient(rgba(61, 255, 122, 0.85), rgba(61, 255, 122, 0.85)), linear-gradient(rgba(61, 255, 122, 0.85), rgba(61, 255, 122, 0.85)), linear-gradient(rgba(61, 255, 122, 0.85), rgba(61, 255, 122, 0.85)), repeating-linear-gradient(90deg, rgba(61, 255, 122, 0.3) 0px, rgba(61, 255, 122, 0.3) 1px, rgba(0, 0, 0, 0) 1px, rgba(0, 0, 0, 0) 3px), repeating-linear-gradient(rgba(61, 255, 122, 0.3) 0px, rgba(61, 255, 122, 0.3) 1px, rgba(0, 0, 0, 0) 1px, rgba(0, 0, 0, 0) 3px), repeating-linear-gradient(90deg, rgba(61, 255, 122, 0.3) 0px, rgba(61, 255, 122, 0.3) 1px, rgba(0, 0, 0, 0) 1px, rgba(0, 0, 0, 0) 3px), repeating-linear-gradient(rgba(61, 255, 122, 0.3) 0px, rgba(61, 255, 122, 0.3) 1px, rgba(0, 0, 0, 0) 1px, rgba(0, 0, 0, 0) 3px), none"}}
+network-browsers (chromium, ubuntu-24.04, 20)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:58.1078147Z     at check (file:///home/runner/work/konard.github.io/konard.github.io/experiments/issue-45-browser.mjs:76:12)
+network-browsers (chromium, ubuntu-24.04, 20)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:58.1078732Z     at file:///home/runner/work/konard.github.io/konard.github.io/experiments/issue-45-browser.mjs:140:5 {
+network-browsers (chromium, ubuntu-24.04, 20)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:58.1079108Z   generatedMessage: false,
+network-browsers (chromium, ubuntu-24.04, 20)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:58.1079322Z   code: 'ERR_ASSERTION',
+network-browsers (chromium, ubuntu-24.04, 20)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:58.1079513Z   actual: false,
+network-browsers (chromium, ubuntu-24.04, 20)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:58.1079688Z   expected: true,
+network-browsers (chromium, ubuntu-24.04, 20)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:58.1080024Z   operator: '==',
+network-browsers (chromium, ubuntu-24.04, 20)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:58.1080204Z   diff: 'simple'
+network-browsers (chromium, ubuntu-24.04, 20)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:58.1080407Z }
+network-browsers (chromium, ubuntu-24.04, 20)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:58.1080492Z 
+network-browsers (chromium, ubuntu-24.04, 20)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:58.1080572Z Node.js v24.22.1
+network-browsers (chromium, ubuntu-24.04, 20)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:58.1389680Z ##[error]Process completed with exit code 1.
+network-browsers (firefox, ubuntu-24.04, 15)	Verify the frame on every bordered element, the corner layer and the colour palettes	﻿2026-11-02T13:37:49.5565943Z ##[group]Run npm run test:ui:issue45
+network-browsers (firefox, ubuntu-24.04, 15)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:49.5566305Z ^[[36;1mnpm run test:ui:issue45^[[0m
+network-browsers (firefox, ubuntu-24.04, 15)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:49.5585750Z shell: /usr/bin/bash -e {0}
+network-browsers (firefox, ubuntu-24.04, 15)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:49.5586008Z env:
+network-browsers (firefox, ubuntu-24.04, 15)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:49.5586198Z   GIT_CONFIG_COUNT: 1
+network-browsers (firefox, ubuntu-24.04, 15)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:49.5586446Z   GIT_CONFIG_KEY_0: init.defaultBranch
+network-browsers (firefox, ubuntu-24.04, 15)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:49.5586732Z   GIT_CONFIG_VALUE_0: main
+network-browsers (firefox, ubuntu-24.04, 15)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:49.5586977Z   ENGINE: firefox
+network-browsers (firefox, ubuntu-24.04, 15)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:49.5587229Z   CAPTURE_DIR: browser-results/screenshots/issue45
+network-browsers (firefox, ubuntu-24.04, 15)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:49.5587534Z ##[endgroup]
+network-browsers (firefox, ubuntu-24.04, 15)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:49.6557897Z 
+network-browsers (firefox, ubuntu-24.04, 15)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:49.6558675Z > konard.github.io@0.1.0 test:ui:issue45
+network-browsers (firefox, ubuntu-24.04, 15)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:49.6559476Z > node experiments/issue-45-browser.mjs
+network-browsers (firefox, ubuntu-24.04, 15)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:49.6559730Z 
+network-browsers (firefox, ubuntu-24.04, 15)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:59.2939742Z node:internal/modules/run_main:107
+network-browsers (firefox, ubuntu-24.04, 15)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:59.2940408Z     triggerUncaughtException(
+network-browsers (firefox, ubuntu-24.04, 15)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:59.2940834Z     ^
+network-browsers (firefox, ubuntu-24.04, 15)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:59.2940959Z 
+network-browsers (firefox, ubuntu-24.04, 15)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:59.2951133Z AssertionError [ERR_ASSERTION]: line blocks and border controls, framed outer panels: {"outer":"polygon(0px 24px, 24px 0px, 24px 0px, 24px 0px, 24px 0px, 24px 0px, 24px 0px, 24px 0px, 24px 0px, 100% 0px, 100% 0px, 100% 0px, 100% 0px, 100% 0px, 100% 0px, 100% 0px, 100% 0px, 100% 0px, 100% calc(100% - 14px), calc(100% - 14px) 100%, calc(100% - 14px) 100%, calc(100% - 14px) 100%, calc(100% - 14px) 100%, calc(100% - 14px) 100%, calc(100% - 14px) 100%, calc(100% - 14px) 100%, calc(100% - 14px) 100%, 0px 100%, 0px 100%, 0px 100%, 0px 100%, 0px 100%, 0px 100%, 0px 100%, 0px 100%, 0px 100%)","inner":"none","button":{"clip-path":"polygon(0px 6px, 6px 0px, 6px 0px, 6px 0px, 6px 0px, 6px 0px, 6px 0px, 6px 0px, 6px 0px, 100% 0px, 100% 0px, 100% 0px, 100% 0px, 100% 0px, 100% 0px, 100% 0px, 100% 0px, 100% 0px, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 0px 100%, 0px 100%, 0px 100%, 0px 100%, 0px 100%, 0px 100%, 0px 100%, 0px 100%, 0px 100%)","background-image":"linear-gradient(to right bottom, rgba(0, 0, 0, 0) 50%, rgba(61, 255, 122, 0.85) 50%, rgba(61, 255, 122, 0.85) calc(50% + 1px), rgba(0, 0, 0, 0) 0px), none, linear-gradient(rgba(61, 255, 122, 0.85), rgba(61, 255, 122, 0.85)), linear-gradient(rgba(61, 255, 122, 0.85), rgba(61, 255, 122, 0.85)), linear-gradient(rgba(61, 255, 122, 0.85), rgba(61, 255, 122, 0.85)), linear-gradient(rgba(61, 255, 122, 0.85), rgba(61, 255, 122, 0.85)), linear-gradient(rgba(61, 255, 122, 0.85), rgba(61, 255, 122, 0.85)), linear-gradient(rgba(61, 255, 122, 0.85), rgba(61, 255, 122, 0.85)), linear-gradient(rgba(61, 255, 122, 0.85), rgba(61, 255, 122, 0.85)), linear-gradient(rgba(61, 255, 122, 0.85), rgba(61, 255, 122, 0.85)), linear-gradient(rgba(61, 255, 122, 0.85), rgba(61, 255, 122, 0.85)), linear-gradient(rgba(61, 255, 122, 0.85), rgba(61, 255, 122, 0.85)), linear-gradient(rgba(61, 255, 122, 0.85), rgba(61, 255, 122, 0.85)), linear-gradient(rgba(61, 255, 122, 0.85), rgba(61, 255, 122, 0.85)), linear-gradient(rgba(61, 255, 122, 0.85), rgba(61, 255, 122, 0.85)), linear-gradient(rgba(61, 255, 122, 0.85), rgba(61, 255, 122, 0.85)), repeating-linear-gradient(90deg, rgba(61, 255, 122, 0.3) 0px, rgba(61, 255, 122, 0.3) 1px, rgba(0, 0, 0, 0) 1px, rgba(0, 0, 0, 0) 3px), repeating-linear-gradient(rgba(61, 255, 122, 0.3) 0px, rgba(61, 255, 122, 0.3) 1px, rgba(0, 0, 0, 0) 1px, rgba(0, 0, 0, 0) 3px), repeating-linear-gradient(90deg, rgba(61, 255, 122, 0.3) 0px, rgba(61, 255, 122, 0.3) 1px, rgba(0, 0, 0, 0) 1px, rgba(0, 0, 0, 0) 3px), repeating-linear-gradient(rgba(61, 255, 122, 0.3) 0px, rgba(61, 255, 122, 0.3) 1px, rgba(0, 0, 0, 0) 1px, rgba(0, 0, 0, 0) 3px), none"}}
+network-browsers (firefox, ubuntu-24.04, 15)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:59.2959705Z     at check (file:///home/runner/work/konard.github.io/konard.github.io/experiments/issue-45-browser.mjs:76:12)
+network-browsers (firefox, ubuntu-24.04, 15)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:59.2960978Z     at file:///home/runner/work/konard.github.io/konard.github.io/experiments/issue-45-browser.mjs:140:5 {
+network-browsers (firefox, ubuntu-24.04, 15)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:59.2961690Z   generatedMessage: false,
+network-browsers (firefox, ubuntu-24.04, 15)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:59.2961972Z   code: 'ERR_ASSERTION',
+network-browsers (firefox, ubuntu-24.04, 15)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:59.2962229Z   actual: false,
+network-browsers (firefox, ubuntu-24.04, 15)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:59.2962442Z   expected: true,
+network-browsers (firefox, ubuntu-24.04, 15)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:59.2964330Z   operator: '==',
+network-browsers (firefox, ubuntu-24.04, 15)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:59.2964826Z   diff: 'simple'
+network-browsers (firefox, ubuntu-24.04, 15)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:59.2965253Z }
+network-browsers (firefox, ubuntu-24.04, 15)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:59.2965439Z 
+network-browsers (firefox, ubuntu-24.04, 15)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:59.2965618Z Node.js v24.22.1
+network-browsers (firefox, ubuntu-24.04, 15)	Verify the frame on every bordered element, the corner layer and the colour palettes	2026-11-02T13:37:59.3397618Z ##[error]Process completed with exit code 1.
+pipeline-status	Verify every required outcome	﻿2026-11-02T13:47:52.0176617Z ##[group]Run node scripts/check-pipeline-status.mjs
+pipeline-status	Verify every required outcome	2026-11-02T13:47:52.0177165Z ^[[36;1mnode scripts/check-pipeline-status.mjs^[[0m
+pipeline-status	Verify every required outcome	2026-11-02T13:47:52.0199245Z shell: /usr/bin/bash -e {0}
+pipeline-status	Verify every required outcome	2026-11-02T13:47:52.0199543Z env:
+pipeline-status	Verify every required outcome	2026-11-02T13:47:52.0199772Z   GIT_CONFIG_COUNT: 1
+pipeline-status	Verify every required outcome	2026-11-02T13:47:52.0200067Z   GIT_CONFIG_KEY_0: init.defaultBranch
+pipeline-status	Verify every required outcome	2026-11-02T13:47:52.0200411Z   GIT_CONFIG_VALUE_0: main
+pipeline-status	Verify every required outcome	2026-11-02T13:47:52.0202499Z   NEEDS_JSON: {
+pipeline-status	Verify every required outcome	  "prepare": {
+pipeline-status	Verify every required outcome	    "result": "success",
+pipeline-status	Verify every required outcome	    "outputs": {
+pipeline-status	Verify every required outcome	      "code": "true",
+pipeline-status	Verify every required outcome	      "docs": "true"
+pipeline-status	Verify every required outcome	    }
+pipeline-status	Verify every required outcome	  },
+pipeline-status	Verify every required outcome	  "lint-workflows": {
+pipeline-status	Verify every required outcome	    "result": "success",
+pipeline-status	Verify every required outcome	    "outputs": {}
+pipeline-status	Verify every required outcome	  },
+pipeline-status	Verify every required outcome	  "checks": {
+pipeline-status	Verify every required outcome	    "result": "success",
+pipeline-status	Verify every required outcome	    "outputs": {}
+pipeline-status	Verify every required outcome	  },
+pipeline-status	Verify every required outcome	  "tooling": {
+pipeline-status	Verify every required outcome	    "result": "success",
+pipeline-status	Verify every required outcome	    "outputs": {}
+pipeline-status	Verify every required outcome	  },
+pipeline-status	Verify every required outcome	  "docs": {
+pipeline-status	Verify every required outcome	    "result": "success",
+pipeline-status	Verify every required outcome	    "outputs": {}
+pipeline-status	Verify every required outcome	  },
+pipeline-status	Verify every required outcome	  "codeql": {
+pipeline-status	Verify every required outcome	    "result": "success",
+pipeline-status	Verify every required outcome	    "outputs": {}
+pipeline-status	Verify every required outcome	  },
+pipeline-status	Verify every required outcome	  "network-browsers": {
+pipeline-status	Verify every required outcome	    "result": "failure",
+pipeline-status	Verify every required outcome	    "outputs": {}
+pipeline-status	Verify every required outcome	  },
+pipeline-status	Verify every required outcome	  "test": {
+pipeline-status	Verify every required outcome	    "result": "skipped",
+pipeline-status	Verify every required outcome	    "outputs": {}
+pipeline-status	Verify every required outcome	  },
+pipeline-status	Verify every required outcome	  "deploy": {
+pipeline-status	Verify every required outcome	    "result": "skipped",
+pipeline-status	Verify every required outcome	    "outputs": {}
+pipeline-status	Verify every required outcome	  }
+pipeline-status	Verify every required outcome	}
+pipeline-status	Verify every required outcome	2026-11-02T13:47:52.0204680Z   CODE_CHANGED: true
+pipeline-status	Verify every required outcome	2026-11-02T13:47:52.0204933Z   DOCS_CHANGED: true
+pipeline-status	Verify every required outcome	2026-11-02T13:47:52.0205355Z   SHOULD_DEPLOY: false
+pipeline-status	Verify every required outcome	2026-11-02T13:47:52.0205618Z ##[endgroup]
+pipeline-status	Verify every required outcome	2026-11-02T13:47:52.0732489Z ##[notice]deploy skipped by its documented event/change condition.
+pipeline-status	Verify every required outcome	2026-11-02T13:47:52.0742074Z Pipeline failed: test: skipped; network-browsers: failure
+pipeline-status	Verify every required outcome	2026-11-02T13:47:52.0773646Z ##[error]Process completed with exit code 1.

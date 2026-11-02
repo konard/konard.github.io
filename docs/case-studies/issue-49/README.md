@@ -50,7 +50,7 @@ The issue lists eleven separate problems, plus the usual request for a case stud
 | 13:27 | 33f774b: the corners section keeps a preview of the chosen level in sight, and the settings fill the shorter column in order (R5, R8) |
 | 13:44 | ce57ce3: the stripe of the experience cards moves inside the border and becomes a bit transparent, and the text starts at the top with the tags at the bottom; both are configurable (R9, R10) |
 | 14:11 | 111ea42: every bordered element is configurable, and so are the borders on hover, when chosen and on focus (R4, R6) |
-| later | This case study |
+| later | This case study; the issue #45 browser check sets buttons to follow the controls again (section 4.8) |
 
 ## 3. Requirements
 
@@ -286,6 +286,18 @@ The defaults follow the issue: "at least 1 px of offset from borders" and "a bit
 text is 12px in every card (the normal spacing), and the tags stay 16px from the bottom
 ([`data/experience-cards-after.txt`](data/experience-cards-after.txt)). With "each card as high as its text", the
 heights follow the content ([`data/experience-cards-content.txt`](data/experience-cards-content.txt)).
+
+### 4.8 The browser check of issue #45 failed after the new defaults (CI)
+
+The CI step "Verify the frame on every bordered element, the corner layer and the colour palettes" failed on chromium
+and firefox (WebKit was cancelled with them) in runs 41443656092, 41444969197, 41453238613 and 41455644189, the
+pushes of 635649e to ce57ce3; the first of them brought 4086d68. The logs are in `ci-logs/deploy-*.log`. Its third check sets `corner.controls: border`
+and expects the sample button to be a plain rectangle with no edge images. The new defaults of R2 give buttons
+corners of their own (`corner.buttonCorners own`), and a level with its own corners does not follow
+`corner.controls`, by design since issue #47. So the button kept its 6px dotted corners
+(run 41455644189: `"clip-path":"polygon(0px 6px, 6px 0px, …"`). The check now also sets
+`corner.buttonCorners: same` (the button follows the controls), which is the case it means to test. It passes
+locally on chromium (16 checks).
 
 ## 5. Research and existing solutions
 
