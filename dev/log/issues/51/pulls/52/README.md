@@ -54,6 +54,7 @@ errors (line 13978), a `::notice::` line produced by a unit test (line 13947), a
 | 9 | 206 `act()` warnings and 8 jsdom errors in "Run tests" | warning | Tests changed shared stores (language, settings) or blurred a slider while components were mounted, or finished before the Habr card fell back to its snapshot; `pdfChecks` called jsdom's unimplemented pseudo-element `getComputedStyle` | Those calls run inside `act()`, the App tests wait for the snapshot, the PDF check test answers pseudo-element styles like a browser; `src/setupTests.js` fails any test that prints `console.error`/`console.warn` | Full suite prints no stderr (section 4) |
 | 10 | No `.gitattributes` (both templates have one) | latent | Hooks and shell scripts could be checked out with CRLF on Windows | `*.sh text eol=lf`, `.husky/** text eol=lf` | `src/workflow.test.js` |
 | 11 | No dependency review on PRs (the JS template has one) | false negative | `npm audit` sees only the lockfile, not the actions a PR adds | `actions/dependency-review-action@v5` step in `checks` on pull requests (the dependency graph is enabled: the compare API answers for this PR) | `src/workflow.test.js` |
+| 12 | A run superseded by a newer push failed `pipeline-status` (run [41493732556](https://github.com/konard/konard.github.io/actions/runs/41493732556) on `0468e61`, log [`ci-logs/github-pages-41493732556.log`](ci-logs/github-pages-41493732556.log), found while this PR ran) | false positive | Every check job uses `cancel-in-progress: true` in a per-ref group, so the newer run cancelled the old webkit job; `test` was then skipped because it needs `network-browsers`, and the gate failed with "test: skipped; network-browsers: cancelled" on a commit nobody was waiting for | As in the JS template's `check-pipeline-status.sh`: the gate reads the head of the PR or branch with `git ls-remote`; when the run is no longer the head, a cancelled job whose concurrency sets `cancel-in-progress: true`, and any job skipped only because it needs one, is a `::warning::`. Failures, timeouts, `deploy` (no cancel-in-progress) and any cancellation of the current head still fail; an unreadable head counts as current | `src/ci-policy.test.js`; `experiments/issue-51/superseded-gate.sh` replays the real run ([`ci-logs/local-superseded-gate.log`](ci-logs/local-superseded-gate.log)): passes with warnings for `0468e61`, fails for the current head |
 
 Checked and left as they are:
 
@@ -95,6 +96,7 @@ Commits:
 | `58263da` | Day-scoped lychee cache (finding 6) |
 | `0468e61` | Dependency review, `.gitattributes` (findings 10, 11) |
 | `1e735d8` | `act()` and jsdom warnings, console guard (finding 9) |
+| (this commit) | Superseded runs warn instead of failing (finding 12) |
 
 ## 5. Existing components considered
 
@@ -131,6 +133,7 @@ Not shared with the templates, so nothing was filed for them:
 - Chunk-size warning: there is none in the template logs.
 - `act()` warnings: the templates have no React tests.
 - Plain-stderr pipeline-status failure: `scripts/check-pipeline-status.sh` already prints `::error title=Pipeline failed::`.
+- Superseded runs (finding 12): the JS template's `scripts/check-pipeline-status.sh` already turns cancellations by a newer commit into a warning; the fix here follows it. The Python template's `scripts/check-pipeline-status.sh` (`run_is_superseded`, `read-job-cancel-in-progress.sh`) does the same, so neither needs an issue.
 - Dependency review and `.gitattributes`: both templates already have them.
 
 The comparison also found template-only problems that this repository does not have: candidates A-E in

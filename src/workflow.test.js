@@ -194,6 +194,9 @@ describe('GitHub Actions best practices', () => {
     const { 'pipeline-status': gate, ...required } = doc.jobs;
     expect([...gate.needs].sort()).toEqual(Object.keys(required).sort());
     expect(gate.if).toContain('!cancelled()');
+    const verify = gate.steps.find((step) => (step.run || '').includes('check-pipeline-status.mjs'));
+    expect(verify.env.RUN_SHA).toContain('github.event.pull_request.head.sha');
+    expect(verify.env.HEAD_REF).toContain('refs/pull/{0}/head');
     expect(doc.on.pull_request).not.toHaveProperty('paths-ignore');
     expect(doc.on.schedule).toHaveLength(1);
     Object.values(doc.jobs).forEach((job) => {

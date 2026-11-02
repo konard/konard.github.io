@@ -544,3 +544,7 @@ jobs:
           CODE_CHANGED: ${{ needs.prepare.outputs.code }}
           DOCS_CHANGED: ${{ needs.prepare.outputs.docs }}
           SHOULD_DEPLOY: ${{ github.event_name != 'pull_request' && github.event_name != 'schedule' && github.ref == 'refs/heads/main' && needs.prepare.outputs.code == 'true' }}
+          # A newer push cancels this run's jobs through cancel-in-progress; the
+          # gate compares the commit it tests with the current head (issue #51).
+          RUN_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          HEAD_REF: ${{ github.event_name == 'pull_request' && format('refs/pull/{0}/head', github.event.number) || github.ref }}

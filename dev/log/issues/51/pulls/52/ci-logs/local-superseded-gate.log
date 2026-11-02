@@ -1,0 +1,12 @@
+--- superseded commit 0468e61
+This run tests 0468e61f4ae131a1c1b04ba55c6f5f64c621215b; refs/pull/52/head is at c11cdd735bd686bbd34277d6fea7f6e787525f79.
+::warning::test skipped: a newer commit superseded this run.
+::warning::network-browsers cancelled: a newer commit superseded this run.
+::notice::deploy skipped by its documented event/change condition.
+No job failed; the run for c11cdd735bd686bbd34277d6fea7f6e787525f79 checks what this one could not finish.
+exit 0
+--- current head
+This run tests c11cdd735bd686bbd34277d6fea7f6e787525f79; refs/pull/52/head is at c11cdd735bd686bbd34277d6fea7f6e787525f79.
+::notice::deploy skipped by its documented event/change condition.
+::error::Pipeline failed: test: skipped; network-browsers: cancelled
+exit 1
