@@ -26,7 +26,6 @@ const cornerFields = (part, en, ru) =>
 export const UI_SECTIONS = [
   {
     id: 'interface',
-    column: 2,
     title: { en: 'Interface controls', ru: 'Элементы интерфейса' },
     lead: {
       en: 'Buttons, menus, fields, tabs and tables share these controls. Menus are drawn by the site, including their popups. The page is a live preview.',
@@ -124,7 +123,6 @@ export const UI_SECTIONS = [
   },
   {
     id: 'borders',
-    column: 2,
     title: { en: 'Borders and accents', ru: 'Рамки и акценты' },
     fields: [
       range('ui.panelBorder', 1, 0, 8, 0.5, { en: 'Panel border width', ru: 'Толщина рамки панелей' }, { unit: 'px' }),
@@ -201,7 +199,6 @@ export const UI_SECTIONS = [
   },
   {
     id: 'tables',
-    column: 2,
     title: { en: 'Tables', ru: 'Таблицы' },
     fields: [
       range('ui.tablePadding', 8, 2, 24, 1, { en: 'Table cell padding', ru: 'Отступ ячеек таблицы' }, { unit: 'px' }),
@@ -230,7 +227,6 @@ export const UI_SECTIONS = [
   },
   {
     id: 'accessibility',
-    column: 2,
     title: { en: 'Comfort and accessibility', ru: 'Комфорт и доступность' },
     fields: [
       select(

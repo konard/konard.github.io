@@ -114,31 +114,25 @@ describe('settings page layout (issue #15)', () => {
       [...column.querySelectorAll(':scope > .settings__group')].map((group) => group.id),
     );
 
-  it('keeps every section in its own column whatever the skin', () => {
+  it('keeps the skin and every section before it in its column whatever the skin', () => {
     setSettings({ 'skin.name': 'glass', 'future.frame': 'corners' });
     render(<SettingsPage />);
-    // The background layers bottom up, then the skin: the beams and the rain start the second column; the sound ends the first.
-    const left = ['motion', 'nebula', 'stars', 'grid', 'sound'];
-    const right = (options) => [
-      'beams',
-      'rain',
-      'skin',
-      options,
-      'interface',
-      'borders',
-      'tables',
-      'accessibility',
-      'avatar',
-      'theory',
-    ];
-    expect(columns()).toEqual([left, right('glass')]);
+    // Issue #49: the sections fill the shorter column in order (./settingsColumns.js), so a section
+    // is placed by the sections before it only and the skin section never jumps (issue #15).
+    const first = columns();
+    const columnOf = (cols, id) => cols.findIndex((column) => column.includes(id));
+    const before = ['motion', 'nebula', 'stars', 'grid', 'beams', 'rain', 'sound', 'skin'];
     for (const [skin, options] of [
       ['liquid', 'liquid'],
       ['futuristic', 'futuristic'],
       ['glass', 'glass'],
     ]) {
       chooseSelect(screen.getByRole('combobox', { name: 'Skin' }), skin);
-      expect(columns()).toEqual([left, right(options)]);
+      const now = columns();
+      expect(now).toHaveLength(2);
+      for (const id of before) expect([id, columnOf(now, id)]).toEqual([id, columnOf(first, id)]);
+      expect(now.flat()).toContain(options);
+      expect(now.every((column) => column.length > 0)).toBe(true);
     }
   });
 

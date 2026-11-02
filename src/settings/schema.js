@@ -44,7 +44,6 @@ const SECTION_LIST = [
   AVATAR_SECTION,
   {
     id: 'theory',
-    column: 2,
     title: { en: 'Links theory notation', ru: 'Нотация теории связей' },
     lead: {
       en: 'The English draft 0.0.2 of the links meta-theory writes links as L → L²; the latest draft 0.0.3 renames links to references and writes R → R².',

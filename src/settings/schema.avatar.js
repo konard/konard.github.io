@@ -17,7 +17,6 @@ const shapes = [
 
 export const AVATAR_SECTION = {
   id: 'avatar',
-  column: 2,
   title: { en: 'Photo and ring', ru: 'Фото и кольцо' },
   lead: {
     en: 'The photo on the home page and the ring that turns under it. The animations button of the top bar and the motion setting stop the turning; the angle stays.',

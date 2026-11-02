@@ -156,7 +156,6 @@ export const BACKGROUND_SECTIONS = [
   },
   {
     id: 'rain',
-    column: 2,
     title: { en: 'Rain of link networks', ru: 'Дождь из сетей связей' },
     fields: [
       toggle('rain.on', true, { en: 'Show the rain', ru: 'Показывать дождь' }),

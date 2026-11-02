@@ -294,7 +294,6 @@ const controlMode = (level) =>
 export const SKIN_SECTIONS = [
   {
     id: 'skin',
-    column: 2,
     title: { en: 'Skin', ru: 'Оформление' },
     lead: {
       en: 'The look of panels, cards, buttons and headings. Every skin works in the light and the dark theme.',
@@ -319,7 +318,6 @@ export const SKIN_SECTIONS = [
   },
   {
     id: 'glass',
-    column: 2,
     title: { en: 'Glass', ru: 'Стекло' },
     when: (s) => s['skin.name'] === 'glass',
     fields: [
@@ -359,7 +357,6 @@ export const SKIN_SECTIONS = [
   },
   {
     id: 'liquid',
-    column: 2,
     title: { en: 'Liquid glass', ru: 'Жидкое стекло' },
     lead: {
       en: 'Thick, bright glass after Apple’s Liquid Glass: strong blur and saturation, light catching the edges, floating capsules.',
@@ -412,7 +409,6 @@ export const SKIN_SECTIONS = [
   },
   {
     id: 'futuristic',
-    column: 2,
     title: { en: 'Futuristic', ru: 'Футуристичное' },
     lead: {
       en: 'Angular HUD panels in the style of konard/immortality: thin neon frames with cut corners, glowing accents, technical fonts.',
@@ -572,7 +568,6 @@ export const SKIN_SECTIONS = [
   },
   {
     id: 'corners',
-    column: 2,
     title: { en: 'Corners of the frame', ru: 'Углы рамки' },
     lead: {
       en: 'Every corner of the panels has its own shape, size and line; the tiles show how the corner will look. The bracket length and the line width are the ones of the futuristic skin. Inner blocks and every type of control draw the corners of the outer panels in their scale, or corners of their own.',

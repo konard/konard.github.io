@@ -159,7 +159,6 @@ export const LAYER_SECTIONS = [
   },
   {
     id: 'beams',
-    column: 2,
     title: { en: 'Beams', ru: 'Лучи' },
     lead: {
       en: 'Light running along the grid lines, across or down the screen.',

@@ -1,0 +1,20 @@
+settings__column left 130 top 0 width 582 height 3230
+   motion         top      0 height   258 estimate 182
+   nebula         top    274 height   939 estimate 920
+   stars          top   1229 height  1229 estimate 1168
+   grid           top   2474 height   541 estimate 528
+   sound          top   3031 height   199 estimate 204
+settings__column left 728 top 0 width 582 height 8749
+   beams          top      0 height   715 estimate 712
+   rain           top    731 height   886 estimate 848
+   skin           top   1633 height   177 estimate 160
+   futuristic     top   1826 height  1301 estimate 1276
+   corners        top   3143 height  1242 estimate 1336
+   interface      top   4400 height  2448 estimate 2446
+   borders        top   6865 height   592 estimate 576
+   tables         top   7472 height   359 estimate 346
+   accessibility  top   7847 height   126 estimate 116
+   avatar         top   7989 height   567 estimate 548
+   theory         top   8572 height   177 estimate 160
+settings__group settings__share left 130 top 8765 width 1180 height 396
+column heights 3230 / 8749; empty under the shorter one: 5519px
