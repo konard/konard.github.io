@@ -3,8 +3,10 @@ import App from '../App';
 import { RepoItem } from './RepoList';
 import { Story } from '../pages/BlogPage';
 
-it('shows a daily contribution calendar and personal open-source code totals', () => {
+it('shows a daily contribution calendar and personal open-source code totals', async () => {
   const { container } = render(<App />);
+  // Habr is unreachable in tests: let its card fall back to the snapshot inside act() (issue #51).
+  await screen.findByText(/^snapshot of/);
   expect(container.querySelectorAll('.contribution-calendar__day').length).toBeGreaterThanOrEqual(365);
   expect(screen.getByRole('heading', { name: 'My open-source code' })).toBeInTheDocument();
   expect(screen.getByText(/Closed-source experience/)).toBeInTheDocument();

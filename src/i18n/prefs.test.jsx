@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { THEME_SCRIPT } from '../../vite.config';
 import PrefSwitches from '../components/PrefSwitches';
@@ -72,7 +72,8 @@ describe('switches', () => {
     expect(window.localStorage.getItem('lang')).toBe('ru');
     expect(window.location.search).toContain('lang=ru');
     expect(screen.getByRole('button', { name: 'RU' })).toHaveAttribute('aria-pressed', 'true');
-    setLang('en');
+    // Both components are still mounted and follow the language (issue #51).
+    act(() => setLang('en'));
     window.history.replaceState(null, '', '/');
   });
 

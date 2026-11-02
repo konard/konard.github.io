@@ -222,7 +222,8 @@ describe('beams on the grid lines (issue #15)', () => {
 });
 
 describe('the background loads the code of a layer only when it is on (issue #15)', () => {
-  afterEach(() => resetSettings(undefined, { save: false }));
+  // Cosmos is still mounted and follows the settings (issue #51).
+  afterEach(() => act(() => resetSettings(undefined, { save: false })));
 
   it('has no star or beam canvas by default and adds them when switched on', async () => {
     resetSettings(undefined, { save: false });

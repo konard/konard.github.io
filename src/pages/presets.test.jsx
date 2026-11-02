@@ -54,7 +54,7 @@ describe('presets (issue #15)', () => {
     const section = presets();
     expect(within(section).getByText(/Nothing yet/)).toBeInTheDocument();
 
-    setSettings({ 'grid.size': 96 });
+    act(() => setSettings({ 'grid.size': 96 }));
     fireEvent.change(within(section).getByRole('textbox', { name: 'Name of the look' }), {
       target: { value: 'Big grid' },
     });

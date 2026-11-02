@@ -1,5 +1,5 @@
 import { chooseSelect } from '../test/select';
-import { fireEvent, render, screen, within } from '@testing-library/react';
+import { act, fireEvent, render, screen, within } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import Layout from '../components/Layout';
 import { readStored } from '../settings/notation';
@@ -186,6 +186,7 @@ describe('settings page layout (issue #15)', () => {
     chooseSelect(within(grid).getByRole('combobox', { name: 'Colour' }), 'custom');
     expect(within(grid).getByLabelText('My colour')).toBeInTheDocument();
     expect(root.style.getPropertyValue('--grid-color')).toBe('#7efcf6');
-    setSettings(DEFAULTS, { save: false });
+    // The page is still mounted and follows the settings (issue #51).
+    act(() => setSettings(DEFAULTS, { save: false }));
   });
 });

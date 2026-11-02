@@ -1,4 +1,4 @@
-import { render, screen, within } from '@testing-library/react';
+import { act, render, screen, within } from '@testing-library/react';
 import { afterEach, describe, expect, it } from 'vitest';
 import github from '../data/github.lino';
 import habr from '../data/habr.lino';
@@ -14,7 +14,8 @@ const languageSkills = skillGroups.find((g) => g.id === 'languages').items;
 const detected = new Set(github.languages.map((l) => l.name));
 
 describe('numbers that agree with each other (issue #47)', () => {
-  afterEach(() => setLang('en'));
+  // The language store re-renders whatever is still mounted, so switch inside act() (issue #51).
+  afterEach(() => act(() => setLang('en')));
 
   it('does not count a skill again when GitHub detects it under its linguist name', () => {
     const others = undetectedLanguages(github.languages, languageSkills);
@@ -71,7 +72,7 @@ describe('numbers that agree with each other (issue #47)', () => {
     expect(empty).not.toContain('Homebrew taps');
     expect(note).toContain(`Nothing published on ${empty.join(', ')}.`);
     expect(note).toContain('Homebrew taps: only packages from repositories that are not original, not counted.');
-    setLang('ru');
+    act(() => setLang('ru'));
     const ru = render(<Registries registries={github.registries} summary={github.packageRegistries} />);
     expect(ru.container.querySelector('.registries__note').textContent).toContain(
       'Homebrew taps: только пакеты из несобственных репозиториев, они не учитываются.',

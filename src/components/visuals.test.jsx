@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { act, render, screen, waitFor } from '@testing-library/react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import habr from '../data/habr.lino';
 import { mergeHabr } from '../data/habrLive';
@@ -174,7 +174,8 @@ describe('background follows the settings at once (issue #13)', () => {
   afterEach(() => {
     vi.unstubAllGlobals();
     vi.useRealTimers();
-    resetSettings(undefined, { save: false });
+    // A test may leave Cosmos mounted, and it follows the settings (issue #51).
+    act(() => resetSettings(undefined, { save: false }));
   });
 
   const recorder = () => {
