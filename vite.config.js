@@ -75,6 +75,23 @@ export const linoData = () => ({
   },
 });
 
+// Vite only warns about a chunk above build.chunkSizeWarningLimit (500 kB), and
+// the warning never fails the build, so a 507 kB chunk went unnoticed on main
+// (issue #51). The same limit, measured the same way, now fails the build.
+export const CHUNK_LIMIT_KB = 500;
+export const chunkBudget = (limitKb = CHUNK_LIMIT_KB) => ({
+  name: 'chunk-budget',
+  writeBundle(_options, bundle) {
+    const large = Object.values(bundle)
+      .filter((file) => file.type === 'chunk' && file.code.length / 1000 > limitKb)
+      .map((file) => `${file.fileName} (${(file.code.length / 1000).toFixed(2)} kB)`);
+    if (large.length)
+      this.error(
+        `Chunks larger than ${limitKb} kB: ${large.join(', ')}. Split them with build.rolldownOptions.output.codeSplitting or dynamic import().`,
+      );
+  },
+});
+
 const themeBeforePaint = () => ({
   name: 'theme-before-paint',
   transformIndexHtml: () => [{ tag: 'script', children: THEME_SCRIPT + SETTINGS_SCRIPT, injectTo: 'head-prepend' }],
@@ -83,9 +100,10 @@ const themeBeforePaint = () => ({
 // The site is served from the root of https://konard.github.io, and the
 // deploy job publishes build/ with the Pages deployment API (see .github/workflows/github-pages.yml).
 export default defineConfig({
-  plugins: [react(), linoData(), themeBeforePaint(), buildIdentity()],
+  plugins: [react(), linoData(), themeBeforePaint(), buildIdentity(), chunkBudget()],
   build: {
     outDir: 'build',
+    chunkSizeWarningLimit: CHUNK_LIMIT_KB,
     sourcemap: true,
     rolldownOptions: {
       input,
