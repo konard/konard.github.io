@@ -41,8 +41,9 @@ describe('issue 39 regressions', () => {
       'nebula.zoom': 0.55,
       'nebula.starSize': 0.5,
       'nebula.starColor': '#00c7fc',
-      'sound.on': true,
     });
+    // The sounds were on in issue #39; issue #49 made them a choice of the visitor, off by default.
+    expect(DEFAULTS['sound.on']).toBe(false);
   });
 
   it('migrates the old transparent surface to solid with zero opacity', () => {

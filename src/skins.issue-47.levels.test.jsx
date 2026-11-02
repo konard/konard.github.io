@@ -12,6 +12,7 @@ import { describe, expect, it } from 'vitest';
 import SettingsPage from './pages/SettingsPage';
 import { applySettings } from './settings/apply';
 import { CSS_RULES, DEFAULTS, FIELDS, SECTIONS } from './settings/schema';
+import { LOOK_49 } from './settings/schema.defaults';
 import { cornerKey, LEVEL_IDS, levelKey } from './settings/schema.skins';
 import { getSettings, setSettings } from './settings/store';
 import { CONTROL_TYPES, CORNERS, INNER, LINES, SHAPES } from './skins.frames';
@@ -24,7 +25,8 @@ const LEVELS = ['block', ...Object.keys(CONTROL_TYPES)];
 
 describe('separate corners of the frame for every level (issue #47)', () => {
   it('has a level for inner blocks and for every type of control', () => {
-    expect(LEVEL_IDS).toEqual(['panel', 'block', 'button', 'field', 'tab', 'chip', 'menu', 'table']);
+    // Issue #49 added the top-level and the second-level menu.
+    expect(LEVEL_IDS).toEqual(['panel', 'block', 'button', 'field', 'tab', 'chip', 'menu', 'nav', 'subnav', 'table']);
     const corners = SECTIONS.find((section) => section.id === 'corners');
     expect(corners.levels.map((level) => level.id)).toEqual(LEVEL_IDS);
   });
@@ -35,8 +37,10 @@ describe('separate corners of the frame for every level (issue #47)', () => {
         const shape = field(cornerKey(level, corner, 'Shape'));
         expect([level, corner, shape?.options.map((o) => o.value)]).toEqual([level, corner, Object.keys(SHAPES)]);
         expect(field(cornerKey(level, corner, 'Line')).options.map((o) => o.value)).toEqual(LINES);
-        // −1 follows the outer panels (the size in the scale of the level).
-        expect(field(cornerKey(level, corner, 'Size')).d).toBe(-1);
+        // −1 follows the outer panels (the size in the scale of the level);
+        // issue #49 gave the buttons and drop-down lists small corners of 6px.
+        const size = ['button', 'menu'].includes(level) && LOOK_49[cornerKey(level, corner, 'Size')];
+        expect([level, corner, field(cornerKey(level, corner, 'Size')).d]).toEqual([level, corner, size || -1]);
         expect(field(cornerKey(level, corner, 'Width')).d).toBe(-1);
         expect(field(cornerKey(level, corner, 'Shape'))).toMatchObject({ level, corner, tab: corner });
       }
@@ -57,8 +61,11 @@ describe('separate corners of the frame for every level (issue #47)', () => {
     for (const level of Object.keys(CONTROL_TYPES))
       expect(field(levelKey(level, 'Corners')).options.map((o) => o.value)).toEqual(['same', 'own', 'border']);
     expect(field('corner.blocks').options.map((o) => o.value)).toEqual(['frame', 'own', 'line']);
-    // Nothing changes by default: tables keep their border, as before.
-    expect(DEFAULTS['corner.buttonCorners']).toBe('same');
+    // Tables keep their border, as before; issue #49 gave the buttons and the
+    // drop-down lists corners of their own, the other controls follow them all.
+    expect(DEFAULTS['corner.buttonCorners']).toBe('own');
+    expect(DEFAULTS['corner.menuCorners']).toBe('own');
+    expect(DEFAULTS['corner.fieldCorners']).toBe('same');
     expect(DEFAULTS['corner.tableCorners']).toBe('border');
     expect(DEFAULTS['corner.blocks']).toBe('frame');
   });
@@ -132,13 +139,18 @@ describe('the settings of the levels on the page (issue #47)', () => {
     expect(root.style.getPropertyValue('--corner-button-top-width')).toBe('2px');
     expect(root.getAttribute('data-corner-button-corners')).toBe('own');
     expect(root.getAttribute('data-corner-button-tl-shape')).toBe('round');
-    applySettings(root, CSS_RULES, { ...DEFAULTS });
+    applySettings(root, CSS_RULES, { ...DEFAULTS, 'corner.buttonTlSize': -1, 'corner.buttonTopWidth': -1 });
     expect(root.style.getPropertyValue('--corner-button-tl-size')).toBe('');
     expect(root.style.getPropertyValue('--corner-button-top-width')).toBe('');
   });
 
   it('shows the corners of a level in its tab once it has its own, and starts them from the panels', () => {
-    setSettings({ 'skin.name': 'futuristic', 'future.frame': 'custom', 'corner.tlShape': 'notch' });
+    setSettings({
+      'skin.name': 'futuristic',
+      'future.frame': 'custom',
+      'corner.tlShape': 'notch',
+      'corner.buttonCorners': 'same',
+    });
     render(<SettingsPage />);
     const section = document.getElementById('corners');
     const levels = within(section).getByRole('tablist', { name: 'Levels' });
@@ -146,7 +158,18 @@ describe('the settings of the levels on the page (issue #47)', () => {
       within(levels)
         .getAllByRole('tab')
         .map((tab) => tab.textContent),
-    ).toEqual(['Outer panels', 'Inner blocks', 'Buttons', 'Fields', 'Tabs', 'Chips and tags', 'Menus', 'Tables']);
+    ).toEqual([
+      'Outer panels',
+      'Inner blocks',
+      'Buttons',
+      'Fields',
+      'Tabs',
+      'Chips and tags',
+      'Drop-down lists',
+      'Top-level menu',
+      'Second-level menu',
+      'Tables',
+    ]);
     fireEvent.click(within(levels).getByRole('tab', { name: 'Buttons' }));
     const panel = document.getElementById('corners-level');
     // The buttons follow all controls: no corners of their own yet.

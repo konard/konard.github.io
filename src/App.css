@@ -82,7 +82,8 @@ main {
   width: 180px;
   height: 180px;
   border-radius: 50%;
-  border: 2px solid var(--surface);
+  /* avatar.photoBorder (issue #49). */
+  border: var(--avatar-photo-border, 2px) solid var(--surface);
   position: relative;
 }
 

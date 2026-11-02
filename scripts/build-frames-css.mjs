@@ -2,11 +2,13 @@
 // src/skins.frames.properties.css (issues #15 and #45) and the stylesheet of
 // every level, src/skins.frames.level-<level>.css (issue #47), from
 // src/skins.frames.js and src/skins.frames.levels.js, and the corners by the size of
-// the element, src/skins.frames.fit.css (issue #47), from src/skins.frames.fit.js.
+// the element, src/skins.frames.fit.css (issue #47), from src/skins.frames.fit.js,
+// and src/ui.borders.css (issue #49) from src/ui.borders.js.
 import { writeFileSync } from 'node:fs';
 import { cornersCss, framesCss, propertiesCss } from '../src/skins.frames.js';
 import { LEVEL_FILES, levelCss } from '../src/skins.frames.levels.js';
 import { fitCss } from '../src/skins.frames.fit.js';
+import { bordersCss } from '../src/ui.borders.js';
 
 for (const [name, css] of [
   ['skins.frames.css', framesCss()],
@@ -14,6 +16,7 @@ for (const [name, css] of [
   ['skins.frames.properties.css', propertiesCss()],
   ...LEVEL_FILES.map(([file, level]) => [file, levelCss(level)]),
   ['skins.frames.fit.css', fitCss()],
+  ['ui.borders.css', bordersCss()],
 ]) {
   const out = new URL(`../src/${name}`, import.meta.url);
   writeFileSync(out, css);

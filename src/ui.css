@@ -76,7 +76,8 @@
     cursor: not-allowed;
   }
   :root:root :focus-visible {
-    outline: var(--ui-focus-width) solid var(--accent);
+    /* Its colour and style are settings too (issue #49, src/ui.borders.js). */
+    outline: var(--ui-focus-width) var(--ui-focus-style, solid) var(--ui-focus-color, var(--accent));
     outline-offset: var(--ui-focus-offset);
   }
   :root:root
@@ -112,7 +113,9 @@
       .network__preview,
       .link-card,
       .preset,
-      .ui-preview__panel
+      .ui-preview__panel,
+      .profession,
+      .contribution-calendar
     ) {
     border-radius: var(--ui-panel-corners);
     border-width: var(--ui-panel-width, var(--ui-panel-border));
@@ -233,7 +236,9 @@
       .network__preview,
       .link-card,
       .preset,
-      .ui-preview__panel
+      .ui-preview__panel,
+      .profession,
+      .contribution-calendar
     ) {
     overflow: clip;
   }
@@ -472,7 +477,7 @@
     background: var(--chip);
   }
   :root:root .ui-color__chip[aria-pressed='true'] {
-    outline: 2px solid var(--chip);
+    outline: var(--ui-chosen-width, 2px) solid var(--chip);
     outline-offset: 1px;
   }
   /* A colour drawn by a child, so the fill, the hover and the frame of the

@@ -1,0 +1,26 @@
+32 kinds of bordered elements with the futuristic skin, 25 that no setting changes:
+  nav.nav [Top]  in topbar  on / /experience/ /repositories/ /research/ /blog/ /art/ /network/ /associative/ /settings/
+  img [Top Right Bottom Left]  in hero__avatar  on /
+  p.hero__kicker [Top Right Bottom Left]  in hero__text  on /
+  li.timeline__row [Top]  in timeline__rows  on / /experience/
+  div.contribution-calendar [Top Right Bottom Left]  in section   on /
+  span.habr__status.habr__status--loading [Top Right Bottom Left]  in habr__summary  on /
+  dl.habr-card__stats [Top]  in habr-card  on /
+  footer.footer [Top]  in app  on / /cv/ /experience/ /repositories/ /research/ /blog/ /art/ /network/ /associative/ /settings/
+  div.cv-paper [Top Right Bottom Left]  in MAIN  on /cv/
+  h2.cv__heading [Bottom]  in cv__section cv__section--profile  on /cv/
+  article.profession [Top Right Bottom Left]  in profession-grid  on /experience/ /repositories/ /research/
+  header.post__head [Bottom]  in post  on /blog/
+  details.post__fallback [Top]  in post  on /blog/
+  div.link-gaps.link-card__geometry.link-card__fields [Top]  in link-card  on /network/
+  li.setting.setting--select [Top]  in settings__fields  on /network/ /settings/
+  li.setting.setting--range [Top]  in settings__fields  on /network/ /settings/
+  li.setting.setting--toggle [Top]  in settings__fields  on /network/ /settings/
+  li.setting.setting--color [Top]  in settings__fields  on /network/ /settings/
+  span.preset__panel.preset__panel--futuristic [Top Right Bottom Left]  in preset__mini  on /settings/
+  span.preset__panel.preset__panel--glass [Top Right Bottom Left]  in preset__mini  on /settings/
+  span.preset__panel.preset__panel--liquid [Top Right Bottom Left]  in preset__mini  on /settings/
+  figure.level-preview [Top Right Bottom Left]  in settings__group  on /settings/
+  li.setting.setting--tiles [Top]  in settings__fields  on /settings/
+  button.palettes__chip [ outline]  in palettes  on /settings/
+  pre.settings__json.mono [Top Right Bottom Left]  in settings__group settings__share  on /settings/

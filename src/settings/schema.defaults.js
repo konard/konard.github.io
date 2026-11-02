@@ -5,7 +5,7 @@
 // preset (./presets.js). Settings added by issue #45 for the frames have
 // defaults that keep the old looks unchanged; the values chosen for the new
 // default look are at the end.
-export const DEFAULT_LOOK = {
+export const LOOK_45 = {
   // The settings of the issue, in its order.
   'nebula.gas': 0.5,
   'nebula.hue': -100,
@@ -48,3 +48,42 @@ export const DEFAULT_LOOK = {
   'ui.sliderTrack': 12,
   'ui.borderStyle': 'dashed',
 };
+
+/**
+ * Issue #49 ("Make these defaults"): no motion and no sound until a visitor
+ * switches them on. They are comfort settings that presets never change.
+ */
+export const COMFORT_49 = {
+  'motion.mode': 'off',
+  'sound.on': false,
+};
+
+/**
+ * Issue #49: own small corners for the buttons and for the drop-down lists
+ * (the frame level that was called "Menus"), in the order of the issue. The
+ * "Glass universe" preset returns them to what they were, like the look of
+ * issue #45.
+ */
+export const LOOK_49 = {
+  'corner.buttonCorners': 'own',
+  'corner.menuCorners': 'own',
+  'corner.buttonEdgeStyle': 'dotted',
+  'corner.buttonTlLine': 'accent',
+  'corner.buttonTlSize': 6,
+  'corner.buttonTrSize': 6,
+  'corner.buttonBrShape': 'square',
+  'corner.buttonBrSize': 6,
+  'corner.buttonBlLine': 'accent',
+  'corner.buttonBlSize': 6,
+  'corner.menuEdges': 'none',
+  'corner.menuEdgeStyle': 'solid',
+  'corner.menuTlShape': 'square',
+  'corner.menuTlSize': 6,
+  'corner.menuTrSize': 6,
+  'corner.menuBrShape': 'square',
+  'corner.menuBrSize': 6,
+  'corner.menuBlSize': 6,
+};
+
+/** The default look: the look of issue #45, the corners of issue #49 and its comfort settings. */
+export const DEFAULT_LOOK = { ...LOOK_45, ...LOOK_49, ...COMFORT_49 };

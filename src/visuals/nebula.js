@@ -118,7 +118,8 @@ export const rgbOf = (hex) => [1, 3, 5].map((at) => parseInt(String(hex).slice(a
 
 /**
  * Starts the nebula on `canvas`; returns a stop function whose `update(options)`
- * changes any option of NEBULA except `animate` on the fly. Returns a no-op where
+ * changes any option of NEBULA except `animate` on the fly, and whose
+ * `animate(on)` stops or starts the motion. Returns a no-op where
  * WebGL is not available (old browsers, tests), leaving the CSS fallback visible.
  */
 export function startNebula(canvas, options = {}) {
@@ -225,6 +226,21 @@ export function startNebula(canvas, options = {}) {
     Object.assign(o, next, { animate: o.animate });
     if (o.scale !== scale) resize();
     render(performance.now());
+  };
+  /**
+   * Stops or starts the motion on the next frame (issue #49): the picture
+   * stays as it is, nothing is compiled or drawn again, and the clocks go on
+   * from where they stood.
+   */
+  stop.animate = (on) => {
+    if (o.animate === Boolean(on)) return;
+    o.animate = Boolean(on);
+    cancelAnimationFrame(frame);
+    frame = 0;
+    clock = performance.now();
+    // The pause is not a slow frame for the governor.
+    previous = 0;
+    if (o.animate) frame = requestAnimationFrame(loop);
   };
   return stop;
 }

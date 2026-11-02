@@ -1,0 +1,4 @@
+91 kinds of bordered elements with the glass skin, 3 that no setting changes:
+  span.preset__panel.preset__panel--futuristic [Top Right Bottom Left]  in preset__mini  on /settings/  (excluded on purpose)
+  span.preset__panel.preset__panel--glass [Top Right Bottom Left]  in preset__mini  on /settings/  (excluded on purpose)
+  span.preset__panel.preset__panel--liquid [Top Right Bottom Left]  in preset__mini  on /settings/  (excluded on purpose)

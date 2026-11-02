@@ -37,7 +37,8 @@ export const lineFor = (span, grid, snap, random) =>
 
 /**
  * Starts the beams on `canvas`; returns a stop function whose `update(options)`
- * changes any option of BEAMS except `animate`. Does nothing without Canvas 2D.
+ * changes any option of BEAMS except `animate`, and whose `animate(on)` stops or
+ * starts the motion. Does nothing without Canvas 2D.
  */
 export function startBeams(canvas, options = {}) {
   const o = { ...BEAMS, random: Math.random, ...options };
@@ -192,6 +193,17 @@ export function startBeams(canvas, options = {}) {
     if (o.direction !== direction || o.grid !== grid || o.snap !== snap || o.both !== both) beams = [];
     fill();
     render();
+  };
+  /** Stops or starts the motion on the next frame: the beams stop where they are and go on from there (issue #49). */
+  stop.animate = (on) => {
+    if (o.animate === Boolean(on)) return;
+    o.animate = Boolean(on);
+    cancelAnimationFrame(frame);
+    frame = 0;
+    last = 0;
+    // The pause is not a slow frame for the governor.
+    previous = 0;
+    if (o.animate) frame = requestAnimationFrame(loop);
   };
   /** The beams as they are now, for tests. */
   stop.beams = () => beams;

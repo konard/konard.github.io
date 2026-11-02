@@ -7,7 +7,9 @@ import './settings.css';
 import Layout from '../components/Layout';
 import { previewSound } from '../components/Sound';
 import { CornerTiles, SameCorners } from './CornerTiles';
+import LevelPreview from './LevelPreview';
 import Presets from './Presets';
+import { placeSections } from './settingsColumns';
 import { useLang } from '../i18n/prefs';
 import { plural } from '../i18n/plural';
 import { getSaved, readPasted, setSaved, withImported } from '../settings/presets';
@@ -28,8 +30,9 @@ export { formatValue };
 // Two explicit columns instead of CSS multi-column layout (issue #15): with
 // multicol the browser rebalanced the sections whenever the skin section
 // changed size, so Skin jumped between the columns, and Safari laid them out in
-// one column or with uneven tops. Each section now names its column.
-const COLUMNS = [1, 2];
+// one column or with uneven tops. The sections fill the shorter column in order
+// (issue #49: the right column was 5519px longer than the left one), see
+// ./settingsColumns.js.
 
 const visibleSections = (settings) => SECTIONS.filter((section) => !section.when || section.when(settings));
 
@@ -218,6 +221,8 @@ function Group({ section, settings }) {
           isOn={(id) => id !== section.levels[0].id && ownsCorners(id, settings)}
         />
       )}
+      {/* Issue #49: the samples of the chosen level stay in sight while its settings scroll. */}
+      {section.id === 'corners' && <LevelPreview level={level} />}
       <div
         {...(section.levels && { id: `${section.id}-level`, role: 'tabpanel', 'aria-labelledby': `level-${level}` })}
       >
@@ -334,13 +339,11 @@ export default function SettingsPage() {
         <Presets settings={settings} />
 
         <div className="settings__groups">
-          {COLUMNS.map((column) => (
-            <div key={column} className="settings__column">
-              {sections
-                .filter((section) => (section.column || 1) === column)
-                .map((section) => (
-                  <Group key={section.id} section={section} settings={settings} />
-                ))}
+          {placeSections(sections).map((column, index) => (
+            <div key={index} className="settings__column">
+              {column.map((section) => (
+                <Group key={section.id} section={section} settings={settings} />
+              ))}
             </div>
           ))}
 

@@ -43,8 +43,8 @@ export const settingsText = writeStored;
 let current = loadSettings();
 const listeners = new Set();
 
-const apply = () => {
-  if (browser) applySettings(document.documentElement, CSS_RULES, current);
+const apply = (previous) => {
+  if (browser) applySettings(document.documentElement, CSS_RULES, current, previous);
 };
 
 const save = () => {
@@ -60,8 +60,9 @@ const save = () => {
 const replace = (next, remember) => {
   const changed = Object.keys(next).some((key) => next[key] !== current[key]);
   if (!changed) return;
+  const previous = current;
   current = next;
-  apply();
+  apply(previous);
   if (remember) save();
   listeners.forEach((listener) => listener());
 };

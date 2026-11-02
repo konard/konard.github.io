@@ -54,6 +54,33 @@ const ISSUE_45 = {
   'ui.borderStyle': 'dashed',
 };
 
+/** The defaults issue #49 asked for ("Make these defaults"), in its order. */
+const ISSUE_49 = {
+  'motion.mode': 'off',
+  'sound.on': false,
+  'corner.buttonCorners': 'own',
+  'corner.menuCorners': 'own',
+  'corner.buttonEdgeStyle': 'dotted',
+  'corner.buttonTlLine': 'accent',
+  'corner.buttonTlSize': 6,
+  'corner.buttonTrSize': 6,
+  'corner.buttonBrShape': 'square',
+  'corner.buttonBrSize': 6,
+  'corner.buttonBlLine': 'accent',
+  'corner.buttonBlSize': 6,
+  'corner.menuEdges': 'none',
+  'corner.menuEdgeStyle': 'solid',
+  'corner.menuTlShape': 'square',
+  'corner.menuTlSize': 6,
+  'corner.menuTrSize': 6,
+  'corner.menuBrShape': 'square',
+  'corner.menuBrSize': 6,
+  'corner.menuBlSize': 6,
+};
+
+/** The comfort settings among them: no look keeps them (src/settings/presets.js). */
+const COMFORT = ['motion.mode', 'sound.on'];
+
 /** The changes the author of issue #15 copied from the settings page; they became the defaults until issue #45. */
 const ISSUE_15 = {
   'nebula.level': 0.5,
@@ -97,14 +124,26 @@ describe('settings schema (issue #13)', () => {
   });
 
   it('uses the look of issue #45 as the defaults, so that look saves as no changes', () => {
-    expect(DEFAULT_LOOK).toEqual(ISSUE_45);
+    expect(DEFAULT_LOOK).toEqual({ ...ISSUE_45, ...ISSUE_49 });
     expect(DEFAULTS).toMatchObject(ISSUE_45);
     expect(changesOf(normalize(RULES, ISSUE_45))).toEqual({});
   });
 
+  it('uses the settings of issue #49 as the defaults, so they save as no changes', () => {
+    expect(DEFAULTS).toMatchObject(ISSUE_49);
+    expect(changesOf(normalize(RULES, { ...ISSUE_45, ...ISSUE_49 }))).toEqual({});
+    // Every key and value of the issue is a known setting with a valid value.
+    expect(normalize(RULES, ISSUE_49)).toMatchObject(ISSUE_49);
+  });
+
   it('keeps the previous defaults of the changed settings for the Glass universe preset', () => {
-    expect(Object.keys(PREVIOUS_DEFAULTS).sort()).toEqual(Object.keys(ISSUE_45).sort());
-    expect(Object.entries(PREVIOUS_DEFAULTS).filter(([key, value]) => ISSUE_45[key] === value)).toEqual([]);
+    const look = Object.keys({ ...ISSUE_45, ...ISSUE_49 }).filter((key) => !COMFORT.includes(key));
+    expect(Object.keys(PREVIOUS_DEFAULTS).sort()).toEqual(look.sort());
+    expect(Object.entries(PREVIOUS_DEFAULTS).filter(([key, value]) => DEFAULTS[key] === value)).toEqual([]);
+    // Before issue #49 the animations followed the system and the sounds were on.
+    expect(FIELDS.find((field) => field.key === 'motion.mode').d).toBe('off');
+    expect(PREVIOUS_DEFAULTS).not.toHaveProperty('motion.mode');
+    expect(PREVIOUS_DEFAULTS).toMatchObject({ 'corner.buttonCorners': 'same', 'corner.menuCorners': 'same' });
   });
 
   it('keeps issue #15 defaults with the twinkle override requested in issue #39 before issue #45', () => {
@@ -114,8 +153,9 @@ describe('settings schema (issue #13)', () => {
   });
 
   it('keeps the rest of the look of the site before settings existed until issue #45', () => {
+    // The motion is a comfort setting: issue #49 turned it off for every look.
+    expect(FIELDS.find((field) => field.key === 'motion.mode').d).toBe('off');
     expect(BEFORE_45).toMatchObject({
-      'motion.mode': 'auto',
       'rain.padding': 0,
       'rain.minLinks': 1,
       'rain.maxLinks': 4,

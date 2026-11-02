@@ -129,8 +129,13 @@ try {
   }
 
   // 3. Plain lines for inner blocks and plain borders for controls; outer panels keep the frame.
+  // Buttons have corners of their own by default since issue #49, so they are set to follow the controls.
   {
-    const page = await open('/settings/', { 'corner.blocks': 'line', 'corner.controls': 'border' });
+    const page = await open('/settings/', {
+      'corner.blocks': 'line',
+      'corner.controls': 'border',
+      'corner.buttonCorners': 'same',
+    });
     await page.locator('.ui-samples').evaluate((node) => node.scrollIntoView({ block: 'start' }));
     const outer = (await style(page, '.ui-samples .card.ui-samples__panel', ['clip-path']))['clip-path'];
     const inner = (await style(page, '.ui-samples .card .repo', ['clip-path']))['clip-path'];

@@ -238,7 +238,8 @@
 }
 
 .palettes__chip[aria-pressed='true'] {
-  outline: 2px solid var(--chip);
+  /* The ring of the chosen colour (issue #49). */
+  outline: var(--ui-chosen-width, 2px) solid var(--chip);
   outline-offset: 2px;
 }
 
@@ -393,5 +394,84 @@
   .setting--toggle .setting__input,
   .setting--tiles .setting__input {
     grid-column: 1 / 3;
+  }
+}
+
+/* Issue #49: the samples of the level chosen in the corners section stick under
+   the top bar while the settings of the level scroll, so what is configured is
+   always in sight. */
+.level-preview {
+  position: sticky;
+  top: 6.2rem; /* the top bar, 92px high */
+  z-index: 2;
+  margin: 0.8rem 0 0;
+  padding: 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) * 0.6);
+  background: rgb(var(--deep-rgb) / 0.96);
+  backdrop-filter: blur(10px);
+}
+
+.level-preview__stage {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 3.2rem;
+}
+
+.level-preview__stage > input,
+.level-preview__stage > textarea {
+  flex: 1 1 8rem;
+  min-width: 0;
+  resize: none;
+}
+
+.level-preview__stage .tags,
+.level-preview__stage .role-tabs {
+  margin: 0;
+}
+
+.level-preview__panel {
+  flex: 1;
+  padding: 0.7rem 0.9rem;
+}
+
+.level-preview__blocks {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.level-preview__blocks .repo {
+  flex: 1;
+  padding: 0.4rem 0.6rem;
+}
+
+.level-preview__menu.nav,
+.level-preview__menu.pages {
+  flex: 1;
+  padding: 0;
+  border: 0;
+}
+
+.level-preview__menu ul {
+  display: flex;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.level-preview__table {
+  margin: 0;
+}
+
+/* On a phone the top bar has a row for the pages. */
+@media (max-width: 720px) {
+  .level-preview {
+    top: 8.2rem; /* 126px high */
   }
 }

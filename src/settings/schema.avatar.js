@@ -17,7 +17,6 @@ const shapes = [
 
 export const AVATAR_SECTION = {
   id: 'avatar',
-  column: 2,
   title: { en: 'Photo and ring', ru: 'Фото и кольцо' },
   lead: {
     en: 'The photo on the home page and the ring that turns under it. The animations button of the top bar and the motion setting stop the turning; the angle stays.',
@@ -70,6 +69,8 @@ export const AVATAR_SECTION = {
       { en: 'Width of the ring', ru: 'Ширина кольца' },
       { unit: 'px', hint: { en: 'Beyond the edge of the photo.', ru: 'За краем фото.' } },
     ),
+    // Issue #49: the border of the photo was the one bordered element of the home page no setting changed.
+    range('avatar.photoBorder', 2, 0, 16, 0.5, { en: 'Border of the photo', ru: 'Рамка фото' }, { unit: 'px' }),
     range('avatar.glow', 24, 0, 80, 1, { en: 'Glow', ru: 'Свечение' }, { unit: 'px' }),
   ],
 };
