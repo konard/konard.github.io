@@ -377,7 +377,8 @@ describe('the settings of the sound', () => {
   it('has a section whose settings only scripts read', () => {
     expect(soundFields().length).toBeGreaterThan(40);
     expect(soundFields().every((field) => field.css === false)).toBe(true);
-    expect(FIELDS.find((field) => field.key === 'sound.on').d).toBe(true);
+    // Issue #49: silent until a visitor switches the sounds on.
+    expect(FIELDS.find((field) => field.key === 'sound.on').d).toBe(false);
   });
 
   it('shows the next sound of an interaction once the one before is chosen', () => {

@@ -1,7 +1,7 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import { readFileSync } from 'node:fs';
 import { afterEach, describe, expect, it } from 'vitest';
-import { getSettings, resetSettings } from '../settings/store';
+import { getSettings, resetSettings, setSettings } from '../settings/store';
 import PrefSwitches from './PrefSwitches';
 
 // Issue #47: "add an animations on/off button next to the sound button" and
@@ -14,7 +14,14 @@ describe('animations button of the top bar (issue #47)', () => {
     const sound = screen.getByRole('button', { name: 'Sounds of the interface' });
     const motion = screen.getByRole('button', { name: 'Animations' });
     expect(sound.nextElementSibling).toBe(motion);
-    // jsdom does not ask for reduced motion, so the automatic mode moves.
+    // Issue #49: the animations are off until a visitor turns them on.
+    expect(getSettings()['motion.mode']).toBe('off');
+    expect(motion.getAttribute('aria-pressed')).toBe('false');
+    expect(motion.title).toBe('Animations: off');
+
+    fireEvent.click(motion);
+    expect(getSettings()['motion.mode']).toBe('on');
+    expect(document.documentElement.dataset.motionMode).toBe('on');
     expect(motion.getAttribute('aria-pressed')).toBe('true');
     expect(motion.title).toBe('Animations: on');
 
@@ -22,14 +29,18 @@ describe('animations button of the top bar (issue #47)', () => {
     expect(getSettings()['motion.mode']).toBe('off');
     expect(document.documentElement.dataset.motionMode).toBe('off');
     expect(motion.getAttribute('aria-pressed')).toBe('false');
-    expect(motion.title).toBe('Animations: off');
+  });
 
-    fireEvent.click(motion);
-    expect(getSettings()['motion.mode']).toBe('on');
-    expect(motion.getAttribute('aria-pressed')).toBe('true');
+  it('follows the system in the automatic mode: on unless it asks for less motion', () => {
+    act(() => setSettings({ 'motion.mode': 'auto' }));
+    const { unmount } = render(<PrefSwitches />);
+    // jsdom does not ask for reduced motion, so the automatic mode moves.
+    expect(screen.getByRole('button', { name: 'Animations' }).getAttribute('aria-pressed')).toBe('true');
+    unmount();
   });
 
   it('is on only when the system does not ask for less motion, until it is pressed', () => {
+    act(() => setSettings({ 'motion.mode': 'auto' }));
     const matchMedia = window.matchMedia;
     window.matchMedia = (query) => ({
       matches: query.includes('reduce'),

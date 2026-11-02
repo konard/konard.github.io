@@ -19,7 +19,7 @@ import { SKIN_SECTIONS } from './schema.skins.js';
 import { UI_SECTIONS } from './schema.ui.js';
 import { SOUND_SECTION } from './schema.sound.js';
 import { AVATAR_SECTION } from './schema.avatar.js';
-import { DEFAULT_LOOK } from './schema.defaults.js';
+import { COMFORT_49, DEFAULT_LOOK } from './schema.defaults.js';
 
 export { PALETTES, SKINS } from './schema.skins.js';
 
@@ -75,10 +75,14 @@ export const SECTIONS = SECTION_LIST.map((section) => ({
 
 export const FIELDS = SECTIONS.flatMap((section) => section.fields);
 
-/** What the settings of the default look were before issue #45: the look of issue #39. */
+/**
+ * What the settings of the default look were before issues #45 and #49: the
+ * look of issue #39. The comfort settings of issue #49 (no motion, no sound)
+ * are not part of a look, so a preset never turns them on again.
+ */
 export const PREVIOUS_DEFAULTS = Object.fromEntries(
   SECTION_LIST.flatMap((section) => section.fields)
-    .filter((field) => field.key in DEFAULT_LOOK)
+    .filter((field) => field.key in DEFAULT_LOOK && !(field.key in COMFORT_49))
     .map((field) => [field.key, field.d]),
 );
 

@@ -65,6 +65,13 @@ const NOTHING = ['none', 'plain'];
  */
 const PLAIN_CONTROLS = /^corner\.(button|field|tab|chip|menu|table)Corners$/;
 
+/**
+ * The edges of a level (issue #47) follow the outer panels with `same`: no
+ * rule of the level matches it, so the rules of the panels draw them. Issue
+ * #49 made other choices the defaults of the buttons and drop-down lists.
+ */
+const FOLLOWS_PANELS = /^corner\.[a-z]+(Edges|EdgeStyle)$/;
+
 describe('every setting is applied (issue #15)', () => {
   it('is used by a stylesheet, a background layer or a component', () => {
     const layers = readByLayers();
@@ -88,6 +95,7 @@ describe('every setting is applied (issue #15)', () => {
             value !== field.d &&
             !NOTHING.includes(value) &&
             !(PLAIN_CONTROLS.test(field.key) && value === 'border') &&
+            !(FOLLOWS_PANELS.test(field.key) && value === 'same') &&
             !CSS.includes(`[data-${cssName(field.key)}='${value}']`),
         )
         .map((value) => `${field.key}=${value}`),
