@@ -10,6 +10,9 @@ inputs:
   pages:
     description: Package the site as the GitHub Pages artifact.tar
     default: 'false'
+outputs:
+  artifact-id:
+    description: ID of the uploaded artifact; the deploy job publishes exactly this Pages artifact
 runs:
   using: node24
   main: index.mjs

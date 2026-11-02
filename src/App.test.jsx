@@ -3,9 +3,17 @@ import App from './App';
 import github from './data/github.lino';
 import { setLang } from './i18n/prefs';
 
+// The home page asks Habr for fresh numbers; with the network off in tests it
+// falls back to the snapshot. Wait for that, so the update lands inside act() (issue #51).
+async function renderApp() {
+  const view = render(<App />);
+  await screen.findByText(/^snapshot of/);
+  return view;
+}
+
 describe('App', () => {
-  test('renders the name, headline and every CV section', () => {
-    render(<App />);
+  test('renders the name, headline and every CV section', async () => {
+    await renderApp();
     expect(screen.getByRole('heading', { level: 1, name: /Konstantin Diachenko/ })).toBeInTheDocument();
     [
       'Companies & ventures',
@@ -22,8 +30,8 @@ describe('App', () => {
     });
   });
 
-  test('every navigation link points to an existing section', () => {
-    const { container } = render(<App />);
+  test('every navigation link points to an existing section', async () => {
+    const { container } = await renderApp();
     const nav = screen.getByRole('navigation', { name: 'Sections' });
     const links = within(nav)
       .getAllByRole('link')
@@ -34,8 +42,8 @@ describe('App', () => {
     });
   });
 
-  test('shows companies on the timeline and social links', () => {
-    render(<App />);
+  test('shows companies on the timeline and social links', async () => {
+    await renderApp();
     expect(screen.getAllByText('LinksPlatform').length).toBeGreaterThan(0);
     expect(screen.getByRole('heading', { level: 3, name: 'Kaiten' })).toBeInTheDocument();
     // Issue #11: Kaiten ended in Nov 2025, the current job is Evirma.
@@ -51,8 +59,8 @@ describe('App', () => {
       });
   });
 
-  test('contributions chart toggles between log and linear scale', () => {
-    render(<App />);
+  test('contributions chart toggles between log and linear scale', async () => {
+    await renderApp();
     const log = screen.getByRole('button', { name: 'Log scale' });
     const linear = screen.getByRole('button', { name: 'Linear' });
     expect(log).toHaveAttribute('aria-pressed', 'true');
@@ -61,8 +69,8 @@ describe('App', () => {
     expect(log).toHaveAttribute('aria-pressed', 'false');
   });
 
-  test('chart bars expose a tooltip on focus', () => {
-    render(<App />);
+  test('chart bars expose a tooltip on focus', async () => {
+    await renderApp();
     const last = github.contributions[github.contributions.length - 1];
     const bar = screen.getByLabelText(new RegExp(`^${last.year}: .* contributions$`));
     fireEvent.focus(bar);
@@ -71,8 +79,8 @@ describe('App', () => {
     expect(screen.queryByRole('status')).toBeNull();
   });
 
-  test('project language filter narrows the list', () => {
-    render(<App />);
+  test('project language filter narrows the list', async () => {
+    await renderApp();
     const projects = document.querySelector('.projects');
     const before = projects.children.length;
     fireEvent.click(screen.getByRole('button', { name: 'Rust' }));
@@ -81,16 +89,16 @@ describe('App', () => {
     expect(after).toBeLessThan(before);
   });
 
-  test('links the CV and every position from the home page', () => {
-    render(<App />);
+  test('links the CV and every position from the home page', async () => {
+    await renderApp();
     expect(screen.getByRole('link', { name: 'Download CV' })).toHaveAttribute('href', '/cv/?lang=en');
     const more = document.querySelector('#experience .section__more');
     expect(within(more).getByRole('link', { name: 'Rust' })).toHaveAttribute('href', '/experience/?role=rust');
     expect(within(more).getAllByRole('link')).toHaveLength(14);
   });
 
-  test('is translated to Russian without untranslated objects', () => {
-    render(<App />);
+  test('is translated to Russian without untranslated objects', async () => {
+    await renderApp();
     act(() => setLang('ru', { save: false }));
     expect(screen.getByRole('heading', { level: 1, name: /Константин Дьяченко/ })).toBeInTheDocument();
     ['Компании и проекты', 'Технологии', 'Сообщество, публикации и образование', 'Контакты и соцсети'].forEach(

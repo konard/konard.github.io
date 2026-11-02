@@ -19,7 +19,8 @@ it.each([
   expect(slider).toHaveFocus();
   // macOS WebKit can clear the explicit pointer focus during its native
   // mouse action. A completed click must restore it before the next key.
-  slider.blur();
+  // useNetworkHistory hears the focusout and updates the page (issue #51).
+  act(() => slider.blur());
   fireEvent.mouseDown(slider);
   fireEvent.pointerUp(slider);
   fireEvent.mouseUp(slider);

@@ -7,6 +7,15 @@ export function classifyChanges(files, force = false) {
   return { code, docs: force || files.some((file) => /\.md$|\.html$|^docs\//.test(file)) };
 }
 
+// Which checks an event needs. Without a base to diff against (a new branch, a manual
+// run) everything runs. The weekly schedule changes nothing, but links rot on their
+// own: it must check them, or a dead link would only surface on the next docs edit
+// (issue #51).
+export function checksForEvent(kind, files, hasBase) {
+  if (kind === 'schedule') return { code: false, docs: true };
+  return classifyChanges(files, kind === 'workflow_dispatch' || !hasBase);
+}
+
 function main() {
   const event = JSON.parse(readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8'));
   const kind = process.env.GITHUB_EVENT_NAME;
@@ -27,7 +36,7 @@ function main() {
   const files = base
     ? execFileSync('git', ['diff', '--name-only', '-z', base, 'HEAD'], { encoding: 'utf8' }).split('\0').filter(Boolean)
     : [];
-  const result = classifyChanges(files, kind === 'workflow_dispatch' || (!base && kind !== 'schedule'));
+  const result = checksForEvent(kind, files, Boolean(base));
   for (const [name, value] of Object.entries(result)) appendFileSync(process.env.GITHUB_OUTPUT, `${name}=${value}\n`);
   const report = `Changed files: ${files.length}; application checks: ${result.code}; documentation checks: ${result.docs}.`;
   console.log(report);

@@ -27,9 +27,14 @@ describe('CV PDF checks', () => {
   });
 
   test('positioned parts of the CV are reported, plain ones are not', () => {
-    const { document } = new JSDOM(
+    const { window } = new JSDOM(
       '<article class="cv"><ul class="cv__bullets"><li>a</li><li class="moved" style="position: relative">b</li></ul></article>',
-    ).window;
+    );
+    // jsdom computes no pseudo-element styles and logs an error for each one (issue #51);
+    // answer like a browser for an element without generated content.
+    const own = window.getComputedStyle.bind(window);
+    window.getComputedStyle = (el, pseudo) => (pseudo ? { content: 'none' } : own(el));
+    const { document } = window;
     expect(positionedParts(document.querySelector('.cv'))).toEqual(['moved']);
   });
 });

@@ -17,7 +17,7 @@ describe('GitHub Actions workflows', () => {
   });
 
   // Issue #5: GitHub Pages is set to deploy from GitHub Actions ("build_type": "workflow"),
-  // so a commit to docs/ never reaches the site. Only actions/deploy-pages publishes it.
+  // so a commit to docs/ never reaches the site. Only the Pages deployment API publishes it.
   describe('GitHub Pages deployment from Actions', () => {
     const doc = yaml.load(fs.readFileSync(path.join(workflowsDir, 'github-pages.yml'), 'utf8'));
     const { deploy, test: testJob } = doc.jobs;
@@ -47,8 +47,21 @@ describe('GitHub Actions workflows', () => {
       expect(upload).toBeGreaterThan(index('npm run build:cv'));
     });
 
-    test('deploy publishes with actions/deploy-pages to the github-pages environment', () => {
-      expect(deploy.steps.some((s) => (s.uses || '').startsWith('actions/deploy-pages@'))).toBe(true);
+    // Issue #51: one HTTP 500 from the Pages API failed actions/deploy-pages@v5 on main,
+    // so the local action publishes exactly the artifact the test job uploaded, with retries.
+    test('deploy publishes the uploaded artifact to the github-pages environment with retries', () => {
+      const upload = testJob.steps.find(
+        (s) => s.uses === './.github/actions/upload-artifact' && s.with?.pages === 'true',
+      );
+      expect(testJob.outputs['pages-artifact-id']).toBe('${{ steps.' + upload.id + '.outputs.artifact-id }}');
+      const step = deploy.steps.find((s) => s.id === 'deployment');
+      expect(step.uses).toBe('./.github/actions/deploy-pages');
+      expect(step.with.artifact_id).toBe('${{ needs.test.outputs.pages-artifact-id }}');
+      const checkout = deploy.steps.findIndex((s) => (s.uses || '').startsWith('actions/checkout@'));
+      expect(checkout).toBeGreaterThanOrEqual(0);
+      expect(checkout).toBeLessThan(deploy.steps.indexOf(step));
+      expect(deploy.steps[checkout].with['sparse-checkout']).toContain('.github/actions');
+      expect(deploy.steps.some((s) => (s.uses || '').startsWith('actions/deploy-pages@'))).toBe(false);
       expect(deploy.permissions).toEqual({ contents: 'read', pages: 'write', 'id-token': 'write' });
       expect(deploy.environment.name).toBe('github-pages');
       expect(deploy.environment.url).toBe('${{ steps.deployment.outputs.page_url }}');
@@ -149,17 +162,41 @@ describe('GitHub Actions best practices', () => {
     expect(steps[analyze].with.output).toBe(steps[gate].env.SARIF_DIR);
   });
 
+  // Issue #51: practices of the pipeline templates.
+  test('pull requests review dependency changes and hooks keep LF endings', () => {
+    const doc = yaml.load(fs.readFileSync(path.join(workflowsDir, 'github-pages.yml'), 'utf8'));
+    const review = doc.jobs.checks.steps.find((step) => step.uses === 'actions/dependency-review-action@v5');
+    expect(review.if).toBe("github.event_name == 'pull_request'");
+    expect(review.with['fail-on-severity']).toBe('moderate');
+    const attributes = fs.readFileSync(path.join(workflowsDir, '../../.gitattributes'), 'utf8');
+    expect(attributes).toMatch(/^\*\.sh text eol=lf$/m);
+    expect(attributes).toMatch(/^\.husky\/\*\* text eol=lf$/m);
+  });
+
+  // Issue #51: a cache older than max_cache_age is discarded with a warning.
+  test('the link check only restores a cache saved the same day', () => {
+    const doc = yaml.load(fs.readFileSync(path.join(workflowsDir, 'github-pages.yml'), 'utf8'));
+    const cache = doc.jobs.docs.steps.find((step) => step.with?.path === '.lycheecache');
+    const day = '${{ steps.link-cache.outputs.day }}';
+    expect(cache.with.key).toContain(day);
+    expect([cache.with['restore-keys']].flat().every((key) => key.includes(day))).toBe(true);
+    expect(fs.readFileSync(path.join(workflowsDir, '../../lychee.toml'), 'utf8')).toMatch(/^max_cache_age = "1d"$/m);
+  });
+
   test('deploy publishes the tested build instead of rebuilding it', () => {
     const doc = yaml.load(fs.readFileSync(path.join(workflowsDir, 'github-pages.yml'), 'utf8'));
     expect(doc.jobs.deploy.needs).toContain('test');
     expect(doc.jobs.deploy.steps.some((s) => (s.run || '').includes('npm run build'))).toBe(false);
-    expect(doc.jobs.deploy.steps.some((s) => (s.uses || '').startsWith('actions/deploy-pages@'))).toBe(true);
+    expect(doc.jobs.deploy.steps.some((s) => s.uses === './.github/actions/deploy-pages')).toBe(true);
   });
 
   test.each(docs)('%s has a terminal gate covering every job and no success overrides', (_file, doc) => {
     const { 'pipeline-status': gate, ...required } = doc.jobs;
     expect([...gate.needs].sort()).toEqual(Object.keys(required).sort());
     expect(gate.if).toContain('!cancelled()');
+    const verify = gate.steps.find((step) => (step.run || '').includes('check-pipeline-status.mjs'));
+    expect(verify.env.RUN_SHA).toContain('github.event.pull_request.head.sha');
+    expect(verify.env.HEAD_REF).toContain('refs/pull/{0}/head');
     expect(doc.on.pull_request).not.toHaveProperty('paths-ignore');
     expect(doc.on.schedule).toHaveLength(1);
     Object.values(doc.jobs).forEach((job) => {

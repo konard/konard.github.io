@@ -13,7 +13,9 @@ test.each(['ENOTFOUND', 'EAI_AGAIN', 'ECONNRESET', 'ETIMEDOUT', 'HTTP 429', 'HTT
       deleteArtifact: vi.fn().mockResolvedValue({}),
     };
     const sleep = vi.fn();
-    await expect(uploadWithRetry(client, 'test', ['file'], '/root', {}, { sleep })).resolves.toEqual({ id: 7 });
+    await expect(uploadWithRetry(client, 'test', ['file'], '/root', {}, { sleep, log: vi.fn() })).resolves.toEqual({
+      id: 7,
+    });
     expect(client.uploadArtifact).toHaveBeenCalledTimes(2);
     expect(client.deleteArtifact).toHaveBeenCalledWith('test');
     expect(sleep).toHaveBeenCalledWith(5000);
@@ -28,7 +30,9 @@ test.each([
   'Resource not accessible by integration',
 ])('permanent failures fail on the first attempt: %s', async (message) => {
   const client = { uploadArtifact: vi.fn().mockRejectedValue(new Error(message)) };
-  await expect(uploadWithRetry(client, 'test', ['file'], '/root', {}, { sleep: vi.fn() })).rejects.toThrow(message);
+  await expect(
+    uploadWithRetry(client, 'test', ['file'], '/root', {}, { sleep: vi.fn(), log: vi.fn() }),
+  ).rejects.toThrow(message);
   expect(client.uploadArtifact).toHaveBeenCalledTimes(1);
 });
 
@@ -37,7 +41,9 @@ test('exhausted transient failures fail closed after three attempts', async () =
     uploadArtifact: vi.fn().mockRejectedValue(new Error('ENOTFOUND')),
     deleteArtifact: vi.fn().mockResolvedValue({}),
   };
-  await expect(uploadWithRetry(client, 'test', ['file'], '/root', {}, { sleep: vi.fn() })).rejects.toThrow('ENOTFOUND');
+  await expect(
+    uploadWithRetry(client, 'test', ['file'], '/root', {}, { sleep: vi.fn(), log: vi.fn() }),
+  ).rejects.toThrow('ENOTFOUND');
   expect(client.uploadArtifact).toHaveBeenCalledTimes(3);
 });
 
@@ -52,15 +58,19 @@ test('a retry reconciles missing artifacts but never hides reconciliation or emp
     uploadArtifact: vi.fn().mockRejectedValueOnce(new Error('ECONNRESET')).mockResolvedValue({ id: 8 }),
     deleteArtifact: vi.fn().mockRejectedValue(Object.assign(new Error('missing'), { name: 'ArtifactNotFoundError' })),
   };
-  await expect(uploadWithRetry(client, 'test', ['file'], '/root', {}, { sleep: vi.fn() })).resolves.toEqual({ id: 8 });
+  await expect(
+    uploadWithRetry(client, 'test', ['file'], '/root', {}, { sleep: vi.fn(), log: vi.fn() }),
+  ).resolves.toEqual({ id: 8 });
   client.uploadArtifact.mockReset().mockRejectedValueOnce(new Error('ENOTFOUND'));
   client.deleteArtifact.mockRejectedValue(new Error('HTTP 403'));
-  await expect(uploadWithRetry(client, 'test', ['file'], '/root', {}, { sleep: vi.fn() })).rejects.toThrow('403');
+  await expect(
+    uploadWithRetry(client, 'test', ['file'], '/root', {}, { sleep: vi.fn(), log: vi.fn() }),
+  ).rejects.toThrow('403');
   expect(client.uploadArtifact).toHaveBeenCalledTimes(1);
   client.uploadArtifact.mockResolvedValue({});
-  await expect(uploadWithRetry(client, 'test', ['file'], '/root', {}, { sleep: vi.fn() })).rejects.toThrow(
-    'no artifact ID',
-  );
+  await expect(
+    uploadWithRetry(client, 'test', ['file'], '/root', {}, { sleep: vi.fn(), log: vi.fn() }),
+  ).rejects.toThrow('no artifact ID');
 });
 
 test('the pinned official SDK produces a readable ZIP with the nondeprecated glob override', async () => {

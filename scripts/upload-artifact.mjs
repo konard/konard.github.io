@@ -1,32 +1,18 @@
 // Same SDK/protocol as actions/upload-artifact; retry the operation that failed,
 // never the test suite. Permanent refusals and missing evidence fail immediately.
 import { DefaultArtifactClient } from '@actions/artifact';
+import { appendFileSync } from 'node:fs';
 import { readdir, mkdtemp, rm } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { setTimeout as delay } from 'node:timers/promises';
+import { isTransient } from './transient.mjs';
 
-export function isTransient(error) {
-  const chain = [];
-  for (let item = error; item && !chain.includes(item); item = item.cause) chain.push(item);
-  const statuses = chain.map((e) => Number(e.statusCode || e.status || e.response?.status)).filter(Boolean);
-  const message = chain.map((e) => `${e.code || ''} ${e.message || ''}`).join(' ');
-  if (
-    statuses.some((n) => n >= 400 && n < 500 && n !== 429) ||
-    /\b(400|401|403|404|409|422)\b|forbidden|unauthorized|not accessible by integration/i.test(message)
-  )
-    return false;
-  return (
-    statuses.some((n) => n === 429 || n >= 500) ||
-    /ENOTFOUND|EAI_AGAIN|ECONNRESET|ETIMEDOUT|ECONNREFUSED|EHOSTUNREACH|EPIPE|socket hang up|\b(429|5\d\d)\b/i.test(
-      message,
-    )
-  );
-}
+export { isTransient };
 
-export async function uploadWithRetry(client, name, files, root, options, { sleep = delay } = {}) {
+export async function uploadWithRetry(client, name, files, root, options, { sleep = delay, log = console.log } = {}) {
   for (let attempt = 1; attempt <= 3; attempt++) {
     try {
       if (attempt > 1) {
@@ -40,11 +26,11 @@ export async function uploadWithRetry(client, name, files, root, options, { slee
       }
       const result = await client.uploadArtifact(name, files, root, options);
       if (!result.id) throw new Error(`Upload returned no artifact ID for ${name}`);
-      console.log(`Uploaded ${name}: artifact ${result.id} (attempt ${attempt}/3).`);
+      log(`Uploaded ${name}: artifact ${result.id} (attempt ${attempt}/3).`);
       return result;
     } catch (error) {
       if (!isTransient(error) || attempt === 3) throw error;
-      console.log(
+      log(
         `Transient artifact transport failure (${error.message}); retrying ${name} in ${attempt * 5}s (${attempt}/3).`,
       );
       await sleep(attempt * 5000);
@@ -108,13 +94,15 @@ export async function main({ name, input, pages = false } = {}) {
   const directory = path.resolve(input);
   const archive = mode ? await packagePages(directory) : null;
   try {
-    await uploadWithRetry(
+    const { id } = await uploadWithRetry(
       new DefaultArtifactClient(),
       name,
       archive ? [archive.file] : await artifactFiles(directory),
       archive?.root || directory,
       { retentionDays: mode ? 1 : 14, compressionLevel: mode ? 0 : 6 },
     );
+    // The deploy job publishes exactly this artifact (scripts/deploy-pages.mjs).
+    if (process.env.GITHUB_OUTPUT) appendFileSync(process.env.GITHUB_OUTPUT, `artifact-id=${id}\n`);
   } finally {
     await archive?.cleanup();
   }

@@ -112,6 +112,16 @@ jobs:
       - name: Audit dependencies
         run: npm audit --package-lock-only --audit-level=moderate
 
+      # npm audit sees only the lockfile; the dependency graph also covers the
+      # actions a pull request adds, as the pipeline templates do (issue #51).
+      - name: Review dependency changes
+        if: github.event_name == 'pull_request'
+        uses: actions/dependency-review-action@v5
+        with:
+          fail-on-severity: moderate
+          comment-summary-in-pr: never
+          retry-on-snapshot-warnings: true
+
   test:
     concurrency:
       group: check-${{ github.workflow }}-${{ github.ref }}-test
@@ -120,6 +130,8 @@ jobs:
     if: needs.prepare.outputs.code == 'true'
     runs-on: ubuntu-24.04
     timeout-minutes: 20
+    outputs:
+      pages-artifact-id: ${{ steps.pages-artifact.outputs.artifact-id }}
 
     steps:
       # On pull requests this is the merge result with main, not the branch head.
@@ -156,6 +168,7 @@ jobs:
       # published from this artifact, not from a branch or the docs/ folder.
       # Pull requests upload it too, so a broken artifact fails before merge.
       - name: Upload the build as the Pages artifact with bounded transport retries
+        id: pages-artifact
         uses: ./.github/actions/upload-artifact
         with:
           name: github-pages
@@ -357,17 +370,24 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v5
-
-      # A green deploy must mean the site is really there (issue #5).
-      - name: Checkout source
+      - name: Checkout the deploy action and the site check
         uses: actions/checkout@v7
         with:
           persist-credentials: false
-          sparse-checkout: scripts
+          sparse-checkout: |
+            .github/actions
+            scripts
 
+      # The protocol of actions/deploy-pages@v5, which fails on the first HTTP
+      # 500 from the Pages API (run 41480863205, issue #51); this retries only
+      # transient failures to create the deployment and adopts a lost one.
+      - name: Deploy to GitHub Pages with bounded retries
+        id: deployment
+        uses: ./.github/actions/deploy-pages
+        with:
+          artifact_id: ${{ needs.test.outputs.pages-artifact-id }}
+
+      # A green deploy must mean the site is really there (issue #5).
       - name: Verify the deployed site
         run: bash scripts/check-deployed-site.sh "$PAGE_URL"
         env:
@@ -436,12 +456,17 @@ jobs:
           persist-credentials: false
       - name: Check required documentation
         run: node scripts/check-docs.mjs
+      # lychee.toml keeps results for one day (max_cache_age) and warns when it
+      # discards an older cache, so only a cache saved today is restored (issue #51).
+      - name: Name today's link cache
+        id: link-cache
+        run: echo "day=$(date -u +%F)" >> "$GITHUB_OUTPUT"
       - name: Restore link cache
         uses: actions/cache@v6
         with:
           path: .lycheecache
-          key: lychee-${{ runner.os }}-${{ github.sha }}
-          restore-keys: lychee-${{ runner.os }}-
+          key: lychee-${{ runner.os }}-${{ steps.link-cache.outputs.day }}-${{ github.sha }}
+          restore-keys: lychee-${{ runner.os }}-${{ steps.link-cache.outputs.day }}-
       - name: Check maintained documentation links
         uses: lycheeverse/lychee-action@v2
         with:
@@ -519,3 +544,7 @@ jobs:
           CODE_CHANGED: ${{ needs.prepare.outputs.code }}
           DOCS_CHANGED: ${{ needs.prepare.outputs.docs }}
           SHOULD_DEPLOY: ${{ github.event_name != 'pull_request' && github.event_name != 'schedule' && github.ref == 'refs/heads/main' && needs.prepare.outputs.code == 'true' }}
+          # A newer push cancels this run's jobs through cancel-in-progress; the
+          # gate compares the commit it tests with the current head (issue #51).
+          RUN_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          HEAD_REF: ${{ github.event_name == 'pull_request' && format('refs/pull/{0}/head', github.event.number) || github.ref }}

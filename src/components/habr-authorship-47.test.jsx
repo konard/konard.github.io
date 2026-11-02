@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import { afterEach, describe, expect, it } from 'vitest';
 import habr from '../data/habr.lino';
 import github from '../data/github.lino';
@@ -9,7 +9,8 @@ import StatTiles, { buildStats } from './StatTiles';
 
 // Issue #47: the Habr numbers must not read as if every article were the owner's own.
 describe('Habr authorship (issue #47)', () => {
-  afterEach(() => setLang('en'));
+  // The language store re-renders whatever is still mounted, so switch inside act() (issue #51).
+  afterEach(() => act(() => setLang('en')));
   const { mine, team } = habrAuthorship(habr);
 
   it('splits the articles between the owner and the Deep.Foundation team', () => {
