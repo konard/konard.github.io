@@ -248,7 +248,7 @@ const defaultCanvas = (side) => {
 /**
  * Starts the star layers on `canvas`; `options.layers` is a list of layers like
  * LAYER. Returns a stop function whose `update(options)` changes anything but
- * `animate` on the fly. Does nothing where Canvas 2D is not available.
+ * `animate` on the fly; `animate(on)` stops or starts the motion. Does nothing where Canvas 2D is not available.
  */
 export function startStars(canvas, options = {}) {
   const o = { animate: true, fps: 30, layers: [], makeCanvas: defaultCanvas, ...options };
@@ -422,6 +422,17 @@ export function startStars(canvas, options = {}) {
     Object.assign(o, next, { animate: o.animate });
     build();
     render(0);
+  };
+  /** Stops or starts the motion on the next frame, keeping the picture (issue #49). */
+  stop.animate = (on) => {
+    if (o.animate === Boolean(on)) return;
+    o.animate = Boolean(on);
+    cancelAnimationFrame(frame);
+    frame = 0;
+    last = 0;
+    // The pause is not a slow frame for the governor.
+    previous = 0;
+    if (o.animate) frame = requestAnimationFrame(loop);
   };
   /** The layers as they are drawn now, for tests. */
   stop.layers = () => layers;

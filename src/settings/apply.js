@@ -34,9 +34,18 @@ export function normalize(rules, stored) {
  * Puts settings on `root` (the <html> element) for the stylesheets: numbers
  * and colours as CSS variables (`liquid.blur` → `--liquid-blur: 18px`),
  * switches and choices as attributes (`skin.name` → `data-skin-name`).
+ * `previous`, the settings already on `root`, limits the work to the changes.
  */
-export function applySettings(root, rules, settings) {
+export function applySettings(root, rules, settings, previous) {
+  /* With `previous`, only what changed is written (issue #49): a border change
+     touches one property instead of hundreds, so nothing else is recalculated. */
+  var changed = function (keys) {
+    if (!previous) return true;
+    for (var i = 0; i < keys.length; i++) if (previous[keys[i]] !== settings[keys[i]]) return true;
+    return false;
+  };
   for (var key in rules) {
+    if (previous && previous[key] === settings[key]) continue;
     var name = key.replace(/\./g, '-').replace(/[A-Z]/g, function (letter) {
       return '-' + letter.toLowerCase();
     });
@@ -51,6 +60,7 @@ export function applySettings(root, rules, settings) {
   /* Resolve skin inheritance once; changing skins still updates CSS references. */
   ['panel', 'control'].forEach(function (part) {
     ['Tl', 'Tr', 'Br', 'Bl'].forEach(function (corner) {
+      if (!changed(['ui.' + part + corner])) return;
       var value = settings['ui.' + part + corner];
       var fallback = part === 'panel' ? 'var(--radius)' : 'var(--ui-skin-control-radius)';
       root.style.setProperty(
@@ -61,6 +71,7 @@ export function applySettings(root, rules, settings) {
   });
   if (!(settings['future.accentWidth'] >= 0)) root.style.removeProperty('--future-accent-width');
   ['accent', 'accent2'].forEach(function (name) {
+    if (!changed(['ui.' + name])) return;
     var hex = settings['ui.' + name];
     if (typeof hex === 'string')
       root.style.setProperty(
@@ -74,6 +85,7 @@ export function applySettings(root, rules, settings) {
   });
   /* A small static noise tile, regenerated only on settings changes. The zero
      path has no image, and every optical layer follows material opacity. */
+  if (!changed(['liquid.noise', 'liquid.opacity', 'skin.name', 'glass.level', 'future.opacity'])) return;
   var grain = settings['liquid.noise'] * settings['liquid.opacity'];
   var noise =
     '<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="' +

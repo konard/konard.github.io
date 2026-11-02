@@ -48,6 +48,17 @@ export const beamsOptions = (s) => ({
   ...Object.fromEntries(BEAM_KEYS.map((key) => [key, s[`beams.${key}`]])),
 });
 
+/**
+ * One picker per choice of links, so the rain sees the same picker until the
+ * choice changes (issue #49: nothing is drawn again for other settings).
+ */
+let picker = null;
+const pickerOf = (minLinks, maxLinks, real) => {
+  const key = `${minLinks} ${maxLinks} ${real}`;
+  if (picker?.key !== key) picker = Object.assign(pickerFor({ minLinks, maxLinks, real }), { key });
+  return picker;
+};
+
 /** Options of the rain from the settings; the grid cell size is shared with the grid layer. */
 export const rainOptions = (s, animate) => ({
   grid: s['grid.size'],
@@ -62,8 +73,38 @@ export const rainOptions = (s, animate) => ({
   speeds: s['rain.speeds'],
   density: s['rain.density'],
   restart: s['rain.restart'],
-  pick: pickerFor({ minLinks: s['rain.minLinks'], maxLinks: s['rain.maxLinks'], real: s['rain.real'] }),
+  pick: pickerOf(s['rain.minLinks'], s['rain.maxLinks'], s['rain.real']),
 });
+
+/**
+ * What a layer is given, as text: a layer is updated only when it changes, so
+ * a border, a colour of the interface or any other setting the layer does not
+ * read never draws the background again (issue #49).
+ */
+export const optionsKey = (options) =>
+  JSON.stringify(options, (key, value) => (typeof value === 'function' ? (value.key ?? 'function') : value));
+
+/** Sends `options` to the running layer `run` when they differ from what it was last given. */
+const send = (sent, name, run, options) => {
+  const key = optionsKey(options);
+  if (sent.current[name] === key) return;
+  sent.current[name] = key;
+  if (run.current) trace('update', name);
+  run.current?.update(options);
+};
+
+/**
+ * Trace of the background (issue #49): `localStorage['cosmos.debug'] = '1'`
+ * logs every layer that starts, every pause and resume and every update.
+ */
+const tracing = () => {
+  try {
+    return window.localStorage?.getItem('cosmos.debug') === '1';
+  } catch {
+    return false;
+  }
+};
+const trace = (...args) => tracing() && console.debug('[cosmos]', ...args);
 
 /**
  * Starts a background layer whose code is loaded only when it is shown
@@ -76,7 +117,7 @@ function useLazyLayer(shown, animate, canvas, run, load, options) {
     let gone = false;
     load().then((start) => {
       if (gone || !canvas.current) return;
-      stop = start(canvas.current, { ...options(), animate });
+      stop = start(canvas.current, { ...options(), animate: animate.current });
       run.current = stop;
     });
     return () => {
@@ -84,9 +125,9 @@ function useLazyLayer(shown, animate, canvas, run, load, options) {
       stop?.();
       run.current = null;
     };
-    // `options` reads the latest settings; the layer starts again only when shown or animated changes.
+    // `options` and `animate` are refs to the latest settings; the layer starts again only when it is shown.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [shown, animate]);
+  }, [shown]);
 }
 
 const loadStars = () => import('../visuals/stars').then((module) => module.startStars);
@@ -96,9 +137,10 @@ const loadBeams = () => import('../visuals/beams').then((module) => module.start
  * The page background, bottom to top: the universe (nebula and stars), up to
  * four layers of stars, a grid, beams running along it, and the rain of link
  * networks, two symbols per grid cell. All infographics are drawn on top of it.
- * Every layer follows the settings at once (issue #13): the layers are started
- * again only when the motion or a layer is switched on or off, everything else
- * is changed while they run.
+ * Every layer follows the settings at once (issue #13): a layer is started
+ * only when it is switched on; the motion only stops or starts the running
+ * layers on their next frame, without drawing anything again (issue #49), and
+ * a layer hears of the settings only when the options it reads change.
  */
 export default function Cosmos() {
   const settings = useSettings();
@@ -112,31 +154,41 @@ export default function Cosmos() {
   const beamsRun = useRef(null);
   const rainRun = useRef(null);
   const latest = useRef(settings);
+  const sent = useRef({});
   const animate = moves(settings['motion.mode']);
+  const moving = useRef(animate);
   const universe = settings['nebula.on'];
   const starry = starsShown(settings);
   const beaming = settings['beams.on'];
 
   useEffect(() => {
     latest.current = settings;
-    nebulaRun.current?.update(nebulaOptions(settings));
-    starsRun.current?.update(starsOptions(settings));
-    beamsRun.current?.update(beamsOptions(settings));
-    rainRun.current?.update(rainOptions(settings, animate));
+    send(sent, 'nebula', nebulaRun, nebulaOptions(settings));
+    send(sent, 'stars', starsRun, starsOptions(settings));
+    send(sent, 'beams', beamsRun, beamsOptions(settings));
+    send(sent, 'rain', rainRun, rainOptions(settings, animate));
   }, [settings, animate]);
 
   useEffect(() => {
+    if (moving.current === animate) return;
+    moving.current = animate;
+    trace(animate ? 'resume' : 'pause');
+    [nebulaRun, starsRun, beamsRun, rainRun].forEach((run) => run.current?.animate?.(animate));
+  }, [animate]);
+
+  useEffect(() => {
     if (!universe) return undefined;
-    const stop = startNebula(nebula.current, { ...nebulaOptions(latest.current), animate });
+    trace('start nebula');
+    const stop = startNebula(nebula.current, { ...nebulaOptions(latest.current), animate: moving.current });
     nebulaRun.current = stop;
     return () => {
       stop();
       nebulaRun.current = null;
     };
-  }, [animate, universe]);
+  }, [universe]);
 
-  useLazyLayer(starry, animate, stars, starsRun, loadStars, () => starsOptions(latest.current));
-  useLazyLayer(beaming, animate, beams, beamsRun, loadBeams, () => beamsOptions(latest.current));
+  useLazyLayer(starry, moving, stars, starsRun, loadStars, () => starsOptions(latest.current));
+  useLazyLayer(beaming, moving, beams, beamsRun, loadBeams, () => beamsOptions(latest.current));
 
   useEffect(() => {
     // The grid and the beams on its lines drift down together with the rain.
@@ -146,13 +198,15 @@ export default function Cosmos() {
       if (beams.current) beams.current.style.transform = shift;
     };
     if (grid.current) grid.current.style.transform = '';
-    const stop = startRain(rain.current, { ...rainOptions(latest.current, animate), onDrift, animate });
+    trace('start rain');
+    const animated = moving.current;
+    const stop = startRain(rain.current, { ...rainOptions(latest.current, animated), onDrift, animate: animated });
     rainRun.current = stop;
     return () => {
       stop();
       rainRun.current = null;
     };
-  }, [animate]);
+  }, []);
 
   return (
     <div className="cosmos" aria-hidden="true">

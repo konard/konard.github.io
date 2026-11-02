@@ -91,6 +91,9 @@ export const paddingFor = (cell, padding = 0) => Math.max(0, Math.min(padding, (
 /** How far the grid has drifted down at time `now` (ms): 0 … grid, one cell per `period`. */
 export const driftAt = (now, grid = 64, period = 24000) => (period ? ((now % period) / period) * grid : 0);
 
+/** The options a still rain shows; changing another one does not draw it again (issue #49). */
+const STILL_KEYS = ['visible', 'density', 'glowColor', 'lineWidth', 'padding', 'pick'];
+
 /** A random network code of minLinks…maxLinks links, optionally with only real references. */
 export const pickerFor =
   ({ minLinks = 1, maxLinks = 4, real = false } = {}, random = Math.random) =>
@@ -108,7 +111,8 @@ export const pickerFor =
  *
  * Returns a function that stops the animation and removes listeners; its
  * `update(options)` changes any option except `animate` on the fly (the
- * settings page previews the rain this way). With `visible: false` the rain
+ * settings page previews the rain this way), and `animate(on)` stops or
+ * starts it without drawing anything again (issue #49). With `visible: false` the rain
  * only drifts the grid. Columns fall every 1…`speeds` steps; a share
  * `density` of them has rain; a column that left the screen starts again with
  * the chance `restart` per step. `padding` keeps free CSS pixels around every
@@ -318,12 +322,26 @@ export function startRain(canvas, options = {}) {
   stop.update = (next) => {
     const before = { ...o };
     Object.assign(o, next, { animate: before.animate });
-    if (o.grid !== before.grid || !o.animate) {
+    // A still picture is drawn again only when something it shows changed: not
+    // for the drift or the cadence, which it does not have (issue #49).
+    const still = !o.animate && STILL_KEYS.some((key) => o[key] !== before[key]);
+    if (o.grid !== before.grid || still) {
       // A new grid needs new columns; a still picture is drawn again with the new options.
       width = 0;
       resize();
     } else if (o.speeds !== before.speeds || o.density !== before.density) columns.forEach(pace);
     // The cadence follows o.step on the next frame by itself.
+  };
+  /**
+   * Stops or starts the rain on the next frame (issue #49): the symbols stop
+   * where they are, nothing is drawn again, and they fall on from there.
+   */
+  stop.animate = (on) => {
+    if (o.animate === Boolean(on)) return;
+    o.animate = Boolean(on);
+    last = 0;
+    frames = 0;
+    run();
   };
   return stop;
 }
