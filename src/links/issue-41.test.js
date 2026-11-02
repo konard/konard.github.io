@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { codeAt, decode } from './configurations';
-import { layoutCurves } from './glyph';
+import { layout, layoutCurves, overlapBends } from './glyph';
 import { linkTurns, normalizeStyle, shapeOfStyle, styleFromParams, styleToParams, withTurns } from './style';
 import { reported, randomNetworks } from '../../experiments/issue-41-cases.mjs';
 
@@ -9,6 +9,13 @@ const curves = (links, raw = {}) => layoutCurves(links, shapeOfStyle(normalizeSt
 const near = (a, b) => expect(Math.hypot(a[0] - b[0], a[1] - b[1])).toBeLessThan(1e-10);
 const sub = (a, b) => a.map((v, i) => v - b[i]);
 const simpleOpen = (links, i) => links[i].includes(0) && links[i].some((ref) => ref && ref !== i + 1);
+// Issue 49: a straight reference that would lie on top of another one is bent
+// by OVERLAP_BEND at zero turns, so only the others stay straight.
+const unbent = (links, raw = {}) => {
+  const shape = shapeOfStyle(normalizeStyle(raw), links);
+  const bends = overlapBends(links, layout(links.length, shape, links), shape);
+  return (i) => bends[i].every((bend) => bend === 0);
+};
 function straight(curve) {
   const axis = sub(curve.end.at, curve.start.at);
   for (const point of curve.segments.flat()) {
@@ -23,17 +30,19 @@ describe('simple default reference turns (issue 41)', () => {
     const links = linksOf(code);
     const actual = curves(links);
     const expected = curves(links, { turns: '0 0' });
+    const plain = unbent(links);
     actual.forEach((curve, i) => {
       curve.segments.flat().forEach((point, k) => near(point, expected[i].segments.flat()[k]));
-      if (simpleOpen(links, i)) straight(curve);
+      if (simpleOpen(links, i) && plain(i)) straight(curve);
     });
     expect(linkTurns(normalizeStyle(), links)).toEqual(links.map(() => [0, 0]));
   });
 
   it.each(randomNetworks())('%s keeps every free-to-other link straight', (code) => {
     const links = linksOf(code);
+    const plain = unbent(links);
     curves(links).forEach((curve, i) => {
-      if (simpleOpen(links, i)) straight(curve);
+      if (simpleOpen(links, i) && plain(i)) straight(curve);
     });
   });
 
@@ -56,6 +65,7 @@ describe('simple default reference turns (issue 41)', () => {
         const shape = shapeOfStyle(style, links);
         const original = layoutCurves(links, shapeOfStyle(style, n));
         const actual = layoutCurves(links, shape);
+        const plain = unbent(links);
         expect(shape.linkGaps).toEqual(shapeOfStyle(style, n).linkGaps);
         expect(shape.startGap).toBe(style.startGap);
         expect(shape.endGap).toBe(style.endGap);
@@ -65,7 +75,7 @@ describe('simple default reference turns (issue 41)', () => {
             if (ref === 0 || ref === i + 1) expect(curve.segments[end]).toEqual(original[i].segments[end]);
             if (shape.turns[i][end]) adjusted++;
           });
-          if (simpleOpen(links, i)) straight(curve);
+          if (simpleOpen(links, i) && plain(i)) straight(curve);
         });
         networks++;
       }

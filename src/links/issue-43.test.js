@@ -2,11 +2,16 @@ import { describe, expect, it } from 'vitest';
 import baseline from '../../docs/case-studies/issue-43/data/audit-before.json';
 import { codeAt, decode } from './configurations';
 import { overlapCost } from './collisions';
-import { layoutCurves } from './glyph';
+import { layout, layoutCurves, overlapBends } from './glyph';
 import { linkTurns, normalizeStyle, shapeOfStyle } from './style';
 
 const linksOf = (code) => decode(code.match(/../g).join(' '));
 const curves = (links, raw = {}) => layoutCurves(links, shapeOfStyle(normalizeStyle(raw), links));
+// Issue 49: a straight reference that would lie on top of another one is bent.
+const bends = (links, raw = {}) => {
+  const shape = shapeOfStyle(normalizeStyle(raw), links);
+  return overlapBends(links, layout(links.length, shape, links), shape);
+};
 const sub = (a, b) => a.map((v, i) => v - b[i]);
 const straight = (curve) => {
   const axis = sub(curve.end.at, curve.start.at);
@@ -58,7 +63,10 @@ describe('zero is the neutral reference geometry (issue 43)', () => {
       for (const n of [3, 5, 10, 25]) {
         const links = Array.from({ length: n }, (_, i) => (i === n - 1 ? [n, n] : [0, n]));
         const raw = { placement, rotation: 39, layoutAspect: 1.2, spread: 0.7, turns: '0 0' };
-        curves(links, raw).slice(0, -1).forEach(straight);
+        const bent = bends(links, raw);
+        curves(links, raw)
+          .slice(0, -1)
+          .forEach((curve, i) => bent[i][1] || straight(curve));
       }
     },
   );

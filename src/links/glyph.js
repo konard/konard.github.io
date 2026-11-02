@@ -149,23 +149,19 @@ function approach(d, chord, twice, angle, neutralAngle, o) {
   return rotate(chord, side * (angle - (neutral ? neutralAngle : 0)) * RAD);
 }
 
-/** The cubic segments of link `i` (0-based) and its two ends, in layout units. */
-export function linkCurve(links, i, places, o) {
-  const n = links.length;
+/**
+ * The direction in which link `i` passes through its own middle, with the
+ * directions to its source and target middles (null for a free end or a loop)
+ * and the axis of its free ends.
+ */
+function middleDirection(links, i, places, o) {
   const [s, t] = links[i];
   const { at: m, out } = places[i];
   const other = (ref) => ref !== 0 && ref !== i + 1;
-  const free = (n === 1 ? LONE.free : FREE) * o.free;
-  const loop = (n === 1 ? LONE.loop : LOOP) * o.loop;
-  const [turnIn, turnOut] = (o.turns[i] || [0, 0]).map((a) => (a || 0) * RAD);
   const bulge = o.bulge * RAD;
-  const startGap = o.linkGaps[i]?.[0] ?? o.startGap ?? o.gap;
-  const endGap = o.linkGaps[i]?.[1] ?? o.endGap ?? o.gap;
   const tangent = rotate(out, Math.PI / 2);
   const tIn = other(s) ? unit(sub(m, places[s - 1].at)) : null;
   const tOut = other(t) ? unit(sub(places[t - 1].at, m)) : null;
-
-  // The direction in which the link passes through its own middle.
   let d;
   if (tIn && tOut) {
     const sum = add(tIn, tOut);
@@ -181,6 +177,78 @@ export function linkCurve(links, i, places, o) {
   if (balanced && !tIn && !tOut) {
     d = s && t ? rotate(tangent, Math.PI / 4) : s || t ? tangent : rotate(tangent, bulge / 2);
   }
+  return { d, tIn, tOut, tangent, freeAxis };
+}
+
+/**
+ * The bend of a neutral reference that would lie on top of another one
+ * (issue #49), in degrees. A reference whose chord follows the tangent of its
+ * own middle is straight at zero turns (issue #43); two such references
+ * between the same middles, like the two links of /network/?code=0201 that
+ * refer to each other, are then one line. Each of them is bent by this angle
+ * at the end away from its own middle, all to the same side of their travel,
+ * so the pair becomes a point-symmetric lens: the picture of
+ * `turns=0+45,0+45` before issue #49 is now zero.
+ */
+export const OVERLAP_BEND = 45;
+
+const overlapCache = new WeakMap();
+
+/**
+ * Extra turns in radians, [source, target] for every link, of the neutral
+ * straight references that lie on top of another straight reference. Only
+ * the curve bending of the editor has them; the gallery and the rain keep
+ * their geometry. They depend on the placement and the bulge only, never on
+ * the turns, so automatic spacing and the turns of a link stay offsets from
+ * them; they are cached per placement.
+ */
+export function overlapBends(links, places, o) {
+  const none = () => links.map(() => [0, 0]);
+  if (o.bendMode !== 'curve' || o.angles !== 'fixed') return none();
+  const key = `${o.bulge}|${links.map((pair) => pair.join(' ')).join(',')}`;
+  const cached = overlapCache.get(places);
+  if (cached?.key === key) return cached.bends;
+  // The straight references: [link, end, from, to].
+  const straight = [];
+  links.forEach(([s, t], i) => {
+    const { d, tIn, tOut } = middleDirection(links, i, places, o);
+    const m = places[i].at;
+    if (tIn && s !== t && dot(d, tIn) > 1 - 1e-10) straight.push([i, 0, places[s - 1].at, m]);
+    if (tOut && s !== t && dot(d, tOut) > 1 - 1e-10) straight.push([i, 1, m, places[t - 1].at]);
+  });
+  const bends = none();
+  // Two straight references overlap when they are on one line and share a part of it.
+  const overlap = ([, , a0, a1], [, , b0, b1]) => {
+    const axis = sub(a1, a0);
+    const span = length(axis);
+    const along = unit(axis);
+    const across = (p) => Math.abs(along[0] * (p[1] - a0[1]) - along[1] * (p[0] - a0[0]));
+    if (across(b0) > 1e-9 * span || across(b1) > 1e-9 * span) return false;
+    const [u, v] = [dot(sub(b0, a0), along), dot(sub(b1, a0), along)].sort((x, y) => x - y);
+    return Math.min(span, v) - Math.max(0, u) > 1e-9 * span;
+  };
+  for (let a = 0; a < straight.length; a++)
+    for (let b = a + 1; b < straight.length; b++)
+      if (straight[a][0] !== straight[b][0] && overlap(straight[a], straight[b]))
+        for (const [i, end] of [straight[a], straight[b]]) bends[i][end] = OVERLAP_BEND * RAD;
+  overlapCache.set(places, { key, bends });
+  return bends;
+}
+
+/** The cubic segments of link `i` (0-based) and its two ends, in layout units. */
+export function linkCurve(links, i, places, o) {
+  const n = links.length;
+  const [s, t] = links[i];
+  const { at: m, out } = places[i];
+  const free = (n === 1 ? LONE.free : FREE) * o.free;
+  const loop = (n === 1 ? LONE.loop : LOOP) * o.loop;
+  const [bendIn, bendOut] = overlapBends(links, places, o)[i];
+  const [turnIn, turnOut] = (o.turns[i] || [0, 0]).map((a) => (a || 0) * RAD);
+  const startGap = o.linkGaps[i]?.[0] ?? o.startGap ?? o.gap;
+  const endGap = o.linkGaps[i]?.[1] ?? o.endGap ?? o.gap;
+  const { d, freeAxis } = middleDirection(links, i, places, o);
+  const other = (ref) => ref !== 0 && ref !== i + 1;
+  const balanced = o.bendMode === 'curve';
   const loopWidth = balanced ? Math.exp((o.bulge + o.loopBend) / 180) : 1;
 
   let first;
@@ -205,7 +273,7 @@ export function linkCurve(links, i, places, o) {
   } else {
     const p = places[s - 1].at;
     const chord = unit(sub(m, p));
-    const dir = rotate(approach(d, chord, s === t, o.sourceAngle, SHAPE.sourceAngle, o), turnIn);
+    const dir = rotate(approach(d, chord, s === t, o.sourceAngle, SHAPE.sourceAngle, o), turnIn + bendIn);
     const k = o.tension * length(sub(m, p));
     const from = add(p, mul(dir, startGap));
     first = [from, add(from, mul(dir, k)), sub(m, mul(d, k)), m];
@@ -234,7 +302,7 @@ export function linkCurve(links, i, places, o) {
   } else {
     const q = places[t - 1].at;
     const chord = unit(sub(q, m));
-    const dir = rotate(approach(d, chord, s === t, o.targetAngle, SHAPE.targetAngle, o), turnOut);
+    const dir = rotate(approach(d, chord, s === t, o.targetAngle, SHAPE.targetAngle, o), turnOut + bendOut);
     const k = o.tension * length(sub(q, m));
     const to = sub(q, mul(dir, endGap));
     second = [m, add(m, mul(d, k)), sub(to, mul(dir, k)), to];
