@@ -1,0 +1,18 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793639611434
+
+::debug::Creating Artifact archive with compressionLevel: 6
+::debug::Zip write high watermark value 8388608
+::debug::Zip read high watermark value 8388608
+::debug::Zip stream for upload has ended.
+::debug::Zip stream for upload has finished.
+
+ Test Files  103 passed (103)
+      Tests  1235 passed (1235)
+   Start at  17:58:42
+   Duration  409.59s (tests 56%, environment 29%, setup 8%, import 6%, transform 1%)
+
+Environment  jsdom was created 103 times · 111.03s total, 29% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+
