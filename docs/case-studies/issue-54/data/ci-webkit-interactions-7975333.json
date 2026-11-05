@@ -1,0 +1,27 @@
+{
+  "run": 42123506812,
+  "sha": "7975333e84665d6cb10a30f8a8826d1a7a599b6f",
+  "createdAt": "2026-11-05T22:40:43Z",
+  "runConclusion": "cancelled",
+  "job": 127582185959,
+  "jobConclusion": "failure",
+  "source_log": "webkit-42123506812.log",
+  "failures": [
+    {
+      "line": 462,
+      "test": "experiments/issue-19-browser.mjs:83",
+      "error": "no URL writes during a held slider: 1 !== 0",
+      "reproduction": "src/pages/network-history.test.jsx: due callback runs inside act after native pointerdown but before React commits",
+      "correction": "Synchronous held-input ref checked in the history callback, alongside existing React state and release debounce"
+    },
+    {
+      "line": 828,
+      "test": "experiments/issue-37-browser.mjs:99",
+      "error": "worker must keep the page responsive: 514,2,12,34,3,2,107,14,167,3",
+      "investigation": "Measured 800 redundant DOM mutations in unchanged select controls during eight edits; zero after changed-property synchronization",
+      "limitation": "This does not establish causation for the particular macOS WebKit frame delay; the original 500 ms assertion remains the current-commit CI gate"
+    }
+  ],
+  "passed": ["Chromium complete browser job", "WebKit frames and palettes", "WebKit production migration smoke"],
+  "notVerified": ["Firefox tests (OS installation cancelled)", "dependent unit/build/PDF job (skipped)"]
+}

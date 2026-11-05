@@ -38,6 +38,18 @@
     {
       "command": "BASE=http://127.0.0.1:3001 ENGINE=chromium node experiments/framework-migration/smoke.mjs",
       "result": "Six production checks pass with no page errors, including light/dark forced colors and English/Russian accessible names"
+    },
+    {
+      "command": "npx vitest run src/components/Select.test.jsx src/components/ColorInput.test.jsx src/ui/framework.test.js src/pages/network-history.test.jsx --maxWorkers=1",
+      "result": "23 passed after synchronous history guard and unchanged-select synchronization"
+    },
+    {
+      "command": "ENGINE=chromium EXPECT_STABLE=1 node experiments/framework-migration/interaction-performance.mjs",
+      "result": "23 unchanged selects, eight edits: zero mutations after correction (800 before); elapsed times do not establish a speedup"
+    },
+    {
+      "command": "npm run build && ENGINE=chromium npm run test:ui:migration",
+      "result": "Production build and all six smoke checks pass after interaction corrections"
     }
   ],
   "regressions": [
@@ -90,6 +102,16 @@
           "mask": "rgb(255, 255, 255)"
         }
       }
+    },
+    {
+      "case": "Due history timer before React commits pointer press",
+      "before_log_excerpt": "\n RUN  v5.0.5 /tmp/gh-issue-solver-1793911090763\n\n ❯ src/pages/network-history.test.jsx (5 tests | 1 failed | 4 skipped) 99ms\n   × suspends an already-due history callback before React commits a pointer press 95ms\n\n⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯\n\n FAIL  src/pages/network-history.test.jsx > suspends an already-due history callback before React commits a pointer press\nAssertionError: expected \"replaceState\" to not be called at all, but actually been called 1 times\n\nReceived:\n\n  1st replaceState call:\n\n    Array [\n      null,\n      \"\",\n      \"/network/?code=11\",\n    ]\n\n\nNumber of calls: 1\n\n ❯ src/pages/network-history.test.jsx:30:23\n     28|     vi.advanceTimersByTime(20);\n     29|   });\n     30|   expect(replace).not.toHaveBeenCalled();\n       |                       ^\n     31|   fireEvent.pointerUp(document);\n     32|   tick();\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯\n\n\n Test Files  1 failed (1)\n      Tests  1 failed | 4 skipped (5)\n   Start at  23:12:22\n   Duration  4.15s (transform 42%, environment 28%, import 16%, setup 11%, tests 3%)\n\n",
+      "after": "New focused regression passes after synchronous held-input guard"
+    },
+    {
+      "case": "Unchanged select DOM with a fresh parent callback",
+      "before_log_excerpt": "\n RUN  v5.0.5 /tmp/gh-issue-solver-1793911090763\n\n ❯ src/components/Select.test.jsx (9 tests | 1 failed | 8 skipped) 161ms\n   ❯ owned select-only combobox (9)\n     × keeps unchanged control DOM stable while using the latest parent callback 156ms\n\n⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯\n\n FAIL  src/components/Select.test.jsx > owned select-only combobox > keeps unchanged control DOM stable while using the latest parent callback\nAssertionError: expected [ MutationRecord{}, …(4) ] to have a length of +0 but got 5\n\n- Expected\n+ Received\n\n- 0\n+ 5\n\n ❯ src/components/Select.test.jsx:54:23\n     52|     await act(async () => rerender(view(latest)));\n     53|     observer.disconnect();\n     54|     expect(mutations).toHaveLength(0);\n       |                       ^\n     55|     fireEvent.click(screen.getByRole('combobox'));\n     56|     fireEvent.click(screen.getByRole('option', { name: 'Green' }));\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯\n\n\n Test Files  1 failed (1)\n      Tests  1 failed | 8 skipped (9)\n   Start at  23:13:26\n   Duration  2.74s (environment 47%, setup 27%, transform 13%, import 7%, tests 6%, worker 1%)\n\n",
+      "after": "New focused regression passes after separating changed-property synchronization from latest callbacks"
     }
   ],
   "limits": [
@@ -111,5 +133,15 @@
       "draft-chevron-before.png",
       "after-chevron.png"
     ]
+  },
+  "browser_history_check": {
+    "tool": "Playwright MCP",
+    "edits": 8,
+    "history_writes_while_held": 0,
+    "history_writes_after_release": 1,
+    "saved_targetAngle": 68,
+    "subsequent_ring_selection": "circle",
+    "preview_changed": true,
+    "console_errors": 0
   }
 }

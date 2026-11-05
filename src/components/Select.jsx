@@ -20,6 +20,9 @@ export default function Select({ children, value, onChange, id, name, disabled, 
   const { t } = useLang();
   const menuHeight = settings['ui.menuHeight'];
   const menuWidth = settings['ui.menuWidth'];
+  const attributes = JSON.stringify(
+    Object.entries(props).filter(([key, val]) => (key.startsWith('aria-') || key.startsWith('data-')) && val != null),
+  );
   const options = JSON.stringify(
     Children.toArray(children)
       .filter(Boolean)
@@ -118,21 +121,24 @@ export default function Select({ children, value, onChange, id, name, disabled, 
     const button = host.current.querySelector('button');
     button.className = `ui-select ${className}`;
     button.dataset.value = value;
+    for (const [key, val] of JSON.parse(attributes)) button.setAttribute(key, String(val));
+    const list = host.current.querySelector('[data-part="listbox"]');
+    list.style.setProperty('--menu-height', `${menuHeight}px`);
+    list.style.maxHeight = 'min(var(--menu-height), calc(100vh - 16px))';
+    list.style.minWidth = `min(${menuWidth}px, calc(100vw - 16px))`;
+    list.style.maxWidth = 'calc(100vw - 16px)';
+  }, [buttonId, options, value, disabled, name, className, attributes, menuHeight, menuWidth]);
+  useLayoutEffect(() => {
+    const button = host.current.querySelector('button');
     // Keep the host's existing labels; hidden framework options are not part
     // of the enclosing label's text, and the list has its own accessible name.
     const label = button.labels?.[0]?.cloneNode(true);
     label?.querySelectorAll('.framework-control').forEach((node) => node.remove());
     const labelText = props['aria-label'] || label?.textContent.trim();
-    if (labelText) button.setAttribute('aria-label', labelText);
-    for (const [key, val] of Object.entries(props)) {
-      if ((key.startsWith('aria-') || key.startsWith('data-')) && val != null) button.setAttribute(key, String(val));
-    }
+    if (labelText && button.getAttribute('aria-label') !== labelText) button.setAttribute('aria-label', labelText);
     const list = host.current.querySelector('[data-part="listbox"]');
-    list.setAttribute('aria-label', `${t(localized('selectOptions'))}${labelText ? `: ${labelText}` : ''}`);
-    list.style.setProperty('--menu-height', `${menuHeight}px`);
-    list.style.maxHeight = 'min(var(--menu-height), calc(100vh - 16px))';
-    list.style.minWidth = `min(${menuWidth}px, calc(100vw - 16px))`;
-    list.style.maxWidth = 'calc(100vw - 16px)';
+    const listName = `${t(localized('selectOptions'))}${labelText ? `: ${labelText}` : ''}`;
+    if (list.getAttribute('aria-label') !== listName) list.setAttribute('aria-label', listName);
     const change = (event) => {
       if (event.detail.value === String(value)) return;
       const target = { value: event.detail.value, name };

@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import Select from './Select';
 
@@ -35,6 +35,27 @@ describe('owned select-only combobox', () => {
     fireEvent.click(button);
     expect(screen.getByRole('listbox')).toHaveAccessibleName('Options: Palette');
     expect(screen.getByLabelText('Palette')).toBe(button);
+  });
+  it('keeps unchanged control DOM stable while using the latest parent callback', async () => {
+    const first = vi.fn();
+    const latest = vi.fn();
+    const view = (onChange) => (
+      <Select value="blue" onChange={onChange} aria-label="Palette">
+        <option value="blue">Blue</option>
+        <option value="green">Green</option>
+      </Select>
+    );
+    const { container, rerender } = render(view(first));
+    const mutations = [];
+    const observer = new MutationObserver((records) => mutations.push(...records));
+    observer.observe(container, { attributes: true, childList: true, subtree: true });
+    await act(async () => rerender(view(latest)));
+    observer.disconnect();
+    expect(mutations).toHaveLength(0);
+    fireEvent.click(screen.getByRole('combobox'));
+    fireEvent.click(screen.getByRole('option', { name: 'Green' }));
+    expect(first).not.toHaveBeenCalled();
+    expect(latest).toHaveBeenCalledWith(expect.objectContaining({ target: { value: 'green', name: undefined } }));
   });
   it('supports navigation, typeahead and Escape without changing the selection', () => {
     const { button, onChange } = setup();

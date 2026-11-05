@@ -248,3 +248,48 @@ mask in forced colors and preserving that background fixes it in light and
 dark high-contrast schemes. A new Chromium migration smoke assertion fails before this change; `draft-forced-colors-before.png` and
 `after-forced-colors.png` preserve visual evidence. Other button colors continue
 to use the system's forced colors.
+
+## CI dependency installation investigation
+
+[Run 42123506812](https://github.com/konard/konard.github.io/actions/runs/42123506812)
+started at 22:40:43 UTC on `7975333`. Chromium passed the complete browser job.
+Firefox reached its existing 15-minute limit during OS dependency installation;
+no Firefox tests ran. The archived job log and exact lines are in
+`data/ci-42123506812.tar.gz` and `data/ci-firefox-install-7975333.json`.
+Line 437 requests 48.8 MB, lines 453/458 retry slow Azure downloads, and line 466
+records cancellation at 22:57:08. This is an installation failure, not a pass.
+
+GitHub's runner-image maintainers track the same slow-transfer problem in
+[runner-images issue 14823](https://github.com/actions/runner-images/issues/14823).
+Their [APT configuration](https://github.com/actions/runner-images/blob/main/images/ubuntu/scripts/build/configure-apt-sources.sh)
+puts Azure first, followed by the standard Ubuntu archive and security endpoints.
+Both browser-install steps (the browser matrix and CV PDF generation) now remove
+only the Azure entry on Linux, keeping those standard fallbacks. macOS installation
+and every test/job timeout remain unchanged. The existing real CI installation
+and complete browser suites verify the correction on a fresh runner; YAML parsing,
+Bash syntax checking and ShellCheck validate both steps locally. The original
+runner issue, comments and its October 27 status screenshot are archived here;
+the screenshot records that incident's status rather than today's service health.
+
+## CI interaction timing investigation
+
+The same run's completed WebKit job failed two existing assertions, while its
+frame/palette and production migration checks passed. The complete workflow,
+WebKit job and Firefox installation logs are all in `data/ci-42123506812.tar.gz`.
+The run concluded cancelled and skipped the dependent unit/build/PDF job; none
+of those skipped checks is treated as passing.
+
+| Evidence in `webkit-42123506812.log` | Investigation and correction | Regression |
+| --- | --- | --- |
+| Line 462: one URL write during a held slider | A due debounce callback can run before React commits the native pointer listener's state update. Track the active gesture synchronously and guard the write itself, retaining debounced persistence after release | `network-history.test.jsx`: advance an already-due timer before React commits the pointer press; fails before and passes after |
+| Line 828: frame intervals include 514 ms against the existing 500 ms limit | The adapter also patches every unchanged select on each parent render. Synchronize framework properties only when they change; keep label derivation and callbacks current independently. This removes measured redundant work, but does not establish the cause of the particular WebKit frame delay | `Select.test.jsx`: unchanged DOM with a new parent callback, then selecting invokes only that latest callback. Existing WebKit responsiveness assertion remains unchanged and must pass in current-commit CI |
+
+`interaction-performance.mjs` bounds its real-browser probe to eight edits on
+one page. Chromium measured 800 DOM mutations across 23 unchanged selects
+before the correction and zero afterward; `data/select-mutations.json` retains
+both results. Elapsed times varied and do not demonstrate a speedup. This probe
+is diagnostic; the existing real worker/slider browser tests remain the CI gate.
+The 23 focused select/color/framework/history tests pass after both changes.
+`data/local-verification.json` preserves both minimal failing reproductions.
+Existing opt-in `network.debug` tracing also records a deferred due callback;
+tracing remains off by default.
