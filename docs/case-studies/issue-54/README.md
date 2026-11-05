@@ -157,5 +157,63 @@ budget was raised to conceal this limitation.
 The comparison discovered an actual draft regression: palette CSS omitted
 all RGB channels because a closing-brace replacement ignored the generated
 trailing newline. That failure removed neon frames. The corrected generator
-now has a complete 24-palette fixture comparison, and the final screenshots
-must be regenerated after that correction.
+now has a complete 24-palette fixture comparison. The committed final
+screenshots were regenerated after that correction.
+
+The Chromium matrix contains 48 paired viewport captures with zero changed
+pixels at pixelmatch threshold 0.1 (antialias differences excluded), identical
+headings/titles, no horizontal overflow and no page errors. These are viewport
+samples, not full-page screenshots of all 608 controls. Direct Playwright MCP
+checks additionally cover the opened select, Tab commit, composite reference
+labels, the mobile RGB/palette chooser and the live inspector. Before/after
+menu bounds were identical. The comparison summaries record control counts;
+framework hidden form inputs increase DOM control counts without adding visible
+fields. See `data/chromium-comparison.json` and `screenshots/`.
+
+A separate 390×320 probe found that a long palette menu extended above the
+screen (y=-144.22, height=320). The adapter now caps height to available space
+before positioning and attaches a resize listener only while open. The same
+anchor then yields y=8, height=167.78. The migration smoke fails before this
+fix and checks both the short viewport and resizing an open menu afterward.
+See `screenshots/draft-landscape-menu-before.png` and
+`screenshots/draft-landscape-menu-after.png`; report 210 includes this evidence.
+
+Firefox's paired production matrix has 47 exact viewport matches and one
+114-pixel difference (0.0347% of a 390×844 viewport), confined to the right
+edge of the mobile top navigation (x=352–377, y=50–80). All 48 cases retain
+their headings/titles, fit the viewport and have no page errors. See
+`data/firefox-comparison.json`; this small difference is recorded, not discarded.
+
+`audit-messages.mjs` expands catalog calls and compares syntax trees with main:
+53 files changed only for catalog extraction preserve their original logic and
+exact text in both languages. The three mixed behavioral files receive focused
+diff review and tests. `data/source-line-counts.json` records selected consumer
+files, including added compatibility modules. Select and color positioning
+shrink, but the draft does not claim a net repository reduction: catalogs,
+source archives, adapters and regression evidence are real additions.
+
+## CI investigation of the first integration draft
+
+[Run 42110736077](https://github.com/konard/konard.github.io/actions/runs/42110736077)
+started at 21:13:57 UTC on the actual integration commit `8f357ec`, later than
+the passing baseline run on `86ce022`. It exposed real browser failures; it
+was cancelled after identifying the failures, then its failed job logs were
+downloaded for investigation. It is not counted as passing.
+The individual job logs are archived in `data/ci-42110736077.tar.gz`, with
+exact filenames/line numbers and excerpts in `data/ci-failures-8f357ec.json`.
+
+| Failure evidence | Root cause and correction | Regression coverage |
+| --- | --- | --- |
+| Chromium log 602: gradient missing; Chromium 639 / WebKit 459: six distinct layouts instead of seven | Native framework events bypass React's discrete event flush. Commit the React callback with flushSync at this integration boundary | Existing production editor and seven-placement browser checks |
+| All engines' issue-25 check: four controls reported out of bounds | The old selector counts new hidden form inputs and misses custom-element comboboxes. Inspect visible input types and role=combobox instead, preserving and broadening the layout assertion | Existing English/Russian mobile card checks |
+| Firefox log 1293: palette click yields #17de1d instead of #ff10f0 | The async floating position can move the chooser during a forced click. Keep it measurable but invisible until the first positioning callback, then focus its first slider | ColorInput positioning regression plus the existing real palette-click browser test |
+| Focused label regression: 0, — void | String(array) inserts commas between React text fragments. Join the flattened text children instead | Select composite-label regression and direct browser checks |
+
+React documents flushSync for third-party integrations that must expose an
+updated DOM before a native callback returns; its cost makes a narrow event
+boundary preferable to applying it to general settings updates.
+[React flushSync](https://react.dev/reference/react-dom/flushSync).
+Floating UI returns coordinates asynchronously and requires measurable initial
+layout. Initial fixed positioning and visibility gating keep the chooser's
+geometry stable until coordinates are ready.
+[Floating UI computePosition](https://floating-ui.com/docs/computeposition).

@@ -1,0 +1,44 @@
+{
+  "run": "https://github.com/konard/konard.github.io/actions/runs/42110736077",
+  "headSha": "8f357ece9b62f7b8e88461972b8e5c7e6f1c601b",
+  "createdAt": "2026-11-05T21:13:57Z",
+  "conclusion": "cancelled after concrete browser failures; never a passing verification",
+  "archive": "ci-42110736077.tar.gz",
+  "results": [
+    {
+      "file": "chromium-42110736077.log",
+      "line": 602,
+      "excerpt": "2026-11-05T21:15:53.3353669Z AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n2026-11-05T21:15:53.3354835Z \n2026-11-05T21:15:53.3355332Z   assert((await svgOf(page)).includes('<linearGradient'))\n2026-11-05T21:15:53.3355992Z \n2026-11-05T21:15:53.3356858Z     at file:///home/runner/work/konard.github.io/konard.github.io/experiments/network-e2e.mjs:121:3 {\n2026-11-05T21:15:53.3358083Z   generatedMessage: true,\n2026-11-05T21:15:53.3358687Z   code: 'ERR_ASSERTION',\n2026-11-05T21:15:53.3359290Z   actual: false,\n2026-11-05T21:15:53.3359792Z   expected: true,\n2026-11-05T21:15:53.3360265Z   operator: '==',\n2026-11-05T21:15:53.3360855Z   diff: 'simple'"
+    },
+    {
+      "file": "chromium-42110736077.log",
+      "line": 639,
+      "excerpt": "2026-11-05T21:16:06.1322620Z AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n2026-11-05T21:16:06.1323419Z \n2026-11-05T21:16:06.1323780Z 6 !== 7\n2026-11-05T21:16:06.1324155Z \n2026-11-05T21:16:06.1325105Z     at file:///home/runner/work/konard.github.io/konard.github.io/experiments/issue-19-browser.mjs:132:10 {\n2026-11-05T21:16:06.1326027Z   generatedMessage: true,\n2026-11-05T21:16:06.1326460Z   code: 'ERR_ASSERTION',\n2026-11-05T21:16:06.1326857Z   actual: 6,\n2026-11-05T21:16:06.1327239Z   expected: 7,\n2026-11-05T21:16:06.1327609Z   operator: 'strictEqual',\n2026-11-05T21:16:06.1328002Z   diff: 'simple'"
+    },
+    {
+      "file": "chromium-42110736077.log",
+      "line": 742,
+      "excerpt": "2026-11-05T21:17:32.0700629Z AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n2026-11-05T21:17:32.0700939Z \n2026-11-05T21:17:32.0701026Z 4 !== 0\n2026-11-05T21:17:32.0701128Z \n2026-11-05T21:17:32.0701530Z     at file:///home/runner/work/konard.github.io/konard.github.io/experiments/issue-25-browser.mjs:144:12 {\n2026-11-05T21:17:32.0702061Z   generatedMessage: true,\n2026-11-05T21:17:32.0702323Z   code: 'ERR_ASSERTION',\n2026-11-05T21:17:32.0702551Z   actual: 4,\n2026-11-05T21:17:32.0702750Z   expected: 0,\n2026-11-05T21:17:32.0702970Z   operator: 'strictEqual',\n2026-11-05T21:17:32.0703201Z   diff: 'simple'"
+    },
+    {
+      "file": "firefox-42110736077.log",
+      "line": 876,
+      "excerpt": "2026-11-05T21:18:04.8341132Z AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n2026-11-05T21:18:04.8341601Z \n2026-11-05T21:18:04.8341706Z 4 !== 0\n2026-11-05T21:18:04.8341823Z \n2026-11-05T21:18:04.8342252Z     at file:///home/runner/work/konard.github.io/konard.github.io/experiments/issue-25-browser.mjs:144:12 {\n2026-11-05T21:18:04.8342819Z   generatedMessage: true,\n2026-11-05T21:18:04.8343089Z   code: 'ERR_ASSERTION',\n2026-11-05T21:18:04.8343340Z   actual: 4,\n2026-11-05T21:18:04.8343548Z   expected: 0,\n2026-11-05T21:18:04.8343784Z   operator: 'strictEqual',\n2026-11-05T21:18:04.8344030Z   diff: 'simple'"
+    },
+    {
+      "file": "firefox-42110736077.log",
+      "line": 1293,
+      "excerpt": "2026-11-05T21:25:37.7450060Z AssertionError [ERR_ASSERTION]: a palette colour sets the value: \"#17de1d\"\n2026-11-05T21:25:37.7451546Z     at check (file:///home/runner/work/konard.github.io/konard.github.io/experiments/issue-45-browser.mjs:76:12)\n2026-11-05T21:25:37.7452955Z     at file:///home/runner/work/konard.github.io/konard.github.io/experiments/issue-45-browser.mjs:127:5 {\n2026-11-05T21:25:37.7454026Z   generatedMessage: false,\n2026-11-05T21:25:37.7454517Z   code: 'ERR_ASSERTION',\n2026-11-05T21:25:37.7454895Z   actual: false,\n2026-11-05T21:25:37.7455235Z   expected: true,\n2026-11-05T21:25:37.7455594Z   operator: '==',\n2026-11-05T21:25:37.7455932Z   diff: 'simple'\n2026-11-05T21:25:37.7456263Z }\n2026-11-05T21:25:37.7456435Z "
+    },
+    {
+      "file": "webkit-42110736077.log",
+      "line": 459,
+      "excerpt": "2026-11-05T21:17:22.7690370Z AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n2026-11-05T21:17:22.7696860Z \n2026-11-05T21:17:22.7727960Z 6 !== 7\n2026-11-05T21:17:22.7757560Z \n2026-11-05T21:17:22.7780170Z     at file:///Users/runner/work/konard.github.io/konard.github.io/experiments/issue-19-browser.mjs:132:10 {\n2026-11-05T21:17:22.7814060Z   generatedMessage: true,\n2026-11-05T21:17:22.7840120Z   code: 'ERR_ASSERTION',\n2026-11-05T21:17:22.7889060Z   actual: 6,\n2026-11-05T21:17:22.7982880Z   expected: 7,\n2026-11-05T21:17:22.8020420Z   operator: 'strictEqual',\n2026-11-05T21:17:22.8046980Z   diff: 'simple'"
+    },
+    {
+      "file": "webkit-42110736077.log",
+      "line": 562,
+      "excerpt": "2026-11-05T21:19:47.8738220Z AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n2026-11-05T21:19:47.8738810Z \n2026-11-05T21:19:47.8738990Z 4 !== 0\n2026-11-05T21:19:47.8739190Z \n2026-11-05T21:19:47.8739950Z     at file:///Users/runner/work/konard.github.io/konard.github.io/experiments/issue-25-browser.mjs:144:12 {\n2026-11-05T21:19:47.8740910Z   generatedMessage: true,\n2026-11-05T21:19:47.8741370Z   code: 'ERR_ASSERTION',\n2026-11-05T21:19:47.8741780Z   actual: 4,\n2026-11-05T21:19:47.8742300Z   expected: 0,\n2026-11-05T21:19:47.8742840Z   operator: 'strictEqual',\n2026-11-05T21:19:47.8743430Z   diff: 'simple'"
+    }
+  ]
+}

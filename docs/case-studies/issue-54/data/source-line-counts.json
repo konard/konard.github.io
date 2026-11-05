@@ -1,0 +1,51 @@
+{
+  "baseline": "f169665",
+  "scope": "Selected consumer source files, physical lines including comments; excludes catalogs, tests, vendored code and generated outputs. This is not a net repository size claim.",
+  "files": [
+    {
+      "file": "src/components/Select.jsx",
+      "before": 210,
+      "after": 139
+    },
+    {
+      "file": "src/components/ColorInput.jsx",
+      "before": 164,
+      "after": 157
+    },
+    {
+      "file": "src/settings/presets.js",
+      "before": 407,
+      "after": 405
+    },
+    {
+      "file": "src/settings/store.js",
+      "before": 120,
+      "after": 123
+    },
+    {
+      "file": "src/links/edit.js",
+      "before": 232,
+      "after": 249
+    },
+    {
+      "file": "src/ui/framework.css",
+      "before": 0,
+      "after": 21
+    },
+    {
+      "file": "src/settings/framework.js",
+      "before": 0,
+      "after": 51
+    },
+    {
+      "file": "src/i18n/localizer.js",
+      "before": 0,
+      "after": 27
+    },
+    {
+      "file": "src/ui/devmode.js",
+      "before": 0,
+      "after": 35
+    }
+  ]
+}

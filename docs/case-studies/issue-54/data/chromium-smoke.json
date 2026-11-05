@@ -1,0 +1,11 @@
+{
+  "engine": "chromium",
+  "results": [
+    "Legacy JSON loads; framework select commits with Tab, respects menu bounds and persists as historical LiNo",
+    "Long select menus fit a short landscape viewport and resize while open",
+    "Framework catalogs resolve English and Russian through the existing language switch",
+    "Official parser accepts indented and historical notation, rejects malformed nested records; mobile layout fits",
+    "Lazy framework inspector loads production assets, closes and reopens with Alt+Shift+D"
+  ],
+  "errors": []
+}

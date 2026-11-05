@@ -19,13 +19,20 @@ working adapters, and collect the research and verification here.
 - [ ] Full support for every reusable UI feature upstream: blocked by the
       panel, frame, network/material/audio and packaging gaps in reports 209–212.
       Reporting them and keeping working adapters does not complete this item.
-- [ ] Compare desktop/mobile, themes, presets and pages in real browsers;
+- [x] Compare desktop/mobile, themes, presets and pages in real browsers;
       commit baseline/final evidence and automated migration checks.
-- [ ] Review line counts and deletions, complete focused checks, push atomic
-      commits, and verify all CI for the final SHA.
-- [ ] Merge main into the prepared branch if necessary; review the entire PR
-      diff, update its title/body with evidence and Fixes #54, mark ready,
+- [x] Review line counts and deletions, complete focused checks, and preserve
+      implementation and evidence as atomic commits.
+- [x] Verify main is an ancestor of the prepared branch; review the entire PR
+      diff, update its title/body with evidence and Fixes #54,
       and confirm the working tree is clean.
+- [ ] Mark ready after the full-support requirement is met. Until then,
+      retain the draft and explicitly report the unfinished criterion.
+
+Final CI is tracked by the current-commit checks on PR 55. The initial failed
+run is preserved in the case study. All checks must pass on the corrected
+commit before this draft's implementation work can be reported as verified;
+passing checks still do not complete the separate upstream-support criterion.
 
 ## Initial findings
 

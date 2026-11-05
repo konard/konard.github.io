@@ -1,0 +1,68 @@
+{
+  "date": "2026-11-05",
+  "baseline": "f169665",
+  "framework": "f72e97fe2db100d88ea460ee8451bbf63a1b01b6",
+  "focused_checks": [
+    {
+      "command": "npx vitest run src/components/Select.test.jsx src/components/ColorInput.test.jsx",
+      "result": "12 passed after final control changes"
+    },
+    {
+      "command": "node experiments/framework-migration/audit-messages.mjs",
+      "result": "53 catalog-only files preserve exact English/Russian text and original syntax trees"
+    },
+    {
+      "command": "ENGINE=chromium node experiments/network-e2e.mjs",
+      "result": "pass: editor, gradient, solver, exact shared SVG, actual SVG/PNG/JPEG/WebP/LiNo downloads"
+    },
+    {
+      "command": "ENGINE=chromium node experiments/issue-19-browser.mjs",
+      "result": "pass: seven layouts, 120-event gestures, history, offsets, clipboard/downloads, 100-link mobile editor"
+    },
+    {
+      "command": "ENGINE=chromium node experiments/issue-25-browser.mjs",
+      "result": "pass: geometry, exact sharing, editing/inheritance and EN/RU visible mobile controls"
+    },
+    {
+      "command": "ENGINE=firefox node experiments/issue-45-browser.mjs",
+      "result": "16 checks passed, including the real forced palette click that failed CI"
+    },
+    {
+      "command": "npm run build",
+      "result": "pass after the short-viewport adapter"
+    }
+  ],
+  "regressions": [
+    {
+      "case": "Composite text/numeric option labels",
+      "before_log_excerpt": "\n RUN  v5.0.5 /tmp/gh-issue-solver-1793911090763\n\n ❯ src/components/Select.test.jsx (7 tests | 1 failed) 750ms\n   ❯ owned select-only combobox (7)\n     × preserves labels assembled from multiple text and numeric children 31ms\n\n⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯\n\n FAIL  src/components/Select.test.jsx > owned select-only combobox > preserves labels assembled from multiple text and numeric children\nError: expect(element).toHaveTextContent()\n\nExpected element to have text content:\n  0 — void\nReceived:\n  0, — void\n ❯ src/components/Select.test.jsx:65:20\n     63|     );\n     64|     const button = screen.getByRole('combobox');\n     65|     expect(button).toHaveTextContent('0 — void');\n       |                    ^\n     66|     fireEvent.click(button);\n     67|     expect(screen.getByRole('option', { name: '1280 × 800 (current)' }…\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯\n\n\n Test Files  1 failed (1)\n      Tests  1 failed | 6 passed (7)\n   Start at  21:23:28\n   Duration  4.97s (environment 51%, tests 16%, setup 16%, import 9%, transform 8%, worker 1%)\n\n",
+      "after": "7 Select tests pass; labels retain spaces and no added commas"
+    },
+    {
+      "case": "Async color chooser positioning",
+      "before_log_excerpt": "\n RUN  v5.0.5 /tmp/gh-issue-solver-1793911090763\n\n ❯ src/components/ColorInput.test.jsx (5 tests | 1 failed) 1065ms\n   × reveals the chooser only after its asynchronous position is ready 113ms\n\n⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯\n\n FAIL  src/components/ColorInput.test.jsx > reveals the chooser only after its asynchronous position is ready\nError: expect(element).toHaveStyle()\n\n- Expected\n\n- visibility: hidden;\n ❯ src/components/ColorInput.test.jsx:56:56\n     54|   render(<ColorInput aria-label=\"Accent\" value=\"#112233\" onChange={() …\n     55|   fireEvent.click(screen.getByRole('button', { name: 'Choose color: Ac…\n     56|   expect(screen.getByRole('dialog', { hidden: true })).toHaveStyle({ v…\n       |                                                        ^\n     57|   const dialog = await screen.findByRole('dialog', { name: 'Color choo…\n     58|   expect(dialog.style.left).not.toBe('');\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯\n\n\n Test Files  1 failed (1)\n      Tests  1 failed | 4 passed (5)\n   Start at  21:30:59\n   Duration  4.59s (environment 40%, tests 25%, setup 16%, import 8%, transform 8%, worker 3%)\n\n",
+      "after": "5 ColorInput tests and the Firefox issue-45 palette click pass"
+    },
+    {
+      "case": "Long menu in 390x320 viewport",
+      "before_log_excerpt": "node:internal/modules/run_main:111\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(landscapeMenu.y >= 0 && landscapeMenu.y + landscapeMenu.height <= 320)\n\n    at file:///tmp/gh-issue-solver-1793911090763/experiments/framework-migration/smoke.mjs:69:10 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v26.13.0\n",
+      "before_geometry": {
+        "y": -144.21875,
+        "height": 320
+      },
+      "after_geometry": {
+        "y": 8,
+        "height": 167.78125
+      },
+      "screenshots": [
+        "draft-landscape-menu-before.png",
+        "draft-landscape-menu-after.png"
+      ]
+    }
+  ],
+  "limits": [
+    "Local Linux WebKit matrix was OOM-killed when overlapping other work; not a pass. CI macOS WebKit supplies remaining platform coverage.",
+    "Viewport comparisons sample 48 scenarios per browser, not every one of the 608 settings.",
+    "Full upstream support is an unfinished acceptance criterion; local adapters and upstream issue reports do not satisfy it."
+  ]
+}

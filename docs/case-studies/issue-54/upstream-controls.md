@@ -11,6 +11,8 @@ Concrete control failures and differences:
 
 Settings panel requirements:
 
+Additional production reproduction for item 3: at a 390×320 viewport, open the 12-option palette select with a configured 320px menu height. The anchor is at y=179.78–211.78, but the menu is positioned at y=-144.22 with height 320px, making the first options unreachable. `createPositioner` uses flip/shift without a size middleware; flipping alone cannot fit the menu above or below this anchor. Bound the height to available space and update it when the viewport changes. Consumer regression: `experiments/framework-migration/smoke.mjs` in PR 55 (fails before the adapter, passes afterward); before/after screenshots are preserved in its case study. The workaround sizes on opening and observes resize only while the menu is open.
+
 The current site's 608 fields include 349 conditional fields, per-section tabs and element levels, transparent frame previews, coupled fit limits, a two-column layout that moves whole sections, customized counts, saved named looks, a recoverable "Before the link" look, comfort preservation, copy/paste/import/export and randomization constraints. The generated framework panel does not yet expose equivalent declarative conditional/preview/tab/group/layout hooks. Replacing it would remove existing functionality.
 
 Settings engine interoperability:
