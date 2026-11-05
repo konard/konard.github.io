@@ -78,7 +78,12 @@ export default function ColorInput({ value, onChange, label = '', ...props }) {
         aria-expanded={open}
         aria-controls={open ? id : undefined}
         disabled={props.disabled}
-        onClick={() => setOpen(!open)}
+        onClick={() => {
+          // Establish focus before async placement, dismissing another chooser
+          // even for keyboard/synthetic clicks and Safari pointer clicks.
+          trigger.current.focus({ preventScroll: true });
+          setOpen(!open);
+        }}
       />
       <input
         {...props}

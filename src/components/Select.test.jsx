@@ -28,6 +28,14 @@ describe('owned select-only combobox', () => {
     );
     expect(button).toHaveAttribute('aria-expanded', 'false');
   });
+  it('keeps the enclosing label distinct from hidden options and the listbox name', () => {
+    const { button } = setup();
+    expect(screen.getByLabelText('Palette')).toBe(button);
+    expect(button).toHaveAccessibleName('Palette');
+    fireEvent.click(button);
+    expect(screen.getByRole('listbox')).toHaveAccessibleName('Options: Palette');
+    expect(screen.getByLabelText('Palette')).toBe(button);
+  });
   it('supports navigation, typeahead and Escape without changing the selection', () => {
     const { button, onChange } = setup();
     button.focus();

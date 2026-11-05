@@ -1,6 +1,7 @@
 {
   "engine": "chromium",
   "results": [
+    "SVG select indicator retains text contrast in light/dark Windows forced colors",
     "Legacy JSON loads; framework select commits with Tab, respects menu bounds and persists as historical LiNo",
     "Long select menus fit a short landscape viewport and resize while open",
     "Framework catalogs resolve English and Russian through the existing language switch",

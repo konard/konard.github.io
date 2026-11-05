@@ -2,6 +2,8 @@ import { Children, useId, useLayoutEffect, useRef } from 'react';
 import { flushSync } from 'react-dom';
 import { mountControls } from '@link-foundation/ui-components/controls';
 import { formatLinks } from '@link-foundation/ui-core';
+import { localized } from '../i18n/localizer';
+import { useLang } from '../i18n/prefs';
 import { useSettings } from '../settings/store';
 import { cue } from '../sound/options';
 import '../ui/framework.css';
@@ -15,6 +17,7 @@ export default function Select({ children, value, onChange, id, name, disabled, 
   const host = useRef(null);
   const mounted = useRef(null);
   const settings = useSettings();
+  const { t } = useLang();
   const menuHeight = settings['ui.menuHeight'];
   const menuWidth = settings['ui.menuWidth'];
   const options = JSON.stringify(
@@ -32,7 +35,7 @@ export default function Select({ children, value, onChange, id, name, disabled, 
         id: buttonId,
         values: [
           'select',
-          ['label', 'Selection'],
+          ['label', ''],
           ...JSON.parse(options).map((option, i) => ({
             id: `${buttonId}-${i}`,
             values: [
@@ -52,7 +55,7 @@ export default function Select({ children, value, onChange, id, name, disabled, 
     button.id = buttonId;
     button.removeAttribute('aria-labelledby');
     list.className = 'ui-select__list';
-    list.setAttribute('aria-labelledby', buttonId);
+    list.removeAttribute('aria-labelledby');
     // The upstream positioner flips but does not resize a menu to available
     // vertical space. Size before it measures, including on viewport resize.
     const fitMenu = () => {
@@ -115,10 +118,17 @@ export default function Select({ children, value, onChange, id, name, disabled, 
     const button = host.current.querySelector('button');
     button.className = `ui-select ${className}`;
     button.dataset.value = value;
+    // Keep the host's existing labels; hidden framework options are not part
+    // of the enclosing label's text, and the list has its own accessible name.
+    const label = button.labels?.[0]?.cloneNode(true);
+    label?.querySelectorAll('.framework-control').forEach((node) => node.remove());
+    const labelText = props['aria-label'] || label?.textContent.trim();
+    if (labelText) button.setAttribute('aria-label', labelText);
     for (const [key, val] of Object.entries(props)) {
       if ((key.startsWith('aria-') || key.startsWith('data-')) && val != null) button.setAttribute(key, String(val));
     }
     const list = host.current.querySelector('[data-part="listbox"]');
+    list.setAttribute('aria-label', `${t(localized('selectOptions'))}${labelText ? `: ${labelText}` : ''}`);
     list.style.setProperty('--menu-height', `${menuHeight}px`);
     list.style.maxHeight = 'min(var(--menu-height), calc(100vh - 16px))';
     list.style.minWidth = `min(${menuWidth}px, calc(100vw - 16px))`;

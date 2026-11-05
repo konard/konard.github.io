@@ -1,0 +1,79 @@
+{
+  "run": 42115569978,
+  "url": "https://github.com/konard/konard.github.io/actions/runs/42115569978",
+  "sha": "b38f52852ab8c5d15494e4549d324e288c309220",
+  "createdAt": "2026-11-05T21:45:52Z",
+  "conclusion": "failure",
+  "browser_jobs": "Chromium, Firefox and macOS WebKit passed all existing browser groups and migration smoke",
+  "unit_tests": {
+    "passed": 1245,
+    "failed": 5,
+    "total": 1250
+  },
+  "source_log": "test-42115569978.log",
+  "failures": [
+    {
+      "pattern": "Unable to find a label with the text of: Style",
+      "matches": [
+        {
+          "line": 702,
+          "text": "test\tRun tests\t2026-11-05T22:18:23.6526825Z TestingLibraryElementError: Unable to find a label with the text of: Style"
+        },
+        {
+          "line": 5048,
+          "text": "test\tRun tests\t2026-11-05T22:18:23.7743447Z ##[error]TestingLibraryElementError: Unable to find a label with the text of: Style"
+        }
+      ]
+    },
+    {
+      "pattern": "ЯзыкSelection",
+      "matches": [
+        {
+          "line": 3574,
+          "text": "test\tRun tests\t2026-11-05T22:18:23.7362598Z   Name \"ЯзыкSelection\":"
+        }
+      ]
+    },
+    {
+      "pattern": "Found multiple elements with the text of: My colour",
+      "matches": [
+        {
+          "line": 4702,
+          "text": "test\tRun tests\t2026-11-05T22:18:23.7589148Z TestingLibraryElementError: Found multiple elements with the text of: My colour"
+        },
+        {
+          "line": 5585,
+          "text": "test\tRun tests\t2026-11-05T22:18:23.7976577Z ##[error]TestingLibraryElementError: Found multiple elements with the text of: My colour"
+        }
+      ]
+    },
+    {
+      "pattern": "to have a length of 6 but got 9",
+      "matches": [
+        {
+          "line": 4998,
+          "text": "test\tRun tests\t2026-11-05T22:18:23.7679186Z AssertionError: expected [ '_r_1j_-red', '_r_1j_-green', …(7) ] to have a length of 6 but got 9"
+        },
+        {
+          "line": 5775,
+          "text": "test\tRun tests\t2026-11-05T22:18:23.7980168Z ##[error]AssertionError: expected [ '_r_1j_-red', '_r_1j_-green', …(7) ] to have a length of 6 but got 9"
+        }
+      ]
+    },
+    {
+      "pattern": "ui/framework.css:13: content:",
+      "matches": [
+        {
+          "line": 5024,
+          "text": "test\tRun tests\t2026-11-05T22:18:23.7686541Z +   \"ui/framework.css:13: content: '⌄';\","
+        },
+        {
+          "line": 5794,
+          "text": "test\tRun tests\t+   \"ui/framework.css:13: content: '⌄';\","
+        }
+      ]
+    }
+  ],
+  "after_focused": "All five previously failing tests pass: npx vitest run src/cv/cv.test.jsx src/pages/pages.test.jsx src/pages/settings.test.jsx src/pages/slider-ids-47.test.jsx src/components/icons-47.test.jsx --maxWorkers=1 -t \"choosing a position|BlogPage:|shows a setting only|names the channel|leaves no emoji\"",
+  "controls_after": "17 passed in Select.test.jsx, ColorInput.test.jsx and framework.test.js"
+}

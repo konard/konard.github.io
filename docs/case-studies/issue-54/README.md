@@ -40,7 +40,7 @@ older site revision; its full body and comments are preserved separately.
 | 608 settings in 20 sections | `ui-settings` readSchema/defaults/merge/diff and shared-look comfort metadata | Existing metadata is projected to a framework schema. Reject wrong JSON primitive types, preserve continuous imported values, legacy transparent-surface migration |
 | Select controls throughout settings/editor | `ui-components/controls` mountControls, official LiNo behavior machine, ui-dom/store and Floating UI | React event/label/skin bridge, disabled-option click guard, Tab commit, ten-option page keys, configurable menu bounds, Safari focus |
 | Color picker position and channel parsing | `ui-components/overlays.positionFloating`, controls.parseHex | Preserve live hex drafts, RGB sliders and named palettes; observers exist only while open |
-| Static English/Russian messages | `ui-i18n` readCatalogs/createLocalizer/message; 808 entries in each locale catalog | Lazy bilingual getters keep CV exports, stable keys and existing language switch compatible. Dynamic domain messages and external data retain their existing representation |
+| Static English/Russian messages | `ui-i18n` readCatalogs/createLocalizer/message; 809 entries in each locale catalog (808 extracted messages plus the options-list accessible name) | Lazy bilingual getters keep CV exports, stable keys and existing language switch compatible. Dynamic domain messages and external data retain their existing representation |
 | Twelve palettes, dark and light | `ui-tokens` readTokens/resolveTokens/toCss over `src/ui/palettes.lino` | One RGB-channel CSS bridge preserves alpha compositing and existing surfaces exactly |
 | Links Notation network input | `ui-core.parseLinks`, backed by official links-notation | Numeric network semantic validation, comma compatibility and historical adjacent-pair line separation; other mathematical/base representations are domain code |
 | Optional development UI | `ui-devmode/foreign` over the whole React document | Lazy URL/hotkey activation; browser import alias and asset-reference transform until report 212 is fixed |
@@ -179,7 +179,7 @@ See `screenshots/draft-landscape-menu-before.png` and
 `screenshots/draft-landscape-menu-after.png`; report 210 includes this evidence.
 
 Firefox's paired production matrix has 47 exact viewport matches and one
-114-pixel difference (0.0347% of a 390×844 viewport), confined to the right
+114-pixel difference (0.0346% of a 390×844 viewport), confined to the right
 edge of the mobile top navigation (x=352–377, y=50–80). All 48 cases retain
 their headings/titles, fit the viewport and have no page errors. See
 `data/firefox-comparison.json`; this small difference is recorded, not discarded.
@@ -217,3 +217,34 @@ Floating UI returns coordinates asynchronously and requires measurable initial
 layout. Initial fixed positioning and visibility gating keep the chooser's
 geometry stable until coordinates are ready.
 [Floating UI computePosition](https://floating-ui.com/docs/computeposition).
+
+## CI investigation of the browser-verified draft
+
+[Run 42115569978](https://github.com/konard/konard.github.io/actions/runs/42115569978)
+started at 21:45:52 UTC on `b38f528`, after that commit was pushed. All three
+browser jobs passed, including every existing editor/frame/palette suite and
+the new production migration smoke. The subsequent unit job passed 1,245 tests
+and failed five. Full workflow and unit logs are archived in
+`data/ci-42115569978.tar.gz`; `data/ci-failures-b38f528.json` records exact
+source lines and focused reproduction commands.
+
+| Failing existing contract | Root cause and correction | Verification |
+| --- | --- | --- |
+| CV Style and Russian Blog Language labels | A generic framework label and in-place hidden options pollute implicit label text. Derive the button name from its actual host label, remove the unused generic label, and give each list a separate localized name | Existing CV/Blog tests pass; added Select test checks unique label lookup and distinct list naming |
+| Conditional My colour field | The hidden listbox inherits the selected option's text as its name, creating a duplicate label match with the actual field | Remove that label reference and use Options: Colour; the existing conditional-settings test passes |
+| One open color chooser at a time | Positioning now focuses the first slider asynchronously, allowing two synthetic opens before either focuses | Focus the trigger immediately before opening, preserving the existing single-chooser rule; existing slider-ID regression passes |
+| SVG-only interface | The draft adapter used a character glyph for its chevron | Restore the existing Lucide SVG shape as a CSS mask, preserving its upstream license notice; existing icon scan passes |
+
+The exact five failing tests pass after these corrections. The control and
+framework fixture check passes all 17 tests. Before/after chevron screenshots
+are `screenshots/draft-chevron-before.png` and `screenshots/after-chevron.png`.
+Final current-commit CI, including the complete unit suite and CV export, must
+still pass before reporting the draft's implementation as verified.
+
+A real Chromium forced-colors probe additionally found a masked icon contrast
+regression: the pseudo-element's text was black but its forced background
+became white, hiding the SVG on the white button. Using ButtonText for the
+mask in forced colors and preserving that background fixes it in light and
+dark high-contrast schemes. A new Chromium migration smoke assertion fails before this change; `draft-forced-colors-before.png` and
+`after-forced-colors.png` preserve visual evidence. Other button colors continue
+to use the system's forced colors.

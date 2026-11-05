@@ -10,12 +10,22 @@
   display: inline;
 }
 .framework-control [data-part='indicator']::after {
-  content: '⌄';
-  font-size: 1.25em;
+  content: '';
+  display: block;
+  width: 1em;
+  height: 1em;
+  background: currentColor;
+  forced-color-adjust: none;
+  mask: url('./chevron-down.svg') center / contain no-repeat;
 }
 .ui-select__list [data-part='indicator'] {
   display: none;
 }
 .framework-control [data-part='listbox']:not([popover]) {
   position: fixed;
+}
+@media (forced-colors: active) {
+  .framework-control [data-part='indicator']::after {
+    color: ButtonText;
+  }
 }

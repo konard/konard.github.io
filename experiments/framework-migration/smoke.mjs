@@ -1,4 +1,4 @@
-/* global document, innerWidth, matchMedia */
+/* global document, innerWidth, matchMedia, getComputedStyle */
 // Production integration checks, one browser at a time. BASE reuses a running
 // static server; CI starts preview over the already-built application.
 import assert from 'node:assert/strict';
@@ -40,6 +40,19 @@ try {
   page.on('pageerror', (error) => errors.push(error.message));
   await page.goto(base + '/settings/');
   const select = page.locator('#setting-motion-mode');
+  assert.equal(await select.and(page.getByRole('combobox', { name: 'Motion', exact: true })).count(), 1);
+  if (engine === 'chromium') {
+    for (const colorScheme of ['light', 'dark']) {
+      await page.emulateMedia({ forcedColors: 'active', colorScheme });
+      const indicator = await select.locator('[data-part="indicator"]').evaluate((node) => ({
+        color: getComputedStyle(node.closest('button')).color,
+        background: getComputedStyle(node, '::after').backgroundColor,
+      }));
+      assert.equal(indicator.background, indicator.color, 'The SVG mask retains the forced-color button text');
+    }
+    await page.emulateMedia({ forcedColors: 'none', colorScheme: 'no-preference' });
+    results.push('SVG select indicator retains text contrast in light/dark Windows forced colors');
+  }
   assert.equal(await select.getAttribute('data-value'), 'off');
   await select.click({ force: true });
   const box = await page.getByRole('listbox').boundingBox();
@@ -80,6 +93,7 @@ try {
   await page.getByRole('button', { name: 'RU', exact: true }).click({ force: true });
   assert.equal(await page.locator('html').getAttribute('lang'), 'ru');
   assert.equal(await page.locator('h1').textContent(), 'Фон, оформление, звук и нотация');
+  assert.equal(await select.and(page.getByRole('combobox', { name: 'Движение', exact: true })).count(), 1);
   await page.getByRole('button', { name: 'EN', exact: true }).click({ force: true });
   assert.equal(await page.locator('h1').textContent(), 'Background, skin, sound and notation');
   results.push('Framework catalogs resolve English and Russian through the existing language switch');

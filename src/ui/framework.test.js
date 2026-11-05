@@ -19,7 +19,7 @@ it('ships matching framework catalogs and reproducible generated data', () => {
   const compiled = readCatalogs(['en', 'ru'].map((lang) => read(`src/i18n/catalogs/${lang}.lino`)).join('\n'));
   expect(compiled).toEqual(catalogs);
   expect(Object.keys(catalogs.en).sort()).toEqual(Object.keys(catalogs.ru).sort());
-  expect(Object.keys(catalogs.en)).toHaveLength(808);
+  expect(Object.keys(catalogs.en)).toHaveLength(809);
 });
 
 const cssRules = (text) =>

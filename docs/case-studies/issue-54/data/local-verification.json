@@ -4,8 +4,8 @@
   "framework": "f72e97fe2db100d88ea460ee8451bbf63a1b01b6",
   "focused_checks": [
     {
-      "command": "npx vitest run src/components/Select.test.jsx src/components/ColorInput.test.jsx",
-      "result": "12 passed after final control changes"
+      "command": "npx vitest run src/components/Select.test.jsx src/components/ColorInput.test.jsx src/ui/framework.test.js --maxWorkers=1",
+      "result": "17 passed after CI label/focus/SVG corrections"
     },
     {
       "command": "node experiments/framework-migration/audit-messages.mjs",
@@ -29,7 +29,15 @@
     },
     {
       "command": "npm run build",
-      "result": "pass after the short-viewport adapter"
+      "result": "pass after final label/focus/SVG and forced-colors changes"
+    },
+    {
+      "command": "npx vitest run src/cv/cv.test.jsx src/pages/pages.test.jsx src/pages/settings.test.jsx src/pages/slider-ids-47.test.jsx src/components/icons-47.test.jsx --maxWorkers=1 -t \"choosing a position|BlogPage:|shows a setting only|names the channel|leaves no emoji\"",
+      "result": "All five previously failing CI tests pass; 195 unrelated cases skipped in this focused invocation"
+    },
+    {
+      "command": "BASE=http://127.0.0.1:3001 ENGINE=chromium node experiments/framework-migration/smoke.mjs",
+      "result": "Six production checks pass with no page errors, including light/dark forced colors and English/Russian accessible names"
     }
   ],
   "regressions": [
@@ -58,11 +66,50 @@
         "draft-landscape-menu-before.png",
         "draft-landscape-menu-after.png"
       ]
+    },
+    {
+      "case": "SVG mask in Windows forced colors",
+      "before": {
+        "textColor": "rgb(0, 0, 0)",
+        "maskBackground": "rgb(255, 255, 255)"
+      },
+      "before_log": "node:internal/modules/run_main:111\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: The SVG mask retains the forced-color text color\n+ actual - expected\n\n+ 'rgb(255, 255, 255)'\n- 'rgb(0, 0, 0)'\n       ^\n\n    at file:///tmp/gh-issue-solver-1793911090763/experiments/framework-migration/smoke.mjs:50:12 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: 'rgb(255, 255, 255)',\n  expected: 'rgb(0, 0, 0)',\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v26.13.0\n",
+      "correction": "Use the ButtonText system color for the SVG mask in forced colors, disabling automatic background remapping on that pseudo-element",
+      "automated_regression": "Chromium production migration smoke, light and dark forced-color schemes: assert mask background equals actual button text color",
+      "screenshots": [
+        "draft-forced-colors-before.png",
+        "after-forced-colors.png"
+      ],
+      "after": {
+        "light": {
+          "button": "rgb(0, 0, 0)",
+          "mask": "rgb(0, 0, 0)"
+        },
+        "dark": {
+          "button": "rgb(255, 255, 255)",
+          "mask": "rgb(255, 255, 255)"
+        }
+      }
     }
   ],
   "limits": [
     "Local Linux WebKit matrix was OOM-killed when overlapping other work; not a pass. CI macOS WebKit supplies remaining platform coverage.",
     "Viewport comparisons sample 48 scenarios per browser, not every one of the 608 settings.",
     "Full upstream support is an unfinished acceptance criterion; local adapters and upstream issue reports do not satisfy it."
-  ]
+  ],
+  "browser_label_focus_check": {
+    "tool": "Playwright MCP",
+    "names": {
+      "button": "Motion",
+      "list": "Options: Motion",
+      "russian": "Движение"
+    },
+    "open_choosers_after_second_trigger": 1,
+    "page_errors": [],
+    "svg_mask": "Lucide chevron-down SVG, replacing the draft glyph",
+    "screenshots": [
+      "draft-chevron-before.png",
+      "after-chevron.png"
+    ]
+  }
 }

@@ -5,12 +5,12 @@
     {
       "file": "src/components/Select.jsx",
       "before": 210,
-      "after": 139
+      "after": 149
     },
     {
       "file": "src/components/ColorInput.jsx",
       "before": 164,
-      "after": 157
+      "after": 162
     },
     {
       "file": "src/settings/presets.js",
@@ -30,7 +30,7 @@
     {
       "file": "src/ui/framework.css",
       "before": 0,
-      "after": 21
+      "after": 31
     },
     {
       "file": "src/settings/framework.js",
