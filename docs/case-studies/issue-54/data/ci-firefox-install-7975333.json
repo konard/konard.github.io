@@ -1,0 +1,35 @@
+{
+  "run": 42123506812,
+  "sha": "7975333e84665d6cb10a30f8a8826d1a7a599b6f",
+  "createdAt": "2026-11-05T22:40:43Z",
+  "job": 127582186019,
+  "runnerImage": "ubuntu-24.04 20261101.360.1",
+  "region": "westus2",
+  "conclusion": "cancelled at existing 15-minute job limit",
+  "phase": "Install the browser; no Firefox tests ran",
+  "source_log": "firefox-42123506812-attempt1.log",
+  "evidence": [
+    {
+      "line": 437,
+      "text": "Need to get 48.8 MB of archives."
+    },
+    {
+      "line": 453,
+      "text": "22:52:56 Ign:14 azure.archive.ubuntu.com libcodec2-1.2, after starting this archive at 22:51:04"
+    },
+    {
+      "line": 458,
+      "text": "22:54:34 Ign:18 azure.archive.ubuntu.com libjxl0.7"
+    },
+    {
+      "line": 466,
+      "text": "22:57:08 The operation was canceled."
+    }
+  ],
+  "cause": "Ubuntu packages trickle from the Azure mirror, consuming the entire job budget before the browser downloads or tests start",
+  "primary_references": [
+    "https://github.com/actions/runner-images/issues/14823",
+    "https://github.com/actions/runner-images/blob/main/images/ubuntu/scripts/build/configure-apt-sources.sh"
+  ],
+  "correction": "Remove only the Azure endpoint from the Linux runner mirror list; retain its standard archive.ubuntu.com and security.ubuntu.com failovers. Preserve all browser/test/job timeouts and coverage."
+}

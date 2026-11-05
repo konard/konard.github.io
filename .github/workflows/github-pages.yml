@@ -159,7 +159,12 @@ jobs:
       # headless Chromium and checked: at most 2 pages for a position, 1 page
       # for the compact style, and a text layer an ATS can read.
       - name: Install Chromium for the CV PDFs
-        run: npx playwright install --with-deps chromium
+        run: |
+          # Keep the same Ubuntu fallback as the browser matrix below.
+          if [[ "$RUNNER_OS" == "Linux" && -f /etc/apt/apt-mirrors.txt ]]; then
+            sudo sed -i '/azure\.archive\.ubuntu\.com/d' /etc/apt/apt-mirrors.txt
+          fi
+          npx playwright install --with-deps chromium
 
       - name: Print the CV PDFs
         run: npm run build:cv
@@ -233,7 +238,13 @@ jobs:
         id: browser
         # WebKit uses macOS because Linux GTK can stall on glass panels.
         # https://github.com/microsoft/playwright/issues/43426
-        run: npx playwright install --with-deps "$ENGINE"
+        run: |
+          # A trickling Azure mirror can exhaust the job without timing out.
+          # https://github.com/actions/runner-images/issues/14823
+          if [[ "$RUNNER_OS" == "Linux" && -f /etc/apt/apt-mirrors.txt ]]; then
+            sudo sed -i '/azure\.archive\.ubuntu\.com/d' /etc/apt/apt-mirrors.txt
+          fi
+          npx playwright install --with-deps "$ENGINE"
 
       - name: Initialize browser evidence
         run: |
