@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 import { useRef, useState } from 'react';
 import { useLang } from '../i18n/prefs';
 import { numericKey } from './numericKeys';
@@ -52,7 +53,7 @@ export default function NumberInput({ value, onValue, fallback = 0, ...props }) 
                 ? (value ?? fallback) >= Number(props.max ?? Infinity)
                 : (value ?? fallback) <= Number(props.min ?? -Infinity))
             }
-            aria-label={`${direction > 0 ? t({ en: 'Increase', ru: 'Увеличить' }) : t({ en: 'Decrease', ru: 'Уменьшить' })}: ${props['aria-label'] || props.id || ''}`}
+            aria-label={`${direction > 0 ? t(localized('m892c85b399cb')) : t(localized('mf53e19b594b5'))}: ${props['aria-label'] || props.id || ''}`}
             onPointerDown={(event) => event.preventDefault()}
             onClick={(event) => {
               input.current.focus({ preventScroll: true });

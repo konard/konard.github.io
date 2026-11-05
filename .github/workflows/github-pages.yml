@@ -342,6 +342,12 @@ jobs:
         env:
           CAPTURE_DIR: browser-results/screenshots/issue45
 
+      - name: Verify framework migration, catalogs, saved settings and the production inspector
+        if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
+        run: npm run test:ui:migration
+        env:
+          CAPTURE_DIR: browser-results/screenshots/migration
+
       - name: Preserve browser evidence with bounded transport retries
         if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
         uses: ./.github/actions/upload-artifact

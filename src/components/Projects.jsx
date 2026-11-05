@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 import { useMemo, useState } from 'react';
 import { useLang } from '../i18n/prefs';
 import { useNotation } from '../links/notation';
@@ -37,11 +38,7 @@ export default function Projects({ featured, projects }) {
 
   return (
     <>
-      <div
-        className="chips"
-        role="group"
-        aria-label={t({ en: 'Filter projects by language', ru: 'Фильтр проектов по языку' })}
-      >
+      <div className="chips" role="group" aria-label={t(localized('m1958529ae1e4'))}>
         {languages.map((l) => (
           <button
             key={l}
@@ -50,7 +47,7 @@ export default function Projects({ featured, projects }) {
             aria-pressed={filter === l}
             onClick={() => setFilter(l)}
           >
-            {l === ALL ? t({ en: 'All', ru: 'Все' }) : l}
+            {l === ALL ? t(localized('m910bdb26a8b9')) : l}
           </button>
         ))}
       </div>

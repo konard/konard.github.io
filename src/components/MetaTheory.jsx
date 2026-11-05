@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 import { useState } from 'react';
 import { linksNotation, mathNotation, randomCode } from '../links/configurations';
 import { tr, useLang, useResolvedTheme } from '../i18n/prefs';
@@ -10,8 +11,8 @@ const gh = (fullName) => `https://github.com/${fullName}`;
 // "a network of N links": Russian needs the genitive after «из».
 const OF_LINKS = { en: ['link', 'links'], ru: ['связи', 'связей', 'связей'] };
 const LANGUAGE_NAMES = {
-  en: { en: 'English', ru: 'на английском' },
-  ru: { en: 'Russian', ru: 'на русском' },
+  en: localized('m6ca16c00b0a1'),
+  ru: localized('ma1c9226b6cb5'),
 };
 
 /**
@@ -31,16 +32,16 @@ export function NetworkExample({ example, random = Math.random }) {
         type="button"
         className="theory__network"
         onClick={() => setCode(randomCode(random))}
-        title={t({ en: 'Show a random network of 1–4 links', ru: 'Показать случайную сеть из 1–4 связей' })}
+        title={t(localized('mb27108d2fe71'))}
       >
-        <Glyph code={code} size={96} title={`${t({ en: 'Network of', ru: 'Сеть из' })} ${links}: ${code}`} />
+        <Glyph code={code} size={96} title={`${t(localized('mc8ffa35f52c7'))} ${links}: ${code}`} />
       </button>
       <dl className="theory__notations">
-        <dt>{t({ en: 'math notation', ru: 'математическая нотация' })}</dt>
+        <dt>{t(localized('m0f48683d5dec'))}</dt>
         <dd className="mono" data-notation="math">
           {mathNotation(code)}
         </dd>
-        <dt>{t({ en: 'links notation', ru: 'нотация связей' })}</dt>
+        <dt>{t(localized('mfe944d2cc5a8'))}</dt>
         <dd className="mono" data-notation="links">
           {linksNotation(code).map((l) => (
             <span key={l}>{l}</span>
@@ -48,18 +49,13 @@ export function NetworkExample({ example, random = Math.random }) {
         </dd>
       </dl>
       <p className="muted">
-        {isExample
-          ? t({
-              en: 'Two links refer to themselves (points), the third connects them: a graph edge is just a link.',
-              ru: 'Две связи ссылаются сами на себя (точки), третья соединяет их: ребро графа — это просто связь.',
-            })
-          : `${t({ en: 'A random network of', ru: 'Случайная сеть из' })} ${links}.`}{' '}
+        {isExample ? t(localized('m1a288f0f8783')) : `${t(localized('md1ec4dcd2955'))} ${links}.`}{' '}
         {t({
           en: `Every link is (index: source target), 0 is nothing; the math notation writes the same sources and targets as digits in base ${size + 1}. Click the symbol for another random network.`,
           ru: `Каждая связь — это (индекс: начало конец), 0 означает «ничего»; математическая нотация записывает те же начала и концы цифрами в системе счисления с основанием ${size + 1}. Нажмите на символ, чтобы увидеть другую случайную сеть.`,
         })}{' '}
         <a className="theory__edit" href={networkHref(code, theme)}>
-          {t({ en: 'Edit and share this network', ru: 'Изменить эту сеть и поделиться ею' })}
+          {t(localized('m7373953f825d'))}
         </a>
       </p>
     </div>
@@ -73,10 +69,7 @@ export default function MetaTheory({ theory, detailed = false }) {
   return (
     <div className="theory">
       <div className="theory__hero" data-notation={notation}>
-        <div
-          className="theory__formula"
-          aria-label={`${t({ en: 'Links theory in four symbols', ru: 'Теория связей в четырёх символах' })}: ${n(theory.tldr)}`}
-        >
+        <div className="theory__formula" aria-label={`${t(localized('m237f2c82faf9'))}: ${n(theory.tldr)}`}>
           <span className="mono">{n(theory.tldr)}</span>
         </div>
         <div>
@@ -87,7 +80,7 @@ export default function MetaTheory({ theory, detailed = false }) {
               link-foundation/meta-theory
             </a>
             <a className="button" href={theory.pdfs} target="_blank" rel="noopener noreferrer">
-              {t({ en: 'All PDFs (ZIP)', ru: 'Все PDF (ZIP)' })}
+              {t(localized('m949a0cb8187b'))}
             </a>
           </p>
         </div>
@@ -102,11 +95,7 @@ export default function MetaTheory({ theory, detailed = false }) {
         ))}
       </ol>
 
-      <div
-        className="theory__versions"
-        role="list"
-        aria-label={t({ en: 'Versions of the links theory', ru: 'Версии теории связей' })}
-      >
+      <div className="theory__versions" role="list" aria-label={t(localized('m8dedf7ef0b06'))}>
         {theory.versions.map((v) => (
           <article key={v.version} className="version" role="listitem">
             <span className="version__number mono">{v.version}</span>

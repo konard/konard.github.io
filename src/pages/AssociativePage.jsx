@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 import Glyph from '../components/Glyph';
 import { DataMark } from '../components/DataSources';
 import Layout from '../components/Layout';
@@ -14,8 +15,8 @@ import { inField, repo } from './repos';
 export { STACK };
 
 const SECTIONS = [
-  ['stack', { en: 'Stack', ru: 'Стек' }],
-  ['all', { en: 'All associative repositories', ru: 'Все ассоциативные репозитории' }],
+  ['stack', localized('m2bfca692a47b')],
+  ['all', localized('m70e1cc1c5e4a')],
 ];
 
 const REPOSITORIES = { en: ['repository', 'repositories'], ru: ['репозиторий', 'репозитория', 'репозиториев'] };
@@ -32,8 +33,8 @@ export default function AssociativePage() {
   return (
     <Layout page="associative" sections={SECTIONS}>
       <header className="page-hero" id="top">
-        <p className="section__kicker">{t({ en: 'Associative technologies', ru: 'Ассоциативные технологии' })}</p>
-        <h1 className="page-hero__title">{t({ en: 'The associative stack', ru: 'Ассоциативный стек' })}</h1>
+        <p className="section__kicker">{t(localized('me4e2ce610593'))}</p>
+        <h1 className="page-hero__title">{t(localized('m114edf2dad78'))}</h1>
         <p className="page-hero__lead">
           {t({
             en: `Since 2010: ${all.length} repositories that store, query and reason about data as links (${n(metaTheory.tldr)}). The stack below starts from the links meta-theory and goes up through notation, storage, tools and the Deep platform to the AI and applications: every project of linksplatform, link-foundation and link-assistant in one of its layers.`,
@@ -43,12 +44,8 @@ export default function AssociativePage() {
         </p>
       </header>
 
-      <Section
-        id="stack"
-        kicker={{ en: 'Layers', ru: 'Слои' }}
-        title={{ en: 'From the theory to applications', ru: 'От теории до приложений' }}
-      >
-        <nav className="chips stack__index" aria-label={t({ en: 'Layers of the stack', ru: 'Слои стека' })}>
+      <Section id="stack" kicker={localized('meeb0b7d64c58')} title={localized('mfdfe155c6b1c')}>
+        <nav className="chips stack__index" aria-label={t(localized('m95b0662f8aaa'))}>
           {STACK.map((layer, i) => (
             <a key={layer.id} className="chip" href={`#layer-${layer.id}`}>
               {i + 1}. {t(layer.title)} <span className="muted">{layer.repos.length}</span>
@@ -78,17 +75,8 @@ export default function AssociativePage() {
         </ol>
       </Section>
 
-      <Section
-        id="all"
-        kicker={{ en: 'Catalog', ru: 'Каталог' }}
-        title={{ en: 'All associative repositories', ru: 'Все ассоциативные репозитории' }}
-      >
-        <RepoList
-          items={all}
-          label={{ en: 'Associative repositories', ru: 'Ассоциативные репозитории' }}
-          fieldOptions={assocFields}
-          showKinds={false}
-        />
+      <Section id="all" kicker={localized('mb51413f8e9ce')} title={localized('m70e1cc1c5e4a')}>
+        <RepoList items={all} label={localized('m3a77da2504fe')} fieldOptions={assocFields} showKinds={false} />
       </Section>
     </Layout>
   );

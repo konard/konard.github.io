@@ -1,5 +1,8 @@
+import { localized } from '../i18n/localizer.js';
 import { useEffect, useId, useLayoutEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { parseHex } from '@link-foundation/ui-components/controls';
+import { positionFloating } from '@link-foundation/ui-components/overlays';
 import { useLang } from '../i18n/prefs';
 import { COLOR_PALETTES } from './colorPalettes';
 import { focusSlider, numericKey } from './numericKeys';
@@ -11,33 +14,15 @@ import { focusSlider, numericKey } from './numericKeys';
 export default function ColorInput({ value, onChange, label = '', ...props }) {
   const [draft, setDraft] = useState(null);
   const [open, setOpen] = useState(false);
-  const [position, setPosition] = useState({});
   const trigger = useRef(null);
   const popup = useRef(null);
   const id = useId();
   const { t } = useLang();
   useLayoutEffect(() => {
     if (!open) return;
-    const place = () => {
-      const rect = trigger.current.getBoundingClientRect();
-      const width = Math.min(280, window.innerWidth - 16);
-      setPosition({
-        position: 'fixed',
-        width,
-        left: Math.max(8, Math.min(rect.left, window.innerWidth - width - 8)),
-        // The palettes make the chooser taller, so it is kept on the screen by its own height.
-        top: Math.max(8, Math.min(rect.bottom + 4, window.innerHeight - (popup.current?.offsetHeight || 250) - 8)),
-        maxHeight: Math.max(80, window.innerHeight - 16),
-      });
-    };
-    place();
+    const stop = positionFloating(trigger.current, popup.current, { offset: 4 });
     popup.current.querySelector('input').focus({ preventScroll: true });
-    window.addEventListener('resize', place);
-    window.addEventListener('scroll', place, true);
-    return () => {
-      window.removeEventListener('resize', place);
-      window.removeEventListener('scroll', place, true);
-    };
+    return stop;
   }, [open]);
   useEffect(() => {
     if (!open) return;
@@ -60,7 +45,8 @@ export default function ColorInput({ value, onChange, label = '', ...props }) {
       document.removeEventListener('keydown', escape);
     };
   }, [open]);
-  const channels = [1, 3, 5].map((start) => parseInt(value.slice(start, start + 2), 16));
+  const rgb = parseHex(value);
+  const channels = [rgb.r, rgb.g, rgb.b];
   const choose = (hex) => {
     setDraft(null);
     onChange({ target: { value: hex }, currentTarget: { value: hex } });
@@ -76,7 +62,7 @@ export default function ColorInput({ value, onChange, label = '', ...props }) {
         type="button"
         className="ui-color__swatch"
         style={{ '--color': value }}
-        aria-label={`${t({ en: 'Choose color', ru: 'Выбрать цвет' })}: ${props['aria-label'] || label}`}
+        aria-label={`${t(localized('m2b9b849b00be'))}: ${props['aria-label'] || label}`}
         aria-haspopup="dialog"
         aria-expanded={open}
         aria-controls={open ? id : undefined}
@@ -110,15 +96,11 @@ export default function ColorInput({ value, onChange, label = '', ...props }) {
             ref={popup}
             id={id}
             role="dialog"
-            aria-label={t({ en: 'Color chooser', ru: 'Выбор цвета' })}
+            aria-label={t(localized('m4ccaa88f0716'))}
             className="ui-color__picker ui-select__list"
-            style={position}
+            style={{ width: 'min(280px, calc(100vw - 16px))', maxHeight: 'max(80px, calc(100vh - 16px))' }}
           >
-            {[
-              { en: 'Red', ru: 'Красный' },
-              { en: 'Green', ru: 'Зелёный' },
-              { en: 'Blue', ru: 'Синий' },
-            ].map((name, index) => (
+            {[localized('m9cc00e8c66e8'), localized('m3c3a5c88f76a'), localized('m2b774520127e')].map((name, index) => (
               <label key={name.en}>
                 <span>{t(name)}</span>
                 <input

@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 // Everything on the site that can be configured (issue #13): the background
 // animation, the skin of the interface, the sound (issue #15) and the
 // notation of the links theory.
@@ -20,6 +21,7 @@ import { UI_SECTIONS } from './schema.ui.js';
 import { SOUND_SECTION } from './schema.sound.js';
 import { AVATAR_SECTION } from './schema.avatar.js';
 import { COMFORT_49, DEFAULT_LOOK } from './schema.defaults.js';
+import { defaults, frameworkSchema } from './framework.js';
 
 export { PALETTES, SKINS } from './schema.skins.js';
 
@@ -44,11 +46,8 @@ const SECTION_LIST = [
   AVATAR_SECTION,
   {
     id: 'theory',
-    title: { en: 'Links theory notation', ru: 'Нотация теории связей' },
-    lead: {
-      en: 'The English draft 0.0.2 of the links meta-theory writes links as L → L²; the latest draft 0.0.3 renames links to references and writes R → R².',
-      ru: 'Английский черновик 0.0.2 метатеории связей записывает связи как L → L²; последний черновик 0.0.3 называет их ссылками и пишет R → R².',
-    },
+    title: localized('md6f82a603961'),
+    lead: localized('ma35a704e80b8'),
     fields: [
       select(
         'theory.notation',
@@ -57,7 +56,7 @@ const SECTION_LIST = [
           option('L', 'L → L² (draft 0.0.2, links)', 'L → L² (черновик 0.0.2, связи)'),
           option('R', 'R → R² (draft 0.0.3, references)', 'R → R² (черновик 0.0.3, ссылки)'),
         ],
-        { en: 'Notation', ru: 'Нотация' },
+        localized('m598537064cab'),
       ),
     ],
   },
@@ -105,4 +104,5 @@ export const RULES = Object.fromEntries(
 /** The rules of the settings that reach the stylesheets; see apply.js. */
 export const CSS_RULES = forCss(RULES);
 
-export const DEFAULTS = Object.fromEntries(FIELDS.map(({ key, d }) => [key, d]));
+export const SETTINGS_SCHEMA = frameworkSchema(SECTIONS);
+export const DEFAULTS = defaults(SETTINGS_SCHEMA);

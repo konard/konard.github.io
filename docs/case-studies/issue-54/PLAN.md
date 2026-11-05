@@ -6,16 +6,19 @@ working adapters, and collect the research and verification here.
 
 ## Requirements and verification
 
-- [ ] Read issue 54, comments, PR conversations, inline comments and reviews;
+- [x] Read issue 54, comments, PR conversations, inline comments and reviews;
       inspect related upstream migration issue 66 and its dependencies.
-- [ ] Inventory reusable UI, persistence, URLs, rendering and site content;
+- [x] Inventory reusable UI, persistence, URLs, rendering and site content;
       record baseline screenshots and contract tests before replacements.
-- [ ] Research current framework APIs and alternatives from primary sources;
+- [x] Research current framework APIs and alternatives from primary sources;
       record source revisions, solutions and tradeoffs for every requirement.
-- [ ] Integrate reproducibly pinned framework packages and migrate settings,
-      controls, localization, themes, network UI and development tools.
-- [ ] Report every observed missing generic feature or bug upstream; retain
+- [x] Integrate reproducibly pinned packages, settings engines, select controls,
+      color positioning, catalogs, palette tokens, notation parser and inspector.
+- [x] Report every observed missing generic feature or bug upstream; retain
       full site functionality through explicit, tested compatibility adapters.
+- [ ] Full support for every reusable UI feature upstream: blocked by the
+      panel, frame, network/material/audio and packaging gaps in reports 209–212.
+      Reporting them and keeping working adapters does not complete this item.
 - [ ] Compare desktop/mobile, themes, presets and pages in real browsers;
       commit baseline/final evidence and automated migration checks.
 - [ ] Review line counts and deletions, complete focused checks, push atomic

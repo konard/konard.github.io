@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 import { useEffect, useRef, useState } from 'react';
 import {
   FORMATS,
@@ -27,7 +28,7 @@ export default function NetworkShare({ code, links, svg, style, url, text, busy 
   const [copying, setCopying] = useState(false);
   const prepared = useRef(null);
   const done = (message) => setStatus(t(message));
-  const failed = (error) => setStatus(`${t({ en: 'Did not work', ru: 'Не получилось' })}: ${error.message}`);
+  const failed = (error) => setStatus(`${t(localized('mc453b55b8099'))}: ${error.message}`);
   const image = (format) =>
     rasterize(svg, {
       width: style.width,
@@ -75,20 +76,20 @@ export default function NetworkShare({ code, links, svg, style, url, text, busy 
     const files = blob ? [new File([blob], fileName(code, 'png'), { type: 'image/png' })] : null;
     return navigator
       .share(files && canShare(files) ? { files, title: text, text, url } : { title: text, text, url })
-      .then(() => done({ en: 'Shared.', ru: 'Отправлено.' }))
+      .then(() => done(localized('m4794c0e52823')))
       .catch((error) => error.name !== 'AbortError' && failed(error));
   };
 
   return (
     <div className="network-share">
-      <div className="network__actions" role="group" aria-label={t({ en: 'Download', ru: 'Скачать' })}>
+      <div className="network__actions" role="group" aria-label={t(localized('m9ad6a19742da'))}>
         <button
           type="button"
           className="button"
           disabled={busy}
           onClick={() => {
             download(svgBlob(svg), fileName(code, 'svg'));
-            done({ en: 'SVG saved.', ru: 'SVG сохранён.' });
+            done(localized('mb14b0fbf0910'));
           }}
         >
           <Download {...iconProps} /> SVG
@@ -106,9 +107,9 @@ export default function NetworkShare({ code, links, svg, style, url, text, busy 
               new Blob([`${linksText(links, '\n')}\n`], { type: 'text/plain;charset=utf-8' }),
               fileName(code, 'lino'),
             );
-            done({ en: 'Links notation saved.', ru: 'Нотация связей сохранена.' });
+            done(localized('m68c85afa488d'));
           }}
-          title={t({ en: 'The network as a links notation file', ru: 'Сеть в файле нотации связей' })}
+          title={t(localized('m2dd3cf7b993e'))}
         >
           <Download {...iconProps} /> .lino
         </button>
@@ -119,45 +120,34 @@ export default function NetworkShare({ code, links, svg, style, url, text, busy 
           ru: `PNG, JPEG и WebP — ${style.width} × ${style.height} пикселей (размер меняется в «Размере изображения»); SVG — та же картинка в векторе, её можно править в любом векторном редакторе.`,
         })}
       </p>
-      <div className="network__actions" role="group" aria-label={t({ en: 'Copy', ru: 'Скопировать' })}>
+      <div className="network__actions" role="group" aria-label={t(localized('m16c143d90f28'))}>
         <button
           type="button"
           className="button"
           disabled={!canCopyText()}
-          title={
-            !canCopyText()
-              ? t({ en: 'Select and copy the link below.', ru: 'Выделите и скопируйте ссылку ниже.' })
-              : undefined
-          }
+          title={!canCopyText() ? t(localized('mcee27fac311d')) : undefined}
           onClick={() =>
             copyText(url)
-              .then(() => done({ en: 'Link copied.', ru: 'Ссылка скопирована.' }))
+              .then(() => done(localized('mc62d15d3f973')))
               .catch(failed)
           }
         >
-          {t({ en: 'Copy the link', ru: 'Скопировать ссылку' })}
+          {t(localized('mdff5bd5906e7'))}
         </button>
         <button
           type="button"
           className="button"
           disabled={busy || !canCopyImage() || copying}
-          title={
-            !canCopyImage()
-              ? t({
-                  en: 'Use PNG download: image copying is unavailable in this browser.',
-                  ru: 'Скачайте PNG: этот браузер не поддерживает копирование изображений.',
-                })
-              : undefined
-          }
+          title={!canCopyImage() ? t(localized('m7d4dc6e78e2f')) : undefined}
           onClick={() => {
             setCopying(true);
             return copyImage(image(png))
-              .then(() => done({ en: 'Image copied.', ru: 'Изображение скопировано.' }))
+              .then(() => done(localized('mbbc418be85e8')))
               .catch(failed)
               .finally(() => setCopying(false));
           }}
         >
-          {t({ en: 'Copy the image', ru: 'Скопировать изображение' })}
+          {t(localized('m3e9cf0118579'))}
         </button>
         <button
           type="button"
@@ -165,23 +155,23 @@ export default function NetworkShare({ code, links, svg, style, url, text, busy 
           disabled={busy || !canCopyText()}
           onClick={() =>
             copyText(svg)
-              .then(() => done({ en: 'SVG code copied.', ru: 'Код SVG скопирован.' }))
+              .then(() => done(localized('meb075401c8a9')))
               .catch(failed)
           }
         >
-          {t({ en: 'Copy the SVG code', ru: 'Скопировать код SVG' })}
+          {t(localized('m57823b91de0b'))}
         </button>
         {canShare() && (
           <button type="button" className="button" onClick={share}>
-            {t({ en: 'Share…', ru: 'Поделиться…' })}
+            {t(localized('m8b6e35999917'))}
           </button>
         )}
       </div>
       <p className="network-share__url">
-        <label htmlFor="network-url">{t({ en: 'Link to this picture', ru: 'Ссылка на эту картинку' })}</label>
+        <label htmlFor="network-url">{t(localized('ma581197e1ae7'))}</label>
         <input id="network-url" className="mono" readOnly value={url} onFocus={(event) => event.target.select()} />
       </p>
-      <ul className="network-share__targets" aria-label={t({ en: 'Share to', ru: 'Поделиться в' })}>
+      <ul className="network-share__targets" aria-label={t(localized('m3c823cb1a49a'))}>
         {shareTargets(url, text).map((target) => (
           <li key={target.id}>
             <a
@@ -196,12 +186,7 @@ export default function NetworkShare({ code, links, svg, style, url, text, busy 
           </li>
         ))}
       </ul>
-      <p className="muted">
-        {t({
-          en: 'Social networks show the preview of a link from the page itself, and a static site has one preview for every network. To post the picture itself, download or copy it and attach it to the post, or use “Share…” where the browser can share files.',
-          ru: 'Соцсети показывают превью ссылки по самой странице, а у статического сайта превью одно для всех сетей. Чтобы опубликовать саму картинку, скачайте или скопируйте её и прикрепите к посту или нажмите «Поделиться…», если браузер умеет делиться файлами.',
-        })}
-      </p>
+      <p className="muted">{t(localized('m9304ce196aa1'))}</p>
       <p className="network-share__status" role="status" aria-live="polite">
         {status}
       </p>

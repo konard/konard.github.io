@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 import { useLang } from '../i18n/prefs';
 import { formatNumber } from './format';
 import { DataMark } from './DataSources';
@@ -18,7 +19,7 @@ export function StackOverflowCard({ so }) {
       </h3>
       <div className="so__numbers">
         <span className="so__rep">
-          <strong>{formatNumber(so.reputation, lang)}</strong> {t({ en: 'reputation', ru: 'репутации' })}
+          <strong>{formatNumber(so.reputation, lang)}</strong> {t(localized('ma8285943f85a'))}
         </span>
         <span
           className="badge badge--silver"
@@ -33,10 +34,7 @@ export function StackOverflowCard({ so }) {
           <Dot /> {so.badges.bronze}
         </span>
       </div>
-      <ul
-        className="hbars hbars--compact"
-        aria-label={t({ en: 'Top tags by answer score', ru: 'Лучшие теги по рейтингу ответов' })}
-      >
+      <ul className="hbars hbars--compact" aria-label={t(localized('mdb757478e630'))}>
         {so.topTags.map((t) => (
           <li key={t.name} className="hbars__row">
             <span className="hbars__name mono">{t.name}</span>
@@ -48,7 +46,7 @@ export function StackOverflowCard({ so }) {
         ))}
       </ul>
       <p className="muted small">
-        {t({ en: 'Answer score per tag', ru: 'Рейтинг ответов по тегам' })} <DataMark />
+        {t(localized('mf20283a4a356'))} <DataMark />
       </p>
     </article>
   );
@@ -58,7 +56,7 @@ export function Publications({ items }) {
   const { t } = useLang();
   return (
     <article className="card">
-      <h3 className="card__title">{t({ en: 'Articles & talks', ru: 'Статьи и доклады' })}</h3>
+      <h3 className="card__title">{t(localized('me0e075a61e22'))}</h3>
       <ol className="pubs">
         {items.map((p) => (
           <li key={p.url}>
@@ -80,7 +78,7 @@ export function Education({ items, achievements, languages = [] }) {
   const { t } = useLang();
   return (
     <article className="card">
-      <h3 className="card__title">{t({ en: 'Education', ru: 'Образование' })}</h3>
+      <h3 className="card__title">{t(localized('m7c3e62ff78aa'))}</h3>
       <ol className="pubs">
         {items.map((e) => (
           <li key={e.id}>
@@ -92,7 +90,7 @@ export function Education({ items, achievements, languages = [] }) {
       </ol>
       {languages.length > 0 && (
         <>
-          <h3 className="card__title card__title--spaced">{t({ en: 'Languages', ru: 'Языки' })}</h3>
+          <h3 className="card__title card__title--spaced">{t(localized('mae10e11a3d25'))}</h3>
           <ul className="highlights">
             {languages.map((l) => (
               <li key={l.id}>
@@ -102,7 +100,7 @@ export function Education({ items, achievements, languages = [] }) {
           </ul>
         </>
       )}
-      <h3 className="card__title card__title--spaced">{t({ en: 'Highlights', ru: 'Достижения' })}</h3>
+      <h3 className="card__title card__title--spaced">{t(localized('m7b3aa149a04c'))}</h3>
       <ul className="highlights">
         {achievements.map((a) => (
           <li key={a.en}>{t(a)}</li>

@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 // SVG icons of the site (issue #47: "use high-quality SVG icons for social
 // networks, and SVG instead of emojis everywhere"). Emojis and symbol glyphs
 // look different in every font and system, often do not follow the text
@@ -117,8 +118,8 @@ export function SkillIcon({ name }) {
 
 /** Words of the bio drawn as icons, with what a screen reader says instead (they were ❤️‍🔥 and 🥰). */
 const BIO_ICONS = {
-  passion: [Flame, 'icon icon--passion', { en: 'love', ru: 'люблю' }],
-  love: [Heart, 'icon icon--love', { en: 'love', ru: 'обожаю' }],
+  passion: [Flame, 'icon icon--passion', localized('m804d5c1d47be')],
+  love: [Heart, 'icon icon--love', localized('m5982334cf1da')],
 };
 
 /** A bio line with its {passion} and {love} words drawn as SVG icons. */

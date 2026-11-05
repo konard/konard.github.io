@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 import Layout from '../components/Layout';
 import { formatNumber } from '../components/format';
 import { DataMark } from '../components/DataSources';
@@ -11,9 +12,9 @@ import { ArrowRight } from 'lucide-react';
 import { iconProps } from '../components/icons';
 
 const SECTIONS = [
-  ['professions', { en: 'By profession', ru: 'По профессиям' }],
-  ['fields', { en: 'By field', ru: 'По областям' }],
-  ['all', { en: 'All repositories', ru: 'Все репозитории' }],
+  ['professions', localized('m5d5d4abf1be8')],
+  ['fields', localized('m02de06dde4ab')],
+  ['all', localized('m485413b55422')],
 ];
 
 const owners = new Set(ownRepositories.map((r) => r.owner));
@@ -28,7 +29,7 @@ const IN_ACCOUNTS = {
   ru: ['аккаунте и организации', 'аккаунтах и организациях', 'аккаунтах и организациях'],
 };
 const STARS = { en: ['star', 'stars'], ru: ['звезда', 'звезды', 'звёзд'] };
-const ALL_REPOSITORIES = { en: 'All repositories', ru: 'Все репозитории' };
+const ALL_REPOSITORIES = localized('m485413b55422');
 
 /** Every repository of konard and the organizations, grouped by field and profession. */
 export default function RepositoriesPage() {
@@ -38,8 +39,8 @@ export default function RepositoriesPage() {
   return (
     <Layout page="repositories" sections={SECTIONS}>
       <header className="page-hero" id="top">
-        <p className="section__kicker">{t({ en: 'Open source', ru: 'Открытый код' })}</p>
-        <h1 className="page-hero__title">{t({ en: 'Repositories', ru: 'Репозитории' })}</h1>
+        <p className="section__kicker">{t(localized('m8015c3f9c25b'))}</p>
+        <h1 className="page-hero__title">{t(localized('m05caedaaca06'))}</h1>
         <p className="page-hero__lead">
           {t({
             en: `${number(ownRepositories.length)} ${words(ownRepositories.length, ORIGINAL)} in ${owners.size} ${words(owners.size, IN_ACCOUNTS)}, with ${number(stars)} ${words(stars, STARS)}. Each one is classified by the fields where it is useful; forks and mirrors are not counted, and empty repositories are not shown.`,
@@ -59,17 +60,8 @@ export default function RepositoriesPage() {
         </ul>
       </header>
 
-      <Section
-        id="professions"
-        kicker={{ en: 'Best examples', ru: 'Лучшие примеры' }}
-        title={{ en: 'Repositories by IT profession', ru: 'Репозитории по IT-профессиям' }}
-      >
-        <p className="section__lead">
-          {t({
-            en: 'Hand-picked repositories that show the work of each profession best, from MLOps and DevOps to ML/AI, data, backend, frontend, systems, compilers and QA.',
-            ru: 'Отобранные вручную репозитории, которые лучше всего показывают работу в каждой профессии: от MLOps и DevOps до ML/AI, данных, бэкенда, фронтенда, системного программирования, компиляторов и QA.',
-          })}
-        </p>
+      <Section id="professions" kicker={localized('m43f1bd1f706e')} title={localized('m0948090bbef3')}>
+        <p className="section__lead">{t(localized('ma033a4d0a55c'))}</p>
         <div className="profession-grid">
           {professions.map((p) => (
             <article key={p.id} className="profession" id={`profession-${p.id}`}>
@@ -95,14 +87,7 @@ export default function RepositoriesPage() {
         </div>
       </Section>
 
-      <Section
-        id="fields"
-        kicker={{ en: 'Fields', ru: 'Области' }}
-        title={{
-          en: 'How the repositories are useful in different fields',
-          ru: 'Чем репозитории полезны в разных областях',
-        }}
-      >
+      <Section id="fields" kicker={localized('m8358697b517a')} title={localized('m1140a54c48f9')}>
         <ul className="field-grid">
           {fields.map((f) => {
             const list = inField(f.id).sort(byStars);
@@ -126,7 +111,7 @@ export default function RepositoriesPage() {
                   ))}
                 </p>
                 <a className="field-card__all" href={`?field=${f.id}#all`}>
-                  {t({ en: 'All', ru: 'Все' })} {list.length} <ArrowRight {...iconProps} />
+                  {t(localized('m910bdb26a8b9'))} {list.length} <ArrowRight {...iconProps} />
                 </a>
               </li>
             );
@@ -134,7 +119,7 @@ export default function RepositoriesPage() {
         </ul>
       </Section>
 
-      <Section id="all" kicker={{ en: 'Catalog', ru: 'Каталог' }} title={ALL_REPOSITORIES}>
+      <Section id="all" kicker={localized('mb51413f8e9ce')} title={ALL_REPOSITORIES}>
         <RepoList items={allRepositories} label={ALL_REPOSITORIES} />
       </Section>
     </Layout>

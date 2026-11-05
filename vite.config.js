@@ -7,6 +7,7 @@ import { readStored } from './src/settings/notation.js';
 import { isObject, readNotation } from './src/lino.js';
 import { CSS_RULES } from './src/settings/schema.js';
 import { inlineJSON } from './scripts/inline-json.mjs';
+import { frameworkAssets } from './scripts/framework-assets.mjs';
 
 // Every page is its own HTML entry (a real URL on GitHub Pages, no client-side
 // routing). The home page must stay `index` so build/index.html keeps its name.
@@ -60,7 +61,8 @@ const isName = (key) => {
 export const linoData = () => ({
   name: 'lino-data',
   transform(code, id) {
-    if (!/\.lino(?:$|\?)/.test(id)) return null;
+    // Framework schemas use their own dialect and Vite's ?url/?raw handling.
+    if (!id.endsWith('.lino') || id.includes('/node_modules/')) return null;
     const { value } = readNotation(code);
     const names = isObject(value) ? Object.keys(value).filter(isName) : [];
     return {
@@ -100,7 +102,17 @@ const themeBeforePaint = () => ({
 // The site is served from the root of https://konard.github.io, and the
 // deploy job publishes build/ with the Pages deployment API (see .github/workflows/github-pages.yml).
 export default defineConfig({
-  plugins: [react(), linoData(), themeBeforePaint(), buildIdentity(), chunkBudget()],
+  resolve: {
+    alias: [
+      {
+        // The upstream root barrel also exports Node-only conversion targets.
+        // Use its browser-safe DOM importer until a public browser export exists.
+        find: /^@link-foundation\/ui-convert$/,
+        replacement: resolve(import.meta.dirname, 'node_modules/@link-foundation/ui-convert/src/html/import.js'),
+      },
+    ],
+  },
+  plugins: [react(), frameworkAssets(), linoData(), themeBeforePaint(), buildIdentity(), chunkBudget()],
   build: {
     outDir: 'build',
     chunkSizeWarningLimit: CHUNK_LIMIT_KB,

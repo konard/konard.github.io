@@ -16,13 +16,9 @@ const packages = [
   'tokens',
   'style',
   'dom',
-  'react',
   'settings',
   'components',
-  'themes',
   'i18n',
-  'animation',
-  'sound',
   'convert',
   'devmode',
 ];

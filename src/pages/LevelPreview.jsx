@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 import { ArrowUp } from 'lucide-react';
 import { iconProps } from '../components/icons';
 import Select from '../components/Select';
@@ -17,45 +18,35 @@ const HREF = '#corners';
 const SAMPLES = {
   panel: (t) => (
     <article className="card level-preview__panel">
-      <strong>{t({ en: 'Outer panel', ru: 'Внешняя панель' })}</strong>
+      <strong>{t(localized('m342cec16ad8c'))}</strong>
     </article>
   ),
   block: (t) => (
     <article className="card level-preview__panel">
       <ul className="level-preview__blocks">
-        <li className="repo">{t({ en: 'Inner block', ru: 'Внутренний блок' })}</li>
-        <li className="repo">{t({ en: 'Inner block', ru: 'Внутренний блок' })}</li>
+        <li className="repo">{t(localized('m58869d304e6e'))}</li>
+        <li className="repo">{t(localized('m58869d304e6e'))}</li>
       </ul>
     </article>
   ),
   button: (t) => (
     <>
-      <button type="button">{t({ en: 'Button', ru: 'Кнопка' })}</button>
+      <button type="button">{t(localized('m37e346e0beb7'))}</button>
       <button type="button" aria-pressed="true">
-        {t({ en: 'Pressed', ru: 'Нажата' })}
+        {t(localized('m9b1d53a1ca95'))}
       </button>
       <button type="button" className="button button--primary">
-        {t({ en: 'Primary', ru: 'Главная' })}
+        {t(localized('m2ec501ec1e20'))}
       </button>
       <button type="button" disabled>
-        {t({ en: 'Disabled', ru: 'Отключена' })}
+        {t(localized('m4a579e377666'))}
       </button>
     </>
   ),
   field: (t) => (
     <>
-      <input
-        type="text"
-        readOnly
-        value={t({ en: 'Text field', ru: 'Текстовое поле' })}
-        aria-label={t({ en: 'Sample text field', ru: 'Пример текстового поля' })}
-      />
-      <textarea
-        rows={1}
-        readOnly
-        value={t({ en: 'Text area', ru: 'Многострочное поле' })}
-        aria-label={t({ en: 'Sample text area', ru: 'Пример многострочного поля' })}
-      />
+      <input type="text" readOnly value={t(localized('m27ec8d25ad33'))} aria-label={t(localized('m6f8342f8a6c6'))} />
+      <textarea rows={1} readOnly value={t(localized('m8e3d01b11205'))} aria-label={t(localized('mace4baab566f'))} />
     </>
   ),
   tab: (t) => (
@@ -63,19 +54,19 @@ const SAMPLES = {
       <ul className="role-tabs">
         <li>
           <a href={HREF} aria-current="page">
-            {t({ en: 'Current', ru: 'Текущая' })}
+            {t(localized('m289b5e78bebe'))}
           </a>
         </li>
         <li>
-          <a href={HREF}>{t({ en: 'Tab', ru: 'Вкладка' })}</a>
+          <a href={HREF}>{t(localized('m6f65753a6194'))}</a>
         </li>
       </ul>
-      <div className="segmented" role="group" aria-label={t({ en: 'Sample switch', ru: 'Пример переключателя' })}>
+      <div className="segmented" role="group" aria-label={t(localized('mfce3441e83ed'))}>
         <button type="button" className="is-active" aria-pressed="true">
-          {t({ en: 'On', ru: 'Вкл.' })}
+          {t(localized('m2483239d9f98'))}
         </button>
         <button type="button" aria-pressed="false">
-          {t({ en: 'Off', ru: 'Выкл.' })}
+          {t(localized('m75cfe729f79b'))}
         </button>
       </div>
     </>
@@ -83,55 +74,45 @@ const SAMPLES = {
   chip: (t) => (
     <>
       <ul className="tags">
-        <li>{t({ en: 'tag', ru: 'метка' })}</li>
-        <li>{t({ en: 'another tag', ru: 'ещё метка' })}</li>
+        <li>{t(localized('m8bbb71290374'))}</li>
+        <li>{t(localized('m81785302de35'))}</li>
       </ul>
       <a className="chip" href={HREF}>
-        {t({ en: 'chip', ru: 'чип' })}
+        {t(localized('m5bc785deb7d7'))}
       </a>
     </>
   ),
   menu: (t) => (
-    <Select
-      aria-label={t({ en: 'Sample drop-down list', ru: 'Пример выпадающего списка' })}
-      value="one"
-      onChange={() => {}}
-    >
-      <option value="one">{t({ en: 'Drop-down list', ru: 'Выпадающий список' })}</option>
-      <option value="two">{t({ en: 'Second', ru: 'Второй' })}</option>
+    <Select aria-label={t(localized('m060911ec95de'))} value="one" onChange={() => {}}>
+      <option value="one">{t(localized('me6d5297e3a7e'))}</option>
+      <option value="two">{t(localized('md3c85054e79b'))}</option>
     </Select>
   ),
   nav: (t) => (
-    <nav
-      className="pages level-preview__menu"
-      aria-label={t({ en: 'Sample top-level menu', ru: 'Пример меню верхнего уровня' })}
-    >
+    <nav className="pages level-preview__menu" aria-label={t(localized('mea972207644f'))}>
       <ul>
         <li>
           <a href={HREF} aria-current="page">
-            {t({ en: 'Page', ru: 'Страница' })}
+            {t(localized('m661395cf1055'))}
           </a>
         </li>
         <li>
-          <a href={HREF}>{t({ en: 'Another page', ru: 'Другая страница' })}</a>
+          <a href={HREF}>{t(localized('m8fdb470d363f'))}</a>
         </li>
       </ul>
     </nav>
   ),
   subnav: (t) => (
-    <nav
-      className="nav level-preview__menu"
-      aria-label={t({ en: 'Sample second-level menu', ru: 'Пример меню второго уровня' })}
-    >
-      <a className="nav__top mono" href={HREF} aria-label={t({ en: 'To the top', ru: 'Наверх' })}>
+    <nav className="nav level-preview__menu" aria-label={t(localized('m632491349592'))}>
+      <a className="nav__top mono" href={HREF} aria-label={t(localized('m55f062eb056a'))}>
         <ArrowUp {...iconProps} />
       </a>
       <ul>
         <li>
-          <a href={HREF}>{t({ en: 'Section', ru: 'Раздел' })}</a>
+          <a href={HREF}>{t(localized('mfad45e576e6b'))}</a>
         </li>
         <li>
-          <a href={HREF}>{t({ en: 'Another section', ru: 'Другой раздел' })}</a>
+          <a href={HREF}>{t(localized('m63e93b8d8e58'))}</a>
         </li>
       </ul>
     </nav>
@@ -140,7 +121,7 @@ const SAMPLES = {
     <table className="level-preview__table">
       <tbody>
         <tr>
-          <th>{t({ en: 'Row', ru: 'Строка' })}</th>
+          <th>{t(localized('m0425c5ff9311'))}</th>
           <td className="mono">1 · 2 · 3</td>
         </tr>
       </tbody>
@@ -156,7 +137,7 @@ export default function LevelPreview({ level }) {
     <figure
       className="level-preview"
       data-level={level}
-      aria-label={`${t({ en: 'Preview', ru: 'Предпросмотр' })}: ${t(LEVEL_NAMES[level])}`}
+      aria-label={`${t(localized('mfd6d4fd26692'))}: ${t(LEVEL_NAMES[level])}`}
     >
       {/* The samples count as outer panels though the settings panel holds them (issue #45). */}
       <div className="level-preview__stage" data-frame-root>
