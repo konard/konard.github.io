@@ -1,4 +1,4 @@
-/* global document, innerWidth */
+/* global document, innerWidth, matchMedia */
 // Production integration checks, one browser at a time. BASE reuses a running
 // static server; CI starts preview over the already-built application.
 import assert from 'node:assert/strict';
@@ -16,7 +16,11 @@ await mkdir(directory, { recursive: true });
 let browser;
 try {
   browser = await { chromium, firefox, webkit }[engine].launch();
-  const context = await browser.newContext({ viewport: { width: 1280, height: 800 }, reducedMotion: 'reduce' });
+  const context = await browser.newContext({
+    viewport: { width: 1280, height: 800 },
+    reducedMotion: 'reduce',
+    hasTouch: true,
+  });
   await context.route('**/*', (route) =>
     new URL(route.request().url()).origin === base ? route.continue() : route.abort(),
   );
@@ -40,6 +44,10 @@ try {
   await select.click({ force: true });
   const box = await page.getByRole('listbox').boundingBox();
   assert.ok(box && box.height <= 121 && box.x >= 0 && box.x + box.width <= 1281);
+  if (await page.evaluate(() => matchMedia('(pointer: coarse)').matches)) {
+    const option = await page.getByRole('option').first().boundingBox();
+    assert.ok(option.height >= 44, 'Framework options preserve the existing 44px touch targets');
+  }
   await select.press('Home');
   await select.press('Tab');
   assert.equal(await select.getAttribute('data-value'), 'auto');
@@ -50,6 +58,24 @@ try {
   results.push(
     'Legacy JSON loads; framework select commits with Tab, respects menu bounds and persists as historical LiNo',
   );
+
+  await page.locator('#setting-ui-menuHeight').fill('320');
+  await page.setViewportSize({ width: 390, height: 320 });
+  const palette = page.locator('#setting-future-palette');
+  await palette.scrollIntoViewIfNeeded();
+  await palette.click({ force: true });
+  const landscapeMenu = await page.getByRole('listbox').boundingBox();
+  await page.screenshot({ path: `${directory}/${engine}-landscape-menu.png` });
+  assert.ok(landscapeMenu.y >= 0 && landscapeMenu.y + landscapeMenu.height <= 320);
+  await page.setViewportSize({ width: 390, height: 600 });
+  await page.waitForFunction(() => {
+    const menu = [...document.querySelectorAll('[role="listbox"]')].find((node) => node.getClientRects().length);
+    const bounds = menu?.getBoundingClientRect();
+    return bounds && bounds.top >= 0 && bounds.bottom <= 600 && bounds.height > 200;
+  });
+  await palette.press('Escape');
+  await page.setViewportSize({ width: 1280, height: 800 });
+  results.push('Long select menus fit a short landscape viewport and resize while open');
 
   await page.getByRole('button', { name: 'RU', exact: true }).click({ force: true });
   assert.equal(await page.locator('html').getAttribute('lang'), 'ru');

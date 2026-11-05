@@ -1,4 +1,5 @@
 import { Children, useId, useLayoutEffect, useRef } from 'react';
+import { flushSync } from 'react-dom';
 import { mountControls } from '@link-foundation/ui-components/controls';
 import { formatLinks } from '@link-foundation/ui-core';
 import { useSettings } from '../settings/store';
@@ -21,7 +22,7 @@ export default function Select({ children, value, onChange, id, name, disabled, 
       .filter(Boolean)
       .map((child) => ({
         value: String(child.props.value),
-        label: String(child.props.children),
+        label: Children.toArray(child.props.children).join(''),
         disabled: !!child.props.disabled,
       })),
   );
@@ -52,8 +53,22 @@ export default function Select({ children, value, onChange, id, name, disabled, 
     button.removeAttribute('aria-labelledby');
     list.className = 'ui-select__list';
     list.setAttribute('aria-labelledby', buttonId);
+    // The upstream positioner flips but does not resize a menu to available
+    // vertical space. Size before it measures, including on viewport resize.
+    const fitMenu = () => {
+      const { top, bottom } = button.getBoundingClientRect();
+      const available = Math.max(0, top - 12, window.innerHeight - bottom - 12);
+      list.style.maxHeight = `min(var(--menu-height), ${available}px)`;
+    };
+    const onToggle = (event) => {
+      if (event.newState === 'open') {
+        fitMenu();
+        window.addEventListener('resize', fitMenu);
+      } else window.removeEventListener('resize', fitMenu);
+    };
     const key = (key) => button.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
     const onKey = (event) => {
+      fitMenu();
       if (button.getAttribute('aria-expanded') !== 'true') return;
       if (event.key === 'Tab') key('Enter');
       if (event.key === 'PageDown' || event.key === 'PageUp') {
@@ -63,15 +78,20 @@ export default function Select({ children, value, onChange, id, name, disabled, 
       }
     };
     const outside = (event) => {
+      if (button.getAttribute('aria-expanded') !== 'true') return;
       if (!button.contains(event.target) && !list.contains(event.target)) key('Escape');
     };
-    const focus = () => button.focus({ preventScroll: true });
+    const focus = () => {
+      fitMenu();
+      button.focus({ preventScroll: true });
+    };
     const preventDisabled = (event) => {
       if (event.target.closest('[role="option"]')?.getAttribute('aria-disabled') === 'true') {
         event.stopImmediatePropagation();
       }
     };
     list.addEventListener('click', preventDisabled, true);
+    list.addEventListener('toggle', onToggle);
     button.addEventListener('click', focus, true);
     button.addEventListener('keydown', onKey, true);
     document.addEventListener('pointerdown', outside);
@@ -80,6 +100,8 @@ export default function Select({ children, value, onChange, id, name, disabled, 
       button.removeEventListener('click', focus, true);
       button.removeEventListener('keydown', onKey, true);
       list.removeEventListener('click', preventDisabled, true);
+      list.removeEventListener('toggle', onToggle);
+      window.removeEventListener('resize', fitMenu);
       handle.destroy();
       mounted.current = null;
     };
@@ -97,13 +119,16 @@ export default function Select({ children, value, onChange, id, name, disabled, 
       if ((key.startsWith('aria-') || key.startsWith('data-')) && val != null) button.setAttribute(key, String(val));
     }
     const list = host.current.querySelector('[data-part="listbox"]');
-    list.style.maxHeight = `${menuHeight}px`;
+    list.style.setProperty('--menu-height', `${menuHeight}px`);
+    list.style.maxHeight = 'min(var(--menu-height), calc(100vh - 16px))';
     list.style.minWidth = `min(${menuWidth}px, calc(100vw - 16px))`;
     list.style.maxWidth = 'calc(100vw - 16px)';
     const change = (event) => {
       if (event.detail.value === String(value)) return;
       const target = { value: event.detail.value, name };
-      onChange?.({ target, currentTarget: target });
+      // This native framework event runs outside React's discrete event
+      // system. Commit before returning, like the original React click did.
+      flushSync(() => onChange?.({ target, currentTarget: target }));
       cue('select');
     };
     const element = host.current;

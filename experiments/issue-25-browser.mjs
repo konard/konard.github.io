@@ -133,7 +133,9 @@ try {
     await page.goto(`http://localhost:4185/network/?code=2222&rotation=90&${manual}&lang=${lang}`);
     await page.locator('#links').scrollIntoViewIfNeeded();
     const bounds = await page.evaluate(() => {
-      const overflow = [...document.querySelectorAll('.link-card input, .link-card select')].filter((node) => {
+      const overflow = [
+        ...document.querySelectorAll('.link-card input:not([type="hidden"]), .link-card [role="combobox"]'),
+      ].filter((node) => {
         const a = node.getBoundingClientRect();
         const b = node.closest('.link-card').getBoundingClientRect();
         return a.left < b.left || a.right > b.right || a.width < 40;

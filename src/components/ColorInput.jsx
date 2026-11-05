@@ -20,9 +20,20 @@ export default function ColorInput({ value, onChange, label = '', ...props }) {
   const { t } = useLang();
   useLayoutEffect(() => {
     if (!open) return;
-    const stop = positionFloating(trigger.current, popup.current, { offset: 4 });
-    popup.current.querySelector('input').focus({ preventScroll: true });
-    return stop;
+    const element = popup.current;
+    // Floating UI measures asynchronously. Avoid exposing a moving hit target
+    // while keeping the chooser measurable for its first layout calculation.
+    Object.assign(element.style, { position: 'fixed', left: '0px', top: '0px', visibility: 'hidden' });
+    let positioned = false;
+    return positionFloating(trigger.current, element, {
+      offset: 4,
+      onUpdate() {
+        if (positioned) return;
+        positioned = true;
+        element.style.visibility = 'visible';
+        element.querySelector('input').focus({ preventScroll: true });
+      },
+    });
   }, [open]);
   useEffect(() => {
     if (!open) return;

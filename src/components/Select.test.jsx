@@ -54,6 +54,23 @@ describe('owned select-only combobox', () => {
     fireEvent.keyDown(button, { key: 'ArrowDown' });
     expect(screen.queryByRole('listbox')).toBeNull();
   });
+  it('preserves labels assembled from multiple text and numeric children', () => {
+    render(
+      <Select value="zero" onChange={() => {}} aria-label="References">
+        <option value="zero">
+          {0}
+          {' — void'}
+        </option>
+        <option value="size">
+          {1280} × {800} ({'current'})
+        </option>
+      </Select>,
+    );
+    const button = screen.getByRole('combobox');
+    expect(button).toHaveTextContent('0 — void');
+    fireEvent.click(button);
+    expect(screen.getByRole('option', { name: '1280 × 800 (current)' })).toBeInTheDocument();
+  });
   it('commits on Tab and Alt+Up and supports page navigation', () => {
     const { button, onChange } = setup();
     fireEvent.keyDown(button, { key: 'ArrowDown' });

@@ -13,19 +13,6 @@
   content: '⌄';
   font-size: 1.25em;
 }
-.ui-select__list [role='option'] {
-  display: block;
-  padding: 0.5rem var(--ui-control-padding);
-  min-height: var(--ui-control-height);
-  border-radius: var(--ui-control-corners);
-  cursor: pointer;
-  overflow-wrap: anywhere;
-}
-.ui-select__list [data-active] {
-  background: var(--ui-hover);
-  outline: 1px solid var(--accent);
-  outline-offset: -1px;
-}
 .ui-select__list [data-part='indicator'] {
   display: none;
 }
