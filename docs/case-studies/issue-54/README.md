@@ -3,7 +3,7 @@
 Work: [issue 54](https://github.com/konard/konard.github.io/issues/54),
 [PR 55](https://github.com/konard/konard.github.io/pull/55).
 Research dates: 2026-11-05–06. Baseline site: `f169665` (main).
-Framework snapshots: `45645979bb91d99f7a308d3b9168f3757294a184` from draft
+Framework snapshots: `27d580f4bac4ebb4e70de3f78671153c2ef5dab9` from draft
 PR 213, with ui-i18n/ui-convert/ui-devmode from PR 214 at
 `e37935ea195fca55cb2ee6a5d2c1723858cd7f81`. Each archive has its own audited
 revision in the manifest. The initial snapshot was `f72e97f`.
@@ -47,7 +47,7 @@ older site revision; its full body and comments are preserved separately.
 | Twelve palettes, dark and light | `ui-tokens` readTokens/resolveTokens/toCss over `src/ui/palettes.lino` | One RGB-channel CSS bridge preserves alpha compositing and existing surfaces exactly |
 | Links Notation network input | `ui-core.parseLinks`, backed by official links-notation | Numeric network semantic validation, comma compatibility and historical adjacent-pair line separation; other mathematical/base representations are domain code |
 | Optional development UI | `ui-devmode/foreign` over the whole React document | Lazy URL/hotkey activation; PR 214 supplies browser imports/assets, so the converter alias and asset transform are deleted |
-| Number/range key arithmetic | `ui-components/controls.nextValue` with directional snapping | Preserve native text navigation and ten-step Page keys; the React number draft still preserves continuous typed values |
+| Number parsing and number/range keys | `ui-components/controls.readNumber` with clamp normalization and `nextValue` with directional snapping | Preserve the polished native input/draft presentation, native text navigation and ten-step Page keys |
 
 No new general-purpose widget library was introduced alongside the framework.
 The archives contain upstream code and license files; they are not a local
@@ -74,7 +74,7 @@ the word “adapter”:
 | Remaining consumer code | Remaining replacement boundary | Follow-through plan |
 | --- | --- | --- |
 | `SettingsPage`, previews, section placement, preset UI | PR 213 now supplies localization and panel hooks; actual site frame previews still depend on unsupported frame/material backends | Preserve the existing polished presentation until providers and complete consumer parity permit deleting it (210/211) |
-| `NumberInput`, color editor | Directional arithmetic is shared. Upstream now supplies translated labels and RGB editors, but typed numbers still quantize to step; the existing named-palette popup has a different presentation | Preserve continuous typed drafts and the polished popup; replace after the remaining normalization policy and presentation contracts match (210) |
+| `NumberInput`, color editor | Continuous parsing and directional arithmetic are shared. Upstream supplies translated labels and RGB editors; native input/draft presentation and the existing named-palette popup differ | Preserve the polished presentation; share additional rendering when its presentation contracts match (210) |
 | `settings/notation`, `apply`, before-paint script and storage bridge | Strict primitive policy is adopted; new codec/paint hooks still need integration with historical formats, corner inheritance and derived material values | Share the rendering projection once report 211's provider/schema contract exists; preserve old storage/share URLs and comfort choices (210/211) |
 | `skins.frames*`, frame CSS generator, fit rules, refraction/noise/material surfaces | Four independent corners/edges, many element levels/states, transparent masks and optical layers | Framework schema/provider implementation plus the existing frame tests at every level and state (211) |
 | `links` geometry, marker placement, collision solver, SVG/raster export, history UI | Continuous self-referential cubics, nine markers, independently editable turns/gaps, pinned solutions and exact preview/export parity | Implement provider hooks and migrate one backend at a time against existing editor/browser suites (211) |
@@ -382,14 +382,14 @@ At `4564597`, it adds directional stepping, translated number/color labels,
 configurable panel messages with live locale changes, and grouped RGB channel
 editors. The new APIs directly address the previous consumer follow-up.
 
-The site now delegates number/range key arithmetic to `nextValue` with
+At that snapshot the site delegates number/range key arithmetic to `nextValue` with
 `snapping: 'directional'`; the `0.075` → `0.08` regression passes. Native text
-navigation and the site's ten-step Page keys remain intact. The full number
-editor still cannot be deleted: public `readNumber('0.075', {step: 0.01})`
+navigation and the site's ten-step Page keys remain intact. At that snapshot continuous parsing cannot be delegated: public `readNumber('0.075', {step: 0.01})`
 returns `0.08` for both draft and commit, even with directional snapping.
 The site preserves continuous finite typed values and treats step as an
-increment. `upstream-contracts.mjs` prints both finite contracts; `STRICT=1`
-fails on this remaining typed-value policy. The new consumer regression checks
+increment. At this historical revision `upstream-contracts.mjs` prints both
+finite contracts; `STRICT=1` fails on the typed-value policy. The later
+`27d580f` adoption below resolves that policy. The new consumer regression checks
 `0.075` and clearing to `null`. The [follow-up report](https://github.com/link-foundation/ui/issues/210#issuecomment-6673550166)
 and `upstream-controls-continuous.md` identify the exact implementation boundary.
 The richer named-palette popup and actual frame previews remain in place;
@@ -409,7 +409,7 @@ is preserved in `upstream-browser-followup.md`. The current render is
 The expanded focused run passes 64 tests in nine files. These checks verify the
 adopted contracts; they do not claim every new upstream panel feature has been
 migrated or every upstream job has finished at its latest revision. Remaining
-full-support blockers are package publication, typed-number policy, independent
+full-support blockers after the adoption below are package publication, independent
 frame/material, geometry/export/solver and audio APIs. The draft remains unmerged.
 
 ## WebKit navigation-readiness investigation
@@ -430,3 +430,42 @@ now wait for their actual geometry before reading colors. Equality assertions
 and the original 15-second timeout remain unchanged. Attachment is sufficient
 for computed stroke reads, including vertical paths whose zero-width fill
 bounds do not satisfy Playwright's visibility test.
+
+
+## Continuous typed numbers and scrolled menus
+
+PR 213 at `27d580f` introduces the explicit `normalization: 'clamp'` policy.
+The site adopts that public `readNumber` API for continuous typing while keeping
+its native input, drafts and pointer steps. The finite contract probe now passes
+both typed `0.075` and directional `0.08`; the focused component regression also
+verifies clearing an inherited override to `null`. The earlier quantization
+report remains historical evidence, not an outstanding typed-number gap.
+
+The same upstream revision shifts sized menus on both axes when their anchors
+leave the viewport. Before adoption, open the palette menu at 390×320 and scroll
+600 pixels: its top becomes -384.21875 and the menu disappears. The new production
+smoke fails at its viewport-bounds assertion on `4564597`, then passes with the
+unmodified `27d580f` package. The after geometry, public API results and full
+before failure are recorded in `data/upstream-continuous-scroll.json`.
+
+| Before scrolling fix | Upstream scrolling fix |
+| --- | --- |
+| ![Menu scrolled offscreen](screenshots/draft-scrolled-menu-before.png) | ![Menu stays in viewport](screenshots/after-upstream-scrolled-menu.png) |
+
+The production build, 64 focused tests in nine files and seven Chromium migration
+checks pass on this snapshot. All original CI feature suites still run; the
+full-support acceptance criterion remains unfinished for the separate backends.
+
+## External rendering and publication blockers
+
+A fresh read of upstream report 211 found its independent implementation attempt
+[failed before creating its branch](https://github.com/link-foundation/ui/issues/211#issuecomment-6672139775).
+GitHub rejected five pushes between 23:22:34Z and 23:23:08Z on November 5 with
+`fatal error in commit_refs_rules`; no rendering implementation or pull request
+was produced. A read-only matching-refs check at 01:08Z on November 6 still finds
+no `issue-211` branch. The public failure comment and evidence are preserved in
+`data/upstream-rendering-blocker.json`. This consumer branch cannot complete or
+verify absent upstream frame/material/network/audio providers. Its working
+implementations remain in place. Report 209 is also open; a fresh registry check
+still returns E404 for `@link-foundation/ui-settings`. Neither reports nor passing
+consumer checks complete these acceptance criteria.

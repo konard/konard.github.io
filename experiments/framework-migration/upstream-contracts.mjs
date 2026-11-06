@@ -14,9 +14,8 @@ console.log(
 );
 assert.equal(actual, expected);
 
-// This diagnostic is a deletion gate for NumberInput, not a failing site test.
-// A step constrains key increments here; typed continuous values must survive.
-const typed = readNumber('0.075', { min: 0, max: 1, step: 0.01, snapping: 'directional' });
+// Typed normalization is independent of keyboard increments.
+const typed = readNumber('0.075', { min: 0, max: 1, step: 0.01, normalization: 'clamp' });
 console.log(
   JSON.stringify({
     contract: 'continuous typed number',
@@ -25,4 +24,4 @@ console.log(
     supported: typed.value === 0.075,
   }),
 );
-if (process.env.STRICT === '1') assert.equal(typed.value, 0.075);
+assert.equal(typed.value, 0.075);

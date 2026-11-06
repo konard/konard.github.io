@@ -1,7 +1,7 @@
 {
   "date": "2026-11-06",
   "baseline": "f169665",
-  "framework": "45645979bb91d99f7a308d3b9168f3757294a184",
+  "framework": "27d580f4bac4ebb4e70de3f78671153c2ef5dab9",
   "focused_checks": [
     {
       "command": "npx vitest run src/components/Select.test.jsx src/components/ColorInput.test.jsx src/ui/framework.test.js --maxWorkers=1",
@@ -113,6 +113,30 @@
       "result": "Pass: supplied URLs, five default configurations, gallery/theory dark/light color parity, exact SVG export and mobile overflow",
       "framework": "45645979bb91d99f7a308d3b9168f3757294a184",
       "browser_framework": "e37935ea195fca55cb2ee6a5d2c1723858cd7f81"
+    },
+    {
+      "command": "npx vitest run src/components/Select.test.jsx src/components/ColorInput.test.jsx src/components/NumberInput.test.jsx src/components/numericKeys.test.js src/ui/framework.test.js src/settings/contracts.test.js src/settings/presets.test.js src/settings/settings.test.js src/pages/network-history.test.jsx --maxWorkers=1",
+      "result": "64 passed across 9 files; official clamp parsing preserves 0.075 and clearing to null",
+      "framework": "27d580f4bac4ebb4e70de3f78671153c2ef5dab9",
+      "browser_framework": "e37935ea195fca55cb2ee6a5d2c1723858cd7f81"
+    },
+    {
+      "command": "npm run build; ENGINE=chromium npm run test:ui:migration",
+      "result": "Production build and all seven Chromium smoke checks pass, including scrolled menus with offscreen anchors",
+      "framework": "27d580f4bac4ebb4e70de3f78671153c2ef5dab9",
+      "browser_framework": "e37935ea195fca55cb2ee6a5d2c1723858cd7f81"
+    },
+    {
+      "command": "node experiments/framework-migration/upstream-contracts.mjs",
+      "result": "Both public contracts pass: directional stepping 0.075 to 0.08; typed clamp normalization preserves 0.075",
+      "framework": "27d580f4bac4ebb4e70de3f78671153c2ef5dab9",
+      "browser_framework": "e37935ea195fca55cb2ee6a5d2c1723858cd7f81"
+    },
+    {
+      "command": "Playwright MCP: production settings at 390x320, open palette then scroll 600px",
+      "result": "Menu remains at y=8 with height=304 despite anchor y=-420.21875; zero console errors; before/after screenshots committed",
+      "framework": "27d580f4bac4ebb4e70de3f78671153c2ef5dab9",
+      "browser_framework": "e37935ea195fca55cb2ee6a5d2c1723858cd7f81"
     }
   ],
   "regressions": [
@@ -180,6 +204,12 @@
       "case": "Multiline browser installation in the CV workflow ordering test",
       "before_log_excerpt": "\n RUN  v5.0.5 /tmp/gh-issue-solver-1793911090763\n\n ❯ src/workflow.test.js (18 tests | 1 failed) 163ms\n   ❯ GitHub Actions workflows (7)\n     ❯ GitHub Pages deployment from Actions (6)\n       × the CV PDFs are printed into the build before it is uploaded 14ms\n\n⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯\n\n FAIL  src/workflow.test.js > GitHub Actions workflows > GitHub Pages deployment from Actions > the CV PDFs are printed into the build before it is uploaded\nAssertionError: expected -1 to be greater than 4\n ❯ src/workflow.test.js:45:68\n     43|         (s) => s.uses === './.github/actions/upload-artifact' && s.wit…\n     44|       );\n     45|       expect(index('npx playwright install --with-deps chromium')).toB…\n       |                                                                    ^\n     46|       expect(index('npm run build:cv')).toBeGreaterThan(index('npx pla…\n     47|       expect(upload).toBeGreaterThan(index('npm run build:cv'));\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯\n\n\n Test Files  1 failed (1)\n      Tests  1 failed | 17 passed (18)\n   Start at  00:01:10\n   Duration  5.30s (environment 70%, setup 19%, transform 5%, tests 3%, import 1%, worker 1%)\n\n",
       "after": "18 workflow tests pass after exact command-line lookup and explicit production-build presence assertion"
+    },
+    {
+      "case": "Open select menu when anchor scrolls offscreen",
+      "evidence": "upstream-continuous-scroll.json",
+      "before_log_excerpt": "\n> konard.github.io@0.1.0 test:ui:migration\n> node experiments/framework-migration/smoke.mjs\n\nnode:internal/modules/run_main:111\n    triggerUncaughtException(\n    ^\n\npage.waitForFunction: Timeout 15000ms exceeded.\n    at /tmp/gh-issue-solver-1793911090763/experiments/framework-migration/smoke.mjs:84:14 {\n  log: [],\n  name: 'TimeoutError'\n}\n\nNode.js v26.13.0\n",
+      "after": "Production smoke passes; menu y=8, height=304 in 320px viewport using official upstream positioner"
     }
   ],
   "limits": [

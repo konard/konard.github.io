@@ -1,4 +1,4 @@
-/* global document, innerWidth, matchMedia, getComputedStyle */
+/* global document, window, innerWidth, innerHeight, matchMedia, getComputedStyle */
 // Production integration checks, one browser at a time. BASE reuses a running
 // static server; CI starts preview over the already-built application.
 import assert from 'node:assert/strict';
@@ -80,6 +80,15 @@ try {
   const landscapeMenu = await page.getByRole('listbox').boundingBox();
   await page.screenshot({ path: `${directory}/${engine}-landscape-menu.png` });
   assert.ok(landscapeMenu.y >= 0 && landscapeMenu.y + landscapeMenu.height <= 320);
+  await page.evaluate(() => window.scrollBy(0, 600));
+  await page.waitForFunction(() => {
+    const menu = [...document.querySelectorAll('[role="listbox"]')].find((node) => node.getClientRects().length);
+    const bounds = menu?.getBoundingClientRect();
+    return bounds && bounds.top >= 0 && bounds.bottom <= innerHeight;
+  });
+  await page.screenshot({ path: `${directory}/${engine}-scrolled-menu.png` });
+  results.push('Open select menus remain inside the viewport when scrolling hides the anchor');
+  await palette.scrollIntoViewIfNeeded();
   await page.setViewportSize({ width: 390, height: 600 });
   await page.waitForFunction(() => {
     const menu = [...document.querySelectorAll('[role="listbox"]')].find((node) => node.getClientRects().length);

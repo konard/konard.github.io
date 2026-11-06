@@ -1,5 +1,6 @@
 import { localized } from '../i18n/localizer.js';
 import { useRef, useState } from 'react';
+import { readNumber } from '@link-foundation/ui-components/controls';
 import { useLang } from '../i18n/prefs';
 import { numericKey } from './numericKeys';
 
@@ -30,7 +31,7 @@ export default function NumberInput({ value, onValue, fallback = 0, ...props }) 
         }}
         onChange={(event) => {
           const text = event.target.value;
-          const next = text === '' ? null : Number(text);
+          const { value: next } = readNumber(text, { normalization: 'clamp' });
           if (event.target.validity.badInput) {
             setDraft({ text, at: value });
             return;

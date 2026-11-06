@@ -2,7 +2,7 @@
 
 These eleven npm tarballs contain the unmodified distributable source of
 [link-foundation/ui](https://github.com/link-foundation/ui) at two immutable revisions:
-`45645979bb91d99f7a308d3b9168f3757294a184` for eight control/settings packages,
+`27d580f4bac4ebb4e70de3f78671153c2ef5dab9` for eight control/settings packages,
 and `e37935ea195fca55cb2ee6a5d2c1723858cd7f81` for ui-i18n, ui-convert and
 ui-devmode browser packaging.
 Each retains its upstream `LICENSE`. The manifest records source permalinks and
@@ -11,10 +11,10 @@ SHA-256 digests; the lockfile additionally pins npm integrity hashes.
 These are unmodified packages from upstream draft
 [PR 213](https://github.com/link-foundation/ui/pull/213) and
 [PR 214](https://github.com/link-foundation/ui/pull/214), not releases. They supply
-select, normalization, directional stepping and browser contracts reported
+select, continuous typed normalization, directional stepping and browser contracts reported
 during this migration. The case study distinguishes historical failures from
 later upstream fixes. This site's complete CI remains the integration gate.
-The initial `f72e97f` and intermediate `2efd7e2` snapshots remain in history.
+The initial `f72e97f` and intermediate `2efd7e2` and `4564597` snapshots remain in history.
 
 The workspace packages are not published to npm. Keeping the actual archives
 allows `npm ci` to work without an upstream monorepo checkout, install scripts,
