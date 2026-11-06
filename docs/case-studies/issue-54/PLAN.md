@@ -48,3 +48,21 @@ passing checks still do not complete the separate upstream-support criterion.
 - Framework classic frames do not represent this site's individual corners,
   edges, states, element levels and fit limits. Replacing these outright would
   remove existing behavior; this gap needs an upstream report and an adapter.
+
+## CI restart: November 6
+
+- [x] Refresh issue and all three PR comment channels; compare current SHA and
+      run times, download all three recent non-passing runs, inspect actual logs.
+- [x] Confirm latest main is already an ancestor; no merge/conflict is pending.
+- [x] Identify current-head failures: gallery API screenshot stalls in its font
+      wait; the keyboard audit passes after 18 minutes but consumes most of the
+      single WebKit job, causing cancellation before later suites run.
+- [x] Draft native gallery capture and isolate the unchanged WebKit keyboard
+      suite in a separate matrix entry with unique concurrency/artifact names.
+- [ ] Verify focused regressions fail against the original workflow and pass
+      after the fix; check static rules and production Chromium gallery capture.
+- [ ] Push only the prepared branch; inspect every current-commit CI check and
+      preserve any new failure logs before making further corrections.
+- [ ] Refresh upstream support/publication evidence; keep any still-blocked
+      acceptance criteria explicit and leave the PR unmerged.
+- [ ] Review final diff, update PR description and confirm a clean working tree.
