@@ -11,6 +11,7 @@
 //
 // Parsers return `{ links }` or `{ error }`, where `error` is an `{ en, ru }` text.
 import { encode } from './configurations.js';
+import { parseLinks as readLinks } from '@link-foundation/ui-core';
 
 const SUBSCRIPTS = '₀₁₂₃₄₅₆₇₈₉';
 const toSubscript = (k) =>
@@ -116,12 +117,28 @@ export function parseIndex(text, n) {
  * the names may be left out ("(0 1) (2 0)") and then count from 1.
  */
 export function parseLinks(text) {
-  const raw = String(text);
-  const pattern = /\(\s*(?:(\d+)\s*:)?\s*(\d+)[\s,]+(\d+)\s*\)/g;
-  const found = [...raw.matchAll(pattern)];
-  if (!found.length || raw.replace(pattern, '').trim())
+  try {
+    // The official parser groups adjacent records on one line. Separate the
+    // editor's historical space-separated pairs without flattening nested
+    // records (which would silently accept malformed networks).
+    const found = readLinks(
+      String(text)
+        .replace(/,/g, ' ')
+        .replace(/\)\s*\(/g, ')\n('),
+    );
+    if (!found.length) throw new Error('empty network');
+    const items = found.map((link) => {
+      const values = Array.isArray(link) ? link : link.values;
+      const name = Array.isArray(link) ? undefined : link.id;
+      if (!values || values.length !== 2 || values.some((v) => typeof v !== 'string' || !/^\d+$/.test(v)))
+        throw new Error('not a doublet');
+      if (name !== undefined && !/^\d+$/.test(name)) throw new Error('not a link number');
+      return [name, ...values.map(Number)];
+    });
+    return byNames(items);
+  } catch {
     return fail('Write links as (1: 0 1) (2: 2 0).', 'Запишите связи как (1: 0 1) (2: 2 0).');
-  return byNames(found.map(([, name, s, t]) => [name, Number(s), Number(t)]));
+  }
 }
 
 /** Links named 1..n in any order, or without names, in the order they are written. */

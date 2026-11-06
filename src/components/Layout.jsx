@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 import '../App.css';
 import '../App.sections.css';
 import '../Layout.css';
@@ -33,6 +34,7 @@ import Sound from './Sound';
 import { watchPanelVisibility } from './panelVisibility';
 import { ArrowUp } from 'lucide-react';
 import { iconProps } from './icons';
+import { installDevMode } from '../ui/devmode';
 
 /**
  * Shared frame of every page: the cosmic background, the page navigation
@@ -40,6 +42,7 @@ import { iconProps } from './icons';
  * settings of the background and the skin (issue #13).
  */
 export default function Layout({ page, sections = null, children, footer = null }) {
+  useEffect(() => installDevMode(), []);
   const { t } = useLang();
   const { n } = useNotation();
   const pages = useRef(null);
@@ -78,7 +81,7 @@ export default function Layout({ page, sections = null, children, footer = null 
         </div>
         {sections && (
           <nav className="nav" aria-label="Sections">
-            <a className="nav__top mono" href="#top" aria-label={t({ en: 'Back to top', ru: 'Наверх' })}>
+            <a className="nav__top mono" href="#top" aria-label={t(localized('mb77305b09310'))}>
               <ArrowUp {...iconProps} />
             </a>
             <ul ref={sectionList}>
@@ -98,24 +101,24 @@ export default function Layout({ page, sections = null, children, footer = null 
         <span className="mono">{n(motto)}</span>
         <span>
           <a className="footer__settings" href="/settings/" aria-current={page === 'settings' ? 'page' : undefined}>
-            {t({ en: 'Settings', ru: 'Настройки' })}
+            {t(localized('m36a930702b39'))}
           </a>{' '}
           · {footer}
-          {t({ en: 'Background: links of the', ru: 'Фон: связи' })}{' '}
+          {t(localized('me26652bd0058'))}{' '}
           <a href="https://github.com/link-foundation/meta-theory" target="_blank" rel="noopener noreferrer">
-            {t({ en: 'links theory', ru: 'теории связей' })}
+            {t(localized('m80471341ba79'))}
           </a>{' '}
-          {t({ en: 'in the', ru: 'в стиле' })}{' '}
+          {t(localized('m350fea66024b'))}{' '}
           <a href="https://github.com/konard/links-visuals" target="_blank" rel="noopener noreferrer">
             links-visuals
           </a>
-          {t({ en: ' style, raining as in', ru: ', падающие как в' })}{' '}
+          {t(localized('m097787b2989b'))}{' '}
           <a href="https://github.com/konard/twittermatrix" target="_blank" rel="noopener noreferrer">
             twittermatrix
           </a>{' '}
           ·{' '}
           <a href="https://github.com/konard/konard.github.io" target="_blank" rel="noopener noreferrer">
-            {t({ en: 'source', ru: 'исходный код' })}
+            {t(localized('m1a82f9fac384'))}
           </a>
         </span>
         <DataSources />

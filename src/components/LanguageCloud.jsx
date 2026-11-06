@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 import { useLang } from '../i18n/prefs';
 import { plural } from '../i18n/plural';
 import { formatNumber } from './format';
@@ -44,7 +45,7 @@ export default function LanguageCloud({ languages, extra = [], favorites = [] })
         })}
         <DataMark />
       </p>
-      <ul className="cloud__list" aria-label={t({ en: 'All languages', ru: 'Все языки' })}>
+      <ul className="cloud__list" aria-label={t(localized('m5f44728ede37'))}>
         {sorted.map((l) => (
           <li
             key={l.name}
@@ -60,11 +61,7 @@ export default function LanguageCloud({ languages, extra = [], favorites = [] })
           </li>
         ))}
         {others.map((name) => (
-          <li
-            key={name}
-            className="is-extra"
-            title={`${name}: ${t({ en: 'known from the skills list', ru: 'из списка навыков' })}`}
-          >
+          <li key={name} className="is-extra" title={`${name}: ${t(localized('md35a193c588e'))}`}>
             {name}
           </li>
         ))}

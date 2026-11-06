@@ -1,0 +1,23 @@
+{
+  "conclusion": "failure",
+  "createdAt": "2026-11-06T00:24:48Z",
+  "headSha": "81a3170234a11798a7f6a700015514a6b8c9c964",
+  "status": "completed",
+  "updatedAt": "2026-11-06T00:48:36Z",
+  "url": "https://github.com/konard/konard.github.io/actions/runs/42136628107",
+  "failure": {
+    "job": "WebKit (macos-15-intel)",
+    "step": "Verify editor geometry, source colors and shared settings",
+    "file": "experiments/issue-21-browser.mjs:104",
+    "error": "dark gallery colors must match editor; actual [] vs expected two stroke colors",
+    "log_lines": [
+      12467,
+      12482
+    ]
+  },
+  "passing_browser_engines": [
+    "Chromium",
+    "Firefox"
+  ],
+  "resolution": "Wait for actual editor SVG paths after navigation before comparing colors; no assertion or timeout changed."
+}

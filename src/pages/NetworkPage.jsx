@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import './settings.css';
 import './network.css';
@@ -30,10 +31,10 @@ import { useNetworkHistory } from './useNetworkHistory';
 export const DEFAULT_CODE = '11 22 12';
 
 const SECTIONS = [
-  ['notations', { en: 'Notations', ru: 'Нотации' }],
-  ['links', { en: 'Links', ru: 'Связи' }],
-  ['style', { en: 'Style', ru: 'Оформление' }],
-  ['share', { en: 'Share', ru: 'Поделиться' }],
+  ['notations', localized('m9826604ea85d')],
+  ['links', localized('m3e892692fc82')],
+  ['style', localized('m5a11d8149d67')],
+  ['share', localized('m95f5e1f9c3d9')],
 ];
 
 /** The network and the style of the picture in a query string (?code=112212&end=dot…). */
@@ -145,21 +146,16 @@ export default function NetworkPage() {
   };
 
   const url = `${window.location.origin}/network/${query}`;
-  const text = `${t({ en: 'Links network', ru: 'Сеть связей' })} ${mathNotation(code)}: ${theoryNotation(links, notation)}`;
+  const text = `${t(localized('mfad91e211832'))} ${mathNotation(code)}: ${theoryNotation(links, notation)}`;
 
   return (
     <Layout page="network" sections={SECTIONS}>
       <section className="section network" id="top">
         <h1 className="section__title">
-          {t({ en: 'Links network', ru: 'Сеть связей' })}{' '}
-          <span className="mono network__code">{mathNotation(code)}</span>
+          {t(localized('mfad91e211832'))} <span className="mono network__code">{mathNotation(code)}</span>
         </h1>
         <p className="section__lead">
-          {t({
-            en: 'One network of doublet links: change it in any notation or link by link, change every detail of its picture and save or share it. The address of the page keeps everything, so a link opens exactly this picture.',
-            ru: 'Одна сеть дуплетных связей: меняйте её в любой нотации или по одной связи, меняйте каждую деталь её картинки, сохраняйте и делитесь. Адрес страницы хранит всё, поэтому ссылка открывает ровно эту картинку.',
-          })}{' '}
-          <a href="/art/#symbols">{t({ en: 'All networks of 1–4 links', ru: 'Все сети из 1–4 связей' })}</a>
+          {t(localized('m2df3c027ef45'))} <a href="/art/#symbols">{t(localized('m9a8545bc791f'))}</a>
         </p>
         <div className="network__layout">
           <figure className="network__view">
@@ -176,30 +172,30 @@ export default function NetworkPage() {
               {(busy || applying) && (
                 <span role="status">
                   {' · '}
-                  {t({ en: 'Spacing…', ru: 'Подбор зазоров…' })}
+                  {t(localized('m7230dba07171'))}
                 </span>
               )}
               {(error || applyError) && (
                 <span role="alert">
                   {' · '}
-                  {t({ en: 'Could not calculate spacing', ru: 'Не удалось подобрать зазоры' })}: {error || applyError}
+                  {t(localized('mb5353c243c61'))}: {error || applyError}
                 </span>
               )}
               {solved && (
                 <span className="network__score">
                   {' · '}
-                  {t({ en: 'overlaps', ru: 'наложения' })} {solved.before.toFixed(1)} → {solved.after.toFixed(1)}
+                  {t(localized('m0671b1cdcdbc'))} {solved.before.toFixed(1)} → {solved.after.toFixed(1)}
                 </span>
               )}
             </figcaption>
           </figure>
           <div className="network__panels">
             <section id="notations" className="network__panel" aria-labelledby="notations-title">
-              <h2 id="notations-title">{t({ en: 'Notations', ru: 'Нотации' })}</h2>
+              <h2 id="notations-title">{t(localized('m9826604ea85d'))}</h2>
               <Notations links={links} notation={notation} onLinks={changeLinks} />
             </section>
             <section id="links" className="network__panel" aria-labelledby="links-title">
-              <h2 id="links-title">{t({ en: 'Links', ru: 'Связи' })}</h2>
+              <h2 id="links-title">{t(localized('m3e892692fc82'))}</h2>
               <LinksTable
                 links={links}
                 colors={colors}
@@ -225,13 +221,8 @@ export default function NetworkPage() {
               />
             </section>
             <section className="network__panel" id="style" aria-labelledby="style-title">
-              <h2 id="style-title">{t({ en: 'Style of the picture', ru: 'Оформление картинки' })}</h2>
-              <p className="network__lead">
-                {t({
-                  en: 'Start from a look and change any detail. A card like in the gallery, or no card at all and only the lines on a black or transparent background: both are here.',
-                  ru: 'Начните с готового оформления и меняйте любую деталь. Карточка как в галерее или без карточки, только линии на чёрном или прозрачном фоне: есть и то, и другое.',
-                })}
-              </p>
+              <h2 id="style-title">{t(localized('ma25d7d9ee1b4'))}</h2>
+              <p className="network__lead">{t(localized('m4775ba33d697'))}</p>
               <Looks style={style} onStyle={setStyle} />
               <div className="network__styles">
                 <StyleSections links={links} style={style} onStyle={setStyle}>
@@ -242,7 +233,7 @@ export default function NetworkPage() {
                       disabled={busy || applying || Boolean(error)}
                       onClick={applySolved}
                     >
-                      {t({ en: 'Apply turns and gaps to links', ru: 'Применить повороты и зазоры связей' })}
+                      {t(localized('mb0557e50c404'))}
                     </button>
                     <button
                       type="button"
@@ -250,14 +241,14 @@ export default function NetworkPage() {
                       disabled={!style.turns}
                       onClick={() => setStyle({ ...style, turns: '' })}
                     >
-                      {t({ en: 'Clear all turns', ru: 'Убрать все повороты' })}
+                      {t(localized('m6a504bc40123'))}
                     </button>
                   </div>
                 </StyleSections>
               </div>
             </section>
             <section id="share" className="network__panel" aria-labelledby="share-title">
-              <h2 id="share-title">{t({ en: 'Save and share', ru: 'Сохранить и поделиться' })}</h2>
+              <h2 id="share-title">{t(localized('mdc9b4f684f2c'))}</h2>
               <NetworkShare
                 code={code}
                 links={links}

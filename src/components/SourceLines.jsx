@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 import { useLang } from '../i18n/prefs';
 import { formatNumber } from './format';
 import { DataMark } from './DataSources';
@@ -11,34 +12,21 @@ export default function SourceLines({ data }) {
   const major = languages.filter(([, count]) => count >= 1000);
   const minor = languages.filter(([, count]) => count < 1000);
   const other = minor.reduce((sum, [, count]) => sum + count, 0);
-  const rows = [...major, ...(minor.length ? [[t({ en: 'Other', ru: 'Другие' }), other]] : [])];
+  const rows = [...major, ...(minor.length ? [[t(localized('m671783c5c71b')), other]] : [])];
   const largest = Math.max(1, ...rows.map(([, count]) => count));
   const total = languages.reduce((sum, [, count]) => sum + count, 0);
   return (
     <article className="source-lines">
-      <h3>{t({ en: 'My open-source code', ru: 'Мой открытый код' })}</h3>
+      <h3>{t(localized('m22e66b4911a6'))}</h3>
       <p className="source-lines__total">
         <strong>{number(total)}</strong> <DataMark />
       </p>
+      <p>{t(localized('m51453daa916f'))}</p>
+      <p className="muted">{t(localized('m787865fefb00'))}</p>
       <p>
-        {t({
-          en: 'Surviving nonblank source lines attributed to my commits in public repositories, including contributions to projects I do not own.',
-          ru: 'Сохранившиеся непустые строки исходного кода, отнесённые к моим коммитам в публичных репозиториях, включая вклад в чужие проекты.',
-        })}
-      </p>
-      <p className="muted">
-        {t({
-          en: 'Includes comments; excludes Markdown, JSON and other prose/data formats, saved patches and dependency/build directories. Shared history is counted once. Git attribution measures responsibility for the current lines, including work done with tools; it cannot establish manual typing or count deleted work.',
-          ru: 'Включает комментарии; исключает Markdown, JSON и другие форматы текста и данных, сохранённые патчи и каталоги зависимостей и сборки. Общая история учитывается один раз. Git определяет авторство текущих строк, в том числе работы с инструментами; он не устанавливает ручной набор и не учитывает удалённый код.',
-        })}
-      </p>
-      <p>
-        {t({
-          en: 'Closed-source experience is much broader; see the positions in my CV.',
-          ru: 'Опыт закрытой разработки значительно шире — см. должности в моём резюме.',
-        })}{' '}
+        {t(localized('m3110c150c7e7'))}{' '}
         <a href={`/cv/?lang=${lang}`}>
-          {t({ en: 'View CV', ru: 'Открыть резюме' })} <ArrowRight {...iconProps} />
+          {t(localized('mcb964b61da78'))} <ArrowRight {...iconProps} />
         </a>
       </p>
       <p className="muted">
@@ -51,9 +39,9 @@ export default function SourceLines({ data }) {
       <table className="source-lines__table">
         <thead>
           <tr>
-            <th>{t({ en: 'Language', ru: 'Язык' })}</th>
+            <th>{t(localized('m6d23696c750e'))}</th>
             <th>
-              {t({ en: 'Attributed source lines', ru: 'Строки с установленным авторством' })} <DataMark />
+              {t(localized('m50395522765f'))} <DataMark />
             </th>
           </tr>
         </thead>
@@ -70,16 +58,14 @@ export default function SourceLines({ data }) {
         </tbody>
         <tfoot>
           <tr>
-            <th>{t({ en: 'Total', ru: 'Всего' })}</th>
+            <th>{t(localized('m3398e3ff6a01'))}</th>
             <td>{number(total)}</td>
           </tr>
         </tfoot>
       </table>
       {minor.length > 0 && (
         <details className="table-view">
-          <summary>
-            {t({ en: 'Other languages (fewer than 1,000 lines each)', ru: 'Другие языки (менее 1 000 строк каждый)' })}
-          </summary>
+          <summary>{t(localized('m99655ad35768'))}</summary>
           <ul>
             {minor.map(([language, count]) => (
               <li key={language}>
@@ -91,7 +77,7 @@ export default function SourceLines({ data }) {
       )}
       {data.excludedRepositories?.map((r) => (
         <p className="muted source-lines__excluded" key={r.fullName}>
-          {t({ en: 'Excluded by hand:', ru: 'Исключён вручную:' })}{' '}
+          {t(localized('m578ecfab6fe2'))}{' '}
           <a href={`https://github.com/${r.fullName}/tree/${r.sha}`} target="_blank" rel="noopener noreferrer">
             {r.fullName}
           </a>{' '}
@@ -99,9 +85,7 @@ export default function SourceLines({ data }) {
         </p>
       ))}
       <details className="table-view">
-        <summary>
-          {t({ en: 'Public repositories with attributed lines', ru: 'Публичные репозитории со строками автора' })}
-        </summary>
+        <summary>{t(localized('m946392b06958'))}</summary>
         <ul>
           {data.authoredRepositories.map((r) => (
             <li key={r.fullName}>

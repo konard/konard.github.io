@@ -159,7 +159,12 @@ jobs:
       # headless Chromium and checked: at most 2 pages for a position, 1 page
       # for the compact style, and a text layer an ATS can read.
       - name: Install Chromium for the CV PDFs
-        run: npx playwright install --with-deps chromium
+        run: |
+          # Keep the same Ubuntu fallback as the browser matrix below.
+          if [[ "$RUNNER_OS" == "Linux" && -f /etc/apt/apt-mirrors.txt ]]; then
+            sudo sed -i '/azure\.archive\.ubuntu\.com/d' /etc/apt/apt-mirrors.txt
+          fi
+          npx playwright install --with-deps chromium
 
       - name: Print the CV PDFs
         run: npm run build:cv
@@ -177,7 +182,7 @@ jobs:
 
   network-browsers:
     concurrency:
-      group: check-${{ github.workflow }}-${{ github.ref }}-network-browsers-${{ matrix.engine }}
+      group: check-${{ github.workflow }}-${{ github.ref }}-network-browsers-${{ matrix.engine }}-${{ matrix.suite }}
       cancel-in-progress: true
     needs: [prepare, lint-workflows, checks, tooling]
     if: needs.prepare.outputs.code == 'true'
@@ -192,9 +197,11 @@ jobs:
           # Chromium took 9 min on main and 11 min with the 18 extra settings
           # sliders and the step of issue #45; that busy run cut it at 15.
           - engine: chromium
+            suite: all
             os: ubuntu-24.04
             timeout: 20
           - engine: firefox
+            suite: all
             os: ubuntu-24.04
             timeout: 15
           # This container's Linux GTK renderer omits backdrop effects on
@@ -206,7 +213,14 @@ jobs:
           # 380 ms instead of about 110 ms, so the issue #27 audit of its 111
           # sliders takes about 290 s instead of 100 s. The job took 16 min 45 s,
           # and 23 min 51 s on a busy runner.
+          # The all-slider keyboard audit took 18 minutes on a busy runner.
+          # Isolate it so every assertion runs within the existing 30-min limit.
           - engine: webkit
+            suite: editor
+            os: macos-15-intel
+            timeout: 30
+          - engine: webkit
+            suite: keyboard
             os: macos-15-intel
             timeout: 30
     env:
@@ -233,7 +247,13 @@ jobs:
         id: browser
         # WebKit uses macOS because Linux GTK can stall on glass panels.
         # https://github.com/microsoft/playwright/issues/43426
-        run: npx playwright install --with-deps "$ENGINE"
+        run: |
+          # A trickling Azure mirror can exhaust the job without timing out.
+          # https://github.com/actions/runner-images/issues/14823
+          if [[ "$RUNNER_OS" == "Linux" && -f /etc/apt/apt-mirrors.txt ]]; then
+            sudo sed -i '/azure\.archive\.ubuntu\.com/d' /etc/apt/apt-mirrors.txt
+          fi
+          npx playwright install --with-deps "$ENGINE"
 
       - name: Initialize browser evidence
         run: |
@@ -241,26 +261,27 @@ jobs:
           node -e 'require("node:fs").writeFileSync("browser-results/run.json", JSON.stringify({sha: process.env.GITHUB_SHA, engine: process.env.ENGINE}))'
 
       - name: Verify existing editor features and image downloads
+        if: ${{ !cancelled() && steps.browser.outcome == 'success' && matrix.suite != 'keyboard' }}
         run: npm run test:network:browser
         env:
           CAPTURE_DIR: browser-results/screenshots/editor
 
       - name: Verify history, self loops, layouts, clipboard and mobile editing
-        if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
+        if: ${{ !cancelled() && steps.browser.outcome == 'success' && matrix.suite != 'keyboard' }}
         run: npm run test:network:issue19
         env:
           CAPTURE_DIR: browser-results/screenshots/issue19
           RESULT_DIR: browser-results/data/issue19
 
       - name: Verify editor geometry, source colors and shared settings
-        if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
+        if: ${{ !cancelled() && steps.browser.outcome == 'success' && matrix.suite != 'keyboard' }}
         run: npm run test:network:issue21
         env:
           CAPTURE_DIR: browser-results/screenshots/issue21
           RESULT_DIR: browser-results/data/issue21
 
       - name: Verify curved markers, per-link gaps and bounded gallery blur surfaces
-        if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
+        if: ${{ !cancelled() && steps.browser.outcome == 'success' && matrix.suite != 'keyboard' }}
         # Capture the actual compositor, including Firefox backdrop effects.
         run: |
           if [[ "$RUNNER_OS" == "macOS" ]]; then
@@ -276,21 +297,21 @@ jobs:
           RESULT_DIR: browser-results/data/issue23
 
       - name: Verify automatic spacing, sharp balanced arrows and per-link cards
-        if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
+        if: ${{ !cancelled() && steps.browser.outcome == 'success' && matrix.suite != 'keyboard' }}
         run: npm run test:network:issue25
         env:
           CAPTURE_DIR: browser-results/screenshots/issue25
           RESULT_DIR: browser-results/data/issue25
 
       - name: Verify equal closed gaps, historical URLs and numeric keyboard controls
-        if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
+        if: ${{ !cancelled() && steps.browser.outcome == 'success' && matrix.suite != 'editor' }}
         run: npm run test:network:issue27
         env:
           CAPTURE_DIR: browser-results/screenshots/issue27
           RESULT_DIR: browser-results/data/issue27
 
       - name: Verify paired sliders, preserved manual layouts and symmetric automatic references
-        if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
+        if: ${{ !cancelled() && steps.browser.outcome == 'success' && matrix.suite != 'keyboard' }}
         run: npm run test:network:issue29
         env:
           CAPTURE_DIR: browser-results/screenshots/issue29
@@ -303,50 +324,56 @@ jobs:
           CAPTURE_DIR: browser-results/screenshots/issue33
 
       - name: Verify continuous middles and explicit cuts after automatic spacing
-        if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
+        if: ${{ !cancelled() && steps.browser.outcome == 'success' && matrix.suite != 'keyboard' }}
         run: npm run test:network:issue35
         env:
           CAPTURE_DIR: browser-results/screenshots/issue35
           RESULT_DIR: browser-results/data/issue35
 
       - name: Verify self crossings, 20 random networks, slider focus and worker responsiveness
-        if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
+        if: ${{ !cancelled() && steps.browser.outcome == 'success' && matrix.suite != 'keyboard' }}
         run: npm run test:network:issue37
         env:
           CAPTURE_DIR: browser-results/screenshots/issue37
           RESULT_DIR: browser-results/data/issue37
 
       - name: Verify configurable controls, corners, materials, opacity and social embeds
-        if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
+        if: ${{ !cancelled() && steps.browser.outcome == 'success' && matrix.suite != 'keyboard' }}
         run: npm run test:ui:issue39
         env:
           CAPTURE_DIR: browser-results/screenshots/issue39
 
       - name: Verify simple default turns, reported examples and 20 seeded networks
-        if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
+        if: ${{ !cancelled() && steps.browser.outcome == 'success' && matrix.suite != 'keyboard' }}
         run: npm run test:network:issue41
         env:
           CAPTURE_DIR: browser-results/screenshots/issue41
           RESULT_DIR: browser-results/data/issue41
 
       - name: Verify neutral geometry, network size transitions and random real networks
-        if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
+        if: ${{ !cancelled() && steps.browser.outcome == 'success' && matrix.suite != 'keyboard' }}
         run: npm run test:network:issue43
         env:
           CAPTURE_DIR: browser-results/screenshots/issue43
           RESULT_DIR: browser-results/data/issue43
 
       - name: Verify the frame on every bordered element, the corner layer and the colour palettes
-        if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
+        if: ${{ !cancelled() && steps.browser.outcome == 'success' && matrix.suite != 'keyboard' }}
         run: npm run test:ui:issue45
         env:
           CAPTURE_DIR: browser-results/screenshots/issue45
+
+      - name: Verify framework migration, catalogs, saved settings and the production inspector
+        if: ${{ !cancelled() && steps.browser.outcome == 'success' && matrix.suite != 'keyboard' }}
+        run: npm run test:ui:migration
+        env:
+          CAPTURE_DIR: browser-results/screenshots/migration
 
       - name: Preserve browser evidence with bounded transport retries
         if: ${{ !cancelled() && steps.browser.outcome == 'success' }}
         uses: ./.github/actions/upload-artifact
         with:
-          name: network-${{ matrix.engine }}
+          name: network-${{ matrix.engine }}-${{ matrix.suite }}
           path: browser-results/
 
   deploy:

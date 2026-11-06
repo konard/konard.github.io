@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 import { useMemo, useState } from 'react';
 import { useLang } from '../i18n/prefs';
 import { DataMark } from './DataSources';
@@ -10,18 +11,15 @@ const HEIGHT = 280;
 const PAD = { top: 28, right: 12, bottom: 32, left: 48 };
 
 const MIX = [
-  { key: 'commits', label: { en: 'Commits', ru: 'Коммиты' } },
-  { key: 'pullRequests', label: { en: 'Pull requests', ru: 'Пул-реквесты' } },
-  { key: 'issues', label: { en: 'Issues', ru: 'Issues' } },
-  { key: 'reviews', label: { en: 'Reviews', ru: 'Ревью' } },
+  { key: 'commits', label: localized('me90a15a75f93') },
+  { key: 'pullRequests', label: localized('m5223917c5868') },
+  { key: 'issues', label: localized('m76f7753b10a1') },
+  { key: 'reviews', label: localized('mb38c66640a9a') },
 ];
 // The yearly totals also count created repositories and private contributions
 // (experiments/collect-contributions.sh), which have no kind of their own here;
 // "Other" is the remainder, so the parts add up to the totals (issue #47).
-const PARTS = [
-  ...MIX,
-  { key: 'other', label: { en: 'Other (new repositories, private)', ru: 'Прочее (новые репозитории, приватные)' } },
-];
+const PARTS = [...MIX, { key: 'other', label: localized('mbe6aa69f568a') }];
 export const withOther = (d) => ({ ...d, other: d.total - MIX.reduce((sum, m) => sum + (d[m.key] || 0), 0) });
 const CONTRIBUTIONS = { en: ['contribution', 'contributions'], ru: ['вклад', 'вклада', 'вкладов'] };
 const TICK_ADVANCE = 6.6; // 11px monospace tick labels
@@ -86,11 +84,11 @@ export default function ContributionsChart({ data: years }) {
     <div className="chart" data-tooltip-root>
       <div className="chart__toolbar">
         <p className="chart__caption">
-          {t({ en: 'GitHub contributions per year · peak', ru: 'Вклад на GitHub по годам · пик —' })}{' '}
-          <strong>{number(peak.total)}</strong> {t({ en: `in ${peak.year}`, ru: `в ${peak.year} году` })}
+          {t(localized('m0568b8856589'))} <strong>{number(peak.total)}</strong>{' '}
+          {t({ en: `in ${peak.year}`, ru: `в ${peak.year} году` })}
           <DataMark />
         </p>
-        <div className="segmented" role="group" aria-label={t({ en: 'Y axis scale', ru: 'Шкала оси Y' })}>
+        <div className="segmented" role="group" aria-label={t(localized('m97bc69b66e60'))}>
           {['log', 'linear'].map((s) => (
             <button
               key={s}
@@ -99,7 +97,7 @@ export default function ContributionsChart({ data: years }) {
               aria-pressed={scale === s}
               onClick={() => setScale(s)}
             >
-              {s === 'log' ? t({ en: 'Log scale', ru: 'Лог. шкала' }) : t({ en: 'Linear', ru: 'Линейная' })}
+              {s === 'log' ? t(localized('m5b519045448f')) : t(localized('m4ecff54a5b00'))}
             </button>
           ))}
         </div>
@@ -164,10 +162,7 @@ export default function ContributionsChart({ data: years }) {
       </svg>
       <Tooltip tip={tip} />
 
-      <div
-        className="mix"
-        aria-label={t({ en: 'Contribution mix across all years', ru: 'Структура вклада за все годы' })}
-      >
+      <div className="mix" aria-label={t(localized('m6cf17ee7488c'))}>
         <div className="mix__bar">
           {mix.map((m, i) => (
             <span
@@ -189,12 +184,12 @@ export default function ContributionsChart({ data: years }) {
       </div>
 
       <details className="table-view">
-        <summary>{t({ en: 'Show data table', ru: 'Показать таблицу данных' })}</summary>
+        <summary>{t(localized('m81359af74074'))}</summary>
         <table>
           <thead>
             <tr>
-              <th>{t({ en: 'Year', ru: 'Год' })}</th>
-              <th>{t({ en: 'Total', ru: 'Всего' })}</th>
+              <th>{t(localized('m7a8beb4ecfa3'))}</th>
+              <th>{t(localized('m3398e3ff6a01'))}</th>
               {PARTS.map((m) => (
                 <th key={m.key}>{t(m.label)}</th>
               ))}

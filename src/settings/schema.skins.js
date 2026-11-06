@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 // Sections of the skins (issues #13 and #15): the choice of a skin and the
 // options of glass, liquid glass and the futuristic HUD; see schema.js.
 import { MATERIAL_FIELDS } from './schema.materials.js';
@@ -41,10 +42,10 @@ export const CORNER_LINES = [
 ];
 
 const CORNER_NAMES = {
-  tl: { en: 'Top left', ru: 'Левый верхний' },
-  tr: { en: 'Top right', ru: 'Правый верхний' },
-  br: { en: 'Bottom right', ru: 'Правый нижний' },
-  bl: { en: 'Bottom left', ru: 'Левый нижний' },
+  tl: localized('m10b3eef0935e'),
+  tr: localized('maabcfc345296'),
+  br: localized('m606e33989e72'),
+  bl: localized('m21bb1e7d2b05'),
 };
 
 /** The default custom frame: a bracket and a bright cut on one diagonal, open corners on the other. */
@@ -58,10 +59,7 @@ const CORNER_LOOKS = {
 /** A width where −1 keeps the width of the line (applied by apply.js only when it is 0 or more). */
 const AUTO_WIDTH = {
   unit: 'px',
-  hint: {
-    en: '−1 keeps the line width of the skin (bright lines twice as wide).',
-    ru: '−1 — толщина линий оформления (яркие линии вдвое толще).',
-  },
+  hint: localized('m30071bccccf4'),
 };
 
 const SIDE_NAMES = [
@@ -78,16 +76,16 @@ const SIDE_NAMES = [
  * (src/skins.frames.js). Each one is a tab of the corners section.
  */
 export const LEVEL_NAMES = {
-  panel: { en: 'Outer panels', ru: 'Внешние панели' },
-  block: { en: 'Inner blocks', ru: 'Внутренние блоки' },
-  button: { en: 'Buttons', ru: 'Кнопки' },
-  field: { en: 'Fields', ru: 'Поля' },
-  tab: { en: 'Tabs', ru: 'Вкладки' },
-  chip: { en: 'Chips and tags', ru: 'Метки и теги' },
-  menu: { en: 'Drop-down lists', ru: 'Выпадающие списки' },
-  nav: { en: 'Top-level menu', ru: 'Меню верхнего уровня' },
-  subnav: { en: 'Second-level menu', ru: 'Меню второго уровня' },
-  table: { en: 'Tables', ru: 'Таблицы' },
+  panel: localized('mf2b14375bd9b'),
+  block: localized('md141e78cac1e'),
+  button: localized('m7a80f5e43922'),
+  field: localized('mac60426e51d2'),
+  tab: localized('m41e2c5acb472'),
+  chip: localized('m93f7daadcbdb'),
+  menu: localized('m1cf0c528ef6f'),
+  nav: localized('m3bb24bab3271'),
+  subnav: localized('m60f384b92348'),
+  table: localized('md5ce05235a41'),
 };
 export const LEVEL_IDS = ['panel', 'block', ...Object.keys(CONTROL_TYPES)];
 export const CONTROL_LEVELS = Object.keys(CONTROL_TYPES);
@@ -118,10 +116,7 @@ const LEVEL_LOOKS = {
 /** A size where −1 is the size of the outer panels in the scale of the level. */
 const AUTO_SIZE = {
   unit: 'px',
-  hint: {
-    en: '−1 is the size of the outer panels in the scale of this level.',
-    ru: '−1 — размер внешних панелей в масштабе этого уровня.',
-  },
+  hint: localized('m5bc08aeb81cd'),
 };
 
 /** Shape, line, size and width of one corner of a level: `corner.tlShape`, `corner.buttonTlShape` and so on. */
@@ -129,20 +124,12 @@ const corner = (level) => (c) => {
   const [shape, line, size] = level === 'panel' ? CORNER_LOOKS[c] : [...LEVEL_LOOKS[c], -1];
   const at = { tab: c, level, corner: c, when: (s) => ownsCorners(level, s) };
   return [
-    select(cornerKey(level, c, 'Shape'), shape, CORNER_SHAPES, { en: 'Shape', ru: 'Форма' }, { ...at, tiles: 'shape' }),
-    select(cornerKey(level, c, 'Line'), line, CORNER_LINES, { en: 'Line', ru: 'Линия' }, { ...at, tiles: 'line' }),
+    select(cornerKey(level, c, 'Shape'), shape, CORNER_SHAPES, localized('m3ed59e8dd46d'), { ...at, tiles: 'shape' }),
+    select(cornerKey(level, c, 'Line'), line, CORNER_LINES, localized('m548568809d0e'), { ...at, tiles: 'line' }),
     level === 'panel'
-      ? range(cornerKey(level, c, 'Size'), size, 0, 128, 1, { en: 'Size', ru: 'Размер' }, { ...at, unit: 'px' })
-      : range(cornerKey(level, c, 'Size'), size, -1, 128, 1, { en: 'Size', ru: 'Размер' }, { ...at, ...AUTO_SIZE }),
-    range(
-      cornerKey(level, c, 'Width'),
-      -1,
-      -1,
-      12,
-      0.5,
-      { en: 'Line width', ru: 'Толщина линии' },
-      { ...at, ...AUTO_WIDTH },
-    ),
+      ? range(cornerKey(level, c, 'Size'), size, 0, 128, 1, localized('m7c201b4a9144'), { ...at, unit: 'px' })
+      : range(cornerKey(level, c, 'Size'), size, -1, 128, 1, localized('m7c201b4a9144'), { ...at, ...AUTO_SIZE }),
+    range(cornerKey(level, c, 'Width'), -1, -1, 12, 0.5, localized('ma63bfc63d133'), { ...at, ...AUTO_WIDTH }),
   ];
 };
 
@@ -168,7 +155,7 @@ const levelEdges = (level) => {
         option('faint', 'Faint line', 'Тонкая линия'),
         option('line', 'Bright line', 'Яркая линия'),
       ],
-      { en: 'Edges between the corners', ru: 'Края между углами' },
+      localized('mff20b6449bb2'),
       at,
     ),
     select(
@@ -181,7 +168,7 @@ const levelEdges = (level) => {
         option('dotted', 'Dotted', 'Пунктирные'),
         option('double', 'Double', 'Двойные'),
       ],
-      { en: 'Style of the edges', ru: 'Стиль краёв' },
+      localized('m4b25549b64db'),
       at,
     ),
     ...SIDE_NAMES.map(([side, en, ru]) =>
@@ -195,7 +182,7 @@ const levelEdges = (level) => {
         {
           ...at,
           unit: 'px',
-          hint: { en: '−1 is the width of the outer panels.', ru: '−1 — толщина внешних панелей.' },
+          hint: localized('ma31397dd88ea'),
         },
       ),
     ),
@@ -247,31 +234,17 @@ const fitFields = (level) => {
           css: false,
           unit: 'px',
           ...(i === 0 && {
-            hint: {
-              en: 'An element of this level smaller than a minimum or larger than a maximum draws the corners below; 0 is no limit.',
-              ru: 'Элемент этого уровня меньше минимума или больше максимума рисует углы, заданные ниже; 0 — без ограничения.',
-            },
+            hint: localized('m17540d27f27f'),
           }),
         },
       ),
     ),
-    range(
-      levelKey(level, 'FitScale'),
-      0.5,
-      0,
-      1,
-      0.05,
-      { en: 'Corners outside the limits', ru: 'Углы вне ограничений' },
-      {
-        level,
-        unit: '×',
-        when: (s) => drawsFrame(level, s) && hasFitLimits(level, s),
-        hint: {
-          en: 'The size of the corners of an element outside the limits; 0 draws no corners, a plain rectangle.',
-          ru: 'Размер углов элемента вне ограничений; 0 — без углов, простой прямоугольник.',
-        },
-      },
-    ),
+    range(levelKey(level, 'FitScale'), 0.5, 0, 1, 0.05, localized('m6fc7283748e6'), {
+      level,
+      unit: '×',
+      when: (s) => drawsFrame(level, s) && hasFitLimits(level, s),
+      hint: localized('m380be1e910b4'),
+    }),
   ];
 };
 
@@ -294,11 +267,8 @@ const controlMode = (level) =>
 export const SKIN_SECTIONS = [
   {
     id: 'skin',
-    title: { en: 'Skin', ru: 'Оформление' },
-    lead: {
-      en: 'The look of panels, cards, buttons and headings. Every skin works in the light and the dark theme.',
-      ru: 'Вид панелей, карточек, кнопок и заголовков. Каждое оформление работает в светлой и тёмной теме.',
-    },
+    title: localized('m278b031cb2cc'),
+    lead: localized('m04a65e0609d0'),
     fields: [
       select(
         'skin.name',
@@ -312,62 +282,43 @@ export const SKIN_SECTIONS = [
             'Футуристичное (HUD, как в konard/immortality)',
           ),
         ],
-        { en: 'Skin', ru: 'Оформление' },
+        localized('m278b031cb2cc'),
       ),
     ],
   },
   {
     id: 'glass',
-    title: { en: 'Glass', ru: 'Стекло' },
+    title: localized('m4acc98d57d11'),
     when: (s) => s['skin.name'] === 'glass',
     fields: [
-      range('glass.level', 0.4, 0, 1.25, 0.05, { en: 'Panel opacity', ru: 'Непрозрачность панелей' }, { unit: '%' }),
-      range('glass.blur', 3, 0, 30, 1, { en: 'Blur behind panels', ru: 'Размытие за панелями' }, { unit: 'px' }),
-      range(
-        'glass.bar',
-        14,
-        0,
-        40,
-        1,
-        { en: 'Blur behind the top bar', ru: 'Размытие за верхней панелью' },
-        { unit: 'px' },
-      ),
-      range('glass.radius', 10, 0, 32, 1, { en: 'Corner radius', ru: 'Скругление углов' }, { unit: 'px' }),
-      range(
-        'glass.saturation',
-        100,
-        100,
-        250,
-        5,
-        { en: 'Colour behind panels', ru: 'Насыщенность за панелями' },
-        {
-          unit: '%',
-          hint: { en: 'More makes the background behind the glass more vivid.', ru: 'Больше — фон за стеклом ярче.' },
-        },
-      ),
-      range('glass.edge', 0.14, 0, 0.6, 0.02, { en: 'Borders and lines', ru: 'Рамки и линии' }, { unit: '%' }),
+      range('glass.level', 0.4, 0, 1.25, 0.05, localized('mce50cba36abd'), { unit: '%' }),
+      range('glass.blur', 3, 0, 30, 1, localized('m228fb2e05897'), { unit: 'px' }),
+      range('glass.bar', 14, 0, 40, 1, localized('m41714d934cab'), { unit: 'px' }),
+      range('glass.radius', 10, 0, 32, 1, localized('mf52ae7917e4c'), { unit: 'px' }),
+      range('glass.saturation', 100, 100, 250, 5, localized('m00286f9934ec'), {
+        unit: '%',
+        hint: localized('m187f8000e216'),
+      }),
+      range('glass.edge', 0.14, 0, 0.6, 0.02, localized('m3d8dc4c27854'), { unit: '%' }),
       select(
         'glass.shadow',
         'none',
         [option('none', 'None', 'Нет'), option('soft', 'Soft', 'Мягкая'), option('deep', 'Deep', 'Глубокая')],
-        { en: 'Shadow under panels', ru: 'Тень под панелями' },
+        localized('m6f14fa052a8c'),
       ),
-      toggle('glass.highlight', false, { en: 'Light on the upper edge', ru: 'Свет на верхней кромке' }),
+      toggle('glass.highlight', false, localized('m85a1cef78f1a')),
     ],
   },
   {
     id: 'liquid',
-    title: { en: 'Liquid glass', ru: 'Жидкое стекло' },
-    lead: {
-      en: 'Thick, bright glass after Apple’s Liquid Glass: strong blur and saturation, light catching the edges, floating capsules.',
-      ru: 'Толстое яркое стекло в духе Liquid Glass от Apple: сильное размытие и насыщенность, свет на кромках, парящие капсулы.',
-    },
+    title: localized('mde4f06b59e3d'),
+    lead: localized('m7c425fdd2d65'),
     when: (s) => s['skin.name'] === 'liquid',
     fields: [
       ...MATERIAL_FIELDS,
-      range('liquid.blur', 18, 0, 48, 1, { en: 'Blur', ru: 'Размытие' }, { unit: 'px' }),
-      range('liquid.saturation', 180, 100, 300, 5, { en: 'Saturation', ru: 'Насыщенность' }, { unit: '%' }),
-      range('liquid.brightness', 108, 70, 150, 1, { en: 'Brightness', ru: 'Яркость' }, { unit: '%' }),
+      range('liquid.blur', 18, 0, 48, 1, localized('mb68a5398d21f'), { unit: 'px' }),
+      range('liquid.saturation', 180, 100, 300, 5, localized('m9e3e087499dc'), { unit: '%' }),
+      range('liquid.brightness', 108, 70, 150, 1, localized('mcc4388b6594d'), { unit: '%' }),
       select(
         'liquid.tint',
         'theme',
@@ -377,50 +328,33 @@ export const SKIN_SECTIONS = [
           option('accent', 'Accent', 'Акцент'),
           option('smoke', 'Smoke (black)', 'Дымчатое (чёрное)'),
         ],
-        { en: 'Tint', ru: 'Оттенок' },
+        localized('m99a5ddee4e29'),
       ),
-      range('liquid.tintLevel', 0.22, 0, 1, 0.01, { en: 'Tint strength', ru: 'Сила оттенка' }, { unit: '%' }),
-      range('liquid.radius', 24, 0, 48, 1, { en: 'Corner radius', ru: 'Скругление углов' }, { unit: 'px' }),
-      range('liquid.highlight', 0.55, 0, 1, 0.05, { en: 'Edge highlight', ru: 'Блик на кромке' }, { unit: '%' }),
-      range('liquid.edge', 0.22, 0, 1, 0.02, { en: 'Border', ru: 'Рамка' }, { unit: '%' }),
-      range(
-        'liquid.depth',
-        0.35,
-        0,
-        1,
-        0.05,
-        { en: 'Inner glow (thickness)', ru: 'Внутреннее свечение (толщина)' },
-        { unit: '%' },
-      ),
-      range('liquid.shadow', 0.5, 0, 1, 0.05, { en: 'Shadow', ru: 'Тень' }, { unit: '%' }),
-      toggle('liquid.sheen', true, {
-        en: 'Light sweeps over a panel on hover',
-        ru: 'Блик пробегает по панели при наведении',
-      }),
-      toggle('liquid.float', true, { en: 'Floating capsule top bar', ru: 'Парящая верхняя панель-капсула' }),
-      toggle('liquid.pills', true, { en: 'Capsule buttons', ru: 'Кнопки-капсулы' }),
-      toggle('liquid.refraction', false, {
-        en: 'Refraction (bends the background; Chrome and Edge only)',
-        ru: 'Преломление (искривляет фон; только Chrome и Edge)',
-      }),
-      range('liquid.refractionScale', 40, 0, 150, 5, { en: 'Refraction strength', ru: 'Сила преломления' }),
-      range('liquid.refractionDetail', 12, 2, 60, 1, { en: 'Refraction ripples', ru: 'Рябь преломления' }),
+      range('liquid.tintLevel', 0.22, 0, 1, 0.01, localized('m169959a5160a'), { unit: '%' }),
+      range('liquid.radius', 24, 0, 48, 1, localized('mf52ae7917e4c'), { unit: 'px' }),
+      range('liquid.highlight', 0.55, 0, 1, 0.05, localized('mdee92e8c5f0a'), { unit: '%' }),
+      range('liquid.edge', 0.22, 0, 1, 0.02, localized('mfeb2a7088c8f'), { unit: '%' }),
+      range('liquid.depth', 0.35, 0, 1, 0.05, localized('maf682a8ae38e'), { unit: '%' }),
+      range('liquid.shadow', 0.5, 0, 1, 0.05, localized('m7bb3e1610c98'), { unit: '%' }),
+      toggle('liquid.sheen', true, localized('md9bad9cb5842')),
+      toggle('liquid.float', true, localized('mc0fdcf60b218')),
+      toggle('liquid.pills', true, localized('mb6ce6e5cadbf')),
+      toggle('liquid.refraction', false, localized('mc71c68fecd07')),
+      range('liquid.refractionScale', 40, 0, 150, 5, localized('ma54b183724a4')),
+      range('liquid.refractionDetail', 12, 2, 60, 1, localized('m79e32bfa2037')),
     ],
   },
   {
     id: 'futuristic',
-    title: { en: 'Futuristic', ru: 'Футуристичное' },
-    lead: {
-      en: 'Angular HUD panels in the style of konard/immortality: thin neon frames with cut corners, glowing accents, technical fonts.',
-      ru: 'Угловатые HUD-панели в стиле konard/immortality: тонкие неоновые рамки со срезанными углами, светящиеся акценты, технические шрифты.',
-    },
+    title: localized('m2a556c6a931e'),
+    lead: localized('m8e7764edee79'),
     when: (s) => s['skin.name'] === 'futuristic',
     fields: [
       select(
         'future.palette',
         'mission',
         PALETTES.map(([value, en, ru]) => option(value, en, ru)),
-        { en: 'Palette', ru: 'Палитра' },
+        localized('mf4be9796b745'),
       ),
       select(
         'future.frame',
@@ -436,12 +370,12 @@ export const SKIN_SECTIONS = [
           option('plain', 'Plain frame', 'Простая рамка'),
           option('custom', 'Each corner on its own', 'Каждый угол по-своему'),
         ],
-        { en: 'Frame', ru: 'Рамка' },
+        localized('ma9d3e70f491f'),
       ),
-      range('future.cut', 14, 0, 128, 1, { en: 'Cut of the corners', ru: 'Срез углов' }, { unit: 'px' }),
-      range('future.corner', 16, 0, 128, 1, { en: 'Length of brackets', ru: 'Длина уголков' }, { unit: 'px' }),
-      range('future.border', 1, 0, 12, 0.5, { en: 'Line width', ru: 'Толщина линий' }, { unit: 'px' }),
-      toggle('future.accentBar', true, { en: 'Accent bar on panels', ru: 'Акцентная планка на панелях' }),
+      range('future.cut', 14, 0, 128, 1, localized('mc7e38e0c8e27'), { unit: 'px' }),
+      range('future.corner', 16, 0, 128, 1, localized('m4681c9e2125e'), { unit: 'px' }),
+      range('future.border', 1, 0, 12, 0.5, localized('m19156ba5b253'), { unit: 'px' }),
+      toggle('future.accentBar', true, localized('m42b43ba1c934')),
       select(
         'future.surface',
         'gradient',
@@ -455,46 +389,19 @@ export const SKIN_SECTIONS = [
           option('holographic', 'Holographic', 'Голографическая'),
           option('blueprint', 'Blueprint', 'Чертёж'),
         ],
-        { en: 'Surface', ru: 'Поверхность' },
+        localized('m2c406035b15f'),
       ),
-      range(
-        'future.opacity',
-        0.82,
-        0,
-        1,
-        0.02,
-        { en: 'Surface opacity', ru: 'Непрозрачность поверхности' },
-        { unit: '%' },
-      ),
-      range('future.blur', 6, 0, 24, 1, { en: 'Blur behind panels', ru: 'Размытие за панелями' }, { unit: 'px' }),
-      range('future.glow', 0.5, 0, 4, 0.05, { en: 'Glow', ru: 'Свечение' }, { unit: '×' }),
-      range('future.frameOpacity', 0.95, 0, 1, 0.01, { en: 'Frame intensity', ru: 'Яркость рамки' }, { unit: '%' }),
-      range('future.accentLength', 112, 0, 480, 4, { en: 'Accent length', ru: 'Длина акцента' }, { unit: 'px' }),
-      range('future.accentOffset', 0, 0, 128, 1, { en: 'Accent offset', ru: 'Отступ акцента' }, { unit: 'px' }),
-      range(
-        'future.accentWidth',
-        -1,
-        -1,
-        12,
-        0.5,
-        { en: 'Accent width (thickness)', ru: 'Толщина акцента' },
-        {
-          unit: 'px',
-          hint: {
-            en: '−1 follows the accent strip width of the borders section.',
-            ru: '−1 — как толщина акцентной полосы в разделе рамок.',
-          },
-        },
-      ),
-      range(
-        'future.accentMax',
-        0.8,
-        0.05,
-        1,
-        0.05,
-        { en: 'Longest accent (share of the panel)', ru: 'Наибольшая длина акцента (доля панели)' },
-        { unit: '%' },
-      ),
+      range('future.opacity', 0.82, 0, 1, 0.02, localized('mccca7d75c724'), { unit: '%' }),
+      range('future.blur', 6, 0, 24, 1, localized('m228fb2e05897'), { unit: 'px' }),
+      range('future.glow', 0.5, 0, 4, 0.05, localized('m3c94e643fd27'), { unit: '×' }),
+      range('future.frameOpacity', 0.95, 0, 1, 0.01, localized('mab0929e6d50c'), { unit: '%' }),
+      range('future.accentLength', 112, 0, 480, 4, localized('m3328d1829d8b'), { unit: 'px' }),
+      range('future.accentOffset', 0, 0, 128, 1, localized('me51334ad9dcb'), { unit: 'px' }),
+      range('future.accentWidth', -1, -1, 12, 0.5, localized('m838c63ed5f65'), {
+        unit: 'px',
+        hint: localized('m6cff56a0779a'),
+      }),
+      range('future.accentMax', 0.8, 0.05, 1, 0.05, localized('md62b4a51121d'), { unit: '%' }),
       select(
         'future.accentStyle',
         'fade',
@@ -504,7 +411,7 @@ export const SKIN_SECTIONS = [
           option('center', 'Bright in the middle', 'Яркий в середине'),
           option('glow', 'Glowing', 'Светящийся'),
         ],
-        { en: 'Accent style', ru: 'Вид акцента' },
+        localized('m14bb55d26a26'),
       ),
       select(
         'future.font',
@@ -517,30 +424,19 @@ export const SKIN_SECTIONS = [
           option('mono', 'Site monospace', 'Моноширинный сайта'),
           option('site', 'Site font', 'Шрифт сайта'),
         ],
-        { en: 'Font of headings', ru: 'Шрифт заголовков' },
+        localized('m53687435176a'),
         {
-          hint: {
-            en: 'These fonts have Latin letters only; Russian text keeps the system font.',
-            ru: 'В этих шрифтах только латиница; русский текст остаётся системным шрифтом.',
-          },
+          hint: localized('m9f6015ca463c'),
         },
       ),
-      toggle('future.bodyFont', false, { en: 'Use it for all text', ru: 'Использовать для всего текста' }),
+      toggle('future.bodyFont', false, localized('mdb23931af84a')),
       select(
         'future.case',
         'upper',
         [option('upper', 'UPPERCASE', 'ПРОПИСНЫЕ'), option('normal', 'As written', 'Как написано')],
-        { en: 'Headings', ru: 'Заголовки' },
+        localized('medf384a1ff79'),
       ),
-      range(
-        'future.spacing',
-        0.08,
-        0,
-        0.4,
-        0.01,
-        { en: 'Letter spacing of headings', ru: 'Разрядка заголовков' },
-        { unit: 'em' },
-      ),
+      range('future.spacing', 0.08, 0, 0.4, 0.01, localized('m170ac5ce8200'), { unit: 'em' }),
       select(
         'future.title',
         'bar',
@@ -550,7 +446,7 @@ export const SKIN_SECTIONS = [
           option('rule', 'Rule after the title', 'Линия после заголовка'),
           option('slash', '// Slashes', '// Слэши'),
         ],
-        { en: 'Section titles', ru: 'Заголовки разделов' },
+        localized('m8584ba51b446'),
       ),
       select(
         'future.hover',
@@ -561,18 +457,15 @@ export const SKIN_SECTIONS = [
           option('sweep', 'Light sweep', 'Пробегающий свет'),
           option('none', 'Nothing', 'Ничего'),
         ],
-        { en: 'Panels on hover', ru: 'Панели при наведении' },
+        localized('m3e3640a0a6cc'),
       ),
-      range('future.scanlines', 0, 0, 0.6, 0.02, { en: 'Scanlines', ru: 'Линии развёртки' }, { unit: '%' }),
+      range('future.scanlines', 0, 0, 0.6, 0.02, localized('me346658f17b3'), { unit: '%' }),
     ],
   },
   {
     id: 'corners',
-    title: { en: 'Corners of the frame', ru: 'Углы рамки' },
-    lead: {
-      en: 'Every corner of the panels has its own shape, size and line; the tiles show how the corner will look. The bracket length and the line width are the ones of the futuristic skin. Inner blocks and every type of control draw the corners of the outer panels in their scale, or corners of their own.',
-      ru: 'У каждого угла панелей свои форма, размер и линия; плитки показывают, как будет выглядеть угол. Длина уголков и толщина линий берутся из футуристичного оформления. Внутренние блоки и каждый тип элементов рисуют углы внешних панелей в своём масштабе или свои углы.',
-    },
+    title: localized('mfd37553d8f9b'),
+    lead: localized('me2b80ff7c894'),
     when: (s) => s['skin.name'] === 'futuristic' && s['future.frame'] === 'custom',
     // Levels (issue #47), and the corners of the chosen level.
     levels: LEVEL_IDS.map((id) => ({ id, label: LEVEL_NAMES[id] })),
@@ -586,7 +479,7 @@ export const SKIN_SECTIONS = [
           option('faint', 'Faint line', 'Тонкая линия'),
           option('line', 'Bright line', 'Яркая линия'),
         ],
-        { en: 'Edges between the corners', ru: 'Края между углами' },
+        localized('mff20b6449bb2'),
         { level: 'panel' },
       ),
       select(
@@ -597,13 +490,10 @@ export const SKIN_SECTIONS = [
           option('dashed', 'Dashed', 'Штриховые'),
           option('dotted', 'Dotted', 'Пунктирные'),
         ],
-        { en: 'Style of the edges', ru: 'Стиль краёв' },
+        localized('m4b25549b64db'),
         {
           level: 'panel',
-          hint: {
-            en: 'Controls follow the border style of the controls, or the style of their own corners.',
-            ru: 'Элементы следуют стилю рамки элементов или стилю своих углов.',
-          },
+          hint: localized('mc712f6a8699f'),
         },
       ),
       ...SIDE_NAMES.map(([side, en, ru]) =>
@@ -631,7 +521,7 @@ export const SKIN_SECTIONS = [
           ),
           option('below', 'Below the content', 'Под содержимым'),
         ],
-        { en: 'Corners and edges', ru: 'Углы и края' },
+        localized('m6cbad53a3570'),
         { level: 'panel' },
       ),
       ...CORNERS.flatMap(corner('panel')),
@@ -643,26 +533,15 @@ export const SKIN_SECTIONS = [
           option('own', 'Corners of their own', 'Свои углы'),
           option('line', 'A plain line', 'Простая линия'),
         ],
-        { en: 'Inner blocks', ru: 'Внутренние блоки' },
+        localized('md141e78cac1e'),
         { level: 'block' },
       ),
-      range(
-        'corner.blockScale',
-        0.6,
-        0.1,
-        1,
-        0.05,
-        { en: 'Corners of inner blocks', ru: 'Углы внутренних блоков' },
-        {
-          level: 'block',
-          unit: '×',
-          when: (s) => s['corner.blocks'] !== 'line',
-          hint: {
-            en: 'The size of the corners of the outer panels in inner blocks.',
-            ru: 'Размер углов внешних панелей во внутренних блоках.',
-          },
-        },
-      ),
+      range('corner.blockScale', 0.6, 0.1, 1, 0.05, localized('m1b81e8959c3f'), {
+        level: 'block',
+        unit: '×',
+        when: (s) => s['corner.blocks'] !== 'line',
+        hint: localized('m6e87e81cb682'),
+      }),
       ...levelEdges('block'),
       ...CORNERS.flatMap(corner('block')),
       ...CONTROL_LEVELS.map(controlMode),
@@ -673,28 +552,17 @@ export const SKIN_SECTIONS = [
           option('frame', 'The corners of the outer panels, smaller', 'Углы внешних панелей, меньше'),
           option('border', 'Their own border', 'Своя рамка'),
         ],
-        { en: 'All controls', ru: 'Все элементы' },
+        localized('m1ae6fafa5d14'),
         { level: CONTROL_LEVELS, when: (s, level) => s[levelKey(level, 'Corners')] === 'same' },
       ),
-      range(
-        'corner.controlScale',
-        0.35,
-        0.1,
-        1,
-        0.05,
-        { en: 'Corners of controls', ru: 'Углы элементов' },
-        {
-          level: CONTROL_LEVELS,
-          unit: '×',
-          when: (s, level) =>
-            s[levelKey(level, 'Corners')] === 'own' ||
-            (s[levelKey(level, 'Corners')] === 'same' && s['corner.controls'] === 'frame'),
-          hint: {
-            en: 'The size of the corners of the outer panels in every control.',
-            ru: 'Размер углов внешних панелей во всех элементах.',
-          },
-        },
-      ),
+      range('corner.controlScale', 0.35, 0.1, 1, 0.05, localized('m35f43b9f0714'), {
+        level: CONTROL_LEVELS,
+        unit: '×',
+        when: (s, level) =>
+          s[levelKey(level, 'Corners')] === 'own' ||
+          (s[levelKey(level, 'Corners')] === 'same' && s['corner.controls'] === 'frame'),
+        hint: localized('md8f9fced8a56'),
+      }),
       ...CONTROL_LEVELS.flatMap((level) => [...levelEdges(level), ...CORNERS.flatMap(corner(level))]),
       ...LEVEL_IDS.flatMap(fitFields),
     ],

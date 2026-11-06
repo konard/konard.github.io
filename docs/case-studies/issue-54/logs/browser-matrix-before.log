@@ -1,0 +1,54 @@
+
+ RUN  v5.0.5 /tmp/gh-issue-solver-1793911090763
+
+ ❯ src/browser-matrix.test.js (6 tests | 4 failed | 2 skipped) 95ms
+   × chromium retains every browser suite exactly once 38ms
+   × firefox retains every browser suite exactly once 23ms
+   × webkit retains every browser suite exactly once 21ms
+   × the long WebKit keyboard audit has its own runner and the original timeout 9ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/browser-matrix.test.js > chromium retains every browser suite exactly once
+ FAIL  src/browser-matrix.test.js > firefox retains every browser suite exactly once
+ FAIL  src/browser-matrix.test.js > webkit retains every browser suite exactly once
+AssertionError: expected 'network-${{ matrix.engine }}' to contain '${{ matrix.suite }}'
+
+Expected: "${{ matrix.suite }}"
+Received: "network-${{ matrix.engine }}"
+
+ ❯ src/browser-matrix.test.js:48:30
+     46|     const upload = job.steps.find((step) => step.uses === './.github/a…
+     47|     expect(enabled(upload, matrix)).toBe(true);
+     48|     expect(upload.with.name).toContain('${{ matrix.suite }}');
+       |                              ^
+     49|     expect(job.concurrency.group).toContain('${{ matrix.suite }}');
+     50|   }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  src/browser-matrix.test.js > the long WebKit keyboard audit has its own runner and the original timeout
+AssertionError: expected [ { engine: 'webkit', …(2) } ] to have a length of 2 but got 1
+
+- Expected
++ Received
+
+- 2
++ 1
+
+ ❯ src/browser-matrix.test.js:55:19
+     53| test('the long WebKit keyboard audit has its own runner and the origin…
+     54|   const entries = job.strategy.matrix.include.filter((entry) => entry.…
+     55|   expect(entries).toHaveLength(2);
+       |                   ^
+     56|   const keyboard = entries.find((entry) => entry.suite === 'keyboard');
+     57|   expect(keyboard).toMatchObject({ os: 'macos-15-intel', timeout: 30 }…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 2 skipped (6)
+   Start at  02:52:43
+   Duration  3.83s (environment 68%, setup 20%, transform 8%, tests 3%, import 1%, worker 1%)
+

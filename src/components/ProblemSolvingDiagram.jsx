@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 // SVG version of the hand-drawn "Universal Problem Solving Algorithm" by
 // konard: a problem is decomposed into tasks, every task gets a test, every
 // test gets several drafts, the drafts that pass are selected and composed
@@ -186,15 +187,8 @@ export default function ProblemSolvingDiagram() {
   return (
     <figure className="psd">
       <svg viewBox={`0 0 ${WIDTH} ${HEIGHT}`} role="img" aria-labelledby="psd-title" aria-describedby="psd-desc">
-        <title id="psd-title">
-          {t({ en: 'Universal Problem Solving Algorithm', ru: 'Универсальный алгоритм решения задач' })}
-        </title>
-        <desc id="psd-desc">
-          {t({
-            en: 'A problem is decomposed into tasks, every task gets a test, every test gets several drafts, the drafts that pass are selected and composed into the solution: decomposition, experiment, selection, composition. Dimmed drafts did not pass their tests.',
-            ru: 'Задача разбивается на подзадачи, для каждой подзадачи пишется тест, для каждого теста — несколько черновиков, а черновики, которые проходят тесты, отбираются и собираются в решение: декомпозиция, эксперимент, отбор, композиция. Приглушённые черновики не прошли свои тесты.',
-          })}
-        </desc>
+        <title id="psd-title">{t(localized('m2be6ef9f72c1'))}</title>
+        <desc id="psd-desc">{t(localized('m42d8a45fbeb4'))}</desc>
         <defs>
           {Object.entries(COLORS).map(([kind, color]) => (
             <marker
@@ -248,7 +242,7 @@ export default function ProblemSolvingDiagram() {
       </svg>
       <figcaption>
         <a href={ORIGINAL_IMAGE} target="_blank" rel="noopener noreferrer">
-          {t({ en: 'Original drawing', ru: 'Оригинальный рисунок' })}
+          {t(localized('mff9fe0149d71'))}
         </a>{' '}
         ·{' '}
         <a href={ORIGINAL_REPOSITORY} target="_blank" rel="noopener noreferrer">
