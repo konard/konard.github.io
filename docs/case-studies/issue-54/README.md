@@ -2,8 +2,9 @@
 
 Work: [issue 54](https://github.com/konard/konard.github.io/issues/54),
 [PR 55](https://github.com/konard/konard.github.io/pull/55).
-Research date: 2026-11-05. Baseline site: `f169665` (main).
-Framework snapshot: `f72e97fe2db100d88ea460ee8451bbf63a1b01b6`.
+Research dates: 2026-11-05–06. Baseline site: `f169665` (main).
+Framework snapshot: `2efd7e23df9df5312cac6d45611aa67e10529715`, from
+upstream draft PR 213; the initial snapshot was `f72e97f`.
 
 The draft integrates framework settings validation/defaults/differences,
 select rendering and behavior, floating color-picker positioning, translation
@@ -37,8 +38,8 @@ older site revision; its full body and comments are preserved separately.
 
 | Area | Framework implementation | Consumer boundary that remains |
 | --- | --- | --- |
-| 608 settings in 20 sections | `ui-settings` readSchema/defaults/merge/diff and shared-look comfort metadata | Existing metadata is projected to a framework schema. Reject wrong JSON primitive types, preserve continuous imported values, legacy transparent-surface migration |
-| Select controls throughout settings/editor | `ui-components/controls` mountControls, official LiNo behavior machine, ui-dom/store and Floating UI | React event/label/skin bridge, disabled-option click guard, Tab commit, ten-option page keys, configurable menu bounds, Safari focus |
+| 608 settings in 20 sections | `ui-settings` readSchema/defaults/merge/diff, strict primitive/continuous clamp policies and shared-look comfort metadata | Existing metadata projection, historical color casing and transparent-surface migration |
+| Select controls throughout settings/editor | `ui-components/controls` mountControls, official LiNo behavior machine, external label/list names, disabled clicks, Tab/page keys, pointer focus, bounded popup and ui-dom/store | React event/localized label/skin bridge; the earlier local interaction and menu-sizing handlers are removed |
 | Color picker position and channel parsing | `ui-components/overlays.positionFloating`, controls.parseHex | Preserve live hex drafts, RGB sliders and named palettes; observers exist only while open |
 | Static English/Russian messages | `ui-i18n` readCatalogs/createLocalizer/message; 809 entries in each locale catalog (808 extracted messages plus the options-list accessible name) | Lazy bilingual getters keep CV exports, stable keys and existing language switch compatible. Dynamic domain messages and external data retain their existing representation |
 | Twelve palettes, dark and light | `ui-tokens` readTokens/resolveTokens/toCss over `src/ui/palettes.lino` | One RGB-channel CSS bridge preserves alpha compositing and existing surfaces exactly |
@@ -56,7 +57,7 @@ The site retains its existing React entry points and all ten real page URLs.
 | Report | Evidence and workaround | What must happen before deleting the consumer implementation |
 | --- | --- | --- |
 | [209: package publication](https://github.com/link-foundation/ui/issues/209) | npm E404 for the workspace package; siblings are 0.0.0. Ship immutable local npm archives with manifest hashes | Publish coordinated, versioned packages and test installation/build in an external consumer |
-| [210: controls and settings](https://github.com/link-foundation/ui/issues/210) | Disabled-option click closes the list; Tab/page behavior and configurable sizing differ; rich settings has 349 conditional fields and preview/tab/level semantics | Add the reported behavior and declarative panel/codec/coercion hooks; pass current select, numeric, color, presets, before-paint and browser suites |
+| [210: controls and settings](https://github.com/link-foundation/ui/issues/210) | Initial snapshot fails disabled-click, Tab/page and sizing contracts; rich settings has 349 conditional fields. PR 213 now implements controls/panel/codec/coercion hooks; this draft adopts its select and strict-normalization APIs | Complete upstream CI and consumer parity for the rich panel/editors/paint hooks before deleting their remaining implementations; see the follow-up analysis below |
 | [211: rendering and materials](https://github.com/link-foundation/ui/issues/211) | Network geometry/export/solver and independently configurable transparent frames cannot be represented by current APIs | Introduce geometry/export/solver providers and per-corner/edge/state/level schemas with fit/material hooks; match the existing geometry and visual contracts |
 | [212: browser packaging](https://github.com/link-foundation/ui/issues/212) | Foreign inspector root import traverses Node exporters; globalThis.URL asset references produce production 404s | Supply a browser-safe converter export and bundler-compatible inspector assets; pass the production smoke test without consumer transforms |
 
@@ -67,11 +68,11 @@ requirements without copying site implementations into the upstream project.
 Remaining generic code is deliberately inventoried, rather than hidden behind
 the word “adapter”:
 
-| Remaining consumer code | Why the framework cannot replace it today | Follow-through plan |
+| Remaining consumer code | Remaining replacement boundary | Follow-through plan |
 | --- | --- | --- |
-| `SettingsPage`, previews, section placement, preset UI | Live coupled fields, conditional previews, levels/tabs, section columns, saved/imported/randomized looks | Extend the generic panel, then replace custom presentation while retaining current schema and tests (210) |
-| `NumberInput`, `numericKeys`, color editor | Nullable inheritance, live invalid drafts, directional step snapping, native text-navigation shortcuts, pointer step controls and RGB palettes | Add editable-draft/value policy hooks; migrate after identical keyboard and live-preview results (210) |
-| `settings/notation`, `apply`, before-paint script and storage bridge | Historical format/keys, strict JSON input, changed-only CSS, inheritance sentinels and derived values | Add codec/normalization/paint hooks; preserve old saved/share URLs and comfort choices (210) |
+| `SettingsPage`, previews, section placement, preset UI | PR 213 adds hooks, but the existing localized presentation and actual frame previews still depend on unsupported frame/material backends; upstream panel preview CI also fails | Validate the new panel with every existing localized/preset/preview contract and the reusable rendering providers before deleting custom presentation (210/211) |
+| `NumberInput`, `numericKeys`, color editor | New upstream number drafts/palettes exist, but exact directional snapping, translated stepper labels and the existing grouped RGB-slider popup are not established as equivalent; upstream touch-target CI fails | Migrate after identical keyboard, focus, touch and live-preview results; retain the more polished working editor meanwhile (210) |
+| `settings/notation`, `apply`, before-paint script and storage bridge | Strict primitive policy is adopted; new codec/paint hooks still need integration with historical formats, corner inheritance and derived material values | Share the rendering projection once report 211's provider/schema contract exists; preserve old storage/share URLs and comfort choices (210/211) |
 | `skins.frames*`, frame CSS generator, fit rules, refraction/noise/material surfaces | Four independent corners/edges, many element levels/states, transparent masks and optical layers | Framework schema/provider implementation plus the existing frame tests at every level and state (211) |
 | `links` geometry, marker placement, collision solver, SVG/raster export, history UI | Continuous self-referential cubics, nine markers, independently editable turns/gaps, pinned solutions and exact preview/export parity | Implement provider hooks and migrate one backend at a time against existing editor/browser suites (211) |
 | Sound bus/player and event governor | Configurable room/tone/reverb, non-repeating random selection, live gain/pan/humanization and current patches | Extend framework audio contracts; preserve no-autoplay, suspension and existing fake-audio tests (211) |
@@ -160,23 +161,36 @@ trailing newline. That failure removed neon frames. The corrected generator
 now has a complete 24-palette fixture comparison. The committed final
 screenshots were regenerated after that correction.
 
-The Chromium matrix contains 48 paired viewport captures with zero changed
-pixels at pixelmatch threshold 0.1 (antialias differences excluded), identical
-headings/titles, no horizontal overflow and no page errors. These are viewport
+The latest Chromium matrix contains 47 exact matches among 48 paired captures
+at pixelmatch threshold 0.1 (antialias differences excluded). The remaining
+default/dark/mobile/art capture differs by 5,954 pixels (1.8088%), entirely in
+the top navigation at x=16–377, y=49–79. Titles/headings remain identical,
+with no horizontal overflow or page errors. These are viewport
 samples, not full-page screenshots of all 608 controls. Direct Playwright MCP
 checks additionally cover the opened select, Tab commit, composite reference
 labels, the mobile RGB/palette chooser and the live inspector. Before/after
 menu bounds were identical. The comparison summaries record control counts;
 framework hidden form inputs increase DOM control counts without adding visible
 fields. See `data/chromium-comparison.json` and `screenshots/`.
+The bounded `navigation-capture.mjs` probe reproduces both scroll positions
+on the original production build: scrollLeft 473 once and 322 twice in three
+cold loads. All three migrated loads produce 322; waiting another second does
+not change either result. The navigation's unchanged mount effect centers
+before awaiting web fonts, so font-load ordering is a likely explanation,
+rather than a proven regression from the new select. Raw differences remain
+in the comparison; `data/navigation-capture.json` and the before/after
+`navigation-art-*.png` screenshots retain the evidence.
 
 A separate 390×320 probe found that a long palette menu extended above the
-screen (y=-144.22, height=320). The adapter now caps height to available space
-before positioning and attaches a resize listener only while open. The same
-anchor then yields y=8, height=167.78. The migration smoke fails before this
+screen (y=-144.22, height=320). The initial adapter capped height to available
+space and observed viewport resizing; the adopted upstream select now owns
+both behaviors, deleting that workaround. The same anchor yields y=8 with
+the entire menu in view. The migration smoke fails before the original
 fix and checks both the short viewport and resizing an open menu afterward.
 See `screenshots/draft-landscape-menu-before.png` and
 `screenshots/draft-landscape-menu-after.png`; report 210 includes this evidence.
+The latest upstream-owned result is
+![Upstream-owned bounded menu](screenshots/after-upstream-landscape-menu.png).
 
 Firefox's paired production matrix has 47 exact viewport matches and one
 114-pixel difference (0.0346% of a 390×844 viewport), confined to the right
@@ -186,7 +200,7 @@ their headings/titles, fit the viewport and have no page errors. See
 
 `audit-messages.mjs` expands catalog calls and compares syntax trees with main:
 53 files changed only for catalog extraction preserve their original logic and
-exact text in both languages. The three mixed behavioral files receive focused
+exact text in both languages. The four mixed behavioral files receive focused
 diff review and tests. `data/source-line-counts.json` records selected consumer
 files, including added compatibility modules. Select and color positioning
 shrink, but the draft does not claim a net repository reduction: catalogs,
@@ -314,9 +328,43 @@ Full workflow/unit logs
 are in `data/ci-42129275767.tar.gz`; `data/ci-workflow-865f7ba.json` records the
 counts, exact failure lines and correction. Current-commit CI remains the gate.
 
-A fresh upstream check still finds snapshot `f72e97f` on main and reports 209–212
-open. [PR 213](https://github.com/link-foundation/ui/pull/213) currently contains
-only its initial `.gitkeep`, not implemented controls. The new
-[comment on report 211](https://github.com/link-foundation/ui/issues/211#issuecomment-6672139775)
-records a GitHub push error before its automated implementation session began.
-Neither changes the unfinished full-support criterion.
+## Follow-up adoption of upstream PR 213
+
+At the earlier upstream check PR 213 contained only its initial placeholder.
+At 23:56:20 UTC on November 5 it published revision `2efd7e2`, implementing
+select/editor/panel and settings-engine contracts without copying consumer code.
+Main still points to `f72e97f`; the new implementation is a draft, not a release.
+The immutable archive pin now adopts this new source rather than retaining
+workarounds for features that upstream has implemented.
+
+The select uses official external-label/list-label and menu dimension properties.
+Its local disabled-click, Tab/page, pointer focus, outside-dismissal and viewport
+handlers are deleted. React still adapts localized host labels, native-shaped
+events, sound cues and the existing skin. Framework strict primitive and continuous
+clamp policies replace the manual primitive filter; only historical color casing
+and the transparent-surface migration remain at that import boundary.
+All 18 focused select/storage/framework tests pass, including the unchanged-DOM
+regression. The production build and all six Chromium migration checks pass.
+The final expanded focused run passes all 61 select/color/number/settings/
+framework/history cases. Directional numeric stepping remains a failing upstream
+deletion gate: `0.075` stepped upward by `0.01` yields `0.09`, versus the
+preserved consumer result `0.08`. Generated panel chrome and stepper names also
+need translation hooks before replacing the English/Russian presentation.
+The [upstream follow-up](https://github.com/link-foundation/ui/issues/210#issuecomment-6673053842)
+and `upstream-controls-followup.md` preserve these remaining contracts;
+`upstream-contracts.mjs` reproduces the numeric gap with a single finite input.
+
+The broader upstream implementation is not recorded as fully verified:
+[its browser run](https://github.com/link-foundation/ui/actions/runs/42133114748)
+reports 513 passed, 21 skipped and six failed (three cases in each browser).
+The archived log identifies stale End-key expectations (lines 1228–1232), an
+unavailable offset editor in the settings preview (1302–1318), and 40-pixel new
+steppers against a 44-pixel touch requirement (1356–1361). These failures do not
+exercise the site's retained number/panel editors, but they prevent claiming
+complete upstream panel/editor parity. Swift and one Windows Deno job also fail;
+their status is recorded separately from this consumer's checks.
+`data/upstream-pr-213.json` records the source/API/status analysis;
+`data/upstream-pr-213-ui-ci.tar.gz` preserves the complete browser log.
+Independent frame, geometry/export/solver, optical material and audio APIs remain
+missing in report 211; publication and browser-packaging reports also remain open.
+The full-support acceptance criterion remains unfinished.

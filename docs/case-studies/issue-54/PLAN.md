@@ -17,7 +17,9 @@ working adapters, and collect the research and verification here.
 - [x] Report every observed missing generic feature or bug upstream; retain
       full site functionality through explicit, tested compatibility adapters.
 - [ ] Full support for every reusable UI feature upstream: blocked by the
-      panel, frame, network/material/audio and packaging gaps in reports 209–212.
+      localized panel/editor, frame, network/material/audio and packaging gaps
+      in reports 209–212. PR 213's select and normalization APIs are adopted;
+      directional stepping and generated-control translations remain gaps.
       Reporting them and keeping working adapters does not complete this item.
 - [x] Compare desktop/mobile, themes, presets and pages in real browsers;
       commit baseline/final evidence and automated migration checks.

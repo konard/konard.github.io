@@ -37,7 +37,7 @@ it('generates all 24 palettes with exactly the original color channels', () => {
 
 it('pins every framework tarball to the audited source snapshot', () => {
   const manifest = JSON.parse(read('vendor/link-ui/manifest.json'));
-  expect(manifest.revision).toBe('f72e97fe2db100d88ea460ee8451bbf63a1b01b6');
+  expect(manifest.revision).toBe('2efd7e23df9df5312cac6d45611aa67e10529715');
   for (const pkg of manifest.packages) {
     expect(
       createHash('sha256')

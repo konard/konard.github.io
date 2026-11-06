@@ -1,6 +1,6 @@
-// The site's field descriptions include conditional previews that the generic
-// panel cannot yet express. Project that metadata into the framework schema;
-// validation, defaults, differences and comfort semantics belong to ui-settings.
+// Project existing field metadata into the framework schema while the rich
+// panel remains in the host. Validation, defaults, differences and comfort
+// semantics belong to ui-settings.
 import { formatLinks } from '@link-foundation/ui-core';
 import { defaults, diff, merge, readSchema } from '@link-foundation/ui-settings';
 
@@ -27,13 +27,13 @@ export function frameworkSchema(sections) {
     }
   }
   const text = formatLinks(records);
-  const { schema, diagnostics } = readSchema(text);
+  const { schema, diagnostics } = readSchema(text, { normalization: { primitives: 'strict', numbers: 'clamp' } });
   if (diagnostics.length) throw new Error(JSON.stringify(diagnostics));
   return schema;
 }
 
-// Legacy JSON is deliberately stricter than LiNo atoms: a saved string "3"
-// must not become a number. Keep that public import contract at this boundary.
+// Preserve the historical transparent-surface migration and color casing;
+// the framework's strict normalization policy validates JSON primitives.
 export function settingsValues(schema, stored) {
   if (stored?.['future.surface'] === 'transparent') {
     stored = { ...stored, 'future.surface': 'solid', 'future.opacity': 0 };
@@ -41,9 +41,7 @@ export function settingsValues(schema, stored) {
   const input = {};
   for (const field of schema.fields.values()) {
     const value = stored?.[field.key];
-    if (typeof value === typeof field.default) {
-      input[field.key] = field.type === 'color' ? value.toLowerCase() : value;
-    }
+    input[field.key] = field.type === 'color' && typeof value === 'string' ? value.toLowerCase() : value;
   }
   return merge(schema, undefined, input).values;
 }

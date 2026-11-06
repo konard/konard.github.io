@@ -8,7 +8,12 @@ import { parse } from '@babel/parser';
 import catalogs from '../../src/i18n/catalogs.generated.js';
 
 const baseline = 'f169665';
-const behavioral = new Set(['src/components/ColorInput.jsx', 'src/components/Layout.jsx', 'src/settings/schema.js']);
+const behavioral = new Set([
+  'src/components/Select.jsx',
+  'src/components/ColorInput.jsx',
+  'src/components/Layout.jsx',
+  'src/settings/schema.js',
+]);
 const files = execFileSync('git', ['diff', '--name-only', baseline, '--', 'src'], { encoding: 'utf8' })
   .trim()
   .split('\n');

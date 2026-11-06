@@ -1,9 +1,16 @@
 # Framework source snapshot
 
 These eleven npm tarballs contain the unmodified distributable source of
-[link-foundation/ui at f72e97fe2db100d88ea460ee8451bbf63a1b01b6](https://github.com/link-foundation/ui/tree/f72e97fe2db100d88ea460ee8451bbf63a1b01b6).
+[link-foundation/ui at 2efd7e23df9df5312cac6d45611aa67e10529715](https://github.com/link-foundation/ui/tree/2efd7e23df9df5312cac6d45611aa67e10529715).
 Each retains its upstream `LICENSE`. The manifest records source permalinks and
 SHA-256 digests; the lockfile additionally pins npm integrity hashes.
+
+This is an immutable revision of upstream draft [PR 213](https://github.com/link-foundation/ui/pull/213),
+not an upstream release. It supplies the select and normalization contracts
+reported during this migration, allowing their consumer workarounds to be
+removed. Upstream CI still has failures outside those adopted contracts;
+the case study records them. This site's complete CI remains the integration
+gate. The initial `f72e97f` snapshot is preserved in this branch's history.
 
 The workspace packages are not published to npm. Keeping the actual archives
 allows `npm ci` to work without an upstream monorepo checkout, install scripts,

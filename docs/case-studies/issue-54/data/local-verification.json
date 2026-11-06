@@ -1,59 +1,82 @@
 {
-  "date": "2026-11-05",
+  "date": "2026-11-06",
   "baseline": "f169665",
-  "framework": "f72e97fe2db100d88ea460ee8451bbf63a1b01b6",
+  "framework": "2efd7e23df9df5312cac6d45611aa67e10529715",
   "focused_checks": [
     {
       "command": "npx vitest run src/components/Select.test.jsx src/components/ColorInput.test.jsx src/ui/framework.test.js --maxWorkers=1",
-      "result": "17 passed after CI label/focus/SVG corrections"
+      "result": "17 passed after CI label/focus/SVG corrections",
+      "framework": "f72e97fe2db100d88ea460ee8451bbf63a1b01b6"
     },
     {
       "command": "node experiments/framework-migration/audit-messages.mjs",
-      "result": "53 catalog-only files preserve exact English/Russian text and original syntax trees"
+      "result": "53 catalog-only files preserve exact English/Russian text and original syntax trees",
+      "framework": "f72e97fe2db100d88ea460ee8451bbf63a1b01b6"
     },
     {
       "command": "ENGINE=chromium node experiments/network-e2e.mjs",
-      "result": "pass: editor, gradient, solver, exact shared SVG, actual SVG/PNG/JPEG/WebP/LiNo downloads"
+      "result": "pass: editor, gradient, solver, exact shared SVG, actual SVG/PNG/JPEG/WebP/LiNo downloads",
+      "framework": "f72e97fe2db100d88ea460ee8451bbf63a1b01b6"
     },
     {
       "command": "ENGINE=chromium node experiments/issue-19-browser.mjs",
-      "result": "pass: seven layouts, 120-event gestures, history, offsets, clipboard/downloads, 100-link mobile editor"
+      "result": "pass: seven layouts, 120-event gestures, history, offsets, clipboard/downloads, 100-link mobile editor",
+      "framework": "f72e97fe2db100d88ea460ee8451bbf63a1b01b6"
     },
     {
       "command": "ENGINE=chromium node experiments/issue-25-browser.mjs",
-      "result": "pass: geometry, exact sharing, editing/inheritance and EN/RU visible mobile controls"
+      "result": "pass: geometry, exact sharing, editing/inheritance and EN/RU visible mobile controls",
+      "framework": "f72e97fe2db100d88ea460ee8451bbf63a1b01b6"
     },
     {
       "command": "ENGINE=firefox node experiments/issue-45-browser.mjs",
-      "result": "16 checks passed, including the real forced palette click that failed CI"
+      "result": "16 checks passed, including the real forced palette click that failed CI",
+      "framework": "f72e97fe2db100d88ea460ee8451bbf63a1b01b6"
     },
     {
       "command": "npm run build",
-      "result": "pass after final label/focus/SVG and forced-colors changes"
+      "result": "pass after final label/focus/SVG and forced-colors changes",
+      "framework": "f72e97fe2db100d88ea460ee8451bbf63a1b01b6"
     },
     {
       "command": "npx vitest run src/cv/cv.test.jsx src/pages/pages.test.jsx src/pages/settings.test.jsx src/pages/slider-ids-47.test.jsx src/components/icons-47.test.jsx --maxWorkers=1 -t \"choosing a position|BlogPage:|shows a setting only|names the channel|leaves no emoji\"",
-      "result": "All five previously failing CI tests pass; 195 unrelated cases skipped in this focused invocation"
+      "result": "All five previously failing CI tests pass; 195 unrelated cases skipped in this focused invocation",
+      "framework": "f72e97fe2db100d88ea460ee8451bbf63a1b01b6"
     },
     {
       "command": "BASE=http://127.0.0.1:3001 ENGINE=chromium node experiments/framework-migration/smoke.mjs",
-      "result": "Six production checks pass with no page errors, including light/dark forced colors and English/Russian accessible names"
+      "result": "Six production checks pass with no page errors, including light/dark forced colors and English/Russian accessible names",
+      "framework": "f72e97fe2db100d88ea460ee8451bbf63a1b01b6"
     },
     {
       "command": "npx vitest run src/components/Select.test.jsx src/components/ColorInput.test.jsx src/ui/framework.test.js src/pages/network-history.test.jsx --maxWorkers=1",
-      "result": "23 passed after synchronous history guard and unchanged-select synchronization"
+      "result": "23 passed after synchronous history guard and unchanged-select synchronization",
+      "framework": "f72e97fe2db100d88ea460ee8451bbf63a1b01b6"
     },
     {
       "command": "ENGINE=chromium EXPECT_STABLE=1 node experiments/framework-migration/interaction-performance.mjs",
-      "result": "23 unchanged selects, eight edits: zero mutations after correction (800 before); elapsed times do not establish a speedup"
+      "result": "23 unchanged selects, eight edits: zero mutations after correction (800 before); elapsed times do not establish a speedup",
+      "framework": "f72e97fe2db100d88ea460ee8451bbf63a1b01b6"
     },
     {
       "command": "npm run build && ENGINE=chromium npm run test:ui:migration",
-      "result": "Production build and all six smoke checks pass after interaction corrections"
+      "result": "Production build and all six smoke checks pass after interaction corrections",
+      "framework": "f72e97fe2db100d88ea460ee8451bbf63a1b01b6"
     },
     {
       "command": "npx vitest run src/workflow.test.js --maxWorkers=1",
-      "result": "18 passed after recognizing exact command lines within multiline workflow steps; original ordering assertions retained"
+      "result": "18 passed after recognizing exact command lines within multiline workflow steps; original ordering assertions retained",
+      "framework": "f72e97fe2db100d88ea460ee8451bbf63a1b01b6"
+    },
+    {
+      "command": "npx vitest run src/components/Select.test.jsx src/components/ColorInput.test.jsx src/components/NumberInput.test.jsx src/ui/framework.test.js src/settings/contracts.test.js src/settings/presets.test.js src/settings/settings.test.js src/pages/network-history.test.jsx --maxWorkers=1",
+      "result": "61 passed across 8 files",
+      "framework": "2efd7e23df9df5312cac6d45611aa67e10529715"
+    },
+    {
+      "command": "npm run build; BASE=http://127.0.0.1:3001 ENGINE=chromium node experiments/framework-migration/smoke.mjs",
+      "result": "Build and six Chromium production checks pass after adopting upstream select/strict normalization",
+      "framework": "2efd7e23df9df5312cac6d45611aa67e10529715"
     }
   ],
   "regressions": [
@@ -152,5 +175,6 @@
     "subsequent_ring_selection": "circle",
     "preview_changed": true,
     "console_errors": 0
-  }
+  },
+  "initial_framework": "f72e97fe2db100d88ea460ee8451bbf63a1b01b6"
 }
