@@ -411,3 +411,22 @@ adopted contracts; they do not claim every new upstream panel feature has been
 migrated or every upstream job has finished at its latest revision. Remaining
 full-support blockers are package publication, typed-number policy, independent
 frame/material, geometry/export/solver and audio APIs. The draft remains unmerged.
+
+## WebKit navigation-readiness investigation
+
+Run [42136628107](https://github.com/konard/konard.github.io/actions/runs/42136628107)
+tests `81a3170` (created 00:24:48Z, finished 00:48:36Z on November 6), before
+the newer control/browser adoption. Chromium and Firefox pass every browser
+group. WebKit's gallery-to-editor color comparison fails with an empty path
+list instead of two colors (`ci-42136628107.log`, lines 12467–12482).
+The complete log is preserved in `data/ci-42136628107.tar.gz` and metadata in
+`data/ci-42136628107.json`.
+
+`navigation-readiness.mjs` reproduces the ordering with a finite 400ms delayed
+editor bootstrap: the loaded URL initially has zero paths, then two after
+waiting for the SVG paths to attach. This models asynchronous rendering rather
+than changing production code. Both gallery and theory navigation assertions
+now wait for their actual geometry before reading colors. Equality assertions
+and the original 15-second timeout remain unchanged. Attachment is sufficient
+for computed stroke reads, including vertical paths whose zero-width fill
+bounds do not satisfy Playwright's visibility test.

@@ -101,6 +101,18 @@
       "result": "Directional stepping passes at 0.08; typed-value deletion gate reports unsupported (0.08 instead of 0.075); STRICT=1 intentionally fails only this remaining upstream boundary",
       "framework": "45645979bb91d99f7a308d3b9168f3757294a184",
       "browser_framework": "e37935ea195fca55cb2ee6a5d2c1723858cd7f81"
+    },
+    {
+      "command": "RESULT_FILE=docs/case-studies/issue-54/data/navigation-readiness.json node experiments/framework-migration/navigation-readiness.mjs",
+      "result": "Pass: deterministic delayed editor bootstrap gives zero paths after loaded navigation and two after attachment readiness",
+      "framework": "45645979bb91d99f7a308d3b9168f3757294a184",
+      "browser_framework": "e37935ea195fca55cb2ee6a5d2c1723858cd7f81"
+    },
+    {
+      "command": "ENGINE=chromium npm run test:network:issue21",
+      "result": "Pass: supplied URLs, five default configurations, gallery/theory dark/light color parity, exact SVG export and mobile overflow",
+      "framework": "45645979bb91d99f7a308d3b9168f3757294a184",
+      "browser_framework": "e37935ea195fca55cb2ee6a5d2c1723858cd7f81"
     }
   ],
   "regressions": [
