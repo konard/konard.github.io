@@ -1,83 +1,94 @@
 {
   "repository": "https://github.com/link-foundation/ui",
-  "revision": "2efd7e23df9df5312cac6d45611aa67e10529715",
+  "revision": "45645979bb91d99f7a308d3b9168f3757294a184",
   "packages": [
     {
       "name": "@link-foundation/ui-core",
       "version": "0.0.0",
       "file": "link-foundation-ui-core-0.0.0.tgz",
-      "sha256": "ae300aae3c8fdf5b0857690a791139d6604d6c66012a0b30eb12eea6b872bc43",
-      "source": "https://github.com/link-foundation/ui/tree/2efd7e23df9df5312cac6d45611aa67e10529715/packages/ui-core"
+      "sha256": "5a2c114d9737cfd3a4429076fb7ed199303bdc1acdf1be68ba4e8d5fb511ba4a",
+      "revision": "45645979bb91d99f7a308d3b9168f3757294a184",
+      "source": "https://github.com/link-foundation/ui/tree/45645979bb91d99f7a308d3b9168f3757294a184/packages/ui-core"
     },
     {
       "name": "@link-foundation/ui-store",
       "version": "0.0.0",
       "file": "link-foundation-ui-store-0.0.0.tgz",
       "sha256": "dd8243a02211dc217379768a3d60a14ae5a00fa183be33e0803cf669c6413512",
-      "source": "https://github.com/link-foundation/ui/tree/2efd7e23df9df5312cac6d45611aa67e10529715/packages/ui-store"
+      "revision": "45645979bb91d99f7a308d3b9168f3757294a184",
+      "source": "https://github.com/link-foundation/ui/tree/45645979bb91d99f7a308d3b9168f3757294a184/packages/ui-store"
     },
     {
       "name": "@link-foundation/ui-config",
       "version": "0.0.0",
       "file": "link-foundation-ui-config-0.0.0.tgz",
       "sha256": "dea37e6c989303666d02a3a0a9d492f369b602b8b17cf2ac90b4d12bd667a2f2",
-      "source": "https://github.com/link-foundation/ui/tree/2efd7e23df9df5312cac6d45611aa67e10529715/packages/ui-config"
+      "revision": "45645979bb91d99f7a308d3b9168f3757294a184",
+      "source": "https://github.com/link-foundation/ui/tree/45645979bb91d99f7a308d3b9168f3757294a184/packages/ui-config"
     },
     {
       "name": "@link-foundation/ui-tokens",
       "version": "0.0.0",
       "file": "link-foundation-ui-tokens-0.0.0.tgz",
       "sha256": "9d2bdbe5c4bd3f572e4054bad161de564db898ea8a8a019b6e6be6b624ff18cb",
-      "source": "https://github.com/link-foundation/ui/tree/2efd7e23df9df5312cac6d45611aa67e10529715/packages/ui-tokens"
+      "revision": "45645979bb91d99f7a308d3b9168f3757294a184",
+      "source": "https://github.com/link-foundation/ui/tree/45645979bb91d99f7a308d3b9168f3757294a184/packages/ui-tokens"
     },
     {
       "name": "@link-foundation/ui-style",
       "version": "0.0.0",
       "file": "link-foundation-ui-style-0.0.0.tgz",
       "sha256": "9de497d9c3e02bf948aba5cc849ae4254942ac5babbd7e1a6d3fbff8bcc35586",
-      "source": "https://github.com/link-foundation/ui/tree/2efd7e23df9df5312cac6d45611aa67e10529715/packages/ui-style"
+      "revision": "45645979bb91d99f7a308d3b9168f3757294a184",
+      "source": "https://github.com/link-foundation/ui/tree/45645979bb91d99f7a308d3b9168f3757294a184/packages/ui-style"
     },
     {
       "name": "@link-foundation/ui-dom",
       "version": "0.0.0",
       "file": "link-foundation-ui-dom-0.0.0.tgz",
       "sha256": "ff8eb9f3600a829ce16fd8429caaf77540907abf8f91096f91c9d1f0b20f11de",
-      "source": "https://github.com/link-foundation/ui/tree/2efd7e23df9df5312cac6d45611aa67e10529715/packages/ui-dom"
+      "revision": "45645979bb91d99f7a308d3b9168f3757294a184",
+      "source": "https://github.com/link-foundation/ui/tree/45645979bb91d99f7a308d3b9168f3757294a184/packages/ui-dom"
     },
     {
       "name": "@link-foundation/ui-settings",
       "version": "0.0.0",
       "file": "link-foundation-ui-settings-0.0.0.tgz",
       "sha256": "cac843ceecad86a14b597b8fdcdfea1f471be897c090d562c86c06c8f06458a7",
-      "source": "https://github.com/link-foundation/ui/tree/2efd7e23df9df5312cac6d45611aa67e10529715/packages/ui-settings"
+      "revision": "45645979bb91d99f7a308d3b9168f3757294a184",
+      "source": "https://github.com/link-foundation/ui/tree/45645979bb91d99f7a308d3b9168f3757294a184/packages/ui-settings"
     },
     {
       "name": "@link-foundation/ui-components",
       "version": "0.0.0",
       "file": "link-foundation-ui-components-0.0.0.tgz",
-      "sha256": "1f2c4bbbfc31bfe266f21717c47a49bcae6e8e8b8dd0d4e669ac61a76ee826ec",
-      "source": "https://github.com/link-foundation/ui/tree/2efd7e23df9df5312cac6d45611aa67e10529715/packages/ui-components"
+      "sha256": "1cacc46c049a78edce2f50cdcf7efb55b34533181d702b1e856e1d273a5a7136",
+      "revision": "45645979bb91d99f7a308d3b9168f3757294a184",
+      "source": "https://github.com/link-foundation/ui/tree/45645979bb91d99f7a308d3b9168f3757294a184/packages/ui-components"
     },
     {
       "name": "@link-foundation/ui-i18n",
       "version": "0.0.0",
       "file": "link-foundation-ui-i18n-0.0.0.tgz",
-      "sha256": "7bb897d81c8856b311eeb15745cddf489f2541ff6a87706ce761be9e4697a524",
-      "source": "https://github.com/link-foundation/ui/tree/2efd7e23df9df5312cac6d45611aa67e10529715/packages/ui-i18n"
+      "sha256": "208a7e7360593638c95f01546240fab44aeb35a58a56442e03f1cda5fbbee5a7",
+      "revision": "e37935ea195fca55cb2ee6a5d2c1723858cd7f81",
+      "source": "https://github.com/link-foundation/ui/tree/e37935ea195fca55cb2ee6a5d2c1723858cd7f81/packages/ui-i18n"
     },
     {
       "name": "@link-foundation/ui-convert",
       "version": "0.0.0",
       "file": "link-foundation-ui-convert-0.0.0.tgz",
-      "sha256": "cc9a2e1091d92d788062c24365968dd9247740ae19a1353f38fcf8fe3de6c7a2",
-      "source": "https://github.com/link-foundation/ui/tree/2efd7e23df9df5312cac6d45611aa67e10529715/packages/ui-convert"
+      "sha256": "d4fcd596bbc171d8210653b1925d061e4335fad626b532a8eddbae6b1ea75bd4",
+      "revision": "e37935ea195fca55cb2ee6a5d2c1723858cd7f81",
+      "source": "https://github.com/link-foundation/ui/tree/e37935ea195fca55cb2ee6a5d2c1723858cd7f81/packages/ui-convert"
     },
     {
       "name": "@link-foundation/ui-devmode",
       "version": "0.0.0",
       "file": "link-foundation-ui-devmode-0.0.0.tgz",
-      "sha256": "58d22f332c5671e5539ec270531dc23c10b1e09534803dba973e5328f159e438",
-      "source": "https://github.com/link-foundation/ui/tree/2efd7e23df9df5312cac6d45611aa67e10529715/packages/ui-devmode"
+      "sha256": "c8ffb19bec130e52dc18094efbd9de56ec82da2829f1ec5734057dc8e9c6efa8",
+      "revision": "e37935ea195fca55cb2ee6a5d2c1723858cd7f81",
+      "source": "https://github.com/link-foundation/ui/tree/e37935ea195fca55cb2ee6a5d2c1723858cd7f81/packages/ui-devmode"
     }
   ]
 }

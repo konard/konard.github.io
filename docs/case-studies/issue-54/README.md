@@ -3,8 +3,10 @@
 Work: [issue 54](https://github.com/konard/konard.github.io/issues/54),
 [PR 55](https://github.com/konard/konard.github.io/pull/55).
 Research dates: 2026-11-05–06. Baseline site: `f169665` (main).
-Framework snapshot: `2efd7e23df9df5312cac6d45611aa67e10529715`, from
-upstream draft PR 213; the initial snapshot was `f72e97f`.
+Framework snapshots: `45645979bb91d99f7a308d3b9168f3757294a184` from draft
+PR 213, with ui-i18n/ui-convert/ui-devmode from PR 214 at
+`e37935ea195fca55cb2ee6a5d2c1723858cd7f81`. Each archive has its own audited
+revision in the manifest. The initial snapshot was `f72e97f`.
 
 The draft integrates framework settings validation/defaults/differences,
 select rendering and behavior, floating color-picker positioning, translation
@@ -28,7 +30,7 @@ older site revision; its full body and comments are preserved separately.
 | Double-check similar or close rendering | Freeze old settings/looks, capture before and after using identical seeded browser inputs, compare themes, sizes, pages and presets | `renderings.mjs`, committed representative screenshots and comparison data |
 | More polished behavior wins | Preserve the existing rich previews, frames, live editing and geometry; adopt framework controls, collision-safe placement and inspector where usable | Existing feature/browser suites plus migration checks; no blanket replacement with less capable widgets |
 | Report every framework missing feature or bug blocking full use | Reproduce actual failures and compare source APIs with current contracts; file grouped, actionable upstream reports | Reports 209–212, exact report bodies retained here |
-| Draft with workarounds at the same time | Compatibility schema projection, control events/styles, legacy storage/CSS boundary, source archives and Vite asset transform | Public-contract tests, palette/default fixtures, production inspector and keyboard checks |
+| Draft with workarounds at the same time | Compatibility schema projection, control events/styles, legacy storage/CSS boundary and source archives; initial browser transforms were removed after upstream fixes | Public-contract tests, palette/default fixtures, production inspector and keyboard checks |
 | Ensure all reusable features are fully supported upstream, making this site's UI as short as possible | Prefer framework engines; identify APIs required to remove each remaining generic backend; propose provider/schema extension points | **Blocked:** the current upstream release cannot express the complete control/panel/frame/network/material contracts. Reports alone do not satisfy this criterion |
 | Collect all data in docs/case-studies/issue-54 | Preserve issue/feedback/source metadata, frozen schemas/looks/palettes, upstream reports, verification records and screenshots | This directory and its relative links; source archives and manifest are under `vendor/link-ui` |
 | Deep analysis, online facts, existing components/libraries, solutions and plans for every requirement | Inspect current framework code and recent related PRs; consult primary npm, Vite, WAI and Floating UI documentation; compare alternatives below | Source links and reasoning below; plans per requirement and per remaining backend |
@@ -44,7 +46,8 @@ older site revision; its full body and comments are preserved separately.
 | Static English/Russian messages | `ui-i18n` readCatalogs/createLocalizer/message; 809 entries in each locale catalog (808 extracted messages plus the options-list accessible name) | Lazy bilingual getters keep CV exports, stable keys and existing language switch compatible. Dynamic domain messages and external data retain their existing representation |
 | Twelve palettes, dark and light | `ui-tokens` readTokens/resolveTokens/toCss over `src/ui/palettes.lino` | One RGB-channel CSS bridge preserves alpha compositing and existing surfaces exactly |
 | Links Notation network input | `ui-core.parseLinks`, backed by official links-notation | Numeric network semantic validation, comma compatibility and historical adjacent-pair line separation; other mathematical/base representations are domain code |
-| Optional development UI | `ui-devmode/foreign` over the whole React document | Lazy URL/hotkey activation; browser import alias and asset-reference transform until report 212 is fixed |
+| Optional development UI | `ui-devmode/foreign` over the whole React document | Lazy URL/hotkey activation; PR 214 supplies browser imports/assets, so the converter alias and asset transform are deleted |
+| Number/range key arithmetic | `ui-components/controls.nextValue` with directional snapping | Preserve native text navigation and ten-step Page keys; the React number draft still preserves continuous typed values |
 
 No new general-purpose widget library was introduced alongside the framework.
 The archives contain upstream code and license files; they are not a local
@@ -59,7 +62,7 @@ The site retains its existing React entry points and all ten real page URLs.
 | [209: package publication](https://github.com/link-foundation/ui/issues/209) | npm E404 for the workspace package; siblings are 0.0.0. Ship immutable local npm archives with manifest hashes | Publish coordinated, versioned packages and test installation/build in an external consumer |
 | [210: controls and settings](https://github.com/link-foundation/ui/issues/210) | Initial snapshot fails disabled-click, Tab/page and sizing contracts; rich settings has 349 conditional fields. PR 213 now implements controls/panel/codec/coercion hooks; this draft adopts its select and strict-normalization APIs | Complete upstream CI and consumer parity for the rich panel/editors/paint hooks before deleting their remaining implementations; see the follow-up analysis below |
 | [211: rendering and materials](https://github.com/link-foundation/ui/issues/211) | Network geometry/export/solver and independently configurable transparent frames cannot be represented by current APIs | Introduce geometry/export/solver providers and per-corner/edge/state/level schemas with fit/material hooks; match the existing geometry and visual contracts |
-| [212: browser packaging](https://github.com/link-foundation/ui/issues/212) | Foreign inspector root import traverses Node exporters; globalThis.URL asset references produce production 404s | Supply a browser-safe converter export and bundler-compatible inspector assets; pass the production smoke test without consumer transforms |
+| [212: browser packaging](https://github.com/link-foundation/ui/issues/212) | Initial imports/assets broke production; PR 214 supplies browser entry points and statically analyzable assets | Adopted without the consumer alias/transform; production build and inspector smoke verify this boundary. Package publication remains separate (209) |
 
 Exact report bodies: `upstream-packaging.md`, `upstream-controls.md`,
 `upstream-rendering.md`, `upstream-browser.md`. These reports describe reusable
@@ -70,8 +73,8 @@ the word “adapter”:
 
 | Remaining consumer code | Remaining replacement boundary | Follow-through plan |
 | --- | --- | --- |
-| `SettingsPage`, previews, section placement, preset UI | PR 213 adds hooks, but the existing localized presentation and actual frame previews still depend on unsupported frame/material backends; upstream panel preview CI also fails | Validate the new panel with every existing localized/preset/preview contract and the reusable rendering providers before deleting custom presentation (210/211) |
-| `NumberInput`, `numericKeys`, color editor | New upstream number drafts/palettes exist, but exact directional snapping, translated stepper labels and the existing grouped RGB-slider popup are not established as equivalent; upstream touch-target CI fails | Migrate after identical keyboard, focus, touch and live-preview results; retain the more polished working editor meanwhile (210) |
+| `SettingsPage`, previews, section placement, preset UI | PR 213 now supplies localization and panel hooks; actual site frame previews still depend on unsupported frame/material backends | Preserve the existing polished presentation until providers and complete consumer parity permit deleting it (210/211) |
+| `NumberInput`, color editor | Directional arithmetic is shared. Upstream now supplies translated labels and RGB editors, but typed numbers still quantize to step; the existing named-palette popup has a different presentation | Preserve continuous typed drafts and the polished popup; replace after the remaining normalization policy and presentation contracts match (210) |
 | `settings/notation`, `apply`, before-paint script and storage bridge | Strict primitive policy is adopted; new codec/paint hooks still need integration with historical formats, corner inheritance and derived material values | Share the rendering projection once report 211's provider/schema contract exists; preserve old storage/share URLs and comfort choices (210/211) |
 | `skins.frames*`, frame CSS generator, fit rules, refraction/noise/material surfaces | Four independent corners/edges, many element levels/states, transparent masks and optical layers | Framework schema/provider implementation plus the existing frame tests at every level and state (211) |
 | `links` geometry, marker placement, collision solver, SVG/raster export, history UI | Continuous self-referential cubics, nine markers, independently editable turns/gaps, pinned solutions and exact preview/export parity | Implement provider hooks and migrate one backend at a time against existing editor/browser suites (211) |
@@ -111,9 +114,9 @@ dependency would duplicate an existing framework facility.
 
 Vite statically analyzes the standard new URL pattern for asset bundling. The
 upstream globalThis.URL variant is not recognized in the observed production
-build. A two-file transform enables normal asset handling, while an exact
-converter alias avoids unrelated Node conversion targets. The source archives
-stay unmodified, making both workarounds removable and auditable.
+build. The initial draft used a two-file transform and converter alias. PR 214
+now provides the browser-safe imports and standard asset expressions upstream;
+both consumer workarounds are deleted, with the source archives unmodified.
 [Vite static assets](https://vite.dev/guide/assets.html#new-url-url-import-meta-url).
 
 The existing React 19 host already supports the site's data-heavy content and
@@ -334,7 +337,7 @@ At the earlier upstream check PR 213 contained only its initial placeholder.
 At 23:56:20 UTC on November 5 it published revision `2efd7e2`, implementing
 select/editor/panel and settings-engine contracts without copying consumer code.
 Main still points to `f72e97f`; the new implementation is a draft, not a release.
-The immutable archive pin now adopts this new source rather than retaining
+The first follow-up archive pin adopted that new source rather than retaining
 workarounds for features that upstream has implemented.
 
 The select uses official external-label/list-label and menu dimension properties.
@@ -346,7 +349,7 @@ and the transparent-surface migration remain at that import boundary.
 All 18 focused select/storage/framework tests pass, including the unchanged-DOM
 regression. The production build and all six Chromium migration checks pass.
 The final expanded focused run passes all 61 select/color/number/settings/
-framework/history cases. Directional numeric stepping remains a failing upstream
+framework/history cases. At this historical revision directional numeric stepping was a failing upstream
 deletion gate: `0.075` stepped upward by `0.01` yields `0.09`, versus the
 preserved consumer result `0.08`. Generated panel chrome and stepper names also
 need translation hooks before replacing the English/Russian presentation.
@@ -354,7 +357,7 @@ The [upstream follow-up](https://github.com/link-foundation/ui/issues/210#issuec
 and `upstream-controls-followup.md` preserve these remaining contracts;
 `upstream-contracts.mjs` reproduces the numeric gap with a single finite input.
 
-The broader upstream implementation is not recorded as fully verified:
+That historical upstream implementation was not fully verified:
 [its browser run](https://github.com/link-foundation/ui/actions/runs/42133114748)
 reports 513 passed, 21 skipped and six failed (three cases in each browser).
 The archived log identifies stale End-key expectations (lines 1228–1232), an
@@ -366,5 +369,45 @@ their status is recorded separately from this consumer's checks.
 `data/upstream-pr-213.json` records the source/API/status analysis;
 `data/upstream-pr-213-ui-ci.tar.gz` preserves the complete browser log.
 Independent frame, geometry/export/solver, optical material and audio APIs remain
-missing in report 211; publication and browser-packaging reports also remain open.
-The full-support acceptance criterion remains unfinished.
+missing in report 211. The following updates supersede the initial control and
+browser-packaging gaps, without completing full upstream support.
+
+## Subsequent upstream control and browser fixes
+
+At `cf2c89e`, PR 213 fixes the six recorded browser failures, the Swift vocabulary
+and Windows Deno issue. Its full checks pass (60 success, 11 explicit skips),
+including the [browser run](https://github.com/link-foundation/ui/actions/runs/42136219816).
+The archived earlier failures remain historical evidence, not current failures.
+At `4564597`, it adds directional stepping, translated number/color labels,
+configurable panel messages with live locale changes, and grouped RGB channel
+editors. The new APIs directly address the previous consumer follow-up.
+
+The site now delegates number/range key arithmetic to `nextValue` with
+`snapping: 'directional'`; the `0.075` → `0.08` regression passes. Native text
+navigation and the site's ten-step Page keys remain intact. The full number
+editor still cannot be deleted: public `readNumber('0.075', {step: 0.01})`
+returns `0.08` for both draft and commit, even with directional snapping.
+The site preserves continuous finite typed values and treats step as an
+increment. `upstream-contracts.mjs` prints both finite contracts; `STRICT=1`
+fails on this remaining typed-value policy. The new consumer regression checks
+`0.075` and clearing to `null`. The [follow-up report](https://github.com/link-foundation/ui/issues/210#issuecomment-6673550166)
+and `upstream-controls-continuous.md` identify the exact implementation boundary.
+The richer named-palette popup and actual frame previews remain in place;
+localization and RGB support are no longer claimed missing upstream.
+
+PR 214 at `e37935e` supplies browser-only converter/i18n entry points, standard
+static asset references and a browser asset loader. Its three unmodified
+packages are pinned alongside PR 213's eight control/settings packages, with
+individual revisions, source permalinks and SHA-256 checks. Both the converter
+alias and the Vite asset transform are deleted. The external consumer production
+build and all six Chromium smoke checks pass, including real inspector assets,
+close and hotkey reopen, without either workaround.
+The [consumer confirmation](https://github.com/link-foundation/ui/issues/212#issuecomment-6673588779)
+is preserved in `upstream-browser-followup.md`. The current render is
+`screenshots/after-upstream-browser-inspector.png`.
+
+The expanded focused run passes 64 tests in nine files. These checks verify the
+adopted contracts; they do not claim every new upstream panel feature has been
+migrated or every upstream job has finished at its latest revision. Remaining
+full-support blockers are package publication, typed-number policy, independent
+frame/material, geometry/export/solver and audio APIs. The draft remains unmerged.

@@ -1,9 +1,8 @@
-// Bounded integration probe for the draft upstream APIs. Missing contracts
-// remain visible; STRICT=1 makes this an intentionally failing deletion gate.
+// Bounded public-API regression for the consumer follow-up to upstream PR 213.
 import assert from 'node:assert/strict';
-import { nextValue } from '@link-foundation/ui-components/controls';
+import { nextValue, readNumber } from '@link-foundation/ui-components/controls';
 
-const actual = nextValue('ArrowUp', { value: 0.075, min: 0, max: 1, step: 0.01 });
+const actual = nextValue('ArrowUp', { value: 0.075, min: 0, max: 1, step: 0.01, snapping: 'directional' });
 const expected = 0.08; // Existing NumberInput.test.jsx: next tick in the direction of travel.
 console.log(
   JSON.stringify({
@@ -13,4 +12,17 @@ console.log(
     supported: actual === expected,
   }),
 );
-if (process.env.STRICT === '1') assert.equal(actual, expected);
+assert.equal(actual, expected);
+
+// This diagnostic is a deletion gate for NumberInput, not a failing site test.
+// A step constrains key increments here; typed continuous values must survive.
+const typed = readNumber('0.075', { min: 0, max: 1, step: 0.01, snapping: 'directional' });
+console.log(
+  JSON.stringify({
+    contract: 'continuous typed number',
+    actual: typed.value,
+    expected: 0.075,
+    supported: typed.value === 0.075,
+  }),
+);
+if (process.env.STRICT === '1') assert.equal(typed.value, 0.075);

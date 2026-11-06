@@ -1,5 +1,5 @@
 // Snapshot only distributable files until upstream publishes its workspaces.
-// SOURCE=/path/to/link-foundation/ui node experiments/framework-migration/vendor.mjs
+// SOURCE=/path/to/controls BROWSER_SOURCE=/path/to/browser-fixes node experiments/framework-migration/vendor.mjs
 import { execFileSync } from 'node:child_process';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
@@ -24,7 +24,10 @@ const packages = [
 ];
 const manifest = { repository: 'https://github.com/link-foundation/ui', revision, packages: [] };
 for (const suffix of packages) {
-  const cwd = resolve(source, `packages/ui-${suffix}`);
+  const packageSource =
+    process.env.BROWSER_SOURCE && ['i18n', 'convert', 'devmode'].includes(suffix) ? process.env.BROWSER_SOURCE : source;
+  const packageRevision = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: packageSource, encoding: 'utf8' }).trim();
+  const cwd = resolve(packageSource, `packages/ui-${suffix}`);
   const [packed] = JSON.parse(
     execFileSync('npm', ['pack', '--ignore-scripts', '--json', '--pack-destination', directory], {
       cwd,
@@ -38,7 +41,8 @@ for (const suffix of packages) {
     version: packed.version,
     file: packed.filename,
     sha256: createHash('sha256').update(bytes).digest('hex'),
-    source: `https://github.com/link-foundation/ui/tree/${revision}/packages/ui-${suffix}`,
+    revision: packageRevision,
+    source: `https://github.com/link-foundation/ui/tree/${packageRevision}/packages/ui-${suffix}`,
   });
   console.log(packed.filename, bytes.length);
 }

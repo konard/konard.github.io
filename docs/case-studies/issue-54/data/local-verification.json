@@ -1,7 +1,7 @@
 {
   "date": "2026-11-06",
   "baseline": "f169665",
-  "framework": "2efd7e23df9df5312cac6d45611aa67e10529715",
+  "framework": "45645979bb91d99f7a308d3b9168f3757294a184",
   "focused_checks": [
     {
       "command": "npx vitest run src/components/Select.test.jsx src/components/ColorInput.test.jsx src/ui/framework.test.js --maxWorkers=1",
@@ -77,6 +77,30 @@
       "command": "npm run build; BASE=http://127.0.0.1:3001 ENGINE=chromium node experiments/framework-migration/smoke.mjs",
       "result": "Build and six Chromium production checks pass after adopting upstream select/strict normalization",
       "framework": "2efd7e23df9df5312cac6d45611aa67e10529715"
+    },
+    {
+      "command": "npx vitest run src/components/Select.test.jsx src/components/ColorInput.test.jsx src/components/NumberInput.test.jsx src/components/numericKeys.test.js src/ui/framework.test.js src/settings/contracts.test.js src/settings/presets.test.js src/settings/settings.test.js src/pages/network-history.test.jsx --maxWorkers=1",
+      "result": "64 passed across 9 files; continuous typed-value and per-package source-pin regressions included",
+      "framework": "45645979bb91d99f7a308d3b9168f3757294a184",
+      "browser_framework": "e37935ea195fca55cb2ee6a5d2c1723858cd7f81"
+    },
+    {
+      "command": "npm run build; ENGINE=chromium npm run test:ui:migration",
+      "result": "Production build and all six smoke checks pass without converter alias or asset-reference transform",
+      "framework": "45645979bb91d99f7a308d3b9168f3757294a184",
+      "browser_framework": "e37935ea195fca55cb2ee6a5d2c1723858cd7f81"
+    },
+    {
+      "command": "Playwright MCP: production /?ui-dev",
+      "result": "Inspector opens, closes and reopens with Alt+Shift+D; no page errors; screenshot after-upstream-browser-inspector.png; three WebGL performance warnings",
+      "framework": "45645979bb91d99f7a308d3b9168f3757294a184",
+      "browser_framework": "e37935ea195fca55cb2ee6a5d2c1723858cd7f81"
+    },
+    {
+      "command": "node experiments/framework-migration/upstream-contracts.mjs",
+      "result": "Directional stepping passes at 0.08; typed-value deletion gate reports unsupported (0.08 instead of 0.075); STRICT=1 intentionally fails only this remaining upstream boundary",
+      "framework": "45645979bb91d99f7a308d3b9168f3757294a184",
+      "browser_framework": "e37935ea195fca55cb2ee6a5d2c1723858cd7f81"
     }
   ],
   "regressions": [
@@ -176,5 +200,6 @@
     "preview_changed": true,
     "console_errors": 0
   },
-  "initial_framework": "f72e97fe2db100d88ea460ee8451bbf63a1b01b6"
+  "initial_framework": "f72e97fe2db100d88ea460ee8451bbf63a1b01b6",
+  "browser_framework": "e37935ea195fca55cb2ee6a5d2c1723858cd7f81"
 }
