@@ -293,3 +293,30 @@ The 23 focused select/color/framework/history tests pass after both changes.
 `data/local-verification.json` preserves both minimal failing reproductions.
 Existing opt-in `network.debug` tracing also records a deferred due callback;
 tracing remains off by default.
+
+## CI workflow-ordering investigation
+
+[Run 42129275767](https://github.com/konard/konard.github.io/actions/runs/42129275767)
+started at 23:26:37 UTC on `865f7ba`. All three browser jobs passed, including
+the held-input history and unchanged 500 ms responsiveness assertions. Firefox
+installed its browser dependencies in 23 seconds after the mirror correction.
+The complete unit suite passed 1,252 tests and failed one workflow-ordering test;
+the dependent build, CV PDFs and Pages artifact were skipped, not verified.
+
+`unit-42129275767.log` lines 543–545 identify `workflow.test.js:45`: the test
+compared an entire `run` block with the Chromium install command. The mirror
+prelude changed that block into a multiline script, making the command appear
+absent (index -1). Match an exact trimmed command line within each step instead,
+preserving build → browser installation → PDF printing → artifact upload order
+and explicitly checking that the production build exists. The focused workflow
+suite reproduces the failure before this correction; all 18 tests pass afterward.
+Full workflow/unit logs
+are in `data/ci-42129275767.tar.gz`; `data/ci-workflow-865f7ba.json` records the
+counts, exact failure lines and correction. Current-commit CI remains the gate.
+
+A fresh upstream check still finds snapshot `f72e97f` on main and reports 209–212
+open. [PR 213](https://github.com/link-foundation/ui/pull/213) currently contains
+only its initial `.gitkeep`, not implemented controls. The new
+[comment on report 211](https://github.com/link-foundation/ui/issues/211#issuecomment-6672139775)
+records a GitHub push error before its automated implementation session began.
+Neither changes the unfinished full-support criterion.
