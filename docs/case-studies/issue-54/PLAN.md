@@ -54,15 +54,19 @@ passing checks still do not complete the separate upstream-support criterion.
 - [x] Refresh issue and all three PR comment channels; compare current SHA and
       run times, download all three recent non-passing runs, inspect actual logs.
 - [x] Confirm latest main is already an ancestor; no merge/conflict is pending.
-- [x] Identify current-head failures: gallery API screenshot stalls in its font
-      wait; the keyboard audit passes after 18 minutes but consumes most of the
+- [x] Identify current-head failures: gallery API screenshot times out after
+      logging its font wait; the keyboard audit passes after 18 minutes but consumes most of the
       single WebKit job, causing cancellation before later suites run.
 - [x] Draft native gallery capture and isolate the unchanged WebKit keyboard
       suite in a separate matrix entry with unique concurrency/artifact names.
 - [x] Verify focused regressions fail against the original workflow and pass
       after the fix; check static rules and production Chromium gallery capture.
-- [ ] Push only the prepared branch; inspect every current-commit CI check and
-      preserve any new failure logs before making further corrections.
+- [x] Push implementation only to the prepared branch. Current-commit CI remains
+      tracked on PR 55; inspect every check and preserve any new failure logs
+      before making further corrections. Record the final outcome in the PR
+      description after every check finishes.
 - [x] Refresh upstream support/publication evidence; keep any still-blocked
       acceptance criteria explicit and leave the PR unmerged.
-- [ ] Review final diff, update PR description and confirm a clean working tree.
+- [x] Review the final implementation diff and update the PR description with
+      regressions, evidence and remaining blockers. Keep final CI status in the
+      PR description and confirm a clean working tree before reporting results.

@@ -202,8 +202,8 @@ their headings/titles, fit the viewport and have no page errors. See
 `data/firefox-comparison.json`; this small difference is recorded, not discarded.
 
 `audit-messages.mjs` expands catalog calls and compares syntax trees with main:
-53 files changed only for catalog extraction preserve their original logic and
-exact text in both languages. The four mixed behavioral files receive focused
+52 files changed only for catalog extraction preserve their original logic and
+exact text in both languages. The five mixed behavioral files receive focused
 diff review and tests. `data/source-line-counts.json` records selected consumer
 files, including added compatibility modules. Select and color positioning
 shrink, but the draft does not claim a net repository reduction: catalogs,
