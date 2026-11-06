@@ -59,10 +59,10 @@ passing checks still do not complete the separate upstream-support criterion.
       single WebKit job, causing cancellation before later suites run.
 - [x] Draft native gallery capture and isolate the unchanged WebKit keyboard
       suite in a separate matrix entry with unique concurrency/artifact names.
-- [ ] Verify focused regressions fail against the original workflow and pass
+- [x] Verify focused regressions fail against the original workflow and pass
       after the fix; check static rules and production Chromium gallery capture.
 - [ ] Push only the prepared branch; inspect every current-commit CI check and
       preserve any new failure logs before making further corrections.
-- [ ] Refresh upstream support/publication evidence; keep any still-blocked
+- [x] Refresh upstream support/publication evidence; keep any still-blocked
       acceptance criteria explicit and leave the PR unmerged.
 - [ ] Review final diff, update PR description and confirm a clean working tree.

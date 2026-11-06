@@ -11,6 +11,9 @@ const baseline = 'f169665';
 const behavioral = new Set([
   'src/components/Select.jsx',
   'src/components/ColorInput.jsx',
+  // Number parsing now uses the upstream continuous clamp policy, verified by
+  // NumberInput.test.jsx; this is no longer a catalog-only migration.
+  'src/components/NumberInput.jsx',
   'src/components/Layout.jsx',
   'src/settings/schema.js',
 ]);

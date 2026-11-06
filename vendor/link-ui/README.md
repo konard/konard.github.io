@@ -8,9 +8,9 @@ ui-devmode browser packaging.
 Each retains its upstream `LICENSE`. The manifest records source permalinks and
 SHA-256 digests; the lockfile additionally pins npm integrity hashes.
 
-These are unmodified packages from upstream draft
+These are unmodified packages from upstream
 [PR 213](https://github.com/link-foundation/ui/pull/213) and
-[PR 214](https://github.com/link-foundation/ui/pull/214), not releases. They supply
+[PR 214](https://github.com/link-foundation/ui/pull/214), both now merged. They are not releases. They supply
 select, continuous typed normalization, directional stepping and browser contracts reported
 during this migration. The case study distinguishes historical failures from
 later upstream fixes. This site's complete CI remains the integration gate.

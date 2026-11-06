@@ -3,8 +3,8 @@
 Work: [issue 54](https://github.com/konard/konard.github.io/issues/54),
 [PR 55](https://github.com/konard/konard.github.io/pull/55).
 Research dates: 2026-11-05–06. Baseline site: `f169665` (main).
-Framework snapshots: `27d580f4bac4ebb4e70de3f78671153c2ef5dab9` from draft
-PR 213, with ui-i18n/ui-convert/ui-devmode from PR 214 at
+Framework snapshots: `27d580f4bac4ebb4e70de3f78671153c2ef5dab9` from
+PR 213 (now merged), with ui-i18n/ui-convert/ui-devmode from merged PR 214 at
 `e37935ea195fca55cb2ee6a5d2c1723858cd7f81`. Each archive has its own audited
 revision in the manifest. The initial snapshot was `f72e97f`.
 
@@ -469,3 +469,72 @@ verify absent upstream frame/material/network/audio providers. Its working
 implementations remain in place. Report 209 is also open; a fresh registry check
 still returns E404 for `@link-foundation/ui-settings`. Neither reports nor passing
 consumer checks complete these acceptance criteria.
+
+
+## Current-head WebKit CI restart
+
+The restart points to [run 42149266019](https://github.com/konard/konard.github.io/actions/runs/42149266019),
+created November 6 at 02:16:28 UTC for `0f6238a`, the actual branch head.
+The preceding `433338f` run passed. The latest main is already an ancestor;
+there is no pending conflict or missing merge. All issue comments and all three
+PR feedback channels were refreshed; there are no new implementation requests.
+
+The downloaded complete log is `logs/deploy-42149266019.log.gz`. Its original
+line numbers identify two distinct failures:
+
+- Lines 11290–11302: the headed WebKit gallery's extra `page.screenshot` times
+  out after reporting “waiting for fonts to load”, before its native display
+  capture and blurred/sharp pixel comparison. All 4,131 cards have loaded and
+  all bounded-surface/scroll samples have already passed. The call log alone
+  does not prove why the screenshot internals stopped responding. Playwright
+  has a [related Linux font-wait report](https://github.com/microsoft/playwright/issues/42986),
+  but that is not proof of an identical macOS defect.
+- Lines 11597 and 13117: the 30-minute WebKit job is cancelled during issue 37;
+  `test` is consequently skipped and `pipeline-status` correctly fails the
+  current head. The unchanged keyboard audit passed, but took 1,086 seconds
+  against 587 seconds in the preceding successful run. Its serial placement
+  consumed most of the whole browser job. Per-step timestamps from both runs
+  are preserved in `data/ci-webkit-restart.json`.
+
+The gallery now goes directly to the existing native compositor capture in
+headed/display mode, retaining headless API screenshots and every pixel/CSS
+assertion. This removes the redundant API snapshot that could prevent the
+real compositor assertion from running. No font-readiness bypass is enabled.
+The unchanged WebKit keyboard suite has a separate macOS matrix entry; all
+other WebKit suites run in the editor entry. Every original suite still runs
+exactly once per supported engine, including Chromium-only indicators. Both
+entries retain the 30-minute timeout. Unique suite-aware concurrency and
+artifact names prevent mutual cancellation and upload collisions. The gate
+still requires the complete matrix to succeed.
+
+`src/browser-matrix.test.js` evaluates the actual workflow conditions and
+verifies exact coverage, independent keyboard execution, timeout, evidence
+upload and concurrency/artifact names. Four cases fail against the original
+workflow and all six pass after the correction. The display regression models
+the observed throwing screenshot API and confirms native pixels are still
+captured; the headless regression confirms API screenshots remain enabled.
+Together with workflow/policy tests, all 49 focused tests pass. Before/after
+logs are in `logs/browser-matrix-{before,after}.log`.
+
+A sequential local Chromium run against the production build passed the
+complete issue 23 script using native Xvfb screenshots and a bounded 1,215-card
+sample, including all three skins, actual blur pixels, repeated scrolling,
+geometry, sharing and the mobile editor. See `logs/chromium-gallery-restart.log`
+and `data/chromium-gallery-restart.json`. The original 4,131-card runs remain
+CI's responsibility. No product UI changed in this restart.
+
+Review also found that the catalog-only audit still included NumberInput after
+its intentional upstream parsing adoption. It now lists that component with
+the other explicit behavior changes; its dedicated component tests verify the
+parsing contract. All **52** remaining catalog-only files match their original
+AST and exact bilingual text (`logs/catalog-audit-restart.log`). The earlier
+53-file count predates that parsing adoption. The GitHub PR diff endpoint now
+returns HTTP 406 because the accumulated diff exceeds 20,000 lines; local
+`git diff origin/main...HEAD` and the AST audit provide the review fallback.
+
+A fresh upstream check confirms PRs 213 and 214 are merged. This does not
+publish their packages: `@link-foundation/ui-settings` still returns npm E404.
+There is still no `issue-211` implementation branch and report 211 remains
+open. `data/upstream-restart-status.json` records the new merged SHAs. The
+independent frame/material/network/audio acceptance criterion remains
+unfinished; this CI correction cannot supply those absent upstream APIs.
