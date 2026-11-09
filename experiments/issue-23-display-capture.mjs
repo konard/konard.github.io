@@ -52,3 +52,14 @@ export async function displayScreenshot(path) {
   if (path) await writeFile(path, png);
   return png;
 }
+
+// Use the compositor that the blur assertions exercise. An additional API
+// snapshot can stall in WebKit's font wait on the 4,131-card gallery, preventing
+// both the native evidence and the actual blurred/sharp pixel checks below it.
+export async function galleryScreenshot(page, path, { display }, capture = displayScreenshot) {
+  if (display) {
+    await page.waitForTimeout(500);
+    return capture(path);
+  }
+  return page.screenshot({ path });
+}

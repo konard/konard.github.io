@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 import { GAP_FIELDS } from '../links/gaps';
 import { useLang } from '../i18n/prefs';
 import LinkSetting from './LinkSetting';
@@ -5,16 +6,12 @@ import LinkSetting from './LinkSetting';
 /** Paired geometry controls stay below one separator in each link's card. */
 export default function NetworkGaps({ i, row, style, onGap, turns, turnDefaults, onTurn }) {
   const { t } = useLang();
-  const name = `${t({ en: 'Link', ru: 'Связь' })} ${i + 1}`;
+  const name = `${t(localized('m574b2b03f271'))} ${i + 1}`;
   return (
     <div className="link-gaps link-card__geometry link-card__fields">
       {[0, 1].map((end) => {
-        const label = t(
-          end
-            ? { en: 'Turn of the target, °', ru: 'Поворот конца, °' }
-            : { en: 'Turn of the source, °', ru: 'Поворот начала, °' },
-        );
-        const fieldName = `${name}: ${t({ en: 'turn of the', ru: 'поворот' })} ${t(end ? { en: 'target', ru: 'конец' } : { en: 'source', ru: 'начало' })}, °`;
+        const label = t(end ? localized('mb932d631d906') : localized('m21da7772f0ce'));
+        const fieldName = `${name}: ${t(localized('m1e24664c7001'))} ${t(end ? localized('m458b8ba592d0') : localized('m11a0be7570c6'))}, °`;
         return (
           <LinkSetting
             key={end}

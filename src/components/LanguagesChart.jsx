@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 import { useLang } from '../i18n/prefs';
 import { plural } from '../i18n/plural';
 import { formatNumber, SERIES } from './format';
@@ -9,7 +10,7 @@ const LIMIT = 10;
 // "in N repositories": Russian needs the prepositional case after «в».
 const IN_REPOSITORIES = { en: ['repository', 'repositories'], ru: ['репозитории', 'репозиториях', 'репозиториях'] };
 const OF_LANGUAGES = { en: ['language', 'languages'], ru: ['языка', 'языков', 'языков'] };
-const OTHER = { en: 'Other', ru: 'Другие' };
+const OTHER = localized('m671783c5c71b');
 
 /** The top languages and the rest summed up as `{ name: 'Other', isOther: true }` (translated when drawn). */
 export function topWithOther(languages, limit = LIMIT) {
@@ -38,12 +39,11 @@ export default function LanguagesChart({ languages, favorites }) {
         )}
       </strong>
       <span className="tooltip__value">
-        {t({ en: 'used in', ru: 'используется в' })} {number(l.count)} {plural(l.count, lang, IN_REPOSITORIES)}
+        {t(localized('mc369eea35aab'))} {number(l.count)} {plural(l.count, lang, IN_REPOSITORIES)}
       </span>
       {!l.isOther && (
         <span className="tooltip__row">
-          {t({ en: 'primary language in', ru: 'основной язык в' })} {number(l.primary)}{' '}
-          {plural(l.primary, lang, IN_REPOSITORIES)}
+          {t(localized('m0780a84f4838'))} {number(l.primary)} {plural(l.primary, lang, IN_REPOSITORIES)}
         </span>
       )}
     </>
@@ -58,14 +58,11 @@ export default function LanguagesChart({ languages, favorites }) {
         })}
         <span className="muted">
           {' '}
-          <StarMark /> {t({ en: '= favorite language', ru: '— любимый язык' })}
+          <StarMark /> {t(localized('ma25126e3201d'))}
         </span>
         <DataMark />
       </p>
-      <ul
-        className="hbars"
-        aria-label={t({ en: 'Repositories by primary language', ru: 'Репозитории по основному языку' })}
-      >
+      <ul className="hbars" aria-label={t(localized('m48e78a00108e'))}>
         {rows.map((l) => (
           <li
             key={l.name}
@@ -79,7 +76,7 @@ export default function LanguagesChart({ languages, favorites }) {
             <span className="hbars__name">
               {name(l)}
               {favorites.includes(l.name) && (
-                <span className="hbars__fav" aria-label={t({ en: 'favorite', ru: 'любимый' })}>
+                <span className="hbars__fav" aria-label={t(localized('m7dbbe7ab097e'))}>
                   {' '}
                   <StarMark />
                 </span>

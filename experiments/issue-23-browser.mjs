@@ -6,7 +6,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { chromium, firefox, webkit } from 'playwright';
 import { preview } from 'vite';
-import { displayScreenshot } from './issue-23-display-capture.mjs';
+import { displayScreenshot, galleryScreenshot } from './issue-23-display-capture.mjs';
 const engine = process.env.ENGINE || 'chromium';
 const output = process.env.CAPTURE_DIR || 'docs/case-studies/issue-23/screenshots';
 const data = process.env.RESULT_DIR || 'docs/case-studies/issue-23/data';
@@ -169,11 +169,9 @@ try {
       await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
       await sample();
     }
-    await shot(page, `gallery-${skin}`);
-    if (display) {
-      await page.waitForTimeout(500);
-      await displayScreenshot(join(output, `${engine}-after-gallery-${skin}-display.png`));
-    }
+    await galleryScreenshot(page, join(output, `${engine}-after-gallery-${skin}${display ? '-display' : ''}.png`), {
+      display,
+    });
     // Exercise the actual compositor, not just computed CSS: a sharp pattern
     // behind the header must render differently when its blur is disabled.
     await page.evaluate(() => {

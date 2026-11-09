@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 import SocialEmbed from '../components/SocialEmbed';
 import { embedUrl } from '../components/socialWidgets';
 export { embedUrl } from '../components/socialWidgets';
@@ -16,13 +17,13 @@ import { Play } from 'lucide-react';
 import { iconProps } from '../components/icons';
 
 const NETWORKS = { x: 'X', vk: 'VK', telegram: 'Telegram' };
-const LANGUAGES = { en: 'English', ru: 'Русский' };
+const LANGUAGES = localized('m337e93d4e534');
 // "Only posts in English": the language name after «на» is in the prepositional case.
 const IN_LANGUAGE = {
-  en: { en: 'English', ru: 'английском' },
-  ru: { en: 'Russian', ru: 'русском' },
+  en: localized('m20ad8d5a05b4'),
+  ru: localized('m3ea87d749d73'),
 };
-const FEED = { en: 'Feed', ru: 'Лента' };
+const FEED = localized('ma2827c06c6a3');
 // "in N stories": Russian needs the prepositional case after «в».
 const IN_STORIES = { en: ['story', 'stories'], ru: ['истории', 'историях', 'историях'] };
 const STORIES = { en: ['story', 'stories'], ru: ['история', 'истории', 'историй'] };
@@ -48,12 +49,7 @@ const date = (iso, lang) =>
 function Picture({ src, alt = '' }) {
   const [failed, setFailed] = useState(false);
   const { t } = useLang();
-  if (failed)
-    return (
-      <span className="post__missing muted">
-        {t({ en: 'Picture no longer available', ru: 'Изображение больше недоступно' })}
-      </span>
-    );
+  if (failed) return <span className="post__missing muted">{t(localized('m8206a8a1d637'))}</span>;
   return <img src={src} alt={alt} loading="lazy" referrerPolicy="no-referrer" onError={() => setFailed(true)} />;
 }
 
@@ -71,7 +67,7 @@ function Media({ items }) {
             <a href={m.url} target="_blank" rel="noopener noreferrer" className="post__video">
               {m.poster && <Picture src={m.posterFile || m.poster} />}
               <span>
-                <Play {...iconProps} /> {t({ en: 'video', ru: 'видео' })}
+                <Play {...iconProps} /> {t(localized('m5728e0a98b18'))}
               </span>
             </a>
           )}
@@ -110,7 +106,7 @@ export function Story({ story, lang }) {
         </a>
         {post.repostOf && (
           <a href={post.repostOf} target="_blank" rel="noopener noreferrer" className="muted">
-            {t({ en: 'repost', ru: 'репост' })}
+            {t(localized('m71780ba42ec6'))}
           </a>
         )}
       </header>
@@ -119,11 +115,7 @@ export function Story({ story, lang }) {
           <SocialEmbed key={`${post.id}:${theme}`} embed={post.embed} theme={theme} onError={fail} />
           <details className="post__fallback">
             <summary>
-              {t({
-                en: 'Historical copy if the original is unavailable',
-                ru: 'Сохранённая копия, если оригинал недоступен',
-              })}{' '}
-              <DataMark />
+              {t(localized('m9ad6b4995fad'))} <DataMark />
             </summary>
             {archived}
           </details>
@@ -131,11 +123,7 @@ export function Story({ story, lang }) {
       ) : (
         <>
           <p className="muted">
-            {t({
-              en: 'Historical copy · original embed unavailable',
-              ru: 'Сохранённая копия · оригинальный виджет недоступен',
-            })}{' '}
-            <DataMark />
+            {t(localized('me99c43caf198'))} <DataMark />
           </p>
           {archived}
         </>
@@ -150,14 +138,12 @@ export function Story({ story, lang }) {
               setFailed(false);
             }}
           >
-            {showEmbed
-              ? t({ en: 'Show archived copy', ru: 'Показать сохранённую копию' })
-              : t({ en: 'Show embed', ru: 'Показать оригинал' })}
+            {showEmbed ? t(localized('m16831a9988a5')) : t(localized('mdafb5fe429d6'))}
           </button>
         )}
         {others.length > 0 && (
           <span className="post__versions">
-            {t({ en: 'Also:', ru: 'Также:' })}{' '}
+            {t(localized('m65318ea9b0ac'))}{' '}
             {others.map((p, i) => (
               <span key={p.id}>
                 {i > 0 && ', '}
@@ -198,13 +184,13 @@ export default function BlogPage({ initialLanguage }) {
   const merged = archive.posts.length - stories.length;
   const sources = Object.entries(archive.counts)
     .map(([n, c]) => `${NETWORKS[n]} (${c})`)
-    .join(t({ en: ' and ', ru: ' и ' }));
+    .join(t(localized('m2b3dd08ec939')));
 
   return (
     <Layout page="blog" sections={[['feed', FEED]]}>
       <header className="page-hero" id="top">
-        <p className="section__kicker">{t({ en: 'Blog', ru: 'Блог' })}</p>
-        <h1 className="page-hero__title">{t({ en: 'Posts', ru: 'Записи' })}</h1>
+        <p className="section__kicker">{t(localized('m3a5d870e1ef3'))}</p>
+        <h1 className="page-hero__title">{t(localized('m9b80cd5d8197'))}</h1>
         <p className="page-hero__lead">
           {t({
             en: `${number(archive.posts.length)} ${words(archive.posts.length, POSTS)} from ${sources} in ${number(stories.length)} ${words(stories.length, STORIES)}: ${number(merged)} ${words(merged, TRANSLATIONS)} merged, and every story is shown once, from X for English readers and from VK for Russian readers.`,
@@ -224,10 +210,10 @@ export default function BlogPage({ initialLanguage }) {
       >
         <div className="filters" role="search">
           <label>
-            <span>{t({ en: 'Language', ru: 'Язык' })}</span>
+            <span>{t(localized('m6d23696c750e'))}</span>
             <Select value={langParam} onChange={(e) => setLangParam(e.target.value)}>
               <option value="">
-                {t({ en: 'Auto', ru: 'Авто' })} ({LANGUAGES[auto]})
+                {t(localized('m6ad984de08d3'))} ({LANGUAGES[auto]})
               </option>
               {Object.entries(LANGUAGES).map(([id, name]) => (
                 <option key={id} value={id}>
@@ -237,9 +223,9 @@ export default function BlogPage({ initialLanguage }) {
             </Select>
           </label>
           <label>
-            <span>{t({ en: 'Network', ru: 'Сеть' })}</span>
+            <span>{t(localized('ma59003cad5e5'))}</span>
             <Select value={network} onChange={(e) => setNetwork(e.target.value)}>
-              <option value="">{t({ en: 'All networks', ru: 'Все сети' })}</option>
+              <option value="">{t(localized('m640a07c10b8c'))}</option>
               {Object.keys(archive.counts).map((id) => (
                 <option key={id} value={id}>
                   {NETWORKS[id]}
@@ -250,24 +236,20 @@ export default function BlogPage({ initialLanguage }) {
           <label className="filters__check">
             <input type="checkbox" checked={onlyLang} onChange={(e) => setOnlyLang(e.target.checked)} />
             <span>
-              {t({ en: 'Only posts in', ru: 'Только записи на' })} {t(IN_LANGUAGE[lang])}
+              {t(localized('mf4c7cbaddf42'))} {t(IN_LANGUAGE[lang])}
             </span>
           </label>
           <output className="filters__count mono" aria-live="polite">
             {number(list.length)} {words(list.length, STORIES)}
           </output>
         </div>
-        <ol className="posts" aria-label={t({ en: 'Posts', ru: 'Записи' })}>
+        <ol className="posts" aria-label={t(localized('m9b80cd5d8197'))}>
           {list.map((s) => (
             <Story key={`${s.id}:${lang}`} story={s} lang={lang} />
           ))}
         </ol>
         <p className="muted posts__note">
-          Telegram: <a href="https://t.me/drakonard">t.me/drakonard</a>{' '}
-          {t({
-            en: 'is a personal account without a public channel, so there is nothing public to archive yet. Posts on X are added by id because the X timeline is not public without a login.',
-            ru: '— личный аккаунт без публичного канала, поэтому сохранять пока нечего. Записи из X добавляются по id, потому что лента X без входа не публична.',
-          })}
+          Telegram: <a href="https://t.me/drakonard">t.me/drakonard</a> {t(localized('m2043d70ec350'))}
         </p>
       </Section>
     </Layout>

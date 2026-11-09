@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 import { useEffect, useState } from 'react';
 import { useLang } from '../i18n/prefs';
 import { agreesWithSnapshot, fetchCalendar, isDisciplined, LEVELS } from '../data/calendar';
@@ -38,39 +39,28 @@ export default function ContributionCalendar({ snapshot, live = true, fetchImpl,
   const date = (d, options) =>
     new Date(`${d}T00:00:00Z`).toLocaleDateString(lang === 'ru' ? 'ru-RU' : 'en-GB', { timeZone: 'UTC', ...options });
   const dayLabel = (d) =>
-    `${date(d.date, { year: 'numeric', month: 'long', day: 'numeric' })}: ${number(d.contributionCount)} ${t({ en: 'contributions', ru: 'вкладов' })}`;
+    `${date(d.date, { year: 'numeric', month: 'long', day: 'numeric' })}: ${number(d.contributionCount)} ${t(localized('mbf795d185592'))}`;
   const months = new Set();
   return (
     <div className="contribution-calendar">
       <div className="contribution-calendar__heading">
-        <h3>{t({ en: 'Daily GitHub contributions', ru: 'Ежедневный вклад на GitHub' })}</h3>
+        <h3>{t(localized('m8af98cadebc3'))}</h3>
         <span>
           {number(calendar.totalContributions)} <DataMark />
         </span>
       </div>
       <p className="muted">
         {days[0]?.date} – {days.at(-1)?.date} ·{' '}
-        {status === 'live' ? t({ en: 'Updated live', ru: 'Обновлено онлайн' }) : t({ en: 'Snapshot', ru: 'Снимок' })}:{' '}
+        {status === 'live' ? t(localized('md70071003a6b')) : t(localized('m9a48a848c7ec'))}:{' '}
         <time dateTime={effectiveAt}>{effectiveAt.slice(0, 10)}</time>
       </p>
       <div
         className="contribution-calendar__scroll"
         tabIndex={0}
         role="region"
-        aria-label={t({
-          en: 'Scrollable GitHub contribution calendar',
-          ru: 'Прокручиваемый календарь вклада на GitHub',
-        })}
+        aria-label={t(localized('mccca8a3373ee'))}
       >
-        <svg
-          width={42 + calendar.weeks.length * 14}
-          height="132"
-          role="img"
-          aria-label={t({
-            en: 'GitHub contribution calendar including shared private activity',
-            ru: 'Календарь вклада GitHub, включая открытую приватную активность',
-          })}
-        >
+        <svg width={42 + calendar.weeks.length * 14} height="132" role="img" aria-label={t(localized('ma40a038712d3'))}>
           {[1, 3, 5].map((d) => (
             <text key={d} x="0" y={29 + d * 14} className="contribution-calendar__label">
               {t({
@@ -112,45 +102,30 @@ export default function ContributionCalendar({ snapshot, live = true, fetchImpl,
       </div>
       <div className="contribution-calendar__legend">
         <a href="https://github.com/konard?tab=overview" target="_blank" rel="noopener noreferrer">
-          {t({ en: 'View on GitHub', ru: 'Смотреть на GitHub' })}
+          {t(localized('m759df9769e17'))}
         </a>
         <span>
-          {t({ en: 'Less', ru: 'Меньше' })}{' '}
+          {t(localized('mc48c121d1004'))}{' '}
           {LEVELS.map((_, i) => (
             <i key={i} data-level={i} />
           ))}{' '}
-          {t({ en: 'More', ru: 'Больше' })}
+          {t(localized('m048459339557'))}
         </span>
       </div>
-      <p className="muted">
-        {t({
-          en: 'Same daily levels as GitHub, including anonymized private contributions shared on the profile. Code statistics below use public repositories only.',
-          ru: 'Те же ежедневные уровни, что на GitHub, включая обезличенный приватный вклад, открытый в профиле. Статистика кода ниже использует только публичные репозитории.',
-        })}
-      </p>
+      <p className="muted">{t(localized('m27af303d19b2'))}</p>
       {disciplined && (
         <div className="discipline">
-          <h3>
-            {t({
-              en: 'Discipline comes first in any work or art',
-              ru: 'Дисциплина прежде всего в любой работе или искусстве',
-            })}
-          </h3>
-          <p>
-            {t({
-              en: 'My goal was to make at least one contribution every day, until it became a habit that grew into what you see today.',
-              ru: 'Моей целью был хотя бы один вклад в день — пока это не стало привычкой, выросшей в то, что вы видите сегодня.',
-            })}
-          </p>
+          <h3>{t(localized('mb76a1e745762'))}</h3>
+          <p>{t(localized('m445ab3ab5dd3'))}</p>
         </div>
       )}
       <details className="table-view">
-        <summary>{t({ en: 'Daily contribution data', ru: 'Данные о ежедневном вкладе' })}</summary>
+        <summary>{t(localized('m34e13b9a3b11'))}</summary>
         <table>
           <thead>
             <tr>
-              <th>{t({ en: 'Date (UTC)', ru: 'Дата (UTC)' })}</th>
-              <th>{t({ en: 'Contributions', ru: 'Вклады' })}</th>
+              <th>{t(localized('m49b7b4c4cc50'))}</th>
+              <th>{t(localized('m0a9d093cf56e'))}</th>
             </tr>
           </thead>
           <tbody>

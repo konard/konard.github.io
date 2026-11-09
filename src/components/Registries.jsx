@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 import { tr, useLang } from '../i18n/prefs';
 import { plural } from '../i18n/plural';
 import { formatCompact, formatNumber } from './format';
@@ -73,9 +74,7 @@ export default function Registries({ registries, summary }) {
                   {local(UNITS, r.downloadsUnit, lang)}
                 </span>
               ) : (
-                <span className="muted">
-                  {t({ en: 'no public download counts', ru: 'нет публичной статистики загрузок' })}
-                </span>
+                <span className="muted">{t(localized('ma13455040a0a'))}</span>
               )}
             </div>
             {r.downloadsUnit ? (

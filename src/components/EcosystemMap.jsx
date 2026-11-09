@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 import { useLang } from '../i18n/prefs';
 import { plural } from '../i18n/plural';
 import { formatNumber, SERIES } from './format';
@@ -56,7 +57,7 @@ export default function EcosystemMap({ owners, avatarUrl }) {
         className="ecosystem__svg"
         viewBox={`0 0 ${SIZE} ${SIZE}`}
         role="img"
-        aria-label={t({ en: 'Ecosystem of GitHub organizations', ru: 'Экосистема организаций на GitHub' })}
+        aria-label={t(localized('m4613a0be4f50'))}
       >
         <defs>
           <clipPath id="eco-avatar">
@@ -93,7 +94,7 @@ export default function EcosystemMap({ owners, avatarUrl }) {
               {formatNumber(n.repositories, lang)}
             </text>
             <text x={n.x} y={n.y + 13} textAnchor="middle" className="ecosystem__unit">
-              {t({ en: 'repos', ru: 'репо' })}
+              {t(localized('md36d79d07e91'))}
             </text>
             <text x={n.x} y={n.y + n.r + 18} textAnchor="middle" className="ecosystem__name">
               {n.name}

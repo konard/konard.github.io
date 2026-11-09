@@ -1,5 +1,6 @@
+import { localized } from '../i18n/localizer.js';
 // Number formats per site language ('en' or 'ru'; see src/i18n/prefs.js).
-const LOCALES = { en: 'en-US', ru: 'ru-RU' };
+const LOCALES = localized('mebc5483bf821');
 const cache = new Map();
 const formatter = (lang, options) => {
   const key = `${lang}:${JSON.stringify(options)}`;

@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 import { useEffect, useId, useRef } from 'react';
 import { useLang } from '../i18n/prefs';
 import { loadWidget } from './socialWidgets';
@@ -118,7 +119,7 @@ export default function SocialEmbed({ embed, theme, onError }) {
       ref={host}
       className={`post__widget post__widget--${embed.type}`}
       data-social-embed={embed.type}
-      aria-label={t({ en: 'Original social post', ru: 'Оригинальная запись' })}
+      aria-label={t(localized('m9935953a3c78'))}
     />
   );
 }

@@ -107,6 +107,8 @@ describe('the data of the site in Links Notation (issue #47)', () => {
     expect(exports.default).toEqual({ sources: [1, 'two'], 'not-a-name': true, default: 3, items: { a: null } });
     expect(Object.keys(exports).sort()).toEqual(['default', 'items', 'sources']);
     expect(linoData().transform('{}', '/x/data.json')).toBeNull();
+    expect(linoData().transform('export default "data:text/plain,..."', '/x/theme.lino?url')).toBeNull();
+    expect(linoData().transform('token: color red', '/x/node_modules/ui/theme.lino')).toBeNull();
   });
 
   it('gives the pages the same objects as the files hold', async () => {

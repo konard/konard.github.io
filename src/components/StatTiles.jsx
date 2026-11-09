@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 import { DataMark } from './DataSources';
 import { experience, experienceYears } from '../data/experience';
 import { tr, useLang } from '../i18n/prefs';
@@ -25,7 +26,7 @@ export function buildStats(github, codingSince, now = new Date(), habr = null, l
     {
       id: 'experience',
       value: experienceYears(undefined, now),
-      label: { en: 'Years of professional experience', ru: 'Лет профессионального опыта' },
+      label: localized('m33b216048384'),
       hint: {
         en: `${experience.length} companies and ventures since ${since}`,
         ru: `${experience.length} компаний и проектов с ${since} года`,
@@ -34,13 +35,13 @@ export function buildStats(github, codingSince, now = new Date(), habr = null, l
     {
       id: 'contributions',
       value: github.totals.contributions,
-      label: { en: 'GitHub contributions', ru: 'Вкладов на GitHub' },
+      label: localized('m74f8882ff2cf'),
       hint: `${first}–${last}`,
     },
     {
       id: 'repos',
       value: totals.ownRepositories,
-      label: { en: 'Original repositories', ru: 'Собственных репозиториев' },
+      label: localized('mf3e532f4ecb4'),
       hint: {
         en: `${n(totals.personalRepositories)} personal + ${n(totals.organizationRepositories)} in organizations, no forks`,
         ru: `${n(totals.personalRepositories)} личных + ${n(totals.organizationRepositories)} в организациях, без форков`,
@@ -49,33 +50,33 @@ export function buildStats(github, codingSince, now = new Date(), habr = null, l
     {
       id: 'organizations',
       value: totals.organizations,
-      label: { en: 'GitHub organizations', ru: 'Организаций на GitHub' },
-      hint: { en: 'founded, led or co-created', ru: 'основал, возглавлял или создавал вместе с другими' },
+      label: localized('m5ebfc89a2f99'),
+      hint: localized('m32e3934f78a4'),
     },
     {
       id: 'languages',
       value: totals.languages,
       // GitHub linguist also counts markup and configuration languages (HTML,
       // CSS, Dockerfile, Makefile, TeX…), so the label does not say "programming" (issue #47).
-      label: { en: 'Languages detected by GitHub', ru: 'Языков по данным GitHub' },
-      hint: { en: 'in original repositories, including markup', ru: 'в собственных репозиториях, включая разметку' },
+      label: localized('m864a0d36c2fb'),
+      hint: localized('m492eb73fd86a'),
     },
     {
       id: 'gists',
       value: github.profile.publicGists,
-      label: { en: 'Public gists', ru: 'Публичных gist' },
-      hint: { en: 'snippets, notes & logs', ru: 'фрагменты кода, заметки и логи' },
+      label: localized('maca4e00df6f1'),
+      hint: localized('ma399f97f654c'),
     },
     {
       id: 'packages',
       value: packages,
-      label: { en: 'Published packages', ru: 'Опубликованных пакетов' },
+      label: localized('m78ed0b9b6c42'),
       hint: github.registries.map((r) => r.name).join(' · '),
     },
     {
       id: 'downloads',
       value: lifetime.reduce((sum, r) => sum + r.downloads, 0),
-      label: { en: 'Package downloads', ru: 'Загрузок пакетов' },
+      label: localized('m559e25ff7b73'),
       hint: {
         en: `lifetime, ${lifetime.map((r) => r.name).join(' + ')}`,
         ru: `за всё время, ${lifetime.map((r) => r.name).join(' + ')}`,
@@ -84,19 +85,19 @@ export function buildStats(github, codingSince, now = new Date(), habr = null, l
     {
       id: 'stars',
       value: github.totals.stars,
-      label: { en: 'Stars on own projects', ru: 'Звёзд у своих проектов' },
-      hint: { en: 'personal + organizations', ru: 'личные + организации' },
+      label: localized('m339177b8166a'),
+      hint: localized('m123b79cb8056'),
     },
     {
       id: 'followers',
       value: github.profile.followers,
-      label: { en: 'GitHub followers', ru: 'Подписчиков на GitHub' },
+      label: localized('m649d7edb4314'),
       hint: { en: `following ${n(github.profile.following)}`, ru: `подписан на ${n(github.profile.following)}` },
     },
     {
       id: 'reputation',
       value: github.stackOverflow.reputation,
-      label: { en: 'Stack Overflow reputation', ru: 'Репутация на Stack Overflow' },
+      label: localized('m4764b398e32b'),
       hint: {
         en: `member since ${github.stackOverflow.memberSince}`,
         ru: `участник с ${github.stackOverflow.memberSince} года`,
@@ -107,10 +108,7 @@ export function buildStats(github, codingSince, now = new Date(), habr = null, l
           {
             id: 'habr',
             value: habrViews,
-            label: {
-              en: 'Views of Habr articles on links theory & Deep',
-              ru: 'Просмотров статей о теории связей и Deep на Хабре',
-            },
+            label: localized('mc3497cb749cd'),
             // The tile shows the committed snapshot while the Habr section refreshes
             // from the Habr API, so the tile names its date (issue #47).
             hint: {
@@ -124,7 +122,7 @@ export function buildStats(github, codingSince, now = new Date(), habr = null, l
     {
       id: 'years',
       value: now.getFullYear() - codingSince,
-      label: { en: 'Years of coding', ru: 'Лет программирования' },
+      label: localized('mb00969e10634'),
       hint: { en: `since ${codingSince}`, ru: `с ${codingSince} года` },
     },
   ];
@@ -135,7 +133,7 @@ export default function StatTiles({ github, codingSince, habr }) {
   const { lang, t } = useLang();
   const stats = buildStats(github, codingSince, new Date(), habr, lang);
   return (
-    <ul className="stats" aria-label={t({ en: 'Key numbers', ru: 'Ключевые цифры' })}>
+    <ul className="stats" aria-label={t(localized('m75b90f40cc0b'))}>
       {stats.map((s) => (
         <li key={s.id} className="stat">
           <span className="stat__value" title={formatNumber(s.value, lang)}>
@@ -148,11 +146,7 @@ export default function StatTiles({ github, codingSince, habr }) {
             {s.note && (
               <>
                 {' '}
-                <a
-                  className="data-mark"
-                  href={`#${s.note}`}
-                  aria-label={t({ en: 'Who wrote these articles', ru: 'Кто написал эти статьи' })}
-                >
+                <a className="data-mark" href={`#${s.note}`} aria-label={t(localized('md86cf51ac6b4'))}>
                   (**)
                 </a>
               </>

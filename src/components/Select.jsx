@@ -1,210 +1,107 @@
-import { Children, useEffect, useId, useLayoutEffect, useRef, useState } from 'react';
+import { Children, useId, useLayoutEffect, useRef } from 'react';
+import { flushSync } from 'react-dom';
+import { mountControls } from '@link-foundation/ui-components/controls';
+import { formatLinks } from '@link-foundation/ui-core';
+import { localized } from '../i18n/localizer';
+import { useLang } from '../i18n/prefs';
 import { useSettings } from '../settings/store';
-import { createPortal } from 'react-dom';
 import { cue } from '../sound/options';
-import { ChevronDown } from 'lucide-react';
-import { iconProps } from './icons';
+import '../ui/framework.css';
 
-/** Owned select-only combobox. Native-shaped onChange keeps callers simple.
- * The popup lives outside clipped glass panels; only an open menu has listeners.
- * Keyboard behavior follows WAI-ARIA APG, including cancellation and typeahead.
- */
+/** React event/skin adapter; the framework owns rendering and interaction. */
 export default function Select({ children, value, onChange, id, name, disabled, className = '', ...props }) {
-  const settings = useSettings();
-  const menuHeight = settings['ui.menuHeight'];
-  const menuWidth = settings['ui.menuWidth'];
   const generated = useId();
   const buttonId = id || `select-${generated}`;
-  const listId = `${buttonId}-list`;
-  const options = Children.toArray(children)
-    .filter(Boolean)
-    .map((child) => ({
-      value: String(child.props.value),
-      label: child.props.children,
-      disabled: child.props.disabled,
-    }));
-  const selected = options.findIndex((option) => option.value === String(value));
-  const [open, setOpen] = useState(false);
-  const [active, setActive] = useState(selected);
-  const [position, setPosition] = useState({});
-  const button = useRef(null);
-  const popup = useRef(null);
-  const typed = useRef({ text: '', at: 0 });
-  const show = () => {
-    if (!disabled && options.length) {
-      setActive(selected);
-      setOpen(true);
-    }
-  };
-  const commit = (index) => {
-    const option = options[index];
-    if (option && !option.disabled && option.value !== String(value)) {
-      onChange?.({ target: { value: option.value, name }, currentTarget: { value: option.value, name } });
-      cue('select');
-    }
-    setOpen(false);
-  };
-  useLayoutEffect(() => {
-    if (!open) return;
-    const place = () => {
-      const rect = button.current.getBoundingClientRect();
-      const width = Math.min(Math.max(rect.width, menuWidth), window.innerWidth - 16);
-      const bottom = Math.max(4, Math.min(rect.bottom, window.innerHeight - 4));
-      const top = Math.max(4, Math.min(rect.top, window.innerHeight - 4));
-      const below = window.innerHeight - bottom - 8;
-      const above = top - 8;
-      const up = below < 200 && above > below;
-      setPosition({
-        position: 'fixed',
-        width,
-        left: Math.min(Math.max(8, rect.left), window.innerWidth - width - 8),
-        maxHeight: Math.min(menuHeight, Math.max(80, up ? above : below)),
-        ...(up ? { bottom: window.innerHeight - top + 4 } : { top: bottom + 4 }),
-      });
-    };
-    place();
-    window.addEventListener('resize', place);
-    window.addEventListener('scroll', place, true);
-    return () => {
-      window.removeEventListener('resize', place);
-      window.removeEventListener('scroll', place, true);
-    };
-  }, [open, menuHeight, menuWidth]);
-  useEffect(() => {
-    if (!open) return;
-    const outside = (event) => {
-      if (!button.current?.contains(event.target) && !popup.current?.contains(event.target)) setOpen(false);
-    };
-    document.addEventListener('pointerdown', outside);
-    return () => document.removeEventListener('pointerdown', outside);
-  }, [open]);
-  useEffect(() => {
-    const list = popup.current;
-    const option = list?.children[active];
-    if (open && option) {
-      // Scroll only the popup. scrollIntoView can also move the document and
-      // pull a portalled menu away from its anchor while it is being placed.
-      if (option.offsetTop < list.scrollTop) list.scrollTop = option.offsetTop;
-      else if (option.offsetTop + option.offsetHeight > list.scrollTop + list.clientHeight)
-        list.scrollTop = option.offsetTop + option.offsetHeight - list.clientHeight;
-    }
-  }, [active, open]);
-  const move = (start, delta = 1) => {
-    for (let index = start; index >= 0 && index < options.length; index += delta) {
-      if (!options[index].disabled) {
-        setActive(index);
-        return;
-      }
-    }
-  };
-  const keyDown = (event) => {
-    const key = event.key;
-    if (['ArrowDown', 'ArrowUp', 'Home', 'End', 'PageUp', 'PageDown', 'Enter', ' ', 'Escape'].includes(key))
-      event.preventDefault();
-    if (key === 'Escape') {
-      event.stopPropagation();
-      setOpen(false);
-      return;
-    }
-    if (key === 'Tab') {
-      if (open) commit(active);
-      return;
-    }
-    if (open && event.altKey && key === 'ArrowUp') {
-      commit(active);
-      return;
-    }
-    if (!open && ['ArrowDown', 'ArrowUp', 'Home', 'End', 'Enter', ' '].includes(key)) {
-      show();
-      if (key === 'Home' || key === 'ArrowUp') move(0);
-      if (key === 'End') move(options.length - 1, -1);
-      return;
-    }
-    if (key === 'ArrowDown') move(Math.max(0, active + 1));
-    else if (key === 'ArrowUp') move(active - 1, -1);
-    else if (key === 'Home') move(0);
-    else if (key === 'End') move(options.length - 1, -1);
-    else if (open && key === 'PageDown') move(Math.min(options.length - 1, active + 10), -1);
-    else if (open && key === 'PageUp') move(Math.max(0, active - 10));
-    else if (open && (key === 'Enter' || key === ' ')) commit(active);
-    else if (key.length === 1 && !event.ctrlKey && !event.metaKey && !event.altKey) {
-      event.preventDefault();
-      const now = Date.now();
-      const state = typed.current;
-      state.text = now - state.at > 700 ? key.toLowerCase() : state.text + key.toLowerCase();
-      state.at = now;
-      if (!open) show();
-      const query = [...state.text].every((c) => c === state.text[0]) ? state.text[0] : state.text;
-      for (let offset = 1; offset <= options.length; offset++) {
-        const index = (Math.max(active, 0) + offset) % options.length;
-        const option = options[index];
-        if (!option.disabled && String(option.label).trim().toLocaleLowerCase().startsWith(query)) {
-          setActive(index);
-          break;
-        }
-      }
-    }
-  };
-  return (
-    <>
-      {name && <input type="hidden" name={name} value={value} />}
-      <button
-        {...props}
-        id={buttonId}
-        ref={button}
-        type="button"
-        role="combobox"
-        disabled={disabled}
-        className={`ui-select ${className}`}
-        data-value={value}
-        aria-haspopup="listbox"
-        aria-expanded={open}
-        aria-controls={open ? listId : undefined}
-        aria-activedescendant={open && active >= 0 ? `${listId}-${active}` : undefined}
-        onClick={(event) => {
-          // Safari does not necessarily focus a button after a pointer click.
-          // Keep keyboard navigation on the combobox in every engine.
-          event.currentTarget.focus({ preventScroll: true });
-          if (open) setOpen(false);
-          else show();
-        }}
-        onKeyDown={keyDown}
-        onBlur={(event) => {
-          if (!popup.current?.contains(event.relatedTarget)) setOpen(false);
-        }}
-      >
-        <span>{options[selected]?.label || '—'}</span>
-        <ChevronDown {...iconProps} />
-      </button>
-      {open &&
-        createPortal(
-          <ul
-            ref={popup}
-            id={listId}
-            role="listbox"
-            aria-labelledby={buttonId}
-            className="ui-select__list"
-            style={position}
-            onPointerDown={(event) => event.preventDefault()}
-          >
-            {options.map((option, index) => (
-              <li
-                key={option.value}
-                id={`${listId}-${index}`}
-                role="option"
-                aria-selected={index === selected}
-                aria-disabled={option.disabled || undefined}
-                data-value={option.value}
-                data-active={index === active}
-                onPointerMove={() => !option.disabled && setActive(index)}
-                onClick={() => !option.disabled && commit(index)}
-              >
-                {option.label}
-              </li>
-            ))}
-          </ul>,
-          document.body,
-        )}
-    </>
+  const host = useRef(null);
+  const mounted = useRef(null);
+  const settings = useSettings();
+  const { t } = useLang();
+  const menuHeight = settings['ui.menuHeight'];
+  const menuWidth = settings['ui.menuWidth'];
+  const attributes = JSON.stringify(
+    Object.entries(props).filter(([key, val]) => (key.startsWith('aria-') || key.startsWith('data-')) && val != null),
   );
+  const options = JSON.stringify(
+    Children.toArray(children)
+      .filter(Boolean)
+      .map((child) => ({
+        value: String(child.props.value),
+        label: Children.toArray(child.props.children).join(''),
+        disabled: !!child.props.disabled,
+      })),
+  );
+  useLayoutEffect(() => {
+    const source = formatLinks([
+      {
+        id: buttonId,
+        values: [
+          'select',
+          ['external-label', 'true'],
+          ...JSON.parse(options).map((option, i) => ({
+            id: `${buttonId}-${i}`,
+            values: [
+              'option',
+              option.label,
+              ['value', option.value],
+              ...(option.disabled ? [['disabled', 'true']] : []),
+            ],
+          })),
+        ],
+      },
+    ]);
+    const handle = mountControls(host.current, source);
+    mounted.current = handle;
+    const button = host.current.querySelector('button');
+    const list = document.getElementById(button.getAttribute('aria-controls'));
+    button.id = buttonId;
+    list.className = 'ui-select__list';
+    return () => {
+      handle.destroy();
+      mounted.current = null;
+    };
+  }, [buttonId, options]);
+  useLayoutEffect(() => {
+    const { store } = mounted.current;
+    store.setProp(buttonId, 'value', [String(value)]);
+    store.setProp(buttonId, 'disabled', [String(!!disabled)]);
+    store.setProp(buttonId, 'menu-min-width', [String(menuWidth)]);
+    store.setProp(buttonId, 'menu-max-height', [String(menuHeight)]);
+    if (name) store.setProp(buttonId, 'name', [name]);
+    for (const [key, val] of JSON.parse(attributes)) {
+      if (key === 'aria-label' || key === 'aria-labelledby') store.setProp(buttonId, key, [String(val)]);
+    }
+    mounted.current.handle.flush();
+    const button = host.current.querySelector('button');
+    button.className = `ui-select ${className}`;
+    button.dataset.value = value;
+    for (const [key, val] of JSON.parse(attributes)) button.setAttribute(key, String(val));
+  }, [buttonId, options, value, disabled, name, className, attributes, menuHeight, menuWidth]);
+  useLayoutEffect(() => {
+    const button = host.current.querySelector('button');
+    // Keep the host's existing labels; hidden framework options are not part
+    // of the enclosing label's text, and the list has its own accessible name.
+    const label = button.labels?.[0]?.cloneNode(true);
+    label?.querySelectorAll('.framework-control').forEach((node) => node.remove());
+    const labelText = props['aria-label'] || label?.textContent.trim();
+    const list = document.getElementById(button.getAttribute('aria-controls'));
+    const listName = `${t(localized('selectOptions'))}${labelText ? `: ${labelText}` : ''}`;
+    const { store, handle } = mounted.current;
+    const labelChanged = labelText && button.getAttribute('aria-label') !== labelText;
+    const listChanged = list.getAttribute('aria-label') !== listName;
+    if (labelChanged) store.setProp(buttonId, 'aria-label', [labelText]);
+    if (listChanged) store.setProp(buttonId, 'list-label', [listName]);
+    if (labelChanged || listChanged) handle.flush();
+    const change = (event) => {
+      if (event.detail.value === String(value)) return;
+      const target = { value: event.detail.value, name };
+      // This native framework event runs outside React's discrete event
+      // system. Commit before returning, like the original React click did.
+      flushSync(() => onChange?.({ target, currentTarget: target }));
+      cue('select');
+    };
+    const element = host.current;
+    element.addEventListener('ui-change', change);
+    return () => element.removeEventListener('ui-change', change);
+  });
+  return <span className="framework-control" ref={host} />;
 }

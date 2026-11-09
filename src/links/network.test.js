@@ -60,6 +60,7 @@ describe('notations of the editor (issue #17)', () => {
     expect(parseLinks('(1: 0 1) (2: 2 0)').links).toEqual(links);
     expect(parseLinks('(2: 2 0)\n(1: 0 1)').links).toEqual(links);
     expect(parseLinks('(0 1) (2 0)').links).toEqual(links);
+    expect(parseLinks('1: 0 1\n2: 2 0').links).toEqual(links);
     expect(parseCode('0120')).toBe('01 20');
     expect(parseCode('01-20')).toBe('01 20');
   });

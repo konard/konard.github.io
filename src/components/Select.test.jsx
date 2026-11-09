@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import Select from './Select';
 
@@ -28,6 +28,35 @@ describe('owned select-only combobox', () => {
     );
     expect(button).toHaveAttribute('aria-expanded', 'false');
   });
+  it('keeps the enclosing label distinct from hidden options and the listbox name', () => {
+    const { button } = setup();
+    expect(screen.getByLabelText('Palette')).toBe(button);
+    expect(button).toHaveAccessibleName('Palette');
+    fireEvent.click(button);
+    expect(screen.getByRole('listbox')).toHaveAccessibleName('Options: Palette');
+    expect(screen.getByLabelText('Palette')).toBe(button);
+  });
+  it('keeps unchanged control DOM stable while using the latest parent callback', async () => {
+    const first = vi.fn();
+    const latest = vi.fn();
+    const view = (onChange) => (
+      <Select value="blue" onChange={onChange} aria-label="Palette">
+        <option value="blue">Blue</option>
+        <option value="green">Green</option>
+      </Select>
+    );
+    const { container, rerender } = render(view(first));
+    const mutations = [];
+    const observer = new MutationObserver((records) => mutations.push(...records));
+    observer.observe(container, { attributes: true, childList: true, subtree: true });
+    await act(async () => rerender(view(latest)));
+    observer.disconnect();
+    expect(mutations).toHaveLength(0);
+    fireEvent.click(screen.getByRole('combobox'));
+    fireEvent.click(screen.getByRole('option', { name: 'Green' }));
+    expect(first).not.toHaveBeenCalled();
+    expect(latest).toHaveBeenCalledWith(expect.objectContaining({ target: { value: 'green', name: undefined } }));
+  });
   it('supports navigation, typeahead and Escape without changing the selection', () => {
     const { button, onChange } = setup();
     button.focus();
@@ -53,6 +82,23 @@ describe('owned select-only combobox', () => {
     fireEvent.click(button);
     fireEvent.keyDown(button, { key: 'ArrowDown' });
     expect(screen.queryByRole('listbox')).toBeNull();
+  });
+  it('preserves labels assembled from multiple text and numeric children', () => {
+    render(
+      <Select value="zero" onChange={() => {}} aria-label="References">
+        <option value="zero">
+          {0}
+          {' — void'}
+        </option>
+        <option value="size">
+          {1280} × {800} ({'current'})
+        </option>
+      </Select>,
+    );
+    const button = screen.getByRole('combobox');
+    expect(button).toHaveTextContent('0 — void');
+    fireEvent.click(button);
+    expect(screen.getByRole('option', { name: '1280 × 800 (current)' })).toBeInTheDocument();
   });
   it('commits on Tab and Alt+Up and supports page navigation', () => {
     const { button, onChange } = setup();

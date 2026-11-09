@@ -1,61 +1,22 @@
+import { localized } from '../i18n/localizer.js';
 import { range } from './fields.js';
 
 export const MATERIAL_FIELDS = [
-  range('liquid.opacity', 0.85, 0, 1, 0.01, { en: 'Material opacity', ru: 'Непрозрачность материала' }, { unit: '%' }),
-  range('liquid.contrast', 100, 50, 200, 1, { en: 'Backdrop contrast', ru: 'Контраст фона за стеклом' }, { unit: '%' }),
-  range('liquid.noise', 0, 0, 0.25, 0.01, { en: 'Frost grain', ru: 'Зернистость матового стекла' }, { unit: '%' }),
-  range(
-    'liquid.sheenStrength',
-    0.16,
-    0,
-    0.8,
-    0.01,
-    { en: 'Sheen strength', ru: 'Сила глянцевого блика' },
-    { unit: '%' },
-  ),
-  range('liquid.sheenAngle', 110, 0, 360, 1, { en: 'Sheen angle', ru: 'Угол глянцевого блика' }, { unit: 'deg' }),
-  range('liquid.lightAngle', 180, 0, 360, 1, { en: 'Lighting angle', ru: 'Угол освещения' }, { unit: 'deg' }),
-  range('liquid.borderWidth', 1, 0, 8, 0.5, { en: 'Glass border width', ru: 'Толщина рамки стекла' }, { unit: 'px' }),
-  range('liquid.borderLight', 0.4, 0, 1, 0.01, { en: 'Border lighting', ru: 'Освещение рамки' }, { unit: '%' }),
-  range(
-    'liquid.depthBlur',
-    20,
-    0,
-    80,
-    1,
-    { en: 'Inner glow spread', ru: 'Размер внутреннего свечения' },
-    { unit: 'px' },
-  ),
-  range('liquid.shadowBlur', 30, 0, 100, 1, { en: 'Shadow blur', ru: 'Размытие тени' }, { unit: 'px' }),
-  range('liquid.shadowDistance', 12, 0, 60, 1, { en: 'Shadow distance', ru: 'Смещение тени' }, { unit: 'px' }),
-  range('liquid.shadowSpread', 0, -20, 30, 1, { en: 'Shadow spread', ru: 'Расширение тени' }, { unit: 'px' }),
-  range(
-    'liquid.refractionOctaves',
-    2,
-    1,
-    4,
-    1,
-    { en: 'Refraction noise layers', ru: 'Слои шума преломления' },
-    { css: false },
-  ),
-  range(
-    'liquid.refractionSmoothing',
-    2,
-    0,
-    10,
-    0.5,
-    { en: 'Refraction smoothing', ru: 'Сглаживание преломления' },
-    { css: false },
-  ),
-  range(
-    'liquid.refractionSeed',
-    13,
-    0,
-    100,
-    1,
-    { en: 'Refraction seed', ru: 'Начальное зерно преломления' },
-    { css: false },
-  ),
+  range('liquid.opacity', 0.85, 0, 1, 0.01, localized('mcf47ce87ce73'), { unit: '%' }),
+  range('liquid.contrast', 100, 50, 200, 1, localized('m738596896ad1'), { unit: '%' }),
+  range('liquid.noise', 0, 0, 0.25, 0.01, localized('m124e236ea6a9'), { unit: '%' }),
+  range('liquid.sheenStrength', 0.16, 0, 0.8, 0.01, localized('m0340ac68b1a8'), { unit: '%' }),
+  range('liquid.sheenAngle', 110, 0, 360, 1, localized('m819032aea370'), { unit: 'deg' }),
+  range('liquid.lightAngle', 180, 0, 360, 1, localized('m0bf34c1269e4'), { unit: 'deg' }),
+  range('liquid.borderWidth', 1, 0, 8, 0.5, localized('m7a1ded29929a'), { unit: 'px' }),
+  range('liquid.borderLight', 0.4, 0, 1, 0.01, localized('m0fff34e4e9e2'), { unit: '%' }),
+  range('liquid.depthBlur', 20, 0, 80, 1, localized('mf83c8f052e30'), { unit: 'px' }),
+  range('liquid.shadowBlur', 30, 0, 100, 1, localized('m111ede846cfc'), { unit: 'px' }),
+  range('liquid.shadowDistance', 12, 0, 60, 1, localized('m0446bb8deead'), { unit: 'px' }),
+  range('liquid.shadowSpread', 0, -20, 30, 1, localized('m60451f3105f5'), { unit: 'px' }),
+  range('liquid.refractionOctaves', 2, 1, 4, 1, localized('m1602a7aa6b49'), { css: false }),
+  range('liquid.refractionSmoothing', 2, 0, 10, 0.5, localized('mbb21ae8a3179'), { css: false }),
+  range('liquid.refractionSeed', 13, 0, 100, 1, localized('m74372ed5f483'), { css: false }),
 ];
 
 const OPTICAL_DEFAULTS = {
@@ -71,7 +32,7 @@ const OPTICAL_DEFAULTS = {
 export const MATERIAL_PRESETS = [
   {
     id: 'frosted',
-    label: { en: 'Frosted', ru: 'Матовое' },
+    label: localized('m20b65766fb4a'),
     values: {
       ...OPTICAL_DEFAULTS,
       'liquid.blur': 28,
@@ -91,7 +52,7 @@ export const MATERIAL_PRESETS = [
   },
   {
     id: 'glossy',
-    label: { en: 'Glossy', ru: 'Глянцевое' },
+    label: localized('m4ca8b7250b49'),
     values: {
       ...OPTICAL_DEFAULTS,
       'liquid.blur': 6,
@@ -111,7 +72,7 @@ export const MATERIAL_PRESETS = [
   },
   {
     id: 'liquid',
-    label: { en: 'Liquid', ru: 'Жидкое' },
+    label: localized('m15dd1ab54927'),
     values: {
       ...OPTICAL_DEFAULTS,
       'liquid.blur': 18,

@@ -1,0 +1,31 @@
+/* Framework light DOM uses the existing theme and frame selectors. */
+.framework-control,
+.framework-control ui-select {
+  display: contents;
+}
+.framework-control ui-select > [data-part='label'] {
+  display: none;
+}
+.framework-control [data-part='value'] {
+  display: inline;
+}
+.framework-control [data-part='indicator']::after {
+  content: '';
+  display: block;
+  width: 1em;
+  height: 1em;
+  background: currentColor;
+  forced-color-adjust: none;
+  mask: url('./chevron-down.svg') center / contain no-repeat;
+}
+.ui-select__list [data-part='indicator'] {
+  display: none;
+}
+.framework-control [data-part='listbox']:not([popover]) {
+  position: fixed;
+}
+@media (forced-colors: active) {
+  .framework-control [data-part='indicator']::after {
+    color: ButtonText;
+  }
+}

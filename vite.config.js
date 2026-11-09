@@ -60,7 +60,8 @@ const isName = (key) => {
 export const linoData = () => ({
   name: 'lino-data',
   transform(code, id) {
-    if (!/\.lino(?:$|\?)/.test(id)) return null;
+    // Framework schemas use their own dialect and Vite's ?url/?raw handling.
+    if (!id.endsWith('.lino') || id.includes('/node_modules/')) return null;
     const { value } = readNotation(code);
     const names = isObject(value) ? Object.keys(value).filter(isName) : [];
     return {

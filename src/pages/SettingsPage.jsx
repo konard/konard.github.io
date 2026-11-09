@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 import InterfacePreview, { MaterialPresets } from './InterfacePreview';
 import UiSamples from './UiSamples';
 import ColorInput from '../components/ColorInput';
@@ -86,8 +87,8 @@ function Control({ field, value, settings }) {
             className="setting__play"
             disabled={value === 'none'}
             onClick={() => previewSound(value)}
-            title={t({ en: 'Play', ru: 'Проиграть' })}
-            aria-label={`${t({ en: 'Play', ru: 'Проиграть' })}: ${t(field.label)}`}
+            title={t(localized('mef9cdc7c629e'))}
+            aria-label={`${t(localized('mef9cdc7c629e'))}: ${t(field.label)}`}
           >
             <Play {...iconProps} />
           </button>
@@ -113,8 +114,8 @@ function Control({ field, value, settings }) {
         className="setting__reset"
         onClick={() => resetSettings([field.key])}
         disabled={!changed}
-        title={t({ en: 'Back to the default', ru: 'Вернуть по умолчанию' })}
-        aria-label={`${t({ en: 'Back to the default', ru: 'Вернуть по умолчанию' })}: ${t(field.label)}`}
+        title={t(localized('mb156711b9597'))}
+        aria-label={`${t(localized('mb156711b9597'))}: ${t(field.label)}`}
       >
         <RotateCcw {...iconProps} />
       </button>
@@ -127,7 +128,7 @@ function Control({ field, value, settings }) {
 function Palettes({ value }) {
   const { t } = useLang();
   return (
-    <div className="palettes" role="group" aria-label={t({ en: 'Palettes', ru: 'Палитры' })}>
+    <div className="palettes" role="group" aria-label={t(localized('me7b18625be67'))}>
       {PALETTES.map(([id, en, ru, neon]) => (
         <button
           key={id}
@@ -200,7 +201,7 @@ function Group({ section, settings }) {
       <header className="settings__head">
         <h2 id={`${section.id}-title`}>{t(section.title)}</h2>
         <button type="button" className="button button--small" onClick={() => resetSettings(keys)} disabled={!changed}>
-          {t({ en: 'Reset', ru: 'Сбросить' })}
+          {t(localized('m1273fbb7d339'))}
         </button>
       </header>
       {section.lead && <p className="settings__lead">{t(section.lead)}</p>}
@@ -217,7 +218,7 @@ function Group({ section, settings }) {
           items={section.levels}
           prefix="level"
           controls={`${section.id}-level`}
-          label={t({ en: 'Levels', ru: 'Уровни' })}
+          label={t(localized('ma68fcc7f03e7'))}
           isOn={(id) => id !== section.levels[0].id && ownsCorners(id, settings)}
         />
       )}
@@ -266,14 +267,9 @@ export default function SettingsPage() {
   const copy = async () => {
     try {
       await navigator.clipboard.writeText(text);
-      setStatus(t({ en: 'Copied.', ru: 'Скопировано.' }));
+      setStatus(t(localized('m099775f5ff02')));
     } catch {
-      setStatus(
-        t({
-          en: 'Copying is not allowed here; select the text below.',
-          ru: 'Копирование запрещено; выделите текст ниже.',
-        }),
-      );
+      setStatus(t(localized('mab1de18eeab5')));
     }
   };
   const load = () => {
@@ -282,36 +278,26 @@ export default function SettingsPage() {
       if (pasted.presets) {
         // Looks copied from "Presets" in another browser.
         setSaved(withImported(getSaved(), pasted.presets));
-        setStatus(t({ en: 'The looks are added to the presets.', ru: 'Виды добавлены к пресетам.' }));
+        setStatus(t(localized('mcabea3631f5f')));
       } else {
         setSettings({ ...DEFAULTS, ...pasted.settings });
-        setStatus(t({ en: 'Settings loaded.', ru: 'Настройки загружены.' }));
+        setStatus(t(localized('mfd05baf40a9c')));
       }
       setDraft('');
     } catch {
-      setStatus(
-        t({
-          en: 'These are not settings in Links Notation or JSON.',
-          ru: 'Это не настройки в Links Notation или JSON.',
-        }),
-      );
+      setStatus(t(localized('mb1554300632a')));
     }
   };
 
   return (
     <Layout
       page="settings"
-      sections={[
-        ['presets', { en: 'Presets', ru: 'Пресеты' }],
-        ...sections.map((section) => [section.id, section.title]),
-      ]}
+      sections={[['presets', localized('mc14b9e9ec1af')], ...sections.map((section) => [section.id, section.title])]}
     >
       <div className={`settings${peek ? ' settings--peek' : ''}`}>
         <header className="page-hero" id="top">
-          <p className="section__kicker">{t({ en: 'Settings', ru: 'Настройки' })}</p>
-          <h1 className="page-hero__title">
-            {t({ en: 'Background, skin, sound and notation', ru: 'Фон, оформление, звук и нотация' })}
-          </h1>
+          <p className="section__kicker">{t(localized('m36a930702b39'))}</p>
+          <h1 className="page-hero__title">{t(localized('mbca00302147f'))}</h1>
           <p className="page-hero__lead">
             {t({
               en: `${FIELDS.length} ${plural(FIELDS.length, lang, SETTINGS)}. Every change is applied at once to this page and its background, and is remembered in this browser only. ${changed} ${plural(changed, lang, SETTINGS)} ${plural(changed, lang, CHANGED)} from the defaults.`,
@@ -326,12 +312,10 @@ export default function SettingsPage() {
               data-sound={peek ? 'close' : 'open'}
               onClick={() => setPeek(!peek)}
             >
-              {peek
-                ? t({ en: 'Show the settings', ru: 'Показать настройки' })
-                : t({ en: 'Look at the background', ru: 'Посмотреть на фон' })}
+              {peek ? t(localized('m3774e2d8c501')) : t(localized('mf594a7dc60ff'))}
             </button>
             <button type="button" className="button" onClick={() => resetSettings()} disabled={!changed}>
-              {t({ en: 'Reset everything', ru: 'Сбросить всё' })}
+              {t(localized('m3aa4d524cb35'))}
             </button>
           </div>
         </header>
@@ -349,32 +333,24 @@ export default function SettingsPage() {
 
           <section id="share" className="settings__group settings__share" aria-labelledby="share-title">
             <header className="settings__head">
-              <h2 id="share-title">{t({ en: 'Your changes', ru: 'Ваши изменения' })}</h2>
+              <h2 id="share-title">{t(localized('m27a7e6efd531'))}</h2>
             </header>
-            <p className="settings__lead">
-              {t({
-                en: 'Only what differs from the defaults, in Links Notation: copy it to move the settings to another browser or to suggest better defaults. JSON copied before still loads.',
-                ru: 'Только то, что отличается от значений по умолчанию, в Links Notation: скопируйте, чтобы перенести настройки в другой браузер или предложить лучшие значения по умолчанию. Скопированный раньше JSON тоже загружается.',
-              })}
-            </p>
-            <pre className="settings__json mono" aria-label={t({ en: 'Changed settings', ru: 'Изменённые настройки' })}>
+            <p className="settings__lead">{t(localized('m7598dd34ba26'))}</p>
+            <pre className="settings__json mono" aria-label={t(localized('m8e8c6d374b01'))}>
               {text}
             </pre>
             <div className="page-hero__actions">
               <button type="button" className="button" onClick={copy} disabled={!changed}>
-                {t({ en: 'Copy', ru: 'Скопировать' })}
+                {t(localized('m16c143d90f28'))}
               </button>
             </div>
             <label className="settings__import">
-              {t({
-                en: 'Paste settings or saved looks to load them',
-                ru: 'Вставьте настройки или сохранённые виды, чтобы загрузить их',
-              })}
+              {t(localized('m5cde81733bac'))}
               <textarea className="mono" rows={4} value={draft} onChange={(event) => setDraft(event.target.value)} />
             </label>
             <div className="page-hero__actions">
               <button type="button" className="button" onClick={load} disabled={!draft.trim()}>
-                {t({ en: 'Load', ru: 'Загрузить' })}
+                {t(localized('md0cc665eb437'))}
               </button>
               <span role="status" className="settings__status">
                 {status}
@@ -390,7 +366,7 @@ export default function SettingsPage() {
           data-sound="close"
           onClick={() => setPeek(false)}
         >
-          {t({ en: 'Show the settings', ru: 'Показать настройки' })}
+          {t(localized('m3774e2d8c501'))}
         </button>
       )}
     </Layout>
