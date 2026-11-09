@@ -70,3 +70,24 @@ passing checks still do not complete the separate upstream-support criterion.
 - [x] Review the final implementation diff and update the PR description with
       regressions, evidence and remaining blockers. Keep final CI status in the
       PR description and confirm a clean working tree before reporting results.
+
+## Re-audit: November 9
+
+- [x] Read the owner's 2026-11-09 PR comment: confirm full delivery and move
+      everything general upstream through issues.
+- [x] Refresh upstream: 209–212 closed, PRs 216–218 merged; repack all eleven
+      archives from the single revision `b4baef4`; update the lockfile
+      integrity, manifest test and docs. Focused tests and the build pass.
+- [x] Compare every remaining site module with upstream at `b4baef4`.
+      Separate general mechanisms from site content.
+- [x] File granular behavior-only requests 221–235 (publication, sound,
+      governor, backgrounds, frames CSS, materials, network renderer, solver,
+      configurations, editor, settings panel, charts, layout, icons and embeds).
+      Preserve the bodies in `upstream-requests/` and link them on upstream
+      issue 66.
+- [ ] Full upstream support: blocked until requests 222–235 are implemented
+      and npm publication (221) is done by a maintainer. The owner's licensing
+      decision would allow a direct port instead of independent
+      reimplementation.
+- [ ] Delete the consumer implementations listed in each request once upstream
+      ships them, against the existing browser suites.

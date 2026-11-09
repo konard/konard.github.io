@@ -29,7 +29,7 @@ older site revision; its full body and comments are preserved separately.
 | Fully draft migration to link-foundation/ui | Install a reproducible source snapshot; integrate current supported APIs; retain explicit adapters at unsupported boundaries | Eleven pinned packages; `src/ui/framework.test.js`; production build and browser migration smoke |
 | Double-check similar or close rendering | Freeze old settings/looks, capture before and after using identical seeded browser inputs, compare themes, sizes, pages and presets | `renderings.mjs`, committed representative screenshots and comparison data |
 | More polished behavior wins | Preserve the existing rich previews, frames, live editing and geometry; adopt framework controls, collision-safe placement and inspector where usable | Existing feature/browser suites plus migration checks; no blanket replacement with less capable widgets |
-| Report every framework missing feature or bug blocking full use | Reproduce actual failures and compare source APIs with current contracts; file grouped, actionable upstream reports | Reports 209–212, exact report bodies retained here |
+| Report every framework missing feature or bug blocking full use | Reproduce actual failures and compare source APIs with current contracts; file grouped, actionable upstream reports | Reports 209–212, then granular requests 221–235 (2026-11-09 re-audit); exact bodies retained here |
 | Draft with workarounds at the same time | Compatibility schema projection, control events/styles, legacy storage/CSS boundary and source archives; initial browser transforms were removed after upstream fixes | Public-contract tests, palette/default fixtures, production inspector and keyboard checks |
 | Ensure all reusable features are fully supported upstream, making this site's UI as short as possible | Prefer framework engines; identify APIs required to remove each remaining generic backend; propose provider/schema extension points | **Blocked:** the current upstream release cannot express the complete control/panel/frame/network/material contracts. Reports alone do not satisfy this criterion |
 | Collect all data in docs/case-studies/issue-54 | Preserve issue/feedback/source metadata, frozen schemas/looks/palettes, upstream reports, verification records and screenshots | This directory and its relative links; source archives and manifest are under `vendor/link-ui` |
@@ -538,3 +538,69 @@ There is still no `issue-211` implementation branch and report 211 remains
 open. `data/upstream-restart-status.json` records the new merged SHAs. The
 independent frame/material/network/audio acceptance criterion remains
 unfinished; this CI correction cannot supply those absent upstream APIs.
+
+## 2026-11-09 re-audit: upstream completeness requests
+
+The owner asked on 2026-11-09 to double-check that issue 54 is fully delivered
+and that link-foundation/ui has exactly everything this site needs. Everything
+general and not site-specific should move upstream through issues.
+
+**Fresh upstream state.** Reports 209–212 are closed. PRs 216 (WASM kept out of
+DOM builds), 217 (network providers and independent optical frames) and 218
+(release preparation) are merged. All eleven archives are repacked from one
+revision, `b4baef4d56eacc9c05d033e3e33a895e540b40ac`, replacing the earlier
+two-revision pin. The npm lockfile integrity, the manifest test and
+`vendor/link-ui/README.md` are updated. The focused UI, settings and component
+suites (28 files, 163 tests), the chunk, CI and deployment policy tests and
+the production build all pass locally.
+
+**What closing those reports did not deliver.** PR 217 adds provider hooks
+and a declarative frame schema. Its own case study marks exact consumer
+geometry, solver, caption/export, palette and optical parity as unfinished.
+PR 218 prepares archives, but every `@link-foundation/ui-*` name still
+returns npm E404. The release workflow on main fails because no `NPM_TOKEN`
+exists for the first publication
+(`logs/upstream-release-42325573807.log.gz`). Closed issues therefore do not
+mean the site can delete its implementations.
+
+**New granular requests.** Each remaining reusable area is one issue with
+behavior-level acceptance criteria and the consumer files it would make
+deletable. Their exact bodies are in `upstream-requests/`. A [summary on upstream issue 66](https://github.com/link-foundation/ui/issues/66#issuecomment-6744883767)
+links them. They supersede the 210/211 references in the remaining-consumer-code
+table above: each row there is now tracked by one or more of these requests.
+
+| Request | Title | Body |
+| --- | --- | --- |
+| [221](https://github.com/link-foundation/ui/issues/221) | Release: first npm publication is still blocked on main after #209 closed | `upstream-requests/publication.md` |
+| [222](https://github.com/link-foundation/ui/issues/222) | ui-sound: live bus parameters, humanized playback, settings-driven event mapping and document-level interaction binding | `upstream-requests/sound.md` |
+| [223](https://github.com/link-foundation/ui/issues/223) | ui-themes: adaptive quality degradation, per-effect frame rate and still repaints in createEffectGovernor | `upstream-requests/quality-governor.md` |
+| [224](https://github.com/link-foundation/ui/issues/224) | ui-animation: reusable canvas/WebGL background effect layers (starfield, shader backdrop, grid beams, glyph rain, grid pattern) | `upstream-requests/background-effects.md` |
+| [225](https://github.com/link-foundation/ui/issues/225) | ui-themes: build-time CSS output for independent frames (per-level, per-corner lines, edge styles, states, fit, typed custom-property registration) | `upstream-requests/frames-css.md` |
+| [226](https://github.com/link-foundation/ui/issues/226) | ui-themes: complete optical materials (filter chain, highlights, noise layer, refraction provider, backdrop budget) and palette packs with alpha channels | `upstream-requests/materials.md` |
+| [227](https://github.com/link-foundation/ui/issues/227) | ui-components/links-view: default doublet-network renderer with one cubic curve per link, symmetric loops, turns/gaps and nine parametric markers | `upstream-requests/network-renderer.md` |
+| [228](https://github.com/link-foundation/ui/issues/228) | ui-components/links-view: collision solver that tries turns before gaps, scores painted clearance and runs as a cancellable provider job | `upstream-requests/network-solver.md` |
+| [229](https://github.com/link-foundation/ui/issues/229) | ui-links: doublet-network enumeration, renaming classes, notations and a configurations gallery | `upstream-requests/network-configurations.md` |
+| [230](https://github.com/link-foundation/ui/issues/230) | ui-components/links-view: network editor panels with live notations, per-link controls, looks, sharing and URL sync | `upstream-requests/network-editor.md` |
+| [231](https://github.com/link-foundation/ui/issues/231) | ui-settings / createSettingsPanel: balanced columns, preset gallery with live miniatures, saved-look management, popover colour chooser and cross-tab sync | `upstream-requests/settings-panel.md` |
+| [232](https://github.com/link-foundation/ui/issues/232) | ui-components/charts: calendar heatmap, range timeline, tag cloud, composition bar, log scale and unclipped rich tooltips | `upstream-requests/charts.md` |
+| [233](https://github.com/link-foundation/ui/issues/233) | ui-components/layout: scrolling link navigation with centred current item and edge fades, section nav, link-card grid, titled section, and quick preference switches | `upstream-requests/layout-nav.md` |
+| [234](https://github.com/link-foundation/ui/issues/234) | ui-components/icons: brand icon set (Simple Icons), static builds of app-chosen names, filled/stroke variants and inline icons in localized messages | `upstream-requests/icons.md` |
+| [235](https://github.com/link-foundation/ui/issues/235) | ui-components: deferred third-party post embed with provider adapters, timeout fallback and archived content | `upstream-requests/embeds.md` |
+
+**Deliberately kept in the site.** Site content stays here: CV, posts,
+repository and indicator data, texts, artwork-specific diagrams and the
+twelve palettes' concrete values. These are not framework features.
+
+**Licensing blocker.** This repository still has no license; the license
+API returns 404. Upstream policy forbids copying from it. Every request is
+therefore a behavior specification that upstream must implement
+independently. That takes longer than porting the code. Adding a license,
+for example Unlicense like the framework, is the owner's decision, so this
+PR does not make it. A license would let upstream port the existing
+implementations and their tests directly.
+
+**Status.** The criterion "every reusable feature is fully supported upstream"
+stays **unfinished**. It needs the requested upstream implementations, an npm
+publication by a maintainer, and then a consumer PR that deletes the listed
+files against the existing browser suites. Filing the issues is necessary but
+does not complete it.
