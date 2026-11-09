@@ -1,5 +1,5 @@
 // Snapshot only distributable files until upstream publishes its workspaces.
-// SOURCE=/path/to/controls BROWSER_SOURCE=/path/to/browser-fixes node experiments/framework-migration/vendor.mjs
+// SOURCE=/path/to/link-foundation-ui node experiments/framework-migration/vendor.mjs (optional BROWSER_SOURCE overrides i18n/convert/devmode)
 import { execFileSync } from 'node:child_process';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';

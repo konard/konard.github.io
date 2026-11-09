@@ -2,11 +2,11 @@
 
 Work: [issue 54](https://github.com/konard/konard.github.io/issues/54),
 [PR 55](https://github.com/konard/konard.github.io/pull/55).
-Research dates: 2026-11-05–06. Baseline site: `f169665` (main).
-Framework snapshots: `27d580f4bac4ebb4e70de3f78671153c2ef5dab9` from
-PR 213 (now merged), with ui-i18n/ui-convert/ui-devmode from merged PR 214 at
-`e37935ea195fca55cb2ee6a5d2c1723858cd7f81`. Each archive has its own audited
-revision in the manifest. The initial snapshot was `f72e97f`.
+Research dates: 2026-11-05–06, re-audit 2026-11-09. Baseline site: `f169665` (main).
+Framework snapshot: `b4baef4d56eacc9c05d033e3e33a895e540b40ac` (upstream `main` after
+merged PRs 213, 214, 216, 217 and 218); every archive in the manifest carries that
+single revision. Earlier snapshots were `f72e97f`, `2efd7e2`, `4564597` and
+`27d580f`/`e37935e`.
 
 The draft integrates framework settings validation/defaults/differences,
 select rendering and behavior, floating color-picker positioning, translation
