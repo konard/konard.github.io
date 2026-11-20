@@ -3,14 +3,15 @@ import { afterEach, expect, it, vi } from 'vitest';
 import { useCollisionSolver } from './useCollisionSolver';
 
 const workers = [];
-class FakeWorker {
+class FakeWorker extends EventTarget {
   constructor() {
+    super();
     workers.push(this);
   }
   postMessage = vi.fn();
   terminate = vi.fn();
   send(data) {
-    this.onmessage({ data });
+    this.dispatchEvent(new MessageEvent('message', { data }));
   }
 }
 afterEach(() => {
@@ -24,7 +25,7 @@ it('cancels obsolete work and accepts only the result for the current drawing', 
     initialProps: { value: key([[1, 1]]) },
   });
   expect(result.current.busy).toBe(true);
-  expect(workers[0].postMessage).toHaveBeenCalledWith([[[1, 1]], {}, {}]);
+  expect(workers[0].postMessage).toHaveBeenCalledWith({ links: [[1, 1]], options: { shape: {}, options: {} } });
   rerender({ value: key([[0, 0]]) });
   expect(workers[0].terminate).toHaveBeenCalled();
   await act(async () => workers[0].send({ result: { after: 99 } }));

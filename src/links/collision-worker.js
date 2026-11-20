@@ -1,9 +1,4 @@
+import { installSolverWorker } from '@link-foundation/ui-components/links-view';
 import { solveCollisions } from './collisions';
 
-self.onmessage = ({ data: [links, shape, options] }) => {
-  try {
-    self.postMessage({ result: solveCollisions(links, shape, options) });
-  } catch (error) {
-    self.postMessage({ error: error.message });
-  }
-};
+installSolverWorker(self, (links, { shape, options }) => solveCollisions(links, shape, options));

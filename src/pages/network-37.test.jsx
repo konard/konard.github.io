@@ -46,8 +46,9 @@ it('preserves colour edits made while a manual Apply worker is running', async (
   let worker;
   vi.stubGlobal(
     'Worker',
-    class {
+    class extends EventTarget {
       constructor() {
+        super();
         worker = this;
       }
       terminate = vi.fn();
@@ -63,17 +64,19 @@ it('preserves colour edits made while a manual Apply worker is running', async (
   const colours = screen.getByLabelText('Colours of the links');
   chooseSelect(colours, 'pastel');
   expect(colours).toHaveAttribute('data-value', 'pastel');
-  const [, shape] = worker.payload;
+  const { shape } = worker.payload.options;
   await act(async () =>
-    worker.onmessage({
-      data: {
-        result: {
-          turns: shape.turns,
-          linkGaps: shape.linkGaps,
-          layout: { order: '2 1', spread: 0.55, palette: 'site' },
+    worker.dispatchEvent(
+      new MessageEvent('message', {
+        data: {
+          result: {
+            turns: shape.turns,
+            linkGaps: shape.linkGaps,
+            layout: { order: '2 1', spread: 0.55, palette: 'site' },
+          },
         },
-      },
-    }),
+      }),
+    ),
   );
   expect(colours).toHaveAttribute('data-value', 'pastel');
   expect(new URL(screen.getByLabelText('Link to this picture').value).searchParams.get('palette')).toBe('pastel');
