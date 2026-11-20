@@ -1,29 +1,8 @@
+import { loadEmbedScript } from '@link-foundation/ui-components/embed';
+
 // Provider scripts own their iframe sizing and message protocols. Load each once;
 // failed script requests may be retried from the archive's "Show embed" button.
-const requests = new Map();
-export function loadWidget(src) {
-  if (requests.has(src)) return requests.get(src);
-  const request = new Promise((resolve, reject) => {
-    const script = document.createElement('script');
-    script.src = src;
-    script.async = true;
-    const fail = () => {
-      clearTimeout(timer);
-      requests.delete(src);
-      script.remove();
-      reject(new Error('Widget script unavailable'));
-    };
-    const timer = setTimeout(fail, 10000);
-    script.onload = () => {
-      clearTimeout(timer);
-      resolve();
-    };
-    script.onerror = fail;
-    document.head.append(script);
-  });
-  requests.set(src, request);
-  return request;
-}
+export const loadWidget = (src) => loadEmbedScript(document, src);
 
 export function embedUrl(embed, theme) {
   if (embed?.type === 'x' && /^\d+$/.test(embed.id))

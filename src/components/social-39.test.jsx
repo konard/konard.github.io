@@ -107,7 +107,7 @@ it('shares script loads and permits retry after a stalled request', async () => 
   try {
     const first = loadWidget(src);
     expect(loadWidget(src)).toBe(first);
-    const failed = expect(first).rejects.toThrow('Widget script unavailable');
+    const failed = expect(first).rejects.toThrow('Embed script failed or timed out');
     await vi.advanceTimersByTimeAsync(10000);
     await failed;
     expect(document.querySelector(`script[src="${src}"]`)).toBeNull();

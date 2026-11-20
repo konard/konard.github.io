@@ -1,4 +1,5 @@
 import { localized } from '../i18n/localizer.js';
+import { networkToRaster } from '@link-foundation/ui-components/links-view';
 import { useEffect, useRef, useState } from 'react';
 import {
   FORMATS,
@@ -9,7 +10,6 @@ import {
   copyText,
   download,
   fileName,
-  rasterize,
   shareTargets,
   svgBlob,
 } from '../links/export';
@@ -30,13 +30,15 @@ export default function NetworkShare({ code, links, svg, style, url, text, busy 
   const done = (message) => setStatus(t(message));
   const failed = (error) => setStatus(`${t(localized('mc453b55b8099'))}: ${error.message}`);
   const image = (format) =>
-    rasterize(svg, {
-      width: style.width,
-      height: style.height,
+    networkToRaster(svg, {
       type: format.type,
       quality: style.quality,
       // JPEG has no transparency: a transparent picture gets its background colour.
-      fill: format.id === 'jpeg' ? style.bgColor : null,
+      background: style.bgColor,
+    }).catch((error) => {
+      if (error.message === `Raster encoding failed: ${format.type}`)
+        throw new Error(`${format.type} is not supported; use PNG instead`, { cause: error });
+      throw error;
     });
   const png = FORMATS[0];
 
@@ -50,7 +52,7 @@ export default function NetworkShare({ code, links, svg, style, url, text, busy 
     if (!busy && canShare([new File([], 'network.png', { type: 'image/png' })])) {
       // Avoid rasterizing a large canvas for every input event in a drag.
       timer = setTimeout(() => {
-        rasterize(svg, { width: style.width, height: style.height, type: 'image/png' })
+        networkToRaster(svg)
           .then((blob) => {
             if (!cancelled) prepared.current = { svg, blob };
           })
@@ -61,7 +63,7 @@ export default function NetworkShare({ code, links, svg, style, url, text, busy 
       cancelled = true;
       clearTimeout(timer);
     };
-  }, [svg, style.width, style.height, busy]);
+  }, [svg, busy]);
 
   const save = (format) =>
     image(format)

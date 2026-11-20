@@ -15,45 +15,6 @@ export const FORMATS = [
   { id: 'webp', type: 'image/webp', label: 'WebP' },
 ];
 
-/**
- * The SVG drawn on a canvas of `width` × `height` as a PNG, JPEG or WebP blob.
- * JPEG has no transparency, so `fill` is painted under it first.
- */
-export function rasterize(svg, { width, height, type = 'image/png', quality = 0.92, fill = null }) {
-  return new Promise((resolve, reject) => {
-    const url = URL.createObjectURL(svgBlob(svg));
-    const image = new Image();
-    image.onload = () => {
-      try {
-        const canvas = document.createElement('canvas');
-        canvas.width = width;
-        canvas.height = height;
-        const context = canvas.getContext('2d');
-        if (fill) {
-          context.fillStyle = fill;
-          context.fillRect(0, 0, width, height);
-        }
-        context.drawImage(image, 0, 0, width, height);
-        canvas.toBlob(
-          (blob) =>
-            blob?.type === type ? resolve(blob) : reject(new Error(`${type} is not supported; use PNG instead`)),
-          type,
-          quality,
-        );
-      } catch (error) {
-        reject(error);
-      } finally {
-        URL.revokeObjectURL(url);
-      }
-    };
-    image.onerror = () => {
-      URL.revokeObjectURL(url);
-      reject(new Error('The SVG could not be drawn'));
-    };
-    image.src = url;
-  });
-}
-
 /** Saves `blob` as a file named `name`. */
 export function download(blob, name) {
   const url = URL.createObjectURL(blob);
