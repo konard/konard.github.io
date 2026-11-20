@@ -8,6 +8,8 @@ import { parse } from '@babel/parser';
 import catalogs from '../../src/i18n/catalogs.generated.js';
 
 const baseline = 'f169665';
+const releaseBaseline = '2f32d20ad92a60fea0720d9dda5d89a2e7c5c977';
+const networkShare = 'src/pages/NetworkShare.jsx';
 const behavioral = new Set([
   'src/components/Select.jsx',
   'src/components/ColorInput.jsx',
@@ -20,6 +22,8 @@ const behavioral = new Set([
 const files = execFileSync('git', ['diff', '--name-only', baseline, '--', 'src'], { encoding: 'utf8' })
   .trim()
   .split('\n');
+const fromRevision = (revision, file) => execFileSync('git', ['show', `${revision}:${file}`], { encoding: 'utf8' });
+const messageKeys = (source) => [...source.matchAll(/\blocalized\('([^']+)'\)/g)].map(([, key]) => key);
 const clean = (node) => {
   if (Array.isArray(node))
     return node
@@ -64,13 +68,22 @@ for (const file of files) {
   if (!/\.[jt]sx?$/.test(file) || behavioral.has(file)) continue;
   const source = await readFile(file, 'utf8');
   if (!source.includes('import { localized } from')) continue;
+  if (file === networkShare) {
+    // Export now delegates raster encoding. Compare its message keys with
+    // the previous draft, which passed the full syntax-tree check.
+    const keys = messageKeys(source);
+    assert.deepEqual(keys, messageKeys(fromRevision(releaseBaseline, file)), file);
+    for (const key of keys) assert.ok(Object.hasOwn(catalogs.en, key) && Object.hasOwn(catalogs.ru, key), key);
+    continue;
+  }
   const current = tree(source);
   current.program.body = current.program.body.filter(
     (node) =>
       !(node.type === 'ImportDeclaration' && node.specifiers.some((specifier) => specifier.local.name === 'localized')),
   );
-  const original = tree(execFileSync('git', ['show', `${baseline}:${file}`], { encoding: 'utf8' }));
+  const original = tree(fromRevision(baseline, file));
   assert.deepEqual(clean(expand(current)), clean(original), file);
   checked++;
 }
 console.log(`${checked} catalog-only files match their original syntax trees and exact English/Russian text.`);
+console.log('NetworkShare retains the previous draft’s localized message keys.');

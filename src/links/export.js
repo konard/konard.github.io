@@ -3,6 +3,7 @@
 // links notation file, copies to the clipboard, the share sheet of the system
 // (Web Share API, with the image when the browser can share files) and links
 // that open the share dialogs of social networks.
+import { networkShareTargets } from '@link-foundation/ui-components/links-view';
 
 /** "links-network-01-20.png". */
 export const fileName = (code, ext) => `links-network-${code.replace(/[ ;,]/g, '-').slice(0, 160)}.${ext}`;
@@ -61,19 +62,17 @@ export function canShare(files) {
 
 /** Links that open the share dialog of each network with `url` and `text`. */
 export function shareTargets(url, text) {
+  const targets = networkShareTargets(url, text);
   const u = encodeURIComponent(url);
   const t = encodeURIComponent(text);
-  const both = encodeURIComponent(`${text} ${url}`);
-  return [
-    { id: 'x', name: 'X (Twitter)', href: `https://x.com/intent/tweet?text=${t}&url=${u}` },
-    { id: 'telegram', name: 'Telegram', href: `https://t.me/share/url?url=${u}&text=${t}` },
-    { id: 'vk', name: 'VK', href: `https://vk.com/share.php?url=${u}&title=${t}` },
-    { id: 'facebook', name: 'Facebook', href: `https://www.facebook.com/sharer/sharer.php?u=${u}` },
-    { id: 'linkedin', name: 'LinkedIn', href: `https://www.linkedin.com/sharing/share-offsite/?url=${u}` },
-    { id: 'reddit', name: 'Reddit', href: `https://www.reddit.com/submit?url=${u}&title=${t}` },
-    { id: 'bluesky', name: 'Bluesky', href: `https://bsky.app/intent/compose?text=${both}` },
-    { id: 'mastodon', name: 'Mastodon', href: `https://mastodonshare.com/?text=${t}&url=${u}` },
-    { id: 'whatsapp', name: 'WhatsApp', href: `https://wa.me/?text=${both}` },
-    { id: 'email', name: 'E-mail', href: `mailto:?subject=${t}&body=${both}` },
-  ];
+  // Keep the established endpoints, instance chooser and complete email body.
+  targets.X = `https://x.com/intent/tweet?text=${t}&url=${u}`;
+  targets.Mastodon = `https://mastodonshare.com/?text=${t}&url=${u}`;
+  targets['e-mail'] = `mailto:?subject=${t}&body=${encodeURIComponent(`${text} ${url}`)}`;
+  const labels = { X: 'X (Twitter)', 'e-mail': 'E-mail' };
+  return Object.entries(targets).map(([key, href]) => ({
+    id: key.toLowerCase().replace('-', ''),
+    name: labels[key] ?? key,
+    href,
+  }));
 }

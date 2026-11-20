@@ -12,7 +12,7 @@ export function useCollisionSolver(key, enabled) {
   );
   useEffect(() => {
     if (!enabled || typeof Worker === 'undefined') return;
-    const job = solverJob(...JSON.parse(key));
+    const job = solverJob(JSON.parse(key));
     job.promise.then(
       (result) => setState({ key, result }),
       (error) => {

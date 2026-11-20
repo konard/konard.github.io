@@ -273,15 +273,30 @@ describe('fewer overlaps of lines (experimental, issue #17)', () => {
 describe('saving and sharing (issue #17)', () => {
   it('names the files by the network and links to the share dialogs', () => {
     expect(fileName('01 20', 'png')).toBe('links-network-01-20.png');
-    const targets = shareTargets('https://konard.github.io/network/?code=0120', 'Links network 01₃ 20₃');
-    expect(targets.map((target) => target.id)).toEqual(expect.arrayContaining(['x', 'telegram', 'vk', 'facebook']));
+    const url = 'https://konard.github.io/network/?code=0120';
+    const title = 'Links network 01₃ 20₃';
+    const targets = shareTargets(url, title);
+    expect(targets.map((target) => target.id)).toEqual([
+      'x',
+      'telegram',
+      'vk',
+      'facebook',
+      'linkedin',
+      'reddit',
+      'bluesky',
+      'mastodon',
+      'whatsapp',
+      'email',
+    ]);
     targets
       .filter((target) => target.id !== 'email')
       .forEach((target) => {
         expect(target.href).toMatch(/^https:\/\//);
       });
-    expect(targets.find((target) => target.id === 'telegram').href).toContain(
-      encodeURIComponent('https://konard.github.io/network/?code=0120'),
-    );
+    const byId = Object.fromEntries(targets.map(({ id, href }) => [id, new URL(href)]));
+    expect(byId.telegram.searchParams.get('url')).toBe(url);
+    expect(byId.x.hostname).toBe('x.com');
+    expect(byId.mastodon.hostname).toBe('mastodonshare.com');
+    expect(byId.email.searchParams.get('body')).toBe(`${title} ${url}`);
   });
 });

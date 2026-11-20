@@ -133,7 +133,7 @@ export default function NetworkPage() {
     }
     setApplying(true);
     setApplyError(null);
-    const job = solverJob(links, shape, solverOptions);
+    const job = solverJob([links, shape, solverOptions]);
     pendingApply.current = job;
     try {
       applyResult(await job.promise);
