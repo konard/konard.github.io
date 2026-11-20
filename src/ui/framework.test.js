@@ -1,4 +1,3 @@
-import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { expect, it } from 'vitest';
@@ -35,18 +34,19 @@ it('generates all 24 palettes with exactly the original color channels', () => {
   expect(cssRules(read('src/skins.palettes.css'))).toEqual(cssRules(fixture('palettes-before.css')));
 });
 
-it('pins every framework tarball to the audited source snapshot', () => {
-  const manifest = JSON.parse(read('vendor/link-ui/manifest.json'));
-  // Upstream main after PRs 216-218 (browser packaging, providers, release preparation).
-  expect(manifest.revision).toBe('b4baef4d56eacc9c05d033e3e33a895e540b40ac');
-  expect(manifest.packages).toHaveLength(11);
-  for (const pkg of manifest.packages) {
-    expect(pkg.revision).toBe(manifest.revision);
-    expect(pkg.source).toBe(`${manifest.repository}/tree/${pkg.revision}/packages/${pkg.name.split('/')[1]}`);
-    expect(
-      createHash('sha256')
-        .update(readFileSync(`vendor/link-ui/${pkg.file}`))
-        .digest('hex'),
-    ).toBe(pkg.sha256);
+it('installs framework packages from versioned releases with registry integrity', () => {
+  const { dependencies } = JSON.parse(read('package.json'));
+  const { packages } = JSON.parse(read('package-lock.json'));
+  const isFramework = (name) => name.startsWith('@link-foundation/ui-');
+  const direct = Object.entries(dependencies).filter(([name]) => isFramework(name));
+  expect(direct.map(([name]) => name)).toContain('@link-foundation/ui-components');
+  for (const [name, version] of direct) {
+    expect(version).toMatch(/^\d+\.\d+\.\d+$/);
+    expect(packages[`node_modules/${name}`].version).toBe(version);
+  }
+  for (const [path, pkg] of Object.entries(packages)) {
+    if (!isFramework(path.split('node_modules/').at(-1))) continue;
+    expect(pkg.resolved).toMatch(/^https:\/\/registry\.npmjs\.org\/@link-foundation\/ui-/);
+    expect(pkg.integrity).toMatch(/^sha512-/);
   }
 });
