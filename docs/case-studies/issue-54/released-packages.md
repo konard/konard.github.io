@@ -150,3 +150,17 @@ keyboard and persistence. Its viewport assertions exercise the same menus.
 The constrained Linux GTK headless run mounted the combobox but stalled on
 scrolling through the settings page. The pixel matrix uses Chromium and Firefox.
 The WebKit interaction checks run on the macOS CI runner.
+
+Run [44841598739](https://github.com/konard/konard.github.io/actions/runs/44841598739)
+confirmed the macOS WebKit settings smoke passed after the readiness change.
+The full unit run on the same revision passed 1,258 tests and exposed two
+network sharing tests that still mocked the removed local rasterizer. The
+mock provided neither the prepared Safari share file nor the expected raster
+call after the last edit. [Test job](https://github.com/konard/konard.github.io/actions/runs/44841598739/job/136661042556),
+[complete run log](data/ci-44841598739.log.gz), lines 14072–14134.
+
+`npm run test:ci -- src/pages/network-share.test.jsx --maxWorkers=1` reproduced
+both failures locally. Updating the mock to the released `networkToRaster`
+boundary preserves the tests for synchronous Safari activation, link sharing
+while a drawing is pending, the clear copy fallback, and debouncing the latest
+SVG. The browser download checks exercise the actual encoder.

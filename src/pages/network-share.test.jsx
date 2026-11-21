@@ -1,10 +1,13 @@
+import { networkToRaster } from '@link-foundation/ui-components/links-view';
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import { afterEach, beforeEach, expect, it, vi } from 'vitest';
 import { STYLE_DEFAULTS } from '../links/style';
 import NetworkShare from './NetworkShare';
-import { rasterize } from '../links/export';
 
-vi.mock('../links/export', async (original) => ({ ...(await original()), rasterize: vi.fn() }));
+vi.mock('@link-foundation/ui-components/links-view', async (original) => ({
+  ...(await original()),
+  networkToRaster: vi.fn(),
+}));
 beforeEach(() => vi.useFakeTimers());
 afterEach(() => {
   vi.useRealTimers();
@@ -22,7 +25,7 @@ const props = {
 
 it('invokes the share sheet within the click with a prepared image (Safari activation)', async () => {
   const blob = new Blob(['png'], { type: 'image/png' });
-  rasterize.mockResolvedValue(blob);
+  networkToRaster.mockResolvedValue(blob);
   let active = false;
   const share = vi.fn(() => (active ? Promise.resolve() : Promise.reject(new Error('activation lost'))));
   vi.stubGlobal('navigator', { share, canShare: () => true });
@@ -38,7 +41,7 @@ it('invokes the share sheet within the click with a prepared image (Safari activ
 
 it('keeps link sharing available synchronously while a new image is being prepared', async () => {
   let finish;
-  rasterize.mockReturnValue(
+  networkToRaster.mockReturnValue(
     new Promise((resolve) => {
       finish = resolve;
     }),
@@ -47,6 +50,7 @@ it('keeps link sharing available synchronously while a new image is being prepar
   vi.stubGlobal('navigator', { share, canShare: () => true });
   const view = render(<NetworkShare {...props} />);
   await act(async () => vi.advanceTimersByTimeAsync(250));
+  expect(networkToRaster).toHaveBeenCalledWith(props.svg);
   fireEvent.click(screen.getByRole('button', { name: 'Share…' }));
   expect(share).toHaveBeenCalledWith({ title: props.text, text: props.text, url: props.url });
   view.unmount();
@@ -63,15 +67,15 @@ it('disables image copying with a useful download alternative when the API is ab
 });
 
 it('prepares only the latest drawing after a burst of edits', async () => {
-  rasterize.mockResolvedValue(new Blob(['png'], { type: 'image/png' }));
+  networkToRaster.mockResolvedValue(new Blob(['png'], { type: 'image/png' }));
   vi.stubGlobal('navigator', { share: vi.fn(), canShare: () => true });
   const view = render(<NetworkShare {...props} />);
   for (let i = 0; i < 10; i++) {
     view.rerender(<NetworkShare {...props} svg={`<svg id="${i}"/>`} />);
     await act(async () => vi.advanceTimersByTimeAsync(20));
   }
-  expect(rasterize).not.toHaveBeenCalled();
+  expect(networkToRaster).not.toHaveBeenCalled();
   await act(async () => vi.advanceTimersByTimeAsync(250));
-  expect(rasterize).toHaveBeenCalledTimes(1);
-  expect(rasterize.mock.calls[0][0]).toBe('<svg id="9"/>');
+  expect(networkToRaster).toHaveBeenCalledTimes(1);
+  expect(networkToRaster).toHaveBeenCalledWith('<svg id="9"/>');
 });
