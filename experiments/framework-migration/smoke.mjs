@@ -40,7 +40,8 @@ try {
   page.on('pageerror', (error) => errors.push(error.message));
   await page.goto(base + '/settings/');
   const select = page.locator('#setting-motion-mode');
-  assert.equal(await select.and(page.getByRole('combobox', { name: 'Motion', exact: true })).count(), 1);
+  // The HTML load can finish before React mounts the framework controls.
+  await select.and(page.getByRole('combobox', { name: 'Motion', exact: true })).waitFor();
   if (engine === 'chromium') {
     for (const colorScheme of ['light', 'dark']) {
       await page.emulateMedia({ forcedColors: 'active', colorScheme });
@@ -102,7 +103,7 @@ try {
   await page.getByRole('button', { name: 'RU', exact: true }).click({ force: true });
   assert.equal(await page.locator('html').getAttribute('lang'), 'ru');
   assert.equal(await page.locator('h1').textContent(), 'Фон, оформление, звук и нотация');
-  assert.equal(await select.and(page.getByRole('combobox', { name: 'Движение', exact: true })).count(), 1);
+  await select.and(page.getByRole('combobox', { name: 'Движение', exact: true })).waitFor();
   await page.getByRole('button', { name: 'EN', exact: true }).click({ force: true });
   assert.equal(await page.locator('h1').textContent(), 'Background, skin, sound and notation');
   results.push('Framework catalogs resolve English and Russian through the existing language switch');

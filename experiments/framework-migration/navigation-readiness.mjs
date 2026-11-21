@@ -15,7 +15,7 @@ try {
     localStorage.setItem('theme', 'dark');
     localStorage.setItem('settings', JSON.stringify({ 'motion.mode': 'off' }));
   });
-  await page.route('**/network/?*', async (route) => {
+  const delayBootstrap = async (route) => {
     if (!route.request().isNavigationRequest()) return route.continue();
     const response = await route.fetch();
     const html = (await response.text()).replace(
@@ -26,7 +26,9 @@ try {
       }, 400));</script>`,
     );
     await route.fulfill({ response, body: html });
-  });
+  };
+  await page.route('**/network/?*', delayBootstrap);
+  await page.route('**/settings/', delayBootstrap);
   await page.goto('http://localhost:4189/art/#symbols');
   await page.locator('.symbols__card').first().click();
   await page.waitForURL('**/network/**');
@@ -36,7 +38,20 @@ try {
   await paths.first().waitFor({ state: 'attached' });
   const after = await paths.count();
   assert.equal(after, 2, 'Waiting for actual geometry observes both link colors');
-  const result = { delayedBootstrapMs: 400, pathsAfterNavigation: before, pathsAfterReadiness: after };
+  await page.goto('http://localhost:4189/settings/');
+  const motion = page.locator('#setting-motion-mode').and(page.getByRole('combobox', { name: 'Motion', exact: true }));
+  const controlsAfterNavigation = await motion.count();
+  assert.equal(controlsAfterNavigation, 0, 'The document can load before the framework settings control mounts');
+  await motion.waitFor();
+  const controlsAfterReadiness = await motion.count();
+  assert.equal(controlsAfterReadiness, 1, 'Waiting for the named control preserves the accessibility assertion');
+  const result = {
+    delayedBootstrapMs: 400,
+    pathsAfterNavigation: before,
+    pathsAfterReadiness: after,
+    controlsAfterNavigation,
+    controlsAfterReadiness,
+  };
   console.log(JSON.stringify(result));
   if (process.env.RESULT_FILE) await writeFile(process.env.RESULT_FILE, JSON.stringify(result, null, 2) + '\n');
 } finally {
