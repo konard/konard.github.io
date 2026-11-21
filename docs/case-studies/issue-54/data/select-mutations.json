@@ -1,0 +1,23 @@
+{
+  "before": {
+    "engine": "chromium",
+    "controls": 23,
+    "edits": 8,
+    "elapsedMs": 391.39999997615814,
+    "unchangedSelectMutations": 800,
+    "attributes": {
+      "class": 184,
+      "data-value": 184,
+      "aria-label": 432
+    }
+  },
+  "after": {
+    "engine": "chromium",
+    "controls": 23,
+    "edits": 8,
+    "elapsedMs": 685,
+    "unchangedSelectMutations": 0,
+    "attributes": {}
+  },
+  "limit": "Elapsed time includes browser scheduling and is not a speedup claim or proof of the macOS WebKit frame-delay cause."
+}

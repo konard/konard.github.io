@@ -1,0 +1,35 @@
+{
+  "run": "https://github.com/konard/konard.github.io/actions/runs/42129275767",
+  "headSha": "865f7ba20b17458240e53c19dbc45d7ad8482da5",
+  "createdAt": "2026-11-05T23:26:37Z",
+  "result": "failure",
+  "browsers": {
+    "chromium": "all 15 groups passed",
+    "firefox": "all 14 groups passed",
+    "webkit": "all 14 groups passed"
+  },
+  "unit": {
+    "passed": 1252,
+    "failed": 1,
+    "total": 1253
+  },
+  "failure": {
+    "file": "unit-42129275767.log",
+    "lines": [
+      543,
+      544,
+      545,
+      556,
+      557
+    ],
+    "test": "src/workflow.test.js:45: CV PDFs are printed into the build before upload",
+    "error": "expected -1 to be greater than 4",
+    "cause": "The ordering test compared an entire run block with a single command, so adding the mirror prelude made the installation step appear absent.",
+    "correction": "Find the exact trimmed command line within each run block, keeping all ordering assertions and adding an explicit production-build presence assertion.",
+    "before": "Focused workflow suite: 17 passed, 1 failed with the same assertion.",
+    "after": "All 18 focused workflow tests pass."
+  },
+  "limits": [
+    "Production build, CV PDFs and Pages artifact were skipped after the unit failure; not counted as passing."
+  ]
+}

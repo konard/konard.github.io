@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 import { useState, useSyncExternalStore } from 'react';
 import './presets.css';
 import { useLang } from '../i18n/prefs';
@@ -155,17 +156,10 @@ export default function Presets({ settings }) {
   const current = cleanLook(changesOf(settings));
 
   const save = () => {
-    const title = name.trim() || `${t({ en: 'Look', ru: 'Вид' })} ${saved.length + 1}`;
+    const title = name.trim() || `${t(localized('m693e4d861656'))} ${saved.length + 1}`;
     const kept = setSaved(withSaved(saved, title, current));
     setName('');
-    say(
-      kept
-        ? t({ en: `Saved as “${title}”.`, ru: `Сохранено как «${title}».` })
-        : t({
-            en: 'This browser does not remember it after closing.',
-            ru: 'Этот браузер не запомнит это после закрытия.',
-          }),
-    );
+    say(kept ? t({ en: `Saved as “${title}”.`, ru: `Сохранено как «${title}».` }) : t(localized('medd2296f64de')));
   };
   const copy = async (text, done) => {
     try {
@@ -173,13 +167,13 @@ export default function Presets({ settings }) {
       say(done);
       return true;
     } catch {
-      say(t({ en: 'Copying is not allowed here; select the text.', ru: 'Копирование запрещено; выделите текст.' }));
+      say(t(localized('m68eb5e60f577')));
       return false;
     }
   };
   const copyLink = async () => {
     const url = shareLink(settings, window.location.href);
-    if (!(await copy(url, t({ en: 'The link is copied.', ru: 'Ссылка скопирована.' })))) setLink(url);
+    if (!(await copy(url, t(localized('mf24b0e3f102a'))))) setLink(url);
   };
   const rename = (from) => {
     setSaved(renamed(saved, from, newName));
@@ -189,41 +183,34 @@ export default function Presets({ settings }) {
   return (
     <section id="presets" className="settings__group settings__presets" aria-labelledby="presets-title">
       <header className="settings__head">
-        <h2 id="presets-title">{t({ en: 'Presets', ru: 'Пресеты' })}</h2>
+        <h2 id="presets-title">{t(localized('mc14b9e9ec1af'))}</h2>
         <div className="settings__head-actions">
           <button
             type="button"
             className="button button--small"
             onClick={() => {
               use(randomLook());
-              say(
-                t({ en: 'A random look. Save it if you like it.', ru: 'Случайный вид. Сохраните, если он нравится.' }),
-              );
+              say(t(localized('m32fdf70bfe40')));
             }}
           >
-            {t({ en: 'Random look', ru: 'Случайный вид' })}
+            {t(localized('md691fa1a697c'))}
           </button>
           <button type="button" className="button button--small" onClick={copyLink}>
-            {t({ en: 'Copy link', ru: 'Скопировать ссылку' })}
+            {t(localized('m508a89b4b213'))}
           </button>
         </div>
       </header>
-      <p className="settings__lead">
-        {t({
-          en: 'Complete looks: the background, the skin and the sounds. A preset keeps your motion, volume and notation; change anything after choosing one and save it as your own. A link carries the current look to another browser.',
-          ru: 'Готовые виды: фон, оформление и звуки. Пресет сохраняет ваши движение, громкость и нотацию; измените что угодно после выбора и сохраните как свой. Ссылка переносит текущий вид в другой браузер.',
-        })}
-      </p>
+      <p className="settings__lead">{t(localized('m01a35d7c3b96'))}</p>
       {link && (
         <input
           className="settings__link mono"
           readOnly
           value={link}
-          aria-label={t({ en: 'Link to this look', ru: 'Ссылка на этот вид' })}
+          aria-label={t(localized('m915deaf92e6e'))}
           onFocus={(event) => event.target.select()}
         />
       )}
-      <ul className="presets" aria-label={t({ en: 'Presets of the site', ru: 'Пресеты сайта' })}>
+      <ul className="presets" aria-label={t(localized('mf3611f728588'))}>
         {PRESETS.map((preset) => (
           <li key={preset.id}>
             <button
@@ -241,7 +228,7 @@ export default function Presets({ settings }) {
         ))}
       </ul>
 
-      <h3 className="settings__subtitle">{t({ en: 'Saved in this browser', ru: 'Сохранённые в этом браузере' })}</h3>
+      <h3 className="settings__subtitle">{t(localized('m9807b186f6c3'))}</h3>
       <form
         className="presets__save"
         onSubmit={(event) => {
@@ -253,16 +240,16 @@ export default function Presets({ settings }) {
           type="text"
           value={name}
           maxLength={60}
-          placeholder={t({ en: 'Name of the look', ru: 'Название вида' })}
-          aria-label={t({ en: 'Name of the look', ru: 'Название вида' })}
+          placeholder={t(localized('mff78983648a6'))}
+          aria-label={t(localized('mff78983648a6'))}
           onChange={(event) => setName(event.target.value)}
         />
         <button type="submit" className="button button--primary button--small">
-          {t({ en: 'Save the current look', ru: 'Сохранить текущий вид' })}
+          {t(localized('me467ad9c5208'))}
         </button>
       </form>
       {saved.length > 0 ? (
-        <ul className="presets presets--saved" aria-label={t({ en: 'Saved looks', ru: 'Сохранённые виды' })}>
+        <ul className="presets presets--saved" aria-label={t(localized('m1d5b1f992910'))}>
           {saved.map((item) => (
             <li key={item.name} className="preset preset--saved">
               <button
@@ -287,7 +274,7 @@ export default function Presets({ settings }) {
                     value={newName}
                     maxLength={60}
                     autoFocus
-                    aria-label={t({ en: 'New name', ru: 'Новое название' })}
+                    aria-label={t(localized('m81b4f7932b5a'))}
                     onChange={(event) => setNewName(event.target.value)}
                     onKeyDown={(event) => event.key === 'Escape' && setEditing(null)}
                   />
@@ -300,8 +287,8 @@ export default function Presets({ settings }) {
                   <button
                     type="button"
                     className="setting__reset"
-                    title={t({ en: 'Save the current look here', ru: 'Сохранить сюда текущий вид' })}
-                    aria-label={`${t({ en: 'Save the current look here', ru: 'Сохранить сюда текущий вид' })}: ${item.name}`}
+                    title={t(localized('m4c677f41d877'))}
+                    aria-label={`${t(localized('m4c677f41d877'))}: ${item.name}`}
                     onClick={() => {
                       setSaved(withSaved(saved, item.name, current));
                       say(t({ en: `“${item.name}” is updated.`, ru: `«${item.name}» обновлён.` }));
@@ -312,8 +299,8 @@ export default function Presets({ settings }) {
                   <button
                     type="button"
                     className="setting__reset"
-                    title={t({ en: 'Rename', ru: 'Переименовать' })}
-                    aria-label={`${t({ en: 'Rename', ru: 'Переименовать' })}: ${item.name}`}
+                    title={t(localized('mec3f0a2b2f00'))}
+                    aria-label={`${t(localized('mec3f0a2b2f00'))}: ${item.name}`}
                     onClick={() => {
                       setEditing(item.name);
                       setNewName(item.name);
@@ -324,8 +311,8 @@ export default function Presets({ settings }) {
                   <button
                     type="button"
                     className="setting__reset"
-                    title={t({ en: 'Delete', ru: 'Удалить' })}
-                    aria-label={`${t({ en: 'Delete', ru: 'Удалить' })}: ${item.name}`}
+                    title={t(localized('mfd6f4e7e7232'))}
+                    aria-label={`${t(localized('mfd6f4e7e7232'))}: ${item.name}`}
                     onClick={() => {
                       setSaved(withoutSaved(saved, item.name));
                       say(t({ en: `“${item.name}” is deleted.`, ru: `«${item.name}» удалён.` }));
@@ -339,32 +326,16 @@ export default function Presets({ settings }) {
           ))}
         </ul>
       ) : (
-        <p className="settings__lead">
-          {t({
-            en: 'Nothing yet. Choose a preset or change the settings below, then save the look under a name.',
-            ru: 'Пока ничего. Выберите пресет или измените настройки ниже, затем сохраните вид под своим названием.',
-          })}
-        </p>
+        <p className="settings__lead">{t(localized('m7775314a6644'))}</p>
       )}
       <div className="page-hero__actions">
         {saved.length > 0 && (
           <button
             type="button"
             className="button button--small"
-            onClick={() =>
-              copy(
-                presetsText(saved),
-                t({
-                  en: 'Copied. Paste it into “Your changes” in another browser.',
-                  ru: 'Скопировано. Вставьте это в «Ваши изменения» в другом браузере.',
-                }),
-              )
-            }
+            onClick={() => copy(presetsText(saved), t(localized('me96cd2a0ac6e')))}
           >
-            {t({
-              en: 'Copy the saved looks in Links Notation',
-              ru: 'Скопировать сохранённые виды в Links Notation',
-            })}
+            {t(localized('m4b99c37a9d4a'))}
           </button>
         )}
         <span role="status" className="settings__status">

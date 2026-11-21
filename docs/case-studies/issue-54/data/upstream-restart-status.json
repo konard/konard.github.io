@@ -1,0 +1,22 @@
+{
+  "upstreamMain": "e3feb8a84cc570db2fe4573c0eab9d685fe31aa3",
+  "renderingRefs": [],
+  "publication": {
+    "package": "@link-foundation/ui-settings",
+    "result": "npm E404"
+  },
+  "pullRequests": [
+    {
+      "headRefOid": "3b85dd4fd02b32a7895e977a1907791549bd4666",
+      "mergedAt": "2026-11-06T01:42:22Z",
+      "state": "MERGED",
+      "title": "feat(settings): restore control contracts and complete rich panel integration"
+    },
+    {
+      "headRefOid": "e2f87b733557dab077c442c64c9711ace4a7e0a0",
+      "mergedAt": "2026-11-06T01:59:59Z",
+      "state": "MERGED",
+      "title": "fix: support external browser consumers and bundle inspector assets"
+    }
+  ]
+}

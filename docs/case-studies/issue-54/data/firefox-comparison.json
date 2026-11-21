@@ -1,0 +1,342 @@
+{
+  "threshold": 0.1,
+  "includeAntiAlias": false,
+  "samples": [
+    {
+      "id": "firefox-default-dark-desktop-home",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 14,
+      "controlsAfter": 14
+    },
+    {
+      "id": "firefox-default-dark-desktop-settings",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 473,
+      "controlsAfter": 512
+    },
+    {
+      "id": "firefox-default-dark-desktop-network",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 261,
+      "controlsAfter": 282
+    },
+    {
+      "id": "firefox-default-dark-desktop-art",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    },
+    {
+      "id": "firefox-default-dark-mobile-home",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 14,
+      "controlsAfter": 14
+    },
+    {
+      "id": "firefox-default-dark-mobile-settings",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 473,
+      "controlsAfter": 512
+    },
+    {
+      "id": "firefox-default-dark-mobile-network",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 261,
+      "controlsAfter": 282
+    },
+    {
+      "id": "firefox-default-dark-mobile-art",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    },
+    {
+      "id": "firefox-default-light-desktop-home",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 14,
+      "controlsAfter": 14
+    },
+    {
+      "id": "firefox-default-light-desktop-settings",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 473,
+      "controlsAfter": 512
+    },
+    {
+      "id": "firefox-default-light-desktop-network",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 261,
+      "controlsAfter": 282
+    },
+    {
+      "id": "firefox-default-light-desktop-art",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    },
+    {
+      "id": "firefox-default-light-mobile-home",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 14,
+      "controlsAfter": 14
+    },
+    {
+      "id": "firefox-default-light-mobile-settings",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 473,
+      "controlsAfter": 512
+    },
+    {
+      "id": "firefox-default-light-mobile-network",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 261,
+      "controlsAfter": 282
+    },
+    {
+      "id": "firefox-default-light-mobile-art",
+      "changedPixels": 114,
+      "percent": 0.034633612832664966,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    },
+    {
+      "id": "firefox-calm-dark-desktop-home",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 14,
+      "controlsAfter": 14
+    },
+    {
+      "id": "firefox-calm-dark-desktop-settings",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 376,
+      "controlsAfter": 405
+    },
+    {
+      "id": "firefox-calm-dark-desktop-network",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 261,
+      "controlsAfter": 282
+    },
+    {
+      "id": "firefox-calm-dark-desktop-art",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    },
+    {
+      "id": "firefox-calm-dark-mobile-home",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 14,
+      "controlsAfter": 14
+    },
+    {
+      "id": "firefox-calm-dark-mobile-settings",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 376,
+      "controlsAfter": 405
+    },
+    {
+      "id": "firefox-calm-dark-mobile-network",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 261,
+      "controlsAfter": 282
+    },
+    {
+      "id": "firefox-calm-dark-mobile-art",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    },
+    {
+      "id": "firefox-calm-light-desktop-home",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 14,
+      "controlsAfter": 14
+    },
+    {
+      "id": "firefox-calm-light-desktop-settings",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 376,
+      "controlsAfter": 405
+    },
+    {
+      "id": "firefox-calm-light-desktop-network",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 261,
+      "controlsAfter": 282
+    },
+    {
+      "id": "firefox-calm-light-desktop-art",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    },
+    {
+      "id": "firefox-calm-light-mobile-home",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 14,
+      "controlsAfter": 14
+    },
+    {
+      "id": "firefox-calm-light-mobile-settings",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 376,
+      "controlsAfter": 405
+    },
+    {
+      "id": "firefox-calm-light-mobile-network",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 261,
+      "controlsAfter": 282
+    },
+    {
+      "id": "firefox-calm-light-mobile-art",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    },
+    {
+      "id": "firefox-fast-dark-desktop-home",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 14,
+      "controlsAfter": 14
+    },
+    {
+      "id": "firefox-fast-dark-desktop-settings",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 376,
+      "controlsAfter": 405
+    },
+    {
+      "id": "firefox-fast-dark-desktop-network",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 261,
+      "controlsAfter": 282
+    },
+    {
+      "id": "firefox-fast-dark-desktop-art",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    },
+    {
+      "id": "firefox-fast-dark-mobile-home",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 14,
+      "controlsAfter": 14
+    },
+    {
+      "id": "firefox-fast-dark-mobile-settings",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 376,
+      "controlsAfter": 405
+    },
+    {
+      "id": "firefox-fast-dark-mobile-network",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 261,
+      "controlsAfter": 282
+    },
+    {
+      "id": "firefox-fast-dark-mobile-art",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    },
+    {
+      "id": "firefox-fast-light-desktop-home",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 14,
+      "controlsAfter": 14
+    },
+    {
+      "id": "firefox-fast-light-desktop-settings",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 376,
+      "controlsAfter": 405
+    },
+    {
+      "id": "firefox-fast-light-desktop-network",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 261,
+      "controlsAfter": 282
+    },
+    {
+      "id": "firefox-fast-light-desktop-art",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    },
+    {
+      "id": "firefox-fast-light-mobile-home",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 14,
+      "controlsAfter": 14
+    },
+    {
+      "id": "firefox-fast-light-mobile-settings",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 376,
+      "controlsAfter": 405
+    },
+    {
+      "id": "firefox-fast-light-mobile-network",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 261,
+      "controlsAfter": 282
+    },
+    {
+      "id": "firefox-fast-light-mobile-art",
+      "changedPixels": 0,
+      "percent": 0,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    }
+  ]
+}

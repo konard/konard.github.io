@@ -38,10 +38,12 @@ describe('GitHub Actions workflows', () => {
 
     // Issue #11: the "Download PDF" links point at PDFs printed after the build.
     test('the CV PDFs are printed into the build before it is uploaded', () => {
-      const index = (run) => testJob.steps.findIndex((s) => s.run === run);
+      const index = (run) =>
+        testJob.steps.findIndex((s) => (s.run || '').split('\n').some((line) => line.trim() === run));
       const upload = testJob.steps.findIndex(
         (s) => s.uses === './.github/actions/upload-artifact' && s.with?.pages === 'true',
       );
+      expect(index('npm run build')).toBeGreaterThanOrEqual(0);
       expect(index('npx playwright install --with-deps chromium')).toBeGreaterThan(index('npm run build'));
       expect(index('npm run build:cv')).toBeGreaterThan(index('npx playwright install --with-deps chromium'));
       expect(upload).toBeGreaterThan(index('npm run build:cv'));

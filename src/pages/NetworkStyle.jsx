@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 import ColorInput from '../components/ColorInput';
 import Select from '../components/Select';
 import { useState } from 'react';
@@ -105,8 +106,8 @@ function Control({ field, value, onChange }) {
         className="setting__reset"
         onClick={() => onChange(STYLE_DEFAULTS[field.key])}
         disabled={!changed}
-        title={t({ en: 'Back to the default', ru: 'Вернуть по умолчанию' })}
-        aria-label={`${t({ en: 'Back to the default', ru: 'Вернуть по умолчанию' })}: ${t(field.label)}`}
+        title={t(localized('mb156711b9597'))}
+        aria-label={`${t(localized('mb156711b9597'))}: ${t(field.label)}`}
       >
         <RotateCcw {...iconProps} />
       </button>
@@ -122,7 +123,7 @@ export function Looks({ style, onStyle }) {
   const [name, setName] = useState('');
   const size = SIZES.findIndex((s) => s.width === style.width && s.height === style.height);
   const save = () => {
-    const label = name.trim() || `${t({ en: 'Style', ru: 'Стиль' })} ${saved.length + 1}`;
+    const label = name.trim() || `${t(localized('mc2e42c394377'))} ${saved.length + 1}`;
     const next = [{ name: label.slice(0, 40), style }, ...saved.filter((item) => item.name !== label)].slice(
       0,
       MAX_SAVED,
@@ -138,7 +139,7 @@ export function Looks({ style, onStyle }) {
   };
   return (
     <div className="looks">
-      <div className="looks__row" role="group" aria-label={t({ en: 'Looks', ru: 'Оформления' })}>
+      <div className="looks__row" role="group" aria-label={t(localized('m725be8324d2d'))}>
         {LOOKS.map((look) => (
           <button
             key={look.id}
@@ -151,7 +152,7 @@ export function Looks({ style, onStyle }) {
         ))}
       </div>
       <label className="looks__size">
-        {t({ en: 'Image size', ru: 'Размер изображения' })}{' '}
+        {t(localized('m8f16af6b7c0f'))}{' '}
         <Select
           value={size}
           onChange={(event) => {
@@ -160,7 +161,7 @@ export function Looks({ style, onStyle }) {
           }}
         >
           <option value={-1}>
-            {style.width} × {style.height} ({t({ en: 'own', ru: 'свой' })})
+            {style.width} × {style.height} ({t(localized('m14a584fcb924'))})
           </option>
           {SIZES.map((s, i) => (
             <option key={s.label} value={i}>
@@ -175,15 +176,15 @@ export function Looks({ style, onStyle }) {
           value={name}
           maxLength={40}
           onChange={(event) => setName(event.target.value)}
-          placeholder={t({ en: 'Name of the style', ru: 'Название стиля' })}
-          aria-label={t({ en: 'Name of the style', ru: 'Название стиля' })}
+          placeholder={t(localized('m088cc1e7f39e'))}
+          aria-label={t(localized('m088cc1e7f39e'))}
         />
         <button type="button" className="button button--small" onClick={save}>
-          {t({ en: 'Save the style', ru: 'Сохранить стиль' })}
+          {t(localized('mbfa988acfa82'))}
         </button>
       </div>
       {saved.length > 0 && (
-        <ul className="looks__list" aria-label={t({ en: 'Saved styles', ru: 'Сохранённые стили' })}>
+        <ul className="looks__list" aria-label={t(localized('mb665a731cea9'))}>
           {saved.map((item) => (
             <li key={item.name}>
               <button
@@ -197,7 +198,7 @@ export function Looks({ style, onStyle }) {
                 type="button"
                 className="setting__reset"
                 onClick={() => remove(item.name)}
-                aria-label={`${t({ en: 'Delete', ru: 'Удалить' })}: ${item.name}`}
+                aria-label={`${t(localized('mfd6f4e7e7232'))}: ${item.name}`}
               >
                 <X {...iconProps} />
               </button>
@@ -235,7 +236,7 @@ export function StyleSections({ style, onStyle, children = null, only = null, li
               )
             }
           >
-            {t({ en: 'Reset', ru: 'Сбросить' })}
+            {t(localized('m1273fbb7d339'))}
           </button>
         </header>
         {section.lead && <p className="settings__lead">{t(section.lead)}</p>}

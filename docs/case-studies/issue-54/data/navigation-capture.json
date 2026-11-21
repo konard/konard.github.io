@@ -1,0 +1,100 @@
+{
+  "baselineRevision": "f169665",
+  "frameworkRevision": "2efd7e23df9df5312cac6d45611aa67e10529715",
+  "command": "BASE=http://127.0.0.1:3002 node experiments/framework-migration/navigation-capture.mjs; BASE=http://127.0.0.1:3001 node experiments/framework-migration/navigation-capture.mjs",
+  "interpretation": "Both scroll positions reproduce on unchanged baseline navigation; font-time mount ordering is an inference. The raw matrix difference is retained.",
+  "before": {
+    "changedPixels": 5954,
+    "bounds": {
+      "left": 16,
+      "top": 49,
+      "right": 377,
+      "bottom": 79
+    },
+    "samples": [
+      {
+        "initial": {
+          "scrollLeft": 473,
+          "currentLeft": 174.859375,
+          "currentRight": 307.625
+        },
+        "later": {
+          "scrollLeft": 473,
+          "currentLeft": 174.859375,
+          "currentRight": 307.625
+        }
+      },
+      {
+        "initial": {
+          "scrollLeft": 322,
+          "currentLeft": 325.859375,
+          "currentRight": 458.625
+        },
+        "later": {
+          "scrollLeft": 322,
+          "currentLeft": 325.859375,
+          "currentRight": 458.625
+        }
+      },
+      {
+        "initial": {
+          "scrollLeft": 322,
+          "currentLeft": 325.859375,
+          "currentRight": 458.625
+        },
+        "later": {
+          "scrollLeft": 322,
+          "currentLeft": 325.859375,
+          "currentRight": 458.625
+        }
+      }
+    ]
+  },
+  "after": {
+    "changedPixels": 5954,
+    "bounds": {
+      "left": 16,
+      "top": 49,
+      "right": 377,
+      "bottom": 79
+    },
+    "samples": [
+      {
+        "initial": {
+          "scrollLeft": 322,
+          "currentLeft": 325.859375,
+          "currentRight": 458.625
+        },
+        "later": {
+          "scrollLeft": 322,
+          "currentLeft": 325.859375,
+          "currentRight": 458.625
+        }
+      },
+      {
+        "initial": {
+          "scrollLeft": 322,
+          "currentLeft": 325.859375,
+          "currentRight": 458.625
+        },
+        "later": {
+          "scrollLeft": 322,
+          "currentLeft": 325.859375,
+          "currentRight": 458.625
+        }
+      },
+      {
+        "initial": {
+          "scrollLeft": 322,
+          "currentLeft": 325.859375,
+          "currentRight": 458.625
+        },
+        "later": {
+          "scrollLeft": 322,
+          "currentLeft": 325.859375,
+          "currentRight": 458.625
+        }
+      }
+    ]
+  }
+}

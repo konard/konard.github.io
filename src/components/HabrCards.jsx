@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 import { useEffect, useState } from 'react';
 import { fetchHabrCards, fetchHabrStatistics, mergeHabr } from '../data/habrLive';
 import { useLang } from '../i18n/prefs';
@@ -9,10 +10,10 @@ import { ArrowBigUp, Bookmark, Eye, MessageSquare } from 'lucide-react';
 import { iconProps } from './icons';
 
 const STATS = [
-  ['views', { en: 'views', ru: 'просмотры' }, Eye],
-  ['score', { en: 'karma', ru: 'карма' }, ArrowBigUp],
-  ['bookmarks', { en: 'bookmarks', ru: 'закладки' }, Bookmark],
-  ['comments', { en: 'comments', ru: 'комментарии' }, MessageSquare],
+  ['views', localized('me0149fcccbde'), Eye],
+  ['score', localized('m74cee34ed92f'), ArrowBigUp],
+  ['bookmarks', localized('me6ced800947f'), Bookmark],
+  ['comments', localized('md8e0c9bf43e0'), MessageSquare],
 ];
 const SUBSCRIBERS = { en: ['subscriber', 'subscribers'], ru: ['подписчик', 'подписчика', 'подписчиков'] };
 const ARTICLES = { en: ['article', 'articles'], ru: ['статья', 'статьи', 'статей'] };
@@ -62,14 +63,14 @@ export default function HabrCards({ snapshot, live = true, fetchImpl }) {
           {habr.company.title}
         </a>
         <span>
-          {t({ en: 'rating', ru: 'рейтинг' })} <strong>{formatNumber(habr.company.rating, lang)}</strong> ·{' '}
+          {t(localized('m2f10a9943296'))} <strong>{formatNumber(habr.company.rating, lang)}</strong> ·{' '}
           {count(habr.company.subscribers, SUBSCRIBERS)}
         </span>
         <span>
           <a href={habr.user.url} target="_blank" rel="noopener noreferrer">
             @{habr.user.alias}
           </a>{' '}
-          {t({ en: 'karma', ru: 'карма' })} <strong>{formatNumber(habr.user.karma, lang)}</strong>
+          {t(localized('m74cee34ed92f'))} <strong>{formatNumber(habr.user.karma, lang)}</strong>
         </span>
         <span>
           {count(habr.articles.length, ARTICLES)}{' '}
@@ -83,8 +84,8 @@ export default function HabrCards({ snapshot, live = true, fetchImpl }) {
           · {count(totals.views, VIEWS)} · {count(totals.bookmarks, BOOKMARKS)}
         </span>
         <span className={`habr__status habr__status--${status}`} aria-live="polite">
-          {status === 'live' && t({ en: 'live numbers from the Habr API', ru: 'актуальные данные из API Хабра' })}
-          {status === 'loading' && t({ en: 'refreshing from Habr…', ru: 'обновление с Хабра…' })}
+          {status === 'live' && t(localized('m40905746a785'))}
+          {status === 'loading' && t(localized('mbd8ff5ce8adc'))}
           {status === 'partial' &&
             t({
               en: `Some numbers updated from Habr; remaining figures use the snapshot of ${snapshot.collectedAt.slice(0, 10)}`,
@@ -122,8 +123,8 @@ export default function HabrCards({ snapshot, live = true, fetchImpl }) {
                 </span>
                 <span className="habr-card__author">
                   {authors.own(a)
-                    ? t({ en: 'by me', ru: 'автор — я' })
-                    : `${t({ en: 'by', ru: 'автор —' })} @${a.author?.alias ?? '?'}`}
+                    ? t(localized('m845e8a002914'))
+                    : `${t(localized('m9d512f3c70a6'))} @${a.author?.alias ?? '?'}`}
                 </span>
                 <h3 className="habr-card__title">{a.title}</h3>
                 <span className="habr-card__hubs">{a.hubs.slice(0, 3).join(' · ')}</span>

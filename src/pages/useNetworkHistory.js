@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { replaceAddress } from '../history';
 
 /** Opt-in tracing: localStorage.setItem('network.debug', 'true'). */
@@ -16,6 +16,7 @@ const continuous = (target) => target?.matches?.('input[type="range"], input[typ
 /** Live state stays in React; history is a debounced, best-effort persistence layer. */
 export function useNetworkHistory(query) {
   const [interacting, setInteracting] = useState(false);
+  const held = useRef(false);
   // Bind before paint: a first touch must not fall between mounting the input
   // and installing passive effects (observable in mobile WebKit).
   useLayoutEffect(() => {
@@ -26,6 +27,7 @@ export function useNetworkHistory(query) {
       if (continuous(event.target) && (event.type !== 'keydown' || SLIDER_KEYS.includes(event.key))) {
         control = event.target;
         active.add(kind(event.type));
+        held.current = true;
         networkDebug('interaction started', { type: event.type, control: event.target.id });
         setInteracting(true);
       }
@@ -43,6 +45,7 @@ export function useNetworkHistory(query) {
         active.delete(kind(event.type));
       }
       networkDebug('interaction ended', { type: event.type, remaining: [...active] });
+      held.current = active.size > 0;
       setInteracting(active.size > 0);
     };
     const starts = ['pointerdown', 'touchstart', 'keydown'];
@@ -62,6 +65,12 @@ export function useNetworkHistory(query) {
     let timer;
     let failures = 0;
     const write = () => {
+      // Native events suspend an already-due callback before React commits
+      // interacting and runs this effect's cleanup on a busy renderer.
+      if (held.current) {
+        networkDebug('address deferred', 'active continuous input');
+        return;
+      }
       if (window.location.search === query) return;
       const error = replaceAddress(`${window.location.pathname}${query}${window.location.hash}`);
       if (error) {

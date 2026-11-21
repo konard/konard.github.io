@@ -1,0 +1,247 @@
+{
+  "date": "2026-11-06",
+  "baseline": "f169665",
+  "framework": "27d580f4bac4ebb4e70de3f78671153c2ef5dab9",
+  "focused_checks": [
+    {
+      "command": "npx vitest run src/components/Select.test.jsx src/components/ColorInput.test.jsx src/ui/framework.test.js --maxWorkers=1",
+      "result": "17 passed after CI label/focus/SVG corrections",
+      "framework": "f72e97fe2db100d88ea460ee8451bbf63a1b01b6"
+    },
+    {
+      "command": "node experiments/framework-migration/audit-messages.mjs",
+      "result": "53 catalog-only files preserve exact English/Russian text and original syntax trees",
+      "framework": "f72e97fe2db100d88ea460ee8451bbf63a1b01b6"
+    },
+    {
+      "command": "ENGINE=chromium node experiments/network-e2e.mjs",
+      "result": "pass: editor, gradient, solver, exact shared SVG, actual SVG/PNG/JPEG/WebP/LiNo downloads",
+      "framework": "f72e97fe2db100d88ea460ee8451bbf63a1b01b6"
+    },
+    {
+      "command": "ENGINE=chromium node experiments/issue-19-browser.mjs",
+      "result": "pass: seven layouts, 120-event gestures, history, offsets, clipboard/downloads, 100-link mobile editor",
+      "framework": "f72e97fe2db100d88ea460ee8451bbf63a1b01b6"
+    },
+    {
+      "command": "ENGINE=chromium node experiments/issue-25-browser.mjs",
+      "result": "pass: geometry, exact sharing, editing/inheritance and EN/RU visible mobile controls",
+      "framework": "f72e97fe2db100d88ea460ee8451bbf63a1b01b6"
+    },
+    {
+      "command": "ENGINE=firefox node experiments/issue-45-browser.mjs",
+      "result": "16 checks passed, including the real forced palette click that failed CI",
+      "framework": "f72e97fe2db100d88ea460ee8451bbf63a1b01b6"
+    },
+    {
+      "command": "npm run build",
+      "result": "pass after final label/focus/SVG and forced-colors changes",
+      "framework": "f72e97fe2db100d88ea460ee8451bbf63a1b01b6"
+    },
+    {
+      "command": "npx vitest run src/cv/cv.test.jsx src/pages/pages.test.jsx src/pages/settings.test.jsx src/pages/slider-ids-47.test.jsx src/components/icons-47.test.jsx --maxWorkers=1 -t \"choosing a position|BlogPage:|shows a setting only|names the channel|leaves no emoji\"",
+      "result": "All five previously failing CI tests pass; 195 unrelated cases skipped in this focused invocation",
+      "framework": "f72e97fe2db100d88ea460ee8451bbf63a1b01b6"
+    },
+    {
+      "command": "BASE=http://127.0.0.1:3001 ENGINE=chromium node experiments/framework-migration/smoke.mjs",
+      "result": "Six production checks pass with no page errors, including light/dark forced colors and English/Russian accessible names",
+      "framework": "f72e97fe2db100d88ea460ee8451bbf63a1b01b6"
+    },
+    {
+      "command": "npx vitest run src/components/Select.test.jsx src/components/ColorInput.test.jsx src/ui/framework.test.js src/pages/network-history.test.jsx --maxWorkers=1",
+      "result": "23 passed after synchronous history guard and unchanged-select synchronization",
+      "framework": "f72e97fe2db100d88ea460ee8451bbf63a1b01b6"
+    },
+    {
+      "command": "ENGINE=chromium EXPECT_STABLE=1 node experiments/framework-migration/interaction-performance.mjs",
+      "result": "23 unchanged selects, eight edits: zero mutations after correction (800 before); elapsed times do not establish a speedup",
+      "framework": "f72e97fe2db100d88ea460ee8451bbf63a1b01b6"
+    },
+    {
+      "command": "npm run build && ENGINE=chromium npm run test:ui:migration",
+      "result": "Production build and all six smoke checks pass after interaction corrections",
+      "framework": "f72e97fe2db100d88ea460ee8451bbf63a1b01b6"
+    },
+    {
+      "command": "npx vitest run src/workflow.test.js --maxWorkers=1",
+      "result": "18 passed after recognizing exact command lines within multiline workflow steps; original ordering assertions retained",
+      "framework": "f72e97fe2db100d88ea460ee8451bbf63a1b01b6"
+    },
+    {
+      "command": "npx vitest run src/components/Select.test.jsx src/components/ColorInput.test.jsx src/components/NumberInput.test.jsx src/ui/framework.test.js src/settings/contracts.test.js src/settings/presets.test.js src/settings/settings.test.js src/pages/network-history.test.jsx --maxWorkers=1",
+      "result": "61 passed across 8 files",
+      "framework": "2efd7e23df9df5312cac6d45611aa67e10529715"
+    },
+    {
+      "command": "npm run build; BASE=http://127.0.0.1:3001 ENGINE=chromium node experiments/framework-migration/smoke.mjs",
+      "result": "Build and six Chromium production checks pass after adopting upstream select/strict normalization",
+      "framework": "2efd7e23df9df5312cac6d45611aa67e10529715"
+    },
+    {
+      "command": "npx vitest run src/components/Select.test.jsx src/components/ColorInput.test.jsx src/components/NumberInput.test.jsx src/components/numericKeys.test.js src/ui/framework.test.js src/settings/contracts.test.js src/settings/presets.test.js src/settings/settings.test.js src/pages/network-history.test.jsx --maxWorkers=1",
+      "result": "64 passed across 9 files; continuous typed-value and per-package source-pin regressions included",
+      "framework": "45645979bb91d99f7a308d3b9168f3757294a184",
+      "browser_framework": "e37935ea195fca55cb2ee6a5d2c1723858cd7f81"
+    },
+    {
+      "command": "npm run build; ENGINE=chromium npm run test:ui:migration",
+      "result": "Production build and all six smoke checks pass without converter alias or asset-reference transform",
+      "framework": "45645979bb91d99f7a308d3b9168f3757294a184",
+      "browser_framework": "e37935ea195fca55cb2ee6a5d2c1723858cd7f81"
+    },
+    {
+      "command": "Playwright MCP: production /?ui-dev",
+      "result": "Inspector opens, closes and reopens with Alt+Shift+D; no page errors; screenshot after-upstream-browser-inspector.png; three WebGL performance warnings",
+      "framework": "45645979bb91d99f7a308d3b9168f3757294a184",
+      "browser_framework": "e37935ea195fca55cb2ee6a5d2c1723858cd7f81"
+    },
+    {
+      "command": "node experiments/framework-migration/upstream-contracts.mjs",
+      "result": "Directional stepping passes at 0.08; typed-value deletion gate reports unsupported (0.08 instead of 0.075); STRICT=1 intentionally fails only this remaining upstream boundary",
+      "framework": "45645979bb91d99f7a308d3b9168f3757294a184",
+      "browser_framework": "e37935ea195fca55cb2ee6a5d2c1723858cd7f81"
+    },
+    {
+      "command": "RESULT_FILE=docs/case-studies/issue-54/data/navigation-readiness.json node experiments/framework-migration/navigation-readiness.mjs",
+      "result": "Pass: deterministic delayed editor bootstrap gives zero paths after loaded navigation and two after attachment readiness",
+      "framework": "45645979bb91d99f7a308d3b9168f3757294a184",
+      "browser_framework": "e37935ea195fca55cb2ee6a5d2c1723858cd7f81"
+    },
+    {
+      "command": "ENGINE=chromium npm run test:network:issue21",
+      "result": "Pass: supplied URLs, five default configurations, gallery/theory dark/light color parity, exact SVG export and mobile overflow",
+      "framework": "45645979bb91d99f7a308d3b9168f3757294a184",
+      "browser_framework": "e37935ea195fca55cb2ee6a5d2c1723858cd7f81"
+    },
+    {
+      "command": "npx vitest run src/components/Select.test.jsx src/components/ColorInput.test.jsx src/components/NumberInput.test.jsx src/components/numericKeys.test.js src/ui/framework.test.js src/settings/contracts.test.js src/settings/presets.test.js src/settings/settings.test.js src/pages/network-history.test.jsx --maxWorkers=1",
+      "result": "64 passed across 9 files; official clamp parsing preserves 0.075 and clearing to null",
+      "framework": "27d580f4bac4ebb4e70de3f78671153c2ef5dab9",
+      "browser_framework": "e37935ea195fca55cb2ee6a5d2c1723858cd7f81"
+    },
+    {
+      "command": "npm run build; ENGINE=chromium npm run test:ui:migration",
+      "result": "Production build and all seven Chromium smoke checks pass, including scrolled menus with offscreen anchors",
+      "framework": "27d580f4bac4ebb4e70de3f78671153c2ef5dab9",
+      "browser_framework": "e37935ea195fca55cb2ee6a5d2c1723858cd7f81"
+    },
+    {
+      "command": "node experiments/framework-migration/upstream-contracts.mjs",
+      "result": "Both public contracts pass: directional stepping 0.075 to 0.08; typed clamp normalization preserves 0.075",
+      "framework": "27d580f4bac4ebb4e70de3f78671153c2ef5dab9",
+      "browser_framework": "e37935ea195fca55cb2ee6a5d2c1723858cd7f81"
+    },
+    {
+      "command": "Playwright MCP: production settings at 390x320, open palette then scroll 600px",
+      "result": "Menu remains at y=8 with height=304 despite anchor y=-420.21875; zero console errors; before/after screenshots committed",
+      "framework": "27d580f4bac4ebb4e70de3f78671153c2ef5dab9",
+      "browser_framework": "e37935ea195fca55cb2ee6a5d2c1723858cd7f81"
+    }
+  ],
+  "regressions": [
+    {
+      "case": "Composite text/numeric option labels",
+      "before_log_excerpt": "\n RUN  v5.0.5 /tmp/gh-issue-solver-1793911090763\n\n ❯ src/components/Select.test.jsx (7 tests | 1 failed) 750ms\n   ❯ owned select-only combobox (7)\n     × preserves labels assembled from multiple text and numeric children 31ms\n\n⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯\n\n FAIL  src/components/Select.test.jsx > owned select-only combobox > preserves labels assembled from multiple text and numeric children\nError: expect(element).toHaveTextContent()\n\nExpected element to have text content:\n  0 — void\nReceived:\n  0, — void\n ❯ src/components/Select.test.jsx:65:20\n     63|     );\n     64|     const button = screen.getByRole('combobox');\n     65|     expect(button).toHaveTextContent('0 — void');\n       |                    ^\n     66|     fireEvent.click(button);\n     67|     expect(screen.getByRole('option', { name: '1280 × 800 (current)' }…\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯\n\n\n Test Files  1 failed (1)\n      Tests  1 failed | 6 passed (7)\n   Start at  21:23:28\n   Duration  4.97s (environment 51%, tests 16%, setup 16%, import 9%, transform 8%, worker 1%)\n\n",
+      "after": "7 Select tests pass; labels retain spaces and no added commas"
+    },
+    {
+      "case": "Async color chooser positioning",
+      "before_log_excerpt": "\n RUN  v5.0.5 /tmp/gh-issue-solver-1793911090763\n\n ❯ src/components/ColorInput.test.jsx (5 tests | 1 failed) 1065ms\n   × reveals the chooser only after its asynchronous position is ready 113ms\n\n⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯\n\n FAIL  src/components/ColorInput.test.jsx > reveals the chooser only after its asynchronous position is ready\nError: expect(element).toHaveStyle()\n\n- Expected\n\n- visibility: hidden;\n ❯ src/components/ColorInput.test.jsx:56:56\n     54|   render(<ColorInput aria-label=\"Accent\" value=\"#112233\" onChange={() …\n     55|   fireEvent.click(screen.getByRole('button', { name: 'Choose color: Ac…\n     56|   expect(screen.getByRole('dialog', { hidden: true })).toHaveStyle({ v…\n       |                                                        ^\n     57|   const dialog = await screen.findByRole('dialog', { name: 'Color choo…\n     58|   expect(dialog.style.left).not.toBe('');\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯\n\n\n Test Files  1 failed (1)\n      Tests  1 failed | 4 passed (5)\n   Start at  21:30:59\n   Duration  4.59s (environment 40%, tests 25%, setup 16%, import 8%, transform 8%, worker 3%)\n\n",
+      "after": "5 ColorInput tests and the Firefox issue-45 palette click pass"
+    },
+    {
+      "case": "Long menu in 390x320 viewport",
+      "before_log_excerpt": "node:internal/modules/run_main:111\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(landscapeMenu.y >= 0 && landscapeMenu.y + landscapeMenu.height <= 320)\n\n    at file:///tmp/gh-issue-solver-1793911090763/experiments/framework-migration/smoke.mjs:69:10 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v26.13.0\n",
+      "before_geometry": {
+        "y": -144.21875,
+        "height": 320
+      },
+      "after_geometry": {
+        "y": 8,
+        "height": 167.78125
+      },
+      "screenshots": [
+        "draft-landscape-menu-before.png",
+        "draft-landscape-menu-after.png"
+      ]
+    },
+    {
+      "case": "SVG mask in Windows forced colors",
+      "before": {
+        "textColor": "rgb(0, 0, 0)",
+        "maskBackground": "rgb(255, 255, 255)"
+      },
+      "before_log": "node:internal/modules/run_main:111\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: The SVG mask retains the forced-color text color\n+ actual - expected\n\n+ 'rgb(255, 255, 255)'\n- 'rgb(0, 0, 0)'\n       ^\n\n    at file:///tmp/gh-issue-solver-1793911090763/experiments/framework-migration/smoke.mjs:50:12 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: 'rgb(255, 255, 255)',\n  expected: 'rgb(0, 0, 0)',\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v26.13.0\n",
+      "correction": "Use the ButtonText system color for the SVG mask in forced colors, disabling automatic background remapping on that pseudo-element",
+      "automated_regression": "Chromium production migration smoke, light and dark forced-color schemes: assert mask background equals actual button text color",
+      "screenshots": [
+        "draft-forced-colors-before.png",
+        "after-forced-colors.png"
+      ],
+      "after": {
+        "light": {
+          "button": "rgb(0, 0, 0)",
+          "mask": "rgb(0, 0, 0)"
+        },
+        "dark": {
+          "button": "rgb(255, 255, 255)",
+          "mask": "rgb(255, 255, 255)"
+        }
+      }
+    },
+    {
+      "case": "Due history timer before React commits pointer press",
+      "before_log_excerpt": "\n RUN  v5.0.5 /tmp/gh-issue-solver-1793911090763\n\n ❯ src/pages/network-history.test.jsx (5 tests | 1 failed | 4 skipped) 99ms\n   × suspends an already-due history callback before React commits a pointer press 95ms\n\n⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯\n\n FAIL  src/pages/network-history.test.jsx > suspends an already-due history callback before React commits a pointer press\nAssertionError: expected \"replaceState\" to not be called at all, but actually been called 1 times\n\nReceived:\n\n  1st replaceState call:\n\n    Array [\n      null,\n      \"\",\n      \"/network/?code=11\",\n    ]\n\n\nNumber of calls: 1\n\n ❯ src/pages/network-history.test.jsx:30:23\n     28|     vi.advanceTimersByTime(20);\n     29|   });\n     30|   expect(replace).not.toHaveBeenCalled();\n       |                       ^\n     31|   fireEvent.pointerUp(document);\n     32|   tick();\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯\n\n\n Test Files  1 failed (1)\n      Tests  1 failed | 4 skipped (5)\n   Start at  23:12:22\n   Duration  4.15s (transform 42%, environment 28%, import 16%, setup 11%, tests 3%)\n\n",
+      "after": "New focused regression passes after synchronous held-input guard"
+    },
+    {
+      "case": "Unchanged select DOM with a fresh parent callback",
+      "before_log_excerpt": "\n RUN  v5.0.5 /tmp/gh-issue-solver-1793911090763\n\n ❯ src/components/Select.test.jsx (9 tests | 1 failed | 8 skipped) 161ms\n   ❯ owned select-only combobox (9)\n     × keeps unchanged control DOM stable while using the latest parent callback 156ms\n\n⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯\n\n FAIL  src/components/Select.test.jsx > owned select-only combobox > keeps unchanged control DOM stable while using the latest parent callback\nAssertionError: expected [ MutationRecord{}, …(4) ] to have a length of +0 but got 5\n\n- Expected\n+ Received\n\n- 0\n+ 5\n\n ❯ src/components/Select.test.jsx:54:23\n     52|     await act(async () => rerender(view(latest)));\n     53|     observer.disconnect();\n     54|     expect(mutations).toHaveLength(0);\n       |                       ^\n     55|     fireEvent.click(screen.getByRole('combobox'));\n     56|     fireEvent.click(screen.getByRole('option', { name: 'Green' }));\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯\n\n\n Test Files  1 failed (1)\n      Tests  1 failed | 8 skipped (9)\n   Start at  23:13:26\n   Duration  2.74s (environment 47%, setup 27%, transform 13%, import 7%, tests 6%, worker 1%)\n\n",
+      "after": "New focused regression passes after separating changed-property synchronization from latest callbacks"
+    },
+    {
+      "case": "Multiline browser installation in the CV workflow ordering test",
+      "before_log_excerpt": "\n RUN  v5.0.5 /tmp/gh-issue-solver-1793911090763\n\n ❯ src/workflow.test.js (18 tests | 1 failed) 163ms\n   ❯ GitHub Actions workflows (7)\n     ❯ GitHub Pages deployment from Actions (6)\n       × the CV PDFs are printed into the build before it is uploaded 14ms\n\n⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯\n\n FAIL  src/workflow.test.js > GitHub Actions workflows > GitHub Pages deployment from Actions > the CV PDFs are printed into the build before it is uploaded\nAssertionError: expected -1 to be greater than 4\n ❯ src/workflow.test.js:45:68\n     43|         (s) => s.uses === './.github/actions/upload-artifact' && s.wit…\n     44|       );\n     45|       expect(index('npx playwright install --with-deps chromium')).toB…\n       |                                                                    ^\n     46|       expect(index('npm run build:cv')).toBeGreaterThan(index('npx pla…\n     47|       expect(upload).toBeGreaterThan(index('npm run build:cv'));\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯\n\n\n Test Files  1 failed (1)\n      Tests  1 failed | 17 passed (18)\n   Start at  00:01:10\n   Duration  5.30s (environment 70%, setup 19%, transform 5%, tests 3%, import 1%, worker 1%)\n\n",
+      "after": "18 workflow tests pass after exact command-line lookup and explicit production-build presence assertion"
+    },
+    {
+      "case": "Open select menu when anchor scrolls offscreen",
+      "evidence": "upstream-continuous-scroll.json",
+      "before_log_excerpt": "\n> konard.github.io@0.1.0 test:ui:migration\n> node experiments/framework-migration/smoke.mjs\n\nnode:internal/modules/run_main:111\n    triggerUncaughtException(\n    ^\n\npage.waitForFunction: Timeout 15000ms exceeded.\n    at /tmp/gh-issue-solver-1793911090763/experiments/framework-migration/smoke.mjs:84:14 {\n  log: [],\n  name: 'TimeoutError'\n}\n\nNode.js v26.13.0\n",
+      "after": "Production smoke passes; menu y=8, height=304 in 320px viewport using official upstream positioner"
+    }
+  ],
+  "limits": [
+    "Local Linux WebKit matrix was OOM-killed when overlapping other work; not a pass. CI macOS WebKit supplies remaining platform coverage.",
+    "Viewport comparisons sample 48 scenarios per browser, not every one of the 608 settings.",
+    "Full upstream support is an unfinished acceptance criterion; local adapters and upstream issue reports do not satisfy it."
+  ],
+  "browser_label_focus_check": {
+    "tool": "Playwright MCP",
+    "names": {
+      "button": "Motion",
+      "list": "Options: Motion",
+      "russian": "Движение"
+    },
+    "open_choosers_after_second_trigger": 1,
+    "page_errors": [],
+    "svg_mask": "Lucide chevron-down SVG, replacing the draft glyph",
+    "screenshots": [
+      "draft-chevron-before.png",
+      "after-chevron.png"
+    ]
+  },
+  "browser_history_check": {
+    "tool": "Playwright MCP",
+    "edits": 8,
+    "history_writes_while_held": 0,
+    "history_writes_after_release": 1,
+    "saved_targetAngle": 68,
+    "subsequent_ring_selection": "circle",
+    "preview_changed": true,
+    "console_errors": 0
+  },
+  "initial_framework": "f72e97fe2db100d88ea460ee8451bbf63a1b01b6",
+  "browser_framework": "e37935ea195fca55cb2ee6a5d2c1723858cd7f81"
+}

@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 import { Moon, Orbit, Pause, Sun, SunMoon, Volume2, VolumeX } from 'lucide-react';
 import { LANGS, THEMES, useLang, useTheme } from '../i18n/prefs';
 import { setSettings, useSettings } from '../settings/store';
@@ -25,7 +26,7 @@ export default function PrefSwitches() {
   const ThemeIcon = THEME_LABELS[theme].Icon;
   return (
     <div className="prefs">
-      <div className="prefs__langs" role="group" aria-label={t({ en: 'Language', ru: 'Язык' })}>
+      <div className="prefs__langs" role="group" aria-label={t(localized('m6d23696c750e'))}>
         {LANGS.map((code) => (
           <button
             key={code}
@@ -43,8 +44,8 @@ export default function PrefSwitches() {
         type="button"
         className="prefs__button prefs__sound"
         aria-pressed={sound}
-        aria-label={t({ en: 'Sounds of the interface', ru: 'Звуки интерфейса' })}
-        title={t(sound ? { en: 'Sound: on', ru: 'Звук: включён' } : { en: 'Sound: off', ru: 'Звук: выключен' })}
+        aria-label={t(localized('m3b3d2462d37e'))}
+        title={t(sound ? localized('m72ae9fef9a73') : localized('m89244689331c'))}
         onClick={() => setSettings({ 'sound.on': !sound })}
       >
         {sound ? <Volume2 {...iconProps} /> : <VolumeX {...iconProps} />}
@@ -53,12 +54,8 @@ export default function PrefSwitches() {
         type="button"
         className="prefs__button prefs__motion"
         aria-pressed={motion}
-        aria-label={t({ en: 'Animations', ru: 'Анимации' })}
-        title={t(
-          motion
-            ? { en: 'Animations: on', ru: 'Анимации: включены' }
-            : { en: 'Animations: off', ru: 'Анимации: выключены' },
-        )}
+        aria-label={t(localized('mc8562865c8b0'))}
+        title={t(motion ? localized('me71c8ad68167') : localized('m51bf75c44c3b'))}
         onClick={() => setSettings({ 'motion.mode': motion ? 'off' : 'on' })}
       >
         {motion ? <Orbit {...iconProps} /> : <Pause {...iconProps} />}
@@ -66,7 +63,7 @@ export default function PrefSwitches() {
       <button
         type="button"
         className="prefs__button prefs__theme"
-        aria-label={`${t(THEME_LABELS[theme])}. ${t({ en: 'Switch to', ru: 'Переключить на' })}: ${t(THEME_LABELS[next]).split(': ')[1]}`}
+        aria-label={`${t(THEME_LABELS[theme])}. ${t(localized('mbca52b60ca71'))}: ${t(THEME_LABELS[next]).split(': ')[1]}`}
         title={t(THEME_LABELS[theme])}
         data-theme-choice={theme}
         onClick={() => setTheme(next)}

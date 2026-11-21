@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 import ColorInput from '../components/ColorInput';
 import Select from '../components/Select';
 import { useState } from 'react';
@@ -93,11 +94,8 @@ export function Notations({ links, notation, onLinks }) {
       </p>
       <NotationField
         id="notation-theory"
-        label={{ en: 'Math notation (the links theory)', ru: 'Математическая нотация (теория связей)' }}
-        hint={{
-          en: 'The function of the network: link ↦ (source, target). The names may be left out.',
-          ru: 'Функция сети: связь ↦ (начало, конец). Имена связей можно не писать.',
-        }}
+        label={localized('m7cc23f2f8b2a')}
+        hint={localized('m89998754a361')}
         value={theoryNotation(links, notation)}
         format={(l) => theoryNotation(l, notation)}
         parse={parseMath}
@@ -105,11 +103,8 @@ export function Notations({ links, notation, onLinks }) {
       />
       <NotationField
         id="notation-pairs"
-        label={{ en: 'Pairs with the base', ru: 'Пары с основанием' }}
-        hint={{
-          en: 'Source and target of each link as two digits (use (source,target) with a base for 10+ links), as under the symbols of the gallery.',
-          ru: 'Начало и конец каждой связи двумя цифрами (для 10+ связей — (начало,конец) с основанием), как под символами галереи.',
-        }}
+        label={localized('m3b663a02c0ef')}
+        hint={localized('m0d71d9034d4a')}
         value={mathNotation(encode(links))}
         format={(l) => mathNotation(encode(l))}
         parse={parseMath}
@@ -117,7 +112,7 @@ export function Notations({ links, notation, onLinks }) {
       />
       <NotationField
         id="notation-number"
-        label={{ en: 'N-ary number', ru: 'N-ричное число' }}
+        label={localized('m567c3ad9f528')}
         hint={{
           en: `The whole network as one number of ${2 * n} digits in base ${n + 1}; for 10+ links use space-separated digits in [brackets].`,
           ru: `Вся сеть как одно число из ${2 * n} цифр в системе с основанием ${n + 1}; для 10+ связей разделяйте цифры пробелами в [скобках].`,
@@ -129,7 +124,7 @@ export function Notations({ links, notation, onLinks }) {
       />
       <NotationField
         id="notation-decimal"
-        label={{ en: 'The same number in decimal', ru: 'То же число в десятичной системе' }}
+        label={localized('m3e8fd5931b00')}
         hint={{
           en: `The position of the network among all networks of ${n} ${plural(n, lang, LINKS)}, from 0 to ${count - 1n}.`,
           ru: `Номер сети среди всех сетей из ${n} ${plural(n, lang, OF_LINKS)}, от 0 до ${count - 1n}.`,
@@ -141,11 +136,8 @@ export function Notations({ links, notation, onLinks }) {
       />
       <NotationField
         id="notation-links"
-        label={{ en: 'Links notation', ru: 'Нотация связей' }}
-        hint={{
-          en: '(index: source target) for each link; 0 is nothing.',
-          ru: '(индекс: начало конец) для каждой связи; 0 — это «ничего».',
-        }}
+        label={localized('m0684ee64a20f')}
+        hint={localized('mc8cbec83df2c')}
         value={linksText(links)}
         format={(l) => linksText(l)}
         parse={parseLinks}
@@ -180,9 +172,9 @@ function ReferenceSelect({ id, value, n, self, onChange, label }) {
         <option key={ref} value={ref}>
           {ref}
           {ref === 0
-            ? ` — ${t({ en: 'nothing', ru: 'ничего' })}`
+            ? ` — ${t(localized('m8a3ee78b9765'))}`
             : ref === self
-              ? ` — ${t({ en: 'itself', ru: 'сама' })}`
+              ? ` — ${t(localized('m07a8c8dddf75'))}`
               : ''}
         </option>
       ))}
@@ -212,19 +204,14 @@ export function LinksTable({
 }) {
   const { t } = useLang();
   const n = links.length;
-  const start = t({ en: 'source', ru: 'начало' });
-  const end = t({ en: 'target', ru: 'конец' });
+  const start = t(localized('m11a0be7570c6'));
+  const end = t(localized('m458b8ba592d0'));
   return (
     <div className="links-table">
-      <p className="network__lead">
-        {t({
-          en: 'Each card contains all settings for one link. Empty gaps follow the global values shown in the fields. Reference gaps use layout units; middle cuts use 1/100 of the symbol.',
-          ru: 'В каждой карточке — все настройки одной связи. Пустые зазоры следуют общим значениям из подсказок. Зазоры ссылок — в единицах размещения, разрывы середины — в 1/100 символа.',
-        })}
-      </p>
-      <ul className="link-cards" aria-label={t({ en: 'Link configurations', ru: 'Настройки связей' })}>
+      <p className="network__lead">{t(localized('mb5f5a15b7996'))}</p>
+      <ul className="link-cards" aria-label={t(localized('mf17b2717aeae'))}>
         {links.map(([s, tg], i) => {
-          const name = `${t({ en: 'Link', ru: 'Связь' })} ${i + 1}`;
+          const name = `${t(localized('m574b2b03f271'))} ${i + 1}`;
           return (
             <li className="link-card" key={i}>
               <div className="link-card__head">
@@ -237,11 +224,8 @@ export function LinksTable({
                   className="button button--small"
                   disabled={n <= 1}
                   onClick={() => onRemove(i + 1)}
-                  aria-label={`${t({ en: 'Remove', ru: 'Удалить' })}: ${name}`}
-                  title={t({
-                    en: 'References to this link become references to 0',
-                    ru: 'Ссылки на эту связь станут ссылками на 0',
-                  })}
+                  aria-label={`${t(localized('mddae809b7081'))}: ${name}`}
+                  title={t(localized('m9ea395041b8b'))}
                 >
                   <X {...iconProps} />
                 </button>
@@ -252,7 +236,7 @@ export function LinksTable({
                   [tg, end, 'target'],
                 ].map(([value, label, id], e) => (
                   <label key={id} htmlFor={`link-${i + 1}-${id}`}>
-                    {t(e ? { en: 'Target', ru: 'Конец' } : { en: 'Source', ru: 'Начало' })}
+                    {t(e ? localized('m99f9bf527607') : localized('m50b184ae4c51'))}
                     <ReferenceSelect
                       id={`link-${i + 1}-${id}`}
                       value={value}
@@ -264,10 +248,10 @@ export function LinksTable({
                   </label>
                 ))}
                 <label className="link-card__colour">
-                  {t({ en: 'Colour', ru: 'Цвет' })}
+                  {t(localized('m9ffc82435487'))}
                   <ColorInput
                     value={colors[i]}
-                    aria-label={`${name}: ${t({ en: 'colour', ru: 'цвет' })}`}
+                    aria-label={`${name}: ${t(localized('mda57c41cc43d'))}`}
                     onChange={(event) => onColor(i, event.target.value)}
                   />
                 </label>
@@ -287,31 +271,28 @@ export function LinksTable({
       </ul>
       <div className="network__actions">
         <button type="button" className="button" onClick={() => onLinks(addLink(links))}>
-          <Plus {...iconProps} /> {t({ en: 'Add a link', ru: 'Добавить связь' })}
+          <Plus {...iconProps} /> {t(localized('m8513a3428120'))}
         </button>
         <button type="button" className="button" onClick={() => onStep(-1)}>
-          <ArrowLeft {...iconProps} /> {t({ en: 'Previous network', ru: 'Предыдущая сеть' })}
+          <ArrowLeft {...iconProps} /> {t(localized('mb4d8e61366a5'))}
         </button>
         <button type="button" className="button" onClick={() => onStep(1)}>
-          {t({ en: 'Next network', ru: 'Следующая сеть' })} <ArrowRight {...iconProps} />
+          {t(localized('m6526d96e2ffa'))} <ArrowRight {...iconProps} />
         </button>
         <button type="button" className="button" onClick={onRandom}>
-          {t({ en: 'Random network', ru: 'Случайная сеть' })}
+          {t(localized('m443af87d6182'))}
         </button>
         <button type="button" className="button" onClick={onRandomReal}>
-          {t({ en: 'Random real network', ru: 'Случайная настоящая сеть' })}
+          {t(localized('m4f4259247fd3'))}
         </button>
         <button
           type="button"
           className="button"
           disabled={n > CANONICAL_UP_TO}
           onClick={() => onLinks(decode(canonical(links)))}
-          title={t({
-            en: 'The same network with the links renamed so that its code is the smallest',
-            ru: 'Та же сеть, связи которой переименованы так, чтобы её код был наименьшим',
-          })}
+          title={t(localized('m146abdca8612'))}
         >
-          {t({ en: 'Smallest renaming', ru: 'Наименьшее переименование' })}
+          {t(localized('mf57fccc8577a'))}
         </button>
       </div>
     </div>

@@ -2,6 +2,7 @@ import { useLayoutEffect } from 'react';
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import { afterEach, beforeEach, expect, it, vi } from 'vitest';
 import NetworkPage from './NetworkPage';
+import { useNetworkHistory } from './useNetworkHistory';
 
 beforeEach(() => {
   window.history.replaceState(null, '', '/network/?code=1221&angles=fixed');
@@ -12,6 +13,25 @@ afterEach(() => {
   vi.useRealTimers();
 });
 const tick = (ms = 450) => act(() => vi.advanceTimersByTime(ms));
+
+it('suspends an already-due history callback before React commits a pointer press', () => {
+  function HistoryProbe() {
+    useNetworkHistory('?code=11');
+    return <input type="range" aria-label="Probe" />;
+  }
+  render(<HistoryProbe />);
+  const replace = vi.spyOn(window.history, 'replaceState');
+  tick(390);
+  act(() => {
+    screen.getByLabelText('Probe').dispatchEvent(new Event('pointerdown', { bubbles: true }));
+    // A due task can run before React has committed the native listener's update.
+    vi.advanceTimersByTime(20);
+  });
+  expect(replace).not.toHaveBeenCalled();
+  fireEvent.pointerUp(document);
+  tick();
+  expect(window.location.search).toBe('?code=11');
+});
 
 it('keeps the preview/share link live but writes history once after a drag and repeated releases', () => {
   render(<NetworkPage />);

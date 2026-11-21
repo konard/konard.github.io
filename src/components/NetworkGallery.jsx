@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 import { useMemo, useState } from 'react';
 import {
   classCount,
@@ -69,24 +70,18 @@ export default function NetworkGallery({ initial = 2 }) {
 
   return (
     <div className="symbols">
-      <p className="section__lead">
-        {t({
-          en: 'Each symbol is one network of links, and each link is one unbroken line in its own colour: a bar marks its source, an arrow its target, and its middle is the point other links refer to. Link 0 (0: 0 0) is “nothing”: it always exists and is never drawn, so a reference to 0 is a free end, and a link that refers to itself twice is a figure eight. These networks are also the alphabet of the rain in the background.',
-          ru: 'Каждый символ — одна сеть связей, а каждая связь — одна непрерывная линия своего цвета: черта отмечает её начало, стрелка — конец, а середина — точку, на которую ссылаются другие связи. Связь 0 (0: 0 0) — это «ничто»: она существует всегда и никогда не рисуется, поэтому ссылка на 0 — это свободный конец, а связь, которая дважды ссылается на себя, — восьмёрка. Эти сети — ещё и алфавит дождя на фоне.',
-        })}
-      </p>
-      <div className="symbols__tabs" role="group" aria-label={t({ en: 'Number of links', ru: 'Количество связей' })}>
+      <p className="section__lead">{t(localized('m22c5a1565ce7'))}</p>
+      <div className="symbols__tabs" role="group" aria-label={t(localized('m6630d09a856d'))}>
         {SIZES.map((k) => (
           <button key={k} type="button" className="button" aria-pressed={k === n} onClick={() => choose(k, classes)}>
             {k} {words(k, LINKS)} <span className="mono">{number(networkCount(k, only))}</span>
           </button>
         ))}
         <button type="button" className="button" aria-pressed={classes} onClick={() => choose(n, !classes)}>
-          {t({ en: 'One per renaming', ru: 'Без переименований' })}{' '}
-          <span className="mono">{number(classCount(n, only))}</span>
+          {t(localized('m582e5bc2ede8'))} <span className="mono">{number(classCount(n, only))}</span>
         </button>
         <button type="button" className="button" aria-pressed={real} onClick={() => choose(n, classes, !real)}>
-          {t({ en: 'Show only real references', ru: 'Только настоящие ссылки' })}{' '}
+          {t(localized('meeea854573a7'))}{' '}
           <span className="mono">
             {number(classes ? classCount(n, { real: true }) : networkCount(n, { real: true }))}
           </span>
@@ -94,12 +89,12 @@ export default function NetworkGallery({ initial = 2 }) {
       </div>
 
       <dl className="symbols__formula">
-        <dt>{t({ en: 'math notation', ru: 'математическая нотация' })}</dt>
+        <dt>{t(localized('m0f48683d5dec'))}</dt>
         <dd className="mono">
           {mathNotation(first)} … {mathNotation(last)} → {real ? n : n + 1}
           {superscript(2 * n)} = {number(networkCount(n, only))} {words(networkCount(n, only), NETWORKS)}
         </dd>
-        <dt>{t({ en: 'links notation', ru: 'нотация связей' })}</dt>
+        <dt>{t(localized('mfe944d2cc5a8'))}</dt>
         <dd className="mono">
           {linksNotation(first).join(' ')} … {linksNotation(last).join(' ')}
         </dd>
@@ -122,7 +117,7 @@ export default function NetworkGallery({ initial = 2 }) {
         <dd className="symbols__legend">
           {COLORS.slice(0, n).map((color, i) => (
             <span key={color} style={{ color }}>
-              ━ {t({ en: 'link', ru: 'связь' })} {i + 1}
+              ━ {t(localized('m1591f3951522'))} {i + 1}
             </span>
           ))}
         </dd>
@@ -130,7 +125,7 @@ export default function NetworkGallery({ initial = 2 }) {
 
       <ul
         className="symbols__grid"
-        aria-label={`${classes ? t({ en: 'Renaming classes', ru: 'Классы переименований' }) : t({ en: 'Networks', ru: 'Сети' })} ${t({ en: 'of', ru: 'из' })} ${n} ${words(n, OF_LINKS)}`}
+        aria-label={`${classes ? t(localized('m2480cecfa59d')) : t(localized('m99bb818c3088'))} ${t(localized('m7b81548c7d3d'))} ${n} ${words(n, OF_LINKS)}`}
       >
         {codes.map((code) => (
           <li key={code} title={linksNotation(code).join(' ')}>

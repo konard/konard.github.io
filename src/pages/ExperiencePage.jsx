@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 import Layout from '../components/Layout';
 import { RepoItem } from '../components/RepoList';
 import Section from '../components/Section';
@@ -22,21 +23,21 @@ const ALL = positions.find((p) => p.id === 'all');
 const CHOICES = positions.filter((p) => p.id !== 'all');
 
 const TEXT = {
-  kicker: { en: 'Experience', ru: 'Опыт' },
-  title: { en: 'Experience by position', ru: 'Опыт по должностям' },
-  tabs: { en: 'Positions', ru: 'Должности' },
-  all: { en: 'All', ru: 'Весь опыт' },
-  cv: { en: 'Download CV', ru: 'Скачать резюме' },
-  pdf: { en: 'PDF', ru: 'PDF' },
-  timeline: { en: 'Timeline', ru: 'Хронология' },
-  examples: { en: 'Examples', ru: 'Примеры' },
-  skills: { en: 'Skills', ru: 'Навыки' },
-  companies: { en: 'Companies & ventures', ru: 'Компании и проекты' },
-  openSource: { en: 'Open source', ru: 'Open source' },
-  repositories: { en: 'Example repositories', ru: 'Примеры репозиториев' },
-  allExamples: { en: 'All examples', ru: 'Все примеры' },
-  stack: { en: 'Stack', ru: 'Стек' },
-  technologies: { en: 'Technologies', ru: 'Технологии' },
+  kicker: localized('m59ce29a188ea'),
+  title: localized('ma1d6ee362ce5'),
+  tabs: localized('m702edf6581fb'),
+  all: localized('m8e35d36c12a5'),
+  cv: localized('m4fba0d94ec05'),
+  pdf: localized('mbeb82eae76ec'),
+  timeline: localized('m68260e09d38b'),
+  examples: localized('m89a78bc55de8'),
+  skills: localized('m76cd1ef8816d'),
+  companies: localized('m10401887ca26'),
+  openSource: localized('m284f146ee95c'),
+  repositories: localized('m946c01a2522b'),
+  allExamples: localized('mc158ea57326f'),
+  stack: localized('m2bfca692a47b'),
+  technologies: localized('m7622035d0674'),
 };
 
 const POSITIONS = { en: ['position', 'positions'], ru: ['место работы', 'места работы', 'мест работы'] };

@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 import Select from './Select';
 import { useMemo, useState } from 'react';
 import { fields } from '../data/fields';
@@ -37,14 +38,14 @@ export function RepoItem({ repo, note = null }) {
               <DataMark />
             </span>
           )}
-          <span title={t({ en: 'last push', ru: 'последнее обновление' })}>{repo.pushedAt?.slice(0, 7)}</span>
-          {repo.archived && <span>{t({ en: 'archived', ru: 'в архиве' })}</span>}
+          <span title={t(localized('mf466b1f4b05b'))}>{repo.pushedAt?.slice(0, 7)}</span>
+          {repo.archived && <span>{t(localized('m77d3bd59b484'))}</span>}
         </span>
       </div>
       {text && <p className="repo__description">{text}</p>}
       {repo.kind === 'fork' && repo.copyOf && (
         <p className="repo__description muted">
-          {t({ en: 'Fork of', ru: 'Форк' })}{' '}
+          {t(localized('m1d2589a30159'))}{' '}
           <a href={`https://github.com/${repo.copyOf}`} target="_blank" rel="noopener noreferrer">
             {repo.copyOf}
           </a>
@@ -57,16 +58,16 @@ export function RepoItem({ repo, note = null }) {
               Object.values(repo.sourceLines).reduce((sum, l) => sum + l.code, 0),
               lang,
             )}{' '}
-            {t({ en: 'source lines', ru: 'строк кода' })} <DataMark />
+            {t(localized('m0a8b7bec9cc3'))} <DataMark />
           </summary>
           <ul>
             {Object.entries(repo.sourceLines)
               .sort((a, b) => b[1].code - a[1].code)
               .map(([language, counts]) => (
                 <li key={language}>
-                  {language}: {formatNumber(counts.code, lang)} {t({ en: 'code', ru: 'код' })} ·{' '}
-                  {formatNumber(counts.comment, lang)} {t({ en: 'comments', ru: 'комментарии' })} ·{' '}
-                  {formatNumber(counts.blank, lang)} {t({ en: 'blank', ru: 'пустые' })}
+                  {language}: {formatNumber(counts.code, lang)} {t(localized('m45999934312c'))} ·{' '}
+                  {formatNumber(counts.comment, lang)} {t(localized('md8e0c9bf43e0'))} ·{' '}
+                  {formatNumber(counts.blank, lang)} {t(localized('ma181d74f8f23'))}
                 </li>
               ))}
           </ul>
@@ -76,17 +77,17 @@ export function RepoItem({ repo, note = null }) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              {t({ en: 'Measured revision', ru: 'Измеренная версия' })} · {repo.sourceCollectedAt?.slice(0, 10)}
+              {t(localized('m6d300e3b17a9'))} · {repo.sourceCollectedAt?.slice(0, 10)}
             </a>
           )}
         </details>
       ) : (
         <p className="repo__lines muted">
-          {t({ en: 'Line count unavailable', ru: 'Число строк недоступно' })} <DataMark />
+          {t(localized('m51557473e31e'))} <DataMark />
         </p>
       )}
       {repo.fields.length > 0 && (
-        <ul className="repo__fields" aria-label={t({ en: 'Fields', ru: 'Области' })}>
+        <ul className="repo__fields" aria-label={t(localized('m8358697b517a'))}>
           {repo.fields.map((f) => (
             <li key={f}>{t(FIELD_NAMES[f]) || f}</li>
           ))}
@@ -102,7 +103,7 @@ export function RepoItem({ repo, note = null }) {
  */
 export default function RepoList({
   items,
-  label = { en: 'Repositories', ru: 'Репозитории' },
+  label = localized('m05caedaaca06'),
   fieldOptions = fields,
   showKinds = true,
   limit = 60,
@@ -129,18 +130,18 @@ export default function RepoList({
     <div className="repo-list">
       <div className="filters" role="search">
         <label>
-          <span>{t({ en: 'Search', ru: 'Поиск' })}</span>
+          <span>{t(localized('m2c44548f634d'))}</span>
           <input
             type="search"
             value={query}
-            placeholder={t({ en: 'name, language, topic…', ru: 'название, язык, тема…' })}
+            placeholder={t(localized('mdc291e023713'))}
             onChange={(e) => setQuery(e.target.value)}
           />
         </label>
         <label>
-          <span>{t({ en: 'Field', ru: 'Область' })}</span>
+          <span>{t(localized('m81ae96ccbcac'))}</span>
           <Select value={field} onChange={(e) => setField(e.target.value)}>
-            <option value="">{t({ en: 'All fields', ru: 'Все области' })}</option>
+            <option value="">{t(localized('m68eb79acafbd'))}</option>
             {fieldOptions.map((f) => (
               <option key={f.id} value={f.id}>
                 {t(f.name)}
@@ -150,19 +151,19 @@ export default function RepoList({
         </label>
         {showKinds && (
           <label>
-            <span>{t({ en: 'Kind', ru: 'Вид' })}</span>
+            <span>{t(localized('m3138dd9f1132'))}</span>
             <Select value={kind} onChange={(e) => setKind(e.target.value)}>
               {Object.entries(KINDS).map(([id, k]) => (
                 <option key={id} value={id}>
                   {t(k.label)}
                 </option>
               ))}
-              <option value="all">{t({ en: 'All kinds', ru: 'Все виды' })}</option>
+              <option value="all">{t(localized('m524092efda77'))}</option>
             </Select>
           </label>
         )}
         <label>
-          <span>{t({ en: 'Sort', ru: 'Сортировка' })}</span>
+          <span>{t(localized('mf3e20b4447ee'))}</span>
           <Select value={sort} onChange={(e) => setSort(e.target.value)}>
             {Object.entries(SORTS).map(([id, s]) => (
               <option key={id} value={id}>
@@ -182,7 +183,7 @@ export default function RepoList({
       </ul>
       {list.length > shown.length && (
         <button type="button" className="button repo-list__more" onClick={() => setExpanded(true)}>
-          {t({ en: 'Show all', ru: 'Показать все' })} {formatNumber(list.length, lang)}
+          {t(localized('mb84e8abe47c2'))} {formatNumber(list.length, lang)}
         </button>
       )}
     </div>

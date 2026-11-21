@@ -11,13 +11,20 @@
 //
 // Parsers return `{ links }` or `{ error }`, where `error` is an `{ en, ru }` text.
 import { encode } from './configurations.js';
+import { parseLinks as readLinks } from '@link-foundation/ui-core';
+import {
+  count,
+  formatDecimal,
+  formatTheory,
+  parseCode as readCode,
+  parseDecimal,
+  removeLink as removeConfigurationLink,
+  setReference as setConfigurationReference,
+} from '@link-foundation/ui-components/links-view/configurations';
+
+export { addLink, formatNumber as numberNotation } from '@link-foundation/ui-components/links-view/configurations';
 
 const SUBSCRIPTS = '₀₁₂₃₄₅₆₇₈₉';
-const toSubscript = (k) =>
-  String(k)
-    .split('')
-    .map((d) => SUBSCRIPTS[d])
-    .join('');
 const fromSubscripts = (text) => text.replace(/[₀-₉]/g, (c) => String(SUBSCRIPTS.indexOf(c)));
 
 const fail = (en, ru) => ({ error: { en, ru } });
@@ -40,16 +47,11 @@ export function check(links) {
 
 /** The code ("01 20") of a network written as "0120", "01 20", "01-20" or "01.20"; null if it is not one. */
 export function parseCode(text) {
-  if (/^\d+,\d+(;\d+,\d+)*$/.test(String(text))) {
-    const links = String(text)
-      .split(';')
-      .map((pair) => pair.split(',').map(Number));
-    return check(links).links ? encode(links) : null;
-  }
-  const digits = String(text ?? '').replace(/[\s._-]/g, '');
-  if (!/^\d+$/.test(digits) || digits.length % 2) return null;
-  const links = digits.match(/../g).map((pair) => [Number(pair[0]), Number(pair[1])]);
-  return check(links).links ? encode(links) : null;
+  const source = String(text ?? '');
+  const code = source.includes(',') ? source : source.replace(/[\s._-]/g, '');
+  if (!/^(?:\d+|\d+,\d+(;\d+,\d+)*)$/.test(code)) return null;
+  const { links } = readCode(code);
+  return links ? encode(links) : null;
 }
 
 /** The N-ary number "0120₃" (or "0120", "0120_3"); its base, if written, must be n + 1. */
@@ -93,22 +95,15 @@ export function parseNumber(text) {
  * How many networks of `n` links there are, (n + 1)^(2n), as a BigInt: with 9
  * links it is 10^18, beyond the integers a Number holds exactly.
  */
-export const countOf = (n) => BigInt(n + 1) ** BigInt(2 * n);
+export const countOf = count;
 
 /** The network at position `index` among the networks of `n` links (the decimal value of the N-ary number). */
 export function parseIndex(text, n) {
   const raw = String(text).replace(/[\s,_]/g, '');
-  const count = countOf(n);
-  const index = /^\d+$/.test(raw) ? BigInt(raw) : -1n;
-  if (index < 0n || index >= count)
-    return fail(`Write a whole number from 0 to ${count - 1n}.`, `Запишите целое число от 0 до ${count - 1n}.`);
-  let remainder = index;
-  const digits = new Array(2 * n).fill(0);
-  for (let k = digits.length - 1; k >= 0; k--) {
-    digits[k] = Number(remainder % BigInt(n + 1));
-    remainder /= BigInt(n + 1);
-  }
-  return check(Array.from({ length: n }, (_, i) => digits.slice(2 * i, 2 * i + 2)));
+  const { links } = parseDecimal(raw, n);
+  if (links) return { links };
+  const max = countOf(n) - 1n;
+  return fail(`Write a whole number from 0 to ${max}.`, `Запишите целое число от 0 до ${max}.`);
 }
 
 /**
@@ -116,12 +111,28 @@ export function parseIndex(text, n) {
  * the names may be left out ("(0 1) (2 0)") and then count from 1.
  */
 export function parseLinks(text) {
-  const raw = String(text);
-  const pattern = /\(\s*(?:(\d+)\s*:)?\s*(\d+)[\s,]+(\d+)\s*\)/g;
-  const found = [...raw.matchAll(pattern)];
-  if (!found.length || raw.replace(pattern, '').trim())
+  try {
+    // The official parser groups adjacent records on one line. Separate the
+    // editor's historical space-separated pairs without flattening nested
+    // records (which would silently accept malformed networks).
+    const found = readLinks(
+      String(text)
+        .replace(/,/g, ' ')
+        .replace(/\)\s*\(/g, ')\n('),
+    );
+    if (!found.length) throw new Error('empty network');
+    const items = found.map((link) => {
+      const values = Array.isArray(link) ? link : link.values;
+      const name = Array.isArray(link) ? undefined : link.id;
+      if (!values || values.length !== 2 || values.some((v) => typeof v !== 'string' || !/^\d+$/.test(v)))
+        throw new Error('not a doublet');
+      if (name !== undefined && !/^\d+$/.test(name)) throw new Error('not a link number');
+      return [name, ...values.map(Number)];
+    });
+    return byNames(items);
+  } catch {
     return fail('Write links as (1: 0 1) (2: 2 0).', 'Запишите связи как (1: 0 1) (2: 2 0).');
-  return byNames(found.map(([, name, s, t]) => [name, Number(s), Number(t)]));
+  }
 }
 
 /** Links named 1..n in any order, or without names, in the order they are written. */
@@ -197,36 +208,16 @@ export const functionOf = (notation) => (notation === 'R' ? 'N²' : 'λ');
 export const signatureOf = (notation) => (notation === 'R' ? 'N²: R → R × R' : 'λ: L → L × L');
 
 /** "λ = {1 ↦ (0, 1), 2 ↦ (2, 0)}". */
-export const theoryNotation = (links, notation = 'L') =>
-  `${functionOf(notation)} = {${links.map(([s, t], i) => `${i + 1} ↦ (${s}, ${t})`).join(', ')}}`;
-
-/** "0120₃". */
-export const numberNotation = (links) =>
-  `${links.length > 9 ? `[${links.flat().join(' ')}]` : encode(links).replace(/ /g, '')}${toSubscript(links.length + 1)}`;
+export const theoryNotation = (links, notation = 'L') => formatTheory(links).replace(/^λ/, functionOf(notation));
 
 /** The decimal value of the N-ary number (a string): the position of the network among those of its size. */
-export const decimalOf = (links) =>
-  links
-    .flat()
-    .reduce((value, digit) => value * BigInt(links.length + 1) + BigInt(digit), 0n)
-    .toString();
+export const decimalOf = formatDecimal;
 
 /** "(1: 0 1) (2: 2 0)". */
 export const linksText = (links, separator = ' ') => links.map(([s, t], i) => `(${i + 1}: ${s} ${t})`).join(separator);
 
-/** A new link (n + 1: 0 0), which refers to nothing yet. */
-export const addLink = (links) => [...links, [0, 0]];
+/** Removes a 1-based link and renumbers remaining references. */
+export const removeLink = (links, k) => removeConfigurationLink(links, k).links;
 
-/**
- * Removes link `k` (1-based): references to it become references to 0, and
- * the links after it move down by one, so the network stays consistent.
- */
-export function removeLink(links, k) {
-  if (links.length <= 1) return links;
-  const rename = (ref) => (ref === k ? 0 : ref > k ? ref - 1 : ref);
-  return links.filter((_, i) => i !== k - 1).map(([s, t]) => [rename(s), rename(t)]);
-}
-
-/** Sets the source (`end` 0) or the target (`end` 1) of link `i` (0-based) to `ref`. */
-export const setReference = (links, i, end, ref) =>
-  links.map((link, k) => (k === i ? link.map((value, e) => (e === end ? ref : value)) : link));
+/** The editor uses a zero-based index for the selected link. */
+export const setReference = (links, i, end, ref) => setConfigurationReference(links, i + 1, end, ref);

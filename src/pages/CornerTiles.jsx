@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 import { useLang } from '../i18n/prefs';
 import { CORNERS, SHAPES } from '../skins.frames';
 import { setSettings } from '../settings/store';
@@ -120,11 +121,11 @@ export function SameCorners({ level = 'panel', corner, settings }) {
   return (
     <div className="corner-tiles__actions">
       <button type="button" className="button button--small corner-tiles__same" onClick={copy}>
-        {t({ en: 'Make all corners like this one', ru: 'Сделать все углы такими же' })}
+        {t(localized('mca71e85c1f78'))}
       </button>
       {level !== 'panel' && (
         <button type="button" className="button button--small corner-tiles__panels" onClick={fromPanels}>
-          {t({ en: 'Start from the corners of the outer panels', ru: 'Взять углы внешних панелей' })}
+          {t(localized('ma944d0c8c07b'))}
         </button>
       )}
     </div>

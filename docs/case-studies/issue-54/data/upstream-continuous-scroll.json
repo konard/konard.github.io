@@ -1,0 +1,51 @@
+{
+  "date": "2026-11-06",
+  "controls_revision": "27d580f4bac4ebb4e70de3f78671153c2ef5dab9",
+  "browser_revision": "e37935ea195fca55cb2ee6a5d2c1723858cd7f81",
+  "before_revision": "45645979bb91d99f7a308d3b9168f3757294a184",
+  "contracts": [
+    {
+      "contract": "directional stepping from continuous values",
+      "actual": 0.08,
+      "expected": 0.08,
+      "supported": true
+    },
+    {
+      "contract": "continuous typed number",
+      "actual": 0.075,
+      "expected": 0.075,
+      "supported": true
+    }
+  ],
+  "scrolled_menu": {
+    "viewport": {
+      "width": 390,
+      "height": 320
+    },
+    "scroll_pixels": 600,
+    "before_menu": {
+      "x": 39.1875,
+      "y": -384.21875,
+      "width": 274.84375,
+      "height": 304
+    },
+    "after_menu": {
+      "x": 39.1875,
+      "y": 8,
+      "width": 274.84375,
+      "height": 304
+    },
+    "anchor": {
+      "x": 39.1875,
+      "y": -420.21875,
+      "width": 274.84375,
+      "height": 32
+    },
+    "before_regression_log": "\n> konard.github.io@0.1.0 test:ui:migration\n> node experiments/framework-migration/smoke.mjs\n\nnode:internal/modules/run_main:111\n    triggerUncaughtException(\n    ^\n\npage.waitForFunction: Timeout 15000ms exceeded.\n    at /tmp/gh-issue-solver-1793911090763/experiments/framework-migration/smoke.mjs:84:14 {\n  log: [],\n  name: 'TimeoutError'\n}\n\nNode.js v26.13.0\n",
+    "after": "Seven Chromium production checks pass",
+    "screenshots": [
+      "draft-scrolled-menu-before.png",
+      "after-upstream-scrolled-menu.png"
+    ]
+  }
+}

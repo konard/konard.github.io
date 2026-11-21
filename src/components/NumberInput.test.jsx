@@ -18,3 +18,18 @@ it('provides owned pointer steps using inherited values, decimal snapping and bo
   rerender(<NumberInput aria-label="Gap" value={1} min={0} max={1} step={0.01} onValue={onValue} />);
   expect(screen.getByRole('button', { name: 'Increase: Gap' })).toBeDisabled();
 });
+
+it('preserves typed continuous values and an empty inherited override', () => {
+  const onValue = vi.fn();
+  const { rerender } = render(
+    <NumberInput aria-label="Gap" value={0.08} min={0} max={1} step={0.01} onValue={onValue} />,
+  );
+  const input = screen.getByRole('spinbutton', { name: 'Gap' });
+  fireEvent.change(input, { target: { value: '0.075' } });
+  expect(onValue).toHaveBeenLastCalledWith(0.075);
+  rerender(<NumberInput aria-label="Gap" value={0.075} min={0} max={1} step={0.01} onValue={onValue} />);
+  expect(input).toHaveValue(0.075);
+  fireEvent.change(input, { target: { value: '' } });
+  expect(onValue).toHaveBeenLastCalledWith(null);
+  expect(input).toHaveValue(null);
+});

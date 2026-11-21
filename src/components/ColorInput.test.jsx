@@ -19,12 +19,12 @@ it('keeps incomplete color drafts out of settings and restores the saved value o
   expect(onChange).toHaveBeenCalledOnce();
 });
 
-it('keeps pointer color selection in an owned keyboard-accessible chooser', () => {
+it('keeps pointer color selection in an owned keyboard-accessible chooser', async () => {
   const change = vi.fn();
   render(<ColorInput aria-label="Accent" value="#112233" onChange={change} />);
   const trigger = screen.getByRole('button', { name: 'Choose color: Accent' });
   fireEvent.click(trigger);
-  expect(screen.getByRole('dialog', { name: 'Color chooser' })).toBeInTheDocument();
+  expect(await screen.findByRole('dialog', { name: 'Color chooser' })).toBeInTheDocument();
   const red = screen.getByRole('slider', { name: 'Red' });
   expect(red).toHaveFocus();
   fireEvent.change(red, { target: { value: '255' } });
@@ -34,11 +34,11 @@ it('keeps pointer color selection in an owned keyboard-accessible chooser', () =
   expect(trigger).toHaveFocus();
 });
 
-it('offers palettes of neon, pastel and matrix colours besides the sliders (issue #45)', () => {
+it('offers palettes of neon, pastel and matrix colours besides the sliders (issue #45)', async () => {
   const change = vi.fn();
   render(<ColorInput aria-label="Accent" value="#39ff14" onChange={change} />);
   fireEvent.click(screen.getByRole('button', { name: 'Choose color: Accent' }));
-  const dialog = screen.getByRole('dialog', { name: 'Color chooser' });
+  const dialog = await screen.findByRole('dialog', { name: 'Color chooser' });
   for (const palette of COLOR_PALETTES) {
     const group = within(dialog).getByRole('group', { name: palette.name.en });
     expect(within(group).getAllByRole('button')).toHaveLength(palette.colors.length);
@@ -47,6 +47,16 @@ it('offers palettes of neon, pastel and matrix colours besides the sliders (issu
   fireEvent.click(within(dialog).getByRole('button', { name: 'Pastel pink #f8c8dc' }));
   expect(change).toHaveBeenCalledWith(expect.objectContaining({ target: { value: '#f8c8dc' } }));
   // The sliders still come first and get the focus.
+  expect(screen.getByRole('slider', { name: 'Red' })).toHaveFocus();
+});
+
+it('reveals the chooser only after its asynchronous position is ready', async () => {
+  render(<ColorInput aria-label="Accent" value="#112233" onChange={() => {}} />);
+  fireEvent.click(screen.getByRole('button', { name: 'Choose color: Accent' }));
+  expect(screen.getByRole('dialog', { hidden: true })).toHaveStyle({ visibility: 'hidden' });
+  const dialog = await screen.findByRole('dialog', { name: 'Color chooser' });
+  expect(dialog.style.left).not.toBe('');
+  expect(dialog.style.top).not.toBe('');
   expect(screen.getByRole('slider', { name: 'Red' })).toHaveFocus();
 });
 

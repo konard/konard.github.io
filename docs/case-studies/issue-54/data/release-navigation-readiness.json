@@ -1,0 +1,7 @@
+{
+  "delayedBootstrapMs": 400,
+  "pathsAfterNavigation": 0,
+  "pathsAfterReadiness": 2,
+  "controlsAfterNavigation": 0,
+  "controlsAfterReadiness": 1
+}

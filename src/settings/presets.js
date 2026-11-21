@@ -6,29 +6,27 @@
 // interface sounds and how loud, and the notation of the theory pages. The idea
 // and the comfort rule follow konard/immortality (src/settings.ts), which has
 // no saved looks.
-import { normalize } from './apply';
+import { applySharedLook } from '@link-foundation/ui-settings';
+import { COMFORT, diff, settingsValues } from './framework';
 import { isObject, readNotation, toIndented, toNested } from '../lino';
-import { DEFAULTS, FIELDS, PREVIOUS_DEFAULTS, RULES } from './schema';
+import { DEFAULTS, FIELDS, PREVIOUS_DEFAULTS, SETTINGS_SCHEMA } from './schema';
 
 /** Settings that a preset, a link or the randomizer never change. */
-export const COMFORT = ['motion.mode', 'sound.on', 'sound.volume', 'theory.notation', 'ui.transparency'];
+export { COMFORT };
 
 /** The difference of `settings` from the defaults. */
-const changes = (settings) =>
-  Object.fromEntries(Object.entries(settings).filter(([key, value]) => value !== DEFAULTS[key]));
+const changes = (settings) => diff(SETTINGS_SCHEMA, settings);
 
 /** Only known settings with valid values, comfort settings left out. */
 export function cleanLook(look) {
   if (!look || typeof look !== 'object' || Array.isArray(look)) return {};
   const known = Object.fromEntries(Object.entries(look).filter(([key]) => key in DEFAULTS && !COMFORT.includes(key)));
-  return changes(normalize(RULES, { ...DEFAULTS, ...known }));
+  return changes(settingsValues(SETTINGS_SCHEMA, known));
 }
 
 /** The settings after applying `look` over `current`: the look on the defaults, comfort kept. */
 export function applyLook(look, current) {
-  const next = normalize(RULES, { ...DEFAULTS, ...cleanLook(look) });
-  for (const key of COMFORT) next[key] = current[key];
-  return next;
+  return applySharedLook(SETTINGS_SCHEMA, current, cleanLook(look));
 }
 
 /** Whether `current` is exactly the look (comfort settings aside). */

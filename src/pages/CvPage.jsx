@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 import Select from '../components/Select';
 import { useEffect, useMemo } from 'react';
 import Layout from '../components/Layout';
@@ -9,17 +10,14 @@ import { useQueryParam } from './query';
 import './cv.css';
 
 const TEXT = {
-  kicker: { en: 'CV', ru: 'Резюме' },
-  title: { en: 'Download CV', ru: 'Скачать резюме' },
-  lead: {
-    en: 'A CV for one position, or the full record without a position. One column of plain text in one font, black on white in the PDF, readable by ATS; a CV for a position fits 2 pages, the compact one fits 1 page.',
-    ru: 'Резюме для одной должности или полный список опыта без должности. Одна колонка простого текста одним шрифтом, в PDF — чёрным по белому, читаемая ATS; резюме для должности занимает до 2 страниц, компактное — 1 страницу.',
-  },
-  position: { en: 'Position', ru: 'Должность' },
-  style: { en: 'Style', ru: 'Стиль' },
-  pdf: { en: 'Download PDF', ru: 'Скачать PDF' },
-  print: { en: 'Print / save as PDF', ru: 'Печать / сохранить в PDF' },
-  experience: { en: 'Experience page', ru: 'Страница опыта' },
+  kicker: localized('m4d522dda41b0'),
+  title: localized('m4fba0d94ec05'),
+  lead: localized('mff6b58c555d8'),
+  position: localized('m47f68dc3bac4'),
+  style: localized('mc2e42c394377'),
+  pdf: localized('m63158e068cce'),
+  print: localized('m52c14ff6c040'),
+  experience: localized('m88c4a1b91fbe'),
 };
 
 /** /cv/?role=<position>&style=<style>&lang=<en|ru>: a CV preview with its PDF. */

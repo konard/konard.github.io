@@ -1,0 +1,218 @@
+/* Palettes of the futuristic skin (issue #13), generated from the palettes of
+   konard/immortality by experiments/future-palettes.mjs; do not edit by hand. */
+
+:root[data-skin-name='futuristic'][data-future-palette='mission'] {
+  --fx-neon-rgb: 126 252 246;
+  --fx-series-rgb: 16 169 154;
+  --fx-panel-rgb: 10 16 24;
+  --fx-panel-2-rgb: 13 21 32;
+  --fx-page-rgb: 6 9 13;
+  --fx-text: #eef6f6;
+}
+
+:root[data-skin-name='futuristic'][data-future-palette='mission'][data-theme='light'] {
+  --fx-neon-rgb: 51 129 124;
+  --fx-series-rgb: 12 132 120;
+  --fx-panel-rgb: 255 255 255;
+  --fx-panel-2-rgb: 249 255 255;
+  --fx-page-rgb: 237 247 249;
+  --fx-text: #060a0e;
+}
+
+:root[data-skin-name='futuristic'][data-future-palette='glitchy'] {
+  --fx-neon-rgb: 226 174 235;
+  --fx-series-rgb: 196 92 214;
+  --fx-panel-rgb: 18 13 23;
+  --fx-panel-2-rgb: 27 19 33;
+  --fx-page-rgb: 10 7 13;
+  --fx-text: #fbf1fd;
+}
+
+:root[data-skin-name='futuristic'][data-future-palette='glitchy'][data-theme='light'] {
+  --fx-neon-rgb: 147 99 155;
+  --fx-series-rgb: 169 79 184;
+  --fx-panel-rgb: 255 255 255;
+  --fx-panel-2-rgb: 254 251 254;
+  --fx-page-rgb: 243 243 248;
+  --fx-text: #0b080e;
+}
+
+:root[data-skin-name='futuristic'][data-future-palette='amber'] {
+  --fx-neon-rgb: 255 210 115;
+  --fx-series-rgb: 228 167 43;
+  --fx-panel-rgb: 21 16 8;
+  --fx-panel-2-rgb: 30 23 10;
+  --fx-page-rgb: 12 9 4;
+  --fx-text: #fff8e9;
+}
+
+:root[data-skin-name='futuristic'][data-future-palette='amber'][data-theme='light'] {
+  --fx-neon-rgb: 142 113 52;
+  --fx-series-rgb: 150 110 28;
+  --fx-panel-rgb: 255 255 255;
+  --fx-panel-2-rgb: 255 253 248;
+  --fx-page-rgb: 245 245 241;
+  --fx-text: #0d0a05;
+}
+
+:root[data-skin-name='futuristic'][data-future-palette='monochrome'] {
+  --fx-neon-rgb: 255 255 255;
+  --fx-series-rgb: 216 222 225;
+  --fx-panel-rgb: 13 15 17;
+  --fx-panel-2-rgb: 21 24 27;
+  --fx-page-rgb: 7 8 9;
+  --fx-text: #f3f5f6;
+}
+
+:root[data-skin-name='futuristic'][data-future-palette='monochrome'][data-theme='light'] {
+  --fx-neon-rgb: 116 117 117;
+  --fx-series-rgb: 112 115 117;
+  --fx-panel-rgb: 255 255 255;
+  --fx-panel-2-rgb: 255 255 255;
+  --fx-page-rgb: 245 247 249;
+  --fx-text: #08090a;
+}
+
+:root[data-skin-name='futuristic'][data-future-palette='tron'] {
+  --fx-neon-rgb: 0 207 209;
+  --fx-series-rgb: 0 178 180;
+  --fx-panel-rgb: 0 11 11;
+  --fx-panel-2-rgb: 0 20 20;
+  --fx-page-rgb: 0 6 6;
+  --fx-text: #e4fbfb;
+}
+
+:root[data-skin-name='futuristic'][data-future-palette='tron'][data-theme='light'] {
+  --fx-neon-rgb: 0 130 131;
+  --fx-series-rgb: 0 132 133;
+  --fx-panel-rgb: 255 255 255;
+  --fx-panel-2-rgb: 242 253 253;
+  --fx-page-rgb: 229 245 247;
+  --fx-text: #000707;
+}
+
+:root[data-skin-name='futuristic'][data-future-palette='ares'] {
+  --fx-neon-rgb: 255 47 69;
+  --fx-series-rgb: 255 75 79;
+  --fx-panel-rgb: 17 3 3;
+  --fx-panel-2-rgb: 28 9 8;
+  --fx-page-rgb: 9 2 2;
+  --fx-text: #fbeceb;
+}
+
+:root[data-skin-name='futuristic'][data-future-palette='ares'][data-theme='light'] {
+  --fx-neon-rgb: 219 49 62;
+  --fx-series-rgb: 214 63 66;
+  --fx-panel-rgb: 255 255 255;
+  --fx-panel-2-rgb: 255 245 246;
+  --fx-page-rgb: 245 235 238;
+  --fx-text: #0a0202;
+}
+
+:root[data-skin-name='futuristic'][data-future-palette='clu'] {
+  --fx-neon-rgb: 255 131 0;
+  --fx-series-rgb: 229 111 0;
+  --fx-panel-rgb: 16 4 0;
+  --fx-panel-2-rgb: 27 11 2;
+  --fx-page-rgb: 9 2 0;
+  --fx-text: #fdf0e6;
+}
+
+:root[data-skin-name='futuristic'][data-future-palette='clu'][data-theme='light'] {
+  --fx-neon-rgb: 182 92 0;
+  --fx-series-rgb: 188 91 0;
+  --fx-panel-rgb: 255 255 255;
+  --fx-panel-2-rgb: 255 249 242;
+  --fx-page-rgb: 245 240 234;
+  --fx-text: #0a0200;
+}
+
+:root[data-skin-name='futuristic'][data-future-palette='athena'] {
+  --fx-neon-rgb: 251 198 0;
+  --fx-series-rgb: 220 174 0;
+  --fx-panel-rgb: 12 7 0;
+  --fx-panel-2-rgb: 21 14 0;
+  --fx-page-rgb: 7 4 0;
+  --fx-text: #fdf7e2;
+}
+
+:root[data-skin-name='futuristic'][data-future-palette='athena'][data-theme='light'] {
+  --fx-neon-rgb: 144 114 0;
+  --fx-series-rgb: 145 115 0;
+  --fx-panel-rgb: 255 255 255;
+  --fx-panel-2-rgb: 255 252 242;
+  --fx-page-rgb: 244 244 234;
+  --fx-text: #070400;
+}
+
+:root[data-skin-name='futuristic'][data-future-palette='aphrodite'] {
+  --fx-neon-rgb: 242 89 200;
+  --fx-series-rgb: 224 92 188;
+  --fx-panel-rgb: 15 4 11;
+  --fx-panel-2-rgb: 25 9 20;
+  --fx-page-rgb: 8 2 6;
+  --fx-text: #fdeef8;
+}
+
+:root[data-skin-name='futuristic'][data-future-palette='aphrodite'][data-theme='light'] {
+  --fx-neon-rgb: 189 72 157;
+  --fx-series-rgb: 184 75 154;
+  --fx-panel-rgb: 255 255 255;
+  --fx-panel-2-rgb: 254 247 252;
+  --fx-page-rgb: 244 238 246;
+  --fx-text: #090207;
+}
+
+:root[data-skin-name='futuristic'][data-future-palette='poseidon'] {
+  --fx-neon-rgb: 89 170 248;
+  --fx-series-rgb: 47 143 234;
+  --fx-panel-rgb: 1 8 19;
+  --fx-panel-2-rgb: 4 16 30;
+  --fx-page-rgb: 1 4 10;
+  --fx-text: #e9f3fd;
+}
+
+:root[data-skin-name='futuristic'][data-future-palette='poseidon'][data-theme='light'] {
+  --fx-neon-rgb: 56 122 185;
+  --fx-series-rgb: 39 120 197;
+  --fx-panel-rgb: 255 255 255;
+  --fx-panel-2-rgb: 247 251 255;
+  --fx-page-rgb: 235 242 249;
+  --fx-text: #01050b;
+}
+
+:root[data-skin-name='futuristic'][data-future-palette='soulextract'] {
+  --fx-neon-rgb: 39 225 250;
+  --fx-series-rgb: 25 160 179;
+  --fx-panel-rgb: 2 22 26;
+  --fx-panel-2-rgb: 6 35 40;
+  --fx-page-rgb: 1 12 14;
+  --fx-text: #e8fdff;
+}
+
+:root[data-skin-name='futuristic'][data-future-palette='soulextract'][data-theme='light'] {
+  --fx-neon-rgb: 22 129 144;
+  --fx-series-rgb: 20 128 143;
+  --fx-panel-rgb: 255 255 255;
+  --fx-panel-2-rgb: 244 254 255;
+  --fx-page-rgb: 232 246 249;
+  --fx-text: #010d10;
+}
+
+:root[data-skin-name='futuristic'][data-future-palette='matrix'] {
+  --fx-neon-rgb: 61 255 122;
+  --fx-series-rgb: 31 191 85;
+  --fx-panel-rgb: 2 12 4;
+  --fx-panel-2-rgb: 4 21 7;
+  --fx-page-rgb: 1 7 2;
+  --fx-text: #e6ffe9;
+}
+
+:root[data-skin-name='futuristic'][data-future-palette='matrix'][data-theme='light'] {
+  --fx-neon-rgb: 29 135 63;
+  --fx-series-rgb: 22 134 60;
+  --fx-panel-rgb: 255 255 255;
+  --fx-panel-2-rgb: 245 255 248;
+  --fx-page-rgb: 233 247 241;
+  --fx-text: #010702;
+}

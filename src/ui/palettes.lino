@@ -1,0 +1,288 @@
+mission-dark: theme
+  token fx-neon-rgb
+    rgb 126 252 246
+  token fx-series-rgb
+    rgb 16 169 154
+  token fx-panel-rgb
+    rgb 10 16 24
+  token fx-panel-2-rgb
+    rgb 13 21 32
+  token fx-page-rgb
+    rgb 6 9 13
+  token fx-text '#eef6f6'
+mission-light: theme
+  token fx-neon-rgb
+    rgb 51 129 124
+  token fx-series-rgb
+    rgb 12 132 120
+  token fx-panel-rgb
+    rgb 255 255 255
+  token fx-panel-2-rgb
+    rgb 249 255 255
+  token fx-page-rgb
+    rgb 237 247 249
+  token fx-text '#060a0e'
+glitchy-dark: theme
+  token fx-neon-rgb
+    rgb 226 174 235
+  token fx-series-rgb
+    rgb 196 92 214
+  token fx-panel-rgb
+    rgb 18 13 23
+  token fx-panel-2-rgb
+    rgb 27 19 33
+  token fx-page-rgb
+    rgb 10 7 13
+  token fx-text '#fbf1fd'
+glitchy-light: theme
+  token fx-neon-rgb
+    rgb 147 99 155
+  token fx-series-rgb
+    rgb 169 79 184
+  token fx-panel-rgb
+    rgb 255 255 255
+  token fx-panel-2-rgb
+    rgb 254 251 254
+  token fx-page-rgb
+    rgb 243 243 248
+  token fx-text '#0b080e'
+amber-dark: theme
+  token fx-neon-rgb
+    rgb 255 210 115
+  token fx-series-rgb
+    rgb 228 167 43
+  token fx-panel-rgb
+    rgb 21 16 8
+  token fx-panel-2-rgb
+    rgb 30 23 10
+  token fx-page-rgb
+    rgb 12 9 4
+  token fx-text '#fff8e9'
+amber-light: theme
+  token fx-neon-rgb
+    rgb 142 113 52
+  token fx-series-rgb
+    rgb 150 110 28
+  token fx-panel-rgb
+    rgb 255 255 255
+  token fx-panel-2-rgb
+    rgb 255 253 248
+  token fx-page-rgb
+    rgb 245 245 241
+  token fx-text '#0d0a05'
+monochrome-dark: theme
+  token fx-neon-rgb
+    rgb 255 255 255
+  token fx-series-rgb
+    rgb 216 222 225
+  token fx-panel-rgb
+    rgb 13 15 17
+  token fx-panel-2-rgb
+    rgb 21 24 27
+  token fx-page-rgb
+    rgb 7 8 9
+  token fx-text '#f3f5f6'
+monochrome-light: theme
+  token fx-neon-rgb
+    rgb 116 117 117
+  token fx-series-rgb
+    rgb 112 115 117
+  token fx-panel-rgb
+    rgb 255 255 255
+  token fx-panel-2-rgb
+    rgb 255 255 255
+  token fx-page-rgb
+    rgb 245 247 249
+  token fx-text '#08090a'
+tron-dark: theme
+  token fx-neon-rgb
+    rgb 0 207 209
+  token fx-series-rgb
+    rgb 0 178 180
+  token fx-panel-rgb
+    rgb 0 11 11
+  token fx-panel-2-rgb
+    rgb 0 20 20
+  token fx-page-rgb
+    rgb 0 6 6
+  token fx-text '#e4fbfb'
+tron-light: theme
+  token fx-neon-rgb
+    rgb 0 130 131
+  token fx-series-rgb
+    rgb 0 132 133
+  token fx-panel-rgb
+    rgb 255 255 255
+  token fx-panel-2-rgb
+    rgb 242 253 253
+  token fx-page-rgb
+    rgb 229 245 247
+  token fx-text '#000707'
+ares-dark: theme
+  token fx-neon-rgb
+    rgb 255 47 69
+  token fx-series-rgb
+    rgb 255 75 79
+  token fx-panel-rgb
+    rgb 17 3 3
+  token fx-panel-2-rgb
+    rgb 28 9 8
+  token fx-page-rgb
+    rgb 9 2 2
+  token fx-text '#fbeceb'
+ares-light: theme
+  token fx-neon-rgb
+    rgb 219 49 62
+  token fx-series-rgb
+    rgb 214 63 66
+  token fx-panel-rgb
+    rgb 255 255 255
+  token fx-panel-2-rgb
+    rgb 255 245 246
+  token fx-page-rgb
+    rgb 245 235 238
+  token fx-text '#0a0202'
+clu-dark: theme
+  token fx-neon-rgb
+    rgb 255 131 0
+  token fx-series-rgb
+    rgb 229 111 0
+  token fx-panel-rgb
+    rgb 16 4 0
+  token fx-panel-2-rgb
+    rgb 27 11 2
+  token fx-page-rgb
+    rgb 9 2 0
+  token fx-text '#fdf0e6'
+clu-light: theme
+  token fx-neon-rgb
+    rgb 182 92 0
+  token fx-series-rgb
+    rgb 188 91 0
+  token fx-panel-rgb
+    rgb 255 255 255
+  token fx-panel-2-rgb
+    rgb 255 249 242
+  token fx-page-rgb
+    rgb 245 240 234
+  token fx-text '#0a0200'
+athena-dark: theme
+  token fx-neon-rgb
+    rgb 251 198 0
+  token fx-series-rgb
+    rgb 220 174 0
+  token fx-panel-rgb
+    rgb 12 7 0
+  token fx-panel-2-rgb
+    rgb 21 14 0
+  token fx-page-rgb
+    rgb 7 4 0
+  token fx-text '#fdf7e2'
+athena-light: theme
+  token fx-neon-rgb
+    rgb 144 114 0
+  token fx-series-rgb
+    rgb 145 115 0
+  token fx-panel-rgb
+    rgb 255 255 255
+  token fx-panel-2-rgb
+    rgb 255 252 242
+  token fx-page-rgb
+    rgb 244 244 234
+  token fx-text '#070400'
+aphrodite-dark: theme
+  token fx-neon-rgb
+    rgb 242 89 200
+  token fx-series-rgb
+    rgb 224 92 188
+  token fx-panel-rgb
+    rgb 15 4 11
+  token fx-panel-2-rgb
+    rgb 25 9 20
+  token fx-page-rgb
+    rgb 8 2 6
+  token fx-text '#fdeef8'
+aphrodite-light: theme
+  token fx-neon-rgb
+    rgb 189 72 157
+  token fx-series-rgb
+    rgb 184 75 154
+  token fx-panel-rgb
+    rgb 255 255 255
+  token fx-panel-2-rgb
+    rgb 254 247 252
+  token fx-page-rgb
+    rgb 244 238 246
+  token fx-text '#090207'
+poseidon-dark: theme
+  token fx-neon-rgb
+    rgb 89 170 248
+  token fx-series-rgb
+    rgb 47 143 234
+  token fx-panel-rgb
+    rgb 1 8 19
+  token fx-panel-2-rgb
+    rgb 4 16 30
+  token fx-page-rgb
+    rgb 1 4 10
+  token fx-text '#e9f3fd'
+poseidon-light: theme
+  token fx-neon-rgb
+    rgb 56 122 185
+  token fx-series-rgb
+    rgb 39 120 197
+  token fx-panel-rgb
+    rgb 255 255 255
+  token fx-panel-2-rgb
+    rgb 247 251 255
+  token fx-page-rgb
+    rgb 235 242 249
+  token fx-text '#01050b'
+soulextract-dark: theme
+  token fx-neon-rgb
+    rgb 39 225 250
+  token fx-series-rgb
+    rgb 25 160 179
+  token fx-panel-rgb
+    rgb 2 22 26
+  token fx-panel-2-rgb
+    rgb 6 35 40
+  token fx-page-rgb
+    rgb 1 12 14
+  token fx-text '#e8fdff'
+soulextract-light: theme
+  token fx-neon-rgb
+    rgb 22 129 144
+  token fx-series-rgb
+    rgb 20 128 143
+  token fx-panel-rgb
+    rgb 255 255 255
+  token fx-panel-2-rgb
+    rgb 244 254 255
+  token fx-page-rgb
+    rgb 232 246 249
+  token fx-text '#010d10'
+matrix-dark: theme
+  token fx-neon-rgb
+    rgb 61 255 122
+  token fx-series-rgb
+    rgb 31 191 85
+  token fx-panel-rgb
+    rgb 2 12 4
+  token fx-panel-2-rgb
+    rgb 4 21 7
+  token fx-page-rgb
+    rgb 1 7 2
+  token fx-text '#e6ffe9'
+matrix-light: theme
+  token fx-neon-rgb
+    rgb 29 135 63
+  token fx-series-rgb
+    rgb 22 134 60
+  token fx-panel-rgb
+    rgb 255 255 255
+  token fx-panel-2-rgb
+    rgb 245 255 248
+  token fx-page-rgb
+    rgb 233 247 241
+  token fx-text '#010702'

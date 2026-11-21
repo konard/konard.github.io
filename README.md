@@ -142,3 +142,4 @@ The generated site is never committed to `docs/`; that directory holds the case 
 - [`issue-37`](docs/case-studies/issue-37/README.md): self-crossing detection, local spacing with fixed link positions, 20 seeded networks, pointer focus and cancellable background spacing.
 - [`issue-41`](docs/case-studies/issue-41/README.md): straight default references, preserved manual turns and reciprocal routes, exhaustive small-network checks and before/after screenshots.
 - [`issue-43`](docs/case-studies/issue-43/README.md): neutral reference geometry at zero turns, network traversal across sizes, random real networks and a complete requirement/evidence audit.
+- [`issue-54`](docs/case-studies/issue-54/README.md): migration to published Link Foundation UI packages, screenshot comparisons across all routes and upstream compatibility reports.

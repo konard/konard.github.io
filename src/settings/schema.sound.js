@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 // Sound design (issue #15: "we should fully support sound design and all
 // other configuration options from all previous issues"; issue #13 asked for
 // the style of konard/immortality, whose interface has sounds). The sounds are
@@ -112,15 +113,12 @@ function eventFields([event, en, ru, sounds]) {
 
 export const SOUND_SECTION = {
   id: 'sound',
-  title: { en: 'Sound', ru: 'Звук' },
-  lead: {
-    en: 'Sounds of the interface, synthesized in the browser (no files are loaded), as in konard/immortality. Every interaction (in the tabs below) can play up to four sounds; the play button plays one. The sound starts only after you press something on the page.',
-    ru: 'Звуки интерфейса, синтезируемые в браузере (без загрузки файлов), как в konard/immortality. Каждое действие (во вкладках ниже) может играть до четырёх звуков; кнопка воспроизведения проигрывает звук. Звук начинается только после нажатия на что-нибудь на странице.',
-  },
+  title: localized('mfcfd2ecc1360'),
+  lead: localized('m03f23cf8c9d2'),
   tabs: SOUND_TABS.map(([id, en, ru]) => ({ id: `sound-${id}`, label: { en, ru } })),
   fields: [
-    toggle('sound.on', true, { en: 'Sounds of the interface', ru: 'Звуки интерфейса' }, { css: false }),
-    range('sound.volume', 1, 0, 2, 0.05, { en: 'Volume', ru: 'Громкость' }, { ...sound, unit: '%' }),
+    toggle('sound.on', true, localized('m3b3d2462d37e'), { css: false }),
+    range('sound.volume', 1, 0, 2, 0.05, localized('m49eed623e653'), { ...sound, unit: '%' }),
     select(
       'sound.mode',
       'random',
@@ -129,7 +127,7 @@ export const SOUND_SECTION = {
         option('cycle', 'Each in turn', 'По очереди'),
         option('layer', 'All together', 'Все вместе'),
       ],
-      { en: 'Several sounds of an interaction', ru: 'Несколько звуков действия' },
+      localized('me80a9d668b95'),
       sound,
     ),
     select(
@@ -140,59 +138,28 @@ export const SOUND_SECTION = {
         option('neutral', 'Neutral', 'Нейтральный'),
         option('bright', 'Bright (more air)', 'Яркий (больше воздуха)'),
       ],
-      { en: 'Tone', ru: 'Тембр' },
+      localized('m1c8ecff76ce0'),
       sound,
     ),
-    range('sound.reverb', 0.2, 0, 1, 0.05, { en: 'Room echo', ru: 'Эхо комнаты' }, { ...sound, unit: '%' }),
-    range(
-      'sound.room',
-      1.4,
-      0.3,
-      4,
-      0.1,
-      { en: 'Size of the room', ru: 'Размер комнаты' },
-      {
-        ...sound,
-        unit: 's',
-        when: (s) => on(s) && s['sound.reverb'] > 0,
-        hint: { en: 'How long the echo lasts.', ru: 'Сколько длится эхо.' },
-      },
-    ),
-    range(
-      'sound.pitch',
-      15,
-      0,
-      100,
-      5,
-      { en: 'Pitch variation', ru: 'Разброс высоты' },
-      {
-        ...sound,
-        unit: 'cents',
-        hint: {
-          en: 'A random detune of every play, so repeated sounds do not feel mechanical.',
-          ru: 'Случайная расстройка каждого звука, чтобы повторы не звучали механически.',
-        },
-      },
-    ),
-    toggle('sound.stereo', true, { en: 'Sound from where the pointer is', ru: 'Звук со стороны указателя' }, sound),
-    range(
-      'sound.width',
-      0.6,
-      0,
-      1,
-      0.05,
-      { en: 'Stereo width', ru: 'Ширина стерео' },
-      { ...sound, unit: '%', when: (s) => on(s) && s['sound.stereo'] },
-    ),
-    range(
-      'sound.gap',
-      80,
-      0,
-      500,
-      10,
-      { en: 'Shortest pause between hover sounds', ru: 'Наименьшая пауза между звуками наведения' },
-      { ...sound, unit: 'ms' },
-    ),
+    range('sound.reverb', 0.2, 0, 1, 0.05, localized('m8691003af07c'), { ...sound, unit: '%' }),
+    range('sound.room', 1.4, 0.3, 4, 0.1, localized('me512290b32aa'), {
+      ...sound,
+      unit: 's',
+      when: (s) => on(s) && s['sound.reverb'] > 0,
+      hint: localized('ma1b960595091'),
+    }),
+    range('sound.pitch', 15, 0, 100, 5, localized('mca89a9542f98'), {
+      ...sound,
+      unit: 'cents',
+      hint: localized('m0241dafaf3a6'),
+    }),
+    toggle('sound.stereo', true, localized('m3fe11f0941f1'), sound),
+    range('sound.width', 0.6, 0, 1, 0.05, localized('md977384272f3'), {
+      ...sound,
+      unit: '%',
+      when: (s) => on(s) && s['sound.stereo'],
+    }),
+    range('sound.gap', 80, 0, 500, 10, localized('m9c5f9120e731'), { ...sound, unit: 'ms' }),
     ...SOUND_EVENTS.flatMap(eventFields),
   ],
 };

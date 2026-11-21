@@ -392,7 +392,8 @@
     color: var(--text);
     font-size: 0.85rem;
   }
-  .ui-select__list li {
+  .ui-select__list [role='option'] {
+    display: block;
     padding: 0.5rem var(--ui-control-padding);
     min-height: var(--ui-control-height);
     border-radius: var(--ui-control-corners);
@@ -403,7 +404,7 @@
     font-weight: 700;
     color: var(--accent);
   }
-  .ui-select__list [data-active='true'] {
+  .ui-select__list [data-active] {
     background: var(--ui-hover);
     outline: 1px solid var(--accent);
     outline-offset: -1px;
@@ -513,7 +514,7 @@
     :root:root :is(input, textarea, .ui-select, .ui-color input) {
       font-size: max(16px, 1rem);
     }
-    .ui-select__list li {
+    .ui-select__list [role='option'] {
       min-height: max(44px, var(--ui-control-height));
     }
     :root:root .ui-color__swatch {
@@ -549,7 +550,7 @@
     :root:root input[type='checkbox']:checked::before {
       border-color: HighlightText;
     }
-    .ui-select__list [data-active='true'] {
+    .ui-select__list [data-active] {
       outline-color: Highlight;
     }
   }

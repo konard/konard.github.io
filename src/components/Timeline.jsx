@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 import { formatPeriod } from '../cv/paths';
 import { useLang } from '../i18n/prefs';
 import { useNotation } from '../links/notation';
@@ -13,13 +14,13 @@ export const toYear = (ym) => {
 };
 
 const TYPES = {
-  company: { en: 'Employment', ru: 'Работа в компании' },
-  'open-source': { en: 'Founded / led open-source', ru: 'Основанный / ведомый open-source' },
+  company: localized('mb67899ca9d00'),
+  'open-source': localized('m77f93d96306f'),
 };
 
 const TEXT = {
-  legend: { en: 'Timeline legend', ru: 'Легенда шкалы времени' },
-  timeline: { en: 'Career timeline', ru: 'Шкала карьеры' },
+  legend: localized('mdc7a757825a2'),
+  timeline: localized('m0753734aab48'),
 };
 
 const linkProps = (url) => (url ? { href: url, target: '_blank', rel: 'noopener noreferrer' } : {});

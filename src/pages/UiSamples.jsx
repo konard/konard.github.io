@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 import { useState } from 'react';
 import ColorInput from '../components/ColorInput';
 import Select from '../components/Select';
@@ -30,30 +31,25 @@ export default function UiSamples() {
   const [checked, setChecked] = useState(true);
   const [level, setLevel] = useState(40);
   const [color, setColor] = useState('#17de1d');
-  const [text, setText] = useState(t({ en: 'Text field', ru: 'Текстовое поле' }));
+  const [text, setText] = useState(t(localized('m27ec8d25ad33')));
   const [scale, setScale] = useState('log');
   return (
     <details className="ui-samples" open>
-      <summary>{t({ en: 'Samples of every element', ru: 'Образцы всех элементов' })}</summary>
-      <p className="ui-samples__lead">
-        {t({
-          en: 'Every bordered element of the site in a small size: change the frame, the corners and the borders and look here for glitches.',
-          ru: 'Все элементы с рамками в малом размере: меняйте рамку, углы и границы и ищите здесь огрехи.',
-        })}
-      </p>
+      <summary>{t(localized('m472964dbe427'))}</summary>
+      <p className="ui-samples__lead">{t(localized('m73050ba3a1da'))}</p>
       {/* The samples count as outer panels though the settings panel holds them (issue #45). */}
       <div className="ui-samples__grid" data-frame-root>
         <Sample name="panel">
           <article className="card ui-samples__panel">
-            <h3>{t({ en: 'Outer panel', ru: 'Внешняя панель' })}</h3>
+            <h3>{t(localized('m342cec16ad8c'))}</h3>
             <p>
-              {t({ en: 'Text with a ', ru: 'Текст со ' })}
-              <a href="#interface">{t({ en: 'link', ru: 'ссылкой' })}</a>.
+              {t(localized('m854f95e4d1e5'))}
+              <a href="#interface">{t(localized('mdb73b28fdd26'))}</a>.
             </p>
             <ul className="ui-samples__repos">
               <li className="repo">
-                <strong>{t({ en: 'Inner block', ru: 'Внутренний блок' })}</strong>
-                <span>{t({ en: 'with the same corners', ru: 'с теми же углами' })}</span>
+                <strong>{t(localized('m58869d304e6e'))}</strong>
+                <span>{t(localized('m392720dc5d6a'))}</span>
               </li>
             </ul>
           </article>
@@ -61,11 +57,11 @@ export default function UiSamples() {
         <Sample name="position">
           <ol className="positions ui-samples__positions">
             <li className="position position--company">
-              <span className="position__period mono">2026 — {t({ en: 'present', ru: 'сейчас' })}</span>
+              <span className="position__period mono">2026 — {t(localized('m447363b7545d'))}</span>
               <h3 className="position__title">
-                <span>{t({ en: 'Position', ru: 'Должность' })}</span>
+                <span>{t(localized('m47f68dc3bac4'))}</span>
               </h3>
-              <span className="position__role">{t({ en: 'Colour bar on the left', ru: 'Цветная полоса слева' })}</span>
+              <span className="position__role">{t(localized('m5448753f87d4'))}</span>
               <ul className="tags">
                 <li>React</li>
                 <li>CSS</li>
@@ -77,7 +73,7 @@ export default function UiSamples() {
           <ul className="stats ui-samples__stats">
             <li className="stat">
               <span className="stat__value">1 234</span>
-              <span className="stat__label">{t({ en: 'Stat with a strip', ru: 'Число с полосой' })}</span>
+              <span className="stat__label">{t(localized('maf0589d7bbb0'))}</span>
             </li>
           </ul>
         </Sample>
@@ -90,22 +86,22 @@ export default function UiSamples() {
         <Sample name="buttons" wide>
           <div className="ui-samples__row">
             <button type="button" className="button">
-              {t({ en: 'Button', ru: 'Кнопка' })}
+              {t(localized('m37e346e0beb7'))}
             </button>
             <button type="button" className="button button--primary">
-              {t({ en: 'Primary', ru: 'Главная' })}
+              {t(localized('m2ec501ec1e20'))}
             </button>
             <button type="button" className="button button--small">
-              {t({ en: 'Small', ru: 'Малая' })}
+              {t(localized('m91ac68d60720'))}
             </button>
             <button type="button" aria-pressed={pressed} onClick={() => setPressed(!pressed)}>
-              {t({ en: 'Toggle', ru: 'Переключатель' })}
+              {t(localized('mf54a77873749'))}
             </button>
             <button type="button" disabled>
-              {t({ en: 'Disabled', ru: 'Отключена' })}
+              {t(localized('m4a579e377666'))}
             </button>
             <a className="button" href="#interface">
-              {t({ en: 'Link button', ru: 'Ссылка-кнопка' })}
+              {t(localized('m76d188f2ac33'))}
             </a>
           </div>
         </Sample>
@@ -115,25 +111,25 @@ export default function UiSamples() {
               type="text"
               value={text}
               onChange={(event) => setText(event.target.value)}
-              aria-label={t({ en: 'Sample text field', ru: 'Пример текстового поля' })}
+              aria-label={t(localized('m6f8342f8a6c6'))}
             />
             <Select
-              aria-label={t({ en: 'Sample menu', ru: 'Пример меню' })}
+              aria-label={t(localized('m67c82fbb2931'))}
               value="one"
               className="ui-samples__select"
               onChange={() => {}}
             >
-              <option value="one">{t({ en: 'Menu', ru: 'Меню' })}</option>
-              <option value="two">{t({ en: 'Second', ru: 'Второй' })}</option>
+              <option value="one">{t(localized('m8ed4c60db531'))}</option>
+              <option value="two">{t(localized('md3c85054e79b'))}</option>
             </Select>
             <ColorInput
               value={color}
               onChange={(event) => setColor(event.target.value)}
-              aria-label={t({ en: 'Sample colour', ru: 'Пример цвета' })}
+              aria-label={t(localized('m5843453153e1'))}
             />
             <label className="ui-samples__check">
               <input type="checkbox" checked={checked} onChange={(event) => setChecked(event.target.checked)} />
-              {t({ en: 'Checkbox', ru: 'Флажок' })}
+              {t(localized('mce4c9a4d5d32'))}
             </label>
             <input
               id="ui-samples-slider"
@@ -142,7 +138,7 @@ export default function UiSamples() {
               max="100"
               value={level}
               onChange={(event) => setLevel(Number(event.target.value))}
-              aria-label={t({ en: 'Sample slider', ru: 'Пример бегунка' })}
+              aria-label={t(localized('m1b2c86d7cbda'))}
             />
           </div>
         </Sample>
@@ -151,26 +147,26 @@ export default function UiSamples() {
             className="ui-samples__textarea"
             rows={3}
             readOnly
-            aria-label={t({ en: 'Sample text area', ru: 'Пример многострочного поля' })}
-            value={`{\n  "${t({ en: 'selected text', ru: 'выделенный текст' })}": true,\n  "long": "${LONG}"\n}`}
+            aria-label={t(localized('mace4baab566f'))}
+            value={`{\n  "${t(localized('m9077d7e86cd3'))}": true,\n  "long": "${LONG}"\n}`}
           />
         </Sample>
         <Sample name="chips">
           <div className="ui-samples__row">
             <ul className="tags">
-              <li>{t({ en: 'tag', ru: 'метка' })}</li>
-              <li>{t({ en: 'another tag', ru: 'ещё метка' })}</li>
+              <li>{t(localized('m8bbb71290374'))}</li>
+              <li>{t(localized('m81785302de35'))}</li>
             </ul>
-            <nav className="chips" aria-label={t({ en: 'Sample chips', ru: 'Пример чипов' })}>
+            <nav className="chips" aria-label={t(localized('m817b1aa0b058'))}>
               <a className="chip" href="#interface">
-                {t({ en: 'chip', ru: 'чип' })}
+                {t(localized('m5bc785deb7d7'))}
               </a>
             </nav>
           </div>
         </Sample>
         <Sample name="tabs">
           <div className="ui-samples__row">
-            <div className="segmented" role="group" aria-label={t({ en: 'Sample switch', ru: 'Пример переключателя' })}>
+            <div className="segmented" role="group" aria-label={t(localized('mfce3441e83ed'))}>
               {['log', 'linear'].map((s) => (
                 <button
                   key={s}
@@ -179,18 +175,18 @@ export default function UiSamples() {
                   aria-pressed={scale === s}
                   onClick={() => setScale(s)}
                 >
-                  {s === 'log' ? t({ en: 'Log', ru: 'Лог.' }) : t({ en: 'Linear', ru: 'Линейная' })}
+                  {s === 'log' ? t(localized('mc0886426ad62')) : t(localized('m4ecff54a5b00'))}
                 </button>
               ))}
             </div>
             <ul className="role-tabs">
               <li>
                 <a href="#interface" aria-current="page">
-                  {t({ en: 'Current', ru: 'Текущая' })}
+                  {t(localized('m289b5e78bebe'))}
                 </a>
               </li>
               <li>
-                <a href="#interface">{t({ en: 'Tab', ru: 'Вкладка' })}</a>
+                <a href="#interface">{t(localized('m6f65753a6194'))}</a>
               </li>
             </ul>
           </div>
@@ -199,13 +195,13 @@ export default function UiSamples() {
           <table className="ui-samples__table">
             <thead>
               <tr>
-                <th>{t({ en: 'Element', ru: 'Элемент' })}</th>
-                <th>{t({ en: 'Value', ru: 'Значение' })}</th>
+                <th>{t(localized('m408be26c7b32'))}</th>
+                <th>{t(localized('mef29096ce272'))}</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>{t({ en: 'Row', ru: 'Строка' })}</td>
+                <td>{t(localized('m0425c5ff9311'))}</td>
                 <td className="mono">1 · 2 · 3</td>
               </tr>
             </tbody>

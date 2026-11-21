@@ -98,6 +98,7 @@ try {
     if (!before) assert.equal(decoration, 'none');
     await card.click();
     await page.waitForURL('**/network/**');
+    await page.locator('.network__preview g[stroke] > path:first-child').first().waitFor({ state: 'attached' });
     const actual = await page
       .locator('.network__preview g[stroke] > path:first-child')
       .evaluateAll((nodes) => nodes.map((node) => getComputedStyle(node).stroke));
@@ -116,6 +117,7 @@ try {
       .evaluateAll((nodes) => nodes.map((node) => getComputedStyle(node).stroke));
     await example.locator('.theory__edit').click();
     await page.waitForURL('**/network/**');
+    await page.locator('.network__preview g[stroke] > path:first-child').first().waitFor({ state: 'attached' });
     const actual = await page
       .locator('.network__preview g[stroke] > path:first-child')
       .evaluateAll((nodes) => nodes.map((node) => getComputedStyle(node).stroke));

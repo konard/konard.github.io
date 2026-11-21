@@ -1,0 +1,1222 @@
+{
+  "threshold": 0.1,
+  "includeAntiAlias": false,
+  "summary": {
+    "engine": "chromium",
+    "samples": 120,
+    "exactMatches": 92,
+    "exactPercent": 99.96386975671761,
+    "leastExact": {
+      "id": "chromium-default-dark-mobile-art",
+      "changedPixels": 5954,
+      "percent": 1.8088467614533965,
+      "exact": 321975,
+      "total": 329160,
+      "exactPercent": 97.81717098067809,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    }
+  },
+  "samples": [
+    {
+      "id": "chromium-default-dark-desktop-home",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 14
+    },
+    {
+      "id": "chromium-default-dark-desktop-settings",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 473,
+      "controlsAfter": 512
+    },
+    {
+      "id": "chromium-default-dark-desktop-network",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 261,
+      "controlsAfter": 282
+    },
+    {
+      "id": "chromium-default-dark-desktop-art",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    },
+    {
+      "id": "chromium-default-dark-desktop-associative",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 9,
+      "controlsAfter": 11
+    },
+    {
+      "id": "chromium-default-dark-desktop-blog",
+      "changedPixels": 123,
+      "percent": 0.01201171875,
+      "exact": 1023774,
+      "total": 1024000,
+      "exactPercent": 99.9779296875,
+      "controlsBefore": 11,
+      "controlsAfter": 13
+    },
+    {
+      "id": "chromium-default-dark-desktop-cv",
+      "changedPixels": 40,
+      "percent": 0.00390625,
+      "exact": 1023938,
+      "total": 1024000,
+      "exactPercent": 99.9939453125,
+      "controlsBefore": 8,
+      "controlsAfter": 10
+    },
+    {
+      "id": "chromium-default-dark-desktop-experience",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 5,
+      "controlsAfter": 5
+    },
+    {
+      "id": "chromium-default-dark-desktop-repositories",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 10,
+      "controlsAfter": 13
+    },
+    {
+      "id": "chromium-default-dark-desktop-research",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 16,
+      "controlsAfter": 18
+    },
+    {
+      "id": "chromium-default-dark-mobile-home",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 14
+    },
+    {
+      "id": "chromium-default-dark-mobile-settings",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 473,
+      "controlsAfter": 512
+    },
+    {
+      "id": "chromium-default-dark-mobile-network",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 261,
+      "controlsAfter": 282
+    },
+    {
+      "id": "chromium-default-dark-mobile-art",
+      "changedPixels": 5954,
+      "percent": 1.8088467614533965,
+      "exact": 321975,
+      "total": 329160,
+      "exactPercent": 97.81717098067809,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    },
+    {
+      "id": "chromium-default-dark-mobile-associative",
+      "changedPixels": 5904,
+      "percent": 1.7936565803864382,
+      "exact": 321997,
+      "total": 329160,
+      "exactPercent": 97.82385466034755,
+      "controlsBefore": 9,
+      "controlsAfter": 11
+    },
+    {
+      "id": "chromium-default-dark-mobile-blog",
+      "changedPixels": 52,
+      "percent": 0.01579778830963665,
+      "exact": 329071,
+      "total": 329160,
+      "exactPercent": 99.97296147770082,
+      "controlsBefore": 11,
+      "controlsAfter": 13
+    },
+    {
+      "id": "chromium-default-dark-mobile-cv",
+      "changedPixels": 30,
+      "percent": 0.00911410864017499,
+      "exact": 329098,
+      "total": 329160,
+      "exactPercent": 99.98116417547698,
+      "controlsBefore": 8,
+      "controlsAfter": 10
+    },
+    {
+      "id": "chromium-default-dark-mobile-experience",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 5,
+      "controlsAfter": 5
+    },
+    {
+      "id": "chromium-default-dark-mobile-repositories",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 10,
+      "controlsAfter": 13
+    },
+    {
+      "id": "chromium-default-dark-mobile-research",
+      "changedPixels": 5448,
+      "percent": 1.6551221290557783,
+      "exact": 323001,
+      "total": 329160,
+      "exactPercent": 98.12887349617208,
+      "controlsBefore": 16,
+      "controlsAfter": 18
+    },
+    {
+      "id": "chromium-default-light-desktop-home",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 14
+    },
+    {
+      "id": "chromium-default-light-desktop-settings",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 473,
+      "controlsAfter": 512
+    },
+    {
+      "id": "chromium-default-light-desktop-network",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 261,
+      "controlsAfter": 282
+    },
+    {
+      "id": "chromium-default-light-desktop-art",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    },
+    {
+      "id": "chromium-default-light-desktop-associative",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 9,
+      "controlsAfter": 11
+    },
+    {
+      "id": "chromium-default-light-desktop-blog",
+      "changedPixels": 66,
+      "percent": 0.0064453125,
+      "exact": 1023747,
+      "total": 1024000,
+      "exactPercent": 99.97529296875,
+      "controlsBefore": 11,
+      "controlsAfter": 13
+    },
+    {
+      "id": "chromium-default-light-desktop-cv",
+      "changedPixels": 28,
+      "percent": 0.002734375,
+      "exact": 1023934,
+      "total": 1024000,
+      "exactPercent": 99.9935546875,
+      "controlsBefore": 8,
+      "controlsAfter": 10
+    },
+    {
+      "id": "chromium-default-light-desktop-experience",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 5,
+      "controlsAfter": 5
+    },
+    {
+      "id": "chromium-default-light-desktop-repositories",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 10,
+      "controlsAfter": 13
+    },
+    {
+      "id": "chromium-default-light-desktop-research",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 16,
+      "controlsAfter": 18
+    },
+    {
+      "id": "chromium-default-light-mobile-home",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 14
+    },
+    {
+      "id": "chromium-default-light-mobile-settings",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 473,
+      "controlsAfter": 512
+    },
+    {
+      "id": "chromium-default-light-mobile-network",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 261,
+      "controlsAfter": 282
+    },
+    {
+      "id": "chromium-default-light-mobile-art",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    },
+    {
+      "id": "chromium-default-light-mobile-associative",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 9,
+      "controlsAfter": 11
+    },
+    {
+      "id": "chromium-default-light-mobile-blog",
+      "changedPixels": 43,
+      "percent": 0.013063555717584153,
+      "exact": 329067,
+      "total": 329160,
+      "exactPercent": 99.97174626321545,
+      "controlsBefore": 11,
+      "controlsAfter": 13
+    },
+    {
+      "id": "chromium-default-light-mobile-cv",
+      "changedPixels": 24,
+      "percent": 0.007291286912139993,
+      "exact": 329094,
+      "total": 329160,
+      "exactPercent": 99.97994896099162,
+      "controlsBefore": 8,
+      "controlsAfter": 10
+    },
+    {
+      "id": "chromium-default-light-mobile-experience",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 5,
+      "controlsAfter": 5
+    },
+    {
+      "id": "chromium-default-light-mobile-repositories",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 10,
+      "controlsAfter": 13
+    },
+    {
+      "id": "chromium-default-light-mobile-research",
+      "changedPixels": 2163,
+      "percent": 0.6571272329566168,
+      "exact": 322990,
+      "total": 329160,
+      "exactPercent": 98.12553165633734,
+      "controlsBefore": 16,
+      "controlsAfter": 18
+    },
+    {
+      "id": "chromium-calm-dark-desktop-home",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 14
+    },
+    {
+      "id": "chromium-calm-dark-desktop-settings",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 376,
+      "controlsAfter": 405
+    },
+    {
+      "id": "chromium-calm-dark-desktop-network",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 261,
+      "controlsAfter": 282
+    },
+    {
+      "id": "chromium-calm-dark-desktop-art",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    },
+    {
+      "id": "chromium-calm-dark-desktop-associative",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 9,
+      "controlsAfter": 11
+    },
+    {
+      "id": "chromium-calm-dark-desktop-blog",
+      "changedPixels": 45,
+      "percent": 0.00439453125,
+      "exact": 1023787,
+      "total": 1024000,
+      "exactPercent": 99.97919921875,
+      "controlsBefore": 11,
+      "controlsAfter": 13
+    },
+    {
+      "id": "chromium-calm-dark-desktop-cv",
+      "changedPixels": 13,
+      "percent": 0.00126953125,
+      "exact": 1023934,
+      "total": 1024000,
+      "exactPercent": 99.9935546875,
+      "controlsBefore": 8,
+      "controlsAfter": 10
+    },
+    {
+      "id": "chromium-calm-dark-desktop-experience",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 5,
+      "controlsAfter": 5
+    },
+    {
+      "id": "chromium-calm-dark-desktop-repositories",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 10,
+      "controlsAfter": 13
+    },
+    {
+      "id": "chromium-calm-dark-desktop-research",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 16,
+      "controlsAfter": 18
+    },
+    {
+      "id": "chromium-calm-dark-mobile-home",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 14
+    },
+    {
+      "id": "chromium-calm-dark-mobile-settings",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 376,
+      "controlsAfter": 405
+    },
+    {
+      "id": "chromium-calm-dark-mobile-network",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 261,
+      "controlsAfter": 282
+    },
+    {
+      "id": "chromium-calm-dark-mobile-art",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    },
+    {
+      "id": "chromium-calm-dark-mobile-associative",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 9,
+      "controlsAfter": 11
+    },
+    {
+      "id": "chromium-calm-dark-mobile-blog",
+      "changedPixels": 8,
+      "percent": 0.002430428970713331,
+      "exact": 329079,
+      "total": 329160,
+      "exactPercent": 99.97539190667153,
+      "controlsBefore": 11,
+      "controlsAfter": 13
+    },
+    {
+      "id": "chromium-calm-dark-mobile-cv",
+      "changedPixels": 10,
+      "percent": 0.0030380362133916637,
+      "exact": 329096,
+      "total": 329160,
+      "exactPercent": 99.98055656823429,
+      "controlsBefore": 8,
+      "controlsAfter": 10
+    },
+    {
+      "id": "chromium-calm-dark-mobile-experience",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 5,
+      "controlsAfter": 5
+    },
+    {
+      "id": "chromium-calm-dark-mobile-repositories",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 10,
+      "controlsAfter": 13
+    },
+    {
+      "id": "chromium-calm-dark-mobile-research",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 16,
+      "controlsAfter": 18
+    },
+    {
+      "id": "chromium-calm-light-desktop-home",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 14
+    },
+    {
+      "id": "chromium-calm-light-desktop-settings",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 376,
+      "controlsAfter": 405
+    },
+    {
+      "id": "chromium-calm-light-desktop-network",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 261,
+      "controlsAfter": 282
+    },
+    {
+      "id": "chromium-calm-light-desktop-art",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    },
+    {
+      "id": "chromium-calm-light-desktop-associative",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 9,
+      "controlsAfter": 11
+    },
+    {
+      "id": "chromium-calm-light-desktop-blog",
+      "changedPixels": 49,
+      "percent": 0.00478515625,
+      "exact": 1023779,
+      "total": 1024000,
+      "exactPercent": 99.97841796875,
+      "controlsBefore": 11,
+      "controlsAfter": 13
+    },
+    {
+      "id": "chromium-calm-light-desktop-cv",
+      "changedPixels": 13,
+      "percent": 0.00126953125,
+      "exact": 1023932,
+      "total": 1024000,
+      "exactPercent": 99.993359375,
+      "controlsBefore": 8,
+      "controlsAfter": 10
+    },
+    {
+      "id": "chromium-calm-light-desktop-experience",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 5,
+      "controlsAfter": 5
+    },
+    {
+      "id": "chromium-calm-light-desktop-repositories",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 10,
+      "controlsAfter": 13
+    },
+    {
+      "id": "chromium-calm-light-desktop-research",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 16,
+      "controlsAfter": 18
+    },
+    {
+      "id": "chromium-calm-light-mobile-home",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 14
+    },
+    {
+      "id": "chromium-calm-light-mobile-settings",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 376,
+      "controlsAfter": 405
+    },
+    {
+      "id": "chromium-calm-light-mobile-network",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 261,
+      "controlsAfter": 282
+    },
+    {
+      "id": "chromium-calm-light-mobile-art",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    },
+    {
+      "id": "chromium-calm-light-mobile-associative",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 9,
+      "controlsAfter": 11
+    },
+    {
+      "id": "chromium-calm-light-mobile-blog",
+      "changedPixels": 8,
+      "percent": 0.002430428970713331,
+      "exact": 329071,
+      "total": 329160,
+      "exactPercent": 99.97296147770082,
+      "controlsBefore": 11,
+      "controlsAfter": 13
+    },
+    {
+      "id": "chromium-calm-light-mobile-cv",
+      "changedPixels": 14,
+      "percent": 0.004253250698748329,
+      "exact": 329092,
+      "total": 329160,
+      "exactPercent": 99.97934135374894,
+      "controlsBefore": 8,
+      "controlsAfter": 10
+    },
+    {
+      "id": "chromium-calm-light-mobile-experience",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 5,
+      "controlsAfter": 5
+    },
+    {
+      "id": "chromium-calm-light-mobile-repositories",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 10,
+      "controlsAfter": 13
+    },
+    {
+      "id": "chromium-calm-light-mobile-research",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 16,
+      "controlsAfter": 18
+    },
+    {
+      "id": "chromium-fast-dark-desktop-home",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 14
+    },
+    {
+      "id": "chromium-fast-dark-desktop-settings",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 376,
+      "controlsAfter": 405
+    },
+    {
+      "id": "chromium-fast-dark-desktop-network",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 261,
+      "controlsAfter": 282
+    },
+    {
+      "id": "chromium-fast-dark-desktop-art",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    },
+    {
+      "id": "chromium-fast-dark-desktop-associative",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 9,
+      "controlsAfter": 11
+    },
+    {
+      "id": "chromium-fast-dark-desktop-blog",
+      "changedPixels": 44,
+      "percent": 0.004296875,
+      "exact": 1023787,
+      "total": 1024000,
+      "exactPercent": 99.97919921875,
+      "controlsBefore": 11,
+      "controlsAfter": 13
+    },
+    {
+      "id": "chromium-fast-dark-desktop-cv",
+      "changedPixels": 12,
+      "percent": 0.001171875,
+      "exact": 1023934,
+      "total": 1024000,
+      "exactPercent": 99.9935546875,
+      "controlsBefore": 8,
+      "controlsAfter": 10
+    },
+    {
+      "id": "chromium-fast-dark-desktop-experience",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 5,
+      "controlsAfter": 5
+    },
+    {
+      "id": "chromium-fast-dark-desktop-repositories",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 10,
+      "controlsAfter": 13
+    },
+    {
+      "id": "chromium-fast-dark-desktop-research",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 16,
+      "controlsAfter": 18
+    },
+    {
+      "id": "chromium-fast-dark-mobile-home",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 14
+    },
+    {
+      "id": "chromium-fast-dark-mobile-settings",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 376,
+      "controlsAfter": 405
+    },
+    {
+      "id": "chromium-fast-dark-mobile-network",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 261,
+      "controlsAfter": 282
+    },
+    {
+      "id": "chromium-fast-dark-mobile-art",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    },
+    {
+      "id": "chromium-fast-dark-mobile-associative",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 9,
+      "controlsAfter": 11
+    },
+    {
+      "id": "chromium-fast-dark-mobile-blog",
+      "changedPixels": 8,
+      "percent": 0.002430428970713331,
+      "exact": 329079,
+      "total": 329160,
+      "exactPercent": 99.97539190667153,
+      "controlsBefore": 11,
+      "controlsAfter": 13
+    },
+    {
+      "id": "chromium-fast-dark-mobile-cv",
+      "changedPixels": 10,
+      "percent": 0.0030380362133916637,
+      "exact": 329096,
+      "total": 329160,
+      "exactPercent": 99.98055656823429,
+      "controlsBefore": 8,
+      "controlsAfter": 10
+    },
+    {
+      "id": "chromium-fast-dark-mobile-experience",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 5,
+      "controlsAfter": 5
+    },
+    {
+      "id": "chromium-fast-dark-mobile-repositories",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 10,
+      "controlsAfter": 13
+    },
+    {
+      "id": "chromium-fast-dark-mobile-research",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 16,
+      "controlsAfter": 18
+    },
+    {
+      "id": "chromium-fast-light-desktop-home",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 14
+    },
+    {
+      "id": "chromium-fast-light-desktop-settings",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 376,
+      "controlsAfter": 405
+    },
+    {
+      "id": "chromium-fast-light-desktop-network",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 261,
+      "controlsAfter": 282
+    },
+    {
+      "id": "chromium-fast-light-desktop-art",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    },
+    {
+      "id": "chromium-fast-light-desktop-associative",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 9,
+      "controlsAfter": 11
+    },
+    {
+      "id": "chromium-fast-light-desktop-blog",
+      "changedPixels": 49,
+      "percent": 0.00478515625,
+      "exact": 1023779,
+      "total": 1024000,
+      "exactPercent": 99.97841796875,
+      "controlsBefore": 11,
+      "controlsAfter": 13
+    },
+    {
+      "id": "chromium-fast-light-desktop-cv",
+      "changedPixels": 13,
+      "percent": 0.00126953125,
+      "exact": 1023932,
+      "total": 1024000,
+      "exactPercent": 99.993359375,
+      "controlsBefore": 8,
+      "controlsAfter": 10
+    },
+    {
+      "id": "chromium-fast-light-desktop-experience",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 5,
+      "controlsAfter": 5
+    },
+    {
+      "id": "chromium-fast-light-desktop-repositories",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 10,
+      "controlsAfter": 13
+    },
+    {
+      "id": "chromium-fast-light-desktop-research",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 16,
+      "controlsAfter": 18
+    },
+    {
+      "id": "chromium-fast-light-mobile-home",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 14
+    },
+    {
+      "id": "chromium-fast-light-mobile-settings",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 376,
+      "controlsAfter": 405
+    },
+    {
+      "id": "chromium-fast-light-mobile-network",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 261,
+      "controlsAfter": 282
+    },
+    {
+      "id": "chromium-fast-light-mobile-art",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    },
+    {
+      "id": "chromium-fast-light-mobile-associative",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 9,
+      "controlsAfter": 11
+    },
+    {
+      "id": "chromium-fast-light-mobile-blog",
+      "changedPixels": 8,
+      "percent": 0.002430428970713331,
+      "exact": 329071,
+      "total": 329160,
+      "exactPercent": 99.97296147770082,
+      "controlsBefore": 11,
+      "controlsAfter": 13
+    },
+    {
+      "id": "chromium-fast-light-mobile-cv",
+      "changedPixels": 14,
+      "percent": 0.004253250698748329,
+      "exact": 329092,
+      "total": 329160,
+      "exactPercent": 99.97934135374894,
+      "controlsBefore": 8,
+      "controlsAfter": 10
+    },
+    {
+      "id": "chromium-fast-light-mobile-experience",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 5,
+      "controlsAfter": 5
+    },
+    {
+      "id": "chromium-fast-light-mobile-repositories",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 10,
+      "controlsAfter": 13
+    },
+    {
+      "id": "chromium-fast-light-mobile-research",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 16,
+      "controlsAfter": 18
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+import { localized } from '../i18n/localizer.js';
 import { cvPagePath } from '../cv/paths';
 import { useLang } from '../i18n/prefs';
 import { useNotation } from '../links/notation';
@@ -5,12 +6,12 @@ import { MapPin } from 'lucide-react';
 import { BioText, iconProps } from './icons';
 
 const TEXT = {
-  open: { en: 'Open to collaboration & hire', ru: 'Открыт к сотрудничеству и найму' },
-  bio: { en: 'Public biography', ru: 'Публичная биография' },
-  avatar: { en: 'avatar', ru: 'аватар' },
-  github: { en: 'GitHub profile', ru: 'Профиль GitHub' },
-  contacts: { en: 'Contacts', ru: 'Контакты' },
-  cv: { en: 'Download CV', ru: 'Скачать резюме' },
+  open: localized('mfdcbbc934f7a'),
+  bio: localized('mfd709a430ecd'),
+  avatar: localized('mc747369da9d5'),
+  github: localized('m87d12894545c'),
+  contacts: localized('mae38ea9fdb32'),
+  cv: localized('m4fba0d94ec05'),
 };
 
 export default function Hero({ profile, github }) {

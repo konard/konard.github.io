@@ -6,10 +6,11 @@
 // tabs of the site follow along through the `storage` event.
 import { useSyncExternalStore } from 'react';
 import { replaceAddress } from '../history';
-import { applySettings, normalize } from './apply';
+import { applySettings } from './apply';
+import { diff, settingsValues } from './framework';
 import { getLang } from '../i18n/prefs';
 import { readStored, writeStored } from './notation';
-import { CSS_RULES, DEFAULTS, RULES } from './schema';
+import { CSS_RULES, DEFAULTS, SETTINGS_SCHEMA } from './schema';
 
 export const STORAGE_KEY = 'settings';
 
@@ -27,15 +28,17 @@ const storage = () => {
 export function loadSettings() {
   try {
     const stored = readStored(storage()?.getItem(STORAGE_KEY));
-    return normalize(RULES, stored && typeof stored === 'object' && !Array.isArray(stored) ? stored : {});
+    return settingsValues(
+      SETTINGS_SCHEMA,
+      stored && typeof stored === 'object' && !Array.isArray(stored) ? stored : {},
+    );
   } catch {
     return DEFAULTS;
   }
 }
 
 /** The settings that differ from the defaults, as `{ key: value }`. */
-export const changesOf = (settings) =>
-  Object.fromEntries(Object.entries(settings).filter(([key, value]) => value !== DEFAULTS[key]));
+export const changesOf = (settings) => diff(SETTINGS_SCHEMA, settings);
 
 /** Settings changes as the indented Links Notation that is saved, shown and copied (issue #47). */
 export const settingsText = writeStored;
@@ -79,7 +82,7 @@ export const getSettings = () => current;
 
 /** Changes some settings (`{ 'rain.step': 50 }`); invalid values fall back to what the rules allow. */
 export function setSettings(patch, { save: remember = true } = {}) {
-  replace(normalize(RULES, { ...current, ...patch }), remember);
+  replace(settingsValues(SETTINGS_SCHEMA, { ...current, ...patch }), remember);
 }
 
 /** Returns the given keys (all keys by default) to their defaults. */
