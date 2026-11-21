@@ -91,3 +91,32 @@ passing checks still do not complete the separate upstream-support criterion.
       reimplementation.
 - [ ] Delete the consumer implementations listed in each request once upstream
       ships them, against the existing browser suites.
+
+## Released-package migration: November 20
+
+The issue and owner feedback in PR 55 require all of the following. The
+November 5–9 sections record earlier iterations and their status at the time.
+
+- [x] Replace the source archives with the published framework packages and
+      verify a lockfile-only install and production browser imports.
+- [x] Audit the whole site, including controls, panels, storage/sharing, frame
+      styling, audio, backgrounds, navigation, charts, icons, embeds and
+      network configuration, rendering, editing, exports and solving.
+- [x] Adopt compatible upstream implementations, including associative-network
+      enumeration, editing primitives, raster encoding and worker transport.
+      Remove the corresponding consumer code and retain site content and
+      design choices.
+- [ ] Migrate the remaining reusable rendering and editor components, and the
+      appearance, settings, chart, layout and embed providers. The released
+      contracts are missing behavior listed in upstream #271–#276.
+- [x] Report every surviving reproducible framework bug and missing feature
+      upstream. Preserve site behavior with tested draft workarounds while
+      documenting the upstream contract each workaround requires.
+- [x] Compare identical before/after states automatically. Verify at least
+      90% exact visual agreement, inspect large changes manually, and record
+      any small fixes to spacing or behavior with screenshots and repros.
+- [x] Keep the case study, code, tests, logs and repository documentation
+      consistent. Preserve issue research, alternatives, solution plans and
+      verification evidence in this directory.
+- Track final-commit CI and the closing reference in PR 55. Keep the draft
+  unmerged while the reusable framework work remains blocked.

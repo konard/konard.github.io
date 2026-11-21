@@ -1,0 +1,176 @@
+{
+  "notation": [
+    {
+      "parse": "parseLinks",
+      "input": "((1: 0 1))",
+      "expected": "error",
+      "actual": {
+        "links": [
+          [
+            0,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "parse": "parseLinks",
+      "input": "(1: 0, 1) (2: 2, 0)",
+      "expected": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "actual": {
+        "error": "configurations.reference"
+      }
+    },
+    {
+      "parse": "parseLinks",
+      "input": "1:\n  0\n  1\n2:\n  2\n  0\n",
+      "expected": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "actual": {
+        "error": "configurations.reference"
+      }
+    },
+    {
+      "parse": "parseNumber",
+      "input": "0120",
+      "expected": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "actual": {
+        "error": "configurations.base"
+      }
+    },
+    {
+      "parse": "parseNumber",
+      "input": "[0, 1, 2, 0]_3",
+      "expected": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "actual": {
+        "error": "configurations.syntax"
+      }
+    },
+    {
+      "parse": "parseTheory",
+      "input": "N² = {1 ↦ (0, 1), 2 ↦ (2, 0)}",
+      "expected": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "actual": {
+        "error": "configurations.syntax"
+      }
+    },
+    {
+      "parse": "parseTheory",
+      "input": "1 -> (0 1), 2 -> (2 0)",
+      "expected": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "actual": {
+        "error": "configurations.syntax"
+      }
+    },
+    {
+      "parse": "parseTheory",
+      "input": "{(0, 1), (2, 0)}",
+      "expected": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "actual": {
+        "error": "configurations.syntax"
+      }
+    }
+  ],
+  "providerMethods": {
+    "doublet": [
+      "geometry",
+      "svg"
+    ],
+    "editor": [
+      "geometry",
+      "svg"
+    ]
+  },
+  "unsupported": [
+    {
+      "option": "(forceCharge: 1)",
+      "error": "Unknown doublet option: forceCharge"
+    },
+    {
+      "option": "(linejoin: bevel)",
+      "error": "Unknown doublet option: linejoin"
+    }
+  ],
+  "share": {
+    "X": "https://twitter.com/intent/tweet?url=https%3A%2F%2Fexample.test%2Fnetwork%2F&text=Example",
+    "Telegram": "https://t.me/share/url?url=https%3A%2F%2Fexample.test%2Fnetwork%2F&text=Example",
+    "VK": "https://vk.com/share.php?url=https%3A%2F%2Fexample.test%2Fnetwork%2F&title=Example",
+    "Facebook": "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fexample.test%2Fnetwork%2F",
+    "LinkedIn": "https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fexample.test%2Fnetwork%2F",
+    "Reddit": "https://www.reddit.com/submit?url=https%3A%2F%2Fexample.test%2Fnetwork%2F&title=Example",
+    "Bluesky": "https://bsky.app/intent/compose?text=Example%20https%3A%2F%2Fexample.test%2Fnetwork%2F",
+    "Mastodon": "https://mastodon.social/share?text=Example%20https%3A%2F%2Fexample.test%2Fnetwork%2F",
+    "WhatsApp": "https://wa.me/?text=Example%20https%3A%2F%2Fexample.test%2Fnetwork%2F",
+    "e-mail": "mailto:?subject=Example&body=https%3A%2F%2Fexample.test%2Fnetwork%2F"
+  },
+  "telegram": {
+    "height": "600px",
+    "ready": 1,
+    "unavailable": 0
+  },
+  "bundledBrands": [
+    "github"
+  ]
+}

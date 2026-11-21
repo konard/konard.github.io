@@ -1,0 +1,73 @@
+{
+  "engine": "chromium",
+  "phase": "after",
+  "date": "2026-11-20T23:59:37.637Z",
+  "networks": [
+    {
+      "code": "2211",
+      "overlaps": "· overlaps 5.8 → 0.0",
+      "turns": "-90 78",
+      "gaps": null,
+      "svgBytes": 1000,
+      "solvedMs": 2299
+    },
+    {
+      "code": "1221",
+      "overlaps": "· overlaps 0.7 → 0.0",
+      "turns": "0 0",
+      "gaps": "~ 0.143,~ 0.093",
+      "svgBytes": 1051,
+      "solvedMs": 1799
+    },
+    {
+      "code": "1210",
+      "overlaps": "· overlaps 0.1 → 0.0",
+      "turns": "0 0",
+      "gaps": "~ 0.093",
+      "svgBytes": 1050,
+      "solvedMs": 1786
+    },
+    {
+      "code": "2010",
+      "overlaps": "· overlaps 0.0 → 0.0",
+      "turns": "0 0",
+      "gaps": null,
+      "svgBytes": 1011,
+      "solvedMs": 1258
+    },
+    {
+      "code": "2011",
+      "overlaps": "· overlaps 0.3 → 0.0",
+      "turns": "-1 0,9 -3",
+      "gaps": null,
+      "svgBytes": 1011,
+      "solvedMs": 1308
+    },
+    {
+      "code": "0210",
+      "overlaps": "· overlaps 0.2 → 0.0",
+      "turns": "0 0",
+      "gaps": "~ 0.093",
+      "svgBytes": 1008,
+      "solvedMs": 1791
+    },
+    {
+      "code": "2001",
+      "overlaps": "· overlaps 0.2 → 0.0",
+      "turns": "0 0",
+      "gaps": "0.23,~ 0.093",
+      "svgBytes": 1007,
+      "solvedMs": 1908
+    },
+    {
+      "code": "111212",
+      "overlaps": "· overlaps 11.2 → 0.0",
+      "turns": ",,-39 0",
+      "gaps": ",0.18,0.18",
+      "svgBytes": 1399,
+      "solvedMs": 1837
+    }
+  ],
+  "errors": [],
+  "version": "156.0.8078.4"
+}

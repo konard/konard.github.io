@@ -1,0 +1,1222 @@
+{
+  "threshold": 0.1,
+  "includeAntiAlias": false,
+  "summary": {
+    "engine": "firefox",
+    "samples": 120,
+    "exactMatches": 95,
+    "exactPercent": 99.9968764472297,
+    "leastExact": {
+      "id": "firefox-default-light-mobile-art",
+      "changedPixels": 114,
+      "percent": 0.034633612832664966,
+      "exact": 328188,
+      "total": 329160,
+      "exactPercent": 99.70470288005833,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    }
+  },
+  "samples": [
+    {
+      "id": "firefox-default-dark-desktop-home",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 14
+    },
+    {
+      "id": "firefox-default-dark-desktop-settings",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 473,
+      "controlsAfter": 512
+    },
+    {
+      "id": "firefox-default-dark-desktop-network",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 261,
+      "controlsAfter": 282
+    },
+    {
+      "id": "firefox-default-dark-desktop-art",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    },
+    {
+      "id": "firefox-default-dark-desktop-associative",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 9,
+      "controlsAfter": 11
+    },
+    {
+      "id": "firefox-default-dark-desktop-blog",
+      "changedPixels": 26,
+      "percent": 0.0025390625,
+      "exact": 1023942,
+      "total": 1024000,
+      "exactPercent": 99.9943359375,
+      "controlsBefore": 11,
+      "controlsAfter": 13
+    },
+    {
+      "id": "firefox-default-dark-desktop-cv",
+      "changedPixels": 32,
+      "percent": 0.003125,
+      "exact": 1023940,
+      "total": 1024000,
+      "exactPercent": 99.994140625,
+      "controlsBefore": 8,
+      "controlsAfter": 10
+    },
+    {
+      "id": "firefox-default-dark-desktop-experience",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 5,
+      "controlsAfter": 5
+    },
+    {
+      "id": "firefox-default-dark-desktop-repositories",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 10,
+      "controlsAfter": 13
+    },
+    {
+      "id": "firefox-default-dark-desktop-research",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 16,
+      "controlsAfter": 18
+    },
+    {
+      "id": "firefox-default-dark-mobile-home",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 14
+    },
+    {
+      "id": "firefox-default-dark-mobile-settings",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 473,
+      "controlsAfter": 512
+    },
+    {
+      "id": "firefox-default-dark-mobile-network",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 261,
+      "controlsAfter": 282
+    },
+    {
+      "id": "firefox-default-dark-mobile-art",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    },
+    {
+      "id": "firefox-default-dark-mobile-associative",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 9,
+      "controlsAfter": 11
+    },
+    {
+      "id": "firefox-default-dark-mobile-blog",
+      "changedPixels": 23,
+      "percent": 0.006987483290800826,
+      "exact": 329104,
+      "total": 329160,
+      "exactPercent": 99.982986997205,
+      "controlsBefore": 11,
+      "controlsAfter": 13
+    },
+    {
+      "id": "firefox-default-dark-mobile-cv",
+      "changedPixels": 24,
+      "percent": 0.007291286912139993,
+      "exact": 329100,
+      "total": 329160,
+      "exactPercent": 99.98177178271965,
+      "controlsBefore": 8,
+      "controlsAfter": 10
+    },
+    {
+      "id": "firefox-default-dark-mobile-experience",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 5,
+      "controlsAfter": 5
+    },
+    {
+      "id": "firefox-default-dark-mobile-repositories",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 10,
+      "controlsAfter": 13
+    },
+    {
+      "id": "firefox-default-dark-mobile-research",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 16,
+      "controlsAfter": 18
+    },
+    {
+      "id": "firefox-default-light-desktop-home",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 14
+    },
+    {
+      "id": "firefox-default-light-desktop-settings",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 473,
+      "controlsAfter": 512
+    },
+    {
+      "id": "firefox-default-light-desktop-network",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 261,
+      "controlsAfter": 282
+    },
+    {
+      "id": "firefox-default-light-desktop-art",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    },
+    {
+      "id": "firefox-default-light-desktop-associative",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 9,
+      "controlsAfter": 11
+    },
+    {
+      "id": "firefox-default-light-desktop-blog",
+      "changedPixels": 19,
+      "percent": 0.00185546875,
+      "exact": 1023948,
+      "total": 1024000,
+      "exactPercent": 99.994921875,
+      "controlsBefore": 11,
+      "controlsAfter": 13
+    },
+    {
+      "id": "firefox-default-light-desktop-cv",
+      "changedPixels": 24,
+      "percent": 0.00234375,
+      "exact": 1023944,
+      "total": 1024000,
+      "exactPercent": 99.99453125,
+      "controlsBefore": 8,
+      "controlsAfter": 10
+    },
+    {
+      "id": "firefox-default-light-desktop-experience",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 5,
+      "controlsAfter": 5
+    },
+    {
+      "id": "firefox-default-light-desktop-repositories",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 10,
+      "controlsAfter": 13
+    },
+    {
+      "id": "firefox-default-light-desktop-research",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 16,
+      "controlsAfter": 18
+    },
+    {
+      "id": "firefox-default-light-mobile-home",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 14
+    },
+    {
+      "id": "firefox-default-light-mobile-settings",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 473,
+      "controlsAfter": 512
+    },
+    {
+      "id": "firefox-default-light-mobile-network",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 261,
+      "controlsAfter": 282
+    },
+    {
+      "id": "firefox-default-light-mobile-art",
+      "changedPixels": 114,
+      "percent": 0.034633612832664966,
+      "exact": 328188,
+      "total": 329160,
+      "exactPercent": 99.70470288005833,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    },
+    {
+      "id": "firefox-default-light-mobile-associative",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 9,
+      "controlsAfter": 11
+    },
+    {
+      "id": "firefox-default-light-mobile-blog",
+      "changedPixels": 74,
+      "percent": 0.02248146797909831,
+      "exact": 328936,
+      "total": 329160,
+      "exactPercent": 99.93194798882003,
+      "controlsBefore": 11,
+      "controlsAfter": 13
+    },
+    {
+      "id": "firefox-default-light-mobile-cv",
+      "changedPixels": 18,
+      "percent": 0.005468465184104995,
+      "exact": 329104,
+      "total": 329160,
+      "exactPercent": 99.982986997205,
+      "controlsBefore": 8,
+      "controlsAfter": 10
+    },
+    {
+      "id": "firefox-default-light-mobile-experience",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 5,
+      "controlsAfter": 5
+    },
+    {
+      "id": "firefox-default-light-mobile-repositories",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 10,
+      "controlsAfter": 13
+    },
+    {
+      "id": "firefox-default-light-mobile-research",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 16,
+      "controlsAfter": 18
+    },
+    {
+      "id": "firefox-calm-dark-desktop-home",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 14
+    },
+    {
+      "id": "firefox-calm-dark-desktop-settings",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 376,
+      "controlsAfter": 405
+    },
+    {
+      "id": "firefox-calm-dark-desktop-network",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 261,
+      "controlsAfter": 282
+    },
+    {
+      "id": "firefox-calm-dark-desktop-art",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    },
+    {
+      "id": "firefox-calm-dark-desktop-associative",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 9,
+      "controlsAfter": 11
+    },
+    {
+      "id": "firefox-calm-dark-desktop-blog",
+      "changedPixels": 5,
+      "percent": 0.00048828125,
+      "exact": 1023940,
+      "total": 1024000,
+      "exactPercent": 99.994140625,
+      "controlsBefore": 11,
+      "controlsAfter": 13
+    },
+    {
+      "id": "firefox-calm-dark-desktop-cv",
+      "changedPixels": 11,
+      "percent": 0.00107421875,
+      "exact": 1023936,
+      "total": 1024000,
+      "exactPercent": 99.99375,
+      "controlsBefore": 8,
+      "controlsAfter": 10
+    },
+    {
+      "id": "firefox-calm-dark-desktop-experience",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 5,
+      "controlsAfter": 5
+    },
+    {
+      "id": "firefox-calm-dark-desktop-repositories",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 10,
+      "controlsAfter": 13
+    },
+    {
+      "id": "firefox-calm-dark-desktop-research",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 16,
+      "controlsAfter": 18
+    },
+    {
+      "id": "firefox-calm-dark-mobile-home",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 14
+    },
+    {
+      "id": "firefox-calm-dark-mobile-settings",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 376,
+      "controlsAfter": 405
+    },
+    {
+      "id": "firefox-calm-dark-mobile-network",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 261,
+      "controlsAfter": 282
+    },
+    {
+      "id": "firefox-calm-dark-mobile-art",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    },
+    {
+      "id": "firefox-calm-dark-mobile-associative",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 9,
+      "controlsAfter": 11
+    },
+    {
+      "id": "firefox-calm-dark-mobile-blog",
+      "changedPixels": 3,
+      "percent": 0.0009114108640174991,
+      "exact": 329104,
+      "total": 329160,
+      "exactPercent": 99.982986997205,
+      "controlsBefore": 11,
+      "controlsAfter": 13
+    },
+    {
+      "id": "firefox-calm-dark-mobile-cv",
+      "changedPixels": 12,
+      "percent": 0.0036456434560699965,
+      "exact": 329100,
+      "total": 329160,
+      "exactPercent": 99.98177178271965,
+      "controlsBefore": 8,
+      "controlsAfter": 10
+    },
+    {
+      "id": "firefox-calm-dark-mobile-experience",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 5,
+      "controlsAfter": 5
+    },
+    {
+      "id": "firefox-calm-dark-mobile-repositories",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 10,
+      "controlsAfter": 13
+    },
+    {
+      "id": "firefox-calm-dark-mobile-research",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 16,
+      "controlsAfter": 18
+    },
+    {
+      "id": "firefox-calm-light-desktop-home",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 14
+    },
+    {
+      "id": "firefox-calm-light-desktop-settings",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 376,
+      "controlsAfter": 405
+    },
+    {
+      "id": "firefox-calm-light-desktop-network",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 261,
+      "controlsAfter": 282
+    },
+    {
+      "id": "firefox-calm-light-desktop-art",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    },
+    {
+      "id": "firefox-calm-light-desktop-associative",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 9,
+      "controlsAfter": 11
+    },
+    {
+      "id": "firefox-calm-light-desktop-blog",
+      "changedPixels": 5,
+      "percent": 0.00048828125,
+      "exact": 1023941,
+      "total": 1024000,
+      "exactPercent": 99.99423828125,
+      "controlsBefore": 11,
+      "controlsAfter": 13
+    },
+    {
+      "id": "firefox-calm-light-desktop-cv",
+      "changedPixels": 11,
+      "percent": 0.00107421875,
+      "exact": 1023938,
+      "total": 1024000,
+      "exactPercent": 99.9939453125,
+      "controlsBefore": 8,
+      "controlsAfter": 10
+    },
+    {
+      "id": "firefox-calm-light-desktop-experience",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 5,
+      "controlsAfter": 5
+    },
+    {
+      "id": "firefox-calm-light-desktop-repositories",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 10,
+      "controlsAfter": 13
+    },
+    {
+      "id": "firefox-calm-light-desktop-research",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 16,
+      "controlsAfter": 18
+    },
+    {
+      "id": "firefox-calm-light-mobile-home",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 14
+    },
+    {
+      "id": "firefox-calm-light-mobile-settings",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 376,
+      "controlsAfter": 405
+    },
+    {
+      "id": "firefox-calm-light-mobile-network",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 261,
+      "controlsAfter": 282
+    },
+    {
+      "id": "firefox-calm-light-mobile-art",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    },
+    {
+      "id": "firefox-calm-light-mobile-associative",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 9,
+      "controlsAfter": 11
+    },
+    {
+      "id": "firefox-calm-light-mobile-blog",
+      "changedPixels": 2,
+      "percent": 0.0006076072426783327,
+      "exact": 329106,
+      "total": 329160,
+      "exactPercent": 99.98359460444769,
+      "controlsBefore": 11,
+      "controlsAfter": 13
+    },
+    {
+      "id": "firefox-calm-light-mobile-cv",
+      "changedPixels": 12,
+      "percent": 0.0036456434560699965,
+      "exact": 329104,
+      "total": 329160,
+      "exactPercent": 99.982986997205,
+      "controlsBefore": 8,
+      "controlsAfter": 10
+    },
+    {
+      "id": "firefox-calm-light-mobile-experience",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 5,
+      "controlsAfter": 5
+    },
+    {
+      "id": "firefox-calm-light-mobile-repositories",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 10,
+      "controlsAfter": 13
+    },
+    {
+      "id": "firefox-calm-light-mobile-research",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 16,
+      "controlsAfter": 18
+    },
+    {
+      "id": "firefox-fast-dark-desktop-home",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 14
+    },
+    {
+      "id": "firefox-fast-dark-desktop-settings",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 376,
+      "controlsAfter": 405
+    },
+    {
+      "id": "firefox-fast-dark-desktop-network",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 261,
+      "controlsAfter": 282
+    },
+    {
+      "id": "firefox-fast-dark-desktop-art",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    },
+    {
+      "id": "firefox-fast-dark-desktop-associative",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 9,
+      "controlsAfter": 11
+    },
+    {
+      "id": "firefox-fast-dark-desktop-blog",
+      "changedPixels": 5,
+      "percent": 0.00048828125,
+      "exact": 1023940,
+      "total": 1024000,
+      "exactPercent": 99.994140625,
+      "controlsBefore": 11,
+      "controlsAfter": 13
+    },
+    {
+      "id": "firefox-fast-dark-desktop-cv",
+      "changedPixels": 11,
+      "percent": 0.00107421875,
+      "exact": 1023936,
+      "total": 1024000,
+      "exactPercent": 99.99375,
+      "controlsBefore": 8,
+      "controlsAfter": 10
+    },
+    {
+      "id": "firefox-fast-dark-desktop-experience",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 5,
+      "controlsAfter": 5
+    },
+    {
+      "id": "firefox-fast-dark-desktop-repositories",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 10,
+      "controlsAfter": 13
+    },
+    {
+      "id": "firefox-fast-dark-desktop-research",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 16,
+      "controlsAfter": 18
+    },
+    {
+      "id": "firefox-fast-dark-mobile-home",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 14
+    },
+    {
+      "id": "firefox-fast-dark-mobile-settings",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 376,
+      "controlsAfter": 405
+    },
+    {
+      "id": "firefox-fast-dark-mobile-network",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 261,
+      "controlsAfter": 282
+    },
+    {
+      "id": "firefox-fast-dark-mobile-art",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    },
+    {
+      "id": "firefox-fast-dark-mobile-associative",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 9,
+      "controlsAfter": 11
+    },
+    {
+      "id": "firefox-fast-dark-mobile-blog",
+      "changedPixels": 3,
+      "percent": 0.0009114108640174991,
+      "exact": 329104,
+      "total": 329160,
+      "exactPercent": 99.982986997205,
+      "controlsBefore": 11,
+      "controlsAfter": 13
+    },
+    {
+      "id": "firefox-fast-dark-mobile-cv",
+      "changedPixels": 12,
+      "percent": 0.0036456434560699965,
+      "exact": 329100,
+      "total": 329160,
+      "exactPercent": 99.98177178271965,
+      "controlsBefore": 8,
+      "controlsAfter": 10
+    },
+    {
+      "id": "firefox-fast-dark-mobile-experience",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 5,
+      "controlsAfter": 5
+    },
+    {
+      "id": "firefox-fast-dark-mobile-repositories",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 10,
+      "controlsAfter": 13
+    },
+    {
+      "id": "firefox-fast-dark-mobile-research",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 16,
+      "controlsAfter": 18
+    },
+    {
+      "id": "firefox-fast-light-desktop-home",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 14
+    },
+    {
+      "id": "firefox-fast-light-desktop-settings",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 376,
+      "controlsAfter": 405
+    },
+    {
+      "id": "firefox-fast-light-desktop-network",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 261,
+      "controlsAfter": 282
+    },
+    {
+      "id": "firefox-fast-light-desktop-art",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    },
+    {
+      "id": "firefox-fast-light-desktop-associative",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 9,
+      "controlsAfter": 11
+    },
+    {
+      "id": "firefox-fast-light-desktop-blog",
+      "changedPixels": 5,
+      "percent": 0.00048828125,
+      "exact": 1023941,
+      "total": 1024000,
+      "exactPercent": 99.99423828125,
+      "controlsBefore": 11,
+      "controlsAfter": 13
+    },
+    {
+      "id": "firefox-fast-light-desktop-cv",
+      "changedPixels": 11,
+      "percent": 0.00107421875,
+      "exact": 1023938,
+      "total": 1024000,
+      "exactPercent": 99.9939453125,
+      "controlsBefore": 8,
+      "controlsAfter": 10
+    },
+    {
+      "id": "firefox-fast-light-desktop-experience",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 5,
+      "controlsAfter": 5
+    },
+    {
+      "id": "firefox-fast-light-desktop-repositories",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 10,
+      "controlsAfter": 13
+    },
+    {
+      "id": "firefox-fast-light-desktop-research",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 1024000,
+      "total": 1024000,
+      "exactPercent": 100,
+      "controlsBefore": 16,
+      "controlsAfter": 18
+    },
+    {
+      "id": "firefox-fast-light-mobile-home",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 14
+    },
+    {
+      "id": "firefox-fast-light-mobile-settings",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 376,
+      "controlsAfter": 405
+    },
+    {
+      "id": "firefox-fast-light-mobile-network",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 261,
+      "controlsAfter": 282
+    },
+    {
+      "id": "firefox-fast-light-mobile-art",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 14,
+      "controlsAfter": 16
+    },
+    {
+      "id": "firefox-fast-light-mobile-associative",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 9,
+      "controlsAfter": 11
+    },
+    {
+      "id": "firefox-fast-light-mobile-blog",
+      "changedPixels": 2,
+      "percent": 0.0006076072426783327,
+      "exact": 329106,
+      "total": 329160,
+      "exactPercent": 99.98359460444769,
+      "controlsBefore": 11,
+      "controlsAfter": 13
+    },
+    {
+      "id": "firefox-fast-light-mobile-cv",
+      "changedPixels": 12,
+      "percent": 0.0036456434560699965,
+      "exact": 329104,
+      "total": 329160,
+      "exactPercent": 99.982986997205,
+      "controlsBefore": 8,
+      "controlsAfter": 10
+    },
+    {
+      "id": "firefox-fast-light-mobile-experience",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 5,
+      "controlsAfter": 5
+    },
+    {
+      "id": "firefox-fast-light-mobile-repositories",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 10,
+      "controlsAfter": 13
+    },
+    {
+      "id": "firefox-fast-light-mobile-research",
+      "changedPixels": 0,
+      "percent": 0,
+      "exact": 329160,
+      "total": 329160,
+      "exactPercent": 100,
+      "controlsBefore": 16,
+      "controlsAfter": 18
+    }
+  ]
+}

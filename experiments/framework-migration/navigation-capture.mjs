@@ -6,7 +6,7 @@ import { chromium } from 'playwright';
 import { PNG } from 'pngjs';
 import pixelmatch from 'pixelmatch';
 
-const root = '/tmp/issue54-renderings';
+const root = process.env.CAPTURES || '/tmp/issue54-renderings';
 const id = 'chromium-default-dark-mobile-art';
 const before = PNG.sync.read(await readFile(`${root}/baseline/${id}.png`));
 const after = PNG.sync.read(await readFile(`${root}/after/${id}.png`));

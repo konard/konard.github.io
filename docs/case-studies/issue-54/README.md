@@ -1,9 +1,19 @@
-# Issue 54: framework migration draft and parity study
+# Issue 54 — Link Foundation UI migration and parity study
 
-Work: [issue 54](https://github.com/konard/konard.github.io/issues/54),
-[PR 55](https://github.com/konard/konard.github.io/pull/55).
-Research dates: 2026-11-05–06, re-audit 2026-11-09. Baseline site: `f169665` (main).
-Framework snapshot: `b4baef4d56eacc9c05d033e3e33a895e540b40ac` (upstream `main` after
+[Issue 54](https://github.com/konard/konard.github.io/issues/54) tracks the migration in
+[PR 55](https://github.com/konard/konard.github.io/pull/55). The November 20
+[published-package audit](released-packages.md) records the current requirements,
+implementation, screenshots and remaining upstream contracts. The site installs
+the framework from npm. It uses the published network configuration, edit,
+worker-transport, raster-encoding and embed-script APIs alongside the settings,
+control, localization, palette and inspector APIs adopted earlier. The
+full upstream support requirement remains open.
+
+## November 5–9 research archive
+
+The sections below record the earlier migration and CI investigations as of
+November 9. They use `f169665` as the baseline. The framework snapshot was
+`b4baef4d56eacc9c05d033e3e33a895e540b40ac` (upstream `main` after
 merged PRs 213, 214, 216, 217 and 218); every archive in the manifest carries that
 single revision. Earlier snapshots were `f72e97f`, `2efd7e2`, `4564597` and
 `27d580f`/`e37935e`.
@@ -32,7 +42,7 @@ older site revision; its full body and comments are preserved separately.
 | Report every framework missing feature or bug blocking full use | Reproduce actual failures and compare source APIs with current contracts; file grouped, actionable upstream reports | Reports 209–212, then granular requests 221–235 (2026-11-09 re-audit); exact bodies retained here |
 | Draft with workarounds at the same time | Compatibility schema projection, control events/styles, legacy storage/CSS boundary and source archives; initial browser transforms were removed after upstream fixes | Public-contract tests, palette/default fixtures, production inspector and keyboard checks |
 | Ensure all reusable features are fully supported upstream, making this site's UI as short as possible | Prefer framework engines; identify APIs required to remove each remaining generic backend; propose provider/schema extension points | **Blocked:** the current upstream release cannot express the complete control/panel/frame/network/material contracts. Reports alone do not satisfy this criterion |
-| Collect all data in docs/case-studies/issue-54 | Preserve issue/feedback/source metadata, frozen schemas/looks/palettes, upstream reports, verification records and screenshots | This directory and its relative links; source archives and manifest are under `vendor/link-ui` |
+| Collect all data in docs/case-studies/issue-54 | Preserve issue/feedback/source metadata, frozen schemas/looks/palettes, upstream reports, verification records and screenshots | This directory and its relative links; see the [historical source archives and manifest](https://github.com/konard/konard.github.io/tree/2f32d20ad92a60fea0720d9dda5d89a2e7c5c977/vendor/link-ui) |
 | Deep analysis, online facts, existing components/libraries, solutions and plans for every requirement | Inspect current framework code and recent related PRs; consult primary npm, Vite, WAI and Floating UI documentation; compare alternatives below | Source links and reasoning below; plans per requirement and per remaining backend |
 | Execute in this single PR until every criterion is addressed | Keep the draft, adapters, tests, evidence and findings together in PR 55; retain positive closing reference | PR remains unmerged; the full-support criterion above must remain explicitly unfinished |
 

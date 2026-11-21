@@ -7,31 +7,36 @@ import { chromium, firefox, webkit } from 'playwright';
 const phase = process.env.PHASE || 'baseline';
 const engine = process.env.ENGINE || 'chromium';
 const base = process.env.BASE || 'http://127.0.0.1:3000';
-const out = `/tmp/issue54-renderings/${phase}`;
+const root = process.env.CAPTURES || '/tmp/issue54-renderings/release';
+const out = `${root}/${phase}`;
 await mkdir(out, { recursive: true });
-const evidence = 'docs/case-studies/issue-54/screenshots';
-await mkdir(evidence, { recursive: true });
+const routes = [
+  ['home', '/'],
+  ['settings', '/settings/'],
+  ['network', '/network/?code=112212'],
+  ['art', '/art/#symbols'],
+  ['associative', '/associative/'],
+  ['blog', '/blog/'],
+  ['cv', '/cv/'],
+  ['experience', '/experience/'],
+  ['repositories', '/repositories/'],
+  ['research', '/research/'],
+];
 let browser;
 const results = [];
 try {
   // Frozen before the migration, so these also exercise old saved looks.
   const looks = JSON.parse(await readFile('docs/case-studies/issue-54/data/presets-before.json', 'utf8'));
   if (Object.values(looks).some((look) => !look)) throw new Error('Missing baseline preset');
+  browser = await { chromium, firefox, webkit }[engine].launch();
   for (const [preset, look] of Object.entries(looks)) {
     for (const theme of ['dark', 'light']) {
       for (const [size, viewport] of [
         ['desktop', { width: 1280, height: 800 }],
         ['mobile', { width: 390, height: 844 }],
       ]) {
-        for (const [name, path] of [
-          ['home', '/'],
-          ['settings', '/settings/'],
-          ['network', '/network/?code=112212'],
-          ['art', '/art/#symbols'],
-        ]) {
-          // A fresh browser per sample bounds GPU/canvas memory and also
-          // verifies a real cold load of saved looks on every route.
-          browser = await { chromium, firefox, webkit }[engine].launch();
+        for (const [name, path] of routes) {
+          // Each sample gets a fresh context and starts from the saved look.
           const page = await browser.newPage({ viewport, colorScheme: 'dark', reducedMotion: 'reduce' });
           page.setDefaultTimeout(30000);
           const errors = [];
@@ -49,6 +54,7 @@ try {
             },
             { look, theme },
           );
+          await page.clock.setFixedTime(new Date('2026-11-20T12:00:00Z'));
           await page.goto(base + path, { waitUntil: 'load' });
           await page.locator('.footer').waitFor();
           await page.evaluate(() => document.fonts.ready);
@@ -56,9 +62,7 @@ try {
           // Allow lazy background layers and the settings columns to settle.
           await page.waitForTimeout(300);
           const id = `${engine}-${preset}-${theme}-${size}-${name}`;
-          const png = await page.screenshot({ path: `${out}/${id}.png`, animations: 'disabled' });
-          if (engine === 'chromium' && preset === 'default' && theme === 'dark' && name !== 'art')
-            await writeFile(`${evidence}/${phase}-${size}-${name}.png`, png);
+          await page.screenshot({ path: `${out}/${id}.png`, animations: 'disabled' });
           const summary = await page.evaluate(() => ({
             title: document.title,
             overflow: document.documentElement.scrollWidth > innerWidth + 1,
@@ -68,7 +72,7 @@ try {
           }));
           results.push({ id, ...summary, errors: errors.splice(0) });
           console.log(id);
-          await browser.close();
+          await page.close();
         }
       }
     }
